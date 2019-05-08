@@ -152,10 +152,8 @@
 &nbsp; <div dir="rtl" style="display:inline">کمپلیکس تار ہینڈلر.</div> | /vault/classes/Maikuolan/ComplexStringHandler.php
 &nbsp; <div dir="rtl" style="display:inline">L10N ہینڈلر.</div> | /vault/classes/Maikuolan/L10N.php
 &nbsp; <div dir="rtl" style="display:inline">YAML ہینڈلر.</div> | /vault/classes/Maikuolan/YAML.php
-&nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/classes/.htaccess
 &nbsp; <div dir="rtl" style="display:inline">IP مجموعی طور پر.</div> | /vault/classes/Aggregator.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے اثاثے.</div> | /vault/fe_assets/
-&nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/fe_assets/.htaccess
 &nbsp; <div dir="rtl" style="display:inline">صارف کو 2FA کوڈ کے لئے پوچھتے وقت ایک HTML ٹیمپلیٹ استعمال کیا جاتا ہے.</div> | /vault/fe_assets/_2fa.html
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اکاؤنٹس صفحہ.</div> | /vault/fe_assets/_accounts.html
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اکاؤنٹس صفحہ.</div> | /vault/fe_assets/_accounts_row.html
@@ -194,71 +192,48 @@
 &nbsp; <div dir="rtl" style="display:inline">پپس کے ہینڈلر (سامنے کے آخر میں فائل مینیجر کی طرف سے استعمال کیا جاتا).</div> | /vault/fe_assets/pips.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر جاوا اسکرپٹ ڈیٹا پر مشتمل ہے.</div> | /vault/fe_assets/scripts.js
 &nbsp; <div dir="rtl" style="display:inline">CIDRAM زبان کے اعداد و شمار پر مشتمل ہے.</div> | /vault/lang/
-&nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/lang/.htaccess
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے عربی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ar.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے عربی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ar.fe.php
 &nbsp; <div dir="rtl" style="display:inline">عربی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ar.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے بنگلا زبان کے اعداد و شمار.</div> | /vault/lang/lang.bn.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے بنگلا زبان کے اعداد و شمار.</div> | /vault/lang/lang.bn.fe.php
 &nbsp; <div dir="rtl" style="display:inline">بنگلا زبان کے اعداد و شمار.</div> | /vault/lang/lang.bn.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے جرمن زبان کے اعداد و شمار.</div> | /vault/lang/lang.de.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے جرمن زبان کے اعداد و شمار.</div> | /vault/lang/lang.de.fe.php
 &nbsp; <div dir="rtl" style="display:inline">جرمن زبان کے اعداد و شمار.</div> | /vault/lang/lang.de.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے انگریزی زبان کے اعداد و شمار.</div> | /vault/lang/lang.en.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے انگریزی زبان کے اعداد و شمار.</div> | /vault/lang/lang.en.fe.php
 &nbsp; <div dir="rtl" style="display:inline">انگریزی زبان کے اعداد و شمار.</div> | /vault/lang/lang.en.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے ہسپانوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.es.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ہسپانوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.es.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ہسپانوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.es.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے فرانسیسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.fr.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے فرانسیسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.fr.fe.php
 &nbsp; <div dir="rtl" style="display:inline">فرانسیسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.fr.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے ہندی زبان کے اعداد و شمار.</div> | /vault/lang/lang.hi.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ہندی زبان کے اعداد و شمار.</div> | /vault/lang/lang.hi.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ہندی زبان کے اعداد و شمار.</div> | /vault/lang/lang.hi.php
-&nbsp; <div dir="rtl" style="display:inline">CLI لئے انڈونیشی زبان کے اعداد و شمار.</div> | /vault/lang/lang.id.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے انڈونیشی زبان کے اعداد و شمار.</div> | /vault/lang/lang.id.fe.php
 &nbsp; <div dir="rtl" style="display:inline">انڈونیشی زبان کے اعداد و شمار.</div> | /vault/lang/lang.id.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے اطالوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.it.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے اطالوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.it.fe.php
 &nbsp; <div dir="rtl" style="display:inline">اطالوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.it.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.fe.php
 &nbsp; <div dir="rtl" style="display:inline">جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.php
-&nbsp; <div dir="rtl" style="display:inline">CLI لیے کوریائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے کوریائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.fe.php
 &nbsp; <div dir="rtl" style="display:inline">کورین زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.fe.php
 &nbsp; <div dir="rtl" style="display:inline">پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.fe.php
 &nbsp; <div dir="rtl" style="display:inline">روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.fe.php
 &nbsp; <div dir="rtl" style="display:inline">سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.fe.php
 &nbsp; <div dir="rtl" style="display:inline">تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے اردو زبان کے اعداد و شمار.</div> | /vault/lang/lang.ur.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے اردو زبان کے اعداد و شمار.</div> | /vault/lang/lang.ur.fe.php
 &nbsp; <div dir="rtl" style="display:inline">اردو زبان کے اعداد و شمار.</div> | /vault/lang/lang.ur.php
-&nbsp; <div dir="rtl" style="display:inline">CLI لئے ویتنامی زبان کے اعداد و شمار.</div> | /vault/lang/lang.vi.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ویتنامی زبان کے اعداد و شمار.</div> | /vault/lang/lang.vi.fe.php
 &nbsp; <div dir="rtl" style="display:inline">ویتنامی زبان کے اعداد و شمار.</div> | /vault/lang/lang.vi.php
-&nbsp; <div dir="rtl" style="display:inline">CLI کے لئے چینی (روایتی) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh-tw.cli.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے چینی (روایتی) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh-tw.fe.php
 &nbsp; <div dir="rtl" style="display:inline">چینی (روایتی) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh-tw.php
-&nbsp; <div dir="rtl" style="display:inline">چینی (آسان کردہ) CLI کے لئے زبان کو ڈیٹا کے.</div> | /vault/lang/lang.zh.cli.php
 &nbsp; <div dir="rtl" style="display:inline">چینی کے سامنے کے آخر کے لئے (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.fe.php
 &nbsp; <div dir="rtl" style="display:inline">چینی (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.php
 &nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/.htaccess
@@ -267,7 +242,6 @@
 &nbsp; <div dir="rtl" style="display:inline">معاون قوانین پر مشتمل ہے. پیکیج میں شامل نہیں. معاون قواعد کے صفحے کی طرف سے پیدا.</div> | /vault/auxiliary.yaml
 &nbsp; <div dir="rtl" style="display:inline">کیشے کے اعداد و شمار.</div> | /vault/cache.dat
 &nbsp; <div dir="rtl" style="display:inline">Macmathan طرف سے فراہم اختیاری ملک blocklists سے متعلق معلومات پر مشتمل ہے؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/cidramblocklists.dat
-&nbsp; <div dir="rtl" style="display:inline">CLI ہینڈلر.</div> | /vault/cli.php
 &nbsp; <div dir="rtl" style="display:inline">جزو میٹا ڈیٹا فائل؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/components.dat
 &nbsp; <div dir="rtl" style="display:inline">کنفگریشن فائل؛ CIDRAM کے تمام ترتیب کے اختیارات، کیا کرنا ہے یہ کہہ رہا ہے اور صحیح طریقے سے کام کرنے کے طریقے پر مشتمل ہے (چالو کرنے کا نام تبدیل).</div> | /vault/config.ini.RenameMe
 &nbsp; <div dir="rtl" style="display:inline">کنفگریشن ہینڈلر.</div> | /vault/config.php
@@ -291,7 +265,6 @@
 &nbsp; <div dir="rtl" style="display:inline">زبان ہینڈلر.</div> | /vault/lang.php
 &nbsp; <div dir="rtl" style="display:inline">ماڈیولز میٹا ڈیٹا فائل؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/modules.dat
 &nbsp; <div dir="rtl" style="display:inline">آؤٹ پٹ جنریٹر.</div> | /vault/outgen.php
-&nbsp; <div dir="rtl" style="display:inline">PHP 5.4.X کے لئے Polyfills (PHP 5.4.X پیچھے کی طرف مطابقت کے لئے ضروری؛ محفوظ نئے PHP ورژن کے لئے حذف کرنا).</div> | /vault/php5.4.x.php
 &nbsp; <div dir="rtl" style="display:inline">reCAPTCHA کے ماڈیول.</div> | /vault/recaptcha.php
 &nbsp; <div dir="rtl" style="display:inline">اپنی مرضی کے قوانین AS6939 لئے دائر.</div> | /vault/rules_as6939.php
 &nbsp; <div dir="rtl" style="display:inline">اپنی مرضی کے قوانین نرم پرت کے لئے دائر.</div> | /vault/rules_softlayer.php
@@ -318,7 +291,7 @@
 
 [general](#general-قسم) | [signatures](#signatures-قسم) | [recaptcha](#recaptcha-قسم) | [legal](#legal-قسم)
 --:|--:|--:|--:
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-قسم) | [PHPMailer](#phpmailer-قسم) | [rate_limiting](#rate_limiting-قسم) | [supplementary_cache_options](#supplementary_cache_options-قسم)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -464,7 +437,7 @@
  <li>آپ کو ای میل ایڈریس کو کس طرح صارفین کو پیش کرنا پسند ہے؟ "default" = کلک کرنے والے لنک. "noclick" = متن جو کلک نہیں کیا جا سکتا.</li>
 </ul></div>
 
-##### <div dir="rtl">"disable_cli"<br /></div>
+##### <div dir="rtl">"disable_cli" (v2 سے ہٹا دیا گیا)<br /></div>
 <div dir="rtl"><ul>
  <li>CLI موڈ کو غیر فعال کریں؟ CLI موڈ ڈیفالٹ کی طرف سے چالو حالت میں ہے، لیکن کبھی کبھی بعض جانچ کے آلات (جیسے PHPUnit کے طور پر، مثال کے طور پر) اور دیگر CLI کی بنیاد پر ایپلی کیشنز کے ساتھ مداخلت کر سکتے ہیں. آپ CLI موڈ کو غیر فعال کرنے کی ضرورت نہیں ہے تو، آپ کو اس ہدایت کو نظر انداز کرنا چاہئے. False (جھوٹی) = CLI موڈ [پہلے سے طے شدہ] فعال؛ True (سچے) = غیر فعال CLI موڈ.</li>
 </ul></div>
@@ -582,6 +555,11 @@
 ##### <div dir="rtl">"empty_fields"<br /></div>
 <div dir="rtl"><ul>
  <li>جب بلاک ایونٹ کی معلومات لاگ ان اور ڈسپلے کرنا، CIDRAM کو خالی شعبوں کو کیسے ہینڈل کرنا چاہئے؟ "include" = خالی شعبیں شامل کریں. "omit" = خالی خالی جگہیں چھپائیں [پہلے سے طے شدہ].</li>
+</ul></div>
+
+##### <div dir="rtl">"log_sanitation"<br /></div>
+<div dir="rtl"><ul>
+ <li>لاگز ڈیٹا دیکھنے کے لئے سامنے کے آخر لاگز صفحے کے کا استعمال کرتے وقت کب، XSS حملوں سے صارفین کی حفاظت کے لئے، یہ نمائش سے پہلے نظر ثانی شدہ ہے. لیکن، ہم ایسا نہیں کرتے جب سب سے پہلے اسے ریکارڈ کرنا پڑتا ہے. اگر یہ مستقبل میں اس کا تجزیہ کرنے کی ضرورت ہے تو اس سے مدد مل سکتی ہے. لیکن خارجہ قارئین کا استعمال کرتے وقت یہ کبھی کبھی غیر محفوظ ہوسکتا ہے. اگر ضرورت ہو تو آپ رویے کو تبدیل کرسکتے ہیں. True (سچے) = کم درست، لیکن کم خطرہ. False (جھوٹی) = زیادہ درست، لیکن زیادہ خطرہ [پہلے سے طے شدہ].</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>

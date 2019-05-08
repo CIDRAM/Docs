@@ -150,10 +150,8 @@ Archivo | Descripción
 /vault/classes/Maikuolan/ComplexStringHandler.php | Controlador para cadenas complejas.
 /vault/classes/Maikuolan/L10N.php | Controlador para L10N.
 /vault/classes/Maikuolan/YAML.php | Controlador para YAML.
-/vault/classes/.htaccess | Un hipertexto acceso archivo (en este caso, para proteger confidenciales archivos perteneciente a la script contra el acceso de fuentes no autorizadas).
 /vault/classes/Aggregator.php | Agregador IP.
 /vault/fe_assets/ | Archivos del front-end.
-/vault/fe_assets/.htaccess | Un hipertexto acceso archivo (en este caso, para proteger confidenciales archivos perteneciente a la script contra el acceso de fuentes no autorizadas).
 /vault/fe_assets/_2fa.html | Un archivo HTML utilizada al pedirle al usuario un código 2FA.
 /vault/fe_assets/_accounts.html | Un archivo HTML para el front-end página de cuentas.
 /vault/fe_assets/_accounts_row.html | Un archivo HTML para el front-end página de cuentas.
@@ -192,71 +190,48 @@ Archivo | Descripción
 /vault/fe_assets/pips.php | Archivo de pips (utilizado por el administración de archivos del front-end).
 /vault/fe_assets/scripts.js | Contiene datos de JavaScript del front-end.
 /vault/lang/ | Contiene lingüísticos datos.
-/vault/lang/.htaccess | Un hipertexto acceso archivo (en este caso, para proteger confidenciales archivos perteneciente a la script contra el acceso de fuentes no autorizadas).
-/vault/lang/lang.ar.cli.php | Lingüísticos datos Árabe para CLI.
 /vault/lang/lang.ar.fe.php | Lingüísticos datos Árabe para el front-end.
 /vault/lang/lang.ar.php | Lingüísticos datos Árabe.
-/vault/lang/lang.bn.cli.php | Lingüísticos datos Bangla para CLI.
 /vault/lang/lang.bn.fe.php | Lingüísticos datos Bangla para el front-end.
 /vault/lang/lang.bn.php | Lingüísticos datos Bangla.
-/vault/lang/lang.de.cli.php | Lingüísticos datos Alemán para CLI.
 /vault/lang/lang.de.fe.php | Lingüísticos datos Alemán para el front-end.
 /vault/lang/lang.de.php | Lingüísticos datos Alemán.
-/vault/lang/lang.en.cli.php | Lingüísticos datos Inglés para CLI.
 /vault/lang/lang.en.fe.php | Lingüísticos datos Inglés para el front-end.
 /vault/lang/lang.en.php | Lingüísticos datos Inglés.
-/vault/lang/lang.es.cli.php | Lingüísticos datos Español para CLI.
 /vault/lang/lang.es.fe.php | Lingüísticos datos Español para el front-end.
 /vault/lang/lang.es.php | Lingüísticos datos Español.
-/vault/lang/lang.fr.cli.php | Lingüísticos datos Francés para CLI.
 /vault/lang/lang.fr.fe.php | Lingüísticos datos Francés para el front-end.
 /vault/lang/lang.fr.php | Lingüísticos datos Francés.
-/vault/lang/lang.hi.cli.php | Lingüísticos datos Hindi para CLI.
 /vault/lang/lang.hi.fe.php | Lingüísticos datos Hindi para el front-end.
 /vault/lang/lang.hi.php | Lingüísticos datos Hindi.
-/vault/lang/lang.id.cli.php | Lingüísticos datos Indonesio para CLI.
 /vault/lang/lang.id.fe.php | Lingüísticos datos Indonesio para el front-end.
 /vault/lang/lang.id.php | Lingüísticos datos Indonesio.
-/vault/lang/lang.it.cli.php | Lingüísticos datos Italiano para CLI.
 /vault/lang/lang.it.fe.php | Lingüísticos datos Italiano para el front-end.
 /vault/lang/lang.it.php | Lingüísticos datos Italiano.
-/vault/lang/lang.ja.cli.php | Lingüísticos datos Japonés para CLI.
 /vault/lang/lang.ja.fe.php | Lingüísticos datos Japonés para el front-end.
 /vault/lang/lang.ja.php | Lingüísticos datos Japonés.
-/vault/lang/lang.ko.cli.php | Lingüísticos datos Koreano para CLI.
 /vault/lang/lang.ko.fe.php | Lingüísticos datos Koreano para el front-end.
 /vault/lang/lang.ko.php | Lingüísticos datos Koreano.
-/vault/lang/lang.nl.cli.php | Lingüísticos datos Holandés para CLI.
 /vault/lang/lang.nl.fe.php | Lingüísticos datos Holandés para el front-end.
 /vault/lang/lang.nl.php | Lingüísticos datos Holandés.
-/vault/lang/lang.no.cli.php | Lingüísticos datos Noruego para CLI.
 /vault/lang/lang.no.fe.php | Lingüísticos datos Noruego para el front-end.
 /vault/lang/lang.no.php | Lingüísticos datos Noruego.
-/vault/lang/lang.pt.cli.php | Lingüísticos datos Portugués para CLI.
 /vault/lang/lang.pt.fe.php | Lingüísticos datos Portugués para el front-end.
 /vault/lang/lang.pt.php | Lingüísticos datos Portugués.
-/vault/lang/lang.ru.cli.php | Lingüísticos datos Ruso para CLI.
 /vault/lang/lang.ru.fe.php | Lingüísticos datos Ruso para el front-end.
 /vault/lang/lang.ru.php | Lingüísticos datos Ruso.
-/vault/lang/lang.sv.cli.php | Lingüísticos datos Sueco para CLI.
 /vault/lang/lang.sv.fe.php | Lingüísticos datos Sueco para el front-end.
 /vault/lang/lang.sv.php | Lingüísticos datos Sueco.
-/vault/lang/lang.th.cli.php | Lingüísticos datos Tailandés para CLI.
 /vault/lang/lang.th.fe.php | Lingüísticos datos Tailandés para el front-end.
 /vault/lang/lang.th.php | Lingüísticos datos Tailandés.
-/vault/lang/lang.tr.cli.php | Lingüísticos datos Turco para CLI.
 /vault/lang/lang.tr.fe.php | Lingüísticos datos Turco para el front-end.
 /vault/lang/lang.tr.php | Lingüísticos datos Turco.
-/vault/lang/lang.ur.cli.php | Lingüísticos datos Urdu para CLI.
 /vault/lang/lang.ur.fe.php | Lingüísticos datos Urdi para el front-end.
 /vault/lang/lang.ur.php | Lingüísticos datos Urdu.
-/vault/lang/lang.vi.cli.php | Lingüísticos datos Vietnamita para CLI.
 /vault/lang/lang.vi.fe.php | Lingüísticos datos Vietnamita para el front-end.
 /vault/lang/lang.vi.php | Lingüísticos datos Vietnamita.
-/vault/lang/lang.zh-tw.cli.php | Lingüísticos datos Chino (tradicional) para CLI.
 /vault/lang/lang.zh-tw.fe.php | Lingüísticos datos Chino (tradicional) para el front-end.
 /vault/lang/lang.zh-tw.php | Lingüísticos datos Chino (tradicional).
-/vault/lang/lang.zh.cli.php | Lingüísticos datos Chino (simplificado) para CLI.
 /vault/lang/lang.zh.fe.php | Lingüísticos datos Chino (simplificado) para el front-end.
 /vault/lang/lang.zh.php | Lingüísticos datos Chino (simplificado).
 /vault/.htaccess | Un hipertexto acceso archivo (en este caso, para proteger confidenciales archivos perteneciente a la script contra el acceso de fuentes no autorizadas).
@@ -265,7 +240,6 @@ Archivo | Descripción
 /vault/auxiliary.yaml | Contiene reglas auxiliares. No incluido en el paquete. Generado por la página de reglas auxiliares.
 /vault/cache.dat | Cache data.
 /vault/cidramblocklists.dat | Archivo de metadatos para las listas de bloqueo opcionales de Macmathan; Utilizado por la página de actualizaciones del front-end.
-/vault/cli.php | Controlador para el CLI modo.
 /vault/components.dat | Archivo de metadatos de componentes; Utilizado por la página de actualizaciones del front-end.
 /vault/config.ini.RenameMe | Archivo de configuración; Contiene todas las opciones de configuración para CIDRAM, instruyendo para qué hacer y cómo operar correctamente (cambiar el nombre para activar).
 /vault/config.php | Módulo de configuración.
@@ -289,7 +263,6 @@ Archivo | Descripción
 /vault/lang.php | Lingüísticos datos.
 /vault/modules.dat | Archivo de metadatos de los módulos; Utilizado por la página de actualizaciones del front-end.
 /vault/outgen.php | Generador de salida.
-/vault/php5.4.x.php | Polyfills para PHP 5.4.X (necesario para la retrocompatibilidad de PHP 5.4.X; seguro para eliminar por versiones más recientes de PHP).
 /vault/recaptcha.php | Módulo de reCAPTCHA.
 /vault/rules_as6939.php | Archivo de reglas personalizado para AS6939.
 /vault/rules_softlayer.php | Archivo de reglas personalizado para Soft Layer.
@@ -316,7 +289,7 @@ La siguiente es una lista de variables encuentran en la `config.ini` configuraci
 
 [general](#general-categoría) | [signatures](#signatures-categoría) | [recaptcha](#recaptcha-categoría) | [legal](#legal-categoría)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-categoría) | [PHPMailer](#phpmailer-categoría) | [rate_limiting](#rate_limiting-categoría) | [supplementary_cache_options](#supplementary_cache_options-categoría)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -425,7 +398,7 @@ Valor | Produce | Descripción
 ##### "emailaddr_display_style"
 - ¿Cómo prefieres que la dirección de correo electrónico sea presentada a los usuarios? "default" = Enlace que se puede hacer clic. "noclick" = Texto que no se puede hacer clic.
 
-##### "disable_cli"
+##### "disable_cli" (eliminado desde v2)
 - ¿Desactivar CLI modo? CLI modo está activado por predefinido, pero a veces puede interferir con ciertas herramientas de prueba (tal como PHPUnit, por ejemplo) y otras aplicaciones basadas en CLI. Si no es necesario desactivar CLI modo, usted debe ignorar esta directiva. False = Activar CLI modo [Predefinido]; True = Desactivar CLI modo.
 
 ##### "disable_frontend"
@@ -502,6 +475,9 @@ Soportado actualmente:
 
 ##### "empty_fields"
 - ¿Cómo debe manejar CIDRAM los campos vacíos al registrar y mostrar información de eventos de bloque? "include" = Incluye los campos vacíos. "omit" = Omita los campos vacíos [predefinido].
+
+##### "log_sanitation"
+- Cuando se utiliza el front-end página de los archivos de registro para ver los datos de registro, CIDRAM sanea los datos de registro antes de mostrarlos, para proteger a los usuarios de los ataques XSS y otras amenazas potenciales que podrían estar contenido dentro de los datos de registro. Pero, de forma predefinida, los datos no se sanean durante el registro. Esto es para asegurar que los datos de registro se conserven con precisión, para ayudar a cualquier análisis heurístico o forense que pueda ser necesario en el futuro. Pero, en el caso de que un usuario intente leer los datos de registro utilizando herramientas externas, y si esas herramientas externas no realizan su propio proceso de saneamiento, el usuario podría estar expuesto a ataques XSS. Si es necesario, puede cambiar el comportamiento predefinido utilizando esta directiva de configuración. True = Sanear datos al registrarlo (los datos se conservan con menos precisión, pero el riesgo de XSS es menor). False = No sanear datos al registrarlo (los datos se conservan con mayor precisión, pero el riesgo de XSS es mayor) [Predefinido].
 
 #### "signatures" (Categoría)
 Configuración de firmas.

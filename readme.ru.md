@@ -150,10 +150,8 @@ CIDRAM можно обновлять вручную или через фронт
 /vault/classes/Maikuolan/ComplexStringHandler.php | Обработчик сложные строки.
 /vault/classes/Maikuolan/L10N.php | Обработчик L10N.
 /vault/classes/Maikuolan/YAML.php | Обработчик YAML.
-/vault/classes/.htaccess | Гипертекст доступа файл (в этом случае защищает от неавторизованного доступа чувствительные файлы данного руководства).
 /vault/classes/Aggregator.php | Агрегатор IP.
 /vault/fe_assets/ | Данные для фронтенд.
-/vault/fe_assets/.htaccess | Гипертекст доступа файл (в этом случае защищает от неавторизованного доступа чувствительные файлы данного руководства).
 /vault/fe_assets/_2fa.html | Шаблон HTML, используемый при запросе пользователя для кода 2FA.
 /vault/fe_assets/_accounts.html | Шаблон HTML для учетными записями страница в фронтенд.
 /vault/fe_assets/_accounts_row.html | Шаблон HTML для учетными записями страница в фронтенд.
@@ -192,71 +190,48 @@ CIDRAM можно обновлять вручную или через фронт
 /vault/fe_assets/pips.php | Обработчик пипсов (файл менеджер фронтенд использует его).
 /vault/fe_assets/scripts.js | Содержит фронтенд данные JavaScript.
 /vault/lang/ | Содержит CIDRAM файлы на разных языках.
-/vault/lang/.htaccess | Гипертекст доступа файл (в этом случае защищает от неавторизованного доступа чувствительные файлы данного руководства).
-/vault/lang/lang.ar.cli.php | Арабском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.ar.fe.php | Арабском языковые файлы для фронтенд.
 /vault/lang/lang.ar.php | Арабском языковые файлы.
-/vault/lang/lang.bn.cli.php | Бенгальском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.bn.fe.php | Бенгальском языковые файлы для фронтенд.
 /vault/lang/lang.bn.php | Бенгальском языковые файлы.
-/vault/lang/lang.de.cli.php | Немецком языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.de.fe.php | Немецком языковые файлы для фронтенд.
 /vault/lang/lang.de.php | Немецком языковые файлы.
-/vault/lang/lang.en.cli.php | Английском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.en.fe.php | Английском языковые файлы для фронтенд.
 /vault/lang/lang.en.php | Английском языковые файлы.
-/vault/lang/lang.es.cli.php | Испанском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.es.fe.php | Испанском языковые файлы для фронтенд.
 /vault/lang/lang.es.php | Испанском языковые файлы.
-/vault/lang/lang.fr.cli.php | Французском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.fr.fe.php | Французском языковые файлы для фронтенд.
 /vault/lang/lang.fr.php | Французском языковые файлы.
-/vault/lang/lang.hi.cli.php | Хинди языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.hi.fe.php | Хинди языковые файлы для фронтенд.
 /vault/lang/lang.hi.php | Хинди языковые файлы.
-/vault/lang/lang.id.cli.php | Индонезийском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.id.fe.php | Индонезийском языковые файлы для фронтенд.
 /vault/lang/lang.id.php | Индонезийском языковые файлы.
-/vault/lang/lang.it.cli.php | Итальянском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.it.fe.php | Итальянском языковые файлы для фронтенд.
 /vault/lang/lang.it.php | Итальянском языковые файлы.
-/vault/lang/lang.ja.cli.php | Японском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.ja.fe.php | Японском языковые файлы для фронтенд.
 /vault/lang/lang.ja.php | Японском языковые файлы.
-/vault/lang/lang.ko.cli.php | Корейском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.ko.fe.php | Корейском языковые файлы для фронтенд.
 /vault/lang/lang.ko.php | Корейском языковые файлы.
-/vault/lang/lang.nl.cli.php | Нидерланском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.nl.fe.php | Нидерланском языковые файлы для фронтенд.
 /vault/lang/lang.nl.php | Нидерланском языковые файлы.
-/vault/lang/lang.no.cli.php | Норвежском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.no.fe.php | Норвежском языковые файлы для фронтенд.
 /vault/lang/lang.no.php | Норвежском языковые файлы.
-/vault/lang/lang.pt.cli.php | Португальском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.pt.fe.php | Португальском языковые файлы для фронтенд.
 /vault/lang/lang.pt.php | Португальском языковые файлы.
-/vault/lang/lang.ru.cli.php | Русском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.ru.fe.php | Русском языковые файлы для фронтенд.
 /vault/lang/lang.ru.php | Русском языковые файлы.
-/vault/lang/lang.sv.cli.php | Шведском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.sv.fe.php | Шведском языковые файлы для фронтенд.
 /vault/lang/lang.sv.php | Шведском языковые файлы.
-/vault/lang/lang.th.cli.php | Тайском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.th.fe.php | Тайском языковые файлы для фронтенд.
 /vault/lang/lang.th.php | Тайском языковые файлы.
-/vault/lang/lang.tr.cli.php | Турецком языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.tr.fe.php | Турецком языковые файлы для фронтенд.
 /vault/lang/lang.tr.php | Турецком языковые файлы.
-/vault/lang/lang.ur.cli.php | Урду языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.ur.fe.php | Урду языковые файлы для фронтенд.
 /vault/lang/lang.ur.php | Урду языковые файлы.
-/vault/lang/lang.vi.cli.php | Вьетнамском языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.vi.fe.php | Вьетнамском языковые файлы для фронтенд.
 /vault/lang/lang.vi.php | Вьетнамском языковые файлы.
-/vault/lang/lang.zh-tw.cli.php | Китайском традиционный языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.zh-tw.fe.php | Китайском традиционный языковые файлы для фронтенд.
 /vault/lang/lang.zh-tw.php | Китайском традиционный языковые файлы.
-/vault/lang/lang.zh.cli.php | Китайском упрощенный языковые файлы для CLI (Способ Командных Строк).
 /vault/lang/lang.zh.fe.php | Китайском упрощенный языковые файлы для фронтенд.
 /vault/lang/lang.zh.php | Китайском упрощенный языковые файлы.
 /vault/.htaccess | Гипертекст доступа файл (в этом случае защищает от неавторизованного доступа чувствительные файлы данного руководства).
@@ -265,7 +240,6 @@ CIDRAM можно обновлять вручную или через фронт
 /vault/auxiliary.yaml | Содержит вспомогательные правила. Не входит в комплект поставки. Сгенерировано страницей вспомогательных правил.
 /vault/cache.dat | Cache-данные.
 /vault/cidramblocklists.dat | Файл метаданных для необязательных блоклистов из Macmathan; Используется на фронтенд обновления страница.
-/vault/cli.php | Обработчик CLI (Способ Командных Строк).
 /vault/components.dat | Файл метаданных компонентов; Используется на фронтенд обновления страница.
 /vault/config.ini.RenameMe | Файл с конфигурации. Содержит всевозможные конфигурации CIDRAM (переименовать чтобы активировать).
 /vault/config.php | Обработчик конфигурации.
@@ -289,7 +263,6 @@ CIDRAM можно обновлять вручную или через фронт
 /vault/lang.php | Язык обработчика.
 /vault/modules.dat | Файл метаданных модулей; Используется на фронтенд обновления страница.
 /vault/outgen.php | Выход генератора.
-/vault/php5.4.x.php | Полифилл для PHP 5.4.X (требуется для PHP 5.4.X обратная совместимость; безопасно для удаления для новых версий PHP).
 /vault/recaptcha.php | Модуль reCAPTCHA.
 /vault/rules_as6939.php | Пользовательские правила файл для AS6939.
 /vault/rules_softlayer.php | Пользовательские правила файл для Soft Layer.
@@ -316,7 +289,7 @@ CIDRAM можно обновлять вручную или через фронт
 
 [general](#general-категория) | [signatures](#signatures-категория) | [recaptcha](#recaptcha-категория) | [legal](#legal-категория)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-категория) | [PHPMailer](#phpmailer-категория) | [rate_limiting](#rate_limiting-категория) | [supplementary_cache_options](#supplementary_cache_options-категория)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -425,7 +398,7 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «emailaddr_display_style»
 - Как Вы предпочитаете, чтобы адрес электронной почты был представлен пользователям? «default» = Ссылки кликабельны. «noclick» = Текст не кликабельны.
 
-##### «disable_cli»
+##### «disable_cli» (удалены начиная с v2)
 - Деактивировать ли CLI-модус? Обычно CLI-модус активирован. Однако иногда он может отрицательно влиять на определённые тестовые программы (например на PHPUnit) и другие приложения, базирующиеся на CLI. Если CLI-модус нельзя деактивировать, то эту команду нужно игнорировать. False = CLI-модус активирован [Стандарт]; True = CLI-модус деактивирован.
 
 ##### «disable_frontend»
@@ -502,6 +475,9 @@ CIDRAM можно обновлять вручную или через фронт
 
 ##### «empty_fields»
 - Как CIDRAM обрабатывать пустые поля при регистрации и отображении информации о событии блока? «include» = Включить пустые поля. «omit» = Опустить пустые поля [стандарт].
+
+##### «log_sanitation»
+- При использовании фронтенд страницы журналов для просмотра данных журнала, CIDRAM подготавливает данные журнала перед их отображением таким образом, чтобы защитить пользователей от атак XSS. Однако эти меры обычно не происходят, когда данные впервые регистрируются. Это необходимо для обеспечения точного сохранения данных журнала, чтобы помочь любому эвристическому анализу, который может потребоваться в будущем. Однако в случае, если пользователь пытается прочитать данные журнала, используя внешние инструменты, которые не подготавливают данные журнала аналогичным образом для защиты пользователей, пользователь может подвергаться атакам XSS. При необходимости Вы можете изменить поведение по умолчанию с помощью этой директивы конфигурации. True = Подготавливайте данные при первой регистрации (данные сохраняются менее точно, но риск XSS ниже). False = Не подготавливайте данные при первой регистрации (данные сохраняются более точно, но риск XSS выше) [Стандарт].
 
 #### «signatures» (Категория)
 Конфигурация сигнатур.

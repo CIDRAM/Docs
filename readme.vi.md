@@ -150,10 +150,8 @@ Tập tin | Chi tiết
 /vault/classes/Maikuolan/ComplexStringHandler.php | Tập tin cho xử lý chuỗi phức tạp.
 /vault/classes/Maikuolan/L10N.php | Tập tin cho xử lý L10N.
 /vault/classes/Maikuolan/YAML.php | Tập tin cho xử lý YAML.
-/vault/classes/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
 /vault/classes/Aggregator.php | Tập hợp IP.
 /vault/fe_assets/ | Các tài sản front-end.
-/vault/fe_assets/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
 /vault/fe_assets/_2fa.html | Tập tin mẫu HTML được sử dụng khi yêu cầu người dùng cho mã 2FA.
 /vault/fe_assets/_accounts.html | Tập tin mẫu HTML cho trang tài khoản của front-end.
 /vault/fe_assets/_accounts_row.html | Tập tin mẫu HTML cho trang tài khoản của front-end.
@@ -192,71 +190,48 @@ Tập tin | Chi tiết
 /vault/fe_assets/pips.php | Tập tin cho các pip (được sử dụng bởi các quản lý tập tin front-end).
 /vault/fe_assets/scripts.js | Chứa dữ liệu JavaScript cho front-end.
 /vault/lang/ | Chứa dữ liệu tiếng cho CIDRAM.
-/vault/lang/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
-/vault/lang/lang.ar.cli.php | Dữ liệu tiếng Ả Rập cho CLI.
 /vault/lang/lang.ar.fe.php | Dữ liệu tiếng Ả Rập cho các front-end.
 /vault/lang/lang.ar.php | Dữ liệu tiếng Ả Rập.
-/vault/lang/lang.bn.cli.php | Dữ liệu tiếng Bengal cho CLI.
 /vault/lang/lang.bn.fe.php | Dữ liệu tiếng Bengal cho các front-end.
 /vault/lang/lang.bn.php | Dữ liệu tiếng Bengal.
-/vault/lang/lang.de.cli.php | Dữ liệu tiếng Đức cho CLI.
 /vault/lang/lang.de.fe.php | Dữ liệu tiếng Đức cho các front-end.
 /vault/lang/lang.de.php | Dữ liệu tiếng Đức.
-/vault/lang/lang.en.cli.php | Dữ liệu tiếng Anh cho CLI.
 /vault/lang/lang.en.fe.php | Dữ liệu tiếng Anh cho các front-end.
 /vault/lang/lang.en.php | Dữ liệu tiếng Anh.
-/vault/lang/lang.es.cli.php | Dữ liệu tiếng Tây Ban Nha cho CLI.
 /vault/lang/lang.es.fe.php | Dữ liệu tiếng Tây Ban Nha cho các front-end.
 /vault/lang/lang.es.php | Dữ liệu tiếng Tây Ban Nha.
-/vault/lang/lang.fr.cli.php | Dữ liệu tiếng Pháp cho CLI.
 /vault/lang/lang.fr.fe.php | Dữ liệu tiếng Pháp cho các front-end.
 /vault/lang/lang.fr.php | Dữ liệu tiếng Pháp.
-/vault/lang/lang.hi.cli.php | Dữ liệu tiếng Hindi cho CLI.
 /vault/lang/lang.hi.fe.php | Dữ liệu tiếng Hindi cho các front-end.
 /vault/lang/lang.hi.php | Dữ liệu tiếng Hindi.
-/vault/lang/lang.id.cli.php | Dữ liệu tiếng Indonesia cho CLI.
 /vault/lang/lang.id.fe.php | Dữ liệu tiếng Indonesia cho các front-end.
 /vault/lang/lang.id.php | Dữ liệu tiếng Indonesia.
-/vault/lang/lang.it.cli.php | Dữ liệu tiếng Ý cho CLI.
 /vault/lang/lang.it.fe.php | Dữ liệu tiếng Ý cho các front-end.
 /vault/lang/lang.it.php | Dữ liệu tiếng Ý.
-/vault/lang/lang.ja.cli.php | Dữ liệu tiếng Nhật cho CLI.
 /vault/lang/lang.ja.fe.php | Dữ liệu tiếng Nhật cho các front-end.
 /vault/lang/lang.ja.php | Dữ liệu tiếng Nhật.
-/vault/lang/lang.ko.cli.php | Dữ liệu tiếng Hàn cho CLI.
 /vault/lang/lang.ko.fe.php | Dữ liệu tiếng Hàn cho các front-end.
 /vault/lang/lang.ko.php | Dữ liệu tiếng Hàn.
-/vault/lang/lang.nl.cli.php | Dữ liệu tiếng Hà Lan cho CLI.
 /vault/lang/lang.nl.fe.php | Dữ liệu tiếng Hà Lan cho các front-end.
 /vault/lang/lang.nl.php | Dữ liệu tiếng Hà Lan.
-/vault/lang/lang.no.cli.php | Dữ liệu tiếng Na Uy cho CLI.
 /vault/lang/lang.no.fe.php | Dữ liệu tiếng Na Uy cho các front-end.
 /vault/lang/lang.no.php | Dữ liệu tiếng Na Uy.
-/vault/lang/lang.pt.cli.php | Dữ liệu tiếng Bồ Đào Nha cho CLI.
 /vault/lang/lang.pt.fe.php | Dữ liệu tiếng Bồ Đào Nha cho các front-end.
 /vault/lang/lang.pt.php | Dữ liệu tiếng Bồ Đào Nha.
-/vault/lang/lang.ru.cli.php | Dữ liệu tiếng Nga cho CLI.
 /vault/lang/lang.ru.fe.php | Dữ liệu tiếng Nga cho các front-end.
 /vault/lang/lang.ru.php | Dữ liệu tiếng Nga.
-/vault/lang/lang.sv.cli.php | Dữ liệu tiếng Thụy Điển cho CLI.
 /vault/lang/lang.sv.fe.php | Dữ liệu tiếng Thụy Điển cho các front-end.
 /vault/lang/lang.sv.php | Dữ liệu tiếng Thụy Điển.
-/vault/lang/lang.th.cli.php | Dữ liệu tiếng Thái Lan cho CLI.
 /vault/lang/lang.th.fe.php | Dữ liệu tiếng Thái Lan cho các front-end.
 /vault/lang/lang.th.php | Dữ liệu tiếng Thái Lan.
-/vault/lang/lang.tr.cli.php | Dữ liệu tiếng Thổ Nhĩ Kỳ cho CLI.
 /vault/lang/lang.tr.fe.php | Dữ liệu tiếng Thổ Nhĩ Kỳ cho các front-end.
 /vault/lang/lang.tr.php | Dữ liệu tiếng Thổ Nhĩ Kỳ.
-/vault/lang/lang.ur.cli.php | Dữ liệu tiếng Urdu cho CLI.
 /vault/lang/lang.ur.fe.php | Dữ liệu tiếng Urdu cho các front-end.
 /vault/lang/lang.ur.php | Dữ liệu tiếng Urdu.
-/vault/lang/lang.vi.cli.php | Dữ liệu tiếng Việt cho CLI.
 /vault/lang/lang.vi.fe.php | Dữ liệu tiếng Việt cho các front-end.
 /vault/lang/lang.vi.php | Dữ liệu tiếng Việt.
-/vault/lang/lang.zh-tw.cli.php | Dữ liệu tiếng Trung Quốc (truyền thống) cho CLI.
 /vault/lang/lang.zh-tw.fe.php | Dữ liệu tiếng Trung Quốc (truyền thống) cho các front-end.
 /vault/lang/lang.zh-tw.php | Dữ liệu tiếng Trung Quốc (truyền thống).
-/vault/lang/lang.zh.cli.php | Dữ liệu tiếng Trung Quốc (giản thể) cho CLI.
 /vault/lang/lang.zh.fe.php | Dữ liệu tiếng Trung Quốc (giản thể) cho các front-end.
 /vault/lang/lang.zh.php | Dữ liệu tiếng Trung Quốc (giản thể).
 /vault/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
@@ -265,7 +240,6 @@ Tập tin | Chi tiết
 /vault/auxiliary.yaml | Chứa các quy tắc phụ trợ. Không bao gồm trong gói. Được tạo bởi trang quy tắc phụ trợ.
 /vault/cache.dat | Dữ liệu bộ nhớ cache.
 /vault/cidramblocklists.dat | Tập tin siêu dữ liệu cho danh sách chặn tùy chọn của Macmathan; Được sử dụng bởi trang cập nhật front-end.
-/vault/cli.php | Tập tin cho xử lý CLI.
 /vault/components.dat | Tập tin siêu dữ liệu thành phần; Được sử dụng bởi trang cập nhật front-end.
 /vault/config.ini.RenameMe | Tập tin cho cấu hình; Chứa tất cả các tùy chọn cho cấu hình của CIDRAM, nói cho nó biết phải làm gì và làm thế nào để hoạt động (đổi tên để kích hoạt).
 /vault/config.php | Tập tin cho xử lý cấu hình.
@@ -289,7 +263,6 @@ Tập tin | Chi tiết
 /vault/lang.php | Dữ liệu tiếng.
 /vault/modules.dat | Tập tin siêu dữ liệu mô-đun; Được sử dụng bởi trang cập nhật front-end.
 /vault/outgen.php | Máy phát đầu ra.
-/vault/php5.4.x.php | Polyfills cho PHP 5.4.X (cần cho khả năng tương thích ngược PHP 5.4.X; an toàn để xóa cho các phiên bản PHP mới hơn).
 /vault/recaptcha.php | reCAPTCHA mô-đun.
 /vault/rules_as6939.php | Tập tin quy tắc tùy chỉnh cho AS6939.
 /vault/rules_softlayer.php | Tập tin quy tắc tùy chỉnh cho Soft Layer.
@@ -316,7 +289,7 @@ Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho
 
 [general](#general-thể-loại) | [signatures](#signatures-thể-loại) | [recaptcha](#recaptcha-thể-loại) | [legal](#legal-thể-loại)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-thể-loại) | [PHPMailer](#phpmailer-thể-loại) | [rate_limiting](#rate_limiting-thể-loại) | [supplementary_cache_options](#supplementary_cache_options-thể-loại)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -425,7 +398,7 @@ Giá trị | Nó tạo ra | Chi tiết
 ##### "emailaddr_display_style"
 - Bạn muốn địa chỉ email được trình bày như thế nào với người dùng? "default" = Liên kết có thể nhấp. "noclick" = Văn bản không thể nhấp.
 
-##### "disable_cli"
+##### "disable_cli" (loại bỏ kể từ v2)
 - Vô hiệu hóa chế độ CLI? Chế độ CLI được kích hoạt theo mặc định, nhưng đôi khi có thể gây trở ngại cho công cụ kiểm tra nhất định (như PHPUnit, cho ví dụ) và khác ứng dụng mà CLI dựa trên. Nếu bạn không cần phải vô hiệu hóa chế độ CLI, bạn nên bỏ qua tùy chọn này. False = Kích hoạt chế độ CLI [Mặc định]; True = Vô hiệu hóa chế độ CLI.
 
 ##### "disable_frontend"
@@ -502,6 +475,9 @@ Không tương thích (gây ra xung đột):
 
 ##### "empty_fields"
 - CIDRAM nên xử lý các trường trống khi ghi và hiển thị thông tin sự kiện khối như thế nào? "include" = Bao gồm các trường trống. "omit" = Bỏ sót các trường trống [mặc định].
+
+##### "log_sanitation"
+- Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.

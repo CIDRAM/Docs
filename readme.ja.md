@@ -150,10 +150,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/classes/Maikuolan/ComplexStringHandler.php | 複雑な文字列ハンドラ。
 /vault/classes/Maikuolan/L10N.php | Ｌ１０Ｎハンドラ。
 /vault/classes/Maikuolan/YAML.php | ＹＡＭＬハンドラ。
-/vault/classes/.htaccess | ハイパーテキスト・アクセスファイル（この場合、​本スクリプトの重要なファイルを権限のないソースのアクセスから保護するためです）。
 /vault/classes/Aggregator.php | ＩＰアグリゲータ。
 /vault/fe_assets/ | フロントエンド資産。
-/vault/fe_assets/.htaccess | ハイパーテキスト・アクセスファイル（この場合、​本スクリプトの重要なファイルを権限のないソースのアクセスから保護するためです）。
 /vault/fe_assets/_2fa.html | ユーザーに２ＦＡコードを要求するときに使用されるＨＴＭＬテンプレート。
 /vault/fe_assets/_accounts.html | フロントエンドのアカウント・ページのＨＴＭＬテンプレート。
 /vault/fe_assets/_accounts_row.html | フロントエンドのアカウント・ページのＨＴＭＬテンプレート。
@@ -175,7 +173,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/fe_assets/_ip_tracking.html | ＩＰトラッキング・ページのＨＴＭＬテンプレート。
 /vault/fe_assets/_ip_tracking_row.html | ＩＰトラッキング・ページのＨＴＭＬテンプレート。
 /vault/fe_assets/_login.html | フロントエンドのログインページのＨＴＭＬテンプレート。
-/vault/fe_assets/_logs.html | フロントエンドのロゴスページのＨＴＭＬテンプレート。
+/vault/fe_assets/_logs.html | フロントエンドのログページのＨＴＭＬテンプレート。
 /vault/fe_assets/_nav_complete_access.html | フロントエンドのナビゲーションリンクのＨＴＭＬテンプレート、​は完全なアクセスのためのものです。
 /vault/fe_assets/_nav_logs_access_only.html | フロントエンドのナビゲーションリンクのＨＴＭＬテンプレート、​はログのみにアクセスのためのものです。
 /vault/fe_assets/_range.html | フロントエンドの範囲テーブル・ページのＨＴＭＬテンプレート。
@@ -192,71 +190,48 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/fe_assets/pips.php | ピップス・ハンドラ（フロントエンド・ファイル・マネージャによって使用される）。
 /vault/fe_assets/scripts.js | フロントエンドJavaScriptデータが含まれています。
 /vault/lang/ | CIDRAMの言語データを含んでいます。
-/vault/lang/.htaccess | ハイパーテキスト・アクセスファイル（この場合、​本スクリプトの重要なファイルを権限のないソースのアクセスから保護するためです）。
-/vault/lang/lang.ar.cli.php | ＣＬＩのアラビア語言語データ。
 /vault/lang/lang.ar.fe.php | フロントエンドのアラビア語言語データ。
 /vault/lang/lang.ar.php | アラビア語言語データ。
-/vault/lang/lang.bn.cli.php | ＣＬＩのベンガル語言語データ。
 /vault/lang/lang.bn.fe.php | フロントエンドのベンガル語言語データ。
 /vault/lang/lang.bn.php | ベンガル語言語データ。
-/vault/lang/lang.de.cli.php | ＣＬＩのドイツ語言語データ。
 /vault/lang/lang.de.fe.php | フロントエンドのドイツ語言語データ。
 /vault/lang/lang.de.php | ドイツ語言語データ。
-/vault/lang/lang.en.cli.php | ＣＬＩの英語言語データ。
 /vault/lang/lang.en.fe.php | フロントエンドの英語言語データ。
 /vault/lang/lang.en.php | 英語言語データ。
-/vault/lang/lang.es.cli.php | ＣＬＩのスペイン語言語データ。
 /vault/lang/lang.es.fe.php | フロントエンドのスペイン語言語データ。
 /vault/lang/lang.es.php | スペイン語言語データ。
-/vault/lang/lang.fr.cli.php | ＣＬＩのフランス語言語データ。
 /vault/lang/lang.fr.fe.php | フロントエンドのフランス語言語データ。
 /vault/lang/lang.fr.php | フランス語言語データ。
-/vault/lang/lang.hi.cli.php | ＣＬＩのヒンディー語言語データ。
 /vault/lang/lang.hi.fe.php | フロントエンドのヒンディー語言語データ。
 /vault/lang/lang.hi.php | ヒンディー語言語データ。
-/vault/lang/lang.id.cli.php | ＣＬＩのインドネシア語言語データ。
 /vault/lang/lang.id.fe.php | フロントエンドのインドネシア語言語データ。
 /vault/lang/lang.id.php | インドネシア語言語データ。
-/vault/lang/lang.it.cli.php | ＣＬＩの伊語言語データ。
 /vault/lang/lang.it.fe.php | フロントエンドの伊語言語データ。
 /vault/lang/lang.it.php | 伊語言語データ。
-/vault/lang/lang.ja.cli.php | ＣＬＩの日本語言語データ。
 /vault/lang/lang.ja.fe.php | フロントエンドの日本語言語データ。
 /vault/lang/lang.ja.php | 日本語言語データ。
-/vault/lang/lang.ko.cli.php | ＣＬＩの韓国語言語データ。
 /vault/lang/lang.ko.fe.php | フロントエンドの韓国語言語データ。
 /vault/lang/lang.ko.php | 韓国語言語データ。
-/vault/lang/lang.nl.cli.php | ＣＬＩのオランダ語言語データ。
 /vault/lang/lang.nl.fe.php | フロントエンドのオランダ語言語データ。
 /vault/lang/lang.nl.php | オランダ語言語データ。
-/vault/lang/lang.no.cli.php | ＣＬＩのノルウェー語言語データ。
 /vault/lang/lang.no.fe.php | フロントエンドのノルウェー語言語データ。
 /vault/lang/lang.no.php | ノルウェー語言語データ。
-/vault/lang/lang.pt.cli.php | ＣＬＩのポルトガル語言語データ。
 /vault/lang/lang.pt.fe.php | フロントエンドのポルトガル語言語データ。
 /vault/lang/lang.pt.php | ポルトガル語言語データ。
-/vault/lang/lang.ru.cli.php | ＣＬＩのロシア語言語データ。
 /vault/lang/lang.ru.fe.php | フロントエンドのロシア語言語データ。
 /vault/lang/lang.ru.php | ロシア語言語データ。
-/vault/lang/lang.sv.cli.php | ＣＬＩのスウェーデン語言語データ。
 /vault/lang/lang.sv.fe.php | フロントエンドのスウェーデン語言語データ。
 /vault/lang/lang.sv.php | スウェーデン語言語データ。
-/vault/lang/lang.th.cli.php | ＣＬＩのタイ語言語データ。
 /vault/lang/lang.th.fe.php | フロントエンドのタイ語言語データ。
 /vault/lang/lang.th.php | タイ語言語データ。
-/vault/lang/lang.tr.cli.php | ＣＬＩのトルコ語言語データ。
 /vault/lang/lang.tr.fe.php | フロントエンドのトルコ語言語データ。
 /vault/lang/lang.tr.php | トルコ語言語データ。
-/vault/lang/lang.ur.cli.php | ＣＬＩのウルドゥー語言語データ。
 /vault/lang/lang.ur.fe.php | フロントエンドのウルドゥー語言語データ。
 /vault/lang/lang.ur.php | ウルドゥー語言語データ。
-/vault/lang/lang.vi.cli.php | ＣＬＩのベトナム語言語データ。
 /vault/lang/lang.vi.fe.php | フロントエンドのベトナム語言語データ。
 /vault/lang/lang.vi.php | ベトナム語言語データ。
-/vault/lang/lang.zh-tw.cli.php | ＣＬＩの繁体字中国語言語データ。
 /vault/lang/lang.zh-tw.fe.php | フロントエンドの繁体字中国語言語データ。
 /vault/lang/lang.zh-tw.php | 繁体字中国語言語データ。
-/vault/lang/lang.zh.cli.php | ＣＬＩの簡体字中国語言語データ。
 /vault/lang/lang.zh.fe.php | フロントエンドの簡体字中国語言語データ。
 /vault/lang/lang.zh.php | 簡体字中国語言語データ。
 /vault/.htaccess | ハイパーテキスト・アクセスファイル（この場合、​本スクリプトの重要なファイルを権限のないソースのアクセスから保護するためです）。
@@ -265,7 +240,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/auxiliary.yaml | 補助ルールが含まれています。​パッケージには含まれていません。​補助ルール・ページによって生成されます。
 /vault/cache.dat | キャッシュ・データ。
 /vault/cidramblocklists.dat | Macmathanのオプションのブロックリストのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
-/vault/cli.php | ＣＬＩハンドラ。
 /vault/components.dat | コンポーネントのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
 /vault/config.ini.RenameMe | CIDRAM設定ファイル；​CIDRAMの全オプション設定を記載しています。​それぞれのオプションの機能と動作手法の説明です（アクティブにするために名前を変更します）。
 /vault/config.php | コンフィギュレーション・ハンドラ。
@@ -289,7 +263,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/lang.php | 言語・ハンドラ。
 /vault/modules.dat | モジュールのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
 /vault/outgen.php | 出力発生器。
-/vault/php5.4.x.php | ＰＨＰ ５.４ポリフィル​（ＰＨＰ ５.４の下位互換性のために必要です。​より新しいＰＨＰバージョンのために、​削除しても安全です）。
 /vault/recaptcha.php | reCAPTCHAのモジュール。
 /vault/rules_as6939.php | カスタムルールは、​AS6939のためのファイル。
 /vault/rules_softlayer.php | カスタムルールは、​Soft Layerのためのファイル。
@@ -316,7 +289,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 
 [general](#general-全般カテゴリー) | [signatures](#signatures-シグネチャーズカテゴリ) | [recaptcha](#recaptcha-リーキャプチャカテゴリ) | [legal](#legal-リーガルカテゴリ)
 :--|:--|:--|:--
-[logfile](#logfile-ログファイル)<br />[logfileApache](#logfileapache-ログファイルアパッチ)<br />[logfileSerialized](#logfileserialized-ログファイルシリアライズ)<br />[truncate](#truncate-トランケート)<br />[log_rotation_limit](#log_rotation_limit-ログローテーションリミット)<br />[log_rotation_action](#log_rotation_action-ログローテーションアクション)<br />[timezone](#timezone-タイムゾーン)<br />[timeOffset](#timeoffset-タイムオフセット)<br />[timeFormat](#timeformat-タイムフォーマット)<br />[ipaddr](#ipaddr-アイピーアドレス)<br />[forbid_on_block](#forbid_on_block-フォービッドオンブロック)<br />[silent_mode](#silent_mode-サイレントモード)<br />[lang](#lang-ラング)<br />[numbers](#numbers-ナンバーズ)<br />[emailaddr](#emailaddr-ｅメールアドレス)<br />[emailaddr_display_style](#emailaddr_display_style-ｅメールアドレスディスプレイスタイル)<br />[disable_cli](#disable_cli-ディスエイブルシーエルアイ)<br />[disable_frontend](#disable_frontend-ディスエイブルフロントエンド)<br />[max_login_attempts](#max_login_attempts-マクスログインアテンプト)<br />[FrontEndLog](#frontendlog-フロントエンドログ)<br />[ban_override](#ban_override-バンオーバーライド)<br />[log_banned_ips](#log_banned_ips-ログバンドアイピーズ)<br />[default_dns](#default_dns-ディフォールトディーエンエス)<br />[search_engine_verification](#search_engine_verification-サーチエンジンベリフィケーション)<br />[social_media_verification](#social_media_verification-ソーシャルメディアベリフィケーション)<br />[protect_frontend](#protect_frontend-プロテクトフロントエンド)<br />[disable_webfonts](#disable_webfonts-ディスエイブルウェブフォンツ)<br />[maintenance_mode](#maintenance_mode-メンテナンスモード)<br />[default_algo](#default_algo-ディフォールトアルゴ)<br />[statistics](#statistics-スタティスティックス統計)<br />[force_hostname_lookup](#force_hostname_lookup-フォースホストネームルックアップ)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup-アラウゲットホストバイエイディディアールックアップ)<br />[hide_version](#hide_version-ハイドバージョン)<br />[empty_fields](#empty_fields-エンプティーフィールズ)<br /> | [ipv4](#ipv4-アイピーブイ４)<br />[ipv6](#ipv6-アイピーブイ６)<br />[block_cloud](#block_cloud-ブロッククラウド)<br />[block_bogons](#block_bogons-ブロックぼごん)<br />[block_generic](#block_generic-ブロックジェネリック)<br />[block_legal](#block_legal-ブロックリーガル)<br />[block_malware](#block_malware-ブロックマルウェア)<br />[block_proxies](#block_proxies-ブロックプロキシ)<br />[block_spam](#block_spam-ブロックスパム)<br />[modules](#modules-モジュールス)<br />[default_tracktime](#default_tracktime-デフォルトトラックタイム)<br />[infraction_limit](#infraction_limit-インフラクションリミット)<br />[track_mode](#track_mode-トラックモード)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode-ユースモード)<br />[lockip](#lockip-ロックｉｐ)<br />[lockuser](#lockuser-ロックユーザー)<br />[sitekey](#sitekey-サイトキー)<br />[secret](#secret-シークレット)<br />[expiry](#expiry-シークレット)<br />[logfile](#logfile-ログファイル-1)<br />[signature_limit](#signature_limit-シグネチャリミット)<br />[api](#api-エイピーアイ)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses-プセユードニマイズアイピーアドレセズ)<br />[omit_ip](#omit_ip-オミットアイピー)<br />[omit_hostname](#omit_hostname-オミットホストネーム)<br />[omit_ua](#omit_ua-オミットユーエイ)<br />[privacy_policy](#privacy_policy-プライバシーポリシー)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile-ログファイル)<br />[logfileApache](#logfileapache-ログファイルアパッチ)<br />[logfileSerialized](#logfileserialized-ログファイルシリアライズ)<br />[truncate](#truncate-トランケート)<br />[log_rotation_limit](#log_rotation_limit-ログローテーションリミット)<br />[log_rotation_action](#log_rotation_action-ログローテーションアクション)<br />[timezone](#timezone-タイムゾーン)<br />[timeOffset](#timeoffset-タイムオフセット)<br />[timeFormat](#timeformat-タイムフォーマット)<br />[ipaddr](#ipaddr-アイピーアドレス)<br />[forbid_on_block](#forbid_on_block-フォービッドオンブロック)<br />[silent_mode](#silent_mode-サイレントモード)<br />[lang](#lang-ラング)<br />[numbers](#numbers-ナンバーズ)<br />[emailaddr](#emailaddr-ｅメールアドレス)<br />[emailaddr_display_style](#emailaddr_display_style-ｅメールアドレスディスプレイスタイル)<br />†[disable_cli](#disable_cli-ディスエイブルシーエルアイ)<br />[disable_frontend](#disable_frontend-ディスエイブルフロントエンド)<br />[max_login_attempts](#max_login_attempts-マクスログインアテンプト)<br />[FrontEndLog](#frontendlog-フロントエンドログ)<br />[ban_override](#ban_override-バンオーバーライド)<br />[log_banned_ips](#log_banned_ips-ログバンドアイピーズ)<br />[default_dns](#default_dns-ディフォールトディーエンエス)<br />[search_engine_verification](#search_engine_verification-サーチエンジンベリフィケーション)<br />[social_media_verification](#social_media_verification-ソーシャルメディアベリフィケーション)<br />[protect_frontend](#protect_frontend-プロテクトフロントエンド)<br />[disable_webfonts](#disable_webfonts-ディスエイブルウェブフォンツ)<br />[maintenance_mode](#maintenance_mode-メンテナンスモード)<br />[default_algo](#default_algo-ディフォールトアルゴ)<br />[statistics](#statistics-スタティスティックス統計)<br />[force_hostname_lookup](#force_hostname_lookup-フォースホストネームルックアップ)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup-アラウゲットホストバイエイディディアールックアップ)<br />[hide_version](#hide_version-ハイドバージョン)<br />[empty_fields](#empty_fields-エンプティーフィールズ)<br />[log_sanitation](#log_sanitation-ログサニテーション)<br /> | [ipv4](#ipv4-アイピーブイ４)<br />[ipv6](#ipv6-アイピーブイ６)<br />[block_cloud](#block_cloud-ブロッククラウド)<br />[block_bogons](#block_bogons-ブロックぼごん)<br />[block_generic](#block_generic-ブロックジェネリック)<br />[block_legal](#block_legal-ブロックリーガル)<br />[block_malware](#block_malware-ブロックマルウェア)<br />[block_proxies](#block_proxies-ブロックプロキシ)<br />[block_spam](#block_spam-ブロックスパム)<br />[modules](#modules-モジュールス)<br />[default_tracktime](#default_tracktime-デフォルトトラックタイム)<br />[infraction_limit](#infraction_limit-インフラクションリミット)<br />[track_mode](#track_mode-トラックモード)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode-ユースモード)<br />[lockip](#lockip-ロックｉｐ)<br />[lockuser](#lockuser-ロックユーザー)<br />[sitekey](#sitekey-サイトキー)<br />[secret](#secret-シークレット)<br />[expiry](#expiry-シークレット)<br />[logfile](#logfile-ログファイル-1)<br />[signature_limit](#signature_limit-シグネチャリミット)<br />[api](#api-エイピーアイ)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses-プセユードニマイズアイピーアドレセズ)<br />[omit_ip](#omit_ip-オミットアイピー)<br />[omit_hostname](#omit_hostname-オミットホストネーム)<br />[omit_ua](#omit_ua-オミットユーエイ)<br />[privacy_policy](#privacy_policy-プライバシーポリシー)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-テンプレートデータカテゴリ) | [PHPMailer](#phpmailer-ピーエイチピーメーラーカテゴリ) | [rate_limiting](#rate_limiting-レートリミッティングカテゴリ) | [supplementary_cache_options](#supplementary_cache_options-サプレメンタリーキャッシュオプションズカテゴリ)
 [theme](#theme-シームテーマ)<br />[Magnification](#magnification-マグニフィケーション)<br />[css_url](#css_url-シーエスエスユーアールエル)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog-イベントログ)<br />[SkipAuthProcess](#skipauthprocess-スキップオスプロセス)<br />[Enable2FA](#enable2fa-イネーブル２ｆａ)<br />[Host](#host-ホスト)<br />[Port](#port-ポート)<br />[SMTPSecure](#smtpsecure-ｓｍｔｐセキュア)<br />[SMTPAuth](#smtpauth-ｓｍｔｐオス)<br />[Username](#username-ユーザーネーム)<br />[Password](#password-パスワード)<br />[setFromAddress](#setfromaddress-セットフロムアドレス)<br />[setFromName](#setfromname-セットフロムネーム)<br />[addReplyToAddress](#addreplytoaddress-アッドリプライアドレス)<br />[addReplyToName](#addreplytoname-アッドリプライネーム)<br /> | [max_bandwidth](#max_bandwidth-マックスバンドウィツ)<br />[max_requests](#max_requests-マックスレクェスツ)<br />[precision_ipv4](#precision_ipv4-プリシジョンアイピーブイ４)<br />[precision_ipv6](#precision_ipv6-プリシジョンアイピーブイ６)<br />[allowance_period](#allowance_period-アラワンスピアリアド)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu-イネーブルａｐｃｕ)<br />[enable_memcached](#enable_memcached-イネーブルメムキャッシュト)<br />[enable_redis](#enable_redis-イネーブルレディス)<br />[enable_pdo](#enable_pdo-イネーブルｐｄｏ)<br />[memcached_host](#memcached_host-メムキャッシュホスト)<br />[memcached_port](#memcached_port-メムキャッシュポート)<br />[redis_host](#redis_host-レディスホスト)<br />[redis_port](#redis_port-レディスポート)<br />[redis_timeout](#redis_timeout-レディスタイムアウト)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username-ｐｄｏユーザーネーム)<br />[pdo_password](#pdo_password-ｐｄｏパスワード)<br /><br />
 
@@ -425,7 +398,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 ##### "emailaddr_display_style" （Ｅメール・アドレス・ディスプレイ・スタイル）
 - ユーザーに電子Ｅメール・アドレスを提示することをどのように希望しますか？ "default" = クリック可能なリンク。 "noclick" = クリックできないテキスト。
 
-##### "disable_cli" （ディスエイブル・シーエルアイ）
+##### "disable_cli" （ディスエイブル・シーエルアイ） （バージョン２以降削除）
 - ＣＬＩモードを無効にするか？​ＣＬＩモード（シーエルアイ・モード）はデフォルトでは有効になっていますが、​テストツール（PHPUnit等）やＣＬＩベースのアプリケーションと干渉しあう可能性が無いとは言い切れません。​ＣＬＩモードを無効にする必要がなければ、​このデレクティブは無視してもらって結構です。​`false`（偽） = ＣＬＩモードを有効にします（Default/デフォルルト）；​`true`（真） = ＣＬＩモードを無効にします。
 
 ##### "disable_frontend" （ディスエイブル・フロントエンド）
@@ -502,6 +475,9 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 
 ##### "empty_fields" （エンプティー・フィールズ）
 - ブロック・イベント情報をロギングと表示場合、CIDRAMは空のフィールドをどのように処理すべきですか？ "include" = 空のフィールドを含めます。 "omit" = 空のフィールドを非表示にします（Default/デフォルルト）。
+
+##### "log_sanitation" （ログ・サニテーション）
+- フロントエンドのログページを使用してログデータを表示する場合、ＸＳＳ攻撃やその他の潜在的な脅威からユーザーを保護する、CIDRAMはログデータを表示前にサニタイズします。​ただし、デフォルトでは、データはロギング中にサニタイズされません。​これは、ログデータが正確に記録されるようにするためです（将来必要になる可能性があるヒューリスティックまたはフォレンジック分析に役立ちます）。​ただし、ユーザーが外部ツールを使用してログデータを読み込もうとした場合、それらの外部ツールが独自のサニティゼーション・プロセスを実行しない場合、ユーザーがＸＳＳ攻撃にさらされる可能性があります。​必要に応じて、このコンフィギュレーション・ディレクティブを使ってデフォルトの動作を変更することができます。 True = データを記録するときは、それをサニタイズして（記録データの精度はもっと低いですが、ＸＳＳリスクはもっと低いです）。 False = データを記録するときは、それをサニタイズしない（記録データの精度はもっと高いですが、ＸＳＳリスクはもっと高いです）。 Default/デフォルルト = False。
 
 #### "signatures" （シグネチャーズ、カテゴリ）
 シグネチャの設定。
@@ -905,7 +881,7 @@ Defers to: preferred_signatures.dat
 
 注意：CIDRAMにおけるYAMLマークアップの実装は非常に単純化されており、​非常に制限されています。​これは、​YAMLマークアップに精通した方法で、​しかし公式仕様書に従ったり準拠したりすることはない、​CIDRAMに固有の要件を満たすことを意図しています（他の実装と同じように動作しない可能性があり、​そして他のプロジェクトには適していない可能性があります）。
 
-CIDRAMでは、​YAMLマークアップセグメントはスクリプトに対して３つのダッシュで（「---」）識別されます。​YAMLマークアップセグメントは、​二重改行によってシグネチャセクションと一緒に終了します。​典型的なセグメントは、​ＣＩＤＲとタグのリストの直後の行に３つのダッシュでコンフィグレーションされ、​続いて２次元のキーと値のペアのリストが続きます。​（１番目のディメンションは、​設定ディレクティブのカテゴリです；２番目のディメンションは、​設定ディレクティブです）。​以下の例を参照してください。
+CIDRAMでは、​YAMLマークアップセグメントはスクリプトに対して３つのダッシュで（「---」）識別されます。​YAMLマークアップセグメントは、​二重改行によってシグネチャセクションと一緒に終了します。​典型的なセグメントは、​ＣＩＤＲとタグのリストの直後の行に３つのダッシュでコンフィグレーションされ、​続いて２次元のキーと値のペアのリストが続きます。​（１番目のディメンションは、​コンフィギュレーション・ディレクティブのカテゴリです；２番目のディメンションは、​コンフィギュレーション・ディレクティブです）。​以下の例を参照してください。
 
 ```
 # Foobar 1.
@@ -1171,7 +1147,7 @@ CIDRAMは、​ＩＰアドレスをブロックします | __偽陽性__ | 真�
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAMは国全体をブロックできますか？
 
-はい。​これを達成する最も簡単な方法は、​Macmathanが提供する国オプショナルブロックリストのいくつかをインストールします。​これはフロントエンドのアップデート・ページから直接行うことができます。​あるいは、​フロントエンドを無効のままにしたい場合は、​**[国オプショナルブロックリストのダウンロードページ](https://bitbucket.org/macmathan/blocklists)** からダウンロードできます。​ダウンロード後、​それらをvaultにアップロードする, 関連する設定ディレクティブで名前を挙げてください。
+はい。​これを達成する最も簡単な方法は、​Macmathanが提供する国オプショナルブロックリストのいくつかをインストールします。​これはフロントエンドのアップデート・ページから直接行うことができます。​あるいは、​フロントエンドを無効のままにしたい場合は、​**[国オプショナルブロックリストのダウンロードページ](https://bitbucket.org/macmathan/blocklists)** からダウンロードできます。​ダウンロード後、​それらをvaultにアップロードする, 関連するコンフィギュレーション・ディレクティブで名前を挙げてください。
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>シグネチャはどれくらいの頻度でアップデイトされますか？
 

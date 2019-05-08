@@ -150,10 +150,8 @@ Data | Deskripsi
 /vault/classes/Maikuolan/ComplexStringHandler.php | Prosesor string yang kompleks.
 /vault/classes/Maikuolan/L10N.php | Prosesor L10N.
 /vault/classes/Maikuolan/YAML.php | Prosesor YAML.
-/vault/classes/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
 /vault/classes/Aggregator.php | Agregator IP.
 /vault/fe_assets/ | Data untuk akses bagian depan.
-/vault/fe_assets/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
 /vault/fe_assets/_2fa.html | Template HTML yang digunakan saat meminta pengguna untuk kode 2FA.
 /vault/fe_assets/_accounts.html | Template HTML untuk halaman akun.
 /vault/fe_assets/_accounts_row.html | Template HTML untuk halaman akun.
@@ -192,71 +190,48 @@ Data | Deskripsi
 /vault/fe_assets/pips.php | File pip (digunakan oleh file manager bagian depan).
 /vault/fe_assets/scripts.js | Berisi data JavaScript bagian depan.
 /vault/lang/ | Berisikan file bahasa.
-/vault/lang/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
-/vault/lang/lang.ar.cli.php | File Bahasa Arab untuk CLI.
 /vault/lang/lang.ar.fe.php | File Bahasa Arab untuk bagian depan.
 /vault/lang/lang.ar.php | File Bahasa Arab.
-/vault/lang/lang.bn.cli.php | File Bahasa Benggala untuk CLI.
 /vault/lang/lang.bn.fe.php | File Bahasa Benggala untuk bagian depan.
 /vault/lang/lang.bn.php | File Bahasa Benggala.
-/vault/lang/lang.de.cli.php | File Bahasa Jerman untuk CLI.
 /vault/lang/lang.de.fe.php | File Bahasa Jerman untuk bagian depan.
 /vault/lang/lang.de.php | File Bahasa Jerman.
-/vault/lang/lang.en.cli.php | File Bahasa Inggris untuk CLI.
 /vault/lang/lang.en.fe.php | File Bahasa Inggris untuk bagian depan.
 /vault/lang/lang.en.php | File Bahasa Inggris.
-/vault/lang/lang.es.cli.php | File Bahasa Spanyol untuk CLI.
 /vault/lang/lang.es.fe.php | File Bahasa Spanyol untuk bagian depan.
 /vault/lang/lang.es.php | File Bahasa Spanyol.
-/vault/lang/lang.fr.cli.php | File Bahasa Perancis untuk CLI.
 /vault/lang/lang.fr.fe.php | File Bahasa Perancis untuk bagian depan.
 /vault/lang/lang.fr.php | File Bahasa Perancis.
-/vault/lang/lang.hi.cli.php | File Bahasa Hindi untuk CLI.
 /vault/lang/lang.hi.fe.php | File Bahasa Hindi untuk bagian depan.
 /vault/lang/lang.hi.php | File Bahasa Hindi.
-/vault/lang/lang.id.cli.php | File Bahasa Indonesia untuk CLI.
 /vault/lang/lang.id.fe.php | File Bahasa Indonesia untuk bagian depan.
 /vault/lang/lang.id.php | File Bahasa Indonesia.
-/vault/lang/lang.it.cli.php | File Bahasa Italia untuk CLI.
 /vault/lang/lang.it.fe.php | File Bahasa Italia untuk bagian depan.
 /vault/lang/lang.it.php | File Bahasa Italia.
-/vault/lang/lang.ja.cli.php | File Bahasa Jepang untuk CLI.
 /vault/lang/lang.ja.fe.php | File Bahasa Jepang untuk bagian depan.
 /vault/lang/lang.ja.php | File Bahasa Jepang.
-/vault/lang/lang.ko.cli.php | File Bahasa Korea untuk CLI.
 /vault/lang/lang.ko.fe.php | File Bahasa Korea untuk bagian depan.
 /vault/lang/lang.ko.php | File Bahasa Korea.
-/vault/lang/lang.nl.cli.php | File Bahasa Belanda untuk CLI.
 /vault/lang/lang.nl.fe.php | File Bahasa Belanda untuk bagian depan.
 /vault/lang/lang.nl.php | File Bahasa Belanda.
-/vault/lang/lang.no.cli.php | File Bahasa Norwegia untuk CLI.
 /vault/lang/lang.no.fe.php | File Bahasa Norwegia untuk bagian depan.
 /vault/lang/lang.no.php | File Bahasa Norwegia.
-/vault/lang/lang.pt.cli.php | File Bahasa Portugis untuk CLI.
 /vault/lang/lang.pt.fe.php | File Bahasa Portugis untuk bagian depan.
 /vault/lang/lang.pt.php | File Bahasa Portugis.
-/vault/lang/lang.ru.cli.php | File Bahasa Rusia untuk CLI.
 /vault/lang/lang.ru.fe.php | File Bahasa Rusia untuk bagian depan.
 /vault/lang/lang.ru.php | File Bahasa Rusia.
-/vault/lang/lang.sv.cli.php | File Bahasa Swedia untuk CLI.
 /vault/lang/lang.sv.fe.php | File Bahasa Swedia untuk bagian depan.
 /vault/lang/lang.sv.php | File Bahasa Swedia.
-/vault/lang/lang.th.cli.php | File Bahasa Thailand untuk CLI.
 /vault/lang/lang.th.fe.php | File Bahasa Thailand untuk bagian depan.
 /vault/lang/lang.th.php | File Bahasa Thailand.
-/vault/lang/lang.tr.cli.php | File Bahasa Turki untuk CLI.
 /vault/lang/lang.tr.fe.php | File Bahasa Turki untuk bagian depan.
 /vault/lang/lang.tr.php | File Bahasa Turki.
-/vault/lang/lang.ur.cli.php | File Bahasa Urdu untuk CLI.
 /vault/lang/lang.ur.fe.php | File Bahasa Urdu untuk bagian depan.
 /vault/lang/lang.ur.php | File Bahasa Urdu.
-/vault/lang/lang.vi.cli.php | File Bahasa Vietnam untuk CLI.
 /vault/lang/lang.vi.fe.php | File Bahasa Vietnam untuk bagian depan.
 /vault/lang/lang.vi.php | File Bahasa Vietnam.
-/vault/lang/lang.zh-tw.cli.php | File Bahasa Cina tradisional untuk CLI.
 /vault/lang/lang.zh-tw.fe.php | File Bahasa Cina tradisional untuk bagian depan.
 /vault/lang/lang.zh-tw.php | File Bahasa Cina tradisional.
-/vault/lang/lang.zh.cli.php | File Bahasa Cina sederhana untuk CLI.
 /vault/lang/lang.zh.fe.php | File Bahasa Cina sederhana untuk bagian depan.
 /vault/lang/lang.zh.php | File Bahasa Cina sederhana.
 /vault/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
@@ -265,7 +240,6 @@ Data | Deskripsi
 /vault/auxiliary.yaml | Berisi aturan tambahan. Tidak termasuk dalam paket. Dihasilkan oleh halaman aturan tambahan.
 /vault/cache.dat | Cache data.
 /vault/cidramblocklists.dat | File metadata untuk daftar-daftar blokir yang opsional dari Macmathan; Digunakan oleh halaman pembaruan untuk bagian depan.
-/vault/cli.php | Modul CLI.
 /vault/components.dat | File metadata komponen; Digunakan oleh halaman pembaruan untuk bagian depan.
 /vault/config.ini.RenameMe | File konfigurasi CIDRAM; Berisi semua opsi konfigurasi dari CIDRAM, memberitahukannya apa yang harus dilakukan dan bagaimana mengoperasikannya dengan benar (mengubah nama untuk mengaktifkan).
 /vault/config.php | Modul konfigurasi.
@@ -289,7 +263,6 @@ Data | Deskripsi
 /vault/lang.php | File bahasa.
 /vault/modules.dat | File metadata modul; Digunakan oleh halaman pembaruan untuk bagian depan.
 /vault/outgen.php | Output Generator.
-/vault/php5.4.x.php | Polyfill untuk PHP 5.4.X (diperlukan untuk kompatibilitas mundur PHP 5.4.X; aman untuk menghapus selama versi PHP yang lebih baru).
 /vault/recaptcha.php | Modul reCAPTCHA.
 /vault/rules_as6939.php | File aturan disesuaikan untuk AS6939.
 /vault/rules_softlayer.php | File aturan disesuaikan untuk Soft Layer.
@@ -316,7 +289,7 @@ Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, 
 
 [general](#general-kategori) | [signatures](#signatures-kategori) | [recaptcha](#recaptcha-kategori) | [legal](#legal-kategori)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-kategori) | [PHPMailer](#phpmailer-kategori) | [rate_limiting](#rate_limiting-kategori) | [supplementary_cache_options](#supplementary_cache_options-kategori)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -425,7 +398,7 @@ Nilai | Menghasilkan | Deskripsi
 ##### "emailaddr_display_style"
 - Bagaimana Anda lebih suka alamat email yang akan disajikan kepada pengguna? "default" = Link yang dapat diklik. "noclick" = Teks yang tidak dapat diklik.
 
-##### "disable_cli"
+##### "disable_cli" (dihapus sejak v2)
 - Menonaktifkan modus CLI? Modus CLI diaktifkan secara default, tapi kadang-kadang dapat mengganggu alat pengujian tertentu (seperti PHPUnit, sebagai contoh) dan aplikasi CLI berbasis lainnya. Jika Anda tidak perlu menonaktifkan modus CLI, Anda harus mengabaikan direktif ini. False = Mengaktifkan modus CLI [Default]; True = Menonaktifkan modus CLI.
 
 ##### "disable_frontend"
@@ -502,6 +475,9 @@ Didukung sekarang:
 
 ##### "empty_fields"
 - Bagaimana seharusnya CIDRAM menangani bidang kosong saat membuat log dan menampilkan informasi kejadian blokir? "include" = Sertakan bidang kosong. "omit" = Hilangkan bidang kosong [default].
+
+##### "log_sanitation"
+- Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data. Namun, secara default, data tidak disanitasi selama pencatatan. Ini untuk memastikan bahwa data log dicatatan secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.

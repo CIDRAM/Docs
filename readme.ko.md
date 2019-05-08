@@ -150,10 +150,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/classes/Maikuolan/ComplexStringHandler.php | 복잡한 문자열 핸들러.
 /vault/classes/Maikuolan/L10N.php | L10N 핸들러.
 /vault/classes/Maikuolan/YAML.php | YAML 핸들러.
-/vault/classes/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
 /vault/classes/Aggregator.php | IP 애그리게이터.
 /vault/fe_assets/ | 프론트 엔드 자산.
-/vault/fe_assets/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
 /vault/fe_assets/_2fa.html | 사용자에게 2FA 코드를 요청할 때 사용되는 HTML 템플릿입니다.
 /vault/fe_assets/_accounts.html | 프론트 엔드의 계정 페이지의 HTML 템플릿.
 /vault/fe_assets/_accounts_row.html | 프론트 엔드의 계정 페이지의 HTML 템플릿.
@@ -192,71 +190,48 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/fe_assets/pips.php | 핍 핸들러 (프론트 엔드 파일 관리자에 의해 사용된다).
 /vault/fe_assets/scripts.js | 프런트 엔드 JavaScript 데이터가 들어 있습니다.
 /vault/lang/ | CIDRAM 언어 데이터가 포함되어 있습니다.
-/vault/lang/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
-/vault/lang/lang.ar.cli.php | CLI 아랍어 언어 데이터.
 /vault/lang/lang.ar.fe.php | 프론트 엔드 아랍어 언어 데이터.
 /vault/lang/lang.ar.php | 아랍어 언어 데이터.
-/vault/lang/lang.bn.cli.php | CLI 벵골어 언어 데이터.
 /vault/lang/lang.bn.fe.php | 프론트 엔드 벵골어 언어 데이터.
 /vault/lang/lang.bn.php | CLI 벵골어 언어 데이터.
-/vault/lang/lang.de.cli.php | CLI 독일어 언어 데이터.
 /vault/lang/lang.de.fe.php | 프론트 엔드 독일어 언어 데이터.
 /vault/lang/lang.de.php | 독일어 언어 데이터.
-/vault/lang/lang.en.cli.php | CLI 영어 언어 데이터.
 /vault/lang/lang.en.fe.php | 프론트 엔드 영어 데이터.
 /vault/lang/lang.en.php | 영어 데이터.
-/vault/lang/lang.es.cli.php | CLI 스페인어 언어 데이터.
 /vault/lang/lang.es.fe.php | 프론트 엔드 스페인어 언어 데이터.
 /vault/lang/lang.es.php | 스페인어 언어 데이터.
-/vault/lang/lang.fr.cli.php | CLI 프랑스어 언어 데이터.
 /vault/lang/lang.fr.fe.php | 프론트 엔드 프랑스어 언어 데이터.
 /vault/lang/lang.fr.php | 프랑스어 언어 데이터.
-/vault/lang/lang.hi.cli.php | CLI 힌디어 언어 데이터.
 /vault/lang/lang.hi.fe.php | 프론트 엔드 힌디어 언어 데이터.
 /vault/lang/lang.hi.php | 힌디어 언어 데이터.
-/vault/lang/lang.id.cli.php | CLI 인도네시아어 언어 데이터.
 /vault/lang/lang.id.fe.php | 프론트 엔드 인도네시아어 언어 데이터.
 /vault/lang/lang.id.php | 인도네시아어 언어 데이터.
-/vault/lang/lang.it.cli.php | CLI의 이탈리아 언어 데이터.
 /vault/lang/lang.it.fe.php | 프론트 엔드 이탈리아 언어 데이터.
 /vault/lang/lang.it.php | 이탈리아 언어 데이터.
-/vault/lang/lang.ja.cli.php | CLI는 일본어 언어 데이터.
 /vault/lang/lang.ja.fe.php | 프론트 엔드 일본어 언어 데이터.
 /vault/lang/lang.ja.php | 일본어 언어 데이터.
-/vault/lang/lang.ko.cli.php | CLI 한국어 언어 데이터.
 /vault/lang/lang.ko.fe.php | 프론트 엔드의 한국어 언어 데이터.
 /vault/lang/lang.ko.php | 한국어 언어 데이터.
-/vault/lang/lang.nl.cli.php | CLI 네덜란드어 언어 데이터.
 /vault/lang/lang.nl.fe.php | 프론트 엔드 네덜란드어 언어 데이터.
 /vault/lang/lang.nl.php | 네덜란드어 언어 데이터.
-/vault/lang/lang.no.cli.php | CLI 노르웨이 언어 데이터.
 /vault/lang/lang.no.fe.php | 프론트 엔드 노르웨이 언어 데이터.
 /vault/lang/lang.no.php | 노르웨이 언어 데이터.
-/vault/lang/lang.pt.cli.php | CLI 포르투갈어 언어 데이터.
 /vault/lang/lang.pt.fe.php | 프론트 엔드 포르투갈어 언어 데이터.
 /vault/lang/lang.pt.php | 포르투갈어 언어 데이터.
-/vault/lang/lang.ru.cli.php | CLI 러시아어 언어 데이터.
 /vault/lang/lang.ru.fe.php | 프론트 엔드 러시아어 언어 데이터.
 /vault/lang/lang.ru.php | 러시아어 언어 데이터.
-/vault/lang/lang.sv.cli.php | CLI 스웨덴어 언어 데이터.
 /vault/lang/lang.sv.fe.php | 프론트 엔드 스웨덴어 언어 데이터.
 /vault/lang/lang.sv.php | 스웨덴어 언어 데이터.
-/vault/lang/lang.th.cli.php | CLI 태국어 언어 데이터.
 /vault/lang/lang.th.fe.php | 프론트 엔드 태국어 언어 데이터.
 /vault/lang/lang.th.php | 태국어 언어 데이터.
-/vault/lang/lang.tr.cli.php | CLI 터키어 언어 데이터.
 /vault/lang/lang.tr.fe.php | 프론트 엔드 터키어 언어 데이터.
 /vault/lang/lang.tr.php | 터키어 언어 데이터.
-/vault/lang/lang.ur.cli.php | CLI 우르두어 언어 데이터.
 /vault/lang/lang.ur.fe.php | 프론트 엔드 우르두어 언어 데이터.
 /vault/lang/lang.ur.php | 우르두어 언어 데이터.
-/vault/lang/lang.vi.cli.php | CLI 베트남어 언어 데이터.
 /vault/lang/lang.vi.fe.php | 프론트 엔드 베트남어 언어 데이터.
 /vault/lang/lang.vi.php | 베트남어 언어 데이터.
-/vault/lang/lang.zh-tw.cli.php | CLI 중국어 번체 언어 데이터.
 /vault/lang/lang.zh-tw.fe.php | 프론트 엔드 중국어 번체 언어 데이터.
 /vault/lang/lang.zh-tw.php | 중국어 번체 언어 데이터.
-/vault/lang/lang.zh.cli.php | CLI 중국어 간체 언어 데이터.
 /vault/lang/lang.zh.fe.php | 프론트 엔드 중국어 간체 언어 데이터.
 /vault/lang/lang.zh.php | 중국어 간체 언어 데이터.
 /vault/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
@@ -265,7 +240,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/auxiliary.yaml | 보조 규칙이 들어 있습니다. 패키지에 포함되어 있지 않습니다. 보조 규칙 페이지에 의해 생성됩니다.
 /vault/cache.dat | 캐시 데이터.
 /vault/cidramblocklists.dat | Macmathan의 선택적 블록리스트 용 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
-/vault/cli.php | CLI 핸들러.
 /vault/components.dat | 구성 요소 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
 /vault/config.ini.RenameMe | CIDRAM 설정 파일; CIDRAM 모든 옵션 설정을 포함하고 있습니다. 각 옵션의 기능과 작동 방법에 대한 설명입니다 (활성화하기 위해 이름을 변경합니다).
 /vault/config.php | 구성 핸들러.
@@ -289,7 +263,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/lang.php | 언어 처리기.
 /vault/modules.dat | 모듈 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
 /vault/outgen.php | 출력 발생기.
-/vault/php5.4.x.php | PHP 5.4.X 뽀리휘루 (PHP 5.4.X의 하위 호환성을 위해 필요합니다; 더 새로운 PHP 버전을 위해 삭제하는 것이 안전합니다).
 /vault/recaptcha.php | reCAPTCHA 모듈.
 /vault/rules_as6939.php | 사용자 정의 규칙은 AS6939을위한 파일입니다.
 /vault/rules_softlayer.php | 사용자 정의 규칙은 Soft Layer위한 파일.
@@ -316,7 +289,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 [general](#general-카테고리) | [signatures](#signatures-카테고리) | [recaptcha](#recaptcha-카테고리) | [legal](#legal-카테고리)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-카테고리) | [PHPMailer](#phpmailer-카테고리) | [rate_limiting](#rate_limiting-카테고리) | [supplementary_cache_options](#supplementary_cache_options-카테고리)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -425,7 +398,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "emailaddr_display_style"
 - 사용자에게 전자 메일 주소를 어떻게 표시 하시겠습니까? "default" = 클릭 가능한 링크. "noclick" = 클릭 할 수없는 텍스트.
 
-##### "disable_cli"
+##### "disable_cli" (v2 이후 삭제됨)
 - CLI 모드를 해제 하는가? CLI 모드 (시에루아이 모드)는 기본적으로 활성화되어 있지만, 테스트 도구 (PHPUnit 등) 및 CLI 기반의 응용 프로그램과 간섭하는 가능성이 없다고는 단언 할 수 없습니다. CLI 모드를 해제 할 필요가 없으면이 데레쿠티부 무시 받고 괜찮습니다. `false`(거짓) = CLI 모드를 활성화합니다 (Default / 기본 설정); `true`(참된) = CLI 모드를 해제합니다.
 
 ##### "disable_frontend"
@@ -502,6 +475,9 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 ##### "empty_fields"
 - 블록 이벤트 정보를 로깅하고 표시 할 때, CIDRAM이 빈 필드를 어떻게 처리해야합니까? "include" = 빈 필드를 포함하십시오. "omit" = 빈 필드는 생략하십시오 (Default / 기본 설정).
+
+##### "log_sanitation"
+- 프런트 엔드 로그 페이지를 사용하여 로그 데이터를 볼 때, XSS 공격 및 기타 잠재적 인 위협으로부터 사용자를 보호하기 위해 CIDRAM은 로그 데이터를 표시하기 전에 위생 처리합니다. 그러나 기본적으로, 로깅 중에는 데이터가 삭제되지 않습니다. 이렇게하면 로그 데이터가 정확하게 보존됩니다 (앞으로 필요할 수도있는 경험적 또는 법의학 분석에 유용합니다). 그러나, 사용자가 외부 도구를 사용하여 로그 데이터를 읽으려고하면, 외부 도구가 자체 위생 처리를 수행하지 않는 경우, 사용자가 XSS 공격에 노출 될 수 있습니다. 필요한 경우, 이 구성 지정 문을 사용하여 기본 작동을 변경할 수 있습니다. True = 데이터 로깅 할 때 데이터, 위생적으로하다 (기록된 데이터 정확도가 더 낮습니다, 않지만 XSS 위험이 더 낮습니다). False = 데이터 로깅 할 때 데이터, 위생적으로하지 마라 (기록된 데이터 정확도가 더 높습니다, 않지만 XSS 위험이 더 높습니다) [Default / 기본 설정].
 
 #### "signatures" (카테고리)
 서명 설정.
