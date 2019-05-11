@@ -289,7 +289,7 @@ Ce qui suit est une liste des directives disponibles pour CIDRAM dans le `config
 
 [general](#general-catégorie) | [signatures](#signatures-catégorie) | [recaptcha](#recaptcha-catégorie) | [legal](#legal-catégorie)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-catégorie) | [PHPMailer](#phpmailer-catégorie) | [rate_limiting](#rate_limiting-catégorie) | [supplementary_cache_options](#supplementary_cache_options-catégorie)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -299,18 +299,20 @@ Configuration générale pour CIDRAM.
 ##### « logfile »
 - Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-##### « logfileApache »
+##### « logfile_apache »
+- *v1 : « logfileApache »*
 - Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-##### « logfileSerialized »
+##### « logfile_serialized »
+- *v1 : « logfileSerialized »*
 - Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
 *Conseil utile : Si vous souhaitez, vous pouvez ajouter l'information pour la date/l'heure à les noms de vos fichiers pour enregistrement par des incluant ceux-ci au nom : `{yyyy}` pour l'année complète, `{yy}` pour l'année abrégée, `{mm}` pour mois, `{dd}` pour le jour, `{hh}` pour l'heure.*
 
 *Exemples :*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### « truncate »
 - Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
@@ -326,11 +328,13 @@ Configuration générale pour CIDRAM.
 ##### « timezone »
 - Ceci est utilisé pour spécifier le fuseau horaire que CIDRAM doit utiliser pour les opérations de date/heure. Si vous n'en avez pas besoin, l'ignorer. Les valeurs possibles sont déterminées par PHP. Il est généralement recommandé à la place pour ajuster la directive de fuseau horaire dans votre fichier `php.ini`, mais parfois (tels que lorsque l'on travaille avec des fournisseurs d'hébergement partagé limitées) ce n'est pas toujours possible de faire, et donc, cette option est disponible ici.
 
-##### « timeOffset »
+##### « time_offset »
+- *v1 : « timeOffset »*
 - Si votre temps serveur ne correspond pas à votre temps locale, vous pouvez spécifier un offset ici pour régler l'information en date/temps généré par CIDRAM selon vos besoins. Il est généralement recommandé à la place pour ajuster la directive de fuseau horaire dans votre fichier `php.ini`, mais parfois (tels que lorsque l'on travaille avec des fournisseurs d'hébergement partagé limitées) ce n'est pas toujours possible de faire, et donc, cette option est disponible ici. Offset est en minutes.
-- Exemple (à ajouter une heure) : `timeOffset=60`
+- Exemple (à ajouter une heure) : `time_offset=60`
 
-##### « timeFormat »
+##### « time_format »
+- *v1 : « timeFormat »*
 - Le format de notation de la date/heure utilisé par CIDRAM. Défaut = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
 
 ##### « ipaddr »
@@ -398,8 +402,9 @@ Valeur | Produit | Description
 ##### « emailaddr_display_style »
 - Comment préférez-vous que l'adresse électronique soit présentée aux utilisateurs ? « default » = Lien cliquable. « noclick » = Texte non-cliquable.
 
-##### « disable_cli » (retiré depuis v2)
+##### « disable_cli »
 - Désactiver le mode CLI ? Le mode CLI est activé par défaut, mais peut parfois interférer avec certains test outils (comme PHPUnit, par exemple) et d'autres applications basées sur CLI. Si vous n'avez pas besoin désactiver le mode CLI, vous devrait ignorer cette directive. False = Activer le mode CLI [Défaut] ; True = Désactiver le mode CLI.
+- *(Retiré depuis v2).*
 
 ##### « disable_frontend »
 - Désactiver l'accès frontal ? L'accès frontal peut rendre CIDRAM plus facile à gérer, mais peut aussi être un risque potentiel pour la sécurité. Il est recommandé de gérer CIDRAM via le back-end chaque fois que possible, mais l'accès frontal est prévu pour quand il est impossible. Seulement activer si vous avez besoin. False = Activer l'accès frontal ; True = Désactiver l'accès frontal [Défaut].
@@ -407,7 +412,8 @@ Valeur | Produit | Description
 ##### « max_login_attempts »
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
 
-##### « FrontEndLog »
+##### « frontend_log »
+- *v1 : « FrontEndLog »*
 - Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
 
 ##### « ban_override »
@@ -476,7 +482,7 @@ Supporté actuellement :
 ##### « empty_fields »
 - Comment CIDRAM doit-il gérer les champs vides lors de l'enregistrement et de l'affichage des informations sur les événements de blocage ? « include » = Inclure les champs vides. « omit » = Omettre les champs vides [défaut].
 
-##### « log_sanitation »
+##### « log_sanitisation »
 - Lorsque vous utilisez la page pour les fichiers journaux pour afficher les données de journaux, CIDRAM assainit les données de journaux avant de les afficher, pour protéger les utilisateurs contre les attaques XSS et autres menaces potentielles que les données de journalisation peuvent contenir. Cependant, par défaut, les données ne sont pas assainie lors de la journalisation. Cela garantit que les données du journalisation sont conservées avec précision, pour faciliter toute analyse heuristique qui pourrait être nécessaire à l'avenir. Cependant, dans le cas où un utilisateur tente de lire les données du journalisation à l'aide d'outils externes, et si ces outils externes n'effectuent pas leur propre processus d'assainissement, l'utilisateur pourrait être exposé à des attaques XSS. Si nécessaire, vous pouvez modifier le comportement par défaut à l'aide de cette directive de configuration. True = Assainir les données lors de la journalisation (les données sont moins bien préservées, mais le risque XSS est plus faible). False = Ne pas assainir les données lors de la journalisation (les données sont mieux préservées, mais le risque XSS est plus élevé) [Défaut].
 
 #### « signatures » (Catégorie)
@@ -892,8 +898,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -913,8 +919,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1386,8 +1392,8 @@ Un événement blocage journalisé inclut généralement les informations suivan
 
 *Les directives de configuration responsables de ce type de journalisation, et pour chacun des trois formats disponibles, sont :*
 - `general` -> `logfile`
-- `general` -> `logfileApache`
-- `general` -> `logfileSerialized`
+- `general` -> `logfile_apache`
+- `general` -> `logfile_serialized`
 
 Lorsque ces directives sont laissées vides, ce type de journalisation reste désactivé.
 
@@ -1415,7 +1421,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Connecté.
 ```
 
 *La directive de configuration responsable de la journalisation frontale est :*
-- `general` -> `FrontEndLog`
+- `general` -> `frontend_log`
 
 ##### 11.3.3 ROTATION DES JOURNAUX
 
@@ -1521,4 +1527,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 5 Mai 2019 (2019.05.05).
+Dernière mise à jour : 11 Mai 2019 (2019.05.11).

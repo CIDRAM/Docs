@@ -1,5 +1,6 @@
 [![Join the chat at https://gitter.im/CIDRAM/Lobby](https://badges.gitter.im/CIDRAM/Lobby.svg)](https://gitter.im/CIDRAM/Lobby)
-[![PHP >= 7.2.0](https://img.shields.io/badge/PHP-%3E%3D%207.2.0-8892bf.svg)](https://maikuolan.github.io/Compatibility-Charts/)
+[![v1: PHP >= 5.4.0](https://img.shields.io/badge/v1-PHP%20%3E%3D%205.4.0-8892bf.svg)](https://maikuolan.github.io/Compatibility-Charts/)
+[![v2: PHP >= 7.2.0](https://img.shields.io/badge/v2-PHP%20%3E%3D%207.2.0-8892bf.svg)](https://maikuolan.github.io/Compatibility-Charts/)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
@@ -41,7 +42,9 @@ CIDRAM (Classless Inter-Domain Routing Access Manager) is a PHP script designed 
 - **[中文（简体）](https://github.com/CIDRAM/Docs/blob/master/readme.zh.md)**
 - **[中文（傳統）](https://github.com/CIDRAM/Docs/blob/master/readme.zh-TW.md)**
 
+[\[CONTRIBUTING.md\] **Want to help?**](https://github.com/CIDRAM/CIDRAM/blob/v2/CONTRIBUTING.md)
+
 ---
 
 
-Last Updated: 5 May 2019 (2019.05.05).
+Last Updated: 11 May 2019 (2019.05.11).

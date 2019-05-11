@@ -289,7 +289,7 @@ Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho
 
 [general](#general-thể-loại) | [signatures](#signatures-thể-loại) | [recaptcha](#recaptcha-thể-loại) | [legal](#legal-thể-loại)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-thể-loại) | [PHPMailer](#phpmailer-thể-loại) | [rate_limiting](#rate_limiting-thể-loại) | [supplementary_cache_options](#supplementary_cache_options-thể-loại)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -299,18 +299,20 @@ Cấu hình chung cho CIDRAM.
 ##### "logfile"
 - Tập tin có thể đọc con người cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "logfileApache"
+##### "logfile_apache"
+- *v1: "logfileApache"*
 - Tập tin Apache phong cách cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "logfileSerialized"
+##### "logfile_serialized"
+- *v1: "logfileSerialized"*
 - Tập tin tuần tự cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
 *Mẹo hữu ích: Nếu bạn muốn, bạn có thể thêm thông tin ngày/giờ trong tên các tập tin ghi của bạn bằng cách bao gồm những trong tên: `{yyyy}` cho năm đầy, `{yy}` cho năm viết tắt, `{mm}` cho tháng, `{dd}` cho ngày, `{hh}` cho giờ.*
 
 *Các ví dụ:*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "truncate"
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
@@ -326,11 +328,13 @@ Cấu hình chung cho CIDRAM.
 ##### "timezone"
 - Điều này được sử dụng để xác định múi giờ nào CIDRAM nên sử dụng cho ngày/giờ. Nếu bạn không cần nó, bỏ qua nó. Các giá trị có thể được xác định bởi PHP. Nó thường được đề nghị thay vì để điều chỉnh các chỉ thị múi giờ trong tập tin `php.ini` của bạn, nhưng đôi khi (như ví dụ, khi làm việc với giới hạn cung cấp lưu trữ chia sẻ) đây không phải là luôn luôn có thể làm, và như vậy, tùy chọn này được cung cấp ở đây.
 
-##### "timeOffset"
+##### "time_offset"
+- *v1: "timeOffset"*
 - Nếu thời gian máy chủ của bạn không phù hợp với thời gian địa phương của bạn, bạn có thể chỉ định một bù đắp đây để điều chỉnh thông tin ngày/giờ được tạo ra bởi CIDRAM theo yêu cầu của bạn. Nó thường được đề nghị thay vì để điều chỉnh các chỉ thị múi giờ trong tập tin `php.ini` của bạn, nhưng đôi khi (như ví dụ, khi làm việc với giới hạn cung cấp lưu trữ chia sẻ) đây không phải là luôn luôn có thể làm, và như vậy, tùy chọn này được cung cấp ở đây. Bù đắp được đo bằng phút.
-- Ví dụ (để thêm một giờ): `timeOffset=60`
+- Ví dụ (để thêm một giờ): `time_offset=60`
 
-##### "timeFormat"
+##### "time_format"
+- *v1: "timeFormat"*
 - Định dạng ngày tháng sử dụng bởi CIDRAM. Mặc định = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
 
 ##### "ipaddr"
@@ -398,8 +402,9 @@ Giá trị | Nó tạo ra | Chi tiết
 ##### "emailaddr_display_style"
 - Bạn muốn địa chỉ email được trình bày như thế nào với người dùng? "default" = Liên kết có thể nhấp. "noclick" = Văn bản không thể nhấp.
 
-##### "disable_cli" (loại bỏ kể từ v2)
+##### "disable_cli"
 - Vô hiệu hóa chế độ CLI? Chế độ CLI được kích hoạt theo mặc định, nhưng đôi khi có thể gây trở ngại cho công cụ kiểm tra nhất định (như PHPUnit, cho ví dụ) và khác ứng dụng mà CLI dựa trên. Nếu bạn không cần phải vô hiệu hóa chế độ CLI, bạn nên bỏ qua tùy chọn này. False = Kích hoạt chế độ CLI [Mặc định]; True = Vô hiệu hóa chế độ CLI.
+- *(Loại bỏ kể từ v2).*
 
 ##### "disable_frontend"
 - Vô hiệu hóa truy cập front-end? Truy cập front-end có thể làm cho CIDRAM dễ quản lý hơn, nhưng cũng có thể là một nguy cơ bảo mật tiềm năng. Đó là khuyến cáo để quản lý CIDRAM từ các back-end bất cứ khi nào có thể, nhưng truy cập front-end là cung cấp khi nó không phải là có thể. Giữ nó vô hiệu hóa trừ khi bạn cần nó. False = Kích hoạt truy cập front-end; True = Vô hiệu hóa truy cập front-end [Mặc định].
@@ -407,7 +412,8 @@ Giá trị | Nó tạo ra | Chi tiết
 ##### "max_login_attempts"
 - Số lượng tối đa cố gắng đăng nhập (front-end). Mặc định = 5.
 
-##### "FrontEndLog"
+##### "frontend_log"
+- *v1: "FrontEndLog"*
 - Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
 ##### "ban_override"
@@ -476,7 +482,7 @@ Không tương thích (gây ra xung đột):
 ##### "empty_fields"
 - CIDRAM nên xử lý các trường trống khi ghi và hiển thị thông tin sự kiện khối như thế nào? "include" = Bao gồm các trường trống. "omit" = Bỏ sót các trường trống [mặc định].
 
-##### "log_sanitation"
+##### "log_sanitisation"
 - Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
 
 #### "signatures" (Thể loại)
@@ -892,8 +898,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -913,8 +919,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1386,8 +1392,8 @@ Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
 
 *Các chỉ thị cấu hình chịu trách nhiệm về loại ghi nhật ký này và cho mỗi một trong ba định dạng có sẵn:*
 - `general` -> `logfile`
-- `general` -> `logfileApache`
-- `general` -> `logfileSerialized`
+- `general` -> `logfile_apache`
+- `general` -> `logfile_serialized`
 
 Khi các chỉ thị này được để trống, loại ghi nhật ký này sẽ vẫn bị vô hiệu hóa.
 
@@ -1415,7 +1421,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Đã đăng nhập.
 ```
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký front-end là:*
-- `general` -> `FrontEndLog`
+- `general` -> `frontend_log`
 
 ##### 11.3.3 XOAY VÒNG NHẬT KÝ
 
@@ -1515,4 +1521,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 5 Tháng Năm 2019 (2019.05.05).
+Lần cuối cập nhật: 11 Tháng Năm 2019 (2019.05.11).

@@ -290,7 +290,7 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 
 [general](#general-類別) | [signatures](#signatures-類別) | [recaptcha](#recaptcha-類別) | [legal](#legal-類別)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-類別) | [PHPMailer](#phpmailer-類別) | [rate_limiting](#rate_limiting-類別) | [supplementary_cache_options](#supplementary_cache_options-類別)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -300,18 +300,20 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 ##### 『logfile』
 - 人類可讀文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
 
-##### 『logfileApache』
+##### 『logfile_apache』
+- *v1: 『logfileApache』*
 - Apache風格文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
 
-##### 『logfileSerialized』
+##### 『logfile_serialized』
+- *v1: 『logfileSerialized』*
 - 連載的文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
 
 *有用的建議：如果您想，​可以追加日期/時間信息及附加到您的日誌文件的名稱通過包括這些中的名稱：`{yyyy}` 為今年完整，​`{yy}` 為今年縮寫，​`{mm}` 為今月，​`{dd}` 為今日，​`{hh}` 為今小時。​*
 
 *例子：*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### 『truncate』
 - 截斷日誌文件當他們達到一定的大小嗎？​值是在B/KB/MB/GB/TB，​是日誌文件允許的最大大小直到它被截斷。​默認值為『0KB』將禁用截斷（日誌文件可以無限成長）。​注意：適用於單個日誌文件！​日誌文件大小不被算集體的。
@@ -327,11 +329,13 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 ##### 『timezone』
 - 這用於指定CIDRAM應用於日期/時間操作的時區。​如果您不需要它，請忽略它。​可能的值由PHP確定。​它一般建議，​而不是，​調整時區指令的文件`php.ini`，​但是有時（例如，​當利用有限的共享主機提供商）這並不總是可能做到，​所以，​此選項在這裡是提供。
 
-##### 『timeOffset』
+##### 『time_offset』
+- *v1: 『timeOffset』*
 - 如果您的服務器時間不符合您的本地時間，​您可以在這裡指定的偏移調整日期/時間信息該產生通過CIDRAM根據您的需要。​它一般建議，​而不是，​調整時區指令的文件`php.ini`，​但是有時（例如，​當利用有限的共享主機提供商）這並不總是可能做到，​所以，​此選項在這裡是提供。​偏移量是在分鐘。
-- 例子（添加1小時）：`timeOffset=60`
+- 例子（添加1小時）：`time_offset=60`
 
-##### 『timeFormat』
+##### 『time_format』
+- *v1: 『timeFormat』*
 - CIDRAM使用的日期符號格式。​標準 = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`。
 
 ##### 『ipaddr』
@@ -399,8 +403,9 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 ##### 『emailaddr_display_style』
 - 您希望如何將電子郵件地址呈現給用戶？ 『default』 = 可點擊的鏈接。 『noclick』 = 不可點擊的文字。
 
-##### 『disable_cli』 （從v2已被刪除）
+##### 『disable_cli』
 - 關閉CLI模式嗎？​CLI模式是按說激活作為標準，​但可以有時干擾某些測試工具（例如PHPUnit，​為例子）和其他基於CLI應用。​如果您沒有需要關閉CLI模式，​您應該忽略這個指令。​False（假）=激活CLI模式【標準】；​True（真）=關閉CLI模式。
+- *（從v2已被刪除）。*
 
 ##### 『disable_frontend』
 - 關閉前端訪問嗎？​前端訪問可以使CIDRAM更易於管理，​但也可能是潛在的安全風險。​建議管理CIDRAM通過後端只要有可能，​但前端訪問提供當不可能。​保持關閉除非您需要它。​False（假）=激活前端訪問；​True（真）=關閉前端訪問【標準】。
@@ -408,7 +413,8 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 ##### 『max_login_attempts』
 - 最大登錄嘗試次數（前端）。​標準=5。
 
-##### 『FrontEndLog』
+##### 『frontend_log』
+- *v1: 『FrontEndLog』*
 - 前端登錄嘗試的錄音文件。​指定一個文件名，​或留空以禁用。
 
 ##### 『ban_override』
@@ -477,7 +483,7 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 ##### 『empty_fields』
 - 在記錄和顯示阻止事件信息時，CIDRAM如何處理空字段？ 『include』 = 包括空字段。 『omit』 = 省略空字段【標準】。
 
-##### 『log_sanitation』
+##### 『log_sanitisation』
 - 當使用前端日誌頁面查看日誌數據時，CIDRAM在顯示之前清理日誌數據。​這可以保護用戶免受XSS攻擊和其他潛在威脅。​但是，默認情況下，在記錄期間不會清理數據。​這是為了確保准確地保留日誌數據（可以幫助任何未來的啟發式或法醫分析）。​但是，如果用戶嘗試使用外部工具讀取日誌數據，如果這些外部工具不執行自己的清理過程，用戶可能會受到XSS攻擊。​如有必要，可以使用此配置指令更改默認行為。 True = 記錄數據時清理數據（數據保存不太準確，但XSS風險較低）。 False = 記錄數據時不要清理數據（數據保存得更準確，但XSS風險更高）【標準】。
 
 #### 『signatures』 （類別）
@@ -893,8 +899,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -914,8 +920,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1387,8 +1393,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 *負責此類日誌記錄的配置指令，適用於以下三種格式中的每一種：*
 - `general` -> `logfile`
-- `general` -> `logfileApache`
-- `general` -> `logfileSerialized`
+- `general` -> `logfile_apache`
+- `general` -> `logfile_serialized`
 
 當這些指令保留為空時，這種類型的日誌記錄將保持禁用狀態。
 
@@ -1416,7 +1422,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 已登錄。
 ```
 
 *負責前端日誌記錄的配置指令是：*
-- `general` -> `FrontEndLog`
+- `general` -> `frontend_log`
 
 ##### 11.3.3 日誌輪換
 
@@ -1524,4 +1530,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2019年5月5日。
+最後更新：2019年5月11日。

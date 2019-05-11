@@ -289,7 +289,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 [general](#general-카테고리) | [signatures](#signatures-카테고리) | [recaptcha](#recaptcha-카테고리) | [legal](#legal-카테고리)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-카테고리) | [PHPMailer](#phpmailer-카테고리) | [rate_limiting](#rate_limiting-카테고리) | [supplementary_cache_options](#supplementary_cache_options-카테고리)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -299,18 +299,20 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "logfile"
 - 액세스 시도 저지를 기록, 인간에 의해 읽기 가능. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
-##### "logfileApache"
+##### "logfile_apache"
+- *v1 : "logfileApache"*
 - 액세스 시도 저지를 기록, Apache 스타일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
-##### "logfileSerialized"
+##### "logfile_serialized"
+- *v1 : "logfileSerialized"*
 - 액세스 시도 저지를 기록 직렬화되었습니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 *유용한 팁 : 당신이 원하는 경우 로그 파일 이름에 날짜/시간 정보를 부가 할 수 있습니다 이름 이들을 포함하여 : 전체 연도에 대한 `{yyyy}`생략 된 년간 `{yy}`달 `{mm}`일 `{dd}`시간 `{hh}`.*
 
 *예 :*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "truncate"
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -326,11 +328,13 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "timezone"
 - 이것은 CIDRAM이 날짜/시간 작업에 사용해야하는 시간대를 지정하는 데 사용됩니다. 필요하지 않으면 무시하십시오. 가능한 값은 PHP에 의해 결정됩니다. 하지만 그 대신에 일반적으로 시간대 지시문 (당신의`php.ini` 파일)을 조정 る 것이 좋습니다,하지만 때때로 (같은 제한 공유 호스팅 제공 업체에서 작업 할 때) 이것은 무엇을하는 것이 항상 가능하지는 않습니다 따라서이 옵션은 여기에서 볼 수 있습니다.
 
-##### "timeOffset"
+##### "time_offset"
+- *v1 : "timeOffset"*
 - 귀하의 서버 시간은 로컬 시간과 일치하지 않는 경우, 당신의 요구에 따라 시간을 조정하기 위해, 당신은 여기에 오프셋을 지정할 수 있습니다. 하지만 그 대신에 일반적으로 시간대 지시문 (당신의`php.ini` 파일)을 조정 る 것이 좋습니다,하지만 때때로 (같은 제한 공유 호스팅 제공 업체에서 작업 할 때) 이것은 무엇을하는 것이 항상 가능하지는 않습니다 따라서이 옵션은 여기에서 볼 수 있습니다. 오프셋 분이며 있습니다.
-- 예 (1 시간을 추가합니다) : `timeOffset=60`
+- 예 (1 시간을 추가합니다) : `time_offset=60`
 
-##### "timeFormat"
+##### "time_format"
+- *v1 : "timeFormat"*
 - CIDRAM에서 사용되는 날짜 형식. Default (기본 설정) = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
 
 ##### "ipaddr"
@@ -398,8 +402,9 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "emailaddr_display_style"
 - 사용자에게 전자 메일 주소를 어떻게 표시 하시겠습니까? "default" = 클릭 가능한 링크. "noclick" = 클릭 할 수없는 텍스트.
 
-##### "disable_cli" (v2 이후 삭제됨)
+##### "disable_cli"
 - CLI 모드를 해제 하는가? CLI 모드 (시에루아이 모드)는 기본적으로 활성화되어 있지만, 테스트 도구 (PHPUnit 등) 및 CLI 기반의 응용 프로그램과 간섭하는 가능성이 없다고는 단언 할 수 없습니다. CLI 모드를 해제 할 필요가 없으면이 데레쿠티부 무시 받고 괜찮습니다. `false`(거짓) = CLI 모드를 활성화합니다 (Default / 기본 설정); `true`(참된) = CLI 모드를 해제합니다.
+- *(v2 이후 삭제됨).*
 
 ##### "disable_frontend"
 - 프론트 엔드에 대한 액세스를 비활성화하거나? 프론트 엔드에 대한 액세스는 CIDRAM을 더 쉽게 관리 할 수 있습니다. 상기 그것은 또한 잠재적 인 보안 위험이 될 수 있습니다. 백엔드를 통해 관리하는 것이 좋습니다,하지만 이것이 불가능한 경우 프론트 엔드에 대한 액세스를 제공. 당신이 그것을 필요로하지 않는 한 그것을 해제합니다. `false`(거짓) = 프론트 엔드에 대한 액세스를 활성화합니다; `true`(참된) = 프론트 엔드에 대한 액세스를 비활성화합니다 (Default / 기본 설정).
@@ -407,7 +412,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "max_login_attempts"
 - 로그인 시도 횟수 (프론트 엔드). Default (기본 설정) = 5.
 
-##### "FrontEndLog"
+##### "frontend_log"
+- *v1 : "FrontEndLog"*
 - 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 ##### "ban_override"
@@ -476,7 +482,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ##### "empty_fields"
 - 블록 이벤트 정보를 로깅하고 표시 할 때, CIDRAM이 빈 필드를 어떻게 처리해야합니까? "include" = 빈 필드를 포함하십시오. "omit" = 빈 필드는 생략하십시오 (Default / 기본 설정).
 
-##### "log_sanitation"
+##### "log_sanitisation"
 - 프런트 엔드 로그 페이지를 사용하여 로그 데이터를 볼 때, XSS 공격 및 기타 잠재적 인 위협으로부터 사용자를 보호하기 위해 CIDRAM은 로그 데이터를 표시하기 전에 위생 처리합니다. 그러나 기본적으로, 로깅 중에는 데이터가 삭제되지 않습니다. 이렇게하면 로그 데이터가 정확하게 보존됩니다 (앞으로 필요할 수도있는 경험적 또는 법의학 분석에 유용합니다). 그러나, 사용자가 외부 도구를 사용하여 로그 데이터를 읽으려고하면, 외부 도구가 자체 위생 처리를 수행하지 않는 경우, 사용자가 XSS 공격에 노출 될 수 있습니다. 필요한 경우, 이 구성 지정 문을 사용하여 기본 작동을 변경할 수 있습니다. True = 데이터 로깅 할 때 데이터, 위생적으로하다 (기록된 데이터 정확도가 더 낮습니다, 않지만 XSS 위험이 더 낮습니다). False = 데이터 로깅 할 때 데이터, 위생적으로하지 마라 (기록된 데이터 정확도가 더 높습니다, 않지만 XSS 위험이 더 높습니다) [Default / 기본 설정].
 
 #### "signatures" (카테고리)
@@ -892,8 +898,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -913,8 +919,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1384,8 +1390,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 *다음 세 가지 형식 각각에 대해 이러한 유형의 로깅을 담당하는 구성 지시문입니다.*
 - `general` -> `logfile`
-- `general` -> `logfileApache`
-- `general` -> `logfileSerialized`
+- `general` -> `logfile_apache`
+- `general` -> `logfile_serialized`
 
 이러한 지시문을 비워두면이, 유형의 로깅은 비활성화 된 상태로 유지됩니다.
 
@@ -1413,7 +1419,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 로그인 했습니다.
 ```
 
 *프런트 엔드 로깅을 담당하는 구성 지시문 :*
-- `general` -> `FrontEndLog`
+- `general` -> `frontend_log`
 
 ##### 11.3.3 로그 회전
 
@@ -1518,4 +1524,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 5월 5일.
+최종 업데이트 : 2019년 5월 11일.

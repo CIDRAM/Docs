@@ -291,7 +291,7 @@
 
 [general](#general-قسم) | [signatures](#signatures-قسم) | [recaptcha](#recaptcha-قسم) | [legal](#legal-قسم)
 --:|--:|--:|--:
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-قسم) | [PHPMailer](#phpmailer-قسم) | [rate_limiting](#rate_limiting-قسم) | [supplementary_cache_options](#supplementary_cache_options-قسم)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -303,13 +303,15 @@
  <li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے انسانی قابل مطالعہ فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے خالی چھوڑ دیں.</li>
 </ul></div>
 
-##### <div dir="rtl">"logfileApache"<br /></div>
+##### <div dir="rtl">"logfile_apache"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "logfileApache"</em></li>
  <li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے اپاچی طرز فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
 </ul></div>
 
-##### <div dir="rtl">"logfileSerialized"<br /></div>
+##### <div dir="rtl">"logfile_serialized"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "logfileSerialized"</em></li>
  <li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے serialized کی فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
 </ul></div>
 
@@ -317,8 +319,8 @@
 
 ```
  logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'
- logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'
- logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'
+ logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'
+ logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'
 ```
 
 ##### <div dir="rtl">"truncate"<br /></div>
@@ -343,16 +345,18 @@
  <li>یہ استعمال کیا جاتا ہے کہ کون سا ٹائم زون CIDRAM کو تاریخ/وقت کے آپریشن کے لئے استعمال کرنا چاہئے. اگر آپ کو اس کی ضرورت نہیں ہے تو اسے نظر انداز کریں. ممکنہ اقدار PHP کی طرف سے مقرر ہیں. یہ عام طور پر یہ کرنا ہمیشہ ممکن نہیں ہے، اور تو، اس اختیار کو یہاں فراہم کی جاتی ہے (جیسا محدود مشترکہ ہوسٹنگ فراہم کرنے والے کے ساتھ کام کرتے وقت کے طور پر) آپ <code dir="ltr">php.ini</code> فائل میں ٹائم زون ہدایت کو ایڈجسٹ کرنے کی بجائے سفارش، لیکن کبھی کبھی رہا ہے.</li>
 </ul></div>
 
-##### <div dir="rtl">"timeOffset"<br /></div>
+##### <div dir="rtl">"time_offset"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "timeOffset"</em></li>
  <li>آپ کے سرور کے وقت آپ کے مقامی وقت کے مماثل نہیں ہے تو، آپ کو آپ کی ضروریات کے مطابق CIDRAM طرف سے پیدا تاریخ / وقت کی معلومات کو ایڈجسٹ کرنے کے لئے یہاں آفسیٹ ایک وضاحت کر سکتے ہیں. یہ عام طور پر یہ کرنا ہمیشہ ممکن نہیں ہے، اور تو، اس اختیار کو یہاں فراہم کی جاتی ہے (جیسا محدود مشترکہ ہوسٹنگ فراہم کرنے والے کے ساتھ کام کرتے وقت کے طور پر) آپ <code dir="ltr">php.ini</code> فائل میں ٹائم زون ہدایت کو ایڈجسٹ کرنے کی بجائے سفارش، لیکن کبھی کبھی رہا ہے. آف سیٹ منٹ میں ہے.<br /></li>
  <li>مثال (ایک گھنٹے کا اضافہ کرنے کے لئے):</li>
 </ul></div>
 
-`timeOffset=60`
+`time_offset=60`
 
-##### <div dir="rtl">"timeFormat"<br /></div>
+##### <div dir="rtl">"time_format"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "timeFormat"</em></li>
  <li>تاریخ کی شکل CIDRAM طرف سے استعمال کیا. پہلے سے طے شدہ:</li>
 </ul></div>
 
@@ -437,9 +441,10 @@
  <li>آپ کو ای میل ایڈریس کو کس طرح صارفین کو پیش کرنا پسند ہے؟ "default" = کلک کرنے والے لنک. "noclick" = متن جو کلک نہیں کیا جا سکتا.</li>
 </ul></div>
 
-##### <div dir="rtl">"disable_cli" (v2 سے ہٹا دیا گیا)<br /></div>
+##### <div dir="rtl">"disable_cli"<br /></div>
 <div dir="rtl"><ul>
  <li>CLI موڈ کو غیر فعال کریں؟ CLI موڈ ڈیفالٹ کی طرف سے چالو حالت میں ہے، لیکن کبھی کبھی بعض جانچ کے آلات (جیسے PHPUnit کے طور پر، مثال کے طور پر) اور دیگر CLI کی بنیاد پر ایپلی کیشنز کے ساتھ مداخلت کر سکتے ہیں. آپ CLI موڈ کو غیر فعال کرنے کی ضرورت نہیں ہے تو، آپ کو اس ہدایت کو نظر انداز کرنا چاہئے. False (جھوٹی) = CLI موڈ [پہلے سے طے شدہ] فعال؛ True (سچے) = غیر فعال CLI موڈ.</li>
+ <li><em>(v2 سے ہٹا دیا گیا).</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"disable_frontend"<br /></div>
@@ -452,8 +457,9 @@
  <li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li>
 </ul></div>
 
-##### <div dir="rtl">"FrontEndLog"<br /></div>
+##### <div dir="rtl">"frontend_log"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "FrontEndLog"</em></li>
  <li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
 </ul></div>
 
@@ -557,7 +563,7 @@
  <li>جب بلاک ایونٹ کی معلومات لاگ ان اور ڈسپلے کرنا، CIDRAM کو خالی شعبوں کو کیسے ہینڈل کرنا چاہئے؟ "include" = خالی شعبیں شامل کریں. "omit" = خالی خالی جگہیں چھپائیں [پہلے سے طے شدہ].</li>
 </ul></div>
 
-##### <div dir="rtl">"log_sanitation"<br /></div>
+##### <div dir="rtl">"log_sanitisation"<br /></div>
 <div dir="rtl"><ul>
  <li>لاگز ڈیٹا دیکھنے کے لئے سامنے کے آخر لاگز صفحے کے کا استعمال کرتے وقت کب، XSS حملوں سے صارفین کی حفاظت کے لئے، یہ نمائش سے پہلے نظر ثانی شدہ ہے. لیکن، ہم ایسا نہیں کرتے جب سب سے پہلے اسے ریکارڈ کرنا پڑتا ہے. اگر یہ مستقبل میں اس کا تجزیہ کرنے کی ضرورت ہے تو اس سے مدد مل سکتی ہے. لیکن خارجہ قارئین کا استعمال کرتے وقت یہ کبھی کبھی غیر محفوظ ہوسکتا ہے. اگر ضرورت ہو تو آپ رویے کو تبدیل کرسکتے ہیں. True (سچے) = کم درست، لیکن کم خطرہ. False (جھوٹی) = زیادہ درست، لیکن زیادہ خطرہ [پہلے سے طے شدہ].</li>
 </ul></div>
@@ -1100,8 +1106,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -1121,8 +1127,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1618,8 +1624,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
  <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">logfileApache</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">logfileSerialized</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">logfile_apache</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">logfile_serialized</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
 <div dir="rtl">جب یہ ہدایات خالی رہیں تو، اس قسم کی ریکارڈنگ غیر فعال رہیں گے.<br /><br /></div>
@@ -1651,7 +1657,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">FrontEndLog</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">frontend_log</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
 ##### <div dir="rtl">١١.٣.٣ لاگ گھومنے<br /><br /></div>
@@ -1774,4 +1780,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 5 مئی 2019 (2019.05.05).</div>
+<div dir="rtl">آخری تازہ کاری: 11 مئی 2019 (2019.05.11).</div>

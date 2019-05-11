@@ -289,7 +289,7 @@ CIDRAM можно обновлять вручную или через фронт
 
 [general](#general-категория) | [signatures](#signatures-категория) | [recaptcha](#recaptcha-категория) | [legal](#legal-категория)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfileApache](#logfileapache)<br />[logfileSerialized](#logfileserialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[timeOffset](#timeoffset)<br />[timeFormat](#timeformat)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />†[disable_cli](#disable_cli)<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[FrontEndLog](#frontendlog)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitation](#log_sanitation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-категория) | [PHPMailer](#phpmailer-категория) | [rate_limiting](#rate_limiting-категория) | [supplementary_cache_options](#supplementary_cache_options-категория)
 [theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -299,18 +299,20 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «logfile»
 - Файл разборчивыми для людей, для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-##### «logfileApache»
+##### «logfile_apache»
+- *v1: «logfileApache»*
 - Apache-стиль файл для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-##### «logfileSerialized»
+##### «logfile_serialized»
+- *v1: «logfileSerialized»*
 - Сериализованная файл для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
 *Полезный совет: Если Вы хотите, Вы можете добавить информацию о дате/времени к именам файлов журналов путем включения их во имя: `{yyyy}` для полный год, `{yy}` для сокращенный год, `{mm}` для месяц, `{dd}` для день, `{hh}` для час.*
 
 *Примеры:*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileApache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfileSerialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### «truncate»
 - Усекать лог-файлы, когда они достигают определенного размера? Значение это максимальный размер в Б/КБ/МБ/ГБ/ТБ, до которого файл журнала может увеличиться до усечения. Стандартное значение 0КБ отключает усечение (лог-файлы может расти неограниченно). Примечание: относится к отдельным лог-файлы! Размер файлов журнала не учитывается совместно.
@@ -326,11 +328,13 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «timezone»
 - Это используется, чтобы указать, какой часового пояса CIDRAM должен использовать для операций даты/времени. Если вам это не нужно, игнорируйте его. Возможные значения определяются PHP. Обычно рекомендуется вместо того, чтобы настроить директиву о зоне времени в файле `php.ini`, но иногда (например, при работе с общими хостинг-провайдеров, которые ограничены) это не всегда возможно, и так, эта опция представлена здесь.
 
-##### «timeOffset»
+##### «time_offset»
+- *v1: «timeOffset»*
 - Если ваш сервер времени не соответствует вашему местному времени, Вы можете указать смещение здесь для корректировки информации о дате/времени генерируется от CIDRAM в соответствии с вашими потребностями. Обычно рекомендуется вместо того, чтобы настроить директиву о зоне времени в файле `php.ini`, но иногда (например, при работе с общими хостинг-провайдеров, которые ограничены) это не всегда возможно, и так, эта опция представлена здесь. Смещение описывается как минут.
-- Пример (добавить один час): `timeOffset=60`
+- Пример (добавить один час): `time_offset=60`
 
-##### «timeFormat»
+##### «time_format»
+- *v1: «timeFormat»*
 - Формат нотации даты, используемый CIDRAM. Стандарт = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
 
 ##### «ipaddr»
@@ -398,8 +402,9 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «emailaddr_display_style»
 - Как Вы предпочитаете, чтобы адрес электронной почты был представлен пользователям? «default» = Ссылки кликабельны. «noclick» = Текст не кликабельны.
 
-##### «disable_cli» (удалены начиная с v2)
+##### «disable_cli»
 - Деактивировать ли CLI-модус? Обычно CLI-модус активирован. Однако иногда он может отрицательно влиять на определённые тестовые программы (например на PHPUnit) и другие приложения, базирующиеся на CLI. Если CLI-модус нельзя деактивировать, то эту команду нужно игнорировать. False = CLI-модус активирован [Стандарт]; True = CLI-модус деактивирован.
+- *(Удалены начиная с v2).*
 
 ##### «disable_frontend»
 - Деактивировать доступ к фронтенд? Доступ к фронтенд может сделать CIDRAM более управляемым, но также может быть потенциальный риск безопасности. Рекомендуется чтобы управлять CIDRAM через бэкенд когда возможно, но доступ к фронтенд предоставлен для того когда это не возможно. Держите его деактивирована за исключением того если Вам это нужно. False = Активировать доступ к фронтенд; True = Деактивировать доступ к фронтенд [Стандарт].
@@ -407,7 +412,8 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «max_login_attempts»
 - Максимальное количество попыток входа в систему (фронтенд). Стандарт = 5.
 
-##### «FrontEndLog»
+##### «frontend_log»
+- *v1: «FrontEndLog»*
 - Файл для запись всех попыток входа в фронтенд. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
 ##### «ban_override»
@@ -476,7 +482,7 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «empty_fields»
 - Как CIDRAM обрабатывать пустые поля при регистрации и отображении информации о событии блока? «include» = Включить пустые поля. «omit» = Опустить пустые поля [стандарт].
 
-##### «log_sanitation»
+##### «log_sanitisation»
 - При использовании фронтенд страницы журналов для просмотра данных журнала, CIDRAM подготавливает данные журнала перед их отображением таким образом, чтобы защитить пользователей от атак XSS. Однако эти меры обычно не происходят, когда данные впервые регистрируются. Это необходимо для обеспечения точного сохранения данных журнала, чтобы помочь любому эвристическому анализу, который может потребоваться в будущем. Однако в случае, если пользователь пытается прочитать данные журнала, используя внешние инструменты, которые не подготавливают данные журнала аналогичным образом для защиты пользователей, пользователь может подвергаться атакам XSS. При необходимости Вы можете изменить поведение по умолчанию с помощью этой директивы конфигурации. True = Подготавливайте данные при первой регистрации (данные сохраняются менее точно, но риск XSS ниже). False = Не подготавливайте данные при первой регистрации (данные сохраняются более точно, но риск XSS выше) [Стандарт].
 
 #### «signatures» (Категория)
@@ -892,8 +898,8 @@ Tag: Foobar 1
 ---
 general:
  logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfileApache: access.{yyyy}-{mm}-{dd}.txt
- logfileSerialized: serial.{yyyy}-{mm}-{dd}.txt
+ logfile_apache: access.{yyyy}-{mm}-{dd}.txt
+ logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
  forbid_on_block: false
  emailaddr: username@domain.tld
 recaptcha:
@@ -913,8 +919,8 @@ Tag: Foobar 2
 ---
 general:
  logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileApache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfileSerialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
  forbid_on_block: 503
 
 # Foobar 3.
@@ -1386,8 +1392,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 *Директивы конфигурации, отвечающие за этот тип ведения журнала, и для каждого из трех доступных форматов:*
 - `general` -> `logfile`
-- `general` -> `logfileApache`
-- `general` -> `logfileSerialized`
+- `general` -> `logfile_apache`
+- `general` -> `logfile_serialized`
 
 Когда эти директивы остаются пустыми, этот тип ведения журнала останется отключенным.
 
@@ -1415,7 +1421,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Вошли в систем
 ```
 
 *Соответствующие директивы конфигурации:*
-- `general` -> `FrontEndLog`
+- `general` -> `frontend_log`
 
 ##### 11.3.3 ВРАЩЕНИЕ ЖУРНАЛА
 
@@ -1517,4 +1523,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 5 Мая 2019 (2019.05.05).
+Последнее обновление: 11 Мая 2019 (2019.05.11).
