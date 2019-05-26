@@ -126,7 +126,7 @@ CIDRAMは、手動で、または、フロントエンド経由で更新でき�
 
 まず、２ＦＡを有効にするには、フロントエンドのアップデイト・ページを使用して、PHPMailerコンポーネントをインストールします。​CIDRAMは、電子Ｅメールを送信するために、PHPMailerを利用します。​注意：CIDRAM自体はPHP >= 5.4.0と互換性がありますが、PHPMailerにはPHP >= 5.5.0が必要です。​したがって、PHP 5.4ユーザーはCIDRAMフロントエンドに２ＦＡを有効にすることはできません。
 
-PHPMailerをインストールしたら、CIDRAMコンフィギュレーション・ページまたはコンフィギュレーション・ファイルを使用して、PHPMailerのコンフィギュレーション・ディレクティブを設定する必要があります。​これらのコンフィギュレーション・ディレクティブの詳細については、このドキュメントのコンフィギュレーション・セクションに記載されています。​PHPMailerコンフィギュレーション・ディレクティブを設定したら、`Enable2FA`を`true`に設定します。​２ＦＡが有効にされている。
+PHPMailerをインストールしたら、CIDRAMコンフィギュレーション・ページまたはコンフィギュレーション・ファイルを使用して、PHPMailerのコンフィギュレーション・ディレクティブを設定する必要があります。​これらのコンフィギュレーション・ディレクティブの詳細については、このドキュメントのコンフィギュレーション・セクションに記載されています。​PHPMailerコンフィギュレーション・ディレクティブを設定したら、`enable_two_factor`を`true`に設定します。​２ＦＡが有効にされている。
 
 次に、CIDRAMがそのアカウントでログインする際に２ＦＡコードを送信する場所を知るように、電子Ｅメール・アドレスをアカウントに関連付ける必要があります。​これを行うには、電子Ｅメール・アドレスをアカウントのユーザー名として使用する（例えば、`foo@bar.tld`）か、電子Ｅメール・アドレスを通常どおり電子Ｅメールを送信する場合と同じ方法でユーザー名の一部として含めます（例えば、`Foo Bar <foo@bar.tld>`）。
 
@@ -291,7 +291,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 :--|:--|:--|:--
 [logfile](#logfile-ログファイル)<br />[logfile_apache](#logfile_apache-ログファイルアパッチ)<br />[logfile_serialized](#logfile_serialized-ログファイルシリアライズ)<br />[truncate](#truncate-トランケート)<br />[log_rotation_limit](#log_rotation_limit-ログローテーションリミット)<br />[log_rotation_action](#log_rotation_action-ログローテーションアクション)<br />[timezone](#timezone-タイムゾーン)<br />[time_offset](#time_offset-タイムオフセット)<br />[time_format](#time_format-タイムフォーマット)<br />[ipaddr](#ipaddr-アイピーアドレス)<br />[forbid_on_block](#forbid_on_block-フォービッドオンブロック)<br />[silent_mode](#silent_mode-サイレントモード)<br />[lang](#lang-ラング)<br />[numbers](#numbers-ナンバーズ)<br />[emailaddr](#emailaddr-ｅメールアドレス)<br />[emailaddr_display_style](#emailaddr_display_style-ｅメールアドレスディスプレイスタイル)<br />*†[disable_cli](#disable_cli-ディスエイブルシーエルアイ)*<br />[disable_frontend](#disable_frontend-ディスエイブルフロントエンド)<br />[max_login_attempts](#max_login_attempts-マクスログインアテンプト)<br />[frontend_log](#frontend_log-フロントエンドログ)<br />[ban_override](#ban_override-バンオーバーライド)<br />[log_banned_ips](#log_banned_ips-ログバンドアイピーズ)<br />[default_dns](#default_dns-ディフォールトディーエンエス)<br />[search_engine_verification](#search_engine_verification-サーチエンジンベリフィケーション)<br />[social_media_verification](#social_media_verification-ソーシャルメディアベリフィケーション)<br />[protect_frontend](#protect_frontend-プロテクトフロントエンド)<br />[disable_webfonts](#disable_webfonts-ディスエイブルウェブフォンツ)<br />[maintenance_mode](#maintenance_mode-メンテナンスモード)<br />[default_algo](#default_algo-ディフォールトアルゴ)<br />[statistics](#statistics-スタティスティックス統計)<br />[force_hostname_lookup](#force_hostname_lookup-フォースホストネームルックアップ)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup-アラウゲットホストバイエイディディアールックアップ)<br />[hide_version](#hide_version-ハイドバージョン)<br />[empty_fields](#empty_fields-エンプティーフィールズ)<br />[log_sanitisation](#log_sanitisation-ログサニテーション)<br /> | [ipv4](#ipv4-アイピーブイ４)<br />[ipv6](#ipv6-アイピーブイ６)<br />[block_cloud](#block_cloud-ブロッククラウド)<br />[block_bogons](#block_bogons-ブロックぼごん)<br />[block_generic](#block_generic-ブロックジェネリック)<br />[block_legal](#block_legal-ブロックリーガル)<br />[block_malware](#block_malware-ブロックマルウェア)<br />[block_proxies](#block_proxies-ブロックプロキシ)<br />[block_spam](#block_spam-ブロックスパム)<br />[modules](#modules-モジュールス)<br />[default_tracktime](#default_tracktime-デフォルトトラックタイム)<br />[infraction_limit](#infraction_limit-インフラクションリミット)<br />[track_mode](#track_mode-トラックモード)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode-ユースモード)<br />[lockip](#lockip-ロックｉｐ)<br />[lockuser](#lockuser-ロックユーザー)<br />[sitekey](#sitekey-サイトキー)<br />[secret](#secret-シークレット)<br />[expiry](#expiry-シークレット)<br />[logfile](#logfile-ログファイル-1)<br />[signature_limit](#signature_limit-シグネチャリミット)<br />[api](#api-エイピーアイ)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses-プセユードニマイズアイピーアドレセズ)<br />[omit_ip](#omit_ip-オミットアイピー)<br />[omit_hostname](#omit_hostname-オミットホストネーム)<br />[omit_ua](#omit_ua-オミットユーエイ)<br />[privacy_policy](#privacy_policy-プライバシーポリシー)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-テンプレートデータカテゴリ) | [PHPMailer](#phpmailer-ピーエイチピーメーラーカテゴリ) | [rate_limiting](#rate_limiting-レートリミッティングカテゴリ) | [supplementary_cache_options](#supplementary_cache_options-サプレメンタリーキャッシュオプションズカテゴリ)
-[theme](#theme-シームテーマ)<br />[Magnification](#magnification-マグニフィケーション)<br />[css_url](#css_url-シーエスエスユーアールエル)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog-イベントログ)<br />[SkipAuthProcess](#skipauthprocess-スキップオスプロセス)<br />[Enable2FA](#enable2fa-イネーブル２ｆａ)<br />[Host](#host-ホスト)<br />[Port](#port-ポート)<br />[SMTPSecure](#smtpsecure-ｓｍｔｐセキュア)<br />[SMTPAuth](#smtpauth-ｓｍｔｐオス)<br />[Username](#username-ユーザーネーム)<br />[Password](#password-パスワード)<br />[setFromAddress](#setfromaddress-セットフロムアドレス)<br />[setFromName](#setfromname-セットフロムネーム)<br />[addReplyToAddress](#addreplytoaddress-アッドリプライアドレス)<br />[addReplyToName](#addreplytoname-アッドリプライネーム)<br /> | [max_bandwidth](#max_bandwidth-マックスバンドウィツ)<br />[max_requests](#max_requests-マックスレクェスツ)<br />[precision_ipv4](#precision_ipv4-プリシジョンアイピーブイ４)<br />[precision_ipv6](#precision_ipv6-プリシジョンアイピーブイ６)<br />[allowance_period](#allowance_period-アラワンスピアリアド)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu-イネーブルａｐｃｕ)<br />[enable_memcached](#enable_memcached-イネーブルメムキャッシュト)<br />[enable_redis](#enable_redis-イネーブルレディス)<br />[enable_pdo](#enable_pdo-イネーブルｐｄｏ)<br />[memcached_host](#memcached_host-メムキャッシュホスト)<br />[memcached_port](#memcached_port-メムキャッシュポート)<br />[redis_host](#redis_host-レディスホスト)<br />[redis_port](#redis_port-レディスポート)<br />[redis_timeout](#redis_timeout-レディスタイムアウト)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username-ｐｄｏユーザーネーム)<br />[pdo_password](#pdo_password-ｐｄｏパスワード)<br /><br />
+[theme](#theme-シームテーマ)<br />[magnification](#magnification-マグニフィケーション)<br />[css_url](#css_url-シーエスエスユーアールエル)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log-イベントログ)<br />[skip_auth_process](#skip_auth_process-スキップオスプロセス)<br />[enable_two_factor](#enable_two_factor-イネーブル２ｆａ)<br />[host](#host-ホスト)<br />[port](#port-ポート)<br />[smtp_secure](#smtp_secure-ｓｍｔｐセキュア)<br />[smtp_auth](#smtp_auth-ｓｍｔｐオス)<br />[username](#username-ユーザーネーム)<br />[password](#password-パスワード)<br />[set_from_address](#set_from_address-セットフロムアドレス)<br />[set_from_name](#set_from_name-セットフロムネーム)<br />[add_reply_to_address](#add_reply_to_address-アッドリプライアドレス)<br />[add_reply_to_name](#add_reply_to_name-アッドリプライネーム)<br /> | [max_bandwidth](#max_bandwidth-マックスバンドウィツ)<br />[max_requests](#max_requests-マックスレクェスツ)<br />[precision_ipv4](#precision_ipv4-プリシジョンアイピーブイ４)<br />[precision_ipv6](#precision_ipv6-プリシジョンアイピーブイ６)<br />[allowance_period](#allowance_period-アラワンスピアリアド)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu-イネーブルａｐｃｕ)<br />[enable_memcached](#enable_memcached-イネーブルメムキャッシュト)<br />[enable_redis](#enable_redis-イネーブルレディス)<br />[enable_pdo](#enable_pdo-イネーブルｐｄｏ)<br />[memcached_host](#memcached_host-メムキャッシュホスト)<br />[memcached_port](#memcached_port-メムキャッシュポート)<br />[redis_host](#redis_host-レディスホスト)<br />[redis_port](#redis_port-レディスポート)<br />[redis_timeout](#redis_timeout-レディスタイムアウト)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username-ｐｄｏユーザーネーム)<br />[pdo_password](#pdo_password-ｐｄｏパスワード)<br /><br />
 
 #### "general" （全般、カテゴリー）
 全般的な設定。
@@ -403,8 +403,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 - ユーザーに電子Ｅメール・アドレスを提示することをどのように希望しますか？ "default" = クリック可能なリンク。 "noclick" = クリックできないテキスト。
 
 ##### "disable_cli" （ディスエイブル・シーエルアイ）
-- ＣＬＩモードを無効にするか？​ＣＬＩモード（シーエルアイ・モード）はデフォルトでは有効になっていますが、​テストツール（PHPUnit等）やＣＬＩベースのアプリケーションと干渉しあう可能性が無いとは言い切れません。​ＣＬＩモードを無効にする必要がなければ、​このデレクティブは無視してもらって結構です。​`false`（偽） = ＣＬＩモードを有効にします（Default/デフォルルト）；​`true`（真） = ＣＬＩモードを無効にします。
 - *（バージョン２以降削除）。*
+- ＣＬＩモードを無効にするか？​ＣＬＩモード（シーエルアイ・モード）はデフォルトでは有効になっていますが、​テストツール（PHPUnit等）やＣＬＩベースのアプリケーションと干渉しあう可能性が無いとは言い切れません。​ＣＬＩモードを無効にする必要がなければ、​このデレクティブは無視してもらって結構です。​`false`（偽） = ＣＬＩモードを有効にします（Default/デフォルルト）；​`true`（真） = ＣＬＩモードを無効にします。
 
 ##### "disable_frontend" （ディスエイブル・フロントエンド）
 - フロントエンドへのアクセスを無効にするか？​フロントエンドへのアクセスは、​CIDRAMをより管理しやすくすることができます。​前記、​それはまた、​潜在的なセキュリティリスクになる可能性があります。​バックエンドを経由して管理することをお勧めします、​しかし、​これが不可能な場合、​フロントエンドへのアクセスが提供され。​あなたがそれを必要としない限り、​それを無効にします。​`false`（偽） = フロントエンドへのアクセスを有効にします；​`true`（真） = フロントエンドへのアクセスを無効にします（Default/デフォルルト）。
@@ -601,7 +601,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 ##### "theme" （シーム/テーマ）
 - CIDRAMに使用するデフォルトテーマ。
 
-##### "Magnification" （マグニフィケーション）
+##### "magnification" （マグニフィケーション）
+- *v1: "Magnification"*
 - フォントの倍率。​Default/デフォルルト = １。
 
 ##### "css_url" （シーエスエス・ユーアールエル）
@@ -612,43 +613,56 @@ PHPMailerコンフィギュレーション。
 
 現在、CIDRAMはフロントエンドの２ＦＡ（二要素認証）にのみPHPMailerを使用しています。​フロントエンドを使用しない場合、またはフロントエンドに２ＦＡ（二要素認証）を使用しない場合は、これらのディレクティブを無視できます。
 
-##### "EventLog" （イベント・ログ）
+##### "event_log" （イベント・ログ）
+- *v1: "EventLog"*
 - PHPMailerに関連してすべてのイベントを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "SkipAuthProcess" （スキップ・オス・プロセス）
+##### "skip_auth_process" （スキップ・オス・プロセス）
+- *v1: "SkipAuthProcess"*
 - このディレクティブを`true`に設定すると、PHPMailerはSMTP経由で電子Ｅメールを送信する際に通常発生する認証プロセスをスキップします。​このプロセスをスキップすると、送信ＥメールがＭＩＴＭ攻撃にさらされる可能性があるため、これは避けるべきです。​しかし、PHPMailerがSMTPサーバに接続できない場合、このプロセスが必要な場合があります。
 
-##### "Enable2FA" （イネーブル２ＦＡ）
+##### "enable_two_factor" （イネーブル２ＦＡ）
+- *v1: "Enable2FA"*
 - このディレクティブは、フロントエンド・アカウントに２ＦＡを使用するかどうかを決定します。
 
-##### "Host" （ホスト）
+##### "host" （ホスト）
+- *v1: "Host"*
 - 送信Ｅメールに使用するＳＭＴＰホスト。
 
-##### "Port" （ポート）
+##### "port" （ポート）
+- *v1: "Port"*
 - 送信Ｅメールに使用するポート番号。​Default/デフォルルト = 587。
 
-##### "SMTPSecure" （ＳＭＴＰセキュア）
+##### "smtp_secure" （ＳＭＴＰセキュア）
+- *v1: "SMTPSecure"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するプロトコル（ＴＬＳまたはＳＳＬ）。
 
-##### "SMTPAuth" （ＳＭＴＰオス）
+##### "smtp_auth" （ＳＭＴＰオス）
+- *v1: "SMTPAuth"*
 - このディレクティブは、ＳＭＴＰセッションを認証するかどうかを決定します（通常はそれをそのまま残すべきです）。
 
-##### "Username" （ユーザーネーム）
+##### "username" （ユーザーネーム）
+- *v1: "Username"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するユーザー名。
 
-##### "Password" （パスワード）
+##### "password" （パスワード）
+- *v1: "Password"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するパスワード。
 
-##### "setFromAddress" （セット・フロム・アドレス）
+##### "set_from_address" （セット・フロム・アドレス）
+- *v1: "setFromAddress"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者アドレス。
 
-##### "setFromName" （セット・フロム・ネーム）
+##### "set_from_name" （セット・フロム・ネーム）
+- *v1: "setFromName"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者名。
 
-##### "addReplyToAddress" （アッド・リプライ・アドレス）
+##### "add_reply_to_address" （アッド・リプライ・アドレス）
+- *v1: "addReplyToAddress"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信アドレス。
 
-##### "addReplyToName" （アッド・リプライ・ネーム）
+##### "add_reply_to_name" （アッド・リプライ・ネーム）
+- *v1: "addReplyToName"*
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信名。
 
 #### "rate_limiting" （レート・リミッティング、カテゴリ）
@@ -1526,4 +1540,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０１９年５月１１日。
+最終アップデート：２０１９年５月２６日。

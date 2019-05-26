@@ -128,7 +128,7 @@
 
 <div dir="rtl">سب سے پہلے، 2FA کو چالو کرنے کے لئے، PHPMailer اجزاء کو انسٹال کرنے کے لئے front-end اپ ڈیٹس کا صفحہ استعمال کریں. ای میل بھیجنے کے لئے CIDRAM PHPMailer کا استعمال کرتا ہے. نوٹ: اگرچہ CIDRAM، خود ہی، <code dir="ltr">PHP &gt;= 5.4.0</code> کے ساتھ مطابقت رکھتا ہے، PHPMailer کی ضرورت ہے <code dir="ltr">PHP &gt;= 5.5.0</code>. اس کا مطلب ہے کہ <code dir="ltr">PHP 5.4</code> صارفوں کیلئے CIDRAM front-end 2FA کو چالو کرنا ممکن نہیں ہوگا.<br /><br /></div>
 
-<div dir="rtl">PHPMailer نصب کرنے کے بعد، آپ کو CIDRAM ترتیب کے صفحے یا ترتیب کی فائل کے ذریعے PHPMailer کے لئے ترتیب ہدایات کو آباد کرنے کی ضرورت ہوگی. ان ترتیبات کے ہدایات کے بارے میں مزید معلومات اس دستاویز کے ترتیب کے حصے میں شامل ہیں. PHPMailer ترتیب ہدایات آبادی کے بعد، <code dir="ltr">Enable2FA</code> <code dir="ltr">true</code> سیٹ کریں. 2FA اب فعال ہونا چاہئے.<br /><br /></div>
+<div dir="rtl">PHPMailer نصب کرنے کے بعد، آپ کو CIDRAM ترتیب کے صفحے یا ترتیب کی فائل کے ذریعے PHPMailer کے لئے ترتیب ہدایات کو آباد کرنے کی ضرورت ہوگی. ان ترتیبات کے ہدایات کے بارے میں مزید معلومات اس دستاویز کے ترتیب کے حصے میں شامل ہیں. PHPMailer ترتیب ہدایات آبادی کے بعد، <code dir="ltr">enable_two_factor</code> <code dir="ltr">true</code> سیٹ کریں. 2FA اب فعال ہونا چاہئے.<br /><br /></div>
 
 <div dir="rtl">اگلا، آپ کو ایک ای میل ایڈریس کو اکاؤنٹ کے ساتھ منسلک کرنے کی ضرورت ہوگی، تاکہ CIDRAM کو معلوم ہے کہ اس اکاؤنٹ کے ساتھ لاگ ان کرتے وقت 2FA کوڈ بھیجنے کے لئے. ایسا کرنے کے لئے، اکاؤنٹ کے صارف نام کے طور پر ای میل پتہ استعمال کریں (کچھ <code dir="ltr">foo@bar.tld</code> کی طرح)، یا اس صارف کے صارف کے حصے کے طور پر ای میل ایڈریس بھی شامل ہے جس طرح آپ عام طور پر ای میل بھیجیں گے (کچھ <code dir="ltr">Foo Bar &lt;foo@bar.tld&gt;</code> کی طرح).<br /><br /></div>
 
@@ -293,7 +293,7 @@
 --:|--:|--:|--:
 [logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-قسم) | [PHPMailer](#phpmailer-قسم) | [rate_limiting](#rate_limiting-قسم) | [supplementary_cache_options](#supplementary_cache_options-قسم)
-[theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
 <div dir="rtl">جنرل CIDRAM کنفیگریشن.<br /><br /></div>
@@ -443,8 +443,8 @@
 
 ##### <div dir="rtl">"disable_cli"<br /></div>
 <div dir="rtl"><ul>
- <li>CLI موڈ کو غیر فعال کریں؟ CLI موڈ ڈیفالٹ کی طرف سے چالو حالت میں ہے، لیکن کبھی کبھی بعض جانچ کے آلات (جیسے PHPUnit کے طور پر، مثال کے طور پر) اور دیگر CLI کی بنیاد پر ایپلی کیشنز کے ساتھ مداخلت کر سکتے ہیں. آپ CLI موڈ کو غیر فعال کرنے کی ضرورت نہیں ہے تو، آپ کو اس ہدایت کو نظر انداز کرنا چاہئے. False (جھوٹی) = CLI موڈ [پہلے سے طے شدہ] فعال؛ True (سچے) = غیر فعال CLI موڈ.</li>
  <li><em>(v2 سے ہٹا دیا گیا).</em></li>
+ <li>CLI موڈ کو غیر فعال کریں؟ CLI موڈ ڈیفالٹ کی طرف سے چالو حالت میں ہے، لیکن کبھی کبھی بعض جانچ کے آلات (جیسے PHPUnit کے طور پر، مثال کے طور پر) اور دیگر CLI کی بنیاد پر ایپلی کیشنز کے ساتھ مداخلت کر سکتے ہیں. آپ CLI موڈ کو غیر فعال کرنے کی ضرورت نہیں ہے تو، آپ کو اس ہدایت کو نظر انداز کرنا چاہئے. False (جھوٹی) = CLI موڈ [پہلے سے طے شدہ] فعال؛ True (سچے) = غیر فعال CLI موڈ.</li>
 </ul></div>
 
 ##### <div dir="rtl">"disable_frontend"<br /></div>
@@ -739,8 +739,9 @@
  <li>CIDRAM لئے استعمال کرنے کے لئے مرکزی خیال، موضوع پہلے سے طے شدہ.</li>
 </ul></div>
 
-##### <div dir="rtl">"Magnification"<br /></div>
+##### <div dir="rtl">"magnification"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Magnification"</em></li>
  <li>فونٹ اضافہ. پہلے سے طے شدہ = 1.</li>
 </ul></div>
 
@@ -754,68 +755,81 @@
 
 <div dir="rtl">فی الحال، CIDRAM صرف 2FA کے لئے صرف PHPMailer کا استعمال کرتا ہے. اگر آپ سامنے کے اختتام کا استعمال نہیں کرتے ہیں، یا اگر آپ 2FA استعمال نہیں کرتے ہیں، تو آپ ان ہدایات کو نظر انداز کر سکتے ہیں.<br /><br /></div>
 
-##### <div dir="rtl">"EventLog"<br /></div>
+##### <div dir="rtl">"event_log"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "EventLog"</em></li>
  <li>PHPMailer کے سلسلے میں تمام واقعات کو لاگ ان کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
 </ul></div>
 
-##### <div dir="rtl">"SkipAuthProcess"<br /></div>
+##### <div dir="rtl">"skip_auth_process"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "SkipAuthProcess"</em></li>
  <li>جب <code dir="ltr">true</code>، SMTP کی تصدیق کے عمل کو چھوڑ دیا گیا ہے. اس سے بچنا چاہئے. اگر عمل ختم ہو جاتا ہے تو، آؤٹ باؤنڈ ای میل MITM حملوں سے بے نقاب ہوسکتا ہے. مخصوص معاملات میں ضروری ہوسکتا ہے (مثال کے طور پر، جب SMTP سرور مناسب طریقے سے منسلک نہیں کرے گا).</li>
 </ul></div>
 
-##### <div dir="rtl">"Enable2FA"<br /></div>
+##### <div dir="rtl">"enable_two_factor"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Enable2FA"</em></li>
  <li>یہ تعین کرتا ہے کہ 2FA استعمال کیا جانا چاہئے.</li>
 </ul></div>
 
-##### <div dir="rtl">"Host"<br /></div>
+##### <div dir="rtl">"host"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Host"</em></li>
  <li>آؤٹ پاؤنڈ ای میل کے لئے استعمال کرنے کے لئے SMTP میزبان.</li>
 </ul></div>
 
-##### <div dir="rtl">"Port"<br /></div>
+##### <div dir="rtl">"port"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Port"</em></li>
  <li>آؤٹ پاؤنڈ ای میل کے لئے استعمال کرنے کے لئے پورٹ نمبر. پہلے سے طے شدہ = 587.</li>
 </ul></div>
 
-##### <div dir="rtl">"SMTPSecure"<br /></div>
+##### <div dir="rtl">"smtp_secure"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "SMTPSecure"</em></li>
  <li>ای میل بھیجنے پر پروٹوکول استعمال کرنے کے لئے (TLS یا SSL).</li>
 </ul></div>
 
-##### <div dir="rtl">"SMTPAuth"<br /></div>
+##### <div dir="rtl">"smtp_auth"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "SMTPAuth"</em></li>
  <li>کیا SMTP سیشن کو مستند کیا جاسکتا ہے؟ (عام طور پر اس کو نظر انداز کرنا چاہئے).</li>
 </ul></div>
 
-##### <div dir="rtl">"Username"<br /></div>
+##### <div dir="rtl">"username"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Username"</em></li>
  <li>ای میل بھیجنے کے لئے صارف کا نام.</li>
 </ul></div>
 
-##### <div dir="rtl">"Password"<br /></div>
+##### <div dir="rtl">"password"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "Password"</em></li>
  <li>ای میل بھیجنے کے لئے پاس ورڈ.</li>
 </ul></div>
 
-##### <div dir="rtl">"setFromAddress"<br /></div>
+##### <div dir="rtl">"set_from_address"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "setFromAddress"</em></li>
  <li>ای میل بھیجنے کے لئے بھیجنے والے کا پتہ.</li>
 </ul></div>
 
-##### <div dir="rtl">"setFromName"<br /></div>
+##### <div dir="rtl">"set_from_name"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "setFromName"</em></li>
  <li>ای میل بھیجنے کے لئے بھیجنے کا نام.</li>
 </ul></div>
 
-##### <div dir="rtl">"addReplyToAddress"<br /></div>
+##### <div dir="rtl">"add_reply_to_address"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "addReplyToAddress"</em></li>
  <li>ای میل بھیجنے پر جواب کا پتہ.</li>
 </ul></div>
 
-##### <div dir="rtl">"addReplyToName"<br /></div>
+##### <div dir="rtl">"add_reply_to_name"<br /></div>
 <div dir="rtl"><ul>
+ <li><em>v1: "addReplyToName"</em></li>
  <li>ای میل بھیجنے پر جواب کا نام.</li>
 </ul></div>
 
@@ -1780,4 +1794,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 11 مئی 2019 (2019.05.11).</div>
+<div dir="rtl">آخری تازہ کاری: 26 مئی 2019 (2019.05.26).</div>

@@ -126,7 +126,7 @@ CIDRAM можно обновлять вручную или через фронт
 
 Во-первых, чтобы включить двухфакторную аутентификацию, используя страницу обновлений фронтенда, установите компонент PHPMailer. CIDRAM использует PHPMailer для отправки электронных писем. Следует отметить, что хотя CIDRAM, сам по себе, совместим с PHP >= 5.4.0, PHPMailer требует PHP >= 5.5.0, поэтому означает, что включение двухфакторной аутентификации для фронтенда CIDRAM будет невозможно для пользователей PHP 5.4.
 
-После того, как Вы установили PHPMailer, вам нужно будет заполнить директивы конфигурации для PHPMailer через страницу конфигурации CIDRAM или файл конфигурации. Более подробная информация об этих директивах конфигурации содержится в разделе конфигурации этого документа. После того, как Вы заполнили директивы конфигурации PHPMailer, установите `Enable2FA` в `true`. На этом этапе должна быть включена двухфакторная аутентификация.
+После того, как Вы установили PHPMailer, вам нужно будет заполнить директивы конфигурации для PHPMailer через страницу конфигурации CIDRAM или файл конфигурации. Более подробная информация об этих директивах конфигурации содержится в разделе конфигурации этого документа. После того, как Вы заполнили директивы конфигурации PHPMailer, установите `enable_two_factor` в `true`. На этом этапе должна быть включена двухфакторная аутентификация.
 
 Затем вам нужно связать адрес электронной почты с учетной записью, чтобы CIDRAM знал, куда отправлять коды 2FA при входе в эту учетную запись. Для этого используйте адрес электронной почты в качестве имени пользователя для учетной записи (например, `foo@bar.tld`), или указать адрес электронной почты как часть имени пользователя так же, как при отправке письма обычно (например, `Foo Bar <foo@bar.tld>`).
 
@@ -291,7 +291,7 @@ CIDRAM можно обновлять вручную или через фронт
 :--|:--|:--|:--
 [logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-категория) | [PHPMailer](#phpmailer-категория) | [rate_limiting](#rate_limiting-категория) | [supplementary_cache_options](#supplementary_cache_options-категория)
-[theme](#theme)<br />[Magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [EventLog](#eventlog)<br />[SkipAuthProcess](#skipauthprocess)<br />[Enable2FA](#enable2fa)<br />[Host](#host)<br />[Port](#port)<br />[SMTPSecure](#smtpsecure)<br />[SMTPAuth](#smtpauth)<br />[Username](#username)<br />[Password](#password)<br />[setFromAddress](#setfromaddress)<br />[setFromName](#setfromname)<br />[addReplyToAddress](#addreplytoaddress)<br />[addReplyToName](#addreplytoname)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
 #### «general» (Категория)
 Генеральная конфигурация от CIDRAM.
@@ -403,8 +403,8 @@ CIDRAM можно обновлять вручную или через фронт
 - Как Вы предпочитаете, чтобы адрес электронной почты был представлен пользователям? «default» = Ссылки кликабельны. «noclick» = Текст не кликабельны.
 
 ##### «disable_cli»
-- Деактивировать ли CLI-модус? Обычно CLI-модус активирован. Однако иногда он может отрицательно влиять на определённые тестовые программы (например на PHPUnit) и другие приложения, базирующиеся на CLI. Если CLI-модус нельзя деактивировать, то эту команду нужно игнорировать. False = CLI-модус активирован [Стандарт]; True = CLI-модус деактивирован.
 - *(Удалены начиная с v2).*
+- Деактивировать ли CLI-модус? Обычно CLI-модус активирован. Однако иногда он может отрицательно влиять на определённые тестовые программы (например на PHPUnit) и другие приложения, базирующиеся на CLI. Если CLI-модус нельзя деактивировать, то эту команду нужно игнорировать. False = CLI-модус активирован [Стандарт]; True = CLI-модус деактивирован.
 
 ##### «disable_frontend»
 - Деактивировать доступ к фронтенд? Доступ к фронтенд может сделать CIDRAM более управляемым, но также может быть потенциальный риск безопасности. Рекомендуется чтобы управлять CIDRAM через бэкенд когда возможно, но доступ к фронтенд предоставлен для того когда это не возможно. Держите его деактивирована за исключением того если Вам это нужно. False = Активировать доступ к фронтенд; True = Деактивировать доступ к фронтенд [Стандарт].
@@ -601,7 +601,8 @@ CIDRAM можно обновлять вручную или через фронт
 ##### «theme»
 - Стандартная тема для CIDRAM.
 
-##### «Magnification»
+##### «magnification»
+- *v1: «Magnification»*
 - Увеличение шрифта. Стандарт = 1.
 
 ##### «css_url»
@@ -612,43 +613,56 @@ CIDRAM можно обновлять вручную или через фронт
 
 В настоящее время CIDRAM использует PHPMailer только для двухфакторной аутентификации на фронтенд. Если вы не используете фронтенд, или если вы не используете двухфакторную аутентификацию для фронтенд, вы можете игнорировать эти директивы.
 
-##### «EventLog»
+##### «event_log»
+- *v1: «EventLog»*
 - Файл для регистрации всех событий в отношении PHPMailer. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-##### «SkipAuthProcess»
+##### «skip_auth_process»
+- *v1: «SkipAuthProcess»*
 - Установка этой директивы на `true` указывает PHPMailer пропустить обычный процесс проверки подлинности, который обычно возникает при отправке электронной почты через SMTP. Этого следует избегать, поскольку пропуская этот процесс может выдать исходящую электронную почту для атак MITM, но может потребоваться в тех случаях, когда этот процесс препятствует подключению PHPMailer к SMTP-серверу.
 
-##### «Enable2FA»
+##### «enable_two_factor»
+- *v1: «Enable2FA»*
 - Эта директива включает/отключает использование 2FA для фронтенд счетов.
 
-##### «Host»
+##### «host»
+- *v1: «Host»*
 - Хост SMTP используется для исходящей электронной почты.
 
-##### «Port»
+##### «port»
+- *v1: «Port»*
 - Номер порта для исходящей электронной почты. Стандарт = 587.
 
-##### «SMTPSecure»
+##### «smtp_secure»
+- *v1: «SMTPSecure»*
 - Протокол для при отправке электронной почты через SMTP (TLS или SSL).
 
-##### «SMTPAuth»
+##### «smtp_auth»
+- *v1: «SMTPAuth»*
 - Эта директива включает/отключает аутентификацию сессия SMTP (обычно ее следует оставить в покое).
 
-##### «Username»
+##### «username»
+- *v1: «Username»*
 - Имя пользователя для отправки электронной почты через SMTP.
 
-##### «Password»
+##### «password»
+- *v1: «Password»*
 - Пароль для отправки электронной почты через SMTP.
 
-##### «setFromAddress»
+##### «set_from_address»
+- *v1: «setFromAddress»*
 - Адрес отправителя для отправки электронной почты через SMTP.
 
-##### «setFromName»
+##### «set_from_name»
+- *v1: «setFromName»*
 - Имя отправителя для отправки электронной почты через SMTP.
 
-##### «addReplyToAddress»
+##### «add_reply_to_address»
+- *v1: «addReplyToAddress»*
 - Адрес ответа для отправки электронной почты через SMTP.
 
-##### «addReplyToName»
+##### «add_reply_to_name»
+- *v1: «addReplyToName»*
 - Имя ответа для отправки электронной почты через SMTP.
 
 #### «rate_limiting» (Категория)
@@ -1523,4 +1537,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 11 Мая 2019 (2019.05.11).
+Последнее обновление: 26 Мая 2019 (2019.05.26).
