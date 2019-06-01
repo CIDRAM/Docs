@@ -191,55 +191,56 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 /vault/fe_assets/pips.php | 点数处理文件（由前端文件管理器使用）。
 /vault/fe_assets/scripts.js | 包含前端JavaScript数据。
 /vault/lang/ | 包含CIDRAM语言数据。
-/vault/lang/lang.ar.fe.php | 阿拉伯文前端语言数据。
-/vault/lang/lang.ar.php | 阿拉伯文语言数据。
-/vault/lang/lang.bn.fe.php | 孟加拉文前端语言数据。
-/vault/lang/lang.bn.php | 孟加拉文语言数据。
-/vault/lang/lang.de.fe.php | 德文前端语言数据。
-/vault/lang/lang.de.php | 德文语言数据。
-/vault/lang/lang.en.fe.php | 英文前端语言数据。
-/vault/lang/lang.en.php | 英文语言数据。
-/vault/lang/lang.es.fe.php | 西班牙文前端语言数据。
-/vault/lang/lang.es.php | 西班牙文语言数据。
-/vault/lang/lang.fr.fe.php | 法文前端语言数据。
-/vault/lang/lang.fr.php | 法文语言数据。
-/vault/lang/lang.hi.fe.php | 印地文前端语言数据。
-/vault/lang/lang.hi.php | 印地文语言数据。
-/vault/lang/lang.id.fe.php | 印度尼西亚文前端语言数据。
-/vault/lang/lang.id.php | 印度尼西亚文语言数据。
-/vault/lang/lang.it.fe.php | 意大利文前端语言数据。
-/vault/lang/lang.it.php | 意大利文语言数据。
-/vault/lang/lang.ja.fe.php | 日文前端语言数据。
-/vault/lang/lang.ja.php | 日文语言数据。
-/vault/lang/lang.ko.fe.php | 韩文前端语言数据。
-/vault/lang/lang.ko.php | 韩文语言数据。
-/vault/lang/lang.nl.fe.php | 荷兰文前端语言数据。
-/vault/lang/lang.nl.php | 荷兰文语言数据。
-/vault/lang/lang.no.fe.php | 挪威文前端语言数据。
-/vault/lang/lang.no.php | 挪威文语言数据。
-/vault/lang/lang.pt.fe.php | 葡萄牙文前端语言数据。
-/vault/lang/lang.pt.php | 葡萄牙文语言数据。
-/vault/lang/lang.ru.fe.php | 俄文前端语言数据。
-/vault/lang/lang.ru.php | 俄文语言数据。
-/vault/lang/lang.sv.fe.php | 瑞典文前端语言数据。
-/vault/lang/lang.sv.php | 瑞典文语言数据。
-/vault/lang/lang.th.fe.php | 泰文前端语言数据。
-/vault/lang/lang.th.php | 泰文语言数据。
-/vault/lang/lang.tr.fe.php | 土耳其文前端语言数据。
-/vault/lang/lang.tr.php | 土耳其文语言数据。
-/vault/lang/lang.ur.fe.php | 乌尔都文前端语言数据。
-/vault/lang/lang.ur.php | 乌尔都文语言数据。
-/vault/lang/lang.vi.fe.php | 越南文前端语言数据。
-/vault/lang/lang.vi.php | 越南文语言数据。
-/vault/lang/lang.zh-tw.fe.php | 中文（传统）前端语言数据。
-/vault/lang/lang.zh-tw.php | 中文（传统）语言数据。
-/vault/lang/lang.zh.fe.php | 中文（简体）前端语言数据。
-/vault/lang/lang.zh.php | 中文（简体）语言数据。
+/vault/lang/lang.ar.fe.yaml | 阿拉伯文前端语言数据。
+/vault/lang/lang.ar.yaml | 阿拉伯文语言数据。
+/vault/lang/lang.bn.fe.yaml | 孟加拉文前端语言数据。
+/vault/lang/lang.bn.yaml | 孟加拉文语言数据。
+/vault/lang/lang.de.fe.yaml | 德文前端语言数据。
+/vault/lang/lang.de.yaml | 德文语言数据。
+/vault/lang/lang.en.fe.yaml | 英文前端语言数据。
+/vault/lang/lang.en.yaml | 英文语言数据。
+/vault/lang/lang.es.fe.yaml | 西班牙文前端语言数据。
+/vault/lang/lang.es.yaml | 西班牙文语言数据。
+/vault/lang/lang.fr.fe.yaml | 法文前端语言数据。
+/vault/lang/lang.fr.yaml | 法文语言数据。
+/vault/lang/lang.hi.fe.yaml | 印地文前端语言数据。
+/vault/lang/lang.hi.yaml | 印地文语言数据。
+/vault/lang/lang.id.fe.yaml | 印度尼西亚文前端语言数据。
+/vault/lang/lang.id.yaml | 印度尼西亚文语言数据。
+/vault/lang/lang.it.fe.yaml | 意大利文前端语言数据。
+/vault/lang/lang.it.yaml | 意大利文语言数据。
+/vault/lang/lang.ja.fe.yaml | 日文前端语言数据。
+/vault/lang/lang.ja.yaml | 日文语言数据。
+/vault/lang/lang.ko.fe.yaml | 韩文前端语言数据。
+/vault/lang/lang.ko.yaml | 韩文语言数据。
+/vault/lang/lang.nl.fe.yaml | 荷兰文前端语言数据。
+/vault/lang/lang.nl.yaml | 荷兰文语言数据。
+/vault/lang/lang.no.fe.yaml | 挪威文前端语言数据。
+/vault/lang/lang.no.yaml | 挪威文语言数据。
+/vault/lang/lang.pt.fe.yaml | 葡萄牙文前端语言数据。
+/vault/lang/lang.pt.yaml | 葡萄牙文语言数据。
+/vault/lang/lang.ru.fe.yaml | 俄文前端语言数据。
+/vault/lang/lang.ru.yaml | 俄文语言数据。
+/vault/lang/lang.sv.fe.yaml | 瑞典文前端语言数据。
+/vault/lang/lang.sv.yaml | 瑞典文语言数据。
+/vault/lang/lang.th.fe.yaml | 泰文前端语言数据。
+/vault/lang/lang.th.yaml | 泰文语言数据。
+/vault/lang/lang.tr.fe.yaml | 土耳其文前端语言数据。
+/vault/lang/lang.tr.yaml | 土耳其文语言数据。
+/vault/lang/lang.ur.fe.yaml | 乌尔都文前端语言数据。
+/vault/lang/lang.ur.yaml | 乌尔都文语言数据。
+/vault/lang/lang.vi.fe.yaml | 越南文前端语言数据。
+/vault/lang/lang.vi.yaml | 越南文语言数据。
+/vault/lang/lang.zh-tw.fe.yaml | 中文（传统）前端语言数据。
+/vault/lang/lang.zh-tw.yaml | 中文（传统）语言数据。
+/vault/lang/lang.zh.fe.yaml | 中文（简体）前端语言数据。
+/vault/lang/lang.zh.yaml | 中文（简体）语言数据。
 /vault/.htaccess | 超文本访问文件（在这种情况，​以保护敏感文件属于脚本从被访问由非授权来源）。
 /vault/.travis.php | 由Travis CI用于测试（不需要为正确经营脚本）。
 /vault/.travis.yml | 由Travis CI用于测试（不需要为正确经营脚本）。
 /vault/auxiliary.yaml | 包含辅助规则。不包括在包中。由辅助规则页面生成。
 /vault/cache.dat | 缓存数据。
+/vault/channels.yaml | curl请求失败的备用渠道数据。
 /vault/cidramblocklists.dat | Macmathan的可选阻止列表的元数据文件。​由前端更新页面使用。
 /vault/components.dat | 组件元数据文件。由前端更新页面使用。
 /vault/config.ini.RenameMe | 配置文件；包含所有配置指令为CIDRAM，​告诉它什么做和怎么正确地经营（重命名为激活）。
@@ -290,7 +291,7 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 
 [general](#general-类别) | [signatures](#signatures-类别) | [recaptcha](#recaptcha-类别) | [legal](#legal-类别)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-类别) | [PHPMailer](#phpmailer-类别) | [rate_limiting](#rate_limiting-类别) | [supplementary_cache_options](#supplementary_cache_options-类别)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -485,6 +486,9 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 
 ##### “log_sanitisation”
 - 当使用前端日志页面查看日志数据时，CIDRAM在显示之前清理日志数据。​这可以保护用户免受XSS攻击和其他潜在威胁。​但是，默认情况下，在记录期间不会清理数据。​这是为了确保准确地保留日志数据（可以帮助任何未来的启发式或法医分析）。​但是，如果用户尝试使用外部工具读取日志数据，如果这些外部工具不执行自己的清理过程，用户可能会受到XSS攻击。​如有必要，可以使用此配置指令更改默认行为。 True = 记录数据时清理数据（数据保存不太准确，但XSS风险较低）。 False = 记录数据时不要清理数据（数据保存得更准确，但XSS风险更高）【标准】。
+
+##### “disabled_channels”
+- 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时，在获取组件元数据时，等等）。
 
 #### “signatures” （类别）
 签名配置。
@@ -1544,4 +1548,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2019年5月26日。
+最后更新：2019年5月30日。

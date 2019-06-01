@@ -190,55 +190,56 @@ Tập tin | Chi tiết
 /vault/fe_assets/pips.php | Tập tin cho các pip (được sử dụng bởi các quản lý tập tin front-end).
 /vault/fe_assets/scripts.js | Chứa dữ liệu JavaScript cho front-end.
 /vault/lang/ | Chứa dữ liệu tiếng cho CIDRAM.
-/vault/lang/lang.ar.fe.php | Dữ liệu tiếng Ả Rập cho các front-end.
-/vault/lang/lang.ar.php | Dữ liệu tiếng Ả Rập.
-/vault/lang/lang.bn.fe.php | Dữ liệu tiếng Bengal cho các front-end.
-/vault/lang/lang.bn.php | Dữ liệu tiếng Bengal.
-/vault/lang/lang.de.fe.php | Dữ liệu tiếng Đức cho các front-end.
-/vault/lang/lang.de.php | Dữ liệu tiếng Đức.
-/vault/lang/lang.en.fe.php | Dữ liệu tiếng Anh cho các front-end.
-/vault/lang/lang.en.php | Dữ liệu tiếng Anh.
-/vault/lang/lang.es.fe.php | Dữ liệu tiếng Tây Ban Nha cho các front-end.
-/vault/lang/lang.es.php | Dữ liệu tiếng Tây Ban Nha.
-/vault/lang/lang.fr.fe.php | Dữ liệu tiếng Pháp cho các front-end.
-/vault/lang/lang.fr.php | Dữ liệu tiếng Pháp.
-/vault/lang/lang.hi.fe.php | Dữ liệu tiếng Hindi cho các front-end.
-/vault/lang/lang.hi.php | Dữ liệu tiếng Hindi.
-/vault/lang/lang.id.fe.php | Dữ liệu tiếng Indonesia cho các front-end.
-/vault/lang/lang.id.php | Dữ liệu tiếng Indonesia.
-/vault/lang/lang.it.fe.php | Dữ liệu tiếng Ý cho các front-end.
-/vault/lang/lang.it.php | Dữ liệu tiếng Ý.
-/vault/lang/lang.ja.fe.php | Dữ liệu tiếng Nhật cho các front-end.
-/vault/lang/lang.ja.php | Dữ liệu tiếng Nhật.
-/vault/lang/lang.ko.fe.php | Dữ liệu tiếng Hàn cho các front-end.
-/vault/lang/lang.ko.php | Dữ liệu tiếng Hàn.
-/vault/lang/lang.nl.fe.php | Dữ liệu tiếng Hà Lan cho các front-end.
-/vault/lang/lang.nl.php | Dữ liệu tiếng Hà Lan.
-/vault/lang/lang.no.fe.php | Dữ liệu tiếng Na Uy cho các front-end.
-/vault/lang/lang.no.php | Dữ liệu tiếng Na Uy.
-/vault/lang/lang.pt.fe.php | Dữ liệu tiếng Bồ Đào Nha cho các front-end.
-/vault/lang/lang.pt.php | Dữ liệu tiếng Bồ Đào Nha.
-/vault/lang/lang.ru.fe.php | Dữ liệu tiếng Nga cho các front-end.
-/vault/lang/lang.ru.php | Dữ liệu tiếng Nga.
-/vault/lang/lang.sv.fe.php | Dữ liệu tiếng Thụy Điển cho các front-end.
-/vault/lang/lang.sv.php | Dữ liệu tiếng Thụy Điển.
-/vault/lang/lang.th.fe.php | Dữ liệu tiếng Thái Lan cho các front-end.
-/vault/lang/lang.th.php | Dữ liệu tiếng Thái Lan.
-/vault/lang/lang.tr.fe.php | Dữ liệu tiếng Thổ Nhĩ Kỳ cho các front-end.
-/vault/lang/lang.tr.php | Dữ liệu tiếng Thổ Nhĩ Kỳ.
-/vault/lang/lang.ur.fe.php | Dữ liệu tiếng Urdu cho các front-end.
-/vault/lang/lang.ur.php | Dữ liệu tiếng Urdu.
-/vault/lang/lang.vi.fe.php | Dữ liệu tiếng Việt cho các front-end.
-/vault/lang/lang.vi.php | Dữ liệu tiếng Việt.
-/vault/lang/lang.zh-tw.fe.php | Dữ liệu tiếng Trung Quốc (truyền thống) cho các front-end.
-/vault/lang/lang.zh-tw.php | Dữ liệu tiếng Trung Quốc (truyền thống).
-/vault/lang/lang.zh.fe.php | Dữ liệu tiếng Trung Quốc (giản thể) cho các front-end.
-/vault/lang/lang.zh.php | Dữ liệu tiếng Trung Quốc (giản thể).
+/vault/lang/lang.ar.fe.yaml | Dữ liệu tiếng Ả Rập cho các front-end.
+/vault/lang/lang.ar.yaml | Dữ liệu tiếng Ả Rập.
+/vault/lang/lang.bn.fe.yaml | Dữ liệu tiếng Bengal cho các front-end.
+/vault/lang/lang.bn.yaml | Dữ liệu tiếng Bengal.
+/vault/lang/lang.de.fe.yaml | Dữ liệu tiếng Đức cho các front-end.
+/vault/lang/lang.de.yaml | Dữ liệu tiếng Đức.
+/vault/lang/lang.en.fe.yaml | Dữ liệu tiếng Anh cho các front-end.
+/vault/lang/lang.en.yaml | Dữ liệu tiếng Anh.
+/vault/lang/lang.es.fe.yaml | Dữ liệu tiếng Tây Ban Nha cho các front-end.
+/vault/lang/lang.es.yaml | Dữ liệu tiếng Tây Ban Nha.
+/vault/lang/lang.fr.fe.yaml | Dữ liệu tiếng Pháp cho các front-end.
+/vault/lang/lang.fr.yaml | Dữ liệu tiếng Pháp.
+/vault/lang/lang.hi.fe.yaml | Dữ liệu tiếng Hindi cho các front-end.
+/vault/lang/lang.hi.yaml | Dữ liệu tiếng Hindi.
+/vault/lang/lang.id.fe.yaml | Dữ liệu tiếng Indonesia cho các front-end.
+/vault/lang/lang.id.yaml | Dữ liệu tiếng Indonesia.
+/vault/lang/lang.it.fe.yaml | Dữ liệu tiếng Ý cho các front-end.
+/vault/lang/lang.it.yaml | Dữ liệu tiếng Ý.
+/vault/lang/lang.ja.fe.yaml | Dữ liệu tiếng Nhật cho các front-end.
+/vault/lang/lang.ja.yaml | Dữ liệu tiếng Nhật.
+/vault/lang/lang.ko.fe.yaml | Dữ liệu tiếng Hàn cho các front-end.
+/vault/lang/lang.ko.yaml | Dữ liệu tiếng Hàn.
+/vault/lang/lang.nl.fe.yaml | Dữ liệu tiếng Hà Lan cho các front-end.
+/vault/lang/lang.nl.yaml | Dữ liệu tiếng Hà Lan.
+/vault/lang/lang.no.fe.yaml | Dữ liệu tiếng Na Uy cho các front-end.
+/vault/lang/lang.no.yaml | Dữ liệu tiếng Na Uy.
+/vault/lang/lang.pt.fe.yaml | Dữ liệu tiếng Bồ Đào Nha cho các front-end.
+/vault/lang/lang.pt.yaml | Dữ liệu tiếng Bồ Đào Nha.
+/vault/lang/lang.ru.fe.yaml | Dữ liệu tiếng Nga cho các front-end.
+/vault/lang/lang.ru.yaml | Dữ liệu tiếng Nga.
+/vault/lang/lang.sv.fe.yaml | Dữ liệu tiếng Thụy Điển cho các front-end.
+/vault/lang/lang.sv.yaml | Dữ liệu tiếng Thụy Điển.
+/vault/lang/lang.th.fe.yaml | Dữ liệu tiếng Thái Lan cho các front-end.
+/vault/lang/lang.th.yaml | Dữ liệu tiếng Thái Lan.
+/vault/lang/lang.tr.fe.yaml | Dữ liệu tiếng Thổ Nhĩ Kỳ cho các front-end.
+/vault/lang/lang.tr.yaml | Dữ liệu tiếng Thổ Nhĩ Kỳ.
+/vault/lang/lang.ur.fe.yaml | Dữ liệu tiếng Urdu cho các front-end.
+/vault/lang/lang.ur.yaml | Dữ liệu tiếng Urdu.
+/vault/lang/lang.vi.fe.yaml | Dữ liệu tiếng Việt cho các front-end.
+/vault/lang/lang.vi.yaml | Dữ liệu tiếng Việt.
+/vault/lang/lang.zh-tw.fe.yaml | Dữ liệu tiếng Trung Quốc (truyền thống) cho các front-end.
+/vault/lang/lang.zh-tw.yaml | Dữ liệu tiếng Trung Quốc (truyền thống).
+/vault/lang/lang.zh.fe.yaml | Dữ liệu tiếng Trung Quốc (giản thể) cho các front-end.
+/vault/lang/lang.zh.yaml | Dữ liệu tiếng Trung Quốc (giản thể).
 /vault/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
 /vault/.travis.php | Được sử dụng bởi Travis CI để thử nghiệm (không cần thiết cho chức năng phù hợp của kịch bản).
 /vault/.travis.yml | Được sử dụng bởi Travis CI để thử nghiệm (không cần thiết cho chức năng phù hợp của kịch bản).
 /vault/auxiliary.yaml | Chứa các quy tắc phụ trợ. Không bao gồm trong gói. Được tạo bởi trang quy tắc phụ trợ.
 /vault/cache.dat | Dữ liệu bộ nhớ cache.
+/vault/channels.yaml | Dữ liệu kênh thay thế cho các yêu cầu curl không thành công.
 /vault/cidramblocklists.dat | Tập tin siêu dữ liệu cho danh sách chặn tùy chọn của Macmathan; Được sử dụng bởi trang cập nhật front-end.
 /vault/components.dat | Tập tin siêu dữ liệu thành phần; Được sử dụng bởi trang cập nhật front-end.
 /vault/config.ini.RenameMe | Tập tin cho cấu hình; Chứa tất cả các tùy chọn cho cấu hình của CIDRAM, nói cho nó biết phải làm gì và làm thế nào để hoạt động (đổi tên để kích hoạt).
@@ -289,7 +290,7 @@ Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho
 
 [general](#general-thể-loại) | [signatures](#signatures-thể-loại) | [recaptcha](#recaptcha-thể-loại) | [legal](#legal-thể-loại)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-thể-loại) | [PHPMailer](#phpmailer-thể-loại) | [rate_limiting](#rate_limiting-thể-loại) | [supplementary_cache_options](#supplementary_cache_options-thể-loại)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ Không tương thích (gây ra xung đột):
 
 ##### "log_sanitisation"
 - Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
+
+##### "disabled_channels"
+- Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -1535,4 +1539,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 26 Tháng Năm 2019 (2019.05.26).
+Lần cuối cập nhật: 30 Tháng Năm 2019 (2019.05.30).

@@ -190,55 +190,56 @@ Datei | Beschreibung
 /vault/fe_assets/pips.php | Pips-Handler (die vom Frontend-Dateimanager verwendet wird).
 /vault/fe_assets/scripts.js | Enthält Frontend-JavaScript-Daten.
 /vault/lang/ | Enthält Sprachdaten für CIDRAM.
-/vault/lang/lang.ar.fe.php | Arabische Sprachdateien für das Frontend.
-/vault/lang/lang.ar.php | Arabische Sprachdateien.
-/vault/lang/lang.bn.fe.php | Bangla Sprachdateien für das Frontend.
-/vault/lang/lang.bn.php | Bangla Sprachdateien.
-/vault/lang/lang.de.fe.php | Deutsche Sprachdateien für das Frontend.
-/vault/lang/lang.de.php | Deutsche Sprachdateien.
-/vault/lang/lang.en.fe.php | Englische Sprachdateien für das Frontend.
-/vault/lang/lang.en.php | Englische Sprachdateien.
-/vault/lang/lang.es.fe.php | Spanische Sprachdateien für das Frontend.
-/vault/lang/lang.es.php | Spanische Sprachdateien.
-/vault/lang/lang.fr.fe.php | Französische Sprachdateien für das Frontend.
-/vault/lang/lang.fr.php | Französische Sprachdateien.
-/vault/lang/lang.hi.fe.php | Hindi Sprachdateien für das Frontend.
-/vault/lang/lang.hi.php | Hindi Sprachdateien.
-/vault/lang/lang.id.fe.php | Indonesische Sprachdateien für das Frontend.
-/vault/lang/lang.id.php | Indonesische Sprachdateien.
-/vault/lang/lang.it.fe.php | Italienische Sprachdateien für das Frontend.
-/vault/lang/lang.it.php | Italienische Sprachdateien.
-/vault/lang/lang.ja.fe.php | Japanische Sprachdateien für das Frontend.
-/vault/lang/lang.ja.php | Japanische Sprachdateien.
-/vault/lang/lang.ko.fe.php | Koreanische Sprachdateien für das Frontend.
-/vault/lang/lang.ko.php | Koreanische Sprachdateien.
-/vault/lang/lang.nl.fe.php | Niederländische Sprachdateien für das Frontend.
-/vault/lang/lang.nl.php | Niederländische Sprachdateien.
-/vault/lang/lang.no.fe.php | Norwegische Sprachdateien für das Frontend.
-/vault/lang/lang.no.php | Norwegische Sprachdateien.
-/vault/lang/lang.pt.fe.php | Portugiesische Sprachdateien für das Frontend.
-/vault/lang/lang.pt.php | Portugiesische Sprachdateien.
-/vault/lang/lang.ru.fe.php | Russische Sprachdateien für das Frontend.
-/vault/lang/lang.ru.php | Russische Sprachdateien.
-/vault/lang/lang.sv.fe.php | Schwedische Sprachdateien für das Frontend.
-/vault/lang/lang.sv.php | Schwedische Sprachdateien.
-/vault/lang/lang.th.fe.php | Thai Sprachdateien für das Frontend.
-/vault/lang/lang.th.php | Thai Sprachdateien.
-/vault/lang/lang.tr.fe.php | Türkische Sprachdateien für das Frontend.
-/vault/lang/lang.tr.php | Türkische Sprachdateien.
-/vault/lang/lang.ur.fe.php | Urdu Sprachdateien für das Frontend.
-/vault/lang/lang.ur.php | Urdu Sprachdateien.
-/vault/lang/lang.vi.fe.php | Vietnamesische Sprachdateien für das Frontend.
-/vault/lang/lang.vi.php | Vietnamesische Sprachdateien.
-/vault/lang/lang.zh-tw.fe.php | Chinesische Sprachdateien (traditionell) für das Frontend.
-/vault/lang/lang.zh-tw.php | Chinesische Sprachdateien (traditionell).
-/vault/lang/lang.zh.fe.php | Chinesische Sprachdateien (vereinfacht) für das Frontend.
-/vault/lang/lang.zh.php | Chinesische Sprachdateien (vereinfacht).
+/vault/lang/lang.ar.fe.yaml | Arabische Sprachdateien für das Frontend.
+/vault/lang/lang.ar.yaml | Arabische Sprachdateien.
+/vault/lang/lang.bn.fe.yaml | Bangla Sprachdateien für das Frontend.
+/vault/lang/lang.bn.yaml | Bangla Sprachdateien.
+/vault/lang/lang.de.fe.yaml | Deutsche Sprachdateien für das Frontend.
+/vault/lang/lang.de.yaml | Deutsche Sprachdateien.
+/vault/lang/lang.en.fe.yaml | Englische Sprachdateien für das Frontend.
+/vault/lang/lang.en.yaml | Englische Sprachdateien.
+/vault/lang/lang.es.fe.yaml | Spanische Sprachdateien für das Frontend.
+/vault/lang/lang.es.yaml | Spanische Sprachdateien.
+/vault/lang/lang.fr.fe.yaml | Französische Sprachdateien für das Frontend.
+/vault/lang/lang.fr.yaml | Französische Sprachdateien.
+/vault/lang/lang.hi.fe.yaml | Hindi Sprachdateien für das Frontend.
+/vault/lang/lang.hi.yaml | Hindi Sprachdateien.
+/vault/lang/lang.id.fe.yaml | Indonesische Sprachdateien für das Frontend.
+/vault/lang/lang.id.yaml | Indonesische Sprachdateien.
+/vault/lang/lang.it.fe.yaml | Italienische Sprachdateien für das Frontend.
+/vault/lang/lang.it.yaml | Italienische Sprachdateien.
+/vault/lang/lang.ja.fe.yaml | Japanische Sprachdateien für das Frontend.
+/vault/lang/lang.ja.yaml | Japanische Sprachdateien.
+/vault/lang/lang.ko.fe.yaml | Koreanische Sprachdateien für das Frontend.
+/vault/lang/lang.ko.yaml | Koreanische Sprachdateien.
+/vault/lang/lang.nl.fe.yaml | Niederländische Sprachdateien für das Frontend.
+/vault/lang/lang.nl.yaml | Niederländische Sprachdateien.
+/vault/lang/lang.no.fe.yaml | Norwegische Sprachdateien für das Frontend.
+/vault/lang/lang.no.yaml | Norwegische Sprachdateien.
+/vault/lang/lang.pt.fe.yaml | Portugiesische Sprachdateien für das Frontend.
+/vault/lang/lang.pt.yaml | Portugiesische Sprachdateien.
+/vault/lang/lang.ru.fe.yaml | Russische Sprachdateien für das Frontend.
+/vault/lang/lang.ru.yaml | Russische Sprachdateien.
+/vault/lang/lang.sv.fe.yaml | Schwedische Sprachdateien für das Frontend.
+/vault/lang/lang.sv.yaml | Schwedische Sprachdateien.
+/vault/lang/lang.th.fe.yaml | Thai Sprachdateien für das Frontend.
+/vault/lang/lang.th.yaml | Thai Sprachdateien.
+/vault/lang/lang.tr.fe.yaml | Türkische Sprachdateien für das Frontend.
+/vault/lang/lang.tr.yaml | Türkische Sprachdateien.
+/vault/lang/lang.ur.fe.yaml | Urdu Sprachdateien für das Frontend.
+/vault/lang/lang.ur.yaml | Urdu Sprachdateien.
+/vault/lang/lang.vi.fe.yaml | Vietnamesische Sprachdateien für das Frontend.
+/vault/lang/lang.vi.yaml | Vietnamesische Sprachdateien.
+/vault/lang/lang.zh-tw.fe.yaml | Chinesische Sprachdateien (traditionell) für das Frontend.
+/vault/lang/lang.zh-tw.yaml | Chinesische Sprachdateien (traditionell).
+/vault/lang/lang.zh.fe.yaml | Chinesische Sprachdateien (vereinfacht) für das Frontend.
+/vault/lang/lang.zh.yaml | Chinesische Sprachdateien (vereinfacht).
 /vault/.htaccess | Ein Hypertext-Access-Datei (in diesem Fall zum Schutz von sensiblen Dateien des Scripts vor einem nicht authorisierten Zugriff).
 /vault/.travis.php | Wird von Travis CI zum Testen verwendet (für die korrekte Funktion des Scripts nicht notwendig).
 /vault/.travis.yml | Wird von Travis CI zum Testen verwendet (für die korrekte Funktion des Scripts nicht notwendig).
 /vault/auxiliary.yaml | Enthält Hilfsregeln. Nicht im Paket enthalten. Erstellt von der Hilfsregeln-Seite.
 /vault/cache.dat | Cache-Daten.
+/vault/channels.yaml | Alternative Kanaldaten für fehlgeschlagene Curl-Anforderungen.
 /vault/cidramblocklists.dat | Metadaten-Datei für die optionalen Blocklisten von Macmathan; Wird von der Frontend-Aktualisierungsseite verwendet.
 /vault/components.dat | Komponenten-Metadaten-Datei; Wird von der Frontend-Aktualisierungsseite verwendet.
 /vault/config.ini.RenameMe | Konfigurationsdatei; Beinhaltet alle Konfigurationsmöglichkeiten von CIDRAM (umbenennen zu aktivieren).
@@ -289,7 +290,7 @@ Nachfolgend finden Sie eine Liste der Variablen in der Konfigurationsdatei (`con
 
 [general](#general-kategorie) | [signatures](#signatures-kategorie) | [recaptcha](#recaptcha-kategorie) | [legal](#legal-kategorie)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-kategorie) | [PHPMailer](#phpmailer-kategorie) | [rate_limiting](#rate_limiting-kategorie) | [supplementary_cache_options](#supplementary_cache_options-kategorie)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ Derzeit unterstützt:
 
 ##### "log_sanitisation"
 - Wenn Sie die Frontend Protokolldateien-Seite verwenden, um Protokolldaten anzuzeigen, saniert CIDRAM die Protokolldaten vor der Anzeige, um Benutzer vor XSS-Angriffen und anderen potenziellen Bedrohungen zu schützen, die Protokolldaten enthalten könnten. Standardmäßig werden Daten während der Protokollierung jedoch nicht saniert. Dadurch wird sichergestellt, dass die Protokolldaten genau aufbewahrt werden, um eine eventuell erforderliche heuristische oder forensische Analyse zu unterstützen. Falls jedoch ein Benutzer versucht, Protokolldaten mit externen Werkzeuge zu lesen, und wenn diese externen Werkzeuge keinen eigenen Sanierungsprozess durchführen, der Benutzer könnte XSS-Angriffen ausgesetzt sein. Bei Bedarf können Sie das Standardverhalten mithilfe dieser Konfigurationsanweisung ändern. True = Sanieren der Daten, wenn der Daten protokolliert (Daten werden weniger genau aufbewahrt, jedoch das XSS-Risiko ist geringer). False = Sanieren der Daten nicht, wenn der Daten protokolliert (Daten werden genauer aufbewahrt, jedoch das XSS-Risiko ist höher) [Standardeinstellung].
+
+##### "disabled_channels"
+- Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
 
 #### "signatures" (Kategorie)
 Konfiguration der Signaturen.
@@ -1551,4 +1555,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 26 Mai 2019 (2019.05.26).
+Zuletzt aktualisiert: 30 Mai 2019 (2019.05.30).

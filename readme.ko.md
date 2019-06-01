@@ -190,55 +190,56 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/fe_assets/pips.php | 핍 핸들러 (프론트 엔드 파일 관리자에 의해 사용된다).
 /vault/fe_assets/scripts.js | 프런트 엔드 JavaScript 데이터가 들어 있습니다.
 /vault/lang/ | CIDRAM 언어 데이터가 포함되어 있습니다.
-/vault/lang/lang.ar.fe.php | 프론트 엔드 아랍어 언어 데이터.
-/vault/lang/lang.ar.php | 아랍어 언어 데이터.
-/vault/lang/lang.bn.fe.php | 프론트 엔드 벵골어 언어 데이터.
-/vault/lang/lang.bn.php | CLI 벵골어 언어 데이터.
-/vault/lang/lang.de.fe.php | 프론트 엔드 독일어 언어 데이터.
-/vault/lang/lang.de.php | 독일어 언어 데이터.
-/vault/lang/lang.en.fe.php | 프론트 엔드 영어 데이터.
-/vault/lang/lang.en.php | 영어 데이터.
-/vault/lang/lang.es.fe.php | 프론트 엔드 스페인어 언어 데이터.
-/vault/lang/lang.es.php | 스페인어 언어 데이터.
-/vault/lang/lang.fr.fe.php | 프론트 엔드 프랑스어 언어 데이터.
-/vault/lang/lang.fr.php | 프랑스어 언어 데이터.
-/vault/lang/lang.hi.fe.php | 프론트 엔드 힌디어 언어 데이터.
-/vault/lang/lang.hi.php | 힌디어 언어 데이터.
-/vault/lang/lang.id.fe.php | 프론트 엔드 인도네시아어 언어 데이터.
-/vault/lang/lang.id.php | 인도네시아어 언어 데이터.
-/vault/lang/lang.it.fe.php | 프론트 엔드 이탈리아 언어 데이터.
-/vault/lang/lang.it.php | 이탈리아 언어 데이터.
-/vault/lang/lang.ja.fe.php | 프론트 엔드 일본어 언어 데이터.
-/vault/lang/lang.ja.php | 일본어 언어 데이터.
-/vault/lang/lang.ko.fe.php | 프론트 엔드의 한국어 언어 데이터.
-/vault/lang/lang.ko.php | 한국어 언어 데이터.
-/vault/lang/lang.nl.fe.php | 프론트 엔드 네덜란드어 언어 데이터.
-/vault/lang/lang.nl.php | 네덜란드어 언어 데이터.
-/vault/lang/lang.no.fe.php | 프론트 엔드 노르웨이 언어 데이터.
-/vault/lang/lang.no.php | 노르웨이 언어 데이터.
-/vault/lang/lang.pt.fe.php | 프론트 엔드 포르투갈어 언어 데이터.
-/vault/lang/lang.pt.php | 포르투갈어 언어 데이터.
-/vault/lang/lang.ru.fe.php | 프론트 엔드 러시아어 언어 데이터.
-/vault/lang/lang.ru.php | 러시아어 언어 데이터.
-/vault/lang/lang.sv.fe.php | 프론트 엔드 스웨덴어 언어 데이터.
-/vault/lang/lang.sv.php | 스웨덴어 언어 데이터.
-/vault/lang/lang.th.fe.php | 프론트 엔드 태국어 언어 데이터.
-/vault/lang/lang.th.php | 태국어 언어 데이터.
-/vault/lang/lang.tr.fe.php | 프론트 엔드 터키어 언어 데이터.
-/vault/lang/lang.tr.php | 터키어 언어 데이터.
-/vault/lang/lang.ur.fe.php | 프론트 엔드 우르두어 언어 데이터.
-/vault/lang/lang.ur.php | 우르두어 언어 데이터.
-/vault/lang/lang.vi.fe.php | 프론트 엔드 베트남어 언어 데이터.
-/vault/lang/lang.vi.php | 베트남어 언어 데이터.
-/vault/lang/lang.zh-tw.fe.php | 프론트 엔드 중국어 번체 언어 데이터.
-/vault/lang/lang.zh-tw.php | 중국어 번체 언어 데이터.
-/vault/lang/lang.zh.fe.php | 프론트 엔드 중국어 간체 언어 데이터.
-/vault/lang/lang.zh.php | 중국어 간체 언어 데이터.
+/vault/lang/lang.ar.fe.yaml | 프론트 엔드 아랍어 언어 데이터.
+/vault/lang/lang.ar.yaml | 아랍어 언어 데이터.
+/vault/lang/lang.bn.fe.yaml | 프론트 엔드 벵골어 언어 데이터.
+/vault/lang/lang.bn.yaml | CLI 벵골어 언어 데이터.
+/vault/lang/lang.de.fe.yaml | 프론트 엔드 독일어 언어 데이터.
+/vault/lang/lang.de.yaml | 독일어 언어 데이터.
+/vault/lang/lang.en.fe.yaml | 프론트 엔드 영어 데이터.
+/vault/lang/lang.en.yaml | 영어 데이터.
+/vault/lang/lang.es.fe.yaml | 프론트 엔드 스페인어 언어 데이터.
+/vault/lang/lang.es.yaml | 스페인어 언어 데이터.
+/vault/lang/lang.fr.fe.yaml | 프론트 엔드 프랑스어 언어 데이터.
+/vault/lang/lang.fr.yaml | 프랑스어 언어 데이터.
+/vault/lang/lang.hi.fe.yaml | 프론트 엔드 힌디어 언어 데이터.
+/vault/lang/lang.hi.yaml | 힌디어 언어 데이터.
+/vault/lang/lang.id.fe.yaml | 프론트 엔드 인도네시아어 언어 데이터.
+/vault/lang/lang.id.yaml | 인도네시아어 언어 데이터.
+/vault/lang/lang.it.fe.yaml | 프론트 엔드 이탈리아 언어 데이터.
+/vault/lang/lang.it.yaml | 이탈리아 언어 데이터.
+/vault/lang/lang.ja.fe.yaml | 프론트 엔드 일본어 언어 데이터.
+/vault/lang/lang.ja.yaml | 일본어 언어 데이터.
+/vault/lang/lang.ko.fe.yaml | 프론트 엔드의 한국어 언어 데이터.
+/vault/lang/lang.ko.yaml | 한국어 언어 데이터.
+/vault/lang/lang.nl.fe.yaml | 프론트 엔드 네덜란드어 언어 데이터.
+/vault/lang/lang.nl.yaml | 네덜란드어 언어 데이터.
+/vault/lang/lang.no.fe.yaml | 프론트 엔드 노르웨이 언어 데이터.
+/vault/lang/lang.no.yaml | 노르웨이 언어 데이터.
+/vault/lang/lang.pt.fe.yaml | 프론트 엔드 포르투갈어 언어 데이터.
+/vault/lang/lang.pt.yaml | 포르투갈어 언어 데이터.
+/vault/lang/lang.ru.fe.yaml | 프론트 엔드 러시아어 언어 데이터.
+/vault/lang/lang.ru.yaml | 러시아어 언어 데이터.
+/vault/lang/lang.sv.fe.yaml | 프론트 엔드 스웨덴어 언어 데이터.
+/vault/lang/lang.sv.yaml | 스웨덴어 언어 데이터.
+/vault/lang/lang.th.fe.yaml | 프론트 엔드 태국어 언어 데이터.
+/vault/lang/lang.th.yaml | 태국어 언어 데이터.
+/vault/lang/lang.tr.fe.yaml | 프론트 엔드 터키어 언어 데이터.
+/vault/lang/lang.tr.yaml | 터키어 언어 데이터.
+/vault/lang/lang.ur.fe.yaml | 프론트 엔드 우르두어 언어 데이터.
+/vault/lang/lang.ur.yaml | 우르두어 언어 데이터.
+/vault/lang/lang.vi.fe.yaml | 프론트 엔드 베트남어 언어 데이터.
+/vault/lang/lang.vi.yaml | 베트남어 언어 데이터.
+/vault/lang/lang.zh-tw.fe.yaml | 프론트 엔드 중국어 번체 언어 데이터.
+/vault/lang/lang.zh-tw.yaml | 중국어 번체 언어 데이터.
+/vault/lang/lang.zh.fe.yaml | 프론트 엔드 중국어 간체 언어 데이터.
+/vault/lang/lang.zh.yaml | 중국어 간체 언어 데이터.
 /vault/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
 /vault/.travis.php | 테스트를 위해 Travis CI에서 사용됩니다. (기능에 관계없는 파일입니다).
 /vault/.travis.yml | 테스트를 위해 Travis CI에서 사용됩니다. (기능에 관계없는 파일입니다).
 /vault/auxiliary.yaml | 보조 규칙이 들어 있습니다. 패키지에 포함되어 있지 않습니다. 보조 규칙 페이지에 의해 생성됩니다.
 /vault/cache.dat | 캐시 데이터.
+/vault/channels.yaml | 실패한 curl 요청에 대한 대체 채널 데이터.
 /vault/cidramblocklists.dat | Macmathan의 선택적 블록리스트 용 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
 /vault/components.dat | 구성 요소 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
 /vault/config.ini.RenameMe | CIDRAM 설정 파일; CIDRAM 모든 옵션 설정을 포함하고 있습니다. 각 옵션의 기능과 작동 방법에 대한 설명입니다 (활성화하기 위해 이름을 변경합니다).
@@ -289,7 +290,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 [general](#general-카테고리) | [signatures](#signatures-카테고리) | [recaptcha](#recaptcha-카테고리) | [legal](#legal-카테고리)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-카테고리) | [PHPMailer](#phpmailer-카테고리) | [rate_limiting](#rate_limiting-카테고리) | [supplementary_cache_options](#supplementary_cache_options-카테고리)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 ##### "log_sanitisation"
 - 프런트 엔드 로그 페이지를 사용하여 로그 데이터를 볼 때, XSS 공격 및 기타 잠재적 인 위협으로부터 사용자를 보호하기 위해 CIDRAM은 로그 데이터를 표시하기 전에 위생 처리합니다. 그러나 기본적으로, 로깅 중에는 데이터가 삭제되지 않습니다. 이렇게하면 로그 데이터가 정확하게 보존됩니다 (앞으로 필요할 수도있는 경험적 또는 법의학 분석에 유용합니다). 그러나, 사용자가 외부 도구를 사용하여 로그 데이터를 읽으려고하면, 외부 도구가 자체 위생 처리를 수행하지 않는 경우, 사용자가 XSS 공격에 노출 될 수 있습니다. 필요한 경우, 이 구성 지정 문을 사용하여 기본 작동을 변경할 수 있습니다. True = 데이터 로깅 할 때 데이터, 위생적으로하다 (기록된 데이터 정확도가 더 낮습니다, 않지만 XSS 위험이 더 낮습니다). False = 데이터 로깅 할 때 데이터, 위생적으로하지 마라 (기록된 데이터 정확도가 더 높습니다, 않지만 XSS 위험이 더 높습니다) [Default / 기본 설정].
+
+##### "disabled_channels"
+- 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
 
 #### "signatures" (카테고리)
 서명 설정.
@@ -1538,4 +1542,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 5월 26일.
+최종 업데이트 : 2019년 5월 30일.

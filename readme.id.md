@@ -190,55 +190,56 @@ Data | Deskripsi
 /vault/fe_assets/pips.php | File pip (digunakan oleh file manager bagian depan).
 /vault/fe_assets/scripts.js | Berisi data JavaScript bagian depan.
 /vault/lang/ | Berisikan file bahasa.
-/vault/lang/lang.ar.fe.php | File Bahasa Arab untuk bagian depan.
-/vault/lang/lang.ar.php | File Bahasa Arab.
-/vault/lang/lang.bn.fe.php | File Bahasa Benggala untuk bagian depan.
-/vault/lang/lang.bn.php | File Bahasa Benggala.
-/vault/lang/lang.de.fe.php | File Bahasa Jerman untuk bagian depan.
-/vault/lang/lang.de.php | File Bahasa Jerman.
-/vault/lang/lang.en.fe.php | File Bahasa Inggris untuk bagian depan.
-/vault/lang/lang.en.php | File Bahasa Inggris.
-/vault/lang/lang.es.fe.php | File Bahasa Spanyol untuk bagian depan.
-/vault/lang/lang.es.php | File Bahasa Spanyol.
-/vault/lang/lang.fr.fe.php | File Bahasa Perancis untuk bagian depan.
-/vault/lang/lang.fr.php | File Bahasa Perancis.
-/vault/lang/lang.hi.fe.php | File Bahasa Hindi untuk bagian depan.
-/vault/lang/lang.hi.php | File Bahasa Hindi.
-/vault/lang/lang.id.fe.php | File Bahasa Indonesia untuk bagian depan.
-/vault/lang/lang.id.php | File Bahasa Indonesia.
-/vault/lang/lang.it.fe.php | File Bahasa Italia untuk bagian depan.
-/vault/lang/lang.it.php | File Bahasa Italia.
-/vault/lang/lang.ja.fe.php | File Bahasa Jepang untuk bagian depan.
-/vault/lang/lang.ja.php | File Bahasa Jepang.
-/vault/lang/lang.ko.fe.php | File Bahasa Korea untuk bagian depan.
-/vault/lang/lang.ko.php | File Bahasa Korea.
-/vault/lang/lang.nl.fe.php | File Bahasa Belanda untuk bagian depan.
-/vault/lang/lang.nl.php | File Bahasa Belanda.
-/vault/lang/lang.no.fe.php | File Bahasa Norwegia untuk bagian depan.
-/vault/lang/lang.no.php | File Bahasa Norwegia.
-/vault/lang/lang.pt.fe.php | File Bahasa Portugis untuk bagian depan.
-/vault/lang/lang.pt.php | File Bahasa Portugis.
-/vault/lang/lang.ru.fe.php | File Bahasa Rusia untuk bagian depan.
-/vault/lang/lang.ru.php | File Bahasa Rusia.
-/vault/lang/lang.sv.fe.php | File Bahasa Swedia untuk bagian depan.
-/vault/lang/lang.sv.php | File Bahasa Swedia.
-/vault/lang/lang.th.fe.php | File Bahasa Thailand untuk bagian depan.
-/vault/lang/lang.th.php | File Bahasa Thailand.
-/vault/lang/lang.tr.fe.php | File Bahasa Turki untuk bagian depan.
-/vault/lang/lang.tr.php | File Bahasa Turki.
-/vault/lang/lang.ur.fe.php | File Bahasa Urdu untuk bagian depan.
-/vault/lang/lang.ur.php | File Bahasa Urdu.
-/vault/lang/lang.vi.fe.php | File Bahasa Vietnam untuk bagian depan.
-/vault/lang/lang.vi.php | File Bahasa Vietnam.
-/vault/lang/lang.zh-tw.fe.php | File Bahasa Cina tradisional untuk bagian depan.
-/vault/lang/lang.zh-tw.php | File Bahasa Cina tradisional.
-/vault/lang/lang.zh.fe.php | File Bahasa Cina sederhana untuk bagian depan.
-/vault/lang/lang.zh.php | File Bahasa Cina sederhana.
+/vault/lang/lang.ar.fe.yaml | File Bahasa Arab untuk bagian depan.
+/vault/lang/lang.ar.yaml | File Bahasa Arab.
+/vault/lang/lang.bn.fe.yaml | File Bahasa Benggala untuk bagian depan.
+/vault/lang/lang.bn.yaml | File Bahasa Benggala.
+/vault/lang/lang.de.fe.yaml | File Bahasa Jerman untuk bagian depan.
+/vault/lang/lang.de.yaml | File Bahasa Jerman.
+/vault/lang/lang.en.fe.yaml | File Bahasa Inggris untuk bagian depan.
+/vault/lang/lang.en.yaml | File Bahasa Inggris.
+/vault/lang/lang.es.fe.yaml | File Bahasa Spanyol untuk bagian depan.
+/vault/lang/lang.es.yaml | File Bahasa Spanyol.
+/vault/lang/lang.fr.fe.yaml | File Bahasa Perancis untuk bagian depan.
+/vault/lang/lang.fr.yaml | File Bahasa Perancis.
+/vault/lang/lang.hi.fe.yaml | File Bahasa Hindi untuk bagian depan.
+/vault/lang/lang.hi.yaml | File Bahasa Hindi.
+/vault/lang/lang.id.fe.yaml | File Bahasa Indonesia untuk bagian depan.
+/vault/lang/lang.id.yaml | File Bahasa Indonesia.
+/vault/lang/lang.it.fe.yaml | File Bahasa Italia untuk bagian depan.
+/vault/lang/lang.it.yaml | File Bahasa Italia.
+/vault/lang/lang.ja.fe.yaml | File Bahasa Jepang untuk bagian depan.
+/vault/lang/lang.ja.yaml | File Bahasa Jepang.
+/vault/lang/lang.ko.fe.yaml | File Bahasa Korea untuk bagian depan.
+/vault/lang/lang.ko.yaml | File Bahasa Korea.
+/vault/lang/lang.nl.fe.yaml | File Bahasa Belanda untuk bagian depan.
+/vault/lang/lang.nl.yaml | File Bahasa Belanda.
+/vault/lang/lang.no.fe.yaml | File Bahasa Norwegia untuk bagian depan.
+/vault/lang/lang.no.yaml | File Bahasa Norwegia.
+/vault/lang/lang.pt.fe.yaml | File Bahasa Portugis untuk bagian depan.
+/vault/lang/lang.pt.yaml | File Bahasa Portugis.
+/vault/lang/lang.ru.fe.yaml | File Bahasa Rusia untuk bagian depan.
+/vault/lang/lang.ru.yaml | File Bahasa Rusia.
+/vault/lang/lang.sv.fe.yaml | File Bahasa Swedia untuk bagian depan.
+/vault/lang/lang.sv.yaml | File Bahasa Swedia.
+/vault/lang/lang.th.fe.yaml | File Bahasa Thailand untuk bagian depan.
+/vault/lang/lang.th.yaml | File Bahasa Thailand.
+/vault/lang/lang.tr.fe.yaml | File Bahasa Turki untuk bagian depan.
+/vault/lang/lang.tr.yaml | File Bahasa Turki.
+/vault/lang/lang.ur.fe.yaml | File Bahasa Urdu untuk bagian depan.
+/vault/lang/lang.ur.yaml | File Bahasa Urdu.
+/vault/lang/lang.vi.fe.yaml | File Bahasa Vietnam untuk bagian depan.
+/vault/lang/lang.vi.yaml | File Bahasa Vietnam.
+/vault/lang/lang.zh-tw.fe.yaml | File Bahasa Cina tradisional untuk bagian depan.
+/vault/lang/lang.zh-tw.yaml | File Bahasa Cina tradisional.
+/vault/lang/lang.zh.fe.yaml | File Bahasa Cina sederhana untuk bagian depan.
+/vault/lang/lang.zh.yaml | File Bahasa Cina sederhana.
 /vault/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
 /vault/.travis.php | Digunakan oleh Travis CI untuk pengujian (tidak dibutuhkan untuk fungsi teratur dari skrip).
 /vault/.travis.yml | Digunakan oleh Travis CI untuk pengujian (tidak dibutuhkan untuk fungsi teratur dari skrip).
 /vault/auxiliary.yaml | Berisi aturan tambahan. Tidak termasuk dalam paket. Dihasilkan oleh halaman aturan tambahan.
 /vault/cache.dat | Cache data.
+/vault/channels.yaml | Data saluran alternatif untuk permintaan curl yang gagal.
 /vault/cidramblocklists.dat | File metadata untuk daftar-daftar blokir yang opsional dari Macmathan; Digunakan oleh halaman pembaruan untuk bagian depan.
 /vault/components.dat | File metadata komponen; Digunakan oleh halaman pembaruan untuk bagian depan.
 /vault/config.ini.RenameMe | File konfigurasi CIDRAM; Berisi semua opsi konfigurasi dari CIDRAM, memberitahukannya apa yang harus dilakukan dan bagaimana mengoperasikannya dengan benar (mengubah nama untuk mengaktifkan).
@@ -289,7 +290,7 @@ Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, 
 
 [general](#general-kategori) | [signatures](#signatures-kategori) | [recaptcha](#recaptcha-kategori) | [legal](#legal-kategori)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-kategori) | [PHPMailer](#phpmailer-kategori) | [rate_limiting](#rate_limiting-kategori) | [supplementary_cache_options](#supplementary_cache_options-kategori)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ Didukung sekarang:
 
 ##### "log_sanitisation"
 - Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data. Namun, secara default, data tidak disanitasi selama pencatatan. Ini untuk memastikan bahwa data log dicatatan secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
+
+##### "disabled_channels"
+- Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -1535,4 +1539,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 26 Mei 2019 (2019.05.26).
+Terakhir Diperbarui: 30 Mei 2019 (2019.05.30).

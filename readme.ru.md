@@ -190,55 +190,56 @@ CIDRAM можно обновлять вручную или через фронт
 /vault/fe_assets/pips.php | Обработчик пипсов (файл менеджер фронтенд использует его).
 /vault/fe_assets/scripts.js | Содержит фронтенд данные JavaScript.
 /vault/lang/ | Содержит CIDRAM файлы на разных языках.
-/vault/lang/lang.ar.fe.php | Арабском языковые файлы для фронтенд.
-/vault/lang/lang.ar.php | Арабском языковые файлы.
-/vault/lang/lang.bn.fe.php | Бенгальском языковые файлы для фронтенд.
-/vault/lang/lang.bn.php | Бенгальском языковые файлы.
-/vault/lang/lang.de.fe.php | Немецком языковые файлы для фронтенд.
-/vault/lang/lang.de.php | Немецком языковые файлы.
-/vault/lang/lang.en.fe.php | Английском языковые файлы для фронтенд.
-/vault/lang/lang.en.php | Английском языковые файлы.
-/vault/lang/lang.es.fe.php | Испанском языковые файлы для фронтенд.
-/vault/lang/lang.es.php | Испанском языковые файлы.
-/vault/lang/lang.fr.fe.php | Французском языковые файлы для фронтенд.
-/vault/lang/lang.fr.php | Французском языковые файлы.
-/vault/lang/lang.hi.fe.php | Хинди языковые файлы для фронтенд.
-/vault/lang/lang.hi.php | Хинди языковые файлы.
-/vault/lang/lang.id.fe.php | Индонезийском языковые файлы для фронтенд.
-/vault/lang/lang.id.php | Индонезийском языковые файлы.
-/vault/lang/lang.it.fe.php | Итальянском языковые файлы для фронтенд.
-/vault/lang/lang.it.php | Итальянском языковые файлы.
-/vault/lang/lang.ja.fe.php | Японском языковые файлы для фронтенд.
-/vault/lang/lang.ja.php | Японском языковые файлы.
-/vault/lang/lang.ko.fe.php | Корейском языковые файлы для фронтенд.
-/vault/lang/lang.ko.php | Корейском языковые файлы.
-/vault/lang/lang.nl.fe.php | Нидерланском языковые файлы для фронтенд.
-/vault/lang/lang.nl.php | Нидерланском языковые файлы.
-/vault/lang/lang.no.fe.php | Норвежском языковые файлы для фронтенд.
-/vault/lang/lang.no.php | Норвежском языковые файлы.
-/vault/lang/lang.pt.fe.php | Португальском языковые файлы для фронтенд.
-/vault/lang/lang.pt.php | Португальском языковые файлы.
-/vault/lang/lang.ru.fe.php | Русском языковые файлы для фронтенд.
-/vault/lang/lang.ru.php | Русском языковые файлы.
-/vault/lang/lang.sv.fe.php | Шведском языковые файлы для фронтенд.
-/vault/lang/lang.sv.php | Шведском языковые файлы.
-/vault/lang/lang.th.fe.php | Тайском языковые файлы для фронтенд.
-/vault/lang/lang.th.php | Тайском языковые файлы.
-/vault/lang/lang.tr.fe.php | Турецком языковые файлы для фронтенд.
-/vault/lang/lang.tr.php | Турецком языковые файлы.
-/vault/lang/lang.ur.fe.php | Урду языковые файлы для фронтенд.
-/vault/lang/lang.ur.php | Урду языковые файлы.
-/vault/lang/lang.vi.fe.php | Вьетнамском языковые файлы для фронтенд.
-/vault/lang/lang.vi.php | Вьетнамском языковые файлы.
-/vault/lang/lang.zh-tw.fe.php | Китайском традиционный языковые файлы для фронтенд.
-/vault/lang/lang.zh-tw.php | Китайском традиционный языковые файлы.
-/vault/lang/lang.zh.fe.php | Китайском упрощенный языковые файлы для фронтенд.
-/vault/lang/lang.zh.php | Китайском упрощенный языковые файлы.
+/vault/lang/lang.ar.fe.yaml | Арабском языковые файлы для фронтенд.
+/vault/lang/lang.ar.yaml | Арабском языковые файлы.
+/vault/lang/lang.bn.fe.yaml | Бенгальском языковые файлы для фронтенд.
+/vault/lang/lang.bn.yaml | Бенгальском языковые файлы.
+/vault/lang/lang.de.fe.yaml | Немецком языковые файлы для фронтенд.
+/vault/lang/lang.de.yaml | Немецком языковые файлы.
+/vault/lang/lang.en.fe.yaml | Английском языковые файлы для фронтенд.
+/vault/lang/lang.en.yaml | Английском языковые файлы.
+/vault/lang/lang.es.fe.yaml | Испанском языковые файлы для фронтенд.
+/vault/lang/lang.es.yaml | Испанском языковые файлы.
+/vault/lang/lang.fr.fe.yaml | Французском языковые файлы для фронтенд.
+/vault/lang/lang.fr.yaml | Французском языковые файлы.
+/vault/lang/lang.hi.fe.yaml | Хинди языковые файлы для фронтенд.
+/vault/lang/lang.hi.yaml | Хинди языковые файлы.
+/vault/lang/lang.id.fe.yaml | Индонезийском языковые файлы для фронтенд.
+/vault/lang/lang.id.yaml | Индонезийском языковые файлы.
+/vault/lang/lang.it.fe.yaml | Итальянском языковые файлы для фронтенд.
+/vault/lang/lang.it.yaml | Итальянском языковые файлы.
+/vault/lang/lang.ja.fe.yaml | Японском языковые файлы для фронтенд.
+/vault/lang/lang.ja.yaml | Японском языковые файлы.
+/vault/lang/lang.ko.fe.yaml | Корейском языковые файлы для фронтенд.
+/vault/lang/lang.ko.yaml | Корейском языковые файлы.
+/vault/lang/lang.nl.fe.yaml | Нидерланском языковые файлы для фронтенд.
+/vault/lang/lang.nl.yaml | Нидерланском языковые файлы.
+/vault/lang/lang.no.fe.yaml | Норвежском языковые файлы для фронтенд.
+/vault/lang/lang.no.yaml | Норвежском языковые файлы.
+/vault/lang/lang.pt.fe.yaml | Португальском языковые файлы для фронтенд.
+/vault/lang/lang.pt.yaml | Португальском языковые файлы.
+/vault/lang/lang.ru.fe.yaml | Русском языковые файлы для фронтенд.
+/vault/lang/lang.ru.yaml | Русском языковые файлы.
+/vault/lang/lang.sv.fe.yaml | Шведском языковые файлы для фронтенд.
+/vault/lang/lang.sv.yaml | Шведском языковые файлы.
+/vault/lang/lang.th.fe.yaml | Тайском языковые файлы для фронтенд.
+/vault/lang/lang.th.yaml | Тайском языковые файлы.
+/vault/lang/lang.tr.fe.yaml | Турецком языковые файлы для фронтенд.
+/vault/lang/lang.tr.yaml | Турецком языковые файлы.
+/vault/lang/lang.ur.fe.yaml | Урду языковые файлы для фронтенд.
+/vault/lang/lang.ur.yaml | Урду языковые файлы.
+/vault/lang/lang.vi.fe.yaml | Вьетнамском языковые файлы для фронтенд.
+/vault/lang/lang.vi.yaml | Вьетнамском языковые файлы.
+/vault/lang/lang.zh-tw.fe.yaml | Китайском традиционный языковые файлы для фронтенд.
+/vault/lang/lang.zh-tw.yaml | Китайском традиционный языковые файлы.
+/vault/lang/lang.zh.fe.yaml | Китайском упрощенный языковые файлы для фронтенд.
+/vault/lang/lang.zh.yaml | Китайском упрощенный языковые файлы.
 /vault/.htaccess | Гипертекст доступа файл (в этом случае защищает от неавторизованного доступа чувствительные файлы данного руководства).
 /vault/.travis.php | Используется Travis CI для тестирования (на эффективность данного руководства не влияет).
 /vault/.travis.yml | Используется Travis CI для тестирования (на эффективность данного руководства не влияет).
 /vault/auxiliary.yaml | Содержит вспомогательные правила. Не входит в комплект поставки. Сгенерировано страницей вспомогательных правил.
 /vault/cache.dat | Cache-данные.
+/vault/channels.yaml | Данные альтернативных канала для неудачных запросов curl.
 /vault/cidramblocklists.dat | Файл метаданных для необязательных блоклистов из Macmathan; Используется на фронтенд обновления страница.
 /vault/components.dat | Файл метаданных компонентов; Используется на фронтенд обновления страница.
 /vault/config.ini.RenameMe | Файл с конфигурации. Содержит всевозможные конфигурации CIDRAM (переименовать чтобы активировать).
@@ -289,7 +290,7 @@ CIDRAM можно обновлять вручную или через фронт
 
 [general](#general-категория) | [signatures](#signatures-категория) | [recaptcha](#recaptcha-категория) | [legal](#legal-категория)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-категория) | [PHPMailer](#phpmailer-категория) | [rate_limiting](#rate_limiting-категория) | [supplementary_cache_options](#supplementary_cache_options-категория)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ CIDRAM можно обновлять вручную или через фронт
 
 ##### «log_sanitisation»
 - При использовании фронтенд страницы журналов для просмотра данных журнала, CIDRAM подготавливает данные журнала перед их отображением таким образом, чтобы защитить пользователей от атак XSS. Однако эти меры обычно не происходят, когда данные впервые регистрируются. Это необходимо для обеспечения точного сохранения данных журнала, чтобы помочь любому эвристическому анализу, который может потребоваться в будущем. Однако в случае, если пользователь пытается прочитать данные журнала, используя внешние инструменты, которые не подготавливают данные журнала аналогичным образом для защиты пользователей, пользователь может подвергаться атакам XSS. При необходимости Вы можете изменить поведение по умолчанию с помощью этой директивы конфигурации. True = Подготавливайте данные при первой регистрации (данные сохраняются менее точно, но риск XSS ниже). False = Не подготавливайте данные при первой регистрации (данные сохраняются более точно, но риск XSS выше) [Стандарт].
+
+##### «disabled_channels»
+- Это можно использовать для предотвращения использования CIDRAM определенных каналов при отправке запросов (например, при обновлении, при извлечении метаданных компонента, и т.д.).
 
 #### «signatures» (Категория)
 Конфигурация сигнатур.
@@ -1537,4 +1541,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 26 Мая 2019 (2019.05.26).
+Последнее обновление: 30 Мая 2019 (2019.05.30).

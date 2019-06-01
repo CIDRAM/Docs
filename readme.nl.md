@@ -190,55 +190,56 @@ Bestand | Beschrijving
 /vault/fe_assets/pips.php | Pitten-handler (door de frontend bestandsbeheer gebruikt).
 /vault/fe_assets/scripts.js | Bevat frontend JavaScript-gegevens.
 /vault/lang/ | Bevat CIDRAM lokalisaties.
-/vault/lang/lang.ar.fe.php | Arabisch lokalisatie voor het frontend.
-/vault/lang/lang.ar.php | Arabisch lokalisatie.
-/vault/lang/lang.bn.fe.php | Bengalees lokalisatie voor het frontend.
-/vault/lang/lang.bn.php | Bengalees lokalisatie.
-/vault/lang/lang.de.fe.php | Duitse lokalisatie voor het frontend.
-/vault/lang/lang.de.php | Duitse lokalisatie.
-/vault/lang/lang.en.fe.php | Engels lokalisatie voor het frontend.
-/vault/lang/lang.en.php | Engels lokalisatie.
-/vault/lang/lang.es.fe.php | Spaanse lokalisatie voor het frontend.
-/vault/lang/lang.es.php | Spaanse lokalisatie.
-/vault/lang/lang.fr.fe.php | Franse lokalisatie voor het frontend.
-/vault/lang/lang.fr.php | Franse lokalisatie.
-/vault/lang/lang.hi.fe.php | Hindi lokalisatie voor het frontend.
-/vault/lang/lang.hi.php | Hindi lokalisatie.
-/vault/lang/lang.id.fe.php | Indonesisch lokalisatie voor het frontend.
-/vault/lang/lang.id.php | Indonesisch lokalisatie.
-/vault/lang/lang.it.fe.php | Italiaanse lokalisatie voor het frontend.
-/vault/lang/lang.it.php | Italiaanse lokalisatie.
-/vault/lang/lang.ja.fe.php | Japanse lokalisatie voor het frontend.
-/vault/lang/lang.ja.php | Japanse lokalisatie.
-/vault/lang/lang.ko.fe.php | Koreaanse lokalisatie voor het frontend.
-/vault/lang/lang.ko.php | Koreaanse lokalisatie.
-/vault/lang/lang.nl.fe.php | Nederlandse lokalisatie voor het frontend.
-/vault/lang/lang.nl.php | Nederlandse lokalisatie.
-/vault/lang/lang.no.fe.php | Noorse lokalisatie voor het frontend.
-/vault/lang/lang.no.php | Noorse lokalisatie.
-/vault/lang/lang.pt.fe.php | Portugees lokalisatie voor het frontend.
-/vault/lang/lang.pt.php | Portugees lokalisatie.
-/vault/lang/lang.ru.fe.php | Russische lokalisatie voor het frontend.
-/vault/lang/lang.ru.php | Russische lokalisatie.
-/vault/lang/lang.sv.fe.php | Zweedse lokalisatie voor het frontend.
-/vault/lang/lang.sv.php | Zweedse lokalisatie.
-/vault/lang/lang.th.fe.php | Thaise lokalisatie voor het frontend.
-/vault/lang/lang.th.php | Thaise lokalisatie.
-/vault/lang/lang.tr.fe.php | Turks lokalisatie voor het frontend.
-/vault/lang/lang.tr.php | Turks lokalisatie.
-/vault/lang/lang.ur.fe.php | Urdu lokalisatie voor het frontend.
-/vault/lang/lang.ur.php | Urdu lokalisatie.
-/vault/lang/lang.vi.fe.php | Vietnamees lokalisatie voor het frontend.
-/vault/lang/lang.vi.php | Vietnamees lokalisatie.
-/vault/lang/lang.zh-tw.fe.php | Chinees (traditioneel) lokalisatie voor het frontend.
-/vault/lang/lang.zh-tw.php | Chinees (traditioneel) lokalisatie.
-/vault/lang/lang.zh.fe.php | Chinees (vereenvoudigd) lokalisatie voor het frontend.
-/vault/lang/lang.zh.php | Chinees (vereenvoudigd) lokalisatie.
+/vault/lang/lang.ar.fe.yaml | Arabisch lokalisatie voor het frontend.
+/vault/lang/lang.ar.yaml | Arabisch lokalisatie.
+/vault/lang/lang.bn.fe.yaml | Bengalees lokalisatie voor het frontend.
+/vault/lang/lang.bn.yaml | Bengalees lokalisatie.
+/vault/lang/lang.de.fe.yaml | Duitse lokalisatie voor het frontend.
+/vault/lang/lang.de.yaml | Duitse lokalisatie.
+/vault/lang/lang.en.fe.yaml | Engels lokalisatie voor het frontend.
+/vault/lang/lang.en.yaml | Engels lokalisatie.
+/vault/lang/lang.es.fe.yaml | Spaanse lokalisatie voor het frontend.
+/vault/lang/lang.es.yaml | Spaanse lokalisatie.
+/vault/lang/lang.fr.fe.yaml | Franse lokalisatie voor het frontend.
+/vault/lang/lang.fr.yaml | Franse lokalisatie.
+/vault/lang/lang.hi.fe.yaml | Hindi lokalisatie voor het frontend.
+/vault/lang/lang.hi.yaml | Hindi lokalisatie.
+/vault/lang/lang.id.fe.yaml | Indonesisch lokalisatie voor het frontend.
+/vault/lang/lang.id.yaml | Indonesisch lokalisatie.
+/vault/lang/lang.it.fe.yaml | Italiaanse lokalisatie voor het frontend.
+/vault/lang/lang.it.yaml | Italiaanse lokalisatie.
+/vault/lang/lang.ja.fe.yaml | Japanse lokalisatie voor het frontend.
+/vault/lang/lang.ja.yaml | Japanse lokalisatie.
+/vault/lang/lang.ko.fe.yaml | Koreaanse lokalisatie voor het frontend.
+/vault/lang/lang.ko.yaml | Koreaanse lokalisatie.
+/vault/lang/lang.nl.fe.yaml | Nederlandse lokalisatie voor het frontend.
+/vault/lang/lang.nl.yaml | Nederlandse lokalisatie.
+/vault/lang/lang.no.fe.yaml | Noorse lokalisatie voor het frontend.
+/vault/lang/lang.no.yaml | Noorse lokalisatie.
+/vault/lang/lang.pt.fe.yaml | Portugees lokalisatie voor het frontend.
+/vault/lang/lang.pt.yaml | Portugees lokalisatie.
+/vault/lang/lang.ru.fe.yaml | Russische lokalisatie voor het frontend.
+/vault/lang/lang.ru.yaml | Russische lokalisatie.
+/vault/lang/lang.sv.fe.yaml | Zweedse lokalisatie voor het frontend.
+/vault/lang/lang.sv.yaml | Zweedse lokalisatie.
+/vault/lang/lang.th.fe.yaml | Thaise lokalisatie voor het frontend.
+/vault/lang/lang.th.yaml | Thaise lokalisatie.
+/vault/lang/lang.tr.fe.yaml | Turks lokalisatie voor het frontend.
+/vault/lang/lang.tr.yaml | Turks lokalisatie.
+/vault/lang/lang.ur.fe.yaml | Urdu lokalisatie voor het frontend.
+/vault/lang/lang.ur.yaml | Urdu lokalisatie.
+/vault/lang/lang.vi.fe.yaml | Vietnamees lokalisatie voor het frontend.
+/vault/lang/lang.vi.yaml | Vietnamees lokalisatie.
+/vault/lang/lang.zh-tw.fe.yaml | Chinees (traditioneel) lokalisatie voor het frontend.
+/vault/lang/lang.zh-tw.yaml | Chinees (traditioneel) lokalisatie.
+/vault/lang/lang.zh.fe.yaml | Chinees (vereenvoudigd) lokalisatie voor het frontend.
+/vault/lang/lang.zh.yaml | Chinees (vereenvoudigd) lokalisatie.
 /vault/.htaccess | Een hypertext toegang bestand (in dit geval, om gevoelige bestanden die behoren tot het script te beschermen tegen toegang door niet-geautoriseerde bronnen).
 /vault/.travis.php | Gebruikt door Travis CI voor het testen (niet vereist voor een goede werking van het script).
 /vault/.travis.yml | Gebruikt door Travis CI voor het testen (niet vereist voor een goede werking van het script).
 /vault/auxiliary.yaml | Bevat aanvullende regels. Niet inbegrepen in het pakket. Gegenereerd op de hulpregels pagina.
 /vault/cache.dat | Cache data/gegevens.
+/vault/channels.yaml | Alternatieve kanaalgegevens voor mislukte curlverzoeken.
 /vault/cidramblocklists.dat | Metadata bestand voor de optionele blokkaderlijsten van Macmathan; Gebruikt door de frontend updates pagina.
 /vault/components.dat | Componenten metadata bestand; Gebruikt door de frontend updates pagina.
 /vault/config.ini.RenameMe | Configuratiebestand; Bevat alle configuratie-opties van CIDRAM, het vertellen wat te doen en hoe om te werken correct (hernoemen om te activeren).
@@ -289,7 +290,7 @@ Het volgende is een lijst van variabelen die in de `config.ini` configuratiebest
 
 [general](#general-categorie) | [signatures](#signatures-categorie) | [recaptcha](#recaptcha-categorie) | [legal](#legal-categorie)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-categorie) | [PHPMailer](#phpmailer-categorie) | [rate_limiting](#rate_limiting-categorie) | [supplementary_cache_options](#supplementary_cache_options-categorie)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ Momenteel ondersteund:
 
 ##### "log_sanitisation"
 - Bij gebruik van de frontend logbestanden pagina om loggegevens te bekijken, CIDRAM sanitiseert de loggegevens voordat deze worden weergegeven, om gebruikers te beschermen tegen XSS-aanvallen en andere potentiële bedreigingen die logboekgegevens kunnen bevatten. Standaard echter, gegevens worden niet gesanitiseerd wanneer ze worden opgenomen. Dit is om ervoor te zorgen dat loggegevens nauwkeurig worden bewaard, om eventuele heuristische of forensische analyses te ondersteunen die in de toekomst nodig kunnen zijn. Echter, in het geval dat een gebruiker probeert om loggegevens te lezen met behulp van externe hulpmiddelen, en of die externe tools hun eigen sanitatieproces niet uitvoeren, de gebruiker kan worden blootgesteld aan XSS-aanvallen. Indien nodig kunt u het standaardgedrag wijzigen met behulp van deze configuratierichtlijn. True = Sanitiseren gegevens tijdens het opnemen (gegevens worden minder nauwkeurig bewaard, maar het XSS-risico is lager). False = Sanitiseren gegevens niet tijdens het opnemen (gegevens worden nauwkeuriger bewaard, maar het XSS-risico is hoger) [Standaard].
+
+##### "disabled_channels"
+- Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
 
 #### "signatures" (Categorie)
 Configuratie voor signatures.
@@ -1543,4 +1547,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 26 Mei 2019 (2019.05.26).
+Laatste Bijgewerkt: 30 Mei 2019 (2019.05.30).

@@ -190,55 +190,56 @@ Arquivo | Descrição
 /vault/fe_assets/pips.php | Módulo de pips (usado pelo gerenciador de arquivos do front-end).
 /vault/fe_assets/scripts.js | Contém dados de JavaScript do front-end.
 /vault/lang/ | Contém dados lingüísticos.
-/vault/lang/lang.ar.fe.php | Dados lingüísticos Árabe para o front-end.
-/vault/lang/lang.ar.php | Dados lingüísticos Árabe.
-/vault/lang/lang.bn.fe.php | Dados lingüísticos Bangla para o front-end.
-/vault/lang/lang.bn.php | Dados lingüísticos Bangla.
-/vault/lang/lang.de.fe.php | Dados lingüísticos Alemão para o front-end.
-/vault/lang/lang.de.php | Dados lingüísticos Alemão.
-/vault/lang/lang.en.fe.php | Dados lingüísticos Inglês para o front-end.
-/vault/lang/lang.en.php | Dados lingüísticos Inglês.
-/vault/lang/lang.es.fe.php | Dados lingüísticos Espanhol para o front-end.
-/vault/lang/lang.es.php | Dados lingüísticos Espanhol.
-/vault/lang/lang.fr.fe.php | Dados lingüísticos Francesa para o front-end.
-/vault/lang/lang.fr.php | Dados lingüísticos Francesa.
-/vault/lang/lang.hi.fe.php | Dados lingüísticos Hindi para o front-end.
-/vault/lang/lang.hi.php | Dados lingüísticos Hindi.
-/vault/lang/lang.id.fe.php | Dados lingüísticos Indonésio para o front-end.
-/vault/lang/lang.id.php | Dados lingüísticos Indonésio.
-/vault/lang/lang.it.fe.php | Dados lingüísticos Italiano para o front-end.
-/vault/lang/lang.it.php | Dados lingüísticos Italiano.
-/vault/lang/lang.ja.fe.php | Dados lingüísticos Japonês para o front-end.
-/vault/lang/lang.ja.php | Dados lingüísticos Japonês.
-/vault/lang/lang.ko.fe.php | Dados lingüísticos Coreano para o front-end.
-/vault/lang/lang.ko.php | Dados lingüísticos Coreano.
-/vault/lang/lang.nl.fe.php | Dados lingüísticos Holandês para o front-end.
-/vault/lang/lang.nl.php | Dados lingüísticos Holandês.
-/vault/lang/lang.no.fe.php | Dados lingüísticos Norueguês para o front-end.
-/vault/lang/lang.no.php | Dados lingüísticos Norueguês.
-/vault/lang/lang.pt.fe.php | Dados lingüísticos Português para o front-end.
-/vault/lang/lang.pt.php | Dados lingüísticos Português.
-/vault/lang/lang.ru.fe.php | Dados lingüísticos Russo para o front-end.
-/vault/lang/lang.ru.php | Dados lingüísticos Russo.
-/vault/lang/lang.sv.fe.php | Dados lingüísticos Sueco para o front-end.
-/vault/lang/lang.sv.php | Dados lingüísticos Sueco.
-/vault/lang/lang.th.fe.php | Dados lingüísticos Tailandês para o front-end.
-/vault/lang/lang.th.php | Dados lingüísticos Tailandês.
-/vault/lang/lang.tr.fe.php | Dados lingüísticos Turco para o front-end.
-/vault/lang/lang.tr.php | Dados lingüísticos Turco.
-/vault/lang/lang.ur.fe.php | Dados lingüísticos Urdu para o front-end.
-/vault/lang/lang.ur.php | Dados lingüísticos Urdu.
-/vault/lang/lang.vi.fe.php | Dados lingüísticos Vietnamita para o front-end.
-/vault/lang/lang.vi.php | Dados lingüísticos Vietnamita.
-/vault/lang/lang.zh-tw.fe.php | Dados lingüísticos Chinês (tradicional) para o front-end.
-/vault/lang/lang.zh-tw.php | Dados lingüísticos Chinês (tradicional).
-/vault/lang/lang.zh.fe.php | Dados lingüísticos Chinês (simplificado) para o front-end.
-/vault/lang/lang.zh.php | Dados lingüísticos Chinês (simplificado).
+/vault/lang/lang.ar.fe.yaml | Dados lingüísticos Árabe para o front-end.
+/vault/lang/lang.ar.yaml | Dados lingüísticos Árabe.
+/vault/lang/lang.bn.fe.yaml | Dados lingüísticos Bangla para o front-end.
+/vault/lang/lang.bn.yaml | Dados lingüísticos Bangla.
+/vault/lang/lang.de.fe.yaml | Dados lingüísticos Alemão para o front-end.
+/vault/lang/lang.de.yaml | Dados lingüísticos Alemão.
+/vault/lang/lang.en.fe.yaml | Dados lingüísticos Inglês para o front-end.
+/vault/lang/lang.en.yaml | Dados lingüísticos Inglês.
+/vault/lang/lang.es.fe.yaml | Dados lingüísticos Espanhol para o front-end.
+/vault/lang/lang.es.yaml | Dados lingüísticos Espanhol.
+/vault/lang/lang.fr.fe.yaml | Dados lingüísticos Francesa para o front-end.
+/vault/lang/lang.fr.yaml | Dados lingüísticos Francesa.
+/vault/lang/lang.hi.fe.yaml | Dados lingüísticos Hindi para o front-end.
+/vault/lang/lang.hi.yaml | Dados lingüísticos Hindi.
+/vault/lang/lang.id.fe.yaml | Dados lingüísticos Indonésio para o front-end.
+/vault/lang/lang.id.yaml | Dados lingüísticos Indonésio.
+/vault/lang/lang.it.fe.yaml | Dados lingüísticos Italiano para o front-end.
+/vault/lang/lang.it.yaml | Dados lingüísticos Italiano.
+/vault/lang/lang.ja.fe.yaml | Dados lingüísticos Japonês para o front-end.
+/vault/lang/lang.ja.yaml | Dados lingüísticos Japonês.
+/vault/lang/lang.ko.fe.yaml | Dados lingüísticos Coreano para o front-end.
+/vault/lang/lang.ko.yaml | Dados lingüísticos Coreano.
+/vault/lang/lang.nl.fe.yaml | Dados lingüísticos Holandês para o front-end.
+/vault/lang/lang.nl.yaml | Dados lingüísticos Holandês.
+/vault/lang/lang.no.fe.yaml | Dados lingüísticos Norueguês para o front-end.
+/vault/lang/lang.no.yaml | Dados lingüísticos Norueguês.
+/vault/lang/lang.pt.fe.yaml | Dados lingüísticos Português para o front-end.
+/vault/lang/lang.pt.yaml | Dados lingüísticos Português.
+/vault/lang/lang.ru.fe.yaml | Dados lingüísticos Russo para o front-end.
+/vault/lang/lang.ru.yaml | Dados lingüísticos Russo.
+/vault/lang/lang.sv.fe.yaml | Dados lingüísticos Sueco para o front-end.
+/vault/lang/lang.sv.yaml | Dados lingüísticos Sueco.
+/vault/lang/lang.th.fe.yaml | Dados lingüísticos Tailandês para o front-end.
+/vault/lang/lang.th.yaml | Dados lingüísticos Tailandês.
+/vault/lang/lang.tr.fe.yaml | Dados lingüísticos Turco para o front-end.
+/vault/lang/lang.tr.yaml | Dados lingüísticos Turco.
+/vault/lang/lang.ur.fe.yaml | Dados lingüísticos Urdu para o front-end.
+/vault/lang/lang.ur.yaml | Dados lingüísticos Urdu.
+/vault/lang/lang.vi.fe.yaml | Dados lingüísticos Vietnamita para o front-end.
+/vault/lang/lang.vi.yaml | Dados lingüísticos Vietnamita.
+/vault/lang/lang.zh-tw.fe.yaml | Dados lingüísticos Chinês (tradicional) para o front-end.
+/vault/lang/lang.zh-tw.yaml | Dados lingüísticos Chinês (tradicional).
+/vault/lang/lang.zh.fe.yaml | Dados lingüísticos Chinês (simplificado) para o front-end.
+/vault/lang/lang.zh.yaml | Dados lingüísticos Chinês (simplificado).
 /vault/.htaccess | Um hipertexto acesso arquivo (neste caso, para proteger confidenciais arquivos pertencentes ao script contra serem acessados por fontes não autorizadas).
 /vault/.travis.php | Usado pela Travis CI para testes (não é necessário para o correto funcionamento do script).
 /vault/.travis.yml | Usado pela Travis CI para testes (não é necessário para o correto funcionamento do script).
 /vault/auxiliary.yaml | Contém regras auxiliares. Não incluído no pacote. Gerado pela página de regras auxiliares.
 /vault/cache.dat | Dados de cache.
+/vault/channels.yaml | Dados de canais alternativos para solicitações de curl com falha.
 /vault/cidramblocklists.dat | Arquivo de metadados para as listas de bloqueio opcionais da Macmathan; Usado pela página de atualizações do front-end.
 /vault/components.dat | Arquivo de metadados de componentes; Usado pela página de atualizações do front-end.
 /vault/config.ini.RenameMe | Arquivo de configuração; Contém todas as opções de configuração para CIDRAM, dizendo-lhe o que fazer e como operar corretamente (renomear para ativar).
@@ -289,7 +290,7 @@ O seguinte é uma lista de variáveis encontradas no `config.ini` arquivo de con
 
 [general](#general-categoria) | [signatures](#signatures-categoria) | [recaptcha](#recaptcha-categoria) | [legal](#legal-categoria)
 :--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-categoria) | [PHPMailer](#phpmailer-categoria) | [rate_limiting](#rate_limiting-categoria) | [supplementary_cache_options](#supplementary_cache_options-categoria)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -484,6 +485,9 @@ Atualmente suportado:
 
 ##### "log_sanitisation"
 - Ao usar o front-end página para os arquivos de registro para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
+
+##### "disabled_channels"
+- Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
 
 #### "signatures" (Categoria)
 Configuração por assinaturas.
@@ -1537,4 +1541,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 26 de Maio de 2019 (2019.05.26).
+Última Atualização: 30 de Maio de 2019 (2019.05.30).

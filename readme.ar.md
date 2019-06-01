@@ -192,55 +192,56 @@
 &nbsp; <div dir="rtl" style="display:inline">بالنقاط معالج (التي يستخدمها مدير الملفات الأمامية).</div> | /vault/fe_assets/pips.php
 &nbsp; <div dir="rtl" style="display:inline">يحتوي على بيانات JavaScript front-end.</div> | /vault/fe_assets/scripts.js
 &nbsp; <div dir="rtl" style="display:inline">يحتوي على بيانات اللغة لـ CIDRAM.</div> | /vault/lang/
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية لfront-end.</div> | /vault/lang/lang.ar.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية.</div> | /vault/lang/lang.ar.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية لfront-end.</div> | /vault/lang/lang.bn.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية.</div> | /vault/lang/lang.bn.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية لfront-end.</div> | /vault/lang/lang.de.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية.</div> | /vault/lang/lang.de.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية لfront-end.</div> | /vault/lang/lang.en.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية.</div> | /vault/lang/lang.en.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية لfront-end.</div> | /vault/lang/lang.es.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية.</div> | /vault/lang/lang.es.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية لfront-end.</div> | /vault/lang/lang.fr.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية.</div> | /vault/lang/lang.fr.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية لfront-end.</div> | /vault/lang/lang.hi.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية.</div> | /vault/lang/lang.hi.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية لfront-end.</div> | /vault/lang/lang.id.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية.</div> | /vault/lang/lang.id.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية لfront-end.</div> | /vault/lang/lang.it.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية.</div> | /vault/lang/lang.it.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية لfront-end.</div> | /vault/lang/lang.ja.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية.</div> | /vault/lang/lang.ja.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية لfront-end.</div> | /vault/lang/lang.ko.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية.</div> | /vault/lang/lang.ko.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية لfront-end.</div> | /vault/lang/lang.nl.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية.</div> | /vault/lang/lang.nl.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة لfront-end.</div> | /vault/lang/lang.no.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة.</div> | /vault/lang/lang.no.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية لfront-end.</div> | /vault/lang/lang.pt.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية.</div> | /vault/lang/lang.pt.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية لfront-end.</div> | /vault/lang/lang.ru.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية.</div> | /vault/lang/lang.ru.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية لfront-end.</div> | /vault/lang/lang.sv.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية.</div> | /vault/lang/lang.sv.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية لfront-end.</div> | /vault/lang/lang.th.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية.</div> | /vault/lang/lang.th.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية لfront-end.</div> | /vault/lang/lang.tr.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية.</div> | /vault/lang/lang.tr.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية لfront-end.</div> | /vault/lang/lang.ur.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية.</div> | /vault/lang/lang.ur.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية لfront-end.</div> | /vault/lang/lang.vi.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية.</div> | /vault/lang/lang.vi.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية) لfront-end.</div> | /vault/lang/lang.zh-tw.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية).</div> | /vault/lang/lang.zh-tw.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة) لfront-end.</div> | /vault/lang/lang.zh.fe.php
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة).</div> | /vault/lang/lang.zh.php
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية لfront-end.</div> | /vault/lang/lang.ar.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية.</div> | /vault/lang/lang.ar.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية لfront-end.</div> | /vault/lang/lang.bn.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية.</div> | /vault/lang/lang.bn.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية لfront-end.</div> | /vault/lang/lang.de.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية.</div> | /vault/lang/lang.de.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية لfront-end.</div> | /vault/lang/lang.en.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية.</div> | /vault/lang/lang.en.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية لfront-end.</div> | /vault/lang/lang.es.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية.</div> | /vault/lang/lang.es.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية لfront-end.</div> | /vault/lang/lang.fr.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية.</div> | /vault/lang/lang.fr.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية لfront-end.</div> | /vault/lang/lang.hi.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية.</div> | /vault/lang/lang.hi.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية لfront-end.</div> | /vault/lang/lang.id.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية.</div> | /vault/lang/lang.id.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية لfront-end.</div> | /vault/lang/lang.it.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية.</div> | /vault/lang/lang.it.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية لfront-end.</div> | /vault/lang/lang.ja.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية.</div> | /vault/lang/lang.ja.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية لfront-end.</div> | /vault/lang/lang.ko.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية.</div> | /vault/lang/lang.ko.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية لfront-end.</div> | /vault/lang/lang.nl.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية.</div> | /vault/lang/lang.nl.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة لfront-end.</div> | /vault/lang/lang.no.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة.</div> | /vault/lang/lang.no.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية لfront-end.</div> | /vault/lang/lang.pt.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية.</div> | /vault/lang/lang.pt.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية لfront-end.</div> | /vault/lang/lang.ru.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية.</div> | /vault/lang/lang.ru.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية لfront-end.</div> | /vault/lang/lang.sv.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية.</div> | /vault/lang/lang.sv.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية لfront-end.</div> | /vault/lang/lang.th.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية.</div> | /vault/lang/lang.th.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية لfront-end.</div> | /vault/lang/lang.tr.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية.</div> | /vault/lang/lang.tr.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية لfront-end.</div> | /vault/lang/lang.ur.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية.</div> | /vault/lang/lang.ur.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية لfront-end.</div> | /vault/lang/lang.vi.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية.</div> | /vault/lang/lang.vi.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية) لfront-end.</div> | /vault/lang/lang.zh-tw.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية).</div> | /vault/lang/lang.zh-tw.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة) لfront-end.</div> | /vault/lang/lang.zh.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة).</div> | /vault/lang/lang.zh.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملف وصول النص التشعبي (في هذه الحالة، لحماية الملفات الحساسة التي تنتمي إلى البرنامج من أن يتم الوصول إليها عن طريق مصادر غير مصرح لها).</div> | /vault/.htaccess
 &nbsp; <div dir="rtl" style="display:inline">المستخدمة من قبل Travis CI للاختبار (غير مطلوب لتشغيل سليم للبرنامج).</div> | /vault/.travis.php
 &nbsp; <div dir="rtl" style="display:inline">المستخدمة من قبل Travis CI للاختبار (غير مطلوب لتشغيل سليم للبرنامج).</div> | /vault/.travis.yml
 &nbsp; <div dir="rtl" style="display:inline">يحتوي على قواعد مساعدة. غير المدرجة في الحزمة. يتم توليدها بواسطة صفحة القواعد المساعدة.</div> | /vault/auxiliary.yaml
 &nbsp; <div dir="rtl" style="display:inline">بيانات ذاكرة التخزين المؤقت.</div> | /vault/cache.dat
+&nbsp; <div dir="rtl" style="display:inline">بيانات القنوات البديلة لطلبات curl الفاشلة.</div> | /vault/channels.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملف البيانات الوصفية لقوائم Macmathan الاختيارية؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/cidramblocklists.dat
 &nbsp; <div dir="rtl" style="display:inline">حدات ملف البيانات الوصفية؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/components.dat
 &nbsp; <div dir="rtl" style="display:inline">ملف التكوين. يحتوي على جميع خيارات تهيئة CIDRAM، يخبرك ماذا يفعل وكيف يعمل بشكل صحيح (إعادة تسمية لتفعيل)!</div> | /vault/config.ini.RenameMe
@@ -291,7 +292,7 @@
 
 [general](#general-التصنيف) | [signatures](#signatures-التصنيف) | [recaptcha](#recaptcha-التصنيف) | [legal](#legal-التصنيف)
 --:|--:|--:|--:
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 [template_data](#template_data-التصنيف) | [PHPMailer](#phpmailer-التصنيف) | [rate_limiting](#rate_limiting-التصنيف) | [supplementary_cache_options](#supplementary_cache_options-التصنيف)
 [theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
 
@@ -566,6 +567,11 @@
 ##### <div dir="rtl">"log_sanitisation"<br /></div>
 <div dir="rtl"><ul>
  <li>عند استخدام صفحة سجلات الواجهة الأمامية لعرض بيانات السجل، تقوم CIDRAM بتعقيم بيانات السجل قبل عرضها، لحماية المستخدمين من هجمات XSS والتهديدات المحتملة الأخرى التي قد تحتوي عليها بيانات السجل. ومع ذلك، بشكل افتراضي، لا يتم تعقيم البيانات أثناء التسجيل. هذا لضمان الحفاظ على بيانات السجل بدقة، للمساعدة في أي تحليل شرعي قد يكون ضروريًا في المستقبل. ومع ذلك، في حالة محاولة المستخدم قراءة بيانات السجل باستخدام أدوات خارجية، وإذا لم تقم تلك الأدوات الخارجية بعملية الصرف الصحي الخاصة بها، فقد يتعرض المستخدم لهجمات XSS. إذا لزم الأمر، يمكنك تغيير السلوك الافتراضي باستخدام توجيه التكوين هذا. True = قم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ بالبيانات بدقة أقل، لكن خطر XSS أقل). False = لا تقم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ البيانات بشكل أكثر دقة، ولكن خطر XSS أعلى) [افتراضي].</li>
+</ul></div>
+
+##### <div dir="rtl">"disabled_channels"<br /></div>
+<div dir="rtl"><ul>
+ <li>يمكن استخدام هذا لمنع CIDRAM من استخدام قنوات معينة عند إرسال الطلبات (على سبيل المثال، عند التحديث، عند جلب بيانات تعريف المكون، إلخ).</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
@@ -1794,4 +1800,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 26 مايو 2019 (2019.05.26).</div>
+<div dir="rtl">آخر تحديث: 30 مايو 2019 (2019.05.30).</div>
