@@ -145,6 +145,7 @@
 
 &nbsp; <div dir="rtl" style="display:inline">تفصیل</div> | <div dir="rtl" style="display:inline">فائل</div>
 ----|----
+&nbsp; <div dir="rtl" style="display:inline">"CI" کیلئے استعمال کردہ فائلوں پر مشتمل ہے.</div> | /tests/
 &nbsp; <div dir="rtl" style="display:inline">والٹ ڈائریکٹری (مختلف فائلوں پر مشتمل ہے).</div> | /vault/
 &nbsp; <div dir="rtl" style="display:inline">کلاس ڈائرکٹری. CIDRAM کی طرف سے استعمال کیا جاتا مختلف طبقات پر مشتمل ہے.</div> | /vault/classes/
 &nbsp; <div dir="rtl" style="display:inline">کلاس ڈائرکٹری. CIDRAM کی طرف سے استعمال کیا جاتا مختلف طبقات پر مشتمل ہے.</div> | /vault/classes/Maikuolan/
@@ -237,7 +238,6 @@
 &nbsp; <div dir="rtl" style="display:inline">چینی کے سامنے کے آخر کے لئے (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">چینی (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.yaml
 &nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/.htaccess
-&nbsp; <div dir="rtl" style="display:inline">جانچ کے لئے Travis CI کی طرف سے استعمال کیا جاتا ہے (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /vault/.travis.php
 &nbsp; <div dir="rtl" style="display:inline">جانچ کے لئے Travis CI کی طرف سے استعمال کیا جاتا ہے (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /vault/.travis.yml
 &nbsp; <div dir="rtl" style="display:inline">معاون قوانین پر مشتمل ہے. پیکیج میں شامل نہیں. معاون قواعد کے صفحے کی طرف سے پیدا.</div> | /vault/auxiliary.yaml
 &nbsp; <div dir="rtl" style="display:inline">کیشے کے اعداد و شمار.</div> | /vault/cache.dat
@@ -1800,4 +1800,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 30 مئی 2019 (2019.05.30).</div>
+<div dir="rtl">آخری تازہ کاری: 20 جون 2019 (2019.06.20).</div>

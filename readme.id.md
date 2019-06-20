@@ -143,6 +143,7 @@ Informasi ini berlaku untuk rilis v2 terbaru, dan mungkin tidak begitu relevan u
 
 Data | Deskripsi
 ----|----
+/tests/ | Direktori yang berisi berbagai file yang digunakan untuk pengujian CI (integrasi berkelanjutan).
 /vault/ | Direktori Vault (berisikan bermacam file).
 /vault/classes/ | Direktori kelas. Berisi berbagai kelas yang digunakan oleh CIDRAM.
 /vault/classes/Maikuolan/ | Direktori kelas. Berisi berbagai kelas yang digunakan oleh CIDRAM.
@@ -235,7 +236,6 @@ Data | Deskripsi
 /vault/lang/lang.zh.fe.yaml | File Bahasa Cina sederhana untuk bagian depan.
 /vault/lang/lang.zh.yaml | File Bahasa Cina sederhana.
 /vault/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
-/vault/.travis.php | Digunakan oleh Travis CI untuk pengujian (tidak dibutuhkan untuk fungsi teratur dari skrip).
 /vault/.travis.yml | Digunakan oleh Travis CI untuk pengujian (tidak dibutuhkan untuk fungsi teratur dari skrip).
 /vault/auxiliary.yaml | Berisi aturan tambahan. Tidak termasuk dalam paket. Dihasilkan oleh halaman aturan tambahan.
 /vault/cache.dat | Cache data.
@@ -1539,4 +1539,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 30 Mei 2019 (2019.05.30).
+Terakhir Diperbarui: 20 Juni 2019 (2019.06.20).

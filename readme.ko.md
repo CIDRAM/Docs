@@ -143,6 +143,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 파일 | 설명
 ----|----
+/tests/ | CI (연속 통합) 테스트에 사용되는 다양한 파일이 들어있는 디렉토리입니다.
 /vault/ | 보루 토 디렉토리 (다양한 파일을 포함합니다).
 /vault/classes/ | 클래스 디렉토리. CIDRAM에서 사용하는 다양한 클래스가 들어 있습니다.
 /vault/classes/Maikuolan/ | 클래스 디렉토리. CIDRAM에서 사용하는 다양한 클래스가 들어 있습니다.
@@ -235,7 +236,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/lang/lang.zh.fe.yaml | 프론트 엔드 중국어 간체 언어 데이터.
 /vault/lang/lang.zh.yaml | 중국어 간체 언어 데이터.
 /vault/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
-/vault/.travis.php | 테스트를 위해 Travis CI에서 사용됩니다. (기능에 관계없는 파일입니다).
 /vault/.travis.yml | 테스트를 위해 Travis CI에서 사용됩니다. (기능에 관계없는 파일입니다).
 /vault/auxiliary.yaml | 보조 규칙이 들어 있습니다. 패키지에 포함되어 있지 않습니다. 보조 규칙 페이지에 의해 생성됩니다.
 /vault/cache.dat | 캐시 데이터.
@@ -1542,4 +1542,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 5월 30일.
+최종 업데이트 : 2019년 6월 20일.

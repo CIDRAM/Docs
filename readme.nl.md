@@ -143,6 +143,7 @@ Deze informatie is van toepassing op de meest recente v2 release, en is mogelijk
 
 Bestand | Beschrijving
 ----|----
+/tests/ | Een map met verschillende bestanden die worden gebruikt voor CI-tests (continue integratie).
 /vault/ | Vault bestandsmap (bevat verschillende bestanden).
 /vault/classes/ | Klasse bestandsmap. Bevat verschillende klassen die worden gebruikt door CIDRAM.
 /vault/classes/Maikuolan/ | Klasse bestandsmap. Bevat verschillende klassen die worden gebruikt door CIDRAM.
@@ -235,7 +236,6 @@ Bestand | Beschrijving
 /vault/lang/lang.zh.fe.yaml | Chinees (vereenvoudigd) lokalisatie voor het frontend.
 /vault/lang/lang.zh.yaml | Chinees (vereenvoudigd) lokalisatie.
 /vault/.htaccess | Een hypertext toegang bestand (in dit geval, om gevoelige bestanden die behoren tot het script te beschermen tegen toegang door niet-geautoriseerde bronnen).
-/vault/.travis.php | Gebruikt door Travis CI voor het testen (niet vereist voor een goede werking van het script).
 /vault/.travis.yml | Gebruikt door Travis CI voor het testen (niet vereist voor een goede werking van het script).
 /vault/auxiliary.yaml | Bevat aanvullende regels. Niet inbegrepen in het pakket. Gegenereerd op de hulpregels pagina.
 /vault/cache.dat | Cache data/gegevens.
@@ -1547,4 +1547,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 30 Mei 2019 (2019.05.30).
+Laatste Bijgewerkt: 20 Juni 2019 (2019.06.20).

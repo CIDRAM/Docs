@@ -143,6 +143,7 @@ Essas informações se aplicam à versão v2 mais recente, e podem não ser tão
 
 Arquivo | Descrição
 ----|----
+/tests/ | Um diretório contendo vários arquivos usados para testes de CI (integração contínua).
 /vault/ | Vault diretório (contém vários arquivos).
 /vault/classes/ | Diretório de classes. Contém várias classes usadas pelo CIDRAM.
 /vault/classes/Maikuolan/ | Diretório de classes. Contém várias classes usadas pelo CIDRAM.
@@ -235,7 +236,6 @@ Arquivo | Descrição
 /vault/lang/lang.zh.fe.yaml | Dados lingüísticos Chinês (simplificado) para o front-end.
 /vault/lang/lang.zh.yaml | Dados lingüísticos Chinês (simplificado).
 /vault/.htaccess | Um hipertexto acesso arquivo (neste caso, para proteger confidenciais arquivos pertencentes ao script contra serem acessados por fontes não autorizadas).
-/vault/.travis.php | Usado pela Travis CI para testes (não é necessário para o correto funcionamento do script).
 /vault/.travis.yml | Usado pela Travis CI para testes (não é necessário para o correto funcionamento do script).
 /vault/auxiliary.yaml | Contém regras auxiliares. Não incluído no pacote. Gerado pela página de regras auxiliares.
 /vault/cache.dat | Dados de cache.
@@ -1541,4 +1541,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 30 de Maio de 2019 (2019.05.30).
+Última Atualização: 20 de Junho de 2019 (2019.06.20).

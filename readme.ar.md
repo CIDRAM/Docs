@@ -145,7 +145,8 @@
 
 &nbsp; <div dir="rtl" style="display:inline">الوصف</div> | <div dir="rtl" style="display:inline">الملف</div>
 ----|----
-&nbsp; <div dir="rtl" style="display:inline">دليل /vault/ (يحتوي على ملفات متنوعة).</div> | /vault/
+&nbsp; <div dir="rtl" style="display:inline">دليل يحتوي على العديد من الملفات المستخدمة لاختبار CI (التكامل المستمر).</div> | /tests/
+&nbsp; <div dir="rtl" style="display:inline">دليل <code dir="ltr">/vault/</code> (يحتوي على ملفات متنوعة).</div> | /vault/
 &nbsp; <div dir="rtl" style="display:inline">مجلد الطبقات. يحتوي على ملفات فئة مختلفة يستخدمها CIDRAM.</div> | /vault/classes/
 &nbsp; <div dir="rtl" style="display:inline">مجلد الطبقات. يحتوي على ملفات فئة مختلفة يستخدمها CIDRAM.</div> | /vault/classes/Maikuolan/
 &nbsp; <div dir="rtl" style="display:inline">معالج ذاكرة تخزين مؤقت بسيط وموحد.</div> | /vault/classes/Maikuolan/Cache.php
@@ -237,7 +238,6 @@
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة) لfront-end.</div> | /vault/lang/lang.zh.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة).</div> | /vault/lang/lang.zh.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملف وصول النص التشعبي (في هذه الحالة، لحماية الملفات الحساسة التي تنتمي إلى البرنامج من أن يتم الوصول إليها عن طريق مصادر غير مصرح لها).</div> | /vault/.htaccess
-&nbsp; <div dir="rtl" style="display:inline">المستخدمة من قبل Travis CI للاختبار (غير مطلوب لتشغيل سليم للبرنامج).</div> | /vault/.travis.php
 &nbsp; <div dir="rtl" style="display:inline">المستخدمة من قبل Travis CI للاختبار (غير مطلوب لتشغيل سليم للبرنامج).</div> | /vault/.travis.yml
 &nbsp; <div dir="rtl" style="display:inline">يحتوي على قواعد مساعدة. غير المدرجة في الحزمة. يتم توليدها بواسطة صفحة القواعد المساعدة.</div> | /vault/auxiliary.yaml
 &nbsp; <div dir="rtl" style="display:inline">بيانات ذاكرة التخزين المؤقت.</div> | /vault/cache.dat
@@ -1800,4 +1800,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 30 مايو 2019 (2019.05.30).</div>
+<div dir="rtl">آخر تحديث: 20 يونيو 2019 (2019.06.20).</div>

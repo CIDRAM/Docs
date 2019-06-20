@@ -143,6 +143,7 @@ Thông tin này áp dụng cho phát hành v2 gần đây nhất, và có thể 
 
 Tập tin | Chi tiết
 ----|----
+/tests/ | Một thư mục chứa các tập tin khác nhau được sử dụng để kiểm tra CI (tích hợp liên tục).
 /vault/ | Vault thư mục (chứa các tập tin khác nhau).
 /vault/classes/ | Thư mục lớp học. Chứa các lớp học khác nhau được sử dụng bởi CIDRAM.
 /vault/classes/Maikuolan/ | Thư mục lớp học. Chứa các lớp học khác nhau được sử dụng bởi CIDRAM.
@@ -235,7 +236,6 @@ Tập tin | Chi tiết
 /vault/lang/lang.zh.fe.yaml | Dữ liệu tiếng Trung Quốc (giản thể) cho các front-end.
 /vault/lang/lang.zh.yaml | Dữ liệu tiếng Trung Quốc (giản thể).
 /vault/.htaccess | Tập tin "hypertext access" / tập tin truy cập siêu văn bản (bảo vệ tập tin bí mật khỏi bị truy cập bởi nguồn không được ủy quyền).
-/vault/.travis.php | Được sử dụng bởi Travis CI để thử nghiệm (không cần thiết cho chức năng phù hợp của kịch bản).
 /vault/.travis.yml | Được sử dụng bởi Travis CI để thử nghiệm (không cần thiết cho chức năng phù hợp của kịch bản).
 /vault/auxiliary.yaml | Chứa các quy tắc phụ trợ. Không bao gồm trong gói. Được tạo bởi trang quy tắc phụ trợ.
 /vault/cache.dat | Dữ liệu bộ nhớ cache.
@@ -1539,4 +1539,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 30 Tháng Năm 2019 (2019.05.30).
+Lần cuối cập nhật: 20 Tháng Sáu 2019 (2019.06.20).
