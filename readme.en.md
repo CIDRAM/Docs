@@ -150,6 +150,7 @@ File | Description
 /vault/classes/Maikuolan/Cache.php | A simple, unified cache handler.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Complex string handler.
 /vault/classes/Maikuolan/L10N.php | L10N handler.
+/vault/classes/Maikuolan/NumberFormatter.php | Number formatter.
 /vault/classes/Maikuolan/YAML.php | YAML handler.
 /vault/classes/Aggregator.php | IP aggregator.
 /vault/fe_assets/ | Front-end assets.
@@ -1559,4 +1560,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 20 June 2019 (2019.06.20).
+Last Updated: 27 June 2019 (2019.06.27).

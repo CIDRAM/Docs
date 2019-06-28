@@ -150,6 +150,7 @@ Tập tin | Chi tiết
 /vault/classes/Maikuolan/Cache.php | Một xử lý bộ đệm đơn giản, thống nhất.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Tập tin cho xử lý chuỗi phức tạp.
 /vault/classes/Maikuolan/L10N.php | Tập tin cho xử lý L10N.
+/vault/classes/Maikuolan/NumberFormatter.php | Công cụ định dạng số.
 /vault/classes/Maikuolan/YAML.php | Tập tin cho xử lý YAML.
 /vault/classes/Aggregator.php | Tập hợp IP.
 /vault/fe_assets/ | Các tài sản front-end.
@@ -1539,4 +1540,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 20 Tháng Sáu 2019 (2019.06.20).
+Lần cuối cập nhật: 27 Tháng Sáu 2019 (2019.06.27).

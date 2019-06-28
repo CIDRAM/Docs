@@ -152,6 +152,7 @@
 &nbsp; <div dir="rtl" style="display:inline">معالج ذاكرة تخزين مؤقت بسيط وموحد.</div> | /vault/classes/Maikuolan/Cache.php
 &nbsp; <div dir="rtl" style="display:inline">معالج سلسلة معقدة.</div> | /vault/classes/Maikuolan/ComplexStringHandler.php
 &nbsp; <div dir="rtl" style="display:inline">معالج L10N.</div> | /vault/classes/Maikuolan/L10N.php
+&nbsp; <div dir="rtl" style="display:inline">عدد المنسق.</div> | /vault/classes/Maikuolan/NumberFormatter.php
 &nbsp; <div dir="rtl" style="display:inline">معالج YAML.</div> | /vault/classes/Maikuolan/YAML.php
 &nbsp; <div dir="rtl" style="display:inline">IP aggregator.</div> | /vault/classes/Aggregator.php
 &nbsp; <div dir="rtl" style="display:inline">الأصول front-end.</div> | /vault/fe_assets/
@@ -1800,4 +1801,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 20 يونيو 2019 (2019.06.20).</div>
+<div dir="rtl">آخر تحديث: 27 يونيو 2019 (2019.06.27).</div>

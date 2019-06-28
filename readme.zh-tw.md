@@ -151,6 +151,7 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 /vault/classes/Maikuolan/Cache.php | 一個簡單的統一緩存處理程序。
 /vault/classes/Maikuolan/ComplexStringHandler.php | 複雜的字符串處理文件。
 /vault/classes/Maikuolan/L10N.php | L10N處理文件。
+/vault/classes/Maikuolan/NumberFormatter.php | 數字格式化程序。
 /vault/classes/Maikuolan/YAML.php | YAML處理文件。
 /vault/classes/Aggregator.php | IP聚合器。
 /vault/fe_assets/ | 前端資產。
@@ -1548,4 +1549,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2019年6月20日。
+最後更新：2019年6月27日。

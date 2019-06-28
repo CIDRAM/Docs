@@ -150,6 +150,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/classes/Maikuolan/Cache.php | 간단하고 통합 된 캐시 처리기입니다.
 /vault/classes/Maikuolan/ComplexStringHandler.php | 복잡한 문자열 핸들러.
 /vault/classes/Maikuolan/L10N.php | L10N 핸들러.
+/vault/classes/Maikuolan/NumberFormatter.php | 숫자 포맷터.
 /vault/classes/Maikuolan/YAML.php | YAML 핸들러.
 /vault/classes/Aggregator.php | IP 애그리게이터.
 /vault/fe_assets/ | 프론트 엔드 자산.
@@ -1542,4 +1543,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 6월 20일.
+최종 업데이트 : 2019년 6월 27일.

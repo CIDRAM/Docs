@@ -150,6 +150,7 @@ Datei | Beschreibung
 /vault/classes/Maikuolan/Cache.php | Ein einfacher, einheitlicher Cache-Handler.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Komplexer String-Handler.
 /vault/classes/Maikuolan/L10N.php | L10N-Handler.
+/vault/classes/Maikuolan/NumberFormatter.php | Zahlenformatierer.
 /vault/classes/Maikuolan/YAML.php | YAML-Handler.
 /vault/classes/Aggregator.php | IP-Aggregator.
 /vault/fe_assets/ | Frontend-Daten.
@@ -1555,4 +1556,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 20 Juni 2019 (2019.06.20).
+Zuletzt aktualisiert: 27 Juni 2019 (2019.06.27).

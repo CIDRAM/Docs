@@ -152,6 +152,7 @@
 &nbsp; <div dir="rtl" style="display:inline">ایک سادہ، متحد کیش ہینڈلر.</div> | /vault/classes/Maikuolan/Cache.php
 &nbsp; <div dir="rtl" style="display:inline">کمپلیکس تار ہینڈلر.</div> | /vault/classes/Maikuolan/ComplexStringHandler.php
 &nbsp; <div dir="rtl" style="display:inline">L10N ہینڈلر.</div> | /vault/classes/Maikuolan/L10N.php
+&nbsp; <div dir="rtl" style="display:inline">نمبر فارمیٹر.</div> | /vault/classes/Maikuolan/NumberFormatter.php
 &nbsp; <div dir="rtl" style="display:inline">YAML ہینڈلر.</div> | /vault/classes/Maikuolan/YAML.php
 &nbsp; <div dir="rtl" style="display:inline">IP مجموعی طور پر.</div> | /vault/classes/Aggregator.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے اثاثے.</div> | /vault/fe_assets/
@@ -1800,4 +1801,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 20 جون 2019 (2019.06.20).</div>
+<div dir="rtl">آخری تازہ کاری: 27 جون 2019 (2019.06.27).</div>

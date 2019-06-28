@@ -150,6 +150,7 @@ Fichier | Description
 /vault/classes/Maikuolan/Cache.php | Un processeur de cache simple et unifié.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Un processeur de chaîne complexe.
 /vault/classes/Maikuolan/L10N.php | L10N processeur.
+/vault/classes/Maikuolan/NumberFormatter.php | Formateur de nombres.
 /vault/classes/Maikuolan/YAML.php | YAML processeur.
 /vault/classes/Aggregator.php | Agrégateur IP.
 /vault/fe_assets/ | Les fichiers de l'accès frontal.
@@ -1545,4 +1546,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 20 Juin 2019 (2019.06.20).
+Dernière mise à jour : 27 Juin 2019 (2019.06.27).

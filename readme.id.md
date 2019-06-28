@@ -150,6 +150,7 @@ Data | Deskripsi
 /vault/classes/Maikuolan/Cache.php | Prosesor cache yang sederhana dan terpadu.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Prosesor string yang kompleks.
 /vault/classes/Maikuolan/L10N.php | Prosesor L10N.
+/vault/classes/Maikuolan/NumberFormatter.php | Pemformat angka.
 /vault/classes/Maikuolan/YAML.php | Prosesor YAML.
 /vault/classes/Aggregator.php | Agregator IP.
 /vault/fe_assets/ | Data untuk akses bagian depan.
@@ -1539,4 +1540,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 20 Juni 2019 (2019.06.20).
+Terakhir Diperbarui: 27 Juni 2019 (2019.06.27).

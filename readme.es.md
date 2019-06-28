@@ -150,6 +150,7 @@ Archivo | Descripción
 /vault/classes/Maikuolan/Cache.php | Un controlador de caché simple y unificado.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Controlador para cadenas complejas.
 /vault/classes/Maikuolan/L10N.php | Controlador para L10N.
+/vault/classes/Maikuolan/NumberFormatter.php | Formateador de números.
 /vault/classes/Maikuolan/YAML.php | Controlador para YAML.
 /vault/classes/Aggregator.php | Agregador IP.
 /vault/fe_assets/ | Archivos del front-end.
@@ -1546,4 +1547,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 20 de Junio de 2019 (2019.06.20).
+Última Actualización: 27 de Junio de 2019 (2019.06.27).

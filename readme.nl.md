@@ -150,6 +150,7 @@ Bestand | Beschrijving
 /vault/classes/Maikuolan/Cache.php | Een eenvoudige, uniforme cache-handler.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Complexe string-handler.
 /vault/classes/Maikuolan/L10N.php | L10N-handler.
+/vault/classes/Maikuolan/NumberFormatter.php | Nummer formatter.
 /vault/classes/Maikuolan/YAML.php | YAML-handler.
 /vault/classes/Aggregator.php | IP-aggregator.
 /vault/fe_assets/ | Frontend data/gegevens.
@@ -1547,4 +1548,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 20 Juni 2019 (2019.06.20).
+Laatste Bijgewerkt: 27 Juni 2019 (2019.06.27).
