@@ -391,10 +391,20 @@ Waarde | Produceert | Beschrijving
 `China-1` | `123,4567.89`
 `India-1` | `12,34,567.89`
 `India-2` | `१२,३४,५६७.८९`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
+`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
+`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
+`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
 `Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
 `Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
+`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
+`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
+`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
+`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
+`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
 `Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
+`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
 
 *Notitie: Deze waarden zijn nergens gestandaardiseerd, en zullen waarschijnlijk niet relevant zijn buiten het pakket. Ook kunnen ondersteunde waarden in de toekomst veranderen.*
 
@@ -433,16 +443,18 @@ Waarde | Produceert | Beschrijving
 - Poging om aanvragen van zoekmachines te bevestigen? Verificatie van zoekmachines zorgt ervoor dat ze niet zullen worden verboden als gevolg van het overschrijden van de overtreding limiet (verbod op zoekmachines van uw website zal meestal een negatief effect hebben op uw zoekmachine ranking, SEO, enz). Wanneer geverifieerd, zoekmachines kunnen worden geblokkeerd als per normaal, maar zal niet worden verboden. Wanneer niet geverifieerd, het is mogelijk dat zij worden verboden ten gevolge van het overschrijden van de overtreding limiet. Bovendien, het verifiëren van zoekmachines biedt bescherming tegen nep-zoekmachine aanvragen en tegen de mogelijk schadelijke entiteiten vermomd als zoekmachines (dergelijke aanvragen zal worden geblokkeerd wanneer het verifiëren van zoekmachines is ingeschakeld). True = Inschakelen het verifiëren van zoekmachines [Standaard]; False = Uitschakelen het verifiëren van zoekmachines.
 
 Momenteel ondersteund:
-- __[Google](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __Yahoo__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __Sogou (搜狗)__
-- __Youdao (有道)__
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
 - __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
+- __[Google](https://support.google.com/webmasters/answer/80553?hl=nl)__
+- __[Mojeek](https://www.mojeek.com/bot.html)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
+- __Sogou (搜狗)__
+- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
+- __Yahoo__
+- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __Youdao (有道)__
 
 Niet compatibel (veroorzaakt conflicten):
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -1553,4 +1565,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 11 Juli 2019 (2019.07.11).
+Laatste Bijgewerkt: 14 Juli 2019 (2019.07.14).

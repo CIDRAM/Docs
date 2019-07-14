@@ -391,10 +391,20 @@ Valeur | Produit | Description
 `China-1` | `123,4567.89`
 `India-1` | `12,34,567.89`
 `India-2` | `१२,३४,५६७.८९`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
+`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
+`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
+`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
 `Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
 `Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
+`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
+`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
+`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
+`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
+`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
 `Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
+`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
 
 *Remarque : Ces valeurs ne sont standardisées nulle part, et ne seront probablement pas pertinentes au-delà du package. Aussi, les valeurs supportées peuvent changer à l'avenir.*
 
@@ -433,16 +443,18 @@ Valeur | Produit | Description
 - Essayez de vérifier les moteurs de recherche ? Vérification des moteurs de recherche assure qu'ils ne seront pas interdits en raison de dépassement de la limite d'infraction (l'interdiction des moteurs de recherche de votre site web aura généralement un effet négatif sur votre moteur de recherche classement, SEO, etc). Lorsqu'ils sont vérifiés, les moteurs de recherche peuvent être bloqués comme d'habitude, mais ne seront pas interdits. Lorsqu'ils ne sont pas vérifiés, il est possible qu'ils soient interdits en raison du dépassement de la limite d'infraction. Aussi, la vérification des moteurs de recherche offre une protection contre les fausses requêtes des moteurs de recherche et contre les entités potentiellement malveillantes masquer comme moteurs de recherche (ces requêtes seront bloquées lorsque la vérification des moteurs de recherche est activée). True = Activer la vérification du moteurs de recherche [Défaut] ; False = Désactiver la vérification du moteurs de recherche.
 
 Supporté actuellement :
-- __[Google](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __Yahoo__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __Sogou (搜狗)__
-- __Youdao (有道)__
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
 - __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
+- __[Google](https://support.google.com/webmasters/answer/80553?hl=fr)__
+- __[Mojeek](https://www.mojeek.com/bot.html)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
+- __Sogou (搜狗)__
+- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
+- __Yahoo__
+- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __Youdao (有道)__
 
 N'est pas compatible (provoque des conflits) :
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -1551,4 +1563,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 11 Juillet 2019 (2019.07.11).
+Dernière mise à jour : 14 Juillet 2019 (2019.07.14).

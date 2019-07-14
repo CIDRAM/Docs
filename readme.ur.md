@@ -426,10 +426,20 @@
 `China-1` | `123,4567.89`
 `India-1` | `12,34,567.89`
 `India-2` | `१२,३४,५६७.८९`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
+`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
+`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
+`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
 `Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
 `Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
+`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
+`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
+`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
+`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
+`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
 `Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
+`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
 
 <div dir="rtl">نوٹ: یہ اقدار کہیں بھی معیاری نہیں ہیں، اور شاید پیکج سے باہر متعلقہ نہیں ہوں گے. اس کے علاوہ، معاون اقدار مستقبل میں تبدیل کر سکتے ہیں.<br /><br /></div>
 
@@ -489,16 +499,18 @@
 
 <div dir="rtl">فی الحال تعاون کی گئی:<br /></div>
 <div dir="rtl"><ul>
- <li><strong dir="ltr"><a href="https://support.google.com/webmasters/answer/80553?hl=en">Google</a></strong></li>
- <li><strong dir="ltr"><a href="https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot">Bing</a></strong></li>
- <li><strong dir="ltr">Yahoo</strong></li>
- <li><strong dir="ltr"><a href="https://help.baidu.com/question?prod_en=master&class=Baiduspider">Baidu (百度)</a></strong></li>
- <li><strong dir="ltr">Sogou (搜狗)</strong></li>
- <li><strong dir="ltr">Youdao (有道)</strong></li>
  <li><strong dir="ltr"><a href="https://discussions.apple.com/thread/7090135">Applebot</a></strong></li>
- <li><strong dir="ltr"><a href="https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml">Yandex (Яндекс)</a></strong></li>
+ <li><strong dir="ltr"><a href="https://help.baidu.com/question?prod_en=master&class=Baiduspider">Baidu (百度)</a></strong></li>
+ <li><strong dir="ltr"><a href="https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot">Bing</a></strong></li>
  <li><strong dir="ltr"><a href="https://duckduckgo.com/duckduckbot">DuckDuckGo</a></strong></li>
+ <li><strong dir="ltr"><a href="https://support.google.com/webmasters/answer/80553?hl=ur">Google</a></strong></li>
+ <li><strong dir="ltr"><a href="https://www.mojeek.com/bot.html">Mojeek</a></strong></li>
  <li><strong dir="ltr"><a href="https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/">SeznamBot</a></strong></li>
+ <li><strong dir="ltr">Sogou (搜狗)</strong></li>
+ <li><strong dir="ltr"><a href="https://www.distilnetworks.com/bot-directory/bot/teoma/">Teoma</a></strong></li>
+ <li><strong dir="ltr">Yahoo</strong></li>
+ <li><strong dir="ltr"><a href="https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml">Yandex (Яндекс)</a></strong></li>
+ <li><strong dir="ltr">Youdao (有道)</strong></li>
 </ul></div>
 
 <div dir="rtl">مطابقت نہیں ہے (تنازعات کا سبب بنتا ہے):<br /></div>
@@ -1808,4 +1820,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 11 جولائی 2019 (2019.07.11).</div>
+<div dir="rtl">آخری تازہ کاری: 14 جولائی 2019 (2019.07.14).</div>

@@ -391,10 +391,20 @@ Wert | Produziert | Beschreibung
 `China-1` | `123,4567.89`
 `India-1` | `12,34,567.89`
 `India-2` | `१२,३४,५६७.८९`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
+`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
+`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
+`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
 `Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
 `Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
+`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
+`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
+`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
+`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
+`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
+`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
 `Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
+`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
 
 *Beachten: Diese Werte sind nirgends standardisiert und werden wahrscheinlich nicht über das Paket hinaus relevant sein. Auch unterstützte Werte können sich in Zukunft ändern.*
 
@@ -433,16 +443,18 @@ Wert | Produziert | Beschreibung
 - Versuchen Sie, Anfragen von Suchmaschinen zu überprüfen? Die Überprüfung von Suchmaschinen stellt sicher, dass sie nicht aufgrund der Überschreitung der Verletzungsgrenze gesperrt werden (das Verbot von Suchmaschinen von Ihrer Website hat in der Regel negative Auswirkungen auf Ihr Suchmaschinen-Ranking, SEO, etc. Wenn verifiziert, können Suchmaschinen wie gewohnt blockiert werden, werden aber nicht gesperrt. Wenn nicht verifiziert, ist es möglich, dass sie aufgrund der Überschreitung der Verletzungsgrenze gesperrt werden. Darüber hinaus bietet die Suchmaschinenverifizierung Schutz vor gefälschten Suchmaschinenanfragen und vor potenziell bösartigen Entitäten, die sich als Suchmaschinen ausgeben (solche Anfragen werden bei aktivierter Suchmaschinenverifizierung blockiert). True = Suchmaschinenverifizierung aktivieren [Standard]; False = Suchmaschinenverifizierung deaktivieren.
 
 Derzeit unterstützt:
-- __[Google](https://support.google.com/webmasters/answer/80553?hl=de)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __Yahoo__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __Sogou (搜狗)__
-- __Youdao (有道)__
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
 - __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
+- __[Google](https://support.google.com/webmasters/answer/80553?hl=de)__
+- __[Mojeek](https://www.mojeek.com/bot.html)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
+- __Sogou (搜狗)__
+- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
+- __Yahoo__
+- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __Youdao (有道)__
 
 Nicht kompatibel (verursacht Konflikte):
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -1561,4 +1573,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 11 Juli 2019 (2019.07.11).
+Zuletzt aktualisiert: 14 Juli 2019 (2019.07.14).
