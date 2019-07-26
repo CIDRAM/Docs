@@ -153,6 +153,7 @@ Data | Deskripsi
 /vault/classes/Maikuolan/NumberFormatter.php | Pemformat angka.
 /vault/classes/Maikuolan/YAML.php | Prosesor YAML.
 /vault/classes/Aggregator.php | Agregator IP.
+/vault/classes/Reporter.php | Laporan orkestra.
 /vault/fe_assets/ | Data untuk akses bagian depan.
 /vault/fe_assets/_2fa.html | Template HTML yang digunakan saat meminta pengguna untuk kode 2FA.
 /vault/fe_assets/_accounts.html | Template HTML untuk halaman akun.
@@ -1376,6 +1377,10 @@ CIDRAM secara opsional mendukung [Google reCAPTCHA](https://www.google.com/recap
 
 CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apakah alamat IP dari permintaan masuk milik seorang spammer yang dicurigai. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API Stop Forum Spam sesuai dengan tujuan yang dimaksudkan dari modul. Ketika modul diinstal, CIDRAM berkomunikasi dengan API ini setiap kali permintaan masuk meminta sumber halaman yang diakui oleh CIDRAM sebagai jenis sumber halaman yang sering ditargetkan oleh pelaku spam (seperti halaman login, halaman registrasi, halaman verifikasi email, formulir komentar, dll).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API AbuseIPDB sesuai dengan tujuan yang dimaksudkan dari modul.
+
 #### 11.3 PENCATATAN
 
 Pencatatan adalah bagian penting dari CIDRAM karena sejumlah alasan. Mungkin sulit untuk mendiagnosis dan menyelesaikan kesalahan positif ketika kejadian blokir yang menyebabkan mereka tidak dicatat. Tanpa mencatat kejadian blokir, mungkin sulit untuk memastikan secara akurat seberapa baik kinerja CIDRAM dalam konteks tertentu, dan mungkin sulit untuk menentukan dimana kekurangannya, dan perubahan apa yang mungkin diperlukan untuk konfigurasi atau tanda tangan yang sesuai, agar terus berfungsi sebagaimana dimaksud. Apapun, pencatatan mungkin tidak diinginkan untuk semua pengguna, dan tetap sepenuhnya opsional. Di CIDRAM, pencatatan dinonaktifkan secara default. Untuk mengaktifkannya, CIDRAM harus dikonfigurasi dengan benar.
@@ -1557,4 +1562,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 14 Juli 2019 (2019.07.14).
+Terakhir Diperbarui: 26 Juli 2019 (2019.07.26).

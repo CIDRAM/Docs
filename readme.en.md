@@ -153,6 +153,7 @@ File | Description
 /vault/classes/Maikuolan/NumberFormatter.php | Number formatter.
 /vault/classes/Maikuolan/YAML.php | YAML handler.
 /vault/classes/Aggregator.php | IP aggregator.
+/vault/classes/Reporter.php | Report orchestrator.
 /vault/fe_assets/ | Front-end assets.
 /vault/fe_assets/_2fa.html | An HTML template used when asking the user for a 2FA code.
 /vault/fe_assets/_accounts.html | An HTML template for the front-end accounts page.
@@ -1386,6 +1387,10 @@ CIDRAM optionally supports [Google reCAPTCHA](https://www.google.com/recaptcha/)
 
 CIDRAM provides an optional module that leverages this API to check whether the IP address of inbound requests belongs to a suspected spammer. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the Stop Forum Spam API in accordance with the intended purpose of the module. When the module is installed, CIDRAM communicates with this API whenever an inbound request requests a resource that CIDRAM recognises as a type of resource frequently targeted by spammers (such as login pages, registration pages, email verification pages, comment forms, etc).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the AbuseIPDB API in accordance with the intended purpose of the module.
+
 #### 11.3 LOGGING
 
 Logging is an important part of CIDRAM for a number of reasons. It may be difficult to diagnose and resolve false positives when the block events that cause them aren't logged. Without logging block events, it may be difficult to ascertain exactly how performant CIDRAM is in any particular context, and it may be difficult to determine where its shortfalls may be, and what changes may be required to its configuration or signatures accordingly, in order for it to continue functioning as intended. Regardless, logging mightn't be desirable for all users, and remains entirely optional. In CIDRAM, logging is disabled by default. To enable it, CIDRAM must be configured accordingly.
@@ -1577,4 +1582,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 14 July 2019 (2019.07.14).
+Last Updated: 26 July 2019 (2019.07.26).

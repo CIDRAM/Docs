@@ -155,6 +155,7 @@
 &nbsp; <div dir="rtl" style="display:inline">نمبر فارمیٹر.</div> | /vault/classes/Maikuolan/NumberFormatter.php
 &nbsp; <div dir="rtl" style="display:inline">YAML ہینڈلر.</div> | /vault/classes/Maikuolan/YAML.php
 &nbsp; <div dir="rtl" style="display:inline">IP مجموعی طور پر.</div> | /vault/classes/Aggregator.php
+&nbsp; <div dir="rtl" style="display:inline">آرکسٹریٹر کی اطلاع دیں.</div> | /vault/classes/Reporter.php
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے اثاثے.</div> | /vault/fe_assets/
 &nbsp; <div dir="rtl" style="display:inline">صارف کو 2FA کوڈ کے لئے پوچھتے وقت ایک HTML ٹیمپلیٹ استعمال کیا جاتا ہے.</div> | /vault/fe_assets/_2fa.html
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اکاؤنٹس صفحہ.</div> | /vault/fe_assets/_accounts.html
@@ -1606,6 +1607,10 @@ IP | آپریٹر
 
 <div dir="rtl">CIDRAM ایک ماڈیول فراہم کرتا ہے جو اس API کو چیک کرنے کے لۓ لیتا ہے کہ آیا درخواستوں کا IP ایڈریس مشتبہ اسپیمر سے تعلق رکھتا ہے. ماڈیول ڈیفالٹ کے ذریعہ انسٹال نہیں ہے، لیکن اگر آپ اسے نصب کرنے کا انتخاب کرتے ہیں تو، صارف IP پتے کو Stop Forum Spam API کے ساتھ اشتراک کیا جا سکتا ہے. جب ماڈیول انسٹال ہوجاتا ہے تو، CIDRAM اس API کے ساتھ بات چیت کرتا ہے جب بھی انباؤنڈ درخواست کسی وسائل کی درخواست کرتا ہے جس میں CIDRAM اکثر اسپیمرز کی طرف سے نشانہ بنایا جاتا وسائل کے ایک قسم کے طور پر تسلیم کرتا ہے (مثلا لاگ ان کے صفحات، رجسٹریشن کے صفحات، ای میل کی توثیق کے صفحات، تبصرہ فارم، وغیرہ جیسے).<br /><br /></div>
 
+##### <div dir="rtl">١١.٢.٥ ABUSEIPDB<br /><br /></div>
+
+<div dir="rtl"><a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a> API کا استعمال کرتے ہوئے بدسلوکی IP پتے کو بلاک کرنے کے لئے CIDRAM ایک اختیاری ماڈیول فراہم کرتا ہے. ماڈیول ڈیفالٹ کے ذریعہ انسٹال نہیں ہے، لیکن اگر آپ اسے نصب کرنے کا انتخاب کرتے ہیں تو، صارف IP پتے کو AbuseIPDB API کے ساتھ اشتراک کیا جا سکتا ہے.<br /><br /></div>
+
 #### <div dir="rtl">١١.٣ لاگ<br /><br /></div>
 
 <div dir="rtl">لاگنگ کئی وجوہات کے لئے CIDRAM کا ایک اہم حصہ ہے. اس کے بغیر، غلطیوں کو تلاش کرنے اور مسائل کی تشخیص مشکل ہوسکتی ہے. اگر ہمارے پاس یہ معلومات نہیں ہے اور کسی چیز کو تبدیل کرنے کی ضرورت ہے، یہ جاننا مشکل ہوسکتا ہے کہ بالکل وہی چیز جو تبدیل کرنے کی ضرورت ہے. اس کے باوجود، ہر کوئی اس معلومات کو ریکارڈ نہیں کرنا چاہتا، لہذا یہ اختیاری رہتا ہے. CIDRAM میں، یہ ڈیفالٹ کی طرف سے معذور ہے. اسے فعال کرنے کے لئے، CIDRAM کے مطابق ترتیب دیا جانا چاہئے.<br /><br /></div>
@@ -1820,4 +1825,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 14 جولائی 2019 (2019.07.14).</div>
+<div dir="rtl">آخری تازہ کاری: 26 جولائی 2019 (2019.07.26).</div>

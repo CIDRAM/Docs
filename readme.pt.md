@@ -153,6 +153,7 @@ Arquivo | Descrição
 /vault/classes/Maikuolan/NumberFormatter.php | Formatador de números.
 /vault/classes/Maikuolan/YAML.php | Manipulador para o YAML.
 /vault/classes/Aggregator.php | Agregador IP.
+/vault/classes/Reporter.php | Comunicar orquestrador.
 /vault/fe_assets/ | Dados front-end.
 /vault/fe_assets/_2fa.html | Um modelo HTML usado ao solicitar ao usuário para um código 2FA.
 /vault/fe_assets/_accounts.html | Um modelo HTML para o front-end página de contas.
@@ -1376,6 +1377,10 @@ O [Stop Forum Spam](https://www.stopforumspam.com/) é um serviço fantástico, 
 
 O CIDRAM fornece um módulo opcional que aproveita essa API para verificar se o endereço IP de solicitações de entrada pertence a um spammer suspeito. O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do Stop Forum Spam de acordo com a finalidade do módulo. Quando o módulo é instalado, o CIDRAM se comunica com essa API sempre que uma solicitação de entrada solicita um recurso que o CIDRAM reconhece como um tipo de recurso frequentemente alvejado por spammers (tais como páginas de login, páginas de registro, páginas de verificação de e-mail, formulários de comentários, etc).
 
+##### 11.2.5 ABUSEIPDB
+
+O CIDRAM fornece um módulo opcional para bloquear endereços IP abusivos usando a API [AbuseIPDB](https://www.abuseipdb.com/). O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do AbuseIPDB de acordo com a finalidade do módulo.
+
 #### 11.3 REGISTRO
 
 O registro é uma parte importante do CIDRAM por vários motivos. Pode ser difícil diagnosticar e resolver falsos positivos quando os eventos de bloqueio que os causam não são registrados. Sem o registro de eventos de bloqueio, pode ser difícil determinar exatamente o quão bem o CIDRAM funciona em qualquer contexto específico, e pode ser difícil determinar onde suas deficiências podem ser, e quais mudanças podem ser necessárias para sua configuração ou assinaturas de acordo, para que ele continue funcionando como pretendido. Não obstante, o registro pode não ser desejável para todos os usuários e permanece totalmente opcional. No CIDRAM, o registro está desabilitado por padrão. Para ativá-lo, o CIDRAM deve ser configurado de acordo.
@@ -1559,4 +1564,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 14 de Julho de 2019 (2019.07.14).
+Última Atualização: 26 de Julho de 2019 (2019.07.26).

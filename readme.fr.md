@@ -153,6 +153,7 @@ Fichier | Description
 /vault/classes/Maikuolan/NumberFormatter.php | Formateur de nombres.
 /vault/classes/Maikuolan/YAML.php | YAML processeur.
 /vault/classes/Aggregator.php | Agrégateur IP.
+/vault/classes/Reporter.php | Orchestrateur de rapports.
 /vault/fe_assets/ | Les fichiers de l'accès frontal.
 /vault/fe_assets/_2fa.html | Un modèle HTML utilisé pour demander à l'utilisateur un code 2FA.
 /vault/fe_assets/_accounts.html | Un modèle HTML pour la page des comptes de l'accès frontal.
@@ -1376,6 +1377,10 @@ Facultativement, CIDRAM prend en charge [Google reCAPTCHA](https://www.google.co
 
 CIDRAM fournit un module facultatif qui exploite cette API pour vérifier si l'adresse IP des requêtes entrantes appartient à un spammeur suspecté. Le module n'est pas installé par défaut, mais si vous choisissez de l'installer, les adresses IP des utilisateurs peuvent être partagées avec l'API Stop Forum Spam conformément à l'usage prévu du module. Lorsque le module est installé, CIDRAM communique avec cette API chaque fois qu'une requête entrante requête une ressource que CIDRAM reconnaît comme un type de ressource fréquemment ciblée par les spammeurs (tels que les pages de connexion, les pages d'enregistrement, les pages de vérification par courriel, les formulaires de commentaires, etc).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM fournit un module optionnel permettant de bloquer les adresses IP abusives à l'aide de l'API [AbuseIPDB](https://www.abuseipdb.com/). Le module n'est pas installé par défaut, mais si vous choisissez de l'installer, les adresses IP des utilisateurs peuvent être partagées avec l'API AbuseIPDB conformément à l'usage prévu du module.
+
 #### 11.3 JOURNALISATION
 
 La journalisation est une partie importante de CIDRAM pour un certain nombre de raisons. Il peut être difficile de diagnostiquer et de résoudre les faux positifs lorsque les événements de blocage qui les provoquent ne sont pas journalisés. Sans journaliser les événements de blocage, il peut être difficile de déterminer exactement comment CIDRAM est performant dans un contexte particulier, et il peut être difficile de déterminer où ses lacunes peuvent être, et quels changements peuvent être nécessaires à sa configuration ou à ses signatures en conséquence, afin de continuer à fonctionner comme prévu. Quoi qu'il en soit, la journalisation peut ne pas être souhaitable pour tous les utilisateurs, et reste entièrement facultative. Dans CIDRAM, la journalisation est désactivée par défaut. Pour l'activer, CIDRAM doit être configuré en accord.
@@ -1563,4 +1568,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 14 Juillet 2019 (2019.07.14).
+Dernière mise à jour : 26 Juillet 2019 (2019.07.26).

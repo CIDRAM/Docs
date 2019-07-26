@@ -154,6 +154,7 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 /vault/classes/Maikuolan/NumberFormatter.php | 數字格式化程序。
 /vault/classes/Maikuolan/YAML.php | YAML處理文件。
 /vault/classes/Aggregator.php | IP聚合器。
+/vault/classes/Reporter.php | 報告編排者。
 /vault/fe_assets/ | 前端資產。
 /vault/fe_assets/_2fa.html | 在向用戶詢問2FA代碼時使用的HTML模板。
 /vault/fe_assets/_accounts.html | 前端帳戶頁面的HTML模板。
@@ -1377,6 +1378,10 @@ CIDRAM可選的支持Google reCAPTCHA，為用戶提供了一種通過完成reCA
 
 CIDRAM提供了一個可選模塊，它使用API​來檢查入站請求的IP地址是否屬於可疑垃圾郵件發送者。​默認情況下該模塊不是安裝，但如果選擇安裝該模塊，則可以根據模塊的預期用途將用戶的IP地址與Stop Forum Spam【停止論壇垃圾郵件】API共享。​安裝模塊時，當入站請求請求的資源是CIDRAM識別為垃圾郵件發送者經常目標的資源時（如登錄頁面，註冊頁面，電子郵件驗證頁面，評論表單，等等），CIDRAM就會與此API通信。
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM提供了一個可選模塊，用於使用[AbuseIPDB](https://www.abuseipdb.com/) API阻止濫用的IP地址。​默認情況下該模塊不是安裝，但如果選擇安裝該模塊，則可以根據模塊的預期用途將用戶的IP地址與AbuseIPDB API共享。
+
 #### 11.3 日誌記錄
 
 由於多種原因，日誌記錄是CIDRAM的重要組成部分。​當未記錄導致它們的阻止事件時，可能難以診斷和解決假陽性。​當未記錄阻止事件時，可能很難確定CIDRAM在某些情況下的表現如何，而且可能很難確定其不足之處，以及可能需要更改哪些配置或簽名，以使其繼續按預期運行。​無論如何，一些用戶可能不想要記錄，並且它仍然是完全可選的。​在CIDRAM中，默認情況下日誌記錄是禁用。​要啟用它，必須相應地配置CIDRAM。
@@ -1566,4 +1571,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2019年7月14日。
+最後更新：2019年7月26日。

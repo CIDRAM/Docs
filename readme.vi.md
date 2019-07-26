@@ -153,6 +153,7 @@ Tập tin | Chi tiết
 /vault/classes/Maikuolan/NumberFormatter.php | Công cụ định dạng số.
 /vault/classes/Maikuolan/YAML.php | Tập tin cho xử lý YAML.
 /vault/classes/Aggregator.php | Tập hợp IP.
+/vault/classes/Reporter.php | Báo cáo dàn nhạc.
 /vault/fe_assets/ | Các tài sản front-end.
 /vault/fe_assets/_2fa.html | Tập tin mẫu HTML được sử dụng khi yêu cầu người dùng cho mã 2FA.
 /vault/fe_assets/_accounts.html | Tập tin mẫu HTML cho trang tài khoản của front-end.
@@ -1376,6 +1377,10 @@ CIDRAM hỗ trợ tùy chọn [Google reCAPTCHA](https://www.google.com/recaptch
 
 CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm tra xem địa chỉ IP của các yêu cầu gửi đến thuộc về một chương trình và những người gửi thư rác bị nghi ngờ hay không. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của Stop Forum Spam theo đúng mục đích của mô-đun. Khi mô-đun được cài đặt, CIDRAM giao tiếp với API này bất cứ khi nào một yêu cầu gửi đến yêu cầu một nguồn tài nguyên mà CIDRAM nhận ra là một loại tài nguyên thường xuyên được nhắm mục tiêu bởi chương trình và những người gửi thư rác (ví dụ, trang đăng nhập, trang đăng ký, trang xác minh email, biểu mẫu nhận xét, vv).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của AbuseIPDB theo đúng mục đích của mô-đun.
+
 #### 11.3 NHẬT KÝ
 
 Nhật ký là một phần quan trọng của CIDRAM vì một số lý do. có thể khó để chẩn đoán và giải quyết các kết quả sai tích cực khi các sự kiện chặn khiến chúng không được ghi lại. Khi các sự kiện chặn không được ghi lại, có thể khó để xác định chính xác CIDRAM hoạt động tốt như thế nào trong bất kỳ ngữ cảnh cụ thể nào, và có thể khó để xác định nơi bất cập của nó, và những thay đổi nào có thể cần thiết đối với cấu hình hay chữ ký của nó, để nó có thể tiếp tục hoạt động như dự định. Bất kể, nhật ký có thể không được mong muốn cho tất cả người dùng, và vẫn hoàn toàn tùy chọn. Trong CIDRAM, ghi nhật ký bị vô hiệu hóa theo mặc định. Để kích hoạt nó, CIDRAM phải được cấu hình cho phù hợp.
@@ -1557,4 +1562,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 14 Tháng Bảy 2019 (2019.07.14).
+Lần cuối cập nhật: 26 Tháng Bảy 2019 (2019.07.26).

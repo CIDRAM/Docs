@@ -153,6 +153,7 @@ File | Descrizione
 /vault/classes/Maikuolan/NumberFormatter.php | Numero formattatore.
 /vault/classes/Maikuolan/YAML.php | Gestore di YAML.
 /vault/classes/Aggregator.php | Aggregatore IP.
+/vault/classes/Reporter.php | Orchestratore di rapporti.
 /vault/fe_assets/ | Dati front-end.
 /vault/fe_assets/_2fa.html | Un modello HTML utilizzato quando si richiede all'utente un codice 2FA.
 /vault/fe_assets/_accounts.html | Un modello HTML per il front-end pagina utenti.
@@ -1376,6 +1377,10 @@ CIDRAM supporta facoltativamente [Google reCAPTCHA](https://www.google.com/recap
 
 CIDRAM fornisce un modulo opzionale che sfrutta questa API per verificare se l'indirizzo IP delle richieste in entrata appartiene a un sospetto spammer. Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API Stop Forum Spam in conformità con lo scopo previsto del modulo. Quando il modulo è installato, CIDRAM comunica con questa API ogni volta che una richiesta in entrata richiede una risorsa riconosciuta da CIDRAM come un tipo di risorsa spesso bersagliato dagli spammer (come pagine di login, pagine di registrazione, pagine di verifica di posta elettronica, moduli di commento, ecc).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM fornisce un modulo opzionale per bloccare indirizzi IP offensivi utilizzando l'API [AbuseIPDB](https://www.abuseipdb.com/). Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API AbuseIPDB in conformità con lo scopo previsto del modulo.
+
 #### 11.3 REGISTRAZIONE
 
 La registrazione è una parte importante di CIDRAM per una serie di motivi. Potrebbe essere difficile diagnosticare e risolvere i falsi positivi quando gli eventi di blocco che li causano non vengono registrati. Senza registrare gli eventi di blocco, potrebbe essere difficile accertare esattamente quanto è performante CIDRAM in un particolare contesto, e potrebbe essere difficile determinare dove potrebbero essere le sue carenze, e quali modifiche potrebbero essere richieste alla sua configurazione o alle sue firme di conseguenza, affinché possa continuare a funzionare come previsto. Ciò nonostante, la registrazione potrebbe non essere auspicabile per tutti gli utenti, e rimane del tutto facoltativa. In CIDRAM, la registrazione è disabilitata per impostazione predefinita. Per abilitarlo, CIDRAM deve essere configurato di conseguenza.
@@ -1562,4 +1567,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 14 Luglio 2019 (2019.07.14).
+Ultimo Aggiornamento: 26 Luglio 2019 (2019.07.26).

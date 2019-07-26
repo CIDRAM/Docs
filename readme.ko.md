@@ -153,6 +153,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/classes/Maikuolan/NumberFormatter.php | 숫자 포맷터.
 /vault/classes/Maikuolan/YAML.php | YAML 핸들러.
 /vault/classes/Aggregator.php | IP 애그리게이터.
+/vault/classes/Reporter.php | 보고서 작성자.
 /vault/fe_assets/ | 프론트 엔드 자산.
 /vault/fe_assets/_2fa.html | 사용자에게 2FA 코드를 요청할 때 사용되는 HTML 템플릿입니다.
 /vault/fe_assets/_accounts.html | 프론트 엔드의 계정 페이지의 HTML 템플릿.
@@ -1374,6 +1375,10 @@ CIDRAM은 [Google reCAPTCHA](https://www.google.com/recaptcha/)를 지원하며 
 
 CIDRAM은이 API를 활용하는 선택적 모듈을 제공합니다. 인바운드 요청의 IP 주소가 스팸으로 의심되는 스팸에 속하는지 여부를 확인합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 Stop Forum Spam API와 공유 할 수 있습니다. 모듈이 설치되면 CIDRAM은 인바운드 요청이 스패머가 자주 타겟팅하는 리소스를 요청할 때마다이 API와 통신합니다 (로그인 페이지, 등록 페이지, 전자 메일 확인 페이지, 의견 양식 등).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM은 [AbuseIPDB](https://www.abuseipdb.com/) API를 사용하여 까다로운 IP 주소를 차단하는 모듈을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 AbuseIPDB API와 공유 할 수 있습니다.
+
 #### 11.3 로깅
 
 로깅은 여러 가지 이유로 CIDRAM의 중요한 부분입니다. 로깅 차단 이벤트가 없으면 오탐 (false positive)이 발생하면이를 진단하고 해결하기 어려울 수 있습니다. 로깅 블록 이벤트가 없으면 CIDRAM이 얼마나 효과적으로 수행되는지를 확인하기 어려울 수 있습니다. 그것의 부족을 확인하는 것은 어려울 수 있으며 의도 한대로 기능을 계속 수행하려면 구성이나 서명에 어떤 변경이 필요할 수 있습니다. 어쨌든 로깅은 일부 사용자가 원하지 않는 경우도 있으며 전체적으로 선택 사항입니다. CIDRAM에서 로깅은 기본적으로 사용되지 않습니다. 이를 사용하려면 CIDRAM을 적절히 구성해야합니다.
@@ -1560,4 +1565,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 7월 14일.
+최종 업데이트 : 2019년 7월 26일.

@@ -153,6 +153,7 @@ Datei | Beschreibung
 /vault/classes/Maikuolan/NumberFormatter.php | Zahlenformatierer.
 /vault/classes/Maikuolan/YAML.php | YAML-Handler.
 /vault/classes/Aggregator.php | IP-Aggregator.
+/vault/classes/Reporter.php | Bericht-Orchestrator.
 /vault/fe_assets/ | Frontend-Daten.
 /vault/fe_assets/_2fa.html | Ein HTML-Template die verwendet wird wenn der Benutzer nach einem 2FA-Code gefragt wird.
 /vault/fe_assets/_accounts.html | Ein HTML-Template für das Frontend Kontenseite.
@@ -1382,6 +1383,10 @@ CIDRAM unterstützt [Google reCAPTCHA](https://www.google.com/recaptcha/) als Op
 
 CIDRAM bietet ein optionales Modul, das diese API nutzt, um zu prüfen, ob die IP-Adresse eingehender Anfragen zu einem mutmaßlichen Spammer gehört. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der Stop Forum Spam API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden. Wenn das Modul installiert wird, kommuniziert CIDRAM mit dieser API immer dann, wenn eine eingehende Anfrage eine Ressource anfordert, die von CIDRAM als eine Art von Ressource erkannt wird, die häufig von Spammern angegriffen wird (wie Einloggen-Seiten, Registrierungsseiten, E-Mail-Verifizierungsseiten, Kommentarformulare, u.s.w.).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM bietet ein optionales Modul zum Blockieren missbräuchlicher IP-Adressen mithilfe der [AbuseIPDB](https://www.abuseipdb.com/) API. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der AbuseIPDB API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
+
 #### 11.3 PROTOKOLLIERUNG
 
 Protokollierung ist aus verschiedenen Gründen ein wichtiger Teil von CIDRAM. Es kann schwierig sein, falsche Positive zu diagnostizieren und zu beheben, wenn die Blockereignisse, die sie verursachen, nicht protokolliert werden. Ohne Blockereignisse zu protokollieren, kann es schwierig sein, exakt festzustellen, wie gut CIDRAM in einem bestimmten Kontext funktioniert, und es kann schwierig sein zu bestimmen, wo die Defizite liegen und welche Änderungen möglicherweise an der Konfiguration oder den Signaturen vorgenommen werden müssen, damit es weiterhin wie beabsichtigt funktioniert. Ungeachtet, die Protokollierung ist möglicherweise nicht für alle Benutzer wünschenswert und bleibt vollständig optional. In CIDRAM ist die Protokollierung standardmäßig deaktiviert. Um es zu aktivieren, muss CIDRAM entsprechend konfiguriert werden.
@@ -1573,4 +1578,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 14 Juli 2019 (2019.07.14).
+Zuletzt aktualisiert: 26 Juli 2019 (2019.07.26).

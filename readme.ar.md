@@ -155,6 +155,7 @@
 &nbsp; <div dir="rtl" style="display:inline">عدد المنسق.</div> | /vault/classes/Maikuolan/NumberFormatter.php
 &nbsp; <div dir="rtl" style="display:inline">معالج YAML.</div> | /vault/classes/Maikuolan/YAML.php
 &nbsp; <div dir="rtl" style="display:inline">IP aggregator.</div> | /vault/classes/Aggregator.php
+&nbsp; <div dir="rtl" style="display:inline">تقرير أوركسترا.</div> | /vault/classes/Reporter.php
 &nbsp; <div dir="rtl" style="display:inline">الأصول front-end.</div> | /vault/fe_assets/
 &nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML المستخدم عند طلب المستخدم للحصول على كود 2FA.</div> | /vault/fe_assets/_2fa.html
 &nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الحسابات.</div> | /vault/fe_assets/_accounts.html
@@ -1606,6 +1607,10 @@ IP | المشغل
 
 <div dir="rtl">يوفر CIDRAM وحدة اختيارية تستفيد من واجهة برمجة التطبيقات هذه للتحقق مما إذا كان عنوان IP للطلبات الواردة ينتمي إلى مرسلي بريد مزعوم مشتبه فيهم. لم يتم تثبيت الوحدة النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات Stop Forum Spam API وفقًا للغرض المقصود من الوحدة. عند تثبيت الوحدة، يتصل CIDRAM مع واجهة برمجة التطبيقات هذه عندما يطلب أحد الطلبات الواردة موردًا يتعرف عليه CIDRAM كنوع من الموارد يتم استهدافه بشكل متكرر بواسطة مرسلي الرسائل غير المرغوب فيها (مثل صفحات تسجيل الدخول وصفحات التسجيل وصفحات التحقق من البريد الإلكتروني ونماذج التعليقات وما إلى ذلك).<br /><br /></div>
 
+##### <div dir="rtl">١١.٢.٥ ABUSEIPDB<br /><br /></div>
+
+<div dir="rtl">يوفر CIDRAM وحدة نمطية اختيارية لحظر عناوين IP المسيئة باستخدام واجهة برمجة تطبيقات <a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a>. لم يتم تثبيت الوحدة النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات AbuseIPDB API وفقًا للغرض المقصود من الوحدة.<br /><br /></div>
+
 #### <div dir="rtl">١١.٣ تسجيل<br /><br /></div>
 
 <div dir="rtl">التسجيل هو جزء مهم من CIDRAM لعدد من الأسباب. قد يكون من الصعب تشخيص وحل إيجابيات خاطئة عندما لا يتم تسجيل أحداث الحظر التي تسبب لهم. بدون تسجيل أحداث الحظر، قد يكون من الصعب التأكد من أداء CIDRAM بشكل جيد، وقد يكون من الصعب تحديد مواطن ضعفها، وما هي التغييرات التي قد تكون مطلوبة لتكوينها أو توقيعاتها، لكي تستمر في العمل على النحو المنشود. بغض النظر، ربما لا يريد الجميع التسجيل، لذلك يبقى اختياريًا تمامًا. في CIDRAM، يتم تعطيل التسجيل افتراضيًا. لتمكينه، يجب تكوين CIDRAM وفقًا لذلك.<br /><br /></div>
@@ -1820,4 +1825,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 14 يوليو 2019 (2019.07.14).</div>
+<div dir="rtl">آخر تحديث: 26 يوليو 2019 (2019.07.26).</div>

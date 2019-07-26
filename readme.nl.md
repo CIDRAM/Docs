@@ -153,6 +153,7 @@ Bestand | Beschrijving
 /vault/classes/Maikuolan/NumberFormatter.php | Nummer formatter.
 /vault/classes/Maikuolan/YAML.php | YAML-handler.
 /vault/classes/Aggregator.php | IP-aggregator.
+/vault/classes/Reporter.php | Verslag orkestrator.
 /vault/fe_assets/ | Frontend data/gegevens.
 /vault/fe_assets/_2fa.html | Een HTML sjabloon die wordt gebruikt wanneer de gebruiker om een 2FA-code wordt gevraagd.
 /vault/fe_assets/_accounts.html | Een HTML sjabloon voor de frontend accounts pagina.
@@ -1376,6 +1377,10 @@ CIDRAM ondersteunt optioneel [Google reCAPTCHA](https://www.google.com/recaptcha
 
 CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de Stop Forum Spam API in overeenstemming met het beoogde doel van de module. Wanneer de module is geïnstalleerd, communiceert CIDRAM met deze API wanneer een inkomende aanvraag een resource aanvraagt die door CIDRAM wordt herkend als een type resource dat vaak wordt getarget door spammers (zoals inlogpagina's, registratiepagina's, e-mailverificatiepagina's, opmerkingenformulieren, enz).
 
+##### 11.2.5 ABUSEIPDB
+
+CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de AbuseIPDB API in overeenstemming met het beoogde doel van de module. 
+
 #### 11.3 LOGGEN
 
 Te loggen is om een aantal redenen een belangrijk onderdeel van CIDRAM. Het kan moeilijk zijn om valse positieven te diagnosticeren en op te lossen wanneer de blokgebeurtenissen die deze veroorzaken niet worden vastgelegd. Zonder blokgebeurtenissen te loggen, kan het moeilijk zijn om precies vast te stellen hoe performant CIDRAM zich in een bepaalde context bevindt, en het kan moeilijk zijn om te bepalen waar zijn tekortkomingen kunnen zijn, en welke veranderingen nodig kunnen zijn voor de configuratie of signatures dienovereenkomstig, zodat het blijft functioneren zoals bedoeld. Ongeacht, loggen is misschien niet wenselijk voor alle gebruikers, en blijft volledig optioneel. In CIDRAM te loggen is standaard uitgeschakeld. Om dit in te schakelen, moet CIDRAM dienovereenkomstig worden geconfigureerd.
@@ -1565,4 +1570,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 14 Juli 2019 (2019.07.14).
+Laatste Bijgewerkt: 26 Juli 2019 (2019.07.26).
