@@ -149,6 +149,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 /vault/classes/Maikuolan/ | 클래스 디렉토리. CIDRAM에서 사용하는 다양한 클래스가 들어 있습니다.
 /vault/classes/Maikuolan/Cache.php | 간단하고 통합 된 캐시 처리기입니다.
 /vault/classes/Maikuolan/ComplexStringHandler.php | 복잡한 문자열 핸들러.
+/vault/classes/Maikuolan/DelayedIO.php | 지연된 파일 IO 클래스.
+/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier".
 /vault/classes/Maikuolan/L10N.php | L10N 핸들러.
 /vault/classes/Maikuolan/NumberFormatter.php | 숫자 포맷터.
 /vault/classes/Maikuolan/YAML.php | YAML 핸들러.

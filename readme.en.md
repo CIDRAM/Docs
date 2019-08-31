@@ -149,6 +149,8 @@ File | Description
 /vault/classes/Maikuolan/ | Classes directory. Contains various classes used by CIDRAM.
 /vault/classes/Maikuolan/Cache.php | A simple, unified cache handler.
 /vault/classes/Maikuolan/ComplexStringHandler.php | Complex string handler.
+/vault/classes/Maikuolan/DelayedIO.php | Delayed file IO class.
+/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier".
 /vault/classes/Maikuolan/L10N.php | L10N handler.
 /vault/classes/Maikuolan/NumberFormatter.php | Number formatter.
 /vault/classes/Maikuolan/YAML.php | YAML handler.

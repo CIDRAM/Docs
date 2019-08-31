@@ -150,6 +150,8 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 /vault/classes/Maikuolan/ | 类目录。包含CIDRAM使用的各种类。
 /vault/classes/Maikuolan/Cache.php | 一个简单的统一缓存处理程序。
 /vault/classes/Maikuolan/ComplexStringHandler.php | 复杂的字符串处理文件。
+/vault/classes/Maikuolan/DelayedIO.php | 延迟文件IO类。
+/vault/classes/Maikuolan/Demojibakefier.php | “Demojibakefier”。
 /vault/classes/Maikuolan/L10N.php | L10N处理文件。
 /vault/classes/Maikuolan/NumberFormatter.php | 数字格式化程序。
 /vault/classes/Maikuolan/YAML.php | YAML处理文件。
