@@ -217,16 +217,22 @@ Tập tin | Chi tiết
 /vault/lang/lang.ja.yaml | Dữ liệu tiếng Nhật.
 /vault/lang/lang.ko.fe.yaml | Dữ liệu tiếng Hàn cho các front-end.
 /vault/lang/lang.ko.yaml | Dữ liệu tiếng Hàn.
+/vault/lang/lang.lv.fe.yaml | Dữ liệu tiếng Latvia cho các front-end.
+/vault/lang/lang.lv.yaml | Dữ liệu tiếng Latvia.
 /vault/lang/lang.nl.fe.yaml | Dữ liệu tiếng Hà Lan cho các front-end.
 /vault/lang/lang.nl.yaml | Dữ liệu tiếng Hà Lan.
 /vault/lang/lang.no.fe.yaml | Dữ liệu tiếng Na Uy cho các front-end.
 /vault/lang/lang.no.yaml | Dữ liệu tiếng Na Uy.
+/vault/lang/lang.pl.fe.yaml | Dữ liệu tiếng Ba Lan cho các front-end.
+/vault/lang/lang.pl.yaml | Dữ liệu tiếng Ba Lan.
 /vault/lang/lang.pt.fe.yaml | Dữ liệu tiếng Bồ Đào Nha cho các front-end.
 /vault/lang/lang.pt.yaml | Dữ liệu tiếng Bồ Đào Nha.
 /vault/lang/lang.ru.fe.yaml | Dữ liệu tiếng Nga cho các front-end.
 /vault/lang/lang.ru.yaml | Dữ liệu tiếng Nga.
 /vault/lang/lang.sv.fe.yaml | Dữ liệu tiếng Thụy Điển cho các front-end.
 /vault/lang/lang.sv.yaml | Dữ liệu tiếng Thụy Điển.
+/vault/lang/lang.ta.fe.yaml | Dữ liệu tiếng Tamil cho các front-end.
+/vault/lang/lang.ta.yaml | Dữ liệu tiếng Tamil.
 /vault/lang/lang.th.fe.yaml | Dữ liệu tiếng Thái Lan cho các front-end.
 /vault/lang/lang.th.yaml | Dữ liệu tiếng Thái Lan.
 /vault/lang/lang.tr.fe.yaml | Dữ liệu tiếng Thổ Nhĩ Kỳ cho các front-end.
@@ -428,7 +434,7 @@ Giá trị | Nó tạo ra | Chi tiết
 - Vô hiệu hóa truy cập front-end? Truy cập front-end có thể làm cho CIDRAM dễ quản lý hơn, nhưng cũng có thể là một nguy cơ bảo mật tiềm năng. Đó là khuyến cáo để quản lý CIDRAM từ các back-end bất cứ khi nào có thể, nhưng truy cập front-end là cung cấp khi nó không phải là có thể. Giữ nó vô hiệu hóa trừ khi bạn cần nó. False = Kích hoạt truy cập front-end; True = Vô hiệu hóa truy cập front-end [Mặc định].
 
 ##### "max_login_attempts"
-- Số lượng tối đa cố gắng đăng nhập (front-end). Mặc định = 5.
+- Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1567,4 +1573,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 17 Tháng Tám 2019 (2019.08.17).
+Lần cuối cập nhật: 6 Tháng Chín 2019 (2019.09.06).

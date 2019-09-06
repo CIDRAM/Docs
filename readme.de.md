@@ -217,16 +217,22 @@ Datei | Beschreibung
 /vault/lang/lang.ja.yaml | Japanische Sprachdateien.
 /vault/lang/lang.ko.fe.yaml | Koreanische Sprachdateien für das Frontend.
 /vault/lang/lang.ko.yaml | Koreanische Sprachdateien.
+/vault/lang/lang.lv.fe.yaml | Lettische Sprachdateien für das Frontend.
+/vault/lang/lang.lv.yaml | Lettische Sprachdateien.
 /vault/lang/lang.nl.fe.yaml | Niederländische Sprachdateien für das Frontend.
 /vault/lang/lang.nl.yaml | Niederländische Sprachdateien.
 /vault/lang/lang.no.fe.yaml | Norwegische Sprachdateien für das Frontend.
 /vault/lang/lang.no.yaml | Norwegische Sprachdateien.
+/vault/lang/lang.pl.fe.yaml | Polnische Sprachdateien für das Frontend.
+/vault/lang/lang.pl.yaml | Polnische Sprachdateien.
 /vault/lang/lang.pt.fe.yaml | Portugiesische Sprachdateien für das Frontend.
 /vault/lang/lang.pt.yaml | Portugiesische Sprachdateien.
 /vault/lang/lang.ru.fe.yaml | Russische Sprachdateien für das Frontend.
 /vault/lang/lang.ru.yaml | Russische Sprachdateien.
 /vault/lang/lang.sv.fe.yaml | Schwedische Sprachdateien für das Frontend.
 /vault/lang/lang.sv.yaml | Schwedische Sprachdateien.
+/vault/lang/lang.ta.fe.yaml | Tamilische Sprachdateien für das Frontend.
+/vault/lang/lang.ta.yaml | Tamilische Sprachdateien.
 /vault/lang/lang.th.fe.yaml | Thai Sprachdateien für das Frontend.
 /vault/lang/lang.th.yaml | Thai Sprachdateien.
 /vault/lang/lang.tr.fe.yaml | Türkische Sprachdateien für das Frontend.
@@ -1583,4 +1589,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 17 August 2019 (2019.08.17).
+Zuletzt aktualisiert: 6 September 2019 (2019.09.06).

@@ -218,16 +218,22 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 /vault/lang/lang.ja.yaml | 日文语言数据。
 /vault/lang/lang.ko.fe.yaml | 韩文前端语言数据。
 /vault/lang/lang.ko.yaml | 韩文语言数据。
+/vault/lang/lang.lv.fe.yaml | 拉脱维亚文前端语言数据。
+/vault/lang/lang.lv.yaml | 拉脱维亚文语言数据。
 /vault/lang/lang.nl.fe.yaml | 荷兰文前端语言数据。
 /vault/lang/lang.nl.yaml | 荷兰文语言数据。
 /vault/lang/lang.no.fe.yaml | 挪威文前端语言数据。
 /vault/lang/lang.no.yaml | 挪威文语言数据。
+/vault/lang/lang.pl.fe.yaml | 波兰文前端语言数据。
+/vault/lang/lang.pl.yaml | 波兰文语言数据。
 /vault/lang/lang.pt.fe.yaml | 葡萄牙文前端语言数据。
 /vault/lang/lang.pt.yaml | 葡萄牙文语言数据。
 /vault/lang/lang.ru.fe.yaml | 俄文前端语言数据。
 /vault/lang/lang.ru.yaml | 俄文语言数据。
 /vault/lang/lang.sv.fe.yaml | 瑞典文前端语言数据。
 /vault/lang/lang.sv.yaml | 瑞典文语言数据。
+/vault/lang/lang.ta.fe.yaml | 泰米尔文前端语言数据。
+/vault/lang/lang.ta.yaml | 泰米尔文语言数据。
 /vault/lang/lang.th.fe.yaml | 泰文前端语言数据。
 /vault/lang/lang.th.yaml | 泰文语言数据。
 /vault/lang/lang.tr.fe.yaml | 土耳其文前端语言数据。
@@ -429,7 +435,7 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 - 关闭前端访问吗？​前端访问可以使CIDRAM更易于管理，​但也可能是潜在的安全风险。​建议管理CIDRAM通过后端只要有可能，​但前端访问提供当不可能。​保持关闭除非您需要它。​False（假）=激活前端访问；​True（真）=关闭前端访问【标准】。
 
 ##### “max_login_attempts”
-- 最大登录尝试次数（前端）。​标准=5。
+- 最大前端登录尝试次数。​标准=5。
 
 ##### “frontend_log”
 - *v1: “FrontEndLog”*
@@ -1576,4 +1582,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2019年8月17日。
+最后更新：2019年9月6日。

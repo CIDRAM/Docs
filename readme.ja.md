@@ -217,16 +217,22 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 /vault/lang/lang.ja.yaml | 日本語言語データ。
 /vault/lang/lang.ko.fe.yaml | フロントエンドの韓国語言語データ。
 /vault/lang/lang.ko.yaml | 韓国語言語データ。
+/vault/lang/lang.lv.fe.yaml | フロントエンドのラトビア語言語データ。
+/vault/lang/lang.lv.yaml | ラトビア語言語データ。
 /vault/lang/lang.nl.fe.yaml | フロントエンドのオランダ語言語データ。
 /vault/lang/lang.nl.yaml | オランダ語言語データ。
 /vault/lang/lang.no.fe.yaml | フロントエンドのノルウェー語言語データ。
 /vault/lang/lang.no.yaml | ノルウェー語言語データ。
+/vault/lang/lang.pl.fe.yaml | フロントエンドのポーランド語言語データ。
+/vault/lang/lang.pl.yaml | ポーランド語言語データ。
 /vault/lang/lang.pt.fe.yaml | フロントエンドのポルトガル語言語データ。
 /vault/lang/lang.pt.yaml | ポルトガル語言語データ。
 /vault/lang/lang.ru.fe.yaml | フロントエンドのロシア語言語データ。
 /vault/lang/lang.ru.yaml | ロシア語言語データ。
 /vault/lang/lang.sv.fe.yaml | フロントエンドのスウェーデン語言語データ。
 /vault/lang/lang.sv.yaml | スウェーデン語言語データ。
+/vault/lang/lang.ta.fe.yaml | フロントエンドのタミル語言語データ。
+/vault/lang/lang.ta.yaml | タミル語言語データ。
 /vault/lang/lang.th.fe.yaml | フロントエンドのタイ語言語データ。
 /vault/lang/lang.th.yaml | タイ語言語データ。
 /vault/lang/lang.tr.fe.yaml | フロントエンドのトルコ語言語データ。
@@ -1572,4 +1578,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０１９年８月１７日。
+最終アップデート：２０１９年９月６日。

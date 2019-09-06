@@ -219,16 +219,22 @@
 &nbsp; <div dir="rtl" style="display:inline">جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے کوریائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">کورین زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.yaml
+&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے لیٹوین زبان کے اعداد و شمار.</div> | /vault/lang/lang.lv.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">لیٹوین زبان کے اعداد و شمار.</div> | /vault/lang/lang.lv.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.yaml
+&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے پولش زبان کے اعداد و شمار.</div> | /vault/lang/lang.pl.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">پولش زبان کے اعداد و شمار.</div> | /vault/lang/lang.pl.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.yaml
+&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے تمل زبان کے اعداد و شمار.</div> | /vault/lang/lang.ta.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">تمل زبان کے اعداد و شمار.</div> | /vault/lang/lang.ta.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.yaml
 &nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.fe.yaml
@@ -1832,4 +1838,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 17 اگست 2019 (2019.08.17).</div>
+<div dir="rtl">آخری تازہ کاری: 6 ستمبر 2019 (2019.09.06).</div>

@@ -217,16 +217,22 @@ Fichier | Description
 /vault/lang/lang.ja.yaml | Données linguistiques en Japonaise.
 /vault/lang/lang.ko.fe.yaml | Données linguistiques en Coréenne pour l'accès frontal.
 /vault/lang/lang.ko.yaml | Données linguistiques en Coréenne.
+/vault/lang/lang.lv.fe.yaml | Données linguistiques en Lettone pour l'accès frontal.
+/vault/lang/lang.lv.yaml | Données linguistiques en Lettone.
 /vault/lang/lang.nl.fe.yaml | Données linguistiques en Néerlandaise pour l'accès frontal.
 /vault/lang/lang.nl.yaml | Données linguistiques en Néerlandaise.
 /vault/lang/lang.no.fe.yaml | Données linguistiques en Norvégienne pour l'accès frontal.
 /vault/lang/lang.no.yaml | Données linguistiques en Norvégienne.
+/vault/lang/lang.pl.fe.yaml | Données linguistiques en Polonaise pour l'accès frontal.
+/vault/lang/lang.pl.yaml | Données linguistiques en Polonaise.
 /vault/lang/lang.pt.fe.yaml | Données linguistiques en Portugaise pour l'accès frontal.
 /vault/lang/lang.pt.yaml | Données linguistiques en Portugaise.
 /vault/lang/lang.ru.fe.yaml | Données linguistiques en Russe pour l'accès frontal.
 /vault/lang/lang.ru.yaml | Données linguistiques en Russe.
 /vault/lang/lang.sv.fe.yaml | Données linguistiques en Suédois pour l'accès frontal.
 /vault/lang/lang.sv.yaml | Données linguistiques en Suédois.
+/vault/lang/lang.ta.fe.yaml | Données linguistiques en Tamoule pour l'accès frontal.
+/vault/lang/lang.ta.yaml | Données linguistiques en Tamoule.
 /vault/lang/lang.th.fe.yaml | Données linguistiques en Thai pour l'accès frontal.
 /vault/lang/lang.th.yaml | Données linguistiques en Thai.
 /vault/lang/lang.tr.fe.yaml | Données linguistiques en Turc pour l'accès frontal.
@@ -1573,4 +1579,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 17 Août 2019 (2019.08.17).
+Dernière mise à jour : 6 Septembre 2019 (2019.09.06).

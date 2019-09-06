@@ -217,16 +217,22 @@ File | Description
 /vault/lang/lang.ja.yaml | Japanese language data.
 /vault/lang/lang.ko.fe.yaml | Korean language data for the front-end.
 /vault/lang/lang.ko.yaml | Korean language data.
+/vault/lang/lang.lv.fe.yaml | Latvian language data for the front-end.
+/vault/lang/lang.lv.yaml | Latvian language data.
 /vault/lang/lang.nl.fe.yaml | Dutch language data for the front-end.
 /vault/lang/lang.nl.yaml | Dutch language data.
 /vault/lang/lang.no.fe.yaml | Norwegian language data for the front-end.
 /vault/lang/lang.no.yaml | Norwegian language data.
+/vault/lang/lang.pl.fe.yaml | Polish language data for the front-end.
+/vault/lang/lang.pl.yaml | Polish language data.
 /vault/lang/lang.pt.fe.yaml | Portuguese language data for the front-end.
 /vault/lang/lang.pt.yaml | Portuguese language data.
 /vault/lang/lang.ru.fe.yaml | Russian language data for the front-end.
 /vault/lang/lang.ru.yaml | Russian language data.
 /vault/lang/lang.sv.fe.yaml | Swedish language data for the front-end.
 /vault/lang/lang.sv.yaml | Swedish language data.
+/vault/lang/lang.ta.fe.yaml | Tamil language data for the front-end.
+/vault/lang/lang.ta.yaml | Tamil language data.
 /vault/lang/lang.th.fe.yaml | Thai language data for the front-end.
 /vault/lang/lang.th.yaml | Thai language data.
 /vault/lang/lang.tr.fe.yaml | Turkish language data for the front-end.
@@ -438,7 +444,7 @@ Value | Produces | Description
 - Disable front-end access? Front-end access can make CIDRAM more manageable, but can also be a potential security risk, too. It's recommended to manage CIDRAM via the back-end whenever possible, but front-end access is provided for when it isn't possible. Keep it disabled unless you need it. False = Enable front-end access; True = Disable front-end access [Default].
 
 ##### "max_login_attempts"
-- Maximum number of login attempts (front-end). Default = 5.
+- Maximum number of front-end login attempts. Default = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1587,4 +1593,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 17 August 2019 (2019.08.17).
+Last Updated: 6 September 2019 (2019.09.06).

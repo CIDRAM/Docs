@@ -217,16 +217,22 @@ File | Descrizione
 /vault/lang/lang.ja.yaml | Dati linguistici Giapponese.
 /vault/lang/lang.ko.fe.yaml | Dati linguistici Coreana per il front-end.
 /vault/lang/lang.ko.yaml | Dati linguistici Coreana.
+/vault/lang/lang.lv.fe.yaml | Dati linguistici Lettone per il front-end.
+/vault/lang/lang.lv.yaml | Dati linguistici Lettone.
 /vault/lang/lang.nl.fe.yaml | Dati linguistici Olandese per il front-end.
 /vault/lang/lang.nl.yaml | Dati linguistici Olandese.
 /vault/lang/lang.no.fe.yaml | Dati linguistici Norvegese per il front-end.
 /vault/lang/lang.no.yaml | Dati linguistici Norvegese.
+/vault/lang/lang.pl.fe.yaml | Dati linguistici Polacca per il front-end.
+/vault/lang/lang.pl.yaml | Dati linguistici Polacca.
 /vault/lang/lang.pt.fe.yaml | Dati linguistici Portoghese per il front-end.
 /vault/lang/lang.pt.yaml | Dati linguistici Portoghese.
 /vault/lang/lang.ru.fe.yaml | Dati linguistici Russa per il front-end.
 /vault/lang/lang.ru.yaml | Dati linguistici Russa.
 /vault/lang/lang.sv.fe.yaml | Dati linguistici Svedese per il front-end.
 /vault/lang/lang.sv.yaml | Dati linguistici Svedese.
+/vault/lang/lang.ta.fe.yaml | Dati linguistici Tamil per il front-end.
+/vault/lang/lang.ta.yaml | Dati linguistici Tamil.
 /vault/lang/lang.th.fe.yaml | Dati linguistici Tailandese per il front-end.
 /vault/lang/lang.th.yaml | Dati linguistici Tailandese.
 /vault/lang/lang.tr.fe.yaml | Dati linguistici Turco per il front-end.
@@ -428,7 +434,7 @@ Valore | Produce | Descrizione
 - Disabilita l'accesso front-end? L'accesso front-end può rendere CIDRAM più gestibile, ma può anche essere un potenziale rischio per la sicurezza. Si consiglia di gestire CIDRAM attraverso il back-end, quando possibile, ma l'accesso front-end è previsto per quando non è possibile. Mantenerlo disabilitato tranne se hai bisogno. False = Abilita l'accesso front-end; True = Disabilita l'accesso front-end [Predefinito].
 
 ##### "max_login_attempts"
-- Numero massimo di tentativi di accesso (front-end). Predefinito = 5.
+- Numero massimo di tentativi di accesso al front-end. Predefinito = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1572,4 +1578,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 17 Agosto 2019 (2019.08.17).
+Ultimo Aggiornamento: 6 Settembre 2019 (2019.09.06).

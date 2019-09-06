@@ -219,16 +219,22 @@
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية.</div> | /vault/lang/lang.ja.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية لfront-end.</div> | /vault/lang/lang.ko.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية.</div> | /vault/lang/lang.ko.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللاتفية لfront-end.</div> | /vault/lang/lang.lv.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللاتفية.</div> | /vault/lang/lang.lv.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية لfront-end.</div> | /vault/lang/lang.nl.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية.</div> | /vault/lang/lang.nl.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة لfront-end.</div> | /vault/lang/lang.no.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة.</div> | /vault/lang/lang.no.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البولندية لfront-end.</div> | /vault/lang/lang.pl.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البولندية.</div> | /vault/lang/lang.pl.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية لfront-end.</div> | /vault/lang/lang.pt.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية.</div> | /vault/lang/lang.pt.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية لfront-end.</div> | /vault/lang/lang.ru.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية.</div> | /vault/lang/lang.ru.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية لfront-end.</div> | /vault/lang/lang.sv.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية.</div> | /vault/lang/lang.sv.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التاميل لfront-end.</div> | /vault/lang/lang.ta.fe.yaml
+&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التاميل.</div> | /vault/lang/lang.ta.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية لfront-end.</div> | /vault/lang/lang.th.fe.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية.</div> | /vault/lang/lang.th.yaml
 &nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية لfront-end.</div> | /vault/lang/lang.tr.fe.yaml
@@ -1832,4 +1838,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 17 أغسطس 2019 (2019.08.17).</div>
+<div dir="rtl">آخر تحديث: 6 سبتمبر 2019 (2019.09.06).</div>

@@ -217,16 +217,22 @@ Arquivo | Descrição
 /vault/lang/lang.ja.yaml | Dados lingüísticos Japonês.
 /vault/lang/lang.ko.fe.yaml | Dados lingüísticos Coreano para o front-end.
 /vault/lang/lang.ko.yaml | Dados lingüísticos Coreano.
+/vault/lang/lang.lv.fe.yaml | Dados lingüísticos Letão para o front-end.
+/vault/lang/lang.lv.yaml | Dados lingüísticos Letão.
 /vault/lang/lang.nl.fe.yaml | Dados lingüísticos Holandês para o front-end.
 /vault/lang/lang.nl.yaml | Dados lingüísticos Holandês.
 /vault/lang/lang.no.fe.yaml | Dados lingüísticos Norueguês para o front-end.
 /vault/lang/lang.no.yaml | Dados lingüísticos Norueguês.
+/vault/lang/lang.pl.fe.yaml | Dados lingüísticos Polonês para o front-end.
+/vault/lang/lang.pl.yaml | Dados lingüísticos Polonês.
 /vault/lang/lang.pt.fe.yaml | Dados lingüísticos Português para o front-end.
 /vault/lang/lang.pt.yaml | Dados lingüísticos Português.
 /vault/lang/lang.ru.fe.yaml | Dados lingüísticos Russo para o front-end.
 /vault/lang/lang.ru.yaml | Dados lingüísticos Russo.
 /vault/lang/lang.sv.fe.yaml | Dados lingüísticos Sueco para o front-end.
 /vault/lang/lang.sv.yaml | Dados lingüísticos Sueco.
+/vault/lang/lang.ta.fe.yaml | Dados lingüísticos Tâmil para o front-end.
+/vault/lang/lang.ta.yaml | Dados lingüísticos Tâmil.
 /vault/lang/lang.th.fe.yaml | Dados lingüísticos Tailandês para o front-end.
 /vault/lang/lang.th.yaml | Dados lingüísticos Tailandês.
 /vault/lang/lang.tr.fe.yaml | Dados lingüísticos Turco para o front-end.
@@ -428,7 +434,7 @@ Valor | Produz | Descrição
 - Desativar o acesso front-end? Acesso front-end pode fazer CIDRAM mais manejável, mas também pode ser um risco de segurança potencial, também. É recomendado para gerenciar CIDRAM através do back-end, sempre que possível, mas o acesso front-end é proporcionada para quando não é possível. Mantê-lo desativado, a menos que você precisar. False = Ativar o acesso front-end; True = Desativar o acesso front-end [Padrão].
 
 ##### "max_login_attempts"
-- Número máximo de tentativas de login (front-end). Padrão = 5.
+- Número máximo de tentativas de login ao front-end. Padrão = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1569,4 +1575,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 17 de Agosto de 2019 (2019.08.17).
+Última Atualização: 6 de Setembro de 2019 (2019.09.06).

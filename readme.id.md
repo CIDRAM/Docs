@@ -217,16 +217,22 @@ Data | Deskripsi
 /vault/lang/lang.ja.yaml | File Bahasa Jepang.
 /vault/lang/lang.ko.fe.yaml | File Bahasa Korea untuk bagian depan.
 /vault/lang/lang.ko.yaml | File Bahasa Korea.
+/vault/lang/lang.lv.fe.yaml | File Bahasa Latvia untuk bagian depan.
+/vault/lang/lang.lv.yaml | File Bahasa Latvia.
 /vault/lang/lang.nl.fe.yaml | File Bahasa Belanda untuk bagian depan.
 /vault/lang/lang.nl.yaml | File Bahasa Belanda.
 /vault/lang/lang.no.fe.yaml | File Bahasa Norwegia untuk bagian depan.
 /vault/lang/lang.no.yaml | File Bahasa Norwegia.
+/vault/lang/lang.pl.fe.yaml | File Bahasa Polandia untuk bagian depan.
+/vault/lang/lang.pl.yaml | File Bahasa Polandia.
 /vault/lang/lang.pt.fe.yaml | File Bahasa Portugis untuk bagian depan.
 /vault/lang/lang.pt.yaml | File Bahasa Portugis.
 /vault/lang/lang.ru.fe.yaml | File Bahasa Rusia untuk bagian depan.
 /vault/lang/lang.ru.yaml | File Bahasa Rusia.
 /vault/lang/lang.sv.fe.yaml | File Bahasa Swedia untuk bagian depan.
 /vault/lang/lang.sv.yaml | File Bahasa Swedia.
+/vault/lang/lang.ta.fe.yaml | File Bahasa Tamil untuk bagian depan.
+/vault/lang/lang.ta.yaml | File Bahasa Tamil.
 /vault/lang/lang.th.fe.yaml | File Bahasa Thailand untuk bagian depan.
 /vault/lang/lang.th.yaml | File Bahasa Thailand.
 /vault/lang/lang.tr.fe.yaml | File Bahasa Turki untuk bagian depan.
@@ -428,7 +434,7 @@ Nilai | Menghasilkan | Deskripsi
 - Menonaktifkan akses bagian depan? Akses bagian depan dapat membuat CIDRAM lebih mudah dikelola, tapi juga dapat menjadi potensial resiko keamanan. Itu direkomendasi untuk mengelola CIDRAM melalui bagian belakang bila mungkin, tapi akses bagian depan yang disediakan untuk saat itu tidak mungkin. Memilikinya dinonaktifkan kecuali jika Anda membutuhkannya. False = Mengaktifkan akses bagian depan; True = Menonaktifkan akses bagian depan [Default].
 
 ##### "max_login_attempts"
-- Jumlah maksimum upaya untuk memasukkan (bagian depan). Default = 5.
+- Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1567,4 +1573,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 17 Agustus 2019 (2019.08.17).
+Terakhir Diperbarui: 6 September 2019 (2019.09.06).

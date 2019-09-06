@@ -217,16 +217,22 @@ Bestand | Beschrijving
 /vault/lang/lang.ja.yaml | Japanse lokalisatie.
 /vault/lang/lang.ko.fe.yaml | Koreaanse lokalisatie voor het frontend.
 /vault/lang/lang.ko.yaml | Koreaanse lokalisatie.
+/vault/lang/lang.lv.fe.yaml | Letse lokalisatie voor het frontend.
+/vault/lang/lang.lv.yaml | Letse lokalisatie.
 /vault/lang/lang.nl.fe.yaml | Nederlandse lokalisatie voor het frontend.
 /vault/lang/lang.nl.yaml | Nederlandse lokalisatie.
 /vault/lang/lang.no.fe.yaml | Noorse lokalisatie voor het frontend.
 /vault/lang/lang.no.yaml | Noorse lokalisatie.
+/vault/lang/lang.pl.fe.yaml | Poolse lokalisatie voor het frontend.
+/vault/lang/lang.pl.yaml | Poolse lokalisatie.
 /vault/lang/lang.pt.fe.yaml | Portugees lokalisatie voor het frontend.
 /vault/lang/lang.pt.yaml | Portugees lokalisatie.
 /vault/lang/lang.ru.fe.yaml | Russische lokalisatie voor het frontend.
 /vault/lang/lang.ru.yaml | Russische lokalisatie.
 /vault/lang/lang.sv.fe.yaml | Zweedse lokalisatie voor het frontend.
 /vault/lang/lang.sv.yaml | Zweedse lokalisatie.
+/vault/lang/lang.ta.fe.yaml | Tamil lokalisatie voor het frontend.
+/vault/lang/lang.ta.yaml | Tamil lokalisatie.
 /vault/lang/lang.th.fe.yaml | Thaise lokalisatie voor het frontend.
 /vault/lang/lang.th.yaml | Thaise lokalisatie.
 /vault/lang/lang.tr.fe.yaml | Turks lokalisatie voor het frontend.
@@ -428,7 +434,7 @@ Waarde | Produceert | Beschrijving
 - Uitschakelen frontend toegang? Frontend toegang kan CIDRAM beter beheersbaar te maken, maar kan ook een potentieel gevaar voor de veiligheid zijn. Het is aan te raden om CIDRAM te beheren via het backend wanneer mogelijk, maar frontend toegang is hier voorzien voor wanneer het niet mogelijk is. Hebben het uitgeschakeld tenzij u het nodig hebt. False = Inschakelen frontend toegang; True = Uitschakelen frontend toegang [Standaard].
 
 ##### "max_login_attempts"
-- Maximum aantal inlogpogingen (frontend). Standaard = 5.
+- Maximum aantal frontend-inlogpogingen. Standaard = 5.
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
@@ -1575,4 +1581,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 17 Augustus 2019 (2019.08.17).
+Laatste Bijgewerkt: 6 September 2019 (2019.09.06).
