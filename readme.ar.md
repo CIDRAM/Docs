@@ -139,172 +139,327 @@
 
 ### <div dir="rtl">٥. <a name="SECTION5"></a>الملفاتالموجودةفيهذهالحزمة</div>
 
-<div dir="rtl">فيما يلي قائمة بجميع الملفات التي ينبغي أن تدرج في النسخة المحفوظة من هذا البرنامج النصي عند تحميله، أي الملفات التي يمكن أن يحتمل أن تكون نشأت نتيجة استعمالك لهذا البرنامج النصي، بالإضافة إلى وصفا موجزا لدور و وظيفة كل ملف.<br /><br /></div>
-
-<div dir="rtl">تنطبق هذه المعلومات على أحدث إصدار v2، وقد لا تكون ذات صلة بالإصدارات.<br /><br /></div>
-
-&nbsp; <div dir="rtl" style="display:inline">الوصف</div> | <div dir="rtl" style="display:inline">الملف</div>
-----|----
-&nbsp; <div dir="rtl" style="display:inline">دليل يحتوي على العديد من الملفات المستخدمة لاختبار CI (التكامل المستمر).</div> | /tests/
-&nbsp; <div dir="rtl" style="display:inline">دليل <code dir="ltr">/vault/</code> (يحتوي على ملفات متنوعة).</div> | /vault/
-&nbsp; <div dir="rtl" style="display:inline">مجلد الطبقات. يحتوي على ملفات فئة مختلفة يستخدمها CIDRAM.</div> | /vault/classes/
-&nbsp; <div dir="rtl" style="display:inline">مجلد الطبقات. يحتوي على ملفات فئة مختلفة يستخدمها CIDRAM.</div> | /vault/classes/Maikuolan/
-&nbsp; <div dir="rtl" style="display:inline">معالج ذاكرة تخزين مؤقت بسيط وموحد.</div> | /vault/classes/Maikuolan/Cache.php
-&nbsp; <div dir="rtl" style="display:inline">معالج سلسلة معقدة.</div> | /vault/classes/Maikuolan/ComplexStringHandler.php
-&nbsp; <div dir="rtl" style="display:inline">تأخر ملف IO الطبقة.</div> | /vault/classes/Maikuolan/DelayedIO.php
-&nbsp; <div dir="rtl" style="display:inline">"Demojibakefier".</div> | /vault/classes/Maikuolan/Demojibakefier.php
-&nbsp; <div dir="rtl" style="display:inline">معالج L10N.</div> | /vault/classes/Maikuolan/L10N.php
-&nbsp; <div dir="rtl" style="display:inline">عدد المنسق.</div> | /vault/classes/Maikuolan/NumberFormatter.php
-&nbsp; <div dir="rtl" style="display:inline">معالج YAML.</div> | /vault/classes/Maikuolan/YAML.php
-&nbsp; <div dir="rtl" style="display:inline">IP aggregator.</div> | /vault/classes/Aggregator.php
-&nbsp; <div dir="rtl" style="display:inline">تقرير أوركسترا.</div> | /vault/classes/Reporter.php
-&nbsp; <div dir="rtl" style="display:inline">الأصول front-end.</div> | /vault/fe_assets/
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML المستخدم عند طلب المستخدم للحصول على كود 2FA.</div> | /vault/fe_assets/_2fa.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الحسابات.</div> | /vault/fe_assets/_accounts.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الحسابات.</div> | /vault/fe_assets/_accounts_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة القواعد المساعدة.</div> | /vault/fe_assets/_aux.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة بيانات ذاكرة التخزين المؤقت.</div> | /vault/fe_assets/_cache.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لآلة حاسبة CIDR.</div> | /vault/fe_assets/_cidr_calc.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لآلة حاسبة CIDR.</div> | /vault/fe_assets/_cidr_calc_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة التكوين.</div> | /vault/fe_assets/_config.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة التكوين.</div> | /vault/fe_assets/_config_row.html
-&nbsp; <div dir="rtl" style="display:inline">قالب HTML لمدير الملفات.</div> | /vault/fe_assets/_files.html
-&nbsp; <div dir="rtl" style="display:inline">قالب HTML لمدير الملفات.</div> | /vault/fe_assets/_files_edit.html
-&nbsp; <div dir="rtl" style="display:inline">قالب HTML لمدير الملفات.</div> | /vault/fe_assets/_files_rename.html
-&nbsp; <div dir="rtl" style="display:inline">قالب HTML لمدير الملفات.</div> | /vault/fe_assets/_files_row.html
-&nbsp; <div dir="rtl" style="display:inline">قالب HTML لأداة إصلاح ملفات التوقيع.</div> | /vault/fe_assets/_fixer.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الرئيسية.</div> | /vault/fe_assets/_home.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لIP aggregator.</div> | /vault/fe_assets/_ip_aggregator.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لصفحة الاختبار IP.</div> | /vault/fe_assets/_ip_test.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لصفحة الاختبار IP.</div> | /vault/fe_assets/_ip_test_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لصفحة التتبع IP.</div> | /vault/fe_assets/_ip_tracking.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لصفحة التتبع IP.</div> | /vault/fe_assets/_ip_tracking_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة تسجيل الدخول.</div> | /vault/fe_assets/_login.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة السجلات.</div> | /vault/fe_assets/_logs.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end ارتباطات التنقل، يستخدم لهؤلاء مع وصول كامل.</div> | /vault/fe_assets/_nav_complete_access.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end ارتباطات التنقل، يستخدم لهؤلاء مع سجلات الوصول فقط.</div> | /vault/fe_assets/_nav_logs_access_only.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الجداول الشبكة الفرعية.</div> | /vault/fe_assets/_range.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الجداول الشبكة الفرعية.</div> | /vault/fe_assets/_range_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لقائمة الأقسام.</div> | /vault/fe_assets/_sections.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة الإحصاء.</div> | /vault/fe_assets/_statistics.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة التحديثات.</div> | /vault/fe_assets/_updates.html
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML لfront-end صفحة التحديثات.</div> | /vault/fe_assets/_updates_row.html
-&nbsp; <div dir="rtl" style="display:inline">ملف CSS (صفحات الطرز المتراصة) لfront-end.</div> | /vault/fe_assets/frontend.css
-&nbsp; <div dir="rtl" style="display:inline">قاعدة البيانات لfront-end (يحتوي على معلومات الحسابات، الجلسات، وذاكرة التخزين المؤقت؛ خلق فقط اذا front-end يتم تمكين واستخدامها).</div> | /vault/fe_assets/frontend.dat
-&nbsp; <div dir="rtl" style="display:inline">يتم توليدها كآلية سلامة عند الحاجة.</div> | /vault/fe_assets/frontend.dat.safety
-&nbsp; <div dir="rtl" style="display:inline">ملف قالب HTML الرئيسي لfront-end.</div> | /vault/fe_assets/frontend.html
-&nbsp; <div dir="rtl" style="display:inline">الرموز معالج (التي يستخدمها مدير الملفات الأمامية).</div> | /vault/fe_assets/icons.php
-&nbsp; <div dir="rtl" style="display:inline">بالنقاط معالج (التي يستخدمها مدير الملفات الأمامية).</div> | /vault/fe_assets/pips.php
-&nbsp; <div dir="rtl" style="display:inline">يحتوي على بيانات JavaScript front-end.</div> | /vault/fe_assets/scripts.js
-&nbsp; <div dir="rtl" style="display:inline">يحتوي على بيانات اللغة لـ CIDRAM.</div> | /vault/lang/
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية لfront-end.</div> | /vault/lang/lang.ar.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة العربية.</div> | /vault/lang/lang.ar.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية لfront-end.</div> | /vault/lang/lang.bn.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البنغالية.</div> | /vault/lang/lang.bn.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية لfront-end.</div> | /vault/lang/lang.de.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الألمانية.</div> | /vault/lang/lang.de.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية لfront-end.</div> | /vault/lang/lang.en.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الإنجليزية.</div> | /vault/lang/lang.en.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية لfront-end.</div> | /vault/lang/lang.es.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاسبانية.</div> | /vault/lang/lang.es.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية لfront-end.</div> | /vault/lang/lang.fr.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفرنسية.</div> | /vault/lang/lang.fr.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية لfront-end.</div> | /vault/lang/lang.hi.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهندية.</div> | /vault/lang/lang.hi.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية لfront-end.</div> | /vault/lang/lang.id.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الاندونيسية.</div> | /vault/lang/lang.id.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية لfront-end.</div> | /vault/lang/lang.it.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الايطالية.</div> | /vault/lang/lang.it.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية لfront-end.</div> | /vault/lang/lang.ja.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اليابانية.</div> | /vault/lang/lang.ja.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية لfront-end.</div> | /vault/lang/lang.ko.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الكورية.</div> | /vault/lang/lang.ko.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللاتفية لfront-end.</div> | /vault/lang/lang.lv.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللاتفية.</div> | /vault/lang/lang.lv.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية لfront-end.</div> | /vault/lang/lang.nl.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الهولندية.</div> | /vault/lang/lang.nl.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة لfront-end.</div> | /vault/lang/lang.no.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة النرويجيةة.</div> | /vault/lang/lang.no.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البولندية لfront-end.</div> | /vault/lang/lang.pl.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البولندية.</div> | /vault/lang/lang.pl.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية لfront-end.</div> | /vault/lang/lang.pt.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة البرتغالية.</div> | /vault/lang/lang.pt.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية لfront-end.</div> | /vault/lang/lang.ru.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الروسية.</div> | /vault/lang/lang.ru.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية لfront-end.</div> | /vault/lang/lang.sv.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة السويدية.</div> | /vault/lang/lang.sv.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التاميل لfront-end.</div> | /vault/lang/lang.ta.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التاميل.</div> | /vault/lang/lang.ta.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية لfront-end.</div> | /vault/lang/lang.th.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة التايلاندية.</div> | /vault/lang/lang.th.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية لfront-end.</div> | /vault/lang/lang.tr.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة اللغة التركية.</div> | /vault/lang/lang.tr.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية لfront-end.</div> | /vault/lang/lang.ur.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الأردية.</div> | /vault/lang/lang.ur.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية لfront-end.</div> | /vault/lang/lang.vi.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الفيتنامية.</div> | /vault/lang/lang.vi.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية) لfront-end.</div> | /vault/lang/lang.zh-tw.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (التقليدية).</div> | /vault/lang/lang.zh-tw.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة) لfront-end.</div> | /vault/lang/lang.zh.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملفات اللغة الصينية (المبسطة).</div> | /vault/lang/lang.zh.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملف وصول النص التشعبي (في هذه الحالة، لحماية الملفات الحساسة التي تنتمي إلى البرنامج من أن يتم الوصول إليها عن طريق مصادر غير مصرح لها).</div> | /vault/.htaccess
-&nbsp; <div dir="rtl" style="display:inline">المستخدمة من قبل Travis CI للاختبار (غير مطلوب لتشغيل سليم للبرنامج).</div> | /vault/.travis.yml
-&nbsp; <div dir="rtl" style="display:inline">يحتوي على قواعد مساعدة. غير المدرجة في الحزمة. يتم توليدها بواسطة صفحة القواعد المساعدة.</div> | /vault/auxiliary.yaml
-&nbsp; <div dir="rtl" style="display:inline">بيانات ذاكرة التخزين المؤقت.</div> | /vault/cache.dat
-&nbsp; <div dir="rtl" style="display:inline">بيانات القنوات البديلة لطلبات curl الفاشلة.</div> | /vault/channels.yaml
-&nbsp; <div dir="rtl" style="display:inline">ملف البيانات الوصفية لقوائم Macmathan الاختيارية؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/cidramblocklists.dat
-&nbsp; <div dir="rtl" style="display:inline">حدات ملف البيانات الوصفية؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/components.dat
-&nbsp; <div dir="rtl" style="display:inline">ملف التكوين. يحتوي على جميع خيارات تهيئة CIDRAM، يخبرك ماذا يفعل وكيف يعمل بشكل صحيح (إعادة تسمية لتفعيل)!</div> | /vault/config.ini.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">معالج التكوين.</div> | /vault/config.php
-&nbsp; <div dir="rtl" style="display:inline">ملف التخلف التكوين؛ يحتوي على قيم التكوين الافتراضي لCIDRAM.</div> | /vault/config.yaml
-&nbsp; <div dir="rtl" style="display:inline">معالج front-end.</div> | /vault/frontend.php
-&nbsp; <div dir="rtl" style="display:inline">ملف وظائف front-end.</div> | /vault/frontend_functions.php
-&nbsp; <div dir="rtl" style="display:inline">ملف وظائف (ضروري).</div> | /vault/functions.php
-&nbsp; <div dir="rtl" style="display:inline">يحتوي على قائمة من علامات الرقم المقبولة (وثيقة الصلة ميزة اختبار reCAPTCHA؛ فقط إنشاء إذا تم تمكين ميزة اختبار reCAPTCHA).</div> | /vault/hashes.dat
-&nbsp; <div dir="rtl" style="display:inline">تستخدم لتحديد أقسام توقيع التي CIDRAM يجب تجاهل.</div> | /vault/ignore.dat
-&nbsp; <div dir="rtl" style="display:inline">يحتوي على قائمة من الالتفافية IP (وثيقة الصلة ميزة اختبار reCAPTCHA؛ فقط إنشاء إذا تم تمكين ميزة اختبار reCAPTCHA).</div> | /vault/ipbypass.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv4 ملف التوقيعات (نقاط الوصول غير البشرية و الخدمات السحابية غير المرغوب فيها).</div> | /vault/ipv4.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv4 ملف التوقيعات (bogon/المريخ CIDRs).</div> | /vault/ipv4_bogons.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv4 ملف التوقيعات المخصصة (إعادة تسمية لتفعيل).</div> | /vault/ipv4_custom.dat.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv4 ملف التوقيعات (مزودي خدمات الإنترنت خطيرة ومزعجة).</div> | /vault/ipv4_isps.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv4 ملف التوقيعات (CIDRs الوكلاء، والشبكات الخاصة الإفتراضية، وغيرها من الخدمات غير المرغوب فيها المتنوعة).</div> | /vault/ipv4_other.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv6 ملف التوقيعات (نقاط الوصول غير البشرية و الخدمات السحابية غير المرغوب فيها).</div> | /vault/ipv6.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv6 ملف التوقيعات (bogon/المريخ CIDRs).</div> | /vault/ipv6_bogons.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv6 ملف التوقيعات المخصصة (إعادة تسمية لتفعيل).</div> | /vault/ipv6_custom.dat.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv6 ملف التوقيعات (مزودي خدمات الإنترنت خطيرة ومزعجة).</div> | /vault/ipv6_isps.dat
-&nbsp; <div dir="rtl" style="display:inline">عناوين IPv6 ملف التوقيعات (CIDRs الوكلاء، والشبكات الخاصة الإفتراضية، وغيرها من الخدمات غير المرغوب فيها المتنوعة).</div> | /vault/ipv6_other.dat
-&nbsp; <div dir="rtl" style="display:inline">ملف لغة.</div> | /vault/lang.php
-&nbsp; <div dir="rtl" style="display:inline">ملف البيانات الوصفية وحدات؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/modules.dat
-&nbsp; <div dir="rtl" style="display:inline">الناتج معالج.</div> | /vault/outgen.php
-&nbsp; <div dir="rtl" style="display:inline">وحدة reCAPTCHA.</div> | /vault/recaptcha.php
-&nbsp; <div dir="rtl" style="display:inline">ملف قواعد العرف لAS6939.</div> | /vault/rules_as6939.php
-&nbsp; <div dir="rtl" style="display:inline">ملف قواعد العرف لSoft Layer.</div> | /vault/rules_softlayer.php
-&nbsp; <div dir="rtl" style="display:inline">ملف قواعد العرف لبعض CIDRs محددة.</div> | /vault/rules_specific.php
-&nbsp; <div dir="rtl" style="display:inline">ملف الملح (المستخدمة من قبل بعض وظائف هامشية؛ فقط تم إنشاؤها إذا لزم الأمر).</div> | /vault/salt.dat
-&nbsp; <div dir="rtl" style="display:inline">ملف القالب. قالب لمخرجات HTML التي تنتجها CIDRAM لرسالة حظر تحميل الملفات (الرسالة التي يراها القائم بالتحميل).</div> | /vault/template_custom.html
-&nbsp; <div dir="rtl" style="display:inline">ملف القالب. قالب لمخرجات HTML التي تنتجها CIDRAM لرسالة حظر تحميل الملفات (الرسالة التي يراها القائم بالتحميل).</div> | /vault/template_default.html
-&nbsp; <div dir="rtl" style="display:inline">ملف البيانات الوصفية للسمات؛ المستخدمة من قبل صفحة التحديثات.</div> | /vault/themes.dat
-&nbsp; <div dir="rtl" style="display:inline">بيانات التحقق لمحركات البحث والشبكات الاجتماعية.</div> | /vault/verification.yaml
-&nbsp; <div dir="rtl" style="display:inline">أ ملف المشروع GitHub (غير مطلوب لتشغيل سليم للبرنامج).</div> | /.gitattributes
-&nbsp; <div dir="rtl" style="display:inline">سجل للتغييرات التي أجريت على البرنامج بين التحديثات المختلفة (غير مطلوب لتشغيل سليم للبرنامج).</div> | /Changelog.txt
-&nbsp; <div dir="rtl" style="display:inline">معلومات Composer/Packagist (غير مطلوب لتشغيل سليم للبرنامج).</div> | /composer.json
-&nbsp; <div dir="rtl" style="display:inline">معلومات حول كيفية المساهمة في المشروع.</div> | /CONTRIBUTING.md
-&nbsp; <div dir="rtl" style="display:inline">نسخة من GNU/GPLv2 رخصة (غير مطلوب لتشغيل سليم للبرنامج).</div> | /LICENSE.txt
-&nbsp; <div dir="rtl" style="display:inline">الملف المحمل (المسئول عن التحميل): يحمل البرنامج الرئيسي و التحديث و، إلى آخره. هذا هو الذي من المفترض أن تكون على علاقة به و تقوم بتركيبه (أساسي)!</div> | /loader.php
-&nbsp; <div dir="rtl" style="display:inline">معلومات موجزة المشروع.</div> | /README.md
-&nbsp; <div dir="rtl" style="display:inline">ملف تكوين ASP.NET (في هذه الحالة، لحماية دليل /vault من أن يتم الوصول إليه بواسطة مصادر غير مأذون لها في حالة إذا ما تم تثبيت البرنامج النصي على ملقم يستند إلى تقنيات ASP.NET</div> | /web.config
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### <div dir="rtl">٦. <a name="SECTION6"></a>خياراتالتكوين/التهيئة</div>
+
 <div dir="rtl">وفيما يلي قائمة من المتغيرات الموجودة في ملف تكوين "config.ini"، بالإضافة إلى وصف الغرض منه و وظيفته.<br /><br /></div>
 
-[general](#general-التصنيف) | [signatures](#signatures-التصنيف) | [recaptcha](#recaptcha-التصنيف) | [legal](#legal-التصنيف)
---:|--:|--:|--:
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-التصنيف) | [PHPMailer](#phpmailer-التصنيف) | [rate_limiting](#rate_limiting-التصنيف) | [supplementary_cache_options](#supplementary_cache_options-التصنيف)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### <div dir="rtl">"general" (التصنيف)<br /></div>
 <div dir="rtl">التكوين العام لـ CIDRAM.<br /><br /></div>
@@ -333,6 +488,17 @@
  logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'
  logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'
 ```
+
+##### <div dir="rtl">"error_log"<br /></div>
+<div dir="rtl"><ul>
+ <li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li>
+</ul></div>
+
+##### <div dir="rtl">"error_log_stages"<br /></div>
+<div dir="rtl"><ul>
+ <li>قائمة المراحل في سلسلة التنفيذ التي بموجبها يجب تسجيل أي أخطاء تم إنشاؤها.</li>
+ <li><em>افتراضي: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
+</ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
 <div dir="rtl"><ul>
@@ -1838,4 +2004,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 6 سبتمبر 2019 (2019.09.06).</div>
+<div dir="rtl">آخر تحديث: 23 سبتمبر 2019 (2019.09.23).</div>

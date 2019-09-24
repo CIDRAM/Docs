@@ -139,172 +139,334 @@
 
 ### <div dir="rtl">٥. <a name="SECTION5"></a>فائل اس پیکیج میں شامل</div>
 
-<div dir="rtl">مندرجہ ذیل اس سکرپٹ کے ذخیرہ کردہ کاپی میں شامل کیا گیا ہے کہ آپ ان فائلوں کے مقصد کی ایک مختصر وضاحت کے ساتھ ساتھ، یہ ڈاؤن لوڈ، جب تمام فائلوں کی ایک فہرست ہے.<br /><br /></div>
-
-<div dir="rtl">یہ معلومات سب سے حالیہ v2 رہائی پر لاگو ہوتا ہے، اور شاید دوسرے ورژن یا ریلیزز کے لئے اتنی مناسب نہیں ہوسکتی ہے.<br /><br /></div>
-
-&nbsp; <div dir="rtl" style="display:inline">تفصیل</div> | <div dir="rtl" style="display:inline">فائل</div>
-----|----
-&nbsp; <div dir="rtl" style="display:inline">"CI" کیلئے استعمال کردہ فائلوں پر مشتمل ہے.</div> | /tests/
-&nbsp; <div dir="rtl" style="display:inline">والٹ ڈائریکٹری (مختلف فائلوں پر مشتمل ہے).</div> | /vault/
-&nbsp; <div dir="rtl" style="display:inline">کلاس ڈائرکٹری. CIDRAM کی طرف سے استعمال کیا جاتا مختلف طبقات پر مشتمل ہے.</div> | /vault/classes/
-&nbsp; <div dir="rtl" style="display:inline">کلاس ڈائرکٹری. CIDRAM کی طرف سے استعمال کیا جاتا مختلف طبقات پر مشتمل ہے.</div> | /vault/classes/Maikuolan/
-&nbsp; <div dir="rtl" style="display:inline">ایک سادہ، متحد کیش ہینڈلر.</div> | /vault/classes/Maikuolan/Cache.php
-&nbsp; <div dir="rtl" style="display:inline">کمپلیکس تار ہینڈلر.</div> | /vault/classes/Maikuolan/ComplexStringHandler.php
-&nbsp; <div dir="rtl" style="display:inline">تاخیر سے فائل IO کلاس.</div> | /vault/classes/Maikuolan/DelayedIO.php
-&nbsp; <div dir="rtl" style="display:inline">"Demojibakefier".</div> | /vault/classes/Maikuolan/Demojibakefier.php
-&nbsp; <div dir="rtl" style="display:inline">L10N ہینڈلر.</div> | /vault/classes/Maikuolan/L10N.php
-&nbsp; <div dir="rtl" style="display:inline">نمبر فارمیٹر.</div> | /vault/classes/Maikuolan/NumberFormatter.php
-&nbsp; <div dir="rtl" style="display:inline">YAML ہینڈلر.</div> | /vault/classes/Maikuolan/YAML.php
-&nbsp; <div dir="rtl" style="display:inline">IP مجموعی طور پر.</div> | /vault/classes/Aggregator.php
-&nbsp; <div dir="rtl" style="display:inline">آرکسٹریٹر کی اطلاع دیں.</div> | /vault/classes/Reporter.php
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے اثاثے.</div> | /vault/fe_assets/
-&nbsp; <div dir="rtl" style="display:inline">صارف کو 2FA کوڈ کے لئے پوچھتے وقت ایک HTML ٹیمپلیٹ استعمال کیا جاتا ہے.</div> | /vault/fe_assets/_2fa.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اکاؤنٹس صفحہ.</div> | /vault/fe_assets/_accounts.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اکاؤنٹس صفحہ.</div> | /vault/fe_assets/_accounts_row.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ایک HTML سانچے اضافی قواعد صفحہ.</div> | /vault/fe_assets/_aux.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کیش ڈیٹا صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_cache.html
-&nbsp; <div dir="rtl" style="display:inline">CIDR کیلکولیٹر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_cidr_calc.html
-&nbsp; <div dir="rtl" style="display:inline">CIDR کیلکولیٹر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_cidr_calc_row.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں ترتیب کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_config.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں ترتیب کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_config_row.html
-&nbsp; <div dir="rtl" style="display:inline">فائل مینیجر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_files.html
-&nbsp; <div dir="rtl" style="display:inline">فائل مینیجر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_files_edit.html
-&nbsp; <div dir="rtl" style="display:inline">فائل مینیجر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_files_rename.html
-&nbsp; <div dir="rtl" style="display:inline">فائل مینیجر کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_files_row.html
-&nbsp; <div dir="rtl" style="display:inline">دستخط فائل مرمت کا آلہ لئے ایک HTML سانچے.</div> | /vault/fe_assets/_fixer.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے ہوم پیج کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_home.html
-&nbsp; <div dir="rtl" style="display:inline">IP مجموعی طور پر کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_ip_aggregator.html
-&nbsp; <div dir="rtl" style="display:inline">IP ٹیسٹ کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_ip_test.html
-&nbsp; <div dir="rtl" style="display:inline">IP ٹیسٹ کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_ip_test_row.html
-&nbsp; <div dir="rtl" style="display:inline">IP باخبر رہنے کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_ip_tracking.html
-&nbsp; <div dir="rtl" style="display:inline">IP باخبر رہنے کے صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_ip_tracking_row.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں لاگ ان کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_login.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر لاگز صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_logs.html
-&nbsp; <div dir="rtl" style="display:inline">مکمل رسائی کے ساتھ ان لوگوں کے لئے سامنے کے آخر نیویگیشن روابط کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_nav_complete_access.html
-&nbsp; <div dir="rtl" style="display:inline">لاگز کے ساتھ ان لوگوں کے لئے سامنے کے آخر نیویگیشن روابط کے لئے ایک HTML سانچے، صرف تک رسائی.</div> | /vault/fe_assets/_nav_logs_access_only.html
-&nbsp; <div dir="rtl" style="display:inline">رینج میزیں لئے ایک HTML سانچے.</div> | /vault/fe_assets/_range.html
-&nbsp; <div dir="rtl" style="display:inline">رینج میزیں لئے ایک HTML سانچے.</div> | /vault/fe_assets/_range_row.html
-&nbsp; <div dir="rtl" style="display:inline">حصوں کی فہرست کے لئے ایک HTML ٹیمپلیٹ.</div> | /vault/fe_assets/_sections.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں اعداد و شمار صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_statistics.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں اپ ڈیٹس صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_updates.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں اپ ڈیٹس صفحے کے لئے ایک HTML سانچے.</div> | /vault/fe_assets/_updates_row.html
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے سی ایس ایس سٹائل شیٹ.</div> | /vault/fe_assets/frontend.css
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ڈیٹا بیس (اکاؤنٹ کی معلومات، سیشن کی معلومات، اور کیشے پر مشتمل ہے؛ سامنے کے آخر میں فعال اور استعمال کیا جاتا ہے تو صرف پیدا).</div> | /vault/fe_assets/frontend.dat
-&nbsp; <div dir="rtl" style="display:inline">جب ضرورت ہو تو ایک حفاظتی میکانزم کی حیثیت سے پیدا.</div> | /vault/fe_assets/frontend.dat.safety
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے اہم HTML سانچے کی فائل.</div> | /vault/fe_assets/frontend.html
-&nbsp; <div dir="rtl" style="display:inline">شبیہیں کے ہینڈلر (سامنے کے آخر میں فائل مینیجر کی طرف سے استعمال کیا جاتا).</div> | /vault/fe_assets/icons.php
-&nbsp; <div dir="rtl" style="display:inline">پپس کے ہینڈلر (سامنے کے آخر میں فائل مینیجر کی طرف سے استعمال کیا جاتا).</div> | /vault/fe_assets/pips.php
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر جاوا اسکرپٹ ڈیٹا پر مشتمل ہے.</div> | /vault/fe_assets/scripts.js
-&nbsp; <div dir="rtl" style="display:inline">CIDRAM زبان کے اعداد و شمار پر مشتمل ہے.</div> | /vault/lang/
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے عربی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ar.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">عربی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ar.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے بنگلا زبان کے اعداد و شمار.</div> | /vault/lang/lang.bn.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">بنگلا زبان کے اعداد و شمار.</div> | /vault/lang/lang.bn.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے جرمن زبان کے اعداد و شمار.</div> | /vault/lang/lang.de.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">جرمن زبان کے اعداد و شمار.</div> | /vault/lang/lang.de.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے انگریزی زبان کے اعداد و شمار.</div> | /vault/lang/lang.en.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">انگریزی زبان کے اعداد و شمار.</div> | /vault/lang/lang.en.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ہسپانوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.es.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ہسپانوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.es.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے فرانسیسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.fr.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">فرانسیسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.fr.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ہندی زبان کے اعداد و شمار.</div> | /vault/lang/lang.hi.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ہندی زبان کے اعداد و شمار.</div> | /vault/lang/lang.hi.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے انڈونیشی زبان کے اعداد و شمار.</div> | /vault/lang/lang.id.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">انڈونیشی زبان کے اعداد و شمار.</div> | /vault/lang/lang.id.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے اطالوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.it.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">اطالوی زبان کے اعداد و شمار.</div> | /vault/lang/lang.it.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">جاپانی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ja.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے کوریائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">کورین زبان کے اعداد و شمار.</div> | /vault/lang/lang.ko.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے لیٹوین زبان کے اعداد و شمار.</div> | /vault/lang/lang.lv.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">لیٹوین زبان کے اعداد و شمار.</div> | /vault/lang/lang.lv.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ڈچ زبان کے اعداد و شمار.</div> | /vault/lang/lang.nl.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ناروے زبان کے اعداد و شمار.</div> | /vault/lang/lang.no.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے پولش زبان کے اعداد و شمار.</div> | /vault/lang/lang.pl.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">پولش زبان کے اعداد و شمار.</div> | /vault/lang/lang.pl.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">پرتگالی زبان کے اعداد و شمار.</div> | /vault/lang/lang.pt.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">روسی زبان کے اعداد و شمار.</div> | /vault/lang/lang.ru.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">سویڈش زبان کے اعداد و شمار.</div> | /vault/lang/lang.sv.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے تمل زبان کے اعداد و شمار.</div> | /vault/lang/lang.ta.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">تمل زبان کے اعداد و شمار.</div> | /vault/lang/lang.ta.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">تھائی زبان کے اعداد و شمار.</div> | /vault/lang/lang.th.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ترکی زبان کے اعداد و شمار.</div> | /vault/lang/lang.tr.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے اردو زبان کے اعداد و شمار.</div> | /vault/lang/lang.ur.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">اردو زبان کے اعداد و شمار.</div> | /vault/lang/lang.ur.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے ویتنامی زبان کے اعداد و شمار.</div> | /vault/lang/lang.vi.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">ویتنامی زبان کے اعداد و شمار.</div> | /vault/lang/lang.vi.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں کے لئے چینی (روایتی) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh-tw.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">چینی (روایتی) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh-tw.yaml
-&nbsp; <div dir="rtl" style="display:inline">چینی کے سامنے کے آخر کے لئے (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.fe.yaml
-&nbsp; <div dir="rtl" style="display:inline">چینی (آسان کردہ) زبان کے اعداد و شمار.</div> | /vault/lang/lang.zh.yaml
-&nbsp; <div dir="rtl" style="display:inline">ایک ہایپر ٹیکسٹ رسائی فائل (اس مثال میں، غیر مجاز ذرائع کی طرف سے حاصل کیا جا رہا ہے سے سکرپٹ سے تعلق رکھنے والے حساس فائلوں کی حفاظت کے لئے).</div> | /vault/.htaccess
-&nbsp; <div dir="rtl" style="display:inline">جانچ کے لئے Travis CI کی طرف سے استعمال کیا جاتا ہے (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /vault/.travis.yml
-&nbsp; <div dir="rtl" style="display:inline">معاون قوانین پر مشتمل ہے. پیکیج میں شامل نہیں. معاون قواعد کے صفحے کی طرف سے پیدا.</div> | /vault/auxiliary.yaml
-&nbsp; <div dir="rtl" style="display:inline">کیشے کے اعداد و شمار.</div> | /vault/cache.dat
-&nbsp; <div dir="rtl" style="display:inline">ناکام curl درخواستوں کے لئے متبادل چینل ڈیٹا.</div> | /vault/channels.yaml
-&nbsp; <div dir="rtl" style="display:inline">Macmathan طرف سے فراہم اختیاری ملک blocklists سے متعلق معلومات پر مشتمل ہے؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/cidramblocklists.dat
-&nbsp; <div dir="rtl" style="display:inline">جزو میٹا ڈیٹا فائل؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/components.dat
-&nbsp; <div dir="rtl" style="display:inline">کنفگریشن فائل؛ CIDRAM کے تمام ترتیب کے اختیارات، کیا کرنا ہے یہ کہہ رہا ہے اور صحیح طریقے سے کام کرنے کے طریقے پر مشتمل ہے (چالو کرنے کا نام تبدیل).</div> | /vault/config.ini.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">کنفگریشن ہینڈلر.</div> | /vault/config.php
-&nbsp; <div dir="rtl" style="display:inline">کنفگریشن ڈیفالٹس فائل؛ CIDRAM لئے پہلے سے طے شدہ ترتیب کے اقدار پر مشتمل ہے.</div> | /vault/config.yaml
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر میں ہینڈلر.</div> | /vault/frontend.php
-&nbsp; <div dir="rtl" style="display:inline">سامنے کے آخر افعال فائل.</div> | /vault/frontend_functions.php
-&nbsp; <div dir="rtl" style="display:inline">افعال فائل (ضروری).</div> | /vault/functions.php
-&nbsp; <div dir="rtl" style="display:inline">قبول کر لیا hashes کی ایک فہرست پر مشتمل ہے (ہیتی خصوصیت کرنا مناسب؛ صرف reCAPTCHA کے خصوصیت فعال ہے تو پیدا کیا).</div> | /vault/hashes.dat
-&nbsp; <div dir="rtl" style="display:inline">ائل (CIDRAM کی پروا نہ کرے جس کے دستخط حصوں کی وضاحت کرنے کے لئے استعمال) کو نظر انداز.</div> | /vault/ignore.dat
-&nbsp; <div dir="rtl" style="display:inline">IP بائ پاس کی ایک فہرست پر مشتمل ہے (ہیتی خصوصیت کرنا مناسب؛ صرف reCAPTCHA کے خصوصیت فعال ہے تو پیدا کیا).</div> | /vault/ipbypass.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv4 کی دستخط فائل (ناپسندیدہ کلاؤڈ سروسز اور غیر انسانی endpoints کے).</div> | /vault/ipv4.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv4 کی دستخط فائل (bogon/martian کی CIDR).</div> | /vault/ipv4_bogons.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv4 کی اپنی مرضی کے دستخط فائل (چالو کرنے کا نام تبدیل).</div> | /vault/ipv4_custom.dat.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">IPv4 کی دستخط فائل (خطرناک اور سپام آئی ایس پیز).</div> | /vault/ipv4_isps.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv4 کی دستخط فائل (کے لئے پراکسی جنگ لڑ، وپ، اور دیگر متفرق ناپسندیدہ خدمات CIDR).</div> | /vault/ipv4_other.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv6 کی دستخط فائل (ناپسندیدہ کلاؤڈ سروسز اور غیر انسانی endpoints کے).</div> | /vault/ipv6.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv6 کی دستخط فائل (bogon/martian کی CIDR).</div> | /vault/ipv6_bogons.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv6 کی اپنی مرضی کے دستخط فائل (چالو کرنے کا نام تبدیل).</div> | /vault/ipv6_custom.dat.RenameMe
-&nbsp; <div dir="rtl" style="display:inline">IPv6 کی دستخط فائل (خطرناک اور سپام آئی ایس پیز).</div> | /vault/ipv6_isps.dat
-&nbsp; <div dir="rtl" style="display:inline">IPv6 کی دستخط فائل (کے لئے پراکسی جنگ لڑ، وپ، اور دیگر متفرق ناپسندیدہ خدمات CIDR).</div> | /vault/ipv6_other.dat
-&nbsp; <div dir="rtl" style="display:inline">زبان ہینڈلر.</div> | /vault/lang.php
-&nbsp; <div dir="rtl" style="display:inline">ماڈیولز میٹا ڈیٹا فائل؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/modules.dat
-&nbsp; <div dir="rtl" style="display:inline">آؤٹ پٹ جنریٹر.</div> | /vault/outgen.php
-&nbsp; <div dir="rtl" style="display:inline">reCAPTCHA کے ماڈیول.</div> | /vault/recaptcha.php
-&nbsp; <div dir="rtl" style="display:inline">اپنی مرضی کے قوانین AS6939 لئے دائر.</div> | /vault/rules_as6939.php
-&nbsp; <div dir="rtl" style="display:inline">اپنی مرضی کے قوانین نرم پرت کے لئے دائر.</div> | /vault/rules_softlayer.php
-&nbsp; <div dir="rtl" style="display:inline">اپنی مرضی کے قوانین میں کچھ مخصوص CIDR لئے دائر.</div> | /vault/rules_specific.php
-&nbsp; <div dir="rtl" style="display:inline">سالٹ فائل (کچھ پردیی فعالیت کی طرف سے استعمال کیا جاتا؛ صرف ضرورت پڑنے پر پیدا).</div> | /vault/salt.dat
-&nbsp; <div dir="rtl" style="display:inline">سانچہ فائل؛ CIDRAM پیداوار جنریٹر کی طرف سے تیار HTML پیداوار کے لئے سانچہ.</div> | /vault/template_custom.html
-&nbsp; <div dir="rtl" style="display:inline">سانچہ فائل؛ CIDRAM پیداوار جنریٹر کی طرف سے تیار HTML پیداوار کے لئے سانچہ.</div> | /vault/template_default.html
-&nbsp; <div dir="rtl" style="display:inline">موضوعات میٹا ڈیٹا فائل؛ سامنے کے آخر میں اپ ڈیٹس صفحہ کے ذریعہ استعمال کیا جاتا ہے.</div> | /vault/themes.dat
-&nbsp; <div dir="rtl" style="display:inline">تلاش کے انجن اور سوشل میڈیا کے لئے توثیقی ڈیٹا.</div> | /vault/verification.yaml
-&nbsp; <div dir="rtl" style="display:inline">A GitHub کے منصوبے فائل (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /.gitattributes
-&nbsp; <div dir="rtl" style="display:inline">مختلف ورژن کے درمیان سکرپٹ کی گئی تبدیلیوں کا ایک ریکارڈ (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /Changelog.txt
-&nbsp; <div dir="rtl" style="display:inline">کمپوزر / Packagist معلومات (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /composer.json
-&nbsp; <div dir="rtl" style="display:inline">اس منصوبے میں شراکت کے لئے کس طرح کے بارے میں معلومات.</div> | /CONTRIBUTING.md
-&nbsp; <div dir="rtl" style="display:inline">GNU/GPLv2 اجازت نامے کی ایک نقل (رسم الخط کی مناسب تقریب کے لئے ضروری نہیں).</div> | /LICENSE.txt
-&nbsp; <div dir="rtl" style="display:inline">لوڈر. اس سے آپ میں hooking ہونا چاہیے رہے ہیں کیا ہوتا ہے (ضروری)!</div> | /loader.php
-&nbsp; <div dir="rtl" style="display:inline">پروجیکٹ کے خلاصے کی معلومات.</div> | /README.md
-&nbsp; <div dir="rtl" style="display:inline">ایک ASP.NET کنفیگریشن فائل (اس مثال میں، ایونٹ میں غیر مجاز ذرائع سکرپٹ ASP.NET ٹیکنالوجیز کی بنیاد پر ایک سرور پر نصب کیا جاتا ہے کہ کی طرف سے حاصل کیا جا رہا ہے سے "/vault" ڈائریکٹری کی حفاظت کے لئے).</div> | /web.config
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### <div dir="rtl">٦. <a name="SECTION6"></a>ترتیب کے اختیارات</div>
+
 <div dir="rtl">ندرجہ ذیل ان ہدایات کے مقصد کی وضاحت کے ساتھ ساتھ، <code dir="ltr">"config.ini"</code> ترتیب فائل میں CIDRAM کو دستیاب ہدایات کی ایک فہرست ہے.<br /><br /></div>
 
-[general](#general-قسم) | [signatures](#signatures-قسم) | [recaptcha](#recaptcha-قسم) | [legal](#legal-قسم)
---:|--:|--:|--:
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-قسم) | [PHPMailer](#phpmailer-قسم) | [rate_limiting](#rate_limiting-قسم) | [supplementary_cache_options](#supplementary_cache_options-قسم)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│     1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
 <div dir="rtl">جنرل CIDRAM کنفیگریشن.<br /><br /></div>
@@ -333,6 +495,17 @@
  logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'
  logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'
 ```
+
+##### <div dir="rtl">"error_log"<br /></div>
+<div dir="rtl"><ul>
+ <li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
+</ul></div>
+
+##### <div dir="rtl">"error_log_stages"<br /></div>
+<div dir="rtl"><ul>
+ <li>عمل درآمد سلسلہ میں مراحل کی ایک فہرست جس میں پیدا ہونے والی غلطیوں میں کوئی لاگ ان ہونا چاہئے.</li>
+ <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
+</ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
 <div dir="rtl"><ul>
@@ -1838,4 +2011,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 6 ستمبر 2019 (2019.09.06).</div>
+<div dir="rtl">آخری تازہ کاری: 23 ستمبر 2019 (2019.09.23).</div>

@@ -136,174 +136,335 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 
 
 ### 5. <a name="SECTION5"></a>文件在包
-（本段文件採用的自動翻譯，​因為都是一些文件描述，​參考意義不是很大，​如有疑問，​請參考英文原版）
 
-下面是一個列表的所有的文件該應該是存在在您的存檔在下載時間，​任何文件該可能創建因之的您的使用這個腳本，​包括一個簡短說明的他們的目的。
-
-此信息適用於最新的『v2』發布。可能與其他版本或發布它無關。
-
-文件 | 說明
-----|----
-/tests/ | 包含用於CI（持續集成）測試的各種文件的目錄。
-/vault/ | 安全/保險庫【Vault】文件夾（包含若干文件）。
-/vault/classes/ | 類目錄。包含CIDRAM使用的各種類。
-/vault/classes/Maikuolan/ | 類目錄。包含CIDRAM使用的各種類。
-/vault/classes/Maikuolan/Cache.php | 一個簡單的統一緩存處理程序。
-/vault/classes/Maikuolan/ComplexStringHandler.php | 複雜的字符串處理文件。
-/vault/classes/Maikuolan/DelayedIO.php | 延遲文件IO類。
-/vault/classes/Maikuolan/Demojibakefier.php | 『Demojibakefier』。
-/vault/classes/Maikuolan/L10N.php | L10N處理文件。
-/vault/classes/Maikuolan/NumberFormatter.php | 數字格式化程序。
-/vault/classes/Maikuolan/YAML.php | YAML處理文件。
-/vault/classes/Aggregator.php | IP聚合器。
-/vault/classes/Reporter.php | 報告編排者。
-/vault/fe_assets/ | 前端資產。
-/vault/fe_assets/_2fa.html | 在向用戶詢問2FA代碼時使用的HTML模板。
-/vault/fe_assets/_accounts.html | 前端帳戶頁面的HTML模板。
-/vault/fe_assets/_accounts_row.html | 前端帳戶頁面的HTML模板。
-/vault/fe_assets/_aux.html | 前端輔助規則頁面的HTML模板。
-/vault/fe_assets/_cache.html | 前端緩存數據頁面的HTML模板。
-/vault/fe_assets/_cidr_calc.html | CIDR計算器的HTML模板。
-/vault/fe_assets/_cidr_calc_row.html | CIDR計算器的HTML模板。
-/vault/fe_assets/_config.html | 前端配置頁面的HTML模板。
-/vault/fe_assets/_config_row.html | 前端配置頁面的HTML模板。
-/vault/fe_assets/_files.html | 文件管理器的HTML模板。
-/vault/fe_assets/_files_edit.html | 文件管理器的HTML模板。
-/vault/fe_assets/_files_rename.html | 文件管理器的HTML模板。
-/vault/fe_assets/_files_row.html | 文件管理器的HTML模板。
-/vault/fe_assets/_fixer.html | 簽名文件修復工具的HTML模板。
-/vault/fe_assets/_home.html | 端主頁的HTML模板。
-/vault/fe_assets/_ip_aggregator.html | IP聚合器HTML模板。
-/vault/fe_assets/_ip_test.html | IP測試頁面的HTML模板。
-/vault/fe_assets/_ip_test_row.html | IP測試頁面的HTML模板。
-/vault/fe_assets/_ip_tracking.html | IP跟踪頁面的HTML模板。
-/vault/fe_assets/_ip_tracking_row.html | IP跟踪頁面的HTML模板。
-/vault/fe_assets/_login.html | 前端登錄的HTML模板。
-/vault/fe_assets/_logs.html | 前端日誌頁面的HTML模板。
-/vault/fe_assets/_nav_complete_access.html | 前端導航鏈接的HTML模板，​由那些與完全訪問使用。
-/vault/fe_assets/_nav_logs_access_only.html | 前端導航鏈接的HTML模板，​由那些與僅日誌訪問使用。
-/vault/fe_assets/_range.html | 範圍表的HTML模板。
-/vault/fe_assets/_range_row.html | 範圍表的HTML模板。
-/vault/fe_assets/_sections.html | 章節列表的HTML模板。
-/vault/fe_assets/_statistics.html | 前端統計頁面的HTML模板。
-/vault/fe_assets/_updates.html | 前端更新頁面的HTML模板。
-/vault/fe_assets/_updates_row.html | 前端更新頁面的HTML模板。
-/vault/fe_assets/frontend.css | 前端CSS樣式表。
-/vault/fe_assets/frontend.dat | 前端數據庫（包含帳戶信息，​會話信息，​和緩存；只生成如果前端是啟用和使用）。
-/vault/fe_assets/frontend.dat.safety | 在需要時為安全目的而生成。
-/vault/fe_assets/frontend.html | 前端的主HTML模板文件。
-/vault/fe_assets/icons.php | 圖標處理文件（由前端文件管理器使用）。
-/vault/fe_assets/pips.php | 點數處理文件（由前端文件管理器使用）。
-/vault/fe_assets/scripts.js | 包含前端JavaScript數據。
-/vault/lang/ | 包含CIDRAM語言數據。
-/vault/lang/lang.ar.fe.yaml | 阿拉伯文前端語言數據。
-/vault/lang/lang.ar.yaml | 阿拉伯文語言數據。
-/vault/lang/lang.bn.fe.yaml | 孟加拉文前端語言數據。
-/vault/lang/lang.bn.yaml | 孟加拉文語言數據。
-/vault/lang/lang.de.fe.yaml | 德文前端語言數據。
-/vault/lang/lang.de.yaml | 德文語言數據。
-/vault/lang/lang.en.fe.yaml | 英文前端語言數據。
-/vault/lang/lang.en.yaml | 英文語言數據。
-/vault/lang/lang.es.fe.yaml | 西班牙文前端語言數據。
-/vault/lang/lang.es.yaml | 西班牙文語言數據。
-/vault/lang/lang.fr.fe.yaml | 法文前端語言數據。
-/vault/lang/lang.fr.yaml | 法文語言數據。
-/vault/lang/lang.hi.fe.yaml | 印地文前端語言數據。
-/vault/lang/lang.hi.yaml | 印地文語言數據。
-/vault/lang/lang.id.fe.yaml | 印度尼西亞文前端語言數據。
-/vault/lang/lang.id.yaml | 印度尼西亞文語言數據。
-/vault/lang/lang.it.fe.yaml | 意大利文前端語言數據。
-/vault/lang/lang.it.yaml | 意大利文語言數據。
-/vault/lang/lang.ja.fe.yaml | 日文前端語言數據。
-/vault/lang/lang.ja.yaml | 日文語言數據。
-/vault/lang/lang.ko.fe.yaml | 韓文前端語言數據。
-/vault/lang/lang.ko.yaml | 韓文語言數據。
-/vault/lang/lang.lv.fe.yaml | 拉脫維亞文前端語言數據。
-/vault/lang/lang.lv.yaml | 拉脫維亞文語言數據。
-/vault/lang/lang.nl.fe.yaml | 荷蘭文前端語言數據。
-/vault/lang/lang.nl.yaml | 荷蘭文語言數據。
-/vault/lang/lang.no.fe.yaml | 挪威文前端語言數據。
-/vault/lang/lang.no.yaml | 挪威文語言數據。
-/vault/lang/lang.pl.fe.yaml | 波蘭文前端語言數據。
-/vault/lang/lang.pl.yaml | 波蘭文語言數據。
-/vault/lang/lang.pt.fe.yaml | 葡萄牙文前端語言數據。
-/vault/lang/lang.pt.yaml | 葡萄牙文語言數據。
-/vault/lang/lang.ru.fe.yaml | 俄文前端語言數據。
-/vault/lang/lang.ru.yaml | 俄文語言數據。
-/vault/lang/lang.sv.fe.yaml | 瑞典文前端語言數據。
-/vault/lang/lang.sv.yaml | 瑞典文語言數據。
-/vault/lang/lang.ta.fe.yaml | 泰米爾文前端語言數據。
-/vault/lang/lang.ta.yaml | 泰米爾文語言數據。
-/vault/lang/lang.th.fe.yaml | 泰文前端語言數據。
-/vault/lang/lang.th.yaml | 泰文語言數據。
-/vault/lang/lang.tr.fe.yaml | 土耳其文前端語言數據。
-/vault/lang/lang.tr.yaml | 土耳其文語言數據。
-/vault/lang/lang.ur.fe.yaml | 烏爾都文前端語言數據。
-/vault/lang/lang.ur.yaml | 烏爾都文語言數據。
-/vault/lang/lang.vi.fe.yaml | 越南文前端語言數據。
-/vault/lang/lang.vi.yaml | 越南文語言數據。
-/vault/lang/lang.zh-tw.fe.yaml | 中文（傳統）前端語言數據。
-/vault/lang/lang.zh-tw.yaml | 中文（傳統）語言數據。
-/vault/lang/lang.zh.fe.yaml | 中文（簡體）前端語言數據。
-/vault/lang/lang.zh.yaml | 中文（簡體）語言數據。
-/vault/.htaccess | 超文本訪問文件（在這種情況，​以保護敏感文件屬於腳本從被訪問由非授權來源）。
-/vault/.travis.yml | 由Travis CI用於測試（不需要為正確經營腳本）。
-/vault/auxiliary.yaml | 包含輔助規則。不包括在包中。由輔助規則頁面生成。
-/vault/cache.dat | 緩存數據。
-/vault/channels.yaml | curl請求失敗的備用渠道數據。
-/vault/cidramblocklists.dat | Macmathan的可選阻止列表的元數據文件。​由前端更新頁面使用。
-/vault/components.dat | 組件元數據文件。由前端更新頁面使用。
-/vault/config.ini.RenameMe | 配置文件；包含所有配置指令為CIDRAM，​告訴它什麼做和怎麼正確地經營（重命名為激活）。
-/vault/config.php | 配置處理文件。
-/vault/config.yaml | 配置默認文件；包含CIDRAM的默認配置值。
-/vault/frontend.php | 前端處理文件。
-/vault/frontend_functions.php | 前端功能處理文件。
-/vault/functions.php | 功能處理文件（必不可少）。
-/vault/hashes.dat | 包含列表接受哈希表（相關的reCAPTCHA功能；只有生成如果reCAPTCHA功能被啟用）。
-/vault/ignore.dat | 忽略文件（用於指定其中簽名章節CIDRAM應該忽略）。
-/vault/ipbypass.dat | 包含列表IP旁路（相關的reCAPTCHA功能；只有生成如果reCAPTCHA功能被啟用）。
-/vault/ipv4.dat | IPv4簽名文件（不想要的雲服務和非人終端）。
-/vault/ipv4_bogons.dat | IPv4簽名文件（bogon/火星CIDR）。
-/vault/ipv4_custom.dat.RenameMe | IPv4定制簽名文件（重命名為激活）。
-/vault/ipv4_isps.dat | IPv4簽名文件（危險和垃圾容易ISP）。
-/vault/ipv4_other.dat | IPv4簽名文件（CIDR從代理，​VPN和其他不需要服務）。
-/vault/ipv6.dat | IPv6簽名文件（不想要的雲服務和非人終端）。
-/vault/ipv6_bogons.dat | IPv6簽名文件（bogon/火星CIDR）。
-/vault/ipv6_custom.dat.RenameMe | IPv6定制簽名文件（重命名為激活）。
-/vault/ipv6_isps.dat | IPv6簽名文件（危險和垃圾容易ISP）。
-/vault/ipv6_other.dat | IPv6簽名文件（CIDR從代理，​VPN和其他不需要服務）。
-/vault/lang.php | 語音數據。
-/vault/modules.dat | 模塊元數據文件。由前端更新頁面使用。
-/vault/outgen.php | 輸出發生器。
-/vault/recaptcha.php | reCAPTCHA模塊。
-/vault/rules_as6939.php | 定制規則文件為 AS6939。
-/vault/rules_softlayer.php | 定制規則文件為 Soft Layer。
-/vault/rules_specific.php | 定制規則文件為一些特定的CIDR。
-/vault/salt.dat | 鹽文件（使用由一些外圍功能；只產生當必要）。
-/vault/template_custom.html | 模板文件；模板為HTML輸出產生通過CIDRAM輸出發生器。
-/vault/template_default.html | 模板文件；模板為HTML輸出產生通過CIDRAM輸出發生器。
-/vault/themes.dat | 主題元數據文件。由前端更新頁面使用。
-/vault/verification.yaml | 搜索引擎和社交媒體的驗證數據。
-/.gitattributes | GitHub文件（不需要為正確經營腳本）。
-/Changelog.txt | 記錄的變化做出至腳本間不同版本（不需要為正確經營腳本）。
-/composer.json | Composer/Packagist 信息（不需要為正確經營腳本）。
-/CONTRIBUTING.md | 相關信息如何有助於該項目。
-/LICENSE.txt | GNU/GPLv2 執照文件（不需要為正確經營腳本）。
-/loader.php | 加載文件。​這個是文件您應該【鉤子】（必不可少）!
-/README.md | 項目概要信息。
-/web.config | 一個ASP.NET配置文件（在這種情況，​以保護`/vault`文件夾從被訪問由非授權來源在事件的腳本是安裝在服務器根據ASP.NET技術）。
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### 6. <a name="SECTION6"></a>配置選項
+
 下列是一個列表的變量發現在`config.ini`配置文件的CIDRAM，​以及一個說明的他們的目的和功能。
 
-[general](#general-類別) | [signatures](#signatures-類別) | [recaptcha](#recaptcha-類別) | [legal](#legal-類別)
-:--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-類別) | [PHPMailer](#phpmailer-類別) | [rate_limiting](#rate_limiting-類別) | [supplementary_cache_options](#supplementary_cache_options-類別)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│     1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### 『general』 （類別）
 基本CIDRAM配置。
@@ -325,6 +486,13 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+
+##### 『error_log』
+- 用於記錄檢測到的任何非致命錯誤的文件。​指定一個文件名，​或留空以禁用。
+
+##### 『error_log_stages』
+- 執行鏈中應該記錄錯誤的階段列表。
+- *標準： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### 『truncate』
 - 截斷日誌文件當他們達到一定的大小嗎？​值是在B/KB/MB/GB/TB，​是日誌文件允許的最大大小直到它被截斷。​默認值為『0KB』將禁用截斷（日誌文件可以無限成長）。​注意：適用於單個日誌文件！​日誌文件大小不被算集體的。
@@ -1582,4 +1750,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2019年9月6日。
+最後更新：2019年9月23日。

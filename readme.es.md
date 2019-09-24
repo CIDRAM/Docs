@@ -137,172 +137,327 @@ Nota: Proteger su vault contra el acceso no autorizado (p.ej., a modo de endurec
 
 ### 5. <a name="SECTION5"></a>ARCHIVOS INCLUIDOS EN ESTE PAQUETE
 
-La siguiente es una lista de todos los archivos que debería haberse incluido en la copia de este script cuando descargado, todos los archivos que pueden ser potencialmente creados como resultado de su uso de este script, junto con una breve descripción de lo que todos estos archivos son para.
-
-Esta información se aplica a la versión v2 más reciente y puede que no sea tan relevante para otras versiones.
-
-Archivo | Descripción
-----|----
-/tests/ | Un directorio que contiene varios archivos utilizados para las pruebas de CI (integración continua).
-/vault/ | Vault directorio (contiene varios archivos).
-/vault/classes/ | Directorio de clases. Contiene varias clases utilizadas por CIDRAM.
-/vault/classes/Maikuolan/ | Directorio de clases. Contiene varias clases utilizadas por CIDRAM.
-/vault/classes/Maikuolan/Cache.php | Un controlador de caché simple y unificado.
-/vault/classes/Maikuolan/ComplexStringHandler.php | Controlador para cadenas complejas.
-/vault/classes/Maikuolan/DelayedIO.php | Archivo retrasado clase IO.
-/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier".
-/vault/classes/Maikuolan/L10N.php | Controlador para L10N.
-/vault/classes/Maikuolan/NumberFormatter.php | Formateador de números.
-/vault/classes/Maikuolan/YAML.php | Controlador para YAML.
-/vault/classes/Aggregator.php | Agregador IP.
-/vault/classes/Reporter.php | Orquestador de informes.
-/vault/fe_assets/ | Archivos del front-end.
-/vault/fe_assets/_2fa.html | Un archivo HTML utilizada al pedirle al usuario un código 2FA.
-/vault/fe_assets/_accounts.html | Un archivo HTML para el front-end página de cuentas.
-/vault/fe_assets/_accounts_row.html | Un archivo HTML para el front-end página de cuentas.
-/vault/fe_assets/_aux.html | Un archivo HTML para el front-end página de reglas auxiliares.
-/vault/fe_assets/_cache.html | Un archivo HTML para el front-end página del datos de caché.
-/vault/fe_assets/_cidr_calc.html | Un archivo HTML para la calculadora CIDR.
-/vault/fe_assets/_cidr_calc_row.html | Un archivo HTML para la calculadora CIDR.
-/vault/fe_assets/_config.html | Un archivo HTML para el front-end página de configuración.
-/vault/fe_assets/_config_row.html | Un archivo HTML para el front-end página de configuración.
-/vault/fe_assets/_files.html | Un archivo HTML para el administración de archivos.
-/vault/fe_assets/_files_edit.html | Un archivo HTML para el administración de archivos.
-/vault/fe_assets/_files_rename.html | Un archivo HTML para el administración de archivos.
-/vault/fe_assets/_files_row.html | Un archivo HTML para el administración de archivos.
-/vault/fe_assets/_fixer.html | Un archivo HTML para el fijador de archivos de firmas.
-/vault/fe_assets/_home.html | Un archivo HTML para el front-end página principal.
-/vault/fe_assets/_ip_aggregator.html | Un archivo HTML para el agregador IP.
-/vault/fe_assets/_ip_test.html | Un archivo HTML para la página para pruebas de IPs.
-/vault/fe_assets/_ip_test_row.html | Un archivo HTML para la página para pruebas de IPs.
-/vault/fe_assets/_ip_tracking.html | Un archivo HTML para la página de seguimiento de IP.
-/vault/fe_assets/_ip_tracking_row.html | Un archivo HTML para la página de seguimiento de IP.
-/vault/fe_assets/_login.html | Un archivo HTML para el front-end página de login.
-/vault/fe_assets/_logs.html | Un archivo HTML para el front-end página de los archivos de registro.
-/vault/fe_assets/_nav_complete_access.html | Un archivo HTML para el menú de navegación del front-end, para aquellos con acceso completo.
-/vault/fe_assets/_nav_logs_access_only.html | Un archivo HTML para el menú de navegación del front-end, para aquellos con acceso de registros solamente.
-/vault/fe_assets/_range.html | Un archivo HTML para el front-end página tablas de rango.
-/vault/fe_assets/_range_row.html | Un archivo HTML para el front-end página tablas de rango.
-/vault/fe_assets/_sections.html | Una archivo HTML para la lista de secciones.
-/vault/fe_assets/_statistics.html | Un archivo HTML para el front-end página de estadísticas.
-/vault/fe_assets/_updates.html | Un archivo HTML para el front-end página de actualizaciones.
-/vault/fe_assets/_updates_row.html | Un archivo HTML para el front-end página de actualizaciones.
-/vault/fe_assets/frontend.css | Hoja de estilo CSS para el front-end.
-/vault/fe_assets/frontend.dat | Base de datos para el front-end (contiene información de cuentas, información de sesiones, y la memoria caché; sólo se genera si el front-end está activado y utilizado).
-/vault/fe_assets/frontend.dat.safety | Generado como un mecanismo de seguridad cuando es necesario.
-/vault/fe_assets/frontend.html | El archivo HTML principal para el front-end.
-/vault/fe_assets/icons.php | Archivo de iconos (utilizado por el administración de archivos del front-end).
-/vault/fe_assets/pips.php | Archivo de pips (utilizado por el administración de archivos del front-end).
-/vault/fe_assets/scripts.js | Contiene datos de JavaScript del front-end.
-/vault/lang/ | Contiene lingüísticos datos.
-/vault/lang/lang.ar.fe.yaml | Lingüísticos datos Árabe para el front-end.
-/vault/lang/lang.ar.yaml | Lingüísticos datos Árabe.
-/vault/lang/lang.bn.fe.yaml | Lingüísticos datos Bangla para el front-end.
-/vault/lang/lang.bn.yaml | Lingüísticos datos Bangla.
-/vault/lang/lang.de.fe.yaml | Lingüísticos datos Alemán para el front-end.
-/vault/lang/lang.de.yaml | Lingüísticos datos Alemán.
-/vault/lang/lang.en.fe.yaml | Lingüísticos datos Inglés para el front-end.
-/vault/lang/lang.en.yaml | Lingüísticos datos Inglés.
-/vault/lang/lang.es.fe.yaml | Lingüísticos datos Español para el front-end.
-/vault/lang/lang.es.yaml | Lingüísticos datos Español.
-/vault/lang/lang.fr.fe.yaml | Lingüísticos datos Francés para el front-end.
-/vault/lang/lang.fr.yaml | Lingüísticos datos Francés.
-/vault/lang/lang.hi.fe.yaml | Lingüísticos datos Hindi para el front-end.
-/vault/lang/lang.hi.yaml | Lingüísticos datos Hindi.
-/vault/lang/lang.id.fe.yaml | Lingüísticos datos Indonesio para el front-end.
-/vault/lang/lang.id.yaml | Lingüísticos datos Indonesio.
-/vault/lang/lang.it.fe.yaml | Lingüísticos datos Italiano para el front-end.
-/vault/lang/lang.it.yaml | Lingüísticos datos Italiano.
-/vault/lang/lang.ja.fe.yaml | Lingüísticos datos Japonés para el front-end.
-/vault/lang/lang.ja.yaml | Lingüísticos datos Japonés.
-/vault/lang/lang.ko.fe.yaml | Lingüísticos datos Koreano para el front-end.
-/vault/lang/lang.ko.yaml | Lingüísticos datos Koreano.
-/vault/lang/lang.lv.fe.yaml | Lingüísticos datos Letón para el front-end.
-/vault/lang/lang.lv.yaml | Lingüísticos datos Letón.
-/vault/lang/lang.nl.fe.yaml | Lingüísticos datos Holandés para el front-end.
-/vault/lang/lang.nl.yaml | Lingüísticos datos Holandés.
-/vault/lang/lang.no.fe.yaml | Lingüísticos datos Noruego para el front-end.
-/vault/lang/lang.no.yaml | Lingüísticos datos Noruego.
-/vault/lang/lang.pl.fe.yaml | Lingüísticos datos Polaco para el front-end.
-/vault/lang/lang.pl.yaml | Lingüísticos datos Polaco.
-/vault/lang/lang.pt.fe.yaml | Lingüísticos datos Portugués para el front-end.
-/vault/lang/lang.pt.yaml | Lingüísticos datos Portugués.
-/vault/lang/lang.ru.fe.yaml | Lingüísticos datos Ruso para el front-end.
-/vault/lang/lang.ru.yaml | Lingüísticos datos Ruso.
-/vault/lang/lang.sv.fe.yaml | Lingüísticos datos Sueco para el front-end.
-/vault/lang/lang.sv.yaml | Lingüísticos datos Sueco.
-/vault/lang/lang.ta.fe.yaml | Lingüísticos datos Tamil para el front-end.
-/vault/lang/lang.ta.yaml | Lingüísticos datos Tamil.
-/vault/lang/lang.th.fe.yaml | Lingüísticos datos Tailandés para el front-end.
-/vault/lang/lang.th.yaml | Lingüísticos datos Tailandés.
-/vault/lang/lang.tr.fe.yaml | Lingüísticos datos Turco para el front-end.
-/vault/lang/lang.tr.yaml | Lingüísticos datos Turco.
-/vault/lang/lang.ur.fe.yaml | Lingüísticos datos Urdi para el front-end.
-/vault/lang/lang.ur.yaml | Lingüísticos datos Urdu.
-/vault/lang/lang.vi.fe.yaml | Lingüísticos datos Vietnamita para el front-end.
-/vault/lang/lang.vi.yaml | Lingüísticos datos Vietnamita.
-/vault/lang/lang.zh-tw.fe.yaml | Lingüísticos datos Chino (tradicional) para el front-end.
-/vault/lang/lang.zh-tw.yaml | Lingüísticos datos Chino (tradicional).
-/vault/lang/lang.zh.fe.yaml | Lingüísticos datos Chino (simplificado) para el front-end.
-/vault/lang/lang.zh.yaml | Lingüísticos datos Chino (simplificado).
-/vault/.htaccess | Un hipertexto acceso archivo (en este caso, para proteger confidenciales archivos perteneciente a la script contra el acceso de fuentes no autorizadas).
-/vault/.travis.yml | Utilizado por Travis CI para pruebas (no se requiere para usar la script).
-/vault/auxiliary.yaml | Contiene reglas auxiliares. No incluido en el paquete. Generado por la página de reglas auxiliares.
-/vault/cache.dat | Cache data.
-/vault/channels.yaml | Datos de canales alternativos para solicitudes de curl fallidas.
-/vault/cidramblocklists.dat | Archivo de metadatos para las listas de bloqueo opcionales de Macmathan; Utilizado por la página de actualizaciones del front-end.
-/vault/components.dat | Archivo de metadatos de componentes; Utilizado por la página de actualizaciones del front-end.
-/vault/config.ini.RenameMe | Archivo de configuración; Contiene todas las opciones de configuración para CIDRAM, instruyendo para qué hacer y cómo operar correctamente (cambiar el nombre para activar).
-/vault/config.php | Módulo de configuración.
-/vault/config.yaml | Archivo de valores predefinidos para la configuración; Contiene valores predefinidos para la configuración de CIDRAM.
-/vault/frontend.php | Controlador para el front-end.
-/vault/frontend_functions.php | Archivo de funciones del front-end.
-/vault/functions.php | Archivo de funciones (esencial).
-/vault/hashes.dat | Contiene una lista de hashes aceptadas (pertinente a la función de reCAPTCHA; sólo se genera si la función de reCAPTCHA está habilitada).
-/vault/ignore.dat | Ignorar archivo (se utiliza para especificar qué secciones de firmas que CIDRAM debe ignorar).
-/vault/ipbypass.dat | Contiene una lista de bypasses IP (pertinente a la función de reCAPTCHA; sólo se genera si la función de reCAPTCHA está habilitada).
-/vault/ipv4.dat | Archivo de firmas por IPv4 (servicios en la nube no deseados y puntos finales no humanos).
-/vault/ipv4_bogons.dat | Archivo de firmas por IPv4 (bogon/marciano CIDRs).
-/vault/ipv4_custom.dat.RenameMe | Archivo de firmas por IPv4 personalizado (cambiar el nombre para activar).
-/vault/ipv4_isps.dat | Archivo de firmas por IPv4 (ISPs peligroso y propenso a spam).
-/vault/ipv4_other.dat | Archivo de firmas por IPv4 (CIDRs para proxies, VPNs y otros servicios misceláneos no deseados).
-/vault/ipv6.dat | Archivo de firmas por IPv6 (servicios en la nube no deseados y puntos finales no humanos).
-/vault/ipv6_bogons.dat | Archivo de firmas por IPv6 (bogon/marciano CIDRs).
-/vault/ipv6_custom.dat.RenameMe | Archivo de firmas por IPv6 personalizado (cambiar el nombre para activar).
-/vault/ipv6_isps.dat | Archivo de firmas por IPv6 (ISPs peligroso y propenso a spam).
-/vault/ipv6_other.dat | Archivo de firmas por IPv6 (CIDRs para proxies, VPNs y otros servicios misceláneos no deseados).
-/vault/lang.php | Lingüísticos datos.
-/vault/modules.dat | Archivo de metadatos de los módulos; Utilizado por la página de actualizaciones del front-end.
-/vault/outgen.php | Generador de salida.
-/vault/recaptcha.php | Módulo de reCAPTCHA.
-/vault/rules_as6939.php | Archivo de reglas personalizado para AS6939.
-/vault/rules_softlayer.php | Archivo de reglas personalizado para Soft Layer.
-/vault/rules_specific.php | Archivo de reglas personalizado para algunos CIDRs específicos.
-/vault/salt.dat | Archivo de sal (utilizado por algunas funciones periférico; solamente generada si es necesario).
-/vault/template_custom.html | Template archivo; Plantilla para HTML salida producida por la CIDRAM generador de salida.
-/vault/template_default.html | Template archivo; Plantilla para HTML salida producida por la CIDRAM generador de salida.
-/vault/themes.dat | Archivo de metadatos de temas; Utilizado por la página de actualizaciones del front-end.
-/vault/verification.yaml | Datos de verificación para motores de búsqueda y redes sociales.
-/.gitattributes | Un archivo de la GitHub proyecto (no se requiere para usar la script).
-/Changelog.txt | Un registro de los cambios realizados en la principal script entre las diferentes versiones (no se requiere para usar la script).
-/composer.json | Composer/Packagist información (no se requiere para usar la script).
-/CONTRIBUTING.md | Información en respecto a cómo contribuir al proyecto.
-/LICENSE.txt | Una copia de la GNU/GPLv2 licencia (no se requiere para usar la script).
-/loader.php | Cargador. Esto es lo que se supone debe enganchando (esencial).
-/README.md | Sumario información del proyecto.
-/web.config | Un ASP.NET configuración archivo (en este caso, para proteger la `/vault` directorio contra el acceso de fuentes no autorizadas en el caso de que la script está instalado en un servidor basado en ASP.NET tecnologías).
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### 6. <a name="SECTION6"></a>OPCIONES DE CONFIGURACIÓN
+
 La siguiente es una lista de variables encuentran en la `config.ini` configuración archivo de CIDRAM, junto con una descripción de sus propósito y función.
 
-[general](#general-categoría) | [signatures](#signatures-categoría) | [recaptcha](#recaptcha-categoría) | [legal](#legal-categoría)
-:--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-categoría) | [PHPMailer](#phpmailer-categoría) | [rate_limiting](#rate_limiting-categoría) | [supplementary_cache_options](#supplementary_cache_options-categoría)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### "general" (Categoría)
 General configuración para CIDRAM.
@@ -324,6 +479,13 @@ General configuración para CIDRAM.
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+
+##### "error_log"
+- Un archivo para registrar cualquier error detectado que no sea fatal. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+##### "error_log_stages"
+- Una lista de las etapas en la cadena de ejecución que deberían tener todos los errores generados registrados.
+- *Predefinido: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predeterminado de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
@@ -1580,4 +1742,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 6 de Septiembre de 2019 (2019.09.06).
+Última Actualización: 23 de Septiembre de 2019 (2019.09.23).

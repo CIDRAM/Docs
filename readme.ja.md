@@ -137,172 +137,334 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 
 ### ５.<a name="SECTION5"></a>本パッケージに含まれるファイル
 
-以下はアーカイブから一括ダウンロードされるファイルのリスト、​ならびにスクリプト使用により作成されるファイルとこれらのファイルが何のためかという簡単な説明です。
-
-この情報は最新の「v2」リリースに適用され、他のバージョンやリリースにはあまり関係がないかもしれません。
-
-ファイル | 説明
-----|----
-/tests/ | ＣＩ（継続的インテグレーション）テストに使用されるさまざまなファイルを含むディレクトリ。
-/vault/ | ヴォルト・ディレクトリ（様々なファイルを含んでいます）。
-/vault/classes/ | クラス・ディレクトリ。​CIDRAMによって使用されるさまざまなクラスが含まれています。
-/vault/classes/Maikuolan/ | クラス・ディレクトリ。​CIDRAMによって使用されるさまざまなクラスが含まれています。
-/vault/classes/Maikuolan/Cache.php | シンプルで統一されたキャッシュ・ハンドラ。
-/vault/classes/Maikuolan/ComplexStringHandler.php | 複雑な文字列ハンドラ。
-/vault/classes/Maikuolan/DelayedIO.php | 遅延ファイルＩＯクラス。
-/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier" （ディ文字化けファイア / 文字化けを元に戻すのクラス）。
-/vault/classes/Maikuolan/L10N.php | Ｌ１０Ｎハンドラ。
-/vault/classes/Maikuolan/NumberFormatter.php | 数値フォーマッタ。
-/vault/classes/Maikuolan/YAML.php | ＹＡＭＬハンドラ。
-/vault/classes/Aggregator.php | ＩＰアグリゲータ。
-/vault/classes/Reporter.php | レポート・オーケストレーター。
-/vault/fe_assets/ | フロントエンド資産。
-/vault/fe_assets/_2fa.html | ユーザーに２ＦＡコードを要求するときに使用されるＨＴＭＬテンプレート。
-/vault/fe_assets/_accounts.html | フロントエンドのアカウント・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_accounts_row.html | フロントエンドのアカウント・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_aux.html | フロントエンドの補助ルール・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_cache.html | フロントエンドのキャッシュ・データ・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_cidr_calc.html | ＣＩＤＲ計算機のＨＴＭＬテンプレート。
-/vault/fe_assets/_cidr_calc_row.html | ＣＩＤＲ計算機のＨＴＭＬテンプレート。
-/vault/fe_assets/_config.html | フロントエンドのコンフィギュレーションページのＨＴＭＬテンプレート。
-/vault/fe_assets/_config_row.html | フロントエンドのコンフィギュレーションページのＨＴＭＬテンプレート。
-/vault/fe_assets/_files.html | ファイル・マネージャのＨＴＭＬテンプレート。
-/vault/fe_assets/_files_edit.html | ファイル・マネージャのＨＴＭＬテンプレート。
-/vault/fe_assets/_files_rename.html | ファイル・マネージャのＨＴＭＬテンプレート。
-/vault/fe_assets/_files_row.html | ファイル・マネージャのＨＴＭＬテンプレート。
-/vault/fe_assets/_fixer.html | シグネチャ・ファイルのフィクサーのＨＴＭＬテンプレート。
-/vault/fe_assets/_home.html | フロントエンドのホームページのＨＴＭＬテンプレート。
-/vault/fe_assets/_ip_aggregator.html | ＩＰアグリゲータのＨＴＭＬテンプレート。
-/vault/fe_assets/_ip_test.html | ＩＰテストページのＨＴＭＬテンプレート。
-/vault/fe_assets/_ip_test_row.html | ＩＰテストページのＨＴＭＬテンプレート。
-/vault/fe_assets/_ip_tracking.html | ＩＰトラッキング・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_ip_tracking_row.html | ＩＰトラッキング・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_login.html | フロントエンドのログインページのＨＴＭＬテンプレート。
-/vault/fe_assets/_logs.html | フロントエンドのログページのＨＴＭＬテンプレート。
-/vault/fe_assets/_nav_complete_access.html | フロントエンドのナビゲーションリンクのＨＴＭＬテンプレート、​は完全なアクセスのためのものです。
-/vault/fe_assets/_nav_logs_access_only.html | フロントエンドのナビゲーションリンクのＨＴＭＬテンプレート、​はログのみにアクセスのためのものです。
-/vault/fe_assets/_range.html | フロントエンドの範囲テーブル・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_range_row.html | フロントエンドの範囲テーブル・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_sections.html | セクション・リストのＨＴＭＬテンプレート。
-/vault/fe_assets/_statistics.html | フロントエンドの統計ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_updates.html | フロントエンドのアップデート・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/_updates_row.html | フロントエンドのアップデート・ページのＨＴＭＬテンプレート。
-/vault/fe_assets/frontend.css | フロントエンドのＣＳＳスタイルシート。
-/vault/fe_assets/frontend.dat | フロントエンドのデータベース（アカウント情報とセッション情報とキャッシュが含まれています；​フロントエンドが有効になっているときに作成）。
-/vault/fe_assets/frontend.dat.safety | 必要に応じて安全機構として生成されます。
-/vault/fe_assets/frontend.html | フロントエンドのメインテンプレートファイル。
-/vault/fe_assets/icons.php | アイコン・ハンドラ（フロントエンド・ファイル・マネージャによって使用される）。
-/vault/fe_assets/pips.php | ピップス・ハンドラ（フロントエンド・ファイル・マネージャによって使用される）。
-/vault/fe_assets/scripts.js | フロントエンドJavaScriptデータが含まれています。
-/vault/lang/ | CIDRAMの言語データを含んでいます。
-/vault/lang/lang.ar.fe.yaml | フロントエンドのアラビア語言語データ。
-/vault/lang/lang.ar.yaml | アラビア語言語データ。
-/vault/lang/lang.bn.fe.yaml | フロントエンドのベンガル語言語データ。
-/vault/lang/lang.bn.yaml | ベンガル語言語データ。
-/vault/lang/lang.de.fe.yaml | フロントエンドのドイツ語言語データ。
-/vault/lang/lang.de.yaml | ドイツ語言語データ。
-/vault/lang/lang.en.fe.yaml | フロントエンドの英語言語データ。
-/vault/lang/lang.en.yaml | 英語言語データ。
-/vault/lang/lang.es.fe.yaml | フロントエンドのスペイン語言語データ。
-/vault/lang/lang.es.yaml | スペイン語言語データ。
-/vault/lang/lang.fr.fe.yaml | フロントエンドのフランス語言語データ。
-/vault/lang/lang.fr.yaml | フランス語言語データ。
-/vault/lang/lang.hi.fe.yaml | フロントエンドのヒンディー語言語データ。
-/vault/lang/lang.hi.yaml | ヒンディー語言語データ。
-/vault/lang/lang.id.fe.yaml | フロントエンドのインドネシア語言語データ。
-/vault/lang/lang.id.yaml | インドネシア語言語データ。
-/vault/lang/lang.it.fe.yaml | フロントエンドの伊語言語データ。
-/vault/lang/lang.it.yaml | 伊語言語データ。
-/vault/lang/lang.ja.fe.yaml | フロントエンドの日本語言語データ。
-/vault/lang/lang.ja.yaml | 日本語言語データ。
-/vault/lang/lang.ko.fe.yaml | フロントエンドの韓国語言語データ。
-/vault/lang/lang.ko.yaml | 韓国語言語データ。
-/vault/lang/lang.lv.fe.yaml | フロントエンドのラトビア語言語データ。
-/vault/lang/lang.lv.yaml | ラトビア語言語データ。
-/vault/lang/lang.nl.fe.yaml | フロントエンドのオランダ語言語データ。
-/vault/lang/lang.nl.yaml | オランダ語言語データ。
-/vault/lang/lang.no.fe.yaml | フロントエンドのノルウェー語言語データ。
-/vault/lang/lang.no.yaml | ノルウェー語言語データ。
-/vault/lang/lang.pl.fe.yaml | フロントエンドのポーランド語言語データ。
-/vault/lang/lang.pl.yaml | ポーランド語言語データ。
-/vault/lang/lang.pt.fe.yaml | フロントエンドのポルトガル語言語データ。
-/vault/lang/lang.pt.yaml | ポルトガル語言語データ。
-/vault/lang/lang.ru.fe.yaml | フロントエンドのロシア語言語データ。
-/vault/lang/lang.ru.yaml | ロシア語言語データ。
-/vault/lang/lang.sv.fe.yaml | フロントエンドのスウェーデン語言語データ。
-/vault/lang/lang.sv.yaml | スウェーデン語言語データ。
-/vault/lang/lang.ta.fe.yaml | フロントエンドのタミル語言語データ。
-/vault/lang/lang.ta.yaml | タミル語言語データ。
-/vault/lang/lang.th.fe.yaml | フロントエンドのタイ語言語データ。
-/vault/lang/lang.th.yaml | タイ語言語データ。
-/vault/lang/lang.tr.fe.yaml | フロントエンドのトルコ語言語データ。
-/vault/lang/lang.tr.yaml | トルコ語言語データ。
-/vault/lang/lang.ur.fe.yaml | フロントエンドのウルドゥー語言語データ。
-/vault/lang/lang.ur.yaml | ウルドゥー語言語データ。
-/vault/lang/lang.vi.fe.yaml | フロントエンドのベトナム語言語データ。
-/vault/lang/lang.vi.yaml | ベトナム語言語データ。
-/vault/lang/lang.zh-tw.fe.yaml | フロントエンドの繁体字中国語言語データ。
-/vault/lang/lang.zh-tw.yaml | 繁体字中国語言語データ。
-/vault/lang/lang.zh.fe.yaml | フロントエンドの簡体字中国語言語データ。
-/vault/lang/lang.zh.yaml | 簡体字中国語言語データ。
-/vault/.htaccess | ハイパーテキスト・アクセスファイル（この場合、​本スクリプトの重要なファイルを権限のないソースのアクセスから保護するためです）。
-/vault/.travis.yml | テストのためにTravis CIによって使用される​（機能には関係のないファイルです）。
-/vault/auxiliary.yaml | 補助ルールが含まれています。​パッケージには含まれていません。​補助ルール・ページによって生成されます。
-/vault/cache.dat | キャッシュ・データ。
-/vault/channels.yaml | 失敗したcurlの要求の代替チャネル・データ。
-/vault/cidramblocklists.dat | Macmathanのオプションのブロックリストのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
-/vault/components.dat | コンポーネントのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
-/vault/config.ini.RenameMe | CIDRAM設定ファイル；​CIDRAMの全オプション設定を記載しています。​それぞれのオプションの機能と動作手法の説明です（アクティブにするために名前を変更します）。
-/vault/config.php | コンフィギュレーション・ハンドラ。
-/vault/config.yaml | 設定・デフォルトス・ファイル；CIDRAMのデフォルト設定値が含まれます。
-/vault/frontend.php | フロントエンド・ハンドラ。
-/vault/frontend_functions.php | フロントエンド機能ファイル。
-/vault/functions.php | 機能ファイル（本質的ファイル）。
-/vault/hashes.dat | 受け入れられているハッシュのリスト（reCAPTCHAの機能に関連します；のみreCAPTCHAの機能が有効になっている場合に生成）。
-/vault/ignore.dat | 無視ファイル（これはシグネチャセクション無視します）。
-/vault/ipbypass.dat | ＩＰバイパスの一覧（reCAPTCHAの機能に関連します；のみreCAPTCHAの機能が有効になっている場合に生成）。
-/vault/ipv4.dat | ＩＰｖ４シグネチャ・ファイル（不要なクラウドサービスと非人のエンドポイント）。
-/vault/ipv4_bogons.dat | ＩＰｖ４シグネチャ・ファイル（ボゴン/火星ＣＩＤＲ）。
-/vault/ipv4_custom.dat.RenameMe | ＩＰｖ４カスタム・シグネチャ・ファイル（アクティブにするために名前を変更します）。
-/vault/ipv4_isps.dat | ＩＰｖ４シグネチャ・ファイル（スパマーを持つ危険なＩＳＰ）。
-/vault/ipv4_other.dat | ＩＰｖ４シグネチャ・ファイル （プロキシ、​ＶＰＮ、​およびその他の不要なサービスのＣＩＤＲ）。
-/vault/ipv6.dat | ＩＰｖ６シグネチャ・ファイル（不要なクラウドサービスと非人のエンドポイント）。
-/vault/ipv6_bogons.dat | ＩＰｖ６シグネチャ・ファイル（ボゴン/火星ＣＩＤＲ）。
-/vault/ipv6_custom.dat.RenameMe | ＩＰｖ６カスタム・シグネチャ・ファイル（アクティブにするために名前を変更します）。
-/vault/ipv6_isps.dat | ＩＰｖ６シグネチャ・ファイル（スパマーを持つ危険なＩＳＰ）。
-/vault/ipv6_other.dat | ＩＰｖ６シグネチャ・ファイル （プロキシ、​ＶＰＮ、​およびその他の不要なサービスのＣＩＤＲ）。
-/vault/lang.php | 言語・ハンドラ。
-/vault/modules.dat | モジュールのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
-/vault/outgen.php | 出力発生器。
-/vault/recaptcha.php | reCAPTCHAのモジュール。
-/vault/rules_as6939.php | カスタムルールは、​AS6939のためのファイル。
-/vault/rules_softlayer.php | カスタムルールは、​Soft Layerのためのファイル。
-/vault/rules_specific.php | カスタムルールは、​いくつかの特定のＣＩＤＲのためのファイル。
-/vault/salt.dat | ソルトファイル（一部の周辺機能によって使用されます；必要な場合にのみ生成）。
-/vault/template_custom.html | CIDRAMテンプレートファイル；​CIDRAMがファイルアップロードをブロックした際に作成されるメッセージのＨＴＭＬ出力用テンプレート（アップローダーが表示するメッセージ）。
-/vault/template_default.html | CIDRAMテンプレートファイル；​CIDRAMがファイルアップロードをブロックした際に作成されるメッセージのＨＴＭＬ出力用テンプレート（アップローダーが表示するメッセージ）。
-/vault/themes.dat | テーマのメタデータ・ファイル。​フロントエンドのアップデート・ページで使用されます。
-/vault/verification.yaml | 検索エンジンとソーシャル・メディアの検証データ。
-/.gitattributes | GitHubのプロジェクトファイル（機能には関係のないファイルです）。
-/Changelog.txt | バージョンによる違いを記録したものです（機能には関係のないファイルです）。
-/composer.json | Composer/Packagist情報（機能には関係のないファイルです）。
-/CONTRIBUTING.md | プロジェクトに貢献する方法について。
-/LICENSE.txt | ＧＮＵ/ＧＰＬｖ２のライセンスのコピー（機能には関係のないファイルです）。
-/loader.php | ローダー・ファイルです。​主要スクリプトのロード、​アップロード等を行います。​フックするのはまさにこれです（本質的ファイル）！
-/README.md | プロジェクト概要情報。
-/web.config | ＡＳＰ.ＮＥＴ設定ファイルです（スクリプトがＡＳＰ.ＮＥＴテクノロジーを基礎とするサーバーにインストールされた時に`/vault`ディレクトリを権限のないソースによるアクセスから保護するためです）。
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### ６.<a name="SECTION6"></a>コンフィギュレーション（設定オプション）
+
 以下は`config.ini`設定ファイルにある変数ならびにその目的と機能のリストです。
 
-[general](#general-全般カテゴリー) | [signatures](#signatures-シグネチャーズカテゴリ) | [recaptcha](#recaptcha-リーキャプチャカテゴリ) | [legal](#legal-リーガルカテゴリ)
-:--|:--|:--|:--
-[logfile](#logfile-ログファイル)<br />[logfile_apache](#logfile_apache-ログファイルアパッチ)<br />[logfile_serialized](#logfile_serialized-ログファイルシリアライズ)<br />[truncate](#truncate-トランケート)<br />[log_rotation_limit](#log_rotation_limit-ログローテーションリミット)<br />[log_rotation_action](#log_rotation_action-ログローテーションアクション)<br />[timezone](#timezone-タイムゾーン)<br />[time_offset](#time_offset-タイムオフセット)<br />[time_format](#time_format-タイムフォーマット)<br />[ipaddr](#ipaddr-アイピーアドレス)<br />[forbid_on_block](#forbid_on_block-フォービッドオンブロック)<br />[silent_mode](#silent_mode-サイレントモード)<br />[lang](#lang-ラング)<br />[lang_override](#lang_override-ラングオーバーライド)<br />[numbers](#numbers-ナンバーズ)<br />[emailaddr](#emailaddr-ｅメールアドレス)<br />[emailaddr_display_style](#emailaddr_display_style-ｅメールアドレスディスプレイスタイル)<br />*†[disable_cli](#disable_cli-ディスエイブルシーエルアイ)*<br />[disable_frontend](#disable_frontend-ディスエイブルフロントエンド)<br />[max_login_attempts](#max_login_attempts-マクスログインアテンプト)<br />[frontend_log](#frontend_log-フロントエンドログ)<br />[ban_override](#ban_override-バンオーバーライド)<br />[log_banned_ips](#log_banned_ips-ログバンドアイピーズ)<br />[default_dns](#default_dns-ディフォールトディーエンエス)<br />[search_engine_verification](#search_engine_verification-サーチエンジンベリフィケーション)<br />[social_media_verification](#social_media_verification-ソーシャルメディアベリフィケーション)<br />[protect_frontend](#protect_frontend-プロテクトフロントエンド)<br />[disable_webfonts](#disable_webfonts-ディスエイブルウェブフォンツ)<br />[maintenance_mode](#maintenance_mode-メンテナンスモード)<br />[default_algo](#default_algo-ディフォールトアルゴ)<br />[statistics](#statistics-スタティスティックス統計)<br />[force_hostname_lookup](#force_hostname_lookup-フォースホストネームルックアップ)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup-アラウゲットホストバイエイディディアールックアップ)<br />[hide_version](#hide_version-ハイドバージョン)<br />[empty_fields](#empty_fields-エンプティーフィールズ)<br />[log_sanitisation](#log_sanitisation-ログサニテーション)<br />[disabled_channels](#disabled_channels-ディセーブルドチャネルズ)<br /> | [ipv4](#ipv4-アイピーブイ４)<br />[ipv6](#ipv6-アイピーブイ６)<br />[block_cloud](#block_cloud-ブロッククラウド)<br />[block_bogons](#block_bogons-ブロックぼごん)<br />[block_generic](#block_generic-ブロックジェネリック)<br />[block_legal](#block_legal-ブロックリーガル)<br />[block_malware](#block_malware-ブロックマルウェア)<br />[block_proxies](#block_proxies-ブロックプロキシ)<br />[block_spam](#block_spam-ブロックスパム)<br />[modules](#modules-モジュールス)<br />[default_tracktime](#default_tracktime-デフォルトトラックタイム)<br />[infraction_limit](#infraction_limit-インフラクションリミット)<br />[track_mode](#track_mode-トラックモード)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode-ユースモード)<br />[lockip](#lockip-ロックｉｐ)<br />[lockuser](#lockuser-ロックユーザー)<br />[sitekey](#sitekey-サイトキー)<br />[secret](#secret-シークレット)<br />[expiry](#expiry-シークレット)<br />[logfile](#logfile-ログファイル-1)<br />[signature_limit](#signature_limit-シグネチャリミット)<br />[api](#api-エイピーアイ)<br />[show_cookie_warning](#show_cookie_warning-ショークッキーウォーニング)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses-プセユードニマイズアイピーアドレセズ)<br />[omit_ip](#omit_ip-オミットアイピー)<br />[omit_hostname](#omit_hostname-オミットホストネーム)<br />[omit_ua](#omit_ua-オミットユーエイ)<br />[privacy_policy](#privacy_policy-プライバシーポリシー)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-テンプレートデータカテゴリ) | [PHPMailer](#phpmailer-ピーエイチピーメーラーカテゴリ) | [rate_limiting](#rate_limiting-レートリミッティングカテゴリ) | [supplementary_cache_options](#supplementary_cache_options-サプレメンタリーキャッシュオプションズカテゴリ)
-[theme](#theme-シームテーマ)<br />[magnification](#magnification-マグニフィケーション)<br />[css_url](#css_url-シーエスエスユーアールエル)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log-イベントログ)<br />[skip_auth_process](#skip_auth_process-スキップオスプロセス)<br />[enable_two_factor](#enable_two_factor-イネーブル２ｆａ)<br />[host](#host-ホスト)<br />[port](#port-ポート)<br />[smtp_secure](#smtp_secure-ｓｍｔｐセキュア)<br />[smtp_auth](#smtp_auth-ｓｍｔｐオス)<br />[username](#username-ユーザーネーム)<br />[password](#password-パスワード)<br />[set_from_address](#set_from_address-セットフロムアドレス)<br />[set_from_name](#set_from_name-セットフロムネーム)<br />[add_reply_to_address](#add_reply_to_address-アッドリプライアドレス)<br />[add_reply_to_name](#add_reply_to_name-アッドリプライネーム)<br /> | [max_bandwidth](#max_bandwidth-マックスバンドウィツ)<br />[max_requests](#max_requests-マックスレクェスツ)<br />[precision_ipv4](#precision_ipv4-プリシジョンアイピーブイ４)<br />[precision_ipv6](#precision_ipv6-プリシジョンアイピーブイ６)<br />[allowance_period](#allowance_period-アラワンスピアリアド)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu-イネーブルａｐｃｕ)<br />[enable_memcached](#enable_memcached-イネーブルメムキャッシュト)<br />[enable_redis](#enable_redis-イネーブルレディス)<br />[enable_pdo](#enable_pdo-イネーブルｐｄｏ)<br />[memcached_host](#memcached_host-メムキャッシュホスト)<br />[memcached_port](#memcached_port-メムキャッシュポート)<br />[redis_host](#redis_host-レディスホスト)<br />[redis_port](#redis_port-レディスポート)<br />[redis_timeout](#redis_timeout-レディスタイムアウト)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username-ｐｄｏユーザーネーム)<br />[pdo_password](#pdo_password-ｐｄｏパスワード)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│     1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### "general" （全般、カテゴリー）
 全般的な設定。
@@ -324,6 +486,13 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+
+##### "error_log" （エラー・ログ）
+- 検出された致命的でないエラーを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+
+##### "error_log_stages" （エラー・ログ・ステージズ）
+- 生成されたエラーをログに記録する必要がある実行チェーン内のステージのリスト。
+- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate" （トランケート）
 - ログ・ファイルが一定のサイズに達したら切り詰めますか？​値は、​ログ・ファイルが切り捨てられる前に大きくなる可能性があるＢ/ＫＢ/ＭＢ/ＧＢ/ＴＢ単位の最大サイズです。​デフォルト値の０ＫＢは切り捨てを無効にします （ログ・ファイルは無期限に拡張できます）。​注：個々のログ・ファイルに適用されます。​ログ・ファイルのサイズは一括して考慮されません。
@@ -1578,4 +1747,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０１９年９月６日。
+最終アップデート：２０１９年９月２３日。

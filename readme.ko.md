@@ -137,172 +137,334 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 ### 5. <a name="SECTION5"></a>본 패키지에 포함 된 파일
 
-다음은 아카이브에서 일괄 다운로드되는 파일의 목록 및 스크립트 사용에 의해 생성되는 파일과이 파일이 무엇 때문인지는 간단한 설명입니다.
-
-이 정보는 최신 v2 릴리스에 적용되며 다른 버전이나 릴리스와는 관련이 없을 수도 있습니다.
-
-파일 | 설명
-----|----
-/tests/ | CI (연속 통합) 테스트에 사용되는 다양한 파일이 들어있는 디렉토리입니다.
-/vault/ | 보루 토 디렉토리 (다양한 파일을 포함합니다).
-/vault/classes/ | 클래스 디렉토리. CIDRAM에서 사용하는 다양한 클래스가 들어 있습니다.
-/vault/classes/Maikuolan/ | 클래스 디렉토리. CIDRAM에서 사용하는 다양한 클래스가 들어 있습니다.
-/vault/classes/Maikuolan/Cache.php | 간단하고 통합 된 캐시 처리기입니다.
-/vault/classes/Maikuolan/ComplexStringHandler.php | 복잡한 문자열 핸들러.
-/vault/classes/Maikuolan/DelayedIO.php | 지연된 파일 IO 클래스.
-/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier".
-/vault/classes/Maikuolan/L10N.php | L10N 핸들러.
-/vault/classes/Maikuolan/NumberFormatter.php | 숫자 포맷터.
-/vault/classes/Maikuolan/YAML.php | YAML 핸들러.
-/vault/classes/Aggregator.php | IP 애그리게이터.
-/vault/classes/Reporter.php | 보고서 작성자.
-/vault/fe_assets/ | 프론트 엔드 자산.
-/vault/fe_assets/_2fa.html | 사용자에게 2FA 코드를 요청할 때 사용되는 HTML 템플릿입니다.
-/vault/fe_assets/_accounts.html | 프론트 엔드의 계정 페이지의 HTML 템플릿.
-/vault/fe_assets/_accounts_row.html | 프론트 엔드의 계정 페이지의 HTML 템플릿.
-/vault/fe_assets/_aux.html | 프론트 엔드의 보조 규칙 페이지의 HTML 템플릿.
-/vault/fe_assets/_cache.html | 프론트 엔드 데이터 캐쉬 페이지의 HTML 템플릿.
-/vault/fe_assets/_cidr_calc.html | CIDR 계산기 HTML 템플릿.
-/vault/fe_assets/_cidr_calc_row.html | CIDR 계산기 HTML 템플릿.
-/vault/fe_assets/_config.html | 프론트 엔드 구성 페이지의 HTML 템플릿.
-/vault/fe_assets/_config_row.html | 프론트 엔드 구성 페이지의 HTML 템플릿.
-/vault/fe_assets/_files.html | 파일 관리자의 HTML 템플릿.
-/vault/fe_assets/_files_edit.html | 파일 관리자의 HTML 템플릿.
-/vault/fe_assets/_files_rename.html | 파일 관리자의 HTML 템플릿.
-/vault/fe_assets/_files_row.html | 파일 관리자의 HTML 템플릿.
-/vault/fe_assets/_fixer.html | 서명 파일 해결의 HTML 템플릿.
-/vault/fe_assets/_home.html | 프론트 엔드의 홈페이지의 HTML 템플릿.
-/vault/fe_assets/_ip_aggregator.html | IP 애그리게이터 HTML 템플릿.
-/vault/fe_assets/_ip_test.html | IP 테스트 페이지의 HTML 템플릿.
-/vault/fe_assets/_ip_test_row.html | IP 테스트 페이지의 HTML 템플릿.
-/vault/fe_assets/_ip_tracking.html | IP 추적 페이지의 HTML 템플릿.
-/vault/fe_assets/_ip_tracking_row.html | IP 추적 페이지의 HTML 템플릿.
-/vault/fe_assets/_login.html | 프론트 엔드 로그인 페이지의 HTML 템플릿.
-/vault/fe_assets/_logs.html | 프론트 엔드 로고스 페이지의 HTML 템플릿.
-/vault/fe_assets/_nav_complete_access.html | 프론트 엔드의 탐색 링크의 HTML 템플릿, 완전한 액세스를위한 것입니다.
-/vault/fe_assets/_nav_logs_access_only.html | 프론트 엔드의 탐색 링크의 HTML 템플릿은 로그에만 액세스를위한 것입니다.
-/vault/fe_assets/_range.html | 프론트 엔드 범위 테이블 페이지의 HTML 템플릿.
-/vault/fe_assets/_range_row.html | 프론트 엔드 범위 테이블 페이지의 HTML 템플릿.
-/vault/fe_assets/_sections.html | 섹션 목록 용 HTML 템플릿.
-/vault/fe_assets/_statistics.html | 프론트 엔드 통계 페이지의 HTML 템플릿.
-/vault/fe_assets/_updates.html | 프론트 엔드 업데이트 페이지의 HTML 템플릿.
-/vault/fe_assets/_updates_row.html | 프론트 엔드 업데이트 페이지의 HTML 템플릿.
-/vault/fe_assets/frontend.css | 프론트 엔드 CSS 스타일 시트.
-/vault/fe_assets/frontend.dat | 프론트 엔드 데이터베이스 (계정 정보와 세션 정보 및 캐시가 포함되어 있습니다; 프론트 엔드가 활성화되어있을 때 생성).
-/vault/fe_assets/frontend.dat.safety | 필요한 경우 안전 메커니즘으로 생성됩니다.
-/vault/fe_assets/frontend.html | 프론트 엔드 메인 템플릿 파일.
-/vault/fe_assets/icons.php | 아이콘 핸들러 (프론트 엔드 파일 관리자에 의해 사용된다).
-/vault/fe_assets/pips.php | 핍 핸들러 (프론트 엔드 파일 관리자에 의해 사용된다).
-/vault/fe_assets/scripts.js | 프런트 엔드 JavaScript 데이터가 들어 있습니다.
-/vault/lang/ | CIDRAM 언어 데이터가 포함되어 있습니다.
-/vault/lang/lang.ar.fe.yaml | 프론트 엔드 아랍어 언어 데이터.
-/vault/lang/lang.ar.yaml | 아랍어 언어 데이터.
-/vault/lang/lang.bn.fe.yaml | 프론트 엔드 벵골어 언어 데이터.
-/vault/lang/lang.bn.yaml | CLI 벵골어 언어 데이터.
-/vault/lang/lang.de.fe.yaml | 프론트 엔드 독일어 언어 데이터.
-/vault/lang/lang.de.yaml | 독일어 언어 데이터.
-/vault/lang/lang.en.fe.yaml | 프론트 엔드 영어 데이터.
-/vault/lang/lang.en.yaml | 영어 데이터.
-/vault/lang/lang.es.fe.yaml | 프론트 엔드 스페인어 언어 데이터.
-/vault/lang/lang.es.yaml | 스페인어 언어 데이터.
-/vault/lang/lang.fr.fe.yaml | 프론트 엔드 프랑스어 언어 데이터.
-/vault/lang/lang.fr.yaml | 프랑스어 언어 데이터.
-/vault/lang/lang.hi.fe.yaml | 프론트 엔드 힌디어 언어 데이터.
-/vault/lang/lang.hi.yaml | 힌디어 언어 데이터.
-/vault/lang/lang.id.fe.yaml | 프론트 엔드 인도네시아어 언어 데이터.
-/vault/lang/lang.id.yaml | 인도네시아어 언어 데이터.
-/vault/lang/lang.it.fe.yaml | 프론트 엔드 이탈리아 언어 데이터.
-/vault/lang/lang.it.yaml | 이탈리아 언어 데이터.
-/vault/lang/lang.ja.fe.yaml | 프론트 엔드 일본어 언어 데이터.
-/vault/lang/lang.ja.yaml | 일본어 언어 데이터.
-/vault/lang/lang.ko.fe.yaml | 프론트 엔드의 한국어 언어 데이터.
-/vault/lang/lang.ko.yaml | 한국어 언어 데이터.
-/vault/lang/lang.lv.fe.yaml | 프론트 엔드의 라트비아어 언어 데이터.
-/vault/lang/lang.lv.yaml | 라트비아어 언어 데이터.
-/vault/lang/lang.nl.fe.yaml | 프론트 엔드 네덜란드어 언어 데이터.
-/vault/lang/lang.nl.yaml | 네덜란드어 언어 데이터.
-/vault/lang/lang.no.fe.yaml | 프론트 엔드 노르웨이 언어 데이터.
-/vault/lang/lang.no.yaml | 노르웨이 언어 데이터.
-/vault/lang/lang.pl.fe.yaml | 프론트 엔드 폴란드어 언어 데이터.
-/vault/lang/lang.pl.yaml | 폴란드어 언어 데이터.
-/vault/lang/lang.pt.fe.yaml | 프론트 엔드 포르투갈어 언어 데이터.
-/vault/lang/lang.pt.yaml | 포르투갈어 언어 데이터.
-/vault/lang/lang.ru.fe.yaml | 프론트 엔드 러시아어 언어 데이터.
-/vault/lang/lang.ru.yaml | 러시아어 언어 데이터.
-/vault/lang/lang.sv.fe.yaml | 프론트 엔드 스웨덴어 언어 데이터.
-/vault/lang/lang.sv.yaml | 스웨덴어 언어 데이터.
-/vault/lang/lang.ta.fe.yaml | 프론트 엔드 타밀어 언어 데이터.
-/vault/lang/lang.ta.yaml | 타밀어 언어 데이터.
-/vault/lang/lang.th.fe.yaml | 프론트 엔드 태국어 언어 데이터.
-/vault/lang/lang.th.yaml | 태국어 언어 데이터.
-/vault/lang/lang.tr.fe.yaml | 프론트 엔드 터키어 언어 데이터.
-/vault/lang/lang.tr.yaml | 터키어 언어 데이터.
-/vault/lang/lang.ur.fe.yaml | 프론트 엔드 우르두어 언어 데이터.
-/vault/lang/lang.ur.yaml | 우르두어 언어 데이터.
-/vault/lang/lang.vi.fe.yaml | 프론트 엔드 베트남어 언어 데이터.
-/vault/lang/lang.vi.yaml | 베트남어 언어 데이터.
-/vault/lang/lang.zh-tw.fe.yaml | 프론트 엔드 중국어 번체 언어 데이터.
-/vault/lang/lang.zh-tw.yaml | 중국어 번체 언어 데이터.
-/vault/lang/lang.zh.fe.yaml | 프론트 엔드 중국어 간체 언어 데이터.
-/vault/lang/lang.zh.yaml | 중국어 간체 언어 데이터.
-/vault/.htaccess | 하이퍼 텍스트 액세스 파일 (이 경우, 본 스크립트의 중요한 파일을 권한이 없는 소스의 액세스로부터 보호하기 위한 것입니다).
-/vault/.travis.yml | 테스트를 위해 Travis CI에서 사용됩니다. (기능에 관계없는 파일입니다).
-/vault/auxiliary.yaml | 보조 규칙이 들어 있습니다. 패키지에 포함되어 있지 않습니다. 보조 규칙 페이지에 의해 생성됩니다.
-/vault/cache.dat | 캐시 데이터.
-/vault/channels.yaml | 실패한 curl 요청에 대한 대체 채널 데이터.
-/vault/cidramblocklists.dat | Macmathan의 선택적 블록리스트 용 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
-/vault/components.dat | 구성 요소 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
-/vault/config.ini.RenameMe | CIDRAM 설정 파일; CIDRAM 모든 옵션 설정을 포함하고 있습니다. 각 옵션의 기능과 작동 방법에 대한 설명입니다 (활성화하기 위해 이름을 변경합니다).
-/vault/config.php | 구성 핸들러.
-/vault/config.yaml | 설정 기본값 스 파일; CIDRAM의 기본 설정이 포함되어 있습니다.
-/vault/frontend.php | 프론트 엔드 핸들러.
-/vault/frontend_functions.php | 프론트 엔드 기능 파일.
-/vault/functions.php | 기능 파일 (기본적으로 파일).
-/vault/hashes.dat | 허용되는 해시 목록 (reCAPTCHA의 기능에 관련합니다; 만 reCAPTCHA 기능이 활성화되어있는 경우에 생성).
-/vault/ignore.dat | 무시 파일 (이것은 서명 섹션 무시합니다).
-/vault/ipbypass.dat | IP 우회 목록 (reCAPTCHA의 기능에 관련합니다; 만 reCAPTCHA 기능이 활성화되어있는 경우에 생성).
-/vault/ipv4.dat | IPv4의 서명 파일 (불필요한 클라우드 서비스와 非人 엔드 포인트).
-/vault/ipv4_bogons.dat | IPv4의 서명 파일 (보공/화성 CIDRs).
-/vault/ipv4_custom.dat.RenameMe | IPv4에 대한 사용자 정의 시그니처 파일 (활성화하기 위해 이름을 변경합니다).
-/vault/ipv4_isps.dat | IPv4의 서명 파일 (스패머를 가진 위험한 ISP).
-/vault/ipv4_other.dat | IPv4의 서명 파일 (프록시, VPN 및 기타 불필요한 서비스 CIDR).
-/vault/ipv6.dat | IPv6의 서명 파일 (불필요한 클라우드 서비스와 非人 엔드 포인트).
-/vault/ipv6_bogons.dat | IPv6의 서명 파일 (보공/화성 CIDRs).
-/vault/ipv6_custom.dat.RenameMe | IPv6에 대한 사용자 정의 시그니처 파일 (활성화하기 위해 이름을 변경합니다).
-/vault/ipv6_isps.dat | IPv6의 서명 파일 (스패머를 가진 위험한 ISP).
-/vault/ipv6_other.dat | IPv6의 서명 파일 (프록시, VPN 및 기타 불필요한 서비스 CIDR).
-/vault/lang.php | 언어 처리기.
-/vault/modules.dat | 모듈 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
-/vault/outgen.php | 출력 발생기.
-/vault/recaptcha.php | reCAPTCHA 모듈.
-/vault/rules_as6939.php | 사용자 정의 규칙은 AS6939을위한 파일입니다.
-/vault/rules_softlayer.php | 사용자 정의 규칙은 Soft Layer위한 파일.
-/vault/rules_specific.php | 사용자 정의 규칙은 일부 특정 CIDR위한 파일.
-/vault/salt.dat | 솔트 파일 (일부 주변 기능에 의해 사용됩니다; 필요한 경우에만 생성).
-/vault/template_custom.html | CIDRAM 템플릿 파일; CIDRAM가 파일 업로드를 차단했을 때 생성되는 메시지의 HTML 출력 템플릿 (업 로더를 표시하는 메시지).
-/vault/template_default.html | CIDRAM 템플릿 파일; CIDRAM가 파일 업로드를 차단했을 때 생성되는 메시지의 HTML 출력 템플릿 (업 로더를 표시하는 메시지).
-/vault/themes.dat | 테마 메타 데이터 파일; 프런트 엔드 업데이트 페이지에서 사용됩니다.
-/vault/verification.yaml | 검색 엔진 및 소셜 미디어에 대한 확인 데이터입니다.
-/.gitattributes | GitHub 프로젝트 파일 (기능에 관계없는 파일입니다).
-/Changelog.txt | 버전에 따른 차이를 기록한 것입니다 (기능에 관계없는 파일입니다).
-/composer.json | Composer/Packagist 정보 (기능에 관계없는 파일입니다).
-/CONTRIBUTING.md | 프로젝트에 기여하는 방법.
-/LICENSE.txt | GNU/GPLv2 라이센스 사본 (기능에 관계없는 파일입니다).
-/loader.php | 로더 파일입니다. 주요 스크립트로드, 업로드 등을 실시합니다. 훅하는 것은 바로 이것입니다 (본질적 파일)!
-/README.md | 프로젝트 개요 정보.
-/web.config | ASP.NET 설정 파일 (스크립트가 ASP.NET 기술을 기초로하는 서버에 설치된 때 `/vault` 디렉토리를 무단 소스에 의한 액세스로부터 보호하는 것입니다).
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### 6. <a name="SECTION6"></a>설정 옵션
+
 다음은 `config.ini`설정 파일에있는 변수 및 그 목적과 기능의 목록입니다.
 
-[general](#general-카테고리) | [signatures](#signatures-카테고리) | [recaptcha](#recaptcha-카테고리) | [legal](#legal-카테고리)
-:--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-카테고리) | [PHPMailer](#phpmailer-카테고리) | [rate_limiting](#rate_limiting-카테고리) | [supplementary_cache_options](#supplementary_cache_options-카테고리)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│     1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### "general" (카테고리)
 일반 설정.
@@ -324,6 +486,13 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+
+##### "error_log"
+- 치명적이지 않은 오류를 탐지하기위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+##### "error_log_stages"
+- 실행 체인에서 생성 된 오류가 기록되어야하는 단계 목록.
+- *Default (기본값) : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -1576,4 +1745,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 9월 6일.
+최종 업데이트 : 2019년 9월 23일.

@@ -137,172 +137,327 @@ Catat: Melindungi vault Anda terhadap akses yang tidak sah (misalnya, dengan mem
 
 ### 5. <a name="SECTION5"></a>FILE YANG DIIKUTKAN DALAM PAKET INI
 
-Berikut list dari semua file yang diikutkan di dalam kopi skrip yang dikompres ketika Anda mendownloadnya, setiap file-file yang secara potensial diciptakan sebagai hasil dari menggunakan skrip ini, sejalan dengan deskripsi singkat dari untuk apa file-file ini.
-
-Informasi ini berlaku untuk rilis v2 terbaru, dan mungkin tidak begitu relevan untuk versi atau rilis lain.
-
-Data | Deskripsi
-----|----
-/tests/ | Direktori yang berisi berbagai file yang digunakan untuk pengujian CI (integrasi berkelanjutan).
-/vault/ | Direktori Vault (berisikan bermacam file).
-/vault/classes/ | Direktori kelas. Berisi berbagai kelas yang digunakan oleh CIDRAM.
-/vault/classes/Maikuolan/ | Direktori kelas. Berisi berbagai kelas yang digunakan oleh CIDRAM.
-/vault/classes/Maikuolan/Cache.php | Prosesor cache yang sederhana dan terpadu.
-/vault/classes/Maikuolan/ComplexStringHandler.php | Prosesor string yang kompleks.
-/vault/classes/Maikuolan/DelayedIO.php | Kelas untuk file IO yang tertunda.
-/vault/classes/Maikuolan/Demojibakefier.php | "Demojibakefier".
-/vault/classes/Maikuolan/L10N.php | Prosesor L10N.
-/vault/classes/Maikuolan/NumberFormatter.php | Pemformat angka.
-/vault/classes/Maikuolan/YAML.php | Prosesor YAML.
-/vault/classes/Aggregator.php | Agregator IP.
-/vault/classes/Reporter.php | Laporan orkestra.
-/vault/fe_assets/ | Data untuk akses bagian depan.
-/vault/fe_assets/_2fa.html | Template HTML yang digunakan saat meminta pengguna untuk kode 2FA.
-/vault/fe_assets/_accounts.html | Template HTML untuk halaman akun.
-/vault/fe_assets/_accounts_row.html | Template HTML untuk halaman akun.
-/vault/fe_assets/_aux.html | Template HTML untuk halaman aturan tambahan.
-/vault/fe_assets/_cache.html | Template HTML untuk halaman data cache.
-/vault/fe_assets/_cidr_calc.html | Template HTML untuk kalkulator CIDR.
-/vault/fe_assets/_cidr_calc_row.html | Template HTML untuk kalkulator CIDR.
-/vault/fe_assets/_config.html | Template HTML untuk halaman konfigurasi.
-/vault/fe_assets/_config_row.html | Template HTML untuk halaman konfigurasi.
-/vault/fe_assets/_files.html | Template HTML untuk file manager.
-/vault/fe_assets/_files_edit.html | Template HTML untuk file manager.
-/vault/fe_assets/_files_rename.html | Template HTML untuk file manager.
-/vault/fe_assets/_files_row.html | Template HTML untuk file manager.
-/vault/fe_assets/_fixer.html | Template HTML untuk alat perbaikan file tanda tangan.
-/vault/fe_assets/_home.html | Template HTML untuk halaman utama.
-/vault/fe_assets/_ip_aggregator.html | Template HTML untuk agregator IP.
-/vault/fe_assets/_ip_test.html | Template HTML untuk halaman test IP.
-/vault/fe_assets/_ip_test_row.html | Template HTML untuk halaman test IP.
-/vault/fe_assets/_ip_tracking.html | Template HTML untuk halaman pelacakan IP.
-/vault/fe_assets/_ip_tracking_row.html | Template HTML untuk halaman pelacakan IP.
-/vault/fe_assets/_login.html | Template HTML untuk halaman masuk.
-/vault/fe_assets/_logs.html | Template HTML untuk halaman log.
-/vault/fe_assets/_nav_complete_access.html | Template HTML untuk link navigasi, untuk mereka yang memiliki akses lengkap.
-/vault/fe_assets/_nav_logs_access_only.html | Template HTML untuk link navigasi, untuk mereka yang memiliki akses ke halaman log hanya.
-/vault/fe_assets/_range.html | Template HTML untuk tabel rentang.
-/vault/fe_assets/_range_row.html | Template HTML untuk tabel rentang.
-/vault/fe_assets/_sections.html | Template HTML untuk daftar bagian.
-/vault/fe_assets/_statistics.html | Template HTML untuk halaman statistik.
-/vault/fe_assets/_updates.html | Template HTML untuk halaman pembaruan.
-/vault/fe_assets/_updates_row.html | Template HTML untuk halaman pembaruan.
-/vault/fe_assets/frontend.css | Style-sheet CSS untuk akses bagian depan.
-/vault/fe_assets/frontend.dat | Database untuk akses bagian depan (berisi informasi akun, informasi sesi, dan cache; hanya dihasilkan jika akses bagian depan diaktifkan dan digunakan).
-/vault/fe_assets/frontend.dat.safety | Dihasilkan sebagai mekanisme keamanan bila diperlukan.
-/vault/fe_assets/frontend.html | Template HTML utama untuk akses bagian depan.
-/vault/fe_assets/icons.php | File ikon (digunakan oleh file manager bagian depan).
-/vault/fe_assets/pips.php | File pip (digunakan oleh file manager bagian depan).
-/vault/fe_assets/scripts.js | Berisi data JavaScript bagian depan.
-/vault/lang/ | Berisikan file bahasa.
-/vault/lang/lang.ar.fe.yaml | File Bahasa Arab untuk bagian depan.
-/vault/lang/lang.ar.yaml | File Bahasa Arab.
-/vault/lang/lang.bn.fe.yaml | File Bahasa Benggala untuk bagian depan.
-/vault/lang/lang.bn.yaml | File Bahasa Benggala.
-/vault/lang/lang.de.fe.yaml | File Bahasa Jerman untuk bagian depan.
-/vault/lang/lang.de.yaml | File Bahasa Jerman.
-/vault/lang/lang.en.fe.yaml | File Bahasa Inggris untuk bagian depan.
-/vault/lang/lang.en.yaml | File Bahasa Inggris.
-/vault/lang/lang.es.fe.yaml | File Bahasa Spanyol untuk bagian depan.
-/vault/lang/lang.es.yaml | File Bahasa Spanyol.
-/vault/lang/lang.fr.fe.yaml | File Bahasa Perancis untuk bagian depan.
-/vault/lang/lang.fr.yaml | File Bahasa Perancis.
-/vault/lang/lang.hi.fe.yaml | File Bahasa Hindi untuk bagian depan.
-/vault/lang/lang.hi.yaml | File Bahasa Hindi.
-/vault/lang/lang.id.fe.yaml | File Bahasa Indonesia untuk bagian depan.
-/vault/lang/lang.id.yaml | File Bahasa Indonesia.
-/vault/lang/lang.it.fe.yaml | File Bahasa Italia untuk bagian depan.
-/vault/lang/lang.it.yaml | File Bahasa Italia.
-/vault/lang/lang.ja.fe.yaml | File Bahasa Jepang untuk bagian depan.
-/vault/lang/lang.ja.yaml | File Bahasa Jepang.
-/vault/lang/lang.ko.fe.yaml | File Bahasa Korea untuk bagian depan.
-/vault/lang/lang.ko.yaml | File Bahasa Korea.
-/vault/lang/lang.lv.fe.yaml | File Bahasa Latvia untuk bagian depan.
-/vault/lang/lang.lv.yaml | File Bahasa Latvia.
-/vault/lang/lang.nl.fe.yaml | File Bahasa Belanda untuk bagian depan.
-/vault/lang/lang.nl.yaml | File Bahasa Belanda.
-/vault/lang/lang.no.fe.yaml | File Bahasa Norwegia untuk bagian depan.
-/vault/lang/lang.no.yaml | File Bahasa Norwegia.
-/vault/lang/lang.pl.fe.yaml | File Bahasa Polandia untuk bagian depan.
-/vault/lang/lang.pl.yaml | File Bahasa Polandia.
-/vault/lang/lang.pt.fe.yaml | File Bahasa Portugis untuk bagian depan.
-/vault/lang/lang.pt.yaml | File Bahasa Portugis.
-/vault/lang/lang.ru.fe.yaml | File Bahasa Rusia untuk bagian depan.
-/vault/lang/lang.ru.yaml | File Bahasa Rusia.
-/vault/lang/lang.sv.fe.yaml | File Bahasa Swedia untuk bagian depan.
-/vault/lang/lang.sv.yaml | File Bahasa Swedia.
-/vault/lang/lang.ta.fe.yaml | File Bahasa Tamil untuk bagian depan.
-/vault/lang/lang.ta.yaml | File Bahasa Tamil.
-/vault/lang/lang.th.fe.yaml | File Bahasa Thailand untuk bagian depan.
-/vault/lang/lang.th.yaml | File Bahasa Thailand.
-/vault/lang/lang.tr.fe.yaml | File Bahasa Turki untuk bagian depan.
-/vault/lang/lang.tr.yaml | File Bahasa Turki.
-/vault/lang/lang.ur.fe.yaml | File Bahasa Urdu untuk bagian depan.
-/vault/lang/lang.ur.yaml | File Bahasa Urdu.
-/vault/lang/lang.vi.fe.yaml | File Bahasa Vietnam untuk bagian depan.
-/vault/lang/lang.vi.yaml | File Bahasa Vietnam.
-/vault/lang/lang.zh-tw.fe.yaml | File Bahasa Cina tradisional untuk bagian depan.
-/vault/lang/lang.zh-tw.yaml | File Bahasa Cina tradisional.
-/vault/lang/lang.zh.fe.yaml | File Bahasa Cina sederhana untuk bagian depan.
-/vault/lang/lang.zh.yaml | File Bahasa Cina sederhana.
-/vault/.htaccess | File akses hiperteks (pada instansi ini, untuk melindungi file-file sensitif dari skrip untuk diakses dari sumber yang tidak terautorisasi).
-/vault/.travis.yml | Digunakan oleh Travis CI untuk pengujian (tidak dibutuhkan untuk fungsi teratur dari skrip).
-/vault/auxiliary.yaml | Berisi aturan tambahan. Tidak termasuk dalam paket. Dihasilkan oleh halaman aturan tambahan.
-/vault/cache.dat | Cache data.
-/vault/channels.yaml | Data saluran alternatif untuk permintaan curl yang gagal.
-/vault/cidramblocklists.dat | File metadata untuk daftar-daftar blokir yang opsional dari Macmathan; Digunakan oleh halaman pembaruan untuk bagian depan.
-/vault/components.dat | File metadata komponen; Digunakan oleh halaman pembaruan untuk bagian depan.
-/vault/config.ini.RenameMe | File konfigurasi CIDRAM; Berisi semua opsi konfigurasi dari CIDRAM, memberitahukannya apa yang harus dilakukan dan bagaimana mengoperasikannya dengan benar (mengubah nama untuk mengaktifkan).
-/vault/config.php | Modul konfigurasi.
-/vault/config.yaml | File default konfigurasi; Berisi nilai konfigurasi default untuk CIDRAM.
-/vault/frontend.php | Modul untuk akses bagian depan.
-/vault/frontend_functions.php | Modul untuk fungsi akses bagian depan.
-/vault/functions.php | Modul fungsi (utama).
-/vault/hashes.dat | Berisi daftar hash diterima (berkaitan dengan fitur reCAPTCHA; hanya dihasilkan jika fitur reCAPTCHA diaktifkan).
-/vault/ignore.dat | File abaikan (digunakan untuk menentukan bagian tanda tangan CIDRAM harus mengabaikan).
-/vault/ipbypass.dat | Berisi daftar bypass IP (berkaitan dengan fitur reCAPTCHA; hanya dihasilkan jika fitur reCAPTCHA diaktifkan).
-/vault/ipv4.dat | File tanda tangan IPv4 (layanan cloud tidak diinginkan dan jalur akses non-manusia).
-/vault/ipv4_bogons.dat | File tanda tangan IPv4 (CIDR bogon/martian).
-/vault/ipv4_custom.dat.RenameMe | File tanda tangan IPv4 disesuaikan (mengubah nama untuk mengaktifkan).
-/vault/ipv4_isps.dat | File tanda tangan IPv4 (ISP berbahaya dan spam rawan).
-/vault/ipv4_other.dat | File tanda tangan IPv4 (CIDR untuk proxy, VPN, dan layanan lain-lain tidak diinginkan).
-/vault/ipv6.dat | File tanda tangan IPv6 (layanan cloud tidak diinginkan dan jalur akses non-manusia).
-/vault/ipv6_bogons.dat | File tanda tangan IPv6 (CIDR bogon/martian).
-/vault/ipv6_custom.dat.RenameMe | File tanda tangan IPv6 disesuaikan (mengubah nama untuk mengaktifkan).
-/vault/ipv6_isps.dat | File tanda tangan IPv6 (ISP berbahaya dan spam rawan).
-/vault/ipv6_other.dat | File tanda tangan IPv6 (CIDR untuk proxy, VPN, dan layanan lain-lain tidak diinginkan).
-/vault/lang.php | File bahasa.
-/vault/modules.dat | File metadata modul; Digunakan oleh halaman pembaruan untuk bagian depan.
-/vault/outgen.php | Output Generator.
-/vault/recaptcha.php | Modul reCAPTCHA.
-/vault/rules_as6939.php | File aturan disesuaikan untuk AS6939.
-/vault/rules_softlayer.php | File aturan disesuaikan untuk Soft Layer.
-/vault/rules_specific.php | File aturan disesuaikan untuk beberapa CIDR spesifik.
-/vault/salt.dat | File garam (digunakan oleh beberapa fungsi periferal; hanya dihasilkan jika diperlukan).
-/vault/template_custom.html | File template; File template untuk output diproduksi HTML oleh CIDRAM output generator.
-/vault/template_default.html | File template; File template untuk output diproduksi HTML oleh CIDRAM output generator.
-/vault/themes.dat | File metadata tema; Digunakan oleh halaman pembaruan untuk bagian depan.
-/vault/verification.yaml | Data verifikasi untuk mesin pencari dan media sosial.
-/.gitattributes | Sebuah file proyek GitHub (tidak dibutuhkan untuk fungsi teratur dari skrip).
-/Changelog.txt | Sebuah rekaman dari perubahan yang dibuat pada skrip ini di antara perbedaan versi (tidak dibutuhkan untuk fungsi teratur dari skrip).
-/composer.json | Informasi untuk Composer/Packagist (tidak dibutuhkan untuk fungsi teratur dari skrip).
-/CONTRIBUTING.md | Informasi tentang cara berkontribusi pada proyek.
-/LICENSE.txt | Salinan lisensi GNU/GPLv2 (tidak dibutuhkan untuk fungsi teratur dari skrip).
-/loader.php | Pemuat/Loader. Ini yang apa Anda ingin masukkan (utama)!
-/README.md | Ringkasan informasi proyek.
-/web.config | Sebuah file konfigurasi ASP.NET (dalam instansi ini, untuk melindungi direktori `/vault` dari pengaksesan oleh sumber-sumber tidak terauthorisasi dalam kejadian yang mana skrip ini diinstal pada server berbasis teknologi ASP.NET).
+```
+https://github.com/CIDRAM/CIDRAM>v2
+│   .gitattributes
+│   .gitignore
+│   .travis.yml
+│   Changelog.txt
+│   codeception.yml
+│   composer.json
+│   CONTRIBUTING.md
+│   crowdin.yml
+│   LICENSE.txt
+│   loader.php
+│   README.md
+│   SECURITY.md
+│   web.config
+│
+├───.github
+│       ISSUE_TEMPLATE.md
+│
+├───tests
+│   │   .gitignore
+│   │   acceptance.suite.yml
+│   │   functional.suite.yml
+│   │   unit.suite.yml
+│   │
+│   ├───acceptance
+│   │       .gitkeep
+│   │
+│   ├───functional
+│   │       .gitkeep
+│   │
+│   ├───unit
+│   │       .gitkeep
+│   │       Ipv4Cest.php
+│   │       Ipv6Cest.php
+│   │       LoaderCest.php
+│   │
+│   ├───_data
+│   │       .gitkeep
+│   │
+│   ├───_output
+│   │       .gitkeep
+│   │
+│   └───_support
+│       │   AcceptanceTester.php
+│       │   FunctionalTester.php
+│       │   UnitTester.php
+│       │
+│       ├───config
+│       │       config.ini
+│       │
+│       └───Helper
+│               Acceptance.php
+│               Functional.php
+│               Unit.php
+│
+└───vault
+    │   .htaccess
+    │   channels.yaml
+    │   cidramblocklists.dat
+    │   components.dat
+    │   config.ini.RenameMe
+    │   config.php
+    │   config.yaml
+    │   event_handlers.php
+    │   frontend.php
+    │   frontend_functions.php
+    │   functions.php
+    │   ignore.dat
+    │   ipv4.dat
+    │   ipv4_bogons.dat
+    │   ipv4_custom.dat.RenameMe
+    │   ipv4_isps.dat
+    │   ipv4_other.dat
+    │   ipv6.dat
+    │   ipv6_bogons.dat
+    │   ipv6_custom.dat.RenameMe
+    │   ipv6_isps.dat
+    │   ipv6_other.dat
+    │   lang.php
+    │   modules.dat
+    │   outgen.php
+    │   recaptcha.php
+    │   rules_as6939.php
+    │   rules_softlayer.php
+    │   rules_specific.php
+    │   template_custom.html
+    │   template_default.html
+    │   themes.dat
+    │   verification.yaml
+    │
+    ├───classes
+    │   │   Aggregator.php
+    │   │   Reporter.php
+    │   │
+    │   └───Maikuolan
+    │           Cache.php
+    │           ComplexStringHandler.php
+    │           DelayedIO.php
+    │           Demojibakefier.php
+    │           Events.php
+    │           L10N.php
+    │           NumberFormatter.php
+    │           YAML.php
+    │
+    ├───fe_assets
+    │       frontend.css
+    │       frontend.html
+    │       icons.php
+    │       pips.php
+    │       scripts.js
+    │       _2fa.html
+    │       _accounts.html
+    │       _accounts_row.html
+    │       _aux.html
+    │       _cache.html
+    │       _cidr_calc.html
+    │       _cidr_calc_row.html
+    │       _config.html
+    │       _config_row.html
+    │       _files.html
+    │       _files_edit.html
+    │       _files_rename.html
+    │       _files_row.html
+    │       _fixer.html
+    │       _home.html
+    │       _ip_aggregator.html
+    │       _ip_test.html
+    │       _ip_test_row.html
+    │       _ip_tracking.html
+    │       _ip_tracking_row.html
+    │       _login.html
+    │       _logs.html
+    │       _nav_complete_access.html
+    │       _nav_logs_access_only.html
+    │       _range.html
+    │       _range_row.html
+    │       _sections.html
+    │       _statistics.html
+    │       _updates.html
+    │       _updates_row.html
+    │
+    └───lang
+            lang.ar.fe.yaml
+            lang.ar.yaml
+            lang.bn.fe.yaml
+            lang.bn.yaml
+            lang.de.fe.yaml
+            lang.de.yaml
+            lang.en.fe.yaml
+            lang.en.yaml
+            lang.es.fe.yaml
+            lang.es.yaml
+            lang.fr.fe.yaml
+            lang.fr.yaml
+            lang.hi.fe.yaml
+            lang.hi.yaml
+            lang.id.fe.yaml
+            lang.id.yaml
+            lang.it.fe.yaml
+            lang.it.yaml
+            lang.ja.fe.yaml
+            lang.ja.yaml
+            lang.ko.fe.yaml
+            lang.ko.yaml
+            lang.lv.fe.yaml
+            lang.lv.yaml
+            lang.nl.fe.yaml
+            lang.nl.yaml
+            lang.no.fe.yaml
+            lang.no.yaml
+            lang.pl.fe.yaml
+            lang.pl.yaml
+            lang.pt.fe.yaml
+            lang.pt.yaml
+            lang.ru.fe.yaml
+            lang.ru.yaml
+            lang.sv.fe.yaml
+            lang.sv.yaml
+            lang.ta.fe.yaml
+            lang.ta.yaml
+            lang.th.fe.yaml
+            lang.th.yaml
+            lang.tr.fe.yaml
+            lang.tr.yaml
+            lang.ur.fe.yaml
+            lang.ur.yaml
+            lang.vi.fe.yaml
+            lang.vi.yaml
+            lang.zh-tw.fe.yaml
+            lang.zh-tw.yaml
+            lang.zh.fe.yaml
+            lang.zh.yaml
+```
 
 ---
 
 
 ### 6. <a name="SECTION6"></a>OPSI KONFIGURASI
+
 Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, dengan deskripsi dari tujuan dan fungsi.
 
-[general](#general-kategori) | [signatures](#signatures-kategori) | [recaptcha](#recaptcha-kategori) | [legal](#legal-kategori)
-:--|:--|:--|:--
-[logfile](#logfile)<br />[logfile_apache](#logfile_apache)<br />[logfile_serialized](#logfile_serialized)<br />[truncate](#truncate)<br />[log_rotation_limit](#log_rotation_limit)<br />[log_rotation_action](#log_rotation_action)<br />[timezone](#timezone)<br />[time_offset](#time_offset)<br />[time_format](#time_format)<br />[ipaddr](#ipaddr)<br />[forbid_on_block](#forbid_on_block)<br />[silent_mode](#silent_mode)<br />[lang](#lang)<br />[lang_override](#lang_override)<br />[numbers](#numbers)<br />[emailaddr](#emailaddr)<br />[emailaddr_display_style](#emailaddr_display_style)<br />*†[disable_cli](#disable_cli)*<br />[disable_frontend](#disable_frontend)<br />[max_login_attempts](#max_login_attempts)<br />[frontend_log](#frontend_log)<br />[ban_override](#ban_override)<br />[log_banned_ips](#log_banned_ips)<br />[default_dns](#default_dns)<br />[search_engine_verification](#search_engine_verification)<br />[social_media_verification](#social_media_verification)<br />[protect_frontend](#protect_frontend)<br />[disable_webfonts](#disable_webfonts)<br />[maintenance_mode](#maintenance_mode)<br />[default_algo](#default_algo)<br />[statistics](#statistics)<br />[force_hostname_lookup](#force_hostname_lookup)<br />[allow_gethostbyaddr_lookup](#allow_gethostbyaddr_lookup)<br />[hide_version](#hide_version)<br />[empty_fields](#empty_fields)<br />[log_sanitisation](#log_sanitisation)<br />[disabled_channels](#disabled_channels)<br /> | [ipv4](#ipv4)<br />[ipv6](#ipv6)<br />[block_cloud](#block_cloud)<br />[block_bogons](#block_bogons)<br />[block_generic](#block_generic)<br />[block_legal](#block_legal)<br />[block_malware](#block_malware)<br />[block_proxies](#block_proxies)<br />[block_spam](#block_spam)<br />[modules](#modules)<br />[default_tracktime](#default_tracktime)<br />[infraction_limit](#infraction_limit)<br />[track_mode](#track_mode)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [usemode](#usemode)<br />[lockip](#lockip)<br />[lockuser](#lockuser)<br />[sitekey](#sitekey)<br />[secret](#secret)<br />[expiry](#expiry)<br />[logfile](#logfile)<br />[signature_limit](#signature_limit)<br />[api](#api)<br />[show_cookie_warning](#show_cookie_warning)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [pseudonymise_ip_addresses](#pseudonymise_ip_addresses)<br />[omit_ip](#omit_ip)<br />[omit_hostname](#omit_hostname)<br />[omit_ua](#omit_ua)<br />[privacy_policy](#privacy_policy)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-[template_data](#template_data-kategori) | [PHPMailer](#phpmailer-kategori) | [rate_limiting](#rate_limiting-kategori) | [supplementary_cache_options](#supplementary_cache_options-kategori)
-[theme](#theme)<br />[magnification](#magnification)<br />[css_url](#css_url)<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> | [event_log](#event_log)<br />[skip_auth_process](#skip_auth_process)<br />[enable_two_factor](#enable_two_factor)<br />[host](#host)<br />[port](#port)<br />[smtp_secure](#smtp_secure)<br />[smtp_auth](#smtp_auth)<br />[username](#username)<br />[password](#password)<br />[set_from_address](#set_from_address)<br />[set_from_name](#set_from_name)<br />[add_reply_to_address](#add_reply_to_address)<br />[add_reply_to_name](#add_reply_to_name)<br /> | [max_bandwidth](#max_bandwidth)<br />[max_requests](#max_requests)<br />[precision_ipv4](#precision_ipv4)<br />[precision_ipv6](#precision_ipv6)<br />[allowance_period](#allowance_period)<br /><br /><br /><br /><br /><br /><br /><br /><br /> | [enable_apcu](#enable_apcu)<br />[enable_memcached](#enable_memcached)<br />[enable_redis](#enable_redis)<br />[enable_pdo](#enable_pdo)<br />[memcached_host](#memcached_host)<br />[memcached_port](#memcached_port)<br />[redis_host](#redis_host)<br />[redis_port](#redis_port)<br />[redis_timeout](#redis_timeout)<br />[pdo_dsn](#pdo_dsn)<br />[pdo_username](#pdo_username)<br />[pdo_password](#pdo_password)<br /><br />
+```
+Configuration (v2)
+│
+├───general
+│       logfile
+│       logfile_apache (v1: logfileApache)
+│       logfile_serialized (v1: logfileSerialized)
+│       error_log
+│       error_log_stages
+│       truncate
+│       log_rotation_limit
+│       log_rotation_action
+│       timezone
+│       time_offset (v1: timeOffset)
+│       time_format (v1: timeFormat)
+│       ipaddr
+│       forbid_on_block
+│       silent_mode
+│       lang
+│       lang_override
+│       numbers
+│       emailaddr
+│       emailaddr_display_style
+│       † (v1: disable_cli)
+│       disable_frontend
+│       max_login_attempts
+│       frontend_log (v1: FrontEndLog)
+│       ban_override
+│       log_banned_ips
+│       default_dns
+│       search_engine_verification
+│       social_media_verification
+│       protect_frontend
+│       disable_webfonts
+│       maintenance_mode
+│       default_algo
+│       statistics
+│       force_hostname_lookup
+│       allow_gethostbyaddr_lookup
+│       hide_version
+│       empty_fields
+│       log_sanitisation
+│       disabled_channels
+│
+├───signatures
+│       ipv4
+│       ipv6
+│       block_cloud
+│       block_bogons
+│       block_generic
+│       block_legal
+│       block_malware
+│       block_proxies
+│       block_spam
+│       modules
+│       default_tracktime
+│       infraction_limit
+│       track_mode
+│
+├───recaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│
+├───legal
+│       pseudonymise_ip_addresses
+│       omit_ip
+│       omit_hostname
+│       omit_ua
+│       privacy_policy
+│
+├───template_data
+│       theme
+│       magnification (v1: Magnification)
+│       css_url
+│
+├───PHPMailer
+│       event_log (v1: EventLog)
+│       skip_auth_process (v1: SkipAuthProcess)
+│       enable_two_factor (v1: Enable2FA)
+│       host (v1: Host)
+│       port (v1: Port)
+│       smtp_secure (v1: SMTPSecure)
+│       smtp_auth (v1: SMTPAuth)
+│       username (v1: Username)
+│       password (v1: Password)
+│       set_from_address (v1: setFromAddress)
+│       set_from_name (v1: setFromName)
+│       add_reply_to_address (v1: addReplyToAddress)
+│       add_reply_to_name (v1: addReplyToName)
+│
+├───rate_limiting
+│       max_bandwidth
+│       max_requests
+│       precision_ipv4
+│       precision_ipv6
+│       allowance_period
+│
+└───supplementary_cache_options
+        enable_apcu
+        enable_memcached
+        enable_redis
+        enable_pdo
+        memcached_host
+        memcached_port
+        redis_host
+        redis_port
+        redis_timeout
+        pdo_dsn
+        pdo_username
+        pdo_password
+```
 
 #### "general" (Kategori)
 Konfigurasi umum dari CIDRAM.
@@ -324,6 +479,13 @@ Konfigurasi umum dari CIDRAM.
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 - *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+
+##### "error_log"
+- File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "error_log_stages"
+- Daftar tahapan dalam rantai eksekusi yang seharusnya memiliki kesalahan yang dihasilkan dicatat.
+- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
@@ -1573,4 +1735,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 6 September 2019 (2019.09.06).
+Terakhir Diperbarui: 23 September 2019 (2019.09.23).
