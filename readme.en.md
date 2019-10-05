@@ -934,6 +934,8 @@ Supplementary cache options.
 ##### "pdo_dsn"
 - PDO DSN value. Default = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
+*See also: [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#HOW_TO_USE_PDO)*
+
 ##### "pdo_username"
 - PDO username.
 
@@ -1329,6 +1331,7 @@ Modules have been made available to ensure that the following packages and produ
 - [Will problems occur if I use CIDRAM at the same time as using CDNs or caching services?](#CDN_CACHING_PROBLEMS)
 - [Will CIDRAM protect my website from DDoS attacks?](#DDOS_ATTACKS)
 - [When I activate or deactivate modules or signature files via the updates page, it sorts them alphanumerically in the configuration. Can I change the way that they get sorted?](#CHANGE_COMPONENT_SORT_ORDER)
+- [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#HOW_TO_USE_PDO)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>What is a "signature"?
 
@@ -1498,6 +1501,51 @@ Then, if a new file, `file6.php`, is activated, when the updates page resorts th
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 Same situation when a file is deactivated. Conversely, if you wanted the file to execute last, you could add something like `zzz:` before the name of the file. In any case, you won't need to rename the file in question.
+
+#### <a name="HOW_TO_USE_PDO"></a>What is a "PDO DSN"? How can I use PDO with CIDRAM?
+
+"PDO" is an acronym for "[PHP Data Objects](https://www.php.net/manual/en/intro.pdo.php)". It provides an interface for PHP to be able to connect to some database systems commonly utilised by various PHP applications.
+
+"DSN" is an acronym for "[data source name](https://en.wikipedia.org/wiki/Data_source_name)". The "PDO DSN" describes to PDO how it should connect to a database.
+
+CIDRAM provides the option to utilise PDO for caching purposes. In order for this to work properly, you'll need to configure CIDRAM accordingly, enabling PDO, create a new database for CIDRAM to use (if you don't already have in mind a database for CIDRAM to use), and create a new table in your database in accordance with the structure described below.
+
+This, of course, only applies if you actually want CIDRAM to use PDO. If you're happy enough for CIDRAM to use flatfile caching (per its default configuration), or any of the various other caching options provided, you won't need to bother troubling yourself with setting up databases, tables and so on.
+
+The structure described below uses "cidram" as its database name, but you can use whichever name you want for your database, so long as that same name is replicated at your DSN configuration.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+CIDRAM's `pdo_dsn` configuration directive should be configured as described below.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └The port number to connect to
+    │            │           │               the host with.
+    │            │           │
+    │            │           └The host to connect with to find the
+    │            │            database.
+    │            │
+    │            └The name of the database to use.
+    │
+    └The name of the database driver for PDO to use.
+```
+
+If you're not sure about what to use for some particular part of your DSN, try seeing firstly whether it works as is, without changing anything.
 
 ---
 
@@ -1755,4 +1803,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 3 October 2019 (2019.10.03).
+Last Updated: 5 October 2019 (2019.10.05).
