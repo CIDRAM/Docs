@@ -924,6 +924,8 @@ Tùy chọn bộ nhớ cache bổ sung.
 ##### "pdo_dsn"
 - Giá trị DSN PDO. Mặc định = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
+*Xem thêm: ["PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?](#HOW_TO_USE_PDO)*
+
 ##### "pdo_username"
 - Tên người dùng PDO.
 
@@ -1319,6 +1321,8 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 - [Sẽ xảy ra sự cố nếu tôi sử dụng CIDRAM cùng lúc với việc sử dụng các CDN hoặc các dịch vụ bộ nhớ đệm?](#CDN_CACHING_PROBLEMS)
 - [CIDRAM có bảo vệ trang web của tôi khỏi các cuộc tấn công DDoS không?](#DDOS_ATTACKS)
 - [Khi tôi kích hoạt hoặc hủy kích hoạt các mô-đun hay các tập tin chữ ký thông qua trang cập nhật, nó sắp xếp chúng theo thứ tự chữ và số trong cấu hình. Tôi có thể thay đổi cách họ được sắp xếp không?](#CHANGE_COMPONENT_SORT_ORDER)
+- ["PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?](#HOW_TO_USE_PDO)
+- [CIDRAM đang chặn cronjobs; Làm thế nào để khắc phục điều này?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>"Chữ ký" là gì?
 
@@ -1488,6 +1492,59 @@ Sau đó, nếu một tập tin mới, `file6.php`, được kích hoạt, khi t
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 Tình huống tương tự khi một tập tin bị hủy kích hoạt. Ngược lại, nếu bạn muốn tập tin thực thi cuối cùng, bạn có thể thêm một cái gì đó như `zzz:` trước tên của tập tin. Trong mọi trường hợp, bạn sẽ không cần đổi tên tập tin đang được đề cập đến.
+
+#### <a name="HOW_TO_USE_PDO"></a>"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?
+
+"PDO" là từ viết tắt của "[PHP Data Objects](https://www.php.net/manual/en/intro.pdo.php)" (đối tượng dữ liệu PHP). Nó cung cấp một giao diện cho PHP để có thể kết nối với một số hệ thống cơ sở dữ liệu thường được sử dụng bởi các ứng dụng PHP khác nhau.
+
+"DSN" là từ viết tắt của "[data source name](https://en.wikipedia.org/wiki/Data_source_name)" (tên nguồn dữ liệu). "PDO DSN" mô tả với PDO cách nó sẽ kết nối với cơ sở dữ liệu.
+
+CIDRAM cung cấp tùy chọn để sử dụng PDO cho mục đích bộ nhớ cache. Để điều này hoạt động chính xác, bạn sẽ cần định cấu hình CIDRAM phù hợp, do đó cho phép PDO, tạo cơ sở dữ liệu mới cho CIDRAM để sử dụng (nếu bạn chưa có cơ sở dữ liệu cho CIDRAM để sử dụng), và tạo một bảng mới trong cơ sở dữ liệu của bạn theo cấu trúc được mô tả dưới đây.
+
+Tất nhiên, điều này chỉ áp dụng nếu bạn thực sự muốn CIDRAM sử dụng PDO. Nếu bạn đủ hạnh phúc cho CIDRAM để sử dụng bộ đệm ẩn phẳng (theo cấu hình mặc định của nó) hoặc bất kỳ tùy chọn bộ nhớ cache nào khác được cung cấp, bạn sẽ không cần phải lo lắng về việc thiết lập cơ sở dữ liệu, bảng, vv.
+
+Cấu trúc được mô tả dưới đây sử dụng "cidram" làm tên cơ sở dữ liệu của nó, nhưng bạn có thể sử dụng bất kỳ tên nào bạn muốn cho cơ sở dữ liệu của mình, miễn là cùng tên đó được sao chép trong cấu hình DSN của bạn.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+Chỉ thị cấu hình `pdo_dsn` của CIDRAM nên được cấu hình như mô tả bên dưới.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └Số cổng để kết nối với máy chủ.
+    │            │           │
+    │            │           └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+    │            │
+    │            └Tên của cơ sở dữ liệu để sử dụng.
+    │
+    └Tên của trình điều khiển cơ sở dữ liệu cho PDO để sử dụng.
+```
+
+Nếu bạn không chắc chắn về việc sử dụng cái gì cho một phần cụ thể trong DSN của mình, hãy thử xem trước tiên xem nó có hoạt động như cũ không mà không thay đổi gì.
+
+Lưu ý rằng `pdo_username` và `pdo_password` phải giống với tên người dùng và mật khẩu bạn đã chọn cho cơ sở dữ liệu của mình.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM đang chặn cronjobs; Làm thế nào để khắc phục điều này?
+
+Nếu bạn đang sử dụng một tập tin chuyên dụng cho mục đích cronjobs, và nếu tập tin đó không cần phải được gọi trong các yêu cầu người dùng thông thường (chẳng hạn như bên ngoài bối cảnh cronjobs), cách đơn giản nhất để khắc phục điều này sẽ là đảm bảo rằng CIDRAM hoàn toàn không được thực thi trong các cronjobs của bạn (có nghĩa là, đừng nối CIDRAM vào tập tin chịu trách nhiệm xử lý các cronjobs của bạn).
+
+Như một sự thay thế, nếu điều đó là không thể, nhưng địa chỉ IP của máy chủ cron của bạn tương đối phù hợp và có thể dự đoán được, bạn có thể thử danh sách trắng địa chỉ IP của máy chủ cron của bạn, bằng cách tạo chữ ký danh sách trắng cho nó trong tập tin chữ ký tùy chỉnh, hoặc bằng cách tạo một quy tắc phụ trợ để danh sách trắng cho nó. Nếu địa chỉ IP của máy chủ cron của bạn thường xuyên xoay và không thể dự đoán được, nhưng dù sao vẫn từ trong cùng một mạng cụ thể, bạn có thể thử liệt kê trong tập tin `ignore.dat` của bạn tên của phần chữ ký chịu trách nhiệm chặn nó ở vị trí đầu tiên.
+
+Nếu bạn đã thử tất cả những ý tưởng đó và không ai trong số chúng làm việc cho bạn, hoặc nếu bạn cần giúp đỡ tìm ra cách để làm điều đó, bạn có thể tạo một issue mới tại trang issues của CIDRAM để yêu cầu trợ giúp.
 
 ---
 
@@ -1735,4 +1792,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 23 Tháng Chín 2019 (2019.09.23).
+Lần cuối cập nhật: 20 Tháng Mười 2019 (2019.10.20).

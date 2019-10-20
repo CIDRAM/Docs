@@ -1332,6 +1332,7 @@ Modules have been made available to ensure that the following packages and produ
 - [Will CIDRAM protect my website from DDoS attacks?](#DDOS_ATTACKS)
 - [When I activate or deactivate modules or signature files via the updates page, it sorts them alphanumerically in the configuration. Can I change the way that they get sorted?](#CHANGE_COMPONENT_SORT_ORDER)
 - [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#HOW_TO_USE_PDO)
+- [CIDRAM is blocking cronjobs; How to fix this?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>What is a "signature"?
 
@@ -1546,6 +1547,16 @@ mysql:dbname=cidram;host=localhost;port=3306
 ```
 
 If you're not sure about what to use for some particular part of your DSN, try seeing firstly whether it works as is, without changing anything.
+
+Note that `pdo_username` and `pdo_password` should be the same as the username and password you've chosen for your database.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM is blocking cronjobs; How to fix this?
+
+If you're using a dedicated file for the purpose of cronjobs, and if that file doesn't need to be called during normal user requests (i.e., outside the context of cronjobs), the most straightforward way to fix this would be to ensure that CIDRAM isn't executed at all during your cronjobs (i.e., don't hook CIDRAM to the file responsible for handling your cronjobs).
+
+Alternatively, if that isn't possible, but your cron server's IP address is relatively consistent and predictable, you could try whitelisting your cron server's IP address, either by creating a whitelist signature for it in a custom signature file, or by creating an auxiliary rule to whitelist it. If your cron server's IP address regularly rotates and isn't particularly predictable, but nonetheless remains from within the same particular network, you could try listing in your `ignore.dat` file the name of the signature section responsible for blocking it in the first place.
+
+If you've tried all of those ideas and none of them worked for you, or if you need help figuring out how to do it, you can create a new issue at CIDRAM's issues page to ask for help.
 
 ---
 
@@ -1803,4 +1814,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 5 October 2019 (2019.10.05).
+Last Updated: 19 October 2019 (2019.10.19).

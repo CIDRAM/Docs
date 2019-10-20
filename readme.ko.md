@@ -4,16 +4,16 @@
 - 1. [서문](#SECTION1)
 - 2. [설치 방법](#SECTION2)
 - 3. [사용 방법](#SECTION3)
-- 4. [프론트 엔드 관리](#SECTION4)
-- 5. [본 패키지에 포함 된 파일](#SECTION5)
+- 4. [프론트엔드 관리](#SECTION4)
+- 5. [패키지에 포함된 파일](#SECTION5)
 - 6. [설정 옵션](#SECTION6)
-- 7. [서명 포맷](#SECTION7)
-- 8. [적합성 문제](#SECTION8)
+- 7. [서명 형식](#SECTION7)
+- 8. [알려진 호환성 문제](#SECTION8)
 - 9. [자주 묻는 질문 (FAQ)](#SECTION9)
 - 10. *나중에 문서에 추가 할 수 있도록 예약되어 있습니다.*
 - 11. [법률 정보](#SECTION11)
 
-*번역에 노트 : 오류가 발생하는 경우 (예를 들어, 번역 사이의 불일치, 오타, 등등), README의 영어 버전은 원본과 권위 버전이라고 생각됩니다. 오류를 발견하면이를 해결하려면 협력을 환영하는 것이다.*
+*번역 관련 참고 사항 : 오류가 발생하는 경우 (예 : 번역 간 불일치, 오타 등), README의 영어 버전을 원본 및 정식 버전으로 취급합니다. 오류가 있는 경우 이를 정정하는 것을 환영합니다.*
 
 ---
 
@@ -24,13 +24,13 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 
 *(참조하십시오 : ["CIDR"이란 무엇입니까?](#WHAT_IS_A_CIDR)).*
 
-[CIDRAM](https://cidram.github.io/) 저작권 2016 년 이후 [Caleb M (Maikuolan)](https://github.com/Maikuolan)의 GNU/GPLv2.
+[CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 and beyond GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
-본 스크립트는 프리웨어입니다. 자유 소프트웨어 재단에서 발행 한 GNU 일반 공중 라이선스 버전 2 (또는 이후 버전)에 따라 재배포 및 가공이 가능합니다. 배포의 목적은 도움이되기를 바랍니다 것이지만 "보증 아니며 상품성 또는 특정 목적에 적합한 것을 시사하는 것이기도 없습니다." "LICENSE.txt"에있는 "GNU General Public License" (일반 라이선스)을 참조하십시오. 다음 URL에서도 볼 수 있습니다 :
+이 스크립트는 자유 소프트웨어입니다; 당신은 자유 소프트웨어 재단이 발표한 GNU 일반 공중 사용 허가서 버전 2 또는 그 이후 버전에 따라 이 스크립트를 재배포하거나 수정할 수 있습니다. 이 스크립트가 유용하게 사용되기를 바라지만 상용으로 사용되거나 특정 목적에 적합할 것이라는 것을 묵시적인 보증을 포함한 그 어떠한 형태로도 보증하지 않습니다. 자세한 내용은 `LICENSE.txt` 파일 또는 다음 링크에서 확인할 수 있는 GNU 일반 공중 사용 허가서를 참조하시기 바랍니다 :
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-본 문서 및 관련 패키지는 다음 URL에서 다운로드 할 수 있습니다.
+이 문서와 관련 패키지는 다음 링크에서 무료로 다운로드할 수 있습니다 :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [SourceForge](https://sourceforge.net/projects/cidram/).
@@ -96,7 +96,7 @@ CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 �
 ---
 
 
-### 4. <a name="SECTION4"></a>프론트 엔드 관리
+### 4. <a name="SECTION4"></a>프론트엔드 관리
 
 #### 4.0 프론트 엔드는 무엇입니다.
 
@@ -135,7 +135,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ---
 
 
-### 5. <a name="SECTION5"></a>본 패키지에 포함 된 파일
+### 5. <a name="SECTION5"></a>패키지에 포함된 파일
 
 ```
 https://github.com/CIDRAM/CIDRAM>v2
@@ -924,6 +924,8 @@ PHPMailer 구성.
 ##### "pdo_dsn"
 - PDO DSN 값. Default (기본값) = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
+*또한보십시오 : ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#HOW_TO_USE_PDO)*
+
 ##### "pdo_username"
 - PDO 사용자 이름.
 
@@ -933,7 +935,7 @@ PHPMailer 구성.
 ---
 
 
-### 7. <a name="SECTION7"></a>서명 포맷
+### 7. <a name="SECTION7"></a>서명 형식
 
 *참조 :*
 - *["서명"이란 무엇입니까?](#WHAT_IS_A_SIGNATURE)*
@@ -1280,7 +1282,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 ---
 
 
-### 8. <a name="SECTION8"></a>적합성 문제
+### 8. <a name="SECTION8"></a>알려진 호환성 문제
 
 다음 패키지 및 제품이 CIDRAM과 호환되지 않습니다.
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1319,6 +1321,8 @@ CIDRAM과의 호환성을 보장하기 위해, 다음 패키지 및 제품에, �
 - [CDN 또는 캐싱 서비스를 사용하는 것과 동시에 CIDRAM을 사용하면 문제가 발생합니까?](#CDN_CACHING_PROBLEMS)
 - [CIDRAM이 내 웹 사이트를 DDoS 공격으로부터 보호합니까?](#DDOS_ATTACKS)
 - [모듈 또는 서명 파일이 업데이트 페이지를 통해 활성화되거나 비활성화되면, 구성에서 문자 또는 숫자로 정렬됩니다. 분류 방식을 변경할 수 있습니까?](#CHANGE_COMPONENT_SORT_ORDER)
+- ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#HOW_TO_USE_PDO)
+- [CIDRAM이 cronjobs을 차단하고 있습니다. 문제를 해결하는 방법?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>"서명"이란 무엇입니까?
 
@@ -1486,6 +1490,59 @@ IP | 운영자
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 파일이 비활성화 될 때와 동일한 상황입니다. 반대로, 파일을 마지막으로 실행하려면, 파일 이름 앞에 `zzz:`와 같은 것을 추가 할 수 있습니다. 어떤 경우이든 해당 파일의 이름을 바꿀 필요가 없습니다.
+
+#### <a name="HOW_TO_USE_PDO"></a>"PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?
+
+"PDO"는 "[PHP Data Objects](https://www.php.net/manual/en/intro.pdo.php)"의 약어입니다 (PHP 데이터 객체). PHP가 다양한 PHP 응용 프로그램에서 일반적으로 사용하는 일부 데이터베이스 시스템에 연결할 수 있도록 인터페이스를 제공합니다.
+
+"DSN"은 "[data source name](https://en.wikipedia.org/wiki/Data_source_name)"의 약어입니다 (데이터 소스 이름). "PDO DSN"은 PDO가 데이터베이스에 연결하는 방법을 설명합니다.
+
+CIDRAM은 캐싱 목적으로 PDO 을 활용할 수 있는 옵션을 제공합니. 이 기능이 제대로 작동하려면, CIDRAM을 적절히 구성하고 (따라서 PDO를 사용하도록 설정), 사용할 CIDRAM 용 데이터베이스를 새로 작성하고 (CIDRAM 용 데이터베이스를 아직 염두에 두지 않은 경우), 그런 아래 설명된 구조에 따라 데이터베이스에 새 테이블을 작성하십시오.
+
+물론 이것은 실제로 CIDRAM이 PDO 을 사용하도록 하려는 경우에만 적용됩니다. 플랫 파일 캐싱 (기본 구성에 따라) 또는 제공된 다양한 캐싱 옵션을 사용하기에 충분하다면, 데이터베이스, 테이블 등을 설정하는 데 어려움을 겪을 필요가 없습니다.
+
+아래 설명된 구조는 "cidram"을 데이터베이스 이름으로 사용하지만, DSN 구성에 동일한 이름이 복제되는 한 데이터베이스에 원하는 이름을 사용할 수 있습니다.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └호스트에 연결할 포트 번호입니다.
+    │            │           │
+    │            │           └데이터베이스를 찾기 위해 연결할 호스트입니다.
+    │            │
+    │            └사용할 데이터베이스의 이름입니다.
+    │
+    └PDO가 사용할 데이터베이스 드라이버의 이름입니다.
+```
+
+DSN의 특정 부분에 무엇을 사용해야할지 확실하지 않은 경우, 아무것도 변경하지 않고 그대로 작동하는지 먼저 확인하십시오.
+
+`pdo_username` 및 `pdo_password` 는 데이터베이스에 대해 선택한 사용자 이름 및 비밀번호와 같아야합니다.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM이 cronjobs을 차단하고 있습니다. 문제를 해결하는 방법?
+
+cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에 해당 파일을 호출 할 필요가없는 경우 (즉, 크론 작업의 맥락 밖에서), 이 문제를 해결하는 가장 간단한 방법은 cronjobs 동안 CIDRAM이 전혀 실행되지 않도록하는 것입니다 (즉, cronjob 처리를 담당하는 파일에 CIDRAM을 연결하지 마십시오).
+
+또는 불가능한 경우, cron 서버의 IP 주소가 비교적 일관되고 예측 가능한 경우, cron 서버의 IP 주소를 허용 목록에 추가 할 수 있습니다. 사용자 정의 서명 파일에서 화이트리스트 서명을 작성하여이를 수행 할 수 있습니다 또는 보조 규칙을 작성하여. cron 서버의 IP 주소가 정기적으로 변경되고 특별히 예측할 수없는 경우, 그럼에도 불구하고 동일한 특정 네트워크 내에 남아 있습니다, 먼저 `ignore.dat`파일에 차단을 담당하는 서명 섹션의 이름을 나열 해 볼 수 있습니다.
+
+당신이 그 아이디어를 모두 시도했지만 그들 중 누구도 당신을 위해 일하지 않았다면, 또는 수행 방법을 알아내는 데 도움이 필요한 경우, CIDRAM issues 페이지에서 새 issue를 만들어 도움을 요청할 수 있습니다.
 
 ---
 
@@ -1738,4 +1795,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 9월 23일.
+최종 업데이트 : 2019년 10월 19일.

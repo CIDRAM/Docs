@@ -924,6 +924,8 @@ Aanvullende cache-opties.
 ##### "pdo_dsn"
 - PDO DSN-waarde. Standaard = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
+*Zie ook: [Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?](#HOW_TO_USE_PDO)*
+
 ##### "pdo_username"
 - PDO gebruikersnaam.
 
@@ -1319,6 +1321,8 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Zullen er problemen optreden als ik CIDRAM tegelijk gebruik met CDN's of cacheservices?](#CDN_CACHING_PROBLEMS)
 - [Zal CIDRAM mijn website beschermen tegen DDoS-aanvallen?](#DDOS_ATTACKS)
 - [Wanneer ik modules of signatuurbestanden activeer of deactiveer via de updates-pagina, sorteert deze ze alfanumeriek in de configuratie. Kan ik de manier wijzigen waarop ze worden gesorteerd?](#CHANGE_COMPONENT_SORT_ORDER)
+- [Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?](#HOW_TO_USE_PDO)
+- [CIDRAM blokkeert cronjobs; Hoe dit op te lossen?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>Wat is een "signature"?
 
@@ -1488,6 +1492,61 @@ Als dan een nieuw bestand, `file6.php`, is geactiveerd, als de updates-pagina ze
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 Dezelfde situatie wanneer een bestand is gedeactiveerd. Omgekeerd, als u wilde dat het bestand als laatste werd uitgevoerd, u zou iets als `zzz:` kunnen toevoegen voor de naam van het bestand. In elk geval hoeft u het betreffende bestand niet te hernoemen.
+
+#### <a name="HOW_TO_USE_PDO"></a>Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?
+
+"PDO" is een acroniem voor "[PHP Data Objects](https://www.php.net/manual/en/intro.pdo.php)". Het biedt een interface voor PHP met sommige databasesystemen te verbinden die vaak worden gebruikt door verschillende PHP-applicaties.
+
+"DSN" is een acroniem voor "[data source name](https://en.wikipedia.org/wiki/Data_source_name)". De "PDO DSN" beschrijft aan PDO hoe te verbinden met een database.
+
+CIDRAM biedt de optie om PDO te gebruiken voor cachingdoeleinden. Om dit correct te laten werken, moet u CIDRAM dienovereenkomstig configureren, PDO ingeschakeld gemaakt, een nieuwe database maken die CIDRAM kan gebruiken (als u nog geen database voor CIDRAM in gedachten hebt), en een nieuwe tabel in uw database maken in overeenstemming met de hieronder beschreven structuur.
+
+Dit is natuurlijk alleen van toepassing als u daadwerkelijk wilt dat CIDRAM PDO gebruikt. Als u tevreden bent dat CIDRAM flatfile caching gebruikt (volgens de standaardconfiguratie), of een van de andere aangeboden cachingopties, hoeft u zich geen zorgen te maken over het opzetten van databases, tabellen, enzovoort.
+
+De hieronder beschreven structuur gebruikt "cidram" als de databasenaam, maar u kunt elke gewenste naam gebruiken voor uw database, zolang diezelfde naam wordt gerepliceerd in uw DSN-configuratie.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+CIDRAM's `pdo_dsn` configuratie-richtlijn moet worden geconfigureerd zoals hieronder beschreven.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └Het poortnummer waarmee verbinding
+    │            │           │               moet worden gemaakt met de host.
+    │            │           │
+    │            │           └De host waarmee verbinding wordt gemaakt om de
+    │            │            database te vinden.
+    │            │
+    │            └De naam van de database te gebruiken.
+    │
+    └De naam van het database stuurprogramma voor PDO te gebruiken.
+```
+
+Als u niet zeker weet wat u voor een bepaald deel van uw DSN moet gebruiken, probeer dan eerst te kijken of het werkt zoals het is, zonder iets te veranderen.
+
+Merk op dat `pdo_username` en `pdo_password` hetzelfde moeten zijn als de gebruikersnaam en het wachtwoord dat u hebt gekozen voor uw database.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM blokkeert cronjobs; Hoe dit op te lossen?
+
+Als u een toegewijd bestand gebruikt voor cronjobs, en als dat bestand niet hoeft te worden aangeroepen tijdens normale gebruikersverzoeken (d.w.z., buiten de context van cronjobs), de meest eenvoudige manier om dit op te lossen, is om ervoor te zorgen dat CIDRAM helemaal niet wordt uitgevoerd tijdens uw cronjobs (d.w.z., haak CIDRAM niet vast aan het bestand dat verantwoordelijk is voor de afhandeling van uw cronjobs).
+
+Als alternatief, als dat niet mogelijk is, maar het IP-adres van uw cron-server is relatief consistent en voorspelbaar, u kunt proberen het IP-adres van uw cron-server op de witte lijst te zetten door er een signature op de witte lijst voor te maken in een aangepast signatuurbestand of door er een hulpregel voor te maken. Als het IP-adres van uw cron-server regelmatig roteert en niet bijzonder voorspelbaar is, maar blijft toch binnen hetzelfde netwerk, u zou kunnen proberen in uw `ignore.dat` bestand de naam te vermelden van de signatuursectie die verantwoordelijk is voor het blokkeren van het in de eerste plaats.
+
+Als u al die ideeën hebt geprobeerd en geen van hen voor jou werkte, of als u hulp nodig hebt om uit te vinden hoe u het moet doen, u kunt een nieuw issue maken op de issues-pagina van CIDRAM om hulp te vragen.
 
 ---
 
@@ -1743,4 +1802,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 23 September 2019 (2019.09.23).
+Laatste Bijgewerkt: 20 Oktober 2019 (2019.10.20).

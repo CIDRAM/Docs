@@ -924,6 +924,8 @@ Opciones de caché complementarias.
 ##### "pdo_dsn"
 - Valor del DSN de PDO. Predefinido = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
+*Ver también: [¿Qué es un "PDO DSN"? Cómo puedo usar PDO con CIDRAM?](#HOW_TO_USE_PDO)*
+
 ##### "pdo_username"
 - Nombre del usuario de PDO.
 
@@ -1319,6 +1321,8 @@ Los módulos se han puesto a disposición para garantizar que los siguientes paq
 - [¿Se producirán problemas si uso CIDRAM al mismo tiempo que uso CDN o servicios de caché?](#CDN_CACHING_PROBLEMS)
 - [¿CIDRAM protegerá mi sitio web de los ataques DDoS?](#DDOS_ATTACKS)
 - [Cuando activar o desactivar módulos o archivos de firmas a través de la página de actualizaciones, los ordena de forma alfanumérica en la configuración. ¿Puedo cambiar la forma en que se ordenan?](#CHANGE_COMPONENT_SORT_ORDER)
+- [¿Qué es un "PDO DSN"? Cómo puedo usar PDO con CIDRAM?](#HOW_TO_USE_PDO)
+- [CIDRAM está bloqueando cronjobs; ¿Cómo arreglar esto?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>¿Qué es una "firma"?
 
@@ -1488,6 +1492,61 @@ Entonces, si se activa un archivo nuevo, `file6.php`, cuando la página de actua
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 La misma situación cuando un archivo está desactivado. Por el contrario, si quería que el archivo se ejecuta al final, podría agregar algo como `zzz:` antes del nombre del archivo. En cualquier caso, no necesitará cambiar el nombre del archivo en cuestión.
+
+#### <a name="HOW_TO_USE_PDO"></a>¿Qué es un "PDO DSN"? Cómo puedo usar PDO con CIDRAM?
+
+"PDO" es un acrónimo de "[PHP Data Objects](https://www.php.net/manual/es/intro.pdo.php)" (objetos de datos PHP). Proporciona una interfaz para PHP para poder conectarse a algunos sistemas de bases de datos comúnmente utilizados por varias aplicaciones PHP.
+
+"DSN" es un acrónimo de "[data source name](https://es.wikipedia.org/wiki/Data_Source_Name)" (nombre de fuente de datos). El "PDO DSN" describe a PDO cómo debe conectarse a una base de datos.
+
+CIDRAM ofrece la opción de utilizar PDO para fines de almacenamiento en caché. Para que esto funcione correctamente, deberá configurar CIDRAM en consecuencia, habilitando PDO, crear una nueva base de datos para que CIDRAM la use (si aún no tiene en mente una base de datos para que CIDRAM la use) y crear una nueva tabla en su base de datos de acuerdo con la estructura que se describe a continuación.
+
+Esto, por supuesto, solo se aplica si realmente desea que CIDRAM use PDO. Si está lo suficientemente contento de que CIDRAM use el almacenamiento en caché de archivos planos (según su configuración predeterminada), o cualquiera de las otras opciones de almacenamiento en caché proporcionadas, no tendrá que preocuparse de configurar bases de datos, tablas, etc.
+
+La estructura que se describe a continuación usa "cidram" como nombre de la base de datos, pero puede usar el nombre que desee para su base de datos, siempre que ese mismo nombre se replique en su configuración DSN.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+La directiva de configuración `pdo_dsn` de CIDRAM debe configurarse como se describe a continuación.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └El número de puerto para
+    │            │           │               conectarse al host.
+    │            │           │
+    │            │           └El host con el que conectarse para encontrar la
+    │            │            base de datos.
+    │            │
+    │            └El nombre de la base de datos a usar.
+    │
+    └El nombre del controlador de la base de datos para usar con PDO.
+```
+
+Si no está seguro de qué usar para una parte particular de su DSN, intenta ver primero si funciona como está, sin cambiar nada.
+
+Tenga en cuenta que `pdo_username` y` pdo_password` deben coincidir con el nombre de usuario y la contraseña que eligió para su base de datos.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM está bloqueando cronjobs; ¿Cómo arreglar esto?
+
+Si está utilizando un archivo dedicado con el propósito de cronjobs, y si ese archivo no necesita ser llamado durante las solicitudes normales del usuario (es decir, fuera del contexto de cronjobs), la forma más directa de solucionar esto sería asegurarse de que CIDRAM no se ejecute en absoluto durante sus cronjobs (es decir, no conecte CIDRAM al archivo responsable de manejar sus cronjobs).
+
+Alternativamente, si eso no es posible, pero la dirección IP de su servidor cron es relativamente consistente y predecible, podría intentar incluir en la lista blanca la dirección IP de su servidor cron por medio de creando una firma en un archivo de firma personalizado o creando una regla auxiliar en consecuencia para incluirlo en la lista blanca. Si la dirección IP de su servidor cron cambia regularmente y no es particularmente predecible, pero no obstante permanece dentro de la misma red particular, puede intentar incluir en su archivo `ignore.dat` el nombre de la sección de la firma responsable de bloquearlo en primer lugar.
+
+Si ha probado todas esas ideas y ninguna funcionó para usted, o si necesita ayuda para descubrir cómo hacerlo, puede crear un nuevo issue en la página de issues de CIDRAM para pedir ayuda.
 
 ---
 
@@ -1742,4 +1801,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 23 de Septiembre de 2019 (2019.09.23).
+Última Actualización: 20 de Octubre de 2019 (2019.10.20).

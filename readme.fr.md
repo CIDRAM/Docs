@@ -924,6 +924,8 @@ Options de cache supplémentaires.
 ##### « pdo_dsn »
 - Valeur de DSN de PDO. Défaut = « `mysql:dbname=cidram;host=localhost;port=3306` ».
 
+*Voir également : [Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?](#HOW_TO_USE_PDO)*
+
 ##### « pdo_username »
 - Nom d'utilisateur PDO.
 
@@ -1319,6 +1321,8 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 - [Des problèmes surviendront-ils si j'utilise CIDRAM en même temps que des CDN ou des services de cache ?](#CDN_CACHING_PROBLEMS)
 - [Est-ce que CIDRAM va protéger mon site web contre les attaques DDoS ?](#DDOS_ATTACKS)
 - [Lorsque j'activer ou désactiver des modules ou des fichiers de signatures via la page des mises à jour, il les trie de manière alphanumérique dans la configuration. Puis-je changer la façon dont ils sont triés ?](#CHANGE_COMPONENT_SORT_ORDER)
+- [Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?](#HOW_TO_USE_PDO)
+- [CIDRAM bloque les cronjobs ; Comment réparer ceci ?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>Qu'est-ce qu'une « signature » ?
 
@@ -1488,6 +1492,61 @@ Ensuite, si un nouveau fichier, `file6.php`, est activé, lorsque la page des mi
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 Inversement, si vous voulez que le fichier s'exécute en dernier, vous pouvez ajouter quelque chose comme `zzz:` avant le nom du fichier. Dans tous les cas, vous n'aurez pas besoin de renommer le fichier en question.
+
+#### <a name="HOW_TO_USE_PDO"></a>Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?
+
+« PDO » est un acronyme pour « [PHP Data Objects](https://www.php.net/manual/fr/intro.pdo.php) » (objets de données PHP). Il fournit une interface permettant à PHP de se connecter à certains systèmes de base de données communément utilisés par diverses applications PHP.
+
+« DSN » est un acronyme pour « [data source name](https://fr.wikipedia.org/wiki/Data_Source_Name) » (nom de la source de données). Le « PDO DSN » explique à PDO comment il doit se connecter à une base de données.
+
+CIDRAM offre la possibilité d'utiliser PDO à des fins de mise en cache. Pour que cela fonctionne correctement, vous devez configurer CIDRAM en conséquence, activant PDO, créer une nouvelle base de données à utiliser par CIDRAM (si vous n'avez pas déjà à l'esprit une base de données que CIDRAM peut utiliser), puis créer un nouvelle table dans votre base de données conformément à la structure décrite ci-dessous.
+
+Ceci, bien sûr, ne s'applique que si vous voulez réellement que CIDRAM utilise PDO. Si vous êtes assez content que CIDRAM utilise la mise en cache de fichiers à plat (selon sa configuration par défaut), ou l'une des autres options de mise en cache fournies, vous n'aurez pas à vous soucier de la configuration de bases de données, de tables, etc.
+
+La structure décrite ci-dessous utilise « cidram » comme nom de base de données, mais vous pouvez utiliser le nom de votre choix pour votre base de données, à condition que ce même nom soit répliqué dans votre configuration DSN.
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+La directive de configuration `pdo_dsn` de CIDRAM doit être configurée comme décrit ci-dessous.
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └Le numéro de port auquel se
+    │            │           │               connecter.
+    │            │           │
+    │            │           └L'hôte avec lequel se connecter pour trouver la
+    │            │            base de données.
+    │            │
+    │            └Le nom de la base de données à utiliser.
+    │
+    └Nom du pilote de base de données à utiliser par PDO.
+```
+
+Si vous ne savez pas quoi utiliser pour une partie particulière de votre DSN, essayez tout d'abord de voir si cela fonctionne tel quel, sans rien changer.
+
+Notez que `pdo_username` et` pdo_password` devraient être identiques au nom d'utilisateur et au mot de passe que vous avez choisis pour votre base de données.
+
+#### <a name="BLOCK_CRON"></a>CIDRAM bloque les cronjobs ; Comment réparer ceci ?
+
+Si vous utilisez un fichier dédié aux fins de cronjobs, et si ce fichier n'a pas besoin d'être appelé lors de requêtes utilisateur normales (c'est-à-dire en dehors du contexte de cronjobs), le moyen le plus simple de résoudre ce problème serait de vous assurer que CIDRAM n'est pas exécuté du tout pendant vos cronjobs (ce qui signifie, n'accrochez pas CIDRAM au fichier responsable de la gestion de vos cronjobs).
+
+Sinon, si ce n'est pas possible, mais l'adresse IP de votre serveur cron est relativement cohérente et prévisible, vous pouvez essayer de mettre en liste blanche l'adresse IP de votre serveur cron, soit en créant une signature de liste blanche pour cela dans un fichier de signature personnalisé, ou en créant une règle auxiliaire pour la mettre en liste blanche. Si l'adresse IP de votre serveur cron tourne régulièrement et n'est pas particulièrement prévisible, mais reste néanmoins à l'intérieur du même réseau particulier, vous pouvez essayer de lister dans votre fichier `ignore.dat` le nom de la section de signature chargée de le bloquer en premier lieu.
+
+Si vous avez essayé toutes ces idées et qu'aucune d'elles n'a fonctionné pour vous, ou si vous avez besoin d'aide pour savoir comment le faire, vous pouvez créer un nouveau issue sur la page des issues du CIDRAM pour demander de l'aide.
 
 ---
 
@@ -1741,4 +1800,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 23 Septembre 2019 (2019.09.23).
+Dernière mise à jour : 20 Octobre 2019 (2019.10.20).

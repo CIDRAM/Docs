@@ -924,6 +924,8 @@ PHPMailer配置。
 ##### “pdo_dsn”
 - PDO DSN值。​标准 = “`mysql:dbname=cidram;host=localhost;port=3306`”。
 
+*也可以看看：​[“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？](#HOW_TO_USE_PDO)*
+
 ##### “pdo_username”
 - PDO用户名。
 
@@ -1319,6 +1321,8 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 - [如果我在使用CDN或缓存服务的同时使用CIDRAM，会发生问题吗？](#CDN_CACHING_PROBLEMS)
 - [CIDRAM会保护我的网站免受DDoS攻击吗？](#DDOS_ATTACKS)
 - [当我通过更新页面启用或禁用模块或签名文件时，它会在配置中它们将按字母数字排序。​我可以改变他们排序的方式吗？](#CHANGE_COMPONENT_SORT_ORDER)
+- [“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？](#HOW_TO_USE_PDO)
+- [CIDRAM正在阻止cronjobs。​如何解决这个问题？](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>什么是“签名”？
 
@@ -1488,6 +1492,59 @@ IP | 操作者
 `aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
 
 当文件禁用时的情况是相同的。​相反，如果您希望文件最后执行，您可以在文件名前添加`zzz:`或类似。​在任何情况下，您都不需要重命名相关文件。
+
+#### <a name="HOW_TO_USE_PDO"></a>“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？
+
+“PDO” 是 “[PHP Data Objects](https://www.php.net/manual/zh/intro.pdo.php)” 的首字母缩写（它的意思是“PHP数据对象”）。​它为PHP提供了一个接口，使其能够连接到各种PHP应用程序通常使用的某些数据库系统。
+
+“DSN” 是 “[data source name](https://en.wikipedia.org/wiki/Data_source_name)” 的首字母缩写（它的意思是“数据源名称”）。​“PDO DSN”向PDO描述了它应如何连接到数据库。
+
+CIDRAM可以将PDO用于缓存。​为了使其正常工作，您需要相应地配置CIDRAM，从而启用PDO，需要为CIDRAM创建一个新数据库以供使用（如果您尚未想到要供CIDRAM使用的数据库），并需要按照以下结构在数据库中创建一个新表。
+
+当然，这仅在您确实希望CIDRAM使用PDO时适用。​如果您对CIDRAM使用平面文件缓存（按照其默认配置）或提供的任何其他各种缓存选项感到足够满意，则无需费心设置数据库，数据库表，等等。
+
+下面描述的结构使用“cidram”作为其数据库名称，但是您可以使用任何想要的数据库名称，只要在DSN配置中名称被复制。
+
+```
+╔══════════════════════════════════════════════╗
+║ DATABASE "cidram"                            ║
+║ │╔═══════════════════════════════════════════╩╗
+║ └╫─TABLE "Cache" (UTF-8)                      ║
+║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
+║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
+║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
+╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
+   ╚════════════════════════════════════════════╝
+```
+
+CIDRAM的`pdo_dsn`应配置如下。
+
+```
+mysql:dbname=cidram;host=localhost;port=3306
+ │
+ │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
+ └─mysql:dbname=cidram;host=localhost;port=3306
+   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
+    │            │           │              └连接的主机端口号。
+    │            │           │
+    │            │           └要查找数据库的主机。
+    │            │
+    │            └要使用的数据库的名称。
+    │
+    └PDO应该使用的数据库驱动程序的名称。
+```
+
+如果不确定如何构造DSN，请尝试先查看它是否按原样工作，而不进行任何更改。
+
+请注意， `pdo_username` 和 `pdo_password` 应与您为数据库选择的用户名和密码相同。
+
+#### <a name="BLOCK_CRON"></a>CIDRAM正在阻止cronjobs。​如何解决这个问题？
+
+如果您为了cronjobs的目的使用专用文件，如果在普通用户请求期间不需要调用它（即，在cronjobs上下文之外），解决此问题的最直接方法是在cronjobs期间不要执行CIDRAM（即，不要将CIDRAM链接到负责处理cronjobs的文件）。
+
+或者，如果那不可能，但是您的cron服务器的IP地址相对一致且可预测，您可以尝试将cron服务器的IP地址列入白名单，通过在自定义签名文件中为其创建白名单签名，或通过创建辅助规则为其。​如果您的cron服务器的IP地址定期旋转并且不是特别可预测，但仍然来自同一特定网络，您可以尝试在`ignore.dat`文件中列出负责阻止该签名的签名章节的名称。
+
+如果您尝试了所有这些想法，但没有一个对您有用，或者如果您需要帮助弄清楚如何做，您可以在CIDRAM的issues页面上创建新issue，以寻求帮助。
 
 ---
 
@@ -1743,4 +1800,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2019年9月23日。
+最后更新：2019年10月19日。
