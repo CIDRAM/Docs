@@ -1501,6 +1501,8 @@ Mesma situação quando um arquivo é desativado. Por outro lado, se você quise
 
 O CIDRAM oferece a opção de utilizar o PDO para fins de armazenamento em cache. Para que isso funcione corretamente, você precisará configurar o CIDRAM adequadamente, habilitando a PDO, criar um novo banco de dados para o CIDRAM usar (se você ainda não tem em mente um banco de dados para o CIDRAM usar), e criar um novo tabela em seu banco de dados de acordo com a estrutura descrita abaixo.
 
+Quando uma conexão com o banco de dados for bem-sucedida, mas a tabela necessária não existir, ela tentará criá-la automaticamente. Mas, esse comportamento não foi extensivamente testado e o sucesso não pode ser garantido.
+
 Obviamente, isso só se aplica se você realmente quiser que o CIDRAM use o PDO. Se você estiver suficientemente satisfeito pelo CIDRAM de usar o cache de arquivos simples (por sua configuração padrão) ou qualquer uma das várias outras opções de cache fornecidas, não será necessário se preocupar em configurar bancos de dados, tabelas e assim por diante.
 
 A estrutura descrita abaixo usa "cidram" como o nome do banco de dados, mas você pode usar o nome que desejar para o banco de dados, contanto que o mesmo nome seja replicado na configuração do DSN.
@@ -1508,32 +1510,143 @@ A estrutura descrita abaixo usa "cidram" como o nome do banco de dados, mas voc�
 ```
 ╔══════════════════════════════════════════════╗
 ║ DATABASE "cidram"                            ║
-║ │╔═══════════════════════════════════════════╩╗
-║ └╫─TABLE "Cache" (UTF-8)                      ║
-║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
-║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
-║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
-╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
-   ╚════════════════════════════════════════════╝
+║ │╔═══════════════════════════════════════════╩═══╗
+║ └╫─TABLE "Cache" (UTF-8)                         ║
+║  ╠═╪═FIELD══CHARSET═DATATYPE═══KEY══NULL═DEFAULT═╣
+║  ║ ├─"Key"──UTF-8───TEXT───────PRI──×────×       ║
+║  ║ ├─"Data"─UTF-8───TEXT───────×────×────×       ║
+╚══╣ └─"Time"─×───────INT(>=10)──×────×────×       ║
+   ╚═══════════════════════════════════════════════╝
 ```
 
 A diretiva de configuração `pdo_dsn` do CIDRAM deve ser configurada conforme descrito abaixo.
 
 ```
-mysql:dbname=cidram;host=localhost;port=3306
- │
- │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
- └─mysql:dbname=cidram;host=localhost;port=3306
-   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
-    │            │           │              └O número da porta com a qual se
-    │            │           │               conectar ao host.
-    │            │           │
-    │            │           └O host para conectar-se para encontrar o banco de
-    │            │            dados.
-    │            │
-    │            └O nome do banco de dados a ser usado.
-    │
-    └O nome do driver do banco de dados para o PDO usar.
+Dependendo do driver de banco de dados usado...
+│
+├─4d (Aviso: Experimental, não testado, não recomendado!)
+│ │
+│ │         ╔═══════╗
+│ └─4D:host=localhost;charset=UTF-8
+│           ╚╤══════╝
+│            └O host para conectar-se para encontrar o banco de dados.
+│
+├─cubrid
+│ │
+│ │             ╔═══════╗      ╔═══╗        ╔═════╗
+│ └─cubrid:host=localhost;port=33000;dbname=example
+│               ╚╤══════╝      ╚╤══╝        ╚╤════╝
+│                │              │            └O nome do banco de dados a ser
+│                │              │             usado.
+│                │              │
+│                │              └O número da porta com a qual se conectar ao
+│                │               host.
+│                │
+│                └O host para conectar-se para encontrar o banco de dados.
+│
+├─dblib
+│ │
+│ │ ╔═══╗      ╔═══════╗        ╔═════╗
+│ └─dblib:host=localhost;dbname=example
+│   ╚╤══╝      ╚╤══════╝        ╚╤════╝
+│    │          │                └O nome do banco de dados a ser usado.
+│    │          │
+│    │          └O host para conectar-se para encontrar o banco de dados.
+│    │
+│    └Valores possíveis: "mssql", "sybase", "dblib".
+│
+├─firebird
+│ │
+│ │                 ╔═══════════════════╗
+│ └─firebird:dbname=/path/to/database.fdb
+│                   ╚╤══════════════════╝
+│                    ├Pode ser um caminho para um arquivo de banco de dados
+│                    │local.
+│                    │
+│                    ├Pode se conectar com um host e um número de porta.
+│                    │
+│                    └Você deve consultar a documentação do Firebird se quiser
+│                     usá-lo.
+│
+├─ibm
+│ │
+│ │         ╔═════╗
+│ └─ibm:DSN=example
+│           ╚╤════╝
+│            └O banco de dados catalogado para se conectar.
+│
+├─informix
+│ │
+│ │              ╔═════╗
+│ └─informix:DSN=example
+│                ╚╤════╝
+│                 └O banco de dados catalogado para se conectar.
+│
+├─mysql (Mais recomendado!)
+│ │
+│ │              ╔═════╗      ╔═══════╗      ╔══╗
+│ └─mysql:dbname=example;host=localhost;port=3306
+│                ╚╤════╝      ╚╤══════╝      ╚╤═╝
+│                 │            │              └O número da porta com a qual se
+│                 │            │               conectar ao host.
+│                 │            │
+│                 │            └O host para conectar-se para encontrar o banco
+│                 │             de dados.
+│                 │
+│                 └O nome do banco de dados a ser usado.
+│
+├─oci
+│ │
+│ │            ╔═════╗
+│ └─oci:dbname=example
+│              ╚╤════╝
+│               ├Pode se referir ao banco de dados catalogado específico.
+│               │
+│               ├Pode se conectar com um host e um número de porta.
+│               │
+│               └Você deve consultar a documentação do Oracle se quiser usá-lo.
+│
+├─odbc
+│ │
+│ │      ╔═════╗
+│ └─odbc:example
+│        ╚╤════╝
+│         ├Pode se referir ao banco de dados catalogado específico.
+│         │
+│         ├Pode se conectar com um host e um número de porta.
+│         │
+│         └Você deve consultar a documentação do ODBC/DB2 se quiser usá-lo.
+│
+├─pgsql
+│ │
+│ │            ╔═══════╗      ╔══╗        ╔═════╗
+│ └─pgsql:host=localhost;port=5432;dbname=example
+│              ╚╤══════╝      ╚╤═╝        ╚╤════╝
+│               │              │           └O nome do banco de dados a ser
+│               │              │            usado.
+│               │              │
+│               │              └O número da porta com a qual se conectar ao
+│               │               host.
+│               │
+│               └O host para conectar-se para encontrar o banco de dados.
+│
+├─sqlite
+│ │
+│ │        ╔════════╗
+│ └─sqlite:example.db
+│          ╚╤═══════╝
+│           └O caminho para o arquivo de banco de dados local a ser usado.
+│
+└─sqlsrv
+  │
+  │               ╔═══════╗ ╔══╗          ╔═════╗
+  └─sqlsrv:Server=localhost,1521;Database=example
+                  ╚╤══════╝ ╚╤═╝          ╚╤════╝
+                   │         │             └O nome do banco de dados a ser usado.
+                   │         │
+                   │         └O número da porta com a qual se conectar ao host.
+                   │
+                   └O host para conectar-se para encontrar o banco de dados.
 ```
 
 Se você não tiver certeza sobre o que usar para uma parte específica do seu DSN, tente primeiro verificar se funciona como está, sem alterar nada.
@@ -1796,4 +1909,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 20 de Outubro de 2019 (2019.10.20).
+Última Atualização: 7 de Novembro de 2019 (2019.11.07).

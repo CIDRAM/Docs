@@ -1501,6 +1501,8 @@ Tình huống tương tự khi một tập tin bị hủy kích hoạt. Ngược
 
 CIDRAM cung cấp tùy chọn để sử dụng PDO cho mục đích bộ nhớ cache. Để điều này hoạt động chính xác, bạn sẽ cần định cấu hình CIDRAM phù hợp, do đó cho phép PDO, tạo cơ sở dữ liệu mới cho CIDRAM để sử dụng (nếu bạn chưa có cơ sở dữ liệu cho CIDRAM để sử dụng), và tạo một bảng mới trong cơ sở dữ liệu của bạn theo cấu trúc được mô tả dưới đây.
 
+Khi kết nối cơ sở dữ liệu thành công, nhưng bảng cần thiết không tồn tại, nó sẽ cố gắng tạo nó tự động. Tuy nhiên, hành vi này đã không được thử nghiệm rộng rãi và thành công không thể được đảm bảo.
+
 Tất nhiên, điều này chỉ áp dụng nếu bạn thực sự muốn CIDRAM sử dụng PDO. Nếu bạn đủ hạnh phúc cho CIDRAM để sử dụng bộ đệm ẩn phẳng (theo cấu hình mặc định của nó) hoặc bất kỳ tùy chọn bộ nhớ cache nào khác được cung cấp, bạn sẽ không cần phải lo lắng về việc thiết lập cơ sở dữ liệu, bảng, vv.
 
 Cấu trúc được mô tả dưới đây sử dụng "cidram" làm tên cơ sở dữ liệu của nó, nhưng bạn có thể sử dụng bất kỳ tên nào bạn muốn cho cơ sở dữ liệu của mình, miễn là cùng tên đó được sao chép trong cấu hình DSN của bạn.
@@ -1508,30 +1510,139 @@ Cấu trúc được mô tả dưới đây sử dụng "cidram" làm tên cơ s
 ```
 ╔══════════════════════════════════════════════╗
 ║ DATABASE "cidram"                            ║
-║ │╔═══════════════════════════════════════════╩╗
-║ └╫─TABLE "Cache" (UTF-8)                      ║
-║  ╠═╪═FLD═════CLL════TYP════════KEY══NLL══DEF══╣
-║  ║ ├─"Key"───UTF-8──STRING─────PRI──×────×    ║
-║  ║ ├─"Data"──UTF-8──STRING─────×────×────×    ║
-╚══╣ └─"Time"──×──────INT(>=10)──×────×────×    ║
-   ╚════════════════════════════════════════════╝
+║ │╔═══════════════════════════════════════════╩═══╗
+║ └╫─TABLE "Cache" (UTF-8)                         ║
+║  ╠═╪═FIELD══CHARSET═DATATYPE═══KEY══NULL═DEFAULT═╣
+║  ║ ├─"Key"──UTF-8───TEXT───────PRI──×────×       ║
+║  ║ ├─"Data"─UTF-8───TEXT───────×────×────×       ║
+╚══╣ └─"Time"─×───────INT(>=10)──×────×────×       ║
+   ╚═══════════════════════════════════════════════╝
 ```
 
 Chỉ thị cấu hình `pdo_dsn` của CIDRAM nên được cấu hình như mô tả bên dưới.
 
 ```
-mysql:dbname=cidram;host=localhost;port=3306
- │
- │ ╔═══╗        ╔════╗      ╔═══════╗      ╔══╗
- └─mysql:dbname=cidram;host=localhost;port=3306
-   ╚╤══╝        ╚╤═══╝      ╚╤══════╝      ╚╤═╝
-    │            │           │              └Số cổng để kết nối với máy chủ.
-    │            │           │
-    │            │           └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
-    │            │
-    │            └Tên của cơ sở dữ liệu để sử dụng.
-    │
-    └Tên của trình điều khiển cơ sở dữ liệu cho PDO để sử dụng.
+Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử dụng...
+│
+├─4d (Cảnh báo: Thử nghiệm, chưa được kiểm tra, không được khuyến khích!)
+│ │
+│ │         ╔═══════╗
+│ └─4D:host=localhost;charset=UTF-8
+│           ╚╤══════╝
+│            └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+│
+├─cubrid
+│ │
+│ │             ╔═══════╗      ╔═══╗        ╔═════╗
+│ └─cubrid:host=localhost;port=33000;dbname=example
+│               ╚╤══════╝      ╚╤══╝        ╚╤════╝
+│                │              │            └Tên của cơ sở dữ liệu để sử dụng.
+│                │              │
+│                │              └Số cổng để kết nối với máy chủ.
+│                │
+│                └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+│
+├─dblib
+│ │
+│ │ ╔═══╗      ╔═══════╗        ╔═════╗
+│ └─dblib:host=localhost;dbname=example
+│   ╚╤══╝      ╚╤══════╝        ╚╤════╝
+│    │          │                └Tên của cơ sở dữ liệu để sử dụng.
+│    │          │
+│    │          └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+│    │
+│    └Những giá trị khả thi: "mssql", "sybase", "dblib".
+│
+├─firebird
+│ │
+│ │                 ╔═══════════════════╗
+│ └─firebird:dbname=/path/to/database.fdb
+│                   ╚╤══════════════════╝
+│                    ├Có thể là một đường dẫn đến một tập tin cơ sở dữ liệu
+│                    │cục bộ.
+│                    │
+│                    ├Có thể kết nối với một máy chủ và số cổng.
+│                    │
+│                    └Bạn nên tham khảo tài liệu Firebird nếu bạn muốn sử dụng
+│                     trình điều khiển này.
+│
+├─ibm
+│ │
+│ │         ╔═════╗
+│ └─ibm:DSN=example
+│           ╚╤════╝
+│            └Các cơ sở dữ liệu được phân loại để kết nối với.
+│
+├─informix
+│ │
+│ │              ╔═════╗
+│ └─informix:DSN=example
+│                ╚╤════╝
+│                 └Các cơ sở dữ liệu được phân loại để kết nối với.
+│
+├─mysql (Được khuyến nghị nhất!)
+│ │
+│ │              ╔═════╗      ╔═══════╗      ╔══╗
+│ └─mysql:dbname=example;host=localhost;port=3306
+│                ╚╤════╝      ╚╤══════╝      ╚╤═╝
+│                 │            │              └Số cổng để kết nối với máy chủ.
+│                 │            │
+│                 │            └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+│                 │
+│                 └Tên của cơ sở dữ liệu để sử dụng.
+│
+├─oci
+│ │
+│ │            ╔═════╗
+│ └─oci:dbname=example
+│              ╚╤════╝
+│               ├Can refer to the specific catalogued database.
+│               │
+│               ├Có thể kết nối với một máy chủ và số cổng.
+│               │
+│               └Bạn nên tham khảo tài liệu Oracle nếu bạn muốn sử dụng
+│                trình điều khiển này.
+│
+├─odbc
+│ │
+│ │      ╔═════╗
+│ └─odbc:example
+│        ╚╤════╝
+│         ├Có thể tham khảo cơ sở dữ liệu danh mục cụ thể.
+│         │
+│         ├Có thể kết nối với một máy chủ và số cổng.
+│         │
+│         └Bạn nên tham khảo tài liệu ODBC/DB2 nếu bạn muốn sử dụng
+│          trình điều khiển này.
+│
+├─pgsql
+│ │
+│ │            ╔═══════╗      ╔══╗        ╔═════╗
+│ └─pgsql:host=localhost;port=5432;dbname=example
+│              ╚╤══════╝      ╚╤═╝        ╚╤════╝
+│               │              │           └Tên của cơ sở dữ liệu để sử dụng.
+│               │              │
+│               │              └Số cổng để kết nối với máy chủ.
+│               │
+│               └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
+│
+├─sqlite
+│ │
+│ │        ╔════════╗
+│ └─sqlite:example.db
+│          ╚╤═══════╝
+│           └Đường dẫn đến tập tin cơ sở dữ liệu cục bộ để sử dụng.
+│
+└─sqlsrv
+  │
+  │               ╔═══════╗ ╔══╗          ╔═════╗
+  └─sqlsrv:Server=localhost,1521;Database=example
+                  ╚╤══════╝ ╚╤═╝          ╚╤════╝
+                   │         │             └Tên của cơ sở dữ liệu để sử dụng.
+                   │         │
+                   │         └Số cổng để kết nối với máy chủ.
+                   │
+                   └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
 ```
 
 Nếu bạn không chắc chắn về việc sử dụng cái gì cho một phần cụ thể trong DSN của mình, hãy thử xem trước tiên xem nó có hoạt động như cũ không mà không thay đổi gì.
@@ -1792,4 +1903,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 20 Tháng Mười 2019 (2019.10.20).
+Lần cuối cập nhật: 7 Tháng Mười Một 2019 (2019.11.07).
