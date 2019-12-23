@@ -274,6 +274,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_logs_access_only.html
     │       _range.html
     │       _range_row.html
+    │       _range_subtractor.html
     │       _sections.html
     │       _statistics.html
     │       _updates.html
@@ -652,7 +653,7 @@ Configuration (v2)
 - メンテナンス・モードを有効にしますか？ True = はい。 False = いいえ（Default/デフォルルト）。​フロントエンド以外のすべてを無効にします。​ＣＭＳ、フレームワークなどを更新するときに便利です。
 
 ##### "default_algo" （ディフォールト・アルゴ）
-- 将来のすべてのパスワードとセッションに使用するアルゴリズムを定義します。​オプション：​PASSWORD_DEFAULT（Default/デフォルルト）、​PASSWORD_BCRYPT、​PASSWORD_ARGON2I ​（ＰＨＰ >= 7.2.0 が必要）。
+- 将来のすべてのパスワードとセッションに使用するアルゴリズムを定義します。​オプション：​PASSWORD_DEFAULT（Default/デフォルルト）、​PASSWORD_BCRYPT、​PASSWORD_ARGON2I ​（ＰＨＰ >= 7.2.0 が必要）、​PASSWORD_ARGON2ID ​（ＰＨＰ >= 7.3.0 が必要）。
 
 ##### "statistics" （スタティスティックス/統計）
 - CIDRAM使用統計を追跡しますか？ True = はい。 False = いいえ（Default/デフォルルト）。
@@ -1904,4 +1905,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０１９年１１月７日。
+最終アップデート：２０１９年１２月２３日。

@@ -276,6 +276,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_logs_access_only.html
     │       _range.html
     │       _range_row.html
+    │       _range_subtractor.html
     │       _sections.html
     │       _statistics.html
     │       _updates.html
@@ -728,7 +729,7 @@ Configuration (v2)
 
 ##### <div dir="rtl">"default_algo"<br /></div>
 <div dir="rtl"><ul>
- <li>اس بات کی وضاحت کرتا ہے جو تمام مستقبل کے پاس ورڈ اور سیشن کے لئے الگورتھم استعمال کرنا ہے. اختیارات: PASSWORD_DEFAULT (ڈیفالٹ), PASSWORD_BCRYPT, PASSWORD_ARGON2I (PHP >= 7.2.0 کی ضرورت ہے).</li>
+ <li>اس بات کی وضاحت کرتا ہے جو تمام مستقبل کے پاس ورڈ اور سیشن کے لئے الگورتھم استعمال کرنا ہے. اختیارات: PASSWORD_DEFAULT (ڈیفالٹ), PASSWORD_BCRYPT, PASSWORD_ARGON2I (PHP >= 7.2.0 کی ضرورت ہے), PASSWORD_ARGON2ID (PHP >= 7.3.0 کی ضرورت ہے).</li>
 </ul></div>
 
 ##### <div dir="rtl">"statistics"<br /></div>
@@ -2168,4 +2169,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 7 نومبر 2019 (2019.11.07).</div>
+<div dir="rtl">آخری تازہ کاری: 23 دسمبر 2019 (2019.12.23).</div>

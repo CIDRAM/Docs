@@ -274,6 +274,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_logs_access_only.html
     │       _range.html
     │       _range_row.html
+    │       _range_subtractor.html
     │       _sections.html
     │       _statistics.html
     │       _updates.html
@@ -652,7 +653,7 @@ Configuration (v2)
 - 启用维护模式？​True（真）=关闭；​False（假）=不关闭【标准】。​它停用一切以外前端。​有时候在更新CMS，框架，等时有用。
 
 ##### “default_algo”
-- 定义要用于所有未来密码和会话的算法。​选项：​PASSWORD_DEFAULT（标准），​PASSWORD_BCRYPT，​PASSWORD_ARGON2I（需要PHP >= 7.2.0）。
+- 定义要用于所有未来密码和会话的算法。​选项：​PASSWORD_DEFAULT（标准），​PASSWORD_BCRYPT，​PASSWORD_ARGON2I（需要PHP >= 7.2.0），​PASSWORD_ARGON2ID（需要PHP >= 7.3.0）。
 
 ##### “statistics”
 - 跟踪CIDRAM使用情况统计？​True（真）=跟踪；False（假）=不跟踪【标准】。
@@ -1907,4 +1908,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2019年11月7日。
+最后更新：2019年12月23日。

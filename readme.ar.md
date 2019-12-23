@@ -276,6 +276,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_logs_access_only.html
     │       _range.html
     │       _range_row.html
+    │       _range_subtractor.html
     │       _sections.html
     │       _statistics.html
     │       _updates.html
@@ -728,7 +729,7 @@ Configuration (v2)
 
 ##### <div dir="rtl">"default_algo"<br /></div>
 <div dir="rtl"><ul>
- <li>يحدد الخوارزمية التي سيتم استخدامها لكل كلمات المرور والجلسات المستقبلية. خيارات: PASSWORD_DEFAULT (افتراضي)، PASSWORD_BCRYPT، PASSWORD_ARGON2I (يتطلب PHP >= 7.2.0).</li>
+ <li>يحدد الخوارزمية التي سيتم استخدامها لكل كلمات المرور والجلسات المستقبلية. خيارات: PASSWORD_DEFAULT (افتراضي)، PASSWORD_BCRYPT، PASSWORD_ARGON2I (يتطلب PHP >= 7.2.0)، PASSWORD_ARGON2ID (يتطلب PHP >= 7.3.0).</li>
 </ul></div>
 
 ##### <div dir="rtl">"statistics"<br /></div>
@@ -2168,4 +2169,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 7 نوفمبر 2019 (2019.11.07).</div>
+<div dir="rtl">آخر تحديث: 23 ديسمبر 2019 (2019.12.23).</div>

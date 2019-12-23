@@ -274,6 +274,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_logs_access_only.html
     │       _range.html
     │       _range_row.html
+    │       _range_subtractor.html
     │       _sections.html
     │       _statistics.html
     │       _updates.html
@@ -652,7 +653,7 @@ Không tương thích (gây ra xung đột):
 - Bật chế độ bảo trì? True = Vâng; False = Không [Mặc định]. Vô hiệu hoá mọi thứ khác ngoài các front-end. Đôi khi hữu ích khi cập nhật CMS, framework của bạn, vv.
 
 ##### "default_algo"
-- Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai. Tùy chọn: PASSWORD_DEFAULT (mặc định), PASSWORD_BCRYPT, PASSWORD_ARGON2I (yêu cầu PHP >= 7.2.0).
+- Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai. Tùy chọn: PASSWORD_DEFAULT (mặc định), PASSWORD_BCRYPT, PASSWORD_ARGON2I (yêu cầu PHP >= 7.2.0), PASSWORD_ARGON2ID (yêu cầu PHP >= 7.3.0).
 
 ##### "statistics"
 - Giám sát thống kê sử dụng CIDRAM? True = Vâng; False = Không [Mặc định].
@@ -1903,4 +1904,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 7 Tháng Mười Một 2019 (2019.11.07).
+Lần cuối cập nhật: 23 Tháng Mười Hai 2019 (2019.12.23).
