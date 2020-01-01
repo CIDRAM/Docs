@@ -221,7 +221,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -1907,4 +1906,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 27 Desember 2019 (2019.12.27).
+Terakhir Diperbarui: 1 Januari 2020 (2020.01.01).

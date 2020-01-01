@@ -221,7 +221,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -1920,4 +1919,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 27 Décembre 2019 (2019.12.27).
+Dernière mise à jour : 1 Janvier 2020 (2020.01.01).

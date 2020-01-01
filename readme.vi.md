@@ -221,7 +221,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -1904,4 +1903,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 27 Tháng Mười Hai 2019 (2019.12.27).
+Lần cuối cập nhật: 1 Tháng Một 2020 (2020.01.01).

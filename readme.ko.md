@@ -221,7 +221,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -1903,4 +1902,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2019년 12월 27일.
+최종 업데이트 : 2020년 1월 1일.

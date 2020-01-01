@@ -223,7 +223,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -2169,4 +2168,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 27 دسمبر 2019 (2019.12.27).</div>
+<div dir="rtl">آخری تازہ کاری: 1 جنوری 2020 (2020.01.01).</div>

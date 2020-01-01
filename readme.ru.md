@@ -221,7 +221,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   outgen.php
     │   recaptcha.php
     │   rules_as6939.php
-    │   rules_softlayer.php
     │   rules_specific.php
     │   template_custom.html
     │   template_default.html
@@ -1908,4 +1907,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 27 Декабрь 2019 (2019.12.27).
+Последнее обновление: 1 Январь 2020 (2020.01.01).
