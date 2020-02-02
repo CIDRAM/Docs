@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Không tương thích (gây ra xung đột):
 
 ##### "disabled_channels"
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
+- *Tùy chọn có sẵn: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -888,6 +889,10 @@ Nếu bạn cảm thấy rằng bạn không cần CIDRAM để thực thi giớ
 
 ##### "allowance_period"
 - Số giờ để theo dõi việc sử dụng. Mặc định = 0.
+
+##### "exceptions"
+- Ngoại lệ (tức là, các yêu cầu không nên giới hạn). Chỉ có hiệu lực khi giới hạn tốc độ được kích hoạt.
+- *Tùy chọn có sẵn: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Thể loại)
 Tùy chọn bộ nhớ cache bổ sung.
@@ -1367,7 +1372,7 @@ CIDRAM chặn một địa chỉ IP | __Sai tích cực__ | Đúng tích cực (
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM có thể chặn toàn bộ quốc gia?
 
-Vâng. Cách dễ nhất để đạt được điều này sẽ được cài đặt một số các danh sách chặn quốc gia tùy chọn được cung cấp bởi Macmathan. Điều này có thể được thực hiện với một vài cú nhấp chuột đơn giản trực tiếp từ trang cập nhật của front-end, hoặc, nếu bạn thích các front-end ở lại vô hiệu hóa, bằng cách tải chúng trực tiếp từ **[trang tải xuống cho các danh sách chặn quốc gia tùy chọn](https://bitbucket.org/macmathan/blocklists)**, tải chúng lên vault, và trích dẫn tên của họ trong các chỉ thị cấu hình có liên quan.
+Vâng. Cách dễ nhất để làm điều này là bằng cách cài đặt mô-đun BGPView và định cấu hình nó theo nhu cầu của bạn.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Tần suất cập nhật chữ ký là bao nhiêu?
 
@@ -1722,6 +1727,10 @@ CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm 
 
 CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của AbuseIPDB theo đúng mục đích của mô-đun.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM cung cấp một mô-đun tùy chọn để thực hiện tra cứu ASN và mã quốc gia bằng API của [BGPView](https://bgpview.io/) API. Các tra cứu này cung cấp khả năng chặn hoặc danh sách trắng yêu cầu trên cơ sở ASN hoặc quốc gia xuất xứ của họ. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của BGPView theo đúng mục đích của mô-đun.
+
 #### 11.3 NHẬT KÝ
 
 Nhật ký là một phần quan trọng của CIDRAM vì một số lý do. có thể khó để chẩn đoán và giải quyết các kết quả sai tích cực khi các sự kiện chặn khiến chúng không được ghi lại. Khi các sự kiện chặn không được ghi lại, có thể khó để xác định chính xác CIDRAM hoạt động tốt như thế nào trong bất kỳ ngữ cảnh cụ thể nào, và có thể khó để xác định nơi bất cập của nó, và những thay đổi nào có thể cần thiết đối với cấu hình hay chữ ký của nó, để nó có thể tiếp tục hoạt động như dự định. Bất kể, nhật ký có thể không được mong muốn cho tất cả người dùng, và vẫn hoàn toàn tùy chọn. Trong CIDRAM, ghi nhật ký bị vô hiệu hóa theo mặc định. Để kích hoạt nó, CIDRAM phải được cấu hình cho phù hợp.
@@ -1903,4 +1912,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 1 Tháng Một 2020 (2020.01.01).
+Lần cuối cập nhật: 2 Tháng Hai 2020 (2020.02.02).

@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Atualmente suportado:
 
 ##### "disabled_channels"
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
+- *Opções disponíveis: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Categoria)
 Configuração por assinaturas.
@@ -888,6 +889,10 @@ Se você acha que não precisa do CIDRAM para impor a limitação de taxas para 
 
 ##### "allowance_period"
 - O número de horas para monitorar o uso. Padrão = 0.
+
+##### "exceptions"
+- Exceções (ou seja, solicitações que não devem ser limitadas à taxa). Relevante apenas quando a limitação de taxa está ativada.
+- *Opções disponíveis: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Categoria)
 Opções suplementares de cache.
@@ -1367,7 +1372,7 @@ CIDRAM *FAZ* bloquear um endereço IP | __Falso positivo__ | Verdadeiro positivo
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM pode bloquear países inteiros?
 
-Sim. A maneira mais fácil de conseguir isso seria instalar algumas das listas opcionais para bloqueando países fornecido por Macmathan. Isso pode ser feito com alguns cliques simples diretamente do front-end página de atualizações, ou, se você preferir o front-end para permanecer desativado, através da baixando-os diretamente da **[página para baixar as listas opcionais para bloqueando países](https://bitbucket.org/macmathan/blocklists)**, carregá-los para o vault, e citando seus nomes nas diretivas de configuração relevantes.
+Sim. A maneira mais fácil de fazer isso seria instalando o módulo BGPView e configurando-o de acordo com suas necessidades.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Com que frequência as assinaturas são atualizadas?
 
@@ -1726,6 +1731,10 @@ O CIDRAM fornece um módulo opcional que aproveita essa API para verificar se o 
 
 O CIDRAM fornece um módulo opcional para bloquear endereços IP abusivos usando a API [AbuseIPDB](https://www.abuseipdb.com/). O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do AbuseIPDB de acordo com a finalidade do módulo.
 
+##### 11.2.6 BGPVIEW
+
+O CIDRAM fornece um módulo opcional para executar pesquisas de ASN e de código de país usando a API [BGPView](https://bgpview.io/). Essas pesquisas fornecem a capacidade de bloquear ou colocar na lista branca com base no ASN ou no país de origem. O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do BGPView de acordo com a finalidade do módulo.
+
 #### 11.3 REGISTRO
 
 O registro é uma parte importante do CIDRAM por vários motivos. Pode ser difícil diagnosticar e resolver falsos positivos quando os eventos de bloqueio que os causam não são registrados. Sem o registro de eventos de bloqueio, pode ser difícil determinar exatamente o quão bem o CIDRAM funciona em qualquer contexto específico, e pode ser difícil determinar onde suas deficiências podem ser, e quais mudanças podem ser necessárias para sua configuração ou assinaturas de acordo, para que ele continue funcionando como pretendido. Não obstante, o registro pode não ser desejável para todos os usuários e permanece totalmente opcional. No CIDRAM, o registro está desabilitado por padrão. Para ativá-lo, o CIDRAM deve ser configurado de acordo.
@@ -1909,4 +1918,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 1 de Janeiro de 2020 (2020.01.01).
+Última Atualização: 2 de Fevereiro de 2020 (2020.02.02).

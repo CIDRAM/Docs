@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Derzeit unterstützt:
 
 ##### "disabled_channels"
 - Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
+- *Verfügbare Optionen: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Kategorie)
 Konfiguration der Signaturen.
@@ -892,6 +893,10 @@ Wenn Sie der Meinung sind, dass Sie CIDRAM nicht benötigen, um die Ratenbegrenz
 
 ##### "allowance_period"
 - Die Anzahl der Stunden, um die Nutzung zu überwachen. Standardeinstellung = 0.
+
+##### "exceptions"
+- Ausnahmen (d.h., Anfragen die nicht ratenbegrenzt sein sollten). Nur relevant wenn die Ratenbegrenzung aktiviert ist.
+- *Verfügbare Optionen: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Kategorie)
 Zusätzliche Cache-Optionen.
@@ -1373,7 +1378,7 @@ CIDRAM blockiert eine IP-Adresse | __Falsch-Positiv__ | True-Positiv (korrekte F
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Kann CIDRAM ganze Länder blockieren?
 
-Ja. Der einfachste Weg für dies zu erreichen wäre einige der von Macmathan bereitgestellten optionalen Landblocklisten zu installieren. Dies kann mit einigen Klicks direkt aus der Aktualisierungsseite des Frontend erfolgen, oder, wenn Sie es vorziehen dass das Frontend deaktiviert bleibt, indem Sie Sie diese Blocklisten direkt aus der **[optionalen Blocklisten-Download-Seite](https://bitbucket.org/macmathan/blocklists)** herunterladen und zum vault hochladen. Sie müssen lediglich die Namen dieser Blocklisten in der Konfigurationsdatei einfügen.
+Ja. Der einfachste Weg ist das BGPView-Modul zu installieren und es gemäß Ihren Anforderungen zu konfigurieren.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Wie häufig werden Signaturen aktualisiert?
 
@@ -1736,6 +1741,10 @@ CIDRAM bietet ein optionales Modul, das diese API nutzt, um zu prüfen, ob die I
 
 CIDRAM bietet ein optionales Modul zum Blockieren missbräuchlicher IP-Adressen mithilfe der [AbuseIPDB](https://www.abuseipdb.com/) API. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der AbuseIPDB API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM bietet ein optionales Modul für die Suche nach ASNs und Ländercodes mithilfe der [BGPView](https://bgpview.io/)-API. Diese Suchvorgänge bieten die Möglichkeit, Anfragen auf der Grundlage ihres ASNs oder ihres Herkunftslandes zu blockieren oder auf die Whitelist zu setzen. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der BGPView API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
+
 #### 11.3 PROTOKOLLIERUNG
 
 Protokollierung ist aus verschiedenen Gründen ein wichtiger Teil von CIDRAM. Es kann schwierig sein, falsche Positive zu diagnostizieren und zu beheben, wenn die Blockereignisse, die sie verursachen, nicht protokolliert werden. Ohne Blockereignisse zu protokollieren, kann es schwierig sein, exakt festzustellen, wie gut CIDRAM in einem bestimmten Kontext funktioniert, und es kann schwierig sein zu bestimmen, wo die Defizite liegen und welche Änderungen möglicherweise an der Konfiguration oder den Signaturen vorgenommen werden müssen, damit es weiterhin wie beabsichtigt funktioniert. Ungeachtet, die Protokollierung ist möglicherweise nicht für alle Benutzer wünschenswert und bleibt vollständig optional. In CIDRAM ist die Protokollierung standardmäßig deaktiviert. Um es zu aktivieren, muss CIDRAM entsprechend konfiguriert werden.
@@ -1927,4 +1936,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 1 Januar 2020 (2020.01.01).
+Zuletzt aktualisiert: 2 Februar 2020 (2020.02.02).

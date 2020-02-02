@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Configuration (v2)
 
 ##### 『disabled_channels』
 - 這可用於防止CIDRAM在發送請求時使用特定通道（例如，在更新時，在獲取組件元數據時，等等）。
+- *可用選項： `GitHub,BitBucket,NotABug`*
 
 #### 『signatures』 （類別）
 簽名配置。
@@ -888,6 +889,10 @@ PHPMailer配置。
 
 ##### 『allowance_period』
 - 監視使用情況的小時數。​標準=0。
+
+##### 『exceptions』
+- 例外（即，不應限制速率的請求）。​僅在啟用速率限制時有效。
+- *可用選項： `Whitelisted,Verified`*
 
 #### 『supplementary_cache_options』 （類別）
 補充緩存選項。
@@ -1367,7 +1372,7 @@ CIDRAM會阻止IP地址 | __假陽性__ | 真陽性（正確的推理）
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM可以阻止整個國家嗎？
 
-它可以。​實現這個最簡單的方法是安裝一些由Macmathan提供的可選的國家阻止列表。​這可以通過直接從前端更新頁面的幾個簡單的點擊完成，​或，​如果您希望前端保持停用狀態，​通過直接從下載頁面下載它們。​通過直接從 **[可選的國家阻止列表下載頁面](https://bitbucket.org/macmathan/blocklists)** 下載它們，​上傳他們到vault，​在相關配置指令中引用它們的名稱。
+它可以。​最簡單的方法是安裝BGPView模塊並根據需要進行配置。
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>什麼是簽名更新頻率？
 
@@ -1718,6 +1723,10 @@ CIDRAM提供了一個可選模塊，它使用API​來檢查入站請求的IP地
 
 CIDRAM提供了一個可選模塊，用於使用[AbuseIPDB](https://www.abuseipdb.com/) API阻止濫用的IP地址。​默認情況下該模塊不是安裝，但如果選擇安裝該模塊，則可以根據模塊的預期用途將用戶的IP地址與AbuseIPDB API共享。
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM提供了一個可選模塊，以使用[BGPView](https://bgpview.io/)執行ASN和國家代碼查找。​這些查詢提供了根據其ASN或來源國家阻止或將在白名單上放請求的功能。​默認情況下該模塊不是安裝，但如果選擇安裝該模塊，則可以根據模塊的預期用途將用戶的IP地址與BGPView API共享。
+
 #### 11.3 日誌記錄
 
 由於多種原因，日誌記錄是CIDRAM的重要組成部分。​當未記錄導致它們的阻止事件時，可能難以診斷和解決假陽性。​當未記錄阻止事件時，可能很難確定CIDRAM在某些情況下的表現如何，而且可能很難確定其不足之處，以及可能需要更改哪些配置或簽名，以使其繼續按預期運行。​無論如何，一些用戶可能不想要記錄，並且它仍然是完全可選的。​在CIDRAM中，默認情況下日誌記錄是禁用。​要啟用它，必須相應地配置CIDRAM。
@@ -1907,4 +1916,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2020年1月1日。
+最後更新：2020年2月2日。

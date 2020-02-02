@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Didukung sekarang:
 
 ##### "disabled_channels"
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
+- *Opsi yang tersedia: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -888,6 +889,10 @@ Jika Anda merasa bahwa Anda tidak perlu CIDRAM untuk menerapkan pembatasan laju 
 
 ##### "allowance_period"
 - Jumlah jam untuk memonitor penggunaan. Default = 0.
+
+##### "exceptions"
+- Pengecualian (yaitu, permintaan yang seharusnya tidak dibatasi). Hanya relevan ketika pembatasan laju diaktifkan.
+- *Opsi yang tersedia: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Kategori)
 Opsi cache tambahan.
@@ -1367,7 +1372,7 @@ CIDRAM memblokir alamat IP | __Positif palsu__ | Positif benar (inferensi benar)
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Dapat CIDRAM blok seluruh negara?
 
-Ya. Cara termudah untuk mencapai hal ini adalah untuk menginstal beberapa daftar blokir negara opsional disediakan oleh Macmathan. Ini dapat dilakukan dengan beberapa klik mudah langsung dari halaman pembaruan dalam akses bagian depan, atau, jika Anda lebih memilih akses ke bagian depan tetap dinonaktifkan, dengan men-download langsung dari **[daftar blokir opsional halaman download](https://bitbucket.org/macmathan/blocklists)**, meng-upload ke vault, dan mengutip nama mereka dalam direktif konfigurasi yang relevan.
+Ya. Cara termudah untuk melakukan ini adalah dengan menginstal modul BGPView dan mengonfigurasinya sesuai dengan kebutuhan Anda.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Seberapa sering tanda tangan diperbarui?
 
@@ -1725,6 +1730,10 @@ CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apak
 
 CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API AbuseIPDB sesuai dengan tujuan yang dimaksudkan dari modul.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API BGPView sesuai dengan tujuan yang dimaksudkan dari modul.
+
 #### 11.3 PENCATATAN
 
 Pencatatan adalah bagian penting dari CIDRAM karena sejumlah alasan. Mungkin sulit untuk mendiagnosis dan menyelesaikan kesalahan positif ketika kejadian blokir yang menyebabkan mereka tidak dicatat. Tanpa mencatat kejadian blokir, mungkin sulit untuk memastikan secara akurat seberapa baik kinerja CIDRAM dalam konteks tertentu, dan mungkin sulit untuk menentukan dimana kekurangannya, dan perubahan apa yang mungkin diperlukan untuk konfigurasi atau tanda tangan yang sesuai, agar terus berfungsi sebagaimana dimaksud. Apapun, pencatatan mungkin tidak diinginkan untuk semua pengguna, dan tetap sepenuhnya opsional. Di CIDRAM, pencatatan dinonaktifkan secara default. Untuk mengaktifkannya, CIDRAM harus dikonfigurasi dengan benar.
@@ -1906,4 +1915,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 1 Januari 2020 (2020.01.01).
+Terakhir Diperbarui: 2 Februari 2020 (2020.02.02).

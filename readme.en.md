@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -685,6 +685,7 @@ Currently supported:
 
 ##### "disabled_channels"
 - This can be used to prevent CIDRAM from using particular channels when sending requests (e.g., when updating, when fetching component metadata, etc).
+- *Available options: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Category)
 Signatures configuration.
@@ -898,6 +899,10 @@ If you feel that you don't need CIDRAM to enforce rate limiting for your website
 
 ##### "allowance_period"
 - The number of hours to monitor usage. Default = 0.
+
+##### "exceptions"
+- Exceptions (i.e., requests which shouldn't be rate limited). Relevant only when rate limiting is enabled.
+- *Available options: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Category)
 Supplementary cache options.
@@ -1377,7 +1382,7 @@ CIDRAM *DOES* block an IP address | __False positive__ | True positive (correct 
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Can CIDRAM block entire countries?
 
-Yes. The easiest way to achieve this would be to install some of the optional country blocklists provided by Macmathan. This can be done with a few simple clicks directly from the front-end updates page, or, if you'd prefer for the front-end to remain disabled, by downloading them directly from the **[optional blocklists download page](https://bitbucket.org/macmathan/blocklists)**, uploading them to the vault, and citing their names in the relevant configuration directives.
+Yes. The easiest way to do this would be by installing the BGPView module and configuring it according to your needs.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>How frequently are signatures updated?
 
@@ -1733,6 +1738,10 @@ CIDRAM provides an optional module that leverages this API to check whether the 
 
 CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the AbuseIPDB API in accordance with the intended purpose of the module.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the BGPView API in accordance with the intended purpose of the module.
+
 #### 11.3 LOGGING
 
 Logging is an important part of CIDRAM for a number of reasons. It may be difficult to diagnose and resolve false positives when the block events that cause them aren't logged. Without logging block events, it may be difficult to ascertain exactly how performant CIDRAM is in any particular context, and it may be difficult to determine where its shortfalls may be, and what changes may be required to its configuration or signatures accordingly, in order for it to continue functioning as intended. Regardless, logging mightn't be desirable for all users, and remains entirely optional. In CIDRAM, logging is disabled by default. To enable it, CIDRAM must be configured accordingly.
@@ -1924,4 +1933,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 1 January 2020 (2020.01.01).
+Last Updated: 2 February 2020 (2020.02.02).

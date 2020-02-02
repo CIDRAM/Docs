@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Configuration (v2)
 
 ##### "disabled_channels"
 - 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
+- *사용 가능한 옵션 : `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (카테고리)
 서명 설정.
@@ -888,6 +889,10 @@ PHPMailer 구성.
 
 ##### "allowance_period"
 - 사용량을 모니터 할 시간입니다. Default (기본 설정) = 0.
+
+##### "exceptions"
+- 예외 (즉, 속도 제한이 없어야하는 요청). 속도 제한이 활성화 된 경우에만 해당됩니다.
+- *사용 가능한 옵션 : `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (카테고리)
 보충 캐시 옵션.
@@ -1367,7 +1372,7 @@ IP 주소를 CIDRAM 차단합니다 | __거짓 양성__ | 진실 양성 (올바�
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM는 나라 전체를 차단할 수 있습니까?
 
-예. 이것을 달성하는 가장 쉬운 방법은 Macmathan 제공하는 국가 선택적 차단 목록의 일부를 설치합니다. 이것은 프론트 엔드 업데이트 페이지에서 직접 할 수 있습니다. 또는, 프론트 엔드를 계속 사용 중지하려는 경우, **[국가 선택적 차단 목록의 다운로드 페이지](https://bitbucket.org/macmathan/blocklists)** 에서 다운로드 할 수 있습니다. 다운로드 후, 그들을 vault에 업로드, 관련 지시에 의해 지명하십시오.
+예. 가장 쉬운 방법은 BGPView 모듈을 설치하고 필요에 따라 구성하는 것입니다.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>서명은 얼마나 자주 업데이트됩니까?
 
@@ -1716,6 +1721,10 @@ CIDRAM은이 API를 활용하는 선택적 모듈을 제공합니다. 인바운�
 
 CIDRAM은 [AbuseIPDB](https://www.abuseipdb.com/) API를 사용하여 까다로운 IP 주소를 차단하는 모듈을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 AbuseIPDB API와 공유 할 수 있습니다.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM은 [BGPView](https://bgpview.io/) API를 사용하여 ASN 및 국가 코드 조회를 수행하는 선택적 모듈을 제공합니다. 이러한 조회는 ASN 또는 출신 국가를 기준으로 요청을 차단하거나 허용하는 기능을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 BGPView API와 공유 할 수 있습니다.
+
 #### 11.3 로깅
 
 로깅은 여러 가지 이유로 CIDRAM의 중요한 부분입니다. 로깅 차단 이벤트가 없으면 오탐 (false positive)이 발생하면이를 진단하고 해결하기 어려울 수 있습니다. 로깅 블록 이벤트가 없으면 CIDRAM이 얼마나 효과적으로 수행되는지를 확인하기 어려울 수 있습니다. 그것의 부족을 확인하는 것은 어려울 수 있으며 의도 한대로 기능을 계속 수행하려면 구성이나 서명에 어떤 변경이 필요할 수 있습니다. 어쨌든 로깅은 일부 사용자가 원하지 않는 경우도 있으며 전체적으로 선택 사항입니다. CIDRAM에서 로깅은 기본적으로 사용되지 않습니다. 이를 사용하려면 CIDRAM을 적절히 구성해야합니다.
@@ -1902,4 +1911,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2020년 1월 1일.
+최종 업데이트 : 2020년 2월 2일.

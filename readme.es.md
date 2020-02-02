@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Soportado actualmente:
 
 ##### "disabled_channels"
 - Esto se puede usar para evitar que CIDRAM use canales particulares al enviar solicitudes (por ejemplo, al actualizar, al obtener metadatos de componentes, etc).
+- *Opciones disponibles: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Categoría)
 Configuración de firmas.
@@ -888,6 +889,10 @@ Si cree que no necesita para CIDRAM imponer la limitación de tarifa para su sit
 
 ##### "allowance_period"
 - El número de horas para monitorear el uso. Predefinido = 0.
+
+##### "exceptions"
+- Excepciones (es decir, solicitudes que no deberían limitada). Relevante solo cuando la limitación de velocidad está habilitada.
+- *Opciones disponibles: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Categoría)
 Opciones de caché complementarias.
@@ -1367,7 +1372,7 @@ CIDRAM *HACE* bloquear una dirección IP | __Falso positivo__ | Verdadero positi
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>¿Puede CIDRAM bloquear países enteros?
 
-Sí. La forma más fácil de lograr esto sería instalar algunas de las listas opcionales para bloquear países proporcionadas por Macmathan. Esto se puede hacer con unos simples clics directamente desde la página de actualizaciones del front-end, o, si prefiere que el front-end permanezca desactivado, con descargándolas directamente desde la **[página de descargar las listas opcionales para bloquear países](https://bitbucket.org/macmathan/blocklists)**, subirlos a la vault, y citando sus nombres en las directivas de configuración pertinentes.
+Sí. La forma más fácil de hacerlo sería instalar el módulo BGPView y configurarlo de acuerdo con sus necesidades.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>¿Con qué frecuencia se actualizan las firmas?
 
@@ -1725,6 +1730,10 @@ CIDRAM proporciona un módulo opcional que aprovecha esta API para verificar si 
 
 CIDRAM proporciona un módulo opcional para bloquear direcciones IP abusivas utilizando la API de [AbuseIPDB](https://www.abuseipdb.com/). El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de AbuseIPDB de acuerdo con el propósito del módulo.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM proporciona un módulo opcional para realizar búsquedas de código de país y ASN utilizando la API de [BGPView](https://bgpview.io/). Estas búsquedas proporcionan la capacidad de bloquear o incluir en la lista blanca las solicitudes en función de su ASN o país de origen. El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de BGPView de acuerdo con el propósito del módulo.
+
 #### 11.3 REGISTRO DE DATOS
 
 El registro de datos es una parte importante de CIDRAM por varias razones. Puede ser difícil diagnosticar y resolver falsos positivos cuando los eventos de bloqueo que los causan no se registran. Sin registrar eventos de bloques, puede ser difícil determinar con exactitud qué tan eficiente es el CIDRAM en un contexto particular, y puede ser difícil determinar dónde se encuentran sus deficiencias, y qué cambios pueden requerirse en su configuración o firmas en consecuencia, para que continúe funcionando según lo previsto. En todo caso, el registro de datos puede no ser deseable para todos los usuarios, y sigue siendo totalmente opcional. En CIDRAM, el registro de datos está deshabilitado de forma predeterminada. Para habilitarlo, CIDRAM debe configurarse en consecuencia.
@@ -1913,4 +1922,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 1 de Enero de 2020 (2020.01.01).
+Última Actualización: 2 de Febrero de 2020 (2020.02.02).

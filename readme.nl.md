@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Momenteel ondersteund:
 
 ##### "disabled_channels"
 - Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
+- *Beschikbare opties: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Categorie)
 Configuratie voor signatures.
@@ -888,6 +889,10 @@ Als u vindt dat u CIDRAM niet nodig hebt om tarieflimiet voor uw website af te d
 
 ##### "allowance_period"
 - Het aantal uren om het gebruik te controleren. Standaard = 0.
+
+##### "exceptions"
+- Excepties (d.w.z., verzoeken die moet niet worden beperkt). Alleen relevant wanneer tarieflimiet is ingeschakeld.
+- *Beschikbare opties: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Categorie)
 Aanvullende cache-opties.
@@ -1367,7 +1372,7 @@ CIDRAM *DOET* blokkeren van een IP-adres | __Vals positieve__ | Waar positieve (
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Kan CIDRAM blok hele landen?
 
-Ja. De eenvoudigste manier om dit te bereiken zou zijn om sommige van de optionele land blocklists door Macmathan te installeren. Dit kan gedaan worden met een paar simpele muisklikken direct vanaf de frontend updates pagina, of, als u liever voor de frontend te blijven uitgeschakeld, door ze rechtstreeks downloaden van de **[optionele land blocklists downloads pagina](https://bitbucket.org/macmathan/blocklists)**, uploaden van hen om de vault, en citeren van hun namen in de desbetreffende configuratie richtlijnen.
+Ja. De eenvoudigste manier om dit te doen is door de BGPView-module te installeren en te configureren volgens uw behoeften.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Hoe vaak worden signatures bijgewerkt?
 
@@ -1734,6 +1739,10 @@ CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controlere
 
 CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de AbuseIPDB API in overeenstemming met het beoogde doel van de module.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM biedt een optionele module voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de BGPView API in overeenstemming met het beoogde doel van de module.
+
 #### 11.3 LOGGEN
 
 Te loggen is om een aantal redenen een belangrijk onderdeel van CIDRAM. Het kan moeilijk zijn om valse positieven te diagnosticeren en op te lossen wanneer de blokgebeurtenissen die deze veroorzaken niet worden vastgelegd. Zonder blokgebeurtenissen te loggen, kan het moeilijk zijn om precies vast te stellen hoe performant CIDRAM zich in een bepaalde context bevindt, en het kan moeilijk zijn om te bepalen waar zijn tekortkomingen kunnen zijn, en welke veranderingen nodig kunnen zijn voor de configuratie of signatures dienovereenkomstig, zodat het blijft functioneren zoals bedoeld. Ongeacht, loggen is misschien niet wenselijk voor alle gebruikers, en blijft volledig optioneel. In CIDRAM te loggen is standaard uitgeschakeld. Om dit in te schakelen, moet CIDRAM dienovereenkomstig worden geconfigureerd.
@@ -1923,4 +1932,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 1 Januari 2020 (2020.01.01).
+Laatste Bijgewerkt: 2 Februari 2020 (2020.02.02).

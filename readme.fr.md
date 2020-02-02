@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Supporté actuellement :
 
 ##### « disabled_channels »
 - Ceci peut être utilisé pour empêcher CIDRAM d'utiliser des canaux particuliers lors de l'envoi de requêtes (par exemple, lors de la mise à jour, lors de l'extraction de métadonnées de composant, etc).
+- *Options disponibles : `GitHub,BitBucket,NotABug`*
 
 #### « signatures » (Catégorie)
 Configuration pour les signatures.
@@ -888,6 +889,10 @@ Si vous estimez que vous n'avez pas besoin de CIDRAM pour imposer une limitation
 
 ##### « allowance_period »
 - Le nombre d'heures pour surveiller l'utilisation. Défaut = 0.
+
+##### « exceptions »
+- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation de débit est activée.
+- *Options disponibles : `Whitelisted,Verified`*
 
 #### « supplementary_cache_options » (Catégorie)
 Options de cache supplémentaires.
@@ -1367,7 +1372,7 @@ CIDRAM bloque une adresse IP | __Faux positif__ | Vrai positif (inférence corre
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM peut-il bloquer des pays entiers ?
 
-Oui. La meilleure façon d'y parvenir serait d'installer certaines des listes facultatives pour les pays bloquants fournies par Macmathan. Cela peut être fait avec quelques clics simples directement à partir de la page des mises à jour de l'accès frontal, ou, si vous préférez que l'accès frontal reste désactivé, en les téléchargeant directement depuis la **[page de téléchargement des listes facultatives pour les pays bloquants](https://bitbucket.org/macmathan/blocklists)**, en les téléchargeant dans le vault, et en citant leurs noms dans les directives de configuration appropriées.
+Oui. La façon la plus simple de le faire serait d'installer le module BGPView et de le configurer en fonction de vos besoins.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>À quelle fréquence les signatures sont-elles mises à jour ?
 
@@ -1732,6 +1737,10 @@ CIDRAM fournit un module facultatif qui exploite cette API pour vérifier si l'a
 
 CIDRAM fournit un module optionnel permettant de bloquer les adresses IP abusives à l'aide de l'API [AbuseIPDB](https://www.abuseipdb.com/). Le module n'est pas installé par défaut, mais si vous choisissez de l'installer, les adresses IP des utilisateurs peuvent être partagées avec l'API AbuseIPDB conformément à l'usage prévu du module.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM fournit un module facultatif pour effectuer des recherches de ASN et de code de pays à l'aide de l'API [BGPView](https://bgpview.io/). Ces recherches permettent de bloquer ou de mettre en liste blanche les requêtes en fonction de leur ASN ou de leur pays d'origine. Le module n'est pas installé par défaut, mais si vous choisissez de l'installer, les adresses IP des utilisateurs peuvent être partagées avec l'API BGPView conformément à l'usage prévu du module.
+
 #### 11.3 JOURNALISATION
 
 La journalisation est une partie importante de CIDRAM pour un certain nombre de raisons. Il peut être difficile de diagnostiquer et de résoudre les faux positifs lorsque les événements de blocage qui les provoquent ne sont pas journalisés. Sans journaliser les événements de blocage, il peut être difficile de déterminer exactement comment CIDRAM est performant dans un contexte particulier, et il peut être difficile de déterminer où ses lacunes peuvent être, et quels changements peuvent être nécessaires à sa configuration ou à ses signatures en conséquence, afin de continuer à fonctionner comme prévu. Quoi qu'il en soit, la journalisation peut ne pas être souhaitable pour tous les utilisateurs, et reste entièrement facultative. Dans CIDRAM, la journalisation est désactivée par défaut. Pour l'activer, CIDRAM doit être configuré en accord.
@@ -1919,4 +1928,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 1 Janvier 2020 (2020.01.01).
+Dernière mise à jour : 2 Février 2020 (2020.02.02).

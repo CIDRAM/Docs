@@ -148,7 +148,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -445,6 +444,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -765,6 +765,7 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>يمكن استخدام هذا لمنع CIDRAM من استخدام قنوات معينة عند إرسال الطلبات (على سبيل المثال، عند التحديث، عند جلب بيانات تعريف المكون، إلخ).</li>
+ <li><em>الخيارات المتاحة: <code dir="ltr">GitHub,BitBucket,NotABug</code></em></li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
@@ -1077,6 +1078,12 @@ Configuration (v2)
 ##### <div dir="rtl">"allowance_period"<br /></div>
 <div dir="rtl"><ul>
  <li>عدد الساعات لمراقبة الاستخدام. افتراضي = 0.</li>
+</ul></div>
+
+##### <div dir="rtl">"exceptions"<br /></div>
+<div dir="rtl"><ul>
+ <li>استثناءات (بمعنى آخر، الطلبات التي لا ينبغي أن تكون محدودة). له تأثير فقط عند تمكين الحد.</li>
+ <li><em>الخيارات المتاحة: <code dir="ltr">Whitelisted,Verified</code></em></li>
 </ul></div>
 
 #### <div dir="rtl">"supplementary_cache_options" (التصنيف)<br /></div>
@@ -1596,7 +1603,7 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 #### <div dir="rtl"><a name="BLOCK_ENTIRE_COUNTRIES"></a>يمكن CIDRAM منع الدول؟<br /><br /></div>
 
-<div dir="rtl">نعم. يمكنك القيام بذلك عن طريق القوائم تحميل Macmathan ل (إما من frontend تلقائيا أو من <strong><a href="https://bitbucket.org/macmathan/blocklists">صفحة التحميل</a></strong> ليدويا. عندما يدويا، تحميلها على vault، لهم وتحدد لهم التكوين.<br /><br /></div>
+<div dir="rtl">نعم. أسهل طريقة للقيام بذلك هي تثبيت وحدة BGPView وتكوينها وفقًا لاحتياجاتك.<br /><br /></div>
 
 #### <div dir="rtl"><a name="SIGNATURE_UPDATE_FREQUENCY"></a>عدد المرات التي يتم تحديثها التوقيعات؟<br /><br /></div>
 
@@ -1954,6 +1961,10 @@ IP | المشغل
 
 <div dir="rtl">يوفر CIDRAM وحدة نمطية اختيارية لحظر عناوين IP المسيئة باستخدام واجهة برمجة تطبيقات <a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a>. لم يتم تثبيت الوحدة النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات AbuseIPDB API وفقًا للغرض المقصود من الوحدة.<br /><br /></div>
 
+##### <div dir="rtl">١١.٢.٦ BGPVIEW<br /><br /></div>
+
+<div dir="rtl">يوفر CIDRAM وحدة نمطية اختيارية لإجراء عمليات البحث ASN ورمز البلد باستخدام API [BGPView](https://bgpview.io/). توفر عمليات البحث هذه القدرة على حظر أو إدراج طلبات القائمة البيضاء على أساس ASN أو بلد المنشأ. لم يتم تثبيت الوحدة النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات BGPView API وفقًا للغرض المقصود من الوحدة.<br /><br /></div>
+
 #### <div dir="rtl">١١.٣ تسجيل<br /><br /></div>
 
 <div dir="rtl">التسجيل هو جزء مهم من CIDRAM لعدد من الأسباب. قد يكون من الصعب تشخيص وحل إيجابيات خاطئة عندما لا يتم تسجيل أحداث الحظر التي تسبب لهم. بدون تسجيل أحداث الحظر، قد يكون من الصعب التأكد من أداء CIDRAM بشكل جيد، وقد يكون من الصعب تحديد مواطن ضعفها، وما هي التغييرات التي قد تكون مطلوبة لتكوينها أو توقيعاتها، لكي تستمر في العمل على النحو المنشود. بغض النظر، ربما لا يريد الجميع التسجيل، لذلك يبقى اختياريًا تمامًا. في CIDRAM، يتم تعطيل التسجيل افتراضيًا. لتمكينه، يجب تكوين CIDRAM وفقًا لذلك.<br /><br /></div>
@@ -2168,4 +2179,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 1 يناير 2020 (2020.01.01).</div>
+<div dir="rtl">آخر تحديث: 2 فبراير 2020 (2020.02.02).</div>

@@ -146,7 +146,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -443,6 +442,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -675,6 +675,7 @@ Attualmente supportato:
 
 ##### "disabled_channels"
 - Questo può essere usato per impedire a CIDRAM di usare canali particolari quando si inviano richieste (ad esempio, quando si aggiorna, quando si recuperano i metadati del componente, ecc).
+- *Opzioni disponibili: `GitHub,BitBucket,NotABug`*
 
 #### "signatures" (Categoria)
 Configurazione per firme.
@@ -888,6 +889,10 @@ Se ritieni di non aver bisogno di CIDRAM per applicare la limitazione della velo
 
 ##### "allowance_period"
 - Il numero di ore per monitorare l'utilizzo. Predefinito = 0.
+
+##### "exceptions"
+- Eccezioni (cioè, richieste che non dovrebbero essere limitate). Rilevante solo quando è abilitata la limitazione della velocità.
+- *Opzioni disponibili: `Whitelisted,Verified`*
 
 #### "supplementary_cache_options" (Categoria)
 Opzioni di cache supplementari.
@@ -1367,7 +1372,7 @@ CIDRAM *FA* bloccare un indirizzo IP | __Falso positivo__ | Vero positivo (infer
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Può CIDRAM blocchi interi paesi?
 
-Sì. Il modo più semplice per raggiungere questo obiettivo sarebbe quella di installare alcune delle liste opzionali per il bloccando di paesi forniti da Macmathan. Questo può essere fatto direttamente dalla pagina degli aggiornamenti situato nel front-end, o, se si preferisce per il front-end di rimanere disabile, da scaricandoli direttamente dalla **[pagina per il scaricando delle liste opzionali per il bloccando di paesi](https://bitbucket.org/macmathan/blocklists)**, caricandoli alla vault, e citando i loro nomi nelle direttive di configurazione rilevanti.
+Sì. Il modo più semplice per farlo sarebbe installare il modulo BGPView e configurarlo in base alle proprie esigenze.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Con quale frequenza vengono aggiornate le firme?
 
@@ -1726,6 +1731,10 @@ CIDRAM fornisce un modulo opzionale che sfrutta questa API per verificare se l'i
 
 CIDRAM fornisce un modulo opzionale per bloccare indirizzi IP offensivi utilizzando l'API [AbuseIPDB](https://www.abuseipdb.com/). Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API AbuseIPDB in conformità con lo scopo previsto del modulo.
 
+##### 11.2.6 BGPVIEW
+
+CIDRAM fornisce un modulo opzionale per eseguire ricerche di ASN e codice paese utilizzando l'API [BGPView](https://bgpview.io/). Queste ricerche offrono la possibilità di bloccare o evitare di bloccare le richieste in base al loro ASN o paese di origine. Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API BGPView in conformità con lo scopo previsto del modulo.
+
 #### 11.3 REGISTRAZIONE
 
 La registrazione è una parte importante di CIDRAM per una serie di motivi. Potrebbe essere difficile diagnosticare e risolvere i falsi positivi quando gli eventi di blocco che li causano non vengono registrati. Senza registrare gli eventi di blocco, potrebbe essere difficile accertare esattamente quanto è performante CIDRAM in un particolare contesto, e potrebbe essere difficile determinare dove potrebbero essere le sue carenze, e quali modifiche potrebbero essere richieste alla sua configurazione o alle sue firme di conseguenza, affinché possa continuare a funzionare come previsto. Ciò nonostante, la registrazione potrebbe non essere auspicabile per tutti gli utenti, e rimane del tutto facoltativa. In CIDRAM, la registrazione è disabilitata per impostazione predefinita. Per abilitarlo, CIDRAM deve essere configurato di conseguenza.
@@ -1912,4 +1921,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 1 Gennaio 2020 (2020.01.01).
+Ultimo Aggiornamento: 2 Febbraio 2020 (2020.02.02).

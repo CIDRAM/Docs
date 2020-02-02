@@ -148,7 +148,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   codeception.yml
 │   composer.json
 │   CONTRIBUTING.md
-│   crowdin.yml
 │   LICENSE.txt
 │   loader.php
 │   README.md
@@ -445,6 +444,7 @@ Configuration (v2)
 │       precision_ipv4
 │       precision_ipv6
 │       allowance_period
+│       exceptions
 │
 └───supplementary_cache_options
         enable_apcu
@@ -765,6 +765,7 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>درخواستوں کو بھیجنے کے لئے خاص طور پر چینلز کا استعمال کے لئے CIDRAM کو روکنے کے لئے یہ استعمال کیا جا سکتا ہے (مثال کے طور پر، جب اپ ڈیٹ کرنا، اجزاء میٹا ڈیٹا، وغیرہ کو پکڑنے کے بعد).</li>
+ <li><em>دستیاب اختیارات: <code dir="ltr">GitHub,BitBucket,NotABug</code></em></li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
@@ -1077,6 +1078,12 @@ Configuration (v2)
 ##### <div dir="rtl">"allowance_period"<br /></div>
 <div dir="rtl"><ul>
  <li>استعمال کی نگرانی کے لئے گھنٹوں کی تعداد. پہلے سے طے شدہ = 0.</li>
+</ul></div>
+
+##### <div dir="rtl">"exceptions"<br /></div>
+<div dir="rtl"><ul>
+ <li>مستثنیات (یعنی، درخواستوں کو جس کی شرح محدود نہیں ہونی چاہئے). متعلقہ صرف اس وقت جب شرح کی حد بندی قابل ہو.</li>
+ <li><em>دستیاب اختیارات: <code dir="ltr">Whitelisted,Verified</code></em></li>
 </ul></div>
 
 #### <div dir="rtl">"supplementary_cache_options" (قسم)<br /></div>
@@ -1596,7 +1603,7 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 #### <div dir="rtl"><a name="BLOCK_ENTIRE_COUNTRIES"></a>بلاک تمام ممالک CIDRAM کر سکتا ہوں؟<br /><br /></div>
 
-<div dir="rtl">جی ہاں. اس مقصد کو حاصل کرنے کے لئے سب سے آسان طریقہ Macmathan طرف سے فراہم اختیاری ملک blocklists کے کچھ نصب کرنے کے لئے ہو جائے گا. <strong><a href="https://bitbucket.org/macmathan/blocklists">ڈاؤن لوڈ، اتارنا صفحے اختیاری blocklists</a></strong> آپ سے ان کا براہ راست ڈاؤن لوڈ کر کے، معذور رہنے کا سامنے کے آخر میں کے لئے ترجیح دیتے ہیں تو یہ سامنے کے آخر میں اپ ڈیٹ کے صفحے سے کچھ آسان براہ راست کلکس کے ساتھ کیا جا سکتا ہے، یا، والٹ پر اپ لوڈ، اور متعلقہ ترتیب ہدایات میں ان کے نام کا حوالہ دیتے ہوئے.<br /><br /></div>
+<div dir="rtl">جی ہاں. اس کا آسان ترین طریقہ BGPView ماڈیول کو انسٹال کرنا اور اپنی ضروریات کے مطابق تشکیل دینا ہے.<br /><br /></div>
 
 #### <div dir="rtl"><a name="SIGNATURE_UPDATE_FREQUENCY"></a>دستخط کیسے بیشتر اپ ڈیٹ کر رہے ہیں؟<br /><br /></div>
 
@@ -1954,6 +1961,10 @@ IP | آپریٹر
 
 <div dir="rtl"><a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a> API کا استعمال کرتے ہوئے بدسلوکی IP پتے کو بلاک کرنے کے لئے CIDRAM ایک اختیاری ماڈیول فراہم کرتا ہے. ماڈیول ڈیفالٹ کے ذریعہ انسٹال نہیں ہے، لیکن اگر آپ اسے نصب کرنے کا انتخاب کرتے ہیں تو، صارف IP پتے کو AbuseIPDB API کے ساتھ اشتراک کیا جا سکتا ہے.<br /><br /></div>
 
+##### <div dir="rtl">١١.٢.٦ BGPVIEW<br /><br /></div>
+
+<div dir="rtl"><a dir="ltr" href="https://bgpview.io/">BGPView</a> API کا استعمال کرتے ہوئے ASN اور ملکی کوڈ تلاش کرنے کیلئے CIDRAM ایک اختیاری ماڈیول فراہم کرتا ہے. یہ تلاشیں اپنے ASN یا ملک کے اصل کی بنیاد پر درخواستوں کو مسدود کرنے یا وائٹ لسٹ کرنے کی اہلیت فراہم کرتی ہیں. ماڈیول ڈیفالٹ کے ذریعہ انسٹال نہیں ہے، لیکن اگر آپ اسے نصب کرنے کا انتخاب کرتے ہیں تو، صارف IP پتے کو BGPView API کے ساتھ اشتراک کیا جا سکتا ہے.<br /><br /></div>
+
 #### <div dir="rtl">١١.٣ لاگ<br /><br /></div>
 
 <div dir="rtl">لاگنگ کئی وجوہات کے لئے CIDRAM کا ایک اہم حصہ ہے. اس کے بغیر، غلطیوں کو تلاش کرنے اور مسائل کی تشخیص مشکل ہوسکتی ہے. اگر ہمارے پاس یہ معلومات نہیں ہے اور کسی چیز کو تبدیل کرنے کی ضرورت ہے، یہ جاننا مشکل ہوسکتا ہے کہ بالکل وہی چیز جو تبدیل کرنے کی ضرورت ہے. اس کے باوجود، ہر کوئی اس معلومات کو ریکارڈ نہیں کرنا چاہتا، لہذا یہ اختیاری رہتا ہے. CIDRAM میں، یہ ڈیفالٹ کی طرف سے معذور ہے. اسے فعال کرنے کے لئے، CIDRAM کے مطابق ترتیب دیا جانا چاہئے.<br /><br /></div>
@@ -2168,4 +2179,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 1 جنوری 2020 (2020.01.01).</div>
+<div dir="rtl">آخری تازہ کاری: 2 فروری 2020 (2020.02.02).</div>
