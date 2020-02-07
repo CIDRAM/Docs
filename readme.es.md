@@ -618,17 +618,17 @@ Valor | Produce | Descripción
 
 Soportado actualmente:
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
-- __[Google](https://support.google.com/webmasters/answer/80553?hl=es)__
-- __[Mojeek](https://www.mojeek.com/bot.html)__
+- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
+- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
+- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
+- __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __Sogou (搜狗)__
-- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
-- __Yahoo__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __Youdao (有道)__
+- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
+- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
+- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
 
 No es compatible (causa conflictos):
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -637,10 +637,13 @@ No es compatible (causa conflictos):
 - ¿Intentar verificar las solicitudes de las redes sociales? La verificación de las redes sociales brinda protección contra solicitudes falsas de redes sociales (tales solicitudes serán bloqueadas). True = Activar la verificación de redes sociales [Predefinido]; False = Desactivar la verificación de redes sociales.
 
 Soportado actualmente:
+- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
+- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
+- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __Embedly__
-- __[Grapeshot](https://www.grapeshot.com/crawler/)__
-- __Twitterbot__
+- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+
+_**: Requiere la funcionalidad de búsqueda ASN, por ejemplo, del módulo BGPView._
 
 ##### "protect_frontend"
 - Especifica si las protecciones normalmente proporcionadas por CIDRAM deben aplicarse al front-end. True = Sí [Predefinido]; False = No.
@@ -1126,7 +1129,7 @@ recaptcha:
  logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
  enabled: true
 template_data:
- css_url: http://domain.tld/cidram.css
+ css_url: https://domain.tld/cidram.css
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1401,7 +1404,7 @@ No. PHP >= 7.2.0 es un requisito mínimo para CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>¿Puedo usar una sola instalación de CIDRAM para proteger múltiples dominios?
 
-Sí. Las instalaciones de CIDRAM no están ligados naturalmente en dominios específicos, y por lo tanto puede ser utilizado para proteger múltiples dominios. En general, nos referimos a las instalaciones de CIDRAM que protegen solo un dominio como "instalaciones solo-dominio" ("single-domain installations"), y nos referimos a las instalaciones de CIDRAM que protegen múltiples dominios y/o subdominios como "instalaciones multi-dominio" ("multi-domain installations"). Si utiliza una instalación multi-dominio y es necesario utilizar diferentes conjuntos de archivos de firmas para diferentes dominios, o si CIDRAM debe configurarse de manera diferente para diferentes dominios, es posible hacer esto. Después de cargar el archivo de configuración (`config.ini`), CIDRAM comprobará la existencia de un "archivo de sustitución para configuración" específico del dominio (o subdominio) que se solicita (`el-dominio-que-se-solicita.tld.config.ini`), y si se encuentra, cualquier valor de configuración definido por el archivo de sustitución para configuración se utilizará para la instancia de ejecución en lugar de los valores de configuración definidos por el archivo de configuración. Los archivos de sustitución para configuración son idénticos al archivo de configuración, ya su discreción, puede contener la totalidad de todas las directivas de configuración disponibles para CIDRAM, o lo que sea subsección necesaria que difiera de los valores normalmente definidos por el archivo de configuración. Los archivos de sustitución para configuración se nombran de acuerdo con el dominio al que están destinados (así por ejemplo, si se requiere un archivo de sustitución para configuración para el dominio, `http://www.some-domain.tld/`, su archivo de sustitución para configuración debe ser nombrado como `some-domain.tld.config.ini`, y debe colocarse dentro de la vault junto con el archivo de configuración, `config.ini`). El nombre del dominio para la instancia de ejecución se deriva del encabezado `HTTP_HOST` de la solicitud; "www" se ignora.
+Sí. Las instalaciones de CIDRAM no están ligados naturalmente en dominios específicos, y por lo tanto puede ser utilizado para proteger múltiples dominios. En general, nos referimos a las instalaciones de CIDRAM que protegen solo un dominio como "instalaciones solo-dominio" ("single-domain installations"), y nos referimos a las instalaciones de CIDRAM que protegen múltiples dominios y/o subdominios como "instalaciones multi-dominio" ("multi-domain installations"). Si utiliza una instalación multi-dominio y es necesario utilizar diferentes conjuntos de archivos de firmas para diferentes dominios, o si CIDRAM debe configurarse de manera diferente para diferentes dominios, es posible hacer esto. Después de cargar el archivo de configuración (`config.ini`), CIDRAM comprobará la existencia de un "archivo de sustitución para configuración" específico del dominio (o subdominio) que se solicita (`el-dominio-que-se-solicita.tld.config.ini`), y si se encuentra, cualquier valor de configuración definido por el archivo de sustitución para configuración se utilizará para la instancia de ejecución en lugar de los valores de configuración definidos por el archivo de configuración. Los archivos de sustitución para configuración son idénticos al archivo de configuración, ya su discreción, puede contener la totalidad de todas las directivas de configuración disponibles para CIDRAM, o lo que sea subsección necesaria que difiera de los valores normalmente definidos por el archivo de configuración. Los archivos de sustitución para configuración se nombran de acuerdo con el dominio al que están destinados (así por ejemplo, si se requiere un archivo de sustitución para configuración para el dominio, `https://www.some-domain.tld/`, su archivo de sustitución para configuración debe ser nombrado como `some-domain.tld.config.ini`, y debe colocarse dentro de la vault junto con el archivo de configuración, `config.ini`). El nombre del dominio para la instancia de ejecución se deriva del encabezado `HTTP_HOST` de la solicitud; "www" se ignora.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>No quiero molestarme con la instalación de este y conseguir que funcione con mi sitio web; ¿Puedo pagarte por hacer todo por mí?
 
@@ -1442,7 +1445,6 @@ En general, la IP de cualquier servidor DNS confiable debería ser suficiente. S
 IP | Operador
 ---|---
 `1.1.1.1` | [Cloudflare](https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/)
-`4.2.2.1`<br />`4.2.2.2`<br />`209.244.0.3`<br />`209.244.0.4` | [Level3](https://www.level3.com/en/)
 `8.8.4.4`<br />`8.8.8.8`<br />`2001:4860:4860::8844`<br />`2001:4860:4860::8888` | [Google Public DNS](https://developers.google.com/speed/public-dns/)
 `9.9.9.9`<br />`149.112.112.112` | [Quad9 DNS](https://www.quad9.net/)
 `84.200.69.80`<br />`84.200.70.40`<br />`2001:1608:10:25::1c04:b12f`<br />`2001:1608:10:25::9249:d69b` | [DNS.WATCH](https://dns.watch/index)
@@ -1451,14 +1453,13 @@ IP | Operador
 `8.20.247.20`<br />`8.26.56.26` | [Comodo Secure DNS](https://www.comodo.com/secure-dns/)
 `216.146.35.35`<br />`216.146.36.36` | [Dyn](https://help.dyn.com/internet-guide-setup/)
 `64.6.64.6`<br />`64.6.65.6` | [Verisign Public DNS](https://www.verisign.com/en_US/security-services/public-dns/index.xhtml)
-`37.235.1.174`<br />`37.235.1.177` | [FreeDNS](https://freedns.zone/en/)
+`37.235.1.174`<br />`37.235.1.177`<br />`45.33.97.5`<br />`172.104.237.57`<br />`172.104.49.100` | [FreeDNS](https://freedns.zone/en/)
 `156.154.70.1`<br />`156.154.71.1`<br />`2610:a1:1018::1`<br />`2610:a1:1019::1` | [Neustar Security](https://www.security.neustar/dns-services/free-recursive-dns-service)
-`45.32.36.36`<br />`45.77.165.194`<br />`179.43.139.226` | [Fourth Estate](https://dns.fourthestate.co/)
+`45.32.36.36`<br />`45.77.165.194` | [Fourth Estate](https://dns.fourthestate.co/)
 `74.82.42.42` | [Hurricane Electric](https://dns.he.net/)
 `195.46.39.39`<br />`195.46.39.40` | [SafeDNS](https://www.safedns.com/en/features/)
-`81.218.119.11`<br />`209.88.198.133` | [GreenTeam Internet](http://www.greentm.co.uk/)
 `89.233.43.71`<br />`91.239.100.100 `<br />`2001:67c:28a4::`<br />`2a01:3a0:53:53::` | [UncensoredDNS](https://blog.uncensoreddns.org/)
-`208.76.50.50`<br />`208.76.51.51` | [SmartViper](http://www.markosweb.com/free-dns/)
+`208.76.50.50`<br />`208.76.51.51` | [SmartViper](https://www.markosweb.com/free-dns/)
 
 *Nota: Yo no realizo ningún reclamo o garantía con respecto a las prácticas de privacidad, seguridad, eficacia ni confiabilidad de los servicios de DNS enumerados o de otro modo. Por favor, haga su propia investigación al tomar decisiones sobre ellos.*
 
@@ -1761,7 +1762,7 @@ Firmas Cuentas: 1
 Firmas Referencias: x.x.x.x/xx
 Razón Bloqueado: Servicio en la nube ("Nombre de red", Lxx:Fx, [XX])!
 Agente de Usuario: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
-Reconstruida URI: http://your-site.tld/index.php
+Reconstruida URI: https://your-site.tld/index.php
 Estado reCAPTCHA: Activado.
 ```
 
@@ -1922,4 +1923,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 2 de Febrero de 2020 (2020.02.02).
+Última Actualización: 7 de Febrero de 2020 (2020.02.07).

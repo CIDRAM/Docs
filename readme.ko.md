@@ -618,17 +618,17 @@ Configuration (v2)
 
 현재 지원 :
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
-- __[Google](https://support.google.com/webmasters/answer/80553?hl=ko)__
-- __[Mojeek](https://www.mojeek.com/bot.html)__
+- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
+- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
+- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
+- __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __Sogou (搜狗)__
-- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
-- __Yahoo__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __Youdao (有道)__
+- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
+- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
+- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
 
 호환되지 않음 (갈등을 일으킨다) :
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -637,10 +637,13 @@ Configuration (v2)
 - 소셜 미디어 요청을 확인하려고합니까? 소셜 미디어 인증은 가짜 소셜 미디어 요청으로부터 보호합니다 (이러한 요청은 차단됩니다). True = 소셜 미디어 검증을 활성화한다 (Default / 기본 설정); False = 소셜 미디어 인증을 무효로한다.
 
 현재 지원 :
+- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
+- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
+- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __Embedly__
-- __[Grapeshot](https://www.grapeshot.com/crawler/)__
-- __Twitterbot__
+- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+
+_** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)._
 
 ##### "protect_frontend"
 - CIDRAM 의해 보통 제공되는 보호를 프론트 엔드에 적용할지 여부를 지정합니다. True = 예 (Default / 기본 설정); False = 아니오.
@@ -1126,7 +1129,7 @@ recaptcha:
  logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
  enabled: true
 template_data:
- css_url: http://domain.tld/cidram.css
+ css_url: https://domain.tld/cidram.css
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1401,7 +1404,7 @@ CIDRAM는 웹 사이트 소유자가 원하지 않는 트래픽을 차단하는 
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>단일 CIDRAM 설치를 사용하여 여러 도메인을 보호 할 수 있습니까?
 
-예. CIDRAM 설치는 특정 도메인에 국한되지 않습니다, 따라서 여러 도메인을 보호하기 위해 사용할 수 있습니다. 일반적으로, 하나의 도메인 만 보호 설치 우리는 "단일 도메인 설치"이 라고 부릅니다에서 여러 도메인을 보호하는 설치 우리는 "멀티 도메인 설치"이 라고 있습니다. 다중 도메인 설치를 사용하는 경우 다른 도메인에 다른 서명 파일 세트를 사용할 필요가 있거나 다른 도메인에 CIDRAM을 다른 설정해야합니다 이것을 할 수 있습니다. 설정 파일을로드 한 후 (`config.ini`), CIDRAM 요청 된 도메인의 "구성 재정 파일"의 존재를 확인합니다 (`xn--hq1bngz0pl7nd2aqft27a.tld.config.ini`), 그리고 발견 된 경우, 구성 재정 파일에 의해 정의 된 구성 값은 설정 파일에 의해 정의 된 구성 값이 아니라 실행 인스턴스에 사용됩니다. 구성 재정 파일은 설정 파일과 동일합니다. 귀하의 재량에 따라 CIDRAM에서 사용할 수있는 모든 구성 지시문 전체 또는 필요한 하위 섹션을 포함 할 수 있습니다. 구성 재정 파일은 그들이 의도하는 도메인에 따라 지정됩니다 (그래서 예를 들면, 도메인 `http://www.some-domain.tld/` 컨피규레이션 재정 파일이 필요한 경우, 구성 재정 파일의 이름은 `some-domain.tld.config.ini` 할 필요가 있습니다. 일반 구성 파일과 동일한 위치에 보관해야합니다). 도메인 이름은 `HTTP_HOST` 에서옵니다. "www"는 무시됩니다.
+예. CIDRAM 설치는 특정 도메인에 국한되지 않습니다, 따라서 여러 도메인을 보호하기 위해 사용할 수 있습니다. 일반적으로, 하나의 도메인 만 보호 설치 우리는 "단일 도메인 설치"이 라고 부릅니다에서 여러 도메인을 보호하는 설치 우리는 "멀티 도메인 설치"이 라고 있습니다. 다중 도메인 설치를 사용하는 경우 다른 도메인에 다른 서명 파일 세트를 사용할 필요가 있거나 다른 도메인에 CIDRAM을 다른 설정해야합니다 이것을 할 수 있습니다. 설정 파일을로드 한 후 (`config.ini`), CIDRAM 요청 된 도메인의 "구성 재정 파일"의 존재를 확인합니다 (`xn--hq1bngz0pl7nd2aqft27a.tld.config.ini`), 그리고 발견 된 경우, 구성 재정 파일에 의해 정의 된 구성 값은 설정 파일에 의해 정의 된 구성 값이 아니라 실행 인스턴스에 사용됩니다. 구성 재정 파일은 설정 파일과 동일합니다. 귀하의 재량에 따라 CIDRAM에서 사용할 수있는 모든 구성 지시문 전체 또는 필요한 하위 섹션을 포함 할 수 있습니다. 구성 재정 파일은 그들이 의도하는 도메인에 따라 지정됩니다 (그래서 예를 들면, 도메인 `https://www.some-domain.tld/` 컨피규레이션 재정 파일이 필요한 경우, 구성 재정 파일의 이름은 `some-domain.tld.config.ini` 할 필요가 있습니다. 일반 구성 파일과 동일한 위치에 보관해야합니다). 도메인 이름은 `HTTP_HOST` 에서옵니다. "www"는 무시됩니다.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>나는 이것을 설치하거나 그것이 내 웹 사이트상에서 동작하는 것을 보장하는 시간을 보내고, 하고 싶지 않아; 그것을 할 수 있습니까? 나는 당신을 고용 할 수 있습니까?
 
@@ -1442,7 +1445,6 @@ CIDRAM는 웹 사이트 소유자가 원하지 않는 트래픽을 차단하는 
 IP | 운영자
 ---|---
 `1.1.1.1` | [Cloudflare](https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/)
-`4.2.2.1`<br />`4.2.2.2`<br />`209.244.0.3`<br />`209.244.0.4` | [Level3](https://www.level3.com/en/)
 `8.8.4.4`<br />`8.8.8.8`<br />`2001:4860:4860::8844`<br />`2001:4860:4860::8888` | [Google Public DNS](https://developers.google.com/speed/public-dns/)
 `9.9.9.9`<br />`149.112.112.112` | [Quad9 DNS](https://www.quad9.net/)
 `84.200.69.80`<br />`84.200.70.40`<br />`2001:1608:10:25::1c04:b12f`<br />`2001:1608:10:25::9249:d69b` | [DNS.WATCH](https://dns.watch/index)
@@ -1451,14 +1453,13 @@ IP | 운영자
 `8.20.247.20`<br />`8.26.56.26` | [Comodo Secure DNS](https://www.comodo.com/secure-dns/)
 `216.146.35.35`<br />`216.146.36.36` | [Dyn](https://help.dyn.com/internet-guide-setup/)
 `64.6.64.6`<br />`64.6.65.6` | [Verisign Public DNS](https://www.verisign.com/en_US/security-services/public-dns/index.xhtml)
-`37.235.1.174`<br />`37.235.1.177` | [FreeDNS](https://freedns.zone/en/)
+`37.235.1.174`<br />`37.235.1.177`<br />`45.33.97.5`<br />`172.104.237.57`<br />`172.104.49.100` | [FreeDNS](https://freedns.zone/en/)
 `156.154.70.1`<br />`156.154.71.1`<br />`2610:a1:1018::1`<br />`2610:a1:1019::1` | [Neustar Security](https://www.security.neustar/dns-services/free-recursive-dns-service)
-`45.32.36.36`<br />`45.77.165.194`<br />`179.43.139.226` | [Fourth Estate](https://dns.fourthestate.co/)
+`45.32.36.36`<br />`45.77.165.194` | [Fourth Estate](https://dns.fourthestate.co/)
 `74.82.42.42` | [Hurricane Electric](https://dns.he.net/)
 `195.46.39.39`<br />`195.46.39.40` | [SafeDNS](https://www.safedns.com/en/features/)
-`81.218.119.11`<br />`209.88.198.133` | [GreenTeam Internet](http://www.greentm.co.uk/)
 `89.233.43.71`<br />`91.239.100.100 `<br />`2001:67c:28a4::`<br />`2a01:3a0:53:53::` | [UncensoredDNS](https://blog.uncensoreddns.org/)
-`208.76.50.50`<br />`208.76.51.51` | [SmartViper](http://www.markosweb.com/free-dns/)
+`208.76.50.50`<br />`208.76.51.51` | [SmartViper](https://www.markosweb.com/free-dns/)
 
 *노트 : 본인은 모든 DNS 서비스의 개인, 열거 되든 그렇지 않든, 정보 보호 관행, 보안, 효능 또는 신뢰성과 관련하여 어떠한 보증이나 보장도하지 않습니다. 그들에 대한 결정을 내릴 때 자신의 연구를하십시오.*
 
@@ -1752,7 +1753,7 @@ IP 주소 : x.x.x.x
 서명 참조 : x.x.x.x/xx
 왜 차단이 되셨나요 : 클라우드 서비스 ("네트워크 이름", Lxx:Fx, [XX])!
 사용자 에이전트 : Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
-URI 재구성 된 : http://your-site.tld/index.php
+URI 재구성 된 : https://your-site.tld/index.php
 reCAPTCHA의 상태 : 온.
 ```
 
@@ -1911,4 +1912,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2020년 2월 2일.
+최종 업데이트 : 2020년 2월 7일.

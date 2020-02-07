@@ -618,17 +618,17 @@ Configuration (v2)
 
 目前支持：
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baidu (百度)](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bing](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckGo](https://duckduckgo.com/duckduckbot)__
-- __[Google (谷歌)](https://support.google.com/webmasters/answer/80553?hl=zh-Hant)__
-- __[Mojeek](https://www.mojeek.com/bot.html)__
+- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
+- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
+- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
+- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
+- __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __Sogou (搜狗)__
-- __[Teoma](https://www.distilnetworks.com/bot-directory/bot/teoma/)__
-- __Yahoo (雅虎)__
-- __[Yandex (Яндекс)](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __Youdao (有道)__
+- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
+- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
+- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
+- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
 
 不兼容（導致衝突）：
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
@@ -637,10 +637,13 @@ Configuration (v2)
 - 嘗試驗證社交媒體請求？​社交媒體驗證可以防止虛假社交媒體請求（此類請求將被阻止）。​True（真）=啟用社交媒體驗證【標準】；​False（假）=禁用社交媒體驗證。
 
 目前支持：
+- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
+- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
+- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __Embedly__
-- __[Grapeshot](https://www.grapeshot.com/crawler/)__
-- __Twitterbot__
+- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+
+_**： 需要ASN查找功能，例如從BGPView模塊。_
 
 ##### 『protect_frontend』
 - 指定是否應將CIDRAM通常提供的保護應用於前端。​True（真）=是【標準】；​False（假）=不是。
@@ -1126,7 +1129,7 @@ recaptcha:
  logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
  enabled: true
 template_data:
- css_url: http://domain.tld/cidram.css
+ css_url: https://domain.tld/cidram.css
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1401,7 +1404,7 @@ CIDRAM使網站所有者能夠阻止不良流量，​但網站所有者有責�
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>我可以使用單個CIDRAM安裝來保護多個域嗎？
 
-可以。​CIDRAM安裝未綁定到特定域，​因此可以用來保護多個域。​通常，​當CIDRAM安裝保護只一個域，​我們稱之為『單域安裝』，​和當CIDRAM安裝保護多個域和/或子域，​我們稱之為『多域安裝』。​如果您進行多域安裝並需要使用不同的簽名文件為不同的域，​或需要不同配置CIDRAM為不同的域，​這可以做到。​加載配置文件後（`config.ini`），​CIDRAM將尋找『配置覆蓋文件』特定於所請求的域（`xn--cjs74vvlieukn40a.tld.config.ini`），​並如果發現，​由配置覆蓋文件定義的任何配置值將用於執行實例而不是由配置文件定義的配置值。​配置覆蓋文件與配置文件相同，​並通過您的決定，​可能包含CIDRAM可用的所有配置指令，​或任何必需的章節當需要。​配置覆蓋文件根據它們旨在的域來命名（所以，​例如，​如果您需要一個配置覆蓋文件為域，​`http://www.some-domain.tld/`，​它的配置覆蓋文件應該被命名`some-domain.tld.config.ini`，​和它應該放置在`vault`與配置文件，​`config.ini`）。​域名是從標題`HTTP_HOST`派生的；『www』被忽略。
+可以。​CIDRAM安裝未綁定到特定域，​因此可以用來保護多個域。​通常，​當CIDRAM安裝保護只一個域，​我們稱之為『單域安裝』，​和當CIDRAM安裝保護多個域和/或子域，​我們稱之為『多域安裝』。​如果您進行多域安裝並需要使用不同的簽名文件為不同的域，​或需要不同配置CIDRAM為不同的域，​這可以做到。​加載配置文件後（`config.ini`），​CIDRAM將尋找『配置覆蓋文件』特定於所請求的域（`xn--cjs74vvlieukn40a.tld.config.ini`），​並如果發現，​由配置覆蓋文件定義的任何配置值將用於執行實例而不是由配置文件定義的配置值。​配置覆蓋文件與配置文件相同，​並通過您的決定，​可能包含CIDRAM可用的所有配置指令，​或任何必需的章節當需要。​配置覆蓋文件根據它們旨在的域來命名（所以，​例如，​如果您需要一個配置覆蓋文件為域，​`https://www.some-domain.tld/`，​它的配置覆蓋文件應該被命名`some-domain.tld.config.ini`，​和它應該放置在`vault`與配置文件，​`config.ini`）。​域名是從標題`HTTP_HOST`派生的；『www』被忽略。
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>我不想浪費時間安裝這個和確保它在我的網站上功能正常；我可以僱用您這樣做嗎？
 
@@ -1442,7 +1445,6 @@ CIDRAM使網站所有者能夠阻止不良流量，​但網站所有者有責�
 IP | 操作者
 ---|---
 `1.1.1.1` | [Cloudflare](https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/)
-`4.2.2.1`<br />`4.2.2.2`<br />`209.244.0.3`<br />`209.244.0.4` | [Level3](https://www.level3.com/en/)
 `8.8.4.4`<br />`8.8.8.8`<br />`2001:4860:4860::8844`<br />`2001:4860:4860::8888` | [Google Public DNS](https://developers.google.com/speed/public-dns/)
 `9.9.9.9`<br />`149.112.112.112` | [Quad9 DNS](https://www.quad9.net/)
 `84.200.69.80`<br />`84.200.70.40`<br />`2001:1608:10:25::1c04:b12f`<br />`2001:1608:10:25::9249:d69b` | [DNS.WATCH](https://dns.watch/index)
@@ -1451,14 +1453,13 @@ IP | 操作者
 `8.20.247.20`<br />`8.26.56.26` | [Comodo Secure DNS](https://www.comodo.com/secure-dns/)
 `216.146.35.35`<br />`216.146.36.36` | [Dyn](https://help.dyn.com/internet-guide-setup/)
 `64.6.64.6`<br />`64.6.65.6` | [Verisign Public DNS](https://www.verisign.com/en_US/security-services/public-dns/index.xhtml)
-`37.235.1.174`<br />`37.235.1.177` | [FreeDNS](https://freedns.zone/en/)
+`37.235.1.174`<br />`37.235.1.177`<br />`45.33.97.5`<br />`172.104.237.57`<br />`172.104.49.100` | [FreeDNS](https://freedns.zone/en/)
 `156.154.70.1`<br />`156.154.71.1`<br />`2610:a1:1018::1`<br />`2610:a1:1019::1` | [Neustar Security](https://www.security.neustar/dns-services/free-recursive-dns-service)
-`45.32.36.36`<br />`45.77.165.194`<br />`179.43.139.226` | [Fourth Estate](https://dns.fourthestate.co/)
+`45.32.36.36`<br />`45.77.165.194` | [Fourth Estate](https://dns.fourthestate.co/)
 `74.82.42.42` | [Hurricane Electric](https://dns.he.net/)
 `195.46.39.39`<br />`195.46.39.40` | [SafeDNS](https://www.safedns.com/en/features/)
-`81.218.119.11`<br />`209.88.198.133` | [GreenTeam Internet](http://www.greentm.co.uk/)
 `89.233.43.71`<br />`91.239.100.100 `<br />`2001:67c:28a4::`<br />`2a01:3a0:53:53::` | [UncensoredDNS](https://blog.uncensoreddns.org/)
-`208.76.50.50`<br />`208.76.51.51` | [SmartViper](http://www.markosweb.com/free-dns/)
+`208.76.50.50`<br />`208.76.51.51` | [SmartViper](https://www.markosweb.com/free-dns/)
 
 *注意：​我對任何列出的DNS服務或其他方式的隱私慣例，安全性，功效和可靠性不做任何聲明或保證。​請在做出關於他們的決定時做您自己的研究。*
 
@@ -1754,7 +1755,7 @@ IP地址： x.x.x.x
 簽名參考： x.x.x.x/xx
 為什麼被阻止： 雲服務 ("網絡名字", Lxx:Fx, [XX])!
 用戶代理： Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
-重建URI： http://your-site.tld/index.php
+重建URI： https://your-site.tld/index.php
 reCAPTCHA狀態： 打開。
 ```
 
@@ -1916,4 +1917,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2020年2月2日。
+最後更新：2020年2月7日。
