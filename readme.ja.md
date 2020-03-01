@@ -237,6 +237,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Demojibakefier.php
     │           Events.php
     │           L10N.php
+    │           Matrix.php
     │           NumberFormatter.php
     │           YAML.php
     │
@@ -1914,4 +1915,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２０年２月７日。
+最終アップデート：２０２０年３月１日。

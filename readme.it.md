@@ -237,6 +237,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Demojibakefier.php
     │           Events.php
     │           L10N.php
+    │           Matrix.php
     │           NumberFormatter.php
     │           YAML.php
     │
@@ -1919,4 +1920,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 7 Febbraio 2020 (2020.02.07).
+Ultimo Aggiornamento: 1 Marzo 2020 (2020.03.01).
