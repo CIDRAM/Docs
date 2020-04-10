@@ -905,8 +905,6 @@ Wenn Sie der Meinung sind, dass Sie CIDRAM nicht benötigen, um die Ratenbegrenz
 #### "supplementary_cache_options" (Kategorie)
 Zusätzliche Cache-Optionen.
 
-*Derzeit ist dies extrem experimentell und verhält sich möglicherweise nicht wie erwartet! Im Moment empfehle ich, es zu ignorieren.*
-
 ##### "enable_apcu"
 - Dies gibt an, ob APCu für das Caching verwendet werden soll. Standardeinstellung = False.
 

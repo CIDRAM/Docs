@@ -901,8 +901,6 @@ Se ritieni di non aver bisogno di CIDRAM per applicare la limitazione della velo
 #### "supplementary_cache_options" (Categoria)
 Opzioni di cache supplementari.
 
-*Attualmente, questo è estremamente sperimentale e, potrebbe non comportarsi come previsto! Per il momento, consiglio di ignorarlo.*
-
 ##### "enable_apcu"
 - Specifica se provare a utilizzare APCu per la memorizzazione nella cache. Predefinito = False.
 

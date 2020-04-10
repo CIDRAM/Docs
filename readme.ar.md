@@ -1093,8 +1093,6 @@ Configuration (v2)
 #### <div dir="rtl">"supplementary_cache_options" (التصنيف)<br /></div>
 <div dir="rtl">خيارات ذاكرة التخزين المؤقت التكميلية.<br /><br /></div>
 
-<div dir="rtl">حاليًا، هذا تجريبي للغاية، وقد لا يتصرف كما هو متوقع! في الوقت الحالي، أوصي بتجاهله.<br /><br /></div>
-
 ##### <div dir="rtl">"enable_apcu"<br /></div>
 <div dir="rtl"><ul>
  <li>يحدد هذا ما إذا كنت تريد استخدام APCu للتخزين المؤقت. افتراضي = False (زائفة).</li>

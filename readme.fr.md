@@ -901,8 +901,6 @@ Si vous estimez que vous n'avez pas besoin de CIDRAM pour imposer une limitation
 #### « supplementary_cache_options » (Catégorie)
 Options de cache supplémentaires.
 
-*Actuellement, c'est extrêmement expérimental, et pourrait ne pas se comporter comme prévu ! Pour le moment, je recommande de l'ignorer.*
-
 ##### « enable_apcu »
 - Spécifie s'il faut essayer d'utiliser APCu pour la mise en cache. Défaut = False.
 

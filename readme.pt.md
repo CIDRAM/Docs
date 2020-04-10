@@ -901,8 +901,6 @@ Se você acha que não precisa do CIDRAM para impor a limitação de taxas para 
 #### "supplementary_cache_options" (Categoria)
 Opções suplementares de cache.
 
-*Atualmente, isso é extremamente experimental, e pode não se comportar como esperado! Por enquanto, recomendo ignorá-lo.*
-
 ##### "enable_apcu"
 - Especifica se deve tentar usar o APCu para armazenamento em cache. Padrão = False.
 
