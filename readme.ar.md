@@ -244,6 +244,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           YAML.php
     │
     ├───fe_assets
+    │       auxiliary.js
     │       frontend.css
     │       frontend.html
     │       icons.php
