@@ -145,15 +145,13 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   Changelog.txt
 │   codeception.yml
 │   composer.json
-│   CONTRIBUTING.md
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   SECURITY.md
 │   web.config
 │
-├───.github
-│       ISSUE_TEMPLATE.md
+├───.docker
+│       docker-compose.yml
 │
 ├───tests
 │   │   .gitignore
