@@ -1,4 +1,4 @@
-## Documentation for CIDRAM (English).
+## Documentation for CIDRAM v2 (English).
 
 ### Contents
 - 1. [PREAMBLE](#SECTION1)
@@ -142,57 +142,23 @@ Note: Protecting your vault against unauthorised access (e.g., by hardening your
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -245,12 +211,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -272,6 +245,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1116,7 +1090,7 @@ Use of YAML markup in the signature files is entirely optional (i.e., you may us
 
 Note: YAML markup implementation in CIDRAM is very simplistic and very limited; It is intended to fulfill requirements specific to CIDRAM in a manner that has the familiarity of YAML markup, but neither follows nor complies with official specifications (and therefore won't behave in the same way as more thorough implementations elsewhere, and may not be appropriate for other projects elsewhere).
 
-In CIDRAM, YAML markup segments are identified to the script by three dashes ("---"), and terminate alongside their containing signature sections by double-linebreaks. A typical YAML markup segment within a signature section consists of three dashes on a line immediately after the list of CIDRS and any tags, followed by a two dimensional list of key-value pairs (first dimension, configuration directive categories; second dimension, configuration directives) for which configuration directives should be modified (and to which values) whenever a signature within that signature section is triggered (see the examples below).
+In CIDRAM, YAML markup segments are identified to the script by three dashes ("---"), and terminate alongside their containing signature sections by double-linebreaks. A typical YAML markup segment within a signature section consists of three dashes on a line immediately after the list of CIDRs and any tags, followed by a two dimensional list of key-value pairs (first dimension, configuration directive categories; second dimension, configuration directives) for which configuration directives should be modified (and to which values) whenever a signature within that signature section is triggered (see the examples below).
 
 ```
 # Foobar 1.
@@ -2002,4 +1976,4 @@ v3 doesn't exist yet. More information will be provided at a later time, when it
 ---
 
 
-Last Updated: 1 March 2020 (2020.03.01).
+Last Updated: 27 November 2020 (2020.11.27).

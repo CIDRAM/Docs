@@ -1,4 +1,4 @@
-## Dokumentation für CIDRAM (Deutsch).
+## Dokumentation für CIDRAM v2 (Deutsch).
 
 ### Inhalt
 - 1. [VORWORT](#SECTION1)
@@ -141,57 +141,23 @@ Hinweis: Besonders wichtig ist hier der Schutz Ihres Vault vor unbefugtem Zugrif
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -244,12 +210,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -271,6 +244,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1057,7 +1031,7 @@ Abgelaufene Signaturen werden niemals in Reaktion irgendeine Anfrage ausgelöst,
 
 Wenn Sie das Herkunftsland für eine bestimmte Signatur angeben möchten, können Sie dies mit einem "Ursprungs-Tag" tun. Ein Ursprungs-Tag akzeptiert einen "[ISO 3166-1 Alpha-2](https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste)"-Code, der dem Ursprungsland für die Signaturen entspricht, auf die es angewendet wird. Diese Codes müssen in Großbuchstaben geschrieben werden (Kleinbuchstaben oder Groß-/Kleinschreibung werden nicht korrekt dargestellt). Wenn ein Ursprungs-Tag verwendet wird, wird es zum Log-Feld für alle Anfragen "Warum blockiert" hinzugefügt, die aufgrund der Signaturen blockiert wurden, auf die das Tag angewendet wurde.
 
-Wenn die optionale Komponente "flags CSS" installiert ist, und Log-Dateien im Frontend angezeigt werden, werden die angehängten Ursprungs-Informationen in die Flaggen der entsprechenden Länder umgewandelt. Diese Information ist anklickbar um nach Ähnlichen Logeinträgen  zu filtern (denjenigen, die auf die Protokollseite zugreifen, die Möglichkeit zu geben, nach dem Herkunftsland zu filtern).
+Wenn die optionale Komponente "flags CSS" installiert ist, und Log-Dateien im Frontend angezeigt werden, werden die angehängten Ursprungs-Informationen in die Flaggen der entsprechenden Länder umgewandelt. Diese Information ist anklickbar um nach Ähnlichen Logeinträgen zu filtern (denjenigen, die auf die Protokollseite zugreifen, die Möglichkeit zu geben, nach dem Herkunftsland zu filtern).
 
 Hinweis: Technisch gesehen ist, dies keine Form von Geolokalisierung, weil es keine spezifischen Informationen sucht in Bezug auf eingehende IPs, aber stattdessen, erlaubt uns einfach, ein Herkunftsland für alle Anfragen anzugeben, die durch bestimmte Signaturen blockiert werden. Innerhalb derselben Signatur-Sektionen sind mehrere Ursprungs-Tags zulässig.
 
@@ -1111,7 +1085,7 @@ Die Verwendung von YAML-Markup in den Signaturdateien ist völlig optional (d.h.
 
 *Beachten: Die YAML-Markup-Implementierung in CIDRAM ist sehr einfach und sehr begrenzt; Es ist ausgelegt um die Anforderungen zu erfüllen welche spezifisch für CIDRAM sind, in einer Weise dass die Vertrautheit mit YAML-Markup gegeben ist, aber folgt nicht den offiziellen Spezifikationen (und wird sich daher nicht in der gleichen Weisewie wie gründlichere Implementierungen anderswo verhalten, und möglicherweise nicht für andere Projekte anderswo geeignet sein).*
 
-In CIDRAM werden YAML-Markup-Segmente durch drei Bindestriche ("---") gegenüber dem Skript identifiziert und enden neben ihren enthaltenen Signaturabschnitten durch doppelte Zeilenumbrüche. Ein typisches YAML-Markup-Segment innerhalb eines Signaturabschnitts besteht aus drei Strichen in einer Zeile unmittelbar nach der Liste der CIDRS und aller Tags, gefolgt von einer zweidimensionalen Liste der Schlüssel-Wert-Paare (erste Dimension, Konfigurationsanweisungskategorien; zweite Dimension, Konfigurationsanweisungen), für die Konfigurationsanweisungen geändert werden sollten (und auf welche Werte), wenn eine Signatur innerhalb dieses Signaturabschnitts ausgelöst wird (siehe die folgenden Beispiele).
+In CIDRAM werden YAML-Markup-Segmente durch drei Bindestriche ("---") gegenüber dem Skript identifiziert und enden neben ihren enthaltenen Signaturabschnitten durch doppelte Zeilenumbrüche. Ein typisches YAML-Markup-Segment innerhalb eines Signaturabschnitts besteht aus drei Strichen in einer Zeile unmittelbar nach der Liste der CIDRs und aller Tags, gefolgt von einer zweidimensionalen Liste der Schlüssel-Wert-Paare (erste Dimension, Konfigurationsanweisungskategorien; zweite Dimension, Konfigurationsanweisungen), für die Konfigurationsanweisungen geändert werden sollten (und auf welche Werte), wenn eine Signatur innerhalb dieses Signaturabschnitts ausgelöst wird (siehe die folgenden Beispiele).
 
 ```
 # Foobar 1.
@@ -1158,11 +1132,11 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 WIE MAN "SPEZIELL MARKIEREN" DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA NUTTZT
+##### 7.2.1 WIE MAN "SPEZIELL MARKIEREN" DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA NUTZT
 
 Wenn "usemode" 0 oder 1 ist, müssen Signatur-Sektionen nicht "besonders markiert" zu werden für die Verwendung mit reCAPTCHA (da diese reCAPTCHA bereits oder bereits nicht nutzen, in Abhängigkeit der entsprechenden Einstellung).
 
-Wenn "usemode" 2 ist, um Signatur-Sektionen "besonders  zumarkiert" für die Verwendung mit reCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
+Wenn "usemode" 2 ist, um Signatur-Sektionen "besonders zumarkiert" für die Verwendung mit reCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
 
 ```
 # In diese Sektion wird reCAPTCHA verwendet werden.
@@ -1383,7 +1357,7 @@ Ja. Der einfachste Weg ist das BGPView-Modul zu installieren und es gemäß Ihre
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Wie häufig werden Signaturen aktualisiert?
 
-Die Aktualisierungshäufigkeit hängt von den betreffenden Signaturdateien ab. In der Regel, versuchen alle Betreuer von CIDRAM Signaturen diese so aktuell wie möglich zu halten, aber da wir alle anderen Verpflichtungen in unserem Leben außerhalb des Projekts haben, und da für unsere Bemühungen um das Projekt  keiner von uns finanziell entschädigt wird (d.h., bezahlt), kann kein genauer Aktualisierungs-Zeitplan garantiert werden. In der Regel, werden Signaturen aktualisiert, wann immer es genügend Zeit gibt sie zu aktualisieren, und Betreuer versuchen auf der Grundlage der Notwendigkeit und auf der Grundlage der häufigkeit der Veränderungen unter den Bereichen auftreten zu priorisieren. Hilfe wird immer geschätzt, wenn Sie bereit sind irgendwelche anzubieten.
+Die Aktualisierungshäufigkeit hängt von den betreffenden Signaturdateien ab. In der Regel, versuchen alle Betreuer von CIDRAM Signaturen diese so aktuell wie möglich zu halten, aber da wir alle anderen Verpflichtungen in unserem Leben außerhalb des Projekts haben, und da für unsere Bemühungen um das Projekt keiner von uns finanziell entschädigt wird (d.h., bezahlt), kann kein genauer Aktualisierungs-Zeitplan garantiert werden. In der Regel, werden Signaturen aktualisiert, wann immer es genügend Zeit gibt sie zu aktualisieren, und Betreuer versuchen auf der Grundlage der Notwendigkeit und auf der Grundlage der häufigkeit der Veränderungen unter den Bereichen auftreten zu priorisieren. Hilfe wird immer geschätzt, wenn Sie bereit sind irgendwelche anzubieten.
 
 #### <a name="ENCOUNTERED_PROBLEM_WHAT_TO_DO"></a>Ich habe ein Problem bei der Verwendung von CIDRAM und ich weiß nicht was ich tun soll! Bitte helfen Sie!
 
@@ -1935,4 +1909,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 1 März 2020 (2020.03.01).
+Zuletzt aktualisiert: 27 November 2020 (2020.11.27).

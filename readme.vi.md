@@ -1,4 +1,4 @@
-## Tài liệu của CIDRAM (Tiếng Việt).
+## Tài liệu của CIDRAM v2 (Tiếng Việt).
 
 ### Nội dung
 - 1. [LỜI GIỚI THIỆU](#SECTION1)
@@ -141,57 +141,23 @@ Chú thích: Bảo vệ vault của bạn khỏi bị truy cập trái phép (v�
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -244,12 +210,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -271,6 +244,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1105,7 +1079,7 @@ Sử dụng YAML trong các tập tin chữ ký là không bắt buộc (có ngh
 
 Lưu ý: YAML của CIDRAM là rất đơn giản và rất hạn chế; Nó được thiết kế để đáp ứng yêu cầu cụ thể để CIDRAM trong một cách mà có sự quen thuộc với YAML, nhưng không theo cũng không tuân thủ các thông số kỹ thuật chính thức (và do đó sẽ không cư xử theo cách tương tự như một số biến thể nơi khác, và có thể không thích hợp cho các dự án khác nơi khác).
 
-Trong CIDRAM, phân khúc YAML được xác định để kịch bản bằng ba dấu gạch ngang ("---"), và chấm dứt cùng với phần chữ ký chứa của họ bởi hai ngắt dòng. Một phân khúc YAML điển hình trong phần chữ ký bao gồm ba dấu gạch ngang trên một dòng ngay sau khi danh sách các CIDRS và bất kỳ gắn thẻ, theo sau là một danh sách cặp khóa giá trị hai chiều (chiều đầu tiên, loại tùy chọn cấu hình; chiều thứ cấp, tùy chọn cấu hình) cho những tùy chọn cấu hình mà cần được sửa đổi (và những giá trị) bất cứ khi nào một chữ ký trong đó phần chữ ký được kích hoạt (xem các ví dụ dưới đây).
+Trong CIDRAM, phân khúc YAML được xác định để kịch bản bằng ba dấu gạch ngang ("---"), và chấm dứt cùng với phần chữ ký chứa của họ bởi hai ngắt dòng. Một phân khúc YAML điển hình trong phần chữ ký bao gồm ba dấu gạch ngang trên một dòng ngay sau khi danh sách các CIDRs và bất kỳ gắn thẻ, theo sau là một danh sách cặp khóa giá trị hai chiều (chiều đầu tiên, loại tùy chọn cấu hình; chiều thứ cấp, tùy chọn cấu hình) cho những tùy chọn cấu hình mà cần được sửa đổi (và những giá trị) bất cứ khi nào một chữ ký trong đó phần chữ ký được kích hoạt (xem các ví dụ dưới đây).
 
 ```
 # Foobar 1.
@@ -1911,4 +1885,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 1 Tháng Ba 2020 (2020.03.01).
+Lần cuối cập nhật: 2020.11.27.

@@ -1,4 +1,4 @@
-## CIDRAM 中文（傳統）文檔。
+## CIDRAM v2 中文（傳統）文檔。
 
 ### 內容
 - 1. [前言](#SECTION1)
@@ -141,57 +141,23 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -244,12 +210,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -271,6 +244,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1651,7 +1625,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 
 #### <a name="BLOCK_CRON"></a>CIDRAM正在阻止cronjobs。​如何解決這個問題？
 
-如果您為了cronjobs的目的使用專用文件，如果在普通用戶請求期間不需要調用它（即，在cronjobs上下文之外），解決此問題的最直接方法是在cronjobs期間不要執行CIDRAM（即，不要將CIDRAM鏈接到負責處理cronjobs的文件）​​。
+如果您為了cronjobs的目的使用專用文件，如果在普通用戶請求期間不需要調用它（即，在cronjobs上下文之外），解決此問題的最直接方法是在cronjobs期間不要執行CIDRAM（即，不要將CIDRAM鏈接到負責處理cronjobs的文件）。
 
 或者，如果那不可能，但是您的cron服務器的IP地址相對一致且可預測，您可以嘗試將cron服務器的IP地址列入白名單，通過在自定義簽名文件中為其創建白名單簽名，或通過創建輔助規則為其。​如果您的cron服務器的IP地址定期旋轉並且不是特別可預測，但仍然來自同一特定網絡，您可以嘗試在`ignore.dat`文件中列出負責阻止該簽名的簽名章節的名稱。
 
@@ -1915,4 +1889,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2020年3月1日。
+最後更新：2020年11月27日。

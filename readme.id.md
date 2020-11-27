@@ -1,4 +1,4 @@
-## Dokumentasi untuk CIDRAM (Bahasa Indonesia).
+## Dokumentasi untuk CIDRAM v2 (Bahasa Indonesia).
 
 ### Isi
 - 1. [SEPATAH KATA](#SECTION1)
@@ -141,57 +141,23 @@ Catat: Melindungi vault Anda terhadap akses yang tidak sah (misalnya, dengan mem
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -244,12 +210,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -271,6 +244,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1914,4 +1888,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 1 Maret 2020 (2020.03.01).
+Terakhir Diperbarui: 27 November 2020 (2020.11.27).

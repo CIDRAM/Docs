@@ -1,4 +1,4 @@
-## <div dir="rtl">CIDRAM بالعربية</div>
+## <div dir="rtl">CIDRAM v2 بالعربية</div>
 
 ### <div dir="rtl">المحتويات:</div>
 <div dir="rtl"><ul>
@@ -143,57 +143,23 @@
 https://github.com/CIDRAM/CIDRAM>v2
 │   .gitattributes
 │   .gitignore
-│   .travis.yml
 │   Changelog.txt
-│   codeception.yml
 │   composer.json
 │   LICENSE.txt
 │   loader.php
 │   README.md
-│   web.config
+│   tests.php
 │
 ├───.docker
 │       docker-compose.yml
 │
-├───tests
-│   │   .gitignore
-│   │   acceptance.suite.yml
-│   │   functional.suite.yml
-│   │   unit.suite.yml
+├───.github
+│   │   FUNDING.yml
 │   │
-│   ├───acceptance
-│   │       .gitkeep
-│   │
-│   ├───functional
-│   │       .gitkeep
-│   │
-│   ├───unit
-│   │       .gitkeep
-│   │       Ipv4Cest.php
-│   │       Ipv6Cest.php
-│   │       LoaderCest.php
-│   │
-│   ├───_data
-│   │       .gitkeep
-│   │
-│   ├───_output
-│   │       .gitkeep
-│   │
-│   └───_support
-│       │   AcceptanceTester.php
-│       │   FunctionalTester.php
-│       │   UnitTester.php
-│       │
-│       ├───config
-│       │       config.ini
-│       │
-│       └───Helper
-│               Acceptance.php
-│               Functional.php
-│               Unit.php
+│   └───workflows
+│           v2.yml
 │
 └───vault
-    │   .htaccess
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -246,12 +212,19 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       frontend.css
     │       frontend.html
     │       icons.php
+    │       lock_bl_c.png
+    │       lock_bl_o.png
+    │       lock_rd_c.png
+    │       lock_rd_o.png
+    │       lock_wt_c.png
+    │       lock_wt_o.png
     │       pips.php
     │       scripts.js
     │       _2fa.html
     │       _accounts.html
     │       _accounts_row.html
     │       _aux.html
+    │       _aux_edit.html
     │       _cache.html
     │       _cidr_calc.html
     │       _cidr_calc_row.html
@@ -273,6 +246,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _nav_complete_access.html
     │       _nav_logs_access_only.html
     │       _range.html
+    │       _range_intersector.html
     │       _range_row.html
     │       _range_subtractor.html
     │       _sections.html
@@ -1496,7 +1470,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 <div dir="rtl">فيما يلي بعض المتغيرات الشائعة التي قد تكون مفيدة للوحدة النمطية الخاصة بك:<br /><br /></div>
 
-&nbsp; <div dir="rtl" style="display:inline">وصف</div> | <div dir="rtl" style="display:inline">متغير</div>
+&nbsp; <div dir="rtl" style="display:inline">وصف</div> | <div dir="rtl">متغير</div>
 ----|----
 &nbsp; <div dir="rtl" style="display:inline">التاريخ والوقت الحاليان.</div> | `$CIDRAM['BlockInfo']['DateTime']`
 &nbsp; <div dir="rtl" style="display:inline">عنوان IP للطلب الحالي.</div> | `$CIDRAM['BlockInfo']['IPAddr']`
@@ -1599,8 +1573,8 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 &nbsp; <div dir="rtl" style="display:inline">CIDRAM لا ينبغي منع عنوان IP</div> | &nbsp; <div dir="rtl" style="display:inline">CIDRAM يجب منع عنوان IP</div> | &nbsp;
 ---|---|---
-&nbsp; <div dir="rtl" style="display:inline">سلبي صحيح (الاستدلال الصحيح)</div> | <div dir="rtl" style="display:inline">افتقد (التناظرية من سلبي خاطئة)</div> | <div dir="rtl" style="display:inline"><strong>CIDRAM لا يمنع عنوان IP</strong></div>
-&nbsp; <div dir="rtl" style="display:inline"><strong>إيجابية خاطئة</strong></div> | <div dir="rtl" style="display:inline">إيجابية صحيح (الاستدلال الصحيح)</div> | <div dir="rtl" style="display:inline"><strong>CIDRAM منع عنوان IP</strong></div>
+&nbsp; <div dir="rtl" style="display:inline">سلبي صحيح (الاستدلال الصحيح)</div> | <div dir="rtl">افتقد (التناظرية من سلبي خاطئة)</div> | <div dir="rtl"><strong>CIDRAM لا يمنع عنوان IP</strong></div>
+&nbsp; <div dir="rtl" style="display:inline"><strong>إيجابية خاطئة</strong></div> | <div dir="rtl">إيجابية صحيح (الاستدلال الصحيح)</div> | <div dir="rtl"><strong>CIDRAM منع عنوان IP</strong></div>
 
 #### <div dir="rtl"><a name="BLOCK_ENTIRE_COUNTRIES"></a>يمكن CIDRAM منع الدول؟<br /><br /></div>
 
@@ -2178,4 +2152,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 1 مارس 2020 (2020.03.01).</div>
+<div dir="rtl">آخر تحديث: 27 نوفمبر 2020 (2020.11.27).</div>
