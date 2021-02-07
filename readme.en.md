@@ -12,7 +12,6 @@
 - 9. [FREQUENTLY ASKED QUESTIONS (FAQ)](#SECTION9)
 - 10. *Reserved for future additions to the documentation.*
 - 11. [LEGAL INFORMATION](#SECTION11)
-- 12. [MIGRATION GUIDE](#SECTION12)
 
 *Note regarding translations: In the event of errors (e.g., discrepancies between translations, typos, etc), the English version of the README is considered the original and authoritative version. If you find any errors, your assistance in correcting them would be welcomed.*
 
@@ -356,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -383,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -663,7 +664,10 @@ _**: Requires an ASN lookup facility, e.g., the BGPView module._
 
 ##### "disabled_channels"
 - This can be used to prevent CIDRAM from using particular channels when sending requests (e.g., when updating, when fetching component metadata, etc).
-- *Available options: `GitHub,BitBucket,NotABug`*
+- *Available options: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Default timeout to use for external requests? Default = 12 seconds.
 
 #### "signatures" (Category)
 Signatures configuration.
@@ -757,6 +761,11 @@ To obtain a "site key" and a "secret key" (required for using reCAPTCHA), please
 - Show cookie warning? True = Yes [Default]; False = No.
 
 *This configuration directive added by request, for users that want to disable the cookie warning usually shown alongside reCAPTCHA (e.g., to help hide any indication that CIDRAM is being used). However, I strongly advise that most users (particularly those based in the EU) keep it enabled.*
+
+##### "show_api_message"
+- Show API message? True = Yes [Default]; False = No.
+
+*This refers to any additional, non-essential messages displayed when a request is blocked, other than the cookie warning.*
 
 #### "legal" (Category)
 Configuration relating to legal requirements.
@@ -1907,73 +1916,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-### 12. <a name="SECTION12"></a>MIGRATION GUIDE
-
-#### 12.0 MIGRATING FROM v0 TO v1
-
-##### 12.0.0 SUMMARY
-
-At the time of the first stable v1 release, there weren't any known compatibility problems, and it was possible to update to v1 directly from the front-end. However, at the time of writing this migrating guide, v0 has already reached EoL since a long time ago, and starting again afresh with a completely new installation is the most recommended way forward (preferably just skipping ahead directly to v2 or newer, if possible).
-
-##### 12.0.1 REQUIREMENTS
-
-CIDRAM v1 requires at least PHP 5.4 or newer with PCRE support. Ensure you meet the requirements before attempting to install, update, or migrate. cURL support is also strongly recommended (though the package should still mostly function without it).
-
-##### 12.0.2 BACKWARDS-INCOMPATIBLE CHANGES, DEPRECATIONS, ETC
-
-None expected (but, due to the passing of time since EoL, there's no guarantee).
-
-##### 12.0.3 NEW FEATURES, BENEFITS, OTHER CHANGES, ETC
-
-Many. :-)
-
-#### 12.1 MIGRATING FROM v1 TO v2
-
-##### 12.1.0 SUMMARY
-
-Some backwards-incompatible changes exist between v1 and v2, and migrating directly from the front-end isn't possible. If you haven't changed anything at your existing installation at all (e.g., configuration hasn't changed from any of the default values, no new modules or signature files have been installed, no custom signatures, etc), or if you don't care about retaining your existing configuration, customistaions, any old logs or other old data, just starting again afresh with a completely new installation would be the easiest, simplest, and most recommended way forward. Otherwise, if you want to preserve anything from your existing installation, follow the steps below to migrate manually from v1 to v2.
-
-##### 12.1.1 REQUIREMENTS
-
-CIDRAM v2 requires at least PHP 7.2 or newer with PCRE support. Ensure you meet the requirements before attempting to install, update, or migrate. cURL support is also strongly recommended (though the package should still mostly function without it).
-
-##### 12.1.2 BACKWARDS-INCOMPATIBLE CHANGES, DEPRECATIONS, ETC
-
-- Minimum requirements raised.
-- Integrated CLI-mode functionality anymore. Instead, a separate, optional, downloadable CLI-mode script is provided ([click here](https://github.com/CIDRAM/CIDRAM-Extras/tree/master/cli)). This separate script is actually much better, and much more powerful than the old integrated functionality though anyway. :-)
-- Some small changes to the loader.
-- Numerous configuration directives renamed in order to implement snake_case.
-- `disable_cli` deprecated/removed.
-
-##### 12.1.3 NEW FEATURES, BENEFITS, OTHER CHANGES, ETC
-
-- Support for 3 additional languages added (22 total supported by v1; 25 total supported by v2).
-- The front-end range tables page is capable of representing the currently active signatures graphically (v1 doesn't have this feature).
-- Very slight overall performance improvements may be noticeable in some circumstances.
-- Slightly stronger typecasting and future-proofing.
-- Codebase refactored to take advantage of syntax and features available to PHP since the raised minimum requirements (e.g., scalar parameter type hints, return type declarations, generators, etc).
-
-##### 12.1.4 STEPS TO MIGRATE
-
-1. Disable all hooks.
-1. Perform a complete backup of your existing CIDRAM installation (e.g., by downloading it, creating a ZIP archive of it, etc). You'll need this in case something goes wrong during the upgrade process, and also to be able to retain any data you want migrated to your new installation.
-3. Uninstall your existing CIDRAM installation.
-4. Reinstall CIDRAM from the latest available version.
-5. If you want to retain your old statistics or your IP tracking information, check your backup for the existence of the file `vault/cache.dat` (depending on whether any of the supplementary cache options in your configuration were enabled, it's possible it mightn't exist). If you see it, copy it to your new installation.
-5. If you want to retain your old configuration, copy the file `vault/config.ini` from your backup to your new installation.
-
-vault/cidramblocklists.dat, vault/config.ini (contains all your configuration; the most important file in this list; will lose your configuration if you skip this file), vault/fe_assets/frontend.dat (if it exists.. but if it doesn't, don't worry about it; contains front-end login information; probably won't exist if you normally keep the front-end disabled), vault/ignore.dat (if you recall ever modifying this file; otherwise, if you've never touched it, don't worry about it), vault/modules.dat, and vault/themes.dat across to your new installation (replacing any existing counterparts in your new installation). If you've ever written any custom signature files yourself (including if you've ever written custom signatures into ipv4_custom.dat or ipv6_custom.dat before) or written any custom modules yourself, copy across the files for those, too. If you want to be able to access old log data specifically from the CIDRAM front-end, copy across the files for those, too (but if you don't care specifically about using the front-end logs page to view log data, or don't need to keep old log files around for any particular other reason, you can skip those). Don't copy across anything else.
-6. Referring to the tree at the top of the "CONFIGURATION OPTIONS" section of the documentation, for any options/directives that include a small, bracketed "v1" (as an example: logfile_apache (v1: logfileApache)), if you've customised any of those particular options/directives in your own configuration, you'll need to rename them in your own configuration from their old v1 name to the new v2 name (or alternatively, if you normally use the front-end configuration page to customise your configuration, you could manually re-enter the appropriate values for the pertinent options/directives). For any that you haven't customised, you don't need to do anything.
-7. After (but not before) doing the above, enable the front-end (if not already enabled), access the front-end updates page, and click "repair all". This will check the list of which modules and signature files should be installed, automatically reinstall any missing files from the remote upstream source, and automatically patch any corrupt/damaged/outdated files that it detects in the installation. Don't forget to disable the front-end again afterwards if you don't normally use, or don't want to use the front-end.
-8. Enable all the previously disabled hooks.
-
-#### 12.2 MIGRATING FROM v2 TO v3
-
-##### 12.2.0 SUMMARY
-
-v3 doesn't exist yet. More information will be provided at a later time, when it becomes relevant.
-
----
-
-
-Last Updated: 27 November 2020 (2020.11.27).
+Last Updated: 7 February 2021 (2021.02.07).

@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 
 ##### “disabled_channels”
 - 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时，在获取组件元数据时，等等）。
-- *可用选项： `GitHub,BitBucket,NotABug`*
+- *可用选项： `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### “default_timeout”
+- 用于外部请求的默认超时？ 标准 = 12秒。
 
 #### “signatures” （类别）
 签名配置。
@@ -746,6 +751,11 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 - 显示cookie警告吗？​True（真）=显示【标准】；False（假）=不显示。
 
 *cookie警告通常与reCAPTCHA一起显示。​为了禁用它，添加了此配置指令（为了帮助，例如，隐藏任何使用CIDRAM的指示）。​但是，我强烈建议大多数用户（特别是欧盟的用户）保持启用。*
+
+##### “show_api_message”
+- 显示API讯息吗？​True（真）=显示【标准】；False（假）=不显示。
+
+*这是指在阻止请求时显示的所有其他非必要消息，cookie警告的例外。*
 
 #### “legal” （类别）
 有关法律义务的配置。
@@ -1889,4 +1899,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2020年11月27日。
+最后更新：2021年2月7日。

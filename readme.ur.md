@@ -357,6 +357,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -384,6 +385,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -742,7 +744,12 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>درخواستوں کو بھیجنے کے لئے خاص طور پر چینلز کا استعمال کے لئے CIDRAM کو روکنے کے لئے یہ استعمال کیا جا سکتا ہے (مثال کے طور پر، جب اپ ڈیٹ کرنا، اجزاء میٹا ڈیٹا، وغیرہ کو پکڑنے کے بعد).</li>
- <li><em>دستیاب اختیارات: <code dir="ltr">GitHub,BitBucket,NotABug</code></em></li>
+ <li><em>دستیاب اختیارات: <code dir="ltr">GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS</code></em></li>
+</ul></div>
+
+##### <div dir="rtl">"default_timeout"<br /></div>
+<div dir="rtl"><ul>
+ <li>بیرونی درخواستوں کے لئے استعمال کرنے کیلئے پہلے سے طے شدہ ٹائم آؤٹ؟ پہلے سے طے شدہ = 12 سیکنڈ.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
@@ -882,6 +889,13 @@ Configuration (v2)
 </ul></div>
 
 <div dir="rtl"><em>یہ ترتیب درخواست کی طرف سے شامل ہے، لیکن میں اس کو اکیلے چھوڑنے کی سفارش کرتا ہوں.</em><br /><br /></div>
+
+##### <div dir="rtl">"show_api_message"<br /></div>
+<div dir="rtl"><ul>
+ <li>API کا پیغام دکھائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li>
+</ul></div>
+
+<div dir="rtl"><em>اس سے مراد کسی بھی اضافی، غیر ضروری پیغامات کا حوالہ دیا جاتا ہے جب کوکی انتباہ کے علاوہ کوئی درخواست مسدود ہوجاتی ہے.</em><br /><br /></div>
 
 #### <div dir="rtl">"legal" (قسم)<br /></div>
 <div dir="rtl">قانونی ضروریات سے متعلق ترتیب.<br /><br /></div>
@@ -2152,4 +2166,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: 27 نومبر 2020 (2020.11.27).</div>
+<div dir="rtl">آخری تازہ کاری: ۷ فروری ۲۰۲۱ (۲۰۲۱.۰۲.۰۷).</div>

@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "disabled_channels"
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
-- *Tùy chọn có sẵn: `GitHub,BitBucket,NotABug`*
+- *Tùy chọn có sẵn: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -746,6 +751,11 @@ Do những rủi ro liên quan đến việc cung cấp một cách cho người
 - Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
 
 *Chỉ thị cấu hình này được thêm theo yêu cầu, cho người dùng muốn tắt cảnh báo cookie thường được hiển thị cùng với reCAPTCHA (để giúp, ví dụ, ẩn bất kỳ dấu hiệu nào cho thấy CIDRAM đang được sử dụng). Tuy nhiên, tôi thực sự khuyên rằng hầu hết người dùng (đặc biệt là những người ở EU) nên giữ nó bật.*
+
+##### "show_api_message"
+- Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
+
+*Điều này đề cập đến bất kỳ thông báo bổ sung, không cần thiết được hiển thị khi một yêu cầu bị chặn, ngoại trừ cảnh báo cookie.*
 
 #### "legal" (Thể loại)
 Cấu hình mà liên quan đến các nghĩa vụ hợp pháp.
@@ -1885,4 +1895,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2020.11.27.
+Lần cuối cập nhật: 2021.02.07.

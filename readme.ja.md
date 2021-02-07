@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュール
 
 ##### "disabled_channels" （ディセーブルド・チャネルズ）
 - これは、要求を送信するときにCIDRAMが特定のチャネルを使用しないようにするために使用できます​（例えば、更新時、コンポーネント・メタデータの取得時、など）。
-- *利用可能なオプション： `GitHub,BitBucket,NotABug`*
+- *利用可能なオプション： `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout" （デフォルト・タイムアウト）
+- 外部リクエストに使用するデフォルトのタイムアウト？ Default/デフォルルト = １２秒。
 
 #### "signatures" （シグネチャーズ、カテゴリ）
 シグネチャの設定。
@@ -746,6 +751,11 @@ _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュール
 - Cookie（クッキー）の警告を表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
 *通常reCAPTCHAと一緒に表示されるcookie（クッキー）の警告を無効にしたいユーザのために（例えば、CIDRAMが使用されているという兆候を隠すのを助けるため）、このコンフィギュレーション・ディレクティブは要求によって追加されます。​ただし、ほとんどのユーザー（特にＥＵを拠点とするユーザー）が有効にしておくことを強くお勧めします。*
+
+##### "show_api_message" （ショー・エイ・ピー・アイ・メシッジ）
+- ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
+
+*これは、cookie（クッキー）の警告以外に、リクエストがブロックされたときに表示される追加の必須ではないメッセージを指します。*
 
 #### "legal" （リーガル、カテゴリ）
 法律要件に関するコンフィギュレーション。
@@ -1886,4 +1896,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２０年１１月２７日。
+最終アップデート：２０２１年２月７日。

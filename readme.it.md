@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Richiede la funzionalità di ricerca ASN, ad es., dal modulo BGPView._
 
 ##### "disabled_channels"
 - Questo può essere usato per impedire a CIDRAM di usare canali particolari quando si inviano richieste (ad esempio, quando si aggiorna, quando si recuperano i metadati del componente, ecc).
-- *Opzioni disponibili: `GitHub,BitBucket,NotABug`*
+- *Opzioni disponibili: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Il tempo scaduto predefinito da utilizzare per le richieste esterne? Predefinito = 12 secondi.
 
 #### "signatures" (Categoria)
 Configurazione per firme.
@@ -746,6 +751,11 @@ Per ottenere una "site key" e una "secret key" (necessaria per l'utilizzo di reC
 - Mostra avviso sui cookie? True = Sì [Predefinito]; False = No.
 
 *Questa direttiva di configurazione è stata aggiunta a richiesta, per gli utenti che desiderano disabilitare l'avviso sui cookie che solitamente visualizzato accanto a reCAPTCHA (ad es., per aiutare a nascondere qualsiasi indicazione sull'uso di CIDRAM). Tuttavia, consiglio vivamente che la maggior parte degli utenti (in particolare quelli con sede nell'UE) lo mantengano abilitato.*
+
+##### "show_api_message"
+- Mostra messaggio API? True = Sì [Predefinito]; False = No.
+
+*Si riferisce a qualsiasi messaggio non essenziale aggiuntivo, visualizzato quando una richiesta viene bloccata, diverso dall'avviso del cookie.*
 
 #### "legal" (Categoria)
 Configurazione relativa ai requisiti legali.
@@ -1891,4 +1901,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 27 Novembre 2020 (2020.11.27).
+Ultimo Aggiornamento: 7 Febbraio 2021 (2021.02.07).

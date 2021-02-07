@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 
 ##### "disabled_channels"
 - 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
-- *사용 가능한 옵션 : `GitHub,BitBucket,NotABug`*
+- *사용 가능한 옵션 : `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
 
 #### "signatures" (카테고리)
 서명 설정.
@@ -743,9 +748,14 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 *유럽 연합 사용자를위한 참고 사항 : 쿠키를 사용하도록 CIDRAM을 구성한 경우 (예 : lockuser가 true 인 경우), 쿠키 경고가 [EU 쿠키 법안](https://www.cookielaw.org/the-cookie-law/)의 요구 사항에 따라 페이지에 눈에 띄게 표시됩니다. 그러나, invisible API를 사용할 때 CIDRAM은 자동으로 사용자의 reCAPTCHA를 완료하려고 시도합니다. 성공하면 페이지가 다시로드되고 실제로 쿠키 경고를 볼 적절한 시간이 주어지지 않고 쿠키가 생성 될 수 있습니다. 이 문제로 인해 법적 위험이있는 경우, invisible API 대신 V2 API를 사용하는 것이 좋습니다 (V2 API는 자동화되어 있지 않으므로, 사용자가 reCAPTCHA 챌린지를 완료해야하므로 쿠키 경고를 볼 수 있습니다).*
 
 ##### "show_cookie_warning"
-- 쿠키 경고 표시? True = 예 (Default / 기본 설정); False = 아니오.
+- 쿠키 경고 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
 
 *reCAPTCHA와 함께 표시되는 쿠키 경고를 사용하지 않으려는 사용자를 위해 요청에 의해 추가 된이 구성 지시문입니다. 그러나, 대부분의 사용자 (특히 EU에있는 사용자)는 계속 사용하도록 권장합니다.*
+
+##### "show_api_message"
+- API 메시지를 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
+
+*이는 쿠키 경고 외에 요청이 차단될 때 표시되는 추가적이고 중요하지 않은 메시지를 나타냅니다.*
 
 #### "legal" (카테고리)
 법적 요구 사항과 관련된 구성.
@@ -1884,4 +1894,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2020년 11월 27일.
+최종 업데이트 : 2021년 2월 7일.

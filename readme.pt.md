@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Requer funcionalidade de pesquisa ASN, por exemplo, do módulo BGPView._
 
 ##### "disabled_channels"
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
-- *Opções disponíveis: `GitHub,BitBucket,NotABug`*
+- *Opções disponíveis: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Tempo limite padrão a ser usado para solicitações externas? Padrão = 12 segundos.
 
 #### "signatures" (Categoria)
 Configuração por assinaturas.
@@ -746,6 +751,11 @@ Para obter uma "site key" e uma "secret key" (necessário para usando reCAPTCHA)
 - Mostrar aviso de cookie? True = Sim [Padrão]; False = Não.
 
 *Esta diretiva de configuração foi adicionada por solicitação, para usuários que desejam desativar o aviso de cookie geralmente mostrado ao lado de reCAPTCHA (para ajudar, por exemplo, ocultar qualquer indicação de que o CIDRAM está sendo usado). Mas, aconselho vivamente que a maioria dos utilizadores (em especial os que residem na UE) o mantenham habilitado.*
+
+##### "show_api_message"
+- Mostrar mensagem API? True = Sim [Padrão]; False = Não.
+
+*Isso se refere a quaisquer mensagens não essenciais adicionais, exibidas quando uma solicitação é bloqueada, além do aviso de cookie.*
 
 #### "legal" (Categoria)
 Configuração relacionada aos requisitos legais.
@@ -1891,4 +1901,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 27 de Novembro de 2020 (2020.11.27).
+Última Atualização: 7 de Fevereiro de 2021 (2021.02.07).

@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Vereist ASN-opzoekfunctionaliteit, b.v., van de BGPView-module._
 
 ##### "disabled_channels"
 - Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
-- *Beschikbare opties: `GitHub,BitBucket,NotABug`*
+- *Beschikbare opties: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Standaard time-out om te gebruiken voor externe verzoeken? Standaard = 12 seconden.
 
 #### "signatures" (Categorie)
 Configuratie voor signatures.
@@ -743,9 +748,14 @@ Om een "site key" en een "secret key" te verkrijgen (vereist voor het gebruik va
 *Opmerking voor gebruikers in de Europese Unie: Wanneer CIDRAM is geconfigureerd om cookies te gebruiken (b.v., wanneer "lockuser" true/waar is), een cookie-waarschuwing wordt prominent op de pagina weergegeven volgens de vereisten van de [EU-cookiewetgeving](https://www.cookielaw.org/the-cookie-law/). Maar, bij het gebruik van de invisible API probeert CIDRAM automatisch de reCAPTCHA voor de gebruiker te voltooien, en wanneer dit lukt, kan dit ertoe leiden dat de pagina opnieuw wordt geladen en een cookie wordt gemaakt zonder dat de gebruiker voldoende tijd krijgt om de cookie-waarschuwing daadwerkelijk te zien. Als dit een juridisch risico voor u oplevert, is het misschien beter om de V2 API te gebruiken in plaats van de invisible API (de V2 API is niet geautomatiseerd en vereist dat de gebruiker de reCAPTCHA-uitdaging zelf voltooit, waardoor de mogelijkheid wordt geboden om de cookie-waarschuwing te zien).*
 
 ##### "show_cookie_warning"
-- Toon cookiewaarschuwing? True = Ja [Standaard]; False = Nee.
+- Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
 
 *Deze configuratierichtlijn is op verzoek toegevoegd voor gebruikers die de cookiewaarschuwing willen uitschakelen die meestal naast reCAPTCHA wordt weergegeven (b.v., om te helpen elke indicatie te verbergen dat CIDRAM wordt gebruikt). Ik adviseer ten sterkste echter dat de meeste gebruikers (met name die in de EU) deze ingeschakeld houden.*
+
+##### "show_api_message"
+- API-bericht weergeven? True = Ja [Standaard]; False = Nee.
+
+*Dit verwijst naar alle aanvullende, niet-essentiële berichten die worden weergegeven wanneer een verzoek wordt geblokkeerd, behalve de cookiewaarschuwing.*
 
 #### "legal" (Category)
 Configuratie met betrekking tot wettelijke vereisten.
@@ -1905,4 +1915,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 27 November 2020 (2020.11.27).
+Laatste Bijgewerkt: 7 Februari 2021 (2021.02.07).

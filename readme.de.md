@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Erfordert eine ASN-Suchfunktion, z.B., von das BGPView-Modul._
 
 ##### "disabled_channels"
 - Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
-- *Verfügbare Optionen: `GitHub,BitBucket,NotABug`*
+- *Verfügbare Optionen: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Standardzeitlimit für externe Anforderungen? Standardeinstellung = 12 Sekunden.
 
 #### "signatures" (Kategorie)
 Konfiguration der Signaturen.
@@ -750,6 +755,11 @@ Ein `site_key` und `secret_key` (für die Verwendung von reCAPTCHA erforderlich)
 - Cookie-Warnung anzeigen? True = Ja [Standardeinstellung]; False = Nein.
 
 *Diese Konfigurationsanweisung wurde auf Anfrage für Benutzer hinzugefügt, die die Cookie-Warnung (die normalerweise neben reCAPTCHA angezeigt wird) deaktivieren möchten (z.B., auf die Verwendung von CIDRAM zu verbergen). Ich rate jedoch nachdrücklich dazu, dass die meisten Benutzer (insbesondere diejenigen mit Sitz in der EU) die Aktivierung beibehalten.*
+
+##### "show_api_message"
+- API-Nachricht anzeigen? True = Ja [Standardeinstellung]; False = Nein.
+
+*Dies bezieht sich auf alle zusätzlichen, nicht wesentlichen Meldungen, die angezeigt werden, wenn eine Anforderung blockiert wird, mit Ausnahme der Cookie-Warnung.*
 
 #### "legal" (Kategorie)
 Konfiguration für gesetzliche Anforderungen.
@@ -1909,4 +1919,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 27 November 2020 (2020.11.27).
+Zuletzt aktualisiert: 7. Februar 2021 (2021.02.07).

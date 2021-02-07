@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Memerlukan fungsionalitas pencarian ASN, mis., dari modul BGPView._
 
 ##### "disabled_channels"
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
-- *Opsi yang tersedia: `GitHub,BitBucket,NotABug`*
+- *Opsi yang tersedia: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -746,6 +751,11 @@ Untuk mendapatkan "site key" dan "secret key" (diperlukan untuk menggunakan reCA
 - Tampilkan peringatan cookie? True = Ya [Default]; False = Tidak.
 
 *Direktif konfigurasi ini ditambahkan oleh permintaan, untuk pengguna yang ingin menonaktifkan peringatan cookie biasanya ditampilkan bersama reCAPTCHA (mis., untuk membantu menyembunyikan indikasi bahwa CIDRAM sedang digunakan). Namun, saya sangat menyarankan agar sebagian besar pengguna (terutama yang berbasis di UE) tetap mengaktifkannya.*
+
+##### "show_api_message"
+- Tampilkan pesan API? True = Ya [Default]; False = Tidak.
+
+*Ini mengacu pada pesan tambahan yang tidak penting yang ditampilkan saat permintaan diblokir, kecuali untuk peringatan cookie.*
 
 #### "legal" (Kategori)
 Konfigurasi yang berkaitan dengan persyaratan hukum.
@@ -1888,4 +1898,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 27 November 2020 (2020.11.27).
+Terakhir Diperbarui: 7 Februari 2021 (2021.02.07).

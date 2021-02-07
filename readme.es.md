@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _**: Requiere la funcionalidad de búsqueda ASN, por ejemplo, del módulo BGPVie
 
 ##### "disabled_channels"
 - Esto se puede usar para evitar que CIDRAM use canales particulares al enviar solicitudes (por ejemplo, al actualizar, al obtener metadatos de componentes, etc).
-- *Opciones disponibles: `GitHub,BitBucket,NotABug`*
+- *Opciones disponibles: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### "default_timeout"
+- ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
 
 #### "signatures" (Categoría)
 Configuración de firmas.
@@ -746,6 +751,11 @@ Para obtener una "site key" y una "secret key" (requerida para utilizar reCAPTCH
 - ¿Mostrar advertencia de cookie? True = Sí [Predefinido]; False = No.
 
 *Esta directiva de configuración agregada por solicitud, para los usuarios que desean deshabilitar la advertencia de cookies que generalmente se muestra junto con reCAPTCHA (para ayudar, por ejemplo, ocultar cualquier indicio de que se está utilizando CIDRAM). Dicho esto, recomiendo encarecidamente que la mayoría de los usuarios (especialmente los de la UE) lo mantengan habilitado.*
+
+##### "show_api_message"
+- ¿Mostrar mensaje de API? True = Sí [Predefinido]; False = No.
+
+*Esto se refiere a cualquier mensaje adicional no esencial que se muestra cuando se bloquea una solicitud, además de la advertencia de cookies.*
 
 #### "legal" (Categoría)
 Configuración relacionada con los requisitos legales.
@@ -1895,4 +1905,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 27 de Noviembre de 2020 (2020.11.27).
+Última Actualización: 7 de Febrero de 2021 (2021.02.07).

@@ -357,6 +357,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -384,6 +385,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -742,7 +744,12 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>يمكن استخدام هذا لمنع CIDRAM من استخدام قنوات معينة عند إرسال الطلبات (على سبيل المثال، عند التحديث، عند جلب بيانات تعريف المكون، إلخ).</li>
- <li><em>الخيارات المتاحة: <code dir="ltr">GitHub,BitBucket,NotABug</code></em></li>
+ <li><em>الخيارات المتاحة: <code dir="ltr">GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS</code></em></li>
+</ul></div>
+
+##### <div dir="rtl">"default_timeout"<br /></div>
+<div dir="rtl"><ul>
+ <li>المهلة الافتراضية لاستخدامها للطلبات الخارجية؟ الافتراضي = 12 ثانية.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
@@ -882,6 +889,13 @@ Configuration (v2)
 </ul></div>
 
 <div dir="rtl"><em>تتم إضافة توجيه التكوين هذا حسب الطلب، للمستخدمين الذين يرغبون في تعطيل تحذير ملف تعريف الارتباط الذي يظهر عادة بجانب reCAPTCHA (على سبيل المثال، للمساعدة في إخفاء أي إشارة إلى أن CIDRAM قيد الاستخدام). ومع ذلك، فإنني أنصح بشدة أن يحافظ عليه معظم المستخدمين (خاصة المستخدمين في الاتحاد الأوروبي).</em><br /><br /></div>
+
+##### <div dir="rtl">"show_api_message"<br /></div>
+<div dir="rtl"><ul>
+ <li>إظهار رسالة API؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li>
+</ul></div>
+
+<div dir="rtl"><em>يشير هذا إلى أي رسائل إضافية غير ضرورية يتم عرضها عند حظر أحد الطلبات، بخلاف تحذير ملف تعريف الارتباط.</em><br /><br /></div>
 
 #### <div dir="rtl">"legal" (التصنيف)<br /></div>
 <div dir="rtl">التكوين المتعلق بالمتطلبات القانونية.<br /><br /></div>
@@ -2152,4 +2166,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: 27 نوفمبر 2020 (2020.11.27).</div>
+<div dir="rtl">آخر تحديث: ٧ فبراير ٢٠٢١ (٢٠٢١.٠٢.٠٧).</div>

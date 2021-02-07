@@ -355,6 +355,7 @@ Configuration (v2)
 │       empty_fields
 │       log_sanitisation
 │       disabled_channels
+│       default_timeout
 │
 ├───signatures
 │       ipv4
@@ -382,6 +383,7 @@ Configuration (v2)
 │       signature_limit
 │       api
 │       show_cookie_warning
+│       show_api_message
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -652,7 +654,10 @@ _** : Nécessite une fonctionnalité de recherche ASN, par exemple, à partir d
 
 ##### « disabled_channels »
 - Ceci peut être utilisé pour empêcher CIDRAM d'utiliser des canaux particuliers lors de l'envoi de requêtes (par exemple, lors de la mise à jour, lors de l'extraction de métadonnées de composant, etc).
-- *Options disponibles : `GitHub,BitBucket,NotABug`*
+- *Options disponibles : `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+
+##### « default_timeout »
+- Délai d'attente par défaut à utiliser pour les requêtes externes ? Défaut = 12 secondes.
 
 #### « signatures » (Catégorie)
 Configuration pour les signatures.
@@ -746,6 +751,11 @@ Pour obtenir une « site key » et une « secret key » (nécessaires à l'u
 - Afficher l'avertissement concernant les cookies ? True = Oui [Défaut] ; False = Non.
 
 *Cette directive de configuration ajoutée par requête aux utilisateurs souhaitant désactiver l'avertissement de cookie généralement affiché à côté de reCAPTCHA (pour aider, par exemple, masquer toute indication que CIDRAM est utilisé). Cependant, je conseille vivement à la plupart des utilisateurs (en particulier ceux basés dans l'UE) de gardez-le activé.*
+
+##### « show_api_message »
+- Afficher le message de l'API ? True = Oui [Défaut] ; False = Non.
+
+*Cela fait référence à tout message non essentiel supplémentaire affiché lorsqu'une requête est bloquée, autre que l'avertissement de cookie.*
 
 #### « legal » (Catégorie)
 Configuration relative aux exigences légales.
@@ -1901,4 +1911,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 27 Novembre 2020 (2020.11.27).
+Dernière mise à jour : 7 Février 2021 (2021.02.07).
