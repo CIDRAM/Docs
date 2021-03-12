@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Generale configurazione per CIDRAM.
 
 ##### "error_log_stages"
 - Un elenco delle fasi nella catena di esecuzione in cui dovrebbero essere registrati eventuali errori generati.
-- *Predefinito: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Predefinito: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -576,7 +577,7 @@ Valore | Produce | Descrizione
 
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
-- File per la registrazione di l'accesso front-end tentativi di accesso. Specificare un nome di file, o lasciare vuoto per disabilitare.
+- File per la registrazione di tentativi di accesso al front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
 ##### "ban_override"
 - Sostituire "forbid_on_block" quando "infraction_limit" è superato? Quando si sostituisce: Richieste bloccate restituire una pagina vuota (file di modello non vengono utilizzati). 200 = Non sostituire [Predefinito]. Altri valori sono uguali ai valori disponibili per "forbid_on_block".
@@ -590,7 +591,7 @@ Valore | Produce | Descrizione
 *Guarda anche: [Cosa posso usare per "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
 
 ##### "search_engine_verification"
-- Tentativo di verificare le richieste dai motori di ricerca? La verifica dei motori di ricerca assicura che non saranno vietate a seguito del superamento del limite infrazione (vieta dei motori di ricerca dal vostro sito web di solito hanno un effetto negativo sul vostro posizionamento sui motori di ricerca, SEO, ecc). Quando verificato, i motori di ricerca possono essere bloccati come al solito, ma non saranno vietate. Quando non verificato, è possibile per loro di essere vietate a seguito del superamento del limite infrazione. Inoltre, verifica dei motori di ricerca fornisce una protezione contro le richieste dei motori di ricerca falso e contro le entità potenzialmente dannosi mascherato da motori di ricerca (tali richieste verranno bloccate quando la verifica dei motori di ricerca è attivato). True = Attiva la verifica dei motori di ricerca [Predefinito]; False = Disattiva la verifica dei motori di ricerca.
+- Tentare di verificare le richieste dai motori di ricerca? La verifica dei motori di ricerca assicura che non saranno vietate a seguito del superamento del limite infrazione (vieta dei motori di ricerca dal vostro sito web di solito hanno un effetto negativo sul vostro posizionamento sui motori di ricerca, SEO, ecc). Quando verificato, i motori di ricerca possono essere bloccati come al solito, ma non saranno vietate. Quando non verificato, è possibile per loro di essere vietate a seguito del superamento del limite infrazione. Inoltre, verifica dei motori di ricerca fornisce una protezione contro le richieste dei motori di ricerca falso e contro le entità potenzialmente dannosi mascherato da motori di ricerca (tali richieste verranno bloccate quando la verifica dei motori di ricerca è attivato). True = Attiva la verifica dei motori di ricerca [Predefinito]; False = Disattiva la verifica dei motori di ricerca.
 
 Attualmente supportato:
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
@@ -610,16 +611,22 @@ Non compatibile (causa conflitti):
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
 
 ##### "social_media_verification"
-- Tentativo di verificare le richieste dei social media? La verifica dei social media fornisce protezione contro le false richieste dei social media (tali richieste saranno bloccate). True = Attiva la verifica dei social media [Predefinito]; False = Disattiva la verifica dei social media.
+- Tentare di verificare le richieste dei social media? La verifica dei social media fornisce protezione contro le false richieste dei social media (tali richieste saranno bloccate). True = Attiva la verifica dei social media [Predefinito]; False = Disattiva la verifica dei social media.
 
 Attualmente supportato:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Richiede la funzionalità di ricerca ASN, ad es., dal modulo BGPView._
+
+##### "other_verification"
+- Ove possibile, tentare di verificare altri tipi di richieste (ad es., AdSense, controllori SEO, ecc)? Una volta rilevate, le richieste false verranno bloccate. True = Attiva [Predefinito]; False = Disattiva.
+
+Attualmente supportato:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Specifica se le protezioni normalmente fornite da CIDRAM devono essere applicati al front-end. True = Sì [Predefinito]; False = No.
@@ -1680,6 +1687,7 @@ Se si utilizzano funzioni o moduli destinati a funzionare con nomi host (come ad
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1697,6 +1705,7 @@ Quando la verifica dei motori di ricerca è abilitata, CIDRAM tenta di eseguire 
 *Direttive di configurazione rilevanti:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1901,4 +1910,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 7 Febbraio 2021 (2021.02.07).
+Ultimo Aggiornamento: 12 Marzo 2021 (2021.03.12).

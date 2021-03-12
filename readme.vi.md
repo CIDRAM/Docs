@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Cấu hình chung cho CIDRAM.
 
 ##### "error_log_stages"
 - Một danh sách các giai đoạn trong chuỗi thực thi, theo đó bất kỳ lỗi nào được tạo sẽ được ghi lại.
-- *Mặc định: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Mặc định: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
@@ -615,11 +616,17 @@ Không tương thích (gây ra xung đột):
 Được hỗ trợ hiện tại:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
+
+##### "other_verification"
+- Bất cứ khi nào có thể, hãy cố gắng xác minh các loại yêu cầu khác (ví dụ: AdSense, công cụ kiểm tra SEO, vv)? Khi bị phát hiện, các yêu cầu giả mạo sẽ bị chặn. True = Kích hoạt [Mặc định]; False = Vô hiệu hóa.
+
+Được hỗ trợ hiện tại:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Chỉ định liệu các bảo vệ thường được cung cấp bởi CIDRAM nên được áp dụng cho các front-end. True = Vâng [Mặc định]; False = Không.
@@ -1676,6 +1683,7 @@ Nếu bạn sử dụng bất kỳ tính năng hay mô-đun nào để làm vi�
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1693,6 +1701,7 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 *Chỉ thị cấu hình có liên quan:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1895,4 +1904,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.02.07.
+Lần cuối cập nhật: 2021.03.12.

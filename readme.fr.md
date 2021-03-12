@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Configuration générale pour CIDRAM.
 
 ##### « error_log_stages »
 - Liste des étapes de la chaîne d'exécution dans lesquelles les erreurs générées doivent être enregistrées.
-- *Défaut : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Défaut : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### « truncate »
 - Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
@@ -615,11 +616,17 @@ N'est pas compatible (provoque des conflits) :
 Supporté actuellement :
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _** : Nécessite une fonctionnalité de recherche ASN, par exemple, à partir du module BGPView._
+
+##### « other_verification »
+- Dans la mesure du possible, essayez de vérifier d'autres types de requêtes (par exemple, AdSense, vérificateurs SEO, etc) ? Lorsqu'elles sont détectées, les fausses requêtes seront bloquées. True = Activer [Défaut] ; False = Désactiver.
+
+Supporté actuellement :
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### « protect_frontend »
 - Spécifie si les protections normalement fournies par CIDRAM doivent être appliquées à l'accès frontal. True = Oui [Défaut] ; False = Non.
@@ -1686,6 +1693,7 @@ Si vous utilisez des fonctionnalités ou des modules destinés à fonctionner av
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1703,6 +1711,7 @@ Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'e
 *Directives de configuration pertinentes :*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1911,4 +1920,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 7 Février 2021 (2021.02.07).
+Dernière mise à jour : 12 Mars 2021 (2021.03.12).

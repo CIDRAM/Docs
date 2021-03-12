@@ -346,6 +346,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -473,7 +474,7 @@ Configuration (v2)
 ##### <div dir="rtl">"error_log_stages"<br /></div>
 <div dir="rtl"><ul>
  <li>عمل درآمد سلسلہ میں مراحل کی ایک فہرست جس میں پیدا ہونے والی غلطیوں میں کوئی لاگ ان ہونا چاہئے.</li>
- <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
+ <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
@@ -683,12 +684,22 @@ Configuration (v2)
 <div dir="rtl"><ul>
  <li><strong dir="ltr"><a href="https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674">Embedly</a></strong></li>
  <li><strong dir="ltr"><a href="https://developers.facebook.com/docs/sharing/webmasters/crawler/">Facebook external hit</a> **</strong></li>
- <li><strong dir="ltr"><a href="https://www.grapeshot.com/crawler/">GrapeshotCrawler</a></strong></li>
  <li><strong dir="ltr"><a href="https://help.pinterest.com/en/articles/about-pinterest-crawler-0">Pinterest</a></strong></li>
  <li><strong dir="ltr"><a href="https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168">Twitterbot</a></strong></li>
 </ul></div>
 
 <div dir="rtl"><em>**: ASN تلاش کی فعالیت کی ضرورت ہوتی ہے (جیسے ،BGPView ماڈیول سے).</em><br /></div>
+
+##### <div dir="rtl">"other_verification"<br /></div>
+<div dir="rtl"><ul>
+ <li>جہاں بھی ممکن ہو، دوسری طرح کی درخواستوں کی تصدیق کرنے کی کوشش کریں (جیسے ایڈسنس، SEO چیکرس، وغیرہ)؟ جب پتہ چلا، جعلی درخواستیں مسدود کردی جائیں گی. True (سچے) = فعال [پہلے سے طے شدہ]؛ False (جھوٹی) = غیر فعال.</li>
+</ul></div>
+
+<div dir="rtl">المدعومة حاليا:<br /></div>
+<div dir="rtl"><ul>
+ <li><strong dir="ltr"><a href="https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html">Oracle Data Cloud Crawler</a></strong></li>
+ <li><strong dir="ltr"><a href="https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers">AdSense</a></strong></li>
+</ul></div>
 
 ##### <div dir="rtl">"protect_frontend"<br /></div>
 <div dir="rtl"><ul>
@@ -1909,6 +1920,7 @@ IP | آپریٹر
  <li><code dir="ltr">default_dns</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">force_hostname_lookup</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">allow_gethostbyaddr_lookup</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
@@ -1930,6 +1942,7 @@ IP | آپریٹر
 <div dir="rtl"><ul>
  <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۱۱.۲.۳ GOOGLE reCAPTCHA<br /><br /></div>
@@ -2166,4 +2179,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۷ فروری ۲۰۲۱ (۲۰۲۱.۰۲.۰۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۲ مارچ ۲۰۲۱ (۲۰۲۱.۰۳.۱۲).</div>

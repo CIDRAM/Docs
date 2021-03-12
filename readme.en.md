@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -471,7 +472,7 @@ _Examples are based on the date 20.08.2018, at 12:06._
 
 ##### "error_log_stages"
 - A list of the stages in the execution chain that should have any generated errors logged.
-- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Truncate logfiles when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a logfile may grow to before being truncated. The default value of 0KB disables truncation (logfiles can grow indefinitely). Note: Applies to individual logfiles! The size of logfiles is not considered collectively.
@@ -625,11 +626,17 @@ Not compatible (causes conflicts):
 Currently supported:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Requires an ASN lookup facility, e.g., the BGPView module._
+
+##### "other_verification"
+- Wherever possible, attempt to verify other kinds of requests (e.g., AdSense, SEO checkers, etc)? When detected, faked requests will be blocked. True = Enable [Default]; False = Disable.
+
+Currently supported:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Specifies whether the protections normally provided by CIDRAM should be applied to the front-end. True = Yes [Default]; False = No.
@@ -1687,6 +1694,7 @@ If you use any features or modules intended to work with hostnames (such as the 
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1704,6 +1712,7 @@ When search engine verification is enabled, CIDRAM attempts to perform "forward 
 *Relevant configuration directives:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1916,4 +1925,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 7 February 2021 (2021.02.07).
+Last Updated: 12 March 2021 (2021.03.12).

@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Configuration (v2)
 
 ##### "error_log_stages" （エラー・ログ・ステージズ）
 - 生成されたエラーをログに記録する必要がある実行チェーン内のステージのリスト。
-- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate" （トランケート）
 - ログ・ファイルが一定のサイズに達したら切り詰めますか？​値は、​ログ・ファイルが切り捨てられる前に大きくなる可能性があるＢ/ＫＢ/ＭＢ/ＧＢ/ＴＢ単位の最大サイズです。​デフォルト値の０ＫＢは切り捨てを無効にします （ログ・ファイルは無期限に拡張できます）。​注：個々のログ・ファイルに適用されます。​ログ・ファイルのサイズは一括して考慮されません。
@@ -615,11 +616,17 @@ Configuration (v2)
 現在サポートされている：
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュールから）。_
+
+##### "other_verification" （アザー・ベリフィケーション）
+- 可能な限り、他の種類のリクエストを確認するがありますか（例：AdSense、SEOチェッカー、など）？​検出されると、偽のリクエストはブロックされます。 True = 有効にする（Default/デフォルルト）。 False = 無効にする。
+
+現在サポートされている：
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend" （プロテクト・フロントエンド）
 - CIDRAMによって通常提供される保護をフロントエンドに適用するかどうかを指定します。 True = はい（Default/デフォルルト）。 False = いいえ。
@@ -1670,6 +1677,7 @@ Cronjobsの目的で専用ファイルを使用している場合、通常のユ
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1687,6 +1695,7 @@ CIDRAMのフロントエンドと「アクセス拒否」ページの標準「�
 *関連するコンフィギュレーション・ディレクティブ：*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA （グーグル・リーキャプチャ）
 
@@ -1896,4 +1905,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年２月７日。
+最終アップデート：２０２１年３月１２日。

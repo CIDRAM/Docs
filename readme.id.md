@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Konfigurasi umum dari CIDRAM.
 
 ##### "error_log_stages"
 - Daftar tahapan dalam rantai eksekusi yang seharusnya memiliki kesalahan yang dihasilkan dicatat.
-- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
@@ -615,11 +616,17 @@ Tidak kompatibel (menyebabkan konflik):
 Didukung sekarang:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Memerlukan fungsionalitas pencarian ASN, mis., dari modul BGPView._
+
+##### "other_verification"
+- Jika memungkinkan, coba verifikasi jenis permintaan lain (mis., AdSense, pemeriksa SEO, dll)? Saat terdeteksi, permintaan palsu akan diblokir. True = Mengaktifkan [Default]; False = Menonaktifkan.
+
+Didukung sekarang:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Menentukan apakah perlindungan biasanya disediakan oleh CIDRAM harus diterapkan pada bagian depan. True = Ya [Default]; False = Tidak.
@@ -1679,6 +1686,7 @@ Jika Anda menggunakan fitur atau modul yang dimaksudkan untuk bekerja dengan nam
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1696,6 +1704,7 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 *Direktif konfigurasi yang relevan:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1898,4 +1907,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 7 Februari 2021 (2021.02.07).
+Terakhir Diperbarui: 12 Maret 2021 (2021.03.12).

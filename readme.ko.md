@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Configuration (v2)
 
 ##### "error_log_stages"
 - 실행 체인에서 생성 된 오류가 기록되어야하는 단계 목록.
-- *Default (기본값) : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default (기본값) : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -615,11 +616,17 @@ Configuration (v2)
 현재 지원 :
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)._
+
+##### "other_verification"
+- 가능한 한, 다른 요청을 확인하려고 합니까 (예 : 애드 센스, SEO 검사기, 등등)? 감지되면, 가짜 요청이 차단됩니다. True = 활성화 (Default / 기본 설정); False = 비활성화.
+
+현재 지원 :
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - CIDRAM 의해 보통 제공되는 보호를 프론트 엔드에 적용할지 여부를 지정합니다. True = 예 (Default / 기본 설정); False = 아니오.
@@ -650,7 +657,7 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 - 블록 이벤트 정보를 로깅하고 표시 할 때, CIDRAM이 빈 필드를 어떻게 처리해야합니까? "include" = 빈 필드를 포함하십시오. "omit" = 빈 필드는 생략하십시오 (Default / 기본 설정).
 
 ##### "log_sanitisation"
-- 프런트 엔드 로그 페이지를 사용하여 로그 데이터를 볼 때, XSS 공격 및 기타 잠재적 인 위협으로부터 사용자를 보호하기 위해 CIDRAM은 로그 데이터를 표시하기 전에 위생 처리합니다. 그러나 기본적으로, 로깅 중에는 데이터가 삭제되지 않습니다. 이렇게하면 로그 데이터가 정확하게 보존됩니다 (앞으로 필요할 수도있는 경험적 또는 법의학 분석에 유용합니다). 그러나, 사용자가 외부 도구를 사용하여 로그 데이터를 읽으려고하면, 외부 도구가 자체 위생 처리를 수행하지 않는 경우, 사용자가 XSS 공격에 노출 될 수 있습니다. 필요한 경우, 이 구성 지정 문을 사용하여 기본 작동을 변경할 수 있습니다. True = 데이터 로깅 할 때 데이터, 위생적으로하다 (기록된 데이터 정확도가 더 낮습니다, 않지만 XSS 위험이 더 낮습니다). False = 데이터 로깅 할 때 데이터, 위생적으로하지 마라 (기록된 데이터 정확도가 더 높습니다, 않지만 XSS 위험이 더 높습니다) [Default / 기본 설정].
+- 프런트 엔드 로그 페이지를 사용하여 로그 데이터를 볼 때, XSS 공격 및 기타 잠재적 인 위협으로부터 사용자를 보호하기 위해 CIDRAM은 로그 데이터를 표시하기 전에 위생 처리합니다. 그러나 기본적으로, 로깅 중에는 데이터가 삭제되지 않습니다. 이렇게하면 로그 데이터가 정확하게 보존됩니다 (앞으로 필요할 수도있는 경험적 또는 법의학 분석에 유용합니다). 그러나, 사용자가 외부 도구를 사용하여 로그 데이터를 읽으려고하면, 외부 도구가 자체 위생 처리를 수행하지 않는 경우, 사용자가 XSS 공격에 노출 될 수 있습니다. 필요한 경우, 이 구성 지정 문을 사용하여 기본 작동을 변경할 수 있습니다. True = 데이터 로깅 할 때 데이터, 위생적으로하다 (기록된 데이터 정확도가 더 낮습니다, 않지만 XSS 위험이 더 낮습니다). False = 데이터 로깅 할 때 데이터, 위생적으로하지 마라 (기록된 데이터 정확도가 더 높습니다, 않지만 XSS 위험이 더 높습니다) (Default / 기본 설정).
 
 ##### "disabled_channels"
 - 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
@@ -1670,6 +1677,7 @@ cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1687,6 +1695,7 @@ CIDRAM 프론트 엔드 및 "액세스 거부"페이지의 표준 UI ("사용자
 *관련 설정 지시어 :*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1894,4 +1903,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 2월 7일.
+최종 업데이트 : 2021년 3월 12일.

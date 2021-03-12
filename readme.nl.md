@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Algemene configuratie voor CIDRAM.
 
 ##### "error_log_stages"
 - Een lijst met de fasen in de uitvoeringsketen waarvan gegenereerde fouten moeten worden vastgelegd.
-- *Standaard: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Standaard: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
@@ -615,11 +616,17 @@ Niet compatibel (veroorzaakt conflicten):
 Momenteel ondersteund:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Vereist ASN-opzoekfunctionaliteit, b.v., van de BGPView-module._
+
+##### "other_verification"
+- Probeer waar mogelijk andere soorten verzoeken te verifiëren (b.v., AdSense, SEO-checkers, enz)? Als ze worden gedetecteerd, worden vervalste verzoeken geblokkeerd. True = Inschakelen [Standaard]; False = Uitschakelen.
+
+Momenteel ondersteund:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Geeft aan of de bescherming die gewoonlijk door CIDRAM is voorzien moet worden toegepast op de frontend. True = Ja [Standaard]; False = Nee.
@@ -1688,6 +1695,7 @@ Als u functies of modules gebruikt die bedoeld zijn om met hostnamen te werken (
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1705,6 +1713,7 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 *Relevante configuratie-opties:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1915,4 +1924,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 7 Februari 2021 (2021.02.07).
+Laatste Bijgewerkt: 12 Maart 2021 (2021.03.12).

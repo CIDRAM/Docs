@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ Configuration (v2)
 
 ##### «error_log_stages»
 - Список этапов в цепочке выполнения, в которых должны регистрироваться любые сгенерированные ошибки.
-- *Стандарт: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Стандарт: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### «truncate»
 - Усекать лог-файлы, когда они достигают определенного размера? Значение это максимальный размер в Б/КБ/МБ/ГБ/ТБ, до которого файл журнала может увеличиться до усечения. Стандартное значение 0КБ отключает усечение (лог-файлы может расти неограниченно). Примечание: относится к отдельным лог-файлы! Размер файлов журнала не учитывается совместно.
@@ -615,11 +616,17 @@ Configuration (v2)
 В настоящее время поддерживается:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Требуется функция поиска ASN, например, из модуля BGPView._
+
+##### «other_verification»
+- По возможности, пытаться проверить другие типы запросов (например, AdSense, средства проверки SEO, и т.д.)? При обнаружении, поддельные запросы будут заблокированы. True = Активировать [Стандарт]; False = Деактивировать.
+
+В настоящее время поддерживается:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### «protect_frontend»
 - Определяет, будут ли средства защиты как правило предоставляемые CIDRAM должны быть применены к фронтенд. True = Да [Стандарт]; False = Нет.
@@ -1678,6 +1685,7 @@ CIDRAM предоставляет возможность использоват�
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1695,6 +1703,7 @@ CIDRAM предоставляет возможность использоват�
 *Соответствующие директивы конфигурации:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1899,4 +1908,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 7 Февраля 2021 г (2021.02.07).
+Последнее обновление: 12 Марта 2021 г (2021.03.12).

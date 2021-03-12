@@ -344,6 +344,7 @@ Configuration (v2)
 │       default_dns
 │       search_engine_verification
 │       social_media_verification
+│       other_verification
 │       protect_frontend
 │       disable_webfonts
 │       maintenance_mode
@@ -461,7 +462,7 @@ _Beispiele anhand des 20.08.2018 um 12:06_
 
 ##### "error_log_stages"
 - Eine Liste der Phasen in der Ausführungskette, in denen generierte Fehler protokolliert werden sollen.
-- *Standardeinstellung: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Standardeinstellung: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
@@ -615,11 +616,17 @@ Nicht kompatibel (verursacht Konflikte):
 Derzeit unterstützt:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
 - __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[GrapeshotCrawler](https://www.grapeshot.com/crawler/)__
 - __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
 - __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
 
 _**: Erfordert eine ASN-Suchfunktion, z.B., von das BGPView-Modul._
+
+##### "other_verification"
+- Versuchen Sie nach Möglichkeit, andere Arten von Anfragen zu überprüfen (z.B., AdSense, SEO-Prüfer, u.s.w.)? Wenn erkannt, werden gefälschte Anforderungen blockiert. True = Aktivieren [Standardeinstellung]; False = Deaktivieren.
+
+Derzeit unterstützt:
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
 
 ##### "protect_frontend"
 - Gibt an, ob die Schutzmaßnahmen normalerweise vom CIDRAM bereitgestellten auf das Frontend angewendet werden sollen. True = Ja [Standardeinstellung]; False = Nein.
@@ -1690,6 +1697,7 @@ Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., "Sc
 - `general` -> `default_dns`
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
@@ -1707,6 +1715,7 @@ Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM "Forward
 *Relevante Konfigurationsdirektiven:*
 - `general` -> `search_engine_verification`
 - `general` -> `social_media_verification`
+- `general` -> `other_verification`
 
 ##### 11.2.3 GOOGLE reCAPTCHA
 
@@ -1919,4 +1928,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 7. Februar 2021 (2021.02.07).
+Zuletzt aktualisiert: 12. März 2021 (2021.03.12).
