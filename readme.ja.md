@@ -155,6 +155,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   │   FUNDING.yml
 │   │
 │   └───workflows
+│           php-cs-fixer.yml
 │           v2.yml
 │
 └───vault
@@ -173,11 +174,13 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   ipv4_bogons.dat
     │   ipv4_custom.dat.RenameMe
     │   ipv4_isps.dat
+    │   ipv4_nonblocking.dat
     │   ipv4_other.dat
     │   ipv6.dat
     │   ipv6_bogons.dat
     │   ipv6_custom.dat.RenameMe
     │   ipv6_isps.dat
+    │   ipv6_nonblocking.dat
     │   ipv6_other.dat
     │   lang.php
     │   modules.dat
@@ -192,6 +195,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Constants.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -203,6 +207,8 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           L10N.php
     │           Matrix.php
     │           NumberFormatter.php
+    │           Operation.php
+    │           Request.php
     │           YAML.php
     │
     ├───fe_assets
@@ -1905,4 +1911,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年３月１２日。
+最終アップデート：２０２１年４月９日。
