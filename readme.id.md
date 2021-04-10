@@ -606,6 +606,7 @@ Didukung sekarang:
 - __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
 - __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
 - __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[PetalBot](https://aspiegel.com/petalbot)__
 - __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
 - __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
@@ -1913,4 +1914,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 9 April 2021 (2021.04.09).
+Terakhir Diperbarui: 10 April 2021 (2021.04.10).

@@ -606,6 +606,7 @@ Configuration (v2)
 - __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
 - __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
 - __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[PetalBot](https://aspiegel.com/petalbot)__
 - __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
 - __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
@@ -1914,4 +1915,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年4月9日。
+最後更新：2021年4月10日。

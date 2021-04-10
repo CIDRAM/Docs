@@ -606,6 +606,7 @@ Configuration (v2)
 - __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
 - __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
 - __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[PetalBot](https://aspiegel.com/petalbot)__
 - __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
 - __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
@@ -1911,4 +1912,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年４月９日。
+最終アップデート：２０２１年４月１０日。

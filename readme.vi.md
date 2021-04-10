@@ -606,6 +606,7 @@ Giá trị | Nó tạo ra | Chi tiết
 - __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
 - __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
 - __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[PetalBot](https://aspiegel.com/petalbot)__
 - __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
 - __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
@@ -1910,4 +1911,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.04.09.
+Lần cuối cập nhật: 2021.04.10.

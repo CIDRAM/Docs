@@ -606,6 +606,7 @@ Configuration (v2)
 - __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
 - __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
 - __[MojeekBot](https://www.mojeek.com/bot.html)__
+- __[PetalBot](https://aspiegel.com/petalbot)__
 - __[Qwantify/Bleriot](https://help.qwant.com/bot)__
 - __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
 - __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
@@ -1909,4 +1910,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 4월 9일.
+최종 업데이트 : 2021년 4월 10일.

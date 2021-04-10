@@ -668,6 +668,7 @@ Configuration (v2)
  <li><strong dir="ltr"><a href="https://duckduckgo.com/duckduckbot">DuckDuckBot</a></strong></li>
  <li><strong dir="ltr"><a href="https://support.google.com/webmasters/answer/80553?hl=en">Googlebot</a></strong></li>
  <li><strong dir="ltr"><a href="https://www.mojeek.com/bot.html">MojeekBot</a></strong></li>
+ <li><strong dir="ltr"><a href="https://aspiegel.com/petalbot">PetalBot</a></strong></li>
  <li><strong dir="ltr"><a href="https://help.qwant.com/bot">Qwantify/Bleriot</a></strong></li>
  <li><strong dir="ltr"><a href="https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/">SeznamBot</a></strong></li>
  <li><strong dir="ltr"><a href="https://www.sogou.com/docs/help/webmasters.htm#07">Sogou/搜狗</a></strong></li>
@@ -2185,4 +2186,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٩ أبريل ٢٠٢١ (٢٠٢١.٠٤.٠٩).</div>
+<div dir="rtl">آخر تحديث: ١٠ أبريل ٢٠٢١ (٢٠٢١.٠٤.١٠).</div>
