@@ -1105,7 +1105,7 @@ Defers to: preferred_signatures.dat
 
 ##### 7.1.4 PROFILE TAGS
 
-Profile tags provide a means display additional information at the test page, and can be leveraged by modules and auxiliary rules for more complex behaviour and fine-tuned decision making.
+Profile tags provide a means to display additional information at the IP test page, and can be leveraged by modules and auxiliary rules for more complex behaviour and fine-tuned decision making.
 
 Profile tags are used similarly to other types of tags. The values of profile tags can be used as a condition for modules and auxiliary rules. Profile tags can provide multiple values by separating those values with a semicolon. The end-user never sees the values of profile tags.
 
