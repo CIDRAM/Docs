@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 ETICHETTE DI PROFILE
+
+Le etichette del profilo forniscono un mezzo per visualizzare informazioni aggiuntive nella pagina di test IP e possono essere sfruttate da moduli e regole ausiliarie per comportamenti più complessi e processi decisionali ottimizzati.
+
+Le etichette del profilo vengono utilizzate in modo simile ad altri tipi di etichette. I valori delle etichette del profilo possono essere utilizzati come condizione per moduli e regole ausiliarie. Le etichette del profilo possono fornire più valori separando tali valori con un punto e virgola. L'utente finale non vede mai i valori delle etichette del profilo.
+
+Esempio:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 YAML BASI
@@ -1917,4 +1932,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 10 Aprile 2021 (2021.04.10).
+Ultimo Aggiornamento: 17 Aprile 2021 (2021.04.17).

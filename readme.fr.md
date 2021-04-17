@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 ÉTIQUETTES DE PROFIL
+
+Les étiquettes de profil permettent d'afficher des informations supplémentaires sur la page de test et peuvent être exploitées par des modules et des règles auxiliaires pour un comportement plus complexe et une prise de décision affinée.
+
+Les étiquettes de profil sont utilisées de la même manière que les autres types d'étiquettes. Les valeurs des étiquettes de profil peuvent être utilisées comme une condition pour les modules et les règles auxiliaires. Les étiquettes de profil peuvent fournir plusieurs valeurs en séparant ces valeurs par un point-virgule. L'utilisateur final ne voit jamais les valeurs des étiquettes de profil.
+
+Exemple :
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 BASES DE YAML
@@ -1927,4 +1942,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 10 Avril 2021 (2021.04.10).
+Dernière mise à jour : 17 Avril 2021 (2021.04.17).

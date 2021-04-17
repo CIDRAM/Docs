@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 TAG PROFIL
+
+Tag profil menyediakan sarana untuk menampilkan informasi tambahan di halaman pengujian IP, dan dapat dimanfaatkan oleh modul dan aturan tambahan untuk perilaku yang lebih kompleks dan pengambilan keputusan yang lebih baik.
+
+Tag profil digunakan serupa dengan jenis tag lainnya. Nilai untuk tag profil dapat digunakan sebagai kondisi untuk modul dan aturan tambahan. Tag profil dapat memberikan beberapa nilai dengan memisahkan nilai tersebut dengan titik koma. Pengguna tidak pernah melihat nilai untuk tag profil.
+
+Contoh:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 DASAR-DASAR YAML
@@ -1914,4 +1929,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 10 April 2021 (2021.04.10).
+Terakhir Diperbarui: 17 April 2021 (2021.04.17).

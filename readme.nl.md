@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 PROFIEL ETIKETTEN
+
+Profiel etiketten bieden een middel om aanvullende informatie op de IP-testpagina weer te geven, en kunnen worden gebruikt door modules en hulpregels voor complexer gedrag en nauwkeurigere besluitvorming.
+
+Profiel etiketten worden op dezelfde manier gebruikt als andere soorten etiketten. De waarden van profiel etiketten kunnen worden gebruikt als voorwaarde voor modules en hulpregels. Profiel etiketten kunnen meerdere waarden bieden door deze waarden te scheiden met een puntkomma. De eindgebruiker ziet nooit de waarden van profiel etiketten.
+
+Voorbeeld:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 YAML BASICS
@@ -1931,4 +1946,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 10 April 2021 (2021.04.10).
+Laatste Bijgewerkt: 17 April 2021 (2021.04.17).

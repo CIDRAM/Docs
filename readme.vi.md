@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 GẮN THẺ HỒ SƠ
+
+Gắn thẻ hồ sơ cung cấp một phương tiện hiển thị thông tin bổ sung tại trang kiểm tra IP, và có thể được tận dụng bởi các mô-đun và các quy tắc phụ trợ để có hành vi phức tạp hơn và việc ra quyết định được tinh chỉnh.
+
+Gắn thẻ hồ sơ được sử dụng tương tự như các loại gắn thẻ khác. Các giá trị của gắn thẻ hồ sơ có thể được sử dụng như một điều kiện cho các mô-đun và các quy tắc phụ trợ. Gắn thẻ hồ sơ có thể cung cấp nhiều giá trị bằng cách tách các giá trị đó bằng dấu chấm phẩy. Người dùng cuối không bao giờ nhìn thấy các giá trị của gắn thẻ hồ sơ.
+
+Ví dụ:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 YAML CƠ BẢN
@@ -1911,4 +1926,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.04.10.
+Lần cuối cập nhật: 2021.04.17.

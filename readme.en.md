@@ -1103,6 +1103,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 PROFILE TAGS
+
+Profile tags provide a means display additional information at the test page, and can be leveraged by modules and auxiliary rules for more complex behaviour and fine-tuned decision making.
+
+Profile tags are used similarly to other types of tags. The values of profile tags can be used as a condition for modules and auxiliary rules. Profile tags can provide multiple values by separating those values with a semicolon. The end-user never sees the values of profile tags.
+
+Example:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 YAML BASICS
@@ -1932,4 +1947,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 10 April 2021 (2021.04.10).
+Last Updated: 17 April 2021 (2021.04.17).

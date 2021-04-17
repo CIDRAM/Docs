@@ -1099,6 +1099,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 PROFIL-TAGS
+
+Profil-Tags bieten eine Möglichkeit zusätzliche Informationen auf der IP-Testseite anzuzeigen, und können von Modulen und Hilfsregeln für ein komplexeres Verhalten und eine genauere Entscheidungsfindung genutzt werden.
+
+Profil-Tags werden ähnlich wie andere Arten von Tags verwendet. Die Werte von Profil-Tags können als Bedingung für Module und Hilfsregeln verwendet werden. Profil-Tags können mehrere Werte bereitstellen, durch Trennen dieser Werte durch ein Semikolon. Der Endbenutzer sieht niemals die Werte von Profil-Tags.
+
+Beispiel:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 YAML GRUNDLAGEN
@@ -1935,4 +1950,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 10. April 2021 (2021.04.10).
+Zuletzt aktualisiert: 17. April 2021 (2021.04.17).

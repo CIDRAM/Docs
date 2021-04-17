@@ -1093,6 +1093,21 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
+##### 7.1.4 ETIQUETAS DE PERFIL
+
+Las etiquetas de perfil proporcionan un medio para mostrar información adicional en la página de prueba de IP y pueden ser aprovechadas por módulos y reglas auxiliares para un comportamiento más complejo y una toma de decisiones más precisa.
+
+Las etiquetas de perfil se utilizan de manera similar a otros tipos de etiquetas. Los valores de las etiquetas de perfil se pueden utilizar como condición para módulos y reglas auxiliares. Las etiquetas de perfil pueden proporcionar varios valores separando esos valores con un punto y coma. El usuario final nunca ve los valores de las etiquetas de perfil.
+
+Ejemplo:
+
+```
+1.2.3.4/32 Deny Generic
+2.3.4.5/32 Deny Generic
+Profile: Example;Just some generic stuff;Foo;Bar
+Origin: BB
+```
+
 #### 7.2 YAML
 
 ##### 7.2.0 LOS FUNDAMENTOS DE YAML
@@ -1921,4 +1936,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 10 de Abril de 2021 (2021.04.10).
+Última Actualización: 17 de Abril de 2021 (2021.04.17).
