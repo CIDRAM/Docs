@@ -161,6 +161,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -187,7 +188,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -197,7 +197,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -480,7 +483,7 @@ Configuration (v2)
 ##### <div dir="rtl">"error_log_stages"<br /></div>
 <div dir="rtl"><ul>
  <li>عمل درآمد سلسلہ میں مراحل کی ایک فہرست جس میں پیدا ہونے والی غلطیوں میں کوئی لاگ ان ہونا چاہئے.</li>
- <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
+ <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
@@ -841,18 +844,23 @@ Configuration (v2)
 #### <div dir="rtl">"recaptcha" (قسم)<br /></div>
 <div dir="rtl">اختیاری، آپ، ایک reCAPTCHA مثال کو مکمل اگر آپ ایسا کرنا چاہتے ہیں تو کی راہ کی طرف سے "رسائی نہیں ہوئی" کے صفحے کو نظرانداز کرنے کا ایک طریقہ کے ساتھ صارفین کو فراہم کر سکتے ہیں. یہ ان حالات میں جہاں ہم مکمل طور پر یقین ہے کہ ایک درخواست میں ایک مشین یا ایک انسان سے شروع ہوا ہے یا نہیں نہیں ہو میں جھوٹے مثبت کے ساتھ منسلک خطرات میں سے کچھ کم کرنے میں مدد کر سکتے ہیں.<br /><br /></div>
 
-<div dir="rtl">آخر میں صارفین کو نظرانداز کرنے کے لئے "رسائی نہیں ہوئی" کے لئے ایک راستہ فراہم کرنے کے ساتھ منسلک خطرات کی وجہ سے صفحہ، عام طور پر، میں اس خصوصیت کو چالو کرنے کے خلاف مشورہ آپ محسوس کرتے ہیں جب تک کہ ایسا کرنا ضروری ہو گا. صورت حال یہ ضروری ہو سکتا ہے جہاں: آپ کی ویب سائٹ آپ کی ویب سائٹ تک رسائی حاصل کرنے کی ضرورت ہے کہ گاہکوں / صارفین ہیں تو، اور اس پر سمجھوتہ نہیں کیا جا سکتا کہ کچھ ہے، لیکن اگر ان گاہکوں / صارفین ہوا ایک دشمن نیٹ ورک سے منسلک کرنے جا کرنے کے لئے ہے تو کہ ممکنہ طور پر بھی ناپسندیدہ ٹریفک لے جانے، اور اس ناپسندیدہ ٹریفک مسدود ہو سکتا ہے یہ بھی ان لوگوں کو خاص طور پر جیت نہیں حالات میں، پر سمجھوتہ نہیں کیا جا سکتا کہ کچھ ہے، reCAPTCHA کے خصوصیت ضروری گاہکوں / صارفین کی اجازت دی ہے کے ایک ذریعہ کے طور پر ہاتھ میں آ سکتا، ایک ہی نیٹ ورک سے ناپسندیدہ ٹریفک باہر رکھتے ہوئے. یہ ہے کہ، اگرچہ کہا دیا ایک کیپچا کے مطلوبہ مقصد انسانوں اور غیر انسانوں کے درمیان تمیز کرنے کے لئے ہے کہ، reCAPTCHA کے خصوصیت ہم اس ناپسندیدہ ٹریفک غیر انسانی ہے کہ فرض کرنا ہو تو ان کی کوئی جیت حالات میں صرف کی مدد کرے گا (مثال کے طور، اسپیم بوٹس، سکراپارس، hacktools، خود کار ٹریفک)، ہونے ناپسندیدہ انسانی ٹریفک کی مخالفت کے طور (جیسے انسانی spammers کو، ہیکروں، اسی ET رحمہ اللہ تعالی).<br /><br /></div>
+<div dir="rtl"><em>نوٹ: reCAPTCHA صرف مشین کالوں کے خلاف حفاظت کرتا ہے، انسانوں کے خلاف نہیں.</em><br /><br /></div>
 
 <div dir="rtl">ایک "site key" اور ایک "secret key" (reCAPTCHA استعمال کرتے ہوئے کے لئے ضروری) حاصل کرنے کے لئے، براہ مہربانی پر جائیں: <a href="https://developers.google.com/recaptcha/">https://developers.google.com/recaptcha/</a><br /><br /></div>
 
 ##### <div dir="rtl">"usemode"<br /></div>
 <div dir="rtl"><ul>
- <li>وضاحت کرتا CIDRAM reCAPTCHA کے استعمال کرنا چاہئے کہ کس طرح.</li>
- <li>0 = reCAPTCHA کے مکمل طور پر غیر فعال کر دیا (پہلے سے مقررشدہ) ہے.</li>
- <li>1 = reCAPTCHA کے تمام دستخطوں کیلئے فعال ہے.</li>
- <li>2 = reCAPTCHA کے طور دستخطی فائلوں کے اندر اندر reCAPTCHA کے فعال خاص نشان لگا حصوں سے تعلق رکھنے والے دستخطوں کے لیے آپ کو چالو حالت میں ہے.</li>
- <li>(کسی اور قدر 0 کے طور پر اسی طرح میں علاج کیا جائے گا).</li>
+ <li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے.</li>
 </ul></div>
+
+&nbsp; <div dir="rtl" style="display:inline">قدر</div> | &nbsp; <div dir="rtl">تفصیل</div>
+--:|--:
+1 | <div dir="rtl">صرف اس صورت میں جب بلاک ہوجائے، دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو.</div>
+2 | <div dir="rtl">صرف اس صورت میں جب بلاک ہو، استعمال کے لئے خصوصی طور پر نشان زد، دستخطوں کی حد میں ہو، اور پابندی نہیں ہو.</div>
+3 | <div dir="rtl">صرف اس وقت جب دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو (کوئی بات نہیں بلاک ہو یا نہیں).</div>
+4 | <div dir="rtl">صرف اس وقت جب بلاک نہیں کیا جاتا ہے.</div>
+5 | <div dir="rtl">صرف اس وقت جب بلاک نہ ہوا ہو، یا جب استعمال کے لئے خاص طور پر نشان زد کیا گیا ہو، دستخطوں کی حد میں ہو، اور پابندی نہ ہو.</div>
+&nbsp; <div dir="rtl" style="display:inline">کوئی اور قدر.</div> | &nbsp; <div dir="rtl">کبھی نہیں!</div>
 
 ##### <div dir="rtl">"lockip"<br /></div>
 <div dir="rtl"><ul>
@@ -2201,4 +2209,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۷ اپریل ۲۰۲۱ (۲۰۲۱.۰۴.۱۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۹ اپریل ۲۰۲۱ (۲۰۲۱.۰۴.۲۹).</div>

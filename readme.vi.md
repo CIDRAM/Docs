@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Cấu hình chung cho CIDRAM.
 
 ##### "error_log_stages"
 - Một danh sách các giai đoạn trong chuỗi thực thi, theo đó bất kỳ lỗi nào được tạo sẽ được ghi lại.
-- *Mặc định: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Mặc định: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
@@ -718,16 +721,21 @@ Cấu hình cho chữ ký.
 #### "recaptcha" (Thể loại)
 Nếu bạn muốn, bạn có thể cung cấp cho người dùng một cách để vượt qua các trang "Truy cập đã bị từ chối" bằng cách hoàn thành một reCAPTCHA. Điều này có thể giúp giảm thiểu một số rủi ro kết hợp với sai tích cực trong những tình huống theo đó chúng tôi không hoàn toàn chắc chắn liệu một yêu cầu bắt nguồn từ một máy tính hay một con người.
 
-Do những rủi ro liên quan đến việc cung cấp một cách cho người dùng để bỏ qua trang "Truy cập đã bị từ chối", nói chung, tôi sẽ tư vấn để không cho phép tính năng này trừ khi bạn cảm thấy nó là cần thiết phải làm như vậy. Tình huống mà nó sẽ là cần thiết: Nếu trang mạng của bạn có khách hàng hay người dùng mà cần phải có quyền truy cập vào trang mạng của bạn, và nếu điều này là một cái gì đó mà không thể được thỏa hiệp, nhưng nếu những khách hàng hay người dùng xảy ra để được kết nối từ một mạng thù địch mà có lẽ được mang giao thông không mong muốn, và ngăn chặn giao thông không mong muốn này cũng là một cái gì đó mà không thể được thỏa hiệp, trong những tình huống mà không chiến thắng này, tính năng reCAPTCHA có thể hữu ích như một phương tiện cho phép các giao thông mong muốn từ khách hàng hay người dùng, trong khi ngăn chặn các giao thông không mong muốn từ cùng một mạng. Tuy vậy, xem xét rằng mục đích của một CAPTCHA là để phân biệt giữa con người và chương trình máy tính, tính năng reCAPTCHA sẽ chỉ giúp đỡ trong những tình huống mà không chiến thắng này nếu chúng ta giả định rằng giao thông không mong muốn này là từ một chương trình máy tính (ví dụ, chương trình thư rác, công cụ cào, công cụ hack, giao thông tự động, vv), như trái ngược với giao thông không mong muốn từ người (như thế thư rác từ người, hacker, vv).
+*Lưu ý: reCAPTCHA chỉ bảo vệ chống lại các cuộc gọi của máy, không chống lại những kẻ tấn công con người.*
 
 Để có được một "site key" và một "secret key" (cần thiết để sử dụng reCAPTCHA), xin truy cập vào: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### "usemode"
-- Định nghĩa thế nào CIDRAM nên sử dụng reCAPTCHA.
-- 0 = reCAPTCHA là hoàn toàn bị vô hiệu hóa (mặc định).
-- 1 = reCAPTCHA là kích hoạt cho tất cả các chữ ký.
-- 2 = reCAPTCHA là kích hoạt chỉ cho chữ ký thuộc phần đặc biệt đánh dấu để sử dụng với reCAPTCHA.
-- (Bất kỳ giá trị khác sẽ được xử lý trong cùng một cách như là 0).
+- Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA.
+
+Giá trị | Chi tiết
+--:|:--
+1 | Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.
+2 | Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.
+3 | Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).
+4 | Chỉ khi không bị chặn.
+5 | Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.
+Bất kỳ giá trị nào khác. | Không bao giờ!
 
 ##### "lockip"
 - Chỉ định liệu các băm/hash nên được khóa trên IP cụ thể. False = Cookie và băm/hash CÓ THỂ được sử dụng bởi nhiều IP (mặc định). True = Cookie và băm/hash KHÔNG THỂ được sử dụng sử dụng bởi nhiều IP (cookie và băm/hash được khóa trên các IP).
@@ -1926,4 +1934,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.04.17.
+Lần cuối cập nhật: 2021.04.29.

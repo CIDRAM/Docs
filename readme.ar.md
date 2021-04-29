@@ -161,6 +161,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -187,7 +188,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -197,7 +197,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -480,7 +483,7 @@ Configuration (v2)
 ##### <div dir="rtl">"error_log_stages"<br /></div>
 <div dir="rtl"><ul>
  <li>قائمة المراحل في سلسلة التنفيذ التي بموجبها يجب تسجيل أي أخطاء تم إنشاؤها.</li>
- <li><em>افتراضي: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"</em></li>
+ <li><em>افتراضي: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
@@ -841,18 +844,23 @@ Configuration (v2)
 #### <div dir="rtl">"recaptcha" (التصنيف)<br /></div>
 <div dir="rtl">اختياريا، أنت يمكن أن توفر للمستخدمين طريقة لتجاوز "تم رفض الوصول!" الصفحة، عن طريق استكمال اختبار reCAPTCHA. هذا يمكن أن تساعد على التخفيف من بعض المخاطر المرتبطة مع إيجابية خاطئة في تلك الحالات حيث أننا لسنا متأكدين تماما ما إذا كان طلب قد نشأت من آلة أو الإنسان.<br /><br /></div>
 
-<div dir="rtl">بسبب المخاطر المرتبطة تجاوز "تم رفض الوصول!" الصفحة، أنصح ضد هذه الميزة إلا إذا كنت تعتقد انه من الضروري لاستخدامه. الحالات التي يمكن أن تكون ضرورية: إذا كان موقع الويب الخاص بك يحتوي على المستخدمين التي تحتاج إلى الحصول على موقع الويب الخاص بك، وإذا كان هذا لا يمكن التفاوض، ولكن إذا كان هؤلاء المستخدمين تتصل من الشبكة المعادية التي يحتمل أن تحمل حركة المرور غير مرغوب فيه، وهذا أيضا لا يمكن التفاوض، في تلك الحالات، reCAPTCHA يمكن أن تكون مفيدة كوسيلة ليسمح للمستخدمين المطلوب، والابتعاد عن حركة غير مرغوب فيه من نفس الشبكة. ومع ذلك، بالنظر إلى أن الغرض المقصود من reCAPTCHA، reCAPTCHA سيكون مساعدة فقط في هذه الحالات إذا كانت حركة المرور غير المرغوب فيها غير البشرية (على سبيل المثال، المتطفلين و برامج التطفل، كاشطات، أدوات القراصنة، حركة المرور الآلي)، بدلا من كونها حركة الإنسان (على سبيل المثال، الاطر البشرية، قراصنة، وآخرون).<br /><br /></div>
+<div dir="rtl"><em>ملحوظة: reCAPTCHA يحمي فقط من مكالمات الآلة، وليس ضد المهاجمين البشريين.</em><br /><br /></div>
 
 <div dir="rtl">للحصول على "site key" و "secret key" (مطلوب لاستخدام اختبار reCAPTCHA)، الرجاء الذهاب إلى: <a href="https://developers.google.com/recaptcha/">https://developers.google.com/recaptcha/</a><br /><br /></div>
 
 ##### <div dir="rtl">"usemode"<br /></div>
 <div dir="rtl"><ul>
- <li>هذا ويعرف كيفية CIDRAM يجب استخدام اختبار reCAPTCHA.</li>
- <li>0 = reCAPTCHA لم يتم تمكين (الافتراضي).</li>
- <li>1 = اختبار reCAPTCHA يتم تمكين لجميع التوقيعات.</li>
- <li>2 = اختبار reCAPTCHA يتم تمكين فقط للتوقيعات ملحوظة.</li>
- <li>(سيتم التعامل مع أي قيمة أخرى بالطريقة نفسها ك 0).</li>
+ <li>متى يجب تقديم الCAPTCHA؟ ملاحظة: لا تحتاج الطلبات المدرجة في القائمة البيضاء أو التي تم التحقق منها والتي لم يتم حظرها إلى إكمال اختبار CAPTCHA.</li>
 </ul></div>
+
+&nbsp; <div dir="rtl" style="display:inline">قيمة</div> | &nbsp; <div dir="rtl">وصف</div>
+--:|--:
+1 | <div dir="rtl">فقط عندما يتم مسدود، ضمن حدود التواقيع، وليس محظور.</div>
+2 | <div dir="rtl">فقط عندما يتم مسدود، ويتم تمييزها خصيصًا للاستخدام، وضمن حدود التواقيع، وليس محظور.</div>
+3 | <div dir="rtl">فقط عندما ضمن حدود التواقيع، وليس محظور (بغض النظر عما إذا كان مسدود).</div>
+4 | <div dir="rtl">فقط عندما لا يتم مسدود.</div>
+5 | <div dir="rtl">فقط عندما لا يتم مسدود، أو عندما يتم تمييزها خصيصًا للاستخدام، وضمن حدود التواقيع، وليس محظور.</div>
+&nbsp; <div dir="rtl" style="display:inline">أي قيمة أخرى.</div> | &nbsp; <div dir="rtl">مطلقا!</div>
 
 ##### <div dir="rtl">"lockip"<br /></div>
 <div dir="rtl"><ul>
@@ -2201,4 +2209,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٧ أبريل ٢٠٢١ (٢٠٢١.٠٤.١٧).</div>
+<div dir="rtl">آخر تحديث: ٢٩ أبريل ٢٠٢١ (٢٠٢١.٠٤.٢٩).</div>

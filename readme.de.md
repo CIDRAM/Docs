@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ _Beispiele anhand des 20.08.2018 um 12:06_
 
 ##### "error_log_stages"
 - Eine Liste der Phasen in der Ausführungskette, in denen generierte Fehler protokolliert werden sollen.
-- *Standardeinstellung: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Standardeinstellung: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
@@ -589,7 +592,7 @@ Wert | Produziert | Beschreibung
 - Überschreiben "forbid_on_block" Wenn "infraction_limit" überschritten wird? Beim überschreiben: Blockierte Anfragen geben eine leere Seite zurück (Template-Dateien werden nicht verwendet). 200 = Nicht überschreiben [Standardeinstellung]. Andere Werte entsprechen den verfügbaren Werten für "forbid_on_block".
 
 ##### "log_banned_ips"
-- Sollen auch blockierte Anfragen von verbotenen IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
+- Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
 
 ##### "default_dns"
 - Eine durch Kommata getrennte Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. Standardeinstellung = "8.8.8.8,8.8.4.4" (Google DNS). ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
@@ -597,7 +600,7 @@ Wert | Produziert | Beschreibung
 *Siehe auch: [Was kann ich für "default_dns" verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
 
 ##### "search_engine_verification"
-- Versuchen Sie, Anfragen von Suchmaschinen zu überprüfen? Die Überprüfung von Suchmaschinen stellt sicher, dass sie nicht aufgrund der Überschreitung der Verletzungsgrenze gesperrt werden (das Verbot von Suchmaschinen von Ihrer Website hat in der Regel negative Auswirkungen auf Ihr Suchmaschinen-Ranking, SEO, etc. Wenn verifiziert, können Suchmaschinen wie gewohnt blockiert werden, werden aber nicht gesperrt. Wenn nicht verifiziert, ist es möglich, dass sie aufgrund der Überschreitung der Verletzungsgrenze gesperrt werden. Darüber hinaus bietet die Suchmaschinenverifizierung Schutz vor gefälschten Suchmaschinenanfragen und vor potenziell bösartigen Entitäten, die sich als Suchmaschinen ausgeben (solche Anfragen werden bei aktivierter Suchmaschinenverifizierung blockiert). True = Suchmaschinenverifizierung aktivieren [Standard]; False = Suchmaschinenverifizierung deaktivieren.
+- Versuchen Sie, Anfragen von Suchmaschinen zu überprüfen? Die Überprüfung von Suchmaschinen stellt sicher, dass sie nicht aufgrund der Überschreitung der Verletzungsgrenze verbannt werden (das Verbann von Suchmaschinen von Ihrer Website hat in der Regel negative Auswirkungen auf Ihr Suchmaschinen-Ranking, SEO, etc. Wenn verifiziert, können Suchmaschinen wie gewohnt blockiert werden, aber nicht verbannt werden. Wenn nicht verifiziert, ist es möglich, dass sie aufgrund der Überschreitung der Verletzungsgrenze verbannt werden. Darüber hinaus bietet die Suchmaschinenverifizierung Schutz vor gefälschten Suchmaschinenanfragen und vor potenziell bösartigen Entitäten, die sich als Suchmaschinen ausgeben (solche Anfragen werden bei aktivierter Suchmaschinenverifizierung blockiert). True = Suchmaschinenverifizierung aktivieren [Standard]; False = Suchmaschinenverifizierung deaktivieren.
 
 Derzeit unterstützt:
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
@@ -707,10 +710,10 @@ Konfiguration der Signaturen.
 - Eine Liste der Moduldateien welche nach der Prüfung der IPv4/IPv6 Signaturen geladen werden soll. Einzelne Moduldateien können durch kommas getrennt werden.
 
 ##### "default_tracktime"
-- Wie viele Sekunden sollen durch Module gesperrte IPs getrackt werden? Standartmäßig 604800 (1 Woche)
+- Wie viele Sekunden sollen durch Module blockierte IPs getrackt werden? Standardeinstellung = 604800 (1 Woche).
 
 ##### "infraction_limit"
-- Maximale Anzahl von Verstößen, die eine IP erleiden darf, bevor sie durch IP-Tracking verboten wird. Standard = 10.
+- Maximale Anzahl von Verstößen, die eine IP erleiden darf, bevor sie durch IP-Tracking verbannt wird. Standard = 10.
 
 ##### "track_mode"
 - Wann sollten Verstöße gezählt werden? False = Wenn IPs von Modulen blockiert werden. True = Wenn IPs aus irgendeinem anderen Grund blockiert werden. Standardeinstellung = False.
@@ -718,20 +721,21 @@ Konfiguration der Signaturen.
 #### "recaptcha" (Kategorie)
 Wenn Sie möchten, können sie blockierten Benutzern mithilfe des google reCAPTCHA eine Möglichkeit bieten, durch den Beweis dass diese ein Mensch sind, auf die Seite zuzugreifen.
 
-Aufgrund der Risiken im Zusammenhang mit der Bereitstellung eines Weges um die Blockierung zu umgehen, ist es nicht empfohlen diese Methode bereitzustellen. Es ist empfohlen, diese Methode nur zu aktivieren wenn Sie diese unbedingt benötigen. Dies könnten beispielsweise diese Situationen sein:
-- Bestimmte Kunden/Benutzer müssen Ihre Webseite auch aus blockierten Netzwerken erreichen können.
-- Einzelne Nutzer nutzen zum Schutz ihrer Daten einen VPN oder Proxy.
-
 *Hinweis: reCAPTCHA schützt nur gegen Maschinelle Aufrufe, nicht gegen Menschliche Angreifer.*
 
 Ein `site_key` und `secret_key` (für die Verwendung von reCAPTCHA erforderlich), kann unter [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/) erhalten werden.
 
 ##### "usemode"
-- Dies definiert wie CIDRAM das reCAPTCHA benutzen sollte.
-- 0 = reCAPTCHA ist komplett deaktiviert (Standardeinstellung).
-- 1 = reCAPTCHA ist für alle Signaturen aktiviert.
-- 2 = reCAPTCHA ist aktiviert, allerdings nur für Signaturen in Sektionen welche in den Signatur Dateien als reCAPTCHA-aktiviert markiert sind.
-- (Jeder andere Wert wird auf die gleiche Weise behandelt wie 0).
+- Wann sollte das CAPTCHA angeboten werden? Hinweis: Whitelist markierte oder verifizierte und nicht blockierte Anfragen müssen niemals ein CAPTCHA abschließen.
+
+Wert | Beschreibung
+--:|:--
+1 | Nur wenn blockiert, innerhalb des Signaturgrenze, und nicht verbannt.
+2 | Nur wenn blockiert, speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.
+3 | Nur wenn innerhalb des Signaturgrenze, und nicht verbannt (unabhängig ob blockiert).
+4 | Nur wenn nicht blockiert.
+5 | Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.
+Jeder andere Wert. | Noch nie!
 
 ##### "lockip"
 - Gibt an ob Hashes an bestimmte IPs gebunden werden sollen. False = Cookies und Hashes KÖNNEN über mehrere IPs verwendet werden (Standardeinstellung). True = Cookies und Hashes können NICHT über mehrere IPs verwendet werden (Cookies/Hashes sind an IPs gebunden).
@@ -1036,7 +1040,7 @@ In dem obigen Beispiel, wird `1.2.3.4/32` und `2.3.4.5/32` als "IPv4" markiert w
 
 Die gleiche Logik kann auch zum Trennen anderer Arten von Tags angewendet werden.
 
-Insbesondere, Sektion-Tags können beim Debuggen sehr nützlich sein, wenn Falsche-Positives auftreten, durch Bereitstellung einer Möglichkeit, die genaue Ursache des Problems zu finden, und können beim Filtern von Protokolleinträgen beim Anzeigen von Protokolldateien über die Frontend-Protokollseite sehr nützlich sein (Sektionsnamen sind über die Frontend-Protokollseite anklickbar und können als Filterkriterien verwendet werden). Wenn für bestimmte Signaturen Sektion-Tags weggelassen werden, verwendet CIDRAM beim Auslösen dieser Signaturen den Namen der Signaturdatei zusammen mit dem Typ der blockierten IP-Adresse (IPv4 oder IPv6) als Fallback, daher sind Sektion-Tags völlig optional. Sie können jedoch in einigen Fällen empfohlen werden, z.B. wenn die Signaturdateien vage benannt werden oder wenn es sonst schwierig ist, die Quelle der Signaturen eindeutig zu identifizieren, die eine gesperrte Anforderung verursachen.
+Insbesondere, Sektion-Tags können beim Debuggen sehr nützlich sein, wenn Falsche-Positives auftreten, durch Bereitstellung einer Möglichkeit, die genaue Ursache des Problems zu finden, und können beim Filtern von Protokolleinträgen beim Anzeigen von Protokolldateien über die Frontend-Protokollseite sehr nützlich sein (Sektionsnamen sind über die Frontend-Protokollseite anklickbar und können als Filterkriterien verwendet werden). Wenn für bestimmte Signaturen Sektion-Tags weggelassen werden, verwendet CIDRAM beim Auslösen dieser Signaturen den Namen der Signaturdatei zusammen mit dem Typ der blockierten IP-Adresse (IPv4 oder IPv6) als Fallback, daher sind Sektion-Tags völlig optional. Sie können jedoch in einigen Fällen empfohlen werden, z.B. wenn die Signaturdateien vage benannt werden oder wenn es sonst schwierig ist, die Quelle der Signaturen eindeutig zu identifizieren, die eine verbannte Anforderung verursachen.
 
 ##### 7.1.1 ABLAUF-TAGS
 
@@ -1800,12 +1804,12 @@ Ein protokolliertes Blockereignis enthält normalerweise die folgenden Informati
 - Eine ID-Nummer, die auf das Blockereignis verweist.
 - Die derzeit verwendete Version von CIDRAM.
 - Datum und Uhrzeit des Auftretens des Blockereignisses.
-- Die IP-Adresse der gesperrten Anfrage.
-- Der Hostname der IP-Adresse der gesperrten Anfrage (wenn verfügbar).
+- Die IP-Adresse der verbannten Anfrage.
+- Der Hostname der IP-Adresse der verbannten Anfrage (wenn verfügbar).
 - Die Anzahl der Signaturen, die von der Anfrage ausgelöst wurden.
 - Verweise auf die ausgelösten Signaturen.
 - Verweise auf die Gründe für das Blockereignis und einige grundlegende Debuginformationen.
-- Der Benutzeragent der gesperrten Anfrage (d.h., wie sich die anfragende Einheit gegenüber der Anfrage identifiziert hat).
+- Der Benutzeragent der verbannten Anfrage (d.h., wie sich die anfragende Einheit gegenüber der Anfrage identifiziert hat).
 - Eine Rekonstruktion der Identifizierung für die ursprünglich angeforderte Ressource.
 - Der reCAPTCHA-Status für die aktuelle Anfrage (falls relevant).
 
@@ -1950,4 +1954,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 17. April 2021 (2021.04.17).
+Zuletzt aktualisiert: 29. April 2021 (2021.04.29).

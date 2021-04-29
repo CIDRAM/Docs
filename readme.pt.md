@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Configuração geral por CIDRAM.
 
 ##### "error_log_stages"
 - Uma lista dos estágios na cadeia de execução que devem ter quaisquer erros gerados registrados.
-- *Padrão: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Padrão: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Truncar arquivos de log quando atingem um determinado tamanho? Valor é o tamanho máximo em B/KB/MB/GB/TB que um arquivo de log pode crescer antes de ser truncado. O valor padrão de 0KB desativa o truncamento (arquivos de log podem crescer indefinidamente). Nota: Aplica-se a arquivos de log individuais! O tamanho dos arquivos de log não é considerado coletivamente.
@@ -718,16 +721,21 @@ Configuração por assinaturas.
 #### "recaptcha" (Categoria)
 Opcionalmente, você pode fornecer aos usuários uma maneira de contornar a página de "Acesso Negado" por meio de completar uma instância de reCAPTCHA, se você quiser fazê-lo. Isso pode ajudar a mitigar alguns dos riscos associados com falsos positivos nas situações em que não estamos inteiramente certo se uma solicitação tem originado a partir de uma máquina ou um ser humano.
 
-Devido aos riscos associados com fornecimento de uma maneira para os usuários a ignorar a página de "Acesso Negado", geralmente, gostaria de aconselhar contra habilitação deste recurso a menos que você sente que isso é necessário para fazê-lo. Situações em que poderia ser necessário: Se seu site tem clientes/usuários que precisam ter acesso ao seu site, e se essa é algo que não pode ser comprometida em, mas se os clientes/usuários acontecer a ser conectando a partir de uma rede hostil que poderiam ser também carregando de tráfego indesejável, e bloqueando este tráfego indesejável também é algo que não pode ser comprometida em, nessas situações particulares sem vitória, o recurso reCAPTCHA poderia ser útil como um meio de permitir que os clientes/usuários desejáveis, enquanto mantendo fora o tráfego indesejável a partir da mesma rede. Dito isto, considerando que o propósito de um CAPTCHA é distinguir entre humanos e não-humanos, o recurso reCAPTCHA só iria ajudar nestas situações sem vitória se fosse para supor que este tráfego indesejável é não-humano (por exemplo, spambots, raspadores, ferramentas de hackers, tráfego automatizado), ao contrário de ser tráfego humano indesejável (tais como spammer humanos, hackers, et ai).
+*Nota: O reCAPTCHA protege apenas contra chamadas de máquina, não contra atacantes humanos.*
 
 Para obter uma "site key" e uma "secret key" (necessário para usando reCAPTCHA), por favor vá a: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### "usemode"
-- Define como CIDRAM deve usar reCAPTCHA.
-- 0 = reCAPTCHA é completamente desativado (padrão).
-- 1 = reCAPTCHA é ativado para todas as assinaturas.
-- 2 = reCAPTCHA é ativado apenas para assinaturas pertencentes a seções especialmente marcados dentro dos arquivos de assinatura.
-- (Qualquer outro valor será tratado da mesma maneira como 0).
+- Quando o CAPTCHA deve ser oferecido? Nota: Solicitações na lista branca ou verificadas e não bloqueadas nunca precisam completar um CAPTCHA.
+
+Valor | Descrição
+--:|:--
+1 | Somente quando bloqueado, dentro do limite de assinaturas, e não banido.
+2 | Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.
+3 | Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).
+4 | Somente quando não está bloqueado.
+5 | Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.
+Qualquer outro valor. | Nunca!
 
 ##### "lockip"
 - Especifica se hashes deve ser ligado para IPs específicos. False = Cookies e hashes PODE ser usado por vários IPs (padrão). True = Cookies e hashes NÃO pode ser usado por vários IPs (cookies/hashes não estão ligados para IPs).
@@ -1932,4 +1940,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 17 de Abril de 2021 (2021.04.17).
+Última Atualização: 29 de Abril de 2021 (2021.04.29).

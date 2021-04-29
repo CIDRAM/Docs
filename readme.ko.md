@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Configuration (v2)
 
 ##### "error_log_stages"
 - 실행 체인에서 생성 된 오류가 기록되어야하는 단계 목록.
-- *Default (기본값) : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default (기본값) : "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -718,16 +721,21 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 #### "recaptcha" (카테고리)
 사용자에게 reCAPTCHA 인스턴스를 완성하여 "액세스 거부"페이지를 우회하는 방법을 제공 할 수 있습니다. 이것은 잘못된 반응과 관련된 몇 가지 위험을 완화하는 데 도움이됩니다 (요청 기계 또는 인간에서 발생한 것인지 여부는 알 수없는 경우).
 
-"액세스 거부"페이지를 우회 할 위험성이 있습니다. 따라서 일반적으로 필요한 경우를 제외하고는이 기능을 사용하는 것은 권장하지 않습니다. 그것이 필요한 상황 : 사용자는 당신의 웹 사이트에 액세스 할 수 있습니다,하지만 그들은 적대적인 네트워크에서 연결하고 있습니다 그리고 이것은 협상 할 수 없습니다; 사용자는 액세스가 필요합니다 적대적인 네트워크를 거절 할 필요가있다 (무엇을해야합니까?!).. 이러한 상황에서는 reCAPTCHA 기능이 도움이 될 수 있습니다 : 사용자는 권한을 가질 수 있습니다; 불필요한 트래픽을 필터링 할 수 있습니다 (일반적으로). 인간 이외의 트래픽에 대해서만 유효합니다 (예를 들어, 스팸 로봇, 스크레이퍼, 해킹 툴, 자동 교통 등)하지만, 인간의 트래픽에별로 도움이되지 않는다 (예를 들어, 인간의 스패머, 해커, 기타).
+*노트 : reCAPTCHA는 사람의 공격자가 아닌, 시스템 호출에 대해서만 보호합니다.*
 
 "site key"와 "secret key"를 얻기 위해 (reCAPTCHA를 사용하는 데 필요한)이 링크를 클릭하십시오 : [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### "usemode"
-- reCAPTCHA를 CIDRAM에서 사용하는 방법.
-- 0 = reCAPTCHA는 비활성화되어 있습니다 (Default / 기본 설정).
-- 1 = reCAPTCHA는 모두를 위해 서명이 활성화되어 있습니다.
-- 2 = 특별히 표시된 섹션의 경우에만 reCAPTCHA가 활성화됩니다.
-- (그렇지 값은 0과 같습니다).
+- 보안 문자는 언제 제공해야 합니까? 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다.
+
+값 | 기술
+--:|:--
+1 | 차단되었을, 서명 한도 내고 금지되지 않으면 때만.
+2 | 차단되었을, 특별히 사용 표시, 서명 한도 내고 금지되지 않으면 때만.
+3 | 서명 한도 내고 금지되지 않으면 때만 (차단 여부와 관계없이).
+4 | 차단되지 때만.
+5 | 차단되지 않은 경우, 또는 특별히 사용 표시, 서명 한도 내고 금지되지 않으면 때만.
+다른 값. | 못!
 
 ##### "lockip"
 - reCAPTCHA를 IP로 잠금 하시겠습니까? False = 쿠키와 해시는 여러 IP에서 사용할 수 있습니다 (Default / 기본 설정). True = 쿠키와 해시는 여러 IP에서 사용할 수 없습니다 (쿠키와 해시는 IP에 잠겨 있습니다).
@@ -1925,4 +1933,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 4월 17일.
+최종 업데이트 : 2021년 4월 29일.

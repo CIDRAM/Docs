@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Configuration (v2)
 
 ##### "error_log_stages" （エラー・ログ・ステージズ）
 - 生成されたエラーをログに記録する必要がある実行チェーン内のステージのリスト。
-- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate" （トランケート）
 - ログ・ファイルが一定のサイズに達したら切り詰めますか？​値は、​ログ・ファイルが切り捨てられる前に大きくなる可能性があるＢ/ＫＢ/ＭＢ/ＧＢ/ＴＢ単位の最大サイズです。​デフォルト値の０ＫＢは切り捨てを無効にします （ログ・ファイルは無期限に拡張できます）。​注：個々のログ・ファイルに適用されます。​ログ・ファイルのサイズは一括して考慮されません。
@@ -718,16 +721,21 @@ _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュール
 #### "recaptcha" （リーキャプチャ、カテゴリ）
 ユーザーにとって、​reCAPTCHAインスタンスを完成させることによって、​「アクセス拒否」ページをバイパスする方法を提供することができます。​これは、​偽陽性に関連するいくつかのリスクを緩和するのに役立ちます （リクエストが機械または人間から、​生じたものであるかどうかは不明である場合）。
 
-「アクセス拒否」ページをバイパスすることに伴うリスクがあります。​このため、​一般的に、​必要な場合を除いて、​この機能を有効にすることはお勧めしません。​それが必要な状況：​ユーザーはあなたのウェブサイトにアクセスする必要があります、​しかし、​彼らは敵対的なネットワークから接続しています、​そして、​これは交渉できません；​ユーザーはアクセスが必要です、​敵対的なネットワークを拒絶する必要がある（何をすべきか？​！​）。​。​このような状況では、​reCAPTCHA機能が役立つ可能性があります：​ユーザーはアクセス権を持つことができます；​望ましくないトラフィックをフィルタリングすることができます（一般的に）。​人間以外のトラフィックに対しても有効です（例えば、​スパムロボット、​スクレーパー、​ハックツール、​自動交通、​など）、​しかし、​人間のトラフィックにあまり役に立たない（例えば、​人間のスパマー、​ハッカー、​その他）。
+*注意：reCAPTCHAは、人間の攻撃者からではなく、マシン呼び出しからのみ保護します。*
 
 「site key」および「secret key」を得るために（reCAPTCHAのを使用するために必要）、​このリンクをクリックしてください：​[https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### "usemode" （ユース・モード）
-- reCAPTCHAをCIDRAMで使用する方法。
-- ０ = reCAPTCHAは、​無効になっています（Default/デフォルルト）。
-- １ = reCAPTCHAは、​すべてのためにシグネチャが有効になっています。
-- ２ = 特別にマークされたセクションの場合のみ、​reCAPTCHAが有効になります。
-- （それ以外の値は０と等価です）。
+- キャプチャはいつ提供する必要がありますか？​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、CAPTCHAを完了する必要はありません。
+
+値 | 説明
+--:|:--
+1 | ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。
+2 | ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。
+3 | シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。
+4 | ブロックされていない場合のみ。
+5 | ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。
+その他の値。 | 決して！
 
 ##### "lockip" （ロック・ＩＰ）
 - reCAPTCHAをＩＰにロックしますか？​False = クッキーとハッシュは複数のＩＰで使用できます（Default/デフォルルト）。 True = クッキーとハッシュは複数のＩＰで使用できません（クッキーとハッシュはIPにロックされています）。
@@ -1927,4 +1935,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年４月１７日。
+最終アップデート：２０２１年４月２９日。

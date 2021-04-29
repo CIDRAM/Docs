@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Generale configurazione per CIDRAM.
 
 ##### "error_log_stages"
 - Un elenco delle fasi nella catena di esecuzione in cui dovrebbero essere registrati eventuali errori generati.
-- *Predefinito: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *Predefinito: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### "truncate"
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -718,16 +721,21 @@ Configurazione per firme.
 #### "recaptcha" (Categoria)
 Se vuoi, è possibile fornire agli utenti un modo per bypassare la pagina di "Accesso Negato" attraverso il completamento di un'istanza di reCAPTCHA. Questo può aiutare a mitigare alcuni dei rischi associati con i falsi positivi in quelle situazioni in cui non siamo del tutto sicuri se una richiesta ha avuto origine da una macchina o di un essere umano.
 
-A causa dei rischi connessi con fornendo un modo per gli utenti di bypassare la pagina di "Accesso Negato", generalmente, vorrei consigliare contro l'attivazione di questa funzione a meno che si sente che sia necessario farlo. Situazioni in cui sarebbe necessario: Se il vostro sito ha clienti/utenti che hanno bisogno di avere accesso al vostro sito web, e se questo è qualcosa che non può essere compromessa sulla, ma se quei clienti/utenti capita di essere di collegamento da una rete ostile che potenzialmente potrebbero essere anche trasportare il traffico indesiderato, e bloccando il traffico indesiderato è anche qualcosa che non può essere compromessa sulla, in quelle particolari situazioni senza possibilità di vittoria, la funzione di reCAPTCHA potrebbe rivelarsi utile come mezzo di permettere ai clienti/utenti desiderabili, mentre tenendo fuori il traffico indesiderato dalla stessa rete. Detto questo, però, dato che la destinazione di un CAPTCHA è quello di distinguere tra esseri umani e non-umani, la funzione di reCAPTCHA aiuterebbe solo in queste situazioni senza possibilità di vittoria se vogliamo supporre che questo traffico indesiderato è non-umano (per esempio, spambots, raschietti, incidere strumenti, traffico automatizzato), invece di essere il traffico umano indesiderato (come ad esempio gli spammer umani, hackers, e altri).
+*Nota: reCAPTCHA protegge solo dalle chiamate della macchina, non dagli aggressori umani.*
 
 Per ottenere una "site key" e una "secret key" (necessaria per l'utilizzo di reCAPTCHA), vai al: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### "usemode"
-- Definisce come CIDRAM dovrebbe usare reCAPTCHA.
-- 0 = reCAPTCHA è completamente disabilitata (predefinito).
-- 1 = reCAPTCHA è abilitato per tutte le firme.
-- 2 = reCAPTCHA è abilitata solo per le firme appartenenti alle sezioni appositamente contrassegnati come reCAPTCHA abilitati all'interno dei file di firma.
-- (Qualsiasi altro valore sarà trattata nello stesso modo come 0).
+- Quando dovrebbe essere offerto il CAPTCHA? Nota: Le richieste nella lista bianca o verificate e non bloccate non devono mai completare un CAPTCHA.
+
+Valore | Descrizione
+--:|:--
+1 | Solo quando bloccato, entro il limite di firme, e non vietato.
+2 | Solo quando bloccato, appositamente contrassegnato per l'uso, entro il limite di firme, e non vietato.
+3 | Solo quando entro il limite di firme, e non vietato (indipendentemente dal fatto che sia bloccato).
+4 | Solo quando non è bloccato.
+5 | Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.
+Qualsiasi altro valore. | Mai!
 
 ##### "lockip"
 - Specifica se hash dovrebbero essere obbligati a specifici indirizzi IP. False = I cookie e gli hash POSSONO essere utilizzati di più indirizzi IP (predefinito). True = I cookie e gli hash NON possono essere utilizzati di più indirizzi IP (cookie/hash sono obbligati a l'IP).
@@ -1932,4 +1940,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 17 Aprile 2021 (2021.04.17).
+Ultimo Aggiornamento: 29 Aprile 2021 (2021.04.29).

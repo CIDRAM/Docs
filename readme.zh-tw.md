@@ -159,6 +159,7 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           v2.yml
 │
 └───vault
+    │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
     │   components.dat
@@ -185,7 +186,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   recaptcha.php
     │   rules_as6939.php
     │   rules_specific.php
     │   template_custom.html
@@ -195,7 +195,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │
     ├───classes
     │   │   Aggregator.php
+    │   │   Captcha.php
     │   │   Constants.php
+    │   │   HCaptcha.php
+    │   │   ReCaptcha.php
     │   │   Reporter.php
     │   │
     │   └───Maikuolan
@@ -468,7 +471,7 @@ Configuration (v2)
 
 ##### 『error_log_stages』
 - 執行鏈中應該記錄錯誤的階段列表。
-- *標準： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,reCAPTCHA,Statistics,Webhooks,Output"*
+- *標準： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"*
 
 ##### 『truncate』
 - 截斷日誌文件當他們達到一定的大小嗎？​值是在B/KB/MB/GB/TB，​是日誌文件允許的最大大小直到它被截斷。​默認值為『0KB』將禁用截斷（日誌文件可以無限成長）。​注意：適用於單個日誌文件！​日誌文件大小不被算集體的。
@@ -718,16 +721,21 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 #### 『recaptcha』 （類別）
 如果您想，​您可以為用戶提供了一種方法繞過『拒絕訪問』頁面通過完成reCAPTCHA事件。​這有助於減輕一些風險假陽性有關，​對於當我們不能完全肯定一個請求是否源自機器或人。
 
-由於風險相關的提供的方法為終端用戶至繞過『拒絕訪問』頁面，​通常，​我建議不要啟用此功能除非您覺得這是必要的做。​情況由此有必要：如果您的網站有客戶/用戶該需要具有訪問權限您的網站，​而如果這一點該不能妥協的，​但如果這些客戶/用戶碰巧被來自敵對網絡連接該可能被攜帶不需要的流量，​並阻斷這種不需要的流量也不能妥協的，​在那些沒有雙贏的局面，​reCAPTCHA的功能可能是有用的作為一種手段允許需要的客戶/用戶，​而避開不需要的流量從同一網絡。​雖然說，​鑑於一個CAPTCHA的預期目的是人類和非人類區分，​reCAPTCHA的功能只會協助在這些沒有雙贏的局面如果我們假設該不需要的流量是非人（例如，​垃圾郵件機器人，​網站鏟運機，​黑客工具，​交通自動化），​而不是作為人的不需要的流量（如人的垃圾郵件機器人，​黑客，​等等）。
+*注意：reCAPTCHA僅能防範機器呼叫，而不能防範人為攻擊。*
 
 為了獲得『site key』和『secret key』（需要為了使用reCAPTCHA），​請訪問：[https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
 
 ##### 『usemode』
-- 它定義瞭如何CIDRAM應該使用reCAPTCHA。
-- 0 = reCAPTCHA是完全禁用【標準】。
-- 1 = reCAPTCHA是啟用為所有簽名。
-- 2 = reCAPTCHA是啟用只為簽名章節被特殊標記在簽名文件作為reCAPTCHA啟用。
-- （任何其他值將以同樣的方式被視作0）。
+- 何時應提供CAPTCHA嗎？​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成CAPTCHA。
+
+數字值 | 描述
+--:|:--
+1 | 僅當被阻止時，在簽名限制之內，並且不被禁止。
+2 | 僅當被阻止時，專門標明使用時，在簽名限制之內，並且不被禁止。
+3 | 僅在簽名限制之內，並且不被禁止（不管是否被阻止）。
+4 | 僅在不被阻止時。
+5 | 僅在不被阻止時，或專門標明使用時，在簽名限制之內，並且不被禁止。
+任何其他值。 | 不要！
 
 ##### 『lockip』
 - 指定是否哈希應鎖定到特定IP地址。​False（假）=Cookie和哈希可以由多個IP地址使用【標準】。​True（真）=Cookie和哈希不能由多個IP地址使用（cookies/哈希是鎖定到IP地址）。
@@ -1930,4 +1938,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年4月17日。
+最後更新：2021年4月29日。
