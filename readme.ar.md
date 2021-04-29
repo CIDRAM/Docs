@@ -483,7 +483,7 @@ Configuration (v2)
 ##### <div dir="rtl">"error_log_stages"<br /></div>
 <div dir="rtl"><ul>
  <li>قائمة المراحل في سلسلة التنفيذ التي بموجبها يجب تسجيل أي أخطاء تم إنشاؤها.</li>
- <li><em>افتراضي: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"</em></li>
+ <li><em>افتراضي: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>

@@ -483,7 +483,7 @@ Configuration (v2)
 ##### <div dir="rtl">"error_log_stages"<br /></div>
 <div dir="rtl"><ul>
  <li>عمل درآمد سلسلہ میں مراحل کی ایک فہرست جس میں پیدا ہونے والی غلطیوں میں کوئی لاگ ان ہونا چاہئے.</li>
- <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output"</em></li>
+ <li><em>پہلے سے طے شدہ: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"</em></li>
 </ul></div>
 
 ##### <div dir="rtl">"truncate"<br /></div>
