@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 ##### "track_mode"
 - 위반은 언제 계산해야합니까? False = IP가 모듈에 의해 차단되는 경우. True = 뭐든지 이유로 IP가 차단 된 경우. Default (기본값) = False.
 
-#### "recaptcha" (카테고리)
-사용자에게 reCAPTCHA 인스턴스를 완성하여 "액세스 거부"페이지를 우회하는 방법을 제공 할 수 있습니다. 이것은 잘못된 반응과 관련된 몇 가지 위험을 완화하는 데 도움이됩니다 (요청 기계 또는 인간에서 발생한 것인지 여부는 알 수없는 경우).
+#### "recaptcha" 및 "hcaptcha" (이 두 범주는 동일한 지침을 제공합니다).
+네가 원한다면, 사용자를 로봇과 구별하거나 차단된 경우 다시 액세스 할 수 있도록 사용자에게 CAPTCHA 챌린지를 제공 할 수 있습니다. 이는 거짓 양성 완화하고 원치 않는 자동화 된 트래픽을 줄이는 데 도움이 될 수 있습니다.
 
-*노트 : reCAPTCHA는 사람의 공격자가 아닌, 시스템 호출에 대해서만 보호합니다.*
+*노트 : CAPTCHA는 사람의 공격자가 아닌, 시스템 호출에 대해서만 보호합니다.*
 
-"site key"와 "secret key"를 얻기 위해 (reCAPTCHA를 사용하는 데 필요한)이 링크를 클릭하십시오 : [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+reCAPTCHA에 대한 "site key" 및 "secret key"는 여기에서 얻을 수 있습니다 :
+- https://developers.google.com/recaptcha/
+
+hCAPTCHA에 대한 "site key" 및 "secret key"는 여기에서 얻을 수 있습니다 :
+- https://www.hcaptcha.com/
 
 ##### "usemode"
 - 보안 문자는 언제 제공해야 합니까? 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다.
@@ -738,31 +755,31 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 다른 값. | 못!
 
 ##### "lockip"
-- reCAPTCHA를 IP로 잠금 하시겠습니까? False = 쿠키와 해시는 여러 IP에서 사용할 수 있습니다 (Default / 기본 설정). True = 쿠키와 해시는 여러 IP에서 사용할 수 없습니다 (쿠키와 해시는 IP에 잠겨 있습니다).
+- reCAPTCHA/hCAPTCHA를 IP로 잠금 하시겠습니까? False = 쿠키와 해시는 여러 IP에서 사용할 수 있습니다 (Default / 기본 설정). True = 쿠키와 해시는 여러 IP에서 사용할 수 없습니다 (쿠키와 해시는 IP에 잠겨 있습니다).
 - 주의 : "lockuser"이 "false"인 경우 "lockip"값은 무시됩니다. 이것은 사용자를 기억 메커니즘이 값에 의존하기 때문입니다.
 
 ##### "lockuser"
-- reCAPTCHA를 사용자에 잠금 하시겠습니까? False = reCAPTCHA 완료하여 책임있는 IP (참고 : 사용자가 아닌) 에서 발생 된 모든 요청에 대한 액세스가 허용됩니다; 쿠키와 해시는 사용되지 않습니다; IP 허용 목록이 사용됩니다. True = reCAPTCHA 완료하여 책임있는 사용자 (참고 : IP가 아닌) 에서 발생 된 모든 요청에 대한 액세스가 허용됩니다; 쿠키와 해시는 고객을 기억하기 위해 사용됩니다; IP 화이트리스트는 사용되지 않습니다 (Default / 기본 설정).
+- reCAPTCHA/hCAPTCHA를 사용자에 잠금 하시겠습니까? False = reCAPTCHA/hCAPTCHA 완료하여 책임있는 IP (참고 : 사용자가 아닌) 에서 발생 된 모든 요청에 대한 액세스가 허용됩니다; 쿠키와 해시는 사용되지 않습니다; IP 허용 목록이 사용됩니다. True = reCAPTCHA/hCAPTCHA 완료하여 책임있는 사용자 (참고 : IP가 아닌) 에서 발생 된 모든 요청에 대한 액세스가 허용됩니다; 쿠키와 해시는 고객을 기억하기 위해 사용됩니다; IP 화이트리스트는 사용되지 않습니다 (Default / 기본 설정).
 
 ##### "sitekey"
-- 이 값은 당신의 reCAPTCHA에 대한 "site key"에 대응하고있을 필요가 있습니다; 이것은 reCAPTCHA 대시 보드에서 찾을 수 있습니다.
+- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
 ##### "secret"
-- 이 값은 당신의 reCAPTCHA에 대한 "secret key"에 대응하고있을 필요가 있습니다; 이것은 reCAPTCHA 대시 보드에서 찾을 수 있습니다.
+- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
 ##### "expiry"
-- "lockuser"이 "true"때(Default / 기본 설정), reCAPTCHA 인스턴스의 합격/불합격 상태를 기억하고 미래의 페이지 요청 용 CIDRAM 해시를 포함한 표준 HTTP Cookie를 생성합니다; 이 해시는 동일한 해시를 포함한 내부 레코드에 해당합니다; 미래의 페이지 요청은 해당 해시를 사용하여 합격/불합격 상태를 인증합니다. "lockuser"이 "false"때 요청을 허용 할 필요가 있는지 여부를 판단하기 위해 IP 허용 목록이 사용됩니다; reCAPTCHA 인스턴스가 성공적으로 전달되면이 화이트리스트에 항목이 추가됩니다. 이러한 쿠키 해시 화이트리스트 항목은 몇 시간 유효해야하나요? Default (기본 설정) = 720 (1 개월).
+- 보안 문자 인스턴스를 기억 시간. Default (기본 설정) = 720 (1 개월).
 
 ##### "logfile"
-- reCAPTCHA 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- CAPTCHA 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 *유용한 팁 : 당신이 원하는 경우 로그 파일 이름에 날짜/시간 정보를 부가 할 수 있습니다 이름 이들을 포함하여 : 전체 연도에 대한 `{yyyy}`생략 된 년간 `{yy}`달 `{mm}`일 `{dd}`시간 `{hh}`.*
 
 *예 :*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "signature_limit"
-- reCAPTCHA 인스턴스가 제공 될 때 트리거 될 수있는 최대 서명 수입니다. Default (기본 설정) = 1. 특정 요청에 대해이 수가 초과되면, reCAPTCHA 인스턴스가 제공되지 않습니다.
+- 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
 
 ##### "api"
 - 어떤 API를 사용할 수 있습니까? V2 또는 Invisible?
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 reCAPTCHA에서 사용하기 위해 서명 섹션을 표시하는 방법.
+##### 7.2.1 reCAPTCHA 또는 hCAPTCHA에서 사용하기 위해 서명 섹션을 표시하는 방법.
 
-"usemode"가 0 또는 1의 경우 reCAPTCHA에서 사용하기 위해 서명 섹션을 표시 할 필요가 없습니다 (reCAPTCHA를 사용할지 여부는 이미 결정되어 있기 때문입니다).
-
-"usemode"가 2이면 reCAPTCHA에서 사용하기 위해 서명 섹션을 표시하려면 시그니처 섹션 YAML 마커 세그먼트를 포함해야합니다 (아래의 예를 참조하십시오).
+"usemode"가 2 또는 5 이면 reCAPTCHA 또는 hCAPTCHA에서 사용하기 위해 서명 섹션을 표시하려면 시그니처 섹션 YAML 마커 세그먼트를 포함해야합니다 (아래의 예를 참조하십시오).
 
 ```
-# 이 섹션에서는 reCAPTCHA를 사용합니다.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*주의 : 기본적으로, reCAPTCHA 인스턴스는 reCAPTCHA가 유효한 경우에만 사용자에게 제공됩니다 ("usemode"가 1 일 때, 또는 "usemode"가 2 "enabled"이 "true"인 경우), 그리고, 정확히 하나의 서명이 트리거 된 경우 (큰 수없는 작은 수 없다; 여러 서명이 트리거 된 경우 reCAPTCHA 인스턴스는 제공되지 않습니다). 그러나이 동작은 "signature_limit"지시문을 통해 수정할 수 있습니다.*
 
 #### 7.3 보조
 
@@ -1933,4 +1947,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 4월 29일.
+최종 업데이트 : 2021년 5월 4일.

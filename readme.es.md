@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ Configuración de firmas.
 ##### "track_mode"
 - ¿Cuándo se deben contar las infracciones? False = Cuando los IPs están bloqueados por módulos. True = Cuando los IP están bloqueados por cualquier razón. Predefinido = False.
 
-#### "recaptcha" (Categoría)
-Opcionalmente, puede proporcionar a los usuarios una manera de evitar la página "Acceso Denegado" a modo de completar una instancia de reCAPTCHA, si desea hacerlo. Esto puede ayudar a mitigar algunos de los riesgos asociados con los falsos positivos en aquellas situaciones por donde no estamos del todo seguro de si una solicitud ha originado a partir de una máquina o un ser humano.
+#### "recaptcha" y "hcaptcha" (estas dos categorías proporcionan las mismas directivas).
+Si lo desea, puede presentar a los usuarios un desafío CAPTCHA para distinguirlos de los bots o para permitirles recuperar el acceso en caso de ser bloqueados. Esto puede ayudar a mitigar los falsos positivos y reducir el tráfico automatizado no deseado.
 
-*Nota: reCAPTCHA solo protege contra llamadas de máquinas, no contra atacantes humanos.*
+*Nota: Los CAPTCHA solo protegen contra llamadas de máquinas, no contra atacantes humanos.*
 
-Para obtener una "site key" y una "secret key" (requerida para utilizar reCAPTCHA), por favor vaya a: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+Puede obtener una "site key" y una "secret key" para reCAPTCHA desde aquí:
+- https://developers.google.com/recaptcha/
+
+Puede obtener una "site key" y una "secret key" para hCAPTCHA desde aquí:
+- https://www.hcaptcha.com/
 
 ##### "usemode"
 - ¿Cuándo se debe ofrecer el CAPTCHA? Nota: Las solicitudes incluidas en la lista blanca o verificadas y no bloqueadas nunca necesitan completar un CAPTCHA.
@@ -742,27 +759,27 @@ Cualquier otro valor. | ¡Nunca!
 - Notar: El valor de "lockip" se ignora cuando "lockuser" es false, debido a que el mecanismo para recordar "usuarios" varía dependiendo de este valor.
 
 ##### "lockuser"
-- Especifica si la completar con éxito una instancia de reCAPTCHA debe estar ligados a usuarios específicos. False = La completar con éxito de una instancia de reCAPTCHA otorgará acceso a todas las solicitudes procedentes de la misma IP que es utilizado por el usuario que es completar la instancia de reCAPTCHA; Las cookies y los hashes no se utilizan; En lugar de ello, se utilizará una lista blanca IP. True = La completar con éxito de una instancia de reCAPTCHA sólo se autorizará el acceso al usuario completar la instancia de reCAPTCHA; Las cookies y los hashes se utilizan para recordar al usuario; Una lista blanca de IP no se utiliza (predefinida).
+- Especifica si la completar con éxito una instancia de reCAPTCHA/hCAPTCHA debe estar ligados a usuarios específicos. False = La completar con éxito de una instancia de reCAPTCHA/hCAPTCHA otorgará acceso a todas las solicitudes procedentes de la misma IP que es utilizado por el usuario que es completar la instancia de reCAPTCHA/hCAPTCHA; Las cookies y los hashes no se utilizan; En lugar de ello, se utilizará una lista blanca IP. True = La completar con éxito de una instancia de reCAPTCHA/hCAPTCHA sólo se autorizará el acceso al usuario completar la instancia de reCAPTCHA/hCAPTCHA; Las cookies y los hashes se utilizan para recordar al usuario; Una lista blanca de IP no se utiliza (predefinida).
 
 ##### "sitekey"
-- Este valor debe corresponder a la "site key" para su reCAPTCHA, que se puede encontrar en el panel de control de reCAPTCHA.
+- Este valor se puede encontrar en el panel de control de su servicio de CAPTCHA.
 
 ##### "secret"
-- Este valor debe corresponder a la "secret key" para su reCAPTCHA, que se puede encontrar en el panel de control de reCAPTCHA.
+- Este valor se puede encontrar en el panel de control de su servicio de CAPTCHA.
 
 ##### "expiry"
-- Cuando "lockuser" es true (predefinido), con el fin de recordar cuándo un usuario ha completado reCAPTCHA con éxito, para solicitudes de páginas en el futuro, CIDRAM genera una cookie HTTP estándar que contiene un hash que corresponde a un registro interno que contiene ese mismo hash; Solicitudes de páginas en el futuro utilizará estos hashes correspondientes para autenticar que un usuario ha previamente ya completado una instancia de reCAPTCHA. Cuando "lockuser" es false, una lista blanca de IP se utiliza para determinar si las solicitudes se debe permitir de la IP de solicitudes entrantes; Las entradas se añaden a esta lista blanca cuando la instancia de reCAPTCHA se completa con éxito. Por cuántas horas deben estas cookies, hashes y entradas de lista blanca siendo válido? Predefinido = 720 (1 mes).
+- Número de horas para recordar instancias de CAPTCHA. Predefinido = 720 (1 mes).
 
 ##### "logfile"
-- Registrar todos los intentos de reCAPTCHA? En caso afirmativo, especifique el nombre que se utilizará para el archivo de registro. Si no, dejar esta variable en blanco.
+- Registrar todos los intentos de CAPTCHA? En caso afirmativo, especifique el nombre que se utilizará para el archivo de registro. Si no, dejar esta variable en blanco.
 
 *Consejo útil: Si usted quieres, puede añadir información en fecha/hora a los nombres de los archivos de registro mediante la inclusión de éstos en el nombre: `{yyyy}` para el año completo, `{yy}` para el año abreviada, `{mm}` por mes, `{dd}` por día, `{hh}` para la hora.*
 
 *Ejemplos:*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "signature_limit"
-- Número máximo de firmas permitidas para se desencadena cuando se ofrece una instancia de reCAPTCHA. Predefinido = 1. Si se excede este número para cualquier solicitud particular, no se ofrecerá una instancia de reCAPTCHA.
+- Número máximo de firmas permitidas antes de que se retire la oferta de CAPTCHA. Predefinido = 1.
 
 ##### "api"
 - ¿Qué API usar? V2 o Invisible?
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 CÓMO "ESPECIALMENTE MARCAR" SECCIONES DE FIRMAS PARA USAR CON reCAPTCHA
+##### 7.2.1 CÓMO "ESPECIALMENTE MARCAR" SECCIONES DE FIRMAS PARA USAR CON reCAPTCHA\hCAPTCHA
 
-Cuando "usemode" es 0 o 1, secciones de firmas no tienen que ser "especialmente marcado" para usar con reCAPTCHA (ya sea porque ya va utilizar o no va utilizar reCAPTCHA, dependiendo de esta directiva).
-
-Cuando "usemode" es 2, para "especialmente marcar" secciones de firmas para usar con reCAPTCHA, una entrada está incluida en el segmento de YAML para que esa sección de firmas (vea el ejemplo siguiente).
+Cuando "usemode" es 2 o 5, para "especialmente marcar" secciones de firmas para usar con reCAPTCHA\hCAPTCHA, una entrada está incluida en el segmento de YAML para que esa sección de firmas (vea el ejemplo siguiente).
 
 ```
-# Esta sección utilizará reCAPTCHA.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*Nota: Como comportamiento predefinido, un instancia de reCAPTCHA sólo se ofrecerán al usuario si reCAPTCHA está activado (ya sea con "usemode" como 1, o "usemode" como 2 con "enabled" como true), y si exactamente UNA firma se desencadena (ni mas, ni menos; si múltiples firmas se desencadena, una instancia de reCAPTCHA NO se ofrecerán). Aunque, este comportamiento se puede modificar mediante la directiva "signature_limit".*
 
 #### 7.3 AUXILIAR
 
@@ -1944,4 +1958,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 29 de Abril de 2021 (2021.04.29).
+Última Actualización: 4 de Mayo de 2021 (2021.05.04).

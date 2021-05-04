@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ Konfigurasi untuk tanda tangan.
 ##### "track_mode"
 - Kapan sebaiknya pelanggaran dihitung? False = Ketika IP adalah diblokir oleh modul. True = Ketika IP adalah diblokir untuk alasan apapun. Default = False.
 
-#### "recaptcha" (Kategori)
-Jika Anda ingin, Anda dapat memberikan pengguna dengan cara untuk memotong halaman "Akses Ditolak" dengan cara menyelesaikan instansi reCAPTCHA. Ini dapat membantu untuk mengurangi beberapa risiko terkait dengan positif palsu dalam situasi dimana kita tidak sepenuhnya yakin apakah permintaan telah berasal dari mesin atau manusia.
+#### "recaptcha" dan "hcaptcha" (kedua kategori ini memberikan direktif-direktif yang sama).
+Jika mau, Anda dapat memberikan tantangan CAPTCHA kepada pengguna untuk membedakan mereka dari bot atau untuk memungkinkan mereka mendapatkan kembali akses jika diblokir. Ini dapat membantu mengurangi positif palsu dan mengurangi lalu lintas otomatis yang tidak diinginkan.
 
-*Catat: reCAPTCHA hanya melindungi dari panggilan mesin, bukan dari penyerang manusia.*
+*Catat: CAPTCHA hanya melindungi dari panggilan mesin, bukan dari penyerang manusia.*
 
-Untuk mendapatkan "site key" dan "secret key" (diperlukan untuk menggunakan reCAPTCHA), silahkan pergi ke: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+Anda bisa mendapatkan "site key" dan "secret key" untuk reCAPTCHA dari sini:
+- https://developers.google.com/recaptcha/
+
+Anda bisa mendapatkan "site key" dan "secret key" untuk hCAPTCHA dari sini:
+- https://www.hcaptcha.com/
 
 ##### "usemode"
 - Kapan CAPTCHA harus ditawarkan? Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA.
@@ -742,27 +759,27 @@ Nilai lainnya. | Tidak pernah!
 - Catat: Nilai "lockip" diabaikan ketika "lockuser" adalah false, karena mekanisme untuk mengingat "pengguna" berbeda tergantung pada nilai ini.
 
 ##### "lockuser"
-- Menyatakan apakah berhasil menyelesaikan instansi reCAPTCHA harus dikunci untuk pengguna spesifik. False = Berhasil menyelesaikan instansi reCAPTCHA akan memberikan akses ke semua permintaan yang berasal dari IP digunakan oleh pengguna yang menyelesaikan instansi reCAPTCHA; Cookie dan hash tidak digunakan; Sebaliknya, sebuah daftar putih IP akan digunakan. True = Berhasil menyelesaikan instansi reCAPTCHA hanya akan memberikan akses kepada pengguna yang menyelesaikan instansi reCAPTCHA; Cookie dan hash digunakan untuk mengingat pengguna; Daftar putih IP tidak digunakan (default).
+- Menyatakan apakah berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA harus dikunci untuk pengguna spesifik. False = Berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA akan memberikan akses ke semua permintaan yang berasal dari IP digunakan oleh pengguna yang menyelesaikan instansi reCAPTCHA/hCAPTCHA; Cookie dan hash tidak digunakan; Sebaliknya, sebuah daftar putih IP akan digunakan. True = Berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA hanya akan memberikan akses kepada pengguna yang menyelesaikan instansi reCAPTCHA/hCAPTCHA; Cookie dan hash digunakan untuk mengingat pengguna; Daftar putih IP tidak digunakan (default).
 
 ##### "sitekey"
-- Nilai ini harus sesuai dengan "site key" untuk reCAPTCHA Anda, yang dapat ditemukan dalam dashboard reCAPTCHA.
+- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
 
 ##### "secret"
-- Nilai ini harus sesuai dengan "secret key" untuk reCAPTCHA Anda, yang dapat ditemukan dalam dashboard reCAPTCHA.
+- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
 
 ##### "expiry"
-- Ketika "lockuser" digunakan (default), untuk mengingat ketika pengguna telah berhasil melewati instansi reCAPTCHA, untuk permintaan halaman dalam masa depan, CIDRAM akan menghasilkan cookie HTTP standar yang berisi hash yang sesuai dengan catatan internal yang yang berisi hash yang sama; permintaan halaman dalam masa depan akan menggunakan hash ini yang sesuai untuk mengotentikasi bahwa pengguna sebelumnya sudah berhasil melewati instansi reCAPTCHA. Ketika "lockuser" adalah false, sebuah daftar putih IP digunakan untuk menentukan apakah permintaan harus diizinkan dari IP dari permintaan masuk; Entri ditambahkan ke daftar putih ini ketika instansi reCAPTCHA adalah berhasil melewati. Untuk berapa jam harus cookie, hash dan entri daftar putih ini tetap berlaku? Default = 720 (1 bulan).
+- Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
 
 ##### "logfile"
-- Mencatat hasil semua instansi reCAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
+- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
 
 *Tip berguna: Jika Anda mau, Anda dapat menambahkan informasi tanggal/waktu untuk nama-nama file log Anda oleh termasuk ini dalam nama: `{yyyy}` untuk tahun lengkap, `{yy}` untuk tahun disingkat, `{mm}` untuk bulan, `{dd}` untuk hari, `{hh}` untuk jam.*
 
 *Contoh:*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "signature_limit"
-- Jumlah maksimum tanda tangan diizinkan untuk dipicu saat instansi reCAPTCHA harus ditawarkan. Default = 1. Jika nomor ini terlampaui untuk permintaan tertentu, instansi reCAPTCHA tidak akan ditawarkan.
+- Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
 
 ##### "api"
 - API mana yang akan digunakan? V2 atau Invisible?
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA
+##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA\hCAPTCHA
 
-Ketika "usemode" 0 atau 1, bagian tanda tangan tidak perlu "khusus ditandai" untuk digunakan dengan reCAPTCHA (karena mereka telah akan atau tidak akan menggunakan reCAPTCHA, tergantung pada pengaturan ini).
-
-Ketika "usemode" 2, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
+Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA\hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
 ```
-# Bagian ini akan menggunakan reCAPTCHA.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*Catat: Secara default, instansi reCAPTCHA akan HANYA ditawarkan kepada pengguna jika reCAPTCHA diaktifkan (dengan "usemode" sebagai 1, atau "usemode" sebagai 2 dengan "enabled" sebagai true), dan jika tepat SATU tanda tangan dipicu (tidak lebih, tidak kurang; jika kelipatan tanda tangan dipicu, instansi reCAPTCHA TIDAK akan ditawarkan). Namun, perilaku ini dapat dimodifikasi melalui direktif "signature_limit".*
 
 #### 7.3 INFORMASI TAMBAHAN
 
@@ -1937,4 +1951,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 29 April 2021 (2021.04.29).
+Terakhir Diperbarui: 4 Mei 2021 (2021.05.04).

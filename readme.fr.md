@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ Configuration pour les signatures.
 ##### « track_mode »
 - Quand faut-il compter les infractions ? False = Quand les adresses IP sont bloquées par des modules. True = Quand les adresses IP sont bloquées pour une raison quelconque. Défaut = False.
 
-#### « recaptcha » (Catégorie)
-Si vous souhaitez, vous pouvez fournir aux utilisateurs un moyen de contourner la page de « Accès Refusé » par voie de complétant d'une instance reCAPTCHA. Cela peut aider à atténuer certains risques associés à des faux positifs dans les situations où nous ne sommes pas tout à fait sûr si une requête est à l'origine d'une machine ou d'un être humain.
+#### « recaptcha » et « hcaptcha » (ces deux catégories fournissent les mêmes directives).
+Si vous le souhaitez, vous pouvez proposer aux utilisateurs un challenge CAPTCHA afin de les distinguer des bots ou de leur permettre de retrouver l'accès en cas de blocage. Cela peut aider à atténuer les faux positifs et à réduire le trafic automatisé indésirable.
 
-*Note : reCAPTCHA protège seulement contre les appels de la machine, pas contre les attaquants humains.*
+*Note : Les CAPTCHA protègent seulement contre les appels de la machine, pas contre les attaquants humains.*
 
-Pour obtenir une « site key » et une « secret key » (nécessaires à l'utilisation de reCAPTCHA), s'il vous plaît allez à : [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+Vous pouvez obtenir une « site key » et une « secret key » pour reCAPTCHA à partir d'ici :
+- https://developers.google.com/recaptcha/
+
+Vous pouvez obtenir une « site key » et une « secret key » pour hCAPTCHA à partir d'ici :
+- https://www.hcaptcha.com/
 
 ##### « usemode »
 - Quand faut-il offrir le CAPTCHA ? Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA.
@@ -742,27 +759,27 @@ Toute autre valeur. | Jamais !
 - Note : La valeur de « lockip » est ignoré lorsque « lockuser » est false, en raison de ce que le mécanisme pour se souvenir de « utilisateurs » varie en fonction de cette valeur.
 
 ##### « lockuser »
-- Indique si le succès d'une instance de reCAPTCHA devrait être verrouillé à des utilisateurs spécifiques. False = Le succès d'une instance de reCAPTCHA donnera accès à toutes les requêtes provenant de la même adresse IP que celui utilisé par l'utilisateur de remplir l'instance du reCAPTCHA ; Cookies et hachages ne sont pas utilisés ; Au lieu, une liste blanche IP sera utilisé. True = Le succès d'une instance de reCAPTCHA donnera accès seulement à l'utilisateur remplissant l'instance du reCAPTCHA ; Cookies et hachages sont utilisés pour mémoriser l'utilisateur ; Une liste blanche IP n'est pas utilisé (défaut).
+- Indique si le succès d'une instance de reCAPTCHA/hCAPTCHA devrait être verrouillé à des utilisateurs spécifiques. False = Le succès d'une instance de reCAPTCHA/hCAPTCHA donnera accès à toutes les requêtes provenant de la même adresse IP que celui utilisé par l'utilisateur de remplir l'instance du reCAPTCHA/hCAPTCHA ; Cookies et hachages ne sont pas utilisés ; Au lieu, une liste blanche IP sera utilisé. True = Le succès d'une instance de reCAPTCHA/hCAPTCHA donnera accès seulement à l'utilisateur remplissant l'instance du reCAPTCHA/hCAPTCHA ; Cookies et hachages sont utilisés pour mémoriser l'utilisateur ; Une liste blanche IP n'est pas utilisé (défaut).
 
 ##### « sitekey »
-- Cette valeur devrait correspondre à la « site key » pour votre reCAPTCHA, qui se trouve dans le tableau de bord reCAPTCHA.
+- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
 
 ##### « secret »
-- Cette valeur devrait correspondre à la « secret key » pour votre reCAPTCHA, qui se trouve dans le tableau de bord reCAPTCHA.
+- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
 
 ##### « expiry »
-- Quand « lockuser » est true (défaut), afin de se souvenir quand un utilisateur a passé avec succès une instance de reCAPTCHA, pour les futures requêtes de page, CIDRAM génère un cookie HTTP standard contenant un hachage qui correspond à un enregistrement interne contenant ce même hachage ; Les futures requêtes de page utilisera ces hachage correspondant pour authentifier qu'un utilisateur a préalablement déjà passé une instance de reCAPTCHA. Quand « lockuser » est false, une liste blanche IP est utilisé pour déterminer si les requêtes devraient être autorisée à partir de l'adresse IP de requêtes entrantes ; Les entrées sont ajoutées à cette liste blanche lorsque l'instance de reCAPTCHA est passé avec succès. Pour combien d'heures devrait ces cookies, hachages et les entrées du liste blanche rester valables ? Défaut = 720 (1 mois).
+- Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
 
 ##### « logfile »
-- Enregistrez toutes les tentatives du reCAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
+- Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
 *Conseil utile : Si vous souhaitez, vous pouvez ajouter l'information pour la date/l'heure à les noms de vos fichiers pour enregistrement par des incluant ceux-ci au nom : `{yyyy}` pour l'année complète, `{yy}` pour l'année abrégée, `{mm}` pour mois, `{dd}` pour le jour, `{hh}` pour l'heure.*
 
 *Exemples :*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### « signature_limit »
-- Nombre maximum de signatures autorisées à être déclenchées lorsqu'une instance de reCAPTCHA doit être présentée. Défaut = 1. Si ce nombre est dépassé pour une requête particulière, une instance de reCAPTCHA ne sera pas présentée.
+- Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
 
 ##### « api »
 - Quelle API utiliser ? V2 ou Invisible ?
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA
+##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA\hCAPTCHA
 
-Quand « usemode » est 0 ou 1, les sections de signature ne doivent pas être « spécialement marqué » pour l'utilisation avec reCAPTCHA (parce qu'ils déjà seront ou non utiliser reCAPTCHA, en fonction de ce paramètre).
-
-Quand « usemode » est 2, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
+Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA\hCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
 
 ```
-# Cette section utilisera reCAPTCHA.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*Note : Par défaut, une instance de reCAPTCHA sera SEULEMENT présenté à l'utilisateur si reCAPTCHA est activé (soit avec « usemode » comme 1, ou « usemode » comme 2 avec « enabled » comme true), et si exactement UNE signature a été déclenchée (ni plus ni moins ; si plusieurs signatures sont déclenchées, une instance de reCAPTCHA NE SERA PAS présenté). Toutefois, ce comportement peut être modifié via la directive « signature_limit ».*
 
 #### 7.3 AUXILIAIRE
 
@@ -1950,4 +1964,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 29 Avril 2021 (2021.04.29).
+Dernière mise à jour : 4 Mai 2021 (2021.05.04).

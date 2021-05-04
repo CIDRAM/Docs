@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ Cấu hình cho chữ ký.
 ##### "track_mode"
 - Khi vi phạm cần được tính? False = Khi IP bị chặn bởi các mô-đun. True = Khi IP bị chặn vì lý do bất kỳ. Mặc định = False.
 
-#### "recaptcha" (Thể loại)
-Nếu bạn muốn, bạn có thể cung cấp cho người dùng một cách để vượt qua các trang "Truy cập đã bị từ chối" bằng cách hoàn thành một reCAPTCHA. Điều này có thể giúp giảm thiểu một số rủi ro kết hợp với sai tích cực trong những tình huống theo đó chúng tôi không hoàn toàn chắc chắn liệu một yêu cầu bắt nguồn từ một máy tính hay một con người.
+#### "recaptcha" và "hcaptcha" (hai thể loại này cung cấp các chỉ thị giống nhau).
+Nếu bạn muốn, bạn có thể giới thiệu cho người dùng một thử thách CAPTCHA để phân biệt họ với bot hoặc cho phép họ lấy lại quyền truy cập trong trường hợp bị chặn. Điều này có thể giúp giảm sai tích cực và giảm lưu lượng truy cập tự động không mong muốn.
 
-*Lưu ý: reCAPTCHA chỉ bảo vệ chống lại các cuộc gọi của máy, không chống lại những kẻ tấn công con người.*
+*Lưu ý: CAPTCHA chỉ bảo vệ chống lại các cuộc gọi của máy, không chống lại những kẻ tấn công con người.*
 
-Để có được một "site key" và một "secret key" (cần thiết để sử dụng reCAPTCHA), xin truy cập vào: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+Bạn có thể lấy "site key" và "secret key" cho reCAPTCHA từ đây:
+- https://developers.google.com/recaptcha/
+
+Bạn có thể lấy "site key" và "secret key" cho hCAPTCHA từ đây:
+- https://www.hcaptcha.com/
 
 ##### "usemode"
 - Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA.
@@ -742,27 +759,27 @@ Bất kỳ giá trị nào khác. | Không bao giờ!
 - Chú thích: Giá trị "lockip" được bỏ qua khi "lockuser" là false, bởi vì các cơ chế để nhớ "người dùng" khác nhau ơ tùy thuộc vào giá trị này.
 
 ##### "lockuser"
-- Chỉ định liệu thành công hoàn thành của reCAPTCHA nên được khóa trên người dùng cụ thể. False = Thành công hoàn thành của reCAPTCHA sẽ cấp quyền truy cập cho tất cả các yêu cầu có nguồn gốc từ cùng một IP như được sử dụng bởi người dùng mà hoàn thành reCAPTCHA; Cookie và băm/hash không được sử dụng; Thay vào đó, một danh sách trắng IP sẽ được sử dụng. True = Thành công hoàn thành của reCAPTCHA sẽ chỉ cấp quyền truy cập cho người dùng mà hoàn thành reCAPTCHA; Cookie và băm/hash được sử dụng để nhớ người dùng; Một danh sách trắng IP sẽ không được sử dụng (mặc định).
+- Chỉ định liệu thành công hoàn thành của reCAPTCHA/hCAPTCHA nên được khóa trên người dùng cụ thể. False = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ cấp quyền truy cập cho tất cả các yêu cầu có nguồn gốc từ cùng một IP như được sử dụng bởi người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash không được sử dụng; Thay vào đó, một danh sách trắng IP sẽ được sử dụng. True = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ chỉ cấp quyền truy cập cho người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash được sử dụng để nhớ người dùng; Một danh sách trắng IP sẽ không được sử dụng (mặc định).
 
 ##### "sitekey"
-- Giá trị này nên tương ứng với "site key" cho reCAPTCHA của bạn, tìm thấy trong bảng điều khiển của reCAPTCHA.
+- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
 
 ##### "secret"
-- Giá trị này nên tương ứng với "secret key" cho reCAPTCHA của bạn, tìm thấy trong bảng điều khiển của reCAPTCHA.
+- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
 
 ##### "expiry"
-- Khi "lockuser" là true (mặc định), để nhớ khi một người dùng hoàn thành reCAPTCHA, cho yêu cầu trang tương lai, CIDRAM tạo ra một cookie chuẩn chứa một băm/hash tương ứng với một bản ghi nội chứa cùng băm/hash; Yêu cầu trang tương lai sẽ sử dụng các tương ứng giá trị băm/hash để xác thực mà người dùng đã hoàn thành reCAPTCHA. Khi "lockuser" là false, một danh sách trắng IP được sử dụng để xác định liệu các yêu cầu nên được chấp nhận từ các IP của các yêu; Mục được thêm vào danh sách trắng này khi reCAPTCHA được hoàn thành. Đối với bao nhiêu giờ nên các cookie, băm/hash và mục danh sách trắng vẫn còn hợp lệ? Mặc định = 720 (1 tháng).
+- Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
 
 ##### "logfile"
-- Đăng nhập tất cả các nỗ lực cho reCAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
+- Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
 *Mẹo hữu ích: Nếu bạn muốn, bạn có thể thêm thông tin ngày/giờ trong tên các tập tin ghi của bạn bằng cách bao gồm những trong tên: `{yyyy}` cho năm đầy, `{yy}` cho năm viết tắt, `{mm}` cho tháng, `{dd}` cho ngày, `{hh}` cho giờ.*
 
 *Các ví dụ:*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "signature_limit"
-- Số chữ ký tối đa cho phép được kích hoạt khi một cá thể reCAPTCHA được cung cấp. Mặc định = 1. Nếu số này vượt quá cho bất kỳ yêu cầu cụ thể nào, một cá thể reCAPTCHA sẽ không được cung cấp.
+- Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
 
 ##### "api"
 - API nào để sử dụng? V2 hoặc Invisible?
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA
+##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA\hCAPTCHA
 
-Khi "usemode" là 0 hay 1, phần chữ ký không cần phải được "đặc biệt đánh dấu" để sử dụng với reCAPTCHA (bởi vì họ đã sẽ hoặc sẽ không sử dụng reCAPTCHA, tùy thuộc vào tùy chọn này).
-
-Khi "usemode" là 2, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
+Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA\hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
 ```
-# Phần này sẽ sử dụng reCAPTCHA.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*Lưu ý: Theo mặc định, một trường hợp reCAPTCHA sẽ chỉ được cung cấp cho người dùng nếu reCAPTCHA được kích hoạt (với "usemode" như 1, hay "usemode" như 2 với "enabled" như true), và nếu chính xác MỘT chữ ký đã được kích hoạt (không nhiều hơn, không ít hơn; nếu nhiều chữ ký được kích hoạt, một trường hợp reCAPTCHA sẽ KHÔNG được cung cấp). Tuy nhiên, hành vi này có thể được sửa đổi thông qua chỉ thị "signature_limit".*
 
 #### 7.3 PHỤ TRỢ
 
@@ -1934,4 +1948,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.04.29.
+Lần cuối cập nhật: 2021.05.04.

@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -728,12 +741,16 @@ Signatures configuration.
 ##### "track_mode"
 - When should infractions be counted? False = When IPs are blocked by modules. True = When IPs are blocked for any reason. Default = False.
 
-#### "recaptcha" (Category)
-Optionally, you can provide users with a way to bypass the "Access Denied" page by way of completing a reCAPTCHA instance, if you want to do so. This can help to mitigate some of the risks associated with false positives in those situations where we're not entirely sure whether a request has originated from a machine or a human.
+#### "recaptcha" and "hcaptcha" (these two categories provide the same directives).
+If you want, you can present users with a CAPTCHA challenge in order to distinguish them from bots or to allow them to regain access in the event of being blocked. This can help mitigate false positives and reduce unwanted automated traffic.
 
-*Note: reCAPTCHA only protects against machine calls, not against human attackers.*
+*Note: CAPTCHAs only protect against machine calls, not against human attackers.*
 
-To obtain a "site key" and a "secret key" (required for using reCAPTCHA), please go to: [https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+You can obtain a "site key" and a "secret key" for reCAPTCHA from here:
+- https://developers.google.com/recaptcha/
+
+You can obtain a "site key" and a "secret key" for hCAPTCHA from here:
+- https://www.hcaptcha.com/
 
 ##### "usemode"
 - When should the CAPTCHA be offered? Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA.
@@ -752,27 +769,27 @@ Any other value. | Never!
 - Note: "lockip" value is ignored when "lockuser" is false, due to that the mechanism for remembering "users" differs depending on this value.
 
 ##### "lockuser"
-- Specifies whether successful completion of a reCAPTCHA instance should be locked to specific users. False = Successful completion of a reCAPTCHA instance will grant access to all requests originating from the same IP as that used by the user completing the reCAPTCHA instance; Cookies and hashes aren't used; Instead, an IP whitelist will be used. True = Successful completion of a reCAPTCHA instance will only grant access to the user completing the reCAPTCHA instance; Cookies and hashes are used to remember the user; An IP whitelist is not used (default).
+- Specifies whether successful completion of a reCAPTCHA/hCAPTCHA instance should be locked to specific users. False = Successful completion of a reCAPTCHA/hCAPTCHA instance will grant access to all requests originating from the same IP as that used by the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes aren't used; Instead, an IP whitelist will be used. True = Successful completion of a reCAPTCHA/hCAPTCHA instance will only grant access to the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes are used to remember the user; An IP whitelist is not used (default).
 
 ##### "sitekey"
-- This value should correspond to the "site key" for your reCAPTCHA, which can be found within the reCAPTCHA dashboard.
+- This value can be found in the dashboard for your CAPTCHA service.
 
 ##### "secret"
-- This value should correspond to the "secret key" for your reCAPTCHA, which can be found within the reCAPTCHA dashboard.
+- This value can be found in the dashboard for your CAPTCHA service.
 
 ##### "expiry"
-- When "lockuser" is true (default), in order to remember when a user has successfully passed a reCAPTCHA instance, for future page requests, CIDRAM generates a standard HTTP cookie containing a hash which corresponds to an internal record containing that same hash; Future page requests will use these corresponding hashes to authenticate that a user has previously already passed a reCAPTCHA instance. When "lockuser" is false, an IP whitelist is used to determine whether requests should be permitted from the IP of inbound requests; Entries are added to this whitelist when the reCAPTCHA instance is successfully passed. For how many hours should these cookies, hashes and whitelist entries remain valid? Default = 720 (1 month).
+- Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
 
 ##### "logfile"
-- Log all reCAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
+- Log all CAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
 
 *Useful tip: If you want, you can append date/time information to the names of your logfiles by including these in the name: `{yyyy}` for complete year, `{yy}` for abbreviated year, `{mm}` for month, `{dd}` for day, `{hh}` for hour.*
 
 *Examples:*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### "signature_limit"
-- Maximum number of signatures allowed to be triggered when a reCAPTCHA instance is to be offered. Default = 1. If this number is exceeded for any particular request, a reCAPTCHA instance won't be offered.
+- Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
 
 ##### "api"
 - Which API to use? V2 or Invisible?
@@ -1183,23 +1200,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA
+##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA\hCAPTCHA
 
-When "usemode" is 0 or 1, signature sections don't need to be "specially marked" for use with reCAPTCHA (because they already either will or won't use reCAPTCHA, depending on this setting).
-
-When "usemode" is 2, to "specially mark" signature sections for use with reCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
+When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA\hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
 
 ```
-# This section will use reCAPTCHA.
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*Note: By default, a reCAPTCHA instance will ONLY be offered to the user if reCAPTCHA is enabled (either with "usemode" as 1, or "usemode" as 2 with "enabled" as true), and if exactly ONE signature has been triggered (no more, no less; if multiple signatures are triggered, a reCAPTCHA instance will NOT be offered). However, this behaviour can be modified via the "signature_limit" directive.*
 
 #### 7.3 AUXILIARY
 
@@ -1955,4 +1969,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 29 April 2021 (2021.04.29).
+Last Updated: 4 May 2021 (2021.05.04).

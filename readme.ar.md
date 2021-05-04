@@ -397,6 +397,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -841,12 +854,20 @@ Configuration (v2)
  <li>متى يجب أن تحسب المخالفات؟ زائفة/False = عندما IP تم حظره من قبل وحدات. صحيح/True = عندما IP يتم حظر لأي سبب من الأسباب. افتراضي = زائفة/False.</li>
 </ul></div>
 
-#### <div dir="rtl">"recaptcha" (التصنيف)<br /></div>
-<div dir="rtl">اختياريا، أنت يمكن أن توفر للمستخدمين طريقة لتجاوز "تم رفض الوصول!" الصفحة، عن طريق استكمال اختبار reCAPTCHA. هذا يمكن أن تساعد على التخفيف من بعض المخاطر المرتبطة مع إيجابية خاطئة في تلك الحالات حيث أننا لسنا متأكدين تماما ما إذا كان طلب قد نشأت من آلة أو الإنسان.<br /><br /></div>
+#### <div dir="rtl">"recaptcha" و "hcaptcha" (كلاهما يقدم نفس التوجيهات).<br /></div>
+<div dir="rtl">إذا كنت ترغب في ذلك، يمكنك تقديم اختبار CAPTCHA للمستخدمين لتمييزهم عن برامج الروبوت أو للسماح لهم باستعادة الوصول في حالة حظرهم. يمكن أن يساعد هذا في التخفيف من الإيجابيات الخاطئة وتقليل حركة المرور الآلية غير المرغوب فيها.<br /><br /></div>
 
-<div dir="rtl"><em>ملحوظة: reCAPTCHA يحمي فقط من مكالمات الآلة، وليس ضد المهاجمين البشريين.</em><br /><br /></div>
+<div dir="rtl"><em>ملحوظة: CAPTCHA يحمي فقط من مكالمات الآلة، وليس ضد المهاجمين البشريين.</em><br /><br /></div>
 
-<div dir="rtl">للحصول على "site key" و "secret key" (مطلوب لاستخدام اختبار reCAPTCHA)، الرجاء الذهاب إلى: <a href="https://developers.google.com/recaptcha/">https://developers.google.com/recaptcha/</a><br /><br /></div>
+<div dir="rtl">من أجل reCAPTCHA، للحصول على "site key" و "secret key"، الرجاء الذهاب إلى:<br /></div>
+<div dir="rtl"><ul>
+ <li><div dir="ltr">https://developers.google.com/recaptcha/</div></li>
+</ul></div>
+
+<div dir="rtl">من أجل hCAPTCHA، للحصول على "site key" و "secret key"، الرجاء الذهاب إلى:<br /></div>
+<div dir="rtl"><ul>
+ <li><div dir="ltr">https://www.hcaptcha.com/</div></li>
+</ul></div>
 
 ##### <div dir="rtl">"usemode"<br /></div>
 <div dir="rtl"><ul>
@@ -870,36 +891,36 @@ Configuration (v2)
 
 ##### <div dir="rtl">"lockuser"<br /></div>
 <div dir="rtl"><ul>
- <li>تحدد ما إذا كان اختبار reCAPTCHA يجب أن يكون مؤمنا لمستخدمين محددين. زائفة/False = الانتهاء من اختبار reCAPTCHA منح حق الوصول إلى كافة الطلبات من عنوان IP نفسه؛ لا تستخدم الكوكيز والتجزئة؛ بدلا من ذلك، سيتم استخدام قائمة بيضاء IP. صحيح/True = الانتهاء من اختبار reCAPTCHA منح حق الوصول فقط إلى المستخدم؛ تستخدم الكوكيز والتجزئة لتذكر المستخدم؛ لا يتم استخدام القائمة البيضاء IP (الافتراضي).</li>
+ <li>تحدد ما إذا كان اختبار reCAPTCHA/hCAPTCHA يجب أن يكون مؤمنا لمستخدمين محددين. زائفة/False = الانتهاء من اختبار reCAPTCHA/hCAPTCHA منح حق الوصول إلى كافة الطلبات من عنوان IP نفسه؛ لا تستخدم الكوكيز والتجزئة؛ بدلا من ذلك، سيتم استخدام قائمة بيضاء IP. صحيح/True = الانتهاء من اختبار reCAPTCHA/hCAPTCHA منح حق الوصول فقط إلى المستخدم؛ تستخدم الكوكيز والتجزئة لتذكر المستخدم؛ لا يتم استخدام القائمة البيضاء IP (الافتراضي).</li>
 </ul></div>
 
 ##### <div dir="rtl">"sitekey"<br /></div>
 <div dir="rtl"><ul>
- <li>يجب أن تتطابق هذه القيمة إلى "site key" لاختبار reCAPTCHA الخاص بك، التي يمكن العثور عليها داخل لوحة التحكم اختبار reCAPTCHA.</li>
+ <li>يمكن العثور على هذه القيمة في لوحة التحكم الخاصة بخدمة CAPTCHA.</li>
 </ul></div>
 
 ##### <div dir="rtl">"secret"<br /></div>
 <div dir="rtl"><ul>
- <li>يجب أن تتطابق هذه القيمة إلى "secret key" لاختبار reCAPTCHA الخاص بك، التي يمكن العثور عليها داخل لوحة التحكم اختبار reCAPTCHA.</li>
+ <li>يمكن العثور على هذه القيمة في لوحة التحكم الخاصة بخدمة CAPTCHA.</li>
 </ul></div>
 
 ##### <div dir="rtl">"expiry"<br /></div>
 <div dir="rtl"><ul>
- <li>عندما "lockuser" هو true (الافتراضي)، من أجل أن نتذكر عند اكتمال المستخدم اختبار reCAPTCHA، لطلبات الصفحة المستقبلية، CIDRAM سوف إنشاء ملف تعريف ارتباط HTTP القياسية التي تتضمن تجزئة، والتي تتطابق مع السجل الداخلي، والذي يحتوي على نفس التجزئة؛ سوف طلبات الصفحة في المستقبل استخدام هذه لمصادقة المستخدم. عندما "lockuser" هو false، تم استخدام القائمة البيضاء IP لتحديد ما إذا كان ينبغي السماح الطلبات؛ وأضاف إدخالات إلى هذا البيضاء عند اكتمال اختبار reCAPTCHA. عدد الساعات يجب أن تبقى هذه صالحة؟ الافتراضي = 720 (١ شهر).</li>
+ <li>عدد الساعات لنتذكر حالات اختبار CAPTCHA. الافتراضي = 720 (١ شهر).</li>
 </ul></div>
 
 ##### <div dir="rtl">"logfile"<br /></div>
 <div dir="rtl"><ul>
- <li>تسجيل جميع محاولات اختبار reCAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li>
+ <li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li>
 </ul></div>
 
 <div dir="rtl"><em>نصيحة مفيدة: إن أردت، يمكنك إلحاق تاريخ/المعلومات في الوقت إلى أسماء ملفات السجل من خلال تضمين هذه في اسم: "{yyyy}" لمدة عام كامل، "{yy}" لمدة عام يختصر، "{mm}" لمدة شهر، "{dd}" ليوم واحد، "{hh}" لمدة ساعة (راجع الأمثلة أدناه).</em><br /><br /></div>
 
-`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`
+`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`
 
 ##### <div dir="rtl">"signature_limit"<br /></div>
 <div dir="rtl"><ul>
- <li>الحد الأقصى لعدد التوقيعات المسموح بتشغيلها عند تقديم مثال reCAPTCHA. افتراضي = 1. إذا تم تجاوز هذا الرقم لأي طلب معين، لن يتم عرض مثال reCAPTCHA.</li>
+ <li>الحد الأقصى لعدد التوقيعات المسموح بها قبل سحب عرض CAPTCHA. افتراضي = 1.</li>
 </ul></div>
 
 ##### <div dir="rtl">"api"<br /></div>
@@ -1401,23 +1422,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">٧.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA<br /><br /></div>
+##### <div dir="rtl">٧.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA\hCAPTCHA<br /><br /></div>
 
-<div dir="rtl">عندما "usemode" هو 1 أو 0، أقسام التوقيع لا تحتاج إلى أن يرمز لاختبار reCAPTCHA (لأن هذا سوف يكون بالفعل تحديد).<br /><br /></div>
-
-<div dir="rtl">عندما "usemode" هو 2، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
+<div dir="rtl">عندما "usemode" هو 2 أو 5، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA\hCAPTCHA، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
 
 <pre dir="ltr">
-# <code dir="rtl">وسيكون هذا القسم استخدام اختبار reCAPTCHA.</code>
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 </pre>
-
-<div dir="rtl"><em>ملحوظة: وفقا الافتراضي، سيتم فقط عرض على اختبار reCAPTCHA إذا تم تمكين اختبار reCAPTCHA (مع "usemode" ك 1، أو "usemode" ك 2 مع "enabled" ك true)، و إذا بالضبط واحد يتم تشغيل توقيع (لا أكثر ولا أقل؛ إذا يتم تشغيلها توقيعات متعددة، لن يتم عرض على اختبار reCAPTCHA). ومع ذلك، يمكن تعديل هذا السلوك عن طريق التوجيه "signature_limit".</em><br /><br /></div>
 
 #### <div dir="rtl">٧.٣ معلومات اضافية<br /><br /></div>
 
@@ -2209,4 +2227,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٩ أبريل ٢٠٢١ (٢٠٢١.٠٤.٢٩).</div>
+<div dir="rtl">آخر تحديث: ٤ مايو ٢٠٢١ (٢٠٢١.٠٥.٠٤).</div>

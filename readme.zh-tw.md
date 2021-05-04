@@ -395,6 +395,19 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │
+├───hcaptcha
+│       usemode
+│       lockip
+│       lockuser
+│       sitekey
+│       secret
+│       expiry
+│       logfile
+│       signature_limit
+│       api
+│       show_cookie_warning
+│       show_api_message
+│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
@@ -718,12 +731,16 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 ##### 『track_mode』
 - 何時應該記錄違規？​False（假）=當IP被模塊阻止時。​True（真）=當IP由於任何原因阻止時。​默認 = False。
 
-#### 『recaptcha』 （類別）
-如果您想，​您可以為用戶提供了一種方法繞過『拒絕訪問』頁面通過完成reCAPTCHA事件。​這有助於減輕一些風險假陽性有關，​對於當我們不能完全肯定一個請求是否源自機器或人。
+#### 『recaptcha』和『hcaptcha』 （這兩個類別提供相同的指令）。
+如果您想，您可以向用戶提出CAPTCHA挑戰，以他們與網絡機器人分開，或在被阻止的情況下允許他們重新獲得訪問權限。​這可以幫助減少假陽性並減少不必要的自動流量。
 
-*注意：reCAPTCHA僅能防範機器呼叫，而不能防範人為攻擊。*
+*注意：CAPTCHA僅能防範機器呼叫，而不能防範人為攻擊。*
 
-為了獲得『site key』和『secret key』（需要為了使用reCAPTCHA），​請訪問：[https://developers.google.com/recaptcha/](https://developers.google.com/recaptcha/)
+您可以從此處獲得reCAPTCHA的『site key』和『secret key』：
+- https://developers.google.com/recaptcha/
+
+您可以從此處獲得hCAPTCHA的『site key』和『secret key』：
+- https://www.hcaptcha.com/
 
 ##### 『usemode』
 - 何時應提供CAPTCHA嗎？​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成CAPTCHA。
@@ -742,27 +759,27 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 - 注意：『lockip』值被忽略當『lockuser』是`false`（假），​由於該機制為記憶的『用戶』可以根據這個值的變化。
 
 ##### 『lockuser』
-- 指定是否一個reCAPTCHA成功完成應鎖定到特定用戶。​False（假）=一個reCAPTCHA成功完成將授予訪問為所有請求該來自同IP作為由用戶使用當完成的reCAPTCHA；​Cookie和哈希不被使用；代替，​一個IP白名單將被用於。​True（真）=一個reCAPTCHA成功完成只會授予訪問為用戶該完成了reCAPTCHA；​Cookie和哈希是用於記住用戶；一個IP白名單不被使用【標準】。
+- 指定是否一個reCAPTCHA/hCAPTCHA成功完成應鎖定到特定用戶。​False（假）=一個reCAPTCHA/hCAPTCHA成功完成將授予訪問為所有請求該來自同IP作為由用戶使用當完成的reCAPTCHA/hCAPTCHA；​Cookie和哈希不被使用；代替，​一個IP白名單將被用於。​True（真）=一個reCAPTCHA/hCAPTCHA成功完成只會授予訪問為用戶該完成了reCAPTCHA/hCAPTCHA；​Cookie和哈希是用於記住用戶；一個IP白名單不被使用【標準】。
 
 ##### 『sitekey』
-- 該值應該對應於『site key』為您的reCAPTCHA，​該可以發現在reCAPTCHA的儀表板。
+- 可以在您的CAPTCHA服務的儀表板中找到該值。
 
 ##### 『secret』
-- 該值應該對應於『secret key』為您的reCAPTCHA，​該可以發現在reCAPTCHA的儀表板。
+- 可以在您的CAPTCHA服務的儀表板中找到該值。
 
 ##### 『expiry』
-- 當『lockuser』是true（真）【標準】，​為了記住當用戶已經成功完成reCAPTCHA，​為未來頁面請求，​CIDRAM生成一個標準的HTTP cookie含哈希對應於內部哈希記錄含有相同哈希；未來頁面請求將使用這些對應的哈希為了驗證該用戶已預先完成reCAPTCHA。​當『lockuser』是false（假），​一個IP白名單被用來確定是否請求應允許從請求的入站IP；條目添加到這個白名單當reCAPTCHA是成功完成。​這些cookies，​哈希，​和白名單條目應在多少小時內有效？​標準 = 720 （1個月）。
+- 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
 
 ##### 『logfile』
-- 記錄所有的reCAPTCHA的嘗試？​要做到這一點，​指定一個文件名到使用。​如果不，​離開這個變量為空白。
+- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個文件名到使用。​如果不，​離開這個變量為空白。
 
 *有用的建議：如果您想，​可以追加日期/時間信息及附加到您的日誌文件的名稱通過包括這些中的名稱：`{yyyy}` 為今年完整，​`{yy}` 為今年縮寫，​`{mm}` 為今月，​`{dd}` 為今日，​`{hh}` 為今小時。​*
 
 *例子：*
-- *`logfile='recaptcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
+- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
 
 ##### 『signature_limit』
-- 當提供reCAPTCHA實例時，允許觸發最大簽名數量。​標準 = 1。​如果這個數字超過了任何特定的請求，一個reCAPTCHA實例將不會被提供。
+- 撤銷CAPTCHA之前允許的最大簽名數。標準 = 1。
 
 ##### 『api』
 - 使用哪個API？V2或Invisible？
@@ -1173,23 +1190,20 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA
+##### 7.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA
 
-當『usemode』是『0』或『1』，​簽名章節不需要是『特別標記』簽名章節為使用的reCAPTCHA（因為他們也會或不會使用reCAPTCHA，​根據此設置）。
-
-當『usemode』是『2』，​為『特別標記』簽名章節為使用的reCAPTCHA，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
+當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
 
 ```
-# 本節將使用reCAPTCHA。
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: reCAPTCHA-Enabled
 ---
 recaptcha:
  enabled: true
+hcaptcha:
+ enabled: true
 ```
-
-*注意：默認，一個reCAPTCHA將僅提供給用戶如果reCAPTCHA是啟用（當『usemode』是『1』，​或『usemode』是『2』和『enabled』是『true』），​和如果只有一個簽名已觸發（不多不少；如果多個簽名被觸發，​一個reCAPTCHA將不提供）。​然而，這個行為可以通過『signature_limit』指令來修改。*
 
 #### 7.3 輔
 
@@ -1938,4 +1952,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年4月29日。
+最後更新：2021年5月4日。
