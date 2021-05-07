@@ -396,6 +396,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -409,6 +410,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -944,6 +946,21 @@ Configuration (v2)
 
 <div dir="rtl"><em>يشير هذا إلى أي رسائل إضافية غير ضرورية يتم عرضها عند حظر أحد الطلبات، بخلاف تحذير ملف تعريف الارتباط.</em><br /><br /></div>
 
+##### <div dir="rtl">"nonblocked_status_code"<br /></div>
+<div dir="rtl"><ul>
+ <li>ما هو رمز الحالة الذي يجب استخدامه عند عرض CAPTCHA للطلبات غير المحظورة؟</li>
+</ul></div>
+
+<div dir="rtl">القيم المدعومة حاليًا:<br /><br /></div>
+
+رمز حالة | رسالة الحالة
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
+
 #### <div dir="rtl">"legal" (التصنيف)<br /></div>
 <div dir="rtl">التكوين المتعلق بالمتطلبات القانونية.<br /><br /></div>
 
@@ -1422,14 +1439,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">٧.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA\hCAPTCHA<br /><br /></div>
+##### <div dir="rtl">٧.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA/hCAPTCHA<br /><br /></div>
 
-<div dir="rtl">عندما "usemode" هو 2 أو 5، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA\hCAPTCHA، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
+<div dir="rtl">عندما "usemode" هو 2 أو 5، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA/hCAPTCHA، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
 
 <pre dir="ltr">
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -2089,6 +2106,7 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 <div dir="rtl">توجيه التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
  <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">recaptcha</code></li>
+ <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">hcaptcha</code></li>
 </ul></div>
 
 ##### <div dir="rtl">١١.٣.٢ سجلات الواجهة الأمامية<br /><br /></div>
@@ -2227,4 +2245,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٤ مايو ٢٠٢١ (٢٠٢١.٠٥.٠٤).</div>
+<div dir="rtl">آخر تحديث: ٧ مايو ٢٠٢١ (٢٠٢١.٠٥.٠٧).</div>

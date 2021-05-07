@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 - 顯示API訊息嗎？​True（真）=顯示【標準】；False（假）=不顯示。
 
 *這是指在阻止請求時顯示的所有其他非必要消息，cookie警告的例外。*
+
+##### 『nonblocked_status_code』
+- 向未阻止的請求顯示CAPTCHA時應使用哪個狀態代碼？
+
+目前支持的值：
+
+狀態碼 | 狀態消息
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### 『legal』 （類別）
 有關法律義務的配置。
@@ -1197,7 +1212,7 @@ general:
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1832,6 +1847,7 @@ IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA狀�
 
 *負責reCAPTCHA日誌記錄的配置指令是：*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 前端日誌記錄
 
@@ -1917,6 +1933,8 @@ CIDRAM在其代碼庫中的兩個點設置cookie。​首先，當用戶成功�
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 市場營銷和廣告
 
@@ -1952,4 +1970,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年5月4日。
+最後更新：2021年5月7日。

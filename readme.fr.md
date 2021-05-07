@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ Toute autre valeur. | Jamais !
 - Afficher le message de l'API ? True = Oui [Défaut] ; False = Non.
 
 *Cela fait référence à tout message non essentiel supplémentaire affiché lorsqu'une requête est bloquée, autre que l'avertissement de cookie.*
+
+##### « nonblocked_status_code »
+- Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
+
+Valeurs actuellement supportées :
+
+Code d'état | Message d'état
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### « legal » (Catégorie)
 Configuration relative aux exigences légales.
@@ -1190,14 +1205,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA\hCAPTCHA
+##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCAPTCHA
 
-Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA\hCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
+Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1846,6 +1861,7 @@ IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État re
 
 *La directive de configuration responsable de la journalisation reCAPTCHA est :*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 JOURNALISATION FRONTALE
 
@@ -1931,6 +1947,8 @@ Dans les deux cas, les avertissements de cookie sont affichés en évidence (le 
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 COMMERCIALISATION ET PUBLICITÉ
 
@@ -1964,4 +1982,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 4 Mai 2021 (2021.05.04).
+Dernière mise à jour : 7 Mai 2021 (2021.05.07).

@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ hCAPTCHAの「site key」と「secret key」は、次の場所から取得でき
 - ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
 *これは、cookie（クッキー）の警告以外に、リクエストがブロックされたときに表示される追加の必須ではないメッセージを指します。*
+
+##### "nonblocked_status_code" （ノンブロクト・ステータス・コード）
+- ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
+
+現在サポートされている値：
+
+ステータス・コード | ステータス・メッセージ
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" （リーガル、カテゴリ）
 法律要件に関するコンフィギュレーション。
@@ -1197,7 +1212,7 @@ general:
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1830,6 +1845,7 @@ reCAPTCHAログ・エントリには、reCAPTCHAインスタンスを完了し�
 
 *reCAPTCHAロギングを担当するコンフィギュレーション・ディレクティブ：*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 フロントエンド・ロギング
 
@@ -1915,6 +1931,8 @@ CIDRAMは、コードベースの2つのポイントで[Cookie](https://ja.wikip
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 マーケティングやアドバタイジング
 
@@ -1949,4 +1967,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年５月４日。
+最終アップデート：２０２１年５月７日。

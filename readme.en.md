@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -806,6 +808,19 @@ Any other value. | Never!
 
 *This refers to any additional, non-essential messages displayed when a request is blocked, other than the cookie warning.*
 
+##### "nonblocked_status_code"
+- Which status code should be used when displaying CAPTCHAs to non-blocked requests?
+
+Currently supported values:
+
+Status code | Status message
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
+
 #### "legal" (Category)
 Configuration relating to legal requirements.
 
@@ -1200,14 +1215,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA\hCAPTCHA
+##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCAPTCHA
 
-When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA\hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
+When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1847,6 +1862,7 @@ IP Address: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA Sta
 
 *The configuration directive responsible for reCAPTCHA logging is:*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 FRONT-END LOGGING
 
@@ -1933,6 +1949,8 @@ In both cases, cookie warnings are displayed prominently (when applicable), warn
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 MARKETING AND ADVERTISING
 
@@ -1969,4 +1987,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 4 May 2021 (2021.05.04).
+Last Updated: 7 May 2021 (2021.05.07).

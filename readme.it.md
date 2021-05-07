@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ Qualsiasi altro valore. | Mai!
 - Mostra messaggio API? True = Sì [Predefinito]; False = No.
 
 *Si riferisce a qualsiasi messaggio non essenziale aggiuntivo, visualizzato quando una richiesta viene bloccata, diverso dall'avviso del cookie.*
+
+##### "nonblocked_status_code"
+- Quale codice di stato deve essere utilizzato quando si visualizzano i CAPTCHA per le richieste non bloccate?
+
+Valori attualmente supportati:
+
+Codice di stato | Messaggio di stato
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" (Categoria)
 Configurazione relativa ai requisiti legali.
@@ -1190,14 +1205,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COME "APPOSITAMENTE CONTRASSEGNARE" SEZIONI DI FIRMA PER L'UTILIZZO CON reCAPTCHA\hCAPTCHA
+##### 7.2.1 COME "APPOSITAMENTE CONTRASSEGNARE" SEZIONI DI FIRMA PER L'UTILIZZO CON reCAPTCHA/hCAPTCHA
 
-Quando "usemode" è 2 o 5, a "appositamente contrassegnare" sezioni di firma per l'utilizzo con reCAPTCHA\hCAPTCHA, una voce è incluso nel segmento di YAML per tale sezione di firme (vedere l'esempio cui seguito).
+Quando "usemode" è 2 o 5, a "appositamente contrassegnare" sezioni di firma per l'utilizzo con reCAPTCHA/hCAPTCHA, una voce è incluso nel segmento di YAML per tale sezione di firme (vedere l'esempio cui seguito).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1840,6 +1855,7 @@ Indirizzo IP: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - Stato reCAP
 
 *La direttiva di configurazione responsabile delle registri di reCAPTCHA è:*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 REGISTRI DEL FRONT-END
 
@@ -1921,6 +1937,8 @@ In entrambi i casi, gli avvertimenti sui cookie vengono visualizzati in modo pro
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 MARKETING E PUBBLICITÀ
 
@@ -1954,4 +1972,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 4 Maggio 2021 (2021.05.04).
+Ultimo Aggiornamento: 7 Maggio 2021 (2021.05.07).

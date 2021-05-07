@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ Bất kỳ giá trị nào khác. | Không bao giờ!
 - Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
 
 *Điều này đề cập đến bất kỳ thông báo bổ sung, không cần thiết được hiển thị khi một yêu cầu bị chặn, ngoại trừ cảnh báo cookie.*
+
+##### "nonblocked_status_code"
+- Mã trạng thái nào nên được sử dụng khi hiển thị CAPTCHA cho các yêu cầu không bị chặn?
+
+Giá trị hiện được hỗ trợ:
+
+Mã trạng thái | Thông thái trạng thái
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" (Thể loại)
 Cấu hình mà liên quan đến các nghĩa vụ hợp pháp.
@@ -1190,14 +1205,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA\hCAPTCHA
+##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCAPTCHA
 
-Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA\hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
+Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1836,6 +1851,7 @@ Mục nhập nhật ký reCAPTCHA chứa địa chỉ IP của người dùng đ
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký reCAPTCHA là:*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 NHẬT KÝ FRONT-END
 
@@ -1917,6 +1933,8 @@ Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi b
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 TIẾP THỊ VÀ QUẢNG CÁO
 
@@ -1948,4 +1966,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.05.04.
+Lần cuối cập nhật: 2021.05.07.

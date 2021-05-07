@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ Nilai lainnya. | Tidak pernah!
 - Tampilkan pesan API? True = Ya [Default]; False = Tidak.
 
 *Ini mengacu pada pesan tambahan yang tidak penting yang ditampilkan saat permintaan diblokir, kecuali untuk peringatan cookie.*
+
+##### "nonblocked_status_code"
+- Kode status mana yang harus digunakan saat menampilkan CAPTCHA ke permintaan yang tidak diblokir?
+
+Nilai yang didukung saat ini:
+
+Kode status | Pesan status
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" (Kategori)
 Konfigurasi yang berkaitan dengan persyaratan hukum.
@@ -1190,14 +1205,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA\hCAPTCHA
+##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCAPTCHA
 
-Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA\hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
+Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1839,6 +1854,7 @@ Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status reC
 
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan reCAPTCHA adalah:*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 LOG BAGIAN DEPAN
 
@@ -1920,6 +1936,8 @@ Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), me
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 PEMASARAN DAN PERIKLANAN
 
@@ -1951,4 +1969,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 4 Mei 2021 (2021.05.04).
+Terakhir Diperbarui: 7 Mei 2021 (2021.05.07).

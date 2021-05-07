@@ -396,6 +396,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -409,6 +410,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -944,6 +946,21 @@ Configuration (v2)
 
 <div dir="rtl"><em>اس سے مراد کسی بھی اضافی، غیر ضروری پیغامات کا حوالہ دیا جاتا ہے جب کوکی انتباہ کے علاوہ کوئی درخواست مسدود ہوجاتی ہے.</em><br /><br /></div>
 
+##### <div dir="rtl">"nonblocked_status_code"<br /></div>
+<div dir="rtl"><ul>
+ <li>غیر مسدود درخواستوں پر CAPTCHA کی نمائش کرتے وقت کون سا اسٹیٹس کوڈ استعمال کرنا چاہئے؟</li>
+</ul></div>
+
+<div dir="rtl">فی الحال تعاون شدہ اقدار:<br /><br /></div>
+
+حیثیت کا کوڈ | حیثیت کا پیغام
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
+
 #### <div dir="rtl">"legal" (قسم)<br /></div>
 <div dir="rtl">قانونی ضروریات سے متعلق ترتیب.<br /><br /></div>
 
@@ -1422,14 +1439,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">۷.۲.۱ کس طرح "خاص نشان" reCAPTCHA\hCAPTCHA کے ساتھ استعمال کریں کے لئے دستخط قسموں<br /><br /></div>
+##### <div dir="rtl">۷.۲.۱ کس طرح "خاص نشان" reCAPTCHA/hCAPTCHA کے ساتھ استعمال کریں کے لئے دستخط قسموں<br /><br /></div>
 
-<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" reCAPTCHA\hCAPTCHA کے ساتھ استعمال کے لئے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لئے.<br /><br /></div>
+<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" reCAPTCHA/hCAPTCHA کے ساتھ استعمال کے لئے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لئے.<br /><br /></div>
 
 <pre dir="ltr">
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -2090,6 +2107,7 @@ IP پتہ: x.x.x.x - تاریخ وقت: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPT
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
  <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">recaptcha</code></li>
+ <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">hcaptcha</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۱۱.۳.۲ سامنے کے آخر لاگ<br /><br /></div>
@@ -2227,4 +2245,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۴ مئی ۲۰۲۱ (۲۰۲۱.۰۵.۰۴).</div>
+<div dir="rtl">آخری تازہ کاری: ۷ مئی ۲۰۲۱ (۲۰۲۱.۰۵.۰۷).</div>

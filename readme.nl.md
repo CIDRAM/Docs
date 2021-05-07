@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ Elke andere waarde. | Nooit!
 - API-bericht weergeven? True = Ja [Standaard]; False = Nee.
 
 *Dit verwijst naar alle aanvullende, niet-essentiële berichten die worden weergegeven wanneer een verzoek wordt geblokkeerd, behalve de cookiewaarschuwing.*
+
+##### "nonblocked_status_code"
+- Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
+
+Momenteel ondersteunde waarden:
+
+Status code | Status bericht
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" (Category)
 Configuratie met betrekking tot wettelijke vereisten.
@@ -1190,14 +1205,14 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA\hCAPTCHA
+##### 7.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCAPTCHA
 
-Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA\hCAPTCHA, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
+Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA/hCAPTCHA, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1848,6 +1863,7 @@ IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA Stat
 
 *De configuratie richtlijn die verantwoordelijk is voor reCAPTCHA loggen is:*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 FRONTEND LOGGEN
 
@@ -1935,6 +1951,8 @@ In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het rel
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 MARKETING EN ADVERTEREN
 
@@ -1968,4 +1986,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 4 Mei 2021 (2021.05.04).
+Laatste Bijgewerkt: 7 Mei 2021 (2021.05.07).

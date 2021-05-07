@@ -394,6 +394,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───hcaptcha
 │       usemode
@@ -407,6 +408,7 @@ Configuration (v2)
 │       api
 │       show_cookie_warning
 │       show_api_message
+│       nonblocked_status_code
 │
 ├───legal
 │       pseudonymise_ip_addresses
@@ -795,6 +797,19 @@ hCAPTCHA에 대한 "site key" 및 "secret key"는 여기에서 얻을 수 있습
 - API 메시지를 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
 
 *이는 쿠키 경고 외에 요청이 차단될 때 표시되는 추가적이고 중요하지 않은 메시지를 나타냅니다.*
+
+##### "nonblocked_status_code"
+- 차단되지 않은 요청에 CAPTCHA를 표시 할 때 어떤 상태 코드를 사용해야합니까?
+
+현재 지원되는 값 :
+
+상태 코드 | 상태 메시지
+---|---
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
+`429` | `429 Too Many Requests`
+`451` | `Unavailable For Legal Reasons`
 
 #### "legal" (카테고리)
 법적 요구 사항과 관련된 구성.
@@ -1197,7 +1212,7 @@ general:
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
-Tag: reCAPTCHA-Enabled
+Tag: CAPTCHA Marked
 ---
 recaptcha:
  enabled: true
@@ -1830,6 +1845,7 @@ IP 주소 : x.x.x.x - 일·월·년·시간 : Day, dd Mon 20xx hh:ii:ss +0000 
 
 *reCAPTCHA 로깅을 담당하는 구성 지시문 :*
 - `recaptcha` -> `logfile`
+- `hcaptcha` -> `logfile`
 
 ##### 11.3.2 프론트 엔드 로깅
 
@@ -1915,6 +1931,8 @@ CIDRAM은 [쿠키](https://ko.wikipedia.org/wiki/HTTP_%EC%BF%A0%ED%82%A4)를 코
 - `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
+- `hcaptcha` -> `lockuser`
+- `hcaptcha` -> `api`
 
 #### 11.5 마케팅과 광고
 
@@ -1947,4 +1965,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 5월 4일.
+최종 업데이트 : 2021년 5월 7일.
