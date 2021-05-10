@@ -784,14 +784,24 @@ Elke andere waarde. | Nooit!
 - Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
 
 ##### "api"
-- Welke API gebruiken? V2 of invisible?
+- Welke API gebruiken?
 
-*Opmerking voor gebruikers in de Europese Unie: Wanneer CIDRAM is geconfigureerd om cookies te gebruiken (b.v., wanneer "lockuser" true/waar is), een cookie-waarschuwing wordt prominent op de pagina weergegeven volgens de vereisten van de [EU-cookiewetgeving](https://www.cookielaw.org/the-cookie-law/). Maar, bij het gebruik van de invisible API probeert CIDRAM automatisch de reCAPTCHA voor de gebruiker te voltooien, en wanneer dit lukt, kan dit ertoe leiden dat de pagina opnieuw wordt geladen en een cookie wordt gemaakt zonder dat de gebruiker voldoende tijd krijgt om de cookie-waarschuwing daadwerkelijk te zien. Als dit een juridisch risico voor u oplevert, is het misschien beter om de V2 API te gebruiken in plaats van de invisible API (de V2 API is niet geautomatiseerd en vereist dat de gebruiker de reCAPTCHA-uitdaging zelf voltooit, waardoor de mogelijkheid wordt geboden om de cookie-waarschuwing te zien).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Opmerking voor gebruikers in de Europese Unie: Wanneer CIDRAM is geconfigureerd om cookies te gebruiken (b.v., wanneer "lockuser" true/waar is), een cookie-waarschuwing wordt prominent op de pagina weergegeven volgens de vereisten van de [EU-cookiewetgeving](https://www.cookielaw.org/the-cookie-law/). Maar, bij het gebruik van de invisible API probeert CIDRAM automatisch de CAPTCHA voor de gebruiker te voltooien, en wanneer dit lukt, kan dit ertoe leiden dat de pagina opnieuw wordt geladen en een cookie wordt gemaakt zonder dat de gebruiker voldoende tijd krijgt om de cookie-waarschuwing daadwerkelijk te zien.*
 
 ##### "show_cookie_warning"
 - Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
 
-*Deze configuratierichtlijn is op verzoek toegevoegd voor gebruikers die de cookiewaarschuwing willen uitschakelen die meestal naast reCAPTCHA wordt weergegeven (b.v., om te helpen elke indicatie te verbergen dat CIDRAM wordt gebruikt). Ik adviseer ten sterkste echter dat de meeste gebruikers (met name die in de EU) deze ingeschakeld houden.*
+*Deze configuratierichtlijn is op verzoek toegevoegd voor gebruikers die de cookiewaarschuwing willen uitschakelen die meestal weergegeven naast CAPTCHA's (b.v., om te helpen elke indicatie te verbergen dat CIDRAM wordt gebruikt). Ik adviseer ten sterkste echter dat de meeste gebruikers (met name die in de EU) deze ingeschakeld houden.*
 
 ##### "show_api_message"
 - API-bericht weergeven? True = Ja [Standaard]; False = Nee.
@@ -1152,7 +1162,7 @@ Origin: BB
 
 ##### 7.2.0 YAML BASICS
 
-Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
+Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA/hCAPTCHA te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
 
 Het gebruik van YAML markup in de signatuurbestanden is volledig optioneel (d.w.z., u kan het gebruiken als u wenst te doen, maar u bent niet verplicht om dit te doen), en is in staat om de meeste (maar niet alle) configuratie richtlijnen hefboomeffect.
 
@@ -1774,11 +1784,9 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-CIDRAM ondersteunt optioneel [Google reCAPTCHA](https://www.google.com/recaptcha/), waardoor gebruikers de mogelijkheid hebben om de pagina "Toegang Geweigerd" te omzeilen door een reCAPTCHA-instantie te voltooien (meer informatie over deze functie wordt eerder in de documentatie beschreven, met name in de configuratiesectie). Google reCAPTCHA vereist API-sleutels om correct te kunnen werken, en is daarom standaard uitgeschakeld. Dit kan worden ingeschakeld door de vereiste API-sleutels in de pakketconfiguratie te definiëren. Indien ingeschakeld, vindt directe communicatie tussen de browser van de gebruiker en de reCAPTCHA-service plaats. Dit kan mogelijk inhouden dat informatie wordt doorgegeven zoals het IP-adres van de gebruiker, user agent, besturingssysteem, en andere details die beschikbaar zijn voor het verzoek. Het IP-adres van de gebruiker kan ook worden gedeeld in communicatie tussen CIDRAM en de reCAPTCHA-service bij het verifiëren van de geldigheid van een reCAPTCHA-instantie en het controleren of deze met succes is voltooid.
-
-*Relevante configuratie-opties: Alles vermeld onder de configuratiecategorie "recaptcha".*
+CIDRAM ondersteunt reCAPTCHA en hCAPTCHA. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1986,4 +1994,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 7 Mei 2021 (2021.05.07).
+Laatste Bijgewerkt: 10 Mei 2021 (2021.05.10).

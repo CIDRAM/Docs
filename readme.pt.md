@@ -784,14 +784,24 @@ Qualquer outro valor. | Nunca!
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
 
 ##### "api"
-- Qual API usar? V2 ou Invisible?
+- Qual API usar?
 
-*Nota para usuários na União Européia: Quando o CIDRAM está configurado para usar cookies (por exemplo, quando "lockuser" é true/verdadeiro), um aviso de cookie é exibido de forma proeminente na página de acordo com os requisitos da [legislação comunitária sobre cookies](https://www.cookielaw.org/the-cookie-law/). Mas, ao usar a API invisible, o CIDRAM tenta completar o reCAPTCHA para o usuário automaticamente, e quando bem-sucedido, isso pode resultar na recarga da página e criar um cookie sem que o usuário tenha dado tempo suficiente para realmente ver o aviso de cookie. Se isso representa um risco legal para você, talvez seja melhor usar a API V2 em vez da API invisible (a API V2 não é automatizada e exige que o usuário complete o desafio reCAPTCHA, proporcionando assim uma oportunidade para ver o aviso de cookie).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Nota para usuários na União Européia: Quando o CIDRAM está configurado para usar cookies (por exemplo, quando "lockuser" é true/verdadeiro), um aviso de cookie é exibido de forma proeminente na página de acordo com os requisitos da [legislação comunitária sobre cookies](https://www.cookielaw.org/the-cookie-law/). Mas, ao usar a API invisible, o CIDRAM tenta completar o CAPTCHA para o usuário automaticamente, e quando bem-sucedido, isso pode resultar na recarga da página e criar um cookie sem que o usuário tenha dado tempo suficiente para realmente ver o aviso de cookie.*
 
 ##### "show_cookie_warning"
 - Mostrar aviso de cookie? True = Sim [Padrão]; False = Não.
 
-*Esta diretiva de configuração foi adicionada por solicitação, para usuários que desejam desativar o aviso de cookie geralmente mostrado ao lado de reCAPTCHA (para ajudar, por exemplo, ocultar qualquer indicação de que o CIDRAM está sendo usado). Mas, aconselho vivamente que a maioria dos utilizadores (em especial os que residem na UE) o mantenham habilitado.*
+*Esta diretiva de configuração foi adicionada por solicitação, para usuários que desejam desativar o aviso de cookie geralmente mostrado ao lado de CAPTCHAs (para ajudar, por exemplo, ocultar qualquer indicação de que o CIDRAM está sendo usado). Mas, aconselho vivamente que a maioria dos utilizadores (em especial os que residem na UE) o mantenham ativado.*
 
 ##### "show_api_message"
 - Mostrar mensagem API? True = Sim [Padrão]; False = Não.
@@ -1152,7 +1162,7 @@ Origin: BB
 
 ##### 7.2.0 YAML BÁSICOS
 
-Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
+Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCAPTCHA; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
 
 Uso de marcação YAML nos arquivos de assinatura é totalmente opcional (isto é, você pode usá-lo se desejar fazê-lo, mas você não é obrigado a fazê-lo), e é capaz de alavancar mais (mas nem todos) das diretivas de configuração.
 
@@ -1752,7 +1762,7 @@ Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes d
 
 ##### 11.2.1 WEBFONTS
 
-Alguns temas personalizados, bem como a interface de usuário ("UI") padrão para o front-end do CIDRAM e a página "Acesso Negado", podem usar webfonts por motivos estéticos. Os webfonts são desabilitados por padrão, mas, quando habilitados, ocorre comunicação direta entre o navegador do usuário e o serviço que hospeda o webfonts. Isso pode envolver informações de comunicação, tal como o endereço IP do usuário, o agente do usuário, o sistema operacional, e outros detalhes disponíveis para a solicitação. A maioria desses webfonts é hospedada pelo serviço [Google Fonts](https://fonts.google.com/).
+Alguns temas personalizados, bem como a interface de usuário ("UI") padrão para o front-end do CIDRAM e a página "Acesso Negado", podem usar webfonts por motivos estéticos. Os webfonts são desativados por padrão, mas, quando ativados, ocorre comunicação direta entre o navegador do usuário e o serviço que hospeda o webfonts. Isso pode envolver informações de comunicação, tal como o endereço IP do usuário, o agente do usuário, o sistema operacional, e outros detalhes disponíveis para a solicitação. A maioria desses webfonts é hospedada pelo serviço [Google Fonts](https://fonts.google.com/).
 
 *Diretivas de configuração relevantes:*
 - `general` -> `disable_webfonts`
@@ -1766,11 +1776,9 @@ Quando a verificação dos motores de busca é ativada, o CIDRAM tenta executar 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-O CIDRAM suporta opcionalmente o [Google reCAPTCHA](https://www.google.com/recaptcha/), fornecendo um meio para os usuários ignorarem a página "Acesso Negado", concluindo uma instância de reCAPTCHA (mais informações sobre essa funcionalidade são descritas anteriormente na documentação, mais notavelmente na seção de configuração). O Google reCAPTCHA requer chaves de API para funcionar corretamente e, portanto, é desativado por padrão. Pode ser ativado definindo as chaves da API necessárias na configuração do pacote. Quando ativado, ocorre comunicação direta entre o navegador do usuário e o serviço reCAPTCHA. Isso pode envolver informações de comunicação, como o endereço IP do usuário, o agente do usuário, o sistema operacional, e outros detalhes disponíveis para a solicitação. O endereço IP do usuário também pode ser compartilhado na comunicação entre o CIDRAM e o serviço reCAPTCHA ao verificar a validade de uma instância do reCAPTCHA e verificar se ela foi concluída com êxito.
-
-*Diretivas de configuração relevantes: Qualquer coisa listada na categoria de configuração "recaptcha".*
+CIDRAM oferece suporte a reCAPTCHA e hCAPTCHA. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1788,7 +1796,7 @@ O CIDRAM fornece um módulo opcional para executar pesquisas de ASN e de código
 
 #### 11.3 REGISTRO
 
-O registro é uma parte importante do CIDRAM por vários motivos. Pode ser difícil diagnosticar e resolver falsos positivos quando os eventos de bloqueio que os causam não são registrados. Sem o registro de eventos de bloqueio, pode ser difícil determinar exatamente o quão bem o CIDRAM funciona em qualquer contexto específico, e pode ser difícil determinar onde suas deficiências podem ser, e quais mudanças podem ser necessárias para sua configuração ou assinaturas de acordo, para que ele continue funcionando como pretendido. Não obstante, o registro pode não ser desejável para todos os usuários e permanece totalmente opcional. No CIDRAM, o registro está desabilitado por padrão. Para ativá-lo, o CIDRAM deve ser configurado de acordo.
+O registro é uma parte importante do CIDRAM por vários motivos. Pode ser difícil diagnosticar e resolver falsos positivos quando os eventos de bloqueio que os causam não são registrados. Sem o registro de eventos de bloqueio, pode ser difícil determinar exatamente o quão bem o CIDRAM funciona em qualquer contexto específico, e pode ser difícil determinar onde suas deficiências podem ser, e quais mudanças podem ser necessárias para sua configuração ou assinaturas de acordo, para que ele continue funcionando como pretendido. Não obstante, o registro pode não ser desejável para todos os usuários e permanece totalmente opcional. No CIDRAM, o registro está desativado por padrão. Para ativá-lo, o CIDRAM deve ser configurado de acordo.
 
 Adicionalmente, se o registro é legalmente permissível, e na medida em que é legalmente permissível (por exemplo, os tipos de informações que podem ser registradas, por quanto tempo, e sob quais circunstâncias), pode variar, dependendo da jurisdição e do contexto onde a CIDRAM é implementada (por exemplo, se você está operando como indivíduo, como entidade corporativa, e se está numa base comercial ou não comercial). Portanto, pode ser útil que você leia atentamente essa seção.
 
@@ -1841,7 +1849,7 @@ Um evento de bloqueio registrado geralmente inclui as seguintes informações:
 - `general` -> `logfile_apache`
 - `general` -> `logfile_serialized`
 
-Quando essas diretivas são deixadas vazias, esse tipo de log permanecerá desabilitado.
+Quando essas diretivas são deixadas vazias, esse tipo de log permanecerá desativado.
 
 ##### 11.3.1 REGISTRO DE reCAPTCHA
 
@@ -1972,4 +1980,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 7 de Maio de 2021 (2021.05.07).
+Última Atualização: 10 de Maio de 2021 (2021.05.10).

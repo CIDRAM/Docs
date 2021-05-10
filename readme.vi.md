@@ -784,14 +784,24 @@ Bất kỳ giá trị nào khác. | Không bao giờ!
 - Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
 
 ##### "api"
-- API nào để sử dụng? V2 hoặc Invisible?
+- API nào để sử dụng?
 
-*Lưu ý đối với người dùng ở Liên minh châu Âu: Khi CIDRAM được định cấu hình để sử dụng cookie (v.d., khi "lockuser" là true/đúng), cảnh báo cookie được hiển thị trên trang theo quy định của [pháp luật về cookie của EU](https://www.cookielaw.org/the-cookie-law/). Tuy nhiên, khi sử dụng API invisible, CIDRAM cố gắng hoàn thành reCAPTCHA cho người dùng tự động, và khi thành công, điều này có thể dẫn đến việc trang được tải lại và một cookie được tạo ra mà không có người dùng được cho đủ thời gian để thực sự xem cảnh báo cookie. Nếu điều này đặt ra rủi ro hợp pháp cho bạn, bạn nên sử dụng API V2 thay vì API invisible (API V2 không phải là tự động và yêu cầu người dùng tự hoàn thành reCAPTCHA, do đó cung cấp cơ hội để xem cảnh báo cookie).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Lưu ý đối với người dùng ở Liên minh châu Âu: Khi CIDRAM được định cấu hình để sử dụng cookie (v.d., khi "lockuser" là true/đúng), cảnh báo cookie được hiển thị trên trang theo quy định của [pháp luật về cookie của EU](https://www.cookielaw.org/the-cookie-law/). Tuy nhiên, khi sử dụng API invisible, CIDRAM cố gắng hoàn thành CAPTCHA cho người dùng tự động, và khi thành công, điều này có thể dẫn đến việc trang được tải lại và một cookie được tạo ra mà không có người dùng được cho đủ thời gian để thực sự xem cảnh báo cookie.*
 
 ##### "show_cookie_warning"
 - Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
 
-*Chỉ thị cấu hình này được thêm theo yêu cầu, cho người dùng muốn tắt cảnh báo cookie thường được hiển thị cùng với reCAPTCHA (để giúp, ví dụ, ẩn bất kỳ dấu hiệu nào cho thấy CIDRAM đang được sử dụng). Tuy nhiên, tôi thực sự khuyên rằng hầu hết người dùng (đặc biệt là những người ở EU) nên giữ nó bật.*
+*Chỉ thị cấu hình này được thêm theo yêu cầu, cho người dùng muốn tắt cảnh báo cookie thường được hiển thị cùng với CAPTCHA (để giúp, ví dụ, ẩn bất kỳ dấu hiệu nào cho thấy CIDRAM đang được sử dụng). Tuy nhiên, tôi thực sự khuyên rằng hầu hết người dùng (đặc biệt là những người ở EU) nên giữ nó bật.*
 
 ##### "show_api_message"
 - Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
@@ -1152,7 +1162,7 @@ Origin: BB
 
 ##### 7.2.0 YAML CƠ BẢN
 
-Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
+Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
 
 Sử dụng YAML trong các tập tin chữ ký là không bắt buộc (có nghĩa là, bạn có thể sử dụng nó nếu bạn muốn làm như vậy, nhưng bạn không cần phải làm như vậy), và có thể tận dụng nhiều nhất (nhưng không phải tất cả) tùy chọn cấu hình.
 
@@ -1762,11 +1772,9 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-CIDRAM hỗ trợ tùy chọn [Google reCAPTCHA](https://www.google.com/recaptcha/), cung cấp phương tiện để người dùng bỏ qua trang "Truy cập đã bị từ chối" bằng cách hoàn thành reCAPTCHA (thông tin thêm về tính năng này được mô tả trước đó trong tài liệu, đáng chú ý nhất trong phần cấu hình). Google reCAPTCHA cần các khóa API để hoạt động chính xác và do đó bị vô hiệu hóa theo mặc định. Nó có thể được kích hoạt bằng cách xác định các khóa API cần thiết trong cấu hình gói. Khi được kích hoạt, giao tiếp trực tiếp giữa trình duyệt của người dùng và dịch vụ reCAPTCHA xảy ra. Điều này có thể liên quan đến việc truyền thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành và các chi tiết khác có sẵn cho yêu cầu. Địa chỉ IP của người dùng cũng có thể được chia sẻ trong giao tiếp giữa CIDRAM và dịch vụ reCAPTCHA khi xác minh tính hợp lệ của một cá thể reCAPTCHA và xác minh xem nó có được hoàn tất thành công hay không.
-
-*Chỉ thị cấu hình có liên quan: Mọi thứ được liệt kê trong danh mục cấu hình "recaptcha".*
+CIDRAM hỗ trợ reCAPTCHA và hCAPTCHA. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, tác nhân người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1966,4 +1974,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.05.07.
+Lần cuối cập nhật: 2021.05.10.

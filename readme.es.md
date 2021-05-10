@@ -784,14 +784,24 @@ Cualquier otro valor. | ¡Nunca!
 - Número máximo de firmas permitidas antes de que se retire la oferta de CAPTCHA. Predefinido = 1.
 
 ##### "api"
-- ¿Qué API usar? V2 o Invisible?
+- ¿Qué API usar?
 
-*Nota para los usuarios en la Unión Europea: Cuando CIDRAM está configurado para usar cookies (por ejemplo, cuando "lockuser" es true/verdadero), una advertencia de cookie se muestra prominentemente en la página según los requisitos de la [legislación de cookies de la UE](https://www.cookielaw.org/the-cookie-law/). Pero, cuando usar la API invisible, CIDRAM intenta completar el reCAPTCHA para el usuario automáticamente, y si tiene éxito, esto podría ocasionar que la página se vuelva a cargar y se cree una cookie sin que el usuario tenga tiempo suficiente para ver realmente la advertencia de cookies. Si esto representa un riesgo legal para usted, puede ser mejor usar la API V2 en lugar de la API invisible (la API V2 no está automatizada, y requiere que el usuario complete el desafío reCAPTCHA, proporcionando así una oportunidad de ver la advertencia de cookie).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Nota para los usuarios en la Unión Europea: Cuando CIDRAM está configurado para usar cookies (por ejemplo, cuando "lockuser" es true/verdadero), una advertencia de cookie se muestra prominentemente en la página según los requisitos de la [legislación de cookies de la UE](https://www.cookielaw.org/the-cookie-law/). Pero, cuando usar la API invisible, CIDRAM intenta completar el CAPTCHA para el usuario automáticamente, y si tiene éxito, esto podría ocasionar que la página se vuelva a cargar y se cree una cookie sin que el usuario tenga tiempo suficiente para ver realmente la advertencia de cookies.*
 
 ##### "show_cookie_warning"
 - ¿Mostrar advertencia de cookie? True = Sí [Predefinido]; False = No.
 
-*Esta directiva de configuración agregada por solicitud, para los usuarios que desean deshabilitar la advertencia de cookies que generalmente se muestra junto con reCAPTCHA (para ayudar, por ejemplo, ocultar cualquier indicio de que se está utilizando CIDRAM). Dicho esto, recomiendo encarecidamente que la mayoría de los usuarios (especialmente los de la UE) lo mantengan habilitado.*
+*Esta directiva de configuración agregada por solicitud, para los usuarios que desean deshabilitar la advertencia de cookies que generalmente se muestra junto a CAPTCHA (para ayudar, por ejemplo, ocultar cualquier indicio de que se está utilizando CIDRAM). Dicho esto, recomiendo encarecidamente que la mayoría de los usuarios (especialmente los de la UE) lo mantengan habilitado.*
 
 ##### "show_api_message"
 - ¿Mostrar mensaje de API? True = Sí [Predefinido]; False = No.
@@ -1152,7 +1162,7 @@ Origin: BB
 
 ##### 7.2.0 LOS FUNDAMENTOS DE YAML
 
-Una forma simplificada de YAML markup se puede utilizar en los archivos de firmas con el propósito de definir los comportamientos y configuraciones específicas para las secciones de firmas individuales. Esto puede ser útil si desea que el valor de sus directivas de configuración diferir sobre la base de las firmas individuales y las secciones de firmas (por ejemplo; si desea proporcionar una dirección de correo electrónico para los tickets de soporte para cualquier usuario bloqueadas por una firma particular, pero no desea proporcionar una dirección de correo electrónico para tickets de soporte para usuarios bloqueados por cualquier otro firmas; si desea por algunas firmas específicas para desencadenar una redirección de página; si desea marcar una sección de firmas para usar con reCAPTCHA; si desea registrar los intentos de acceso bloqueados para archivos separados sobre la base de firmas individuales y/o secciones de firmas).
+Una forma simplificada de YAML markup se puede utilizar en los archivos de firmas con el propósito de definir los comportamientos y configuraciones específicas para las secciones de firmas individuales. Esto puede ser útil si desea que el valor de sus directivas de configuración diferir sobre la base de las firmas individuales y las secciones de firmas (por ejemplo; si desea proporcionar una dirección de correo electrónico para los tickets de soporte para cualquier usuario bloqueadas por una firma particular, pero no desea proporcionar una dirección de correo electrónico para tickets de soporte para usuarios bloqueados por cualquier otro firmas; si desea por algunas firmas específicas para desencadenar una redirección de página; si desea marcar una sección de firmas para usar con reCAPTCHA/hCAPTCHA; si desea registrar los intentos de acceso bloqueados para archivos separados sobre la base de firmas individuales y/o secciones de firmas).
 
 El uso de YAML markup en los archivos de firma es totalmente opcional (es decir, usted puede utilizarlo si desea hacerlo, pero no está obligado a hacerlo), y es capaz de aprovechar la mayoría (pero no todos) de las directivas de configuración.
 
@@ -1765,11 +1775,9 @@ Cuando la verificación del motor de búsqueda está habilitada, CIDRAM intenta 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-CIDRAM suporte opcionalmente [Google reCAPTCHA](https://www.google.com/recaptcha/), proporcionando un medio para que los usuarios se pueden evitan la página "Acceso Denegado" por completando una instancia de reCAPTCHA (más información sobre esta funcionalidad se describe anteriormente en la documentación, más notablemente en la sección de configuración). Google reCAPTCHA requiere claves API para funcionar correctamente y, por lo tanto, está deshabilitado de forma predeterminada. Se puede habilitar definiendo las claves API requeridas en la configuración del paquete. Cuando está habilitado, se produce la comunicación directa entre el navegador del usuario y el servicio reCAPTCHA. Esto puede implicar la comunicación de información tal como la dirección IP del usuario, el agente de usuario, el sistema operativo, y otros detalles disponibles para la solicitud. La dirección IP del usuario también se puede compartir en la comunicación entre CIDRAM y el servicio reCAPTCHA al verificar la validez de una instancia de reCAPTCHA y verificar si se completó con éxito.
-
-*Directivas de configuración relevantes: Todo lo que figura en la categoría de configuración "recaptcha".*
+CIDRAM suporte reCAPTCHA y hCAPTCHA. Requieren claves API para funcionar correctamente. Están deshabilitados de forma predeterminada, pero se pueden habilitar configurando las claves API requeridas. Cuando están habilitado, la comunicación puede ocurrir entre el servicio y CIDRAM o el navegador del usuario. Esto puede implicar la comunicación de información como la dirección IP del usuario, el agente de usuario, el sistema operativo, y otros detalles disponibles para la solicitud.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1976,4 +1984,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 7 de Mayo de 2021 (2021.05.07).
+Última Actualización: 10 de Mayo de 2021 (2021.05.10).

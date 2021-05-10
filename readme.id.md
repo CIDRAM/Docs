@@ -784,14 +784,24 @@ Nilai lainnya. | Tidak pernah!
 - Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
 
 ##### "api"
-- API mana yang akan digunakan? V2 atau Invisible?
+- API mana yang akan digunakan?
 
-*Catat untuk pengguna di Uni Eropa: Saat CIDRAM dikonfigurasi untuk menggunakan cookie (mis., ketika "lockuser" true/benar), peringatan cookie ditampilkan secara mencolok di halaman sesuai persyaratan [hukum-hukum cookie UE](https://www.cookielaw.org/the-cookie-law/). Namun, saat menggunakan API invisible, CIDRAM berupaya menyelesaikan reCAPTCHA untuk pengguna secara otomatis, dan bila berhasil, ini bisa mengakibatkan halaman menjadi reload dan cookie dibuat tanpa pengguna diberi waktu yang cukup untuk benar-benar melihat peringatan cookie. Jika ini menimbulkan risiko hukum bagi Anda, mungkin lebih baik menggunakan API V2 dan bukan API invisible (API V2 tidak otomatis, dan mengharuskan pengguna menyelesaikan tantangan reCAPTCHA sendiri, sehingga memberikan kesempatan untuk melihat peringatan cookie).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Catat untuk pengguna di Uni Eropa: Saat CIDRAM dikonfigurasi untuk menggunakan cookie (mis., ketika "lockuser" true/benar), peringatan cookie ditampilkan secara mencolok di halaman sesuai persyaratan [hukum-hukum cookie UE](https://www.cookielaw.org/the-cookie-law/). Namun, saat menggunakan API invisible, CIDRAM berupaya menyelesaikan CAPTCHA untuk pengguna secara otomatis, dan bila berhasil, ini bisa mengakibatkan halaman menjadi reload dan cookie dibuat tanpa pengguna diberi waktu yang cukup untuk benar-benar melihat peringatan cookie.*
 
 ##### "show_cookie_warning"
 - Tampilkan peringatan cookie? True = Ya [Default]; False = Tidak.
 
-*Direktif konfigurasi ini ditambahkan oleh permintaan, untuk pengguna yang ingin menonaktifkan peringatan cookie biasanya ditampilkan bersama reCAPTCHA (mis., untuk membantu menyembunyikan indikasi bahwa CIDRAM sedang digunakan). Namun, saya sangat menyarankan agar sebagian besar pengguna (terutama yang berbasis di UE) tetap mengaktifkannya.*
+*Direktif konfigurasi ini ditambahkan oleh permintaan, untuk pengguna yang ingin menonaktifkan peringatan cookie biasanya ditampilkan bersama CAPTCHA (mis., untuk membantu menyembunyikan indikasi bahwa CIDRAM sedang digunakan). Namun, saya sangat menyarankan agar sebagian besar pengguna (terutama yang berbasis di UE) tetap mengaktifkannya.*
 
 ##### "show_api_message"
 - Tampilkan pesan API? True = Ya [Default]; False = Tidak.
@@ -1152,7 +1162,7 @@ Origin: BB
 
 ##### 7.2.0 DASAR-DASAR YAML
 
-Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
+Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
 
 Penggunaan YAML markup dalam file tanda tangan sepenuhnya opsional (yaitu, Anda dapat menggunakannya jika Anda ingin melakukannya, tapi Anda tidak diharuskan untuk melakukannya), dan mampu memanfaatkan kebanyakan (tapi tidak semua) direktif konfigurasi.
 
@@ -1765,11 +1775,9 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-CIDRAM secara opsional mendukung [Google reCAPTCHA](https://www.google.com/recaptcha/), menyediakan sarana bagi pengguna untuk melewati halaman "Akses Ditolak" dengan menyelesaikan instance reCAPTCHA (informasi lebih lanjut tentang fitur ini dijelaskan sebelumnya dalam dokumentasi, terutama di bagian konfigurasi). Google reCAPTCHA membutuhkan kunci API agar berfungsi dengan benar, dan karenanya dinonaktifkan secara default. Ini dapat diaktifkan dengan menentukan kunci API yang diperlukan dalam konfigurasi paket. Ketika diaktifkan, komunikasi langsung antara browser pengguna dan layanan reCAPTCHA terjadi. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lainnya yang tersedia untuk permintaan tersebut. Alamat IP pengguna juga dapat dibagi dalam komunikasi antara CIDRAM dan layanan reCAPTCHA ketika memverifikasi validitas instance reCAPTCHA dan memverifikasi apakah itu berhasil diselesaikan.
-
-*Direktif konfigurasi yang relevan: Apapun yang tercantum dibawah kategori konfigurasi "recaptcha".*
+CIDRAM mendukung reCAPTCHA dan hCAPTCHA. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1969,4 +1977,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 7 Mei 2021 (2021.05.07).
+Terakhir Diperbarui: 10 Mei 2021 (2021.05.10).

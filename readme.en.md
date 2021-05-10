@@ -794,14 +794,24 @@ Any other value. | Never!
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
 
 ##### "api"
-- Which API to use? V2 or Invisible?
+- Which API to use?
 
-*Note for users in the European Union: When CIDRAM is configured to use cookies (e.g., when "lockuser" is true), a cookie warning is displayed prominently on the page as per the requirements of [EU cookie legislation](https://www.cookielaw.org/the-cookie-law/). However, when using the invisible API, CIDRAM attempts to complete the reCAPTCHA for the user automatically, and when successful, this could result in the page being reloaded and a cookie being created without the user being given adequate time to actually see the cookie warning. If this poses a legal risk for you, it may be better to use the V2 API instead of the invisible API (the V2 API is not automated, and requires that the user completes the reCAPTCHA challenge themselves, thus providing an opportunity to see the cookie warning).*
+```
+api
+├─recaptcha
+│ ├─V2
+│ └─Invisible
+└─hcaptcha
+  ├─V1
+  └─Invisible
+```
+
+*Note for users in the European Union: When CIDRAM is configured to use cookies (e.g., when "lockuser" is true), a cookie warning is displayed prominently on the page as per the requirements of [EU cookie legislation](https://www.cookielaw.org/the-cookie-law/). However, when using the invisible API, CIDRAM attempts to complete the CAPTCHA for the user automatically, and when successful, this could result in the page being reloaded and a cookie being created without the user being given adequate time to actually see the cookie warning.*
 
 ##### "show_cookie_warning"
 - Show cookie warning? True = Yes [Default]; False = No.
 
-*This configuration directive added by request, for users that want to disable the cookie warning usually shown alongside reCAPTCHA (e.g., to help hide any indication that CIDRAM is being used). However, I strongly advise that most users (particularly those based in the EU) keep it enabled.*
+*This configuration directive added by request, for users that want to disable the cookie warning usually shown alongside CAPTCHAs (e.g., to help hide any indication that CIDRAM is being used). However, I strongly advise that most users (particularly those based in the EU) keep it enabled.*
 
 ##### "show_api_message"
 - Show API message? True = Yes [Default]; False = No.
@@ -1162,7 +1172,7 @@ Origin: BB
 
 ##### 7.2.0 YAML BASICS
 
-A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
+A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCAPTCHA; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
 
 Use of YAML markup in the signature files is entirely optional (i.e., you may use it if you wish to do so, but you are not required to do so), and is able to leverage most (but not all) configuration directives.
 
@@ -1773,11 +1783,9 @@ When search engine verification is enabled, CIDRAM attempts to perform "forward 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 GOOGLE reCAPTCHA
+##### 11.2.3 CAPTCHA
 
-CIDRAM optionally supports [Google reCAPTCHA](https://www.google.com/recaptcha/), providing a means for users to bypass the "Access Denied" page by completing a reCAPTCHA instance (more information about this feature is described earlier in the documentation, most notably in the configuration section). Google reCAPTCHA requires API keys in order to be work correctly, and is thereby disabled by default. It can be enabled by defining the required API keys in the package configuration. When enabled, direct communication between the user's browser and the reCAPTCHA service occurs. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request. The user's IP address may also be shared in communication between CIDRAM and the reCAPTCHA service when verifying the validity of a reCAPTCHA instance and verifying whether it was completed successfully.
-
-*Relevant configuration directives: Anything listed under the "recaptcha" configuration category.*
+CIDRAM supports reCAPTCHA and hCAPTCHA. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1987,4 +1995,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 7 May 2021 (2021.05.07).
+Last Updated: 10 May 2021 (2021.05.10).
