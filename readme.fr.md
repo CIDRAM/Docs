@@ -1828,7 +1828,7 @@ Signatures Référence : x.x.x.x/xx
 Raison Bloquée : Service de cloud ("Nom de réseau", Lxx:Fx, [XX])!
 Agent Utilisateur : Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Reconstruite URI : https://your-site.tld/index.php
-État reCAPTCHA : Activée.
+État CAPTCHA : Activée.
 ```
 
 Ce même événement de blocage, journalisé à un fichier journal de style Apache, ressemblerait à ceci :
@@ -1848,7 +1848,7 @@ Un événement blocage journalisé inclut généralement les informations suivan
 - Références aux raisons de l'événement de blocage et à certaines informations de débogage de base liées.
 - L'agent utilisateur de la requête bloquée (comment l'entité requérante s'est identifiée à la requête).
 - Une reconstruction de l'identifiant de la ressource initialement requêtée.
-- L'état reCAPTCHA pour la requête en cours (le cas échéant).
+- L'état CAPTCHA pour la requête en cours (le cas échéant).
 
 *Les directives de configuration responsables de ce type de journalisation, et pour chacun des trois formats disponibles, sont :*
 - `general` -> `logfile`
@@ -1857,17 +1857,17 @@ Un événement blocage journalisé inclut généralement les informations suivan
 
 Lorsque ces directives sont laissées vides, ce type de journalisation reste désactivé.
 
-##### 11.3.1 JOURNALISATION reCAPTCHA
+##### 11.3.1 JOURNALISATION CAPTCHA
 
-Ce type de journalisation concerne spécifiquement les instances reCAPTCHA, et se produit uniquement lorsqu'un utilisateur tente de terminer une instance reCAPTCHA.
+Ce type de journalisation concerne spécifiquement les instances CAPTCHA, et se produit uniquement lorsqu'un utilisateur tente de terminer une instance CAPTCHA.
 
-Une entrée de journal reCAPTCHA contient l'adresse IP de l'utilisateur qui tente de terminer une instance reCAPTCHA, la date et l'heure auxquelles la tentative s'est produite, et l'état reCAPTCHA. Une entrée de journal reCAPTCHA ressemble généralement à ceci (à titre d'exemple) :
+Une entrée de journal CAPTCHA contient l'adresse IP de l'utilisateur qui tente de terminer une instance CAPTCHA, la date et l'heure auxquelles la tentative s'est produite, et l'état CAPTCHA. Une entrée de journal CAPTCHA ressemble généralement à ceci (à titre d'exemple) :
 
 ```
-IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État reCAPTCHA : Passé !
+IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CAPTCHA : Passé !
 ```
 
-*La directive de configuration responsable de la journalisation reCAPTCHA est :*
+*La directive de configuration responsable de la journalisation CAPTCHA est :*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1934,7 +1934,7 @@ Si vous voulez aller plus loin en empêchant la journalisation complète de cert
 
 ##### 11.3.7 STATISTIQUES
 
-CIDRAM est facultativement capable de suivre des statistiques telles que le nombre total d'événements de blocage ou les instances de reCAPTCHA qui ont eu lieu depuis un certain moment. Cette fonctionnalité est désactivée par défaut, mais peut être activée via la configuration du package. Cette fonctionnalité suit uniquement le nombre total d'événements survenus et n'inclut aucune information sur des événements spécifiques (et par conséquent, ne devrait pas être considéré comme les PII).
+CIDRAM est facultativement capable de suivre des statistiques telles que le nombre total d'événements de blocage ou les instances de CAPTCHA qui ont eu lieu depuis un certain moment. Cette fonctionnalité est désactivée par défaut, mais peut être activée via la configuration du package. Cette fonctionnalité suit uniquement le nombre total d'événements survenus et n'inclut aucune information sur des événements spécifiques (et par conséquent, ne devrait pas être considéré comme les PII).
 
 *Directives de configuration pertinentes :*
 - `general` -> `statistics`
@@ -1945,11 +1945,11 @@ CIDRAM ne crypte pas son cache ou aucune information de journal. Le [cryptage](h
 
 #### 11.4 COOKIES
 
-CIDRAM définit les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) à deux points dans son code. Premièrement, lorsqu'un utilisateur termine avec succès une instance de reCAPTCHA (et en supposant que `lockuser` est mis à `true`), CIDRAM définit un cookie afin de pouvoir se souvenir pour les requêtes suivantes que l'utilisateur a déjà terminé une instance de reCAPTCHA, de sorte qu'il n'aura pas besoin de requêter continuellement à l'utilisateur de terminer une instance de reCAPTCHA lors des requêtes suivantes. Deuxièmement, lorsqu'un utilisateur se connecte avec succès à l'accès frontal, CIDRAM définit un cookie afin de pouvoir se souvenir de l'utilisateur pour les requêtes suivantes (c'est à dire, les cookies sont utilisés pour authentifier l'utilisateur à une session de connexion).
+CIDRAM définit les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) à deux points dans son code. Premièrement, lorsqu'un utilisateur termine avec succès une instance de CAPTCHA (et en supposant que `lockuser` est mis à `true`), CIDRAM définit un cookie afin de pouvoir se souvenir pour les requêtes suivantes que l'utilisateur a déjà terminé une instance de CAPTCHA, de sorte qu'il n'aura pas besoin de requêter continuellement à l'utilisateur de terminer une instance de CAPTCHA lors des requêtes suivantes. Deuxièmement, lorsqu'un utilisateur se connecte avec succès à l'accès frontal, CIDRAM définit un cookie afin de pouvoir se souvenir de l'utilisateur pour les requêtes suivantes (c'est à dire, les cookies sont utilisés pour authentifier l'utilisateur à une session de connexion).
 
 Dans les deux cas, les avertissements de cookie sont affichés en évidence (le cas échéant), avertissant l'utilisateur que les cookies seront définis s'ils s'engagent dans les actions correspondantes. Les cookies ne sont définis à aucun autre endroit du code.
 
-*Remarque : La mise en œuvre particulière par CIDRAM de l'API « invisible » pour reCAPTCHA pourrait être incompatible avec les lois sur les cookies dans certaines juridictions, et devrait être évitée par tous les sites web soumis à ces lois. Opter pour l'utilisation de l'API « V2 » à la place, ou simplement désactiver complètement reCAPTCHA, peut être préférable.*
+*Remarque : Les APIs CAPTCHA « invisible » peuvent être incompatibles avec les lois sur les cookies dans certaines juridictions, et devrait être évitée par tous les sites web soumis à ces lois. Opter d'utiliser les autres API fournies à la place, ou simplement désactiver complètement CAPTCHA, peut être préférable.*
 
 *Directives de configuration pertinentes :*
 - `general` -> `disable_frontend`
@@ -1990,4 +1990,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 10 Mai 2021 (2021.05.10).
+Dernière mise à jour : 23 Mai 2021 (2021.05.23).

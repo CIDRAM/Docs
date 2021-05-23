@@ -1829,7 +1829,7 @@ Signatures Reference: x.x.x.x/xx
 Why Blocked: Cloud service ("Network Name", Lxx:Fx, [XX])!
 User Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Reconstructed URI: https://your-site.tld/index.php
-reCAPTCHA State: Enabled.
+CAPTCHA State: Enabled.
 ```
 
 That same block event, logged to an Apache-style logfile, would look something like this:
@@ -1849,7 +1849,7 @@ A logged block event typically includes the following information:
 - References to the reasons for the block event and some basic, related debug information.
 - The user agent of the blocked request (i.e., how the requesting entity identified itself to the request).
 - A reconstruction of the identifier for the resource originally requested.
-- The reCAPTCHA state for the current request (when relevant).
+- The CAPTCHA state for the current request (when relevant).
 
 *The configuration directives responsible for this type of logging, and for each of the three formats available, are:*
 - `general` -> `logfile`
@@ -1858,17 +1858,17 @@ A logged block event typically includes the following information:
 
 When these directives are left empty, this type of logging will remain disabled.
 
-##### 11.3.1 reCAPTCHA LOGGING
+##### 11.3.1 CAPTCHA LOGGING
 
-This type of logging relates specifically to reCAPTCHA instances, and occurs only when a user attempts to complete a reCAPTCHA instance.
+This type of logging relates specifically to CAPTCHA instances, and occurs only when a user attempts to complete a CAPTCHA instance.
 
-A reCAPTCHA log entry contains the IP address of the user attempting to complete a reCAPTCHA instance, the date and time that the attempt occurred, and the reCAPTCHA state. A reCAPTCHA log entry typically looks something like this (as an example):
+A CAPTCHA log entry contains the IP address of the user attempting to complete a CAPTCHA instance, the date and time that the attempt occurred, and the CAPTCHA state. A CAPTCHA log entry typically looks something like this (as an example):
 
 ```
-IP Address: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA State: Passed!
+IP Address: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State: Passed!
 ```
 
-*The configuration directive responsible for reCAPTCHA logging is:*
+*The configuration directive responsible for CAPTCHA logging is:*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1936,7 +1936,7 @@ If you want to take it a step further by preventing specific types of informatio
 
 ##### 11.3.7 STATISTICS
 
-CIDRAM is optionally able to track statistics such as the total number of block events or reCAPTCHA instances that have occurred since some particular point in time. This feature is disabled by default, but can be enabled via the package configuration. This feature only tracks the total number of events occurred, and doesn't include any information about specific events (and therefore, shouldn't be regarded as PII).
+CIDRAM is optionally able to track statistics such as the total number of block events or CAPTCHA instances that have occurred since some particular point in time. This feature is disabled by default, but can be enabled via the package configuration. This feature only tracks the total number of events occurred, and doesn't include any information about specific events (and therefore, shouldn't be regarded as PII).
 
 *Relevant configuration directives:*
 - `general` -> `statistics`
@@ -1947,11 +1947,11 @@ CIDRAM doesn't encrypt its cache or any log information. Cache and log [encrypti
 
 #### 11.4 COOKIES
 
-CIDRAM sets [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) at two points in its codebase. Firstly, when a user successfully completes a reCAPTCHA instance (and assuming that `lockuser` is set to `true`), CIDRAM sets a cookie in order to be able to remember for subsequent requests that the user has already completed a reCAPTCHA instance, so that it won't need to continuously ask the user to complete a reCAPTCHA instance on subsequent requests. Secondly, when a user successfully logs into the front-end, CIDRAM sets a cookie in order to be able to remember the user for subsequent requests (i.e., cookies are used to authenticate the user to a login session).
+CIDRAM sets [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) at two points in its codebase. Firstly, when a user successfully completes a CAPTCHA instance (and assuming that `lockuser` is set to `true`), CIDRAM sets a cookie in order to be able to remember for subsequent requests that the user has already completed a CAPTCHA instance, so that it won't need to continuously ask the user to complete a CAPTCHA instance on subsequent requests. Secondly, when a user successfully logs into the front-end, CIDRAM sets a cookie in order to be able to remember the user for subsequent requests (i.e., cookies are used to authenticate the user to a login session).
 
 In both cases, cookie warnings are displayed prominently (when applicable), warning the user that cookies will be set if they engage in the relevant actions. Cookies aren't set at any other points in the codebase.
 
-*Note: CIDRAM's particular implementation of the "invisible" API for reCAPTCHA might be incompatible with cookie laws in some jurisdictions, and should be avoided by any websites subject to such laws. Opting to use the "V2" API instead, or simply disabling reCAPTCHA entirely, may be preferable.*
+*Note: The "invisible" CAPTCHA APIs might be incompatible with cookie laws in some jurisdictions, and should be avoided by any websites subject to such laws. Opting to use the other provided APIs instead, or simply disabling CAPTCHA entirely, may be preferable.*
 
 *Relevant configuration directives:*
 - `general` -> `disable_frontend`
@@ -1995,4 +1995,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 10 May 2021 (2021.05.10).
+Last Updated: 23 May 2021 (2021.05.23).

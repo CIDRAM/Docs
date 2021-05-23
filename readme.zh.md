@@ -1814,7 +1814,7 @@ IP地址： x.x.x.x
 为什么被阻止： 云服务 ("网络名字", Lxx:Fx, [XX])!
 用户代理： Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 重建URI： https://your-site.tld/index.php
-reCAPTCHA状态： 打开。
+CAPTCHA状态： 打开。
 ```
 
 记录到Apache样式的日志文件中的同一阻止事件看起来像这样：
@@ -1834,7 +1834,7 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 - 引用阻止事件的原因和一些基本的相关调试信息。
 - 被阻止请求的用户代理（即，请求实体如何向请求标识自己）。
 - 重建最初请求的资源的标识符。
-- 当前请求的reCAPTCHA状态（相关时）。
+- 当前请求的CAPTCHA状态（相关时）。
 
 *负责此类日志记录的配置指令，适用于以下三种格式中的每一种：*
 - `general` -> `logfile`
@@ -1843,17 +1843,17 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 当这些指令保留为空时，这种类型的日志记录将保持禁用状态。
 
-##### 11.3.1 reCAPTCHA日志记录
+##### 11.3.1 CAPTCHA日志记录
 
-此类日志记录特定于reCAPTCHA实例，仅在用户尝试完成reCAPTCHA实例时才会发生。
+此类日志记录特定于CAPTCHA实例，仅在用户尝试完成CAPTCHA实例时才会发生。
 
-reCAPTCHA日志条目包含尝试完成reCAPTCHA实例的用户的IP地址，尝试发生的日期和时间以及reCAPTCHA状态。​reCAPTCHA日志条目通常看起来像这样（作为示例）：
+CAPTCHA日志条目包含尝试完成CAPTCHA实例的用户的IP地址，尝试发生的日期和时间以及CAPTCHA状态。​CAPTCHA日志条目通常看起来像这样（作为示例）：
 
 ```
-IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA状态：成功！
+IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA状态：成功！
 ```
 
-*负责reCAPTCHA日志记录的配置指令是：*
+*负责CAPTCHA日志记录的配置指令是：*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1920,7 +1920,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 已登录。
 
 ##### 11.3.7 统计
 
-CIDRAM可选择跟踪统计信息，例如自特定时间以来发生的阻止事件或reCAPTCHA实例的总数。​默认情况下此功能是禁用，但可以通过程序包配置启用此功能。​此功能仅跟踪发生的事件总数，不包括有关特定事件的任何信息（因此，不应被视为PII）。
+CIDRAM可选择跟踪统计信息，例如自特定时间以来发生的阻止事件或CAPTCHA实例的总数。​默认情况下此功能是禁用，但可以通过程序包配置启用此功能。​此功能仅跟踪发生的事件总数，不包括有关特定事件的任何信息（因此，不应被视为PII）。
 
 *相关配置指令：*
 - `general` -> `statistics`
@@ -1931,11 +1931,11 @@ CIDRAM不[加密](https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%AF%86)其缓存或�
 
 #### 11.4 COOKIE
 
-CIDRAM在其代码库中的两个点设置cookie。​首先，当用户成功完成reCAPTCHA实例时（这假定`lockuser`设置为`true`），CIDRAM设置cookie，以便能够在后续请求中记住用户已经完成了reCAPTCHA实例，这样就不需要不断要求用户在后续请求中完成reCAPTCHA实例。​其次，当用户成功登录前端时，CIDRAM设置cookie以便能够在后续请求中的记住用户（即，cookie用于向登录会话验证用户身份）。
+CIDRAM在其代码库中的两个点设置[cookie](https://zh.wikipedia.org/wiki/Cookie)。​首先，当用户成功完成CAPTCHA实例时（这假定`lockuser`设置为`true`），CIDRAM设置cookie，以便能够在后续请求中记住用户已经完成了CAPTCHA实例，这样就不需要不断要求用户在后续请求中完成CAPTCHA实例。​其次，当用户成功登录前端时，CIDRAM设置cookie以便能够在后续请求中的记住用户（即，cookie用于向登录会话验证用户身份）。
 
 在这两种情况下，cookie警告显着显示（适用时），警告用户如果他们参与相关操作将设置cookie。 Cookie不会在代码库中的任何其他位置设置。
 
-*注意：CIDRAM针对reCAPTCHA的“invisible”API的特定实现可能与某些司法管辖区的cookie法律不兼容，任何受这些法律约束的网站都应该避免这个API。​选择使用“V2”API，或者简单地完全禁用reCAPTCHA，可能更为可取。*
+*注意：在某些司法管辖区中，“不可见的” CAPTCHA API可能与Cookie法律不兼容，任何受这些法律约束的网站都应该避免这个API。​选择改用其他提供的API，或完全禁用CAPTCHA，可能是更可取的选择。*
 
 *相关配置指令：*
 - `general` -> `disable_frontend`
@@ -1978,4 +1978,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2021年5月10日。
+最后更新：2021年5月23日。

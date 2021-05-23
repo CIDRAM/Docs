@@ -1821,7 +1821,7 @@ Tanda Tangan Referensi: x.x.x.x/xx
 Mengapa Diblokir: Layanan komputasi awan ("Nama Jaringan", Lxx:Fx, [XX])!
 Agen Pengguna: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Direkonstruksi URI: https://your-site.tld/index.php
-Status reCAPTCHA: Diaktifkan.
+Status CAPTCHA: Diaktifkan.
 ```
 
 Kejadian blokir yang sama ini, yang dicatat ke file log dalam gaya Apache, akan terlihat seperti ini:
@@ -1841,7 +1841,7 @@ Kejadian blokir yang dicatat biasanya mencakup informasi berikut:
 - Referensi ke alasan untuk kejadian blokir dan beberapa informasi debug dasar yang terkait.
 - Agen pengguna dari permintaan yang diblokir (yaitu, bagaimana entitas yang meminta mengidentifikasi dirinya untuk permintaan tersebut).
 - Rekonstruksi pengidentifikasi untuk sumber yang awalnya diminta.
-- Status reCAPTCHA untuk permintaan saat ini (bila relevan).
+- Status CAPTCHA untuk permintaan saat ini (bila relevan).
 
 *Direktif konfigurasi yang bertanggung jawab untuk jenis pencatatan ini, dan untuk masing-masing dari tiga format yang tersedia, adalah:*
 - `general` -> `logfile`
@@ -1850,17 +1850,17 @@ Kejadian blokir yang dicatat biasanya mencakup informasi berikut:
 
 Ketika direktif ini dibiarkan kosong, jenis pencatatan ini akan tetap dinonaktifkan.
 
-##### 11.3.1 LOG reCAPTCHA
+##### 11.3.1 LOG CAPTCHA
 
-Jenis pencatatan ini secara khusus berkaitan dengan instance reCAPTCHA, dan hanya terjadi ketika pengguna mencoba menyelesaikan instance reCAPTCHA.
+Jenis pencatatan ini secara khusus berkaitan dengan instance CAPTCHA, dan hanya terjadi ketika pengguna mencoba menyelesaikan instance CAPTCHA.
 
-Entri log reCAPTCHA berisi alamat IP pengguna yang berusaha menyelesaikan instance reCAPTCHA, tanggal dan waktu ketika itu terjadi, dan status reCAPTCHA. Entri log reCAPTCHA biasanya terlihat seperti ini (sebagai contoh):
+Entri log CAPTCHA berisi alamat IP pengguna yang berusaha menyelesaikan instance CAPTCHA, tanggal dan waktu ketika itu terjadi, dan status CAPTCHA. Entri log CAPTCHA biasanya terlihat seperti ini (sebagai contoh):
 
 ```
-Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status reCAPTCHA: Lulus!
+Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status CAPTCHA: Lulus!
 ```
 
-*Direktif konfigurasi yang bertanggung jawab untuk pencatatan reCAPTCHA adalah:*
+*Direktif konfigurasi yang bertanggung jawab untuk pencatatan CAPTCHA adalah:*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1923,7 +1923,7 @@ Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu se
 
 ##### 11.3.7 STATISTIK
 
-CIDRAM secara opsional dapat melacak statistik seperti jumlah total kejadian blokir atau instance reCAPTCHA yang telah terjadi sejak beberapa titik waktu tertentu. Fitur ini dinonaktifkan secara default, tetapi dapat diaktifkan melalui konfigurasi paket. Fitur ini hanya melacak jumlah total kejadian yang terjadi, dan tidak termasuk informasi apapun tentang kejadian tertentu (dan dengan demikian, tidak boleh dianggap sebagai PII).
+CIDRAM secara opsional dapat melacak statistik seperti jumlah total kejadian blokir atau instance CAPTCHA yang telah terjadi sejak beberapa titik waktu tertentu. Fitur ini dinonaktifkan secara default, tetapi dapat diaktifkan melalui konfigurasi paket. Fitur ini hanya melacak jumlah total kejadian yang terjadi, dan tidak termasuk informasi apapun tentang kejadian tertentu (dan dengan demikian, tidak boleh dianggap sebagai PII).
 
 *Direktif konfigurasi yang relevan:*
 - `general` -> `statistics`
@@ -1934,11 +1934,11 @@ CIDRAM tidak mengenkripsi cache atau informasi log apapun. [Enkripsi](https://id
 
 #### 11.4 COOKIE
 
-CIDRAM menetapkan [cookie](https://id.wikipedia.org/wiki/Kuki_HTTP) pada dua titik dalam basis kodenya. Pertama, ketika pengguna berhasil menyelesaikan instance reCAPTCHA (dan mengasumsikan bahwa `lockuser` diatur ke `true`), CIDRAM menetapkan cookie agar dapat mengingat untuk permintaan berikutnya bahwa pengguna telah menyelesaikan instance reCAPTCHA, sehingga tidak perlu meminta pengguna untuk menyelesaikan instance reCAPTCHA pada permintaan berikutnya. Kedua, ketika pengguna berhasil masuk ke akses bagian depan, CIDRAM menetapkan cookie agar dapat mengingat pengguna untuk permintaan berikutnya (yaitu, cookie digunakan untuk mengotentikasi pengguna ke sesi masuk).
+CIDRAM menetapkan [cookie](https://id.wikipedia.org/wiki/Kuki_HTTP) pada dua titik dalam basis kodenya. Pertama, ketika pengguna berhasil menyelesaikan instance CAPTCHA (dan mengasumsikan bahwa `lockuser` diatur ke `true`), CIDRAM menetapkan cookie agar dapat mengingat untuk permintaan berikutnya bahwa pengguna telah menyelesaikan instance CAPTCHA, sehingga tidak perlu meminta pengguna untuk menyelesaikan instance CAPTCHA pada permintaan berikutnya. Kedua, ketika pengguna berhasil masuk ke akses bagian depan, CIDRAM menetapkan cookie agar dapat mengingat pengguna untuk permintaan berikutnya (yaitu, cookie digunakan untuk mengotentikasi pengguna ke sesi masuk).
 
 Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), memperingatkan pengguna bahwa cookie akan diatur jika mereka terlibat dalam tindakan yang relevan. Cookie tidak diatur dalam titik lain di basis kode.
 
-*Catat: Implementasi spesifik CIDRAM dari "invisible" API untuk reCAPTCHA mungkin tidak kompatibel dengan hukum cookie di beberapa yurisdiksi, dan harus dihindari oleh situs web apapun yang tunduk pada hukum-hukum tersebut. Memilih untuk menggunakan "V2" API sebagai gantinya, atau hanya menonaktifkan reCAPTCHA sepenuhnya, mungkin lebih baik.*
+*Catat: CAPTCHA API "tak terlihat" mungkin tidak kompatibel dengan hukum cookie di beberapa yurisdiksi, dan harus dihindari oleh situs web apapun yang tunduk pada hukum-hukum tersebut. Memilih untuk menggunakan API lain yang disediakan, atau menonaktifkan CAPTCHA sepenuhnya, mungkin lebih disukai.*
 
 *Direktif konfigurasi yang relevan:*
 - `general` -> `disable_frontend`
@@ -1977,4 +1977,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 10 Mei 2021 (2021.05.10).
+Terakhir Diperbarui: 23 Mei 2021 (2021.05.23).

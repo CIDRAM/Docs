@@ -1828,7 +1828,7 @@ Referenz für den Signaturen: x.x.x.x/xx
 Warum blockierte: Cloud-Service ("Netzwerkname", Lxx:Fx, [XX])!
 Benutzeragent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Rekonstruierte URI: https://your-site.tld/index.php
-Status der reCAPTCHA: Aktiviert.
+Status der CAPTCHA: Aktiviert.
 ```
 
 Das gleiche Blockereignis, das in einer Protokolldatei im Apache-Stil protokolliert wird, würde ungefähr so aussehen:
@@ -1848,7 +1848,7 @@ Ein protokolliertes Blockereignis enthält normalerweise die folgenden Informati
 - Verweise auf die Gründe für das Blockereignis und einige grundlegende Debuginformationen.
 - Der Benutzeragent der verbannten Anfrage (d.h., wie sich die anfragende Einheit gegenüber der Anfrage identifiziert hat).
 - Eine Rekonstruktion der Identifizierung für die ursprünglich angeforderte Ressource.
-- Der reCAPTCHA-Status für die aktuelle Anfrage (falls relevant).
+- Der CAPTCHA-Status für die aktuelle Anfrage (falls relevant).
 
 *Die Konfigurationsdirektiven, die für diese Art der Protokollierung und für jedes der drei verfügbaren Formate verantwortlich sind:*
 - `general` -> `logfile`
@@ -1857,17 +1857,17 @@ Ein protokolliertes Blockereignis enthält normalerweise die folgenden Informati
 
 Wenn diese Direktiven leer bleiben, bleibt diese Art der Protokollierung deaktiviert.
 
-##### 11.3.1 reCAPTCHA PROTOKOLLIERUNG
+##### 11.3.1 CAPTCHA PROTOKOLLIERUNG
 
-Diese Art der Protokollierung bezieht sich speziell auf reCAPTCHA-Instanzen und tritt nur auf, wenn ein Benutzer versucht, eine reCAPTCHA-Instanz abzuschließen.
+Diese Art der Protokollierung bezieht sich speziell auf CAPTCHA-Instanzen und tritt nur auf, wenn ein Benutzer versucht, eine CAPTCHA-Instanz abzuschließen.
 
-Ein reCAPTCHA-Protokolleintrag enthält die IP-Adresse des Benutzers, der versucht, eine reCAPTCHA-Instanz abzuschließen, das Datum und die Uhrzeit des Versuchs, und der Status der reCAPTCHA. Ein reCAPTCHA-Protokolleintrag sieht in etwa wie folgt aus (als Beispiel):
+Ein CAPTCHA-Protokolleintrag enthält die IP-Adresse des Benutzers, der versucht, eine CAPTCHA-Instanz abzuschließen, das Datum und die Uhrzeit des Versuchs, und der Status der CAPTCHA. Ein CAPTCHA-Protokolleintrag sieht in etwa wie folgt aus (als Beispiel):
 
 ```
-IP-Adresse: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - Status der reCAPTCHA: Gelungen!
+IP-Adresse: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - Status der CAPTCHA: Gelungen!
 ```
 
-*Die für die reCAPTCHA-Protokollierung verantwortliche Konfigurationsdirektiven lautet:*
+*Die für die CAPTCHA-Protokollierung verantwortliche Konfigurationsdirektiven lautet:*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1935,7 +1935,7 @@ Wenn Sie einen Schritt weiter gehen wollen, indem Sie verhindern, dass bestimmte
 
 ##### 11.3.7 STATISTIKEN
 
-CIDRAM ist optional in der Lage, Statistiken wie die Gesamtzahl der seit einem bestimmten Zeitpunkt aufgetretenen Blockereignisse oder reCAPTCHA-Instanzen zu verfolgen. Diese Funktion ist standardmäßig deaktiviert, kann jedoch über die Paketkonfiguration aktiviert werden. Diese Funktion verfolgt nur die Gesamtzahl der aufgetretenen Ereignisse, und enthält keine Informationen zu bestimmten Ereignissen (und sollten daher nicht als PII betrachtet werden).
+CIDRAM ist optional in der Lage, Statistiken wie die Gesamtzahl der seit einem bestimmten Zeitpunkt aufgetretenen Blockereignisse oder CAPTCHA-Instanzen zu verfolgen. Diese Funktion ist standardmäßig deaktiviert, kann jedoch über die Paketkonfiguration aktiviert werden. Diese Funktion verfolgt nur die Gesamtzahl der aufgetretenen Ereignisse, und enthält keine Informationen zu bestimmten Ereignissen (und sollten daher nicht als PII betrachtet werden).
 
 *Relevante Konfigurationsdirektiven:*
 - `general` -> `statistics`
@@ -1946,11 +1946,11 @@ CIDRAM verwendet keine [Kryptografie](https://de.wikipedia.org/wiki/Kryptographi
 
 #### 11.4 COOKIES
 
-CIDRAM setzt [Cookies](https://de.wikipedia.org/wiki/HTTP-Cookie) an zwei Stellen in seiner Codebasis. Erstens, wenn ein Benutzer eine reCAPTCHA-Instanz erfolgreich abgeschlossen hat (und angenommen, dass `lockuser` auf `true` gesetzt ist), CIDRAM setzt einen Cookie, um sich bei nachfolgenden Anfragen daran erinnern zu können, dass der Benutzer bereits eine reCAPTCHA-Instanz abgeschlossen hat, damit muss der Benutzer nicht ständig aufgefordert werden, eine reCAPTCHA-Instanz bei nachfolgenden Anfragen zu vervollständigen. Zweitens, wenn sich ein Benutzer erfolgreich am Frontend eingeloggt, CIDRAM setzt eine einen Cookie, um sich den Benutzer für nachfolgende Anfragen merken zu können (d.h., Cookies dienen zur Authentifizierung des Benutzers bei einer Einloggen-Sitzung).
+CIDRAM setzt [Cookies](https://de.wikipedia.org/wiki/HTTP-Cookie) an zwei Stellen in seiner Codebasis. Erstens, wenn ein Benutzer eine CAPTCHA-Instanz erfolgreich abgeschlossen hat (und angenommen, dass `lockuser` auf `true` gesetzt ist), CIDRAM setzt einen Cookie, um sich bei nachfolgenden Anfragen daran erinnern zu können, dass der Benutzer bereits eine CAPTCHA-Instanz abgeschlossen hat, damit muss der Benutzer nicht ständig aufgefordert werden, eine CAPTCHA-Instanz bei nachfolgenden Anfragen zu vervollständigen. Zweitens, wenn sich ein Benutzer erfolgreich am Frontend eingeloggt, CIDRAM setzt eine einen Cookie, um sich den Benutzer für nachfolgende Anfragen merken zu können (d.h., Cookies dienen zur Authentifizierung des Benutzers bei einer Einloggen-Sitzung).
 
 In beiden Fällen werden Cookie-Warnungen angezeigt (falls zutreffend), die den Benutzer warnen, dass Cookies gesetzt werden, wenn sie die relevanten Aktionen ausführt. An anderen Stellen in der Codebasis werden keine Cookies gesetzt.
 
-*Hinweis: Die Art und Weise, wie CIDRAM die "invisible" reCAPTCHA-API implementiert, könnte in einigen Ländern mit den Cookie-Gesetzen nicht kompatibel sein, und sollte von Websites, die solchen Gesetzen unterliegen, vermieden werden. Es könnte besser sein, stattdessen die API "V2" zu verwenden, oder reCAPTCHA vollständig deaktivieren.*
+*Hinweis: Die "unsichtbaren" CAPTCHA-APIs sind in einigen Ländern möglicherweise nicht mit den Cookie-Gesetzen kompatibel, und sollte von Websites die solchen Gesetzen unterliegen vermieden werden. Es kann vorzuziehen sein stattdessen die anderen bereitgestellten APIs zu verwenden, oder CAPTCHA vollständig zu deaktivieren.*
 
 *Relevante Konfigurationsdirektiven:*
 - `general` -> `disable_frontend`
@@ -1994,4 +1994,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 10. Mai 2021 (2021.05.10).
+Zuletzt aktualisiert: 23. Mai 2021 (2021.05.23).

@@ -1818,7 +1818,7 @@ Tham khảo cho chữ ký: x.x.x.x/xx
 Tại sao bị chặn: Dịch vụ điện toán đám mây ("Tên mạng", Lxx:Fx, [XX])!
 Đại lý người dùng: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 URI được xây dựng lại: https://your-site.tld/index.php
-Tình trạng reCAPTCHA: Trên.
+Tình trạng CAPTCHA: Trên.
 ```
 
 Cùng một sự kiện khối, được ghi vào tập tin nhật ký trong kiểu Apache, sẽ trông giống như sau:
@@ -1838,7 +1838,7 @@ Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
 - Tham khảo các lý do cho sự kiện khối và một số thông tin gỡ rối cơ bản liên quan.
 - Đại lý người dùng của yêu cầu bị chặn (danh tính của thực thể yêu cầu).
 - Việc xây dựng lại số nhận dạng cho tài nguyên được yêu cầu ban đầu.
-- Trạng thái reCAPTCHA cho yêu cầu hiện tại (khi có liên quan).
+- Trạng thái CAPTCHA cho yêu cầu hiện tại (khi có liên quan).
 
 *Các chỉ thị cấu hình chịu trách nhiệm về loại ghi nhật ký này và cho mỗi một trong ba định dạng có sẵn:*
 - `general` -> `logfile`
@@ -1847,17 +1847,17 @@ Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
 
 Khi các chỉ thị này được để trống, loại ghi nhật ký này sẽ vẫn bị vô hiệu hóa.
 
-##### 11.3.1 NHẬT KÝ reCAPTCHA
+##### 11.3.1 NHẬT KÝ CAPTCHA
 
-Loại nhật ký này liên quan cụ thể đến reCAPTCHA, và chỉ xảy ra khi người dùng cố gắng hoàn thành reCAPTCHA.
+Loại nhật ký này liên quan cụ thể đến CAPTCHA, và chỉ xảy ra khi người dùng cố gắng hoàn thành CAPTCHA.
 
-Mục nhập nhật ký reCAPTCHA chứa địa chỉ IP của người dùng đang cố gắng hoàn thành reCAPTCHA, ngày và giờ xảy ra sự cố, và trạng thái của reCAPTCHA. Mục nhập nhật ký reCAPTCHA thường trông giống như sau (ví dụ):
+Mục nhập nhật ký CAPTCHA chứa địa chỉ IP của người dùng đang cố gắng hoàn thành CAPTCHA, ngày và giờ xảy ra sự cố, và trạng thái của CAPTCHA. Mục nhập nhật ký CAPTCHA thường trông giống như sau (ví dụ):
 
 ```
-Địa chỉ IP: x.x.x.x - Ngày/Thời gian: Day, dd Mon 20xx hh:ii:ss +0000 - Tình trạng reCAPTCHA: Thành công!
+Địa chỉ IP: x.x.x.x - Ngày/Thời gian: Day, dd Mon 20xx hh:ii:ss +0000 - Tình trạng CAPTCHA: Thành công!
 ```
 
-*Chỉ thị cấu hình chịu trách nhiệm cho nhật ký reCAPTCHA là:*
+*Chỉ thị cấu hình chịu trách nhiệm cho nhật ký CAPTCHA là:*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1920,7 +1920,7 @@ Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn c�
 
 ##### 11.3.7 SỐ LIỆU THỐNG KÊ
 
-CIDRAM có thể tùy chọn theo dõi số liệu thống kê như tổng số sự kiện chặn hay sự xuất hiện reCAPTCHA đã xảy ra kể từ một số thời điểm cụ thể. Tính năng này được vô hiệu hóa theo mặc định, nhưng có thể được kích hoạt thông qua cấu hình gói. Tính năng này chỉ theo dõi tổng số sự kiện đã xảy ra và không bao gồm bất kỳ thông tin nào về các sự kiện cụ thể (và do đó, không nên được coi là PII).
+CIDRAM có thể tùy chọn theo dõi số liệu thống kê như tổng số sự kiện chặn hay sự xuất hiện CAPTCHA đã xảy ra kể từ một số thời điểm cụ thể. Tính năng này được vô hiệu hóa theo mặc định, nhưng có thể được kích hoạt thông qua cấu hình gói. Tính năng này chỉ theo dõi tổng số sự kiện đã xảy ra và không bao gồm bất kỳ thông tin nào về các sự kiện cụ thể (và do đó, không nên được coi là PII).
 
 *Chỉ thị cấu hình có liên quan:*
 - `general` -> `statistics`
@@ -1931,11 +1931,11 @@ CIDRAM không mã hóa bộ nhớ cache của nó hoặc bất kỳ thông tin l
 
 #### 11.4 COOKIE
 
-CIDRAM đặt [cookie](https://vi.wikipedia.org/wiki/Cookie_(tin_h%E1%BB%8Dc)) ở hai điểm trong cơ sở mã của nó. Thứ nhất, khi người dùng hoàn tất thành công sự xuất hiện reCAPTCHA (và giả định rằng `lockuser` được đặt thành `true`), CIDRAM đặt cookie để có thể ghi nhớ các yêu cầu tiếp theo mà người dùng đã hoàn sự xuất hiện reCAPTCHA, vì vậy để không cần liên tục yêu cầu người dùng hoàn thành một sự xuất hiện reCAPTCHA trên mỗi yêu cầu tiếp theo. Thứ hai, khi người dùng đăng nhập thành công vào front-end, CIDRAM đặt cookie để có thể nhớ người dùng cho các yêu cầu tiếp theo (cookie được sử dụng để xác thực người dùng đến phiên đăng nhập).
+CIDRAM đặt [cookie](https://vi.wikipedia.org/wiki/Cookie_(tin_h%E1%BB%8Dc)) ở hai điểm trong cơ sở mã của nó. Thứ nhất, khi người dùng hoàn tất thành công sự xuất hiện CAPTCHA (và giả định rằng `lockuser` được đặt thành `true`), CIDRAM đặt cookie để có thể ghi nhớ các yêu cầu tiếp theo mà người dùng đã hoàn sự xuất hiện CAPTCHA, vì vậy để không cần liên tục yêu cầu người dùng hoàn thành một sự xuất hiện CAPTCHA trên mỗi yêu cầu tiếp theo. Thứ hai, khi người dùng đăng nhập thành công vào front-end, CIDRAM đặt cookie để có thể nhớ người dùng cho các yêu cầu tiếp theo (cookie được sử dụng để xác thực người dùng đến phiên đăng nhập).
 
 Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi bật (khi nó có liên quan), cảnh báo người dùng rằng cookie sẽ được đặt nếu họ tham gia vào các hành động có liên quan. Cookie không được đặt ở bất kỳ điểm nào khác trong cơ sở mã.
 
-*Chú thích: Việc triển khai API "invisible" cụ thể của CIDRAM cho reCAPTCHA có thể không tương thích với luật cookie ở một số khu vực pháp lý, và phải được tránh bởi bất kỳ trang web nào tuân theo các luật đó. Thay vào đó, việc chọn sử dụng API "V2", hoặc chỉ đơn giản là tắt hoàn toàn reCAPTCHA, có thể thích hợp hơn.*
+*Chú thích: Các API CAPTCHA "vô hình" có thể không tương thích với luật cookie ở một số khu vực pháp lý, và nên được tránh bởi bất kỳ trang web nào tuân theo các luật đó. Thay vào đó, chọn sử dụng các API được cung cấp khác, hoặc đơn giản là vô hiệu hóa hoàn toàn CAPTCHA, có thể thích hợp hơn.*
 
 *Chỉ thị cấu hình có liên quan:*
 - `general` -> `disable_frontend`
@@ -1974,4 +1974,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.05.10.
+Lần cuối cập nhật: 2021.05.23.

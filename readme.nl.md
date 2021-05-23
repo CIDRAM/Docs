@@ -1830,7 +1830,7 @@ Signatures Verwijzing: x.x.x.x/xx
 Waarom Geblokkeerd: Cloud Service ("Netwerknaam", Lxx:Fx, [XX])!
 User Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Gereconstrueerde URI: https://your-site.tld/index.php
-reCAPTCHA State: Enabled.
+CAPTCHA State: Enabled.
 ```
 
 Diezelfde blokgebeurtenis, geregistreerd in een Apache-stijl logbestand, ziet er ongeveer zo uit:
@@ -1850,7 +1850,7 @@ Een geregistreerde blokgebeurtenis bevat meestal de volgende informatie:
 - Verwijzingen naar de redenen voor de blokgebeurtenis, en enkele standaard, gerelateerde foutopsporingsinformatie.
 - De user agent van het geblokkeerde verzoek (d.w.z., hoe de verzoekende entiteit zichzelf identificeerde bij het verzoek).
 - Een reconstructie van de identifier voor de oorspronkelijk aangevraagde bron.
-- De reCAPTCHA state voor het huidige verzoek (indien relevant).
+- De CAPTCHA state voor het huidige verzoek (indien relevant).
 
 *De configuratie richtlijnen die verantwoordelijk zijn voor dit type loggen, en voor elk van de drie beschikbare indelingen, zijn:*
 - `general` -> `logfile`
@@ -1859,17 +1859,17 @@ Een geregistreerde blokgebeurtenis bevat meestal de volgende informatie:
 
 Wanneer deze richtlijnen leeg worden gelaten, blijft dit type logboek uitgeschakeld.
 
-##### 11.3.1 reCAPTCHA LOGGEN
+##### 11.3.1 CAPTCHA LOGGEN
 
-Dit type loggen heeft specifiek betrekking op reCAPTCHA-instanties, en gebeurt alleen op wanneer een gebruiker een reCAPTCHA-instantie probeert te voltooien.
+Dit type loggen heeft specifiek betrekking op CAPTCHA-instanties, en gebeurt alleen op wanneer een gebruiker een CAPTCHA-instantie probeert te voltooien.
 
-Een reCAPTCHA-logsinvoer bevat het IP-adres van de gebruiker die probeert een reCAPTCHA-instantie te voltooien, de datum en tijd waarop de poging heeft plaatsgevonden, en de reCAPTCHA state. Een reCAPTCHA-logsinvoer ziet er meestal als volgt uit (bijvoorbeeld):
+Een CAPTCHA-logsinvoer bevat het IP-adres van de gebruiker die probeert een CAPTCHA-instantie te voltooien, de datum en tijd waarop de poging heeft plaatsgevonden, en de CAPTCHA state. Een CAPTCHA-logsinvoer ziet er meestal als volgt uit (bijvoorbeeld):
 
 ```
-IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - reCAPTCHA State: Succes!
+IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State: Succes!
 ```
 
-*De configuratie richtlijn die verantwoordelijk is voor reCAPTCHA loggen is:*
+*De configuratie richtlijn die verantwoordelijk is voor CAPTCHA loggen is:*
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
@@ -1938,7 +1938,7 @@ Als u nog een stap verder wilt gaan door te voorkomen dat specifieke soorten inf
 
 ##### 11.3.7 STATISTIEKEN
 
-CIDRAM is optioneel in staat om statistieken bij te houden, zoals het totale aantal blokgebeurtenissen of reCAPTCHA-instanties die zijn opgetreden sinds een bepaald tijdstip. Deze functie is standaard uitgeschakeld, maar kan worden ingeschakeld via de pakketconfiguratie. Deze functie houdt alleen het totale aantal opgetreden gebeurtenissen bij en bevat geen informatie over specifieke gebeurtenissen (en moet daarom niet als PII worden beschouwd).
+CIDRAM is optioneel in staat om statistieken bij te houden, zoals het totale aantal blokgebeurtenissen of CAPTCHA-instanties die zijn opgetreden sinds een bepaald tijdstip. Deze functie is standaard uitgeschakeld, maar kan worden ingeschakeld via de pakketconfiguratie. Deze functie houdt alleen het totale aantal opgetreden gebeurtenissen bij en bevat geen informatie over specifieke gebeurtenissen (en moet daarom niet als PII worden beschouwd).
 
 *Relevante configuratie-opties:*
 - `general` -> `statistics`
@@ -1949,11 +1949,11 @@ CIDRAM codeert de cache of logboekinformatie niet. [Encryptie](https://nl.wikipe
 
 #### 11.4 COOKIES
 
-CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een reCAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een reCAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een reCAPTCHA-instantie bij volgende aanvragen in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende aanvragen (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
+CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende aanvragen in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende aanvragen (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
 
 In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het relevant is), waardoor de gebruiker wordt gewaarschuwd dat cookies worden ingesteld als deze zich bezighouden met de relevante acties. Cookies zijn niet ingesteld op andere punten in de codebase.
 
-*Notitie: De specifieke implementatie door CIDRAM van de "invisible" API voor reCAPTCHA kan incompatibel zijn met cookiewetten in sommige rechtsgebieden, en moet worden vermeden door websites die onder dergelijke wetgeving vallen. Kiezen om in plaats daarvan de "V2" API te gebruiken, of eenvoudig reCAPTCHA volledig uit te schakelen, kan de voorkeur verdienen.*
+*Notitie: De "onzichtbare" CAPTCHA-API's zijn mogelijk incompatibel met de cookiewetgeving in sommige rechtsgebieden, en moet worden vermeden door websites die onder dergelijke wetgeving vallen. Kiezen om in plaats daarvan de andere meegeleverde API's te gebruiken, of gewoon CAPTCHA volledig uitschakelen, kan de voorkeur hebben.*
 
 *Relevante configuratie-opties:*
 - `general` -> `disable_frontend`
@@ -1994,4 +1994,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 10 Mei 2021 (2021.05.10).
+Laatste Bijgewerkt: 23 Mei 2021 (2021.05.23).
