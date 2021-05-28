@@ -348,6 +348,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -602,6 +603,9 @@ Valor | Produce | Descripción
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
 - Archivo para registrar intentos de login al front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+##### "signatures_update_event_log"
+- Un archivo para registrar cuando las firmas se actualizan a través del front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
 ##### "ban_override"
 - Anular "forbid_on_block" cuando "infraction_limit" es excedido? Cuando se anula: Las solicitudes bloqueadas devuelven una página en blanco (los archivos templates no se utilizan). 200 = No anular [Predefinido]. Otros valores son los mismos que los valores disponibles para "forbid_on_block".
@@ -1984,4 +1988,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 23 de Mayo de 2021 (2021.05.23).
+Última Actualización: 28 de Mayo de 2021 (2021.05.28).

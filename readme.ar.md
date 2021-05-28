@@ -350,6 +350,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -654,6 +655,11 @@ Configuration (v2)
 <div dir="rtl"><ul>
  <li><em>v1: "FrontEndLog"</em></li>
  <li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li>
+</ul></div>
+
+##### <div dir="rtl">"signatures_update_event_log"<br /></div>
+<div dir="rtl"><ul>
+ <li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li>
 </ul></div>
 
 ##### <div dir="rtl">"ban_override"<br /></div>
@@ -2255,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٣ مايو ٢٠٢١ (٢٠٢١.٠٥.٢٣).</div>
+<div dir="rtl">آخر تحديث: ٢٨ مايو ٢٠٢١ (٢٠٢١.٠٥.٢٨).</div>

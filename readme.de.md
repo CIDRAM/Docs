@@ -348,6 +348,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -602,6 +603,9 @@ Wert | Produziert | Beschreibung
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
 - Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "signatures_update_event_log"
+- Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
 ##### "ban_override"
 - Überschreiben "forbid_on_block" Wenn "infraction_limit" überschritten wird? Beim überschreiben: Blockierte Anfragen geben eine leere Seite zurück (Template-Dateien werden nicht verwendet). 200 = Nicht überschreiben [Standardeinstellung]. Andere Werte entsprechen den verfügbaren Werten für "forbid_on_block".
@@ -1994,4 +1998,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 23. Mai 2021 (2021.05.23).
+Zuletzt aktualisiert: 28. Mai 2021 (2021.05.28).

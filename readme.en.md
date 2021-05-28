@@ -348,6 +348,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -612,6 +613,9 @@ Value | Produces | Description
 ##### "frontend_log"
 - *v1: "FrontEndLog"*
 - File for logging front-end login attempts. Specify a filename, or leave blank to disable.
+
+##### "signatures_update_event_log"
+- A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
 
 ##### "ban_override"
 - Override "forbid_on_block" when "infraction_limit" is exceeded? When overriding: Blocked requests return a blank page (template files aren't used). 200 = Don't override [Default]. Other values are the same as the available values for "forbid_on_block".
@@ -1951,7 +1955,7 @@ CIDRAM sets [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) at two points i
 
 In both cases, cookie warnings are displayed prominently (when applicable), warning the user that cookies will be set if they engage in the relevant actions. Cookies aren't set at any other points in the codebase.
 
-*Note: The "invisible" CAPTCHA APIs might be incompatible with cookie laws in some jurisdictions, and should be avoided by any websites subject to such laws. Opting to use the other provided APIs instead, or simply disabling CAPTCHA entirely, may be preferable.*
+*Note: The "invisible" CAPTCHA APIs might be incompatible with cookie laws in some jurisdictions, and should be avoided by any websites subject to such laws. Opting to use the other provided APIs instead, or simply disabling CAPTCHAs entirely, may be preferable.*
 
 *Relevant configuration directives:*
 - `general` -> `disable_frontend`
@@ -1995,4 +1999,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 23 May 2021 (2021.05.23).
+Last Updated: 28 May 2021 (2021.05.28).

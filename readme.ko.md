@@ -348,6 +348,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -602,6 +603,9 @@ Configuration (v2)
 ##### "frontend_log"
 - *v1 : "FrontEndLog"*
 - 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+##### "signatures_update_event_log"
+- 프런트 엔드임를 통해 서명이 업데이트될 때 로깅을 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 ##### "ban_override"
 - "infraction_limit"를 초과하면 "forbid_on_block"를 덮어 쓰시겠습니까? 덮어 쓸 때 : 차단 된 요청은 빈 페이지를 반환합니다 (템플릿 파일은 사용되지 않습니다). 200 = 덮어 쓰지 (Default / 기본 설정). 다른 값은 "forbid_on_block"에 사용할 수있는 값과 같습니다.
@@ -1973,4 +1977,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 5월 23일.
+최종 업데이트 : 2021년 5월 28일.

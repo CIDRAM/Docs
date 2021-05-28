@@ -350,6 +350,7 @@ Configuration (v2)
 │       disable_frontend
 │       max_login_attempts
 │       frontend_log (v1: FrontEndLog)
+│       signatures_update_event_log
 │       ban_override
 │       log_banned_ips
 │       default_dns
@@ -654,6 +655,11 @@ Configuration (v2)
 <div dir="rtl"><ul>
  <li><em>v1: "FrontEndLog"</em></li>
  <li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
+</ul></div>
+
+##### <div dir="rtl">"signatures_update_event_log"<br /></div>
+<div dir="rtl"><ul>
+ <li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li>
 </ul></div>
 
 ##### <div dir="rtl">"ban_override"<br /></div>
@@ -2255,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۳ مئی ۲۰۲۱ (۲۰۲۱.۰۵.۲۳).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۸ مئی ۲۰۲۱ (۲۰۲۱.۰۵.۲۸).</div>
