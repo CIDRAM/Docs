@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ The following is a list of the directives available to CIDRAM in the `config.ini
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -746,6 +735,9 @@ Signatures configuration.
 
 ##### "track_mode"
 - When should infractions be counted? False = When IPs are blocked by modules. True = When IPs are blocked for any reason. Default = False.
+
+##### "tracking_override"
+- Allow modules to override tracking options? True = Yes [Default]; False = No.
 
 #### "recaptcha" and "hcaptcha" (these two categories provide the same directives).
 If you want, you can present users with a CAPTCHA challenge in order to distinguish them from bots or to allow them to regain access in the event of being blocked. This can help mitigate false positives and reduce unwanted automated traffic.
@@ -1601,14 +1593,12 @@ CIDRAM's `pdo_dsn` configuration directive should be configured as described bel
 
 ```
 Depending on which database driver is used...
-│
 ├─4d (Warning: Experimental, untested, not recommended!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └The host to connect with to find the database.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1619,7 +1609,6 @@ Depending on which database driver is used...
 │                │              └The port number to connect to the host.
 │                │
 │                └The host to connect with to find the database.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1630,7 +1619,6 @@ Depending on which database driver is used...
 │    │          └The host to connect with to find the database.
 │    │
 │    └Possible values: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1642,21 +1630,18 @@ Depending on which database driver is used...
 │                    │
 │                    └You should refer to the Firebird documentation if you
 │                     want to use this.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Which catalogued database to connect with.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Which catalogued database to connect with.
-│
 ├─mysql (Most recommended!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1669,7 +1654,6 @@ Depending on which database driver is used...
 │                 │             database.
 │                 │
 │                 └The name of the database to use.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1681,7 +1665,6 @@ Depending on which database driver is used...
 │               │
 │               └You should refer to the Oracle documentation if you want to
 │                use this.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1693,7 +1676,6 @@ Depending on which database driver is used...
 │         │
 │         └You should refer to the ODBC/DB2 documentation if you want to use
 │          this.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1704,14 +1686,12 @@ Depending on which database driver is used...
 │               │              └The port number to connect to the host.
 │               │
 │               └The host to connect with to find the database.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └The path to the local database file to use.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1999,4 +1979,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 28 May 2021 (2021.05.28).
+Last Updated: 28 June 2021 (2021.06.28).

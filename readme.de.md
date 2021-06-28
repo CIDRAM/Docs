@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ Nachfolgend finden Sie eine Liste der Variablen in der Konfigurationsdatei (`con
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ Konfiguration der Signaturen.
 
 ##### "track_mode"
 - Wann sollten Verstöße gezählt werden? False = Wenn IPs von Modulen blockiert werden. True = Wenn IPs aus irgendeinem anderen Grund blockiert werden. Standardeinstellung = False.
+
+##### "tracking_override"
+- Sollten Module erlaubt sein Tracking-Optionen zu überschreiben? True = Ja [Standardeinstellung]; False = Nein.
 
 #### "recaptcha" und "hcaptcha" (diese beiden Kategorien enthalten dieselben Richtlinien).
 Wenn Sie möchten, können Sie Benutzern eine CAPTCHA-Herausforderung stellen, um sie von Bots zu unterscheiden, oder ihnen zu ermöglichen wieder Zugriff zu erhalten im Falle einer Blockierung. Dies kann dazu beitragen, Falsch-Positiv zu vermeiden und unerwünschten, automatisierten Datenverkehr zu reduzieren.
@@ -1593,14 +1585,12 @@ Die Konfigurationsanweisung `pdo_dsn` von CIDRAM sollte wie folgt konfiguriert w
 
 ```
 Abhängig davon, welcher Datenbanktreiber verwendet wird...
-│
 ├─4d (Warnung: Experimentell, ungetestet, nicht empfohlen!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └Der Host, auf dem sich die Datenbank befindet.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1612,7 +1602,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │                │               Verbindung verwendet werden soll.
 │                │
 │                └Der Host, auf dem sich die Datenbank befindet.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1623,7 +1612,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │    │          └Der Host, auf dem sich die Datenbank befindet.
 │    │
 │    └Mögliche Werte: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1636,7 +1624,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │                    │
 │                    └Sie sollten auf die Firebird-Dokumentation lesen wenn Sie
 │                     diese verwenden möchten.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
@@ -1644,7 +1631,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │           ╚╤════╝
 │            └Die katalogisierte Datenbank, mit der eine Verbindung hergestellt
 │             werden soll.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
@@ -1652,7 +1638,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │                ╚╤════╝
 │                 └Die katalogisierte Datenbank, mit der eine Verbindung
 │                  hergestellt werden soll.
-│
 ├─mysql (Am meisten empfohlen!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1665,7 +1650,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │                 │            └Der Host, auf dem sich die Datenbank befindet.
 │                 │
 │                 └Der Name der Datenbank.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1678,7 +1662,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │               │
 │               └Sie sollten auf die Oracle-Dokumentation lesen wenn Sie diese
 │                verwenden möchten.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1690,7 +1673,6 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │         │
 │         └Sie sollten auf die ODBC/DB2-Dokumentation lesen wenn Sie diese
 │          verwenden möchten.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1702,14 +1684,12 @@ Abhängig davon, welcher Datenbanktreiber verwendet wird...
 │               │               Verbindung verwendet werden soll.
 │               │
 │               └Der Host, auf dem sich die Datenbank befindet.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Der Pfad zur lokalen Datenbankdatei, die verwendet werden soll.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1998,4 +1978,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 28. Mai 2021 (2021.05.28).
+Zuletzt aktualisiert: 28. Juni 2021 (2021.06.28).

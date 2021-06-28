@@ -149,17 +149,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -325,7 +322,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -369,7 +365,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -384,7 +379,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -398,7 +393,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -412,19 +406,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -439,7 +430,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -447,7 +437,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -860,6 +849,11 @@ Configuration (v2)
 ##### <div dir="rtl">"track_mode"<br /></div>
 <div dir="rtl"><ul>
  <li>متى يجب أن تحسب المخالفات؟ زائفة/False = عندما IP تم حظره من قبل وحدات. صحيح/True = عندما IP يتم حظر لأي سبب من الأسباب. افتراضي = زائفة/False.</li>
+</ul></div>
+
+##### <div dir="rtl">"tracking_override"<br /></div>
+<div dir="rtl"><ul>
+ <li>هل تسمح للوحدات النمطية بتجاوز خيارات التتبع؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li>
 </ul></div>
 
 #### <div dir="rtl">"recaptcha" و "hcaptcha" (كلاهما يقدم نفس التوجيهات).<br /></div>
@@ -1839,14 +1833,12 @@ IP | المشغل
 
 ```
 اعتمادًا على برنامج تشغيل قاعدة البيانات المستخدم...
-│
 ├─4d (تحذير: تجريبي، لم يتم اختباره، غير مستحسن)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └المضيف للاتصال مع للعثور على قاعدة البيانات
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1857,7 +1849,6 @@ IP | المشغل
 │                │              └رقم المنفذ للاتصال بالمضيف مع
 │                │
 │                └المضيف للاتصال مع للعثور على قاعدة البيانات
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1868,7 +1859,6 @@ IP | المشغل
 │    │          └المضيف للاتصال مع للعثور على قاعدة البيانات
 │    │
 │    └"mssql", "sybase", "dblib": القيم الممكنة
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1879,21 +1869,18 @@ IP | المشغل
 │                    ├يمكن الاتصال مع المضيف ورقم المنفذ
 │                    │
 │                    └يجب عليك الرجوع إلى وثائق Firebird إذا كنت تريد استخدام هذا
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └التي فهرستها قاعدة البيانات للتواصل مع
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └التي فهرستها قاعدة البيانات للتواصل مع
-│
 ├─mysql (الأكثر الموصى بها)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1904,7 +1891,6 @@ IP | المشغل
 │                 │            └المضيف للاتصال مع للعثور على قاعدة البيانات
 │                 │
 │                 └اسم قاعدة البيانات المراد استخدامها
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1915,7 +1901,6 @@ IP | المشغل
 │               ├يمكن الاتصال مع المضيف ورقم المنفذ
 │               │
 │               └يجب عليك الرجوع إلى وثائق Oracle إذا كنت تريد استخدام هذا
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1926,7 +1911,6 @@ IP | المشغل
 │         ├يمكن الاتصال مع المضيف ورقم المنفذ
 │         │
 │         └└يجب عليك الرجوع إلى وثائق ODBC/DB2 إذا كنت تريد استخدام هذا
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1937,14 +1921,12 @@ IP | المشغل
 │               │              └رقم المنفذ للاتصال بالمضيف مع
 │               │
 │               └المضيف للاتصال مع للعثور على قاعدة البيانات
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └المسار إلى ملف قاعدة البيانات المحلية للاستخدام
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -2261,4 +2243,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٨ مايو ٢٠٢١ (٢٠٢١.٠٥.٢٨).</div>
+<div dir="rtl">آخر تحديث: ٢٨ يونيو ٢٠٢١ (٢٠٢١.٠٦.٢٨).</div>

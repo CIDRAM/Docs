@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ _**: Требуется функция поиска ASN, например, из 
 
 ##### «track_mode»
 - Когда следует учитывать нарушения? False = Когда IP-адреса блокируются из модулями. True = Когда IP-адреса блокируются по какой-либо причине. Стандарт = False.
+
+##### «tracking_override»
+- Разрешить модулям переопределять параметры отслеживания? True = Да [Стандарт]; False = Нет.
 
 #### «recaptcha» и «hcaptcha» (эти две категории предоставляют одинаковые директивы).
 При желании, вы можете представить пользователям задачу CAPTCHA, чтобы отличить их от ботов или позволить им восстановить доступ в случае блокировки. Это может помочь уменьшить количество ложноположительный и уменьшить нежелательный автоматизированный трафик.
@@ -1591,14 +1583,12 @@ CIDRAM предоставляет возможность использоват�
 
 ```
 Согласно базе данных драйвер используется...
-│
 ├─4d (Предупреждение: экспериментально, не проверено, не рекомендуется!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └Хост, с которым нужно связаться, чтобы найти базу данных.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1610,7 +1600,6 @@ CIDRAM предоставляет возможность использоват�
 │                │              └Номер порта для подключения к хосту.
 │                │
 │                └Хост, с которым нужно связаться, чтобы найти базу данных.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1621,7 +1610,6 @@ CIDRAM предоставляет возможность использоват�
 │    │          └Хост, с которым нужно связаться, чтобы найти базу данных.
 │    │
 │    └Возможные значения: «mssql», «sybase», «dblib».
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1633,21 +1621,18 @@ CIDRAM предоставляет возможность использоват�
 │                    │
 │                    └Вам следует обратиться к документации Firebird, если вы
 │                     хотите использовать это.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Каталогизированная база данных для связи.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Каталогизированная база данных для связи.
-│
 ├─mysql (Наиболее рекомендуется!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1660,7 +1645,6 @@ CIDRAM предоставляет возможность использоват�
 │                 │             базу данных.
 │                 │
 │                 └Имя базы данных для использования.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1672,7 +1656,6 @@ CIDRAM предоставляет возможность использоват�
 │               │
 │               └Вам следует обратиться к документации Oracle, если вы хотите
 │                использовать это.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1684,7 +1667,6 @@ CIDRAM предоставляет возможность использоват�
 │         │
 │         └Вам следует обратиться к документации ODBC/DB2, если вы хотите
 │          использовать это.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1695,14 +1677,12 @@ CIDRAM предоставляет возможность использоват�
 │               │              └Номер порта для подключения к хосту.
 │               │
 │               └Хост, с которым нужно связаться, чтобы найти базу данных.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Путь к файлу локальной базы данных для использования.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1982,4 +1962,4 @@ CIDRAM не собирает и не обрабатывает какую-либ�
 ---
 
 
-Последнее обновление: 28 Мая 2021 г (2021.05.28).
+Последнее обновление: 28 Июня 2021 г (2021.06.28).

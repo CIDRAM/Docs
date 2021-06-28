@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ Het volgende is een lijst van variabelen die in de `config.ini` configuratiebest
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ Configuratie voor signatures.
 
 ##### "track_mode"
 - Wanneer moet overtredingen worden gerekend? False = Wanneer IP's geblokkeerd door modules worden. True = Wanneer IP's om welke reden geblokkeerd worden. Standaard = False.
+
+##### "tracking_override"
+- Moeten modules worden toegestaan om opties voor tracking te overschrijven? True = Ja [Standaard]; False = Nee.
 
 #### "recaptcha" en "hcaptcha" (deze twee categorieën geven dezelfde richtlijnen).
 Als je wilt, kun je gebruikers een CAPTCHA-uitdaging aanbieden om ze te onderscheiden van bots of om ze weer toegang te geven als ze worden geblokkeerd. Dit kan helpen om false positives te verminderen en ongewenst geautomatiseerd verkeer te verminderen.
@@ -1591,7 +1583,6 @@ CIDRAM's `pdo_dsn` configuratie-richtlijn moet worden geconfigureerd zoals hiero
 
 ```
 Afhankelijk van welk databasestuurprogramma wordt gebruikt...
-│
 ├─4d (Waarschuwing: Experimenteel, niet getest, niet aanbevolen!)
 │ │
 │ │         ╔═══════╗
@@ -1599,7 +1590,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │           ╚╤══════╝
 │            └De host waarmee verbinding wordt gemaakt om de database te
 │             vinden.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1613,7 +1603,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │                │
 │                └De host waarmee verbinding wordt gemaakt om de database te
 │                 vinden.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1625,7 +1614,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │    │           vinden.
 │    │
 │    └Mogelijke waarden: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1637,14 +1625,12 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │                    │
 │                    └Raadpleeg de Firebird-documentatie als u hiervan gebruik
 │                     wilt maken.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Met welke gecatalogiseerde database om verbinding mee te maken.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
@@ -1652,7 +1638,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │                ╚╤════╝
 │                 └Met welke gecatalogiseerde database om verbinding mee te
 │                  maken.
-│
 ├─mysql (Meest aanbevolen!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1666,7 +1651,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │                 │             database te vinden.
 │                 │
 │                 └De naam van de database te gebruiken.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1678,7 +1662,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │               │
 │               └Raadpleeg de Oracle-documentatie als u hiervan gebruik wilt
 │                maken.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1689,7 +1672,6 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │         ├Kan verbinding maken met een host en poortnummer.
 │         │
 │         └Raadpleeg de ODBC/DB2-documentatie als u hiervan gebruik wilt maken.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1703,14 +1685,12 @@ Afhankelijk van welk databasestuurprogramma wordt gebruikt...
 │               │
 │               └De host waarmee verbinding wordt gemaakt om de database te
 │                vinden.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Het pad naar het te gebruiken lokale databasebestand.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1998,4 +1978,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 28 Mei 2021 (2021.05.28).
+Laatste Bijgewerkt: 28 Juni 2021 (2021.06.28).

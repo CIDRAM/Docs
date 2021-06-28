@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, 
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ Konfigurasi untuk tanda tangan.
 
 ##### "track_mode"
 - Kapan sebaiknya pelanggaran dihitung? False = Ketika IP adalah diblokir oleh modul. True = Ketika IP adalah diblokir untuk alasan apapun. Default = False.
+
+##### "tracking_override"
+- Izinkan modul untuk mengganti opsi pelacakan? True = Ya [Default]; False = Tidak.
 
 #### "recaptcha" dan "hcaptcha" (kedua kategori ini memberikan direktif-direktif yang sama).
 Jika mau, Anda dapat memberikan tantangan CAPTCHA kepada pengguna untuk membedakan mereka dari bot atau untuk memungkinkan mereka mendapatkan kembali akses jika diblokir. Ini dapat membantu mengurangi positif palsu dan mengurangi lalu lintas otomatis yang tidak diinginkan.
@@ -1591,14 +1583,12 @@ Direktif konfigurasi `pdo_dsn` harus dikonfigurasi seperti dijelaskan dibawah.
 
 ```
 Tergantung pada driver basis data yang digunakan...
-│
 ├─4d (Peringatan: Eksperimental, belum diuji, tidak direkomendasikan!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └Host untuk terhubung dengan untuk menemukan database.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1610,7 +1600,6 @@ Tergantung pada driver basis data yang digunakan...
 │                │              └Nomor port yang akan dihubungkan dengan host.
 │                │
 │                └Host untuk terhubung dengan untuk menemukan database.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1621,7 +1610,6 @@ Tergantung pada driver basis data yang digunakan...
 │    │          └Host untuk terhubung dengan untuk menemukan database.
 │    │
 │    └Nilai yang mungkin: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1633,21 +1621,18 @@ Tergantung pada driver basis data yang digunakan...
 │                    │
 │                    └Anda harus merujuk pada dokumentasi Firebird jika Anda
 │                     ingin menggunakan ini.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Database yang di katalog untuk dihubungkan.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Database yang di katalog untuk dihubungkan.
-│
 ├─mysql (Paling direkomendasikan!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1660,7 +1645,6 @@ Tergantung pada driver basis data yang digunakan...
 │                 │             database.
 │                 │
 │                 └Nama basis data yang akan digunakan.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1672,7 +1656,6 @@ Tergantung pada driver basis data yang digunakan...
 │               │
 │               └Anda harus merujuk pada dokumentasi Oracle jika Anda ingin
 │                menggunakan ini.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1684,7 +1667,6 @@ Tergantung pada driver basis data yang digunakan...
 │         │
 │         └Anda harus merujuk pada dokumentasi ODBC/DB2 jika Anda ingin
 │          menggunakan ini.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1696,14 +1678,12 @@ Tergantung pada driver basis data yang digunakan...
 │               │              └Nomor port yang akan dihubungkan dengan host.
 │               │
 │               └Host untuk terhubung dengan untuk menemukan database.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Jalur ke file database lokal untuk digunakan.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1981,4 +1961,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 28 Mei 2021 (2021.05.28).
+Terakhir Diperbarui: 28 Juni 2021 (2021.06.28).

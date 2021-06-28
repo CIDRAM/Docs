@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 
 ##### "track_mode"
 - 위반은 언제 계산해야합니까? False = IP가 모듈에 의해 차단되는 경우. True = 뭐든지 이유로 IP가 차단 된 경우. Default (기본값) = False.
+
+##### "tracking_override"
+- 모듈이 추적 옵션을 재정의하도록 허용하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
 
 #### "recaptcha" 및 "hcaptcha" (이 두 범주는 동일한 지침을 제공합니다).
 네가 원한다면, 사용자를 로봇과 구별하거나 차단된 경우 다시 액세스 할 수 있도록 사용자에게 CAPTCHA 챌린지를 제공 할 수 있습니다. 이는 거짓 양성 완화하고 원치 않는 자동화 된 트래픽을 줄이는 데 도움이 될 수 있습니다.
@@ -1589,14 +1581,12 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 
 ```
 사용되는 데이터베이스 드라이버에 따라...
-│
 ├─4d (경고 : 실험적, 테스트 되지 않은, 권장하지 않음!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └데이터베이스를 찾기 위해 연결할 호스트입니다.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1607,7 +1597,6 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │                │              └호스트에 연결할 포트 번호입니다.
 │                │
 │                └데이터베이스를 찾기 위해 연결할 호스트입니다.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1618,7 +1607,6 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │    │          └데이터베이스를 찾기 위해 연결할 호스트입니다.
 │    │
 │    └가능한 값 : "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1629,21 +1617,18 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │                    ├호스트 및 포트 번호와 연결할 수 있습니다.
 │                    │
 │                    └이것을 사용하려면 Firebird 설명서를 참조하십시오.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └연결할 카탈로그 된 데이터베이스입니다.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └연결할 카탈로그 된 데이터베이스입니다.
-│
 ├─mysql (가장 추천!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1654,7 +1639,6 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │                 │            └데이터베이스를 찾기 위해 연결할 호스트입니다.
 │                 │
 │                 └사용할 데이터베이스의 이름입니다.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1665,7 +1649,6 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │               ├호스트 및 포트 번호와 연결할 수 있습니다.
 │               │
 │               └이것을 사용하려면 Oracle 설명서를 참조하십시오.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1676,7 +1659,6 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │         ├호스트 및 포트 번호와 연결할 수 있습니다.
 │         │
 │         └이것을 사용하려면 ODBC/DB2 설명서를 참조하십시오.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1687,14 +1669,12 @@ CIDRAM의 `pdo_dsn` 설정 지시어는 아래와 같이 설정해야합니다.
 │               │              └호스트에 연결할 포트 번호입니다.
 │               │
 │               └데이터베이스를 찾기 위해 연결할 호스트입니다.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └사용할 로컬 데이터베이스 파일의 경로입니다.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1977,4 +1957,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 5월 28일.
+최종 업데이트 : 2021년 6월 28일.

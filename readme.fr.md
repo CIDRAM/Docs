@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ Ce qui suit est une liste des directives disponibles pour CIDRAM dans le `config
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -676,7 +665,7 @@ Supporté actuellement :
 - Forcer les recherches de nom d'hôte ? True = Oui ; False = Non [Défaut]. Les recherches de nom d'hôte sont normalement effectuées « au besoin », mais peuvent être forcées pour toutes les requêtes. Cela peut être utile pour fournir des informations plus détaillées dans les fichiers journaux, mais peut également avoir un effet légèrement négatif sur les performances.
 
 ##### « allow_gethostbyaddr_lookup »
-- Autoriser les recherches par gethostbyaddr lorsque UDP est indisponible ? True = Yes [Default]; False = No.
+- Autoriser les recherches par gethostbyaddr lorsque UDP est indisponible ? True = Oui [Défaut] ; False = Non.
 - *Remarque : La recherche de IPv6 peut ne pas fonctionner correctement sur certains systèmes 32-bits.*
 
 ##### « hide_version »
@@ -736,6 +725,9 @@ Configuration pour les signatures.
 
 ##### « track_mode »
 - Quand faut-il compter les infractions ? False = Quand les adresses IP sont bloquées par des modules. True = Quand les adresses IP sont bloquées pour une raison quelconque. Défaut = False.
+
+##### « tracking_override »
+- Autoriser les modules à remplacer les options de suivi ? True = Oui [Défaut] ; False = Non.
 
 #### « recaptcha » et « hcaptcha » (ces deux catégories fournissent les mêmes directives).
 Si vous le souhaitez, vous pouvez proposer aux utilisateurs un challenge CAPTCHA afin de les distinguer des bots ou de leur permettre de retrouver l'accès en cas de blocage. Cela peut aider à atténuer les faux positifs et à réduire le trafic automatisé indésirable.
@@ -1591,14 +1583,12 @@ La directive de configuration `pdo_dsn` de CIDRAM doit être configurée comme d
 
 ```
 En fonction du pilote de base de données utilisé ...
-│
 ├─4d (Avertissement : Expérimental, non testé, non recommandé !)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └L'hôte avec lequel se connecter pour trouver la base de données.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1611,7 +1601,6 @@ En fonction du pilote de base de données utilisé ...
 │                │
 │                └L'hôte avec lequel se connecter pour trouver la base de
 │                 données.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1623,7 +1612,6 @@ En fonction du pilote de base de données utilisé ...
 │    │           données.
 │    │
 │    └Valeurs possibles : « mssql », « sybase », « dblib ».
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1636,21 +1624,18 @@ En fonction du pilote de base de données utilisé ...
 │                    │
 │                    └Vous devriez vous référer à la documentation Firebird si
 │                     vous voulez l'utiliser.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Avec quelle base de données cataloguée vous connecter.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Avec quelle base de données cataloguée vous connecter.
-│
 ├─mysql (Le plus recommandé !)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1663,7 +1648,6 @@ En fonction du pilote de base de données utilisé ...
 │                 │             base de données.
 │                 │
 │                 └Le nom de la base de données à utiliser.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1676,7 +1660,6 @@ En fonction du pilote de base de données utilisé ...
 │               │
 │               └Vous devriez vous référer à la documentation Oracle si vous
 │                voulez l'utiliser.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1688,7 +1671,6 @@ En fonction du pilote de base de données utilisé ...
 │         │
 │         └Vous devriez vous référer à la documentation ODBC/DB2 si vous voulez
 │          l'utiliser.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1701,14 +1683,12 @@ En fonction du pilote de base de données utilisé ...
 │               │
 │               └L'hôte avec lequel se connecter pour trouver la base de
 │                données.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Le chemin d'accès au fichier de base de données local à utiliser.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1994,4 +1974,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 28 Mai 2021 (2021.05.28).
+Dernière mise à jour : 28 Juin 2021 (2021.06.28).

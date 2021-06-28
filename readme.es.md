@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ La siguiente es una lista de variables encuentran en la `config.ini` configuraci
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ Configuración de firmas.
 
 ##### "track_mode"
 - ¿Cuándo se deben contar las infracciones? False = Cuando los IPs están bloqueados por módulos. True = Cuando los IP están bloqueados por cualquier razón. Predefinido = False.
+
+##### "tracking_override"
+- ¿Permitir que los módulos reemplacen las opciones de seguimiento? True = Sí [Predefinido]; False = No.
 
 #### "recaptcha" y "hcaptcha" (estas dos categorías proporcionan las mismas directivas).
 Si lo desea, puede presentar a los usuarios un desafío CAPTCHA para distinguirlos de los bots o para permitirles recuperar el acceso en caso de ser bloqueados. Esto puede ayudar a mitigar los falsos positivos y reducir el tráfico automatizado no deseado.
@@ -1591,14 +1583,12 @@ La directiva de configuración `pdo_dsn` de CIDRAM debe configurarse como se des
 
 ```
 Dependiendo de qué controlador de base de datos se use...
-│
 ├─4d (¡Advertencia: Experimental, no probado, no recomendado!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └El host con el que conectarse para encontrar la base de datos.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1611,7 +1601,6 @@ Dependiendo de qué controlador de base de datos se use...
 │                │
 │                └El host con el que conectarse para encontrar la base de
 │                 datos.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1622,7 +1611,6 @@ Dependiendo de qué controlador de base de datos se use...
 │    │          └El host con el que conectarse para encontrar la base de datos.
 │    │
 │    └Valores posibles: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1634,21 +1622,18 @@ Dependiendo de qué controlador de base de datos se use...
 │                    │
 │                    └Debe consultar la documentación de Firebird si desea usar
 │                     esto.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Con qué base de datos catalogada para conectarse.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Con qué base de datos catalogada para conectarse.
-│
 ├─mysql (¡Lo más recomendado!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1661,7 +1646,6 @@ Dependiendo de qué controlador de base de datos se use...
 │                 │             base de datos.
 │                 │
 │                 └El nombre de la base de datos a usar.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1673,7 +1657,6 @@ Dependiendo de qué controlador de base de datos se use...
 │               ├Se puede conectar con un host y número de puerto.
 │               │
 │               └Debe consultar la documentación de Oracle si desea usar esto.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1684,7 +1667,6 @@ Dependiendo de qué controlador de base de datos se use...
 │         ├Se puede conectar con un host y número de puerto.
 │         │
 │         └Debe consultar la documentación de ODBC/DB2 si desea usar esto.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1696,14 +1678,12 @@ Dependiendo de qué controlador de base de datos se use...
 │               │              └El número de puerto para conectarse al host.
 │               │
 │               └El host con el que conectarse para encontrar la base de datos.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └La ruta al archivo de base de datos local a utilizar.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1988,4 +1968,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 28 de Mayo de 2021 (2021.05.28).
+Última Actualización: 28 de Junio de 2021 (2021.06.28).

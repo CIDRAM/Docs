@@ -147,17 +147,14 @@ https://github.com/CIDRAM/CIDRAM>v2
 │   loader.php
 │   README.md
 │   tests.php
-│
 ├───.docker
 │       docker-compose.yml
-│
 ├───.github
 │   │   FUNDING.yml
 │   │
 │   └───workflows
 │           php-cs-fixer.yml
 │           v2.yml
-│
 └───vault
     │   captcha_default.html
     │   channels.yaml
@@ -323,7 +320,6 @@ Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho
 
 ```
 Configuration (v2)
-│
 ├───general
 │       logfile
 │       logfile_apache (v1: logfileApache)
@@ -367,7 +363,6 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
-│
 ├───signatures
 │       ipv4
 │       ipv6
@@ -382,7 +377,7 @@ Configuration (v2)
 │       default_tracktime
 │       infraction_limit
 │       track_mode
-│
+│       tracking_override
 ├───recaptcha
 │       usemode
 │       lockip
@@ -396,7 +391,6 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───hcaptcha
 │       usemode
 │       lockip
@@ -410,19 +404,16 @@ Configuration (v2)
 │       show_cookie_warning
 │       show_api_message
 │       nonblocked_status_code
-│
 ├───legal
 │       pseudonymise_ip_addresses
 │       omit_ip
 │       omit_hostname
 │       omit_ua
 │       privacy_policy
-│
 ├───template_data
 │       theme
 │       magnification (v1: Magnification)
 │       css_url
-│
 ├───PHPMailer
 │       event_log (v1: EventLog)
 │       skip_auth_process (v1: SkipAuthProcess)
@@ -437,7 +428,6 @@ Configuration (v2)
 │       set_from_name (v1: setFromName)
 │       add_reply_to_address (v1: addReplyToAddress)
 │       add_reply_to_name (v1: addReplyToName)
-│
 ├───rate_limiting
 │       max_bandwidth
 │       max_requests
@@ -445,7 +435,6 @@ Configuration (v2)
 │       precision_ipv6
 │       allowance_period
 │       exceptions
-│
 └───supplementary_cache_options
         enable_apcu
         enable_memcached
@@ -736,6 +725,9 @@ Cấu hình cho chữ ký.
 
 ##### "track_mode"
 - Khi vi phạm cần được tính? False = Khi IP bị chặn bởi các mô-đun. True = Khi IP bị chặn vì lý do bất kỳ. Mặc định = False.
+
+##### "tracking_override"
+- Cho phép các mô-đun ghi đè các tùy chọn giám sát? True = Vâng [Mặc định]; False = Không.
 
 #### "recaptcha" và "hcaptcha" (hai thể loại này cung cấp các chỉ thị giống nhau).
 Nếu bạn muốn, bạn có thể giới thiệu cho người dùng một thử thách CAPTCHA để phân biệt họ với bot hoặc cho phép họ lấy lại quyền truy cập trong trường hợp bị chặn. Điều này có thể giúp giảm sai tích cực và giảm lưu lượng truy cập tự động không mong muốn.
@@ -1591,14 +1583,12 @@ Chỉ thị cấu hình `pdo_dsn` của CIDRAM nên được cấu hình như m�
 
 ```
 Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử dụng...
-│
 ├─4d (Cảnh báo: Thử nghiệm, chưa được kiểm tra, không được khuyến khích!)
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
 │            └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
-│
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
@@ -1609,7 +1599,6 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │                │              └Số cổng để kết nối với máy chủ.
 │                │
 │                └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
-│
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
@@ -1620,7 +1609,6 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │    │          └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
 │    │
 │    └Những giá trị khả thi: "mssql", "sybase", "dblib".
-│
 ├─firebird
 │ │
 │ │                 ╔═══════════════════╗
@@ -1633,21 +1621,18 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │                    │
 │                    └Bạn nên tham khảo tài liệu Firebird nếu bạn muốn sử dụng
 │                     trình điều khiển này.
-│
 ├─ibm
 │ │
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
 │            └Các cơ sở dữ liệu được phân loại để kết nối với.
-│
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
 │                 └Các cơ sở dữ liệu được phân loại để kết nối với.
-│
 ├─mysql (Được khuyến nghị nhất!)
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1658,7 +1643,6 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │                 │            └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
 │                 │
 │                 └Tên của cơ sở dữ liệu để sử dụng.
-│
 ├─oci
 │ │
 │ │            ╔═════╗
@@ -1670,7 +1654,6 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │               │
 │               └Bạn nên tham khảo tài liệu Oracle nếu bạn muốn sử dụng
 │                trình điều khiển này.
-│
 ├─odbc
 │ │
 │ │      ╔═════╗
@@ -1682,7 +1665,6 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │         │
 │         └Bạn nên tham khảo tài liệu ODBC/DB2 nếu bạn muốn sử dụng
 │          trình điều khiển này.
-│
 ├─pgsql
 │ │
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
@@ -1693,14 +1675,12 @@ Tùy thuộc vào trình điều khiển cơ sở dữ liệu nào được sử
 │               │              └Số cổng để kết nối với máy chủ.
 │               │
 │               └Máy chủ để kết nối với để tìm cơ sở dữ liệu.
-│
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
 │           └Đường dẫn đến tập tin cơ sở dữ liệu cục bộ để sử dụng.
-│
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
@@ -1978,4 +1958,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.05.28.
+Lần cuối cập nhật: 2021.06.28.
