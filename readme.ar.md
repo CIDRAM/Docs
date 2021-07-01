@@ -365,6 +365,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -781,6 +782,11 @@ Configuration (v2)
 ##### <div dir="rtl">"default_timeout"<br /></div>
 <div dir="rtl"><ul>
  <li>المهلة الافتراضية لاستخدامها للطلبات الخارجية؟ الافتراضي = 12 ثانية.</li>
+</ul></div>
+
+##### <div dir="rtl">"config_imports"<br /></div>
+<div dir="rtl"><ul>
+ <li>قائمة ملفات محددة بفواصل لاستيرادها إلى التكوين الافتراضي لـ CIDRAM. يتم ملؤها عادةً بصفحة التحديثات عند تنشيط المكونات التي تحتاج إليها عند الضرورة. فارغ بشكل افتراضي. في معظم الحالات، يمكن تجاهله.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
@@ -2243,4 +2249,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٨ يونيو ٢٠٢١ (٢٠٢١.٠٦.٢٨).</div>
+<div dir="rtl">آخر تحديث: ١ يوليو ٢٠٢١ (٢٠٢١.٠٧.٠١).</div>

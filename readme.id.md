@@ -363,6 +363,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -683,6 +684,9 @@ Didukung sekarang:
 
 ##### "default_timeout"
 - Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
+
+##### "config_imports"
+- Sebuah daftar dipisahkan dengan koma untuk file untuk mengimpor ke konfigurasi default CIDRAM. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Kosong secara default. Dalam kebanyakan kasus, bisa mengabaikannya.
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -1961,4 +1965,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 28 Juni 2021 (2021.06.28).
+Terakhir Diperbarui: 1 Juli 2021 (2021.07.01).

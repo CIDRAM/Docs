@@ -363,6 +363,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -683,6 +684,9 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "default_timeout"
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
+
+##### "config_imports"
+- Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Mặc định là trống. Trong hầu hết các trường hợp, có thể bỏ qua nó.
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -1958,4 +1962,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.06.28.
+Lần cuối cập nhật: 2021.07.01.

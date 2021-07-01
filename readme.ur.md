@@ -365,6 +365,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -781,6 +782,11 @@ Configuration (v2)
 ##### <div dir="rtl">"default_timeout"<br /></div>
 <div dir="rtl"><ul>
  <li>بیرونی درخواستوں کے لئے استعمال کرنے کیلئے پہلے سے طے شدہ ٹائم آؤٹ؟ پہلے سے طے شدہ = 12 سیکنڈ.</li>
+</ul></div>
+
+##### <div dir="rtl">"config_imports"<br /></div>
+<div dir="rtl"><ul>
+ <li>CIDRAM ڈیفالٹ ترتیب میں درآمد کرنے والی فائلیں، کوما کے ذریعہ الگ کردی گئیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. خالی معیار کے طور پر. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
@@ -2243,4 +2249,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۸ جون ۲۰۲۱ (۲۰۲۱.۰۶.۲۸).</div>
+<div dir="rtl">آخری تازہ کاری: ۱ جولائی ۲۰۲۱ (۲۰۲۱.۰۷.۰۱).</div>

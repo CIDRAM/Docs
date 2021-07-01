@@ -363,6 +363,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -683,6 +684,9 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 
 ##### "default_timeout"
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
+
+##### "config_imports"
+- CIDRAM 기본 구성으로 가져올 쉼표로 구분된 파일 목록입니다. 일반적으로 구성 요소를 활성화할 때 업데이트 페이지에서 필요에 따라 채워집니다. 기본적으로 비어 있습니다. 대부분의 경우 무시할 수 있습니다.
 
 #### "signatures" (카테고리)
 서명 설정.
@@ -1957,4 +1961,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 6월 28일.
+최종 업데이트 : 2021년 7월 1일.

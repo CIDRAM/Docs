@@ -363,6 +363,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -683,6 +684,9 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 
 ##### “default_timeout”
 - 用于外部请求的默认超时？ 标准 = 12秒。
+
+##### “config_imports”
+- 要导入CIDRAM默认配置的以逗号分隔的文件列表。​通常在启用组件时由更新页面按需填充。​默认为空。​大多数情况下，可以忽略它。
 
 #### “signatures” （类别）
 签名配置。
@@ -1962,4 +1966,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2021年6月28日。
+最后更新：2021年7月1日。

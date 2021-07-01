@@ -363,6 +363,7 @@ Configuration (v2)
 │       log_sanitisation
 │       disabled_channels
 │       default_timeout
+│       config_imports
 ├───signatures
 │       ipv4
 │       ipv6
@@ -683,6 +684,9 @@ Soportado actualmente:
 
 ##### "default_timeout"
 - ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
+
+##### "config_imports"
+- Una lista delimitada por comas de archivos para importar a la configuración predeterminada de CIDRAM. Normalmente se llena con la página de actualizaciones al activar componentes que lo necesitan cuando sea necesario. Vacío por predefinido. En la mayoría de los casos, puede ignorarlo.
 
 #### "signatures" (Categoría)
 Configuración de firmas.
@@ -1968,4 +1972,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 28 de Junio de 2021 (2021.06.28).
+Última Actualización: 1 de Julio de 2021 (2021.07.01).
