@@ -641,7 +641,7 @@ Configuration (v2)
 _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)._
 
 ##### "other_verification"
-- 가능한 한, 다른 요청을 확인하려고 합니까 (예 : 애드 센스, SEO 검사기, 등등)? 감지되면, 가짜 요청이 차단됩니다. True = 활성화 (Default / 기본 설정); False = 비활성화.
+- 가능한 한, 다른 요청을 확인하려고 합니까 (예 : 애드 센스, SEO 검사기, 등등)? 감지되면, 가짜 요청이 차단됩니다. True = 활성화 (Default / 기본 설정); False = 비활성화.
 
 현재 지원 :
 - __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
