@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 - 用於外部請求的默認超時？ 標準 = 12秒。
 
 ##### 『config_imports』
-- 要導入CIDRAM默認配置的以逗號分隔的文件列表。​通常在啟用組件時由更新頁面按需填充。​默認為空。​大多數情況下，可以忽略它。
+- 要導入CIDRAM默認配置的以逗號分隔的文件列表。​通常在啟用組件時由更新頁面按需填充。​大多數情況下，可以忽略它。
 
 #### 『signatures』 （類別）
 簽名配置。
@@ -1966,4 +1963,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年7月1日。
+最後更新：2021年7月12日。

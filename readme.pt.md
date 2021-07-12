@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ Atualmente suportado:
 - Tempo limite padrão a ser usado para solicitações externas? Padrão = 12 segundos.
 
 ##### "config_imports"
-- Uma lista delimitada por vírgulas de arquivos a serem importados para a configuração padrão de CIDRAM. Normalmente preenchido pela página de atualizações ao ativar componentes que precisam dela quando necessário. Vazio por padrão. Na maioria dos casos, pode ignorá-lo.
+- Uma lista delimitada por vírgulas de arquivos a serem importados para a configuração padrão de CIDRAM. Normalmente preenchido pela página de atualizações ao ativar componentes que precisam dela quando necessário. Na maioria dos casos, pode ignorá-lo.
 
 #### "signatures" (Categoria)
 Configuração por assinaturas.
@@ -1968,4 +1965,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 1 de Julho de 2021 (2021.07.01).
+Última Atualização: 12 de Julho de 2021 (2021.07.12).

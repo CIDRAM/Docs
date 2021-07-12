@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
 
 ##### "config_imports"
-- Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Mặc định là trống. Trong hầu hết các trường hợp, có thể bỏ qua nó.
+- Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -1962,4 +1959,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.07.01.
+Lần cuối cập nhật: 2021.07.12.

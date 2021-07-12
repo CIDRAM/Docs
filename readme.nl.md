@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ Momenteel ondersteund:
 - Standaard time-out om te gebruiken voor externe verzoeken? Standaard = 12 seconden.
 
 ##### "config_imports"
-- Een door komma's gescheiden lijst met bestanden die moeten worden geïmporteerd in de standaardconfiguratie van CIDRAM. Wordt doorgaans naar behoefte ingevuld door de pagina met updates bij het activeren van componenten. Het is leeg als standard. In de meeste gevallen kunt u het negeren.
+- Een door komma's gescheiden lijst met bestanden die moeten worden geïmporteerd in de standaardconfiguratie van CIDRAM. Wordt doorgaans naar behoefte ingevuld door de pagina met updates bij het activeren van componenten. In de meeste gevallen kunt u het negeren.
 
 #### "signatures" (Categorie)
 Configuratie voor signatures.
@@ -1982,4 +1979,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 1 Juli 2021 (2021.07.01).
+Laatste Bijgewerkt: 12 Juli 2021 (2021.07.12).

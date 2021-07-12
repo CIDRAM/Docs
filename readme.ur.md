@@ -158,6 +158,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -185,13 +187,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -212,7 +211,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -259,7 +257,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -786,7 +783,7 @@ Configuration (v2)
 
 ##### <div dir="rtl">"config_imports"<br /></div>
 <div dir="rtl"><ul>
- <li>CIDRAM ڈیفالٹ ترتیب میں درآمد کرنے والی فائلیں، کوما کے ذریعہ الگ کردی گئیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. خالی معیار کے طور پر. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li>
+ <li>CIDRAM ڈیفالٹ ترتیب میں درآمد کرنے والی فائلیں، کوما کے ذریعہ الگ کردی گئیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
@@ -2249,4 +2246,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱ جولائی ۲۰۲۱ (۲۰۲۱.۰۷.۰۱).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۲ جولائی ۲۰۲۱ (۲۰۲۱.۰۷.۱۲).</div>

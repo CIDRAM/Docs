@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ Attualmente supportato:
 - Il tempo scaduto predefinito da utilizzare per le richieste esterne? Predefinito = 12 secondi.
 
 ##### "config_imports"
-- Un elenco delimitato con virgole di file da importare nella configurazione predefinita di CIDRAM. Tipicamente popolato dalla pagina degli aggiornamenti quando si attivano i componenti che ne hanno bisogno quando necessario. Vuoto per impostazione predefinita. Nella maggior parte dei casi, può ignorarlo.
+- Un elenco delimitato con virgole di file da importare nella configurazione predefinita di CIDRAM. Tipicamente popolato dalla pagina degli aggiornamenti quando si attivano i componenti che ne hanno bisogno quando necessario. Nella maggior parte dei casi, può ignorarlo.
 
 #### "signatures" (Categoria)
 Configurazione per firme.
@@ -1968,4 +1965,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 1 Luglio 2021 (2021.07.01).
+Ultimo Aggiornamento: 12 Luglio 2021 (2021.07.12).

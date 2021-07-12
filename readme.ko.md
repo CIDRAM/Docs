@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
 
 ##### "config_imports"
-- CIDRAM 기본 구성으로 가져올 쉼표로 구분된 파일 목록입니다. 일반적으로 구성 요소를 활성화할 때 업데이트 페이지에서 필요에 따라 채워집니다. 기본적으로 비어 있습니다. 대부분의 경우 무시할 수 있습니다.
+- CIDRAM 기본 구성으로 가져올 쉼표로 구분된 파일 목록입니다. 일반적으로 구성 요소를 활성화할 때 업데이트 페이지에서 필요에 따라 채워집니다. 대부분의 경우 무시할 수 있습니다.
 
 #### "signatures" (카테고리)
 서명 설정.
@@ -1961,4 +1958,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 7월 1일.
+최종 업데이트 : 2021년 7월 12일.

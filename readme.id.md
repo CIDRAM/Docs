@@ -156,6 +156,8 @@ https://github.com/CIDRAM/CIDRAM>v2
 │           php-cs-fixer.yml
 │           v2.yml
 └───vault
+    │   bypasses.php
+    │   bypasses.yml
     │   captcha_default.html
     │   channels.yaml
     │   cidramblocklists.dat
@@ -183,13 +185,10 @@ https://github.com/CIDRAM/CIDRAM>v2
     │   lang.php
     │   modules.dat
     │   outgen.php
-    │   rules_as6939.php
-    │   rules_specific.php
     │   template_custom.html
     │   template_default.html
     │   themes.dat
     │   verification.yaml
-    │
     ├───classes
     │   │   Aggregator.php
     │   │   Captcha.php
@@ -210,7 +209,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           Operation.php
     │           Request.php
     │           YAML.php
-    │
     ├───fe_assets
     │       auxiliary.js
     │       frontend.css
@@ -257,7 +255,6 @@ https://github.com/CIDRAM/CIDRAM>v2
     │       _statistics.html
     │       _updates.html
     │       _updates_row.html
-    │
     └───lang
             lang.ar.fe.yaml
             lang.ar.yaml
@@ -686,7 +683,7 @@ Didukung sekarang:
 - Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
 
 ##### "config_imports"
-- Sebuah daftar dipisahkan dengan koma untuk file untuk mengimpor ke konfigurasi default CIDRAM. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Kosong secara default. Dalam kebanyakan kasus, bisa mengabaikannya.
+- Sebuah daftar dipisahkan dengan koma untuk file untuk mengimpor ke konfigurasi default CIDRAM. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Dalam kebanyakan kasus, bisa mengabaikannya.
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -1965,4 +1962,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 1 Juli 2021 (2021.07.01).
+Terakhir Diperbarui: 12 Juli 2021 (2021.07.12).
