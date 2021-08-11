@@ -361,6 +361,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -684,6 +685,9 @@ Derzeit unterstützt:
 
 ##### "config_imports"
 - Eine durch Kommata getrennte Liste von Dateien, die in die CIDRAM-Standardkonfiguration importiert werden sollen. Wird normalerweise von der Aktualisierungsseite nach Bedarf ausgefüllt wenn Komponenten aktiviert werden. In den meisten Fällen kann es ignorieren.
+
+##### "events"
+- Hier aufgelistete Dateien werden direkt nach der Ereignishandlerdatei geladen. Wird normalerweise von der Aktualisierungsseite nach Bedarf ausgefüllt wenn Komponenten aktiviert werden. In den meisten Fällen kann es ignorieren.
 
 #### "signatures" (Kategorie)
 Konfiguration der Signaturen.
@@ -1979,4 +1983,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 12. Juli 2021 (2021.07.12).
+Zuletzt aktualisiert: 11. August 2021 (2021.08.11).

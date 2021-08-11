@@ -361,6 +361,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -684,6 +685,9 @@ Didukung sekarang:
 
 ##### "config_imports"
 - Sebuah daftar dipisahkan dengan koma untuk file untuk mengimpor ke konfigurasi default CIDRAM. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Dalam kebanyakan kasus, bisa mengabaikannya.
+
+##### "events"
+- File yang terdaftar disini dimuat langsung setelah file pengendali acara. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Dalam kebanyakan kasus, bisa mengabaikannya.
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan.
@@ -1962,4 +1966,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 12 Juli 2021 (2021.07.12).
+Terakhir Diperbarui: 11 Agustus 2021 (2021.08.11).

@@ -361,6 +361,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -684,6 +685,9 @@ Supporté actuellement :
 
 ##### « config_imports »
 - Une liste délimitée par des virgules de fichiers à importer dans la configuration par défaut du CIDRAM. Généralement renseigné par la page des mises à jour lors de l'activation des composants qui en ont besoin si nécessaire. Dans la plupart des cas, peut l'ignorer.
+
+##### « events »
+- Les fichiers répertoriés ici sont chargés directement après le fichier des gestionnaires d'événements. Généralement renseigné par la page des mises à jour lors de l'activation des composants qui en ont besoin si nécessaire. Dans la plupart des cas, peut l'ignorer.
 
 #### « signatures » (Catégorie)
 Configuration pour les signatures.
@@ -1975,4 +1979,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 12 Juillet 2021 (2021.07.12).
+Dernière mise à jour : 11 Août 2021 (2021.08.11).

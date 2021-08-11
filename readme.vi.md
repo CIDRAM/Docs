@@ -361,6 +361,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -684,6 +685,9 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "config_imports"
 - Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
+
+##### "events"
+- Các tập tin được liệt kê ở đây được tải trực tiếp sau tập tin trình xử lý sự kiện. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký.
@@ -1959,4 +1963,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.07.12.
+Lần cuối cập nhật: 2021.08.11.

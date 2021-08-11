@@ -363,6 +363,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -784,6 +785,11 @@ Configuration (v2)
 ##### <div dir="rtl">"config_imports"<br /></div>
 <div dir="rtl"><ul>
  <li>قائمة ملفات محددة بفواصل لاستيرادها إلى التكوين الافتراضي لـ CIDRAM. يتم ملؤها عادةً بصفحة التحديثات عند تنشيط المكونات التي تحتاج إليها عند الضرورة. في معظم الحالات، يمكن تجاهله.</li>
+</ul></div>
+
+##### <div dir="rtl">"events"<br /></div>
+<div dir="rtl"><ul>
+ <li>يتم تحميل الملفات المدرجة هنا مباشرة بعد ملف معالجات الأحداث. يتم ملؤها عادةً بصفحة التحديثات عند تنشيط المكونات التي تحتاج إليها عند الضرورة. في معظم الحالات، يمكن تجاهله.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
@@ -2246,4 +2252,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٢ يوليو ٢٠٢١ (٢٠٢١.٠٧.١٢).</div>
+<div dir="rtl">آخر تحديث: ١١ أغسطس ٢٠٢١ (٢٠٢١.٠٨.١١).</div>

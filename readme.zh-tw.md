@@ -361,6 +361,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -684,6 +685,9 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 
 ##### 『config_imports』
 - 要導入CIDRAM默認配置的以逗號分隔的文件列表。​通常在啟用組件時由更新頁面按需填充。​大多數情況下，可以忽略它。
+
+##### 『events』
+- 此處列出的文件在事件處理程序文件之後直接加載。​通常在啟用組件時由更新頁面按需填充。​大多數情況下，可以忽略它。
 
 #### 『signatures』 （類別）
 簽名配置。
@@ -1963,4 +1967,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年7月12日。
+最後更新：2021年8月11日。

@@ -363,6 +363,7 @@ Configuration (v2)
 │       disabled_channels
 │       default_timeout
 │       config_imports
+│       events
 ├───signatures
 │       ipv4
 │       ipv6
@@ -784,6 +785,11 @@ Configuration (v2)
 ##### <div dir="rtl">"config_imports"<br /></div>
 <div dir="rtl"><ul>
  <li>CIDRAM ڈیفالٹ ترتیب میں درآمد کرنے والی فائلیں، کوما کے ذریعہ الگ کردی گئیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li>
+</ul></div>
+
+##### <div dir="rtl">"events"<br /></div>
+<div dir="rtl"><ul>
+ <li>یہاں درج فائلیں براہ راست ایونٹ ہینڈلرز فائل کے بعد لوڈ کی جاتی ہیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li>
 </ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
@@ -2246,4 +2252,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۲ جولائی ۲۰۲۱ (۲۰۲۱.۰۷.۱۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۱ اگست ۲۰۲۱ (۲۰۲۱.۰۸.۱۱).</div>
