@@ -642,8 +642,9 @@ _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュール
 - 可能な限り、他の種類のリクエストを確認するがありますか（例：AdSense、SEOチェッカー、など）？​検出されると、偽のリクエストはブロックされます。 True = 有効にする（Default/デフォルルト）。 False = 無効にする。
 
 現在サポートされている：
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### "protect_frontend" （プロテクト・フロントエンド）
 - CIDRAMによって通常提供される保護をフロントエンドに適用するかどうかを指定します。 True = はい（Default/デフォルルト）。 False = いいえ。
@@ -1964,4 +1965,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年８月１１日。
+最終アップデート：２０２１年９月２６日。

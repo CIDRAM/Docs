@@ -642,8 +642,9 @@ _**: Memerlukan fungsionalitas pencarian ASN, mis., dari modul BGPView._
 - Jika memungkinkan, coba verifikasi jenis permintaan lain (mis., AdSense, pemeriksa SEO, dll)? Saat terdeteksi, permintaan palsu akan diblokir. True = Mengaktifkan [Default]; False = Menonaktifkan.
 
 Didukung sekarang:
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### "protect_frontend"
 - Menentukan apakah perlindungan biasanya disediakan oleh CIDRAM harus diterapkan pada bagian depan. True = Ya [Default]; False = Tidak.
@@ -1966,4 +1967,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 11 Agustus 2021 (2021.08.11).
+Terakhir Diperbarui: 26 September 2021 (2021.09.26).

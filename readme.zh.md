@@ -642,8 +642,9 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 - 若有可能，尝试验证其他类型的请求（例如，AdSense，SEO检查器，等等）？​当检测到时，伪造的请求将被阻止。​True（真）=启用【标准】；​False（假）=禁用。
 
 目前支持：
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### “protect_frontend”
 - 指定是否应将CIDRAM通常提供的保护应用于前端。​True（真）=是【标准】；​False（假）=不是。
@@ -1967,4 +1968,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2021年8月11日。
+最后更新：2021年9月26日。

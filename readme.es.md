@@ -642,8 +642,9 @@ _**: Requiere la funcionalidad de búsqueda ASN, por ejemplo, del módulo BGPVie
 - ¿Siempre que sea posible, intente verificar otros tipos de solicitudes (por ejemplo, AdSense, verificadores de SEO, etc)? Cuando se detectan, las solicitudes falsas se bloquearán. True = Activar [Predefinido]; False = Desactivar.
 
 Soportado actualmente:
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### "protect_frontend"
 - Especifica si las protecciones normalmente proporcionadas por CIDRAM deben aplicarse al front-end. True = Sí [Predefinido]; False = No.
@@ -1973,4 +1974,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 11 de Agosto de 2021 (2021.08.11).
+Última Actualización: 26 de Septiembre de 2021 (2021.09.26).

@@ -716,8 +716,9 @@ Configuration (v2)
 
 <div dir="rtl">المدعومة حاليا:<br /></div>
 <div dir="rtl"><ul>
- <li><strong dir="ltr"><a href="https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html">Oracle Data Cloud Crawler</a></strong></li>
+ <li><strong dir="ltr"><a href="https://adbot.amazon.com/index.html">AmazonAdBot</a></strong></li>
  <li><strong dir="ltr"><a href="https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers">AdSense</a></strong></li>
+ <li><strong dir="ltr"><a href="https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html">Oracle Data Cloud Crawler</a></strong></li>
 </ul></div>
 
 ##### <div dir="rtl">"protect_frontend"<br /></div>
@@ -2252,4 +2253,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١١ أغسطس ٢٠٢١ (٢٠٢١.٠٨.١١).</div>
+<div dir="rtl">آخر تحديث: ٢٦ سبتمبر ٢٠٢١ (٢٠٢١.٠٩.٢٦).</div>

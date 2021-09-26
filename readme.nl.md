@@ -642,8 +642,9 @@ _**: Vereist ASN-opzoekfunctionaliteit, b.v., van de BGPView-module._
 - Probeer waar mogelijk andere soorten verzoeken te verifiëren (b.v., AdSense, SEO-checkers, enz)? Als ze worden gedetecteerd, worden vervalste verzoeken geblokkeerd. True = Inschakelen [Standaard]; False = Uitschakelen.
 
 Momenteel ondersteund:
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### "protect_frontend"
 - Geeft aan of de bescherming die gewoonlijk door CIDRAM is voorzien moet worden toegepast op de frontend. True = Ja [Standaard]; False = Nee.
@@ -1983,4 +1984,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 11 Augustus 2021 (2021.08.11).
+Laatste Bijgewerkt: 26 September 2021 (2021.09.26).

@@ -642,8 +642,9 @@ _** : Nécessite une fonctionnalité de recherche ASN, par exemple, à partir d
 - Dans la mesure du possible, essayez de vérifier d'autres types de requêtes (par exemple, AdSense, vérificateurs SEO, etc) ? Lorsqu'elles sont détectées, les fausses requêtes seront bloquées. True = Activer [Défaut] ; False = Désactiver.
 
 Supporté actuellement :
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### « protect_frontend »
 - Spécifie si les protections normalement fournies par CIDRAM doivent être appliquées à l'accès frontal. True = Oui [Défaut] ; False = Non.
@@ -1979,4 +1980,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 11 Août 2021 (2021.08.11).
+Dernière mise à jour : 26 Septembre 2021 (2021.09.26).

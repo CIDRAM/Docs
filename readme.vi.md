@@ -642,8 +642,9 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 - Bất cứ khi nào có thể, hãy cố gắng xác minh các loại yêu cầu khác (ví dụ: AdSense, công cụ kiểm tra SEO, vv)? Khi bị phát hiện, các yêu cầu giả mạo sẽ bị chặn. True = Kích hoạt [Mặc định]; False = Vô hiệu hóa.
 
 Được hỗ trợ hiện tại:
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 - __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
+- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
+- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
 
 ##### "protect_frontend"
 - Chỉ định liệu các bảo vệ thường được cung cấp bởi CIDRAM nên được áp dụng cho các front-end. True = Vâng [Mặc định]; False = Không.
@@ -1963,4 +1964,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.08.11.
+Lần cuối cập nhật: 2021.09.26.
