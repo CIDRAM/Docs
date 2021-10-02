@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -709,6 +710,9 @@ Signatures configuration.
 ##### "ipv6"
 - A list of the IPv6 signature files that CIDRAM should attempt to parse, delimited by commas. You can add entries here if you want to include additional IPv6 signature files into CIDRAM.
 
+##### "block_attacks"
+- Block CIDRs associated with attacks and other abnormal traffic? E.g., port scans, hacking, probing for vulnerabilities, etc. Unless you experience problems when doing so, generally, this should always be set to true.
+
 ##### "block_cloud"
 - Block CIDRs identified as belonging to webhosting/cloud services? If you operate an API service from your website or if you expect other websites to connect to your website, this should be set to false. If you don't, then, this directive should be set to true.
 
@@ -722,7 +726,7 @@ Signatures configuration.
 - Block CIDRs in response to legal obligations? This directive shouldn't normally have any effect, because CIDRAM doesn't associate any CIDRs with "legal obligations" by default, but it exists nonetheless as an additional control measure for the benefit of any custom signature files or modules that might exist for legal reasons.
 
 ##### "block_malware"
-- Block IPs associated with malware? This includes C&C servers, infected machines, machines involved in malware distribution, etc.
+- Block CIDRs associated with malware? This includes C&C servers, infected machines, machines involved in malware distribution, etc.
 
 ##### "block_proxies"
 - Block CIDRs identified as belonging to proxy services or VPNs? If you require that users be able to access your website from proxy services and VPNs, this directive should be set to false. Otherwise, if you don't require proxy services or VPNs, this directive should be set to true as a means of improving security.
@@ -1053,13 +1057,14 @@ The `[Param]` value accepted by "Deny" will be parsed to the "Access Denied" pag
 The pre-prepared explanations have L10N support and can be translated by the script based upon the language you specify to the `lang` directive of the script configuration. Additionally, you can instruct the script to ignore "Deny" signatures based upon their `[Param]` value (if they're using these shorthand words) via the directives specified by the script configuration (each shorthand word has a corresponding directive to either process the corresponding signatures or to ignore them). `[Param]` values that don't use these shorthand words, however, don't have L10N support and therefore WON'T be translated by the script, and additionally, aren't directly controllable by the script configuration.
 
 The available shorthand words are:
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 TAGS
 
@@ -1985,4 +1990,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 26 September 2021 (2021.09.26).
+Last Updated: 2 October 2021 (2021.10.02).

@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Konfiguration der Signaturen.
 ##### "ipv6"
 - Eine Liste der IPv6-Signaturdateien, die CIDRAM zu analysieren versuchen sollte, getrennt durch Kommas. Hier können Sie Einträge hinzufügen, wenn Sie zusätzliche IPv6-Signaturdateien in CIDRAM aufnehmen möchten.
 
+##### "block_attacks"
+- Blockieren Sie CIDRs, die mit Angriffen und anderem abnormalem Datenverkehr verbunden sind? z.B., Port-Scans, Hacking, Sondieren nach Schwachstellen, u.s.w. Solange Sie keine Probleme haben während Sie dies tun, allgemein, dies immer auf true sollte gesetzt sein.
+
 ##### "block_cloud"
 - CIDRs blockieren, welche zu Web-/Server- Hostern gehören. Wenn Sie eine API betreiben oder erwarten, dass Sie oft Aufrufe von solchen Servern bekommen sollten Sie diese Option auf false (nicht blockieren) setzen. Wenn Sie solche Anfragen blockieren möchten, setzen Sie diese Option auf true [Standarteinstellung].
 
@@ -712,7 +716,7 @@ Konfiguration der Signaturen.
 - Blockieren Sie CIDRs als Antwort auf gesetzliche Verpflichtungen? Diese Richtlinie sollte normalerweise keine Wirkung haben, da CIDRAM standardmäßig keine CIDRs mit "gesetzliche Verpflichtungen" assoziiert, aber es existiert dennoch als zusätzliche Kontrollmaßnahme für den Vorteil von benutzerdefinierten Signaturdateien oder Modulen, die aus gesetzlichen Gründen existieren könnten.
 
 ##### "block_malware"
-- Blockieren Sie IP-Adressen in Verbindung mit Malware? Dazu gehören C&C-Server, infizierte Computer, Malware-Verteilung beteiligte Computer, u.s.w.
+- Blockieren Sie CIDRs in Verbindung mit Malware? Dazu gehören C&C-Server, infizierte Computer, Malware-Verteilung beteiligte Computer, u.s.w.
 
 ##### "block_proxies"
 - Blockieren Sie CIDRs identifiziert als zu Proxy-Dienste oder VPNs gehören? Wenn Sie möchten dass Benutzer von Proxy-Diensten und VPNs auf Ihre Webseiten zugreifen können, diese Richtlinie auf false sollte gesetzt werden. Andernfalls, Wenn Sie Proxy-Dienste oder VPNs nicht benötigen, sollte diese Richtlinie auf true gesetzt werden, als Mittel zur Verbesserung der Sicherheit.
@@ -1043,13 +1047,14 @@ Der `[Param]`-Wert welcher von "Deny" akzeptiert udn verarbeitet wird wird auf d
 Die vorbereiteten Erklärungen haben L10N-Unterstützung und können durch das Skript übersetzt werden. Dies geschieht basierend auf der Sprache welche Sie in der `lang` Richtlinie der Skript-Konfiguration angeben. Zusätzlich, können Sie das Skript anweisen dies für "Deny" Signaturen zu ignorieren, basierend auf ihrem `[Param]`-Wert (wenn sie diese Kurzwörter verwenden) über die in der Skript-Konfiguration spezifizierten Richtlinien (jedes Kurzwort hat eine entsprechende Richtlinie für die entsprechenden Signaturen diese entweder zu verarbeiten oder zu ignorieren). `[Param]`-Werte welche diese Kurzwörter nicht verwenden haben jedoch keine L10N-Unterstützung, und werden daher nicht NICHT durch das Skript übersetzt, und sind des weiteren nicht direkt durch die Skript-Konfiguration kontrollierbar.
 
 Die verfügbaren Kurzwörter sind:
+- Attacks   ("Angriffe")
 - Bogon     ("Bogon-IP")
 - Cloud     ("Cloud-Service")
 - Generic   ("Generisch")
-- Proxy     ("Proxy-Service")
-- Spam      ("Spam Risiko")
 - Legal     ("Gesetzliche")
 - Malware   ("Malware")
+- Proxy     ("Proxy-Service")
+- Spam      ("Spam Risiko")
 
 Die Übersetzungen für die jeweilige Sprache können in der Datei `/vault/lang/lang.<sprache>.php` eingesehen werden.
 
@@ -1984,4 +1989,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 26. September 2021 (2021.09.26).
+Zuletzt aktualisiert: 2. Oktober 2021 (2021.10.02).

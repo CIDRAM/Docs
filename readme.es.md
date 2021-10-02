@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Configuración de firmas.
 ##### "ipv6"
 - Una lista de los archivos de firmas IPv6 que CIDRAM debe tratar de utilizar, delimitado por comas. Puede agregar entradas aquí si desea incluir archivos de firmas IPv6 adicionales dentro CIDRAM.
 
+##### "block_attacks"
+- ¿Bloquear CIDRs asociados con ataques y otro tráfico anormal? Por ejemplo, escaneos de puertos, piratería, sondeo de vulnerabilidades, etc. A menos que experimentar problemas cuando hacerlo, en general, esto siempre debe establecerse para true.
+
 ##### "block_cloud"
 - ¿Bloquear CIDRs identificados como pertenecientes de servicios de webhosting o servicios en la nube? Si usted operar un servicio de un API desde su sitio web o si usted espera otros sitios web para conectarse a su sitio web, esta directiva debe ser establecido para false. Si usted no espera esta, esta directiva debe ser establecido para true.
 
@@ -712,7 +716,7 @@ Configuración de firmas.
 - ¿Bloquear CIDRs en respuesta a obligaciones legales? Esta directiva normalmente no debería tener ningún efecto, porque CIDRAM no asocia ningún CIDR con "obligaciones legales" como estándar, pero existe aunque como una medida de control adicional en beneficio de cualquier archivo de firmas o módulo personalizado que pueda existir por razones legales.
 
 ##### "block_malware"
-- ¿Bloquear las direcciones IP asociadas con el malware? Esto incluye servidores de C&C, máquinas infectadas, máquinas involucradas en la distribución de malware, etc.
+- ¿Bloquear CIDRs asociados con el malware? Esto incluye servidores de C&C, máquinas infectadas, máquinas involucradas en la distribución de malware, etc.
 
 ##### "block_proxies"
 - ¿Bloquear CIDRs identificados como pertenecientes a los servicios de proxy o VPNs? Si requiere que los usuarios puedan acceder a su sitio web a partir de los servicios de proxy o VPNs, esta directiva debe ser establecido para false. Alternativamente, Si usted no requiere servicios de proxy o VPNs, esta directiva debe ser establecido para true como un medio para mejorar la seguridad.
@@ -1043,13 +1047,14 @@ El valor de `[Param]` aceptado por "Deny" será dado a la salida del "Acceso Den
 Las explicaciones pre-preparadas tienen soporte para L10N y puede ser traducido por la script basado en el idioma que especifique a la directiva `lang` de la configuración de la script. Adicionalmente, puede instruir a la script ignorar las firmas "Deny" basado en el valor de su `[Param]` (si están usando estas palabras abreviadas) a través de las directrivas especificadas por la configuración de la script (cada palabra abreviada tiene una directiva correspondiente ya sea para procesar las firmas correspondientes o para ignorarlos). Los valores de `[Param]` que no utilizan estas palabras abreviadas, sin embargo, no tienen soporte para L10N y por lo tanto NO será traducido por la script, y además, no son controlable directamente por la configuración de la script.
 
 Las palabras abreviadas disponibles son:
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 ETIQUETAS
 
@@ -1974,4 +1979,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 26 de Septiembre de 2021 (2021.09.26).
+Última Actualización: 2 de Octubre de 2021 (2021.10.02).

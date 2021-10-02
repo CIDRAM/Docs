@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Configuratie voor signatures.
 ##### "ipv6"
 - Een lijst van de IPv6 signatuurbestanden dat CIDRAM moet proberen om te gebruiken, afgebakend door komma's. U kunt items hier toevoegen Als u wilt meer IPv6 signature files in CIDRAM bevatten.
 
+##### "block_attacks"
+- Blokkeren CIDR's die verband houden met aanvallen en ander abnormaal verkeer? B.v., poortscans, hacken, zoeken naar kwetsbaarheden, etc. Tenzij u problemen ondervindt wanneer u dit doet, in algemeen, dit moet altijd worden ingesteld op true.
+
 ##### "block_cloud"
 - Blokkeren CIDR's geïdentificeerd als behorend tot webhosting/cloud-diensten? Als u een api te bedienen vanaf uw website of als u verwacht dat andere websites aan te sluiten op uw website, dit richtlijn moet worden ingesteld op false. Als u niet, dan, dit richtlijn moet worden ingesteld op true.
 
@@ -712,7 +716,7 @@ Configuratie voor signatures.
 - Blokkeren CIDR's als reactie op wettelijke verplichtingen? Dit richtlijn zou normaal gesproken geen effect moeten hebben, omdat CIDRAM als standaard geen CIDR's met "wettelijke verplichtingen" associeert, maar het bestaat niettemin als een extra beheersmaatregel ten behoeve van eventuele aangepaste signatuurbestanden of modules die mogelijk bestaan om wettelijke redenen.
 
 ##### "block_malware"
-- Blokkeren IP's die zijn gekoppeld aan malware? Dit omvat C&C-servers, geïnfecteerde machines, machines die betrokken zijn bij de distributie van malware, enz.
+- Blokkeren CIDR's die zijn gekoppeld aan malware? Dit omvat C&C-servers, geïnfecteerde machines, machines die betrokken zijn bij de distributie van malware, enz.
 
 ##### "block_proxies"
 - Blokkeren CIDR's geïdentificeerd als behorend tot proxy-services of VPN's? Als u vereisen dat gebruikers kan toegang tot uw website van proxy-services en VPN's, dit richtlijn moet worden ingesteld op false. Anders, als u geen proxy-services of VPN's nodig, dit richtlijn moet worden ingesteld op true als een middel ter verbetering van de beveiliging.
@@ -1043,13 +1047,14 @@ De `[Param]` waarde geaccepteerd door "Deny" zal worden parsed aan de "Toegang G
 De voorbereide toelichtingen hebben L10N-ondersteuning en kan worden vertaald door het script op basis van de taal die u opgeeft naar de `lang` richtlijn van het script-configuratie. Tevens, u kunt het script instrueren om "Deny"-signatures te negeren op basis van hun `[Param]` waarde (als ze gebruik maken van deze korte woorden) via de richtlijnen gespecificeerd door het script-configuratie (elk kort woord heeft een overeenkomstige richtlijn te verwerken overeenkomende signatures of te negeren hen). `[Param]` waarden dat niet gebruiken deze korte woorden, echter, hebben geen L10N-ondersteuning en daarom zal NIET worden vertaald door het script, en tevens, en zijn niet direct controleerbaar door het script-configuratie.
 
 De beschikbare korte woorden zijn:
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 ETIKETTEN
 
@@ -1984,4 +1989,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 26 September 2021 (2021.09.26).
+Laatste Bijgewerkt: 2 Oktober 2021 (2021.10.02).

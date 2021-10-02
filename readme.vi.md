@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Cấu hình cho chữ ký.
 ##### "ipv6"
 - Một danh sách các tập tin chữ ký IPv6 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy. Bạn có thể thêm các mục ở đây nếu bạn muốn bao gồm thêm các tập tin chữ ký IPv6 trong CIDRAM.
 
+##### "block_attacks"
+- Chặn CIDR liên quan đến các cuộc tấn công và lưu lượng truy cập bất thường khác? Ví dụ, quét cổng, tấn công, dò tìm lỗ hổng bảo mật, vv. Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
+
 ##### "block_cloud"
 - Chặn CIDR xác định là thuộc về các dịch vụ lưu trữ mạng hay dịch vụ điện toán đám mây? Nếu bạn điều hành một dịch vụ API từ trang mạng của bạn hay nếu bạn mong đợi các trang mạng khác để kết nối với trang mạng của bạn, điều này cần được thiết lập để false. Nếu bạn không, sau đó, tùy chọn này cần được thiết lập để true.
 
@@ -712,7 +716,7 @@ Cấu hình cho chữ ký.
 - Chặn CIDR theo các nghĩa vụ hợp pháp? Chỉ thị này thường không có bất kỳ hiệu lực, vì CIDRAM không liên kết bất kỳ CIDR nào với "nghĩa vụ hợp pháp" theo mặc định, nhưng nó vẫn tồn tại tuy nhiên như một biện pháp kiểm soát bổ sung vì lợi ích của bất kỳ tập tin chữ ký hay mô-đun tùy chỉnh nào có thể tồn tại vì lý do hợp pháp.
 
 ##### "block_malware"
-- Chặn IP liên quan đến phần mềm độc hại? Điều này bao gồm các máy chủ C&C, máy chủ bị nhiễm, máy chủ liên quan đến phân phối phần mềm độc hại, vv.
+- Chặn CIDR liên quan đến phần mềm độc hại? Điều này bao gồm các máy chủ C&C, máy chủ bị nhiễm, máy chủ liên quan đến phân phối phần mềm độc hại, vv.
 
 ##### "block_proxies"
 - Chặn CIDR xác định là thuộc về các dịch vụ proxy hay VPN? Nếu bạn yêu cầu mà người dùng có thể truy cập trang mạng của bạn từ các dịch vụ proxy hay VPN, điều này cần được thiết lập để false. Nếu không thì, nếu bạn không yêu cầu các dịch vụ proxy hay VPN, tùy chọn này cần được thiết lập để true như một phương tiện để cải thiện an ninh.
@@ -1043,13 +1047,14 @@ Giá trị `[Param]` chấp nhận bởi "Deny" sẽ được phân tích để 
 Những lời giải thích trước khi chuẩn bị có hỗ trợ L10N và có thể được dịch bởi kịch bản dựa trên ngôn ngữ mà bạn chỉ định đến tùy chọn `lang` của các cấu hình kịch bản. Ngoài ra, bạn có thể hướng dẫn các kịch bản để bỏ qua chữ ký "Deny" dựa trên giá trị `[Param]` của họ (nếu họ đang sử dụng những từ viết tắt) thông qua các tùy chọn định bởi cấu hình kịch bản (mỗi từ viết tắt có một tùy chọn tương ứng để xử lý chữ ký tương ứng hoặc bỏ qua chúng). Các giá trị `[Param]` mà không sử dụng những từ viết tắt, tuy nhiên, không có hỗ trợ L10N và do đó KHÔNG SẼ được dịch bởi kịch bản, và do đó, không thể được kiểm soát trực tiếp bởi các cấu hình kịch bản.
 
 Những từ viết tắt có sẵn là:
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 GẮN THẺ
 
@@ -1964,4 +1969,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.09.26.
+Lần cuối cập nhật: 2021.10.02.

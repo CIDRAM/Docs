@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Configuration pour les signatures.
 ##### « ipv6 »
 - Une liste des fichiers du signatures IPv6 que CIDRAM devrait tenter d'utiliser, délimité par des virgules. Vous pouvez ajouter des entrées ici si vous voulez inclure des fichiers supplémentaires dans CIDRAM.
 
+##### « block_attacks »
+- Bloquer les CIDRs associés aux attaques et autres trafics anormaux ? Par exemple, les analyses de ports, le piratage, la recherche de vulnérabilités, etc. Sauf si vous rencontrez des problèmes quand vous faire, en généralement, cette directive devrait toujours être fixé comme true.
+
 ##### « block_cloud »
 - Bloquer les CIDRs identifié comme appartenant aux services d'hébergement/cloud ? Si vous utilisez un service d'API à partir de votre site web ou si vous attendez d'autres sites à connecter avec votre site web, cette directive devrait être fixé sur false. Si vous ne pas, puis, cette directive doit être fixé comme true.
 
@@ -712,7 +716,7 @@ Configuration pour les signatures.
 - Bloquer les CIDRs en réponse à des obligations légales ? Cette directive ne devrait normalement pas avoir d'effet, car CIDRAM n'associe aucun CIDR avec des « obligations légales » par défaut, mais il existe néanmoins comme une mesure de contrôle supplémentaire au profit de tous les fichiers de signatures personnalisées ou des modules qui pourraient exister pour des raisons juridiques.
 
 ##### « block_malware »
-- Bloquer les adresses IP associées à des logiciels malveillants ? Cela inclut les serveurs C&C, les machines infectées, les machines impliquées dans la distribution de logiciels malveillants, etc.
+- Bloquer les CIDRs associés à des logiciels malveillants ? Cela inclut les serveurs C&C, les machines infectées, les machines impliquées dans la distribution de logiciels malveillants, etc.
 
 ##### « block_proxies »
 - Bloquer les CIDRs identifié comme appartenant aux services proxy ou VPNs ? Si vous avez besoin que les utilisateurs puissent accéder à votre site web à partir des services de proxy ou des VPNs, cette directive devrait être fixé sur false. Autrement, si vous n'avez besoin pas des services de proxy ou des VPNs, cette directive devrait être fixé sur true comme moyen d'améliorer la sécurité.
@@ -1043,13 +1047,14 @@ La valeur de `[Param]` accepté par « Deny » seront traitées au la sortie d
 Les explications pré-préparés avoir le support de L10N et peut être traduit par le script sur la base de la langue que vous spécifiez à la directive `lang` de la configuration du script. En outre, vous pouvez demander le script d'ignorer signatures de « Deny » sur la base de leur valeur de `[Param]` (s'ils utilisent ces mots courts) par les directives indiquées par la configuration du script (chaque mot court a une directive correspondante à traiter les signatures correspondant ou d'ignorer les). Les valeurs de `[Param]` qui ne pas utiliser ces mots courts, toutefois, n'avoir pas le support de L10N et donc ne seront PAS traduits par le script, et en outre, ne sont pas directement contrôlables par la configuration du script.
 
 Les mots courts disponibles sont :
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 ÉTIQUETTES
 
@@ -1980,4 +1985,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 26 Septembre 2021 (2021.09.26).
+Dernière mise à jour : 2 Octobre 2021 (2021.10.02).

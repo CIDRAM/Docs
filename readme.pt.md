@@ -365,6 +365,7 @@ Configuration (v2)
 ├───signatures
 │       ipv4
 │       ipv6
+│       block_attacks
 │       block_cloud
 │       block_bogons
 │       block_generic
@@ -699,6 +700,9 @@ Configuração por assinaturas.
 ##### "ipv6"
 - Uma lista dos arquivos de assinaturas IPv6 que CIDRAM deve tentar usar, delimitado por vírgulas. Você pode adicionar entradas aqui Se você quiser incluir arquivos adicionais em CIDRAM.
 
+##### "block_attacks"
+- Bloquear CIDRs associados a ataques e outro tráfego anormal? Por exemplo, varreduras de portas, hacking, sondagem de vulnerabilidades, etc. A menos que você tiver problemas ao fazê-lo, geralmente, esta deve sempre ser definido como true.
+
 ##### "block_cloud"
 - Bloquear CIDRs identificado como pertencente a webhosting e/ou serviços em nuvem? Se você operar um serviço de API a partir do seu site ou se você espera outros sites para se conectar para o seu site, este deve ser definido como false. Se não, este deve ser definido como true.
 
@@ -712,7 +716,7 @@ Configuração por assinaturas.
 - Bloquear CIDRs em resposta a obrigações legais? Esta diretiva normalmente não deve ter qualquer efeito, porque o CIDRAM não associa nenhum CIDR com "obrigações legais" por padrão, mas existe, no entanto, como uma medida de controle adicional para o benefício de quaisquer arquivos de assinatura ou módulos personalizados que possam existir por motivos legais.
 
 ##### "block_malware"
-- Bloquear IPs associados ao malware? Isso inclui servidores C&C, máquinas infectadas, máquinas envolvidas na distribuição de malware, etc.
+- Bloquear CIDRs associados ao malware? Isso inclui servidores C&C, máquinas infectadas, máquinas envolvidas na distribuição de malware, etc.
 
 ##### "block_proxies"
 - Bloquear CIDRs identificado como pertencente a serviços de proxy ou VPNs? Se você precisar que os usuários poderão acessar seu site dos serviços de proxy e VPNs, este deve ser definido como false. De outra forma, se você não precisa de serviços de proxy ou VPNs, este deve ser definido como true como um meio de melhorar a segurança.
@@ -1043,13 +1047,14 @@ O valor da `[Param]` aceita por "Deny" será processado com o saída da "Acesso 
 As explicações pré-preparados têm suporte L10N e pode ser traduzido pelo script com base no idioma que você especificar com a directiva da configuração do script, `lang`. Além disso, você pode instruir o script para ignorar assinaturas "Deny" com base em sua valor de `[Param]` (se eles estão usando essas palavras curtas) através das directivas especificados pelo configuração do script (cada palavra curta tem uma directiva correspondente para processar as assinaturas correspondentes ou ignorá-los). Valores de `[Param]` que não usar essas palavras curtas, contudo, não tem suporte L10N e por conseguinte NÃO será traduzido pelo script, e adicionalmente, não podem ser controlados directamente pelo configuração do script.
 
 As palavras curtas disponíveis são:
+- Attacks
 - Bogon
 - Cloud
 - Generic
-- Proxy
-- Spam
 - Legal
 - Malware
+- Proxy
+- Spam
 
 #### 7.1 ETIQUETAS
 
@@ -1970,4 +1975,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 26 de Setembro de 2021 (2021.09.26).
+Última Atualização: 2 de Outubro de 2021 (2021.10.02).
