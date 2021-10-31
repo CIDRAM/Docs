@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ Wenn Sie der Meinung sind, dass Sie CIDRAM nicht benötigen, um die Ratenbegrenz
 
 #### "supplementary_cache_options" (Kategorie)
 Zusätzliche Cache-Optionen.
+
+##### "prefix"
+- Dieser Wert hier wird zu allen Cache-Eintragsschlüsseln vorangestellt. Standardmäßig leer. Wenn mehrere Installationen auf demselben Server vorhanden sind, kann dies nützlich sein, um ihre Caches getrennt zu halten.
 
 ##### "enable_apcu"
 - Dies gibt an, ob APCu für das Caching verwendet werden soll. Standardeinstellung = False.
@@ -1989,4 +1993,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 2. Oktober 2021 (2021.10.02).
+Zuletzt aktualisiert: 31. Oktober 2021 (2021.10.31).

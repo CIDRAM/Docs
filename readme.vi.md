@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ Nếu bạn cảm thấy rằng bạn không cần CIDRAM để thực thi giớ
 
 #### "supplementary_cache_options" (Thể loại)
 Tùy chọn bộ nhớ cache bổ sung.
+
+##### "prefix"
+- Giá trị được chỉ định ở đây sẽ được thêm vào trước tất cả các khóa mục nhập bộ nhớ cache. Trống theo mặc định. Khi nhiều bản cài đặt tồn tại trên cùng một máy chủ, điều này có thể hữu ích để giữ các bộ nhớ cache của chúng tách biệt với nhau.
 
 ##### "enable_apcu"
 - Điều này xác định có nên thử sử dụng APCu để lưu trữ không. Mặc định = False.
@@ -1969,4 +1973,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.10.02.
+Lần cuối cập nhật: 2021.10.31.

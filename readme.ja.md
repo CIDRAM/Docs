@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ PHPMailerコンフィギュレーション。
 
 #### "supplementary_cache_options" （サプレメンタリー・キャッシュ・オプションズ、カテゴリ）
 補足キャッシュ・オプション。
+
+##### "prefix" （プリフィクス）
+- ここで指定された値は、すべてのキャッシュ・エントリ・キーの前に追加されます。​デフォルトでは空です。​同じサーバーに複数のインストールが存在する場合、これはキャッシュを互いに分離しておくのに役立ちます。
 
 ##### "enable_apcu" （イネーブル・ＡＰＣｕ）
 - キャッシュに「APCu」を使用するかどうかを指定します。 Default/デフォルルト = False。
@@ -1970,4 +1974,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２１年１０月２日。
+最終アップデート：２０２１年１０月３１日。

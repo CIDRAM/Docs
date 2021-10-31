@@ -438,6 +438,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -1169,6 +1170,11 @@ api
 
 #### <div dir="rtl">"supplementary_cache_options" (قسم)<br /></div>
 <div dir="rtl">اضافی کیشنگ کے اختیارات.<br /><br /></div>
+
+##### <div dir="rtl">"prefix"<br /></div>
+<div dir="rtl"><ul>
+ <li>یہاں بیان کردہ قدر کو تمام کیش انٹری کیز کے ساتھ پہلے سے جوڑا جائے گا. بطور ڈیفالٹ خالی. جب ایک ہی سرور پر متعدد تنصیبات موجود ہوں، تو یہ ان کے کیچز کو ایک دوسرے سے الگ رکھنے کے لیے مفید ہو سکتا ہے.</li>
+</ul></div>
 
 ##### <div dir="rtl">"enable_apcu"<br /></div>
 <div dir="rtl"><ul>
@@ -2260,4 +2266,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲ اکتوبر ۲۰۲۱ (۲۰۲۱.۱۰.۰۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۳۱ اکتوبر ۲۰۲۱ (۲۰۲۱.۱۰.۳۱).</div>

@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ Si cree que no necesita para CIDRAM imponer la limitación de tarifa para su sit
 
 #### "supplementary_cache_options" (Categoría)
 Opciones de caché complementarias.
+
+##### "prefix"
+- El valor especificado aquí se antepondrá a las claves de todas las entradas de la caché. Vacía por predefinida. Cuando existen varias instalaciones en el mismo servidor, esto puede ser útil para mantener sus cachés separados entre sí.
 
 ##### "enable_apcu"
 - Especifica si se intenta utilizar APCu para el almacenamiento en caché. Predefinido = False.
@@ -1979,4 +1983,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 2 de Octubre de 2021 (2021.10.02).
+Última Actualización: 31 de Octubre de 2021 (2021.10.31).

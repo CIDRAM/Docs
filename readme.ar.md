@@ -438,6 +438,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -1169,6 +1170,11 @@ api
 
 #### <div dir="rtl">"supplementary_cache_options" (التصنيف)<br /></div>
 <div dir="rtl">خيارات ذاكرة التخزين المؤقت التكميلية.<br /><br /></div>
+
+##### <div dir="rtl">"prefix"<br /></div>
+<div dir="rtl"><ul>
+ <li>سيتم إضافة القيمة المحددة هنا إلى جميع مفاتيح إدخال ذاكرة التخزين المؤقت. فارغ بشكل افتراضي. عند وجود عدة عمليات تثبيت على نفس الخادم، يمكن أن يكون ذلك مفيدًا للحفاظ على ذاكرة التخزين المؤقت منفصلة عن بعضها البعض.</li>
+</ul></div>
 
 ##### <div dir="rtl">"enable_apcu"<br /></div>
 <div dir="rtl"><ul>
@@ -2260,4 +2266,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢ أكتوبر ٢٠٢١ (٢٠٢١.١٠.٠٢).</div>
+<div dir="rtl">آخر تحديث: ٣١ أكتوبر ٢٠٢١ (٢٠٢١.١٠.٣١).</div>

@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ PHPMailer 구성.
 
 #### "supplementary_cache_options" (카테고리)
 보충 캐시 옵션.
+
+##### "prefix"
+- 여기에 지정된 값은 모든 캐시 항목 키 앞에 추가됩니다. 기본적으로 비어 있습니다. 동일한 서버에 여러 설치가 있는 경우, 캐시를 서로 분리하여 유지하는 데 유용할 수 있습니다.
 
 ##### "enable_apcu"
 - 캐싱에 APCu를 사용할지 여부를 지정합니다. Default (기본값) = False.
@@ -1968,4 +1972,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 10월 2일.
+최종 업데이트 : 2021년 10월 31일.

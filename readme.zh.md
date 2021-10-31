@@ -436,6 +436,7 @@ Configuration (v2)
 │       allowance_period
 │       exceptions
 └───supplementary_cache_options
+        prefix
         enable_apcu
         enable_memcached
         enable_redis
@@ -953,6 +954,9 @@ PHPMailer配置。
 
 #### “supplementary_cache_options” （类别）
 补充缓存选项。
+
+##### “prefix”
+- 该值将附加到所有缓存条目的键的开头。​默认值为空。​当同一服务器上存在多个安装时，这对于将它们的缓存彼此分开非常有用。
 
 ##### “enable_apcu”
 - 指定是否尝试使用APCu进行缓存。​标准 = False。
@@ -1973,4 +1977,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2021年10月2日。
+最后更新：2021年10月31日。
