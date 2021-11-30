@@ -681,7 +681,7 @@ Atualmente suportado:
 
 ##### "disabled_channels"
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
-- *Opções disponíveis: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Opções disponíveis: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Tempo limite padrão a ser usado para solicitações externas? Padrão = 12 segundos.
@@ -925,7 +925,6 @@ Diretivas de configuração opcionais para limitação de taxa.
 
 Esse recurso foi implementado no CIDRAM porque foi solicitado por usuários suficientes para justificar a implementação. Contudo, porque está um pouco fora do escopo da finalidade originalmente pretendida para a CIDRAM, provavelmente não será necessário para a maioria dos usuários. Se você precisa especificamente do CIDRAM para lidar com a limitação de taxa do seu site, esse recurso pode ser útil para você. Contudo, existem algumas coisas importantes que você deve considerar:
 - Esse recurso, como todos os outros recursos do CIDRAM, funcionará apenas para páginas protegidas pelo CIDRAM. Portanto, qualquer recurso de site não especificamente roteado através do CIDRAM não pode ser limitado pela CIDRAM.
-- Não esqueça que o CIDRAM escreve o cache e outros dados diretamente no disco (isto é, salva seus dados em arquivos), e não usa nenhum sistema de banco de dados externo como MySQL, PostgreSQL, Access ou similar. Isso significa que, para rastrear o uso de limitação de taxa, seria efetivamente necessário escrever em disco para cada solicitação potencialmente limitada. Isso pode contribuir para diminuir a expectativa de vida do disco a longo prazo, e não é idealmente recomendado. Em vez disso, idealmente, uma ferramenta usada para limitar de taxa poderia utilizar um sistema de banco de dados destinado a pequenas e freqüentes operações de leitura/escrita, ou poderia reter informações persistentemente entre as solicitações, sem a necessidade de escrever dados no disco entre os solicitações (por exemplo, escrito como um módulo de servidor independente, em vez de um pacote PHP).
 - Se você é capaz de usar um módulo de servidor, cPanel, ou alguma outra ferramenta de rede para impor a limitação de taxa, seria melhor usar isso para limitação de taxa, em vez de CIDRAM.
 - Se um usuário em particular estiver muito interessado em continuar acessando seu website depois de ser limitado, na maioria dos casos, será muito fácil para eles contornar o limitação de taxa (por exemplo, se eles mudarem seu endereço IP, ou se eles usam um proxy ou VPN, e assumindo que você configurou o CIDRAM para não bloquear proxies e VPNs, ou que o CIDRAM não está ciente do proxy ou VPN que eles estão usando).
 - A limitação de taxa pode ser muito irritante para usuários reais. Pode ser necessário se a sua largura de banda disponível for muito limitada, e se você descobrir que existem algumas fontes específicas de tráfego, que ainda não estão bloqueadas, estão consumindo a maior parte de sua largura de banda disponível. Mas, se não for necessário, provavelmente deve ser evitado.
@@ -1979,4 +1978,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 31 de Outubro de 2021 (2021.10.31).
+Última Atualização: 1 de Dezembro de 2021 (2021.12.01).

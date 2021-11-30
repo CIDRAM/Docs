@@ -681,7 +681,7 @@ Soportado actualmente:
 
 ##### "disabled_channels"
 - Esto se puede usar para evitar que CIDRAM use canales particulares al enviar solicitudes (por ejemplo, al actualizar, al obtener metadatos de componentes, etc).
-- *Opciones disponibles: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Opciones disponibles: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
@@ -925,7 +925,6 @@ Directivas de configuración opcionales para limitar la tarifa.
 
 Esta característica se implementó en CIDRAM porque fue solicitada por usuarios suficientes para justificar su implementación. Pero, como está algo fuera del alcance del propósito originalmente previsto para CIDRAM, es muy probable que no sea necesario para la mayoría de los usuarios. Si lo necesita específicamente CIDRAM para manejar la limitación de tarifa para su sitio web, esta característica podría ser útil para usted. Pero, hay algunas cosas importantes que debe considerar:
 - Esta característica, como todas las demás características de CIDRAM, solo funcionará para páginas protegidas por CIDRAM. Por lo tanto, cualquier activo del sitio web que no se enrute específicamente a través de CIDRAM no puede ser limitado por CIDRAM.
-- No olvide que CIDRAM escribe el caché y otros datos directamente en el disco (es decir, guarda sus datos en archivos), y no utiliza ningún sistema de base de datos externo como MySQL, PostgreSQL, Access o similar. Esto significa que para poder rastrear el uso para limitar la tarifa, de hecho, tendría que estar escribiendo en el disco para cada solicitud con un limitación de la tarifa potencial. Esto podría contribuir a reducir la esperanza de vida del disco a largo plazo, y no se recomienda idealmente. En su lugar, idealmente, una herramienta utilizada para limitar la tarifa podría utilizar un sistema de base de datos diseñado para operaciones de lectura/escritura pequeñas y frecuentes, o podría retener información de forma persistente entre todas las solicitudes, sin la necesidad de escribir datos en el disco entre las solicitudes (por ejemplo, escrito como un módulo de servidor independiente, en lugar de un paquete PHP).
 - Si puede usar un módulo de servidor, cPanel, o alguna otra herramienta de red para aplicar la limitación de tarifa, sería mejor usar eso para limitar la tarifa, en lugar de CIDRAM.
 - Si un usuario en particular está muy interesado en continuar accediendo a su sitio web después de ser limitado, en la mayoría de los casos, será muy fácil para ellos eludir la limitación de tarifa (por ejemplo, si cambian su dirección IP, o si usan un proxy o VPN, y asumiendo que ha configurado CIDRAM para no bloquear proxies y VPNs, o que CIDRAM no tiene conocimiento del proxy o VPN que están usando).
 - La limitación de tarifa puede ser muy molesta para los usuarios reales. Puede ser necesario si el ancho de banda disponible es muy limitado, y si descubres que hay algunas fuentes de tráfico específicas, no bloqueado de otra manera, que están consumiendo la mayoría de su ancho de banda disponible. Pero, si no es necesario, probablemente debe evitarse.
@@ -1983,4 +1982,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 31 de Octubre de 2021 (2021.10.31).
+Última Actualización: 1 de Diciembre de 2021 (2021.12.01).

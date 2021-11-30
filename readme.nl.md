@@ -681,7 +681,7 @@ Momenteel ondersteund:
 
 ##### "disabled_channels"
 - Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
-- *Beschikbare opties: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Beschikbare opties: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Standaard time-out om te gebruiken voor externe verzoeken? Standaard = 12 seconden.
@@ -925,7 +925,6 @@ Optionele configuratie-instructies voor tarieflimiet.
 
 Deze functie is geïmplementeerd in CIDRAM omdat deze door voldoende gebruikers is aangevraagd om de implementatie te rechtvaardigen. Omdat het echter enigszins buiten de reikwijdte van het oorspronkelijk bedoelde doel voor CIDRAM, zal het waarschijnlijk niet nodig zijn voor de meeste gebruikers. Als u specifiek CIDRAM nodig hebt om de tarieflimiet voor uw website te handelen, kan deze functie nuttig voor u zijn. Er zijn echter enkele belangrijke zaken die u moet overwegen:
 - Deze functie werkt, net als alle andere CIDRAM-functies, alleen voor pagina's die worden beschermd door CIDRAM. Daarom kunnen website assets die niet specifiek via CIDRAM worden gerouteerd, niet worden beperkt door CIDRAM.
-- Vergeet niet dat CIDRAM het cache en andere gegevens rechtstreeks naar de schijf schrijft (d.w.z. slaat zijn gegevens op in bestanden), en gebruikt geen extern databasesysteem zoals MySQL, PostgreSQL, Access, of iets dergelijks. Dit betekent dus dat het voor het volgen van het gebruik voor tarieflimiet effectief naar schijf moet schrijven voor elk mogelijk potentieel beperkt verzoek. Dit zou kunnen bijdragen aan een lagere levensduur van de schijflevensduur op de lange termijn en wordt niet ideaal aanbevolen. Idealiter zou een tool die wordt gebruikt voor tarieflimiet een databasesysteem kunnen gebruiken dat bedoeld is voor veelvuldige, kleine lees/schrijf-bewerkingen, of kon informatie blijven behouden in alle verzoeken, zonder de noodzaak om gegevens tussen aanvragen naar schijf te schrijven (b.v., geschreven als een onafhankelijke servermodule, in plaats van een PHP-pakket).
 - Als u een servermodule, cPanel, of een andere netwerktool kunt gebruiken om tarieflimiet af te dwingen, is het beter om die te gebruiken voor tarieflimiet in plaats van CIDRAM.
 - Als een bepaalde gebruiker graag toegang blijft houden tot uw website nadat hij tarieflimiet is, in de meeste gevallen is het voor hen heel gemakkelijk om tarieflimiet te omzeilen (b.v., als ze hun IP-adres wijzigen, of als ze een proxy of VPN gebruiken, en ervan uitgaande dat u CIDRAM hebt geconfigureerd om geen proxy's en VPN's te blokkeren, of dat CIDRAM niet op de hoogte is van de proxy of VPN die ze gebruiken).
 - Tarieflimiet kan erg vervelend zijn voor echte, eindgebruikers. Het kan nodig zijn als uw beschikbare bandbreedte zeer beperkt is, en als u ontdekt dat er bepaalde specifieke verkeersbronnen zijn, die niet al op andere wijze zijn geblokkeerd, die het grootste deel van uw beschikbare bandbreedte verbruiken. Als dit echter niet nodig is, moet dit waarschijnlijk worden vermeden.
@@ -1993,4 +1992,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 31 Oktober 2021 (2021.10.31).
+Laatste Bijgewerkt: 1 December 2021 (2021.12.01).

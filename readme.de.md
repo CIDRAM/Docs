@@ -681,7 +681,7 @@ Derzeit unterstützt:
 
 ##### "disabled_channels"
 - Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
-- *Verfügbare Optionen: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Verfügbare Optionen: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Standardzeitlimit für externe Anforderungen? Standardeinstellung = 12 Sekunden.
@@ -925,7 +925,6 @@ Optionale Konfigurationsanweisungen zur Ratenbegrenzung.
 
 Dieses Feature wurde in CIDRAM implementiert, da es von genügend Benutzern angefordert wurde um, es zu rechtfertigen. Da dies jedoch etwas außerhalb des Umfangs des ursprünglich vorgesehene Zwecks für, es wird höchstwahrscheinlich von den meisten Benutzern nicht benötigt. Wenn Sie speziell CIDRAM benötigen, um die Ratenbegrenzung für Ihre Website zu steuern, kann diese Funktion für Sie nützlich sein. Es gibt jedoch einige wichtige Dinge, die Sie beachten sollten:
 - Diese Funktion funktioniert, wie alle anderen CIDRAM-Funktionen nur für Seiten, die durch CIDRAM geschützt werden. Daher können Website-Assets, die nicht speziell über CIDRAM geleitet werden, nicht durch CIDRAM ratenbegrenzt werden.
-- Vergessen Sie nicht, dass CIDRAM den Cache und andere Daten direkt auf die Festplatte schreibt (d.h., speichert seine Daten in Dateien), und verwendet kein externes Datenbanksystem wie MySQL, PostgreSQL, Access oder ähnliches. Daher um die Verwendung zur Ratenbegrenzung zu verfolgen, es müsste effektiv für jede einzelne potentiell ratenbegrenzt Anforderung auf die Festplatte schreiben. Dies könnte langfristig zu einer niedrigeren Lebensdauer der Festplatten beitragen, und nicht ideal empfohlen ist. Im Idealfall stattdessen könnte ein zur Ratenbegrenzung verwendetes Werkzeug ein Datenbanksystem verwenden, das für häufige kleine Lese-/Schreibvorgänge vorgesehen ist, oder möglicherweise Informationen persistent über Anforderungen pflegen, ohne dass zwischen den Anforderungen Daten auf die Festplatte geschrieben werden müssen (z.B., als unabhängiges Servermodul anstelle eines PHP-Pakets geschrieben).
 - Wenn Sie um die Ratenbegrenzung durchzusetzen ein Servermodul, cPanel oder ein anderes Netzwerktool verwenden können, dies zur Ratenbegrenzung anstelle von CIDRAM zu verwenden wäre besser ist.
 - Wenn nachdem sie ratenbegrenzt sind, ein bestimmter Benutzer weiterhin beharrlich auf Ihre Website zugreifen möchte, in den meisten Fällen wird es ihnen leicht fallen, die Ratenbegrenzung zu umgehen (z.B., wenn sie ihre IP-Adresse ändern, oder wenn sie einen Proxy oder ein VPN verwenden, und vorausgesetzt, Sie haben CIDRAM so konfiguriert, dass es keine Proxy oder VPN blockiert, oder dass CIDRAM den von ihnen verwendeten Proxy oder VPN nicht kennt).
 - Die Ratenbegrenzung kann für tatsächliche, echte Endbenutzer sehr ärgerlich sein. Dies kann erforderlich sein, wenn Ihre verfügbare Bandbreite sehr begrenzt ist, und wenn Sie feststellen, dass bestimmte Verkehrsquellen, die nicht bereits anderweitig blockiert sind, den Großteil Ihrer verfügbaren Bandbreite beanspruchen. Wenn jedoch nicht notwendig, es wahrscheinlich vermieden sollte werden.
@@ -1993,4 +1992,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 31. Oktober 2021 (2021.10.31).
+Zuletzt aktualisiert: 1. Dezember 2021 (2021.12.01).

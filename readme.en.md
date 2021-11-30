@@ -691,7 +691,7 @@ Currently supported:
 
 ##### "disabled_channels"
 - This can be used to prevent CIDRAM from using particular channels when sending requests (e.g., when updating, when fetching component metadata, etc).
-- *Available options: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Available options: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Default timeout to use for external requests? Default = 12 seconds.
@@ -935,7 +935,6 @@ Optional configuration directives for rate limiting.
 
 This feature was implemented to CIDRAM because it was requested by enough users to warrant being implemented. However, as it is somewhat outside the scope of the purpose originally intended for CIDRAM, it most likely won't be needed by most users. If you specifically need CIDRAM to handle rate limiting for your website, this feature could be useful for you. However, there are some important things you should consider:
 - This feature, like all other CIDRAM features, will only work for pages protected by CIDRAM. Therefore, any website assets not specifically routed through CIDRAM can't be rate limited by CIDRAM.
-- Don't forget that CIDRAM writes it cache and other data directly to disk (i.e., saves its data onto files), and doesn't use any external database system like MySQL, PostgreSQL, Access, or similar. This means that in order for it to track usage for rate limiting, it would effectively need to be writing to disk for every single potentially rate limited request. This could contribute to lower disk life expectancy in the longterm, and is not ideally recommended. Instead, ideally, a tool used for rate limiting could utilise a database system intended for frequent, small read/write operations, or could retain information persistently across requests, without the need to write data to disk between requests (e.g., written as an independent server module, instead of a PHP package).
 - If you're able to use a server module, cPanel, or some other network tool to enforce rate limiting, it would be better to use that for rate limiting, instead of CIDRAM.
 - If a particular user is very keen to continue accessing your website after being rate limited, in most cases, it will be very easy for them to circumvent rate limiting (e.g., if they change their IP address, or if they use a proxy or VPN, and assuming that you've configured CIDRAM to not block proxies and VPNs, or that CIDRAM isn't aware of the proxy or VPN that they're using).
 - Rate limiting can be very annoying for actual, real end-users. It may be necessary if your available bandwidth is very limited, and if you discover that there are some specific sources of traffic, not already otherwise blocked, that are consuming the majority of your available bandwidth. If not necessary though, it should probably be avoided.
@@ -1994,4 +1993,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 31 October 2021 (2021.10.31).
+Last Updated: 1 December 2021 (2021.12.01).

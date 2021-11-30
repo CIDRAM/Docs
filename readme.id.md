@@ -681,7 +681,7 @@ Didukung sekarang:
 
 ##### "disabled_channels"
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
-- *Opsi yang tersedia: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Opsi yang tersedia: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
@@ -925,7 +925,6 @@ Direktif konfigurasi opsional untuk pembatasan laju.
 
 Fitur ini diimplementasikan ke CIDRAM karena diminta oleh pengguna yang cukup untuk membenarkan diimplementasikan. Namun, karena agak tidak terkait dengan tujuan yang awalnya ditujukan untuk CIDRAM, kemungkinan besar tidak akan dibutuhkan oleh sebagian besar pengguna. Jika Anda secara khusus membutuhkan CIDRAM untuk menangani pembatasan laju untuk situs web Anda, fitur ini dapat bermanfaat bagi Anda. Namun, ada beberapa hal penting yang harus Anda pertimbangkan:
 - Fitur ini, seperti semua fitur CIDRAM lainnya, hanya akan berfungsi untuk halaman yang dilindungi oleh CIDRAM. Demikian, aset situs web apapun yang tidak dirutekan secara khusus melalui CIDRAM tidak dapat dibatasi oleh CIDRAM.
-- Jangan lupa bahwa CIDRAM menulisnya cache dan data lain secara langsung ke disk (yaitu, menyimpan data ke dalam file), dan tidak menggunakan sistem basis data eksternal seperti MySQL, PostgreSQL, Access, atau yang serupa. Ini berarti bahwa untuk melacak penggunaan untuk membatasi laju, itu akan secara efektif perlu menulis ke disk untuk setiap permintaan yang berpotensi terbatas. Ini dapat berkontribusi untuk menurunkan harapan masa pakai disk dalam jangka panjang, dan idealnya tidak disarankan. Sebaliknya, idealnya, alat yang digunakan untuk membatasi laju dapat menggunakan sistem basis data yang ditujukan untuk operasi baca/tulis yang kecil dan sering, atau dapat menyimpan informasi secara terus-menerus di seluruh permintaan, tanpa perlu menulis data ke disk antara permintaan (misalnya, ditulis sebagai modul server independen, sebagai alternatif untuk paket PHP).
 - Jika Anda dapat menggunakan modul server, cPanel, atau beberapa alat jaringan lain untuk menerapkan pembatasan laju, akan lebih baik menggunakan itu untuk membatasi laju, sebagai alternatif untuk CIDRAM.
 - Jika pengguna tertentu sangat tertarik untuk terus mengakses situs web Anda setelah dibatasi, dalam banyak kasus, akan sangat mudah bagi mereka untuk menghindari pembatasan laju (misalnya, jika mereka mengubah alamat IP mereka, atau jika mereka menggunakan proxy atau VPN, dan dengan asumsi Anda telah mengonfigurasi CIDRAM untuk tidak memblokir proxy dan VPN, atau bahwa CIDRAM tidak mengetahui proxy atau VPN yang mereka gunakan).
 - Pembatasan laju bisa sangat mengganggu bagi pengguna sebenarnya. Mungkin diperlukan jika bandwidth yang tersedia sangat terbatas, dan jika Anda menemukan bahwa ada beberapa sumber lalu lintas khusus, yang belum diblokir, yang menghabiskan sebagian besar bandwidth yang tersedia. Namun jika tidak perlu, itu mungkin harus dihindari.
@@ -1976,4 +1975,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 31 Oktober 2021 (2021.10.31).
+Terakhir Diperbarui: 1 Desember 2021 (2021.12.01).

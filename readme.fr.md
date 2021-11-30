@@ -681,7 +681,7 @@ Supporté actuellement :
 
 ##### « disabled_channels »
 - Ceci peut être utilisé pour empêcher CIDRAM d'utiliser des canaux particuliers lors de l'envoi de requêtes (par exemple, lors de la mise à jour, lors de l'extraction de métadonnées de composant, etc).
-- *Options disponibles : `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Options disponibles : `GitHub,BitBucket,GoogleDNS`*
 
 ##### « default_timeout »
 - Délai d'attente par défaut à utiliser pour les requêtes externes ? Défaut = 12 secondes.
@@ -925,7 +925,6 @@ Directives de configuration facultatives pour la limitation de débit.
 
 Cette fonctionnalité a été implémentée dans CIDRAM car elle a été demandée par suffisamment d'utilisateurs pour justifier son implémentation. Cependant, parce que c'est un peu en dehors de l'objectif initial prévu pour le CIDRAM, la plupart des utilisateurs n'en auront probablement pas besoin. Si vous avez spécifiquement besoin de CIDRAM pour gérer la limitation du débit de votre site Web, cette fonctionnalité pourrait vous être utile. Cependant, il y a quelques points importants à considérer :
 - Cette fonctionnalité, comme toutes les autres fonctionnalités de CIDRAM, fonctionnera seulement pour les pages protégées par CIDRAM. Par conséquent, les actifs de site Web qui ne sont pas spécifiquement acheminés via CIDRAM ne peuvent pas être limités par CIDRAM.
-- N'oubliez pas que CIDRAM écrit le cache et d'autres données directement sur le disque (c'est-à-dire, enregistre ses données dans des fichiers), et n'utilise aucun système de base de données externe tel que MySQL, PostgreSQL, Access ou similaire. Cela signifie que pour pouvoir suivre l'utilisation pour la limitation de débit, il serait nécessaire d'écrire sur le disque pour chaque requête potentiellement limité. Cela pourrait contribuer à réduire l'espérance de vie des disques à long terme, et n'est pas recommandé de manière idéale. Alternativement, idéalement, un outil utilisé pour la limitation de débit pourrait utiliser un système de base de données destiné à de opérations de lecture/écriture petites et fréquentes, ou pourrait conserver des informations de manière persistante d'une requête à l'autre, sans avoir besoin d'écrire des données sur le disque entre les requêtes (par exemple, écrit en tant que module de serveur indépendant, au lieu d'un paquet PHP).
 - Si vous pouvez utiliser un module serveur, cPanel, ou un autre outil réseau pour appliquer la limitation de débit, il serait préférable de l'utiliser pour limitation de débit, au lieu de CIDRAM.
 - Si un utilisateur particulier souhaite vivement continuer à accéder à votre site Web après avoir été limité, dans la plupart des cas, il leur sera très facile de contourner la limitation de débit (par exemple, s'ils changent d'adresse IP, ou s'ils utilisent un proxy ou un VPN, et en supposant que vous avez configuré CIDRAM pour ne pas bloquer les proxy et les VPN, ou que CIDRAM n'est pas au courant du proxy ou du VPN qu'ils utilisent).
 - La limitation de débit peut être très gênante pour les vrais utilisateurs. Cela peut être nécessaire si votre bande passante disponible est très limitée, et si vous découvrez qu'il existe des sources de trafic spécifiques, non encore bloquées, qui utilisent la majeure partie de votre bande passante disponible. Donc, si ce n'est pas nécessaire, cela devrait probablement être évité.
@@ -1989,4 +1988,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 31 Octobre 2021 (2021.10.31).
+Dernière mise à jour : 1 Décembre 2021 (2021.12.01).

@@ -681,7 +681,7 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "disabled_channels"
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
-- *Tùy chọn có sẵn: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Tùy chọn có sẵn: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
@@ -925,7 +925,6 @@ Các chỉ thị cấu hình tùy chọn để giới hạn tốc độ.
 
 Tính năng này được thực hiện cho CIDRAM bởi vì nó được yêu cầu bởi đủ người dùng để biện minh cho việc thực hiện. Tuy nhiên, bởi vì nó không liên quan đến mục đích dự định ban đầu cho CIDRAM, rất có thể sẽ không cần thiết cho hầu hết người dùng. Nếu bạn đặc biệt cần CIDRAM để xử lý giới hạn tốc độ cho trang web của mình, tính năng này có thể hữu ích cho bạn. Tuy nhiên, có một số điều quan trọng bạn nên cân nhắc:
 - Tính năng này, giống như tất cả các tính năng CIDRAM khác, sẽ chỉ hoạt động đối với các trang được bảo vệ bởi CIDRAM. Do đó, bất kỳ tài sản trang web nào không được định tuyến cụ thể thông qua CIDRAM không thể bị giới hạn bởi CIDRAM.
-- Đừng quên rằng CIDRAM ghi cache và các dữ liệu khác trực tiếp vào đĩa (nói cách khác, lưu dữ liệu của nó vào tập tin), và không sử dụng bất kỳ hệ thống cơ sở dữ liệu bên ngoài nào như MySQL, PostgreSQL, Access, hay tương tự. Điều này có nghĩa là để có thể theo dõi việc sử dụng cho giới hạn tốc độ, nó sẽ có hiệu quả cần phải được ghi vào đĩa cho mỗi yêu cầu được giới hạn. Điều này có thể góp phần làm giảm tuổi thọ ổ đĩa trong dài hạn, và không được khuyến khích. Thay vào đó, lý tưởng, một công cụ được sử dụng để giới hạn tốc độ có thể sử dụng một hệ thống cơ sở dữ liệu dành cho các hoạt động đọc/ghi nhỏ và thường xuyên, hoặc có thể giữ lại thông tin liên tục qua các yêu cầu, mà không cần phải ghi dữ liệu vào đĩa giữa các yêu cầu (v.d., được viết dưới dạng mô-đun máy chủ độc lập, thay vì gói PHP).
 - Nếu bạn có thể sử dụng mô-đun máy chủ, cPanel, hoặc một số công cụ mạng khác để thực thi giới hạn tốc độ, nó sẽ là tốt hơn để sử dụng mà thay vì CIDRAM.
 - Nếu một người dùng cụ thể rất muốn tiếp tục truy cập trang web của bạn sau khi bị giới hạn, trong hầu hết các trường hợp, sẽ rất dễ dàng để họ vượt qua giới hạn tốc độ (v.d., nếu họ thay đổi địa chỉ IP của họ, hoặc nếu họ sử dụng proxy hoặc VPN, và giả định rằng bạn đã định cấu hình CIDRAM để không chặn proxy và VPN, hoặc CIDRAM đó không biết về proxy hoặc VPN mà họ đang sử dụng).
 - Giới hạn tốc độ có thể rất khó chịu đối với người dùng cuối thực tế. Có thể cần thiết nếu băng thông có sẵn của bạn rất hạn chế, và nếu bạn phát hiện ra rằng có một số nguồn lưu lượng truy cập cụ thể, chưa bị chặn, điều đó sẽ tiêu tốn phần lớn băng thông có sẵn của bạn. Nếu không cần thiết tuy nhiên, nó có lẽ nên tránh.
@@ -1973,4 +1972,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.10.31.
+Lần cuối cập nhật: 2021.12.01.

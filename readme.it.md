@@ -681,7 +681,7 @@ Attualmente supportato:
 
 ##### "disabled_channels"
 - Questo può essere usato per impedire a CIDRAM di usare canali particolari quando si inviano richieste (ad esempio, quando si aggiorna, quando si recuperano i metadati del componente, ecc).
-- *Opzioni disponibili: `GitHub,macmathan.info,BitBucket,NotABug,GoogleDNS`*
+- *Opzioni disponibili: `GitHub,BitBucket,GoogleDNS`*
 
 ##### "default_timeout"
 - Il tempo scaduto predefinito da utilizzare per le richieste esterne? Predefinito = 12 secondi.
@@ -925,7 +925,6 @@ Direttive di configurazione opzionali per la limitazione della velocità.
 
 Questa funzionalità è stata implementata in CIDRAM perché è stata richiesta da un numero di utenti sufficiente per giustificare l'implementazione. Tuttavia, poiché è alquanto estraneo allo scopo originariamente previsto per CIDRAM, molto probabilmente non sarà necessario dalla maggior parte degli utenti. Se hai specificamente bisogno di CIDRAM per gestire la limitazione della velocità per il tuo sito web, questa funzionalità potrebbe essere utile per te. Tuttavia, ci sono alcune cose importanti che dovresti considerare:
 - Questa funzionalità, come tutte le altre funzionalità di CIDRAM, funzionerà solo per le pagine protette da CIDRAM. Pertanto, le risorse di siti Web non specificatamente instradate tramite CIDRAM non possono essere limitate da CIDRAM.
-- Non dimenticare che CIDRAM scrive la cache e altri dati direttamente sul disco (cioè, salva i suoi dati in file), e non utilizza alcun sistema di database esterno come MySQL, PostgreSQL, Access o simili. Ciò significa che per monitorare l'utilizzo per la limitazione della velocità, avrebbe effettivamente bisogno di scrivere sul disco per ogni singola richiesta potenzialmente limitata. Ciò potrebbe contribuire a ridurre l'aspettativa di vita del disco a lungo termine, e non è idealmente raccomandato. Invece, idealmente, uno strumento utilizzato per la limitazione della velocità potrebbe utilizzare un sistema di database destinato a frequenti, piccole operazioni di lettura/scrittura, o potrebbe conservare le informazioni in modo persistente tra le richieste, senza la necessità di scrivere dati su disco tra le richieste (ad esempio, scritto come modulo server indipendente, invece di un pacchetto PHP).
 - Se sei in grado di utilizzare un modulo server, cPanel, o qualche altro strumento di rete per applicare la limitazione della velocità, sarebbe meglio usarlo per la limitazione della velocità, invece di CIDRAM.
 - Se un determinato utente è molto interessato a continuare ad accedere al tuo sito Web dopo essere stato limitato, nella maggior parte dei casi, sarà molto facile per loro aggirare la limitazione della velocità (ad esempio, se cambiano il loro indirizzo IP, o se usano un proxy o VPN, e supponendo che tu abbia configurato CIDRAM per non bloccare proxy e VPN, o che CIDRAM non è a conoscenza del proxy o della VPN che stanno utilizzando).
 - La limitazione della velocità può essere molto fastidiosa per gli utenti reali. Potrebbe essere necessario se la larghezza di banda disponibile è molto limitata, e se scopri che ci sono alcune specifiche fonti di traffico, non già bloccate altrimenti, che consumano la maggior parte della larghezza di banda disponibile. Però, se non necessario, dovrebbe probabilmente essere evitato.
@@ -1979,4 +1978,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 31 Ottobre 2021 (2021.10.31).
+Ultimo Aggiornamento: 1 Dicembre 2021 (2021.12.01).
