@@ -1,4 +1,4 @@
-## CIDRAM v2 中文（傳統）文檔。
+## CIDRAM v3 中文（傳統）文檔。
 
 ### 內容
 - 1. [前言](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ _**： 需要ASN查找功能，例如從BGPView模塊。_
 
 ##### 『protect_frontend』
 - 指定是否應將CIDRAM通常提供的保護應用於前端。​True（真）=是【標準】；​False（假）=不是。
-
-##### 『disable_webfonts』
-- 關閉網絡字體嗎？​True（真）=關閉【標準】；False（假）=不關閉。
 
 ##### 『maintenance_mode』
 - 啟用維護模式？​True（真）=關閉；​False（假）=不關閉【標準】。​它停用一切以外前端。​有時候在更新CMS，框架，等時有用。
@@ -1750,15 +1746,6 @@ CIDRAM的`pdo_dsn`應配置如下。
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 網絡字體
-
-一些自定義主題，以及CIDRAM前端的標準UI（『用戶界面』），和『拒絕訪問』頁面可能出於審美原因使用網絡字體。​網絡字體默認是禁用，但啟用後，用戶的瀏覽器和託管網絡字體的服務之間會發生直接通信。​這可能涉及傳遞信息，例如用戶的IP地址，用戶代理，操作系統，以及請求可用的其他詳細信息。​大部分這些網絡字體都由[Google Fonts](https://fonts.google.com/)服務託管。
-
-*相關配置指令：*
-- `general` -> `disable_webfonts`
-
-##### 11.2.2 搜索引擎驗證和社交媒體驗證
-
 當啟用搜索引擎驗證時，CIDRAM嘗試執行『正向DNS查找』以驗證聲稱源自搜索引擎的請求是否真實。​同樣，當啟用社交媒體驗證時，CIDRAM對為社交媒體請求做同樣的事情。​為此，它使用[Google DNS](https://dns.google.com/)服務嘗試從這些入站請求的主機名解析IP地址（在這個過程中，這些入站請求的主機名與服務共享）。
 
 *相關配置指令：*
@@ -1976,4 +1963,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2021年12月1日。
+最後更新：2022年2月17日。

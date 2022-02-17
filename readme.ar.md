@@ -1,4 +1,4 @@
-## <div dir="rtl">CIDRAM v2 بالعربية</div>
+## <div dir="rtl">CIDRAM v3 بالعربية</div>
 
 ### <div dir="rtl">المحتويات:</div>
 <div dir="rtl"><ul>
@@ -351,7 +351,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -726,11 +725,6 @@ Configuration (v2)
 ##### <div dir="rtl">"protect_frontend"<br /></div>
 <div dir="rtl"><ul>
  <li>يحدد ما إذا كانت الحماية التي توفرها عادة CIDRAM يجب أن تطبق لfront-end. صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li>
-</ul></div>
-
-##### <div dir="rtl">"disable_webfonts"<br /></div>
-<div dir="rtl"><ul>
- <li>هل تريد تعطيل ويبفونتس؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li>
 </ul></div>
 
 ##### <div dir="rtl">"maintenance_mode"<br /></div>
@@ -2010,15 +2004,6 @@ IP | المشغل
  <li><code dir="ltr">allow_gethostbyaddr_lookup</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
-##### <div dir="rtl">١١.٢.١ خطوط الويب<br /><br /></div>
-
-<div dir="rtl">بعض السمات المخصصة، واجهة المستخدم القياسية CIDRAM، وصفحة "تم رفض الوصول" قد تستخدم خطوط الويب لأسباب جمالية. يتم تعطيل خطوط الويب بشكل افتراضي. عند التمكين، هناك اتصال مباشر بين متصفح المستخدم ومضيف الويب. قد ينطوي ذلك على نقل معلومات مثل عنوان IP الخاص بالمستخدم، وكيل المستخدم، نظام التشغيل، وغيرها من التفاصيل المتاحة للطلب. تستضيف <a href="https://fonts.google.com/">خدمة خطوط Google</a> معظم خطوط الويب هذه.<br /><br /></div>
-
-<div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
-<div dir="rtl"><ul>
- <li><code dir="ltr">disable_webfonts</code> &lt;- <code dir="ltr">general</code></li>
-</ul></div>
-
 ##### <div dir="rtl">١١.٢.٢ التحقق من محركات البحث ووسائل الإعلام الاجتماعية<br /><br /></div>
 
 <div dir="rtl">عندما يتم تمكين هذه الخيارات، يحاول CIDRAM التحقق من صحة الطلبات من محركات البحث والشبكات الاجتماعية. للقيام بذلك، فإنه يستخدم خدمة <a dir="ltr" href="https://dns.google.com/">Google DNS</a> لمحاولة حل عناوين IP من أسماء المضيفين لهذه الطلبات الواردة (في هذه العملية، تتم مشاركة أسماء المضيفين لهذه الطلبات الواردة مع الخدمة).<br /><br /></div>
@@ -2265,4 +2250,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١ ديسمبر ٢٠٢١ (٢٠٢١.١٢.٠١).</div>
+<div dir="rtl">آخر تحديث: ١٧ فبراير ٢٠٢٢ (٢٠٢٢.٠٢.١٧).</div>

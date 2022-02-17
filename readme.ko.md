@@ -1,4 +1,4 @@
-## CIDRAM v2 설명서 (한국어).
+## CIDRAM v3 설명서 (한국어).
 
 ### 목차
 - 1. [서문](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 
 ##### "protect_frontend"
 - CIDRAM 의해 보통 제공되는 보호를 프론트 엔드에 적용할지 여부를 지정합니다. True = 예 (Default / 기본 설정); False = 아니오.
-
-##### "disable_webfonts"
-- 웹 글꼴을 사용하지 않도록 설정 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
 
 ##### "maintenance_mode"
 - 유지 관리 모드를 사용 하시겠습니까? True = 예; False = 아니오 (Default / 기본 설정). 프런트 엔드 이외의 모든 것을 비활성화합니다. CMS, 프레임 워크 등을 업데이트 할 때 유용합니다.
@@ -1748,13 +1744,6 @@ cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 웹 글꼴
-
-CIDRAM 프론트 엔드 및 "액세스 거부"페이지의 표준 UI ("사용자 인터페이스")뿐만 아니라 일부 사용자 정의 테마는 미적인 이유로 웹 글꼴을 사용할 수 있습니다. 웹 글꼴은 기본적으로 사용되지 않습니다. 사용하도록 설정하면 사용자의 브라우저와 웹 글꼴을 호스팅하는 서비스 간의 직접 통신이 발생합니다. 여기에는 사용자의 IP 주소, 사용자 에이전트, 운영 체제 및 요청에 사용 가능한 기타 세부 정보와 같은 정보를 전달하는 것이 포함될 수 있습니다. 대부분의 웹 글꼴은 [Google Fonts](https://fonts.google.com/) 서비스에서 호스팅합니다.
-
-*관련 설정 지시어 :*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 검색 엔진 검증 및 소셜 미디어 검증
 
 이러한 구성 지시문을 사용하면, CIDRAM은 "순방향 DNS 조회"를 수행하여 검색 엔진 및 소셜 미디어에서 발생했다고 추정되는 요청의 진위 여부를 확인합니다. 이렇게하기 위해 [Google DNS](https://dns.google.com/) 서비스를 사용하여 이러한 인바운드 요청의 호스트 이름에서 IP 주소를 확인합니다 (이 프로세스에서 이러한 인바운드 요청의 호스트 이름은 서비스와 공유됩니다).
@@ -1971,4 +1960,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2021년 12월 1일.
+최종 업데이트 : 2022년 2월 17일.

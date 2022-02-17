@@ -1,4 +1,4 @@
-## Dokumentasi untuk CIDRAM v2 (Bahasa Indonesia).
+## Dokumentasi untuk CIDRAM v3 (Bahasa Indonesia).
 
 ### Isi
 - 1. [SEPATAH KATA](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ Didukung sekarang:
 
 ##### "protect_frontend"
 - Menentukan apakah perlindungan biasanya disediakan oleh CIDRAM harus diterapkan pada bagian depan. True = Ya [Default]; False = Tidak.
-
-##### "disable_webfonts"
-- Menonaktifkan webfonts? True = Ya [Default]; False = Tidak.
 
 ##### "maintenance_mode"
 - Aktifkan modus perawatan? True = Ya; False = Tidak [Default]. Nonaktifkan semuanya selain bagian depan. Terkadang berguna saat memperbarui CMS, kerangka kerja, dll.
@@ -1757,13 +1753,6 @@ Jika Anda menggunakan fitur atau modul yang dimaksudkan untuk bekerja dengan nam
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 FONT WEB
-
-Beberapa tema kustom, serta UI standar ("antarmuka pengguna") untuk halaman bagian depan CIDRAM dan halaman "Akses Ditolak", dapat menggunakan font web untuk alasan estetika. Font web dinonaktifkan secara default, tetapi ketika diaktifkan, komunikasi langsung antara browser pengguna dan layanan hosting font web terjadi. Ini mungkin melibatkan informasi komunikasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lainnya yang tersedia untuk permintaan tersebut. Sebagian besar font web ini dihosting oleh layanan [Google Fonts](https://fonts.google.com/).
-
-*Direktif konfigurasi yang relevan:*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 VERIFIKASI MESIN PENCARI DAN MEDIA SOSIAL
 
 Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian DNS ke depan" untuk memverifikasi apakah permintaan yang mengaku berasal dari mesin pencari adalah asli. Juga, ketika verifikasi media sosial diaktifkan, CIDRAM melakukan hal yang sama untuk permintaan media sosial dugaan. Untuk melakukan ini, verifikasi mesin pencari menggunakan layanan [Google DNS](https://dns.google.com/) untuk mencoba menyelesaikan alamat IP dari nama host dari permintaan masuk ini (dalam proses ini, nama host dari permintaan masuk ini dibagikan dengan layanan).
@@ -1975,4 +1964,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 1 Desember 2021 (2021.12.01).
+Terakhir Diperbarui: 17 Februari 2022 (2022.02.17).

@@ -1,4 +1,4 @@
-## Tài liệu của CIDRAM v2 (Tiếng Việt).
+## Tài liệu của CIDRAM v3 (Tiếng Việt).
 
 ### Nội dung
 - 1. [LỜI GIỚI THIỆU](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "protect_frontend"
 - Chỉ định liệu các bảo vệ thường được cung cấp bởi CIDRAM nên được áp dụng cho các front-end. True = Vâng [Mặc định]; False = Không.
-
-##### "disable_webfonts"
-- Vô hiệu hóa các webfont? True = Vâng [Mặc định]; False = Không.
 
 ##### "maintenance_mode"
 - Bật chế độ bảo trì? True = Vâng; False = Không [Mặc định]. Vô hiệu hoá mọi thứ khác ngoài các front-end. Đôi khi hữu ích khi cập nhật CMS, framework của bạn, vv.
@@ -1754,13 +1750,6 @@ Nếu bạn sử dụng bất kỳ tính năng hay mô-đun nào để làm vi�
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 WEBFONT
-
-Một số chủ đề tùy chỉnh, cũng như UI chuẩn ("giao diện người dùng") cho front-end CIDRAM và trang "Truy cập đã bị từ chối", có thể sử dụng các webfont vì lý do thẩm mỹ. Các webfont được vô hiệu hóa theo mặc định, nhưng khi được kích hoạt, giao tiếp trực tiếp giữa trình duyệt của người dùng và dịch vụ lưu trữ webfont sẽ xảy ra. Điều này có thể liên quan đến việc truyền thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu. Hầu hết các webfont này được lưu trữ bởi dịch vụ [Google Fonts](https://fonts.google.com/).
-
-*Chỉ thị cấu hình có liên quan:*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 XÁC MINH MÁY TÌM KIẾM VÀ TRUYỀN THÔNG XÃ HỘI
 
 Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực hiện "tra cứu DNS chuyển tiếp" để xác minh tính xác thực của các yêu cầu nói rằng bắt nguồn từ các máy tìm kiếm. Tương tự như vậy, khi xác minh truyền thông xã hội được kích hoạt, CIDRAM thực hiện tương tự cho các yêu cầu truyền thông xã hội bị nghi ngờ. Để thực hiện điều này, nó sử dụng dịch vụ [Google DNS](https://dns.google.com/) để cố gắng giải quyết các địa chỉ IP từ tên máy chủ của các yêu cầu gửi đến này (trong quá trình này, tên máy chủ của các yêu cầu gửi đến này được chia sẻ với dịch vụ).
@@ -1972,4 +1961,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2021.12.01.
+Lần cuối cập nhật: 2022.02.17.

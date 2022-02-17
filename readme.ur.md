@@ -1,4 +1,4 @@
-## <div dir="rtl">CIDRAM v2 لئے دستاویزی (اردو).</div>
+## <div dir="rtl">CIDRAM v3 لئے دستاویزی (اردو).</div>
 
 ### <div dir="rtl">فہرست:</div>
 <div dir="rtl"><ul>
@@ -351,7 +351,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -726,11 +725,6 @@ Configuration (v2)
 ##### <div dir="rtl">"protect_frontend"<br /></div>
 <div dir="rtl"><ul>
  <li>متعین کرتا ہے جو عام طور پر CIDRAM طرف سے فراہم کردہ تحفظات سامنے کے آخر پر لاگو کیا جانا چاہئے یا نہیں. سچا = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = کوئی.</li>
-</ul></div>
-
-##### <div dir="rtl">"disable_webfonts"<br /></div>
-<div dir="rtl"><ul>
- <li>Webfonts کے غیر فعال کریں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = کوئی.</li>
 </ul></div>
 
 ##### <div dir="rtl">"maintenance_mode"<br /></div>
@@ -2010,15 +2004,6 @@ IP | آپریٹر
  <li><code dir="ltr">allow_gethostbyaddr_lookup</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
-##### <div dir="rtl">۱۱.۲.۱ ویب فونٹس<br /><br /></div>
-
-<div dir="rtl">کچھ اپنی مرضی کے مطابق موضوعات، معیاری CIDRAM صارف انٹرفیس، اور "رسائی نہیں ہوئی" صفحہ، ویب فونٹس کو جمالیاتی وجوہات کے لۓ استعمال کرسکتے ہیں. ویب فونٹس ڈیفالٹ کے ذریعہ غیر فعال ہیں. فعال ہونے پر، صارف کے برائوزر اور ویب فونٹ میزبان کے درمیان براہ راست مواصلات موجود ہے. یہ ممکنہ طور پر مواصلاتی معلومات جیسے صارف کے IP ایڈریس، صارف ایجنٹ، آپریٹنگ سسٹم، اور درخواست کے لئے دستیاب دیگر تفصیلات شامل ہوسکتا ہے. ان میں سے زیادہ تر ویب فونٹس <a dir="ltr" href="https://fonts.google.com/">Google Fonts</a> سروس کی طرف سے میزبان ہیں.<br /><br /></div>
-
-<div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
-<div dir="rtl"><ul>
- <li><code dir="ltr">disable_webfonts</code> &lt;- <code dir="ltr">general</code></li>
-</ul></div>
-
 ##### <div dir="rtl">۱۱.۲.۲ تلاش انجن اور سوشل میڈیا کی توثیق<br /><br /></div>
 
 <div dir="rtl">جب یہ اختیارات فعال ہوتے ہیں تو، CIDRAM کو تلاش کے انجن اور سوشل میڈیا کی درخواستوں کی صداقت کی توثیق کرنے کی کوشش ہوتی ہے. ایسا کرنے کے لئے، یہ ان پونڈ درخواستوں کے میزبانوں سے IP پتوں کو حل کرنے کی کوشش کرنے کیلئے <a dir="ltr" href="https://dns.google.com/">Google DNS</a> سروس کا استعمال کرتا ہے (اس عمل میں، ان بے حد درخواستوں کے میزبانوں کو سروس کے ساتھ اشتراک کیا جاتا ہے).<br /><br /></div>
@@ -2265,4 +2250,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱ دسمبر ۲۰۲۱ (۲۰۲۱.۱۲.۰۱).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۷ فروری ۲۰۲۲ (۲۰۲۲.۰۲.۱۷).</div>

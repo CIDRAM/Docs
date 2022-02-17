@@ -1,4 +1,4 @@
-## Dokumentation für CIDRAM v2 (Deutsch).
+## Dokumentation für CIDRAM v3 (Deutsch).
 
 ### Inhalt
 - 1. [VORWORT](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ Derzeit unterstützt:
 
 ##### "protect_frontend"
 - Gibt an, ob die Schutzmaßnahmen normalerweise vom CIDRAM bereitgestellten auf das Frontend angewendet werden sollen. True = Ja [Standardeinstellung]; False = Nein.
-
-##### "disable_webfonts"
-- Web-Fonts deaktivieren? True = Ja [Standardeinstellung]; False = Nein.
 
 ##### "maintenance_mode"
 - Deaktiviert alles andere als das Frontend. Manchmal nützlich für die Aktualisierung Ihrer CMS, Frameworks, u.s.w. Wartungsmodus aktivieren? True = Ja; False = Nein [Standardeinstellung].
@@ -1764,13 +1760,6 @@ Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., "Sc
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 WEBFONTS
-
-Einige benutzerdefinierte Themen sowie die Standard-UI (oder Benutzerschnittstelle) für das CIDRAM-Frontend und die Seite "Zugriff verweigert" können Webfonts aus ästhetischen Gründen verwenden. Webfonts sind standardmäßig deaktiviert. Wenn sie jedoch aktiviert sind, erfolgt eine direkte Kommunikation zwischen dem Browser des Benutzers und dem Dienst, der die Webfonts hostet. Dies kann möglicherweise die Übermittlung von Informationen wie die IP-Adresse des Benutzers, den Benutzeragenten ("User-Agent"), das Betriebssystem und andere Details übermitteln. Die meisten dieser Webfonts werden vom [Google Fonts](https://fonts.google.com/)-Service gehostet.
-
-*Relevante Konfigurationsdirektiven:*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 VERIFIZIERUNG VON SUCHMASCHINEN UND SOCIAL MEDIA
 
 Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM "Forward-DNS-Lookups" durchzuführen, um zu überprüfen, ob Anfragen, die behaupten, von Suchmaschinen zu stammen, authentisch sind. Gleichfalls, wenn die Verifizierung von Social Media aktiviert ist, macht CIDRAM das gleiche für scheinbare Social-Media-Anfragen. Um dies zu tun, verwendet es den [Google DNS](https://dns.google.com/)-Dienst, um IP-Adressen aus den Hostnamen dieser eingehenden Anfragen aufzulösen (in diesem Prozess werden die Hostnamen dieser eingehenden Anfragen für den Dienst freigegeben).
@@ -1992,4 +1981,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 1. Dezember 2021 (2021.12.01).
+Zuletzt aktualisiert: 17. Februar 2022 (2022.02.17).

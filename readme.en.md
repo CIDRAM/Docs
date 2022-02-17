@@ -1,4 +1,4 @@
-## Documentation for CIDRAM v2 (English).
+## Documentation for CIDRAM v3 (English).
 
 ### Contents
 - 1. [PREAMBLE](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -660,9 +659,6 @@ Currently supported:
 
 ##### "protect_frontend"
 - Specifies whether the protections normally provided by CIDRAM should be applied to the front-end. True = Yes [Default]; False = No.
-
-##### "disable_webfonts"
-- Disable webfonts? True = Yes [Default]; False = No.
 
 ##### "maintenance_mode"
 - Enable maintenance mode? True = Yes; False = No [Default]. Disables everything other than the front-end. Sometimes useful for when updating your CMS, frameworks, etc.
@@ -1765,13 +1761,6 @@ If you use any features or modules intended to work with hostnames (such as the 
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 WEBFONTS
-
-Some custom themes, as well as the standard UI ("user interface") for the CIDRAM front-end and the "Access Denied" page, may use webfonts for aesthetic reasons. Webfonts are disabled by default, but when enabled, direct communication between the user's browser and the service hosting the webfonts occurs. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request. Most of these webfonts are hosted by the [Google Fonts](https://fonts.google.com/) service.
-
-*Relevant configuration directives:*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 SEARCH ENGINE VERIFICATION AND SOCIAL MEDIA VERIFICATION
 
 When search engine verification is enabled, CIDRAM attempts to perform "forward DNS lookups" to verify whether requests claiming to originate from search engines are authentic. Similarly, when social media verification is enabled, CIDRAM does the same for apparent social media requests. To do this, it uses the [Google DNS](https://dns.google.com/) service to attempt to resolve IP addresses from the hostnames of these inbound requests (in this process, the hostnames of these inbound requests is shared with the service).
@@ -1993,4 +1982,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 1 December 2021 (2021.12.01).
+Last Updated: 17 February 2022 (2022.02.17).

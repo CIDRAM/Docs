@@ -1,4 +1,4 @@
-## Documentatie voor CIDRAM v2 (Nederlandse).
+## Documentatie voor CIDRAM v3 (Nederlandse).
 
 ### Inhoud
 - 1. [PREAMBULE](#SECTION1)
@@ -349,7 +349,6 @@ Configuration (v2)
 │       social_media_verification
 │       other_verification
 │       protect_frontend
-│       disable_webfonts
 │       maintenance_mode
 │       default_algo
 │       statistics
@@ -650,9 +649,6 @@ Momenteel ondersteund:
 
 ##### "protect_frontend"
 - Geeft aan of de bescherming die gewoonlijk door CIDRAM is voorzien moet worden toegepast op de frontend. True = Ja [Standaard]; False = Nee.
-
-##### "disable_webfonts"
-- Uitschakelen webfonts? True = Ja [Standaard]; False = Nee.
 
 ##### "maintenance_mode"
 - Inschakelen de onderhoudsmodus? True = Ja; False = Nee [Standaard]. Schakelt alles anders dan het frontend uit. Soms nuttig bij het bijwerken van uw CMS, frameworks, enz.
@@ -1766,13 +1762,6 @@ Als u functies of modules gebruikt die bedoeld zijn om met hostnamen te werken (
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.1 WEBFONTS
-
-Sommige aangepaste thema's, evenals de standaard UI ("gebruikersinterface") voor de frontend van CIDRAM en de pagina "Toegang Geweigerd", kunnen webfonts gebruiken om esthetische redenen. Webfonts zijn standaard uitgeschakeld, maar indien ingeschakeld, vindt directe communicatie plaats tussen de browser van de gebruiker en de service die de webfonts host. Dit kan mogelijk inhouden dat informatie wordt doorgegeven zoals het IP-adres van de gebruiker, user agent, besturingssysteem, en andere details die beschikbaar zijn voor het verzoek. De meeste van deze webfonts worden gehost door de [Google Fonts](https://fonts.google.com/)-service.
-
-*Relevante configuratie-opties:*
-- `general` -> `disable_webfonts`
-
 ##### 11.2.2 VERIFICATIE VAN ZOEKMACHINES EN SOCIALE MEDIA
 
 Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward DNS-lookups" uit te voeren om te verifiëren of verzoeken die claimen afkomstig te zijn van zoekmachines authentiek zijn. Hetzelfde, wanneer verificatie van sociale media is ingeschakeld, CIDRAM doet hetzelfde voor schijnbare verzoeken van sociale media. Hiertoe gebruikt het de [Google DNS](https://dns.google.com/)-service om IP-adressen van de hostnamen van deze inkomende verzoeken op te lossen (in dit proces worden de hostnamen van deze inkomende verzoeken gedeeld met de service).
@@ -1992,4 +1981,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 1 December 2021 (2021.12.01).
+Laatste Bijgewerkt: 17 Februari 2022 (2022.02.17).
