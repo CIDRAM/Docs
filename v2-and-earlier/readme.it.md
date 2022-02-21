@@ -203,6 +203,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           DelayedIO.php
     │           Demojibakefier.php
     │           Events.php
+    │           IPHeader.php
     │           L10N.php
     │           Matrix.php
     │           NumberFormatter.php
@@ -514,6 +515,7 @@ Valore | Utilizzando
 `CF-Connecting-IP` | Proxy inverso Cloudflare (alternativa; se il precedente non funziona).
 `HTTP_X_FORWARDED_FOR` | Proxy inverso Cloudbric.
 `X-Forwarded-For` | [Proxy inverso Squid](http://www.squid-cache.org/Doc/config/forwarded_for/).
+`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
 *Definito dalla configurazione del server.* | [Proxy inverso Nginx](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
 `REMOTE_ADDR` | Nessun proxy inverso (valore predefinito).
 
@@ -1978,4 +1980,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 1 Dicembre 2021 (2021.12.01).
+Ultimo Aggiornamento: 20 Febbraio 2022 (2022.02.20).

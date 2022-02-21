@@ -203,6 +203,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           DelayedIO.php
     │           Demojibakefier.php
     │           Events.php
+    │           IPHeader.php
     │           L10N.php
     │           Matrix.php
     │           NumberFormatter.php
@@ -514,6 +515,7 @@ Nilai | Menggunakan
 `CF-Connecting-IP` | Cloudflare reverse proxy (alternatif; jika di atas tidak bekerja).
 `HTTP_X_FORWARDED_FOR` | Cloudbric reverse proxy.
 `X-Forwarded-For` | [Squid reverse proxy](http://www.squid-cache.org/Doc/config/forwarded_for/).
+`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
 *Ditetapkan oleh konfigurasi server.* | [Nginx reverse proxy](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
 `REMOTE_ADDR` | Tidak ada reverse proxy (nilai default).
 
@@ -1975,4 +1977,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 1 Desember 2021 (2021.12.01).
+Terakhir Diperbarui: 20 Februari 2022 (2022.02.20).

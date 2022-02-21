@@ -203,6 +203,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           DelayedIO.php
     │           Demojibakefier.php
     │           Events.php
+    │           IPHeader.php
     │           L10N.php
     │           Matrix.php
     │           NumberFormatter.php
@@ -513,6 +514,7 @@ Configuration (v2)
 `CF-Connecting-IP` | Cloudflareリバース・プロキシ（代替；上記がうまくいかない場合）。
 `HTTP_X_FORWARDED_FOR` | Cloudbricリバース・プロキシ。
 `X-Forwarded-For` | [Squidリバース・プロキシ](http://www.squid-cache.org/Doc/config/forwarded_for/)。
+`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
 *サーバー・コンフィギュレーションによって定義されます。* | [Nginxリバース・プロキシ](https://www.nginx.com/resources/admin-guide/reverse-proxy/)。
 `REMOTE_ADDR` | リバース・プロキシはありません（デフォルト値）。
 
@@ -1962,4 +1964,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２２年２月１７日。
+最終アップデート：２０２２年２月２０日。

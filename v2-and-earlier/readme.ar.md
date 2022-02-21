@@ -205,6 +205,7 @@ https://github.com/CIDRAM/CIDRAM>v2
     │           DelayedIO.php
     │           Demojibakefier.php
     │           Events.php
+    │           IPHeader.php
     │           L10N.php
     │           Matrix.php
     │           NumberFormatter.php
@@ -545,6 +546,7 @@ Configuration (v2)
 `CF-Connecting-IP` | Cloudflare reverse proxy (كلودفلاري عكس الوكيل؛ لبديل؛ إذا كان ما سبق لا يعمل).
 `HTTP_X_FORWARDED_FOR` | Cloudbric reverse proxy.
 `X-Forwarded-For` | [Squid reverse proxy (عكس الوكيل)](http://www.squid-cache.org/Doc/config/forwarded_for/).
+`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
 &nbsp; <div dir="rtl" style="display:inline"><em>يحددها تكوين الخادم.</em></div> | [Nginx reverse proxy (إنجن إكس عكس الوكيل)](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
 `REMOTE_ADDR` | &nbsp; <div dir="rtl" style="display:inline">لا يوجد عكس الوكيل (الافتراضي).</div>
 
@@ -2265,4 +2267,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١ ديسمبر ٢٠٢١ (٢٠٢١.١٢.٠١).</div>
+<div dir="rtl">آخر تحديث: ٢٠ فبراير ٢٠٢٢ (٢٠٢٢.٠٢.٢٠).</div>
