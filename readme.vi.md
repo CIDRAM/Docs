@@ -317,680 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho CIDRAM `config.ini`, cùng với một mô tả về mục đích và chức năng của chúng.
 
 ```
-Configuration (v2)
+Cấu hình (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Thể loại)
-Cấu hình chung cho CIDRAM.
+Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về các loại khác).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Tập tin có thể đọc con người cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "logfile_apache"
-- *v1: "logfileApache"*
+##### "logfile_apache" `[string]`
 - Tập tin Apache phong cách cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "logfile_serialized"
-- *v1: "logfileSerialized"*
+##### "logfile_serialized" `[string]`
 - Tập tin tuần tự cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-*Mẹo hữu ích: Nếu bạn muốn, bạn có thể thêm thông tin ngày/giờ trong tên các tập tin ghi của bạn bằng cách bao gồm những trong tên: `{yyyy}` cho năm đầy, `{yy}` cho năm viết tắt, `{mm}` cho tháng, `{dd}` cho ngày, `{hh}` cho giờ.*
-
-*Các ví dụ:*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "error_log"
+##### "error_log" `[string]`
 - Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "error_log_stages"
-- Một danh sách các giai đoạn trong chuỗi thực thi, theo đó bất kỳ lỗi nào được tạo sẽ được ghi lại.
-- *Mặc định: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### "stages" `[string]`
+- Kiểm soát các giai đoạn của chuỗi thực thi (có được bật hay không, có lỗi được ghi lại hay không, vv).
 
-##### "truncate"
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### "fields" `[string]`
+- Kiểm soát các trường trong các sự kiện khối (khi một yêu cầu bị chặn).
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### "truncate" `[string]`
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
 
-##### "log_rotation_limit"
+##### "log_rotation_limit" `[int]`
 - Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định giới hạn mong muốn tại đây. Giá trị 0 sẽ vô hiệu hóa xoay vòng nhật ký.
 
-##### "log_rotation_action"
+##### "log_rotation_action" `[string]`
 - Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định hành động mong muốn tại đây. Delete = Xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá. Archive = Trước tiên lưu trữ, và sau đó xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.
 
-*Làm rõ kỹ thuật: Trong ngữ cảnh này, "cũ nhất" có nghĩa là không được sửa đổi gần đây.*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### "timezone"
-- Điều này được sử dụng để xác định múi giờ nào CIDRAM nên sử dụng cho ngày/giờ. Nếu bạn không cần nó, bỏ qua nó. Các giá trị có thể được xác định bởi PHP. Nó thường được đề nghị thay vì để điều chỉnh các chỉ thị múi giờ trong tập tin `php.ini` của bạn, nhưng đôi khi (như ví dụ, khi làm việc với giới hạn cung cấp lưu trữ chia sẻ) đây không phải là luôn luôn có thể làm, và như vậy, tùy chọn này được cung cấp ở đây.
+##### "timezone" `[string]`
+- Điều này được sử dụng để chỉ định múi giờ sử dụng (ví dụ, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, vv). Chỉ định "SYSTEM" để cho phép PHP tự động xử lý việc này cho bạn.
 
-##### "time_offset"
-- *v1: "timeOffset"*
-- Nếu thời gian máy chủ của bạn không phù hợp với thời gian địa phương của bạn, bạn có thể chỉ định một bù đắp đây để điều chỉnh thông tin ngày/giờ được tạo ra bởi CIDRAM theo yêu cầu của bạn. Nó thường được đề nghị thay vì để điều chỉnh các chỉ thị múi giờ trong tập tin `php.ini` của bạn, nhưng đôi khi (như ví dụ, khi làm việc với giới hạn cung cấp lưu trữ chia sẻ) đây không phải là luôn luôn có thể làm, và như vậy, tùy chọn này được cung cấp ở đây. Bù đắp được đo bằng phút.
-- Ví dụ (để thêm một giờ): `time_offset=60`
+```
+timezone
+├─SYSTEM ("Sử dụng múi giờ mặc định của hệ thống.")
+├─UTC ("UTC")
+└─…Khác
+```
 
-##### "time_format"
-- *v1: "timeFormat"*
-- Định dạng ngày tháng sử dụng bởi CIDRAM. Mặc định = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
+##### "time_offset" `[int]`
+- Múi giờ bù đắp trong phút.
 
-##### "ipaddr"
+##### "time_format" `[string]`
+- Định dạng ngày tháng sử dụng bởi CIDRAM. Các tùy chọn bổ sung có thể được bổ sung theo yêu cầu.
+
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…Khác
+```
+
+##### "ipaddr" `[string]`
 - Nơi để tìm địa chỉ IP của các yêu cầu kết nối? (Hữu ích cho các dịch vụ như Cloudflare và vv). Mặc định = REMOTE_ADDR. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
-Giá trị được đề xuất cho "ipaddr":
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (Mặc định)")
+└─…Khác
+```
 
-Giá trị | Sử dụng
----|---
-`HTTP_INCAP_CLIENT_IP` | Proxy reverse Incapsula.
-`HTTP_CF_CONNECTING_IP` | Proxy reverse Cloudflare.
-`CF-Connecting-IP` | Proxy reverse Cloudflare (một sự thay thế; nếu ở trên không hoạt động).
-`HTTP_X_FORWARDED_FOR` | Proxy reverse Cloudbric.
-`X-Forwarded-For` | [Proxy reverse Squid](http://www.squid-cache.org/Doc/config/forwarded_for/).
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*Xác định bởi cấu hình máy chủ.* | [Proxy reverse Nginx](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
-`REMOTE_ADDR` | Không có proxy reverse (giá trị mặc định).
+Xem thêm:
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "forbid_on_block"
-- Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi yêu cầu bị chặn?
+##### "http_response_header_code" `[int]`
+- Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi yêu cầu bị chặn? (Tham khảo tài liệu để biết thêm thông tin).
 
-Giá trị hiện được hỗ trợ:
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-Mã trạng thái | Thông thái trạng thái | Chi tiết
----|---|---
-`200` | `200 OK` | Giá trị mặc định. Không phải là rất mạnh mẽ, nhưng thân thiện với người dùng.
-`403` | `403 Forbidden` | Hơi mạnh mẽ, và thân thiện với người dùng.
-`410` | `410 Gone` | Có thể gây ra sự cố khi cố gắng giải quyết các sai tích cực, bởi vì một số trình duyệt sẽ lưu trữ thông thái trạng thái này và không gửi lại yêu cầu, ngay cả sau khi bỏ chặn người dùng. Có thể hữu ích hơn các tùy chọn khác để giảm yêu cầu từ một số loại bot cụ thể.
-`418` | `418 I'm a teapot` | Điều này thực sự ám chỉ đến một trò đùa của April Fools [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] và có lẽ khách hàng sẽ không hiểu. Cung cấp cho vui chơi giải trí và thuận tiện, nhưng không thường được đề nghị.
-`451` | `Unavailable For Legal Reasons` | Thích hợp cho các ngữ cảnh khi các yêu cầu bị chặn chủ yếu vì lý do pháp lý. Không được đề xuất trong các ngữ cảnh khác.
-`503` | `Service Unavailable` | Không phải là rất thân thiện với người dùng, nhưng mạnh mẽ.
-
-##### "silent_mode"
+##### "silent_mode" `[string]`
 - CIDRAM nên âm thầm chuyển hướng cố gắng truy cập bị chặn thay vì hiển thị trang "Truy cập đã bị từ chối"? Nếu vâng, xác định vị trí để chuyển hướng cố gắng truy cập bị chặn để. Nếu không, để cho biến này được trống.
 
-##### "lang"
+##### "lang" `[string]`
 - Xác định tiếng mặc định cho CIDRAM.
 
-##### "lang_override"
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### "lang_override" `[bool]`
 - Bản địa hóa theo HTTP_ACCEPT_LANGUAGE bất cứ khi nào có thể? True = Vâng [Mặc định]; False = Không.
 
-##### "numbers"
-- Chỉ định cách hiển thị số.
+##### "numbers" `[string]`
+- Làm thế nào để bạn thích số được hiển thị? Chọn ví dụ có vẻ chính xác nhất cho bạn.
 
-Giá trị hiện được hỗ trợ:
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-Giá trị | Nó tạo ra | Chi tiết
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | Giá trị mặc định.
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*Chú thích: Các giá trị này không được chuẩn hóa ở bất kỳ đâu, và có thể sẽ không liên quan ngoài gói. Ngoài ra, các giá trị được hỗ trợ có thể thay đổi trong tương lai.*
-
-##### "emailaddr"
+##### "emailaddr" `[string]`
 - Nếu bạn muốn, bạn có thể cung cấp một địa chỉ email ở đây để được trao cho người dùng khi họ đang bị chặn, cho họ để sử dụng như một điểm tiếp xúc cho hỗ trợ hay giúp đở cho trong trường hợp họ bị chặn bởi nhầm hay lỗi. CẢNH BÁO: Bất kỳ địa chỉ email mà bạn cung cấp ở đây sẽ chắc chắn nhất được mua lại bởi chương trình thư rác và cái nạo trong quá trình con của nó được sử dụng ở đây, và như vậy, nó khuyên rằng nếu bạn chọn để cung cấp một địa chỉ email ở đây, mà bạn đảm bảo rằng địa chỉ email bạn cung cấp ở đây là một địa chỉ dùng một lần hay một địa chỉ mà bạn không nhớ được thư rác (nói cách khác, có thể bạn không muốn sử dụng một cá nhân chính hay kinh doanh chính địa chỉ email).
 
-##### "emailaddr_display_style"
-- Bạn muốn địa chỉ email được trình bày như thế nào với người dùng? "default" = Liên kết có thể nhấp. "noclick" = Văn bản không thể nhấp.
+##### "emailaddr_display_style" `[string]`
+- Bạn muốn địa chỉ email được trình bày như thế nào với người dùng?
 
-##### "disable_cli"
-- *(Loại bỏ kể từ v2).*
-- Vô hiệu hóa chế độ CLI? Chế độ CLI được kích hoạt theo mặc định, nhưng đôi khi có thể gây trở ngại cho công cụ kiểm tra nhất định (như PHPUnit, cho ví dụ) và khác ứng dụng mà CLI dựa trên. Nếu bạn không cần phải vô hiệu hóa chế độ CLI, bạn nên bỏ qua tùy chọn này. False = Kích hoạt chế độ CLI [Mặc định]; True = Vô hiệu hóa chế độ CLI.
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### "disable_frontend"
+##### "disable_frontend" `[bool]`
 - Vô hiệu hóa truy cập front-end? Truy cập front-end có thể làm cho CIDRAM dễ quản lý hơn, nhưng cũng có thể là một nguy cơ bảo mật tiềm năng. Đó là khuyến cáo để quản lý CIDRAM từ các back-end bất cứ khi nào có thể, nhưng truy cập front-end là cung cấp khi nó không phải là có thể. Giữ nó vô hiệu hóa trừ khi bạn cần nó. False = Kích hoạt truy cập front-end; True = Vô hiệu hóa truy cập front-end [Mặc định].
 
-##### "max_login_attempts"
+##### "max_login_attempts" `[int]`
 - Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
 
-##### "frontend_log"
-- *v1: "FrontEndLog"*
+##### "frontend_log" `[string]`
 - Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "signatures_update_event_log"
+##### "signatures_update_event_log" `[string]`
 - Một tập tin để ghi nhật ký khi chữ ký được cập nhật qua front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "ban_override"
-- Ghi đè "forbid_on_block" khi "infraction_limit" bị vượt quá? Khi ghi đè: Các yêu cầu bị chặn sản xuất một trang trống (tập tin mẫu không được sử dụng). 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "forbid_on_block".
+##### "ban_override" `[int]`
+- Ghi đè "http_response_header_code" khi "infraction_limit" bị vượt quá? Khi ghi đè: Các yêu cầu bị chặn sản xuất một trang trống (tập tin mẫu không được sử dụng). 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "http_response_header_code".
 
-##### "log_banned_ips"
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### "log_banned_ips" `[bool]`
 - Bao gồm các yêu cầu bị chặn từ các IP bị cấm trong các tập tin đăng nhập? True = Vâng [Mặc định]; False = Không.
 
-##### "default_dns"
+##### "default_dns" `[string]`
 - Một dấu phẩy phân cách danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. Mặc định = "8.8.8.8,8.8.4.4" (Google DNS). CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
-*Xem thêm: [Những gì tôi có thể sử dụng cho "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### "search_engine_verification" `[string]`
+- Kiểm soát để xác minh các yêu cầu từ các máy tìm kiếm.
 
-##### "search_engine_verification"
-- Cố gắng xác minh các yêu cầu từ các máy tìm kiếm? Xác minh máy tìm kiếm đảm bảo rằng họ sẽ không bị cấm là kết quả của vượt quá giới các hạn vi phạm (cấm các máy tìm kiếm từ trang web của bạn thường sẽ có một tác động tiêu cực đến các xếp hạng máy tìm kiếm của bạn, SEO, vv). Khi xác minh được kích hoạt, các máy tìm kiếm có thể bị chặn như bình thường, nhưng sẽ không bị cấm. Khi xác minh không được kích hoạt, họ có thể bị cấm như là kết quả của vượt quá giới các hạn vi phạm. Ngoài ra, xác minh máy tìm kiếm cung cấp bảo vệ chống lại các yêu cầu giả máy tìm kiếm và chống lại các thực thể rằng là khả năng độc hại được giả mạo như là các máy tìm kiếm (những yêu cầu này sẽ bị chặn khi xác minh máy tìm kiếm được kích hoạt). True = Kích hoạt xác minh máy tìm kiếm [Mặc định]; False = Vô hiệu hóa xác minh máy tìm kiếm.
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-Được hỗ trợ hiện tại:
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
-Không tương thích (gây ra xung đột):
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
 
-##### "social_media_verification"
-- Cố gắng xác minh yêu cầu truyền thông xã hội? Xác minh truyền thông xã hội cung cấp sự bảo vệ chống lại các yêu cầu truyền thông xã hội giả mạo (các yêu cầu như vậy sẽ bị chặn). True = Kích hoạt xác minh truyền thông xã hội [Mặc định]; False = Vô hiệu hóa xác minh truyền thông xã hội.
+##### "social_media_verification" `[string]`
+- Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
 
-Được hỗ trợ hiện tại:
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
-##### "other_verification"
-- Bất cứ khi nào có thể, hãy cố gắng xác minh các loại yêu cầu khác (ví dụ: AdSense, công cụ kiểm tra SEO, vv)? Khi bị phát hiện, các yêu cầu giả mạo sẽ bị chặn. True = Kích hoạt [Mặc định]; False = Vô hiệu hóa.
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
 
-Được hỗ trợ hiện tại:
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### "other_verification" `[string]`
+- Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
 
-##### "protect_frontend"
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
+
+##### "protect_frontend" `[bool]`
 - Chỉ định liệu các bảo vệ thường được cung cấp bởi CIDRAM nên được áp dụng cho các front-end. True = Vâng [Mặc định]; False = Không.
 
-##### "maintenance_mode"
-- Bật chế độ bảo trì? True = Vâng; False = Không [Mặc định]. Vô hiệu hoá mọi thứ khác ngoài các front-end. Đôi khi hữu ích khi cập nhật CMS, framework của bạn, vv.
-
-##### "default_algo"
+##### "default_algo" `[string]`
 - Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai. Tùy chọn: PASSWORD_DEFAULT (mặc định), PASSWORD_BCRYPT, PASSWORD_ARGON2I (yêu cầu PHP >= 7.2.0), PASSWORD_ARGON2ID (yêu cầu PHP >= 7.3.0).
 
-##### "statistics"
-- Giám sát thống kê sử dụng CIDRAM? True = Vâng; False = Không [Mặc định].
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### "force_hostname_lookup"
+##### "statistics" `[string]`
+- Kiểm soát thông tin thống kê cần theo dõi.
+
+```
+statistics
+├─Blocked-IPv4 ("Yêu cầu bị chặn – IPv4")
+├─Blocked-IPv6 ("Yêu cầu bị chặn – IPv6")
+├─Blocked-Other ("Yêu cầu bị chặn – Khác")
+├─Banned-IPv4 ("Yêu cầu bị cấm – IPv4")
+├─Banned-IPv6 ("Yêu cầu bị cấm – IPv6")
+├─Passed-IPv4 ("Yêu cầu được phép – IPv4")
+├─Passed-IPv6 ("Yêu cầu được phép – IPv6")
+├─Passed-Other ("Yêu cầu được phép – Khác")
+├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – {state_failed}")
+└─CAPTCHAs-Passed ("CAPTCHA nỗ lực – {state_passed}")
+```
+
+##### "force_hostname_lookup" `[bool]`
 - Thực hiện tìm kiếm tên máy chủ cho tất cả các yêu cầu? True = Vâng; False = Không [Mặc định]. Tìm kiếm tên máy chủ thường được thực hiện trên cơ sở cần thiết, nhưng có thể được thực hiện cho tất cả các yêu cầu. Điều này có thể hữu ích như một phương tiện cung cấp thông tin chi tiết hơn trong các tập tin đăng nhập, nhưng cũng có thể có tác động tiêu cực đến hiệu suất.
 
-##### "allow_gethostbyaddr_lookup"
+##### "allow_gethostbyaddr_lookup" `[bool]`
 - Cho phép tra cứu gethostbyaddr khi UDP không khả dụng? True = Vâng [Mặc định]; False = Không.
-- *Lưu ý: Tra cứu IPv6 có thể không hoạt động chính xác trên một số hệ thống 32-bit.*
 
-##### "hide_version"
-- Ẩn thông tin phiên bản từ nhật ký và đầu ra của trang? True = Vâng; False = Không [Mặc định].
-
-##### "empty_fields"
-- CIDRAM nên xử lý các trường trống khi ghi và hiển thị thông tin sự kiện khối như thế nào? "include" = Bao gồm các trường trống. "omit" = Bỏ sót các trường trống [mặc định].
-
-##### "log_sanitisation"
+##### "log_sanitisation" `[bool]`
 - Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
 
-##### "disabled_channels"
+##### "disabled_channels" `[string]`
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
-- *Tùy chọn có sẵn: `GitHub,BitBucket,GoogleDNS`*
 
-##### "default_timeout"
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### "default_timeout" `[int]`
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
 
-##### "config_imports"
+##### "config_imports" `[string]`
 - Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
 
-##### "events"
+##### "events" `[string]`
 - Các tập tin được liệt kê ở đây được tải trực tiếp sau tập tin trình xử lý sự kiện. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
 
 #### "signatures" (Thể loại)
-Cấu hình cho chữ ký.
+Cấu hình cho chữ ký, tập tin chữ ký, mô-đun, vv.
 
-##### "ipv4"
-- Một danh sách các tập tin chữ ký IPv4 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy. Bạn có thể thêm các mục ở đây nếu bạn muốn bao gồm thêm các tập tin chữ ký IPv4 trong CIDRAM.
+##### "ipv4" `[string]`
+- Một danh sách các tập tin chữ ký IPv4 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy.
 
-##### "ipv6"
-- Một danh sách các tập tin chữ ký IPv6 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy. Bạn có thể thêm các mục ở đây nếu bạn muốn bao gồm thêm các tập tin chữ ký IPv6 trong CIDRAM.
+##### "ipv6" `[string]`
+- Một danh sách các tập tin chữ ký IPv6 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy.
 
-##### "block_attacks"
+##### "block_attacks" `[bool]`
 - Chặn CIDR liên quan đến các cuộc tấn công và lưu lượng truy cập bất thường khác? Ví dụ, quét cổng, tấn công, dò tìm lỗ hổng bảo mật, vv. Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
 
-##### "block_cloud"
+##### "block_cloud" `[bool]`
 - Chặn CIDR xác định là thuộc về các dịch vụ lưu trữ mạng hay dịch vụ điện toán đám mây? Nếu bạn điều hành một dịch vụ API từ trang mạng của bạn hay nếu bạn mong đợi các trang mạng khác để kết nối với trang mạng của bạn, điều này cần được thiết lập để false. Nếu bạn không, sau đó, tùy chọn này cần được thiết lập để true.
 
-##### "block_bogons"
+##### "block_bogons" `[bool]`
 - Chặn CIDR bogon/martian? Nếu bạn mong đợi các kết nối đến trang mạng của bạn từ bên trong mạng nội bộ của bạn, từ localhost, hay từ LAN của bạn, tùy chọn này cần được thiết lập để false. Nếu bạn không mong đợi những kết nối như vậy, tùy chọn này cần được thiết lập để true.
 
-##### "block_generic"
+##### "block_generic" `[bool]`
 - Chặn CIDR thường được khuyến cáo cho danh sách đen? Điều này bao gồm bất kỳ chữ ký không được đánh dấu như một phần của bất kỳ các loại chữ ký cụ thể khác.
 
-##### "block_legal"
+##### "block_legal" `[bool]`
 - Chặn CIDR theo các nghĩa vụ hợp pháp? Chỉ thị này thường không có bất kỳ hiệu lực, vì CIDRAM không liên kết bất kỳ CIDR nào với "nghĩa vụ hợp pháp" theo mặc định, nhưng nó vẫn tồn tại tuy nhiên như một biện pháp kiểm soát bổ sung vì lợi ích của bất kỳ tập tin chữ ký hay mô-đun tùy chỉnh nào có thể tồn tại vì lý do hợp pháp.
 
-##### "block_malware"
+##### "block_malware" `[bool]`
 - Chặn CIDR liên quan đến phần mềm độc hại? Điều này bao gồm các máy chủ C&C, máy chủ bị nhiễm, máy chủ liên quan đến phân phối phần mềm độc hại, vv.
 
-##### "block_proxies"
+##### "block_proxies" `[bool]`
 - Chặn CIDR xác định là thuộc về các dịch vụ proxy hay VPN? Nếu bạn yêu cầu mà người dùng có thể truy cập trang mạng của bạn từ các dịch vụ proxy hay VPN, điều này cần được thiết lập để false. Nếu không thì, nếu bạn không yêu cầu các dịch vụ proxy hay VPN, tùy chọn này cần được thiết lập để true như một phương tiện để cải thiện an ninh.
 
-##### "block_spam"
+##### "block_spam" `[bool]`
 - Chặn CIDR xác định như có nguy cơ cao đối được thư rác? Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
 
-##### "modules"
+##### "modules" `[string]`
 - Một danh sách các tập tin mô-đun để tải sau khi kiểm tra các chữ ký IPv4/IPv6, ngăn cách bởi dấu phẩy.
 
-##### "default_tracktime"
+##### "default_tracktime" `[int]`
 - Có bao nhiêu giây để giám sát các IP bị cấm bởi các mô-đun. Mặc định = 604800 (1 tuần).
 
-##### "infraction_limit"
+##### "infraction_limit" `[int]`
 - Số lượng tối đa các vi phạm một IP được phép chịu trước khi nó bị cấm bởi các giám sát IP. Mặc định = 10.
 
-##### "track_mode"
-- Khi vi phạm cần được tính? False = Khi IP bị chặn bởi các mô-đun. True = Khi IP bị chặn vì lý do bất kỳ. Mặc định = False.
-
-##### "tracking_override"
+##### "tracking_override" `[bool]`
 - Cho phép các mô-đun ghi đè các tùy chọn giám sát? True = Vâng [Mặc định]; False = Không.
 
-#### "recaptcha" và "hcaptcha" (hai thể loại này cung cấp các chỉ thị giống nhau).
-Nếu bạn muốn, bạn có thể giới thiệu cho người dùng một thử thách CAPTCHA để phân biệt họ với bot hoặc cho phép họ lấy lại quyền truy cập trong trường hợp bị chặn. Điều này có thể giúp giảm sai tích cực và giảm lưu lượng truy cập tự động không mong muốn.
+#### "recaptcha" (Thể loại)
+Cấu hình cho ReCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
 
-*Lưu ý: CAPTCHA chỉ bảo vệ chống lại các cuộc gọi của máy, không chống lại những kẻ tấn công con người.*
-
-Bạn có thể lấy "site key" và "secret key" cho reCAPTCHA từ đây:
-- https://developers.google.com/recaptcha/
-
-Bạn có thể lấy "site key" và "secret key" cho hCAPTCHA từ đây:
-- https://www.hcaptcha.com/
-
-##### "usemode"
+##### "usemode" `[int]`
 - Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA.
 
-Giá trị | Chi tiết
---:|:--
-1 | Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.
-2 | Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.
-3 | Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).
-4 | Chỉ khi không bị chặn.
-5 | Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.
-Bất kỳ giá trị nào khác. | Không bao giờ!
+```
+usemode
+├─0 (Không bao giờ !!!)
+├─1 (Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.)
+├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
+├─4 (Chỉ khi không bị chặn.)
+└─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+```
 
-##### "lockip"
-- Chỉ định liệu các băm/hash nên được khóa trên IP cụ thể. False = Cookie và băm/hash CÓ THỂ được sử dụng bởi nhiều IP (mặc định). True = Cookie và băm/hash KHÔNG THỂ được sử dụng sử dụng bởi nhiều IP (cookie và băm/hash được khóa trên các IP).
-- Chú thích: Giá trị "lockip" được bỏ qua khi "lockuser" là false, bởi vì các cơ chế để nhớ "người dùng" khác nhau ơ tùy thuộc vào giá trị này.
+##### "lockip" `[bool]`
+- Khóa CAPTCHA để IP?
 
-##### "lockuser"
-- Chỉ định liệu thành công hoàn thành của reCAPTCHA/hCAPTCHA nên được khóa trên người dùng cụ thể. False = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ cấp quyền truy cập cho tất cả các yêu cầu có nguồn gốc từ cùng một IP như được sử dụng bởi người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash không được sử dụng; Thay vào đó, một danh sách trắng IP sẽ được sử dụng. True = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ chỉ cấp quyền truy cập cho người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash được sử dụng để nhớ người dùng; Một danh sách trắng IP sẽ không được sử dụng (mặc định).
+##### "lockuser" `[bool]`
+- Khóa CAPTCHA để người dùng?
 
-##### "sitekey"
+##### "sitekey" `[string]`
 - Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
 
-##### "secret"
+Xem thêm:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "secret" `[string]`
 - Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
 
-##### "expiry"
+Xem thêm:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "expiry" `[float]`
 - Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
-*Mẹo hữu ích: Nếu bạn muốn, bạn có thể thêm thông tin ngày/giờ trong tên các tập tin ghi của bạn bằng cách bao gồm những trong tên: `{yyyy}` cho năm đầy, `{yy}` cho năm viết tắt, `{mm}` cho tháng, `{dd}` cho ngày, `{hh}` cho giờ.*
-
-*Các ví dụ:*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "signature_limit"
+##### "signature_limit" `[int]`
 - Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
 
-##### "api"
+##### "api" `[string]`
 - API nào để sử dụng?
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (Hộp kiểm)")
+└─Invisible ("V2 (Vô hình)")
 ```
 
-*Lưu ý đối với người dùng ở Liên minh châu Âu: Khi CIDRAM được định cấu hình để sử dụng cookie (v.d., khi "lockuser" là true/đúng), cảnh báo cookie được hiển thị trên trang theo quy định của [pháp luật về cookie của EU](https://www.cookielaw.org/the-cookie-law/). Tuy nhiên, khi sử dụng API invisible, CIDRAM cố gắng hoàn thành CAPTCHA cho người dùng tự động, và khi thành công, điều này có thể dẫn đến việc trang được tải lại và một cookie được tạo ra mà không có người dùng được cho đủ thời gian để thực sự xem cảnh báo cookie.*
-
-##### "show_cookie_warning"
+##### "show_cookie_warning" `[bool]`
 - Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
 
-*Chỉ thị cấu hình này được thêm theo yêu cầu, cho người dùng muốn tắt cảnh báo cookie thường được hiển thị cùng với CAPTCHA (để giúp, ví dụ, ẩn bất kỳ dấu hiệu nào cho thấy CIDRAM đang được sử dụng). Tuy nhiên, tôi thực sự khuyên rằng hầu hết người dùng (đặc biệt là những người ở EU) nên giữ nó bật.*
-
-##### "show_api_message"
+##### "show_api_message" `[bool]`
 - Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
 
-*Điều này đề cập đến bất kỳ thông báo bổ sung, không cần thiết được hiển thị khi một yêu cầu bị chặn, ngoại trừ cảnh báo cookie.*
-
-##### "nonblocked_status_code"
+##### "nonblocked_status_code" `[int]`
 - Mã trạng thái nào nên được sử dụng khi hiển thị CAPTCHA cho các yêu cầu không bị chặn?
 
-Giá trị hiện được hỗ trợ:
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-Mã trạng thái | Thông thái trạng thái
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### "hcaptcha" (Thể loại)
+Cấu hình cho HCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
+
+##### "usemode" `[int]`
+- Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA.
+
+```
+usemode
+├─0 (Không bao giờ !!!)
+├─1 (Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.)
+├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
+├─4 (Chỉ khi không bị chặn.)
+└─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+```
+
+##### "lockip" `[bool]`
+- Khóa CAPTCHA để IP?
+
+##### "lockuser" `[bool]`
+- Khóa CAPTCHA để người dùng?
+
+##### "sitekey" `[string]`
+- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "secret" `[string]`
+- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "expiry" `[float]`
+- Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
+
+##### "logfile" `[string]`
+- Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
+
+##### "signature_limit" `[int]`
+- Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
+
+##### "api" `[string]`
+- API nào để sử dụng?
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (Vô hình)")
+```
+
+##### "show_cookie_warning" `[bool]`
+- Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
+
+##### "show_api_message" `[bool]`
+- Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
+
+##### "nonblocked_status_code" `[int]`
+- Mã trạng thái nào nên được sử dụng khi hiển thị CAPTCHA cho các yêu cầu không bị chặn?
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
 #### "legal" (Thể loại)
-Cấu hình mà liên quan đến các nghĩa vụ hợp pháp.
+Cấu hình cho các yêu cầu pháp lý.
 
-*Để biết thêm thông tin về các nghĩa vụ hợp pháp và cách nó có thể ảnh hưởng đến các nghĩa vụ cấu hình của bạn, vui lòng tham khảo phần "[THÔNG TIN HỢP PHÁP](#SECTION11)" của các tài liệu.*
-
-##### "pseudonymise_ip_addresses"
+##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonymise địa chỉ IP khi viết các tập tin nhật ký? True = Vâng [Mặc định]; False = Không.
 
-##### "omit_ip"
-- Bỏ qua địa chỉ IP từ nhật ký? True = Vâng; False = Không [Mặc định]. Lưu ý: "pseudonymise_ip_addresses" trở nên dư thừa khi "omit_ip" là "true".
-
-##### "omit_hostname"
-- Bỏ qua tên máy chủ từ nhật ký? True = Vâng; False = Không [Mặc định].
-
-##### "omit_ua"
-- Bỏ qua đại lý người dùng từ nhật ký? True = Vâng; False = Không [Mặc định].
-
-##### "privacy_policy"
+##### "privacy_policy" `[string]`
 - Địa chỉ của chính sách bảo mật liên quan được hiển thị ở chân trang của bất kỳ trang nào được tạo. Chỉ định URL, hoặc để trống để vô hiệu hóa.
 
 #### "template_data" (Thể loại)
-Cấu hình cho mẫu thiết kế và chủ đề.
+Cấu hình cho mẫu và chủ đề.
 
-Liên quan đến đầu ra HTML sử dụng để tạo ra các trang "Truy cập đã bị từ chối". Nếu bạn đang sử dụng chủ đề tùy chỉnh cho CIDRAM, đầu ra HTML có nguồn gốc từ tập tin `template_custom.html`, và nếu không thì, đầu ra HTML có nguồn gốc từ tập tin `template.html`. Biến bằng văn bản cho phần này của tập tin cấu hình được xử lý để đầu ra HTML bằng cách thay thế bất kỳ tên biến được bao quanh bởi các dấu ngoặc nhọn tìm thấy trong đầu ra HTML với các dữ liệu biến tương ứng. Ví dụ, ở đâu `foo="bar"`, bất kỳ trường hợp `<p>{foo}</p>` tìm thấy trong đầu ra HTML sẽ trở thành `<p>bar</p>`.
-
-##### "theme"
+##### "theme" `[string]`
 - Chủ đề mặc định để sử dụng cho CIDRAM.
 
-##### "magnification"
-- *v1: "Magnification"*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Khác
+```
+
+##### "magnification" `[float]`
 - Phóng to chữ. Mặc định = 1.
 
-##### "css_url"
-- Tập tin mẫu thiết kế cho chủ đề tùy chỉnh sử dụng thuộc tính CSS bên ngoài, trong khi các tập tin mẫu thiết kế cho các chủ đề mặc định sử dụng thuộc tính CSS nội bộ. Để hướng dẫn CIDRAM để sử dụng các tập tin mẫu thiết kế cho chủ đề tùy chỉnh, xác định các địa chỉ HTTP cho các tập tin CSS chủ đề tùy chỉnh của bạn sử dụng các biến số `css_url`. Nếu bạn để cho biến số này chỗ trống, CIDRAM sẽ sử dụng các tập tin mẫu thiết kế cho các chủ đề mặc định.
+##### "css_url" `[string]`
+- URL của tập tin CSS cho các chủ đề tùy chỉnh.
+
+##### "block_event_title" `[string]`
+- Tiêu đề trang để hiển thị cho các sự kiện khối.
+
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…Khác
+```
+
+##### "captcha_title" `[string]`
+- Tiêu đề trang để hiển thị cho các yêu cầu CAPTCHA.
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…Khác
+```
 
 #### "PHPMailer" (Thể loại)
-Cấu hình PHPMailer.
+Cấu hình cho PHPMailer (được sử dụng để xác thực hai yếu tố).
 
-Hiện tại, CIDRAM chỉ sử dụng PHPMailer để xác thực hai yếu tố front-end. Nếu bạn không sử dụng các front-end, hoặc nếu bạn không sử dụng xác thực hai yếu tố cho các front-end, bạn có thể bỏ qua các chỉ thị này.
-
-##### "event_log"
-- *v1: "EventLog"*
+##### "event_log" `[string]`
 - Một tập tin để ghi nhật ký tất cả các sự kiện liên quan đến PHPMailer. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
-##### "skip_auth_process"
-- *v1: "SkipAuthProcess"*
+##### "skip_auth_process" `[bool]`
 - Đặt chỉ thị này thành `true` chỉ thị cho PHPMailer bỏ qua quy trình xác thực thông thường thường xảy ra khi gửi email qua SMTP. Điều này nên tránh, bởi vì bỏ qua quá trình này có thể tiết lộ email gửi đến các cuộc tấn công MITM, nhưng có thể cần thiết trong trường hợp quá trình này ngăn PHPMailer kết nối với máy chủ SMTP.
 
-##### "enable_two_factor"
-- *v1: "Enable2FA"*
+##### "enable_two_factor" `[bool]`
 - Chỉ thị này xác định có nên sử dụng 2FA cho tài khoản front-end hay không.
 
-##### "host"
-- *v1: "Host"*
+##### "host" `[string]`
 - Máy chủ SMTP để sử dụng cho email gửi đi.
 
-##### "port"
-- *v1: "Port"*
+##### "port" `[int]`
 - Số cổng để sử dụng cho email gửi đi. Mặc định = 587.
 
-##### "smtp_secure"
-- *v1: "SMTPSecure"*
+##### "smtp_secure" `[string]`
 - Giao thức sử dụng khi gửi email qua SMTP (TLS hoặc SSL).
 
-##### "smtp_auth"
-- *v1: "SMTPAuth"*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### "smtp_auth" `[bool]`
 - Chỉ thị này xác định xem có nên xác thực các phiên SMTP (thường nên để lại một mình).
 
-##### "username"
-- *v1: "Username"*
+##### "username" `[string]`
 - Tên người dùng để sử dụng khi gửi email qua SMTP.
 
-##### "password"
-- *v1: "Password"*
+##### "password" `[string]`
 - Mật khẩu để sử dụng khi gửi email qua SMTP.
 
-##### "set_from_address"
-- *v1: "setFromAddress"*
+##### "set_from_address" `[string]`
 - Địa chỉ người gửi để trích dẫn khi gửi email qua SMTP.
 
-##### "set_from_name"
-- *v1: "setFromName"*
+##### "set_from_name" `[string]`
 - Tên người gửi để trích dẫn khi gửi email qua SMTP.
 
-##### "add_reply_to_address"
-- *v1: "addReplyToAddress"*
+##### "add_reply_to_address" `[string]`
 - Địa chỉ trả lời để trích dẫn khi gửi email qua SMTP.
 
-##### "add_reply_to_name"
-- *v1: "addReplyToName"*
+##### "add_reply_to_name" `[string]`
 - Tên trả lời để trích dẫn khi gửi email qua SMTP.
 
 #### "rate_limiting" (Thể loại)
-Các chỉ thị cấu hình tùy chọn để giới hạn tốc độ.
+Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chung).
 
-Tính năng này được thực hiện cho CIDRAM bởi vì nó được yêu cầu bởi đủ người dùng để biện minh cho việc thực hiện. Tuy nhiên, bởi vì nó không liên quan đến mục đích dự định ban đầu cho CIDRAM, rất có thể sẽ không cần thiết cho hầu hết người dùng. Nếu bạn đặc biệt cần CIDRAM để xử lý giới hạn tốc độ cho trang web của mình, tính năng này có thể hữu ích cho bạn. Tuy nhiên, có một số điều quan trọng bạn nên cân nhắc:
-- Tính năng này, giống như tất cả các tính năng CIDRAM khác, sẽ chỉ hoạt động đối với các trang được bảo vệ bởi CIDRAM. Do đó, bất kỳ tài sản trang web nào không được định tuyến cụ thể thông qua CIDRAM không thể bị giới hạn bởi CIDRAM.
-- Nếu bạn có thể sử dụng mô-đun máy chủ, cPanel, hoặc một số công cụ mạng khác để thực thi giới hạn tốc độ, nó sẽ là tốt hơn để sử dụng mà thay vì CIDRAM.
-- Nếu một người dùng cụ thể rất muốn tiếp tục truy cập trang web của bạn sau khi bị giới hạn, trong hầu hết các trường hợp, sẽ rất dễ dàng để họ vượt qua giới hạn tốc độ (v.d., nếu họ thay đổi địa chỉ IP của họ, hoặc nếu họ sử dụng proxy hoặc VPN, và giả định rằng bạn đã định cấu hình CIDRAM để không chặn proxy và VPN, hoặc CIDRAM đó không biết về proxy hoặc VPN mà họ đang sử dụng).
-- Giới hạn tốc độ có thể rất khó chịu đối với người dùng cuối thực tế. Có thể cần thiết nếu băng thông có sẵn của bạn rất hạn chế, và nếu bạn phát hiện ra rằng có một số nguồn lưu lượng truy cập cụ thể, chưa bị chặn, điều đó sẽ tiêu tốn phần lớn băng thông có sẵn của bạn. Nếu không cần thiết tuy nhiên, nó có lẽ nên tránh.
-- Đôi khi, bạn có thể có nguy cơ chặn người dùng hợp pháp, hay thậm chí là chính bạn.
-
-Nếu bạn cảm thấy rằng bạn không cần CIDRAM để thực thi giới hạn tốc độ cho trang web của bạn, giữ các chỉ thị bên dưới được đặt làm giá trị mặc định của chúng. Nếu không, bạn có thể thay đổi giá trị của chúng cho phù hợp với nhu cầu của bạn.
-
-##### "max_bandwidth"
+##### "max_bandwidth" `[string]`
 - Số lượng băng thông tối đa được phép trong khoảng thời gian cho phép trước khi cho phép giới hạn tốc độ cho các yêu cầu trong tương lai. Giá trị 0 sẽ vô hiệu hóa loại giới hạn tốc độ này. Mặc định = 0KB.
 
-##### "max_requests"
+##### "max_requests" `[int]`
 - Số lượng yêu cầu tối đa được phép trong khoảng thời gian cho phép trước khi cho phép giới hạn tốc độ cho các yêu cầu trong tương lai. Giá trị 0 sẽ vô hiệu hóa loại giới hạn tốc độ này. Mặc định = 0.
 
-##### "precision_ipv4"
+##### "precision_ipv4" `[int]`
 - Độ chính xác để sử dụng khi theo dõi việc sử dụng IPv4. Giá trị phản ánh kích thước khối CIDR. Đặt thành 32 để có độ chính xác cao nhất. Mặc định = 32.
 
-##### "precision_ipv6"
+##### "precision_ipv6" `[int]`
 - Độ chính xác để sử dụng khi theo dõi việc sử dụng IPv6. Giá trị phản ánh kích thước khối CIDR. Đặt thành 128 để có độ chính xác cao nhất. Mặc định = 128.
 
-##### "allowance_period"
+##### "allowance_period" `[float]`
 - Số giờ để theo dõi việc sử dụng. Mặc định = 0.
 
-##### "exceptions"
+##### "exceptions" `[string]`
 - Ngoại lệ (tức là, các yêu cầu không nên giới hạn). Chỉ có hiệu lực khi giới hạn tốc độ được kích hoạt.
-- *Tùy chọn có sẵn: `Whitelisted,Verified`*
+
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
 #### "supplementary_cache_options" (Thể loại)
-Tùy chọn bộ nhớ cache bổ sung.
+Tùy chọn bộ nhớ cache bổ sung. Lưu ý: Việc thay đổi các giá trị này có thể khiến bạn bị đăng xuất.
 
-##### "prefix"
-- Giá trị được chỉ định ở đây sẽ được thêm vào trước tất cả các khóa mục nhập bộ nhớ cache. Trống theo mặc định. Khi nhiều bản cài đặt tồn tại trên cùng một máy chủ, điều này có thể hữu ích để giữ các bộ nhớ cache của chúng tách biệt với nhau.
+##### "prefix" `[string]`
+- Giá trị được chỉ định ở đây sẽ được thêm vào trước tất cả các khóa mục nhập bộ nhớ cache. Mặc định = "CIDRAM_". Khi nhiều bản cài đặt tồn tại trên cùng một máy chủ, điều này có thể hữu ích để giữ các bộ nhớ cache của chúng tách biệt với nhau.
 
-##### "enable_apcu"
-- Điều này xác định có nên thử sử dụng APCu để lưu trữ không. Mặc định = False.
+##### "enable_apcu" `[bool]`
+- Điều này xác định có nên thử sử dụng APCu để lưu trữ không. Mặc định = True.
 
-##### "enable_memcached"
+##### "enable_memcached" `[bool]`
 - Điều này xác định có nên thử sử dụng Memcached để lưu trữ không. Mặc định = False.
 
-##### "enable_redis"
+##### "enable_redis" `[bool]`
 - Điều này xác định có nên thử sử dụng Redis để lưu trữ không. Mặc định = False.
 
-##### "enable_pdo"
+##### "enable_pdo" `[bool]`
 - Điều này xác định có nên thử sử dụng PDO để lưu trữ không. Mặc định = False.
 
-##### "memcached_host"
+##### "memcached_host" `[string]`
 - Giá trị máy chủ Memcached. Mặc định = "localhost".
 
-##### "memcached_port"
+##### "memcached_port" `[int]`
 - Giá trị cổng Memcached. Mặc định = "11211".
 
-##### "redis_host"
+##### "redis_host" `[string]`
 - Giá trị máy chủ Redis. Mặc định = "localhost".
 
-##### "redis_port"
+##### "redis_port" `[int]`
 - Giá trị cổng Redis. Mặc định = "6379".
 
-##### "redis_timeout"
+##### "redis_timeout" `[float]`
 - Giá trị thời gian chờ Redis. Mặc định = "2.5".
 
-##### "pdo_dsn"
-- Giá trị DSN PDO. Mặc định = "`mysql:dbname=cidram;host=localhost;port=3306`".
+##### "pdo_dsn" `[string]`
+- Giá trị DSN PDO. Mặc định = "mysql:dbname=cidram;host=localhost;port=3306".
 
-*Xem thêm: ["PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?](#HOW_TO_USE_PDO)*
-
-##### "pdo_username"
+##### "pdo_username" `[string]`
 - Tên người dùng PDO.
 
-##### "pdo_password"
+##### "pdo_password" `[string]`
 - Mật khẩu PDO.
 
 ---
@@ -1963,4 +2231,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2022.02.20.
+Lần cuối cập nhật: 2022.03.25.

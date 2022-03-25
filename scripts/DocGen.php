@@ -1,0 +1,156 @@
+<?php
+$loadL10N = function (string $Language) {
+    $YAML = new \Maikuolan\Common\YAML();
+    $Arr = [];
+    $DataDocGen = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml');
+    $YAML->process($DataDocGen, $Arr);
+    $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml');
+    $YAML->process($Data, $Arr);
+    return new \Maikuolan\Common\L10N($Arr, []);
+};
+
+if (!isset($_GET['language'])) {
+    echo 'No language specified.';
+} else {
+    $CIDRAM = ['Vault' => __DIR__ . '/vault/'];
+    require $CIDRAM['Vault'] . 'functions.php';
+    require $CIDRAM['Vault'] . 'config.php';
+    header('Content-Type: text/plain');
+
+    $Final = '';
+    $Data = $loadL10N($_GET['language']);
+    $First = "```\n" . $Data->getString('link_config') . " (v3)\n│\n";
+    $Cats = count($CIDRAM['Config Defaults']);
+    $Current = 1;
+    foreach ($CIDRAM['Config Defaults'] as $Category => $Directives) {
+        if (!isset($Data->Data['config_' . $Category])) {
+            continue;
+        }
+        $First .= ($Current === $Cats ? '└───' : '├───') . $Category . "\n";
+        if (strpos($Data->Data['category'], '<div') === false) {
+            $Out = str_replace(
+                ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
+                ['`', '`', '`', '`', '__', '__', '*', '*'],
+                html_entity_decode($Data->getString('config_' . $Category))
+            );
+        } else {
+            $Out = $Data->getString('config_' . $Category);
+        }
+        $Final .= sprintf($Data->getString('category'), $Category, $Out) . "\n\n";
+        foreach ($Directives as $Directive => $Info) {
+            if (!isset($Data->Data['config_' . $Category . '_' . $Directive], $Info['type'])) {
+                continue;
+            }
+            if (strpos($Data->Data['directive'], '<div') === false) {
+                $Out = str_replace(
+                    ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
+                    ['`', '`', '`', '`', '__', '__', '*', '*'],
+                    html_entity_decode($Data->getString('config_' . $Category . '_' . $Directive))
+                );
+            } else {
+                $Out = $Data->getString('config_' . $Category . '_' . $Directive);
+            }
+            $Default = $Info['default'] ?? '';
+            if (in_array($Info['type'], ['string', 'timezone', 'checkbox', 'url', 'email', 'kb'], true)) {
+                $Type = 'string';
+                $Default = '"' . $Default . '"';
+            } elseif ($Info['type'] === 'float') {
+                $Type = 'float';
+            } elseif ($Info['type'] === 'bool') {
+                $Type = 'bool';
+                $Default = $Default ? 'true' : 'false';
+            } else {
+                $Type = 'int';
+            }
+            $Choices = [];
+            if ($Info['type'] === 'timezone') {
+                $Choices = ['SYSTEM' => $Data->getString('field_system_timezone'), 'UTC' => 'UTC'];
+                $Info['allow_other'] = true;
+            } elseif (isset($Info['choices'])) {
+                $Choices = $Info['choices'];
+            }
+            $First .= ($Current === $Cats ? '        ' : '│       ') . $Directive . ' [' . $Type . "]\n";
+            $Final .= sprintf($Data->getString('directive'), $Directive, $Type, $Out) . "\n\n";
+            if (!empty($Choices)) {
+                $Final .= "```\n" . $Directive . "\n";
+                $Number = count($Choices);
+                if (!empty($Info['allow_other'])) {
+                    $Number++;
+                }
+                $Iterant = 1;
+                foreach ($Choices as $Choice => $Value) {
+                    if ($Type === 'string') {
+                        $Value = '"' . $Value . '"';
+                    } elseif ($Type === 'bool') {
+                        $Value = $Value ? 'true' : 'false';
+                    }
+                    $Final .= ($Iterant === $Number ? '└─' : '├─') . $Choice . ' (' . $Value . ")\n";
+                    $Iterant++;
+                }
+                if (!empty($Info['allow_other'])) {
+                    $Final .= '└─…' . $Data->getString('label_other') . "\n";
+                }
+                $Final .= "```\n\n";
+            }
+            if (!empty($Info['hints'])) {
+                $Hints = $Data->Data[$Info['hints']] ?? $Info['hints'];
+                if (!is_array($Hints)) {
+                    $Hints = [$Hints];
+                }
+                foreach ($Hints as $HintKey => $HintValue) {
+                    if (is_int($HintKey)) {
+                        $Final .= $HintValue . "\n\n";
+                        continue;
+                    }
+                    $Final .= sprintf("__%s__ %s\n\n", $HintKey, $HintValue);
+                }
+            }
+            if (!empty($Info['See also'])) {
+                $Final .= sprintf($Data->getString('menu_open'), $Data->getString('label_see_also')) . "\n";
+                foreach ($Info['See also'] as $RefKey => $RefLink) {
+                    $Final .= sprintf($Data->getString('menu_item'), $RefKey, $RefLink) . "\n";
+                }
+                $Final .= $Data->getString('menu_close') . "\n";
+            }
+        }
+        if ($Current !== $Cats) {
+            $Current++;
+        }
+    }
+    $Matches = [];
+    if (preg_match_all('~\{([a-z_]+)\}~i', $Final, $Matches)) {
+        $Matches = array_unique($Matches[1]);
+        foreach ($Matches as $Match) {
+            if ($Try = $Data->getString($Match)) {
+                $Final = str_replace('{' . $Match . '}', $Try, $Final);
+            }
+        }
+    }
+    if (!isset($_GET['autoupdate'])) {
+        echo $First . "```\n\n" . $Final;
+    } else {
+        $Try = $_GET['autoupdate'] . $_GET['language'] . '.md';
+        if (is_file($Try) && is_writable($Try)) {
+            $README = file_get_contents($Try);
+            if (($Start = strpos($README, '<a name="SECTION6">')) !== false) {
+                $Start = strpos($README, '```', $Start);
+            }
+            if (($Finish = strpos($README, '<a name="SECTION7">')) !== false) {
+                $Finish = strrpos(substr($README, 0, $Finish), '---');
+            }
+            if ($Start === false || $Finish === false) {
+                echo 'Unable to find configuration section markers in ' . $Try . '!';
+            } else {
+                $New = substr($README, 0, $Start) . $First . "```\n\n" . $Final . substr($README, $Finish);
+                $Handle = fopen($Try, 'wb');
+                fwrite($Handle, $New);
+                fclose($Handle);
+                echo 'Successfully updated ' . $Try . '. :-)';
+            }
+        } else {
+            echo $Try . ' doesn\'t exist or isn\'t writable!';
+        }
+    }
+}
+
+unset($CIDRAM);

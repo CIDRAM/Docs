@@ -317,680 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 O seguinte é uma lista de variáveis encontradas no `config.ini` arquivo de configuração para CIDRAM, juntamente com uma descrição de sua propósito e função.
 
 ```
-Configuration (v2)
+Configuração (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Categoria)
-Configuração geral por CIDRAM.
+Configuração geral (qualquer configuração principal que não pertença a outras categorias).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Um arquivo legível por humanos para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "logfile_apache"
-- *v1: "logfileApache"*
+##### "logfile_apache" `[string]`
 - Um arquivo no estilo da Apache para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "logfile_serialized"
-- *v1: "logfileSerialized"*
+##### "logfile_serialized" `[string]`
 - Um arquivo serializado para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de registro através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
-
-*Exemplos:*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "error_log"
+##### "error_log" `[string]`
 - Um arquivo para registrar erros detectados que não são fatais. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "error_log_stages"
-- Uma lista dos estágios na cadeia de execução que devem ter quaisquer erros gerados registrados.
-- *Padrão: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### "stages" `[string]`
+- Controles para as etapas da cadeia de execução (se ativado, se os erros são registrados, etc).
 
-##### "truncate"
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### "fields" `[string]`
+- Controles para os campos durante eventos de bloco (quando uma solicitação é bloqueada).
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### "truncate" `[string]`
 - Truncar arquivos de log quando atingem um determinado tamanho? Valor é o tamanho máximo em B/KB/MB/GB/TB que um arquivo de log pode crescer antes de ser truncado. O valor padrão de 0KB desativa o truncamento (arquivos de log podem crescer indefinidamente). Nota: Aplica-se a arquivos de log individuais! O tamanho dos arquivos de log não é considerado coletivamente.
 
-##### "log_rotation_limit"
+##### "log_rotation_limit" `[int]`
 - A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar o limite desejado aqui. Um valor de 0 desativará a rotação de log.
 
-##### "log_rotation_action"
+##### "log_rotation_action" `[string]`
 - A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar a ação desejada aqui. Delete = Deletar os arquivos de log mais antigos, até o limite não seja mais excedido. Archive = Primeiramente arquivar, e então deletar os arquivos de log mais antigos, até o limite não seja mais excedido.
 
-*Esclarecimento técnico: Neste contexto, "mais antigo" significa modificado menos recentemente.*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### "timezone"
-- Isso é usado para especificar qual fuso horário o CIDRAM deve usar para operações de data/hora. Se você não precisa disso, ignore. Valores possíveis são determinados pelo PHP. É geralmente recomendado no lugar para ajustar a directiva fuso horário no seu arquivo `php.ini`, mas às vezes (tais como quando se trabalha com provedores de hospedagem compartilhada e limitados) isto não é sempre possível fazer, e então, esta opção é fornecido aqui.
+##### "timezone" `[string]`
+- Isso é usado para especificar o fuso horário a ser usado (por exemplo, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Especifique "SYSTEM" para permitir que o PHP lide com isso automaticamente.
 
-##### "time_offset"
-- *v1: "timeOffset"*
-- Se o tempo do servidor não coincide com sua hora local, você pode especificar aqui um offset para ajustar as informações de data/tempo gerado por CIDRAM de acordo com as suas necessidades. É geralmente recomendado no lugar para ajustar a directiva fuso horário no seu arquivo `php.ini`, mas às vezes (tais como quando se trabalha com provedores de hospedagem compartilhada e limitados) isto não é sempre possível fazer, e então, esta opção é fornecido aqui. Offset é em minutos.
-- Exemplo (para adicionar uma hora): `time_offset=60`
+```
+timezone
+├─SYSTEM ("Usar o fuso horário padrão do sistema.")
+├─UTC ("UTC")
+└─…Outros
+```
 
-##### "time_format"
-- *v1: "timeFormat"*
-- O formato de notação de data/tempo utilizado pelo CIDRAM. Padrão = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
+##### "time_offset" `[int]`
+- Deslocamento do fuso horário em minutos.
 
-##### "ipaddr"
+##### "time_format" `[string]`
+- O formato de notação de data/tempo utilizado pelo CIDRAM. Opções adicionais podem ser adicionadas mediante solicitação.
+
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…Outros
+```
+
+##### "ipaddr" `[string]`
 - Onde encontrar o IP endereço das solicitações? (Útil por serviços como o Cloudflare e tal). Padrão = REMOTE_ADDR. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
-Valores recomendados para "ipaddr":
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (Padrão)")
+└─…Outros
+```
 
-Valor | Usando
----|---
-`HTTP_INCAP_CLIENT_IP` | Proxy reverso Incapsula.
-`HTTP_CF_CONNECTING_IP` | Proxy reverso Cloudflare.
-`CF-Connecting-IP` | Proxy reverso Cloudflare (alternativa; se o acima não funcionar).
-`HTTP_X_FORWARDED_FOR` | Proxy reverso Cloudbric.
-`X-Forwarded-For` | [Proxy reverso Squid](http://www.squid-cache.org/Doc/config/forwarded_for/).
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*Definido pela configuração do servidor.* | [Proxy reverso Nginx](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
-`REMOTE_ADDR` | Nenhum proxy reverso (valor padrão).
+Veja também:
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "forbid_on_block"
-- Qual mensagem de status HTTP deve enviar o CIDRAM ao bloquear solicitações?
+##### "http_response_header_code" `[int]`
+- Qual mensagem de status HTTP deve enviar o CIDRAM ao bloquear solicitações? (Consulte a documentação para mais informações).
 
-Valores atualmente suportados:
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-Código de status | Mensagem de status | Descrição
----|---|---
-`200` | `200 OK` | Valor padrão. Menos robusto, mas mais amigável para os usuários.
-`403` | `403 Forbidden` | Um pouco mais robusto, mas um pouco menos amigável para os usuários.
-`410` | `410 Gone` | Pode causar problemas ao tentar resolver falsos positivos, pois alguns navegadores armazenam em cache essa mensagem de status e não enviam solicitações subsequentes, mesmo depois de desbloquear os usuários. Pode ser mais útil do que outras opções para reduzir solicitações de certos, muito específicos tipos de bots.
-`418` | `418 I'm a teapot` | Na verdade, faz referência a uma piada do primeiro de abril [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] e é improvável que seja entendida pelo cliente. Fornecido por diversão e conveniência, mas geralmente não é recomendado.
-`451` | `Unavailable For Legal Reasons` | Apropriado para contextos em que as solicitações são bloqueadas principalmente por motivos legais. Não recomendado em outros contextos.
-`503` | `Service Unavailable` | Mais robusto, mas menos amigável para os usuários.
-
-##### "silent_mode"
+##### "silent_mode" `[string]`
 - Deve CIDRAM silenciosamente redirecionar as tentativas de acesso bloqueadas em vez de exibir o "Acesso Negado" página? Se sim, especificar o local para redirecionar as tentativas de acesso bloqueadas para. Se não, deixe esta variável em branco.
 
-##### "lang"
+##### "lang" `[string]`
 - Especificar o padrão da linguagem por CIDRAM.
 
-##### "lang_override"
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### "lang_override" `[bool]`
 - Localizar de acordo com HTTP_ACCEPT_LANGUAGE sempre que possível? True = Sim [Padrão]; False = Não.
 
-##### "numbers"
-- Especifica como exibir números.
+##### "numbers" `[string]`
+- Como você prefere que os números sejam exibidos? Selecione o exemplo que parece mais correto para você.
 
-Valores atualmente suportados:
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-Valor | Produz | Descrição
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | Valor padrão.
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*Nota: Esses valores não são padronizados em nenhum lugar, e provavelmente não serão relevantes além do pacote. Adicionalmente, os valores suportados podem mudar no futuro.*
-
-##### "emailaddr"
+##### "emailaddr" `[string]`
 - Se você desejar, você pode fornecer um endereço de e-mail aqui a ser dado para os usuários quando eles estão bloqueadas, para eles para usar como um ponto de contato para suporte e/ou assistência no caso de eles sendo bloqueado por engano ou em erro. AVISO: Qualquer endereço de e-mail que você fornecer aqui certamente vai ser adquirido por spambots e raspadores/scrapers durante o curso de seu ser usada aqui, e assim, é fortemente recomendado que, se você optar por fornecer um endereço de e-mail aqui, que você garantir que o endereço de email você fornecer aqui é um endereço descartável e/ou um endereço que você não é importante (em outras palavras, você provavelmente não quer usar seu pessoal principal ou negócio principal endereço de e-mail).
 
-##### "emailaddr_display_style"
-- Como você prefere que o endereço de e-mail seja apresentado aos usuários? "default" = Link clicável. "noclick" = Texto não-clicável.
+##### "emailaddr_display_style" `[string]`
+- Como você prefere que o endereço de e-mail seja apresentado aos usuários?
 
-##### "disable_cli"
-- *(Removido desde v2).*
-- Desativar o modo CLI? O modo CLI é ativado por padrão, mas às vezes pode interferir com certas testes ferramentas (tal como PHPUnit, por exemplo) e outras aplicações baseadas em CLI. Se você não precisa desativar o modo CLI, você deve ignorar esta directiva. False = Ativar o modo CLI [Padrão]; True = Desativar o modo CLI.
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### "disable_frontend"
+##### "disable_frontend" `[bool]`
 - Desativar o acesso front-end? Acesso front-end pode fazer CIDRAM mais manejável, mas também pode ser um risco de segurança potencial, também. É recomendado para gerenciar CIDRAM através do back-end, sempre que possível, mas o acesso front-end é proporcionada para quando não é possível. Mantê-lo desativado, a menos que você precisar. False = Ativar o acesso front-end; True = Desativar o acesso front-end [Padrão].
 
-##### "max_login_attempts"
+##### "max_login_attempts" `[int]`
 - Número máximo de tentativas de login ao front-end. Padrão = 5.
 
-##### "frontend_log"
-- *v1: "FrontEndLog"*
+##### "frontend_log" `[string]`
 - Arquivo para registrar tentativas de login ao front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "signatures_update_event_log"
+##### "signatures_update_event_log" `[string]`
 - Um arquivo para registrar quando as assinaturas são atualizadas por meio do front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "ban_override"
-- Sobrepor "forbid_on_block" quando "infraction_limit" é excedido? Quando sobrepõe: As solicitações bloqueadas retornam uma página em branco (os arquivos de modelo não são usados). 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "forbid_on_block".
+##### "ban_override" `[int]`
+- Sobrepor "http_response_header_code" quando "infraction_limit" é excedido? Quando sobrepõe: As solicitações bloqueadas retornam uma página em branco (os arquivos de modelo não são usados). 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "http_response_header_code".
 
-##### "log_banned_ips"
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### "log_banned_ips" `[bool]`
 - Incluir solicitações bloqueadas de IPs banidas nos arquivos de log? True = Sim [Padrão]; False = Não.
 
-##### "default_dns"
+##### "default_dns" `[string]`
 - Uma lista delimitada por vírgulas de servidores DNS a serem usados para pesquisas de nomes de host. Padrão = "8.8.8.8,8.8.4.4" (Google DNS). ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
-*Veja também: [O que posso usar para "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### "search_engine_verification" `[string]`
+- Controles para verificar solicitações de mecanismos de pesquisa.
 
-##### "search_engine_verification"
-- Tentativa de verificar solicitações dos motores de busca? Verificando os motores de busca garante que eles não serão banidos como resultado de exceder o limite de infrações (proibindo motores de busca de seu site normalmente terá um efeito negativo sobre o seu motor de busca ranking, SEO, etc). Quando verificado, os motores de busca podem ser bloqueados como por normal, mas não serão banidos. Quando não verificado, é possível que eles serão banidos como resultado de ultrapassar o limite de infrações. Também, a verificação dos motores de busca fornece proteção contra falsos solicitações de motores de busca e contra entidades potencialmente mal-intencionadas mascarando como motores de busca (tais solicitações serão bloqueados quando a verificação dos motores de busca estiver ativada). True = Ativar a verificação dos motores de busca [Padrão]; False = Desativar a verificação dos motores de busca.
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-Atualmente suportado:
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
 
-Não compatível (causa conflitos):
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-##### "social_media_verification"
-- Tentativa de verificar solicitações de mídia social? A verificação de mídia social fornece proteção contra solicitações falsas de mídia social (essas solicitações serão bloqueadas). True = Ativar a verificação de mídia social [Padrão]; False = Desativar a verificação de mídia social.
+##### "social_media_verification" `[string]`
+- Controles para verificar solicitações de plataformas de mídia social.
 
-Atualmente suportado:
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**: Requer funcionalidade de pesquisa ASN, por exemplo, do módulo BGPView._
+__O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
 
-##### "other_verification"
-- Sempre que possível, tente verificar outros tipos de solicitações (por exemplo, AdSense, verificadores de SEO, etc)? Quando detectados, as solicitações falsas serão bloqueadas. True = Ativar [Padrão]; False = Desativar.
+__O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-Atualmente suportado:
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### "other_verification" `[string]`
+- Controles para verificar outros tipos de solicitações sempre que possível.
 
-##### "protect_frontend"
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
+
+__O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
+
+##### "protect_frontend" `[bool]`
 - Especifica se as proteções normalmente fornecidas pelo CIDRAM devem ser aplicadas ao front-end. True = Sim [Padrão]; False = Não.
 
-##### "maintenance_mode"
-- Ativar o modo de manutenção? True = Sim; False = Não [Padrão]. Desativa tudo além do front-end. Às vezes útil para quando atualiza seu CMS, frameworks, etc.
-
-##### "default_algo"
+##### "default_algo" `[string]`
 - Define qual algoritmo usar para todas as futuras senhas e sessões. Opções: PASSWORD_DEFAULT (padrão), PASSWORD_BCRYPT, PASSWORD_ARGON2I (requer PHP >= 7.2.0), PASSWORD_ARGON2ID (requer PHP >= 7.3.0).
 
-##### "statistics"
-- Monitorar as estatísticas de uso do CIDRAM? True = Sim; False = Não [Padrão].
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### "force_hostname_lookup"
+##### "statistics" `[string]`
+- Controla quais informações estatísticas rastrear.
+
+```
+statistics
+├─Blocked-IPv4 ("Solicitações bloqueadas – IPv4")
+├─Blocked-IPv6 ("Solicitações bloqueadas – IPv6")
+├─Blocked-Other ("Solicitações bloqueadas – Outros")
+├─Banned-IPv4 ("Solicitações banidas – IPv4")
+├─Banned-IPv6 ("Solicitações banidas – IPv6")
+├─Passed-IPv4 ("Solicitações aprovadas – IPv4")
+├─Passed-IPv6 ("Solicitações aprovadas – IPv6")
+├─Passed-Other ("Solicitações aprovadas – Outros")
+├─CAPTCHAs-Failed ("CAPTCHA tentativas – {state_failed}")
+└─CAPTCHAs-Passed ("CAPTCHA tentativas – {state_passed}")
+```
+
+##### "force_hostname_lookup" `[bool]`
 - Forçar pesquisas de nome de anfitrião? True = Sim; False = Não [Padrão]. As pesquisas de nome de anfitrião normalmente são realizadas com base na necessidade, mas pode ser forçado para todos os solicitações. Isso pode ser útil como forma de fornecer informações mais detalhadas nos arquivos de log, mas também pode ter um efeito ligeiramente negativo sobre o desempenho.
 
-##### "allow_gethostbyaddr_lookup"
+##### "allow_gethostbyaddr_lookup" `[bool]`
 - Permitir pesquisas gethostbyaddr quando o UDP não está disponível? True = Sim [Padrão]; False = Não.
-- *Nota: A pesquisa do IPv6 pode não funcionar corretamente em alguns sistemas de 32-bits.*
 
-##### "hide_version"
-- Ocultar informações da versão dos logs e da saída da página? True = Sim; False = Não [Padrão].
-
-##### "empty_fields"
-- Como o CIDRAM deve manipular campos vazios ao registrar e exibir informações de eventos de bloco? "include" = Incluir campos vazios. "omit" = Omitir campos vazios [padrão].
-
-##### "log_sanitisation"
+##### "log_sanitisation" `[bool]`
 - Ao usar o front-end página para os arquivos de registro para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
 
-##### "disabled_channels"
+##### "disabled_channels" `[string]`
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
-- *Opções disponíveis: `GitHub,BitBucket,GoogleDNS`*
 
-##### "default_timeout"
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### "default_timeout" `[int]`
 - Tempo limite padrão a ser usado para solicitações externas? Padrão = 12 segundos.
 
-##### "config_imports"
+##### "config_imports" `[string]`
 - Uma lista delimitada por vírgulas de arquivos a serem importados para a configuração padrão de CIDRAM. Normalmente preenchido pela página de atualizações ao ativar componentes que precisam dela quando necessário. Na maioria dos casos, pode ignorá-lo.
 
-##### "events"
+##### "events" `[string]`
 - Os arquivos listados aqui são carregados diretamente após o arquivo do manipuladores de eventos. Normalmente preenchido pela página de atualizações ao ativar componentes que precisam dela quando necessário. Na maioria dos casos, pode ignorá-lo.
 
 #### "signatures" (Categoria)
-Configuração por assinaturas.
+Configuração para assinaturas, arquivos de assinatura, módulos, etc.
 
-##### "ipv4"
-- Uma lista dos arquivos de assinaturas IPv4 que CIDRAM deve tentar usar, delimitado por vírgulas. Você pode adicionar entradas aqui Se você quiser incluir arquivos adicionais em CIDRAM.
+##### "ipv4" `[string]`
+- Uma lista dos arquivos de assinaturas IPv4 que CIDRAM deve tentar usar, delimitado por vírgulas.
 
-##### "ipv6"
-- Uma lista dos arquivos de assinaturas IPv6 que CIDRAM deve tentar usar, delimitado por vírgulas. Você pode adicionar entradas aqui Se você quiser incluir arquivos adicionais em CIDRAM.
+##### "ipv6" `[string]`
+- Uma lista dos arquivos de assinaturas IPv6 que CIDRAM deve tentar usar, delimitado por vírgulas.
 
-##### "block_attacks"
+##### "block_attacks" `[bool]`
 - Bloquear CIDRs associados a ataques e outro tráfego anormal? Por exemplo, varreduras de portas, hacking, sondagem de vulnerabilidades, etc. A menos que você tiver problemas ao fazê-lo, geralmente, esta deve sempre ser definido como true.
 
-##### "block_cloud"
+##### "block_cloud" `[bool]`
 - Bloquear CIDRs identificado como pertencente a webhosting e/ou serviços em nuvem? Se você operar um serviço de API a partir do seu site ou se você espera outros sites para se conectar para o seu site, este deve ser definido como false. Se não, este deve ser definido como true.
 
-##### "block_bogons"
+##### "block_bogons" `[bool]`
 - Bloquear bogon/martian CIDRs? Se você espera conexões para o seu site de dentro de sua rede local, de localhost, ou de seu LAN, esta directiva deve ser definido como false. Se você não esperar que esses tais conexões, esta directiva deve ser definido como true.
 
-##### "block_generic"
+##### "block_generic" `[bool]`
 - Bloquear CIDRs geralmente recomendado para a lista negra? Isso abrange todas as assinaturas que não são marcados como sendo parte de qualquer um dos outros mais categorias de assinaturas mais específica.
 
-##### "block_legal"
+##### "block_legal" `[bool]`
 - Bloquear CIDRs em resposta a obrigações legais? Esta diretiva normalmente não deve ter qualquer efeito, porque o CIDRAM não associa nenhum CIDR com "obrigações legais" por padrão, mas existe, no entanto, como uma medida de controle adicional para o benefício de quaisquer arquivos de assinatura ou módulos personalizados que possam existir por motivos legais.
 
-##### "block_malware"
+##### "block_malware" `[bool]`
 - Bloquear CIDRs associados ao malware? Isso inclui servidores C&C, máquinas infectadas, máquinas envolvidas na distribuição de malware, etc.
 
-##### "block_proxies"
+##### "block_proxies" `[bool]`
 - Bloquear CIDRs identificado como pertencente a serviços de proxy ou VPNs? Se você precisar que os usuários poderão acessar seu site dos serviços de proxy e VPNs, este deve ser definido como false. De outra forma, se você não precisa de serviços de proxy ou VPNs, este deve ser definido como true como um meio de melhorar a segurança.
 
-##### "block_spam"
+##### "block_spam" `[bool]`
 - Bloquear CIDRs identificado como sendo de alto risco para spam? A menos que você tiver problemas ao fazê-lo, geralmente, esta deve sempre ser definido como true.
 
-##### "modules"
+##### "modules" `[string]`
 - Uma lista de arquivos módulo a carregar depois de processamento as assinaturas IPv4/IPv6, delimitado por vírgulas.
 
-##### "default_tracktime"
+##### "default_tracktime" `[int]`
 - Quantos segundos para rastrear IPs banidos por módulos. Padrão = 604800 (1 semana).
 
-##### "infraction_limit"
+##### "infraction_limit" `[int]`
 - Número máximo de infrações que um IP pode incorrer antes de ser banido por monitoração IP. Padrão = 10.
 
-##### "track_mode"
-- Quando as infrações devem ser contadas? False = Quando os IPs são bloqueados por módulos. True = Quando os IPs são bloqueados por qualquer motivo. Padrão = False.
-
-##### "tracking_override"
+##### "tracking_override" `[bool]`
 - Permitir que os módulos substituem as opções de monitoração? True = Sim [Padrão]; False = Não.
 
-#### "recaptcha" e "hcaptcha" (essas duas categorias fornecem as mesmas diretivas).
-Se desejar, você pode apresentar aos usuários um desafio CAPTCHA para distingui-los dos bots ou para permitir que eles recuperem o acesso no caso de serem bloqueados. Isso pode ajudar a mitigar falsos positivos e reduzir o tráfego automatizado indesejado.
+#### "recaptcha" (Categoria)
+Configuração para ReCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
 
-*Nota: Os CAPTCHAs protegem apenas contra chamadas de máquina, não contra atacantes humanos.*
-
-Você pode obter uma "site key" e uma "secret key" para o reCAPTCHA aqui:
-- https://developers.google.com/recaptcha/
-
-Você pode obter uma "site key" e uma "secret key" para o hCAPTCHA aqui:
-- https://www.hcaptcha.com/
-
-##### "usemode"
+##### "usemode" `[int]`
 - Quando o CAPTCHA deve ser oferecido? Nota: Solicitações na lista branca ou verificadas e não bloqueadas nunca precisam completar um CAPTCHA.
 
-Valor | Descrição
---:|:--
-1 | Somente quando bloqueado, dentro do limite de assinaturas, e não banido.
-2 | Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.
-3 | Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).
-4 | Somente quando não está bloqueado.
-5 | Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.
-Qualquer outro valor. | Nunca!
+```
+usemode
+├─0 (Nunca !!!)
+├─1 (Somente quando bloqueado, dentro do limite de assinaturas, e não banido.)
+├─2 (Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+├─3 (Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).)
+├─4 (Somente quando não está bloqueado.)
+└─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+```
 
-##### "lockip"
-- Especifica se hashes deve ser ligado para IPs específicos. False = Cookies e hashes PODE ser usado por vários IPs (padrão). True = Cookies e hashes NÃO pode ser usado por vários IPs (cookies/hashes não estão ligados para IPs).
-- Notar: O valor de "lockip" é ignorado quando "lockuser" é false, devido a que o mecanismo para lembrar "usuários" varia de acordo com este valor.
+##### "lockip" `[bool]`
+- Ligar CAPTCHA para IPs?
 
-##### "lockuser"
-- Especifica se a conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA deve ser ligado a usuários específicos. False = A conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA irá conceder acesso a todos as solicitações provenientes do mesmo IP como aquilo utilizado pelo utilizador completar a instância de reCAPTCHA/hCAPTCHA; Cookies e hashes não são usados; Em vez disso, um IP whitelist será usado. True = A conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA só irá conceder acesso para o usuário completar a instância de reCAPTCHA/hCAPTCHA; Cookies e hashes são usados para lembrar o usuário; Um IP whitelist não é usado (padrão).
+##### "lockuser" `[bool]`
+- Ligar CAPTCHA para os usuários?
 
-##### "sitekey"
+##### "sitekey" `[string]`
 - Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
 
-##### "secret"
+Veja também:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "secret" `[string]`
 - Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
 
-##### "expiry"
+Veja também:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "expiry" `[float]`
 - Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de registro. Se não, deixe esta variável em branco.
 
-*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de registro através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
-
-*Exemplos:*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "signature_limit"
+##### "signature_limit" `[int]`
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
 
-##### "api"
+##### "api" `[string]`
 - Qual API usar?
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (Caixa de seleção)")
+└─Invisible ("V2 (Invisível)")
 ```
 
-*Nota para usuários na União Européia: Quando o CIDRAM está configurado para usar cookies (por exemplo, quando "lockuser" é true/verdadeiro), um aviso de cookie é exibido de forma proeminente na página de acordo com os requisitos da [legislação comunitária sobre cookies](https://www.cookielaw.org/the-cookie-law/). Mas, ao usar a API invisible, o CIDRAM tenta completar o CAPTCHA para o usuário automaticamente, e quando bem-sucedido, isso pode resultar na recarga da página e criar um cookie sem que o usuário tenha dado tempo suficiente para realmente ver o aviso de cookie.*
-
-##### "show_cookie_warning"
+##### "show_cookie_warning" `[bool]`
 - Mostrar aviso de cookie? True = Sim [Padrão]; False = Não.
 
-*Esta diretiva de configuração foi adicionada por solicitação, para usuários que desejam desativar o aviso de cookie geralmente mostrado ao lado de CAPTCHAs (para ajudar, por exemplo, ocultar qualquer indicação de que o CIDRAM está sendo usado). Mas, aconselho vivamente que a maioria dos utilizadores (em especial os que residem na UE) o mantenham ativado.*
-
-##### "show_api_message"
+##### "show_api_message" `[bool]`
 - Mostrar mensagem API? True = Sim [Padrão]; False = Não.
 
-*Isso se refere a quaisquer mensagens não essenciais adicionais, exibidas quando uma solicitação é bloqueada, além do aviso de cookie.*
-
-##### "nonblocked_status_code"
+##### "nonblocked_status_code" `[int]`
 - Qual código de status deve ser usado ao exibir CAPTCHAs para solicitações não bloqueadas?
 
-Valores atualmente suportados:
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-Código de status | Mensagem de status
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### "hcaptcha" (Categoria)
+Configuração para HCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
+
+##### "usemode" `[int]`
+- Quando o CAPTCHA deve ser oferecido? Nota: Solicitações na lista branca ou verificadas e não bloqueadas nunca precisam completar um CAPTCHA.
+
+```
+usemode
+├─0 (Nunca !!!)
+├─1 (Somente quando bloqueado, dentro do limite de assinaturas, e não banido.)
+├─2 (Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+├─3 (Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).)
+├─4 (Somente quando não está bloqueado.)
+└─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+```
+
+##### "lockip" `[bool]`
+- Ligar CAPTCHA para IPs?
+
+##### "lockuser" `[bool]`
+- Ligar CAPTCHA para os usuários?
+
+##### "sitekey" `[string]`
+- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+
+Veja também:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "secret" `[string]`
+- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+
+Veja também:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "expiry" `[float]`
+- Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
+
+##### "logfile" `[string]`
+- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de registro. Se não, deixe esta variável em branco.
+
+##### "signature_limit" `[int]`
+- O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
+
+##### "api" `[string]`
+- Qual API usar?
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (Invisível)")
+```
+
+##### "show_cookie_warning" `[bool]`
+- Mostrar aviso de cookie? True = Sim [Padrão]; False = Não.
+
+##### "show_api_message" `[bool]`
+- Mostrar mensagem API? True = Sim [Padrão]; False = Não.
+
+##### "nonblocked_status_code" `[int]`
+- Qual código de status deve ser usado ao exibir CAPTCHAs para solicitações não bloqueadas?
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
 #### "legal" (Categoria)
-Configuração relacionada aos requisitos legais.
+Configuração para requisitos legais.
 
-*Para obter mais informações sobre requisitos legais e como isso pode afetar seus requisitos de configuração, consulte a seção "[INFORMAÇÃO LEGAL](#SECTION11)" da documentação.*
-
-##### "pseudonymise_ip_addresses"
+##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonimiza endereços IP ao escrever os arquivos de log? True = Sim [Padrão]; False = Não.
 
-##### "omit_ip"
-- Omitir endereços IP de logs? True = Sim; False = Não [Padrão]. Nota: "pseudonymise_ip_addresses" se torna redundante quando "omit_ip" é "true".
-
-##### "omit_hostname"
-- Omitir nomes de host de logs? True = Sim; False = Não [Padrão].
-
-##### "omit_ua"
-- Omitir agentes de usuários de logs? True = Sim; False = Não [Padrão].
-
-##### "privacy_policy"
+##### "privacy_policy" `[string]`
 - O endereço de uma política de privacidade relevante a ser exibida no rodapé de qualquer página gerada. Especifique um URL, ou deixe em branco para desabilitar.
 
 #### "template_data" (Categoria)
-Directivas/Variáveis para modelos e temas.
+Configuração para modelos e temas.
 
-Relaciona-se com a saída HTML usado para gerar a página "Acesso Negado". Se você estiver usando temas personalizados para CIDRAM, HTML é originado a partir do `template_custom.html` arquivo, e caso contrário, HTML é originado a partir do `template.html` arquivo. Variáveis escritas para esta seção do configuração arquivo são processado ao HTML via substituição de quaisquer nomes de variáveis cercado por colchetes encontrado dentro do HTML com os variáveis dados correspondentes. Por exemplo, onde `foo="bar"`, qualquer instância de `<p>{foo}</p>` encontrado dentro do HTML tornará `<p>bar</p>`.
-
-##### "theme"
+##### "theme" `[string]`
 - Tema padrão a ser usado para CIDRAM.
 
-##### "magnification"
-- *v1: "Magnification"*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Outros
+```
+
+##### "magnification" `[float]`
 - Ampliação de fonte. Padrão = 1.
 
-##### "css_url"
-- O template arquivo para temas personalizados utiliza CSS propriedades externos, enquanto que o template arquivo para o padrão tema utiliza CSS propriedades internos. Para instruir CIDRAM para usar o template arquivo para temas personalizados, especificar o endereço HTTP pública do seu temas personalizados CSS arquivos usando a `css_url` variável. Se você deixar essa variável em branco, CIDRAM usará o template arquivo para o padrão tema.
+##### "css_url" `[string]`
+- URL de arquivo CSS para temas personalizados.
+
+##### "block_event_title" `[string]`
+- O título da página a ser exibido para eventos de bloco.
+
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…Outros
+```
+
+##### "captcha_title" `[string]`
+- O título da página a ser exibido para solicitações CAPTCHA.
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…Outros
+```
 
 #### "PHPMailer" (Categoria)
-Configuração do PHPMailer.
+Configuração para PHPMailer (usado para autenticação de dois fatores).
 
-Atualmente, o CIDRAM usa o PHPMailer apenas para autenticação de dois fatores front-end. Se você não usa o front-end, ou se você não usa a autenticação de dois fatores para o front-end, você pode ignorar essas diretivas.
-
-##### "event_log"
-- *v1: "EventLog"*
+##### "event_log" `[string]`
 - Um arquivo para registrar todos os eventos em relação ao PHPMailer. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-##### "skip_auth_process"
-- *v1: "SkipAuthProcess"*
+##### "skip_auth_process" `[bool]`
 - Definir essa diretiva como `true` instrui o PHPMailer a ignorar o processo de autenticação que normalmente ocorre ao enviar e-mail via SMTP. Isso deve ser evitado, porque ignorar esse processo pode expor o e-mail de saída a ataques MITM, mas pode ser necessário nos casos em que esse processo impedir que o PHPMailer se conecte a um servidor SMTP.
 
-##### "enable_two_factor"
-- *v1: "Enable2FA"*
+##### "enable_two_factor" `[bool]`
 - Esta diretiva determina se deve usar 2FA para contas front-end.
 
-##### "host"
-- *v1: "Host"*
+##### "host" `[string]`
 - O host SMTP a ser usado para e-mail de saída.
 
-##### "port"
-- *v1: "Port"*
+##### "port" `[int]`
 - O número da porta a ser usado para o e-mail de saída. Padrão = 587.
 
-##### "smtp_secure"
-- *v1: "SMTPSecure"*
+##### "smtp_secure" `[string]`
 - O protocolo a ser usado ao enviar e-mail via SMTP (TLS ou SSL).
 
-##### "smtp_auth"
-- *v1: "SMTPAuth"*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### "smtp_auth" `[bool]`
 - Esta diretiva determina se autenticar sessões SMTP (geralmente deve ser deixado em paz).
 
-##### "username"
-- *v1: "Username"*
+##### "username" `[string]`
 - O nome de usuário a ser usada ao enviar e-mail via SMTP.
 
-##### "password"
-- *v1: "Password"*
+##### "password" `[string]`
 - A senha a ser usada ao enviar e-mail via SMTP.
 
-##### "set_from_address"
-- *v1: "setFromAddress"*
+##### "set_from_address" `[string]`
 - O endereço do remetente a ser citado ao enviar e-mail via SMTP.
 
-##### "set_from_name"
-- *v1: "setFromName"*
+##### "set_from_name" `[string]`
 - O nome do remetente a ser citado ao enviar e-mail via SMTP.
 
-##### "add_reply_to_address"
-- *v1: "addReplyToAddress"*
+##### "add_reply_to_address" `[string]`
 - O endereço de resposta a ser citado ao enviar e-mail via SMTP.
 
-##### "add_reply_to_name"
-- *v1: "addReplyToName"*
+##### "add_reply_to_name" `[string]`
 - O nome da resposta a ser citado ao enviar e-mail via SMTP.
 
 #### "rate_limiting" (Categoria)
-Diretivas de configuração opcionais para limitação de taxa.
+Configuração para limitação de taxa (não recomendado para uso geral).
 
-Esse recurso foi implementado no CIDRAM porque foi solicitado por usuários suficientes para justificar a implementação. Contudo, porque está um pouco fora do escopo da finalidade originalmente pretendida para a CIDRAM, provavelmente não será necessário para a maioria dos usuários. Se você precisa especificamente do CIDRAM para lidar com a limitação de taxa do seu site, esse recurso pode ser útil para você. Contudo, existem algumas coisas importantes que você deve considerar:
-- Esse recurso, como todos os outros recursos do CIDRAM, funcionará apenas para páginas protegidas pelo CIDRAM. Portanto, qualquer recurso de site não especificamente roteado através do CIDRAM não pode ser limitado pela CIDRAM.
-- Se você é capaz de usar um módulo de servidor, cPanel, ou alguma outra ferramenta de rede para impor a limitação de taxa, seria melhor usar isso para limitação de taxa, em vez de CIDRAM.
-- Se um usuário em particular estiver muito interessado em continuar acessando seu website depois de ser limitado, na maioria dos casos, será muito fácil para eles contornar o limitação de taxa (por exemplo, se eles mudarem seu endereço IP, ou se eles usam um proxy ou VPN, e assumindo que você configurou o CIDRAM para não bloquear proxies e VPNs, ou que o CIDRAM não está ciente do proxy ou VPN que eles estão usando).
-- A limitação de taxa pode ser muito irritante para usuários reais. Pode ser necessário se a sua largura de banda disponível for muito limitada, e se você descobrir que existem algumas fontes específicas de tráfego, que ainda não estão bloqueadas, estão consumindo a maior parte de sua largura de banda disponível. Mas, se não for necessário, provavelmente deve ser evitado.
-- Você pode, ocasionalmente, arriscar bloquear usuários legítimos, ou até você mesmo.
-
-Se você acha que não precisa do CIDRAM para impor a limitação de taxas para o seu site, mantenha as diretivas abaixo definidas como valores padrão. Caso contrário, você poderá alterar seus valores para atender às suas necessidades.
-
-##### "max_bandwidth"
+##### "max_bandwidth" `[string]`
 - A quantidade máxima de largura de banda permitida dentro do período de tolerância antes de ativar a limitação de taxa para solicitações futuras. Um valor de 0 desativa esse tipo de limitação de taxa. Padrão = 0KB.
 
-##### "max_requests"
+##### "max_requests" `[int]`
 - O número máximo de solicitações permitido dentro do período de tolerância antes de ativar a limitação de taxa para solicitações futuras. Um valor de 0 desativa esse tipo de limitação de taxa. Padrão = 0.
 
-##### "precision_ipv4"
+##### "precision_ipv4" `[int]`
 - A precisão a ser usada ao monitorar o uso do IPv4. Valor espelha o tamanho do bloco CIDR. Defina para 32 para melhor precisão. Padrão = 32.
 
-##### "precision_ipv6"
+##### "precision_ipv6" `[int]`
 - A precisão a ser usada ao monitorar o uso do IPv6. Valor espelha o tamanho do bloco CIDR. Defina para 128 para melhor precisão. Padrão = 128.
 
-##### "allowance_period"
+##### "allowance_period" `[float]`
 - O número de horas para monitorar o uso. Padrão = 0.
 
-##### "exceptions"
+##### "exceptions" `[string]`
 - Exceções (ou seja, solicitações que não devem ser limitadas à taxa). Relevante apenas quando a limitação de taxa está ativada.
-- *Opções disponíveis: `Whitelisted,Verified`*
+
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
 #### "supplementary_cache_options" (Categoria)
-Opções de cache suplementares.
+Opções de cache suplementares. Nota: Alterar estes valores podem potencialmente fazer você ser estar desconectado.
 
-##### "prefix"
-- O valor especificado aqui será adicionado ao começo das chaves para todas as entradas de cache. Vazio por padrão. Quando existem várias instalações no mesmo servidor, isso pode ser útil para manter seus caches separados uns dos outros.
+##### "prefix" `[string]`
+- O valor especificado aqui será adicionado ao começo das chaves para todas as entradas de cache. Padrão = "CIDRAM_". Quando existem várias instalações no mesmo servidor, isso pode ser útil para manter seus caches separados uns dos outros.
 
-##### "enable_apcu"
-- Especifica se deve tentar usar o APCu para armazenamento em cache. Padrão = False.
+##### "enable_apcu" `[bool]`
+- Especifica se deve tentar usar o APCu para armazenamento em cache. Padrão = True.
 
-##### "enable_memcached"
+##### "enable_memcached" `[bool]`
 - Especifica se deve tentar usar o Memcached para armazenamento em cache. Padrão = False.
 
-##### "enable_redis"
+##### "enable_redis" `[bool]`
 - Especifica se deve tentar usar o Redis para armazenamento em cache. Padrão = False.
 
-##### "enable_pdo"
+##### "enable_pdo" `[bool]`
 - Especifica se deve tentar usar o PDO para armazenamento em cache. Padrão = False.
 
-##### "memcached_host"
+##### "memcached_host" `[string]`
 - Valor da host do Memcached. Padrão = "localhost".
 
-##### "memcached_port"
+##### "memcached_port" `[int]`
 - Valor da porta do Memcached. Padrão = "11211".
 
-##### "redis_host"
+##### "redis_host" `[string]`
 - Valor da host do Redis. Padrão = "localhost".
 
-##### "redis_port"
+##### "redis_port" `[int]`
 - Valor da porta do Redis. Padrão = "6379".
 
-##### "redis_timeout"
+##### "redis_timeout" `[float]`
 - Valor de tempo limite do Redis. Padrão = "2.5".
 
-##### "pdo_dsn"
-- Valor DSN do PDO. Padrão = "`mysql:dbname=cidram;host=localhost;port=3306`".
+##### "pdo_dsn" `[string]`
+- Valor DSN do PDO. Padrão = "mysql:dbname=cidram;host=localhost;port=3306".
 
-*Veja também: [O que é um "PDO DSN"? Como posso usar o PDO com o CIDRAM?](#HOW_TO_USE_PDO)*
-
-##### "pdo_username"
+##### "pdo_username" `[string]`
 - O nome de usuário do PDO.
 
-##### "pdo_password"
+##### "pdo_password" `[string]`
 - A senha do PDO.
 
 ---
@@ -1088,7 +1356,7 @@ No exemplo acima, `1.2.3.4/32` e `2.3.4.5/32` será etiquetadas como "IPv4", enq
 
 A mesma lógica pode ser aplicada para separar outros tipos de etiquetas, também.
 
-Em particular, as etiquetas de seção podem ser muito úteis para depuração quando ocorrem falsos positivos, fornecendo um meio fácil de encontrar a fonte exata do problema, e pode ser muito útil para filtrar entradas de arquivos de log ao visualizar arquivos de log por meio da página de logs do front-end (os nomes das seções são clicáveis através da página de logs do front-end e podem ser usados como critérios de filtragem). Se as etiquetas de seção forem omitidas para algumas assinaturas específicas, quando essas assinaturas são desencadeadas, o CIDRAM usa o nome do arquivo de assinatura juntamente com o tipo de endereço IP bloqueado (IPv4 ou IPv6) como um retorno, e portanto, as etiquetas de seção são inteiramente opcionais. Embora, eles podem ser recomendados em alguns casos, como quando os arquivos de assinatura são nomeados vagamente ou quando pode ser difícil identificar claramente a origem das assinaturas fazendo com que um pedido seja bloqueado.
+Em particular, as etiquetas de seção podem ser muito úteis para depuração quando ocorrem falsos positivos, fornecendo um meio fácil de encontrar a fonte exata do problema, e pode ser muito útil para filtrar entradas de arquivos de log ao visualizar arquivos de log por meio da página de logs do front-end (os nomes das seções são clicáveis através da página de logs do front-end e podem ser usados como critérios de filtragem). Se as etiquetas de seção forem omitidas para algumas assinaturas específicas, quando essas assinaturas são desencadeadas, o CIDRAM usa o nome do arquivo de assinatura juntamente com o tipo de endereço IP bloqueado (IPv4 ou IPv6) como um retorno, e portanto, as etiquetas de seção são inteiramente opcionais. Embora, eles podem ser recomendados em alguns casos, como quando os arquivos de assinatura são nomeados vagamente ou quando pode ser difícil identificar claramente a origem das assinaturas fazendo com que uma solicitação seja bloqueada.
 
 ##### 7.1.1 ETIQUETAS DE EXPIRAÇÃO
 
@@ -1101,7 +1369,7 @@ Se você quiser assinaturas para expirar depois de algum tempo, de um modo semel
 Expires: 2016.12.31
 ```
 
-As assinaturas expiradas nunca serão desencadeadas em qualquer pedido, não importa o que.
+As assinaturas expiradas nunca serão desencadeadas em qualquer solicitação, não importa o que.
 
 ##### 7.1.2 ETIQUETAS DE ORIGEM
 
@@ -1256,7 +1524,7 @@ Se você acha que escrever seus próprios arquivos de assinatura personalizados 
 
 #### 7.4 <a name="MODULE_BASICS"></a>NOÇÕES BÁSICAS (PARA MÓDULOS)
 
-Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear um pedido numa base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear o pedido). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
+Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear uma solicitação com base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear a solicitação). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
 
 Alguns bons exemplos de módulos do CIDRAM podem ser encontrados aqui:
 - https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
@@ -1278,7 +1546,7 @@ As assinaturas do módulo geralmente são escritas com `$Trigger`. Na maioria do
 
 `$Trigger` aceita 4 parâmetros: `$Condition`, `$ReasonShort`, `$ReasonLong` (opcional), e `$DefineOptions` (opcional).
 
-A verdade de `$Condition` é avaliada, e se for true/verdade, a assinatura é "desencadeada". Se false/falso, a assinatura *não* é "desencadeada". `$Condition` tipicamente contém código PHP para avaliar uma condição que deve causar um pedido para ser bloqueado.
+A verdade de `$Condition` é avaliada, e se for true/verdade, a assinatura é "desencadeada". Se false/falso, a assinatura *não* é "desencadeada". `$Condition` tipicamente contém código PHP para avaliar uma condição que deve causar uma solicitação seja bloqueada.
 
 `$ReasonShort` é citado no campo "Razão Bloqueada" quando a assinatura é "desencadeada".
 
@@ -1299,7 +1567,7 @@ Os bypass de assinatura geralmente são escritos com `$Bypass`.
 
 `$Bypass` aceita 3 parâmetros: `$Condition`, `$ReasonShort`, e `$DefineOptions` (opcional).
 
-A verdade de `$Condition` é avaliada, e se for true/verdade, o bypass é "desencadeado". Se false/falso, o bypass *não* é "desencadeado". `$Condition` tipicamente contém código PHP para avaliar uma condição *não* que deve causar um pedido para ser bloqueado.
+A verdade de `$Condition` é avaliada, e se for true/verdade, o bypass é "desencadeado". Se false/falso, o bypass *não* é "desencadeado". `$Condition` tipicamente contém código PHP para avaliar uma condição *não* que deve causar uma solicitação seja bloqueada.
 
 `$ReasonShort` é citado no campo "Razão Bloqueada" quando o bypass é "desencadeado".
 
@@ -1342,16 +1610,16 @@ Abaixo estão algumas das variáveis comuns que podem ser úteis para o seu mód
 Variável | Descrição
 ----|----
 `$CIDRAM['BlockInfo']['DateTime']` | A data e a hora atuais.
-`$CIDRAM['BlockInfo']['IPAddr']` | O endereço IP para a pedido atual.
+`$CIDRAM['BlockInfo']['IPAddr']` | O endereço IP para a solicitação atual.
 `$CIDRAM['BlockInfo']['ScriptIdent']` | Versão do CIDRAM.
-`$CIDRAM['BlockInfo']['Query']` | A consulta para o pedido atual.
-`$CIDRAM['BlockInfo']['Referrer']` | O referente para o pedido atual (se houver).
-`$CIDRAM['BlockInfo']['UA']` | O agente do usuário (user agent) para o pedido atual.
-`$CIDRAM['BlockInfo']['UALC']` | O agente do usuário (user agent) para o pedido atual (em minúsculas).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | A mensagem a ser exibida para o usuário/cliente do pedido atual se eles estiverem bloqueados.
-`$CIDRAM['BlockInfo']['SignatureCount']` | O número de assinaturas desencadeadas para o pedido atual.
-`$CIDRAM['BlockInfo']['Signatures']` | Informações de referência para qualquer assinatura desencadeada para o pedido atual.
-`$CIDRAM['BlockInfo']['WhyReason']` | Informações de referência para qualquer assinatura desencadeada para o pedido atual.
+`$CIDRAM['BlockInfo']['Query']` | A consulta para a solicitação atual.
+`$CIDRAM['BlockInfo']['Referrer']` | O referente para a solicitação atual (se houver).
+`$CIDRAM['BlockInfo']['UA']` | O agente do usuário (user agent) para a solicitação atual.
+`$CIDRAM['BlockInfo']['UALC']` | O agente do usuário (user agent) para a solicitação atual (em minúsculas).
+`$CIDRAM['BlockInfo']['ReasonMessage']` | A mensagem a ser exibida para o usuário/cliente da solicitação atual se eles estiverem bloqueados.
+`$CIDRAM['BlockInfo']['SignatureCount']` | O número de assinaturas desencadeadas para a solicitação atual.
+`$CIDRAM['BlockInfo']['Signatures']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
+`$CIDRAM['BlockInfo']['WhyReason']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
 
 ---
 
@@ -1470,7 +1738,7 @@ Não. PHP >= 7.2.0 é um requisito mínimo para CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Posso usar uma única instalação do CIDRAM para proteger vários domínios?
 
-Sim. As instalações do CIDRAM não estão naturalmente atado com domínios específicos, e pode, portanto, ser usado para proteger vários domínios. Geralmente, referimo-nos a instalações do CIDRAM que protegem apenas um domínio como "instalações de singular-domínio", e referimo-nos a instalações do CIDRAM que protegem vários domínios e/ou subdomínios como "instalações multi-domínio". Se você operar uma instalação multi-domínio e precisa usar conjuntos diferentes de arquivos de assinaturas para domínios diferentes, ou precisam CIDRAM para ser configurado de forma diferente para domínios diferentes, é possível fazer isso. Depois de carregar o arquivo de configuração (`config.ini`), o CIDRAM verificará a existência de um "arquivo de sobreposição para a configuração" específico para o domínio (ou subdomínio) que está sendo solicitado (`o-domínio-que-está-sendo-solicitado.tld.config.ini`), e se encontrado, quaisquer valores de configuração definidos pelo arquivo de sobreposição para a configuração serão usados para a instância de execução em vez dos valores de configuração definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são idênticos ao arquivo de configuração, e a seu critério, pode conter a totalidade de todas as diretivas de configuração disponíveis para o CIDRAM, ou qualquer subseção menor necessária que difere dos valores normalmente definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são nomeados de acordo com o domínio que eles são destinados para (por exemplo, se você precisar de um arquivo de sobreposição para a configuração para o domínio, `https://www.some-domain.tld/`, o seu arquivo de sobreposição para a configuração deve ser nomeado como `some-domain.tld.config.ini`, e deve ser colocado dentro da vault ao lado do arquivo de configuração, `config.ini`). O nome de domínio para a instância de execução é derivado do cabeçalho `HTTP_HOST` do pedido; "www" é ignorado.
+Sim. As instalações do CIDRAM não estão naturalmente atado com domínios específicos, e pode, portanto, ser usado para proteger vários domínios. Geralmente, referimo-nos a instalações do CIDRAM que protegem apenas um domínio como "instalações de singular-domínio", e referimo-nos a instalações do CIDRAM que protegem vários domínios e/ou subdomínios como "instalações multi-domínio". Se você operar uma instalação multi-domínio e precisa usar conjuntos diferentes de arquivos de assinaturas para domínios diferentes, ou precisam CIDRAM para ser configurado de forma diferente para domínios diferentes, é possível fazer isso. Depois de carregar o arquivo de configuração (`config.ini`), o CIDRAM verificará a existência de um "arquivo de sobreposição para a configuração" específico para o domínio (ou subdomínio) que está sendo solicitado (`o-domínio-que-está-sendo-solicitado.tld.config.ini`), e se encontrado, quaisquer valores de configuração definidos pelo arquivo de sobreposição para a configuração serão usados para a instância de execução em vez dos valores de configuração definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são idênticos ao arquivo de configuração, e a seu critério, pode conter a totalidade de todas as diretivas de configuração disponíveis para o CIDRAM, ou qualquer subseção menor necessária que difere dos valores normalmente definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são nomeados de acordo com o domínio que eles são destinados para (por exemplo, se você precisar de um arquivo de sobreposição para a configuração para o domínio, `https://www.some-domain.tld/`, o seu arquivo de sobreposição para a configuração deve ser nomeado como `some-domain.tld.config.ini`, e deve ser colocado dentro da vault ao lado do arquivo de configuração, `config.ini`). O nome de domínio para a instância de execução é derivado do cabeçalho `HTTP_HOST` da solicitação; "www" é ignorado.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Eu não quero mexer com a instalação deste e fazê-lo funcionar com o meu site; Posso pagar-te para fazer tudo por mim?
 
@@ -1746,7 +2014,7 @@ Para fins de transparência, o tipo de informação compartilhada e com quem est
 
 ##### 11.2.0 PESQUISA DE NOME DE HOST
 
-Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes de host (tais como o "módulo bloqueador de hosts perigosos", o "tor project exit nodes block module", ou "verificação do motores de busca", por exemplo), o CIDRAM precisa ser capaz de obter o nome do host de solicitações de entrada de alguma forma. Tipicamente, ele faz isso solicitando o nome do host do endereço IP das solicitações de entrada de um servidor DNS ou solicitando as informações por meio da funcionalidade fornecida pelo sistema em que o CIDRAM está instalado (isso é tipicamente referido como um "pesquisa de nome de host"). Os servidores DNS definidos por padrão pertencem ao serviço [Google DNS](https://dns.google.com/) (mas isso pode ser facilmente alterado por meio da configuração). Os serviços exatos comunicados com são configuráveis, e dependem de como você configura o pacote. No caso de usar a funcionalidade fornecida pelo sistema em que o CIDRAM está instalado, você precisará entrar em contato com o administrador do sistema para determinar quais rotas as pesquisas de nome de host usam. Pesquisas de nome de host podem ser evitadas no CIDRAM, evitando os módulos afetados ou modificando a configuração do pacote de acordo com suas necessidades.
+Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes de host (tais como o "módulo bloqueador de hosts perigosos", o "tor project exit nodes block module", ou "verificação dos motores de busca", por exemplo), o CIDRAM precisa ser capaz de obter o nome do host de solicitações de entrada de alguma forma. Tipicamente, ele faz isso solicitando o nome do host do endereço IP das solicitações de entrada de um servidor DNS ou solicitando as informações por meio da funcionalidade fornecida pelo sistema em que o CIDRAM está instalado (isso é tipicamente referido como um "pesquisa de nome de host"). Os servidores DNS definidos por padrão pertencem ao serviço [Google DNS](https://dns.google.com/) (mas isso pode ser facilmente alterado por meio da configuração). Os serviços exatos comunicados com são configuráveis, e dependem de como você configura o pacote. No caso de usar a funcionalidade fornecida pelo sistema em que o CIDRAM está instalado, você precisará entrar em contato com o administrador do sistema para determinar quais rotas as pesquisas de nome de host usam. Pesquisas de nome de host podem ser evitadas no CIDRAM, evitando os módulos afetados ou modificando a configuração do pacote de acordo com suas necessidades.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `default_dns`
@@ -1969,4 +2237,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 20 de Fevereiro de 2022 (2022.02.20).
+Última Atualização: 25 de Março de 2022 (2022.03.25).

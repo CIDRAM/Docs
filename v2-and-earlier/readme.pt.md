@@ -1092,7 +1092,7 @@ No exemplo acima, `1.2.3.4/32` e `2.3.4.5/32` será etiquetadas como "IPv4", enq
 
 A mesma lógica pode ser aplicada para separar outros tipos de etiquetas, também.
 
-Em particular, as etiquetas de seção podem ser muito úteis para depuração quando ocorrem falsos positivos, fornecendo um meio fácil de encontrar a fonte exata do problema, e pode ser muito útil para filtrar entradas de arquivos de log ao visualizar arquivos de log por meio da página de logs do front-end (os nomes das seções são clicáveis através da página de logs do front-end e podem ser usados como critérios de filtragem). Se as etiquetas de seção forem omitidas para algumas assinaturas específicas, quando essas assinaturas são desencadeadas, o CIDRAM usa o nome do arquivo de assinatura juntamente com o tipo de endereço IP bloqueado (IPv4 ou IPv6) como um retorno, e portanto, as etiquetas de seção são inteiramente opcionais. Embora, eles podem ser recomendados em alguns casos, como quando os arquivos de assinatura são nomeados vagamente ou quando pode ser difícil identificar claramente a origem das assinaturas fazendo com que um pedido seja bloqueado.
+Em particular, as etiquetas de seção podem ser muito úteis para depuração quando ocorrem falsos positivos, fornecendo um meio fácil de encontrar a fonte exata do problema, e pode ser muito útil para filtrar entradas de arquivos de log ao visualizar arquivos de log por meio da página de logs do front-end (os nomes das seções são clicáveis através da página de logs do front-end e podem ser usados como critérios de filtragem). Se as etiquetas de seção forem omitidas para algumas assinaturas específicas, quando essas assinaturas são desencadeadas, o CIDRAM usa o nome do arquivo de assinatura juntamente com o tipo de endereço IP bloqueado (IPv4 ou IPv6) como um retorno, e portanto, as etiquetas de seção são inteiramente opcionais. Embora, eles podem ser recomendados em alguns casos, como quando os arquivos de assinatura são nomeados vagamente ou quando pode ser difícil identificar claramente a origem das assinaturas fazendo com que uma solicitação seja bloqueada.
 
 ##### 7.1.1 ETIQUETAS DE EXPIRAÇÃO
 
@@ -1105,7 +1105,7 @@ Se você quiser assinaturas para expirar depois de algum tempo, de um modo semel
 Expires: 2016.12.31
 ```
 
-As assinaturas expiradas nunca serão desencadeadas em qualquer pedido, não importa o que.
+As assinaturas expiradas nunca serão desencadeadas em qualquer solicitação, não importa o que.
 
 ##### 7.1.2 ETIQUETAS DE ORIGEM
 
@@ -1260,7 +1260,7 @@ Se você acha que escrever seus próprios arquivos de assinatura personalizados 
 
 #### 7.4 <a name="MODULE_BASICS"></a>NOÇÕES BÁSICAS (PARA MÓDULOS)
 
-Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear um pedido numa base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear o pedido). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
+Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear uma solicitação com base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear a solicitação). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
 
 Alguns bons exemplos de módulos do CIDRAM podem ser encontrados aqui:
 - https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
@@ -1282,7 +1282,7 @@ As assinaturas do módulo geralmente são escritas com `$Trigger`. Na maioria do
 
 `$Trigger` aceita 4 parâmetros: `$Condition`, `$ReasonShort`, `$ReasonLong` (opcional), e `$DefineOptions` (opcional).
 
-A verdade de `$Condition` é avaliada, e se for true/verdade, a assinatura é "desencadeada". Se false/falso, a assinatura *não* é "desencadeada". `$Condition` tipicamente contém código PHP para avaliar uma condição que deve causar um pedido para ser bloqueado.
+A verdade de `$Condition` é avaliada, e se for true/verdade, a assinatura é "desencadeada". Se false/falso, a assinatura *não* é "desencadeada". `$Condition` tipicamente contém código PHP para avaliar uma condição que deve causar uma solicitação seja bloqueada.
 
 `$ReasonShort` é citado no campo "Razão Bloqueada" quando a assinatura é "desencadeada".
 
@@ -1303,7 +1303,7 @@ Os bypass de assinatura geralmente são escritos com `$Bypass`.
 
 `$Bypass` aceita 3 parâmetros: `$Condition`, `$ReasonShort`, e `$DefineOptions` (opcional).
 
-A verdade de `$Condition` é avaliada, e se for true/verdade, o bypass é "desencadeado". Se false/falso, o bypass *não* é "desencadeado". `$Condition` tipicamente contém código PHP para avaliar uma condição *não* que deve causar um pedido para ser bloqueado.
+A verdade de `$Condition` é avaliada, e se for true/verdade, o bypass é "desencadeado". Se false/falso, o bypass *não* é "desencadeado". `$Condition` tipicamente contém código PHP para avaliar uma condição *não* que deve causar uma solicitação seja bloqueada.
 
 `$ReasonShort` é citado no campo "Razão Bloqueada" quando o bypass é "desencadeado".
 
@@ -1346,16 +1346,16 @@ Abaixo estão algumas das variáveis comuns que podem ser úteis para o seu mód
 Variável | Descrição
 ----|----
 `$CIDRAM['BlockInfo']['DateTime']` | A data e a hora atuais.
-`$CIDRAM['BlockInfo']['IPAddr']` | O endereço IP para a pedido atual.
+`$CIDRAM['BlockInfo']['IPAddr']` | O endereço IP para a solicitação atual.
 `$CIDRAM['BlockInfo']['ScriptIdent']` | Versão do CIDRAM.
-`$CIDRAM['BlockInfo']['Query']` | A consulta para o pedido atual.
-`$CIDRAM['BlockInfo']['Referrer']` | O referente para o pedido atual (se houver).
-`$CIDRAM['BlockInfo']['UA']` | O agente do usuário (user agent) para o pedido atual.
-`$CIDRAM['BlockInfo']['UALC']` | O agente do usuário (user agent) para o pedido atual (em minúsculas).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | A mensagem a ser exibida para o usuário/cliente do pedido atual se eles estiverem bloqueados.
-`$CIDRAM['BlockInfo']['SignatureCount']` | O número de assinaturas desencadeadas para o pedido atual.
-`$CIDRAM['BlockInfo']['Signatures']` | Informações de referência para qualquer assinatura desencadeada para o pedido atual.
-`$CIDRAM['BlockInfo']['WhyReason']` | Informações de referência para qualquer assinatura desencadeada para o pedido atual.
+`$CIDRAM['BlockInfo']['Query']` | A consulta para a solicitação atual.
+`$CIDRAM['BlockInfo']['Referrer']` | O referente para a solicitação atual (se houver).
+`$CIDRAM['BlockInfo']['UA']` | O agente do usuário (user agent) para a solicitação atual.
+`$CIDRAM['BlockInfo']['UALC']` | O agente do usuário (user agent) para a solicitação atual (em minúsculas).
+`$CIDRAM['BlockInfo']['ReasonMessage']` | A mensagem a ser exibida para o usuário/cliente da solicitação atual se eles estiverem bloqueados.
+`$CIDRAM['BlockInfo']['SignatureCount']` | O número de assinaturas desencadeadas para a solicitação atual.
+`$CIDRAM['BlockInfo']['Signatures']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
+`$CIDRAM['BlockInfo']['WhyReason']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
 
 ---
 
@@ -1474,7 +1474,7 @@ Não. PHP >= 7.2.0 é um requisito mínimo para CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Posso usar uma única instalação do CIDRAM para proteger vários domínios?
 
-Sim. As instalações do CIDRAM não estão naturalmente atado com domínios específicos, e pode, portanto, ser usado para proteger vários domínios. Geralmente, referimo-nos a instalações do CIDRAM que protegem apenas um domínio como "instalações de singular-domínio", e referimo-nos a instalações do CIDRAM que protegem vários domínios e/ou subdomínios como "instalações multi-domínio". Se você operar uma instalação multi-domínio e precisa usar conjuntos diferentes de arquivos de assinaturas para domínios diferentes, ou precisam CIDRAM para ser configurado de forma diferente para domínios diferentes, é possível fazer isso. Depois de carregar o arquivo de configuração (`config.ini`), o CIDRAM verificará a existência de um "arquivo de sobreposição para a configuração" específico para o domínio (ou subdomínio) que está sendo solicitado (`o-domínio-que-está-sendo-solicitado.tld.config.ini`), e se encontrado, quaisquer valores de configuração definidos pelo arquivo de sobreposição para a configuração serão usados para a instância de execução em vez dos valores de configuração definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são idênticos ao arquivo de configuração, e a seu critério, pode conter a totalidade de todas as diretivas de configuração disponíveis para o CIDRAM, ou qualquer subseção menor necessária que difere dos valores normalmente definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são nomeados de acordo com o domínio que eles são destinados para (por exemplo, se você precisar de um arquivo de sobreposição para a configuração para o domínio, `https://www.some-domain.tld/`, o seu arquivo de sobreposição para a configuração deve ser nomeado como `some-domain.tld.config.ini`, e deve ser colocado dentro da vault ao lado do arquivo de configuração, `config.ini`). O nome de domínio para a instância de execução é derivado do cabeçalho `HTTP_HOST` do pedido; "www" é ignorado.
+Sim. As instalações do CIDRAM não estão naturalmente atado com domínios específicos, e pode, portanto, ser usado para proteger vários domínios. Geralmente, referimo-nos a instalações do CIDRAM que protegem apenas um domínio como "instalações de singular-domínio", e referimo-nos a instalações do CIDRAM que protegem vários domínios e/ou subdomínios como "instalações multi-domínio". Se você operar uma instalação multi-domínio e precisa usar conjuntos diferentes de arquivos de assinaturas para domínios diferentes, ou precisam CIDRAM para ser configurado de forma diferente para domínios diferentes, é possível fazer isso. Depois de carregar o arquivo de configuração (`config.ini`), o CIDRAM verificará a existência de um "arquivo de sobreposição para a configuração" específico para o domínio (ou subdomínio) que está sendo solicitado (`o-domínio-que-está-sendo-solicitado.tld.config.ini`), e se encontrado, quaisquer valores de configuração definidos pelo arquivo de sobreposição para a configuração serão usados para a instância de execução em vez dos valores de configuração definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são idênticos ao arquivo de configuração, e a seu critério, pode conter a totalidade de todas as diretivas de configuração disponíveis para o CIDRAM, ou qualquer subseção menor necessária que difere dos valores normalmente definidos pelo arquivo de configuração. Os arquivos de sobreposição para a configuração são nomeados de acordo com o domínio que eles são destinados para (por exemplo, se você precisar de um arquivo de sobreposição para a configuração para o domínio, `https://www.some-domain.tld/`, o seu arquivo de sobreposição para a configuração deve ser nomeado como `some-domain.tld.config.ini`, e deve ser colocado dentro da vault ao lado do arquivo de configuração, `config.ini`). O nome de domínio para a instância de execução é derivado do cabeçalho `HTTP_HOST` da solicitação; "www" é ignorado.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Eu não quero mexer com a instalação deste e fazê-lo funcionar com o meu site; Posso pagar-te para fazer tudo por mim?
 
@@ -1750,7 +1750,7 @@ Para fins de transparência, o tipo de informação compartilhada e com quem est
 
 ##### 11.2.0 PESQUISA DE NOME DE HOST
 
-Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes de host (tais como o "módulo bloqueador de hosts perigosos", o "tor project exit nodes block module", ou "verificação do motores de busca", por exemplo), o CIDRAM precisa ser capaz de obter o nome do host de solicitações de entrada de alguma forma. Tipicamente, ele faz isso solicitando o nome do host do endereço IP das solicitações de entrada de um servidor DNS ou solicitando as informações por meio da funcionalidade fornecida pelo sistema em que o CIDRAM está instalado (isso é tipicamente referido como um "pesquisa de nome de host"). Os servidores DNS definidos por padrão pertencem ao serviço [Google DNS](https://dns.google.com/) (mas isso pode ser facilmente alterado por meio da configuração). Os serviços exatos comunicados com são configuráveis, e dependem de como você configura o pacote. No caso de usar a funcionalidade fornecida pelo sistema em que o CIDRAM está instalado, você precisará entrar em contato com o administrador do sistema para determinar quais rotas as pesquisas de nome de host usam. Pesquisas de nome de host podem ser evitadas no CIDRAM, evitando os módulos afetados ou modificando a configuração do pacote de acordo com suas necessidades.
+Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes de host (tais como o "módulo bloqueador de hosts perigosos", o "tor project exit nodes block module", ou "verificação dos motores de busca", por exemplo), o CIDRAM precisa ser capaz de obter o nome do host de solicitações de entrada de alguma forma. Tipicamente, ele faz isso solicitando o nome do host do endereço IP das solicitações de entrada de um servidor DNS ou solicitando as informações por meio da funcionalidade fornecida pelo sistema em que o CIDRAM está instalado (isso é tipicamente referido como um "pesquisa de nome de host"). Os servidores DNS definidos por padrão pertencem ao serviço [Google DNS](https://dns.google.com/) (mas isso pode ser facilmente alterado por meio da configuração). Os serviços exatos comunicados com são configuráveis, e dependem de como você configura o pacote. No caso de usar a funcionalidade fornecida pelo sistema em que o CIDRAM está instalado, você precisará entrar em contato com o administrador do sistema para determinar quais rotas as pesquisas de nome de host usam. Pesquisas de nome de host podem ser evitadas no CIDRAM, evitando os módulos afetados ou modificando a configuração do pacote de acordo com suas necessidades.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `default_dns`
@@ -1980,4 +1980,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 20 de Fevereiro de 2022 (2022.02.20).
+Última Atualização: 27 de Fevereiro de 2022 (2022.02.27).

@@ -317,680 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 Het volgende is een lijst van variabelen die in de `config.ini` configuratiebestand van CIDRAM, samen met een beschrijving van hun doel en functie.
 
 ```
-Configuration (v2)
+Configuratie (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Categorie)
-Algemene configuratie voor CIDRAM.
+Algemene configuratie (elke kernconfiguratie die niet tot andere categorieën behoort).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Mensen leesbare bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "logfile_apache"
-- *v1: "logfileApache"*
+##### "logfile_apache" `[string]`
 - Apache-stijl bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "logfile_serialized"
-- *v1: "logfileSerialized"*
+##### "logfile_serialized" `[string]`
 - Geserialiseerd bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-*Handige tip: Als u wil, u kunt datum/tijd informatie toevoegen om de namen van uw logbestanden door deze op in naam inclusief: `{yyyy}` voor volledige jaar, `{yy}` voor verkorte jaar, `{mm}` voor maand, `{dd}` voor dag, `{hh}` voor het uur.*
-
-*Voorbeelden:*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "error_log"
+##### "error_log" `[string]`
 - Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "error_log_stages"
-- Een lijst met de fasen in de uitvoeringsketen waarvan gegenereerde fouten moeten worden vastgelegd.
-- *Standaard: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### "stages" `[string]`
+- Controles voor de fasen van de uitvoeringsketen (of ingeschakeld, of fouten worden geregistreerd, enz).
 
-##### "truncate"
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### "fields" `[string]`
+- Controles voor de velden tijdens blokgebeurtenissen (wanneer een verzoek wordt geblokkeerd).
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### "truncate" `[string]`
 - Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
 
-##### "log_rotation_limit"
+##### "log_rotation_limit" `[int]`
 - Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste limiet opgeven. Een waarde van 0 zal logrotatie uitschakelen.
 
-##### "log_rotation_action"
+##### "log_rotation_action" `[string]`
 - Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste actie opgeven. Delete = Verwijder de oudste logbestanden, totdat de limiet niet langer wordt overschreden. Archive = Eerst archiveer en verwijder vervolgens de oudste logbestanden, totdat de limiet niet langer wordt overschreden.
 
-*Technische verduidelijking: In deze context, de "oudste" betekent de minste recentelijk gewijzigd.*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### "timezone"
-- Dit wordt gebruikt om op te geven welke tijdzone CIDRAM moet gebruiken voor de datum/tijd-bewerkingen. Als je het niet nodig hebt, negeer het. Mogelijke waarden worden bepaald door PHP. Het is in het algemeen in plaats aanbevolen de tijdzone richtlijn in uw bestand `php.ini` aan te passen, maar somtijds (zoals bij het werken met beperkte shared hosting providers) dit is niet altijd mogelijk om te voldoen, en dus, Dit optie is hier voorzien.
+##### "timezone" `[string]`
+- Dit wordt gebruikt om de te gebruiken tijdzone op te geven (b.v., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, enz). Geef "SYSTEM" op om PHP dit automatisch voor u te laten afhandelen.
 
-##### "time_offset"
-- *v1: "timeOffset"*
-- Als uw server tijd niet overeenkomt met uw lokale tijd, u kunt opgeven hier een offset om de datum/tijd informatie gegenereerd door CIDRAM aan te passen volgens uw behoeften. Het is in het algemeen in plaats aanbevolen de tijdzone richtlijn in uw bestand `php.ini` aan te passen, maar somtijds (zoals bij het werken met beperkte shared hosting providers) dit is niet altijd mogelijk om te voldoen, en dus, Dit optie is hier voorzien. Offset is in een minuten.
-- Voorbeeld (een uur toe te voegen): `time_offset=60`
+```
+timezone
+├─SYSTEM ("Gebruik de systeem standaard tijdzone.")
+├─UTC ("UTC")
+└─…Anders
+```
 
-##### "time_format"
-- *v1: "timeFormat"*
-- De datum notatie gebruikt door CIDRAM. Standaard = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
+##### "time_offset" `[int]`
+- Tijdzone offset in minuten.
 
-##### "ipaddr"
+##### "time_format" `[string]`
+- De datum notatie gebruikt door CIDRAM. Extra opties kunnen worden toegevoegd op aanvraag.
+
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…Anders
+```
+
+##### "ipaddr" `[string]`
 - Waar het IP-adres van het aansluiten verzoek te vinden? (Handig voor diensten zoals Cloudflare en dergelijke). Standaard = REMOTE_ADDR. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
-Aanbevolen waarden voor "ipaddr":
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (Standaard)")
+└─…Anders
+```
 
-Waarde | Gebruik makend van
----|---
-`HTTP_INCAP_CLIENT_IP` | Incapsula reverse proxy.
-`HTTP_CF_CONNECTING_IP` | Cloudflare reverse proxy.
-`CF-Connecting-IP` | Cloudflare reverse proxy (alternatief; als bovenstaande niet werkt).
-`HTTP_X_FORWARDED_FOR` | Cloudbric reverse proxy.
-`X-Forwarded-For` | [Squid reverse proxy](http://www.squid-cache.org/Doc/config/forwarded_for/).
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*Definieerd door de server configuratie.* | [Nginx reverse proxy](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
-`REMOTE_ADDR` | Geen reverse proxy (standaardwaarde).
+Zie ook:
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "forbid_on_block"
-- Welk HTTP-statusbericht moet CIDRAM verzenden bij het blokkeren van verzoeken?
+##### "http_response_header_code" `[int]`
+- Welk HTTP-statusbericht moet CIDRAM verzenden bij het blokkeren van verzoeken? (Raadpleeg de documentatie voor meer informatie).
 
-Momenteel ondersteunde waarden:
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-Status code | Status bericht | Beschrijving
----|---|---
-`200` | `200 OK` | Standaardwaarde. Minst robuust, maar meest gebruiksvriendelijk.
-`403` | `403 Forbidden` | Robuuster, maar minder gebruikersvriendelijk.
-`410` | `410 Gone` | Kan problemen veroorzaken bij pogingen om valse positieven op te lossen, omdat sommige browsers dit statusbericht in de cache opslaan en geen volgende verzoeken verzenden, zelfs niet na het deblokkeren van gebruikers. Kan echter nuttiger zijn dan andere opties om aanvragen van bepaalde, zeer specifieke typen bots te verminderen.
-`418` | `418 I'm a teapot` | Verwijst eigenlijk naar de grap van April Fools [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] en het is onwaarschijnlijk dat de klant het begrijpt. Voorzien voor amusement en gemak, maar over het algemeen niet aanbevolen.
-`451` | `Unavailable For Legal Reasons` | Geschikt voor situaties waarin verzoeken voornamelijk om juridische redenen worden geblokkeerd. Niet aanbevolen in andere contexten.
-`503` | `Service Unavailable` | Meest robuust, maar minst gebruiksvriendelijk.
-
-##### "silent_mode"
+##### "silent_mode" `[string]`
 - Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "Toegang Geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
 
-##### "lang"
+##### "lang" `[string]`
 - Geef de standaardtaal voor CIDRAM.
 
-##### "lang_override"
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### "lang_override" `[bool]`
 - Waar mogelijk lokaliseren volgens HTTP_ACCEPT_LANGUAGE? True = Ja [Standaard]; False = Nee.
 
-##### "numbers"
-- Specificeert hoe u nummers wilt weergeven.
+##### "numbers" `[string]`
+- Hoe verkiest u nummers die worden weergegeven? Selecteer het voorbeeld dat het meest correct voor u lijkt.
 
-Momenteel ondersteunde waarden:
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-Waarde | Produceert | Beschrijving
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | Standaardwaarde.
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*Notitie: Deze waarden zijn nergens gestandaardiseerd, en zullen waarschijnlijk niet relevant zijn buiten het pakket. Ook kunnen ondersteunde waarden in de toekomst veranderen.*
-
-##### "emailaddr"
+##### "emailaddr" `[string]`
 - Indien u wenst, u kunt een e-mailadres op hier te geven te geven aan de gebruikers als ze geblokkeerd, voor hen te gebruiken als aanspreekpunt voor steun en/of assistentie in het geval dat ze worden onrechte geblokkeerd. WAARSCHUWING: Elke e-mailadres u leveren hier zal zeker worden overgenomen met spambots en schrapers in de loop van zijn wezen die hier gebruikt, en dus, het wordt ten zeerste aanbevolen als u ervoor kiest om een e-mailadres hier te leveren, dat u ervoor zorgen dat het e-mailadres dat u hier leveren is een wegwerp-adres en/of een adres dat u niet de zorg over wordt gespamd (met andere woorden, u waarschijnlijk niet wilt om uw primaire persoonlijk of primaire zakelijke e-mailadressen te gebruik).
 
-##### "emailaddr_display_style"
-- Hoe zou u het e-mailadres voor gebruikers willen aanbieden? "default" = Klikbare link. "noclick" = Niet-klikbare tekst.
+##### "emailaddr_display_style" `[string]`
+- Hoe zou u het e-mailadres voor gebruikers willen aanbieden?
 
-##### "disable_cli"
-- *(Verwijderd sinds v2).*
-- Uitschakelen CLI-modus? CLI-modus is standaard ingeschakeld, maar kunt somtijds interfereren met bepaalde testtools (zoals PHPUnit bijvoorbeeld) en andere CLI-gebaseerde applicaties. Als u niet hoeft te uitschakelen CLI-modus, u moeten om dit richtlijn te negeren. False = Inschakelen CLI-modus [Standaard]; True = Uitschakelen CLI-modus.
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### "disable_frontend"
-- Uitschakelen frontend toegang? Frontend toegang kan CIDRAM beter beheersbaar te maken, maar kan ook een potentieel gevaar voor de veiligheid zijn. Het is aan te raden om CIDRAM te beheren via het backend wanneer mogelijk, maar frontend toegang is hier voorzien voor wanneer het niet mogelijk is. Hebben het uitgeschakeld tenzij u het nodig hebt. False = Inschakelen frontend toegang; True = Uitschakelen frontend toegang [Standaard].
+##### "disable_frontend" `[bool]`
+- Uitschakelen frontend toegang? frontend toegang kan CIDRAM beter beheersbaar te maken, maar kan ook een potentieel gevaar voor de veiligheid zijn. Het is aan te raden om CIDRAM te beheren via het backend wanneer mogelijk, maar frontend toegang is hier voorzien voor wanneer het niet mogelijk is. Hebben het uitgeschakeld tenzij u het nodig hebt. False = Inschakelen frontend toegang; True = Uitschakelen frontend toegang [Standaard].
 
-##### "max_login_attempts"
+##### "max_login_attempts" `[int]`
 - Maximum aantal frontend-inlogpogingen. Standaard = 5.
 
-##### "frontend_log"
-- *v1: "FrontEndLog"*
+##### "frontend_log" `[string]`
 - Bestand om de frontend login pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "signatures_update_event_log"
+##### "signatures_update_event_log" `[string]`
 - Een bestand om te loggen wanneer signatures worden bijgewerkt via de frontend. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "ban_override"
-- Overrijden "forbid_on_block" wanneer "infraction_limit" wordt overschreden? Wanneer het overrijdt: Geblokkeerde verzoeken retourneert een lege pagina (template bestanden worden niet gebruikt). 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "forbid_on_block".
+##### "ban_override" `[int]`
+- Overrijden "http_response_header_code" wanneer "infraction_limit" wordt overschreden? Wanneer het overrijdt: Geblokkeerde verzoeken retourneert een lege pagina (template bestanden worden niet gebruikt). 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "http_response_header_code".
 
-##### "log_banned_ips"
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### "log_banned_ips" `[bool]`
 - Omvatten geblokkeerde verzoeken van verbannen IP-adressen in de logbestanden? True = Ja [Standaard]; False = Nee.
 
-##### "default_dns"
+##### "default_dns" `[string]`
 - Een door komma's gescheiden lijst met DNS-servers te gebruiken voor de hostnaam lookups. Standaard = "8.8.8.8,8.8.4.4" (Google DNS). WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
-*Zie ook: [Wat kan ik gebruiken voor "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### "search_engine_verification" `[string]`
+- Controles voor het verifiëren van verzoeken van zoekmachines.
 
-##### "search_engine_verification"
-- Poging om aanvragen van zoekmachines te bevestigen? Verificatie van zoekmachines zorgt ervoor dat ze niet zullen worden verbannen als gevolg van het overschrijden van de overtreding limiet (verbod op zoekmachines van uw website zal meestal een negatief effect hebben op uw zoekmachine ranking, SEO, enz). Wanneer geverifieerd, zoekmachines kunnen worden geblokkeerd als per normaal, maar zal niet worden verbannen. Wanneer niet geverifieerd, het is mogelijk dat zij worden verbannen ten gevolge van het overschrijden van de overtreding limiet. Bovendien, het verifiëren van zoekmachines biedt bescherming tegen nep-zoekmachine aanvragen en tegen de mogelijk schadelijke entiteiten vermomd als zoekmachines (dergelijke aanvragen zal worden geblokkeerd wanneer het verifiëren van zoekmachines is ingeschakeld). True = Inschakelen het verifiëren van zoekmachines [Standaard]; False = Uitschakelen het verifiëren van zoekmachines.
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-Momenteel ondersteund:
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
 
-Niet compatibel (veroorzaakt conflicten):
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-##### "social_media_verification"
-- Poging om aanvragen voor sociale media te verifiëren? Verificatie van sociale media biedt bescherming tegen nep-aanvragen voor sociale media (dergelijke aanvragen worden geblokkeerd). True = Inschakelen verificatie van sociale media [Standaard]; False = Uitschakelen verificatie van sociale media.
+##### "social_media_verification" `[string]`
+- Controles voor het verifiëren van verzoeken van sociale media platforms.
 
-Momenteel ondersteund:
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**: Vereist ASN-opzoekfunctionaliteit, b.v., van de BGPView-module._
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
 
-##### "other_verification"
-- Probeer waar mogelijk andere soorten verzoeken te verifiëren (b.v., AdSense, SEO-checkers, enz)? Als ze worden gedetecteerd, worden vervalste verzoeken geblokkeerd. True = Inschakelen [Standaard]; False = Uitschakelen.
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-Momenteel ondersteund:
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### "other_verification" `[string]`
+- Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
 
-##### "protect_frontend"
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
+
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
+
+##### "protect_frontend" `[bool]`
 - Geeft aan of de bescherming die gewoonlijk door CIDRAM is voorzien moet worden toegepast op de frontend. True = Ja [Standaard]; False = Nee.
 
-##### "maintenance_mode"
-- Inschakelen de onderhoudsmodus? True = Ja; False = Nee [Standaard]. Schakelt alles anders dan het frontend uit. Soms nuttig bij het bijwerken van uw CMS, frameworks, enz.
-
-##### "default_algo"
+##### "default_algo" `[string]`
 - Definieert welk algoritme u wilt gebruiken voor alle toekomstige wachtwoorden en sessies. Opties: PASSWORD_DEFAULT (standaard), PASSWORD_BCRYPT, PASSWORD_ARGON2I (vereist PHP >= 7.2.0), PASSWORD_ARGON2ID (vereist PHP >= 7.3.0).
 
-##### "statistics"
-- Track CIDRAM gebruiksstatistieken? True = Ja; False = Nee [Standaard].
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### "force_hostname_lookup"
+##### "statistics" `[string]`
+- Bepaalt welke statistische informatie moet worden bijgehouden.
+
+```
+statistics
+├─Blocked-IPv4 ("Verzoeken geblokkeerd – IPv4")
+├─Blocked-IPv6 ("Verzoeken geblokkeerd – IPv6")
+├─Blocked-Other ("Verzoeken geblokkeerd – Anders")
+├─Banned-IPv4 ("Verzoeken verbannen – IPv4")
+├─Banned-IPv6 ("Verzoeken verbannen – IPv6")
+├─Passed-IPv4 ("Verzoeken toegestaan – IPv4")
+├─Passed-IPv6 ("Verzoeken toegestaan – IPv6")
+├─Passed-Other ("Verzoeken toegestaan – Anders")
+├─CAPTCHAs-Failed ("CAPTCHA pogingen – {state_failed}")
+└─CAPTCHAs-Passed ("CAPTCHA pogingen – {state_passed}")
+```
+
+##### "force_hostname_lookup" `[bool]`
 - Hostname-opzoekingen afdwingen? True = Ja; False = Nee [Standaard]. Hostname-opzoekingen worden normaal uitgevoerd op basis van noodzaak, maar kan voor alle verzoeken worden gedwongen. Dit kan nuttig zijn als een middel om meer gedetailleerde informatie in de logbestanden te verstrekken, maar kan ook een licht negatief effect hebben op de prestaties.
 
-##### "allow_gethostbyaddr_lookup"
+##### "allow_gethostbyaddr_lookup" `[bool]`
 - Zoeken op gethostbyaddr toestaan als UDP niet beschikbaar is? True = Ja [Standaard]; False = Nee.
-- *Notitie: IPv6-lookup werkt mogelijk niet correct op sommige 32-bits systemen.*
 
-##### "hide_version"
-- Versleutelingsinformatie uit logs en pagina-uitvoer verbergen? True = Ja; False = Nee [Standaard].
-
-##### "empty_fields"
-- Hoe moet CIDRAM lege velden afhandelen bij het loggen en weergeven van informatie over blokgebeurtenissen? "include" = Voeg lege velden in. "omit" = Sluit lege velden uit [standaard].
-
-##### "log_sanitisation"
+##### "log_sanitisation" `[bool]`
 - Bij gebruik van de frontend logbestanden pagina om loggegevens te bekijken, CIDRAM sanitiseert de loggegevens voordat deze worden weergegeven, om gebruikers te beschermen tegen XSS-aanvallen en andere potentiële bedreigingen die logboekgegevens kunnen bevatten. Standaard echter, gegevens worden niet gesanitiseerd wanneer ze worden opgenomen. Dit is om ervoor te zorgen dat loggegevens nauwkeurig worden bewaard, om eventuele heuristische of forensische analyses te ondersteunen die in de toekomst nodig kunnen zijn. Echter, in het geval dat een gebruiker probeert om loggegevens te lezen met behulp van externe hulpmiddelen, en of die externe tools hun eigen sanitatieproces niet uitvoeren, de gebruiker kan worden blootgesteld aan XSS-aanvallen. Indien nodig kunt u het standaardgedrag wijzigen met behulp van deze configuratierichtlijn. True = Sanitiseren gegevens tijdens het opnemen (gegevens worden minder nauwkeurig bewaard, maar het XSS-risico is lager). False = Sanitiseren gegevens niet tijdens het opnemen (gegevens worden nauwkeuriger bewaard, maar het XSS-risico is hoger) [Standaard].
 
-##### "disabled_channels"
+##### "disabled_channels" `[string]`
 - Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
-- *Beschikbare opties: `GitHub,BitBucket,GoogleDNS`*
 
-##### "default_timeout"
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### "default_timeout" `[int]`
 - Standaard time-out om te gebruiken voor externe verzoeken? Standaard = 12 seconden.
 
-##### "config_imports"
+##### "config_imports" `[string]`
 - Een door komma's gescheiden lijst met bestanden die moeten worden geïmporteerd in de standaardconfiguratie van CIDRAM. Wordt doorgaans naar behoefte ingevuld door de pagina met updates bij het activeren van componenten. In de meeste gevallen kunt u het negeren.
 
-##### "events"
+##### "events" `[string]`
 - De hier vermelde bestanden worden direct na het gebeurtenishandlerbestand geladen. Wordt doorgaans naar behoefte ingevuld door de pagina met updates bij het activeren van componenten. In de meeste gevallen kunt u het negeren.
 
 #### "signatures" (Categorie)
-Configuratie voor signatures.
+Configuratie voor signatures, signatuurbestanden, modules, enz.
 
-##### "ipv4"
-- Een lijst van de IPv4 signatuurbestanden dat CIDRAM moet proberen om te gebruiken, afgebakend door komma's. U kunt items hier toevoegen Als u wilt meer IPv4 signature files in CIDRAM bevatten.
+##### "ipv4" `[string]`
+- Een lijst van de IPv4 signatuurbestanden dat CIDRAM moet proberen om te gebruiken, afgebakend door komma's.
 
-##### "ipv6"
-- Een lijst van de IPv6 signatuurbestanden dat CIDRAM moet proberen om te gebruiken, afgebakend door komma's. U kunt items hier toevoegen Als u wilt meer IPv6 signature files in CIDRAM bevatten.
+##### "ipv6" `[string]`
+- Een lijst van de IPv6 signatuurbestanden dat CIDRAM moet proberen om te gebruiken, afgebakend door komma's.
 
-##### "block_attacks"
+##### "block_attacks" `[bool]`
 - Blokkeren CIDR's die verband houden met aanvallen en ander abnormaal verkeer? B.v., poortscans, hacken, zoeken naar kwetsbaarheden, etc. Tenzij u problemen ondervindt wanneer u dit doet, in algemeen, dit moet altijd worden ingesteld op true.
 
-##### "block_cloud"
+##### "block_cloud" `[bool]`
 - Blokkeren CIDR's geïdentificeerd als behorend tot webhosting/cloud-diensten? Als u een api te bedienen vanaf uw website of als u verwacht dat andere websites aan te sluiten op uw website, dit richtlijn moet worden ingesteld op false. Als u niet, dan, dit richtlijn moet worden ingesteld op true.
 
-##### "block_bogons"
+##### "block_bogons" `[bool]`
 - Blokkeren bogon/martian CIDR's? Als u verwacht aansluitingen om uw website vanuit uw lokale netwerk, vanuit localhost, of vanuit uw LAN, dit richtlijn moet worden ingesteld op false. Als u niet verwacht deze aansluitingen, dit richtlijn moet worden ingesteld op true.
 
-##### "block_generic"
+##### "block_generic" `[bool]`
 - Blokkeren CIDR's algemeen aanbevolen voor blacklisting? Dit omvat alle signatures die niet zijn gemarkeerd als onderdeel van elke van de andere, meer specifieke signature categorieën.
 
-##### "block_legal"
+##### "block_legal" `[bool]`
 - Blokkeren CIDR's als reactie op wettelijke verplichtingen? Dit richtlijn zou normaal gesproken geen effect moeten hebben, omdat CIDRAM als standaard geen CIDR's met "wettelijke verplichtingen" associeert, maar het bestaat niettemin als een extra beheersmaatregel ten behoeve van eventuele aangepaste signatuurbestanden of modules die mogelijk bestaan om wettelijke redenen.
 
-##### "block_malware"
+##### "block_malware" `[bool]`
 - Blokkeren CIDR's die zijn gekoppeld aan malware? Dit omvat C&C-servers, geïnfecteerde machines, machines die betrokken zijn bij de distributie van malware, enz.
 
-##### "block_proxies"
+##### "block_proxies" `[bool]`
 - Blokkeren CIDR's geïdentificeerd als behorend tot proxy-services of VPN's? Als u vereisen dat gebruikers kan toegang tot uw website van proxy-services en VPN's, dit richtlijn moet worden ingesteld op false. Anders, als u geen proxy-services of VPN's nodig, dit richtlijn moet worden ingesteld op true als een middel ter verbetering van de beveiliging.
 
-##### "block_spam"
+##### "block_spam" `[bool]`
 - Blokkeren CIDR's geïdentificeerd als zijnde hoog risico voor spam? Tenzij u problemen ondervindt wanneer u dit doet, in algemeen, dit moet altijd worden ingesteld op true.
 
-##### "modules"
+##### "modules" `[string]`
 - Een lijst van module bestanden te laden na verwerking van de IPv4/IPv6 signatures, afgebakend door komma's.
 
-##### "default_tracktime"
+##### "default_tracktime" `[int]`
 - Hoeveel seconden om IP's verbannen door modules te volgen. Standaard = 604800 (1 week).
 
-##### "infraction_limit"
+##### "infraction_limit" `[int]`
 - Maximum aantal overtredingen een IP mag worden gesteld voordat hij wordt verbannen door IP-tracking. Standaard = 10.
 
-##### "track_mode"
-- Wanneer moet overtredingen worden gerekend? False = Wanneer IP's geblokkeerd door modules worden. True = Wanneer IP's om welke reden geblokkeerd worden. Standaard = False.
-
-##### "tracking_override"
+##### "tracking_override" `[bool]`
 - Moeten modules worden toegestaan om opties voor tracking te overschrijven? True = Ja [Standaard]; False = Nee.
 
-#### "recaptcha" en "hcaptcha" (deze twee categorieën geven dezelfde richtlijnen).
-Als je wilt, kun je gebruikers een CAPTCHA-uitdaging aanbieden om ze te onderscheiden van bots of om ze weer toegang te geven als ze worden geblokkeerd. Dit kan helpen om false positives te verminderen en ongewenst geautomatiseerd verkeer te verminderen.
+#### "recaptcha" (Categorie)
+Configuratie voor ReCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
-*Opmerking: CAPTCHA's bieden alleen bescherming tegen computeroproepen, niet tegen menselijke aanvallers.*
-
-U kunt hier een "site key" en een "secret key" voor reCAPTCHA verkrijgen:
-- https://developers.google.com/recaptcha/
-
-U kunt hier een "site key" en een "secret key" voor hCAPTCHA verkrijgen:
-- https://www.hcaptcha.com/
-
-##### "usemode"
+##### "usemode" `[int]`
 - Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen.
 
-Waarde | Beschrijving
---:|:--
-1 | Alleen wanneer geblokkeerd, binnen de signatures limiet, en niet verbannen.
-2 | Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.
-3 | Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).
-4 | Alleen wanneer niet geblokkeerd.
-5 | Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.
-Elke andere waarde. | Nooit!
+```
+usemode
+├─0 (Nooit !!!)
+├─1 (Alleen wanneer geblokkeerd, binnen de signatures limiet, en niet verbannen.)
+├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
+├─4 (Alleen wanneer niet geblokkeerd.)
+└─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+```
 
-##### "lockip"
-- Geeft aan of hashes moeten worden vergrendeld om specifieke IP's. False = Cookies en hashes KAN worden gebruikt voor meerdere IP-adressen (standaard). True = Cookies en hashes kan NIET worden gebruikt voor meerdere IP-adressen (cookies/hashes worden vergrendeld om IP's).
-- Notitie: "lockip" waarde wordt genegeerd als "lockuser" is false, te wijten aan dat het mechanisme voor het onthouden van "gebruikers" verschilt afhankelijk van deze waarde.
+##### "lockip" `[bool]`
+- Binden CAPTCHA om IP's?
 
-##### "lockuser"
-- Geeft aan of het succesvol afronden van een reCAPTCHA/hCAPTCHA instantie moet worden vergrendeld om specifieke gebruikers. False = Succesvolle afronding van een reCAPTCHA/hCAPTCHA instantie zal het verlenen van de toegang tot alle verzoeken die afkomstig zijn van hetzelfde IP als die gebruikt wordt door de gebruiker het invullen van de reCAPTCHA/hCAPTCHA instantie; Cookies en hashes worden niet gebruikt; In plaats daarvan zal een IP whitelist worden gebruikt. True = Succesvolle afronding van een reCAPTCHA/hCAPTCHA instantie zal alleen toegang tot de gebruiker te verlenen het invullen van de reCAPTCHA/hCAPTCHA instantie; Cookies en hashes worden gebruikt om de gebruiker te herinneren; Een IP whitelist wordt niet gebruikt (standaard).
+##### "lockuser" `[bool]`
+- Binden CAPTCHA om gebruikers?
 
-##### "sitekey"
+##### "sitekey" `[string]`
 - Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
 
-##### "secret"
+Zie ook:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "secret" `[string]`
 - Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
 
-##### "expiry"
+Zie ook:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "expiry" `[float]`
 - Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
-*Handige tip: Als u wil, u kunt datum/tijd informatie toevoegen om de namen van uw logbestanden door deze op in naam inclusief: `{yyyy}` voor volledige jaar, `{yy}` voor verkorte jaar, `{mm}` voor maand, `{dd}` voor dag, `{hh}` voor het uur.*
-
-*Voorbeelden:*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "signature_limit"
+##### "signature_limit" `[int]`
 - Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
 
-##### "api"
+##### "api" `[string]`
 - Welke API gebruiken?
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (Selectievakje)")
+└─Invisible ("V2 (Onzichtbaar)")
 ```
 
-*Opmerking voor gebruikers in de Europese Unie: Wanneer CIDRAM is geconfigureerd om cookies te gebruiken (b.v., wanneer "lockuser" true/waar is), een cookie-waarschuwing wordt prominent op de pagina weergegeven volgens de vereisten van de [EU-cookiewetgeving](https://www.cookielaw.org/the-cookie-law/). Maar, bij het gebruik van de invisible API probeert CIDRAM automatisch de CAPTCHA voor de gebruiker te voltooien, en wanneer dit lukt, kan dit ertoe leiden dat de pagina opnieuw wordt geladen en een cookie wordt gemaakt zonder dat de gebruiker voldoende tijd krijgt om de cookie-waarschuwing daadwerkelijk te zien.*
-
-##### "show_cookie_warning"
+##### "show_cookie_warning" `[bool]`
 - Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
 
-*Deze configuratierichtlijn is op verzoek toegevoegd voor gebruikers die de cookiewaarschuwing willen uitschakelen die meestal weergegeven naast CAPTCHA's (b.v., om te helpen elke indicatie te verbergen dat CIDRAM wordt gebruikt). Ik adviseer ten sterkste echter dat de meeste gebruikers (met name die in de EU) deze ingeschakeld houden.*
-
-##### "show_api_message"
+##### "show_api_message" `[bool]`
 - API-bericht weergeven? True = Ja [Standaard]; False = Nee.
 
-*Dit verwijst naar alle aanvullende, niet-essentiële berichten die worden weergegeven wanneer een verzoek wordt geblokkeerd, behalve de cookiewaarschuwing.*
-
-##### "nonblocked_status_code"
+##### "nonblocked_status_code" `[int]`
 - Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
 
-Momenteel ondersteunde waarden:
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-Status code | Status bericht
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### "hcaptcha" (Categorie)
+Configuratie voor HCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
-#### "legal" (Category)
-Configuratie met betrekking tot wettelijke vereisten.
+##### "usemode" `[int]`
+- Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen.
 
-*Voor meer informatie over wettelijke vereisten en hoe dit uw configuratie-eisen kan beïnvloeden, zie het sectie "[LEGALE INFORMATIE](#SECTION11)" van de documentatie.*
+```
+usemode
+├─0 (Nooit !!!)
+├─1 (Alleen wanneer geblokkeerd, binnen de signatures limiet, en niet verbannen.)
+├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
+├─4 (Alleen wanneer niet geblokkeerd.)
+└─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+```
 
-##### "pseudonymise_ip_addresses"
+##### "lockip" `[bool]`
+- Binden CAPTCHA om IP's?
+
+##### "lockuser" `[bool]`
+- Binden CAPTCHA om gebruikers?
+
+##### "sitekey" `[string]`
+- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "secret" `[string]`
+- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "expiry" `[float]`
+- Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
+
+##### "logfile" `[string]`
+- Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
+
+##### "signature_limit" `[int]`
+- Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
+
+##### "api" `[string]`
+- Welke API gebruiken?
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (Onzichtbaar)")
+```
+
+##### "show_cookie_warning" `[bool]`
+- Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
+
+##### "show_api_message" `[bool]`
+- API-bericht weergeven? True = Ja [Standaard]; False = Nee.
+
+##### "nonblocked_status_code" `[int]`
+- Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
+
+#### "legal" (Categorie)
+Configuratie voor wettelijke vereisten.
+
+##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonimiseren de IP-adressen bij het schrijven van logbestanden? True = Ja [Standaard]; False = Nee.
 
-##### "omit_ip"
-- IP-adressen uit logbestanden weglaten? True = Ja; False = Nee [Standaard]. Opmerking: "pseudonymise_ip_addresses" wordt overbodig zijn wanneer "omit_ip" "true" is.
-
-##### "omit_hostname"
-- Hostnamen uit logbestanden weglaten? True = Ja; False = Nee [Standaard].
-
-##### "omit_ua"
-- Gebruikersagenten uit logbestanden weglaten? True = Ja; False = Nee [Standaard].
-
-##### "privacy_policy"
+##### "privacy_policy" `[string]`
 - Het adres van een relevant privacybeleid dat moet worden weergegeven in de voettekst van eventuele gegenereerde pagina's. Geef een URL, of laat leeg om uit te schakelen.
 
 #### "template_data" (Categorie)
-Richtlijnen/Variabelen voor sjablonen en thema's.
+Configuratie voor sjablonen en thema's.
 
-Betreft de HTML-uitvoer gebruikt om de "Toegang Geweigerd" pagina te genereren. Als u gebruik aangepaste thema's voor CIDRAM, HTML-uitvoer is afkomstig van de `template_custom.html` bestand, en alternatief, HTML-uitvoer is afkomstig van de `template.html` bestand. Variabelen geschreven om dit sectie van het configuratiebestand worden geïnterpreteerd aan de HTML-uitvoer door middel van het vervangen van variabelennamen omringd door accolades gevonden binnen de HTML-uitvoer met de bijbehorende variabele gegevens. Bijvoorbeeld, waar `foo="bar"`, elk geval van `<p>{foo}</p>` gevonden binnen de HTML-uitvoer `<p>bar</p>` zal worden.
-
-##### "theme"
+##### "theme" `[string]`
 - Standaard thema om te gebruiken voor CIDRAM.
 
-##### "magnification"
-- *v1: "Magnification"*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Anders
+```
+
+##### "magnification" `[float]`
 - Lettergrootte vergroting. Standaard = 1.
 
-##### "css_url"
-- De sjabloonbestand voor aangepaste thema's maakt gebruik van externe CSS-eigenschappen, terwijl de sjabloonbestand voor het standaardthema maakt gebruik van interne CSS-eigenschappen. Om CIDRAM instrueren om de sjabloonbestand voor aangepaste thema's te gebruiken, geef het openbare HTTP-adres van uw aangepaste thema's CSS-bestanden via de `css_url` variabele. Als u dit variabele leeg laat, CIDRAM zal de sjabloonbestand voor de standaardthema te gebruiken.
+##### "css_url" `[string]`
+- CSS-bestand URL voor aangepaste thema's.
+
+##### "block_event_title" `[string]`
+- De paginatitel die moet worden weergegeven voor blokgebeurtenissen.
+
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…Anders
+```
+
+##### "captcha_title" `[string]`
+- De paginatitel die moet worden weergegeven voor CAPTCHA-verzoeken.
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…Anders
+```
 
 #### "PHPMailer" (Categorie)
-PHPMailer-configuratie.
+Configuratie voor PHPMailer (gebruikt voor tweefactorauthenticatie).
 
-Op dit moment gebruikt CIDRAM alleen PHPMailer voor front-end two-factor authenticatie. Als u de front-end niet gebruikt, of als u geen twee-factorenauthenticatie gebruikt voor de front-end, kunt u deze richtlijnen negeren.
-
-##### "event_log"
-- *v1: "EventLog"*
+##### "event_log" `[string]`
 - Een bestand voor het loggen van alle evenementen met betrekking tot PHPMailer. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-##### "skip_auth_process"
-- *v1: "SkipAuthProcess"*
+##### "skip_auth_process" `[bool]`
 - Wanneer `true`, geeft PHPMailer opdracht om het verificatieproces over te slaan dat normaal optreedt bij het verzenden van e-mail via SMTP. Dit moet worden vermeden, omdat bij het overslaan van dit verificatieproces uitgaande e-mail aan MITM-aanvallen kan worden blootgesteld, maar kan nodig zijn in gevallen waarin dit verificatieproces verhindert dat PHPMailer verbinding maakt met een SMTP-server.
 
-##### "enable_two_factor"
-- *v1: "Enable2FA"*
+##### "enable_two_factor" `[bool]`
 - Deze richtlijn bepaalt of 2FA wordt gebruikt voor frontend-accounts.
 
-##### "host"
-- *v1: "Host"*
+##### "host" `[string]`
 - De SMTP-host dat moet worden gebruikt voor uitgaande e-mail.
 
-##### "port"
-- *v1: "Port"*
+##### "port" `[int]`
 - Het poortnummer dat moet worden gebruikt voor uitgaande e-mail. Standaard = 587.
 
-##### "smtp_secure"
-- *v1: "SMTPSecure"*
+##### "smtp_secure" `[string]`
 - Het protocol voor het verzenden van e-mail via SMTP (TLS of SSL).
 
-##### "smtp_auth"
-- *v1: "SMTPAuth"*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### "smtp_auth" `[bool]`
 - Deze richtlijn bepaalt of SMTP-sessies moeten worden geverifieerd (moet meestal alleen worden gelaten).
 
-##### "username"
-- *v1: "Username"*
+##### "username" `[string]`
 - De gebruikersnaam voor het verzenden van e-mail via SMTP.
 
-##### "password"
-- *v1: "Password"*
+##### "password" `[string]`
 - Het wachtwoord voor het verzenden van e-mail via SMTP.
 
-##### "set_from_address"
-- *v1: "setFromAddress"*
+##### "set_from_address" `[string]`
 - Het afzenderadres voor het verzenden van e-mail via SMTP.
 
-##### "set_from_name"
-- *v1: "setFromName"*
+##### "set_from_name" `[string]`
 - De naam van de afzender voor het verzenden van e-mail via SMTP.
 
-##### "add_reply_to_address"
-- *v1: "addReplyToAddress"*
+##### "add_reply_to_address" `[string]`
 - Het antwoordadres voor het verzenden van e-mail via SMTP.
 
-##### "add_reply_to_name"
-- *v1: "addReplyToName"*
+##### "add_reply_to_name" `[string]`
 - De antwoordnaam voor het verzenden van e-mail via SMTP.
 
 #### "rate_limiting" (Categorie)
-Optionele configuratie-instructies voor tarieflimiet.
+Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
 
-Deze functie is geïmplementeerd in CIDRAM omdat deze door voldoende gebruikers is aangevraagd om de implementatie te rechtvaardigen. Omdat het echter enigszins buiten de reikwijdte van het oorspronkelijk bedoelde doel voor CIDRAM, zal het waarschijnlijk niet nodig zijn voor de meeste gebruikers. Als u specifiek CIDRAM nodig hebt om de tarieflimiet voor uw website te handelen, kan deze functie nuttig voor u zijn. Er zijn echter enkele belangrijke zaken die u moet overwegen:
-- Deze functie werkt, net als alle andere CIDRAM-functies, alleen voor pagina's die worden beschermd door CIDRAM. Daarom kunnen website assets die niet specifiek via CIDRAM worden gerouteerd, niet worden beperkt door CIDRAM.
-- Als u een servermodule, cPanel, of een andere netwerktool kunt gebruiken om tarieflimiet af te dwingen, is het beter om die te gebruiken voor tarieflimiet in plaats van CIDRAM.
-- Als een bepaalde gebruiker graag toegang blijft houden tot uw website nadat hij tarieflimiet is, in de meeste gevallen is het voor hen heel gemakkelijk om tarieflimiet te omzeilen (b.v., als ze hun IP-adres wijzigen, of als ze een proxy of VPN gebruiken, en ervan uitgaande dat u CIDRAM hebt geconfigureerd om geen proxy's en VPN's te blokkeren, of dat CIDRAM niet op de hoogte is van de proxy of VPN die ze gebruiken).
-- Tarieflimiet kan erg vervelend zijn voor echte, eindgebruikers. Het kan nodig zijn als uw beschikbare bandbreedte zeer beperkt is, en als u ontdekt dat er bepaalde specifieke verkeersbronnen zijn, die niet al op andere wijze zijn geblokkeerd, die het grootste deel van uw beschikbare bandbreedte verbruiken. Als dit echter niet nodig is, moet dit waarschijnlijk worden vermeden.
-- U loopt af en toe het risico legitieme gebruikers of uzelf te blokkeren.
-
-Als u vindt dat u CIDRAM niet nodig hebt om tarieflimiet voor uw website af te dwingen, houd dan de onderstaande richtlijnen als hun standaardwaarden. Anders kunt u hun waarden aanpassen aan uw behoeften.
-
-##### "max_bandwidth"
+##### "max_bandwidth" `[string]`
 - De maximale hoeveelheid toegestane bandbreedte binnen de toeslagperiode voordat tarieflimiet voor toekomstige verzoeken wordt ingeschakeld. Een waarde van 0 schakelt dit type tarieflimiet uit. Standaard = 0KB.
 
-##### "max_requests"
+##### "max_requests" `[int]`
 - Het maximale aantal toegestane verzoeken binnen de toeslagperiode voordat de tarieflimiet voor toekomstige verzoeken wordt ingeschakeld. Een waarde van 0 schakelt dit type tarieflimiet uit. Standaard = 0.
 
-##### "precision_ipv4"
+##### "precision_ipv4" `[int]`
 - De precisie om te gebruiken bij het monitoren op het gebruik van IPv4. Waarde weerspiegelt de CIDR-blokgrootte. Stel in op 32 voor de beste precisie. Standaard = 32.
 
-##### "precision_ipv6"
+##### "precision_ipv6" `[int]`
 - De precisie om te gebruiken bij het monitoren op het gebruik van IPv6. Waarde weerspiegelt de CIDR-blokgrootte. Stel in op 128 voor de beste precisie. Standaard = 128.
 
-##### "allowance_period"
+##### "allowance_period" `[float]`
 - Het aantal uren om het gebruik te controleren. Standaard = 0.
 
-##### "exceptions"
+##### "exceptions" `[string]`
 - Excepties (d.w.z., verzoeken die moet niet worden beperkt). Alleen relevant wanneer tarieflimiet is ingeschakeld.
-- *Beschikbare opties: `Whitelisted,Verified`*
+
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
 #### "supplementary_cache_options" (Categorie)
-Aanvullende cache-opties.
+Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u uitgelogd.
 
-##### "prefix"
-- De hier opgegeven waarde wordt toegevoegd aan alle cache-invoersleutels. Standaard leeg. Als er meerdere installaties op dezelfde server staan, dit kan handig zijn om hun caches gescheiden van elkaar te houden.
+##### "prefix" `[string]`
+- De hier opgegeven waarde wordt toegevoegd aan alle cache-invoersleutels. Standaard = "CIDRAM_". Als er meerdere installaties op dezelfde server staan, dit kan handig zijn om hun caches gescheiden van elkaar te houden.
 
-##### "enable_apcu"
-- Dit geeft aan of APCu moet worden gebruikt voor caching. Standaard = False.
+##### "enable_apcu" `[bool]`
+- Dit geeft aan of APCu moet worden gebruikt voor caching. Standaard = True.
 
-##### "enable_memcached"
+##### "enable_memcached" `[bool]`
 - Dit geeft aan of Memcached moet worden gebruikt voor caching. Standaard = False.
 
-##### "enable_redis"
+##### "enable_redis" `[bool]`
 - Dit geeft aan of Redis moet worden gebruikt voor caching. Standaard = False.
 
-##### "enable_pdo"
+##### "enable_pdo" `[bool]`
 - Dit geeft aan of PDO moet worden gebruikt voor caching. Standaard = False.
 
-##### "memcached_host"
+##### "memcached_host" `[string]`
 - Memcached hostwaarde. Standaard = "localhost".
 
-##### "memcached_port"
+##### "memcached_port" `[int]`
 - Memcached poortwaarde. Standaard = "11211".
 
-##### "redis_host"
+##### "redis_host" `[string]`
 - Redis hostwaarde. Standaard = "localhost".
 
-##### "redis_port"
+##### "redis_port" `[int]`
 - Redis poortwaarde. Standaard = "6379".
 
-##### "redis_timeout"
+##### "redis_timeout" `[float]`
 - Redis timeoutwaarde. Standaard = "2.5".
 
-##### "pdo_dsn"
-- PDO DSN-waarde. Standaard = "`mysql:dbname=cidram;host=localhost;port=3306`".
+##### "pdo_dsn" `[string]`
+- PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
 
-*Zie ook: [Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?](#HOW_TO_USE_PDO)*
-
-##### "pdo_username"
+##### "pdo_username" `[string]`
 - PDO gebruikersnaam.
 
-##### "pdo_password"
+##### "pdo_password" `[string]`
 - PDO wachtwoord.
 
 ---
@@ -1983,4 +2251,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 20 Februari 2022 (2022.02.20).
+Laatste Bijgewerkt: 25 Maart 2022 (2022.03.25).

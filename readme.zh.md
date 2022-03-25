@@ -317,680 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 下列是一个列表的变量发现在`config.ini`配置文件的CIDRAM，​以及一个说明的他们的目的和功能。
 
 ```
-Configuration (v2)
+配置 (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### “general” （类别）
-基本CIDRAM配置。
+基本配置（任何不属于其他类别的核心配置）。
 
-##### “logfile”
+##### “logfile” `[string]`
 - 人类可读文件用于记录所有被拦截的访问。​指定一个文件名，​或留空以禁用。
 
-##### “logfile_apache”
-- *v1: “logfileApache”*
+##### “logfile_apache” `[string]`
 - Apache风格文件用于记录所有被拦截的访问。​指定一个文件名，​或留空以禁用。
 
-##### “logfile_serialized”
-- *v1: “logfileSerialized”*
+##### “logfile_serialized” `[string]`
 - 连载的文件用于记录所有被拦截的访问。​指定一个文件名，​或留空以禁用。
 
-*有用的建议：如果您想，​可以追加日期/时间信息至附加到您的日志文件的名称通过包括这些中的名称：`{yyyy}` 为今年完整，​`{yy}` 为今年缩写，​`{mm}` 为今月，​`{dd}` 为今日，​`{hh}` 为今小时。​*
-
-*例子：*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### “error_log”
+##### “error_log” `[string]`
 - 用于记录检测到的任何非致命错误的文件。​指定一个文件名，​或留空以禁用。
 
-##### “error_log_stages”
-- 执行链中应该记录错误的阶段列表。
-- *标准： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### “stages” `[string]`
+- 用于执行链的各个阶段的控件（是否启用，是否记录错误，等等）。
 
-##### “truncate”
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### “fields” `[string]`
+- 用于阻止事件的字段控件（当请求被阻止时）。
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### “truncate” `[string]`
 - 截断日志文件当他们达到一定的大小吗？​值是在B/KB/MB/GB/TB，​是日志文件允许的最大大小直到它被截断。​默认值为“0KB”将禁用截断（日志文件可以无限成长）。​注意：适用于单个日志文件！​日志文件大小不被算集体的。
 
-##### “log_rotation_limit”
+##### “log_rotation_limit” `[int]`
 - 日志轮转限制了任何时候应该存在的日志文件的数量。​当新的日志文件被创建时，如果日志文件的指定的最大数量已经超过，将执行指定的操作。​您可以在此指定所需的限制。​值为“0”将禁用日志轮转。
 
-##### “log_rotation_action”
+##### “log_rotation_action” `[string]`
 - 日志轮转限制了任何时候应该存在的日志文件的数量。​当新的日志文件被创建时，如果日志文件的指定的最大数量已经超过，将执行指定的操作。​您可以在此处指定所需的操作。​“Delete”=删除最旧的日志文件，直到不再超出限制。​“Archive”=首先归档，然后删除最旧的日志文件，直到不再超出限制。
 
-*技术澄清：在这种情况下，“最旧”意味着“不是最近被修改”。*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### “timezone”
-- 这用于指定CIDRAM应用于日期/时间操作的时区。​如果您不需要它，请忽略它。​可能的值由PHP确定。​它一般建议，​而不是，​调整时区指令的文件`php.ini`，​但是有时（例如，​当利用有限的共享主机提供商）这并不总是可能做到，​所以，​此选项在这里是提供。
+##### “timezone” `[string]`
+- 这用于指定要使用的时区​（例如，Africa/Cairo，America/New_York，Asia/Tokyo，Australia/Perth，Europe/Berlin，Pacific/Guam，等等）。​指定“SYSTEM”使PHP自动为您处理。
 
-##### “time_offset”
-- *v1: “timeOffset”*
-- 如果您的服务器时间不符合您的本地时间，​您可以在这里指定的偏移调整日期/时间信息该产生通过CIDRAM根据您的需要。​它一般建议，​而不是，​调整时区指令的文件`php.ini`，​但是有时（例如，​当利用有限的共享主机提供商）这并不总是可能做到，​所以，​此选项在这里是提供。​偏移量是在分钟。
-- 例子（添加1小时）：`time_offset=60`
+```
+timezone
+├─SYSTEM ("使用系统默认时区。")
+├─UTC ("UTC")
+└─…其他
+```
 
-##### “time_format”
-- *v1: “timeFormat”*
-- CIDRAM使用的日期符号格式。​标准 = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`。
+##### “time_offset” `[int]`
+- 时区偏移量（分钟）。
 
-##### “ipaddr”
-- 在哪里可以找到连接请求IP地址？​（可以使用为服务例如Cloudflare和类似）。​标准=REMOTE_ADDR。​警告：不要修改此除非您知道什么您做着！
+##### “time_format” `[string]`
+- CIDRAM使用的日期符号格式。​可根据要求增加附加选项。
 
-“ipaddr”的推荐值：
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…其他
+```
 
-值 | 运用
----|---
-`HTTP_INCAP_CLIENT_IP` | Incapsula反向代理。
-`HTTP_CF_CONNECTING_IP` | Cloudflare反向代理。
-`CF-Connecting-IP` | Cloudflare反向代理（替代；如果另一个不工作）。
-`HTTP_X_FORWARDED_FOR` | Cloudbric反向代理。
-`X-Forwarded-For` | [Squid反向代理](http://www.squid-cache.org/Doc/config/forwarded_for/)。
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*由服务器配置定义。​* | [Nginx反向代理](https://www.nginx.com/resources/admin-guide/reverse-proxy/)。
-`REMOTE_ADDR` | 没有反向代理（默认值）。
+##### “ipaddr” `[string]`
+- 在哪里可以找到连接请求IP地址？​（可以使用为服务例如Cloudflare和类似）。​标准 = REMOTE_ADDR。​警告：不要修改此除非您知道什么您做着！
 
-##### “forbid_on_block”
-- 阻止请求时，CIDRAM应发送哪个HTTP状态消息？
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (标准)")
+└─…其他
+```
 
-目前支持的值：
+也可以看看：
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-状态码 | 状态消息 | 描述
----|---|---
-`200` | `200 OK` | 默认值。​最不强大，但对用户最友善。
-`403` | `403 Forbidden` | 更强大，和对用户有点友善。
-`410` | `410 Gone` | 某些浏览器会缓存此状态消息，并且不会再发送请求，即使用户未被阻止。​这可能会导致很难解决假阳性。​但为减少某些特定类型的漫游器的请求的它可能比其他选项更有效。
-`418` | `418 I'm a teapot` | 这实际上引用了愚人节的笑话【[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)】，而客户不太可能理解它。​提供了为娱乐和方便的，但一般不推荐。
-`451` | `Unavailable For Legal Reasons` | 主要出于法律原因阻止请求时适用于上下文。​不建议在其他情况下。
-`503` | `Service Unavailable` | 最强大，但对用户最不友善。
+##### “http_response_header_code” `[int]`
+- 阻止请求时，CIDRAM应发送哪个HTTP状态消息？ （请参阅文档以获取更多信息）。
 
-##### “silent_mode”
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### “silent_mode” `[string]`
 - CIDRAM应该默默重定向被拦截的访问而不是显示该“拒绝访问”页吗？​指定位置至重定向被拦截的访问，​或让它空将其禁用。
 
-##### “lang”
+##### “lang” `[string]`
 - 指定标准CIDRAM语言。
 
-##### “lang_override”
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### “lang_override” `[bool]`
 - 尽可能根据HTTP_ACCEPT_LANGUAGE进行本地化？True（真）=进行本地化【标准】；False（假）=不要本地化。
 
-##### “numbers”
-- 指定如何显示数字。
+##### “numbers” `[string]`
+- 您如何喜欢显示数字？​选择最适合示例。
 
-目前支持的值：
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-值 | 产生 | 描述
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | 默认值。
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*注意：​这些值在任何地方都不是标准化的，并超出包裹且可能不会相关性。​此外，支持的值可能会在未来发生变化。*
-
-##### “emailaddr”
+##### “emailaddr” `[string]`
 - 如果您希望，​您可以提供电子邮件地址这里要给予用户当他们被阻止，​他们使用作为接触点为支持和/或帮助在的情况下他们错误地阻止。​警告:您提供的任何电子邮件地址，​它肯定会被获得通过垃圾邮件机器人和铲运机，​所以，​它强烈推荐如果选择提供一个电子邮件地址这里，​您保证它是一次性的和/或不是很重要（换一种说法，​您可能不希望使用您的主电子邮件地址或您的企业电子邮件地址）。
 
-##### “emailaddr_display_style”
-- 您希望如何将电子邮件地址呈现给用户？ “default” = 可点击的链接。 “noclick” = 不可点击的文字。
+##### “emailaddr_display_style” `[string]`
+- 您希望如何将电子邮件地址呈现给用户？
 
-##### “disable_cli”
-- *（从v2已被删除）。*
-- 关闭CLI模式吗？​CLI模式是按说激活作为标准，​但可以有时干扰某些测试工具（例如PHPUnit，​为例子）和其他基于CLI应用。​如果您没有需要关闭CLI模式，​您应该忽略这个指令。​False（假）=激活CLI模式【标准】；​True（真）=关闭CLI模式。
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### “disable_frontend”
-- 关闭前端访问吗？​前端访问可以使CIDRAM更易于管理，​但也可能是潜在的安全风险。​建议管理CIDRAM通过后端只要有可能，​但前端访问提供当不可能。​保持关闭除非您需要它。​False（假）=激活前端访问；​True（真）=关闭前端访问【标准】。
+##### “disable_frontend” `[bool]`
+- 关闭前端访问吗？​前端访问可以使CIDRAM更易于管理，​但也可能是潜在的安全风险。​建议管理CIDRAM通过后端只要有可能，​但前端访问提供当不可能。​保持关闭除非您需要它。​False（假）=激活前端访问；True（真）=关闭前端访问【标准】。
 
-##### “max_login_attempts”
+##### “max_login_attempts” `[int]`
 - 最大前端登录尝试次数。​标准=5。
 
-##### “frontend_log”
-- *v1: “FrontEndLog”*
+##### “frontend_log” `[string]`
 - 前端登录尝试的录音文件。​指定一个文件名，​或留空以禁用。
 
-##### “signatures_update_event_log”
+##### “signatures_update_event_log” `[string]`
 - 通过前端更新签名时用于记录的文件。​指定一个文件名，​或留空以禁用。
 
-##### “ban_override”
-- 覆盖“forbid_on_block”当“infraction_limit”已被超过？​当覆盖：已阻止的请求返回一个空白页（不使用模板文件）。​200 = 不要覆盖【标准】。​其他值与“forbid_on_block”的可用值相同。
+##### “ban_override” `[int]`
+- 覆盖“http_response_header_code”当“infraction_limit”已被超过？​当覆盖：已阻止的请求返回一个空白页（不使用模板文件）。​200 = 不要覆盖【标准】。​其他值与“http_response_header_code”的可用值相同。
 
-##### “log_banned_ips”
-- 包括IP禁止从阻止请求在日志文件吗？​True（真）=是【标准】；​False（假）=不是。
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-##### “default_dns”
+##### “log_banned_ips” `[bool]`
+- 包括IP禁止从阻止请求在日志文件吗？​True（真）=是【标准】；False（假）=不是。
+
+##### “default_dns” `[string]`
 - 以逗号分隔的DNS服务器列表，​用于主机名查找。​标准 = “8.8.8.8,8.8.4.4” (Google DNS)。​警告：不要修改此除非您知道什么您做着！
 
-*也可以看看：​[在“default_dns”中我可以使用什么？](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### “search_engine_verification” `[string]`
+- 用于验证来自搜索引擎的请求的控件。
 
-##### “search_engine_verification”
-- 尝试验证来自搜索引擎的请求？​验证搜索引擎确保他们不会因超过违规限制而被禁止 （禁止在您的网站上使用搜索引擎通常会有产生负面影响对您的搜索引擎排名，​SEO，​等等）。​当被验证，​搜索引擎可以被阻止，​但不会被禁止。​当不被验证，​他们可以由于超过违规限制而被禁止。​另外，​搜索引擎验证提供保护针对假搜索引擎请求和针对潜在的恶意实体伪装成搜索引擎（当搜索引擎验证是启用，​这些请求将被阻止）。​True（真）=搜索引擎验证是启用【标准】；​False（假）=搜索引擎验证是禁用。
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-目前支持：
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-不兼容（导致冲突）：
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-##### “social_media_verification”
-- 尝试验证社交媒体请求？​社交媒体验证可以防止虚假社交媒体请求（此类请求将被阻止）。​True（真）=启用社交媒体验证【标准】；​False（假）=禁用社交媒体验证。
+##### “social_media_verification” `[string]`
+- 用于验证来自社交媒体平台的请求的控件。
 
-目前支持：
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**： 需要ASN查找功能，例如从BGPView模块。_
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-##### “other_verification”
-- 若有可能，尝试验证其他类型的请求（例如，AdSense，SEO检查器，等等）？​当检测到时，伪造的请求将被阻止。​True（真）=启用【标准】；​False（假）=禁用。
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-目前支持：
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### “other_verification” `[string]`
+- 用于在可能的情况下，验证其他类型的请求的控件。
 
-##### “protect_frontend”
-- 指定是否应将CIDRAM通常提供的保护应用于前端。​True（真）=是【标准】；​False（假）=不是。
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
 
-##### “maintenance_mode”
-- 启用维护模式？​True（真）=关闭；​False（假）=不关闭【标准】。​它停用一切以外前端。​有时候在更新CMS，框架，等时有用。
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-##### “default_algo”
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+##### “protect_frontend” `[bool]`
+- 指定是否应将CIDRAM通常提供的保护应用于前端。​True（真）=是【标准】；False（假）=不是。
+
+##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。​选项：​PASSWORD_DEFAULT（标准），​PASSWORD_BCRYPT，​PASSWORD_ARGON2I（需要PHP >= 7.2.0），​PASSWORD_ARGON2ID（需要PHP >= 7.3.0）。
 
-##### “statistics”
-- 跟踪CIDRAM使用情况统计？​True（真）=跟踪；False（假）=不跟踪【标准】。
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### “force_hostname_lookup”
+##### “statistics” `[string]`
+- 控制要跟踪的统计信息。
+
+```
+statistics
+├─Blocked-IPv4 ("请求已阻止 – IPv4")
+├─Blocked-IPv6 ("请求已阻止 – IPv6")
+├─Blocked-Other ("请求已阻止 – 其他")
+├─Banned-IPv4 ("请求已禁止 – IPv4")
+├─Banned-IPv6 ("请求已禁止 – IPv6")
+├─Passed-IPv4 ("允许的请求 – IPv4")
+├─Passed-IPv6 ("允许的请求 – IPv6")
+├─Passed-Other ("允许的请求 – 其他")
+├─CAPTCHAs-Failed ("CAPTCHA尝试 – {state_failed}")
+└─CAPTCHAs-Passed ("CAPTCHA尝试 – {state_passed}")
+```
+
+##### “force_hostname_lookup” `[bool]`
 - 强制主机名查找？​True（真）=跟踪；False（假）=不跟踪【标准】。​主机名查询通常在“根据需要”的基础上执行，但可以在所有请求上强制。​这可能会有助于提供日志文件中更详细的信息，但也可能会对性能产生轻微的负面影响。
 
-##### “allow_gethostbyaddr_lookup”
+##### “allow_gethostbyaddr_lookup” `[bool]`
 - 当UDP不可用时允许gethostbyaddr查找？​True（真）=允许【标准】；False（假）=不允许。
-- *注意：在某些32位系统上，IPv6查找可能无法正常工作。*
 
-##### “hide_version”
-- 从日志和页面输出中隐藏版本信息吗？​True（真）=关闭；False（假）=不关闭【标准】。
-
-##### “empty_fields”
-- 在记录和显示阻止事件信息时，CIDRAM如何处理空字段？ “include” = 包括空字段。 “omit” = 省略空字段【标准】。
-
-##### “log_sanitisation”
+##### “log_sanitisation” `[bool]`
 - 当使用前端日志页面查看日志数据时，CIDRAM在显示之前清理日志数据。​这可以保护用户免受XSS攻击和其他潜在威胁。​但是，默认情况下，在记录期间不会清理数据。​这是为了确保准确地保留日志数据（可以帮助任何未来的启发式或法医分析）。​但是，如果用户尝试使用外部工具读取日志数据，如果这些外部工具不执行自己的清理过程，用户可能会受到XSS攻击。​如有必要，可以使用此配置指令更改默认行为。 True = 记录数据时清理数据（数据保存不太准确，但XSS风险较低）。 False = 记录数据时不要清理数据（数据保存得更准确，但XSS风险更高）【标准】。
 
-##### “disabled_channels”
+##### “disabled_channels” `[string]`
 - 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时，在获取组件元数据时，等等）。
-- *可用选项： `GitHub,BitBucket,GoogleDNS`*
 
-##### “default_timeout”
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### “default_timeout” `[int]`
 - 用于外部请求的默认超时？ 标准 = 12秒。
 
-##### “config_imports”
+##### “config_imports” `[string]`
 - 要导入CIDRAM默认配置的以逗号分隔的文件列表。​通常在启用组件时由更新页面按需填充。​大多数情况下，可以忽略它。
 
-##### “events”
+##### “events” `[string]`
 - 此处列出的文件在事件处理程序文件之后直接加载。​通常在启用组件时由更新页面按需填充。​大多数情况下，可以忽略它。
 
 #### “signatures” （类别）
-签名配置。
+签名，签名文件，模块，等的配置。
 
-##### “ipv4”
-- 列表的IPv4签名文件，​CIDRAM应该尝试使用，​用逗号分隔。​您可以在这里添加条目如果您想包括其他文件在CIDRAM。
+##### “ipv4” `[string]`
+- 列表的IPv4签名文件，​CIDRAM应该尝试使用，​用逗号分隔。
 
-##### “ipv6”
-- 列表的IPv6签名文件，​CIDRAM应该尝试使用，​用逗号分隔。​您可以在这里添加条目如果您想包括其他文件在CIDRAM。
+##### “ipv6” `[string]`
+- 列表的IPv6签名文件，​CIDRAM应该尝试使用，​用逗号分隔。
 
-##### “block_attacks”
+##### “block_attacks” `[bool]`
 - 阻止攻击和其他异常流量相关的CIDR吗？​例如，端口扫描、黑客攻击、漏洞探测、等等。​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
 
-##### “block_cloud”
+##### “block_cloud” `[bool]`
 - 阻止CIDR认定为属于虚拟主机或云服务吗？​如果您操作一个API服务从您的网站或如果您预计其他网站连接到您的网站，​这应该被设置为“false”（假）。​如果不，​这应该被设置为“true”（真）。
 
-##### “block_bogons”
+##### “block_bogons” `[bool]`
 - 阻止bogon(“ㄅㄡㄍㄛㄋ”)/martian（“火星”）CIDR吗？​如果您希望连接到您的网站从您的本地网络/本地主机/localhost/LAN/等等，​这应该被设置为“false”（假）。​如果不，​这应该被设置为“true”（真）。
 
-##### “block_generic”
+##### “block_generic” `[bool]`
 - 阻止CIDR一般建议对于黑名单吗？​这包括签名不标记为的一章节任何其他更具体签名类别。
 
-##### “block_legal”
+##### “block_legal” `[bool]`
 - 阻止CIDR因为法律义务吗？​这个指令通常不应该有任何作用，因为CIDRAM默认情况下不会将任何CIDR与“法律义务”相关联，​但它作为一个额外的控制措施存在，以利于任何可能因法律原因而存在的自定义签名文件或模块。
 
-##### “block_malware”
+##### “block_malware” `[bool]`
 - 阻止与恶意软件相关的CIDR吗？​这包括C&C服务器，受感染的机器，涉及恶意软件分发的机器，等等。
 
-##### “block_proxies”
+##### “block_proxies” `[bool]`
 - 阻止CIDR认定为属于代理服务或VPN吗？​如果您需要该用户可以访问您的网站从代理服务和VPN，​这应该被设置为“false”（假）。​除此以外，​如果您不需要代理服务或VPN，​这应该被设置为“true”（真）作为一个方式以提高安全性。
 
-##### “block_spam”
+##### “block_spam” `[bool]`
 - 阻止高风险垃圾邮件CIDR吗？​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
 
-##### “modules”
+##### “modules” `[string]`
 - 模块文件要加载的列表以后检查签名IPv4/IPv6，​用逗号分隔。
 
-##### “default_tracktime”
+##### “default_tracktime” `[int]`
 - 多少秒钟来跟踪模块禁止的IP。​标准 = 604800 （1周）。
 
-##### “infraction_limit”
+##### “infraction_limit” `[int]`
 - 从IP最大允许违规数量之前它被禁止。​标准=10。
 
-##### “track_mode”
-- 何时应该记录违规？​False（假）=当IP被模块阻止时。​True（真）=当IP由于任何原因阻止时。​标准 = False。
-
-##### “tracking_override”
+##### “tracking_override” `[bool]`
 - 允许模块覆盖跟踪选项吗？​True（真）=允许【标准】；False（假）=不允许。
 
-#### “recaptcha”和“hcaptcha” （这两个类别提供相同的指令）。
-如果您想，您可以向用户提出CAPTCHA挑战，以他们与网络机器人分开，或在被阻止的情况下允许他们重新获得访问权限。​这可以帮助减少假阳性并减少不必要的自动流量。
+#### “recaptcha” （类别）
+ReCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
 
-*注意：CAPTCHA仅能防范机器呼叫，而不能防范人为攻击。*
-
-您可以从此处获得reCAPTCHA的“site key”和“secret key”：
-- https://developers.google.com/recaptcha/
-
-您可以从此处获得hCAPTCHA的“site key”和“secret key”：
-- https://www.hcaptcha.com/
-
-##### “usemode”
+##### “usemode” `[int]`
 - 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。
 
-数字值 | 描述
---:|:--
-1 | 仅当被阻止时，在签名限制之内，并且不被禁止。
-2 | 仅当被阻止时，专门标明使用时，在签名限制之内，并且不被禁止。
-3 | 仅在签名限制之内，并且不被禁止（不管是否被阻止）。
-4 | 仅在不被阻止时。
-5 | 仅在不被阻止时，或专门标明使用时，在签名限制之内，并且不被禁止。
-任何其他值。 | 不要！
+```
+usemode
+├─0 (决不 !!!)
+├─1 (仅当被阻止时，在签名限制之内，并且不被禁止。)
+├─2 (仅当被阻止时，专门标明使用时，在签名限制之内，并且不被禁止。)
+├─3 (仅在签名限制之内，并且不被禁止（不管是否被阻止）。)
+├─4 (仅在不被阻止时。)
+└─5 (仅在不被阻止时，或专门标明使用时，在签名限制之内，并且不被禁止。)
+```
 
-##### “lockip”
-- 指定是否哈希应锁定到特定IP地址。​False（假）=Cookie和哈希可以由多个IP地址使用【标准】。​True（真）=Cookie和哈希不能由多个IP地址使用（cookies/哈希是锁定到IP地址）。
-- 注意：“lockip”值被忽略当“lockuser”是false（假），​由于该机制为记忆的“用户”可以根据这个值的变化。
+##### “lockip” `[bool]`
+- 应该CAPTCHA锁定到IP？
 
-##### “lockuser”
-- 指定是否一个reCAPTCHA/hCAPTCHA成功完成应锁定到特定用户。​False（假）=一个reCAPTCHA/hCAPTCHA成功完成将授予访问为所有请求该来自同IP作为由用户使用当完成的reCAPTCHA/hCAPTCHA；​Cookie和哈希不被使用；代替，​一个IP白名单将被用于。​True（真）=一个reCAPTCHA/hCAPTCHA成功完成只会授予访问为用户该完成了reCAPTCHA/hCAPTCHA；​Cookie和哈希是用于记住用户；一个IP白名单不被使用【标准】。
+##### “lockuser” `[bool]`
+- 应该CAPTCHA锁定到用户？
 
-##### “sitekey”
+##### “sitekey” `[string]`
 - 可以在您的CAPTCHA服务的仪表板中找到该值。
 
-##### “secret”
+也可以看看：
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### “secret” `[string]`
 - 可以在您的CAPTCHA服务的仪表板中找到该值。
 
-##### “expiry”
+也可以看看：
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### “expiry” `[float]`
 - 记得CAPTCHA多少小时？ 标准 = 720 （1个月）。
 
-##### “logfile”
+##### “logfile” `[string]`
 - 记录所有的CAPTCHA的尝试？​要做到这一点，​指定一个文件名到使用。​如果不，​离开这个变量为空白。
 
-*有用的建议：如果您想，​可以追加日期/时间信息至附加到您的日志文件的名称通过包括这些中的名称：`{yyyy}` 为今年完整，​`{yy}` 为今年缩写，​`{mm}` 为今月，​`{dd}` 为今日，​`{hh}` 为今小时。​*
-
-*例子：*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### “signature_limit”
+##### “signature_limit” `[int]`
 - 撤销CAPTCHA之前允许的最大签名数。标准 = 1。
 
-##### “api”
+##### “api” `[string]`
 - 使用哪个API？
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (选框)")
+└─Invisible ("V2 (不可见的)")
 ```
 
-*欧盟用户须知：​当CIDRAM被配置为使用cookie时（例如，当“lockuser”是true/真时），根据[欧盟的cookie法规](https://www.cookielaw.org/the-cookie-law/)，cookie警告显示在页面上。​但是，当使用invisible API时，CIDRAM将自动为用户完成CAPTCHA，并且当成功时，这可能导致页面被重新加载，并且创建cookie，而用户没有足够的时间来实际看到cookie警告。*
-
-##### “show_cookie_warning”
+##### “show_cookie_warning” `[bool]`
 - 显示cookie警告吗？​True（真）=显示【标准】；False（假）=不显示。
 
-*Cookie警告通常与CAPTCHA一起显示。​为了禁用它，添加了此配置指令（为了帮助，例如，隐藏任何使用CIDRAM的指示）。​但是，我强烈建议大多数用户（特别是欧盟的用户）保持启用。*
-
-##### “show_api_message”
+##### “show_api_message” `[bool]`
 - 显示API讯息吗？​True（真）=显示【标准】；False（假）=不显示。
 
-*这是指在阻止请求时显示的所有其他非必要消息，cookie警告的例外。*
-
-##### “nonblocked_status_code”
+##### “nonblocked_status_code” `[int]`
 - 向未阻止的请求显示CAPTCHA时应使用哪个状态代码？
 
-目前支持的值：
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-状态码 | 状态消息
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### “hcaptcha” （类别）
+HCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
+
+##### “usemode” `[int]`
+- 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。
+
+```
+usemode
+├─0 (决不 !!!)
+├─1 (仅当被阻止时，在签名限制之内，并且不被禁止。)
+├─2 (仅当被阻止时，专门标明使用时，在签名限制之内，并且不被禁止。)
+├─3 (仅在签名限制之内，并且不被禁止（不管是否被阻止）。)
+├─4 (仅在不被阻止时。)
+└─5 (仅在不被阻止时，或专门标明使用时，在签名限制之内，并且不被禁止。)
+```
+
+##### “lockip” `[bool]`
+- 应该CAPTCHA锁定到IP？
+
+##### “lockuser” `[bool]`
+- 应该CAPTCHA锁定到用户？
+
+##### “sitekey” `[string]`
+- 可以在您的CAPTCHA服务的仪表板中找到该值。
+
+也可以看看：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### “secret” `[string]`
+- 可以在您的CAPTCHA服务的仪表板中找到该值。
+
+也可以看看：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### “expiry” `[float]`
+- 记得CAPTCHA多少小时？ 标准 = 720 （1个月）。
+
+##### “logfile” `[string]`
+- 记录所有的CAPTCHA的尝试？​要做到这一点，​指定一个文件名到使用。​如果不，​离开这个变量为空白。
+
+##### “signature_limit” `[int]`
+- 撤销CAPTCHA之前允许的最大签名数。标准 = 1。
+
+##### “api” `[string]`
+- 使用哪个API？
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (不可见的)")
+```
+
+##### “show_cookie_warning” `[bool]`
+- 显示cookie警告吗？​True（真）=显示【标准】；False（假）=不显示。
+
+##### “show_api_message” `[bool]`
+- 显示API讯息吗？​True（真）=显示【标准】；False（假）=不显示。
+
+##### “nonblocked_status_code” `[int]`
+- 向未阻止的请求显示CAPTCHA时应使用哪个状态代码？
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
 #### “legal” （类别）
-有关法律义务的配置。
+法律要求的配置。
 
-*请参阅文档的“[法律信息](#SECTION11)”章节以获取更多有关法律义务的信息，以及它可以如何影响您的配置义务。*
-
-##### “pseudonymise_ip_addresses”
+##### “pseudonymise_ip_addresses” `[bool]`
 - 编写日志文件时使用假名的IP地址吗？​True（真）=使用假名【标准】；False（假）=不使用假名。
 
-##### “omit_ip”
-- 从日志文件中排除IP地址？​True（真）=排除；False（假）=不排除【标准】。​注意：“omit_ip”为“true”时，“pseudonymise_ip_addresses”变得不必要。
-
-##### “omit_hostname”
-- 从日志文件中排除主机名？​True（真）=排除；False（假）=不排除【标准】。
-
-##### “omit_ua”
-- 从日志文件中排除用户代理？​True（真）=排除；False（假）=不排除【标准】。
-
-##### “privacy_policy”
+##### “privacy_policy” `[string]`
 - 要显示在任何生成的页面的页脚中的相关隐私政策的地址。​指定一个URL，或留空以禁用。
 
 #### “template_data” （类别）
-指令和变量为模板和主题。
+模板和主题的配置。
 
-涉及的HTML输出用于生成该“拒绝访问”页面。​如果您使用个性化主题为CIDRAM，​HTML产量资源是从`template_custom.html`文件，​和否则，​HTML产量资源是从`template.html`文件。​变量书面在这个配置文件章节是喂在HTML产量通过更换任何变量名包围在大括号发现在HTML产量使用相应变量数据。​为例子，​哪里`foo="bar"`，​任何发生的`<p>{foo}</p>`发现在HTML产量将成为`<p>bar</p>`。
-
-##### “theme”
+##### “theme” `[string]`
 - 用于CIDRAM的默认主题。
 
-##### “magnification”
-- *v1: “Magnification”*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…其他
+```
+
+##### “magnification” `[float]`
 - 字体放大。​标准 = 1。
 
-##### “css_url”
-- 模板文件为个性化主题使用外部CSS属性，​而模板文件为t标准主题使用内部CSS属性。​以指令CIDRAM使用模板文件为个性化主题，​指定公共HTTP地址的您的个性化主题的CSS文件使用`css_url`变量。​如果您离开这个变量空白，​CIDRAM将使用模板文件为默认主题。
+##### “css_url” `[string]`
+- 自定义主题的CSS文件URL。
+
+##### “block_event_title” `[string]`
+- 为阻止事件显示的页面标题。
+
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…其他
+```
+
+##### “captcha_title” `[string]`
+- 为CAPTCHA请求显示的页面标题。
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…其他
+```
 
 #### “PHPMailer” （类别）
-PHPMailer配置。
+PHPMailer的配置（用于双因素身份验证）。
 
-目前，CIDRAM仅将PHPMailer用于前端双因素身份验证。​如果不使用前端，或者如果为前端不用双因素身份验证，则可以忽略这些指令。
-
-##### “event_log”
-- *v1: “EventLog”*
+##### “event_log” `[string]`
 - 用于记录与PHPMailer相关的所有事件的文件。​指定一个文件名，​或留空以禁用。
 
-##### “skip_auth_process”
-- *v1: “SkipAuthProcess”*
+##### “skip_auth_process” `[bool]`
 - 将此指令设置为`true`会指示PHPMailer跳过通过SMTP发送电子邮件时通常会发生的正常身份验证过程。​应该避免这种情况，因为跳过此过程可能会将出站电子邮件暴露给MITM攻击，但在此过程阻止PHPMailer连接到SMTP服务器的情况下可能是必要的。
 
-##### “enable_two_factor”
-- *v1: “Enable2FA”*
+##### “enable_two_factor” `[bool]`
 - 该指令确定是否将2FA用于前端帐户。
 
-##### “host”
-- *v1: “Host”*
+##### “host” `[string]`
 - 用于出站电子邮件的SMTP主机。
 
-##### “port”
-- *v1: “Port”*
+##### “port” `[int]`
 - 用于出站电子邮件的端口号。​标准=587。
 
-##### “smtp_secure”
-- *v1: “SMTPSecure”*
+##### “smtp_secure” `[string]`
 - 通过SMTP发送电子邮件时使用的协议（TLS或SSL）。
 
-##### “smtp_auth”
-- *v1: “SMTPAuth”*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### “smtp_auth” `[bool]`
 - 此指令确定是否对SMTP会话进行身份验证（通常应该保持不变）。
 
-##### “username”
-- *v1: “Username”*
+##### “username” `[string]`
 - 通过SMTP发送电子邮件时使用的用户名。
 
-##### “password”
-- *v1: “Password”*
+##### “password” `[string]`
 - 通过SMTP发送电子邮件时使用的密码。
 
-##### “set_from_address”
-- *v1: “setFromAddress”*
+##### “set_from_address” `[string]`
 - 通过SMTP发送电子邮件时引用的发件人地址。
 
-##### “set_from_name”
-- *v1: “setFromName”*
+##### “set_from_name” `[string]`
 - 通过SMTP发送电子邮件时引用的发件人姓名。
 
-##### “add_reply_to_address”
-- *v1: “addReplyToAddress”*
+##### “add_reply_to_address” `[string]`
 - 通过SMTP发送电子邮件时引用的回复地址。
 
-##### “add_reply_to_name”
-- *v1: “addReplyToName”*
+##### “add_reply_to_name” `[string]`
 - 通过SMTP发送电子邮件时引用的回复姓名。
 
 #### “rate_limiting” （类别）
-用于速率限制的可选配置指令。
+速率限制的配置（不建议一般使用）。
 
-此功能已实施到CIDRAM，因为有足够的用户请求它来辩解它的实施。​但是，因为它与之无关CIDRAM的最初的预期目的，大多数用户很可能不需要它。​如果您特别需要CIDRAM来处理您网站的速率限制，此功能可能是有用给您的。​但是，您应该考虑一些重要的事情：
-- 与所有其他CIDRAM功能一样，此功能仅适用于受CIDRAM保护的页面。​因此，任何未通过CIDRAM特定路由的网站资产都不能被CIDRAM限制。
-- 如果您能够使用服务器模块，cPanel，或其他一些网络工具来强制执行速率限制，最好将其用于速率限制，而不是CIDRAM。
-- 如果特定用户非常希望在受到限制后继续访问您的网站，在大多数情况下，他们很容易绕过速率限制（例如，如果他们改变他们的IP地址，或者如果他们使用代理或VPN，并假设您已将CIDRAM配置为不阻止代理和VPN，或者假设CIDRAM不知道他们正在使用的代理或VPN）。
-- 对于真实用户来说，速率限制可能非常烦人。​如果您的可用带宽非常有限，并且如果您发现有一些特定的流量来源，尚未被阻止，并且它占用大部分可用带宽，速率限制可能是必要的。​然而，如果没有必要，应该避免它。
-- 您可能偶尔冒险阻止合法用户，甚至是您自己。
-
-如果您不需要CIDRAM来对您的网站进行速率限制，请将以下指令设置为默认值。​否则，您可以更改其值以满足您的需求。
-
-##### “max_bandwidth”
+##### “max_bandwidth” `[string]`
 - 在为将来的请求启用速率限制之前的最大允许带宽量。​值为0将禁用此类速率限制。​标准=0KB。
 
-##### “max_requests”
+##### “max_requests” `[int]`
 - 在为将来的请求启用速率限制之前允许的最大请求数。​值为0将禁用此类速率限制。​标准=0。
 
-##### “precision_ipv4”
+##### “precision_ipv4” `[int]`
 - 监视IPv4使用时的精度。​值镜像CIDR块大小。​设置为32以获得最佳精度。​标准=32。
 
-##### “precision_ipv6”
+##### “precision_ipv6” `[int]`
 - 监视IPv6使用时的精度。​值镜像CIDR块大小。​设置为128以获得最佳精度。​标准=128。
 
-##### “allowance_period”
+##### “allowance_period” `[float]`
 - 监视使用情况的小时数。​标准=0。
 
-##### “exceptions”
+##### “exceptions” `[string]`
 - 例外（即，不应限制速率的请求）。​仅在启用速率限制时有效。
-- *可用选项： `Whitelisted,Verified`*
+
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
 #### “supplementary_cache_options” （类别）
-补充缓存选项。
+补充缓存选项。​注意：更改这些值可能会使您注销。
 
-##### “prefix”
-- 该值将附加到所有缓存条目的键的开头。​默认值为空。​当同一服务器上存在多个安装时，这对于将它们的缓存彼此分开非常有用。
+##### “prefix” `[string]`
+- 该值将附加到所有缓存条目的键的开头。​标准 = “CIDRAM_”。​当同一服务器上存在多个安装时，这对于将它们的缓存彼此分开非常有用。
 
-##### “enable_apcu”
-- 指定是否尝试使用APCu进行缓存。​标准 = False。
+##### “enable_apcu” `[bool]`
+- 指定是否尝试使用APCu进行缓存。​标准 = True。
 
-##### “enable_memcached”
+##### “enable_memcached” `[bool]`
 - 指定是否尝试使用Memcached进行缓存。​标准 = False。
 
-##### “enable_redis”
+##### “enable_redis” `[bool]`
 - 指定是否尝试使用Redis进行缓存。​标准 = False。
 
-##### “enable_pdo”
+##### “enable_pdo” `[bool]`
 - 指定是否尝试使用PDO进行缓存。​标准 = False。
 
-##### “memcached_host”
+##### “memcached_host” `[string]`
 - Memcached主机值。​标准 = “localhost”。
 
-##### “memcached_port”
+##### “memcached_port” `[int]`
 - Memcached端口值。​标准 = “11211”。
 
-##### “redis_host”
+##### “redis_host” `[string]`
 - Redis主机值。​标准 = “localhost”。
 
-##### “redis_port”
+##### “redis_port” `[int]`
 - Redis端口值。​标准 = “6379”。
 
-##### “redis_timeout”
+##### “redis_timeout” `[float]`
 - Redis超时值。​标准 = “2.5”。
 
-##### “pdo_dsn”
-- PDO DSN值。​标准 = “`mysql:dbname=cidram;host=localhost;port=3306`”。
+##### “pdo_dsn” `[string]`
+- PDO DSN值。​标准 = “mysql:dbname=cidram;host=localhost;port=3306”。
 
-*也可以看看：​[“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？](#HOW_TO_USE_PDO)*
-
-##### “pdo_username”
+##### “pdo_username” `[string]`
 - PDO用户名。
 
-##### “pdo_password”
+##### “pdo_password” `[string]`
 - PDO密码。
 
 ---
@@ -1967,4 +2235,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年2月20日。
+最后更新：2022年3月25日。

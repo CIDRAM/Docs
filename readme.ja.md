@@ -317,680 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 以下は`config.ini`設定ファイルにある変数ならびにその目的と機能のリストです。
 
 ```
-Configuration (v2)
+コンフィギュレーション (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
-#### "general" （全般、カテゴリー）
-全般的な設定。
+#### "general" （カテゴリ）
+全般的な設定（他のカテゴリに属さないの設定）。
 
-##### "logfile" （ログ・ファイル）
-- アクセス試行阻止の記録、人間によって読み取り可能。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+##### "logfile" `[string]`
+- アクセス試行阻止の記録、​人間によって読み取り可能。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "logfile_apache" （ログ・ファイル・アパッチ）
-- *v1: "logfileApache"*
-- アクセス試行阻止の記録、Apacheスタイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+##### "logfile_apache" `[string]`
+- アクセス試行阻止の記録、​Apacheスタイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "logfile_serialized" （ログ・ファイル・シリアライズ）
-- *v1: "logfileSerialized"*
-- アクセス試行阻止の記録、シリアル化されました。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+##### "logfile_serialized" `[string]`
+- アクセス試行阻止の記録、​シリアル化されました。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-*有用な先端：​あなたがしたい場合は、​ログ・ファイルの名前に日付/時刻情報を付加することができます、​名前にこれらを含めることで:完全な年のため`{yyyy}`、​省略された年のため`{yy}`、​月`{mm}`、​日`{dd}`、​時間`{hh}`。*
-
-*例:*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "error_log" （エラー・ログ）
+##### "error_log" `[string]`
 - 検出された致命的でないエラーを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "error_log_stages" （エラー・ログ・ステージズ）
-- 生成されたエラーをログに記録する必要がある実行チェーン内のステージのリスト。
-- *Default（デフォルト設定）： "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### "stages" `[string]`
+- 実行チェーンの段階のコントロールです （有効かどうか、エラーがログに記録されるかどうか、など）。
 
-##### "truncate" （トランケート）
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### "fields" `[string]`
+- ブロック・イベント中のために、フィールドのコントロールです （リクエストがブロックされたとき）。
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### "truncate" `[string]`
 - ログ・ファイルが一定のサイズに達したら切り詰めますか？​値は、​ログ・ファイルが切り捨てられる前に大きくなる可能性があるＢ/ＫＢ/ＭＢ/ＧＢ/ＴＢ単位の最大サイズです。​デフォルト値の０ＫＢは切り捨てを無効にします （ログ・ファイルは無期限に拡張できます）。​注：個々のログ・ファイルに適用されます。​ログ・ファイルのサイズは一括して考慮されません。
 
-##### "log_rotation_limit" （ログ・ローテーション・リミット）
+##### "log_rotation_limit" `[int]`
 - ログ・ローテーションは、一度に存在する必要があるログ・ファイルの数を制限します。​新しいログ・ファイルが作成されると、ログ・ファイルの総数が指定された制限を超えると、指定されたアクションが実行されます。​ここで希望の制限を指定することができます。​値「0」は、ログ・ローテーションを無効にします。
 
-##### "log_rotation_action" （ログ・ローテーション・アクション）
+##### "log_rotation_action" `[string]`
 - ログ・ローテーションは、一度に存在する必要があるログ・ファイルの数を制限します。​新しいログ・ファイルが作成されると、ログ・ファイルの総数が指定された制限を超えると、指定されたアクションが実行されます。​ここで希望のアクションを指定できます。 「Delete」 = 最も古いログ・ファイルを削除して、制限を超過しないようにします。 「Archive」 = 最初にアーカイブしてから、最も古いログ・ファイルを削除して、制限を超過しないようにします。
 
-*技術的な説明：この文脈では、「最も古い」とは「最近変更されていない」という意味です。*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### "timezone" （タイムゾーン）
-- これは、CIDRAMが日付/時刻操作に使用するタイムゾーンを指定するために使用されます。​あなたがそれを必要としないなら、それを無視してください。​可能な値はＰＨＰによって決定されます。​しかし、​その代わりに、​一般的にタイムゾーンディレクティブ（あなたの`php.ini`ファイルで）を調整ーることをお勧めします、​でも時々（といった、​限ら共有ホスティングプロバイダでの作業時）これは何をすることは必ずしも可能ではありません、​したがって、​このオプションは、​ここで提供されています。
+##### "timezone" `[string]`
+- 使用するタイムゾーンを指定します​（例えば、「Africa/Cairo」、「America/New_York」、「Asia/Tokyo」、「Australia/Perth」、「Europe/Berlin」、「Pacific/Guam」、等等）。​「SYSTEM」を指定すると、ＰＨＰがこれを自動的に処理します。
 
-##### "time_offset" （タイム・オフセット）
-- *v1: "timeOffset"*
-- お使いのサーバーの時刻は、​ローカル時刻と一致しない場合、​あなたのニーズに応じて、​時間を調整するために、​あなたはここにオフセットを指定することができます。​しかし、​その代わりに、​一般的にタイムゾーンディレクティブ（あなたの`php.ini`ファイルで）を調整ーることをお勧めします、​でも時々（といった、​限ら共有ホスティングプロバイダでの作業時）これは何をすることは必ずしも可能ではありません、​したがって、​このオプションは、​ここで提供されています。​オフセット分であります。
-- 例（１時間を追加します）：`time_offset=60`
+```
+timezone
+├─SYSTEM ("システムのデフォルトタイムゾーンを使用します。")
+├─UTC ("UTC")
+└─…その他
+```
 
-##### "time_format" （タイム・フォーマット）
-- *v1: "timeFormat"*
-- CIDRAMで使用される日付表記形式。​Default（デフォルト設定） = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
+##### "time_offset" `[int]`
+- タイムゾーン・オフセット（分）。
 
-##### "ipaddr" （アイピーアドレス）
+##### "time_format" `[string]`
+- CIDRAMで使用される日付表記形式。​追加のオプションがリクエストに応じて追加される場合があります。
+
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…その他
+```
+
+##### "ipaddr" `[string]`
 - 接続リクエストのＩＰアドレスをどこで見つけるべきかについて（Cloudflareのようなサービスに対して有効）。​Default（デフォルト設定） = REMOTE_ADDR。​注意：あなたが何をしているのか、​分からない限り、​これを変更しないでください。
 
-「ipaddr」の推奨値です：
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (デフォルト)")
+└─…その他
+```
 
-値 | 使用
----|---
-`HTTP_INCAP_CLIENT_IP` | Incapsulaリバース・プロキシ。
-`HTTP_CF_CONNECTING_IP` | Cloudflareリバース・プロキシ。
-`CF-Connecting-IP` | Cloudflareリバース・プロキシ（代替；上記がうまくいかない場合）。
-`HTTP_X_FORWARDED_FOR` | Cloudbricリバース・プロキシ。
-`X-Forwarded-For` | [Squidリバース・プロキシ](http://www.squid-cache.org/Doc/config/forwarded_for/)。
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*サーバー・コンフィギュレーションによって定義されます。* | [Nginxリバース・プロキシ](https://www.nginx.com/resources/admin-guide/reverse-proxy/)。
-`REMOTE_ADDR` | リバース・プロキシはありません（デフォルト値）。
+参照してください：
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "forbid_on_block" （フォービッド・オン・ブロック）
-- リクエストをブロックするときに、CIDRAMが送信するＨＴＴＰステータス・メッセージはどれですか？
+##### "http_response_header_code" `[int]`
+- リクエストをブロックするときに、CIDRAMが送信するＨＴＴＰステータス・メッセージはどれですか？​（詳細については、ドキュメントを参照してください）。
 
-現在サポートされている値：
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-ステータス・コード | ステータス・メッセージ | 説明
----|---|---
-`200` | `200 OK` | デフォルト値。​最も堅牢ではありませんが、ユーザーにとって最も親切です。
-`403` | `403 Forbidden` | もう少し堅牢ですが、ユーザーにとってはあまり親切ではありません。
-`410` | `410 Gone` | 一部のブラウザではこのステータス・メッセージがキャッシュされ、その後はそれ以上のリクエストは送信されません。​これにより、偽陽性を解決することが困難になる可能性があります。​しかし、特定の非常に特殊なタイプのボットからの要求を減らすために、他のオプションよりも有用かもしれません。
-`418` | `418 I'm a teapot` | 実際には「April Fools」の冗談を参照し「[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)」、クライアントが理解することはまずありません。​娯楽と利便性のために提供されるが、一般的に推奨されていない。
-`451` | `Unavailable For Legal Reasons` | リクエストが法的な理由で主にブロックされた場合のコンテキストに適しています。​他のコンテキストでは推奨されません。
-`503` | `Service Unavailable` | 最も堅牢ですが、ユーザーにとっては最も親切ではありません。
-
-##### "silent_mode" （サイレント・モード）
+##### "silent_mode" `[string]`
 - 「アクセス拒否」ページを表示する代わりに、​CIDRAMはブロックされたアクセス試行を自動的にリダイレクトする必要がありますか？​はいの場合は、​リダイレクトの場所を指定します。​いいえの場合は、​この変数を空白のままにします。
 
-##### "lang" （ラング）
+##### "lang" `[string]`
 - CIDRAMのデフォルト言語を設定します。
 
-##### "lang_override" （ラング・オーバーライド）
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### "lang_override" `[bool]`
 - 可能な限り「HTTP_ACCEPT_LANGUAGE」に従ってローカライズしますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-##### "numbers" （ナンバーズ）
-- 数値の表示方法を指定します。
+##### "numbers" `[string]`
+- どのように数字を表示するのが好きですか？​あなたに一番正しい例を選択してください。
 
-現在サポートされている値：
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-値 | これを生産する | 説明
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | デフォルト値。
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*注意：これらの値は、パッケージを超えては関連しません。​また、サポートされる値は将来変更される可能性があります。*
-
-##### "emailaddr" （Ｅメール・アドレス）
+##### "emailaddr" `[string]`
 - ここにＥメールアドレスを入力して、​ユーザーがブロックされているときにユーザーに送信することができます。​これはサポートと支援に使用できます（誤ってブロックされた場合、​等）。​警告：​ここに入力された電子Ｅメールアドレスは、​おそらくスパムロボットによって取得されます。​ここで提供される電子Ｅメールアドレスは、​すべて使い捨てにすることを強く推奨します（例えば、​プライマリ個人アドレスまたはビジネスアドレスを使用しない、​等）。
 
-##### "emailaddr_display_style" （Ｅメール・アドレス・ディスプレイ・スタイル）
-- ユーザーに電子Ｅメール・アドレスを提示することをどのように希望しますか？ "default" = クリック可能なリンク。 "noclick" = クリックできないテキスト。
+##### "emailaddr_display_style" `[string]`
+- ユーザーに電子Ｅメール・アドレスを提示することをどのように希望しますか？
 
-##### "disable_cli" （ディスエイブル・シーエルアイ）
-- *（バージョン２以降削除）。*
-- ＣＬＩモードを無効にするか？​ＣＬＩモード（シーエルアイ・モード）はデフォルトでは有効になっていますが、​テストツール（PHPUnit等）やＣＬＩベースのアプリケーションと干渉しあう可能性が無いとは言い切れません。​ＣＬＩモードを無効にする必要がなければ、​このデレクティブは無視してもらって結構です。​`false`（偽） = ＣＬＩモードを有効にします（Default/デフォルルト）；​`true`（真） = ＣＬＩモードを無効にします。
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### "disable_frontend" （ディスエイブル・フロントエンド）
+##### "disable_frontend" `[bool]`
 - フロントエンドへのアクセスを無効にするか？​フロントエンドへのアクセスは、​CIDRAMをより管理しやすくすることができます。​前記、​それはまた、​潜在的なセキュリティリスクになる可能性があります。​バックエンドを経由して管理することをお勧めします、​しかし、​これが不可能な場合、​フロントエンドへのアクセスが提供され。​あなたがそれを必要としない限り、​それを無効にします。​`false`（偽） = フロントエンドへのアクセスを有効にします；​`true`（真） = フロントエンドへのアクセスを無効にします（Default/デフォルルト）。
 
-##### "max_login_attempts" （マクス・ログイン・アテンプト）
+##### "max_login_attempts" `[int]`
 - ログイン試行の最大回数（フロントエンド）。​Default（デフォルト設定） = ５。
 
-##### "frontend_log" （フロントエンド・ログ）
-- *v1: "FrontEndLog"*
+##### "frontend_log" `[string]`
 - フロントエンド・ログインの試みを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "signatures_update_event_log" （シグネチャズ・アプデート・エベント・ログ）
+##### "signatures_update_event_log" `[string]`
 - フロントエンドを介してシグネチャ・ファイルが更新されたときにログに記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "ban_override" （バン・オーバーライド）
-- 「infraction_limit」を超えたときに「forbid_on_block」を上書きしますか？​上書きするとき：ブロックされたリクエストは空白のページを返します（テンプレートファイルは使用されません）。​２００ = 上書きしない（Default/デフォルルト）。​他の値は、「forbid_on_block」の利用可能な値と同じです。
+##### "ban_override" `[int]`
+- 「infraction_limit」を超えたときに「http_response_header_code」を上書きしますか？​上書きするとき：ブロックされたリクエストは空白のページを返します（テンプレートファイルは使用されません）。​２００ = 上書きしない（Default/デフォルルト）。​他の値は、「http_response_header_code」の利用可能な値と同じです。
 
-##### "log_banned_ips" （ログ・バンド・アイピーズ）
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### "log_banned_ips" `[bool]`
 - 禁止されたＩＰからブロックされたリクエストをログ・ファイルに含めますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-##### "default_dns" （ディフォールト・ディーエンエス）
+##### "default_dns" `[string]`
 - ホスト名検索に使用する、​ＤＮＳ（ドメイン・ネーム・システム）サーバーのカンマ区切りリスト。​Default（デフォルルト） = "8.8.8.8,8.8.4.4" （Google DNS）。​注意：あなたが何をしているのか、​分からない限り、​これを変更しないでください。
 
-*参照：​[「default_dns」には何が使えますか？](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### "search_engine_verification" `[string]`
+- 検索エンジンからのリクエストを検証するためのコントロール。
 
-##### "search_engine_verification" （サーチ・エンジン・ベリフィケーション）
-- 検索エンジンからのリクエストを確認する必要がありますか？​検索エンジンを確認することで、​違反の最大数を超えたために検索エンジンが禁止されないことが保証されます（検索エンジンを禁止することは、​通常、​検索エンジンランキング、​ＳＥＯなどに悪影響を及ぼします）。​確認されると、​検索エンジンがブロックされることがありますが、​しかしは禁止されません。​検証されていない場合は、​違反の最大を超えた結果、​禁止される可能性があります。​さらに、​検索エンジンの検証は、​詐称された検索エンジンから保護します（これらのリクエストはブロックされます）。 True = 検索エンジンの検証を有効にする（Default/デフォルルト）。 False = 検索エンジンの検証を無効にする。
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-現在サポートされている：
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
 
-互換性がありません（競合を引き起こす）：
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
 
-##### "social_media_verification" （ソーシャル・メディア・ベリフィケーション）
-- ソーシャル・メディアのリクエストを確認する必要がありますか？​ソーシャル・メディアの検証では、偽のソーシャル・メディア・リクエストに対する保護が提供されます（このようなリクエストはブロックされます）。 True = ソーシャル・メディア検証を有効にする（Default/デフォルルト）。 False = ソーシャル・メディア検証を無効にする。
+##### "social_media_verification" `[string]`
+- ソーシャル・メディア・プラットフォームからのリクエストを検証するためのコントロール。
 
-現在サポートされている：
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュールから）。_
+__「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
 
-##### "other_verification" （アザー・ベリフィケーション）
-- 可能な限り、他の種類のリクエストを確認するがありますか（例：AdSense、SEOチェッカー、など）？​検出されると、偽のリクエストはブロックされます。 True = 有効にする（Default/デフォルルト）。 False = 無効にする。
+__「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
 
-現在サポートされている：
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### "other_verification" `[string]`
+- 可能な場合は、他の種類のリクエストを検証するためのコントロール。
 
-##### "protect_frontend" （プロテクト・フロントエンド）
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
+
+__「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
+
+##### "protect_frontend" `[bool]`
 - CIDRAMによって通常提供される保護をフロントエンドに適用するかどうかを指定します。 True = はい（Default/デフォルルト）。 False = いいえ。
 
-##### "maintenance_mode" （メンテナンス・モード）
-- メンテナンス・モードを有効にしますか？ True = はい。 False = いいえ（Default/デフォルルト）。​フロントエンド以外のすべてを無効にします。​ＣＭＳ、フレームワークなどを更新するときに便利です。
-
-##### "default_algo" （ディフォールト・アルゴ）
+##### "default_algo" `[string]`
 - 将来のすべてのパスワードとセッションに使用するアルゴリズムを定義します。​オプション：​PASSWORD_DEFAULT（Default/デフォルルト）、​PASSWORD_BCRYPT、​PASSWORD_ARGON2I （ＰＨＰ >= 7.2.0 が必要）、​PASSWORD_ARGON2ID （ＰＨＰ >= 7.3.0 が必要）。
 
-##### "statistics" （スタティスティックス/統計）
-- CIDRAM使用統計を追跡しますか？ True = はい。 False = いいえ（Default/デフォルルト）。
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### "force_hostname_lookup" （フォース・ホストネーム・ルックアップ）
+##### "statistics" `[string]`
+- 追跡する統計情報を制御します。
+
+```
+statistics
+├─Blocked-IPv4 ("ブロックされたリクエスト – IPv4")
+├─Blocked-IPv6 ("ブロックされたリクエスト – IPv6")
+├─Blocked-Other ("ブロックされたリクエスト – その他")
+├─Banned-IPv4 ("禁止されたリクエスト – IPv4")
+├─Banned-IPv6 ("禁止されたリクエスト – IPv6")
+├─Passed-IPv4 ("許可されたリクエスト – IPv4")
+├─Passed-IPv6 ("許可されたリクエスト – IPv6")
+├─Passed-Other ("許可されたリクエスト – その他")
+├─CAPTCHAs-Failed ("キャプチャの試み – {state_failed}")
+└─CAPTCHAs-Passed ("キャプチャの試み – {state_passed}")
+```
+
+##### "force_hostname_lookup" `[bool]`
 - ホスト名検索を強制しますか？ True = はい。 False = いいえ（Default/デフォルルト）。​ホスト名検索は、通常、「必要に応じて」実行されますが、すべてのリクエストに対して強制することができます。​これは、より詳細な情報をログ・ファイルに提供する手段として有用ですが、パフォーマンスに多少の悪影響を及ぼすこともあります。
 
-##### "allow_gethostbyaddr_lookup" （アラウ・「ゲット・ホストバイ・エイ・ディ・ディ・アー」・ルックアップ）
+##### "allow_gethostbyaddr_lookup" `[bool]`
 - ＵＤＰが利用できない場合、gethostbyaddrルックアップを許可しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
-- *注：一部の３２ビットシステムでＩＰｖ６検索が正しく機能しないことがあります。*
 
-##### "hide_version" （ハイド・バージョン）
-- ログとページ出力からバージョン情報を隠すか？ True = はい。 False = いいえ（Default/デフォルルト）。
-
-##### "empty_fields" （エンプティー・フィールズ）
-- ブロック・イベント情報をロギングと表示場合、CIDRAMは空のフィールドをどのように処理すべきですか？ "include" = 空のフィールドを含めます。 "omit" = 空のフィールドを非表示にします（Default/デフォルルト）。
-
-##### "log_sanitisation" （ログ・サニテーション）
+##### "log_sanitisation" `[bool]`
 - フロントエンドのログページを使用してログデータを表示する場合、ＸＳＳ攻撃やその他の潜在的な脅威からユーザーを保護する、CIDRAMはログデータを表示前にサニタイズします。​ただし、デフォルトでは、データはロギング中にサニタイズされません。​これは、ログデータが正確に記録されるようにするためです（将来必要になる可能性があるヒューリスティックまたはフォレンジック分析に役立ちます）。​ただし、ユーザーが外部ツールを使用してログデータを読み込もうとした場合、それらの外部ツールが独自のサニティゼーション・プロセスを実行しない場合、ユーザーがＸＳＳ攻撃にさらされる可能性があります。​必要に応じて、このコンフィギュレーション・ディレクティブを使ってデフォルトの動作を変更することができます。 True = データを記録するときは、それをサニタイズして（記録データの精度はもっと低いですが、ＸＳＳリスクはもっと低いです）。 False = データを記録するときは、それをサニタイズしない（記録データの精度はもっと高いですが、ＸＳＳリスクはもっと高いです）。 Default/デフォルルト = False。
 
-##### "disabled_channels" （ディセーブルド・チャネルズ）
+##### "disabled_channels" `[string]`
 - これは、要求を送信するときにCIDRAMが特定のチャネルを使用しないようにするために使用できます​（例えば、更新時、コンポーネント・メタデータの取得時、など）。
-- *利用可能なオプション： `GitHub,BitBucket,GoogleDNS`*
 
-##### "default_timeout" （デフォルト・タイムアウト）
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### "default_timeout" `[int]`
 - 外部リクエストに使用するデフォルトのタイムアウト？ Default/デフォルルト = １２秒。
 
-##### "config_imports" （コンフィグ・インポーツ）
+##### "config_imports" `[string]`
 - CIDRAMのデフォルト・コンフィグレーションにインポートするファイルのコンマ区切りリスト。​通常、コンポーネントをアクティブ化するときに、アップデート・ページによって必要に応じて入力されます。​ほとんどの場合、それを無視することができます。
 
-##### "events" （エベンツ）
+##### "events" `[string]`
 - ここにリストされているファイルは、イベント・ハンドラー・ファイルの直後にロードされます。​通常、コンポーネントをアクティブ化するときに、アップデート・ページによって必要に応じて入力されます。​ほとんどの場合、それを無視することができます。
 
-#### "signatures" （シグネチャーズ、カテゴリ）
-シグネチャの設定。
+#### "signatures" （カテゴリ）
+シグネチャ、シグネチャ・ファイル、モジュール、などの設定。
 
-##### "ipv4" （アイピーブイ４）
+##### "ipv4" `[string]`
 - ＩＰｖ４シグネチャ・ファイルのリスト（CIDRAMは、​これを使用します）。​これは、​カンマで区切られています。​必要に応じて、​項目を追加することができます。
 
-##### "ipv6" （アイピーブイ６）
+##### "ipv6" `[string]`
 - ＩＰｖ６シグネチャ・ファイルのリスト（CIDRAMは、​これを使用します）。​これは、​カンマで区切られています。​必要に応じて、​項目を追加することができます。
 
-##### "block_attacks" （ブロック・アタックス）
+##### "block_attacks" `[bool]`
 - 攻撃やその他の異常なトラフィックに関連するＣＩＤＲをブロックしますか？​例：ポートスキャン、ハッキング、脆弱性の調査、など。​問題がある場合を除き、​一般的には、​これをtrueに設定する必要があります。
 
-##### "block_cloud" （ブロック・クラウド）
+##### "block_cloud" `[bool]`
 - クラウドサービスからのＣＩＤＲをブロックする必要がありますか？​あなたのウェブサイトからのＡＰＩサービスを操作する場合、​または、​あなたがウェブサイトツーサイト接続が予想される場合、​これはfalseに設定する必要があります。​ない場合は、​これをtrueに設定する必要があります。
 
-##### "block_bogons" （ブロック・ボゴンズ）
+##### "block_bogons" `[bool]`
 - ボゴン・アドレスからのＣＩＤＲをブロックする必要がありますか？​あなたがローカルホストから、​またはお使いのＬＡＮから、​ローカルネットワーク内からの接続を受信した場合、​これはfalseに設定する必要があります。​ない場合は、​これをtrueに設定する必要があります。
 
-##### "block_generic" （ブロック・ジェネリック）
+##### "block_generic" `[bool]`
 - 一般的なＣＩＤＲをブロックする必要がありますか？​（他のオプションに固有ではないもの）。
 
-##### "block_legal" （ブロック・リーガル）
+##### "block_legal" `[bool]`
 - 法的義務に対応してＣＩＤＲをブロックするか？​CIDRAMは、どんなＣＩＤＲをデフォルトで「法的義務」に関連付けることはないため、このディレクティブは通常は効果がありません。​しかし、それは法的理由のために存在する可能性のある任意のカスタム・シグネチャ・ファイルまたはモジュールの利益のための追加の制御手段として存在する。
 
-##### "block_malware" （ブロック・マルウェア）
+##### "block_malware" `[bool]`
 - マルウェアに関連するＣＩＤＲをブロックするか？​これには、Ｃ＆Ｃサーバー、感染マシン、マルウェア配布に関係するマシンなどが含まれます。
 
-##### "block_proxies" （ブロック・プロキシ）
+##### "block_proxies" `[bool]`
 - プロキシサービスまたはＶＰＮからのＣＩＤＲをブロックする必要がありますか？​プロキシサービスまたはＶＰＮが必要な場合は、​これをfalseに設定する必要があります。​ない場合は、​セキュリティを向上させるために、​これをtrueに設定する必要があります。
 
-##### "block_spam" （ブロック・スパム）
+##### "block_spam" `[bool]`
 - スパムのため、​ＣＩＤＲをブロックする必要がありますか？​問題がある場合を除き、​一般的には、​これをtrueに設定する必要があります。
 
-##### "modules" （モジュールス）
+##### "modules" `[string]`
 - ＩＰｖ４/ＩＰｖ６シグネチャをチェックした後にロードするモジュールファイルのリスト。​これは、​カンマで区切られています。
 
-##### "default_tracktime" （デフォルト・トラックタイム）
+##### "default_tracktime" `[int]`
 - モジュールによって禁止されているＩＰを追跡する秒数。​Default（デフォルト設定） = ６０４８００（１週間）。
 
-##### "infraction_limit" （インフラクション・リミット）
+##### "infraction_limit" `[int]`
 - ＩＰがＩＰトラッキングによって禁止される前に発生することが、​許される違反の最大数。​Default（デフォルト設定） = １０。
 
-##### "track_mode" （トラック・モード）
-- 違反はいつカウントされるべきですか？​False = ＩＰがモジュールによってブロックされている場合。 True = なんでもの理由でＩＰがブロックされた場合。 Default/デフォルルト = False。
-
-##### "tracking_override" （トラッキング・オーバーライド）
+##### "tracking_override" `[bool]`
 - モジュールが追跡オプションをオーバーライドできるようにしますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-#### 「recaptcha」と「hcaptcha」 （「リーキャプチャ」と「エーチキャプチャ」） – これら２つのカテゴリは同じディレクティブを提供します。
-必要に応じて、ユーザーにキャプチャ・チャレンジを提示して、ユーザーをボットと区別したり、ブロックされた場合に、アクセスを回復できるようにしたりできます。​これ、偽陽性を軽減し、不要な自動トラフィックを減らすことができます。
+#### "recaptcha" （カテゴリ）
+ReCaptchaの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
 
-*注意：キャプチャは、人間の攻撃者からではなく、マシン呼び出しからのみ保護します。*
-
-reCAPTCHAの「site key」と「secret key」は、次の場所から取得できます：
-- https://developers.google.com/recaptcha/
-
-hCAPTCHAの「site key」と「secret key」は、次の場所から取得できます：
-- https://www.hcaptcha.com/
-
-##### "usemode" （ユース・モード）
+##### "usemode" `[int]`
 - キャプチャはいつ提供する必要がありますか？​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。
 
-値 | 説明
---:|:--
-1 | ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。
-2 | ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。
-3 | シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。
-4 | ブロックされていない場合のみ。
-5 | ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。
-その他の値。 | 決して！
+```
+usemode
+├─0 (決して !!!)
+├─1 (ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。)
+├─2 (ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。)
+├─3 (シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。)
+├─4 (ブロックされていない場合のみ。)
+└─5 (ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。)
+```
 
-##### "lockip" （ロック・ＩＰ）
-- reCAPTCHA/hCAPTCHAをＩＰにロックしますか？​False = クッキーとハッシュは複数のＩＰで使用できます（Default/デフォルルト）。 True = クッキーとハッシュは複数のＩＰで使用できません（クッキーとハッシュはIPにロックされています）。
-- 注意：「lockuser」が「false」の場合、​「lockip」の値は無視されます。​これは、​ユーザーを覚えておくメカニズムがこの値に依存するためです。
+##### "lockip" `[bool]`
+- キャプチャをＩＰにロックしますか？
 
-##### "lockuser" （ロック・ユーザー）
-- reCAPTCHA/hCAPTCHAをユーザーにロックしますか？​False = reCAPTCHA/hCAPTCHAの完了により、​責任あるＩＰ（注：ユーザーではない）から発信されたすべてのリクエストへのアクセスが許可されます；​クッキーとハッシュは使用されていません；​ＩＰホワイトリストが使用されます。 True = reCAPTCHA/hCAPTCHAの完了により、​責任あるユーザー（注：ＩＰではない）から発信されたすべてのリクエストへのアクセスが許可されます；​クッキーとハッシュはユーザーを思い出すために使用されます；​ＩＰホワイトリストは使用されません（Default/デフォルルト）。
+##### "lockuser" `[bool]`
+- キャプチャをユーザーにロックしますか？
 
-##### "sitekey" （サイト・キー）
+##### "sitekey" `[string]`
 - この値は、キャプチャ・サービスのダッシュボードに表示されます。
 
-##### "secret" （シークレット）
+参照してください：
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "secret" `[string]`
 - この値は、キャプチャ・サービスのダッシュボードに表示されます。
 
-##### "expiry" （シークレット）
+参照してください：
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "expiry" `[float]`
 - キャプチャ・インスタンスを覚えておく時間数。 Default（デフォルルト） = ７２０（１ヶ月）。
 
-##### "logfile" （ログ・ファイル）
+##### "logfile" `[string]`
 - キャプチャ試行の記録。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-*有用な先端：​あなたがしたい場合は、​ログ・ファイルの名前に日付/時刻情報を付加することができます、​名前にこれらを含めることで:完全な年のため`{yyyy}`、​省略された年のため`{yy}`、​月`{mm}`、​日`{dd}`、​時間`{hh}`。*
-
-*例:*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "signature_limit" （シグネチャ・リミット）
+##### "signature_limit" `[int]`
 - キャプチャが取り消される前に許可されるシグネチャの最大数。​Default/デフォルルト = １。
 
-##### "api" （エイ・ピー・アイ）
+##### "api" `[string]`
 - どのＡＰＩを使用するのですか？
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (チェック・ボックス)")
+└─Invisible ("V2 (インビジブル)")
 ```
 
-*欧州連合（ＥＵ）のユーザーのための注意：​クッキーを使用するようにCIDRAMが設定されている場合（「lockuser」がtrueの場合など）、[ＥＵクッキー法](https://www.cookielaw.org/the-cookie-law/)の要件に従って、Cookieの警告がページに目立つように表示されます。​ただし、不可視ＡＰＩを使用する場合、CIDRAMはユーザーのキャプチャを自動的に完了しようとします。​成功すると、ページがリロードされ、クッキーが実際に表示されるのに十分な時間が与えられずにクッキーが作成される可能性があります。*
-
-##### "show_cookie_warning" （ショー・クッキー・ウォーニング）
+##### "show_cookie_warning" `[bool]`
 - クッキーの警告を表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-*通常キャプチャと一緒に表示されるクッキーの警告を無効にしたいユーザのために（例えば、CIDRAMが使用されているという兆候を隠すのを助けるため）、このコンフィギュレーション・ディレクティブは要求によって追加されます。​ただし、ほとんどのユーザー（特にＥＵを拠点とするユーザー）が有効にしておくことを強くお勧めします。*
-
-##### "show_api_message" （ショー・エイ・ピー・アイ・メシッジ）
+##### "show_api_message" `[bool]`
 - ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-*これは、クッキーの警告以外に、リクエストがブロックされたときに表示される追加の必須ではないメッセージを指します。*
-
-##### "nonblocked_status_code" （ノンブロクト・ステータス・コード）
+##### "nonblocked_status_code" `[int]`
 - ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
 
-現在サポートされている値：
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-ステータス・コード | ステータス・メッセージ
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### "hcaptcha" （カテゴリ）
+HCaptchaの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
 
-#### "legal" （リーガル、カテゴリ）
-法律要件に関するコンフィギュレーション。
+##### "usemode" `[int]`
+- キャプチャはいつ提供する必要がありますか？​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。
 
-*法律要件とこれがコンフィギュレーション要件に与える影響の詳細については、ドキュメントの「[法律情報](#SECTION11)」セクションを参照してください。*
+```
+usemode
+├─0 (決して !!!)
+├─1 (ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。)
+├─2 (ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。)
+├─3 (シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。)
+├─4 (ブロックされていない場合のみ。)
+└─5 (ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。)
+```
 
-##### "pseudonymise_ip_addresses" （プセユードニマイズ・アイピー・アドレセズ）
+##### "lockip" `[bool]`
+- キャプチャをＩＰにロックしますか？
+
+##### "lockuser" `[bool]`
+- キャプチャをユーザーにロックしますか？
+
+##### "sitekey" `[string]`
+- この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "secret" `[string]`
+- この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "expiry" `[float]`
+- キャプチャ・インスタンスを覚えておく時間数。 Default（デフォルルト） = ７２０（１ヶ月）。
+
+##### "logfile" `[string]`
+- キャプチャ試行の記録。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+
+##### "signature_limit" `[int]`
+- キャプチャが取り消される前に許可されるシグネチャの最大数。​Default/デフォルルト = １。
+
+##### "api" `[string]`
+- どのＡＰＩを使用するのですか？
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (インビジブル)")
+```
+
+##### "show_cookie_warning" `[bool]`
+- クッキーの警告を表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
+
+##### "show_api_message" `[bool]`
+- ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
+
+##### "nonblocked_status_code" `[int]`
+- ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
+
+#### "legal" （カテゴリ）
+法的要件の設定。
+
+##### "pseudonymise_ip_addresses" `[bool]`
 - ログ・ファイルを書き込むときにＩＰアドレス偽名化するか「プセユードニマイズ」？ True = はい（Default/デフォルルト）。 False = いいえ。
 
-##### "omit_ip" （オミット・アイピー）
-- ログからＩＰアドレスを省略しますか？ True = はい。 False = いいえ（Default/デフォルルト）。​注：「omit_ip」が「true」の場合、「pseudonymise_ip_addresses」は冗長になります。
-
-##### "omit_hostname" （オミット・ホストネーム）
-- ログからホスト名を省略しますか？ True = はい。 False = いいえ（Default/デフォルルト）。
-
-##### "omit_ua" （オミット・ユーエイ）
-- ログからユーザー・エージェント（ユーエイ）を省略しますか？ True = はい。 False = いいえ（Default/デフォルルト）。
-
-##### "privacy_policy" （プライバシー・ポリシー）
+##### "privacy_policy" `[string]`
 - 生成されたページのフッターに表示される関連プライバシー・ポリシーのアドレス。​ＵＲＬを指定するか、無効にしたい場合は空白のままにして下さい。
 
-#### "template_data" （テンプレート・データ、カテゴリ）
-テンプレートとテーマ用のディレクティブと変数。
+#### "template_data" （カテゴリ）
+テンプレートとテーマの設定。
 
-テンプレートのデータは、​ユーザーに向けてアクセス拒否のメッセージをＨＴＭＬ形式でアウトプットする際に使用されます。​カスタムテーマを使っている場合は`template_custom.html`を使用して、​そうでない場合は`template.html`を使用してＨＴＭＬアウトプットが生成されます。​設定ファイル内にあるこのセクション用の変数は、​ＨＴＭＬアウトプットのために解析され、​で囲まれた変数名は対応する変数データに置き換えられます。​例えば`foo="bar"`とすると、​ＨＴＭＬアウトプット内の`<p>{foo}</p>`は`<p>bar</p>`となります。
-
-##### "theme" （シーム/テーマ）
+##### "theme" `[string]`
 - CIDRAMに使用するデフォルトテーマ。
 
-##### "magnification" （マグニフィケーション）
-- *v1: "Magnification"*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…その他
+```
+
+##### "magnification" `[float]`
 - フォントの倍率。​Default/デフォルルト = １。
 
-##### "css_url" （シーエスエス・ユーアールエル）
-- カスタムテーマ用のテンプレートファイルは、​外部ＣＳＳプロパティーを使っています。​一方、​デフォルトテーマは内部ＣＳＳです。​カスタムテーマを適用するためには、​ＣＳＳファイルのパブリックＨＴＴＰアドレスを"css_url"変数を使って指定して下さい。​この変数が空白であれば、​デフォルトテーマが適用されます。
+##### "css_url" `[string]`
+- カスタムテーマのＣＳＳファイルＵＲＬ。
 
-#### "PHPMailer" （ピー・エイチ・ピー・メーラー、カテゴリ）
-PHPMailerコンフィギュレーション。
+##### "block_event_title" `[string]`
+- ブロック・イベントに表示するページ・タイトル。
 
-現在、CIDRAMはフロントエンドの２ＦＡ（二要素認証）にのみPHPMailerを使用しています。​フロントエンドを使用しない場合、またはフロントエンドに２ＦＡ（二要素認証）を使用しない場合は、これらのディレクティブを無視できます。
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…その他
+```
 
-##### "event_log" （イベント・ログ）
-- *v1: "EventLog"*
+##### "captcha_title" `[string]`
+- キャプチャ・リクエストに表示するページ・タイトル。
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…その他
+```
+
+#### "PHPMailer" （カテゴリ）
+PHPMailerの設定（二要素認証に使用されます）。
+
+##### "event_log" `[string]`
 - PHPMailerに関連してすべてのイベントを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
-##### "skip_auth_process" （スキップ・オス・プロセス）
-- *v1: "SkipAuthProcess"*
+##### "skip_auth_process" `[bool]`
 - このディレクティブを`true`に設定すると、PHPMailerはSMTP経由で電子Ｅメールを送信する際に通常発生する認証プロセスをスキップします。​このプロセスをスキップすると、送信ＥメールがＭＩＴＭ攻撃にさらされる可能性があるため、これは避けるべきです。​しかし、PHPMailerがSMTPサーバに接続できない場合、このプロセスが必要な場合があります。
 
-##### "enable_two_factor" （イネーブル２ＦＡ）
-- *v1: "Enable2FA"*
+##### "enable_two_factor" `[bool]`
 - このディレクティブは、フロントエンド・アカウントに２ＦＡを使用するかどうかを決定します。
 
-##### "host" （ホスト）
-- *v1: "Host"*
+##### "host" `[string]`
 - 送信Ｅメールに使用するＳＭＴＰホスト。
 
-##### "port" （ポート）
-- *v1: "Port"*
+##### "port" `[int]`
 - 送信Ｅメールに使用するポート番号。​Default/デフォルルト = 587。
 
-##### "smtp_secure" （ＳＭＴＰセキュア）
-- *v1: "SMTPSecure"*
+##### "smtp_secure" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するプロトコル（ＴＬＳまたはＳＳＬ）。
 
-##### "smtp_auth" （ＳＭＴＰオス）
-- *v1: "SMTPAuth"*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### "smtp_auth" `[bool]`
 - このディレクティブは、ＳＭＴＰセッションを認証するかどうかを決定します（通常はそれをそのまま残すべきです）。
 
-##### "username" （ユーザーネーム）
-- *v1: "Username"*
+##### "username" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するユーザー名。
 
-##### "password" （パスワード）
-- *v1: "Password"*
+##### "password" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するパスワード。
 
-##### "set_from_address" （セット・フロム・アドレス）
-- *v1: "setFromAddress"*
+##### "set_from_address" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者アドレス。
 
-##### "set_from_name" （セット・フロム・ネーム）
-- *v1: "setFromName"*
+##### "set_from_name" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者名。
 
-##### "add_reply_to_address" （アッド・リプライ・アドレス）
-- *v1: "addReplyToAddress"*
+##### "add_reply_to_address" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信アドレス。
 
-##### "add_reply_to_name" （アッド・リプライ・ネーム）
-- *v1: "addReplyToName"*
+##### "add_reply_to_name" `[string]`
 - ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信名。
 
-#### "rate_limiting" （レート・リミッティング、カテゴリ）
-レート制限のオプショナル・コンフィギュレーション・ディレクティブ。
+#### "rate_limiting" （カテゴリ）
+レート制限の設定（一般的な使用には推奨されません）。
 
-この機能は、実装が正当化されるのに十分なユーザーから要求されたため、CIDRAMに実装されました。​しかし、この機能はCIDRAMのもともとの目的とは多少関係がありません、したがって、ほとんどのユーザーはほとんど必要としません。​ウェブサイトのレート制限を処理するためにCIDRAMが特に必要な場合は、この機能が役立ちます。​ただし、考慮すべき重要な事項がいくつかあります。
-- この機能は、他のすべてのCIDRAM機能と同様に、CIDRAMで保護されたページでのみ機能します。​このため、CIDRAM経由で特別にルーティングされていないウェブサイト資産は、CIDRAMによってレート制限されません。
-- サーバー・モジュール、cPanel、またはその他のネットワークツールを使用してレート制限を適用できる場合、レート制限に使用する方が良いでしょう（CIDRAMを使用する代わりに）。
-- 制限された後、特定のユーザーがあなたのウェブサイトへのアクセスを続けたいと願っている場合、ほとんどの場合、レート制限を回避するのは非常に簡単です（例えば、彼らは彼らのＩＰアドレスを変更する場合、または、プロキシまたはＶＰＮを使用している場合、プロキシやＶＰＮをブロックしないようにCIDRAMを設定していること、またはCIDRAMが使用しているプロキシやＶＰＮを認識していないことを前提としています）。
-- レート制限は、ユーザーにとって非常に迷惑になる可能性があります。​使用可能な帯域幅が非常に限られている場合、そして、まだブロックされていないトラフィックの一部のソースが大部分の帯域幅を消費していることがわかった場合、おそらくそれは必要です。​しかし、必要でない場合は、それはおそらく避けるべきです。
-- あなた自身または合法的なユーザーをブロックする危険性があります。
-
-あなたのウェブサイトにレート制限を適用するためにCIDRAMが必要ない場合、ディレクティブをデフォルト値のままにしてください。​それ以外の場合は、ニーズに合わせて値を変更できます。
-
-##### "max_bandwidth" （マックス・バンドウィツ）
+##### "max_bandwidth" `[string]`
 - 将来の要求に対してレート制限を有効にする前の許容期間内に許容される最大帯域幅。​０の値は、このタイプのレート制限を無効にします。​Default/デフォルルト = 0KB。
 
-##### "max_requests" （マックス・レクェスツ）
+##### "max_requests" `[int]`
 - 将来の要求に対してレート制限を有効にする前に、許容期間内に許可される要求の最大数。​０の値は、このタイプのレート制限を無効にします。​Default/デフォルルト = 0。
 
-##### "precision_ipv4" （プリシジョン・アイピーブイ４）
+##### "precision_ipv4" `[int]`
 - ＩＰｖ４の使用状況を監視する際の精度。​値はＣＩＤＲブロック・サイズを反映します。​最高の精度を得るには３２に設定します。​Default/デフォルルト = 32。
 
-##### "precision_ipv6" （プリシジョン・アイピーブイ６）
+##### "precision_ipv6" `[int]`
 - ＩＰｖ６の使用状況を監視する際の精度。​値はＣＩＤＲブロック・サイズを反映します。​最高の精度を得るには１２８に設定します。​Default/デフォルルト = 128。
 
-##### "allowance_period" （アラワンス・ピアリアド）
+##### "allowance_period" `[float]`
 - 使用状況を監視する時間数。​Default/デフォルルト = 0.
 
-##### "exceptions" （エクセプションズ）
+##### "exceptions" `[string]`
 - 例外（すなわち、レート制限されるべきではないリクエスト）。​レート制限が有効な場合にのみ効果があります。
-- *利用可能なオプション： `Whitelisted,Verified`*
 
-#### "supplementary_cache_options" （サプレメンタリー・キャッシュ・オプションズ、カテゴリ）
-補足キャッシュ・オプション。
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
-##### "prefix" （プリフィクス）
-- ここで指定された値は、すべてのキャッシュ・エントリ・キーの前に追加されます。​デフォルトでは空です。​同じサーバーに複数のインストールが存在する場合、これはキャッシュを互いに分離しておくのに役立ちます。
+#### "supplementary_cache_options" （カテゴリ）
+補足キャッシュ・オプション。 注：これらの値を変更すると、ログアウトする可能性があります。
 
-##### "enable_apcu" （イネーブル・ＡＰＣｕ）
-- キャッシュに「APCu」を使用するかどうかを指定します。 Default/デフォルルト = False。
+##### "prefix" `[string]`
+- ここで指定された値は、すべてのキャッシュ・エントリ・キーの前に追加されます。 Default/デフォルルト = 「CIDRAM_」。 同じサーバーに複数のインストールが存在する場合、これはキャッシュを互いに分離しておくのに役立ちます。
 
-##### "enable_memcached" （イネーブル・メムキャッシュト）
+##### "enable_apcu" `[bool]`
+- キャッシュに「APCu」を使用するかどうかを指定します。 Default/デフォルルト = True。
+
+##### "enable_memcached" `[bool]`
 - キャッシュに「Memcached」を使用するかどうかを指定します。 Default/デフォルルト = False。
 
-##### "enable_redis" （イネーブル・レディス）
+##### "enable_redis" `[bool]`
 - キャッシュに「Redis」を使用するかどうかを指定します。 Default/デフォルルト = False。
 
-##### "enable_pdo" （イネーブル・ＰＤＯ）
+##### "enable_pdo" `[bool]`
 - キャッシュに「PDO」を使用するかどうかを指定します。 Default/デフォルルト = False。
 
-##### "memcached_host" （メムキャッシュ・ホスト）
+##### "memcached_host" `[string]`
 - Memcachedのホスト値。 Default/デフォルルト = 「localhost」。
 
-##### "memcached_port" （メムキャッシュ・ポート）
+##### "memcached_port" `[int]`
 - Memcachedのポート値。 Default/デフォルルト = 「11211」。
 
-##### "redis_host" （レディス・ホスト）
+##### "redis_host" `[string]`
 - Redisのホスト値。 Default/デフォルルト = 「localhost」。
 
-##### "redis_port" （レディス・ポート）
+##### "redis_port" `[int]`
 - Redisのポート値。 Default/デフォルルト = 「6379」。
 
-##### "redis_timeout" （レディス・タイムアウト）
+##### "redis_timeout" `[float]`
 - Redisのタイムアウト値。 Default/デフォルルト = 「2.5」。
 
-##### "pdo_dsn"
-- PDOのDSN値。 Default/デフォルルト = 「`mysql:dbname=cidram;host=localhost;port=3306`」。
+##### "pdo_dsn" `[string]`
+- PDOのDSN値。 Default/デフォルルト = 「mysql:dbname=cidram;host=localhost;port=3306」。
 
-*参照する：​[「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？](#HOW_TO_USE_PDO)*
-
-##### "pdo_username" （ＰＤＯ・ユーザーネーム）
+##### "pdo_username" `[string]`
 - PDOのユーザー名。
 
-##### "pdo_password" （ＰＤＯ・パスワード）
+##### "pdo_password" `[string]`
 - PDOのパスワード。
 
 ---
@@ -1964,4 +2232,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２２年２月２０日。
+最終アップデート：２０２２年３月２５日。

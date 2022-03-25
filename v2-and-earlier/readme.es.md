@@ -731,10 +731,10 @@ Configuración de firmas.
 - Una lista de archivos módulo a cargar después de comprobar las firmas IPv4/IPv6, delimitado por comas.
 
 ##### "default_tracktime"
-- ¿Cuántos segundos para realizar el seguimiento de las IP prohibidas por los módulos? Predefinida = 604800 (1 semana).
+- ¿Cuántos segundos para realizar el seguimiento de las IP prohibidas por los módulos? Predefinido = 604800 (1 semana).
 
 ##### "infraction_limit"
-- Número máximo de infracciones a las que un IP puede incurrir antes de ser prohibido por el seguimiento de IP. Predefinida = 10.
+- Número máximo de infracciones a las que un IP puede incurrir antes de ser prohibido por el seguimiento de IP. Predefinido = 10.
 
 ##### "track_mode"
 - ¿Cuándo se deben contar las infracciones? False = Cuando los IPs están bloqueados por módulos. True = Cuando los IP están bloqueados por cualquier razón. Predefinido = False.
@@ -1984,4 +1984,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 20 de Febrero de 2022 (2022.02.20).
+Última Actualización: 21 de Febrero de 2022 (2022.02.21).

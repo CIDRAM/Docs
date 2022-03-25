@@ -317,690 +317,948 @@ https://github.com/CIDRAM/CIDRAM>v2
 The following is a list of the directives available to CIDRAM in the `config.ini` configuration file, along with a description of the purpose of these directives.
 
 ```
-Configuration (v2)
+Configuration (v3)
+│
 ├───general
-│       logfile
-│       logfile_apache (v1: logfileApache)
-│       logfile_serialized (v1: logfileSerialized)
-│       error_log
-│       error_log_stages
-│       truncate
-│       log_rotation_limit
-│       log_rotation_action
-│       timezone
-│       time_offset (v1: timeOffset)
-│       time_format (v1: timeFormat)
-│       ipaddr
-│       forbid_on_block
-│       silent_mode
-│       lang
-│       lang_override
-│       numbers
-│       emailaddr
-│       emailaddr_display_style
-│       † (v1: disable_cli)
-│       disable_frontend
-│       max_login_attempts
-│       frontend_log (v1: FrontEndLog)
-│       signatures_update_event_log
-│       ban_override
-│       log_banned_ips
-│       default_dns
-│       search_engine_verification
-│       social_media_verification
-│       other_verification
-│       protect_frontend
-│       maintenance_mode
-│       default_algo
-│       statistics
-│       force_hostname_lookup
-│       allow_gethostbyaddr_lookup
-│       hide_version
-│       empty_fields
-│       log_sanitisation
-│       disabled_channels
-│       default_timeout
-│       config_imports
-│       events
+│       logfile [string]
+│       logfile_apache [string]
+│       logfile_serialized [string]
+│       error_log [string]
+│       stages [string]
+│       fields [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       timezone [string]
+│       time_offset [int]
+│       time_format [string]
+│       ipaddr [string]
+│       http_response_header_code [int]
+│       silent_mode [string]
+│       lang [string]
+│       lang_override [bool]
+│       numbers [string]
+│       emailaddr [string]
+│       emailaddr_display_style [string]
+│       disable_frontend [bool]
+│       max_login_attempts [int]
+│       frontend_log [string]
+│       signatures_update_event_log [string]
+│       ban_override [int]
+│       log_banned_ips [bool]
+│       default_dns [string]
+│       search_engine_verification [string]
+│       social_media_verification [string]
+│       other_verification [string]
+│       protect_frontend [bool]
+│       default_algo [string]
+│       statistics [string]
+│       force_hostname_lookup [bool]
+│       allow_gethostbyaddr_lookup [bool]
+│       log_sanitisation [bool]
+│       disabled_channels [string]
+│       default_timeout [int]
+│       config_imports [string]
+│       events [string]
 ├───signatures
-│       ipv4
-│       ipv6
-│       block_attacks
-│       block_cloud
-│       block_bogons
-│       block_generic
-│       block_legal
-│       block_malware
-│       block_proxies
-│       block_spam
-│       modules
-│       default_tracktime
-│       infraction_limit
-│       track_mode
-│       tracking_override
+│       ipv4 [string]
+│       ipv6 [string]
+│       block_attacks [bool]
+│       block_cloud [bool]
+│       block_bogons [bool]
+│       block_generic [bool]
+│       block_legal [bool]
+│       block_malware [bool]
+│       block_proxies [bool]
+│       block_spam [bool]
+│       modules [string]
+│       default_tracktime [int]
+│       infraction_limit [int]
+│       tracking_override [bool]
 ├───recaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───hcaptcha
-│       usemode
-│       lockip
-│       lockuser
-│       sitekey
-│       secret
-│       expiry
-│       logfile
-│       signature_limit
-│       api
-│       show_cookie_warning
-│       show_api_message
-│       nonblocked_status_code
+│       usemode [int]
+│       lockip [bool]
+│       lockuser [bool]
+│       sitekey [string]
+│       secret [string]
+│       expiry [float]
+│       logfile [string]
+│       signature_limit [int]
+│       api [string]
+│       show_cookie_warning [bool]
+│       show_api_message [bool]
+│       nonblocked_status_code [int]
 ├───legal
-│       pseudonymise_ip_addresses
-│       omit_ip
-│       omit_hostname
-│       omit_ua
-│       privacy_policy
+│       pseudonymise_ip_addresses [bool]
+│       privacy_policy [string]
 ├───template_data
-│       theme
-│       magnification (v1: Magnification)
-│       css_url
+│       theme [string]
+│       magnification [float]
+│       css_url [string]
+│       block_event_title [string]
+│       captcha_title [string]
 ├───PHPMailer
-│       event_log (v1: EventLog)
-│       skip_auth_process (v1: SkipAuthProcess)
-│       enable_two_factor (v1: Enable2FA)
-│       host (v1: Host)
-│       port (v1: Port)
-│       smtp_secure (v1: SMTPSecure)
-│       smtp_auth (v1: SMTPAuth)
-│       username (v1: Username)
-│       password (v1: Password)
-│       set_from_address (v1: setFromAddress)
-│       set_from_name (v1: setFromName)
-│       add_reply_to_address (v1: addReplyToAddress)
-│       add_reply_to_name (v1: addReplyToName)
+│       event_log [string]
+│       skip_auth_process [bool]
+│       enable_two_factor [bool]
+│       host [string]
+│       port [int]
+│       smtp_secure [string]
+│       smtp_auth [bool]
+│       username [string]
+│       password [string]
+│       set_from_address [string]
+│       set_from_name [string]
+│       add_reply_to_address [string]
+│       add_reply_to_name [string]
 ├───rate_limiting
-│       max_bandwidth
-│       max_requests
-│       precision_ipv4
-│       precision_ipv6
-│       allowance_period
-│       exceptions
+│       max_bandwidth [string]
+│       max_requests [int]
+│       precision_ipv4 [int]
+│       precision_ipv6 [int]
+│       allowance_period [float]
+│       exceptions [string]
 └───supplementary_cache_options
-        prefix
-        enable_apcu
-        enable_memcached
-        enable_redis
-        enable_pdo
-        memcached_host
-        memcached_port
-        redis_host
-        redis_port
-        redis_timeout
-        pdo_dsn
-        pdo_username
-        pdo_password
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Category)
-General CIDRAM configuration.
+General configuration (any core configuration not belonging to other categories).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Human readable file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-##### "logfile_apache"
-- *v1: "logfileApache"*
+##### "logfile_apache" `[string]`
 - Apache-style file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-##### "logfile_serialized"
-- *v1: "logfileSerialized"*
+##### "logfile_serialized" `[string]`
 - Serialised file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-*Useful tip: If you want, you can append date/time information to the names of your logfiles by including these in the name.*
-
-Placeholder | Explanation | Example
----|---|---
-`{yyyy}` | Entire year | 2018
-`{yy}` | Shortened year | 18
-`{mm}` | Month| 08
-`{dd}` | Day | 20
-`{hh}` | Hour | 12
-
-_Examples are based on the date 20.08.2018, at 12:06._
-
-*Examples:*
-- *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_apache='access.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-- *`logfile_serialized='serial.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "error_log"
+##### "error_log" `[string]`
 - A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
 
-##### "error_log_stages"
-- A list of the stages in the execution chain that should have any generated errors logged.
-- *Default: "Tests,Modules,SearchEngineVerification,SocialMediaVerification,OtherVerification,Aux,Reporting,Tracking,RL,CAPTCHA,Statistics,Webhooks,Output,NonBlockedCAPTCHA"*
+##### "stages" `[string]`
+- Controls for the stages of the execution chain (whether enabled, whether errors are logged, etc).
 
-##### "truncate"
+```
+stages
+├─Tests ("stage_tests")
+├─Modules ("stage_modules")
+├─SearchEngineVerification ("stage_sev")
+├─SocialMediaVerification ("stage_smv")
+├─OtherVerification ("stage_ov")
+├─Aux ("stage_aux")
+├─Reporting ("stage_reporting")
+├─Tracking ("stage_tracking")
+├─RL ("stage_rl")
+├─CAPTCHA ("stage_captcha")
+├─Statistics ("stage_statistics")
+├─Webhooks ("stage_webhooks")
+├─PrepareFields ("stage_preparefields")
+├─Output ("stage_output")
+├─WriteLogs ("stage_writelogs")
+├─Terminate ("stage_terminate")
+├─AuxRedirect ("stage_auxredirect")
+└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+```
+
+##### "fields" `[string]`
+- Controls for the fields during block events (when a request is blocked).
+
+```
+fields
+├─ID ("field_id")
+├─ScriptIdent ("field_scriptversion")
+├─DateTime ("field_datetime")
+├─IPAddr ("field_ipaddr")
+├─IPAddrResolved ("field_ipaddr_resolved")
+├─Query ("field_query")
+├─Referrer ("field_referrer")
+├─UA ("field_ua")
+├─UALC ("field_ualc")
+├─SignatureCount ("field_sigcount")
+├─Signatures ("field_sigref")
+├─WhyReason ("field_whyreason")
+├─ReasonMessage ("field_reasonmessage")
+├─rURI ("field_rURI")
+├─Infractions ("field_infractions")
+├─ASNLookup ("field_asnlookup")
+├─CCLookup ("field_cclookup")
+├─Verified ("field_verified")
+├─Expired ("state_expired")
+├─Ignored ("state_ignored")
+├─Request_Method ("field_request_method")
+├─Hostname ("field_hostname")
+└─CAPTCHA ("field_captcha")
+```
+
+##### "truncate" `[string]`
 - Truncate logfiles when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a logfile may grow to before being truncated. The default value of 0KB disables truncation (logfiles can grow indefinitely). Note: Applies to individual logfiles! The size of logfiles is not considered collectively.
 
-##### "log_rotation_limit"
+##### "log_rotation_limit" `[int]`
 - Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired limit here. A value of 0 will disable log rotation.
 
-##### "log_rotation_action"
+##### "log_rotation_action" `[string]`
 - Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired action here. Delete = Delete the oldest logfiles, until the limit is no longer exceeded. Archive = Firstly archive, and then delete the oldest logfiles, until the limit is no longer exceeded.
 
-*Technical clarification: In this context, "oldest" means least recently modified.*
+```
+log_rotation_action
+├─Delete ("Delete")
+└─Archive ("Archive")
+```
 
-##### "timezone"
-- This is used to specify which timezone CIDRAM should use for date/time operations. If you don't need it, ignore it. Possible values are determined by PHP. It's generally recommended instead to adjust the timezone directive in your `php.ini` file, but sometimes (such as when working with limited shared hosting providers) this isn't always possible to do, and so, this option is provided here.
+##### "timezone" `[string]`
+- This is used to specify the timezone to use (e.g., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Specify "SYSTEM" to let PHP handle this for you automatically.
 
-##### "time_offset"
-- *v1: "timeOffset"*
-- If your server time doesn't match your local time, you can specify an offset here to adjust the date/time information generated by CIDRAM according to your needs. It's generally recommended instead to adjust the timezone directive in your `php.ini` file, but sometimes (such as when working with limited shared hosting providers) this isn't always possible to do, and so, this option is provided here. Offset is in minutes.
-- Example (to add one hour): `time_offset=60`
+```
+timezone
+├─SYSTEM ("Use system default timezone.")
+├─UTC ("UTC")
+└─…Other
+```
 
-##### "time_format"
-- *v1: "timeFormat"*
-- The date/time notation format used by CIDRAM. Default = `{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}`.
+##### "time_offset" `[int]`
+- Timezone offset in minutes.
 
-##### "ipaddr"
+##### "time_format" `[string]`
+- The date/time notation format used by CIDRAM. Additional options may be added upon request.
+
+```
+time_format
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} {tz}")
+├─{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss} ("{Day}, {dd} {Mon} {yyyy} {hh}:{ii}:{ss}")
+├─{Day}, {dd} {Mon} {yyyy} ("{Day}, {dd} {Mon} {yyyy}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yyyy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yyyy}.{mm}.{dd} ("{yyyy}.{mm}.{dd}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yyyy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yyyy}-{mm}-{dd} ("{yyyy}-{mm}-{dd}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yyyy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yyyy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yyyy}/{mm}/{dd} ("{yyyy}/{mm}/{dd}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yyyy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yyyy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yyyy} ("{dd}.{mm}.{yyyy}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yyyy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yyyy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yyyy} ("{dd}-{mm}-{yyyy}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yyyy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yyyy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yyyy} ("{dd}/{mm}/{yyyy}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yyyy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yyyy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yyyy} ("{mm}.{dd}.{yyyy}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yyyy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yyyy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yyyy} ("{mm}-{dd}-{yyyy}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yyyy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yyyy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yyyy} ("{mm}/{dd}/{yyyy}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}.{mm}.{dd} {hh}:{ii}:{ss} ("{yy}.{mm}.{dd} {hh}:{ii}:{ss}")
+├─{yy}.{mm}.{dd} ("{yy}.{mm}.{dd}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}-{mm}-{dd} {hh}:{ii}:{ss} ("{yy}-{mm}-{dd} {hh}:{ii}:{ss}")
+├─{yy}-{mm}-{dd} ("{yy}-{mm}-{dd}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss} {tz}")
+├─{yy}/{mm}/{dd} {hh}:{ii}:{ss} ("{yy}/{mm}/{dd} {hh}:{ii}:{ss}")
+├─{yy}/{mm}/{dd} ("{yy}/{mm}/{dd}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}.{mm}.{yy} {hh}:{ii}:{ss} ("{dd}.{mm}.{yy} {hh}:{ii}:{ss}")
+├─{dd}.{mm}.{yy} ("{dd}.{mm}.{yy}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}-{mm}-{yy} {hh}:{ii}:{ss} ("{dd}-{mm}-{yy} {hh}:{ii}:{ss}")
+├─{dd}-{mm}-{yy} ("{dd}-{mm}-{yy}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{dd}/{mm}/{yy} {hh}:{ii}:{ss} ("{dd}/{mm}/{yy} {hh}:{ii}:{ss}")
+├─{dd}/{mm}/{yy} ("{dd}/{mm}/{yy}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}.{dd}.{yy} {hh}:{ii}:{ss} ("{mm}.{dd}.{yy} {hh}:{ii}:{ss}")
+├─{mm}.{dd}.{yy} ("{mm}.{dd}.{yy}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}-{dd}-{yy} {hh}:{ii}:{ss} ("{mm}-{dd}-{yy} {hh}:{ii}:{ss}")
+├─{mm}-{dd}-{yy} ("{mm}-{dd}-{yy}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss} {tz}")
+├─{mm}/{dd}/{yy} {hh}:{ii}:{ss} ("{mm}/{dd}/{yy} {hh}:{ii}:{ss}")
+├─{mm}/{dd}/{yy} ("{mm}/{dd}/{yy}")
+├─{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yyyy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yyyy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}年{m}月{d}日 ("{yyyy}年{m}月{d}日")
+├─{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒 ("{yy}年{m}月{d}日 {hh}時{ii}分{ss}秒")
+├─{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz} ("{yy}年{m}月{d}日 {hh}:{ii}:{ss} {tz}")
+├─{yy}年{m}月{d}日 ("{yy}年{m}月{d}日")
+├─{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yyyy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yyyy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yyyy}년 {m}월 {d}일 ("{yyyy}년 {m}월 {d}일")
+├─{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초 ("{yy}년 {m}월 {d}일 {hh}시 {ii}분 {ss}초")
+├─{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz} ("{yy}년 {m}월 {d}일 {hh}:{ii}:{ss} {tz}")
+├─{yy}년 {m}월 {d}일 ("{yy}년 {m}월 {d}일")
+├─{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z} ("{yyyy}-{mm}-{dd}T{hh}:{ii}:{ss}{t:z}")
+├─{d}. {m}. {yyyy} ("{d}. {m}. {yyyy}")
+└─…Other
+```
+
+##### "ipaddr" `[string]`
 - Where to find the IP address of connecting requests? (Useful for services such as Cloudflare and the likes). Default = REMOTE_ADDR. WARNING: Don't change this unless you know what you're doing!
 
-Recommended values for "ipaddr":
+```
+ipaddr
+├─HTTP_INCAP_CLIENT_IP ("HTTP_INCAP_CLIENT_IP (Incapsula)")
+├─HTTP_CF_CONNECTING_IP ("HTTP_CF_CONNECTING_IP (Cloudflare)")
+├─CF-Connecting-IP ("CF-Connecting-IP (Cloudflare)")
+├─HTTP_X_FORWARDED_FOR ("HTTP_X_FORWARDED_FOR (Cloudbric)")
+├─X-Forwarded-For ("X-Forwarded-For (Squid)")
+├─Forwarded ("Forwarded")
+├─REMOTE_ADDR ("REMOTE_ADDR (Default)")
+└─…Other
+```
 
-Value | Using
----|---
-`HTTP_INCAP_CLIENT_IP` | Incapsula reverse proxy.
-`HTTP_CF_CONNECTING_IP` | Cloudflare reverse proxy.
-`CF-Connecting-IP` | Cloudflare reverse proxy (alternative; if the above doesn't work).
-`HTTP_X_FORWARDED_FOR` | Cloudbric reverse proxy.
-`X-Forwarded-For` | [Squid reverse proxy](http://www.squid-cache.org/Doc/config/forwarded_for/).
-`Forwarded` | *[Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded).*
-*Defined by server configuration.* | [Nginx reverse proxy](https://www.nginx.com/resources/admin-guide/reverse-proxy/).
-`REMOTE_ADDR` | No reverse proxy (default value).
+See also:
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
+- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "forbid_on_block"
-- Which HTTP status message should CIDRAM send when blocking requests?
+##### "http_response_header_code" `[int]`
+- Which HTTP status message should CIDRAM send when blocking requests? (Refer to the documentation for more information).
 
-Currently supported values:
+```
+http_response_header_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
 
-Status code | Status message | Description
----|---|---
-`200` | `200 OK` | Default value. Least robust, but most user-friendly.
-`403` | `403 Forbidden` | More robust, but less user-friendly.
-`410` | `410 Gone` | Could cause problems when attempting to resolve false positives, due to that some browsers will cache this status message and not send subsequent requests, even after unblocking users. May be more useful than other options for reducing requests from certain, very specific types of bots though.
-`418` | `418 I'm a teapot` | Actually references an April Fools' joke [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] and is unlikely to be understood by the client. Provided for amusement and convenience, but not generally recommended.
-`451` | `Unavailable For Legal Reasons` | Appropriate for contexts when requests are blocked primarily for legal reasons. Not recommended in other contexts.
-`503` | `Service Unavailable` | Most robust, but least user-friendly.
-
-##### "silent_mode"
+##### "silent_mode" `[string]`
 - Should CIDRAM silently redirect blocked access attempts instead of displaying the "Access Denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
 
-##### "lang"
+##### "lang" `[string]`
 - Specify the default language for CIDRAM.
 
-##### "lang_override"
+```
+lang
+├─en ("English")
+├─ar ("العربية")
+├─bn ("বাংলা")
+├─de ("Deutsch")
+├─es ("Español")
+├─fr ("Français")
+├─hi ("हिंदी")
+├─id ("Bahasa Indonesia")
+├─it ("Italiano")
+├─ja ("日本語")
+├─ko ("한국어")
+├─lv ("Latviešu")
+├─nl ("Nederlandse")
+├─no ("Norsk")
+├─pl ("Polski")
+├─pt ("Português")
+├─ru ("Русский")
+├─sv ("Svenska")
+├─ta ("தமிழ்")
+├─th ("ภาษาไทย")
+├─tr ("Türkçe")
+├─ur ("اردو")
+├─vi ("Tiếng Việt")
+├─zh ("中文（简体）")
+└─zh-tw ("中文（傳統）")
+```
+
+##### "lang_override" `[bool]`
 - Localise according to HTTP_ACCEPT_LANGUAGE whenever possible? True = Yes [Default]; False = No.
 
-##### "numbers"
-- Specifies how to display numbers.
+##### "numbers" `[string]`
+- How do you prefer numbers to be displayed? Select the example that looks the most correct to you.
 
-Currently supported values:
+```
+numbers
+├─Arabic-1 ("١٢٣٤٥٦٧٫٨٩")
+├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
+├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
+├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
+├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Base-12 ("4b6547.a8")
+├─Base-16 ("12d687.e3")
+├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
+├─Burmese-1 ("၁၂၃၄၅၆၇.၈၉")
+├─China-1 ("123,4567.89")
+├─Chinese-Simplified ("一百二十三万四千五百六十七点八九")
+├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
+├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
+├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
+├─Fullwidth ("１２３４５６７.８９")
+├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
+├─India-1 ("12,34,567.89")
+├─India-2 ("१२,३४,५६७.८९")
+├─India-3 ("૧૨,૩૪,૫૬૭.૮૯")
+├─India-4 ("੧੨,੩੪,੫੬੭.੮੯")
+├─India-5 ("೧೨,೩೪,೫೬೭.೮೯")
+├─India-6 ("౧౨,౩౪,౫౬౭.౮౯")
+├─Japanese ("百万二十万三万四千五百六十七・八九分")
+├─Javanese ("꧑꧒꧓꧔꧕꧖꧗.꧘꧙")
+├─Khmer-1 ("១.២៣៤.៥៦៧,៨៩")
+├─Lao-1 ("໑໒໓໔໕໖໗.໘໙")
+├─Latin-1 ("1,234,567.89")
+├─Latin-2 ("1 234 567.89")
+├─Latin-3 ("1.234.567,89")
+├─Latin-4 ("1 234 567,89")
+├─Latin-5 ("1,234,567·89")
+├─Mayan ("𝋧𝋮𝋦𝋨𝋧.𝋱𝋰")
+├─Mongolian ("᠑᠒᠓᠔᠕᠖᠗.᠘᠙")
+├─NoSep-1 ("1234567.89")
+├─NoSep-2 ("1234567,89")
+├─Odia ("୧୨୩୪୫୬୭.୮୯")
+├─Roman ("M̅C̅C̅X̅X̅X̅I̅V̅DLXVII")
+├─SDN-Dwiggins ("4E6,547;X8")
+├─SDN-Pitman ("4↋6,547;↊8")
+├─Tamil ("௲௲௨௱௲௩௰௲௪௲௫௱௬௰௭")
+├─Thai-1 ("๑,๒๓๔,๕๖๗.๘๙")
+├─Thai-2 ("๑๒๓๔๕๖๗.๘๙")
+└─Tibetan ("༡༢༣༤༥༦༧.༨༩")
+```
 
-Value | Produces | Description
----|---|---
-`NoSep-1` | `1234567.89`
-`NoSep-2` | `1234567,89`
-`Latin-1` | `1,234,567.89` | Default value.
-`Latin-2` | `1 234 567.89`
-`Latin-3` | `1.234.567,89`
-`Latin-4` | `1 234 567,89`
-`Latin-5` | `1,234,567·89`
-`China-1` | `123,4567.89`
-`India-1` | `12,34,567.89`
-`India-2` | `१२,३४,५६७.८९`
-`India-3` | `૧૨,૩૪,૫૬૭.૮૯`
-`India-4` | `੧੨,੩੪,੫੬੭.੮੯`
-`India-5` | `೧೨,೩೪,೫೬೭.೮೯`
-`India-6` | `౧౨,౩౪,౫౬౭.౮౯`
-`Arabic-1` | `١٢٣٤٥٦٧٫٨٩`
-`Arabic-2` | `١٬٢٣٤٬٥٦٧٫٨٩`
-`Arabic-3` | `۱٬۲۳۴٬۵۶۷٫۸۹`
-`Arabic-4` | `۱۲٬۳۴٬۵۶۷٫۸۹`
-`Bengali-1` | `১২,৩৪,৫৬৭.৮৯`
-`Burmese-1` | `၁၂၃၄၅၆၇.၈၉`
-`Khmer-1` | `១.២៣៤.៥៦៧,៨៩`
-`Lao-1` | `໑໒໓໔໕໖໗.໘໙`
-`Thai-1` | `๑,๒๓๔,๕๖๗.๘๙`
-`Thai-2` | `๑๒๓๔๕๖๗.๘๙`
-
-*Note: These values aren't standardised anywhere, and probably won't be relevant beyond the package. Also, supported values may change in the future.*
-
-##### "emailaddr"
+##### "emailaddr" `[string]`
 - If you wish, you can supply an email address here to be given to users when they're blocked, for them to use as a point of contact for support and/or assistance for in the event of them being blocked mistakenly or in error. WARNING: Whatever email address you supply here will most certainly be acquired by spambots and scrapers during the course of its being used here, and so, it's strongly recommended that if you choose to supply an email address here, that you ensure that the email address you supply here is a disposable address and/or an address that you don't mind being spammed (in other words, you probably don't want to use your primary personal or primary business email addresses).
 
-##### "emailaddr_display_style"
-- How would you prefer the email address to be presented to users? "default" = Clickable link. "noclick" = Non-clickable text.
+##### "emailaddr_display_style" `[string]`
+- How would you prefer the email address to be presented to users?
 
-##### "disable_cli"
-- *(Removed since v2).*
-- Disable CLI mode? CLI mode is enabled by default, but can sometimes interfere with certain testing tools (such as PHPUnit, for example) and other CLI-based applications. If you don't need to disable CLI mode, you should ignore this directive. False = Enable CLI mode [Default]; True = Disable CLI mode.
+```
+emailaddr_display_style
+├─default ("field_clickable_link")
+└─noclick ("field_nonclickable_text")
+```
 
-##### "disable_frontend"
+##### "disable_frontend" `[bool]`
 - Disable front-end access? Front-end access can make CIDRAM more manageable, but can also be a potential security risk, too. It's recommended to manage CIDRAM via the back-end whenever possible, but front-end access is provided for when it isn't possible. Keep it disabled unless you need it. False = Enable front-end access; True = Disable front-end access [Default].
 
-##### "max_login_attempts"
+##### "max_login_attempts" `[int]`
 - Maximum number of front-end login attempts. Default = 5.
 
-##### "frontend_log"
-- *v1: "FrontEndLog"*
+##### "frontend_log" `[string]`
 - File for logging front-end login attempts. Specify a filename, or leave blank to disable.
 
-##### "signatures_update_event_log"
+##### "signatures_update_event_log" `[string]`
 - A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
 
-##### "ban_override"
-- Override "forbid_on_block" when "infraction_limit" is exceeded? When overriding: Blocked requests return a blank page (template files aren't used). 200 = Don't override [Default]. Other values are the same as the available values for "forbid_on_block".
+##### "ban_override" `[int]`
+- Override "http_response_header_code" when "infraction_limit" is exceeded? When overriding: Blocked requests return a blank page (template files aren't used). 200 = Don't override [Default]. Other values are the same as the available values for "http_response_header_code".
 
-##### "log_banned_ips"
+```
+ban_override
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─410 (410 Gone)
+├─418 (418 I'm a teapot)
+├─451 (451 Unavailable For Legal Reasons)
+└─503 (503 Service Unavailable)
+```
+
+##### "log_banned_ips" `[bool]`
 - Include blocked requests from banned IPs in the logfiles? True = Yes [Default]; False = No.
 
-##### "default_dns"
+##### "default_dns" `[string]`
 - A comma delimited list of DNS servers to use for hostname lookups. Default = "8.8.8.8,8.8.4.4" (Google DNS). WARNING: Don't change this unless you know what you're doing!
 
-*See also: [What can I use for "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+##### "search_engine_verification" `[string]`
+- Controls for verifying requests from search engines.
 
-##### "search_engine_verification"
-- Attempt to verify requests from search engines? Verifying search engines ensures that they won't be banned as a result of exceeding the infraction limit (banning search engines from your website will usually have a negative effect upon your search engine ranking, SEO, etc). When verified, search engines can be blocked as per normal, but won't be banned. When not verified, it's possible for them to be banned as a result of exceeding the infraction limit. Additionally, search engine verification provides protection against fake search engine requests and against potentially malicious entities masquerading as search engines (such requests will be blocked when search engine verification is enabled). True = Enable search engine verification [Default]; False = Disable search engine verification.
+```
+search_engine_verification
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
 
-Currently supported:
-- __[Applebot](https://discussions.apple.com/thread/7090135)__
-- __[Baiduspider/百度](https://help.baidu.com/question?prod_en=master&class=Baiduspider)__
-- __[Bingbot](https://blogs.bing.com/webmaster/2012/08/31/how-to-verify-that-bingbot-is-bingbot)__
-- __[DuckDuckBot](https://duckduckgo.com/duckduckbot)__
-- __[Googlebot](https://support.google.com/webmasters/answer/80553?hl=en)__
-- __[MojeekBot](https://www.mojeek.com/bot.html)__
-- __[PetalBot](https://aspiegel.com/petalbot)__
-- __[Qwantify/Bleriot](https://help.qwant.com/bot)__
-- __[SeznamBot](https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler/)__
-- __[Sogou/搜狗](https://www.sogou.com/docs/help/webmasters.htm#07)__
-- __[Yahoo/Slurp](https://help.yahoo.com/help/us/ysearch/slurp)__
-- __[Yandex/Яндекс](https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.xml)__
-- __[Youdao/有道](https://udger.com/resources/ua-list/bot-detail?bot=YoudaoBot#id1507)__
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
-Not compatible (causes conflicts):
-- __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-##### "social_media_verification"
-- Attempt to verify social media requests? Social media verification provides protection against fake social media requests (such requests will be blocked). True = Enable social media verification [Default]; False = Disable social media verification.
+##### "social_media_verification" `[string]`
+- Controls for verifying requests from social media platforms.
 
-Currently supported:
-- __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
-- __** [Facebook external hit](https://developers.facebook.com/docs/sharing/webmasters/crawler/)__
-- __[Pinterest](https://help.pinterest.com/en/articles/about-pinterest-crawler-0)__
-- __[Twitterbot](https://udger.com/resources/ua-list/bot-detail?bot=Twitterbot#id6168)__
+```
+social_media_verification
+├─Embedly ("Embedly")
+├─Facebook ("Facebook external hit")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
 
-_**: Requires an ASN lookup facility, e.g., the BGPView module._
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
-##### "other_verification"
-- Wherever possible, attempt to verify other kinds of requests (e.g., AdSense, SEO checkers, etc)? When detected, faked requests will be blocked. True = Enable [Default]; False = Disable.
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-Currently supported:
-- __[AdSense](https://developers.google.com/search/docs/advanced/crawling/overview-google-crawlers)__
-- __[AmazonAdBot](https://adbot.amazon.com/index.html)__
-- __[Oracle Data Cloud Crawler](https://www.oracle.com/corporate/acquisitions/grapeshot/crawler.html)__
+##### "other_verification" `[string]`
+- Controls for verifying other kinds of requests where possible.
 
-##### "protect_frontend"
+```
+other_verification
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
+
+##### "protect_frontend" `[bool]`
 - Specifies whether the protections normally provided by CIDRAM should be applied to the front-end. True = Yes [Default]; False = No.
 
-##### "maintenance_mode"
-- Enable maintenance mode? True = Yes; False = No [Default]. Disables everything other than the front-end. Sometimes useful for when updating your CMS, frameworks, etc.
-
-##### "default_algo"
+##### "default_algo" `[string]`
 - Defines which algorithm to use for all future passwords and sessions. Options: PASSWORD_DEFAULT (default), PASSWORD_BCRYPT, PASSWORD_ARGON2I (requires PHP >= 7.2.0), PASSWORD_ARGON2ID (requires PHP >= 7.3.0).
 
-##### "statistics"
-- Track CIDRAM usage statistics? True = Yes; False = No [Default].
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
 
-##### "force_hostname_lookup"
+##### "statistics" `[string]`
+- Controls which statistical information to track.
+
+```
+statistics
+├─Blocked-IPv4 ("Requests blocked – IPv4")
+├─Blocked-IPv6 ("Requests blocked – IPv6")
+├─Blocked-Other ("Requests blocked – Other")
+├─Banned-IPv4 ("Requests banned – IPv4")
+├─Banned-IPv6 ("Requests banned – IPv6")
+├─Passed-IPv4 ("Requests passed – IPv4")
+├─Passed-IPv6 ("Requests passed – IPv6")
+├─Passed-Other ("Requests passed – Other")
+├─CAPTCHAs-Failed ("CAPTCHA attempts – {state_failed}")
+└─CAPTCHAs-Passed ("CAPTCHA attempts – {state_passed}")
+```
+
+##### "force_hostname_lookup" `[bool]`
 - Force hostname lookups? True = Yes; False = No [Default]. Hostname lookups are normally performed on an "as needed" basis, but can be forced for all requests. Doing so may be useful as a means of providing more detailed information in the logfiles, but may also have a slightly negative effect on performance.
 
-##### "allow_gethostbyaddr_lookup"
+##### "allow_gethostbyaddr_lookup" `[bool]`
 - Allow gethostbyaddr lookups when UDP is unavailable? True = Yes [Default]; False = No.
-- *Note: IPv6 lookup mightn't work correctly on some 32-bit systems.*
 
-##### "hide_version"
-- Hide version information from logs and page output? True = Yes; False = No [Default].
-
-##### "empty_fields"
-- How should CIDRAM handle empty fields when logging and displaying block event information? "include" = Include empty fields. "omit" = Omit empty fields [default].
-
-##### "log_sanitisation"
+##### "log_sanitisation" `[bool]`
 - When using the front-end logs page to view log data, CIDRAM sanitises the log data before displaying it, to protect users from XSS attacks and other potential threats that log data could contain. However, by default, data isn't sanitised during logging. This is to ensure that log data is preserved accurately, to aid any heuristic or forensic analysis that might be necessary in the future. However, in the event that a user attempts to read log data using external tools, and if those external tools don't perform their own sanitisation process, the user could be exposed to XSS attacks. If necessary, you can change the default behaviour using this configuration directive. True = Sanitise data when logging it (data is preserved less accurately, but XSS risk is lower). False = Don't sanitise data when logging it (data is preserved more accurately, but XSS risk is higher) [Default].
 
-##### "disabled_channels"
+##### "disabled_channels" `[string]`
 - This can be used to prevent CIDRAM from using particular channels when sending requests (e.g., when updating, when fetching component metadata, etc).
-- *Available options: `GitHub,BitBucket,GoogleDNS`*
 
-##### "default_timeout"
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### "default_timeout" `[int]`
 - Default timeout to use for external requests? Default = 12 seconds.
 
-##### "config_imports"
+##### "config_imports" `[string]`
 - A comma delimited list of files to import into the CIDRAM default configuration. Typically populated by the updates page when activating components which need it when necessary. In most cases, can ignore it.
 
-##### "events"
+##### "events" `[string]`
 - Files listed here are loaded directly after the event handlers file. Typically populated by the updates page when activating components which need it when necessary. In most cases, can ignore it.
 
 #### "signatures" (Category)
-Signatures configuration.
+Configuration for signatures, signature files, modules, etc.
 
-##### "ipv4"
-- A list of the IPv4 signature files that CIDRAM should attempt to parse, delimited by commas. You can add entries here if you want to include additional IPv4 signature files into CIDRAM.
+##### "ipv4" `[string]`
+- A list of the IPv4 signature files that CIDRAM should attempt to parse, delimited by commas.
 
-##### "ipv6"
-- A list of the IPv6 signature files that CIDRAM should attempt to parse, delimited by commas. You can add entries here if you want to include additional IPv6 signature files into CIDRAM.
+##### "ipv6" `[string]`
+- A list of the IPv6 signature files that CIDRAM should attempt to parse, delimited by commas.
 
-##### "block_attacks"
+##### "block_attacks" `[bool]`
 - Block CIDRs associated with attacks and other abnormal traffic? E.g., port scans, hacking, probing for vulnerabilities, etc. Unless you experience problems when doing so, generally, this should always be set to true.
 
-##### "block_cloud"
+##### "block_cloud" `[bool]`
 - Block CIDRs identified as belonging to webhosting/cloud services? If you operate an API service from your website or if you expect other websites to connect to your website, this should be set to false. If you don't, then, this directive should be set to true.
 
-##### "block_bogons"
+##### "block_bogons" `[bool]`
 - Block bogon/martian CIDRs? If you expect connections to your website from within your local network, from localhost, or from your LAN, this directive should be set to false. If you don't expect these such connections, this directive should be set to true.
 
-##### "block_generic"
+##### "block_generic" `[bool]`
 - Block CIDRs generally recommended for blacklisting? This covers any signatures that aren't marked as being part of any of the other more specific signature categories.
 
-##### "block_legal"
+##### "block_legal" `[bool]`
 - Block CIDRs in response to legal obligations? This directive shouldn't normally have any effect, because CIDRAM doesn't associate any CIDRs with "legal obligations" by default, but it exists nonetheless as an additional control measure for the benefit of any custom signature files or modules that might exist for legal reasons.
 
-##### "block_malware"
+##### "block_malware" `[bool]`
 - Block CIDRs associated with malware? This includes C&C servers, infected machines, machines involved in malware distribution, etc.
 
-##### "block_proxies"
+##### "block_proxies" `[bool]`
 - Block CIDRs identified as belonging to proxy services or VPNs? If you require that users be able to access your website from proxy services and VPNs, this directive should be set to false. Otherwise, if you don't require proxy services or VPNs, this directive should be set to true as a means of improving security.
 
-##### "block_spam"
+##### "block_spam" `[bool]`
 - Block CIDRs identified as being high-risk for spam? Unless you experience problems when doing so, generally, this should always be set to true.
 
-##### "modules"
+##### "modules" `[string]`
 - A list of module files to load after checking the IPv4/IPv6 signatures, delimited by commas.
 
-##### "default_tracktime"
+##### "default_tracktime" `[int]`
 - How many seconds to track IPs banned by modules. Default = 604800 (1 week).
 
-##### "infraction_limit"
+##### "infraction_limit" `[int]`
 - Maximum number of infractions an IP is allowed to incur before it is banned by IP tracking. Default = 10.
 
-##### "track_mode"
-- When should infractions be counted? False = When IPs are blocked by modules. True = When IPs are blocked for any reason. Default = False.
-
-##### "tracking_override"
+##### "tracking_override" `[bool]`
 - Allow modules to override tracking options? True = Yes [Default]; False = No.
 
-#### "recaptcha" and "hcaptcha" (these two categories provide the same directives).
-If you want, you can present users with a CAPTCHA challenge in order to distinguish them from bots or to allow them to regain access in the event of being blocked. This can help mitigate false positives and reduce unwanted automated traffic.
+#### "recaptcha" (Category)
+Configuration for ReCaptcha (provides a way for humans to regain access when blocked).
 
-*Note: CAPTCHAs only protect against machine calls, not against human attackers.*
-
-You can obtain a "site key" and a "secret key" for reCAPTCHA from here:
-- https://developers.google.com/recaptcha/
-
-You can obtain a "site key" and a "secret key" for hCAPTCHA from here:
-- https://www.hcaptcha.com/
-
-##### "usemode"
+##### "usemode" `[int]`
 - When should the CAPTCHA be offered? Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA.
 
-Value | Description
---:|:--
-1 | Only when blocked, within the signature limit, and not banned.
-2 | Only when blocked, specially marked for use, within the signature limit, and not banned.
-3 | Only when within the signature limit, and not banned (regardless of whether blocked).
-4 | Only when not blocked.
-5 | Only when not blocked, or when specially marked for use, within the signature limit, and not banned.
-Any other value. | Never!
+```
+usemode
+├─0 (Never !!!)
+├─1 (Only when blocked, within the signature limit, and not banned.)
+├─2 (Only when blocked, specially marked for use, within the signature limit, and not banned.)
+├─3 (Only when within the signature limit, and not banned (regardless of whether blocked).)
+├─4 (Only when not blocked.)
+└─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+```
 
-##### "lockip"
-- Specifies whether hashes should be locked to specific IPs. False = Cookies and hashes CAN be used across multiple IPs (default). True = Cookies and hashes CAN'T be used across multiple IPs (cookies/hashes are locked to IPs).
-- Note: "lockip" value is ignored when "lockuser" is false, due to that the mechanism for remembering "users" differs depending on this value.
+##### "lockip" `[bool]`
+- Lock CAPTCHA to IPs?
 
-##### "lockuser"
-- Specifies whether successful completion of a reCAPTCHA/hCAPTCHA instance should be locked to specific users. False = Successful completion of a reCAPTCHA/hCAPTCHA instance will grant access to all requests originating from the same IP as that used by the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes aren't used; Instead, an IP whitelist will be used. True = Successful completion of a reCAPTCHA/hCAPTCHA instance will only grant access to the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes are used to remember the user; An IP whitelist is not used (default).
+##### "lockuser" `[bool]`
+- Lock CAPTCHA to users?
 
-##### "sitekey"
+##### "sitekey" `[string]`
 - This value can be found in the dashboard for your CAPTCHA service.
 
-##### "secret"
+See also:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "secret" `[string]`
 - This value can be found in the dashboard for your CAPTCHA service.
 
-##### "expiry"
+See also:
+- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
+- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
+- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
+##### "expiry" `[float]`
 - Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
 
-##### "logfile"
+##### "logfile" `[string]`
 - Log all CAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
 
-*Useful tip: If you want, you can append date/time information to the names of your logfiles by including these in the name: `{yyyy}` for complete year, `{yy}` for abbreviated year, `{mm}` for month, `{dd}` for day, `{hh}` for hour.*
-
-*Examples:*
-- *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
-
-##### "signature_limit"
+##### "signature_limit" `[int]`
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
 
-##### "api"
+##### "api" `[string]`
 - Which API to use?
 
 ```
 api
-├─recaptcha
-│ ├─V2
-│ └─Invisible
-└─hcaptcha
-  ├─V1
-  └─Invisible
+├─V2 ("V2 (Checkbox)")
+└─Invisible ("V2 (Invisible)")
 ```
 
-*Note for users in the European Union: When CIDRAM is configured to use cookies (e.g., when "lockuser" is true), a cookie warning is displayed prominently on the page as per the requirements of [EU cookie legislation](https://www.cookielaw.org/the-cookie-law/). However, when using the invisible API, CIDRAM attempts to complete the CAPTCHA for the user automatically, and when successful, this could result in the page being reloaded and a cookie being created without the user being given adequate time to actually see the cookie warning.*
-
-##### "show_cookie_warning"
+##### "show_cookie_warning" `[bool]`
 - Show cookie warning? True = Yes [Default]; False = No.
 
-*This configuration directive added by request, for users that want to disable the cookie warning usually shown alongside CAPTCHAs (e.g., to help hide any indication that CIDRAM is being used). However, I strongly advise that most users (particularly those based in the EU) keep it enabled.*
-
-##### "show_api_message"
+##### "show_api_message" `[bool]`
 - Show API message? True = Yes [Default]; False = No.
 
-*This refers to any additional, non-essential messages displayed when a request is blocked, other than the cookie warning.*
-
-##### "nonblocked_status_code"
+##### "nonblocked_status_code" `[int]`
 - Which status code should be used when displaying CAPTCHAs to non-blocked requests?
 
-Currently supported values:
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
-Status code | Status message
----|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
-`429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+#### "hcaptcha" (Category)
+Configuration for HCaptcha (provides a way for humans to regain access when blocked).
+
+##### "usemode" `[int]`
+- When should the CAPTCHA be offered? Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA.
+
+```
+usemode
+├─0 (Never !!!)
+├─1 (Only when blocked, within the signature limit, and not banned.)
+├─2 (Only when blocked, specially marked for use, within the signature limit, and not banned.)
+├─3 (Only when within the signature limit, and not banned (regardless of whether blocked).)
+├─4 (Only when not blocked.)
+└─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+```
+
+##### "lockip" `[bool]`
+- Lock CAPTCHA to IPs?
+
+##### "lockuser" `[bool]`
+- Lock CAPTCHA to users?
+
+##### "sitekey" `[string]`
+- This value can be found in the dashboard for your CAPTCHA service.
+
+See also:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "secret" `[string]`
+- This value can be found in the dashboard for your CAPTCHA service.
+
+See also:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "expiry" `[float]`
+- Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
+
+##### "logfile" `[string]`
+- Log all CAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
+
+##### "signature_limit" `[int]`
+- Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
+
+##### "api" `[string]`
+- Which API to use?
+
+```
+api
+├─V1 ("V1")
+└─Invisible ("V1 (Invisible)")
+```
+
+##### "show_cookie_warning" `[bool]`
+- Show cookie warning? True = Yes [Default]; False = No.
+
+##### "show_api_message" `[bool]`
+- Show API message? True = Yes [Default]; False = No.
+
+##### "nonblocked_status_code" `[int]`
+- Which status code should be used when displaying CAPTCHAs to non-blocked requests?
+
+```
+nonblocked_status_code
+├─200 (200 OK)
+├─403 (403 Forbidden)
+├─418 (418 I'm a teapot)
+├─429 (429 Too Many Requests)
+└─451 (451 Unavailable For Legal Reasons)
+```
 
 #### "legal" (Category)
-Configuration relating to legal requirements.
+Configuration for legal requirements.
 
-*For more information about legal requirements and how this could affect your configuration requirements, please refer to the "[LEGAL INFORMATION](#SECTION11)" section of the documentation.*
-
-##### "pseudonymise_ip_addresses"
+##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonymise IP addresses when logging? True = Yes [Default]; False = No.
 
-##### "omit_ip"
-- Omit IP addresses from logs? True = Yes; False = No [Default]. Note: "pseudonymise_ip_addresses" becomes redundant when "omit_ip" is "true".
-
-##### "omit_hostname"
-- Omit hostnames from logs? True = Yes; False = No [Default].
-
-##### "omit_ua"
-- Omit user agents from logs? True = Yes; False = No [Default].
-
-##### "privacy_policy"
+##### "privacy_policy" `[string]`
 - The address of a relevant privacy policy to be displayed in the footer of any generated pages. Specify a URL, or leave blank to disable.
 
 #### "template_data" (Category)
-Directives/Variables for templates and themes.
+Configuration for templates and themes.
 
-Relates to the HTML output used to generate the "Access Denied" page. If you're using custom themes for CIDRAM, HTML output is sourced from the `template_custom.html` file, and otherwise, HTML output is sourced from the `template.html` file. Variables written to this section of the configuration file are parsed to the HTML output by way of replacing any variable names circumfixed by curly brackets found within the HTML output with the corresponding variable data. For example, where `foo="bar"`, any instance of `<p>{foo}</p>` found within the HTML output will become `<p>bar</p>`.
-
-##### "theme"
+##### "theme" `[string]`
 - Default theme to use for CIDRAM.
 
-##### "magnification"
-- *v1: "Magnification"*
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─obscured ("Obscured")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Other
+```
+
+##### "magnification" `[float]`
 - Font magnification. Default = 1.
 
-##### "css_url"
-- The template file for custom themes utilises external CSS properties, whereas the template file for the default theme utilises internal CSS properties. To instruct CIDRAM to use the template file for custom themes, specify the public HTTP address of your custom theme's CSS files using the `css_url` variable. If you leave this variable blank, CIDRAM will use the template file for the default theme.
+##### "css_url" `[string]`
+- CSS file URL for custom themes.
+
+##### "block_event_title" `[string]`
+- The page title to display for block events.
+
+```
+block_event_title
+├─CIDRAM ("CIDRAM")
+├─denied ("denied")
+└─…Other
+```
+
+##### "captcha_title" `[string]`
+- The page title to display for CAPTCHA requests.
+
+```
+captcha_title
+├─CIDRAM ("CIDRAM")
+└─…Other
+```
 
 #### "PHPMailer" (Category)
-PHPMailer configuration.
+Configuration for PHPMailer (used for two-factor authentication).
 
-Currently, CIDRAM uses PHPMailer only for front-end two-factor authentication. If you don't use the front-end, or if you don't use two-factor authentication for the front-end, you can ignore these directives.
-
-##### "event_log"
-- *v1: "EventLog"*
+##### "event_log" `[string]`
 - A file for logging all events in relation to PHPMailer. Specify a filename, or leave blank to disable.
 
-##### "skip_auth_process"
-- *v1: "SkipAuthProcess"*
+##### "skip_auth_process" `[bool]`
 - Setting this directive to `true` instructs PHPMailer to skip the normal authentication process that normally occurs when sending email via SMTP. This should be avoided, because skipping this process may expose outbound email to MITM attacks, but may be necessary in cases where this process prevents PHPMailer from connecting to an SMTP server.
 
-##### "enable_two_factor"
-- *v1: "Enable2FA"*
+##### "enable_two_factor" `[bool]`
 - This directive determines whether to use 2FA for front-end accounts.
 
-##### "host"
-- *v1: "Host"*
+##### "host" `[string]`
 - The SMTP host to use for outbound email.
 
-##### "port"
-- *v1: "Port"*
+##### "port" `[int]`
 - The port number to use for outbound email. Default = 587.
 
-##### "smtp_secure"
-- *v1: "SMTPSecure"*
+##### "smtp_secure" `[string]`
 - The protocol to use when sending email via SMTP (TLS or SSL).
 
-##### "smtp_auth"
-- *v1: "SMTPAuth"*
+```
+smtp_secure
+├─default ("-")
+├─tls ("TLS")
+└─ssl ("SSL")
+```
+
+##### "smtp_auth" `[bool]`
 - This directive determines whether to authenticate SMTP sessions (should usually be left alone).
 
-##### "username"
-- *v1: "Username"*
+##### "username" `[string]`
 - The username to use when sending email via SMTP.
 
-##### "password"
-- *v1: "Password"*
+##### "password" `[string]`
 - The password to use when sending email via SMTP.
 
-##### "set_from_address"
-- *v1: "setFromAddress"*
+##### "set_from_address" `[string]`
 - The sender address to cite when sending email via SMTP.
 
-##### "set_from_name"
-- *v1: "setFromName"*
+##### "set_from_name" `[string]`
 - The sender name to cite when sending email via SMTP.
 
-##### "add_reply_to_address"
-- *v1: "addReplyToAddress"*
+##### "add_reply_to_address" `[string]`
 - The reply address to cite when sending email via SMTP.
 
-##### "add_reply_to_name"
-- *v1: "addReplyToName"*
+##### "add_reply_to_name" `[string]`
 - The reply name to cite when sending email via SMTP.
 
 #### "rate_limiting" (Category)
-Optional configuration directives for rate limiting.
+Configuration for rate limiting (not recommended for general use).
 
-This feature was implemented to CIDRAM because it was requested by enough users to warrant being implemented. However, as it is somewhat outside the scope of the purpose originally intended for CIDRAM, it most likely won't be needed by most users. If you specifically need CIDRAM to handle rate limiting for your website, this feature could be useful for you. However, there are some important things you should consider:
-- This feature, like all other CIDRAM features, will only work for pages protected by CIDRAM. Therefore, any website assets not specifically routed through CIDRAM can't be rate limited by CIDRAM.
-- If you're able to use a server module, cPanel, or some other network tool to enforce rate limiting, it would be better to use that for rate limiting, instead of CIDRAM.
-- If a particular user is very keen to continue accessing your website after being rate limited, in most cases, it will be very easy for them to circumvent rate limiting (e.g., if they change their IP address, or if they use a proxy or VPN, and assuming that you've configured CIDRAM to not block proxies and VPNs, or that CIDRAM isn't aware of the proxy or VPN that they're using).
-- Rate limiting can be very annoying for actual, real end-users. It may be necessary if your available bandwidth is very limited, and if you discover that there are some specific sources of traffic, not already otherwise blocked, that are consuming the majority of your available bandwidth. If not necessary though, it should probably be avoided.
-- You may occasionally risk blocking legitimate users, or even yourself.
+##### "max_bandwidth" `[string]`
+- The maximum amount of bandwidth allowed within the allowance period before rate limiting future requests. A value of 0 disables this type of rate limiting. Default = 0KB.
 
-If you feel that you don't need CIDRAM to enforce rate limiting for your website, keep the directives below set as their default values. Otherwise, you can change their values to suit your needs.
+##### "max_requests" `[int]`
+- The maximum number of requests allowed within the allowance period before rate limiting future requests. A value of 0 disables this type of rate limiting. Default = 0.
 
-##### "max_bandwidth"
-- The maximum amount of bandwidth allowed within the allowance period before enabling rate limiting for future requests. A value of 0 disables this type of rate limiting. Default = 0KB.
+##### "precision_ipv4" `[int]`
+- The precision to use for tracking IPv4 usage. Value mirrors CIDR block size. Set to 32 for best precision. Default = 32.
 
-##### "max_requests"
-- The maximum number of requests allowed within the allowance period before enabling rate limiting for future requests. A value of 0 disables this type of rate limiting. Default = 0.
-
-##### "precision_ipv4"
-- The precision to use when monitoring IPv4 usage. Value mirrors CIDR block size. Set to 32 for best precision. Default = 32.
-
-##### "precision_ipv6"
+##### "precision_ipv6" `[int]`
 - The precision to use for tracking IPv6 usage. Value mirrors CIDR block size. Set to 128 for best precision. Default = 128.
 
-##### "allowance_period"
-- The number of hours to monitor usage. Default = 0.
+##### "allowance_period" `[float]`
+- The number of hours to track usage. Default = 0.
 
-##### "exceptions"
+##### "exceptions" `[string]`
 - Exceptions (i.e., requests which shouldn't be rate limited). Relevant only when rate limiting is enabled.
-- *Available options: `Whitelisted,Verified`*
+
+```
+exceptions
+├─Whitelisted ("field_whitelisted_requests")
+└─Verified ("field_verified_requests")
+```
 
 #### "supplementary_cache_options" (Category)
-Supplementary cache options.
+Supplementary cache options. Note: Changing these values may potentially log you out.
 
-##### "prefix"
-- The value specified here will be prepended to all cache entry keys. Empty by default. When multiple installations exist at the same server, this can be useful for keeping their caches separate from each other.
+##### "prefix" `[string]`
+- The value specified here will be prepended to all cache entry keys. Default = "CIDRAM_". When multiple installations exist at the same server, this can be useful for keeping their caches separate from each other.
 
-##### "enable_apcu"
-- Specifies whether to try using APCu for caching. Default = False.
+##### "enable_apcu" `[bool]`
+- Specifies whether to try using APCu for caching. Default = True.
 
-##### "enable_memcached"
+##### "enable_memcached" `[bool]`
 - Specifies whether to try using Memcached for caching. Default = False.
 
-##### "enable_redis"
+##### "enable_redis" `[bool]`
 - Specifies whether to try using Redis for caching. Default = False.
 
-##### "enable_pdo"
+##### "enable_pdo" `[bool]`
 - Specifies whether to try using PDO for caching. Default = False.
 
-##### "memcached_host"
+##### "memcached_host" `[string]`
 - Memcached host value. Default = "localhost".
 
-##### "memcached_port"
+##### "memcached_port" `[int]`
 - Memcached port value. Default = "11211".
 
-##### "redis_host"
+##### "redis_host" `[string]`
 - Redis host value. Default = "localhost".
 
-##### "redis_port"
+##### "redis_port" `[int]`
 - Redis port value. Default = "6379".
 
-##### "redis_timeout"
+##### "redis_timeout" `[float]`
 - Redis timeout value. Default = "2.5".
 
-##### "pdo_dsn"
-- PDO DSN value. Default = "`mysql:dbname=cidram;host=localhost;port=3306`".
+##### "pdo_dsn" `[string]`
+- PDO DSN value. Default = "mysql:dbname=cidram;host=localhost;port=3306".
 
-*See also: [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#HOW_TO_USE_PDO)*
-
-##### "pdo_username"
+##### "pdo_username" `[string]`
 - PDO username.
 
-##### "pdo_password"
+##### "pdo_password" `[string]`
 - PDO password.
 
 ---
@@ -1984,4 +2242,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 20 February 2022 (2022.02.20).
+Last Updated: 25 March 2022 (2022.03.25).
