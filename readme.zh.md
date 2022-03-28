@@ -642,7 +642,7 @@ ipaddr
 也可以看看：
 - [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 - [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
-- [Forwarded - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
+- [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### “http_response_header_code” `[int]`
 - 阻止请求时，CIDRAM应发送哪个HTTP状态消息？ （请参阅文档以获取更多信息）。
@@ -818,7 +818,7 @@ __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模
 ```
 social_media_verification
 ├─Embedly ("Embedly")
-├─Facebook ("Facebook external hit")
+├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
 └─Twitterbot ("Twitterbot")
 ```
@@ -826,6 +826,8 @@ social_media_verification
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+** 需要ASN查找功能（例如，通过BGPView模块）。
 
 ##### “other_verification” `[string]`
 - 用于在可能的情况下，验证其他类型的请求的控件。
@@ -845,13 +847,13 @@ __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模
 - 指定是否应将CIDRAM通常提供的保护应用于前端。​True（真）=是【标准】；False（假）=不是。
 
 ##### “default_algo” `[string]`
-- 定义要用于所有未来密码和会话的算法。​选项：​PASSWORD_DEFAULT（标准），​PASSWORD_BCRYPT，​PASSWORD_ARGON2I（需要PHP >= 7.2.0），​PASSWORD_ARGON2ID（需要PHP >= 7.3.0）。
+- 定义要用于所有未来密码和会话的算法。
 
 ```
 default_algo
 ├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
 ├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
-├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I (PHP >= 7.2.0)")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I")
 └─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
 ```
 
@@ -877,6 +879,8 @@ statistics
 
 ##### “allow_gethostbyaddr_lookup” `[bool]`
 - 当UDP不可用时允许gethostbyaddr查找？​True（真）=允许【标准】；False（假）=不允许。
+
+注意：IPv6查找在某些32位系统上可能无法正常工作。
 
 ##### “log_sanitisation” `[bool]`
 - 当使用前端日志页面查看日志数据时，CIDRAM在显示之前清理日志数据。​这可以保护用户免受XSS攻击和其他潜在威胁。​但是，默认情况下，在记录期间不会清理数据。​这是为了确保准确地保留日志数据（可以帮助任何未来的启发式或法医分析）。​但是，如果用户尝试使用外部工具读取日志数据，如果这些外部工具不执行自己的清理过程，用户可能会受到XSS攻击。​如有必要，可以使用此配置指令更改默认行为。 True = 记录数据时清理数据（数据保存不太准确，但XSS风险较低）。 False = 记录数据时不要清理数据（数据保存得更准确，但XSS风险更高）【标准】。
@@ -949,7 +953,7 @@ disabled_channels
 ReCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
 
 ##### “usemode” `[int]`
-- 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。
+- 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。​另请注意：CAPTCHA可以提供有用的保护层，防止机器人和各种恶意自动请求，但不会提供任何针对恶意人类的保护。
 
 ```
 usemode
@@ -1023,7 +1027,7 @@ nonblocked_status_code
 HCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
 
 ##### “usemode” `[int]`
-- 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。
+- 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。​另请注意：CAPTCHA可以提供有用的保护层，防止机器人和各种恶意自动请求，但不会提供任何针对恶意人类的保护。
 
 ```
 usemode
@@ -2235,4 +2239,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年3月25日。
+最后更新：2022年3月28日。

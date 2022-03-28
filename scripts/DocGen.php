@@ -9,6 +9,29 @@ $loadL10N = function (string $Language) {
     return new \Maikuolan\Common\L10N($Arr, []);
 };
 
+$ArrayFromL10NDataToArray = function ($References, &$L10N): array {
+    if (!is_array($References)) {
+        $References = [$References];
+    }
+    $Out = [];
+    foreach ($References as $Reference) {
+        if (isset($L10N->Data[$Reference])) {
+            $Reference = $L10N->Data[$Reference];
+        }
+        if (!is_array($Reference)) {
+            $Reference = [$Reference];
+        }
+        foreach ($Reference as $Key => $Value) {
+            if (is_int($Key)) {
+                $Out[] = $Value;
+                continue;
+            }
+            $Out[$Key] = $Value;
+        }
+    }
+    return $Out;
+};
+
 if (!isset($_GET['language'])) {
     echo 'No language specified.';
 } else {
@@ -93,10 +116,7 @@ if (!isset($_GET['language'])) {
                 $Final .= "```\n\n";
             }
             if (!empty($Info['hints'])) {
-                $Hints = $Data->Data[$Info['hints']] ?? $Info['hints'];
-                if (!is_array($Hints)) {
-                    $Hints = [$Hints];
-                }
+                $Hints = $ArrayFromL10NDataToArray($Info['hints'], $Data);
                 foreach ($Hints as $HintKey => $HintValue) {
                     if (is_int($HintKey)) {
                         $Final .= $HintValue . "\n\n";
@@ -108,6 +128,7 @@ if (!isset($_GET['language'])) {
             if (!empty($Info['See also'])) {
                 $Final .= sprintf($Data->getString('menu_open'), $Data->getString('label_see_also')) . "\n";
                 foreach ($Info['See also'] as $RefKey => $RefLink) {
+                    $RefKey = addcslashes($RefKey, '|');
                     $Final .= sprintf($Data->getString('menu_item'), $RefKey, $RefLink) . "\n";
                 }
                 $Final .= $Data->getString('menu_close') . "\n";
