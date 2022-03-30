@@ -1770,7 +1770,9 @@ Sí. Una API está integrada en el front-end para interactuar con la página de 
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>¿Qué son "infracciones"?
 
-Las "infracciones" determinan cuándo una IP que todavía no está bloqueada por ningún archivo de firma específico debe comenzar a bloquearse para futuras solicitudes, y están estrechamente asociados con el seguimiento de IP. Existen algunas funcionalidades y módulos que permiten que las solicitudes sean bloqueadas por razones distintas del origen del IP (tal como la presencia de agentes de usuario [user agents] correspondientes a spambots o hacktools, solicitudes peligrosas, DNS falsificado, etc), y cuando esto sucede, una "infracción" puede ocurrir. Proporcionan una forma de identificar las direcciones IP que corresponden a las solicitudes no deseadas que aún no pueden ser bloqueadas por ningún archivo de firma específico. Las infracciones generalmente corresponden de 1-a-1 con la cantidad de veces que se bloquea un IP, pero no siempre (los eventos de bloque severos pueden incurrir en un valor de infracción mayor que uno, y si "track_mode" es false, infracciones no ocurrirán para eventos de bloque causados únicamente por archivos de firma).
+El "recuento de firmas" y las "infracciones" se relacionan con la gravedad y la cantidad de firmas desencadenadas durante una solicitud particular, ya sea debido a archivos de firmas, módulos, reglas auxiliares, u otros, pero mientras que el "recuento de firmas" persiste solo para esa solicitud en particular, las "infracciones" pueden persistir en cualquier número de solicitudes, siempre que lo determine el `default_tracktime`.
+
+Esto proporciona un mecanismo para garantizar que las solicitudes de fuentes potencialmente peligrosas puedan bloquearse en solicitudes secundarias de cualquier fuente particular en la que esa fuente ya haya sido bloqueada durante una solicitud anterior con un número suficiente de infracciones.
 
 #### <a name="BLOCK_HOSTNAMES"></a>¿Puede CIDRAM bloquear nombres de host?
 
@@ -2170,10 +2172,9 @@ En algunas circunstancias, se le puede ser legalmente requerido anonimizar o seu
 
 CIDRAM es capaz de seudonimizar las direcciones IP cuando las registra, si es algo que podría necesitar o querer hacer. Cuando CIDRAM seudonimizar de direcciones IP, cuando se registra, el octeto final de las direcciones IPv4, y todo lo que ocurre después de la segunda parte de las direcciones IPv6 está representado por una "x" (redondeando efectivamente las direcciones IPv4 a la dirección inicial de la 24 subred en la que tienen en cuenta, y las direcciones IPv6 a la dirección inicial de la 32 subred en la que tienen en cuenta).
 
-*Nota: El proceso de seudonimización de las direcciones IP en CIDRAM no afecta la función de seguimiento de las direcciones IP en CIDRAM. Si esto es un problema para usted, puede ser mejor desactivar por completo el seguimiento de IP. Esto puede lograrse configurando `track_mode` a `false` y evitando cualquier módulo.*
+*Nota: El proceso de seudonimización de las direcciones IP en CIDRAM no afecta la función de seguimiento de las direcciones IP en CIDRAM. Si esto es un problema para usted, puede ser mejor desactivar por completo el seguimiento de IP.*
 
 *Directivas de configuración relevantes:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 OMITIENDO INFORMACIÓN DE REGISTRO

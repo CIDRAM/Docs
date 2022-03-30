@@ -1770,7 +1770,9 @@ Vâng. API được tích hợp trong front-end để tương tác với trang c
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>"Vi phạm" là gì?
 
-"Vi phạm" xác định khi một IP không bị chặn bởi bất kỳ tập tin chữ ký cụ thể nào cũng sẽ bị chặn vì bất kỳ yêu cầu nào trong tương lai, và chúng liên quan chặt chẽ với giám sát IP. Một số chức năng và mô-đun tồn tại cho phép các yêu cầu bị chặn vì các lý do khác với IP có nguồn gốc (như là sự hiện diện của các đại lý người dùng ["user agents"] tương ứng với chương trình thư rác ["spambots"] hay công cụ hack ["hacktools"], truy vấn nguy hiểm, giả mạo DNS và vv), và khi điều này xảy ra, một "vi phạm" có thể xảy ra. Chúng cung cấp cách để nhận định địa chỉ IP tương ứng với các yêu cầu không mong muốn mà có thể chưa bị chặn bởi bất kỳ tập tin chữ ký cụ thể nào. Các vi phạm thường tương ứng với 1 đến 1 với số lần IP bị chặn, nhưng không phải luôn luôn (sự kiện nghiêm trọng chặn có thể gây ra một giá trị vi phạm lớn hơn một, và nếu "track_mode" là sai [false], vi phạm sẽ không xảy ra cho các sự kiện chặn gây ra bởi chỉ các tập tin chữ ký).
+"Số lượng chữ ký" và "vi phạm" đều liên quan đến mức độ nghiêm trọng và số lượng chữ ký được kích hoạt trong bất kỳ yêu cầu cụ thể nào, cho dù do tập tin chữ ký, mô-đun, quy tắc phụ trợ, hoặc do cách khác, nhưng trong khi "số lượng chữ ký" chỉ tồn tại cho yêu cầu cụ thể đó, "vi phạm" có thể tồn tại trên bất kỳ số lượng yêu cầu nào, miễn là được xác định bởi `default_tracktime`.
+
+Điều này cung cấp một cơ chế để đảm bảo rằng các yêu cầu từ các nguồn tiềm ẩn nguy hiểm có thể bị chặn theo các yêu cầu thứ cấp từ bất kỳ nguồn cụ thể nào như vậy, theo đó nguồn đó đã bị chặn trong một yêu cầu trước đó với đủ số lần vi phạm.
 
 #### <a name="BLOCK_HOSTNAMES"></a>CIDRAM có thể chặn tên máy chủ không?
 
@@ -2162,10 +2164,9 @@ Trong một số trường hợp, bạn có thể được yêu cầu về mặt
 
 CIDRAM có thể sử dụng "pseudonymisation" cho các địa chỉ IP khi nhật ký chúng vào bản ghi, nếu đây bạn có thể cần hay muốn làm. Khi CIDRAM sử dụng "pseudonymisation" cho các địa chỉ IP, khi nhật ký chúng vào bản ghi, octet cuối cùng của địa chỉ IPv4, và mọi thứ sau phần thứ hai của địa chỉ IPv6 được đại diện bởi một "x" (hiệu quả làm tròn địa chỉ IPv4 đến địa chỉ đầu tiên của mạng con thứ 24 mà chúng đưa vào, và địa chỉ IPv6 đến địa chỉ đầu tiên của mạng con thứ 32 mà chúng đưa vào).
 
-*Chú thích: Quá trình pseudonymisation địa chỉ IP của CIDRAM không ảnh hưởng đến tính năng giám sát IP của CIDRAM. Nếu đây là vấn đề với bạn, có thể tốt nhất là tắt giám sát IP hoàn toàn. Điều này có thể đạt được bằng cách đặt `track_mode` để `false` và bằng cách tránh bất kỳ mô-đun nào.*
+*Chú thích: Quá trình pseudonymisation địa chỉ IP của CIDRAM không ảnh hưởng đến tính năng giám sát IP của CIDRAM. Nếu đây là vấn đề với bạn, có thể tốt nhất là tắt giám sát IP hoàn toàn.*
 
 *Chỉ thị cấu hình có liên quan:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 BỎ QUA THÔNG TIN NHẬT KÝ

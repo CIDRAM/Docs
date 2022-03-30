@@ -1770,7 +1770,9 @@ Ja. Een API is ingebouwd in het frontend voor interactie met de updates pagina v
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>Wat zijn "overtredingen"?
 
-"Overtredingen" bepalen wanneer een IP die nog niet is geblokkeerd door specifieke signatuurbestanden, moet worden geblokkeerd voor toekomstige verzoeken, en ze zijn nauw verbonden met IP-tracking. Sommige functionaliteit en modules bestaan die toestaan dat verzoeken om andere redenen dan het herkomst van IP worden geblokkeerd (zoals de aanwezigheid van user agents die overeenkomen met spambots of hacktools, gevaarlijke zoekopdrachten, vervalste DNS enzovoort), en wanneer dit gebeurt, kan een "overtreding" optreden. Ze bieden een manier om IP-adressen te identificeren die overeenkomen met ongewenste verzoeken die nog niet door specifieke signatuurbestanden worden geblokkeerd. Overtredingen komen meestal 1-op-1 overeen met het aantal keren dat een IP wordt geblokkeerd, maar niet altijd (ernstige blokgebeurtenissen kunnen een overtredingen-waarde groter dan één oplopen, en als "track_mode" false is, er zullen geen overtredingen plaatsvinden voor blokgebeurtenissen die alleen door signatuurbestanden worden getriggerd).
+"Signatures tellen" en "overtredingen" hebben beide betrekking op de ernst en het aantal signatures dat tijdens een bepaald verzoek is geactiveerd, ongeacht of dit te wijten is aan signatuurbestanden, modules, hulpregels, of anderszins, maar terwijl het "signatures tellen" alleen voor dat specifieke verzoek blijft bestaan, "overtredingen" kunnen over een aantal verzoeken blijven bestaan, zolang als wordt bepaald door de `default_tracktime`.
+
+Dit biedt een mechanisme om ervoor te zorgen dat verzoeken van potentieel gevaarlijke bronnen kunnen worden geblokkeerd, waarbij die bron al was geblokkeerd tijdens een eerder verzoek met een voldoende aantal overtredingen.
 
 #### <a name="BLOCK_HOSTNAMES"></a>Kan CIDRAM hostnamen blokkeren?
 
@@ -2180,10 +2182,9 @@ In sommige omstandigheden kan het wettelijk verplicht zijn om PII die is verzame
 
 CIDRAM kan IP-adressen pseudonimiseren wanneer ze worden geregistreerd, als dit iets is dat u misschien nodig heeft, of zou willen doen. Wanneer CIDRAM IP-adressen pseudonimiseert, wanneer geregistreerd, het laatste octet van IPv4-adressen, en alles na het tweede deel van IPv6-adressen wordt weergegeven door een "x" (effectief afronding van IPv4-adressen naar het initiële adres van het 24e subnet waar ze in factoreren, en IPv6-adressen naar het initiële adres van het 32e subnet waar ze in factoreren).
 
-*Notitie: Het pseudonimisatieproces van het IP-adres van CIDRAM heeft geen invloed op de IP-trackingfunctie van CIDRAM. Als dit een probleem voor u is, is het misschien het beste om IP-tracking volledig uit te schakelen. Dit kan worden bereikt door `track_mode` in te stellen op `false` en door modules te vermijden.*
+*Notitie: Het pseudonimisatieproces van het IP-adres van CIDRAM heeft geen invloed op de IP-trackingfunctie van CIDRAM. Als dit een probleem voor u is, is het misschien het beste om IP-tracking volledig uit te schakelen.*
 
 *Relevante configuratie-opties:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 HET WEGLATEN VAN LOGINFORMATIE

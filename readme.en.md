@@ -1770,7 +1770,9 @@ Yes. An API is built into the front-end for interacting with the updates page vi
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>What are "infractions"?
 
-"Infractions" determine when an IP that isn't yet blocked by any specific signature files should start being blocked for any future requests, and they are closely associated with IP tracking. Some functionality and modules exist that allow requests to be blocked for reasons other than the IP of origin (such as the presence of user agents corresponding to spambots or hacktools, dangerous queries, spoofed DNS and so on), and when this happens, an "infraction" can occur. They provide a way to identify IP addresses that correspond to unwanted requests that mightn't yet be blocked by any specific signature files. Infractions usually correspond 1-to-1 with the number of times an IP is blocked, but not always (severe block events may incur an infraction value greater than one, and if "track_mode" is false, infractions won't occur for block events triggered solely by signature files).
+"Signatures count" and "infractions" both relate to the severity and number of signatures triggered during any particular request, whether due to signature files, modules, auxiliary rules, or otherwise, but while the "signatures count" persists only for that particular request, "infractions" can persist over any number of requests, for as long as is determined by the `default_tracktime`.
+
+This provides a mechanism to ensure that requests from potentially dangerous sources can be blocked upon secondary requests from any particular such source whereby that source had already been blocked during a prior request with a sufficient number of infractions.
 
 #### <a name="BLOCK_HOSTNAMES"></a>Can CIDRAM block hostnames?
 
@@ -2168,10 +2170,9 @@ In some circumstances, you may be legally required to anonymise or pseudonymise 
 
 CIDRAM is able to pseudonymise IP addresses when logging them, if this is something you might need or want to do. When CIDRAM pseudonymises IP addresses, when logged, the final octet of IPv4 addresses, and everything after the second part of IPv6 addresses is represented by an "x" (effectively rounding IPv4 addresses to the initial address of the 24th subnet they factor into, and IPv6 addresses to the initial address of the 32nd subnet they factor into).
 
-*Note: CIDRAM's IP address pseudonymisation process doesn't affect CIDRAM's IP tracking feature. If this is a problem for you, it may be best to disable IP tracking entirely. This can be achieved by setting `track_mode` to `false` and by avoiding any modules.*
+*Note: CIDRAM's IP address pseudonymisation process doesn't affect CIDRAM's IP tracking feature. If this is a problem for you, it may be best to disable IP tracking entirely.*
 
 *Relevant configuration directives:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 OMITTING LOG INFORMATION

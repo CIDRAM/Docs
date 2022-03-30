@@ -1772,7 +1772,9 @@ Ja. Eine API ist in das Frontend integriert, um über externe Skripte mit der Ak
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>Was sind "Verstöße"?
 
-"Verstöße" bestimmen, wann eine IP-Adresse, die noch nicht von bestimmten Signaturdateien blockiert wurde, für zukünftige Anforderungen blockiert werden soll, und sie sind eng mit IP-Tracking verbunden. Es gibt einige Funktionen und Module, die es ermöglichen, dass Anfragen aus anderen Gründen als der Ursprungs-IP blockiert werden (wie die Anwesenheit von User Agents, Hacktools, Spambots, gefährliche Anfragen, gefälschte DNS und so weiter), und wenn dies passiert kann ein "Verstoß" auftreten. Sie bieten eine Möglichkeit dazu, IP-Adressen zu identifizieren, die unerwünschten Anforderungen entsprechen, die möglicherweise noch nicht von bestimmten Signaturdateien blockiert wurden. Verstöße entsprechen in der Regel 1-zu-1 der Häufigkeit, mit der eine IP blockiert wird, aber nicht immer (bei schweren Blockereignissen kann es zu einem Verstoßwert größer als eins kommen, und wenn "track_mode" false ist, werden keien Verstöße auftreten).
+„Zählung den Signaturen“ und „Verstöße“ beziehen sich beide auf die Schwere und die Anzahl der Signaturen, die während einer bestimmten Anfrage ausgelöst werden, sei es aufgrund von Signaturdateien, Modulen, Hilfsregeln, oder anderweitig, aber während die „Zählung den Signaturen“ nur für diese Spezifische Anfrage bestehen bleibt, können „Verstöße“ über eine beliebige Anzahl von Anfragen bestehen bleiben, solange dies durch das `default_tracktime` bestimmt wird.
+
+Dies bietet einer Mechanismus um sicherzustellen dass Anforderungen von potenziell gefährlichen Quellen blockiert werden können, wobei diese Quelle bereits während einer vorherigen Anforderung mit einer ausreichenden Anzahl von Verstößen blockiert wurde.
 
 #### <a name="BLOCK_HOSTNAMES"></a>Kann CIDRAM Hostnamen blockieren?
 
@@ -2177,10 +2179,9 @@ Unter gewissen Umständen sind Sie gesetzlich dazu verpflichtet, alle PII, die g
 
 CIDRAM ist in der Lage, IP-Adressen zu pseudonymisieren, wenn Sie sie protokollieren, wenn Sie dies benötigen oder tun möchten. Wenn CIDRAM IP-Adressen pseudonymisiert, wird das letzte Oktett von IPv4-Adressen und alles nach dem zweiten Teil von IPv6-Adressen durch ein "x" dargestellt (runden effektiv IPv4-Adressen in Subnetz 24 und IPv6-Adressen in Subnetz 32 ab).
 
-*Hinweis: Der IP-Adress-Pseudonymisierungsprozess von CIDRAM hat keinen Einfluss auf die IP-Tracking-Funktion von CIDRAM. Wenn dies ein Problem für Sie darstellt, ist es möglicherweise am besten, das IP-Tracking vollständig zu deaktivieren. Dies kann durch Setzen von `track_mode` auf `false` und durch Vermeiden von Modulen erreicht werden.*
+*Hinweis: Der IP-Adress-Pseudonymisierungsprozess von CIDRAM hat keinen Einfluss auf die IP-Tracking-Funktion von CIDRAM. Wenn dies ein Problem für Sie darstellt, ist es möglicherweise am besten, das IP-Tracking vollständig zu deaktivieren.*
 
 *Relevante Konfigurationsdirektiven:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 WEGLASSUNG VON PROTOKOLLINFORMATIONEN

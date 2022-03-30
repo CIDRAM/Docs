@@ -1770,7 +1770,9 @@ Ya. API dibangun dalam bagian depan untuk berinteraksi dengan halaman pembaruan 
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>Apa "pelanggaran"?
 
-"Pelanggaran" menentukan kapan IP yang belum diblokir oleh file tanda tangan tertentu seharusnya mulai diblokir untuk permintaan di masa mendatang, dan mereka terkait erat dengan pelacakan IP. Beberapa fungsi dan modul ada yang memungkinkan permintaan menjadi diblokir karena alasan selain IP asal (seperti kehadiran agen pengguna [user agent] yang sesuai dengan spambot atau hacktool, permintaan berbahaya, DNS ditempa dan seterusnya), dan kapan ini terjadi, "pelanggaran" dapat terjadi. Mereka menyediakan cara untuk mengidentifikasi alamat IP yang sesuai dengan permintaan yang tidak diinginkan yang mungkin belum terhalang oleh file tanda tangan tertentu. Pelanggaran biasanya sesuai 1-ke-1 dengan berapa kali IP diblokir, namun tidak selalu (kejadian blokir yang parah dapat menimbulkan nilai pelanggaran lebih besar dari satu, dan jika "track_mode" false, pelanggaran tidak akan terjadi karena kejadian blokir yang hanya dipicu oleh file tanda tangan).
+"Penghitungan tanda tangan" dan "pelanggaran" keduanya berhubungan dengan tingkat keparahan dan jumlah tanda tangan yang dipicu selama permintaan tertentu, tidak peduli apakah karena file tanda tangan, modul, aturan tambahan, atau lainnya, tetapi sementara "penghitungan tanda tangan" hanya bertahan untuk permintaan tertentu itu, "pelanggaran" dapat bertahan atas sejumlah permintaan, selama ditentukan oleh `default_tracktime`.
+
+Ini menyediakan mekanisme untuk memastikan bahwa permintaan dari sumber yang berpotensi berbahaya dapat diblokir atas permintaan sekunder dari sumber tertentu yang mana telah diblokir selama permintaan sebelumnya dengan jumlah pelanggaran yang cukup.
 
 #### <a name="BLOCK_HOSTNAMES"></a>Dapatkah CIDRAM memblokir nama host?
 
@@ -2165,10 +2167,9 @@ Dalam beberapa keadaan, Anda mungkin diperlukan secara hukum untuk membuat diano
 
 CIDRAM mampu mem-pseudonimisasi alamat IP ketika melakukan pencatatan, jika ini adalah sesuatu yang mungkin Anda butuhkan atau ingin lakukan. Ketika CIDRAM mem-pseudonimkan alamat IP, saat dicatat, oktet terakhir dari alamat IPv4, dan semuanya setelah bagian kedua dari alamat IPv6 diwakili oleh "x" (efektif membulatkan alamat IPv4 ke alamat awal dari subnet ke-24 dari faktor dimana mereka dimasukkan, dan alamat IPv6 ke alamat awal dari subnet ke-32 dari faktor dimana mereka dimasukkan).
 
-*Catat: Proses pseudonimisasi alamat IP untuk CIDRAM tidak mempengaruhi fitur pelacakan IP untuk CIDRAM. Jika ini masalah bagi Anda, mungkin yang terbaik adalah menonaktifkan pelacakan IP sepenuhnya. Ini dapat dicapai dengan mengatur `track_mode` ke `false` dan dengan menghindari modul apapun.*
+*Catat: Proses pseudonimisasi alamat IP untuk CIDRAM tidak mempengaruhi fitur pelacakan IP untuk CIDRAM. Jika ini masalah bagi Anda, mungkin yang terbaik adalah menonaktifkan pelacakan IP sepenuhnya.*
 
 *Direktif konfigurasi yang relevan:*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 MENGHILANGKAN INFORMASI LOG

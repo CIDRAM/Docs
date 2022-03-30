@@ -1770,7 +1770,9 @@ Oui. Une API est intégrée dans le frontal pour interagir avec la page des mise
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>Quelles sont les « infractions » ?
 
-« Infractions » détermine quand une adresse IP qui n'est pas bloquée par des fichiers de signatures spécifiques devrait être bloqué pour les requêtes futures, et ils sont étroitement associés au surveillance des adresses IP. Certaines fonctionnalités et certains modules permettent de bloquer les requêtes pour des raisons autres que l'adresse IP d'origine (tels que la présence d'agents utilisateurs [user agents] correspondant à spambots ou hacktools, requêtes dangereuses, DNS usurpé et ainsi de suite), et quand cela arrive, une « infraction » peut survenir. Ils fournissent un moyen d'identifier les adresses IP qui correspondent à des requêtes non désirées qui ne sont pas bloquées par des fichiers de signatures spécifiques. Les infractions correspondent généralement 1-à-1 avec le nombre de fois qu'une IP est bloquée, mais pas toujours (les événements de bloc graves peuvent entraîner une valeur d'infraction supérieure à un, et si « track_mode » est false, les infractions ne se produiront pas pour les événements de bloc déclenchés uniquement par des fichiers de signatures).
+Le « compte des signatures » et les « infractions » se rapportent tous deux à la gravité et au nombre de signatures déclenchées lors d'une requête particulière, que ce soit en raison de fichiers de signatures, de modules, de règles auxiliaires, ou autres, mais alors que le « compte des signatures » ne persiste pas au-delà cette requête particulière, les « infractions » peuvent persister sur n'importe quel nombre de requêtes, aussi longtemps que cela est déterminé par la `default_tracktime`.
+
+Cela fournit un mécanisme pour garantir que les requêtes provenant de sources potentiellement dangereuses peuvent être bloquées lors de requêtes secondaires provenant d'une telle source particulière, ayant déjà été bloquée lors d'une requête antérieur avec un nombre suffisant d'infractions.
 
 #### <a name="BLOCK_HOSTNAMES"></a>Est-ce que CIDRAM peut bloquer les noms d'hôtes ?
 
@@ -2176,10 +2178,9 @@ Dans certaines circonstances, vous pouvez être légalement requis d'anonymiser 
 
 CIDRAM est capable de pseudonymiser les adresses IP lors de la connexion, si c'est quelque chose que vous pourriez avoir besoin ou que vous voulez faire. Lorsque CIDRAM pseudonymise les adresses IP, lorsqu'il est connecté, l'octet final des adresses IPv4, et tout ce qui suit la deuxième partie des adresses IPv6 est représenté par un « x » (arrondir efficacement les adresses IPv4 à l'adresse initiale du 24ème sous-réseau dans lequel elles sont factorisées, et les adresses IPv6 à l'adresse initiale du 32ème sous-réseau dans lequel elles sont factorisées).
 
-*Remarque : Le processus dans CIDRAM pour la pseudonymisation des adresses IP n'affecte pas la fonction de suivi des adresses IP dans CIDRAM. Si cela pour vous pose un problème, il est préférable de désactiver entièrement le suivi des adresses IP. Cela peut être réalisé en mettre la valeur de `track_mode` à `false`, et en évitant les modules.*
+*Remarque : Le processus dans CIDRAM pour la pseudonymisation des adresses IP n'affecte pas la fonction de suivi des adresses IP dans CIDRAM. Si cela pour vous pose un problème, il est préférable de désactiver entièrement le suivi des adresses IP.*
 
 *Directives de configuration pertinentes :*
-- `signatures` -> `track_mode`
 - `legal` -> `pseudonymise_ip_addresses`
 
 ##### 11.3.6 OMETTRE DES INFORMATIONS DE JOURNAL
