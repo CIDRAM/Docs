@@ -467,24 +467,24 @@ Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về c�
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Thực hiện kiểm tra tập tin chữ ký")
+├─Modules ("Thực hiện mô-đun")
+├─SearchEngineVerification ("Thực hiện xác minh của máy tìm kiếm")
+├─SocialMediaVerification ("Thực hiện xác minh của truyền thông xã hội")
+├─OtherVerification ("Thực hiện xác minh khác")
+├─Aux ("Thực hiện quy tắc phụ trợ")
+├─Reporting ("Thực hiện báo cáo")
+├─Tracking ("Thực hiện giám sát IP")
+├─RL ("Thực hiện giới hạn tốc độ")
+├─CAPTCHA ("Triển khai CAPTCHA (yêu cầu bị chặn)")
+├─Statistics ("Cập nhật số liệu thống kê")
+├─Webhooks ("Thực hiện webhook")
+├─PrepareFields ("Chuẩn bị các trường cho đầu ra và nhật ký")
+├─Output ("Tạo đầu ra (yêu cầu bị chặn)")
+├─WriteLogs ("Ghi vào nhật ký (yêu cầu bị chặn)")
+├─Terminate ("Chấm dứt yêu cầu (yêu cầu bị chặn)")
+├─AuxRedirect ("Chuyển hướng theo các quy tắc phụ trợ")
+└─NonBlockedCAPTCHA ("Triển khai CAPTCHA (yêu cầu không bị chặn)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("Phiên bản kịch bản")
+├─DateTime ("Ngày/Thời gian")
+├─IPAddr ("Địa chỉ IP")
+├─IPAddrResolved ("Địa chỉ IP (giải quyết)")
+├─Query ("Truy vấn")
+├─Referrer ("Trang giới thiệu")
+├─UA ("Đại lý người dùng")
+├─UALC ("Đại lý người dùng (chữ thường)")
+├─SignatureCount ("Số lượng chữ ký")
+├─Signatures ("Tham khảo cho chữ ký")
+├─WhyReason ("Tại sao bị chặn")
+├─ReasonMessage ("Tại sao bị chặn (chi tiết hơn)")
+├─rURI ("URI được xây dựng lại")
+├─Infractions ("Vi phạm")
+├─ASNLookup ("Tra cứu ASN")
+├─CCLookup ("Tra cứu mã quốc gia")
+├─Verified ("Xác minh danh tính")
+├─Expired ("Đã hết hạn")
+├─Ignored ("Bị bỏ qua")
+├─Request_Method ("Phương thức yêu cầu")
+├─Hostname ("Tên máy chủ")
+└─CAPTCHA ("Tình trạng CAPTCHA")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định giới hạn mong muốn tại đây. Giá trị 0 sẽ vô hiệu hóa xoay vòng nhật ký.
 
 ##### "log_rotation_action" `[string]`
-- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định hành động mong muốn tại đây. Delete = Xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá. Archive = Trước tiên lưu trữ, và sau đó xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.
+- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định hành động mong muốn tại đây.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
+└─Archive ("Trước tiên lưu trữ, và sau đó xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,31 @@ Xem thêm:
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi yêu cầu bị chặn? (Tham khảo tài liệu để biết thêm thông tin).
+- Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi yêu cầu bị chặn?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
+│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
+│ là dấu hiệu cho thấy yêu cầu đã thành công.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
+│ xuất cho hầu hết các trường hợp chung.
+├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
+│ một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo
+│ trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả
+│ khi đã được bỏ chặn. Có thể thích hợp nhất trong một
+│ số ngữ cảnh, đối với một số loại lưu lượng truy cập
+│ nhất định.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
+│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
+│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
+│ cung cấp để giải trí và tiện lợi, nhưng thường không
+│ được khuyến khích.
+├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+│ được khuyến khích trong các ngữ cảnh khác.
+└─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
+  Được đề xuất khi bị tấn công, hoặc khi xử lý lưu
+  lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +768,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Liên kết có thể nhấp")
+└─noclick ("Văn bản không thể nhấp")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +789,27 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
+│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
+│ là dấu hiệu cho thấy yêu cầu đã thành công.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
+│ xuất cho hầu hết các trường hợp chung.
+├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
+│ một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo
+│ trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả
+│ khi đã được bỏ chặn. Có thể thích hợp nhất trong một
+│ số ngữ cảnh, đối với một số loại lưu lượng truy cập
+│ nhất định.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
+│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
+│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
+│ cung cấp để giải trí và tiện lợi, nhưng thường không
+│ được khuyến khích.
+├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+│ được khuyến khích trong các ngữ cảnh khác.
+└─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
+  Được đề xuất khi bị tấn công, hoặc khi xử lý lưu
+  lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +817,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - Một dấu phẩy phân cách danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. Mặc định = "8.8.8.8,8.8.4.4" (Google DNS). CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
+
+__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="vi">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - Kiểm soát để xác minh các yêu cầu từ các máy tìm kiếm.
@@ -870,8 +902,8 @@ statistics
 ├─Passed-IPv4 ("Yêu cầu được phép – IPv4")
 ├─Passed-IPv6 ("Yêu cầu được phép – IPv6")
 ├─Passed-Other ("Yêu cầu được phép – Khác")
-├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – {state_failed}")
-└─CAPTCHAs-Passed ("CAPTCHA nỗ lực – {state_passed}")
+├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – Thất bại!")
+└─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1048,19 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
+│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
+│ là dấu hiệu cho thấy yêu cầu đã thành công.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
+│ xuất cho hầu hết các trường hợp chung.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
+│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
+│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
+│ cung cấp để giải trí và tiện lợi, nhưng thường không
+│ được khuyến khích.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+  được khuyến khích trong các ngữ cảnh khác.
 ```
 
 #### "hcaptcha" (Thể loại)
@@ -1086,11 +1126,19 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
+│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
+│ là dấu hiệu cho thấy yêu cầu đã thành công.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
+│ xuất cho hầu hết các trường hợp chung.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
+│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
+│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
+│ cung cấp để giải trí và tiện lợi, nhưng thường không
+│ được khuyến khích.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+  được khuyến khích trong các ngữ cảnh khác.
 ```
 
 #### "legal" (Thể loại)
@@ -1134,7 +1182,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Truy cập đã bị từ chối!")
 └─…Khác
 ```
 
@@ -1219,8 +1267,8 @@ Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chu
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Yêu cầu trong danh sách trắng")
+└─Verified ("Yêu cầu máy tìm kiếm và truyền thông xã hội đã xác minh")
 ```
 
 #### "supplementary_cache_options" (Thể loại)
@@ -1258,6 +1306,8 @@ Tùy chọn bộ nhớ cache bổ sung. Lưu ý: Việc thay đổi các giá tr
 
 ##### "pdo_dsn" `[string]`
 - Giá trị DSN PDO. Mặc định = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#HOW_TO_USE_PDO" hreflang="vi">"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Tên người dùng PDO.
@@ -2236,4 +2286,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2022.03.28.
+Lần cuối cập nhật: 2022.04.23.

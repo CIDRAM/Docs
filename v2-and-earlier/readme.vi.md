@@ -526,12 +526,12 @@ Giá trị hiện được hỗ trợ:
 
 Mã trạng thái | Thông thái trạng thái | Chi tiết
 ---|---|---
-`200` | `200 OK` | Giá trị mặc định. Không phải là rất mạnh mẽ, nhưng thân thiện với người dùng.
-`403` | `403 Forbidden` | Hơi mạnh mẽ, và thân thiện với người dùng.
-`410` | `410 Gone` | Có thể gây ra sự cố khi cố gắng giải quyết các sai tích cực, bởi vì một số trình duyệt sẽ lưu trữ thông thái trạng thái này và không gửi lại yêu cầu, ngay cả sau khi bỏ chặn người dùng. Có thể hữu ích hơn các tùy chọn khác để giảm yêu cầu từ một số loại bot cụ thể.
-`418` | `418 I'm a teapot` | Điều này thực sự ám chỉ đến một trò đùa của April Fools [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] và có lẽ khách hàng sẽ không hiểu. Cung cấp cho vui chơi giải trí và thuận tiện, nhưng không thường được đề nghị.
-`451` | `Unavailable For Legal Reasons` | Thích hợp cho các ngữ cảnh khi các yêu cầu bị chặn chủ yếu vì lý do pháp lý. Không được đề xuất trong các ngữ cảnh khác.
-`503` | `Service Unavailable` | Không phải là rất thân thiện với người dùng, nhưng mạnh mẽ.
+`200` | `200 OK` | Giá trị mặc định. Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các yêu cầu tự động rất có thể sẽ diễn giải phản hồi này là dấu hiệu cho thấy yêu cầu đã thành công.
+`403` | `403 Forbidden` | Hơi mạnh mẽ, và thân thiện với người dùng. Được đề xuất cho hầu hết các trường hợp chung.
+`410` | `410 Gone` | Có thể gây ra sự cố khi giải quyết các sai tích cực, vì một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả khi đã được bỏ chặn. Có thể thích hợp nhất trong một số ngữ cảnh, đối với một số loại lưu lượng truy cập nhất định.
+`418` | `418 I'm a teapot` | Điều này đề cập đến một trò đùa ngày cá tháng tư ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Rất khó có thể được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được cung cấp để giải trí và tiện lợi, nhưng thường không được khuyến khích.
+`451` | `451 Unavailable For Legal Reasons` | Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không được khuyến khích trong các ngữ cảnh khác.
+`503` | `503 Service Unavailable` | Mạnh mẽ nhất, nhưng không thân thiện với người dùng. Được đề xuất khi bị tấn công, hoặc khi xử lý lưu lượng truy cập không mong muốn và cực kỳ dai dẳng.
 
 ##### "silent_mode"
 - CIDRAM nên âm thầm chuyển hướng cố gắng truy cập bị chặn thay vì hiển thị trang "Truy cập đã bị từ chối"? Nếu vâng, xác định vị trí để chuyển hướng cố gắng truy cập bị chặn để. Nếu không, để cho biến này được trống.
@@ -824,11 +824,11 @@ Giá trị hiện được hỗ trợ:
 
 Mã trạng thái | Thông thái trạng thái
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Thể loại)
 Cấu hình mà liên quan đến các nghĩa vụ hợp pháp.
@@ -1974,4 +1974,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2022.02.20.
+Lần cuối cập nhật: 2022.04.23.

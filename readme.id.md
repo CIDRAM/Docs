@@ -467,24 +467,24 @@ Konfigurasi umum (konfigurasi inti apapun yang bukan milik kategori lain).
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Jalankan tes untuk file tanda tangan")
+├─Modules ("Jalankan modul")
+├─SearchEngineVerification ("Jalankan verifikasi mesin pencari")
+├─SocialMediaVerification ("Jalankan verifikasi media sosial")
+├─OtherVerification ("Jalankan verifikasi lainnya")
+├─Aux ("Jalankan aturan tambahan")
+├─Reporting ("Jalankan pelaporan")
+├─Tracking ("Jalankan pelacakan IP")
+├─RL ("Jalankan pembatasan laju")
+├─CAPTCHA ("Terapkan CAPTCHA (permintaan yang diblokir)")
+├─Statistics ("Memperbarui statistik")
+├─Webhooks ("Jalankan webhook")
+├─PrepareFields ("Siapkan bidang untuk keluaran dan log")
+├─Output ("Menghasilkan keluaran (permintaan yang diblokir)")
+├─WriteLogs ("Mencatat ke log (permintaan yang diblokir)")
+├─Terminate ("Hentikan permintaan (permintaan yang diblokir)")
+├─AuxRedirect ("Arahkan ulang sesuai dengan aturan tambahan")
+└─NonBlockedCAPTCHA ("Terapkan CAPTCHA (permintaan yang tidak diblokir)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("Versi Skrip")
+├─DateTime ("Tanggal/Waktu")
+├─IPAddr ("Alamat IP")
+├─IPAddrResolved ("Alamat IP (Terselesaikan)")
+├─Query ("Kueri")
+├─Referrer ("Halaman Mengacu")
+├─UA ("Agen Pengguna")
+├─UALC ("Agen Pengguna (huruf kecil)")
+├─SignatureCount ("Penghitungan tanda tangan")
+├─Signatures ("Referensi tanda tangan")
+├─WhyReason ("Mengapa diblokir")
+├─ReasonMessage ("Mengapa diblokir (terperinci)")
+├─rURI ("Direkonstruksi URI")
+├─Infractions ("Pelanggaran")
+├─ASNLookup ("Pencarian ASN")
+├─CCLookup ("Pencarian kode negara")
+├─Verified ("Identitas terverifikasi")
+├─Expired ("Kedaluwarsa")
+├─Ignored ("Diabaikan")
+├─Request_Method ("Metode permintaan")
+├─Hostname ("Nama host")
+└─CAPTCHA ("Status CAPTCHA")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan batas yang diinginkan disini. Nilai 0 akan menonaktifkan rotasi log.
 
 ##### "log_rotation_action" `[string]`
-- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan tindakan yang diinginkan disini. Delete = Hapus file log tertua, hingga batasnya tidak lagi terlampaui. Archive = Pertama arsipkan, lalu hapus file log tertua, hingga batasnya tidak lagi terlampaui.
+- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan tindakan yang diinginkan disini.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
+└─Archive ("Pertama arsipkan, lalu hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,27 @@ Lihat juga:
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- Pesan status HTTP mana yang harus dikirim oleh CIDRAM ketika memblokir permintaan? (Lihat dokumentasi untuk informasi lebih lanjut).
+- Pesan status HTTP mana yang harus dikirim oleh CIDRAM ketika memblokir permintaan?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
+│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
+│ permintaan berhasil.
+├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
+│ keadaan umum.
+├─410 (410 Gone (Dipergi)): Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena
+│ beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim
+│ permintaan berikutnya, bahkan setelah diblokir. Mungkin yang paling disukai
+│ dalam beberapa konteks, untuk jenis lalu lintas tertentu.
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
+│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
+├─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
+│ direkomendasikan dalam konteks lain.
+└─503 (503 Service Unavailable (Layanan tidak tersedia)): Paling kuat, tetapi paling tidak ramah-pengguna. Direkomendasikan untuk saat
+  diserang, atau saat berhadapan dengan lalu lintas yang tidak diinginkan yang
+  sangat persisten.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +764,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Link yang dapat diklik")
+└─noclick ("Teks yang tidak dapat diklik")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +785,23 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
+│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
+│ permintaan berhasil.
+├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
+│ keadaan umum.
+├─410 (410 Gone (Dipergi)): Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena
+│ beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim
+│ permintaan berikutnya, bahkan setelah diblokir. Mungkin yang paling disukai
+│ dalam beberapa konteks, untuk jenis lalu lintas tertentu.
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
+│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
+├─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
+│ direkomendasikan dalam konteks lain.
+└─503 (503 Service Unavailable (Layanan tidak tersedia)): Paling kuat, tetapi paling tidak ramah-pengguna. Direkomendasikan untuk saat
+  diserang, atau saat berhadapan dengan lalu lintas yang tidak diinginkan yang
+  sangat persisten.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +809,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - Sebuah daftar dipisahkan dengan koma dari server DNS yang digunakan untuk pencarian nama host. Default = "8.8.8.8,8.8.4.4" (Google DNS). PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="id">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - Kontrol untuk memverifikasi permintaan dari mesin pencari.
@@ -870,8 +894,8 @@ statistics
 ├─Passed-IPv4 ("Permintaan berlalu – IPv4")
 ├─Passed-IPv6 ("Permintaan berlalu – IPv6")
 ├─Passed-Other ("Permintaan berlalu – Lain")
-├─CAPTCHAs-Failed ("Upaya CAPTCHA – {state_failed}")
-└─CAPTCHAs-Passed ("Upaya CAPTCHA – {state_passed}")
+├─CAPTCHAs-Failed ("Upaya CAPTCHA – Gagal!")
+└─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1040,17 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
+│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
+│ permintaan berhasil.
+├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
+│ keadaan umum.
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
+│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
+  direkomendasikan dalam konteks lain.
 ```
 
 #### "hcaptcha" (Kategori)
@@ -1086,11 +1116,17 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
+│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
+│ permintaan berhasil.
+├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
+│ keadaan umum.
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
+│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
+  direkomendasikan dalam konteks lain.
 ```
 
 #### "legal" (Kategori)
@@ -1134,7 +1170,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Akses Ditolak!")
 └─…Lain
 ```
 
@@ -1219,8 +1255,8 @@ Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum)
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Permintaan yang masuk daftar putih")
+└─Verified ("Permintaan yang diverifikasi dari mesin pencari dan media sosial")
 ```
 
 #### "supplementary_cache_options" (Kategori)
@@ -1258,6 +1294,8 @@ Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
 
 ##### "pdo_dsn" `[string]`
 - Nilai DSN PDO. Default = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HOW_TO_USE_PDO" hreflang="id">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Nama pengguna PDO.
@@ -2239,4 +2277,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 28 Maret 2022 (2022.03.28).
+Terakhir Diperbarui: 23 April 2022 (2022.04.23).

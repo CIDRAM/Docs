@@ -536,12 +536,12 @@ Currently supported values:
 
 Status code | Status message | Description
 ---|---|---
-`200` | `200 OK` | Default value. Least robust, but most user-friendly.
-`403` | `403 Forbidden` | More robust, but less user-friendly.
-`410` | `410 Gone` | Could cause problems when attempting to resolve false positives, due to that some browsers will cache this status message and not send subsequent requests, even after unblocking users. May be more useful than other options for reducing requests from certain, very specific types of bots though.
-`418` | `418 I'm a teapot` | Actually references an April Fools' joke [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] and is unlikely to be understood by the client. Provided for amusement and convenience, but not generally recommended.
-`451` | `Unavailable For Legal Reasons` | Appropriate for contexts when requests are blocked primarily for legal reasons. Not recommended in other contexts.
-`503` | `Service Unavailable` | Most robust, but least user-friendly.
+`200` | `200 OK` | Default value. Least robust, but most user-friendly. Automated requests will most likely interpret this response as indication that the request was successful.
+`403` | `403 Forbidden` | More robust, but less user-friendly. Recommended for most general circumstances.
+`410` | `410 Gone` | Could cause problems when resolving false positives, because some browsers will cache this status message and not send subsequent requests, even after having been unblocked. May be the most preferable in some contexts, for certain kinds of traffic.
+`418` | `418 I'm a teapot` | References an April Fools' joke ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Very unlikely to be understood by any client, bot, browser, or otherwise. Provided for amusement and convenience, but not generally recommended.
+`451` | `451 Unavailable For Legal Reasons` | Recommended when blocking primarily for legal reasons. Not recommended in other contexts.
+`503` | `503 Service Unavailable` | Most robust, but least user-friendly. Recommended for when under attack, or for when dealing with extremely persistent unwanted traffic.
 
 ##### "silent_mode"
 - Should CIDRAM silently redirect blocked access attempts instead of displaying the "Access Denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
@@ -834,11 +834,11 @@ Currently supported values:
 
 Status code | Status message
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Category)
 Configuration relating to legal requirements.
@@ -1995,4 +1995,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 20 February 2022 (2022.02.20).
+Last Updated: 23 April 2022 (2022.04.23).

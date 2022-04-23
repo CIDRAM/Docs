@@ -469,24 +469,24 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("دستخطی فائلوں کے ٹیسٹ پر عمل کریں")
+├─Modules ("ماڈیولز پر عمل کریں")
+├─SearchEngineVerification ("سرچ انجن کی تصدیق پر عمل کریں")
+├─SocialMediaVerification ("سوشل میڈیا کی تصدیق پر عمل کریں")
+├─OtherVerification ("دوسری توثیق پر عمل کریں")
+├─Aux ("معاون قوانین پر عمل کریں")
+├─Reporting ("رپورٹنگ پر عمل کریں")
+├─Tracking ("IP ٹریکنگ پر عمل کریں")
+├─RL ("ریٹ محدود کرنے پر عمل کریں")
+├─CAPTCHA ("CAPTCHA تعینات کریں (بلاک شدہ درخواستیں)")
+├─Statistics ("اعداد و شمار کو اپ ڈیٹ کریں")
+├─Webhooks ("ویب ہکس پر عمل کریں")
+├─PrepareFields ("آؤٹ پٹ اور لاگز کے لیے فیلڈز تیار کریں")
+├─Output ("آؤٹ پٹ پیدا کریں (بلاک شدہ درخواستیں)")
+├─WriteLogs ("لاگ فائلوں میں لکھیں (بلاک شدہ درخواستیں)")
+├─Terminate ("درخواست کو ختم کریں (بلاک شدہ درخواستیں)")
+├─AuxRedirect ("معاون قوانین کے مطابق ری ڈائریکٹ کریں")
+└─NonBlockedCAPTCHA ("CAPTCHA تعینات کریں (غیر مسدود درخواستیں)")
 ```
 
 ##### <div dir="rtl">"fields" <code dir="ltr">[string]</code><br /></div>
@@ -494,29 +494,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("اسکرپٹ ورژن")
+├─DateTime ("تاریخ وقت")
+├─IPAddr ("IP پتہ")
+├─IPAddrResolved ("IP پتہ (حل کیا)")
+├─Query ("طلب")
+├─Referrer ("حوالہ دہندہ")
+├─UA ("صارف ایجنٹ")
+├─UALC ("صارف ایجنٹ (کم کیس)")
+├─SignatureCount ("دستخط شمار")
+├─Signatures ("دستخط حوالہ")
+├─WhyReason ("کیوں بلاک شدہ")
+├─ReasonMessage ("کیوں بلاک شدہ (تفصیلی)")
+├─rURI ("دوبارہ تعمیر URI")
+├─Infractions ("خلاف ورزی")
+├─ASNLookup ("ASN کی تلاش")
+├─CCLookup ("ملک کا کوڈ کی تلاش")
+├─Verified ("تصدیق شدہ شناخت")
+├─Expired ("میعاد ختم")
+├─Ignored ("نظر انداز")
+├─Request_Method ("درخواست کا طریقہ")
+├─Hostname ("میزبان کا نام")
+└─CAPTCHA ("CAPTCHA کے ریاست")
 ```
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
@@ -526,12 +526,12 @@ fields
 <div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ حد کی وضاحت کرسکتے ہیں. 0 کی قیمت لاگ گرد گردش کو غیر فعال کرے گی.</li></ul></div>
 
 ##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ کارروائی کی وضاحت کرسکتے ہیں. Delete = قدیم ترین لاگ ان کو حذف کریں، جب تک کہ حد تک زیادہ نہیں ہوسکتی ہے. Archive = سب سے پہلے آرکائیو، اور پھر سب سے پرانی لاگ ان کو حذف کریں، جب تک کہ حد زیادہ نہیں ہوسکتی.</li></ul></div>
+<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ کارروائی کی وضاحت کرسکتے ہیں.</li></ul></div>
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("قدیم ترین لاگ ان کو حذف کریں، جب تک کہ حد تک زیادہ نہیں ہوسکتی ہے.")
+└─Archive ("سب سے پہلے آرکائیو، اور پھر سب سے پرانی لاگ ان کو حذف کریں، جب تک کہ حد زیادہ نہیں ہوسکتی.")
 ```
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
@@ -648,16 +648,31 @@ ipaddr
 </ul></div>
 
 ##### <div dir="rtl">"http_response_header_code" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>درخواستوں کو روکنے پر بھیجنے کے لئے HTTP حیثیت کا پیغام. (مزید معلومات کے لئے دستاویزات کا حوالہ دیتے ہیں).</li></ul></div>
+<div dir="rtl"><ul><li>درخواستوں کو روکنے پر بھیجنے کے لئے HTTP حیثیت کا پیغام.</li></ul></div>
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
+│ خودکار درخواستیں غالباً اس جواب کی تشریح
+│ کریں گی کہ درخواست کامیاب تھی.
+├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
+│ عام حالات کے لیے تجویز کردہ.
+├─410 (410 Gone (چلا گیا)): غلط مثبت کو حل کرتے وقت مسائل پیدا ہوسکتے
+│ ہیں، کیونکہ کچھ براؤزر اس اسٹیٹس میسج کو
+│ کیش کریں گے اور بعد میں درخواستیں نہیں
+│ بھیجیں گے. کچھ سیاق و سباق میں استعمال
+│ کرنے کے لیے بہترین ہو سکتا ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
+│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
+│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
+│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
+│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
+│ مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
+│ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
+└─503 (503 Service Unavailable (سروس میسر نہیں)): سب سے زیادہ مضبوط، لیکن کم از کم صارف دوست.
+  حملے کے دوران، یا انتہائی مسلسل ناپسندیدہ
+  ٹریفک سے نمٹنے کے لیے تجویز کردہ.
 ```
 
 ##### <div dir="rtl">"silent_mode" <code dir="ltr">[string]</code><br /></div>
@@ -756,8 +771,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("کلک کرنے والے لنک")
+└─noclick ("متن جو کلک نہیں کیا جا سکتا")
 ```
 
 ##### <div dir="rtl">"disable_frontend" <code dir="ltr">[bool]</code><br /></div>
@@ -777,12 +792,27 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
+│ خودکار درخواستیں غالباً اس جواب کی تشریح
+│ کریں گی کہ درخواست کامیاب تھی.
+├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
+│ عام حالات کے لیے تجویز کردہ.
+├─410 (410 Gone (چلا گیا)): غلط مثبت کو حل کرتے وقت مسائل پیدا ہوسکتے
+│ ہیں، کیونکہ کچھ براؤزر اس اسٹیٹس میسج کو
+│ کیش کریں گے اور بعد میں درخواستیں نہیں
+│ بھیجیں گے. کچھ سیاق و سباق میں استعمال
+│ کرنے کے لیے بہترین ہو سکتا ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
+│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
+│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
+│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
+│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
+│ مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
+│ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
+└─503 (503 Service Unavailable (سروس میسر نہیں)): سب سے زیادہ مضبوط، لیکن کم از کم صارف دوست.
+  حملے کے دوران، یا انتہائی مسلسل ناپسندیدہ
+  ٹریفک سے نمٹنے کے لیے تجویز کردہ.
 ```
 
 ##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
@@ -790,6 +820,8 @@ ban_override
 
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>میزبان نام لک اپ کے لئے استعمال کرنے کے لئے DNS سرورز کی کوما ختم ہونے والی فہرست. پہلے سے طے شدہ = "8.8.8.8,8.8.4.4" (Google DNS). انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li></ul></div>
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ur">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></em>
 
 ##### <div dir="rtl">"search_engine_verification" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>سرچ انجنوں سے درخواستوں کی تصدیق کے لیے کنٹرولز.</li></ul></div>
@@ -873,8 +905,8 @@ statistics
 ├─Passed-IPv4 ("درخواستیں گزر گئیں – IPv4")
 ├─Passed-IPv6 ("درخواستیں گزر گئیں – IPv6")
 ├─Passed-Other ("درخواستیں گزر گئیں – دیگر")
-├─CAPTCHAs-Failed ("کوششیں CAPTCHA – {state_failed}")
-└─CAPTCHAs-Passed ("کوششیں CAPTCHA – {state_passed}")
+├─CAPTCHAs-Failed ("کوششیں CAPTCHA – ناکام ہوگیا!")
+└─CAPTCHAs-Passed ("کوششیں CAPTCHA – ایوان کے پاس!")
 ```
 
 ##### <div dir="rtl">"force_hostname_lookup" <code dir="ltr">[bool]</code><br /></div>
@@ -1021,11 +1053,20 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
+│ خودکار درخواستیں غالباً اس جواب کی تشریح
+│ کریں گی کہ درخواست کامیاب تھی.
+├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
+│ عام حالات کے لیے تجویز کردہ.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
+│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
+│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
+│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
+│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
+  مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
+  سیاق و سباق میں سفارش نہیں کی جاتی ہے.
 ```
 
 #### <div dir="rtl">"hcaptcha" (قسم)<br /></div>
@@ -1093,11 +1134,20 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
+│ خودکار درخواستیں غالباً اس جواب کی تشریح
+│ کریں گی کہ درخواست کامیاب تھی.
+├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
+│ عام حالات کے لیے تجویز کردہ.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
+│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
+│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
+│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
+│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
+  مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
+  سیاق و سباق میں سفارش نہیں کی جاتی ہے.
 ```
 
 #### <div dir="rtl">"legal" (قسم)<br /></div>
@@ -1141,7 +1191,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("رسائی نہیں ہوئی!")
 └─…دیگر
 ```
 
@@ -1226,8 +1276,8 @@ smtp_secure
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("وائٹ لسٹ کی درخواستیں")
+└─Verified ("سرچ انجنوں اور سوشل میڈیا سے تصدیق شدہ درخواستیں")
 ```
 
 #### <div dir="rtl">"supplementary_cache_options" (قسم)<br /></div>
@@ -1265,6 +1315,8 @@ exceptions
 
 ##### <div dir="rtl">"pdo_dsn" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے DSN. پہلے سے طے شدہ = "mysql:dbname=cidram;host=localhost;port=3306".</li></ul></div>
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#HOW_TO_USE_PDO" hreflang="ur">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></em>
 
 ##### <div dir="rtl">"pdo_username" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے صارف نام.</li></ul></div>
@@ -2292,4 +2344,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۸ مارچ ۲۰۲۲ (۲۰۲۲.۰۳.۲۸).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۳ اپریل ۲۰۲۲ (۲۰۲۲.۰۴.۲۳).</div>

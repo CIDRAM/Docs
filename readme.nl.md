@@ -467,24 +467,24 @@ Algemene configuratie (elke kernconfiguratie die niet tot andere categorieën be
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Voer de signatuurbestandentests")
+├─Modules ("Voer de modules")
+├─SearchEngineVerification ("Voer zoekmachine verificatie")
+├─SocialMediaVerification ("Voer sociale media verificatie")
+├─OtherVerification ("Voer andere verificatie")
+├─Aux ("Voer hulpregels")
+├─Reporting ("Voer rapportage")
+├─Tracking ("Voer IP-tracking")
+├─RL ("Voer tarieflimiet")
+├─CAPTCHA ("Voeg CAPTCHA's (geblokkeerde verzoeken)")
+├─Statistics ("Bijwerk statistieken")
+├─Webhooks ("Voer webhooks")
+├─PrepareFields ("Voorbereiden velden voor uitvoer en logs")
+├─Output ("Genereren uitvoer (geblokkeerde verzoeken)")
+├─WriteLogs ("Schrijf naar logs (geblokkeerde verzoeken)")
+├─Terminate ("Beëindig het verzoek (geblokkeerde verzoeken)")
+├─AuxRedirect ("Omleiden volgens hulpregels")
+└─NonBlockedCAPTCHA ("Voeg CAPTCHA's (niet-geblokkeerde verzoeken)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("Script Versie")
+├─DateTime ("Datum/Tijd")
+├─IPAddr ("IP-Adres")
+├─IPAddrResolved ("IP-Adres (Vastbesloten)")
+├─Query ("Query")
+├─Referrer ("Verwijzer")
+├─UA ("User Agent")
+├─UALC ("User Agent (kleine letters)")
+├─SignatureCount ("Signatures Tellen")
+├─Signatures ("Signatures Verwijzing")
+├─WhyReason ("Waarom Geblokkeerd")
+├─ReasonMessage ("Waarom Geblokkeerd (gedetailleerd)")
+├─rURI ("Gereconstrueerde URI")
+├─Infractions ("Overtredingen")
+├─ASNLookup ("ASN opzoeken")
+├─CCLookup ("Landcode opzoeken")
+├─Verified ("Geverifieerde identiteit")
+├─Expired ("Verlopen")
+├─Ignored ("Genegeerd")
+├─Request_Method ("Verzoek methode")
+├─Hostname ("Hostname")
+└─CAPTCHA ("CAPTCHA State")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste limiet opgeven. Een waarde van 0 zal logrotatie uitschakelen.
 
 ##### "log_rotation_action" `[string]`
-- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste actie opgeven. Delete = Verwijder de oudste logbestanden, totdat de limiet niet langer wordt overschreden. Archive = Eerst archiveer en verwijder vervolgens de oudste logbestanden, totdat de limiet niet langer wordt overschreden.
+- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste actie opgeven.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Verwijder de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
+└─Archive ("Eerst archiveer en verwijder vervolgens de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,28 @@ Zie ook:
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- Welk HTTP-statusbericht moet CIDRAM verzenden bij het blokkeren van verzoeken? (Raadpleeg de documentatie voor meer informatie).
+- Welk HTTP-statusbericht moet CIDRAM verzenden bij het blokkeren van verzoeken?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
+│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
+│ het verzoek was succesvol.
+├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
+│ algemene omstandigheden.
+├─410 (410 Gone (Weg)): Kan problemen veroorzaken bij het oplossen van valse positieven, omdat
+│ sommige browsers dit statusbericht in de cache opslaan en geen volgende
+│ verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in
+│ sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
+│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
+│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
+│ aanbevolen.
+├─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
+│ aanbevolen in andere contexten.
+└─503 (503 Service Unavailable (Dienst onbeschikbaar)): Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u
+  wordt aangevallen, of wanneer u te maken hebt met extreem hardnekkig
+  ongewenst verkeer.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +765,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Klikbare link")
+└─noclick ("Niet-klikbare tekst")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +786,24 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
+│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
+│ het verzoek was succesvol.
+├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
+│ algemene omstandigheden.
+├─410 (410 Gone (Weg)): Kan problemen veroorzaken bij het oplossen van valse positieven, omdat
+│ sommige browsers dit statusbericht in de cache opslaan en geen volgende
+│ verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in
+│ sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
+│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
+│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
+│ aanbevolen.
+├─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
+│ aanbevolen in andere contexten.
+└─503 (503 Service Unavailable (Dienst onbeschikbaar)): Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u
+  wordt aangevallen, of wanneer u te maken hebt met extreem hardnekkig
+  ongewenst verkeer.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +811,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - Een door komma's gescheiden lijst met DNS-servers te gebruiken voor de hostnaam lookups. Standaard = "8.8.8.8,8.8.4.4" (Google DNS). WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="nl">Wat kan ik gebruiken voor "default_dns"?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - Controles voor het verifiëren van verzoeken van zoekmachines.
@@ -870,8 +896,8 @@ statistics
 ├─Passed-IPv4 ("Verzoeken toegestaan – IPv4")
 ├─Passed-IPv6 ("Verzoeken toegestaan – IPv6")
 ├─Passed-Other ("Verzoeken toegestaan – Anders")
-├─CAPTCHAs-Failed ("CAPTCHA pogingen – {state_failed}")
-└─CAPTCHAs-Passed ("CAPTCHA pogingen – {state_passed}")
+├─CAPTCHAs-Failed ("CAPTCHA pogingen – Mislukt!")
+└─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1042,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
+│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
+│ het verzoek was succesvol.
+├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
+│ algemene omstandigheden.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
+│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
+│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
+│ aanbevolen.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
+  aanbevolen in andere contexten.
 ```
 
 #### "hcaptcha" (Categorie)
@@ -1086,11 +1119,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
+│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
+│ het verzoek was succesvol.
+├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
+│ algemene omstandigheden.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
+│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
+│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
+│ aanbevolen.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
+  aanbevolen in andere contexten.
 ```
 
 #### "legal" (Categorie)
@@ -1134,7 +1174,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Toegang Geweigerd!")
 └─…Anders
 ```
 
@@ -1219,8 +1259,8 @@ Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Verzoeken gemarkeerd als op de witte lijst")
+└─Verified ("Geverifieerde verzoeken van zoekmachines en sociale media")
 ```
 
 #### "supplementary_cache_options" (Categorie)
@@ -1258,6 +1298,8 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HOW_TO_USE_PDO" hreflang="nl">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO gebruikersnaam.
@@ -2256,4 +2298,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 28 Maart 2022 (2022.03.28).
+Laatste Bijgewerkt: 23 April 2022 (2022.04.23).

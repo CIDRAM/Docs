@@ -526,12 +526,12 @@ Momenteel ondersteunde waarden:
 
 Status code | Status bericht | Beschrijving
 ---|---|---
-`200` | `200 OK` | Standaardwaarde. Minst robuust, maar meest gebruiksvriendelijk.
-`403` | `403 Forbidden` | Robuuster, maar minder gebruikersvriendelijk.
-`410` | `410 Gone` | Kan problemen veroorzaken bij pogingen om valse positieven op te lossen, omdat sommige browsers dit statusbericht in de cache opslaan en geen volgende verzoeken verzenden, zelfs niet na het deblokkeren van gebruikers. Kan echter nuttiger zijn dan andere opties om aanvragen van bepaalde, zeer specifieke typen bots te verminderen.
-`418` | `418 I'm a teapot` | Verwijst eigenlijk naar de grap van April Fools [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] en het is onwaarschijnlijk dat de klant het begrijpt. Voorzien voor amusement en gemak, maar over het algemeen niet aanbevolen.
-`451` | `Unavailable For Legal Reasons` | Geschikt voor situaties waarin verzoeken voornamelijk om juridische redenen worden geblokkeerd. Niet aanbevolen in andere contexten.
-`503` | `Service Unavailable` | Meest robuust, maar minst gebruiksvriendelijk.
+`200` | `200 OK` | Standaardwaarde. Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat het verzoek was succesvol.
+`403` | `403 Forbidden` | Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste algemene omstandigheden.
+`410` | `410 Gone` | Kan problemen veroorzaken bij het oplossen van valse positieven, omdat sommige browsers dit statusbericht in de cache opslaan en geen volgende verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
+`418` | `418 I'm a teapot` | Verwijst naar een 1-aprilgrap ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet aanbevolen.
+`451` | `451 Unavailable For Legal Reasons` | Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet aanbevolen in andere contexten.
+`503` | `503 Service Unavailable` | Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u wordt aangevallen, of wanneer u te maken hebt met extreem hardnekkig ongewenst verkeer.
 
 ##### "silent_mode"
 - Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "Toegang Geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
@@ -824,11 +824,11 @@ Momenteel ondersteunde waarden:
 
 Status code | Status bericht
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Category)
 Configuratie met betrekking tot wettelijke vereisten.
@@ -1994,4 +1994,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 20 Februari 2022 (2022.02.20).
+Laatste Bijgewerkt: 23 April 2022 (2022.04.23).

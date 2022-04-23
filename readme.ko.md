@@ -467,24 +467,24 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("서명 파일 테스트 실행")
+├─Modules ("모듈 실행")
+├─SearchEngineVerification ("검색 엔진 검증 실행")
+├─SocialMediaVerification ("소셜 미디어 검증 실행")
+├─OtherVerification ("기타 검증 실행")
+├─Aux ("보조 규칙 실행")
+├─Reporting ("보고 실행")
+├─Tracking ("IP 추적 실행")
+├─RL ("속도 제한 실행")
+├─CAPTCHA ("보안문자 배포 (차단된 요청)")
+├─Statistics ("통계 업데이트")
+├─Webhooks ("웹훅 실행")
+├─PrepareFields ("출력 및 로그용 필드 준비")
+├─Output ("출력 생성 (차단된 요청)")
+├─WriteLogs ("로그에 쓰기 (차단된 요청)")
+├─Terminate ("요청 종료 (차단된 요청)")
+├─AuxRedirect ("보조 규칙에 따라 리디렉션")
+└─NonBlockedCAPTCHA ("보안문자 배포 (차단되지 않은 요청)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("신분증")
+├─ScriptIdent ("스크립트 버전")
+├─DateTime ("일·월·년·시간")
+├─IPAddr ("IP 주소")
+├─IPAddrResolved ("IP 주소 (해결됨)")
+├─Query ("쿼리")
+├─Referrer ("추천자")
+├─UA ("사용자 에이전트")
+├─UALC ("사용자 에이전트 (소문자)")
+├─SignatureCount ("서명수")
+├─Signatures ("서명 참조")
+├─WhyReason ("왜 차단이 되셨나요")
+├─ReasonMessage ("왜 차단이 되셨나요 (상세한)")
+├─rURI ("URI 재구성 된")
+├─Infractions ("위반")
+├─ASNLookup ("ASN 조회")
+├─CCLookup ("국가 코드 조회")
+├─Verified ("확인 된 신원")
+├─Expired ("만료됨")
+├─Ignored ("무시 됨")
+├─Request_Method ("요청 방법")
+├─Hostname ("호스트 이름")
+└─CAPTCHA ("CAPTCHA의 상태")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - 로그 회전은 한 번에 존재해야하는 로그 파일 수를 제한합니다. 새 로그 파일을 만들 때 총 로그, 파일 수가 지정된 제한을 초과하면, 지정된 작업이 수행됩니다. 여기서 원하는 한계를 지정할 수 있습니다. 값 0은 로그 회전을 비활성화합니다.
 
 ##### "log_rotation_action" `[string]`
-- 로그 회전은 한 번에 존재해야하는 로그 파일 수를 제한합니다. 새 로그 파일을 만들 때 총 로그, 파일 수가 지정된 제한을 초과하면, 지정된 작업이 수행됩니다. 여기서 원하는 동작을 지정할 수 있습니다. Delete = 제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 삭제하십시오. Archive = 제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 보관 한 다음 삭제하십시오.
+- 로그 회전은 한 번에 존재해야하는 로그 파일 수를 제한합니다. 새 로그 파일을 만들 때 총 로그, 파일 수가 지정된 제한을 초과하면, 지정된 작업이 수행됩니다. 여기서 원하는 동작을 지정할 수 있습니다.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 삭제하십시오.")
+└─Archive ("제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 보관 한 다음 삭제하십시오.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,28 @@ ipaddr
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- 요청을 차단할 때 CIDRAM이 전송해야하는 HTTP 상태 메시지는 무엇입니까? (자세한 내용은 설명서를 참조하십시오).
+- 요청을 차단할 때 CIDRAM이 전송해야하는 HTTP 상태 메시지는 무엇입니까?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
+│ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
+│ 가능성이 큽니다.
+├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
+│ 일반적인 상황에 권장됩니다.
+├─410 (410 Gone (갔다)): 일부 브라우저는 차단 해제된 후에도 이 상태 메시지를
+│ 캐시하고 후속 요청을 보내지 않기 때문에 가 양성을
+│ 해결할 때 문제를 일으킬 수 있습니다. 어떤 상황에서는
+│ 특정 종류의 트래픽에 대해 가장 선호될 수 있습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
+│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
+│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
+│ 권장되지 않습니다.
+├─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
+│ 상황에서는 권장되지 않습니다.
+└─503 (503 Service Unavailable (서비스 불가)): 가장 강력하지만 사용자 친화적이지 않습니다.
+  공격받거나 매우 지속적인 원치 않는 트래픽을 처리할 때
+  권장됩니다.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +765,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("클릭 가능한 링크")
+└─noclick ("클릭 할 수없는 텍스트")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +786,24 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
+│ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
+│ 가능성이 큽니다.
+├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
+│ 일반적인 상황에 권장됩니다.
+├─410 (410 Gone (갔다)): 일부 브라우저는 차단 해제된 후에도 이 상태 메시지를
+│ 캐시하고 후속 요청을 보내지 않기 때문에 가 양성을
+│ 해결할 때 문제를 일으킬 수 있습니다. 어떤 상황에서는
+│ 특정 종류의 트래픽에 대해 가장 선호될 수 있습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
+│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
+│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
+│ 권장되지 않습니다.
+├─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
+│ 상황에서는 권장되지 않습니다.
+└─503 (503 Service Unavailable (서비스 불가)): 가장 강력하지만 사용자 친화적이지 않습니다.
+  공격받거나 매우 지속적인 원치 않는 트래픽을 처리할 때
+  권장됩니다.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +811,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 쉼표로 구분 된 목록입니다. Default (기본 설정) = "8.8.8.8,8.8.4.4" (Google DNS). 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
+
+__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ko">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - 검색 엔진의 요청을 확인하기 위한 컨트롤입니다.
@@ -870,8 +896,8 @@ statistics
 ├─Passed-IPv4 ("허용된 요청 – IPv4")
 ├─Passed-IPv6 ("허용된 요청 – IPv6")
 ├─Passed-Other ("허용된 요청 – 다른")
-├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – {state_failed}")
-└─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – {state_passed}")
+├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – 실패!")
+└─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1042,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
+│ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
+│ 가능성이 큽니다.
+├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
+│ 일반적인 상황에 권장됩니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
+│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
+│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
+│ 권장되지 않습니다.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
+  상황에서는 권장되지 않습니다.
 ```
 
 #### "hcaptcha" (카테고리)
@@ -1086,11 +1119,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
+│ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
+│ 가능성이 큽니다.
+├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
+│ 일반적인 상황에 권장됩니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
+│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
+│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
+│ 권장되지 않습니다.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
+  상황에서는 권장되지 않습니다.
 ```
 
 #### "legal" (카테고리)
@@ -1134,7 +1174,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("액세스 거부!")
 └─…다른
 ```
 
@@ -1219,8 +1259,8 @@ smtp_secure
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("화이트리스트 된 것으로 표시된 요청")
+└─Verified ("확인 된 검색 엔진 및 소셜 미디어 요청")
 ```
 
 #### "supplementary_cache_options" (카테고리)
@@ -1258,6 +1298,8 @@ exceptions
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN 값. Default (기본값) = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#HOW_TO_USE_PDO" hreflang="ko">"PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO 사용자 이름.
@@ -2235,4 +2277,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 3월 28일.
+최종 업데이트 : 2022년 4월 23일.

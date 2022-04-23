@@ -526,12 +526,12 @@ Nilai yang didukung saat ini:
 
 Kode status | Pesan status | Deskripsi
 ---|---|---
-`200` | `200 OK` | Nilai default. Paling tidak kuat, tetapi paling ramah kepada pengguna.
-`403` | `403 Forbidden` | Lebih kuat, tetapi kurang ramah kepada pengguna.
-`410` | `410 Gone` | Dapat menyebabkan masalah ketika mencoba menyelesaikan kesalahan positif, karena beberapa browser akan menyimpan pesan status ini dan tidak mengirim permintaan lagi, bahkan setelah membuka blokir pengguna. Mungkin lebih berguna daripada opsi lain untuk mengurangi permintaan dari jenis bot tertentu yang sangat spesifik.
-`418` | `418 I'm a teapot` | Sebenarnya referensi lelucon "bodoh april" [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] dan tidak mungkin dipahami oleh klien. Disediakan untuk hiburan dan kenyamanan, tetapi tidak direkomendasikan secara umum.
-`451` | `Unavailable For Legal Reasons` | Sesuai untuk konteks ketika permintaan diblokir terutama karena alasan hukum. Tidak direkomendasikan dalam konteks lain.
-`503` | `Service Unavailable` | Paling kuat, tetapi paling tidak ramah kepada pengguna.
+`200` | `200 OK` | Nilai default. Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa permintaan berhasil.
+`403` | `403 Forbidden` | Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan keadaan umum.
+`410` | `410 Gone` | Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim permintaan berikutnya, bahkan setelah diblokir. Mungkin yang paling disukai dalam beberapa konteks, untuk jenis lalu lintas tertentu.
+`418` | `418 I'm a teapot` | Referensi pada lelucon April Mop ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Probabilitas rendah bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
+`451` | `451 Unavailable For Legal Reasons` | Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak direkomendasikan dalam konteks lain.
+`503` | `503 Service Unavailable` | Paling kuat, tetapi paling tidak ramah-pengguna. Direkomendasikan untuk saat diserang, atau saat berhadapan dengan lalu lintas yang tidak diinginkan yang sangat persisten.
 
 ##### "silent_mode"
 - Seharusnya CIDRAM diam-diam mengarahkan diblokir upaya akses bukannya menampilkan halaman "Akses Ditolak"? Jika ya, menentukan lokasi untuk mengarahkan diblokir upaya akses. Jika tidak, kosongkan variabel ini.
@@ -824,11 +824,11 @@ Nilai yang didukung saat ini:
 
 Kode status | Pesan status
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Kategori)
 Konfigurasi yang berkaitan dengan persyaratan hukum.
@@ -1977,4 +1977,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 20 Februari 2022 (2022.02.20).
+Terakhir Diperbarui: 23 April 2022 (2022.04.23).

@@ -467,24 +467,24 @@ General configuration (any core configuration not belonging to other categories)
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Execute signature files tests")
+├─Modules ("Execute modules")
+├─SearchEngineVerification ("Execute search engine verification")
+├─SocialMediaVerification ("Execute social media verification")
+├─OtherVerification ("Execute other verification")
+├─Aux ("Execute auxiliary rules")
+├─Reporting ("Execute reporting")
+├─Tracking ("Execute IP tracking")
+├─RL ("Execute rate limiting")
+├─CAPTCHA ("Deploy CAPTCHAs (blocked requests)")
+├─Statistics ("Update statistics")
+├─Webhooks ("Execute webhooks")
+├─PrepareFields ("Prepare fields for output and logs")
+├─Output ("Generate output (blocked requests)")
+├─WriteLogs ("Write to logs (blocked requests)")
+├─Terminate ("Terminate the request (blocked requests)")
+├─AuxRedirect ("Redirect according to auxiliary rules")
+└─NonBlockedCAPTCHA ("Deploy CAPTCHAs (non-blocked requests)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("Script Version")
+├─DateTime ("Date/Time")
+├─IPAddr ("IP Address")
+├─IPAddrResolved ("IP Address (Resolved)")
+├─Query ("Query")
+├─Referrer ("Referrer")
+├─UA ("User Agent")
+├─UALC ("User Agent (lower-case)")
+├─SignatureCount ("Signatures Count")
+├─Signatures ("Signatures Reference")
+├─WhyReason ("Why Blocked")
+├─ReasonMessage ("Why Blocked (detailed)")
+├─rURI ("Reconstructed URI")
+├─Infractions ("Infractions")
+├─ASNLookup ("ASN lookup")
+├─CCLookup ("Country code lookup")
+├─Verified ("Verified identity")
+├─Expired ("Expired")
+├─Ignored ("Ignored")
+├─Request_Method ("Request method")
+├─Hostname ("Hostname")
+└─CAPTCHA ("CAPTCHA State")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired limit here. A value of 0 will disable log rotation.
 
 ##### "log_rotation_action" `[string]`
-- Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired action here. Delete = Delete the oldest logfiles, until the limit is no longer exceeded. Archive = Firstly archive, and then delete the oldest logfiles, until the limit is no longer exceeded.
+- Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired action here.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Delete the oldest logfiles, until the limit is no longer exceeded.")
+└─Archive ("Firstly archive, and then delete the oldest logfiles, until the limit is no longer exceeded.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,25 @@ See also:
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- Which HTTP status message should CIDRAM send when blocking requests? (Refer to the documentation for more information).
+- Which HTTP status message should CIDRAM send when blocking requests?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
+│ interpret this response as indication that the request was successful.
+├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
+│ circumstances.
+├─410 (410 Gone): Could cause problems when resolving false positives, because some browsers
+│ will cache this status message and not send subsequent requests, even after
+│ having been unblocked. May be the most preferable in some contexts, for
+│ certain kinds of traffic.
+├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+│ understood by any client, bot, browser, or otherwise. Provided for amusement
+│ and convenience, but not generally recommended.
+├─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
+│ other contexts.
+└─503 (503 Service Unavailable): Most robust, but least user-friendly. Recommended for when under attack, or
+  for when dealing with extremely persistent unwanted traffic.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +762,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Clickable link")
+└─noclick ("Non-clickable text")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +783,21 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
+│ interpret this response as indication that the request was successful.
+├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
+│ circumstances.
+├─410 (410 Gone): Could cause problems when resolving false positives, because some browsers
+│ will cache this status message and not send subsequent requests, even after
+│ having been unblocked. May be the most preferable in some contexts, for
+│ certain kinds of traffic.
+├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+│ understood by any client, bot, browser, or otherwise. Provided for amusement
+│ and convenience, but not generally recommended.
+├─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
+│ other contexts.
+└─503 (503 Service Unavailable): Most robust, but least user-friendly. Recommended for when under attack, or
+  for when dealing with extremely persistent unwanted traffic.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +805,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - A comma delimited list of DNS servers to use for hostname lookups. Default = "8.8.8.8,8.8.4.4" (Google DNS). WARNING: Don't change this unless you know what you're doing!
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="en-AU">What can I use for "default_dns"?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - Controls for verifying requests from search engines.
@@ -870,8 +890,8 @@ statistics
 ├─Passed-IPv4 ("Requests passed – IPv4")
 ├─Passed-IPv6 ("Requests passed – IPv6")
 ├─Passed-Other ("Requests passed – Other")
-├─CAPTCHAs-Failed ("CAPTCHA attempts – {state_failed}")
-└─CAPTCHAs-Passed ("CAPTCHA attempts – {state_passed}")
+├─CAPTCHAs-Failed ("CAPTCHA attempts – Failed!")
+└─CAPTCHAs-Passed ("CAPTCHA attempts – Passed!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1036,16 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
+│ interpret this response as indication that the request was successful.
+├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
+│ circumstances.
+├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+│ understood by any client, bot, browser, or otherwise. Provided for amusement
+│ and convenience, but not generally recommended.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
+  other contexts.
 ```
 
 #### "hcaptcha" (Category)
@@ -1086,11 +1111,16 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
+│ interpret this response as indication that the request was successful.
+├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
+│ circumstances.
+├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+│ understood by any client, bot, browser, or otherwise. Provided for amusement
+│ and convenience, but not generally recommended.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
+  other contexts.
 ```
 
 #### "legal" (Category)
@@ -1134,7 +1164,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Access Denied!")
 └─…Other
 ```
 
@@ -1219,8 +1249,8 @@ Configuration for rate limiting (not recommended for general use).
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Whitelisted requests")
+└─Verified ("Verified search engine and social media requests")
 ```
 
 #### "supplementary_cache_options" (Category)
@@ -1258,6 +1288,8 @@ Supplementary cache options. Note: Changing these values may potentially log you
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN value. Default = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#HOW_TO_USE_PDO" hreflang="en-AU">What is a "PDO DSN"? How can I use PDO with CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO username.
@@ -2247,4 +2279,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 28 March 2022 (2022.03.28).
+Last Updated: 23 April 2022 (2022.04.23).

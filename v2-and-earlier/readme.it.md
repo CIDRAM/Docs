@@ -526,12 +526,12 @@ Valori attualmente supportati:
 
 Codice di stato | Messaggio di stato | Descrizione
 ---|---|---
-`200` | `200 OK` | Il valore predefinito. Meno robusto, ma più amichevole per gli utenti.
-`403` | `403 Forbidden` | Un po' più robusto, ma un po' meno amichevole per gli utenti.
-`410` | `410 Gone` | Potrebbe causare problemi quando si tenta di risolvere i falsi positivi, a causa di ciò alcuni browser memorizzeranno nella cache questo messaggio di stato e non invieranno richieste successive, anche dopo aver sbloccato gli utenti. Può essere più utile di altre opzioni per ridurre le richieste da determinati tipi di robot molto specifici.
-`418` | `418 I'm a teapot` | In realtà fa riferimento a uno scherzo di April Fools [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] ed è improbabile che venga compreso dal cliente. Fornito per divertimento e convenienza, ma generalmente non raccomandato.
-`451` | `Unavailable For Legal Reasons` | Appropriato per i contesti in cui le richieste vengono bloccate principalmente per motivi legali. Non raccomandato in altri contesti.
-`503` | `Service Unavailable` | Più robusto, ma meno amichevole per gli utenti.
+`200` | `200 OK` | Il valore predefinito. Meno robusto, ma più facile da usare. Molto probabilmente le richieste automatiche interpreteranno questa risposta come un'indicazione che la richiesta riuscito.
+`403` | `403 Forbidden` | Un po' più robusto, ma un po' meno facile da usare. Consigliato per la maggior parte delle circostanze generali.
+`410` | `410 Gone` | Potrebbe causare problemi durante la risoluzione dei falsi positivi, perché alcuni browser memorizzano nella cache questo messaggio di stato e non inviano richieste successive, anche dopo essere stati sbloccati. Può essere il più preferibile in alcuni contesti, per specifici tipi di traffico.
+`418` | `418 I'm a teapot` | Fa riferimento a uno scherzo di pesce d'aprile ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). È molto improbabile che venga compreso da qualsiasi client, bot, browser, o altro. Fornito per divertimento e comodità, ma generalmente non consigliato.
+`451` | `451 Unavailable For Legal Reasons` | Consigliato in caso di blocco principalmente per motivi legali. Non consigliato in altri contesti.
+`503` | `503 Service Unavailable` | Più robusto, ma meno facile da usare. Consigliato per quando si è sotto attacco, o quando si ha a che fare con traffico indesiderato estremamente persistente.
 
 ##### "silent_mode"
 - CIDRAM dovrebbe reindirizzare silenziosamente tutti i tentativi di accesso bloccati invece di visualizzare la pagina "Accesso Negato"? Se si, specificare la localizzazione di reindirizzare i tentativi di accesso bloccati. Se no, lasciare questo variabile vuoto.
@@ -824,11 +824,11 @@ Valori attualmente supportati:
 
 Codice di stato | Messaggio di stato
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Categoria)
 Configurazione relativa ai requisiti legali.
@@ -1980,4 +1980,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 20 Febbraio 2022 (2022.02.20).
+Ultimo Aggiornamento: 23 Aprile 2022 (2022.04.23).

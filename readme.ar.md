@@ -469,24 +469,24 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("تنفيذ اختبارات ملفات التوقيع")
+├─Modules ("تنفيذ الوحدات")
+├─SearchEngineVerification ("تنفيذ التحقق من محرك البحث")
+├─SocialMediaVerification ("تنفيذ التحقق من وسائل التواصل الاجتماعي")
+├─OtherVerification ("تنفيذ التحقق الآخر")
+├─Aux ("تنفيذ القواعد المساعدة")
+├─Reporting ("تنفيذ التقارير")
+├─Tracking ("تنفيذ تتبع IP")
+├─RL ("تنفيذ تحديد معدل")
+├─CAPTCHA ("انشر الكابتشا (الطلبات المحظورة)")
+├─Statistics ("تحديث الإحصائيات")
+├─Webhooks ("تنفيذ الخطافات على الويب")
+├─PrepareFields ("تحضير الحقول للإخراج والسجلات")
+├─Output ("توليد الإخراج (الطلبات المحظورة)")
+├─WriteLogs ("الكتابة إلى السجلات (الطلبات المحظورة)")
+├─Terminate ("قم بإنهاء الطلب (الطلبات المحظورة)")
+├─AuxRedirect ("إعادة التوجيه وفقًا للقواعد المساعدة")
+└─NonBlockedCAPTCHA ("انشر الكابتشا (الطلبات غير المحظورة)")
 ```
 
 ##### <div dir="rtl">"fields" <code dir="ltr">[string]</code><br /></div>
@@ -494,29 +494,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("الهوية الشخصية")
+├─ScriptIdent ("النسخة النصية")
+├─DateTime ("الوقت/التاريخ")
+├─IPAddr ("عنوان IP")
+├─IPAddrResolved ("عنوان IP (تم حلها)")
+├─Query ("إستعلام")
+├─Referrer ("المرجع")
+├─UA ("وكيل المستخدم")
+├─UALC ("وكيل المستخدم (أحرف صغيرة)")
+├─SignatureCount ("عدد التوقيعات")
+├─Signatures ("مرجع التوقيعات")
+├─WhyReason ("سبب الحظر")
+├─ReasonMessage ("سبب الحظر (مفصلة)")
+├─rURI ("أعيد بناؤها URI")
+├─Infractions ("مخالفات")
+├─ASNLookup ("بحث ASN")
+├─CCLookup ("بحث عن كود البلد")
+├─Verified ("التحقق من الهوية")
+├─Expired ("منتهية الصلاحية")
+├─Ignored ("تجاهل")
+├─Request_Method ("Request method")
+├─Hostname ("اسم المضيف")
+└─CAPTCHA ("الحالة CAPTCHA")
 ```
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
@@ -526,12 +526,12 @@ fields
 <div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الحد المرغوب هنا. ستعمل القيمة 0 على تعطيل تدوير السجل.</li></ul></div>
 
 ##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الإجراء المطلوب هنا. Delete = احذف أقدم السجلات، حتى لا يتم تجاوز الحد. Archive = أرشفة أولاً، ثم احذف أقدم السجلات، حتى لا يتم تجاوز الحد.</li></ul></div>
+<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الإجراء المطلوب هنا.</li></ul></div>
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
+└─Archive ("أرشفة أولاً، ثم احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
 ```
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
@@ -648,16 +648,31 @@ ipaddr
 </ul></div>
 
 ##### <div dir="rtl">"http_response_header_code" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>ما هي رسالة حالة HTTP التي يجب أن يرسلها CIDRAM عند حظر الطلبات؟ (الرجوع إلى الوثائق لمزيد من المعلومات).</li></ul></div>
+<div dir="rtl"><ul><li>ما هي رسالة حالة HTTP التي يجب أن يرسلها CIDRAM عند حظر الطلبات؟</li></ul></div>
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
+│ من المرجح أن تفسر الطلبات الآلية هذه
+│ الاستجابة على أنها إشارة إلى نجاح الطلب.
+├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
+│ موصى به لمعظم الظروف العامة.
+├─410 (410 Gone (ذهب)): يمكن أن يسبب مشاكل عند حل الإيجابيات
+│ الخاطئة، لأن بعض المتصفحات سوف تخزن رسالة
+│ الحالة هذه مؤقتًا ولا ترسل طلبات لاحقة،
+│ حتى بعد إلغاء الحظر. قد يكون الأكثر
+│ تفضيلاً في بعض السياقات، لأنواع معينة من
+│ حركة المرور.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
+│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
+│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
+│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
+│ المقام الأول. لا ينصح به في سياقات أخرى.
+└─503 (503 Service Unavailable (الخدمة غير متوفرة)): الأكثر قوة، ولكن الأقل سهولة في
+  الاستخدام. يوصى به عند التعرض للهجوم أو
+  عند التعامل مع حركة مرور غير مرغوب فيها
+  بشكل دائم للغاية.
 ```
 
 ##### <div dir="rtl">"silent_mode" <code dir="ltr">[string]</code><br /></div>
@@ -756,8 +771,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("رابط قابل للنقر")
+└─noclick ("نص غير قابل للنقر")
 ```
 
 ##### <div dir="rtl">"disable_frontend" <code dir="ltr">[bool]</code><br /></div>
@@ -777,12 +792,27 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
+│ من المرجح أن تفسر الطلبات الآلية هذه
+│ الاستجابة على أنها إشارة إلى نجاح الطلب.
+├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
+│ موصى به لمعظم الظروف العامة.
+├─410 (410 Gone (ذهب)): يمكن أن يسبب مشاكل عند حل الإيجابيات
+│ الخاطئة، لأن بعض المتصفحات سوف تخزن رسالة
+│ الحالة هذه مؤقتًا ولا ترسل طلبات لاحقة،
+│ حتى بعد إلغاء الحظر. قد يكون الأكثر
+│ تفضيلاً في بعض السياقات، لأنواع معينة من
+│ حركة المرور.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
+│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
+│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
+│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
+│ المقام الأول. لا ينصح به في سياقات أخرى.
+└─503 (503 Service Unavailable (الخدمة غير متوفرة)): الأكثر قوة، ولكن الأقل سهولة في
+  الاستخدام. يوصى به عند التعرض للهجوم أو
+  عند التعامل مع حركة مرور غير مرغوب فيها
+  بشكل دائم للغاية.
 ```
 
 ##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
@@ -790,6 +820,8 @@ ban_override
 
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة بفواصل من خوادم DNS لاستخدامها في عمليات البحث عن اسم المضيف. الافتراضي = "8.8.8.8,8.8.4.4" (Google DNS). تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ar">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></em>
 
 ##### <div dir="rtl">"search_engine_verification" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>آلية الرقابة للتحقق من الطلبات الواردة من محركات البحث.</li></ul></div>
@@ -873,8 +905,8 @@ statistics
 ├─Passed-IPv4 ("مرت الطلبات – IPv4")
 ├─Passed-IPv6 ("مرت الطلبات – IPv6")
 ├─Passed-Other ("مرت الطلبات – آخر")
-├─CAPTCHAs-Failed ("محاولات CAPTCHA – {state_failed}")
-└─CAPTCHAs-Passed ("محاولات CAPTCHA – {state_passed}")
+├─CAPTCHAs-Failed ("محاولات CAPTCHA – فشل!")
+└─CAPTCHAs-Passed ("محاولات CAPTCHA – نجحت!")
 ```
 
 ##### <div dir="rtl">"force_hostname_lookup" <code dir="ltr">[bool]</code><br /></div>
@@ -1021,11 +1053,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
+│ من المرجح أن تفسر الطلبات الآلية هذه
+│ الاستجابة على أنها إشارة إلى نجاح الطلب.
+├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
+│ موصى به لمعظم الظروف العامة.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
+│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
+│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
+│ والراحة، ولكن لا يوصى بها بشكل عام.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
+  المقام الأول. لا ينصح به في سياقات أخرى.
 ```
 
 #### <div dir="rtl">"hcaptcha" (التصنيف)<br /></div>
@@ -1093,11 +1132,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
+│ من المرجح أن تفسر الطلبات الآلية هذه
+│ الاستجابة على أنها إشارة إلى نجاح الطلب.
+├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
+│ موصى به لمعظم الظروف العامة.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
+│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
+│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
+│ والراحة، ولكن لا يوصى بها بشكل عام.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
+  المقام الأول. لا ينصح به في سياقات أخرى.
 ```
 
 #### <div dir="rtl">"legal" (التصنيف)<br /></div>
@@ -1141,7 +1187,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("تم رفض الوصول!")
 └─…آخر
 ```
 
@@ -1226,8 +1272,8 @@ smtp_secure
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("طلبات القائمة البيضاء")
+└─Verified ("الطلبات التي تم التحقق منها من محركات البحث ووسائل التواصل الاجتماعي")
 ```
 
 #### <div dir="rtl">"supplementary_cache_options" (التصنيف)<br /></div>
@@ -1265,6 +1311,8 @@ exceptions
 
 ##### <div dir="rtl">"pdo_dsn" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قيمة PDO DSN. افتراضي = "mysql:dbname=cidram;host=localhost;port=3306".</li></ul></div>
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#HOW_TO_USE_PDO" hreflang="ar">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></em>
 
 ##### <div dir="rtl">"pdo_username" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO اسم المستخدم.</li></ul></div>
@@ -2292,4 +2340,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٨ مارس ٢٠٢٢ (٢٠٢٢.٠٣.٢٨).</div>
+<div dir="rtl">آخر تحديث: ٢٣ أبريل ٢٠٢٢ (٢٠٢٢.٠٤.٢٣).</div>

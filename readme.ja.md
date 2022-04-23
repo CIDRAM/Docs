@@ -467,24 +467,24 @@ https://github.com/CIDRAM/CIDRAM>v2
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("シグネチャ・ファイル・テストを実行する")
+├─Modules ("モジュールを実行する")
+├─SearchEngineVerification ("検索エンジンの検証を実行する")
+├─SocialMediaVerification ("ソーシャル・メディア検証を実行する")
+├─OtherVerification ("その他の検証を実行する")
+├─Aux ("補助ルールを実行する")
+├─Reporting ("レポートを実行する")
+├─Tracking ("ＩＰトラッキングを実行する")
+├─RL ("レート制限を実行する")
+├─CAPTCHA ("キャプチャを展開する（ブロックされたリクエスト）")
+├─Statistics ("統計をアップデートする")
+├─Webhooks ("Webhookを実行する")
+├─PrepareFields ("出力とログ用のフィールドを準備する")
+├─Output ("出力を生成する（ブロックされたリクエスト）")
+├─WriteLogs ("ログへの書き込み（ブロックされたリクエスト）")
+├─Terminate ("リクエストを終了する（ブロックされたリクエスト）")
+├─AuxRedirect ("補助ルールに従ってリダイレクトする")
+└─NonBlockedCAPTCHA ("キャプチャを展開する（ブロックされていないリクエスト）")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ＩＤ")
+├─ScriptIdent ("スクリプトのバージョン")
+├─DateTime ("日/月/年/時刻")
+├─IPAddr ("ＩＰアドレス")
+├─IPAddrResolved ("ＩＰアドレス（解決済み）")
+├─Query ("クエリー")
+├─Referrer ("リファラー")
+├─UA ("ユーザーエージェント")
+├─UALC ("ユーザーエージェント（小文字）")
+├─SignatureCount ("シグネチャの数")
+├─Signatures ("シグネチャリファレンス")
+├─WhyReason ("なぜブロックされましたか")
+├─ReasonMessage ("なぜブロックされましたか（詳細な）")
+├─rURI ("ＵＲＩ再構築された")
+├─Infractions ("違反")
+├─ASNLookup ("ＡＳＮルックアップ")
+├─CCLookup ("国コード・ルックアップ")
+├─Verified ("確認済みの身元")
+├─Expired ("期限切れ")
+├─Ignored ("無視された")
+├─Request_Method ("リクエスト・メソッド")
+├─Hostname ("ホスト名")
+└─CAPTCHA ("キャプチャ・ステータス")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - ログ・ローテーションは、一度に存在する必要があるログ・ファイルの数を制限します。​新しいログ・ファイルが作成されると、ログ・ファイルの総数が指定された制限を超えると、指定されたアクションが実行されます。​ここで希望の制限を指定することができます。​値「0」は、ログ・ローテーションを無効にします。
 
 ##### "log_rotation_action" `[string]`
-- ログ・ローテーションは、一度に存在する必要があるログ・ファイルの数を制限します。​新しいログ・ファイルが作成されると、ログ・ファイルの総数が指定された制限を超えると、指定されたアクションが実行されます。​ここで希望のアクションを指定できます。 「Delete」 = 最も古いログ・ファイルを削除して、制限を超過しないようにします。 「Archive」 = 最初にアーカイブしてから、最も古いログ・ファイルを削除して、制限を超過しないようにします。
+- ログ・ローテーションは、一度に存在する必要があるログ・ファイルの数を制限します。​新しいログ・ファイルが作成されると、ログ・ファイルの総数が指定された制限を超えると、指定されたアクションが実行されます。​ここで希望のアクションを指定できます。
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("最も古いログ・ファイルを削除して、制限を超過しないようにします。")
+└─Archive ("最初にアーカイブしてから、最も古いログ・ファイルを削除して、制限を超過しないようにします。")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,23 @@ ipaddr
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- リクエストをブロックするときに、CIDRAMが送信するＨＴＴＰステータス・メッセージはどれですか？​（詳細については、ドキュメントを参照してください）。
+- リクエストをブロックするときに、CIDRAMが送信するＨＴＴＰステータス・メッセージはどれですか？
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
+│ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
+│ ほとんどの場合に推奨されます。
+├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
+│ 特定の種類のトラフィックでは、状況によっては最も望ましい場合があります。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+│ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
+│ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
+├─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
+│ 他のコンテキストでは推奨されません。
+└─503 (503 Service Unavailable （サービスは利用できません）): それは最も堅牢が、最小のユーザー・フレンドリーです。
+  攻撃を受けている場合、または非常に永続的な不要なトラフィックを処理する場合に推奨されます。
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +760,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("クリック可能なリンク")
+└─noclick ("クリックできないテキスト")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +781,19 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
+│ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
+│ ほとんどの場合に推奨されます。
+├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
+│ 特定の種類のトラフィックでは、状況によっては最も望ましい場合があります。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+│ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
+│ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
+├─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
+│ 他のコンテキストでは推奨されません。
+└─503 (503 Service Unavailable （サービスは利用できません）): それは最も堅牢が、最小のユーザー・フレンドリーです。
+  攻撃を受けている場合、または非常に永続的な不要なトラフィックを処理する場合に推奨されます。
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +801,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - ホスト名検索に使用する、​ＤＮＳ（ドメイン・ネーム・システム）サーバーのカンマ区切りリスト。​Default（デフォルルト） = "8.8.8.8,8.8.4.4" （Google DNS）。​注意：あなたが何をしているのか、​分からない限り、​これを変更しないでください。
+
+__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ja">「default_dns」には何が使えますか？</a></em>
 
 ##### "search_engine_verification" `[string]`
 - 検索エンジンからのリクエストを検証するためのコントロール。
@@ -870,8 +886,8 @@ statistics
 ├─Passed-IPv4 ("許可されたリクエスト – IPv4")
 ├─Passed-IPv6 ("許可されたリクエスト – IPv6")
 ├─Passed-Other ("許可されたリクエスト – その他")
-├─CAPTCHAs-Failed ("キャプチャの試み – {state_failed}")
-└─CAPTCHAs-Passed ("キャプチャの試み – {state_passed}")
+├─CAPTCHAs-Failed ("キャプチャの試み – 失敗！")
+└─CAPTCHAs-Passed ("キャプチャの試み – 合格！")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1032,16 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
+│ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
+│ ほとんどの場合に推奨されます。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+│ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
+│ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
+  他のコンテキストでは推奨されません。
 ```
 
 #### "hcaptcha" （カテゴリ）
@@ -1086,11 +1107,16 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
+│ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
+│ ほとんどの場合に推奨されます。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+│ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
+│ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
+  他のコンテキストでは推奨されません。
 ```
 
 #### "legal" （カテゴリ）
@@ -1134,7 +1160,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("アクセス拒否！")
 └─…その他
 ```
 
@@ -1219,8 +1245,8 @@ smtp_secure
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("ホワイトリストに登録されたリクエスト")
+└─Verified ("検証済みの検索エンジンとソーシャル・メディアのリクエスト")
 ```
 
 #### "supplementary_cache_options" （カテゴリ）
@@ -1258,6 +1284,8 @@ exceptions
 
 ##### "pdo_dsn" `[string]`
 - PDOのDSN値。 Default/デフォルルト = 「mysql:dbname=cidram;host=localhost;port=3306」。
+
+__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#HOW_TO_USE_PDO" hreflang="ja">「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？</a></em>
 
 ##### "pdo_username" `[string]`
 - PDOのユーザー名。
@@ -2237,4 +2265,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２２年３月２８日。
+最終アップデート：２０２２年４月２３日。

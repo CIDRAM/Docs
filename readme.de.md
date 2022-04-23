@@ -467,24 +467,24 @@ Allgemeine Konfiguration (jede Kernkonfiguration, die nicht zu anderen Kategorie
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Signaturdatei-Tests ausführen")
+├─Modules ("Module ausführen")
+├─SearchEngineVerification ("Suchmaschinenverifizierung ausführen")
+├─SocialMediaVerification ("Social-Media-Verifizierung ausführen")
+├─OtherVerification ("Andere Verifizierung ausführen")
+├─Aux ("Hilfsregeln ausführen")
+├─Reporting ("Berichterstattung ausführen")
+├─Tracking ("IP-Tracking ausführen")
+├─RL ("Ratenbegrenzung ausführen")
+├─CAPTCHA ("Richten die CAPTCHAs ein (blockierte Anfragen)")
+├─Statistics ("Statistiken aktualisieren")
+├─Webhooks ("Webhooks ausführen")
+├─PrepareFields ("Bereiten Felder für Ausgabe und Protokolle")
+├─Output ("Ausgabe generieren (blockierte Anfragen)")
+├─WriteLogs ("In Protokolle schreiben (blockierte Anfragen)")
+├─Terminate ("Die Anfrage beenden (blockierte Anfragen)")
+├─AuxRedirect ("Umleitung nach Hilfsregeln")
+└─NonBlockedCAPTCHA ("Richten die CAPTCHAs ein (non-blockierte Anfragen)")
 ```
 
 ##### "fields" `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("Script-Version")
+├─DateTime ("Datum/Uhrzeit")
+├─IPAddr ("IP-Adresse")
+├─IPAddrResolved ("IP-Adresse (Aufgelöst)")
+├─Query ("Abfrage/Query")
+├─Referrer ("Referrer")
+├─UA ("Benutzeragent")
+├─UALC ("Benutzeragent (kleingeschrieben)")
+├─SignatureCount ("Zählung den Signaturen")
+├─Signatures ("Referenz für den Signaturen")
+├─WhyReason ("Warum blockierte")
+├─ReasonMessage ("Warum blockierte (detailliert)")
+├─rURI ("Rekonstruierte URI")
+├─Infractions ("Verstöße")
+├─ASNLookup ("ASN-Suche")
+├─CCLookup ("Ländercode-Suche")
+├─Verified ("Verifizierte Identität")
+├─Expired ("Abgelaufen")
+├─Ignored ("Ignoriert")
+├─Request_Method ("Methode anfordern")
+├─Hostname ("Hostname")
+└─CAPTCHA ("Status der CAPTCHA")
 ```
 
 ##### "truncate" `[string]`
@@ -524,12 +524,12 @@ fields
 - Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein dürfen. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier das gewünschte Limit angeben. Ein Wert von 0 deaktiviert die Protokollrotation.
 
 ##### "log_rotation_action" `[string]`
-- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben. Delete = Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird. Archive = Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.
+- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
+└─Archive ("Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
 ```
 
 ##### "timezone" `[string]`
@@ -645,16 +645,27 @@ Siehe auch:
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### "http_response_header_code" `[int]`
-- Welche HTTP-Status-Message sollte CIDRAM senden, wenn Anfragen blockiert werden? (Bitte beachten Sie die Dokumentation).
+- Welche HTTP-Status-Message sollte CIDRAM senden, wenn Anfragen blockiert werden?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Wenigsten robust, aber benutzerfreundlichsten. Automatisierte Anfragen
+│ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
+├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
+│ allgemeinen Umstände.
+├─410 (410 Gone (Gegangen)): Beim Auflösen von Falsch-Positive können Probleme auftreten, aufgrund
+│ einiger Browser diese Statusmeldung zwischenspeichern und keine
+│ nachfolgenden Anfragen senden, selbst nachdem sie entsperrt wurden. Kann in
+│ einigen Kontexten für bestimmte Arten von Datenverkehr am besten sein.
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+│ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
+│ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
+│ nicht allgemein empfohlen.
+├─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
+│ anderen Kontexten empfohlen.
+└─503 (503 Service Unavailable (Dienst nicht verfügbar)): Robustesten, aber wenigsten benutzerfreundlich. Empfohlen wenn Sie
+  angegriffen werden, oder wenn Sie mit extrem hartnäckigem unerwünschtem
+  Datenverkehr umgehen.
 ```
 
 ##### "silent_mode" `[string]`
@@ -753,8 +764,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Klickbarer Link")
+└─noclick ("Nicht klickbarer Text")
 ```
 
 ##### "disable_frontend" `[bool]`
@@ -774,12 +785,23 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Wenigsten robust, aber benutzerfreundlichsten. Automatisierte Anfragen
+│ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
+├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
+│ allgemeinen Umstände.
+├─410 (410 Gone (Gegangen)): Beim Auflösen von Falsch-Positive können Probleme auftreten, aufgrund
+│ einiger Browser diese Statusmeldung zwischenspeichern und keine
+│ nachfolgenden Anfragen senden, selbst nachdem sie entsperrt wurden. Kann in
+│ einigen Kontexten für bestimmte Arten von Datenverkehr am besten sein.
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+│ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
+│ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
+│ nicht allgemein empfohlen.
+├─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
+│ anderen Kontexten empfohlen.
+└─503 (503 Service Unavailable (Dienst nicht verfügbar)): Robustesten, aber wenigsten benutzerfreundlich. Empfohlen wenn Sie
+  angegriffen werden, oder wenn Sie mit extrem hartnäckigem unerwünschtem
+  Datenverkehr umgehen.
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -787,6 +809,8 @@ ban_override
 
 ##### "default_dns" `[string]`
 - Eine durch Kommata getrennte Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. Standardeinstellung = "8.8.8.8,8.8.4.4" (Google DNS). ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="de">Was kann ich für „default_dns“ verwenden?</a></em>
 
 ##### "search_engine_verification" `[string]`
 - Kontrollen für die Verifizierung von Anfragen von Suchmaschinen.
@@ -870,8 +894,8 @@ statistics
 ├─Passed-IPv4 ("Anfragen erlaubt – IPv4")
 ├─Passed-IPv6 ("Anfragen erlaubt – IPv6")
 ├─Passed-Other ("Anfragen erlaubt – Andere")
-├─CAPTCHAs-Failed ("CAPTCHA versucht – {state_failed}")
-└─CAPTCHAs-Passed ("CAPTCHA versucht – {state_passed}")
+├─CAPTCHAs-Failed ("CAPTCHA versucht – Gescheitert!")
+└─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -1016,11 +1040,17 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Wenigsten robust, aber benutzerfreundlichsten. Automatisierte Anfragen
+│ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
+├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
+│ allgemeinen Umstände.
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+│ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
+│ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
+│ nicht allgemein empfohlen.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
+  anderen Kontexten empfohlen.
 ```
 
 #### "hcaptcha" (Kategorie)
@@ -1086,11 +1116,17 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Wenigsten robust, aber benutzerfreundlichsten. Automatisierte Anfragen
+│ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
+├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
+│ allgemeinen Umstände.
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+│ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
+│ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
+│ nicht allgemein empfohlen.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
+  anderen Kontexten empfohlen.
 ```
 
 #### "legal" (Kategorie)
@@ -1134,7 +1170,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Zugriff verweigert!")
 └─…Andere
 ```
 
@@ -1219,8 +1255,8 @@ Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohle
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Anfragen die als auf der Whitelist markiert sind")
+└─Verified ("Verifizierte Suchmaschinen und Social Media Anfragen")
 ```
 
 #### "supplementary_cache_options" (Kategorie)
@@ -1258,6 +1294,8 @@ Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglich
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN-Wert. Standardeinstellung = "mysql:dbname=cidram;host=localhost;port=3306".
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#HOW_TO_USE_PDO" hreflang="de">Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO Nutzername.
@@ -1664,12 +1702,12 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Kann ich cron verwenden, um automatisch zu aktualisieren?](#CRON_TO_UPDATE_AUTOMATICALLY)
 - [Was sind "Verstöße"?](#WHAT_ARE_INFRACTIONS)
 - [Kann CIDRAM Hostnamen blockieren?](#BLOCK_HOSTNAMES)
-- [Was kann ich für "default_dns" verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
+- [Was kann ich für „default_dns“ verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
 - [Kann ich CIDRAM verwenden, um andere Dinge als Websites zu schützen (z.B. E-Mail-Server, FTP, SSH, IRC u.s.w.)?](#PROTECT_OTHER_THINGS)
 - [Werden Probleme auftreten, wenn ich CIDRAM gleichzeitig mit CDNs oder Caching-Diensten verwende?](#CDN_CACHING_PROBLEMS)
 - [Wird CIDRAM meine Website vor DDoS-Angriffen schützen?](#DDOS_ATTACKS)
 - [Wenn ich Module oder Signaturdateien über die Aktualisierungsseite aktiviere oder deaktiviere, sortiert sich diese alphanumerisch in der Konfiguration. Kann ich die Art der Sortierung ändern?](#CHANGE_COMPONENT_SORT_ORDER)
-- [Was ist ein "PDO DSN"? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)
+- [Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)
 - [CIDRAM blockiert Cronjobs; Wie kann das behoben werden?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>Was ist eine "Signatur"?
@@ -1780,7 +1818,7 @@ Dies bietet einer Mechanismus um sicherzustellen dass Anforderungen von potenzie
 
 Ja. Dazu müssen Sie eine benutzerdefinierte Moduldatei erstellen. *Siehe: [GRUNDLAGEN (FÜR MODULE)](#MODULE_BASICS)*.
 
-#### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Was kann ich für "default_dns" verwenden?
+#### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Was kann ich für „default_dns“ verwenden?
 
 Die IP eines jeden zuverlässigen DNS-Servers sollte in der Regel ausreichen. Wenn Sie nach Vorschlägen suchen, bieten [public-dns.info](https://public-dns.info/) und [OpenNIC](https://servers.opennic.org/) umfangreiche Listen bekannter öffentlicher DNS-Server. Alternativ, sehen Sie die folgende Tabelle:
 
@@ -1841,7 +1879,7 @@ Wenn dann eine neue Datei `file6.php` aktiviert wird, wenn die Aktualisierungsse
 
 Gleiche Situation, wenn eine Datei deaktiviert ist. Umgekehrt, wenn Sie möchten, dass die Datei zuletzt ausgeführt wird, Sie könnten etwas wie `zzz:` vor dem Namen der Datei hinzufügen. In jedem Fall müssen Sie die betreffende Datei nicht umbenennen.
 
-#### <a name="HOW_TO_USE_PDO"></a>Was ist ein "PDO DSN"? Wie kann ich PDO mit CIDRAM verwenden?
+#### <a name="HOW_TO_USE_PDO"></a>Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?
 
 "PDO" ist eine Akronym für "[PHP Data Objects](https://www.php.net/manual/de/intro.pdo.php)". Es bietet eine Schnittstelle zum Verbinden von PHP mit einigen Datenbanksystemen die häufig von verschiedenen PHP-Anwendungen verwendet werden.
 
@@ -2256,4 +2294,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 28. März 2022 (2022.03.28).
+Zuletzt aktualisiert: 23. April 2022 (2022.04.23).

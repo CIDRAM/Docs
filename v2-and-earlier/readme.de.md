@@ -526,12 +526,12 @@ Derzeit unterstützte Werte:
 
 Status-Code | Status-Message | Beschreibung
 ---|---|---
-`200` | `200 OK` | Standardwert. Am wenigsten robust, aber am benutzerfreundlichsten.
-`403` | `403 Forbidden` | Robuster, aber weniger benutzerfreundlich.
-`410` | `410 Gone` | Bei dem Versuch, falsch positive Ergebnisse zu beheben, können Probleme auftreten, weil einige Browser diese Status-Message zwischenspeichern und keine nachfolgenden Anfragen senden, selbst nachdem die Benutzer unblockiert wurden. Kann jedoch nützlicher sein als andere Optionen, um Anfragen von bestimmten, sehr spezifischen Arten von Bots zu reduzieren.
-`418` | `418 I'm a teapot` | Bezieht sich eigentlich auf einen Aprilscherz [[RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)] und wird vom Client wahrscheinlich nicht verstanden. Zur Unterhaltung und Bequemlichkeit zur Verfügung gestellt, aber nicht allgemein empfohlen.
-`451` | `Unavailable For Legal Reasons` | Geeignet für Kontexte, in denen Anfragen hauptsächlich aus rechtlichen Gründen blockiert werden. Nicht in anderen Kontexten empfohlen.
-`503` | `Service Unavailable` | Am robustesten, aber am wenigsten benutzerfreundlich.
+`200` | `200 OK` | Standardwert. Wenigsten robust, aber benutzerfreundlichsten. Automatisierte Anfragen werden dies höchstwahrscheinlich als erfolgreich interpretieren.
+`403` | `403 Forbidden` | Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten allgemeinen Umstände.
+`410` | `410 Gone` | Beim Auflösen von Falsch-Positive können Probleme auftreten, aufgrund einiger Browser diese Statusmeldung zwischenspeichern und keine nachfolgenden Anfragen senden, selbst nachdem sie entsperrt wurden. Kann in einigen Kontexten für bestimmte Arten von Datenverkehr am besten sein.
+`418` | `418 I'm a teapot` | Bezieht sich auf einen Aprilscherz ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Es ist sehr unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber nicht allgemein empfohlen.
+`451` | `451 Unavailable For Legal Reasons` | Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in anderen Kontexten empfohlen.
+`503` | `503 Service Unavailable` | Robustesten, aber wenigsten benutzerfreundlich. Empfohlen wenn Sie angegriffen werden, oder wenn Sie mit extrem hartnäckigem unerwünschtem Datenverkehr umgehen.
 
 ##### "silent_mode"
 - Anstatt die "Zugriff verweigert" Meldung auszugeben, sollte CIDRAM leise die Zugriffe umleiten? Wenn ja, geben Sie den Speicherort an auf welchen die Zugriffe umgeleitet werden sollen. Wenn nein, diese Variable leer lassen.
@@ -608,7 +608,7 @@ Wert | Produziert | Beschreibung
 ##### "default_dns"
 - Eine durch Kommata getrennte Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. Standardeinstellung = "8.8.8.8,8.8.4.4" (Google DNS). ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
-*Siehe auch: [Was kann ich für "default_dns" verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+*Siehe auch: [Was kann ich für „default_dns“ verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
 
 ##### "search_engine_verification"
 - Versuchen Sie, Anfragen von Suchmaschinen zu überprüfen? Die Überprüfung von Suchmaschinen stellt sicher, dass sie nicht aufgrund der Überschreitung der Verletzungsgrenze verbannt werden (das Verbann von Suchmaschinen von Ihrer Website hat in der Regel negative Auswirkungen auf Ihr Suchmaschinen-Ranking, SEO, etc. Wenn verifiziert, können Suchmaschinen wie gewohnt blockiert werden, aber nicht verbannt werden. Wenn nicht verifiziert, ist es möglich, dass sie aufgrund der Überschreitung der Verletzungsgrenze verbannt werden. Darüber hinaus bietet die Suchmaschinenverifizierung Schutz vor gefälschten Suchmaschinenanfragen und vor potenziell bösartigen Entitäten, die sich als Suchmaschinen ausgeben (solche Anfragen werden bei aktivierter Suchmaschinenverifizierung blockiert). True = Suchmaschinenverifizierung aktivieren [Standard]; False = Suchmaschinenverifizierung deaktivieren.
@@ -824,11 +824,11 @@ Derzeit unterstützte Werte:
 
 Status-Code | Status-Message
 ---|---
-`200` | `200 OK`
-`403` | `403 Forbidden`
-`418` | `418 I'm a teapot`
+`200` | `200 OK`
+`403` | `403 Forbidden`
+`418` | `418 I'm a teapot`
 `429` | `429 Too Many Requests`
-`451` | `Unavailable For Legal Reasons`
+`451` | `451 Unavailable For Legal Reasons`
 
 #### "legal" (Kategorie)
 Konfiguration für gesetzliche Anforderungen.
@@ -989,7 +989,7 @@ Zusätzliche Cache-Optionen.
 ##### "pdo_dsn"
 - PDO DSN-Wert. Standardeinstellung = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
-*Siehe auch: [Was ist ein "PDO DSN"? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)*
+*Siehe auch: [Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)*
 
 ##### "pdo_username"
 - PDO Nutzername.
@@ -1396,12 +1396,12 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Kann ich cron verwenden, um automatisch zu aktualisieren?](#CRON_TO_UPDATE_AUTOMATICALLY)
 - [Was sind "Verstöße"?](#WHAT_ARE_INFRACTIONS)
 - [Kann CIDRAM Hostnamen blockieren?](#BLOCK_HOSTNAMES)
-- [Was kann ich für "default_dns" verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
+- [Was kann ich für „default_dns“ verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
 - [Kann ich CIDRAM verwenden, um andere Dinge als Websites zu schützen (z.B. E-Mail-Server, FTP, SSH, IRC u.s.w.)?](#PROTECT_OTHER_THINGS)
 - [Werden Probleme auftreten, wenn ich CIDRAM gleichzeitig mit CDNs oder Caching-Diensten verwende?](#CDN_CACHING_PROBLEMS)
 - [Wird CIDRAM meine Website vor DDoS-Angriffen schützen?](#DDOS_ATTACKS)
 - [Wenn ich Module oder Signaturdateien über die Aktualisierungsseite aktiviere oder deaktiviere, sortiert sich diese alphanumerisch in der Konfiguration. Kann ich die Art der Sortierung ändern?](#CHANGE_COMPONENT_SORT_ORDER)
-- [Was ist ein "PDO DSN"? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)
+- [Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)
 - [CIDRAM blockiert Cronjobs; Wie kann das behoben werden?](#BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>Was ist eine "Signatur"?
@@ -1510,7 +1510,7 @@ Ja. Eine API ist in das Frontend integriert, um über externe Skripte mit der Ak
 
 Ja. Dazu müssen Sie eine benutzerdefinierte Moduldatei erstellen. *Siehe: [GRUNDLAGEN (FÜR MODULE)](#MODULE_BASICS)*.
 
-#### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Was kann ich für "default_dns" verwenden?
+#### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Was kann ich für „default_dns“ verwenden?
 
 Die IP eines jeden zuverlässigen DNS-Servers sollte in der Regel ausreichen. Wenn Sie nach Vorschlägen suchen, bieten [public-dns.info](https://public-dns.info/) und [OpenNIC](https://servers.opennic.org/) umfangreiche Listen bekannter öffentlicher DNS-Server. Alternativ, sehen Sie die folgende Tabelle:
 
@@ -1571,7 +1571,7 @@ Wenn dann eine neue Datei `file6.php` aktiviert wird, wenn die Aktualisierungsse
 
 Gleiche Situation, wenn eine Datei deaktiviert ist. Umgekehrt, wenn Sie möchten, dass die Datei zuletzt ausgeführt wird, Sie könnten etwas wie `zzz:` vor dem Namen der Datei hinzufügen. In jedem Fall müssen Sie die betreffende Datei nicht umbenennen.
 
-#### <a name="HOW_TO_USE_PDO"></a>Was ist ein "PDO DSN"? Wie kann ich PDO mit CIDRAM verwenden?
+#### <a name="HOW_TO_USE_PDO"></a>Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?
 
 "PDO" ist eine Akronym für "[PHP Data Objects](https://www.php.net/manual/de/intro.pdo.php)". Es bietet eine Schnittstelle zum Verbinden von PHP mit einigen Datenbanksystemen die häufig von verschiedenen PHP-Anwendungen verwendet werden.
 
@@ -1994,4 +1994,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 20. Februar 2022 (2022.02.20).
+Zuletzt aktualisiert: 23. April 2022 (2022.04.23).

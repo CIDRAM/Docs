@@ -467,24 +467,24 @@ Configuration générale (toute configuration de base n'appartenant pas à d'aut
 
 ```
 stages
-├─Tests ("stage_tests")
-├─Modules ("stage_modules")
-├─SearchEngineVerification ("stage_sev")
-├─SocialMediaVerification ("stage_smv")
-├─OtherVerification ("stage_ov")
-├─Aux ("stage_aux")
-├─Reporting ("stage_reporting")
-├─Tracking ("stage_tracking")
-├─RL ("stage_rl")
-├─CAPTCHA ("stage_captcha")
-├─Statistics ("stage_statistics")
-├─Webhooks ("stage_webhooks")
-├─PrepareFields ("stage_preparefields")
-├─Output ("stage_output")
-├─WriteLogs ("stage_writelogs")
-├─Terminate ("stage_terminate")
-├─AuxRedirect ("stage_auxredirect")
-└─NonBlockedCAPTCHA ("stage_nonblockedcaptcha")
+├─Tests ("Exécuter les tests des fichiers de signature")
+├─Modules ("Exécuter les modules")
+├─SearchEngineVerification ("Exécuter la vérification des moteurs de recherche")
+├─SocialMediaVerification ("Exécuter la vérification des médias sociaux")
+├─OtherVerification ("Exécuter une autre vérification")
+├─Aux ("Exécuter les règles auxiliaires")
+├─Reporting ("Traiter les rapports")
+├─Tracking ("Exécuter le surveillance d'IP")
+├─RL ("Exécuter la limitation de débit")
+├─CAPTCHA ("Déployer les CAPTCHAs (requêtes bloquées)")
+├─Statistics ("Mettre à jour les statistiques")
+├─Webhooks ("Exécuter des webhooks")
+├─PrepareFields ("Préparer les champs pour la sortie et les journaux")
+├─Output ("Générer une sortie (requêtes bloquées)")
+├─WriteLogs ("Enregistrer dans les journaux (requêtes bloquées)")
+├─Terminate ("Terminer la requête (requêtes bloquées)")
+├─AuxRedirect ("Rediriger selon les règles auxiliaires")
+└─NonBlockedCAPTCHA ("Déployer les CAPTCHAs (requêtes non bloquées)")
 ```
 
 ##### « fields » `[string]`
@@ -492,29 +492,29 @@ stages
 
 ```
 fields
-├─ID ("field_id")
-├─ScriptIdent ("field_scriptversion")
-├─DateTime ("field_datetime")
-├─IPAddr ("field_ipaddr")
-├─IPAddrResolved ("field_ipaddr_resolved")
-├─Query ("field_query")
-├─Referrer ("field_referrer")
-├─UA ("field_ua")
-├─UALC ("field_ualc")
-├─SignatureCount ("field_sigcount")
-├─Signatures ("field_sigref")
-├─WhyReason ("field_whyreason")
-├─ReasonMessage ("field_reasonmessage")
-├─rURI ("field_rURI")
-├─Infractions ("field_infractions")
-├─ASNLookup ("field_asnlookup")
-├─CCLookup ("field_cclookup")
-├─Verified ("field_verified")
-├─Expired ("state_expired")
-├─Ignored ("state_ignored")
-├─Request_Method ("field_request_method")
-├─Hostname ("field_hostname")
-└─CAPTCHA ("field_captcha")
+├─ID ("ID")
+├─ScriptIdent ("La version du script")
+├─DateTime ("Date/Heure")
+├─IPAddr ("IP Adresse")
+├─IPAddrResolved ("IP Adresse (Résolu)")
+├─Query ("Query")
+├─Referrer ("Referrer")
+├─UA ("Agent Utilisateur")
+├─UALC ("Agent Utilisateur (minuscule)")
+├─SignatureCount ("Compte des signatures")
+├─Signatures ("Signatures Référence")
+├─WhyReason ("Raison bloquée")
+├─ReasonMessage ("Raison bloquée (détaillée)")
+├─rURI ("Reconstruite URI")
+├─Infractions ("Infractions")
+├─ASNLookup ("Recherche d'ASN")
+├─CCLookup ("Recherche de code de pays")
+├─Verified ("Identité vérifiée")
+├─Expired ("Expiré")
+├─Ignored ("Ignoré")
+├─Request_Method ("Méthode de requête")
+├─Hostname ("Nom d'hôte")
+└─CAPTCHA ("État CAPTCHA")
 ```
 
 ##### « truncate » `[string]`
@@ -524,12 +524,12 @@ fields
 - La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier la limite souhaitée ici. Une valeur de 0 désactivera la rotation du journal.
 
 ##### « log_rotation_action » `[string]`
-- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier l'action souhaitée ici. Delete = Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée. Archive = Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.
+- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier l'action souhaitée ici.
 
 ```
 log_rotation_action
-├─Delete ("Delete")
-└─Archive ("Archive")
+├─Delete ("Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
+└─Archive ("Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
 ```
 
 ##### « timezone » `[string]`
@@ -645,16 +645,27 @@ Voir également :
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
 ##### « http_response_header_code » `[int]`
-- Quel message d'état HTTP devrait être envoyé par CIDRAM lors du blocage des requêtes ? (Référez-vous à la documentation pour plus d'informations).
+- Quel message d'état HTTP devrait être envoyé par CIDRAM lors du blocage des requêtes ?
 
 ```
 http_response_header_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
+│ probablement interpréteront cette réponse comme une indication que la
+│ requête a réussi.
+├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
+│ circonstances générales.
+├─410 (410 Gone (Parti)): Peut causer des problèmes lors de la résolution des faux positifs, car
+│ certains navigateurs mettront en cache ce message d'état et n'enverront pas
+│ de requêtes ultérieures, même après avoir été débloqués. Peut être
+│ le plus préférable dans certains contextes, pour certains types de trafic.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
+│ est très peu probable qu'il soit compris par un client, un bot, un
+│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
+│ généralement pas recommandé.
+├─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
+│ recommandé dans d'autres contextes.
+└─503 (503 Service Unavailable (Service indisponible)): Le plus robuste, mais le moins convivial. Recommandé en cas d'attaque, ou
+  en cas de trafic indésirable extrêmement persistant.
 ```
 
 ##### « silent_mode » `[string]`
@@ -753,8 +764,8 @@ numbers
 
 ```
 emailaddr_display_style
-├─default ("field_clickable_link")
-└─noclick ("field_nonclickable_text")
+├─default ("Lien cliquable")
+└─noclick ("Texte non-cliquable")
 ```
 
 ##### « disable_frontend » `[bool]`
@@ -774,12 +785,23 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─410 (410 Gone)
-├─418 (418 I'm a teapot)
-├─451 (451 Unavailable For Legal Reasons)
-└─503 (503 Service Unavailable)
+├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
+│ probablement interpréteront cette réponse comme une indication que la
+│ requête a réussi.
+├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
+│ circonstances générales.
+├─410 (410 Gone (Parti)): Peut causer des problèmes lors de la résolution des faux positifs, car
+│ certains navigateurs mettront en cache ce message d'état et n'enverront pas
+│ de requêtes ultérieures, même après avoir été débloqués. Peut être
+│ le plus préférable dans certains contextes, pour certains types de trafic.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
+│ est très peu probable qu'il soit compris par un client, un bot, un
+│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
+│ généralement pas recommandé.
+├─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
+│ recommandé dans d'autres contextes.
+└─503 (503 Service Unavailable (Service indisponible)): Le plus robuste, mais le moins convivial. Recommandé en cas d'attaque, ou
+  en cas de trafic indésirable extrêmement persistant.
 ```
 
 ##### « log_banned_ips » `[bool]`
@@ -787,6 +809,8 @@ ban_override
 
 ##### « default_dns » `[string]`
 - Une liste délimitée par des virgules de serveurs DNS à utiliser pour les recherches de noms d'hôtes. Par Défaut = « 8.8.8.8,8.8.4.4 » (Google DNS). AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="fr">Que puis-je utiliser pour « default_dns » ?</a></em>
 
 ##### « search_engine_verification » `[string]`
 - Contrôles pour vérifier les requêtes des moteurs de recherche.
@@ -870,8 +894,8 @@ statistics
 ├─Passed-IPv4 ("Requêtes passées – IPv4")
 ├─Passed-IPv6 ("Requêtes passées – IPv6")
 ├─Passed-Other ("Requêtes passées – Autres")
-├─CAPTCHAs-Failed ("Tentatives de CAPTCHA – {state_failed}")
-└─CAPTCHAs-Passed ("Tentatives de CAPTCHA – {state_passed}")
+├─CAPTCHAs-Failed ("Tentatives de CAPTCHA – Échoué !")
+└─CAPTCHAs-Passed ("Tentatives de CAPTCHA – Passé !")
 ```
 
 ##### « force_hostname_lookup » `[bool]`
@@ -926,7 +950,7 @@ Configuration pour les signatures, fichiers de signatures, modules, etc.
 - Bloquer les CIDRs recommandé en généralement pour les listes noires ? Cela couvre toutes les signatures qui ne sont pas marqué comme étant partie de l'autre plus spécifique catégories de signatures.
 
 ##### « block_legal » `[bool]`
-- Bloquer les CIDRs en réponse à des obligations légales ? Cette directive ne devrait normalement pas avoir d'effet, car CIDRAM n'associe aucun CIDR avec des « obligations légales » par défaut, mais il existe néanmoins comme une mesure de contrôle supplémentaire au profit de tous les fichiers de signatures personnalisées ou des modules qui pourraient exister pour des raisons juridiques.
+- Bloquer les CIDRs en réponse à des obligations légales ? Cette directive ne devrait normalement pas avoir d'effet, car CIDRAM n'associe aucun CIDR avec des « obligations légales » par défaut, mais il existe néanmoins comme une mesure de contrôle supplémentaire au profit de tous les fichiers de signatures personnalisées ou des modules qui pourraient exister pour des raisons légales.
 
 ##### « block_malware » `[bool]`
 - Bloquer les CIDRs associés à des logiciels malveillants ? Cela inclut les serveurs C&C, les machines infectées, les machines impliquées dans la distribution de logiciels malveillants, etc.
@@ -1016,11 +1040,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
+│ probablement interpréteront cette réponse comme une indication que la
+│ requête a réussi.
+├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
+│ circonstances générales.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
+│ est très peu probable qu'il soit compris par un client, un bot, un
+│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
+│ généralement pas recommandé.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
+  recommandé dans d'autres contextes.
 ```
 
 #### « hcaptcha » (Catégorie)
@@ -1086,11 +1117,18 @@ api
 
 ```
 nonblocked_status_code
-├─200 (200 OK)
-├─403 (403 Forbidden)
-├─418 (418 I'm a teapot)
+├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
+│ probablement interpréteront cette réponse comme une indication que la
+│ requête a réussi.
+├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
+│ circonstances générales.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
+│ est très peu probable qu'il soit compris par un client, un bot, un
+│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
+│ généralement pas recommandé.
 ├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons)
+└─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
+  recommandé dans d'autres contextes.
 ```
 
 #### « legal » (Catégorie)
@@ -1134,7 +1172,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("denied")
+├─denied ("Accès Refusé !")
 └─…Autres
 ```
 
@@ -1219,8 +1257,8 @@ Configuration pour la limitation de débit (non recommandé pour d'utilisation g
 
 ```
 exceptions
-├─Whitelisted ("field_whitelisted_requests")
-└─Verified ("field_verified_requests")
+├─Whitelisted ("Requêtes qui ont été listé blanche")
+└─Verified ("Les requêtes vérifiés des moteur de recherche et médias sociaux")
 ```
 
 #### « supplementary_cache_options » (Catégorie)
@@ -1258,6 +1296,8 @@ Options de cache supplémentaires. Remarque : La modification de ces valeurs pe
 
 ##### « pdo_dsn » `[string]`
 - Valeur de DSN de PDO. Défaut = « mysql:dbname=cidram;host=localhost;port=3306 ».
+
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#HOW_TO_USE_PDO" hreflang="fr">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
 
 ##### « pdo_username » `[string]`
 - Nom d'utilisateur PDO.
@@ -2252,4 +2292,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 28 Mars 2022 (2022.03.28).
+Dernière mise à jour : 23 Avril 2022 (2022.04.23).

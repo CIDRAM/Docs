@@ -6,6 +6,8 @@ $loadL10N = function (string $Language) {
     $YAML->process($DataDocGen, $Arr);
     $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml');
     $YAML->process($Data, $Arr);
+    $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . $Language . '.yml');
+    $YAML->process($Data, $Arr);
     return new \Maikuolan\Common\L10N($Arr, []);
 };
 
@@ -102,12 +104,19 @@ if (!isset($_GET['language'])) {
                 }
                 $Iterant = 1;
                 foreach ($Choices as $Choice => $Value) {
+                    $Value = $Data->getString($Value) ?: $Value;
                     if ($Type === 'string') {
                         $Value = '"' . $Value . '"';
                     } elseif ($Type === 'bool') {
                         $Value = $Value ? 'true' : 'false';
                     }
-                    $Final .= ($Iterant === $Number ? '└─' : '├─') . $Choice . ' (' . $Value . ")\n";
+                    if (strpos($Value, "\n")) {
+                        $Value = explode("\n", $Value);
+                        $Value[1] = wordwrap($Value[1], 76, ($Iterant === $Number ? "\n  " : "\n│ "));
+                        $Final .= ($Iterant === $Number ? '└─' : '├─') . $Choice . ' (' . $Value[0] . '): ' . $Value[1] . "\n";
+                    } else {
+                        $Final .= ($Iterant === $Number ? '└─' : '├─') . $Choice . ' (' . $Value . ")\n";
+                    }
                     $Iterant++;
                 }
                 if (!empty($Info['allow_other'])) {
