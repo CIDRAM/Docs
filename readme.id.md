@@ -5,12 +5,11 @@
 - 2. [BAGAIMANA CARA MENGINSTAL](#SECTION2)
 - 3. [BAGAIMANA CARA MENGGUNAKAN](#SECTION3)
 - 4. [MANAJEMEN BAGIAN DEPAN](#SECTION4)
-- 6. [OPSI KONFIGURASI](#SECTION6)
-- 7. [FORMAT TANDA TANGAN](#SECTION7)
-- 8. [MASALAH KOMPATIBILITAS DIKETAHUI](#SECTION8)
-- 9. [PERTANYAAN YANG SERING DIAJUKAN (FAQ)](#SECTION9)
-- 10. *Dicadangkan untuk penambahan dokumentasi di masa mendatang.*
-- 11. [INFORMASI HUKUM](#SECTION11)
+- 5. [OPSI KONFIGURASI](#SECTION5)
+- 6. [FORMAT TANDA TANGAN](#SECTION6)
+- 7. [MASALAH KOMPATIBILITAS DIKETAHUI](#SECTION7)
+- 8. [PERTANYAAN YANG SERING DIAJUKAN (FAQ)](#SECTION8)
+- 9. [INFORMASI HUKUM](#SECTION9)
 
 *Catatan tentang terjemahan: Dalam hal kesalahan (misalnya, perbedaan antara terjemahan, kesalahan cetak, dll), versi bahasa Inggris dari README dianggap versi asli dan berwibawa. Jika Anda menemukan kesalahan, bantuan Anda dalam mengoreksi mereka akan disambut.*
 
@@ -134,7 +133,7 @@ Catat: Melindungi vault Anda terhadap akses yang tidak sah (misalnya, dengan mem
 ---
 
 
-### 6. <a name="SECTION6"></a>OPSI KONFIGURASI
+### 5. <a name="SECTION5"></a>OPSI KONFIGURASI
 
 Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, dengan deskripsi dari tujuan dan fungsi.
 
@@ -1128,12 +1127,12 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HO
 ---
 
 
-### 7. <a name="SECTION7"></a>FORMAT TANDA TANGAN
+### 6. <a name="SECTION6"></a>FORMAT TANDA TANGAN
 
 *Lihat juga:*
 - *[Apa yang "tanda tangan"?](#WHAT_IS_A_SIGNATURE)*
 
-#### 7.0 DASAR-DASAR (UNTUK FILE TANDA TANGAN)
+#### 6.0 DASAR-DASAR (UNTUK FILE TANDA TANGAN)
 
 Semua tanda tangan IPv4 mengikuti format: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
 - `xxx.xxx.xxx.xxx` merupakan awal dari blok CIDR (oktet dari alamat IP pertama dalam blok).
@@ -1189,9 +1188,9 @@ Kata-kata singkat yang tersedia adalah:
 - Proxy
 - Spam
 
-#### 7.1 TAG
+#### 6.1 TAG
 
-##### 7.1.0 TAG BAGIAN
+##### 6.1.0 TAG BAGIAN
 
 Jika Anda ingin membagi tanda tangan kustom Anda ke bagian individual, Anda dapat mengidentifikasi bagian individual untuk skrip dengan menambahkan "tag bagian" segera setelah tanda tangan dari setiap bagian, bersama dengan nama bagian tanda tangan Anda (lihat contoh dibawah ini).
 
@@ -1222,7 +1221,7 @@ Logika sama ini dapat diterapkan untuk memisahkan jenis tag lainnya juga.
 
 Secara khusus, tag bagian bisa sangat berguna untuk debugging bila terjadi positif palsu, dengan menyediakan sarana mudah untuk menemukan sumber masalah yang tepat, dan bisa sangat berguna untuk menyaring entri file log saat melihat file log melalui halaman log depan (nama bagian dapat diklik melalui halaman log depan dan dapat digunakan sebagai kriteria penyaringan). Jika tag bagian diabaikan untuk beberapa tanda tangan tertentu, saat tanda tangan dipicu, CIDRAM menggunakan nama file tanda tangan beserta jenis alamat IP yang diblokir (IPv4 atau IPv6) sebagai fallback, dan demikian, tag bagian sepenuhnya opsional. Mereka mungkin akan merekomendasikan dalam beberapa kasus meskipun, seperti ketika file tanda tangan diberi nama samar-samar atau bila mungkin sulit untuk secara jelas mengidentifikasi sumber tanda tangan yang menyebabkan permintaan diblokir.
 
-##### 7.1.1 TAG KADALUARSA
+##### 6.1.1 TAG KADALUARSA
 
 Jika Anda ingin tanda tangan untuk berakhir setelah beberapa waktu, dengan cara yang sama untuk tag bagian, Anda dapat menggunakan "tag kadaluarsa" untuk menentukan kapan tanda tangan harus berhenti menjadi valid. Tag kadaluarsa menggunakan format "TTTT.BB.HH" (lihat contoh dibawah ini).
 
@@ -1235,7 +1234,7 @@ Expires: 2016.12.31
 
 Tanda tangan kadaluarsa tidak akan pernah dipicu pada permintaan apapun, tidak masalah apa.
 
-##### 7.1.2 TAG ASAL
+##### 6.1.2 TAG ASAL
 
 Jika Anda ingin menentukan negara asal untuk beberapa tanda tangan tertentu, Anda dapat melakukannya dengan menggunakan "tag asal". Tag asal menerima kode "[ISO 3166-1 Alpha-2](https://id.wikipedia.org/wiki/ISO_3166-1)" yang sesuai dengan negara asal untuk tanda tangan yang berlaku. Kode ini harus ditulis dalam huruf besar (huruf kecil atau huruf campuran tidak akan ditampilkan dengan benar). Saat tag asal digunakan, ditambahkan ke entri lapangan log "Mengapa Diblokir" untuk setiap permintaan yang diblokir akibat tanda tangan yang diterapkan tag.
 
@@ -1267,7 +1266,7 @@ Tag: Contoh Bagian
 Expires: 2016.12.31
 ```
 
-##### 7.1.3 TAG PENANGGUH
+##### 6.1.3 TAG PENANGGUH
 
 Ketika sejumlah besar file tanda tangan diinstal dan aktif digunakan, instalasi bisa menjadi sangat kompleks, dan mungkin ada beberapa tanda tangan yang tumpang tindih. Dalam kasus ini, untuk mencegah banyak tanda tangan tumpang tindih dipicu selama kejadian blokir, tag penangguh dapat digunakan untuk menangguhkan bagian tanda tangan tertentu dalam kasus dimana beberapa file tanda tangan khusus lainnya diinstal dan aktif digunakan. Ini mungkin berguna jika beberapa tanda tangan diperbarui lebih sering daripada yang lain, untuk menangguhkan tanda tangan yang kurang sering diperbarui untuk mendukung tanda tangan yang lebih sering diperbarui.
 
@@ -1283,7 +1282,7 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
-##### 7.1.4 TAG PROFIL
+##### 6.1.4 TAG PROFIL
 
 Tag profil menyediakan sarana untuk menampilkan informasi tambahan di halaman pengujian IP, dan dapat dimanfaatkan oleh modul dan aturan tambahan untuk perilaku yang lebih kompleks dan pengambilan keputusan yang lebih baik.
 
@@ -1298,9 +1297,9 @@ Profile: Example;Just some generic stuff;Foo;Bar
 Origin: BB
 ```
 
-#### 7.2 YAML
+#### 6.2 YAML
 
-##### 7.2.0 DASAR-DASAR YAML
+##### 6.2.0 DASAR-DASAR YAML
 
 Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
 
@@ -1355,7 +1354,7 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCAPTCHA
+##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCAPTCHA
 
 Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
@@ -1370,9 +1369,9 @@ hcaptcha:
  enabled: true
 ```
 
-#### 7.3 INFORMASI TAMBAHAN
+#### 6.3 INFORMASI TAMBAHAN
 
-##### 7.3.0 MENGABAIKAN BAGIAN TANDA TANGAN
+##### 6.3.0 MENGABAIKAN BAGIAN TANDA TANGAN
 
 Juga, jika Anda ingin CIDRAM untuk sama sekali mengabaikan beberapa bagian tertentu dalam salah satu file tanda tangan, Anda dapat menggunakan file `ignore.dat` untuk menentukan bagian untuk mengabaikan. Pada baris baru, menulis `Ignore`, diikuti dengan spasi, diikuti dengan nama bagian yang Anda ingin CIDRAM untuk mengabaikan (lihat contoh dibawah ini).
 
@@ -1382,11 +1381,11 @@ Ignore Bagian 1
 
 Ini juga dapat dicapai dengan menggunakan antarmuka yang disediakan oleh halaman "daftar bagian" dari bagian depan CIDRAM.
 
-##### 7.3.1 ATURAN TAMBAHAN
+##### 6.3.1 ATURAN TAMBAHAN
 
 Jika Anda merasa bahwa menulis file tanda tangan atau modul kustom Anda sendiri terlalu rumit untuk Anda, alternatif yang lebih sederhana mungkin menggunakan antarmuka yang disediakan oleh halaman "aturan tambahan" dari bagian depan CIDRAM. Dengan memilih opsi yang sesuai dan menentukan detail tentang jenis permintaan spesifik, Anda dapat menginstruksikan CIDRAM cara menanggapi permintaan tersebut. "Aturan tambahan" dijalankan setelah semua file tanda tangan dan modul telah selesai dijalankan.
 
-#### 7.4 <a name="MODULE_BASICS"></a>DASAR-DASAR (UNTUK MODUL)
+#### 6.4 <a name="MODULE_BASICS"></a>DASAR-DASAR (UNTUK MODUL)
 
 Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan. Biasanya, mereka digunakan saat perlu memblokir permintaan untuk alasan selain alamat IP (dan dengan demikian, ketika tanda tangan CIDR tidak cukup untuk memblokir permintaan). Modul ditulis sebagai file PHP, dan dengan demikian, biasanya, tanda tangan modul ditulis sebagai kode PHP.
 
@@ -1402,9 +1401,9 @@ Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRA
 
 Beberapa fungsi disediakan oleh CIDRAM yang dapat digunakan oleh modul, yang seharusnya membuatnya lebih sederhana dan mudah untuk menulis modul Anda sendiri. Informasi tentang fungsi ini dijelaskan dibawah ini.
 
-#### 7.5 FUNGSIONALITAS MODUL
+#### 6.5 FUNGSIONALITAS MODUL
 
-##### 7.5.0 "$Trigger"
+##### 6.5.0 "$Trigger"
 
 Tanda tangan modul biasanya ditulis dengan `$Trigger`. Dalam kebanyakan kasus, closure ini akan lebih penting daripada hal lain untuk tujuan penulisan modul.
 
@@ -1425,7 +1424,7 @@ Untuk menggunakan closure ini di modul Anda, ingat dulu untuk mewarisi dari ling
 $Trigger = $CIDRAM['Trigger'];
 ```
 
-##### 7.5.1 "$Bypass"
+##### 6.5.1 "$Bypass"
 
 Tanda tangan bypass biasanya ditulis dengan `$Bypass`.
 
@@ -1444,7 +1443,7 @@ Untuk menggunakan closure ini di modul Anda, ingat dulu untuk mewarisi dari ling
 $Bypass = $CIDRAM['Bypass'];
 ```
 
-##### 7.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$CIDRAM['DNS-Reverse']"
 
 Ini bisa digunakan untuk mengambil nama host dari alamat IP. Jika Anda ingin membuat modul untuk memblokir nama host, closure ini bisa bermanfaat.
 
@@ -1465,7 +1464,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 }
 ```
 
-#### 7.6 MODUL VARIABEL
+#### 6.6 MODUL VARIABEL
 
 Modul mengeksekusi dalam lingkup mereka sendiri, dan variabel apapun yang ditentukan oleh modul, tidak akan dapat diakses ke modul lain, atau ke skrip utama, kecuali jika disimpan dalam array `$CIDRAM` (segala sesuatu yang lain dibuang setelah eksekusi modul selesai).
 
@@ -1488,7 +1487,7 @@ Variabel | Deskripsi
 ---
 
 
-### 8. <a name="SECTION8"></a>MASALAH KOMPATIBILITAS DIKETAHUI
+### 7. <a name="SECTION7"></a>MASALAH KOMPATIBILITAS DIKETAHUI
 
 Paket dan produk berikut telah ditemukan tidak bisa dioperasikan dengan CIDRAM:
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1502,7 +1501,7 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 ---
 
 
-### 9. <a name="SECTION9"></a>PERTANYAAN YANG SERING DIAJUKAN (FAQ)
+### 8. <a name="SECTION8"></a>PERTANYAAN YANG SERING DIAJUKAN (FAQ)
 
 - [Apa yang "tanda tangan"?](#WHAT_IS_A_SIGNATURE)
 - [Apa yang "CIDR"?](#WHAT_IS_A_CIDR)
@@ -1857,19 +1856,19 @@ Jika Anda sudah mencoba semua ide ini dan tidak ada bekerja untuk Anda, atau jik
 ---
 
 
-### 11. <a name="SECTION11"></a>INFORMASI HUKUM
+### 9. <a name="SECTION9"></a>INFORMASI HUKUM
 
-#### 11.0 PENGANTAR BAGIAN
+#### 9.0 PENGANTAR BAGIAN
 
 Bagian dokumentasi ini dimaksudkan untuk menjelaskan kemungkinan pertimbangan hukum mengenai penggunaan dan implementasi paket, dan untuk memberikan beberapa informasi dasar terkait. Ini mungkin penting bagi beberapa pengguna sebagai sarana untuk memastikan kepatuhan dengan persyaratan hukum yang mungkin ada di negara tempat mereka beroperasi, dan beberapa pengguna mungkin perlu menyesuaikan kebijakan situs web mereka sesuai dengan informasi ini.
 
 Pertama dan terutama, harap menyadari bahwa saya (penulis paket) bukan seorang pengacara, atau profesional hukum yang berkualitas dalam bentuk apapun. Oleh karena itu, saya secara hukum tidak memenuhi syarat untuk memberikan nasihat hukum. Juga, dalam beberapa kasus, persyaratan hukum yang tepat dapat bervariasi antara negara dan yurisdiksi yang berbeda, dan berbagai persyaratan hukum ini terkadang dapat menimbulkan konflik (seperti, misalnya, dalam kasus negara-negara yang mendukung hak privasi dan hak untuk dilupakan, versus negara-negara yang mendukung retensi data diperpanjang). Pertimbangkan juga bahwa akses ke paket tidak terbatas pada negara atau yurisdiksi tertentu, dan oleh karena itu, pengguna paket cenderung ke geografis yang beragam. Poin-poin ini dianggap, saya tidak dalam posisi untuk menyatakan apa artinya "mematuhi hukum" untuk semua pengguna, dalam semua hal. Namun, saya berharap informasi disini akan membantu Anda untuk mengambil keputusan sendiri mengenai apa yang Anda harus lakukan agar tetap mematuhi hukum dalam konteks paket. Jika Anda memiliki keraguan atau kekhawatiran mengenai informasi disini, atau jika Anda membutuhkan bantuan dan saran tambahan dari perspektif hukum, saya merekomendasikan konsultasi dengan profesional hukum yang berkualitas.
 
-#### 11.1 TANGGUNG JAWAB DAN KEWAJIBAN HUKUM
+#### 9.1 TANGGUNG JAWAB DAN KEWAJIBAN HUKUM
 
 Seperti yang telah dinyatakan oleh lisensi paket, paket ini disediakan tanpa jaminan apapun. Ini termasuk (tetapi tidak terbatas pada) semua lingkup kewajiban hukum. Paket ini diberikan kepada Anda untuk kenyamanan Anda, dengan harapan itu akan berguna, dan itu akan memberikan beberapa manfaat bagi Anda. Namun, apakah Anda menggunakan atau mengimplementasikan paket ini, adalah pilihan Anda sendiri. Anda tidak dipaksa untuk menggunakan atau mengimplementasikan paket ini, tetapi ketika Anda melakukannya, Anda bertanggung jawab atas keputusan itu. Bukan saya, dan tidak ada kontributor lain untuk paket ini, bertanggung jawab secara hukum atas konsekuensi keputusan yang Anda buat, terlepas dari apakah langsung, tidak langsung, tersirat, atau sebaliknya.
 
-#### 11.2 PIHAK KETIGA
+#### 9.2 PIHAK KETIGA
 
 Tergantung pada konfigurasi dan implementasinya yang tepat, paket dapat berkomunikasi dan berbagi informasi dengan pihak ketiga dalam beberapa kasus. Informasi ini dapat didefinisikan sebagai "informasi identitas pribadi" (PII) dalam beberapa konteks, oleh beberapa yurisdiksi.
 
@@ -1877,7 +1876,7 @@ Bagaimana informasi ini dapat digunakan oleh pihak ketiga ini, tunduk pada berba
 
 Untuk tujuan transparansi, jenis informasi yang dibagikan, dan dengan siapa, dijelaskan dibawah ini.
 
-##### 11.2.0 PENCARIAN NAMA HOST
+##### 9.2.0 PENCARIAN NAMA HOST
 
 Jika Anda menggunakan fitur atau modul yang dimaksudkan untuk bekerja dengan nama host (seperti "modul pemblokir untuk host buruk", "tor project exit nodes block module", atau "verifikasi mesin pencari", misalnya), CIDRAM harus dapat memperoleh nama host dari permintaan masuk entah bagaimana. Biasanya, ini dilakukan dengan meminta nama host dari alamat IP permintaan masuk dari server DNS, atau dengan meminta informasi melalui fungsionalitas yang disediakan oleh sistem tempat CIDRAM diinstal (ini biasanya disebut sebagai "pencarian nama host"). Server DNS yang ditentukan secara default adalah milik layanan [Google DNS](https://dns.google.com/) (tetapi ini dapat dengan mudah diubah melalui konfigurasi). Layanan yang tepat yang dikomunikasikan dapat dikonfigurasi, dan tergantung pada cara Anda mengonfigurasi paket. Dalam kasus menggunakan fungsionalitas yang disediakan oleh sistem tempat CIDRAM diinstal, Anda harus menghubungi administrator sistem Anda untuk menentukan rute mana yang digunakan oleh pencarian nama host. Pencarian nama host dapat dicegah dalam CIDRAM dengan menghindari modul yang terpengaruh atau dengan memodifikasi konfigurasi paket sesuai dengan kebutuhan Anda.
 
@@ -1889,7 +1888,7 @@ Jika Anda menggunakan fitur atau modul yang dimaksudkan untuk bekerja dengan nam
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.2 VERIFIKASI MESIN PENCARI DAN MEDIA SOSIAL
+##### 9.2.1 VERIFIKASI MESIN PENCARI DAN MEDIA SOSIAL
 
 Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian DNS ke depan" untuk memverifikasi apakah permintaan yang mengaku berasal dari mesin pencari adalah asli. Juga, ketika verifikasi media sosial diaktifkan, CIDRAM melakukan hal yang sama untuk permintaan media sosial dugaan. Untuk melakukan ini, verifikasi mesin pencari menggunakan layanan [Google DNS](https://dns.google.com/) untuk mencoba menyelesaikan alamat IP dari nama host dari permintaan masuk ini (dalam proses ini, nama host dari permintaan masuk ini dibagikan dengan layanan).
 
@@ -1898,25 +1897,25 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 CAPTCHA
+##### 9.2.2 CAPTCHA
 
 CIDRAM mendukung reCAPTCHA dan hCAPTCHA. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
-##### 11.2.4 STOP FORUM SPAM
+##### 9.2.3 STOP FORUM SPAM
 
 [Stop Forum Spam](https://www.stopforumspam.com/) adalah layanan fantastis, tersedia secara bebas yang dapat membantu melindungi forum, blog, dan situs web dari spammer. Ini dilakukan dengan menyediakan database spammer yang dikenal, dan API yang dapat dimanfaatkan untuk memeriksa apakah alamat IP, nama pengguna, atau alamat email tercantum dalam database-nya.
 
 CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apakah alamat IP dari permintaan masuk milik seorang spammer yang dicurigai. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API Stop Forum Spam sesuai dengan tujuan yang dimaksudkan dari modul. Ketika modul diinstal, CIDRAM berkomunikasi dengan API ini setiap kali permintaan masuk meminta sumber halaman yang diakui oleh CIDRAM sebagai jenis sumber halaman yang sering ditargetkan oleh pelaku spam (seperti halaman login, halaman registrasi, halaman verifikasi email, formulir komentar, dll).
 
-##### 11.2.5 ABUSEIPDB
+##### 9.2.4 ABUSEIPDB
 
 CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API AbuseIPDB sesuai dengan tujuan yang dimaksudkan dari modul.
 
-##### 11.2.6 BGPVIEW
+##### 9.2.5 BGPVIEW
 
 CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API BGPView sesuai dengan tujuan yang dimaksudkan dari modul.
 
-#### 11.3 PENCATATAN
+#### 9.3 PENCATATAN
 
 Pencatatan adalah bagian penting dari CIDRAM karena sejumlah alasan. Mungkin sulit untuk mendiagnosis dan menyelesaikan kesalahan positif ketika kejadian blokir yang menyebabkan mereka tidak dicatat. Tanpa mencatat kejadian blokir, mungkin sulit untuk memastikan secara akurat seberapa baik kinerja CIDRAM dalam konteks tertentu, dan mungkin sulit untuk menentukan dimana kekurangannya, dan perubahan apa yang mungkin diperlukan untuk konfigurasi atau tanda tangan yang sesuai, agar terus berfungsi sebagaimana dimaksud. Apapun, pencatatan mungkin tidak diinginkan untuk semua pengguna, dan tetap sepenuhnya opsional. Di CIDRAM, pencatatan dinonaktifkan secara default. Untuk mengaktifkannya, CIDRAM harus dikonfigurasi dengan benar.
 
@@ -1924,7 +1923,7 @@ Juga, apakah pencatatan diizinkan secara hukum, dan sejauh diizinkan secara huku
 
 Ada beberapa jenis pencatatan yang dapat dilakukan oleh CIDRAM. Berbagai jenis pencatatan melibatkan berbagai jenis informasi, untuk berbagai alasan.
 
-##### 11.3.0 KEJADIAN BLOKIR
+##### 9.3.0 KEJADIAN BLOKIR
 
 Jenis utama dari pencatatan yang dapat dilakukan oleh CIDRAM berhubungan dengan "kejadian blokir". Jenis pencatatan ini terkait dengan kapan CIDRAM memblokir permintaan, dan dapat diberikan dalam tiga format berbeda:
 - File log yang dapat dibaca oleh manusia.
@@ -1973,7 +1972,7 @@ Kejadian blokir yang dicatat biasanya mencakup informasi berikut:
 
 Ketika direktif ini dibiarkan kosong, jenis pencatatan ini akan tetap dinonaktifkan.
 
-##### 11.3.1 LOG CAPTCHA
+##### 9.3.1 LOG CAPTCHA
 
 Jenis pencatatan ini secara khusus berkaitan dengan instance CAPTCHA, dan hanya terjadi ketika pengguna mencoba menyelesaikan instance CAPTCHA.
 
@@ -1987,7 +1986,7 @@ Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status CAP
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
-##### 11.3.2 LOG BAGIAN DEPAN
+##### 9.3.2 LOG BAGIAN DEPAN
 
 Jenis pencatatan ini berhubungan dengan upaya masuk bagian depan, dan hanya terjadi ketika pengguna mencoba masuk ke bagian depan (dengan asumsi akses bagian depan diaktifkan).
 
@@ -2000,7 +1999,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Dimasuk.
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan bagian depan adalah:*
 - `general` -> `frontend_log`
 
-##### 11.3.3 ROTASI LOG
+##### 9.3.3 ROTASI LOG
 
 Anda mungkin ingin membersihkan log setelah jangka waktu tertentu, atau mungkin diminta untuk melakukannya oleh hukum (yaitu, jumlah waktu yang diizinkan secara hukum bagi Anda untuk mempertahankan log mungkin dibatasi oleh hukum). Anda dapat mencapai ini dengan menyertakan penanda tanggal/waktu dalam nama-nama file log Anda sesuai yang ditentukan oleh konfigurasi paket Anda (misalnya, `{yyyy}-{mm}-{dd}.log`), dan kemudian mengaktifkan rotasi log (rotasi log memungkinkan Anda untuk melakukan beberapa tindakan pada file log ketika batas yang ditentukan terlampaui).
 
@@ -2012,14 +2011,14 @@ Sebaliknya, jika Anda diminta untuk menyimpan log untuk jangka waktu yang panjan
 - `general` -> `log_rotation_limit`
 - `general` -> `log_rotation_action`
 
-##### 11.3.4 PEMOTONGAN LOG
+##### 9.3.4 PEMOTONGAN LOG
 
 Ini juga memungkinkan untuk memotong file log individu ketika mereka melebihi ukuran tertentu, jika ini adalah sesuatu yang mungkin Anda butuhkan atau ingin lakukan.
 
 *Direktif konfigurasi yang relevan:*
 - `general` -> `truncate`
 
-##### 11.3.5 PSEUDONIMISASI ALAMAT IP
+##### 9.3.5 PSEUDONIMISASI ALAMAT IP
 
 Pertama, jika Anda tidak akrab dengan istilah ini, "pseudonimisasi" mengacu pada memproses data pribadi sedemikian rupa sehingga tidak dapat diidentifikasi ke subjek data tertentu lagi tanpa beberapa informasi tambahan, dan dengan ketentuan bahwa informasi tambahan tersebut dipelihara secara terpisah dan tunduk pada tindakan teknis dan organisasi untuk memastikan bahwa data pribadi tidak dapat diidentifikasi kepada orang alami.
 
@@ -2032,7 +2031,7 @@ CIDRAM mampu mem-pseudonimisasi alamat IP ketika melakukan pencatatan, jika ini 
 *Direktif konfigurasi yang relevan:*
 - `legal` -> `pseudonymise_ip_addresses`
 
-##### 11.3.6 MENGHILANGKAN INFORMASI LOG
+##### 9.3.6 MENGHILANGKAN INFORMASI LOG
 
 Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu sedang dicatat sepenuhnya, ini juga mungkin dilakukan. CIDRAM menyediakan direktif-direktif konfigurasi untuk mengontrol apakah alamat IP, nama host, dan agen pengguna termasuk dalam log. Secara default, ketiga titik data ini termasuk dalam log bila tersedia. Menetapkan apapun direktif-direktif konfigurasi ini ke `true` akan menghilangkan informasi terkait dari log.
 
@@ -2043,18 +2042,18 @@ Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu se
 - `legal` -> `omit_hostname`
 - `legal` -> `omit_ua`
 
-##### 11.3.7 STATISTIK
+##### 9.3.7 STATISTIK
 
 CIDRAM secara opsional dapat melacak statistik seperti jumlah total kejadian blokir atau instance CAPTCHA yang telah terjadi sejak beberapa titik waktu tertentu. Fitur ini dinonaktifkan secara default, tetapi dapat diaktifkan melalui konfigurasi paket. Fitur ini hanya melacak jumlah total kejadian yang terjadi, dan tidak termasuk informasi apapun tentang kejadian tertentu (dan dengan demikian, tidak boleh dianggap sebagai PII).
 
 *Direktif konfigurasi yang relevan:*
 - `general` -> `statistics`
 
-##### 11.3.8 ENKRIPSI
+##### 9.3.8 ENKRIPSI
 
 CIDRAM tidak mengenkripsi cache atau informasi log apapun. [Enkripsi](https://id.wikipedia.org/wiki/Enkripsi) cache dan log dapat diperkenalkan di masa depan, tetapi tidak ada rencana khusus untuk itu saat ini. Jika Anda khawatir tentang pihak ketiga yang tidak sah mendapatkan akses ke bagian depan dari CIDRAM yang mungkin berisi PII atau informasi sensitif seperti cache atau log-nya, saya akan merekomendasikan bahwa CIDRAM tidak diinstal di lokasi yang dapat diakses publik (misalnya, instal CIDRAM di luar direktori `public_html` standar atau yang setara dengan yang tersedia untuk sebagian besar web server standar) dan bahwa perizinan restriktif yang tepat diberlakukan untuk direktori tempat ia tinggal (khususnya, untuk direktori vault). Jika itu tidak cukup untuk mengatasi masalah Anda, konfigurasikan CIDRAM sedemikian rupa sehingga jenis informasi yang menyebabkan kekhawatiran Anda tidak akan dikumpulkan atau dicatat di tempat pertama (seperti, dengan menonaktifkan pencatatan).
 
-#### 11.4 COOKIE
+#### 9.4 COOKIE
 
 CIDRAM menetapkan [cookie](https://id.wikipedia.org/wiki/Kuki_HTTP) pada dua titik dalam basis kodenya. Pertama, ketika pengguna berhasil menyelesaikan instance CAPTCHA (dan mengasumsikan bahwa `lockuser` diatur ke `true`), CIDRAM menetapkan cookie agar dapat mengingat untuk permintaan berikutnya bahwa pengguna telah menyelesaikan instance CAPTCHA, sehingga tidak perlu meminta pengguna untuk menyelesaikan instance CAPTCHA pada permintaan berikutnya. Kedua, ketika pengguna berhasil masuk ke akses bagian depan, CIDRAM menetapkan cookie agar dapat mengingat pengguna untuk permintaan berikutnya (yaitu, cookie digunakan untuk mengotentikasi pengguna ke sesi masuk).
 
@@ -2069,11 +2068,11 @@ Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), me
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
-#### 11.5 PEMASARAN DAN PERIKLANAN
+#### 9.5 PEMASARAN DAN PERIKLANAN
 
 CIDRAM tidak mengumpulkan atau memproses informasi apapun untuk tujuan pemasaran atau periklanan, dan tidak menjual atau memperoleh keuntungan dari informasi yang dikumpulkan atau dicatat. CIDRAM bukan perusahaan komersial, juga tidak terkait dengan kepentingan komersial, sehingga melakukan hal-hal ini tidak akan masuk akal. Ini telah terjadi sejak awal proyek, dan terus menjadi kasus hari ini. Juga, melakukan hal-hal ini akan menjadi kontra-produktif terhadap semangat dan tujuan yang dimaksudkan dari proyek secara keseluruhan, dan selama saya terus mempertahankan proyek, tidak akan pernah terjadi.
 
-#### 11.6 KEBIJAKAN PRIVASI
+#### 9.6 KEBIJAKAN PRIVASI
 
 Dalam beberapa keadaan, Anda mungkin diharuskan secara hukum untuk secara jelas menampilkan tautan ke kebijakan privasi Anda pada semua halaman dan bagian dari situs web Anda. Ini mungkin penting sebagai sarana untuk memastikan bahwa pengguna mendapat informasi yang jelas tentang praktik privasi Anda, jenis PII yang Anda kumpulkan, dan bagaimana Anda akan menggunakannya. Agar dapat menyertakan tautan di halaman "Akses Ditolak" CIDRAM, direktif konfigurasi disediakan untuk menentukan URL ke kebijakan privasi Anda.
 
@@ -2082,7 +2081,7 @@ Dalam beberapa keadaan, Anda mungkin diharuskan secara hukum untuk secara jelas 
 *Direktif konfigurasi yang relevan:*
 - `legal` -> `privacy_policy`
 
-#### 11.7 GDPR/DSGVO
+#### 9.7 GDPR/DSGVO
 
 Regulasi Perlindungan Data Umum (GDPR) adalah regulasi dari Uni Eropa, yang mulai berlaku pada 25 Mei 2018. Tujuan utama dari regulasi ini adalah untuk memberikan kontrol kepada warga dan penduduk negara Uni Eropa mengenai data pribadi mereka sendiri, dan untuk menyatukan regulasi di Uni Eropa terkait privasi dan data pribadi.
 

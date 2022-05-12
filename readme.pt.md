@@ -5,12 +5,11 @@
 - 2. [COMO INSTALAR](#SECTION2)
 - 3. [COMO USAR](#SECTION3)
 - 4. [GESTÃO DE FRONT-END](#SECTION4)
-- 6. [OPÇÕES DE CONFIGURAÇÃO](#SECTION6)
-- 7. [FORMATO DE ASSINATURAS](#SECTION7)
-- 8. [PROBLEMAS DE COMPATIBILIDADE CONHECIDOS](#SECTION8)
-- 9. [PERGUNTAS MAIS FREQUENTES (FAQ)](#SECTION9)
-- 10. *Reservado para futuras adições à documentação.*
-- 11. [INFORMAÇÃO LEGAL](#SECTION11)
+- 5. [OPÇÕES DE CONFIGURAÇÃO](#SECTION5)
+- 6. [FORMATO DE ASSINATURAS](#SECTION6)
+- 7. [PROBLEMAS DE COMPATIBILIDADE CONHECIDOS](#SECTION7)
+- 8. [PERGUNTAS MAIS FREQUENTES (FAQ)](#SECTION8)
+- 9. [INFORMAÇÃO LEGAL](#SECTION9)
 
 *Nota relativa às traduções: Em caso de erros (por exemplo, discrepâncias entre as traduções, erros de digitação, etc), a versão em inglês do README é considerada a versão original e autorizada. Se você encontrar algum erro, a sua ajuda em corrigi-los seria bem-vinda.*
 
@@ -134,7 +133,7 @@ Nota: Proteger seu vault contra acesso não autorizado (p.e., por meio de endure
 ---
 
 
-### 6. <a name="SECTION6"></a>OPÇÕES DE CONFIGURAÇÃO
+### 5. <a name="SECTION5"></a>OPÇÕES DE CONFIGURAÇÃO
 
 O seguinte é uma lista de variáveis encontradas no `config.ini` arquivo de configuração para CIDRAM, juntamente com uma descrição de sua propósito e função.
 
@@ -1126,12 +1125,12 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#HO
 ---
 
 
-### 7. <a name="SECTION7"></a>FORMATO DE ASSINATURAS
+### 6. <a name="SECTION6"></a>FORMATO DE ASSINATURAS
 
 *Veja também:*
 - *[O que é uma "assinatura"?](#WHAT_IS_A_SIGNATURE)*
 
-#### 7.0 NOÇÕES BÁSICAS (PARA ARQUIVOS DE ASSINATURA)
+#### 6.0 NOÇÕES BÁSICAS (PARA ARQUIVOS DE ASSINATURA)
 
 Todas as assinaturas IPv4 seguir o formato: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
 - `xxx.xxx.xxx.xxx` representa o início do bloco CIDR (os octetos do endereço IP inicial no bloco).
@@ -1187,9 +1186,9 @@ As palavras curtas disponíveis são:
 - Proxy
 - Spam
 
-#### 7.1 ETIQUETAS
+#### 6.1 ETIQUETAS
 
-##### 7.1.0 ETIQUETAS DE SEÇÃO
+##### 6.1.0 ETIQUETAS DE SEÇÃO
 
 Se você quiser dividir suas assinaturas personalizadas em seções individuais, você pode identificar estas seções individuais para o script por adição de uma "etiqueta de seção" imediatamente após as assinaturas de cada seção, juntamente com o nome de sua seção de assinaturas (veja o exemplo abaixo).
 
@@ -1220,7 +1219,7 @@ A mesma lógica pode ser aplicada para separar outros tipos de etiquetas, també
 
 Em particular, as etiquetas de seção podem ser muito úteis para depuração quando ocorrem falsos positivos, fornecendo um meio fácil de encontrar a fonte exata do problema, e pode ser muito útil para filtrar entradas de arquivos de log ao visualizar arquivos de log por meio da página de logs do front-end (os nomes das seções são clicáveis através da página de logs do front-end e podem ser usados como critérios de filtragem). Se as etiquetas de seção forem omitidas para algumas assinaturas específicas, quando essas assinaturas são desencadeadas, o CIDRAM usa o nome do arquivo de assinatura juntamente com o tipo de endereço IP bloqueado (IPv4 ou IPv6) como um retorno, e portanto, as etiquetas de seção são inteiramente opcionais. Embora, eles podem ser recomendados em alguns casos, como quando os arquivos de assinatura são nomeados vagamente ou quando pode ser difícil identificar claramente a origem das assinaturas fazendo com que uma solicitação seja bloqueada.
 
-##### 7.1.1 ETIQUETAS DE EXPIRAÇÃO
+##### 6.1.1 ETIQUETAS DE EXPIRAÇÃO
 
 Se você quiser assinaturas para expirar depois de algum tempo, de um modo semelhante para etiquetas de seção, você pode usar um "etiqueta de expiração" para especificar quando as assinaturas devem deixar de ser válida. Etiquetas de expiração usam o formato "AAAA.MM.DD" (veja o exemplo abaixo).
 
@@ -1233,7 +1232,7 @@ Expires: 2016.12.31
 
 As assinaturas expiradas nunca serão desencadeadas em qualquer solicitação, não importa o que.
 
-##### 7.1.2 ETIQUETAS DE ORIGEM
+##### 6.1.2 ETIQUETAS DE ORIGEM
 
 Se você deseja especificar o país de origem para alguma assinatura específica, você pode fazer isso usando uma "etiqueta de origem". Uma etiqueta de origem aceita um código "[ISO 3166-1 alfa-2](https://pt.wikipedia.org/wiki/ISO_3166-1_alfa-2)" correspondente ao país de origem para as assinaturas às quais se aplica. Esses códigos devem ser escritos em maiúsculas (minúsculas não serão processadas corretamente). Quando uma etiqueta de origem é usada, ela é adicionada à campo "Razão Bloqueada" do entrada de log para quaisquer solicitações bloqueadas como resultado das assinaturas às quais a etiqueta é aplicada.
 
@@ -1265,7 +1264,7 @@ Tag: Seção Exemplo
 Expires: 2016.12.31
 ```
 
-##### 7.1.3 ETIQUETAS DE DEFERÊNCIA
+##### 6.1.3 ETIQUETAS DE DEFERÊNCIA
 
 Quando um grande número de arquivos de assinatura é instalado e usado ativamente, as instalações podem se tornar bastante complexas, e pode haver algumas assinaturas que se sobrepõem. Nestes casos, a fim de evitar que várias assinaturas sobrepostas sejam desencadeados durante eventos de bloco, etiquetas de deferência podem ser usadas para diferir seções de assinatura específicas nos casos em que algum outro arquivo de assinatura específico é instalado e usado ativamente. Isso pode ser útil nos casos em que algumas assinaturas são atualizadas com mais freqüência do que outras, a fim de diferir as assinaturas atualizadas com menos frequência em favor das assinaturas atualizadas com maior frequência.
 
@@ -1281,7 +1280,7 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
-##### 7.1.4 ETIQUETAS DE PERFIL
+##### 6.1.4 ETIQUETAS DE PERFIL
 
 As etiquetas de perfil fornecem um meio de exibir informações adicionais na página de teste de IP, e podem ser aproveitadas por módulos e regras auxiliares para um comportamento mais complexo e tomada de decisão ajustada.
 
@@ -1296,9 +1295,9 @@ Profile: Example;Just some generic stuff;Foo;Bar
 Origin: BB
 ```
 
-#### 7.2 YAML
+#### 6.2 YAML
 
-##### 7.2.0 YAML BÁSICOS
+##### 6.2.0 YAML BÁSICOS
 
 Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCAPTCHA; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
 
@@ -1353,7 +1352,7 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCAPTCHA
+##### 6.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCAPTCHA
 
 Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com reCAPTCHA/hCAPTCHA, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
 
@@ -1368,9 +1367,9 @@ hcaptcha:
  enabled: true
 ```
 
-#### 7.3 AUXILIAR
+#### 6.3 AUXILIAR
 
-##### 7.3.0 IGNORANDO SEÇÕES DE ASSINATURA
+##### 6.3.0 IGNORANDO SEÇÕES DE ASSINATURA
 
 Em suplemento, se você quiser CIDRAM para ignorar completamente algumas seções específicas dentro de qualquer um dos arquivos de assinatura, você pode usar o arquivo `ignore.dat` para especificar quais seções para ignorar. numa nova linha, escreva `Ignore`, seguido por um espaço, seguido do nome da seção que você quer CIDRAM para ignorar (veja o exemplo abaixo).
 
@@ -1380,11 +1379,11 @@ Ignore Seção 1
 
 Isso também pode ser alcançado usando a interface fornecida pela página "lista de seções" do front-end do CIDRAM.
 
-##### 7.3.1 REGRAS AUXILIARES
+##### 6.3.1 REGRAS AUXILIARES
 
 Se você acha que escrever seus próprios arquivos de assinatura personalizados ou módulos personalizados é muito complicado para você, uma alternativa mais simples pode ser usar a interface fornecida pela página "regras auxiliares" do front-end do CIDRAM. Ao selecionar as opções apropriadas e especificar detalhes sobre os tipos de solicitações específicos, você pode instruir o CIDRAM sobre como responder a essas solicitações. "Regras auxiliares" são executadas depois que todos os arquivos de assinatura e módulos já tiverem terminado a execução.
 
-#### 7.4 <a name="MODULE_BASICS"></a>NOÇÕES BÁSICAS (PARA MÓDULOS)
+#### 6.4 <a name="MODULE_BASICS"></a>NOÇÕES BÁSICAS (PARA MÓDULOS)
 
 Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear uma solicitação com base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear a solicitação). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
 
@@ -1400,9 +1399,9 @@ Devido a que os módulos são escritos como arquivos PHP, se você estiver adequ
 
 Algumas funcionalidades são fornecidas pelo CIDRAM para os módulos a serem usados, o que deve tornar mais simples e fácil de escrever seus próprios módulos. A informação sobre esta funcionalidade é descrita abaixo.
 
-#### 7.5 FUNCIONALIDADE DO MÓDULO
+#### 6.5 FUNCIONALIDADE DO MÓDULO
 
-##### 7.5.0 "$Trigger"
+##### 6.5.0 "$Trigger"
 
 As assinaturas do módulo geralmente são escritas com `$Trigger`. Na maioria dos casos, esse closure será mais importante do que qualquer outra coisa com a finalidade de escrever módulos.
 
@@ -1423,7 +1422,7 @@ Para usar esse closure em seu módulo, lembre-se de herdá-lo do escopo pai:
 $Trigger = $CIDRAM['Trigger'];
 ```
 
-##### 7.5.1 "$Bypass"
+##### 6.5.1 "$Bypass"
 
 Os bypass de assinatura geralmente são escritos com `$Bypass`.
 
@@ -1442,7 +1441,7 @@ Para usar esse closure em seu módulo, lembre-se de herdá-lo do escopo pai:
 $Bypass = $CIDRAM['Bypass'];
 ```
 
-##### 7.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$CIDRAM['DNS-Reverse']"
 
 Isso pode ser usado para buscar o nome do host de um endereço IP. Se você quiser criar um módulo para bloquear nomes de host, este closure pode ser útil.
 
@@ -1463,7 +1462,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 }
 ```
 
-#### 7.6 VARIABLES DE MÓDULO
+#### 6.6 VARIABLES DE MÓDULO
 
 Os módulos executam dentro do seu próprio escopo, e quaisquer variáveis definidas por um módulo, não serão acessíveis a outros módulos, nem ao script pai, a menos que estejam armazenados na array `$CIDRAM` (tudo o resto é liberado após a conclusão do módulo).
 
@@ -1486,7 +1485,7 @@ Variável | Descrição
 ---
 
 
-### 8. <a name="SECTION8"></a>CONHECIDOS COMPATIBILIDADE PROBLEMAS
+### 7. <a name="SECTION7"></a>CONHECIDOS COMPATIBILIDADE PROBLEMAS
 
 Os seguintes pacotes e produtos foram considerados incompatíveis com o CIDRAM:
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1500,7 +1499,7 @@ Os módulos foram disponibilizados para garantir que os seguintes pacotes e prod
 ---
 
 
-### 9. <a name="SECTION9"></a>PERGUNTAS MAIS FREQUENTES (FAQ)
+### 8. <a name="SECTION8"></a>PERGUNTAS MAIS FREQUENTES (FAQ)
 
 - [O que é uma "assinatura"?](#WHAT_IS_A_SIGNATURE)
 - [O que é um "CIDR"?](#WHAT_IS_A_CIDR)
@@ -1856,19 +1855,19 @@ Se você tentou todas essas idéias e nenhuma delas funcionou para você, ou se 
 ---
 
 
-### 11. <a name="SECTION11"></a>INFORMAÇÃO LEGAL
+### 9. <a name="SECTION9"></a>INFORMAÇÃO LEGAL
 
-#### 11.0 PREÂMBULO DE SEÇÃO
+#### 9.0 PREÂMBULO DE SEÇÃO
 
 Esta seção da documentação destina-se a descrever possíveis considerações legais em relação ao uso e implementação do pacote, e fornecer algumas informações básicas relacionadas. Isso pode ser importante para alguns usuários como um meio de garantir a conformidade com quaisquer requisitos legais que possam existir nos países nos quais eles operam, e alguns usuários podem precisar ajustar as políticas do site de acordo com essas informações.
 
 Em primeiro lugar por favor, perceba que eu (o autor do pacote) não sou advogado, nem profissional legal qualificado de qualquer tipo. Portanto, não estou legalmente qualificado para fornecer aconselhamento jurídico. Além disso, em alguns casos, exigências legais exatas podem variar entre diferentes países e jurisdições, e estes requisitos legais variados podem, às vezes, conflitar (como, por exemplo, no caso de países que defendem os [direitos de privacidade](https://pt.wikipedia.org/wiki/Direito_%C3%A0_privacidade) e o [direito de ser esquecido](https://pt.wikipedia.org/wiki/Direito_ao_esquecimento), versus países que favorecem a retenção prolongada de dados). Considere também que o acesso ao pacote não está restrito a países ou jurisdições específicos e, portanto, o pacote userbase é provável que seja geograficamente diverso. Estes pontos considerados, eu não estou em posição de afirmar o que significa ser "legalmente compatível" para todos os usuários, em todos os aspectos. No entanto, espero que as informações aqui contidas o ajudem a chegar a uma decisão sobre o que você deve fazer para permanecer legalmente conforme no contexto do pacote. Se tiver alguma dúvida ou preocupação em relação às informações aqui contidas, ou se você precisar de ajuda e conselhos adicionais de uma perspectiva legal, eu recomendaria consultar um profissional legal qualificado.
 
-#### 11.1 RESPONSABILIDADE
+#### 9.1 RESPONSABILIDADE
 
 Conforme já declarado pela licença do pacote, o pacote é fornecido sem qualquer garantia. Isso inclui (mas não está limitado a) todo o escopo de responsabilidade. O pacote é fornecido a você para sua conveniência, na esperança de que seja útil e que traga algum benefício para você. Entretanto, se você usa ou implementa o pacote, é sua própria escolha. Você não é forçado a usar ou implementar o pacote, mas, quando o faz, você é responsável por essa decisão. Nem eu, nem qualquer outro colaborador do pacote, somos legalmente responsáveis pelas consequências das decisões que você toma, independentemente de ser direto, indireto, implícito, ou de outra forma.
 
-#### 11.2 TERCEIROS
+#### 9.2 TERCEIROS
 
 Dependendo de sua configuração e implementação exatas, o pacote pode se comunicar e compartilhar informações com terceiros em alguns casos. Essas informações podem ser definidas como "[informação pessoalmente identificável](https://pt.wikipedia.org/wiki/Informa%C3%A7%C3%A3o_pessoalmente_identific%C3%A1vel)" (PII) em alguns contextos, por algumas jurisdições.
 
@@ -1876,7 +1875,7 @@ Como esta informação pode ser usada por estes terceiros, está sujeita às vá
 
 Para fins de transparência, o tipo de informação compartilhada e com quem está descrito abaixo.
 
-##### 11.2.0 PESQUISA DE NOME DE HOST
+##### 9.2.0 PESQUISA DE NOME DE HOST
 
 Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes de host (tais como o "módulo bloqueador de hosts perigosos", o "tor project exit nodes block module", ou "verificação dos motores de busca", por exemplo), o CIDRAM precisa ser capaz de obter o nome do host de solicitações de entrada de alguma forma. Tipicamente, ele faz isso solicitando o nome do host do endereço IP das solicitações de entrada de um servidor DNS ou solicitando as informações por meio da funcionalidade fornecida pelo sistema em que o CIDRAM está instalado (isso é tipicamente referido como um "pesquisa de nome de host"). Os servidores DNS definidos por padrão pertencem ao serviço [Google DNS](https://dns.google.com/) (mas isso pode ser facilmente alterado por meio da configuração). Os serviços exatos comunicados com são configuráveis, e dependem de como você configura o pacote. No caso de usar a funcionalidade fornecida pelo sistema em que o CIDRAM está instalado, você precisará entrar em contato com o administrador do sistema para determinar quais rotas as pesquisas de nome de host usam. Pesquisas de nome de host podem ser evitadas no CIDRAM, evitando os módulos afetados ou modificando a configuração do pacote de acordo com suas necessidades.
 
@@ -1888,7 +1887,7 @@ Se você usar quaisquer funções ou módulos destinados a trabalhar com nomes d
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.2 VERIFICAÇÃO DOS MOTORES DE BUSCA E MÍDIAS SOCIAIS
+##### 9.2.1 VERIFICAÇÃO DOS MOTORES DE BUSCA E MÍDIAS SOCIAIS
 
 Quando a verificação dos motores de busca é ativada, o CIDRAM tenta executar pesquisas direta DNS para verificar se as solicitações que dizem ter origem nos motores de busca são autênticas. Da mesma forma, quando a verificação de mídia social é ativada, o CIDRAM faz o mesmo para solicitações aparentes de mídia social. Para fazer isso, ele usa o serviço [Google DNS](https://dns.google.com/) para tentar resolver endereços IP dos nomes de host dessas solicitações de entrada (nesse processo, os nomes de host dessas solicitações de entrada são compartilhados com o serviço).
 
@@ -1897,25 +1896,25 @@ Quando a verificação dos motores de busca é ativada, o CIDRAM tenta executar 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 CAPTCHA
+##### 9.2.2 CAPTCHA
 
 CIDRAM oferece suporte a reCAPTCHA e hCAPTCHA. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
 
-##### 11.2.4 STOP FORUM SPAM
+##### 9.2.3 STOP FORUM SPAM
 
 O [Stop Forum Spam](https://www.stopforumspam.com/) é um serviço fantástico, disponível gratuitamente, que pode ajudar a proteger fóruns, blogs, e sites de spammers. Ele faz isso fornecendo um banco de dados de spammers conhecidos, e uma API que pode ser aproveitada para verificar se um endereço IP, nome de usuário, ou um endereço de e-mail está listado em seu banco de dados.
 
 O CIDRAM fornece um módulo opcional que aproveita essa API para verificar se o endereço IP de solicitações de entrada pertence a um spammer suspeito. O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do Stop Forum Spam de acordo com a finalidade do módulo. Quando o módulo é instalado, o CIDRAM se comunica com essa API sempre que uma solicitação de entrada solicita um recurso que o CIDRAM reconhece como um tipo de recurso frequentemente alvejado por spammers (tais como páginas de login, páginas de registro, páginas de verificação de e-mail, formulários de comentários, etc).
 
-##### 11.2.5 ABUSEIPDB
+##### 9.2.4 ABUSEIPDB
 
 O CIDRAM fornece um módulo opcional para bloquear endereços IP abusivos usando a API [AbuseIPDB](https://www.abuseipdb.com/). O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do AbuseIPDB de acordo com a finalidade do módulo.
 
-##### 11.2.6 BGPVIEW
+##### 9.2.5 BGPVIEW
 
 O CIDRAM fornece um módulo opcional para executar pesquisas de ASN e de código de país usando a API [BGPView](https://bgpview.io/). Essas pesquisas fornecem a capacidade de bloquear ou colocar na lista branca com base no ASN ou no país de origem. O módulo não é instalado por padrão, mas se você optar por instalá-lo, os endereços IP do usuário podem ser compartilhados com a API do BGPView de acordo com a finalidade do módulo.
 
-#### 11.3 REGISTRO
+#### 9.3 REGISTRO
 
 O registro é uma parte importante do CIDRAM por vários motivos. Pode ser difícil diagnosticar e resolver falsos positivos quando os eventos de bloqueio que os causam não são registrados. Sem o registro de eventos de bloqueio, pode ser difícil determinar exatamente o quão bem o CIDRAM funciona em qualquer contexto específico, e pode ser difícil determinar onde suas deficiências podem ser, e quais mudanças podem ser necessárias para sua configuração ou assinaturas de acordo, para que ele continue funcionando como pretendido. Não obstante, o registro pode não ser desejável para todos os usuários e permanece totalmente opcional. No CIDRAM, o registro está desativado por padrão. Para ativá-lo, o CIDRAM deve ser configurado de acordo.
 
@@ -1923,7 +1922,7 @@ Adicionalmente, se o registro é legalmente permissível, e na medida em que é 
 
 Existem vários tipos de registro que o CIDRAM pode executar. Diferentes tipos de registro envolvem diferentes tipos de informações, por diferentes razões.
 
-##### 11.3.0 OS EVENTOS DE BLOQUEIO
+##### 9.3.0 OS EVENTOS DE BLOQUEIO
 
 O principal tipo de registro que o CIDRAM pode realizar refere-se a "eventos de bloqueio". Esse tipo do registro está relacionado a quando o CIDRAM bloqueia uma solicitação, e pode ser fornecido em três formatos diferentes:
 - Arquivos de log legíveis para humanos.
@@ -1972,7 +1971,7 @@ Um evento de bloqueio registrado geralmente inclui as seguintes informações:
 
 Quando essas diretivas são deixadas vazias, esse tipo de log permanecerá desativado.
 
-##### 11.3.1 REGISTRO DE CAPTCHA
+##### 9.3.1 REGISTRO DE CAPTCHA
 
 Esse tipo de registro refere-se especificamente a instâncias de CAPTCHA, e ocorre apenas quando um usuário tenta concluir uma instância de CAPTCHA.
 
@@ -1986,7 +1985,7 @@ Endereço IP: x.x.x.x - Data/Hora: Day, dd Mon 20xx hh:ii:ss +0000 - Estado CAPT
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
-##### 11.3.2 REGISTRO DO FRONT-END
+##### 9.3.2 REGISTRO DO FRONT-END
 
 Esse tipo de registro está associado a tentativas de login no front-end, e ocorre apenas quando um usuário tenta efetuar login no front-end (supondo que o acesso ao front-end esteja ativado).
 
@@ -1999,7 +1998,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Conectado.
 *A diretiva de configuração responsável pelo registro do front-end é:*
 - `general` -> `frontend_log`
 
-##### 11.3.3 ROTAÇÃO DE REGISTRO
+##### 9.3.3 ROTAÇÃO DE REGISTRO
 
 Você pode querer purgar os registros após um período de tempo, ou pode ser obrigado a fazê-lo por lei (ou seja, a quantidade de tempo permitida legalmente para você manter registros pode ser limitada por lei). Você pode conseguir isso incluindo marcadores de data/hora nos nomes de seus arquivos de registro conforme especificado pela sua configuração de pacote (por exemplo, `{yyyy}-{mm}-{dd}.log`) e, em seguida, ativando a rotação de registro (a rotação de registro permite que você execute alguma ação nos arquivos de registro quando os limites especificados são excedidos).
 
@@ -2011,14 +2010,14 @@ Por outro lado, se você precisar reter o registros por um longo período de tem
 - `general` -> `log_rotation_limit`
 - `general` -> `log_rotation_action`
 
-##### 11.3.4 TRUNCAMENTO DE REGISTRO
+##### 9.3.4 TRUNCAMENTO DE REGISTRO
 
 Também é possível truncar arquivos de registro individuais quando eles excedem um certo tamanho, se isso for algo que você possa precisar ou desejar fazer.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `truncate`
 
-##### 11.3.5 PSEUDONIMIZAÇÃO DE ENDEREÇOS IP
+##### 9.3.5 PSEUDONIMIZAÇÃO DE ENDEREÇOS IP
 
 Em primeiro lugar, se você não estiver familiarizado com o termo, "pseudonimização" refere-se ao processamento de dados pessoais como tal que não pode ser identificado a nenhuma pessoa específica sem informações suplementares, e desde que tais informações suplementares sejam mantidas separadamente e sujeitas a medidas técnicas e organizacionais para assegurar que os dados pessoais não possam ser identificados a nenhuma pessoa natural.
 
@@ -2031,7 +2030,7 @@ O CIDRAM é capaz de pseudonimizar endereços IP ao registrá-los, se isso for a
 *Diretivas de configuração relevantes:*
 - `legal` -> `pseudonymise_ip_addresses`
 
-##### 11.3.6 OMITINDO INFORMAÇÕES DE REGISTRO
+##### 9.3.6 OMITINDO INFORMAÇÕES DE REGISTRO
 
 Se você quiser dar um passo adiante, impedindo que tipos específicos de informação sejam registrados inteiramente, isso também é possível. O CIDRAM fornece diretivas de configuração para controlar se os endereços IP, os nomes de host, e os agentes do usuário estão incluídos nos registros. Por padrão, todos esses três pontos de dados são incluídos nos registros quando disponíveis. Definir qualquer uma dessas diretivas de configuração como `true` omitirá as informações correspondentes dos registros.
 
@@ -2042,18 +2041,18 @@ Se você quiser dar um passo adiante, impedindo que tipos específicos de inform
 - `legal` -> `omit_hostname`
 - `legal` -> `omit_ua`
 
-##### 11.3.7 ESTATISTICAS
+##### 9.3.7 ESTATISTICAS
 
 O CIDRAM é opcionalmente capaz de rastrear estatísticas como o número total de eventos de bloqueio ou instâncias de CAPTCHA que ocorreram desde algum momento específico no tempo. Esta funcionalidade está desativada por padrão, mas pode ser ativada através da configuração do pacote. Essa funcionalidade rastreia apenas o número total de eventos ocorridos e não inclui informações sobre eventos específicos (e, portanto, não deve ser considerado como PII).
 
 *Diretivas de configuração relevantes:*
 - `general` -> `statistics`
 
-##### 11.3.8 ENCRIPTAÇÃO
+##### 9.3.8 ENCRIPTAÇÃO
 
 CIDRAM não criptografa seu cache ou qualquer informação de registro. A [encriptação](https://pt.wikipedia.org/wiki/Encripta%C3%A7%C3%A3o) de cache e registro pode ser introduzida no futuro, mas não há planos específicos para ela atualmente. Se você estiver preocupado com o acesso de terceiros não autorizados a partes do CIDRAM que possam conter PII ou informações confidenciais, como cache ou logs, recomendo que o CIDRAM não seja instalado em um local de acesso público (por exemplo, instale o CIDRAM fora do diretório `public_html` padrão ou seu equivalente disponível para a maioria dos servidores web padrão) e que as permissões apropriadamente restritivas sejam impostas para o diretório em que ele reside (em particular, para o diretório do vault). Se isso não for suficiente para resolver suas preocupações, configure o CIDRAM para que os tipos de informações que causam suas preocupações não sejam coletados ou registrados em primeiro lugar (tal como desabilitar o registro em log).
 
-#### 11.4 COOKIES
+#### 9.4 COOKIES
 
 O CIDRAM define [cookies](https://pt.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)) em dois pontos em sua base de código. Em primeiro lugar, quando um usuário concluir com êxito uma instância de CAPTCHA (e supondo que `lockuser` esteja definido como `true`), O CIDRAM define um cookie para poder lembrar, para solicitações subsequentes, que o usuário já concluiu uma instância de CAPTCHA, de modo que não será necessário pedir continuamente ao usuário para concluir uma instância de CAPTCHA em solicitações subsequentes. Em segundo lugar, quando um usuário efetua login com êxito no front-end, o CIDRAM define um cookie para poder lembrar o usuário das solicitações subsequentes (isto é, os cookies são usados para autenticar o usuário numa sessão de login).
 
@@ -2068,11 +2067,11 @@ Em ambos os casos, os avisos de cookie são exibidos de forma proeminente (quand
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
-#### 11.5 MARKETING E PUBLICIDADE
+#### 9.5 MARKETING E PUBLICIDADE
 
 A CIDRAM não coleta ou processa qualquer informação para fins de marketing ou publicidade, e nem vende nem lucra com qualquer informação coletada ou registrada. A CIDRAM não é uma empresa comercial, nem está relacionada a nenhum interesse comercial, portanto, fazer essas coisas não faria sentido. Este tem sido o caso desde o início do projeto, e continua sendo o caso hoje. Além disso, fazer essas coisas seria contraproducente para o espírito e propósito do projeto como um todo, e enquanto eu continuar a manter o projeto, nunca acontecerá.
 
-#### 11.6 POLÍTICA DE PRIVACIDADE
+#### 9.6 POLÍTICA DE PRIVACIDADE
 
 Em algumas circunstâncias, você pode ser legalmente obrigado a exibir claramente um link para sua política de privacidade em todas as páginas e seções do seu site. Isso pode ser importante como um meio de garantir que os usuários estejam bem informados sobre suas práticas de privacidade exatas, os tipos de PII que você coletar, e como você pretende usá-lo. Para poder incluir esse link na página "Acesso Negado" do CIDRAM, é fornecida uma diretiva de configuração para especificar o URL da sua política de privacidade.
 
@@ -2081,7 +2080,7 @@ Em algumas circunstâncias, você pode ser legalmente obrigado a exibir claramen
 *Diretivas de configuração relevantes:*
 - `legal` -> `privacy_policy`
 
-#### 11.7 GDPR/DSGVO
+#### 9.7 GDPR/DSGVO
 
 O Regulamento Geral sobre a Proteção de Dados (GDPR) é um regulamento da União Europeia, que entra em vigor em 25 de Maio, 2018. O principal objectivo do regulamento é dar controlo aos cidadãos e residentes da UE relativamente aos seus próprios dados pessoais, e unificar a regulação na UE em matéria de privacidade e dados pessoais.
 

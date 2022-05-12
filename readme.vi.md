@@ -5,12 +5,11 @@
 - 2. [CÁCH CÀI ĐẶT](#SECTION2)
 - 3. [CÁCH SỬ DỤNG](#SECTION3)
 - 4. [QUẢN LÝ FRONT-END](#SECTION4)
-- 6. [TÙY CHỌN CHO CẤU HÌNH](#SECTION6)
-- 7. [ĐỊNH DẠNG CỦA CHỬ KÝ](#SECTION7)
-- 8. [NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH](#SECTION8)
-- 9. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#SECTION9)
-- 10. *Dành riêng cho các bổ sung trong tương lai cho tài liệu.*
-- 11. [THÔNG TIN HỢP PHÁP](#SECTION11)
+- 5. [TÙY CHỌN CHO CẤU HÌNH](#SECTION5)
+- 6. [ĐỊNH DẠNG CỦA CHỬ KÝ](#SECTION6)
+- 7. [NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH](#SECTION7)
+- 8. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#SECTION8)
+- 9. [THÔNG TIN HỢP PHÁP](#SECTION9)
 
 *Lưu ý về bản dịch: Trong trường hợp có sai sót (ví dụ, sự khác biệt giữa bản dịch, lỗi chính tả, vv), phiên bản tiếng Anh của README được coi là phiên bản gốc và có thẩm quyền. Nếu bạn tìm thấy bất kỳ lỗi, giúp đỡ của bạn trong việc điều chỉnh họ sẽ được hoan nghênh.*
 
@@ -134,7 +133,7 @@ Chú thích: Bảo vệ vault của bạn khỏi bị truy cập trái phép (v�
 ---
 
 
-### 6. <a name="SECTION6"></a>TÙY CHỌN CHO CẤU HÌNH
+### 5. <a name="SECTION5"></a>TÙY CHỌN CHO CẤU HÌNH
 
 Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho CIDRAM `config.ini`, cùng với một mô tả về mục đích và chức năng của chúng.
 
@@ -1140,12 +1139,12 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 ---
 
 
-### 7. <a name="SECTION7"></a>ĐỊNH DẠNG CỦA CHỬ KÝ
+### 6. <a name="SECTION6"></a>ĐỊNH DẠNG CỦA CHỬ KÝ
 
 *Xem thêm:*
 - *["Chữ ký" là gì?](#WHAT_IS_A_SIGNATURE)*
 
-#### 7.0 KHÁI NIỆM CƠ BẢN (ĐỐI VỚI TẬP TIN CHỮ KÝ)
+#### 6.0 KHÁI NIỆM CƠ BẢN (ĐỐI VỚI TẬP TIN CHỮ KÝ)
 
 Tất cả các chữ ký IPv4 theo định dạng: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
 - `xxx.xxx.xxx.xxx` đại diện cho sự khởi đầu của khối CIDR (octet của địa chỉ IP đầu tiên trong khối).
@@ -1201,9 +1200,9 @@ Những từ viết tắt có sẵn là:
 - Proxy
 - Spam
 
-#### 7.1 GẮN THẺ
+#### 6.1 GẮN THẺ
 
-##### 7.1.0 GẮN THẺ PHẦN
+##### 6.1.0 GẮN THẺ PHẦN
 
 Nếu bạn muốn chia chữ ký tùy chỉnh của bạn để các phần riêng biệt, bạn có thể xác định những phần riêng lẻ cho các kịch bản bằng cách thêm một "gắn thẻ phần" ngay sau khi có chữ ký của từng phần, với tên của phần chữ ký của bạn (xem ví dụ dưới đây).
 
@@ -1234,7 +1233,7 @@ Tương tự logic có thể được áp dụng để tách thẻ loại khác.
 
 Gắn thẻ phần có thể rất hữu ích cho lọc lỗi khi xảy ra sai tích cực, bằng cách cung cấp một phương tiện dễ dàng để tìm ra chính xác nguồn gốc của vấn đề, và có thể rất hữu ích cho lọc các mục nhập tập tin bản ghi khi xem tập tin bản ghi qua trang bản ghi của front-end (tên phần có thể nhấp qua trang bản ghi của front-end và có thể được sử dụng làm tiêu chí lọc). Nếu gắn thẻ phần bị bỏ qua đối với một số chữ ký cụ thể, khi những chữ ký được kích hoạt, CIDRAM sử dụng tên của tập tin chữ ký cùng với loại địa chỉ IP bị chặn (IPv4 hoặc IPv6) như là một dự phòng, và do đó, các gắn thẻ phần là hoàn toàn tùy chọn. Chúng có thể được khuyên dùng trong một số trường hợp, chẳng hạn như khi tập tin chữ ký được đặt tên mơ hồ hoặc nếu không thì khó xác định được nguồn gốc của chữ ký gây ra yêu cầu bị chặn.
 
-##### 7.1.1 GẮN THẺ HẾT HẠN
+##### 6.1.1 GẮN THẺ HẾT HẠN
 
 Nếu bạn muốn chữ ký hết hạn sau một thời gian, trong một cách tương tự như gắn thẻ phần, bạn có thể sử dụng một "gắn thẻ hết hạn" để chỉ định khi chữ ký nên hết hiệu lực. Gắn thẻ hết hạn sử dụng định dạng "YYYY.MM.DD" (xem ví dụ dưới đây).
 
@@ -1247,7 +1246,7 @@ Expires: 2016.12.31
 
 Chữ ký hết hạn sẽ không bao giờ được kích hoạt trên bất kỳ yêu cầu, không có vấn đề gì.
 
-##### 7.1.2 GẮN THẺ XUẤT XỨ
+##### 6.1.2 GẮN THẺ XUẤT XỨ
 
 Nếu bạn muốn chỉ định quốc gia xuất xứ cho một số chữ ký cụ thể, bạn có thể làm như vậy bằng cách sử dụng một "gắn thẻ xuất xứ". Gắn thẻ xuất xứ chấp nhận một mã "[ISO 3166-1 Alpha-2](https://vi.wikipedia.org/wiki/ISO_3166-1_alpha-2)" tương ứng với quốc gia xuất xứ cho các chữ ký mà nó áp dụng. Các mã này phải được viết bằng chữ hoa (trường hợp thấp hoặc trường hợp hỗn hợp sẽ không hiển thị chính xác). Khi một gắn thẻ xuất xứ được sử dụng, nó được thêm vào mục nhập bản ghi "Tại sao bị chặn" cho bất kỳ yêu cầu bị chặn như là kết quả của chữ ký mà gắn thẻ được áp dụng.
 
@@ -1279,7 +1278,7 @@ Tag: Phần Ví Dụ
 Expires: 2016.12.31
 ```
 
-##### 7.1.3 GẮN THẺ TRÌ HOÃN
+##### 6.1.3 GẮN THẺ TRÌ HOÃN
 
 Khi số lượng lớn các tập tin chữ ký được cài đặt và sử dụng, cài đặt có thể trở nên khá phức tạp, và có thể có một số chữ ký chồng lên nhau. Trong những trường hợp này, để ngăn chặn nhiều chữ ký chồng chéo được kích hoạt trong các sự kiện khối, gắn thẻ trì hoãn có thể được sử dụng để trì hoãn các phần chữ ký cụ thể trong trường hợp một số tập tin chữ ký cụ thể khác được cài đặt và sử dụng. Điều này có thể hữu ích trong trường hợp một số chữ ký được cập nhật thường xuyên hơn các chữ ký khác, để trì hoãn các chữ ký ít được cập nhật thường xuyên hơn với các chữ ký được cập nhật thường xuyên hơn.
 
@@ -1295,7 +1294,7 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
-##### 7.1.4 GẮN THẺ HỒ SƠ
+##### 6.1.4 GẮN THẺ HỒ SƠ
 
 Gắn thẻ hồ sơ cung cấp một phương tiện hiển thị thông tin bổ sung tại trang kiểm tra IP, và có thể được tận dụng bởi các mô-đun và các quy tắc phụ trợ để có hành vi phức tạp hơn và việc ra quyết định được tinh chỉnh.
 
@@ -1310,9 +1309,9 @@ Profile: Example;Just some generic stuff;Foo;Bar
 Origin: BB
 ```
 
-#### 7.2 YAML
+#### 6.2 YAML
 
-##### 7.2.0 YAML CƠ BẢN
+##### 6.2.0 YAML CƠ BẢN
 
 Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
 
@@ -1367,7 +1366,7 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCAPTCHA
+##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCAPTCHA
 
 Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
@@ -1382,9 +1381,9 @@ hcaptcha:
  enabled: true
 ```
 
-#### 7.3 PHỤ TRỢ
+#### 6.3 PHỤ TRỢ
 
-##### 7.3.0 BỎ QUA PHẦN CHỮ KÝ
+##### 6.3.0 BỎ QUA PHẦN CHỮ KÝ
 
 Ngoài ra, nếu bạn muốn CIDRAM để hoàn toàn bỏ qua một số phần cụ thể trong bất kỳ tập tin chữ ký, bạn có thể sử dụng các tập tin `ignore.dat` để xác định những phần để bỏ qua. Trên một dòng mới, viết `Ignore`, theo sau là một không gian, theo sau là tên của phần mà bạn muốn CIDRAM để bỏ qua (xem ví dụ dưới đây).
 
@@ -1394,11 +1393,11 @@ Ignore Phần 1
 
 Điều này cũng có thể đạt được bằng cách sử dụng giao diện được cung cấp bởi trang "danh sách phần" front-end của CIDRAM.
 
-##### 7.3.1 QUY TẮC PHỤ TRỢ
+##### 6.3.1 QUY TẮC PHỤ TRỢ
 
 Nếu bạn cảm thấy việc viết các tập tin chữ ký tùy chỉnh hoặc các mô-đun tùy chỉnh của riêng bạn quá phức tạp đối với bạn, một lựa chọn đơn giản hơn có thể là sử dụng giao diện được cung cấp bởi trang "quy tắc phụ trợ" front-end của CIDRAM. Bằng cách chọn các tùy chọn thích hợp và chỉ định chi tiết về các loại yêu cầu cụ thể, bạn có thể hướng dẫn CIDRAM cách trả lời các yêu cầu đó. Các "quy tắc phụ trợ" được thực hiện sau khi tất cả các tập tin chữ ký và mô-đun đã hoàn thành thực hiện.
 
-#### 7.4 <a name="MODULE_BASICS"></a>KHÁI NIỆM CƠ BẢN (CHO MÔ-ĐUN)
+#### 6.4 <a name="MODULE_BASICS"></a>KHÁI NIỆM CƠ BẢN (CHO MÔ-ĐUN)
 
 Các mô-đun có thể được sử dụng để mở rộng chức năng của CIDRAM, thực hiện các tác vụ bổ sung hay xử lý logic bổ sung. Thông thường, chúng được sử dụng khi cần thiết để chặn một yêu cho cầu lý do khác với địa chỉ IP có nguồn gốc (và như vậy, khi một chữ ký CIDR sẽ không đủ để chặn yêu cầu). Mô-đun được viết như tập tin PHP, và như vậy, thông thường, chữ ký mô-đun được viết như mã PHP.
 
@@ -1414,9 +1413,9 @@ Bởi vì các mô-đun được viết như tập tin PHP, nếu bạn đã que
 
 Một số chức năng được cung cấp bởi CIDRAM cho các mô-đun để sử dụng, để làm cho việc viết mô-đun của bạn trở nên đơn giản và dễ dàng hơn. Thông tin về chức năng này được mô tả dưới đây.
 
-#### 7.5 CHỨC NĂNG MÔ-ĐUN
+#### 6.5 CHỨC NĂNG MÔ-ĐUN
 
-##### 7.5.0 "$Trigger"
+##### 6.5.0 "$Trigger"
 
 Chữ ký mô-đun thường được viết bằng `$Trigger`. Trong hầu hết các trường hợp, sự đóng này sẽ quan trọng hơn bất cứ thứ gì khác để viết mô-đun.
 
@@ -1437,7 +1436,7 @@ Thực tế của `$Condition` được đánh giá, và nếu true/đúng, ch�
 $Trigger = $CIDRAM['Trigger'];
 ```
 
-##### 7.5.1 "$Bypass"
+##### 6.5.1 "$Bypass"
 
 Đường tránh chữ ký thường được viết bằng `$Bypass`.
 
@@ -1456,7 +1455,7 @@ Thực tế của `$Condition` được đánh giá, và nếu true/đúng, đư
 $Bypass = $CIDRAM['Bypass'];
 ```
 
-##### 7.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$CIDRAM['DNS-Reverse']"
 
 Điều này có thể được sử dụng để lấy tên máy chủ của một địa chỉ IP. Nếu bạn muốn tạo một mô-đun để chặn tên máy chủ, sự đóng này có thể hữu ích.
 
@@ -1477,7 +1476,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 }
 ```
 
-#### 7.6 BIẾN MÔ-ĐUN
+#### 6.6 BIẾN MÔ-ĐUN
 
 Mô-đun thực hiện theo phạm vi riêng của chúng, và bất kỳ biến nào được xác định bởi mô-đun, sẽ không thể truy cập vào mô-đun khác, hoặc kịch bản cha mẹ, trừ khi chúng được lưu trữ trong mảng `$CIDRAM` (mọi thứ khác được làm sạch sau khi kết thúc thực hiện mô-đun).
 
@@ -1500,7 +1499,7 @@ Biến | Chi tiết
 ---
 
 
-### 8. <a name="SECTION8"></a>NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH
+### 7. <a name="SECTION7"></a>NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH
 
 Các gói và sản phẩm sau đã được tìm thấy là không tương thích với CIDRAM:
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1514,7 +1513,7 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 ---
 
 
-### 9. <a name="SECTION9"></a>NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)
+### 8. <a name="SECTION8"></a>NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)
 
 - ["Chữ ký" là gì?](#WHAT_IS_A_SIGNATURE)
 - ["CIDR" là gì?](#WHAT_IS_A_CIDR)
@@ -1866,19 +1865,19 @@ Nếu bạn đã thử tất cả những ý tưởng đó và không ai trong s
 ---
 
 
-### 11. <a name="SECTION11"></a>THÔNG TIN HỢP PHÁP
+### 9. <a name="SECTION9"></a>THÔNG TIN HỢP PHÁP
 
-#### 11.0 PHẦN MỞ ĐẦU
+#### 9.0 PHẦN MỞ ĐẦU
 
 Phần tài liệu này nhằm mô tả các cân nhắc pháp lý có thể có về việc sử dụng và thực hiện của gói, và cung cấp một số thông tin liên quan cơ bản. Điều này có thể quan trọng đối với một số người dùng như một phương tiện để đảm bảo tuân thủ mọi yêu cầu pháp lý có thể tồn tại ở các quốc gia mà họ hoạt động, và một số người dùng có thể cần phải điều chỉnh chính sách trang web của họ theo thông tin này.
 
 Đầu tiên và quan trọng nhất, xin vui lòng nhận ra rằng tôi (tác giả gói) không phải là luật sư, cũng không phải là một chuyên gia pháp lý đủ điều kiện. Do đó, tôi không đủ tư cách pháp lý để cung cấp tư vấn pháp lý. Ngoài ra, trong một số trường hợp, yêu cầu pháp lý chính xác có thể khác nhau giữa các quốc gia và khu vực pháp lý khác nhau, và các yêu cầu pháp lý khác nhau đôi khi có thể xung đột (chẳng hạn như, ví dụ, trong trường hợp các quốc gia mà ủng hộ [quyền riêng tư](https://vi.wikipedia.org/wiki/Quy%E1%BB%81n_%C4%91%C6%B0%E1%BB%A3c_b%E1%BA%A3o_v%E1%BB%87_%C4%91%E1%BB%9Di_t%C6%B0) và quyền bị lãng quên, so với các quốc gia mà ủng hộ luật lưu giữ dữ liệu). Cũng xem xét việc truy cập vào gói không bị giới hạn ở các quốc gia hoặc khu vực pháp lý cụ thể, và do đó, cơ sở người dùng gói có khả năng đa dạng về mặt địa lý. Những điểm này được xem xét, tôi không ở trong một vị trí để tuyên bố những gì nó có nghĩa là để "tuân thủ về mặt pháp lý" cho tất cả người dùng, trong tất cả các liên quan. Tuy nhiên, tôi hy vọng rằng thông tin trong tài liệu này sẽ giúp bạn tự quyết định về những gì bạn phải làm để duy trì tuân thủ về mặt pháp lý trong bối cảnh của gói. Nếu bạn có bất kỳ nghi ngờ hoặc quan tâm nào về thông tin ở đây, hoặc nếu bạn cần thêm trợ giúp và tư vấn từ góc độ pháp lý, tôi khuyên bạn nên tham khảo ý kiến chuyên gia pháp lý đủ điều kiện.
 
-#### 11.1 TRÁCH NHIỆM PHÁP LÝ
+#### 9.1 TRÁCH NHIỆM PHÁP LÝ
 
 Theo như đã nêu trong giấy phép gói, gói được cung cấp mà không có bất kỳ bảo hành nào. Điều này bao gồm (nhưng không giới hạn) tất cả phạm vi trách nhiệm pháp lý. Gói phần mềm được cung cấp cho bạn để thuận tiện cho bạn, với hy vọng rằng nó sẽ hữu ích, và rằng nó sẽ cung cấp một số lợi ích cho bạn. Tuy nhiên, việc sử dụng hoặc triển khai gói, là lựa chọn của riêng bạn. Bạn không bị buộc phải sử dụng hoặc triển khai gói, nhưng khi bạn làm như vậy, bạn chịu trách nhiệm về quyết định đó. Tôi và những người đóng góp gói khác, không chịu trách nhiệm pháp lý về hậu quả của các quyết định mà bạn đưa ra, bất kể trực tiếp, gián tiếp, ngụ ý, hay nói cách khác.
 
-#### 11.2 BÊN THỨ BA
+#### 9.2 BÊN THỨ BA
 
 Tùy thuộc vào cấu hình và triển khai chính xác của nó, gói có thể giao tiếp và chia sẻ thông tin với bên thứ ba trong một số trường hợp. Thông tin này có thể được định nghĩa là "[thông tin nhận dạng cá nhân](https://www.pcworld.com.vn/articles/cong-nghe/an-ninh-mang/2016/05/1248000/thong-tin-ca-nhan-tai-san-rieng-cung-la-tien/)" (PII) trong một số ngữ cảnh, bởi một số khu vực pháp lý.
 
@@ -1886,7 +1885,7 @@ Thông tin này có thể được các bên thứ ba này sử dụng như th�
 
 Với mục đích minh bạch, loại thông tin được chia sẻ, và với ai, được mô tả dưới đây.
 
-##### 11.2.0 TRA CỨU TÊN MÁY CHỦ
+##### 9.2.0 TRA CỨU TÊN MÁY CHỦ
 
 Nếu bạn sử dụng bất kỳ tính năng hay mô-đun nào để làm việc với tên máy chủ (chẳng hạn như "mô-đun cho chặn các host xấu", "tor project exit nodes block module", hay "xác minh máy tìm kiếm", ví dụ), CIDRAM cần để có thể có được tên máy chủ của các yêu cầu gửi đến bằng cách nào đó. Thông thường, nó thực hiện điều này bằng cách yêu cầu tên máy chủ của địa chỉ IP của các yêu cầu gửi đến từ một máy chủ DNS, hoặc bằng cách yêu cầu thông tin thông qua chức năng được cung cấp bởi hệ thống nơi CIDRAM được cài đặt (điều này thường được gọi là "tra cứu tên máy chủ"). Các máy chủ DNS được xác định theo mặc định thuộc về dịch vụ [Google DNS](https://dns.google.com/) (nhưng điều này có thể dễ dàng thay đổi thông qua cấu hình). Các dịch vụ chính xác được truyền thông phụ thuộc vào cách bạn định cấu hình gói (nó có thể được cấu hình dễ dàng). Trong trường hợp sử dụng chức năng được cung cấp bởi hệ thống nơi CIDRAM được cài đặt, bạn sẽ cần phải liên hệ với quản trị viên hệ thống của bạn để xác định các tuyến đường để sử dụng cho tra cứu tên máy chủ. Tra cứu tên máy chủ có thể được ngăn chặn trong CIDRAM bằng cách tránh các mô-đun bị ảnh hưởng hay bằng cách sửa đổi cấu hình gói để phù hợp với nhu cầu của bạn.
 
@@ -1898,7 +1897,7 @@ Nếu bạn sử dụng bất kỳ tính năng hay mô-đun nào để làm vi�
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.2 XÁC MINH MÁY TÌM KIẾM VÀ TRUYỀN THÔNG XÃ HỘI
+##### 9.2.1 XÁC MINH MÁY TÌM KIẾM VÀ TRUYỀN THÔNG XÃ HỘI
 
 Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực hiện "tra cứu DNS chuyển tiếp" để xác minh tính xác thực của các yêu cầu nói rằng bắt nguồn từ các máy tìm kiếm. Tương tự như vậy, khi xác minh truyền thông xã hội được kích hoạt, CIDRAM thực hiện tương tự cho các yêu cầu truyền thông xã hội bị nghi ngờ. Để thực hiện điều này, nó sử dụng dịch vụ [Google DNS](https://dns.google.com/) để cố gắng giải quyết các địa chỉ IP từ tên máy chủ của các yêu cầu gửi đến này (trong quá trình này, tên máy chủ của các yêu cầu gửi đến này được chia sẻ với dịch vụ).
 
@@ -1907,25 +1906,25 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 CAPTCHA
+##### 9.2.2 CAPTCHA
 
 CIDRAM hỗ trợ reCAPTCHA và hCAPTCHA. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, tác nhân người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
-##### 11.2.4 STOP FORUM SPAM
+##### 9.2.3 STOP FORUM SPAM
 
 [Stop Forum Spam](https://www.stopforumspam.com/) là một dịch vụ tuyệt vời, miễn phí có sẵn có thể giúp bảo vệ diễn đàn, blog và trang web từ chương trình thư rác. Nó thực hiện điều này bằng cách cung cấp một cơ sở dữ liệu của chương trình và những người gửi thư rác đã biết, và một API có thể được tận dụng để kiểm tra xem địa chỉ IP, tên người dùng hay địa chỉ email có được liệt kê trên cơ sở dữ liệu của nó hay không.
 
 CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm tra xem địa chỉ IP của các yêu cầu gửi đến thuộc về một chương trình và những người gửi thư rác bị nghi ngờ hay không. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của Stop Forum Spam theo đúng mục đích của mô-đun. Khi mô-đun được cài đặt, CIDRAM giao tiếp với API này bất cứ khi nào một yêu cầu gửi đến yêu cầu một nguồn tài nguyên mà CIDRAM nhận ra là một loại tài nguyên thường xuyên được nhắm mục tiêu bởi chương trình và những người gửi thư rác (ví dụ, trang đăng nhập, trang đăng ký, trang xác minh email, biểu mẫu nhận xét, vv).
 
-##### 11.2.5 ABUSEIPDB
+##### 9.2.4 ABUSEIPDB
 
 CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của AbuseIPDB theo đúng mục đích của mô-đun.
 
-##### 11.2.6 BGPVIEW
+##### 9.2.5 BGPVIEW
 
 CIDRAM cung cấp một mô-đun tùy chọn để thực hiện tra cứu ASN và mã quốc gia bằng API của [BGPView](https://bgpview.io/) API. Các tra cứu này cung cấp khả năng chặn hoặc danh sách trắng yêu cầu trên cơ sở ASN hoặc quốc gia xuất xứ của họ. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của BGPView theo đúng mục đích của mô-đun.
 
-#### 11.3 NHẬT KÝ
+#### 9.3 NHẬT KÝ
 
 Nhật ký là một phần quan trọng của CIDRAM vì một số lý do. có thể khó để chẩn đoán và giải quyết các kết quả sai tích cực khi các sự kiện chặn khiến chúng không được ghi lại. Khi các sự kiện chặn không được ghi lại, có thể khó để xác định chính xác CIDRAM hoạt động tốt như thế nào trong bất kỳ ngữ cảnh cụ thể nào, và có thể khó để xác định nơi bất cập của nó, và những thay đổi nào có thể cần thiết đối với cấu hình hay chữ ký của nó, để nó có thể tiếp tục hoạt động như dự định. Bất kể, nhật ký có thể không được mong muốn cho tất cả người dùng, và vẫn hoàn toàn tùy chọn. Trong CIDRAM, ghi nhật ký bị vô hiệu hóa theo mặc định. Để kích hoạt nó, CIDRAM phải được cấu hình cho phù hợp.
 
@@ -1933,7 +1932,7 @@ Ngoài ra, việc nhật ký có được cho phép hợp pháp hay không, và 
 
 Có nhiều kiểu ghi nhật ký mà CIDRAM có thể thực hiện. Các loại ghi nhật ký khác nhau liên quan đến các loại thông tin khác nhau, vì các lý do khác nhau.
 
-##### 11.3.0 SỰ KIỆN CHẶN
+##### 9.3.0 SỰ KIỆN CHẶN
 
 Loại nhật ký chính mà CIDRAM có thể thực hiện liên quan đến "sự kiện chặn". Loại nhật ký này liên quan đến khi CIDRAM chặn một yêu cầu, và có thể được cung cấp theo ba định dạng khác nhau:
 - Tập tin nhật ký mà có thể được đọc bởi con người.
@@ -1982,7 +1981,7 @@ Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
 
 Khi các chỉ thị này được để trống, loại ghi nhật ký này sẽ vẫn bị vô hiệu hóa.
 
-##### 11.3.1 NHẬT KÝ CAPTCHA
+##### 9.3.1 NHẬT KÝ CAPTCHA
 
 Loại nhật ký này liên quan cụ thể đến CAPTCHA, và chỉ xảy ra khi người dùng cố gắng hoàn thành CAPTCHA.
 
@@ -1996,7 +1995,7 @@ Mục nhập nhật ký CAPTCHA chứa địa chỉ IP của người dùng đan
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
-##### 11.3.2 NHẬT KÝ FRONT-END
+##### 9.3.2 NHẬT KÝ FRONT-END
 
 Loại nhật ký này liên quan đến cố gắng đăng nhập, và chỉ xảy ra khi người dùng cố gắng đăng nhập vào front-end (giả sử truy cập front-end được kích hoạt).
 
@@ -2009,7 +2008,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Đã đăng nhập.
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký front-end là:*
 - `general` -> `frontend_log`
 
-##### 11.3.3 XOAY VÒNG NHẬT KÝ
+##### 9.3.3 XOAY VÒNG NHẬT KÝ
 
 Bạn có thể muốn thanh lọc nhật ký sau một khoảng thời gian, hoặc có thể được yêu cầu làm như vậy theo luật pháp (khoảng thời gian được phép giữ nhật ký hợp pháp có thể bị giới hạn bởi luật pháp). Bạn có thể đạt được điều này bằng cách đưa dấu ngày/giờ vào tên tập tin nhật ký của bạn theo quy định của cấu hình gói của bạn (ví dụ, `{yyyy}-{mm}-{dd}.log`), và sau đó kích hoạt xoay vòng nhật ký (xoay vòng nhật ký cho phép bạn thực hiện một số hành động trên tập tin nhật ký khi vượt quá giới hạn được chỉ định).
 
@@ -2021,14 +2020,14 @@ Ngược lại, nếu bạn được yêu cầu giữ lại nhật ký trong m�
 - `general` -> `log_rotation_limit`
 - `general` -> `log_rotation_action`
 
-##### 11.3.4 CẮT NGẮN NHẬT KÝ
+##### 9.3.4 CẮT NGẮN NHẬT KÝ
 
 Cũng có thể cắt ngắn các tập tin nhật ký riêng lẻ khi chúng vượt quá một kích thước nhất định, nếu đây bạn có thể cần hay muốn làm.
 
 *Chỉ thị cấu hình có liên quan:*
 - `general` -> `truncate`
 
-##### 11.3.5 PSEUDONYMISATION ĐỊA CHỈ IP
+##### 9.3.5 PSEUDONYMISATION ĐỊA CHỈ IP
 
 Thứ nhất, nếu bạn không quen thuộc với thuật ngữ này, "pseudonymisation" đề cập đến việc xử lý dữ liệu cá nhân sao cho không thể xác định được dữ liệu cá nhân cho bất kỳ chủ đề dữ liệu cụ thể nào nữa trừ khi có thông tin bổ sung, và miễn là thông tin bổ sung đó được duy trì riêng biệt và phải chịu sự các biện pháp kỹ thuật và tổ chức để đảm bảo rằng dữ liệu cá nhân không thể được xác định cho bất kỳ người tự nhiên nào.
 
@@ -2041,7 +2040,7 @@ CIDRAM có thể sử dụng "pseudonymisation" cho các địa chỉ IP khi nh�
 *Chỉ thị cấu hình có liên quan:*
 - `legal` -> `pseudonymise_ip_addresses`
 
-##### 11.3.6 BỎ QUA THÔNG TIN NHẬT KÝ
+##### 9.3.6 BỎ QUA THÔNG TIN NHẬT KÝ
 
 Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn các loại thông tin cụ thể được ghi lại hoàn toàn, điều này cũng có thể thực hiện được. CIDRAM cung cấp chỉ thị cấu hình để kiểm soát xem địa chỉ IP, tên máy chủ, và đại lý người dùng có được bao gồm trong nhật ký hay không. Theo mặc định, tất cả ba trong số các điểm dữ liệu này được bao gồm trong nhật ký khi có sẵn. Việc đặt bất kỳ chỉ thị cấu hình nào thành `true` sẽ bỏ qua thông tin tương ứng từ nhật ký.
 
@@ -2052,18 +2051,18 @@ Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn c�
 - `legal` -> `omit_hostname`
 - `legal` -> `omit_ua`
 
-##### 11.3.7 SỐ LIỆU THỐNG KÊ
+##### 9.3.7 SỐ LIỆU THỐNG KÊ
 
 CIDRAM có thể tùy chọn theo dõi số liệu thống kê như tổng số sự kiện chặn hay sự xuất hiện CAPTCHA đã xảy ra kể từ một số thời điểm cụ thể. Tính năng này được vô hiệu hóa theo mặc định, nhưng có thể được kích hoạt thông qua cấu hình gói. Tính năng này chỉ theo dõi tổng số sự kiện đã xảy ra và không bao gồm bất kỳ thông tin nào về các sự kiện cụ thể (và do đó, không nên được coi là PII).
 
 *Chỉ thị cấu hình có liên quan:*
 - `general` -> `statistics`
 
-##### 11.3.8 MÃ HÓA
+##### 9.3.8 MÃ HÓA
 
 CIDRAM không mã hóa bộ nhớ cache của nó hoặc bất kỳ thông tin log nào. [Mã hóa](https://vi.wikipedia.org/wiki/M%C3%A3_h%C3%B3a) bộ nhớ cache và log có thể được giới thiệu trong tương lai, nhưng hiện tại không có bất kỳ kế hoạch cụ thể nào. Nếu bạn lo lắng về các bên thứ ba không được phép truy cập vào các phần của CIDRAM có thể chứa thông tin nhận dạng cá nhân hay thông tin nhạy cảm như bộ nhớ cache hoặc nhật ký của nó, tôi khuyên bạn không nên cài đặt CIDRAM tại vị trí có thể truy cập công khai (ví dụ, cài đặt CIDRAM bên ngoài thư mục `public_html` tiêu chuẩn hoặc tương đương chúng có sẵn cho hầu hết các máy chủ web tiêu chuẩn) và các quyền hạn chế thích hợp sẽ được thực thi cho thư mục nơi nó cư trú (đặc biệt, cho thư mục vault). Nếu điều đó không đủ để giải quyết mối quan ngại của bạn, hãy định cấu hình CIDRAM để các loại thông tin gây ra mối lo ngại của bạn sẽ không được thu thập hoặc nhật ký ở địa điểm đầu tiên (ví dụ, bằng cách tắt ghi nhật ký).
 
-#### 11.4 COOKIE
+#### 9.4 COOKIE
 
 CIDRAM đặt [cookie](https://vi.wikipedia.org/wiki/Cookie_(tin_h%E1%BB%8Dc)) ở hai điểm trong cơ sở mã của nó. Thứ nhất, khi người dùng hoàn tất thành công sự xuất hiện CAPTCHA (và giả định rằng `lockuser` được đặt thành `true`), CIDRAM đặt cookie để có thể ghi nhớ các yêu cầu tiếp theo mà người dùng đã hoàn sự xuất hiện CAPTCHA, vì vậy để không cần liên tục yêu cầu người dùng hoàn thành một sự xuất hiện CAPTCHA trên mỗi yêu cầu tiếp theo. Thứ hai, khi người dùng đăng nhập thành công vào front-end, CIDRAM đặt cookie để có thể nhớ người dùng cho các yêu cầu tiếp theo (cookie được sử dụng để xác thực người dùng đến phiên đăng nhập).
 
@@ -2078,11 +2077,11 @@ Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi b
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
-#### 11.5 TIẾP THỊ VÀ QUẢNG CÁO
+#### 9.5 TIẾP THỊ VÀ QUẢNG CÁO
 
 CIDRAM không thu thập hoặc xử lý bất kỳ thông tin nào cho mục đích tiếp thị hoặc quảng cáo, và không bán hoặc lợi nhuận từ bất kỳ thông tin được thu thập hoặc ghi lại nào. CIDRAM không phải là một doanh nghiệp thương mại, cũng không liên quan đến bất kỳ lợi ích thương mại nào, do đó, làm những việc này sẽ không có ý nghĩa gì cả. Đây là trường hợp kể từ khi bắt đầu dự án, và tiếp tục là trường hợp ngày hôm nay. Ngoài ra, làm những việc này sẽ phản tác dụng với tinh thần và mục đích dự định của toàn bộ dự án, và miễn là tôi tiếp tục duy trì dự án, sẽ không bao giờ xảy ra.
 
-#### 11.6 CHÍNH SÁCH BẢO MẬT
+#### 9.6 CHÍNH SÁCH BẢO MẬT
 
 Trong một số trường hợp, bạn có thể được yêu cầu về mặt pháp lý để hiển thị rõ ràng liên kết đến chính sách bảo mật của bạn trên tất cả các trang và phần trong trang web của bạn. Điều này có thể quan trọng như một phương tiện để đảm bảo rằng người dùng được thông báo đầy đủ về các thực tiễn bảo mật chính xác của bạn, loại PII bạn thu thập, và cách bạn định sử dụng. Để có thể bao gồm một liên kết trên trang "Truy cập đã bị từ chối" của CIDRAM, một chỉ thị cấu hình được cung cấp để chỉ định URL cho chính sách bảo mật của bạn.
 
@@ -2091,7 +2090,7 @@ Trong một số trường hợp, bạn có thể được yêu cầu về mặt
 *Chỉ thị cấu hình có liên quan:*
 - `legal` -> `privacy_policy`
 
-#### 11.7 GDPR/DSGVO
+#### 9.7 GDPR/DSGVO
 
 Quy định bảo vệ dữ liệu chung (GDPR) là một quy định của Liên minh châu Âu, có hiệu lực kể từ 25 Tháng Năm 2018. Mục tiêu chính của quy định là cung cấp quyền kiểm soát cho công dân và cư dân EU về dữ liệu cá nhân của riêng họ, và thống nhất quy định trong EU về quyền riêng tư và dữ liệu cá nhân.
 

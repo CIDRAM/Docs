@@ -5,12 +5,11 @@
 - 2. [HOE TE INSTALLEREN](#SECTION2)
 - 3. [HOE TE GEBRUIKEN](#SECTION3)
 - 4. [FRONTEND MANAGEMENT](#SECTION4)
-- 6. [CONFIGURATIE-OPTIES](#SECTION6)
-- 7. [SIGNATURE FORMAAT](#SECTION7)
-- 8. [BEKENDE COMPATIBILITEITSPROBLEMEN](#SECTION8)
-- 9. [VEELGESTELDE VRAGEN (FAQ)](#SECTION9)
-- 10. *Gereserveerd voor toekomstige toevoegingen aan de documentatie.*
-- 11. [LEGALE INFORMATIE](#SECTION11)
+- 5. [CONFIGURATIE-OPTIES](#SECTION5)
+- 6. [SIGNATURE FORMAAT](#SECTION6)
+- 7. [BEKENDE COMPATIBILITEITSPROBLEMEN](#SECTION7)
+- 8. [VEELGESTELDE VRAGEN (FAQ)](#SECTION8)
+- 9. [LEGALE INFORMATIE](#SECTION9)
 
 *Opmerking over vertalingen: In geval van fouten (b.v., verschillen tussen vertalingen, typefouten, enz), de Engels versie van de README wordt beschouwd als het origineel en gezaghebbende versie. Als u vinden elke fouten, uw hulp bij het corrigeren van hen zou worden toegejuicht.*
 
@@ -134,7 +133,7 @@ Notitie: Het beschermen van uw vault tegen ongeautoriseerde toegang (b.v., door 
 ---
 
 
-### 6. <a name="SECTION6"></a>CONFIGURATIE-OPTIES
+### 5. <a name="SECTION5"></a>CONFIGURATIE-OPTIES
 
 Het volgende is een lijst van variabelen die in de `config.ini` configuratiebestand van CIDRAM, samen met een beschrijving van hun doel en functie.
 
@@ -1132,12 +1131,12 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HO
 ---
 
 
-### 7. <a name="SECTION7"></a>SIGNATURE FORMAAT
+### 6. <a name="SECTION6"></a>SIGNATURE FORMAAT
 
 *Zie ook:*
 - *[Wat is een "signature"?](#WHAT_IS_A_SIGNATURE)*
 
-#### 7.0 BASICS (VOOR SIGNATUURBESTANDEN)
+#### 6.0 BASICS (VOOR SIGNATUURBESTANDEN)
 
 Alle IPv4 signatures volgt het formaat: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
 - `xxx.xxx.xxx.xxx` vertegenwoordigt het begin van het CIDR blok (de octetten van de eerste IP-adres in het blok).
@@ -1193,9 +1192,9 @@ De beschikbare korte woorden zijn:
 - Proxy
 - Spam
 
-#### 7.1 ETIKETTEN
+#### 6.1 ETIKETTEN
 
-##### 7.1.0 SECTIE ETIKETTEN
+##### 6.1.0 SECTIE ETIKETTEN
 
 Als u wilt uw aangepaste signatures te splitsen in afzonderlijke secties, u kunt deze individuele secties te identificeren om het script door toevoeging van een "sectie etiket" onmiddellijk na de signatures van elke sectie, samen met de naam van uw signature-sectie (zie het onderstaande voorbeeld).
 
@@ -1226,7 +1225,7 @@ Dezelfde logica kan ook worden toegepast voor het scheiden van andere typen etik
 
 In het bijzonder kunnen sectie etiketten erg handig zijn voor foutopsporing wanneer valse positieven optreden, door een eenvoudige manier te voorzien om de exacte oorzaak van het probleem te vinden, en kunnen erg handig zijn om logbestanditems te filteren bij het bekijken van logbestanden via de frontend logbestanden pagina (sectienamen kunnen worden aangeklikt via de frontend logs pagina en kunnen worden gebruikt als filtercriteria). Als sectie etiketten zijn weggelaten voor bepaalde signatures, wanneer de signatures worden getriggerd, gebruikt CIDRAM de naam van het signatuurbestand samen met het type IP-adres geblokkeerd (IPv4 of IPv6) als een fallback, en dus zijn sectie etiketten volledig optioneel. In sommige gevallen kunnen ze echter worden aanbevolen, zoals wanneer signatuurbestanden vaag worden genoemd of wanneer het anders moeilijk zou zijn om de bron van de signatures duidelijk te identificeren waardoor een verzoek wordt geblokkeerd.
 
-##### 7.1.1 VERVALTIJD ETIKETTEN
+##### 6.1.1 VERVALTIJD ETIKETTEN
 
 Als u wilt signatures te vervallen na verloop van tijd, op soortgelijke wijze als sectie etiketten, u kan een "vervaltijd etiket" gebruikt om aan te geven wanneer signatures moet niet meer geldig. Vervaltijd etiketten gebruiken het formaat "JJJJ.MM.DD" (zie het onderstaande voorbeeld).
 
@@ -1239,7 +1238,7 @@ Expires: 2016.12.31
 
 Verlopen signatures zullen nooit worden getriggerd bij een aanvraag, wat er ook gebeurt.
 
-##### 7.1.2 HERKOMST ETIKETTEN
+##### 6.1.2 HERKOMST ETIKETTEN
 
 Als u het land van herkomst voor een bepaalde signature wilt opgeven, kunt u dit doen met behulp van een "herkomst etiket". Een herkomst etiket accepteert een "[ISO 3166-1 2-letterig](https://nl.wikipedia.org/wiki/ISO_3166-1)"-code die overeenkomt met het land van herkomst voor de signatures waarop deze van toepassing is. Deze codes moeten in hoofd-letters worden geschreven (kleine-letters worden niet correct weergegeven). Wanneer een herkomst etiket wordt gebruikt, wordt deze toegevoegd aan het logveld "Waarom Geblokkeerd" voor alle verzoeken die zijn geblokkeerd als gevolg van de signatures waarop de etiket is toegepast.
 
@@ -1271,7 +1270,7 @@ Tag: Voorbeeld Sectie.
 Expires: 2016.12.31
 ```
 
-##### 7.1.3 UITSTEL ETIKETTEN
+##### 6.1.3 UITSTEL ETIKETTEN
 
 Wanneer grote aantallen signatuurbestanden zijn geïnstalleerd en actief worden gebruikt, installaties kunnen behoorlijk ingewikkeld worden, en er kunnen signatures zijn die elkaar overlappen. In deze gevallen om te voorkomen dat meerdere, overlappende signatures worden geactiveerd tijdens blokgebeurtenissen, uitstel etiketten kunnen worden gebruikt om specifieke signature secties uit te stellen in gevallen waarin een ander specifiek signatuurbestand is geïnstalleerd en actief wordt gebruikt. Dit kan handig zijn in gevallen waarin sommige signatures vaker worden bijgewerkt dan andere, om de minder vaak bijgewerkte signatures uit te stellen ten gunste van de meer frequent bijgewerkte signatures.
 
@@ -1287,7 +1286,7 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
-##### 7.1.4 PROFIEL ETIKETTEN
+##### 6.1.4 PROFIEL ETIKETTEN
 
 Profiel etiketten bieden een middel om aanvullende informatie op de IP-testpagina weer te geven, en kunnen worden gebruikt door modules en hulpregels voor complexer gedrag en nauwkeurigere besluitvorming.
 
@@ -1302,9 +1301,9 @@ Profile: Example;Just some generic stuff;Foo;Bar
 Origin: BB
 ```
 
-#### 7.2 YAML
+#### 6.2 YAML
 
-##### 7.2.0 YAML BASICS
+##### 6.2.0 YAML BASICS
 
 Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA/hCAPTCHA te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
 
@@ -1359,7 +1358,7 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCAPTCHA
+##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCAPTCHA
 
 Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA/hCAPTCHA, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
 
@@ -1374,9 +1373,9 @@ hcaptcha:
  enabled: true
 ```
 
-#### 7.3 EXTRA INFORMATIE
+#### 6.3 EXTRA INFORMATIE
 
-##### 7.3.0 SIGNATUURSECTIES TE NEGEREN
+##### 6.3.0 SIGNATUURSECTIES TE NEGEREN
 
 Bovendien, als u wilt CIDRAM om enkele specifieke secties in iedereen van de signatuurbestanden te negeren, kunt u het `ignore.dat` bestand gebruiken om specificeren welke secties te negeren. Op een nieuwe regel, schrijven `Ignore`, gevolgd door een spatie, gevolgd door de naam van de sectie die u wilt CIDRAM te negeren (zie het onderstaande voorbeeld).
 
@@ -1386,11 +1385,11 @@ Ignore Sectie 1
 
 Dit kan ook worden bereikt door de interface te gebruiken die wordt geboden door de pagina "sectielijst" van de frontend van CIDRAM.
 
-##### 7.3.1 HULPREGELS
+##### 6.3.1 HULPREGELS
 
 Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aangepaste modules te ingewikkeld voor u is, kan een eenvoudiger alternatief zijn om de interface te gebruiken die wordt geboden door de "hulpregels"-pagina van de front-end van CIDRAM. Door de juiste opties te selecteren en details over specifieke soorten verzoeken op te geven, kunt u CIDRAM instrueren hoe op die verzoeken moet worden gereageerd. "Hulpregels" worden uitgevoerd nadat alle signatuurbestanden en modules al zijn uitgevoerd.
 
-#### 7.4 <a name="MODULE_BASICS"></a>BASICS (VOOR MODULES)
+#### 6.4 <a name="MODULE_BASICS"></a>BASICS (VOOR MODULES)
 
 Modules kunnen worden gebruikt om de functionaliteit van CIDRAM uit te breiden, extra taken uit te voeren, of aanvullende logica te verwerken. Meestal worden ze gebruikt wanneer een verzoek op een andere manier dan het oorspronkelijke IP-adres moet worden geblokkeerd (en dus, wanneer een CIDR-signature niet voldoende is om de aanvraag te blokkeren). Modules worden geschreven als PHP-bestanden, en dus worden module-signatures doorgaans geschreven als PHP-code.
 
@@ -1406,9 +1405,9 @@ Vanwege dat modules worden geschreven als PHP-bestanden, als je voldoende bekend
 
 CIDRAM biedt een aantal functies voor het gebruik van modules, waardoor het eenvoudiger en gemakkelijker is om uw eigen modules te schrijven. Informatie over deze functionaliteit wordt hieronder beschreven.
 
-#### 7.5 MODULE FUNCTIONALITEIT
+#### 6.5 MODULE FUNCTIONALITEIT
 
-##### 7.5.0 "$Trigger"
+##### 6.5.0 "$Trigger"
 
 Module-signatures worden meestal geschreven met `$Trigger`. In de meeste gevallen zal deze closure belangrijker zijn dan iets anders om modules te schrijven.
 
@@ -1429,7 +1428,7 @@ Als u deze closure in uw module wilt gebruiken, moet u deze eerst erven het van 
 $Trigger = $CIDRAM['Trigger'];
 ```
 
-##### 7.5.1 "$Bypass"
+##### 6.5.1 "$Bypass"
 
 Signature-bypasses worden meestal geschreven met `$Bypass`.
 
@@ -1448,7 +1447,7 @@ Als u deze closure in uw module wilt gebruiken, moet u deze eerst erven het van 
 $Bypass = $CIDRAM['Bypass'];
 ```
 
-##### 7.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$CIDRAM['DNS-Reverse']"
 
 Dit kan worden gebruikt om de hostnaam van een IP-adres op te halen. Als u een module wilt maken om hostnamen te blokkeren, kan deze closure nuttig zijn.
 
@@ -1469,7 +1468,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 }
 ```
 
-#### 7.6 MODULE VARIABELEN
+#### 6.6 MODULE VARIABELEN
 
 Modules worden in hun eigen bereik uitgevoerd, en alle variabelen gedefinieerd door een module, zullen niet toegankelijk zijn voor andere modules, of naar het bovenliggende script, tenzij ze zijn opgeslagen in de array `$CIDRAM` (al het andere wordt gespoeld nadat de module-uitvoering is voltooid).
 
@@ -1492,7 +1491,7 @@ Variabele | Beschrijving
 ---
 
 
-### 8. <a name="SECTION8"></a>BEKENDE COMPATIBILITEITSPROBLEMEN
+### 7. <a name="SECTION7"></a>BEKENDE COMPATIBILITEITSPROBLEMEN
 
 De volgende pakketten en producten zijn incompatibel met CIDRAM:
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1506,7 +1505,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 ---
 
 
-### 9. <a name="SECTION9"></a>VEELGESTELDE VRAGEN (FAQ)
+### 8. <a name="SECTION8"></a>VEELGESTELDE VRAGEN (FAQ)
 
 - [Wat is een "signature"?](#WHAT_IS_A_SIGNATURE)
 - [Wat is een "CIDR"?](#WHAT_IS_A_CIDR)
@@ -1870,19 +1869,19 @@ Als u al die ideeën hebt geprobeerd en geen van hen voor jou werkte, of als u h
 ---
 
 
-### 11. <a name="SECTION11"></a>LEGALE INFORMATIE
+### 9. <a name="SECTION9"></a>LEGALE INFORMATIE
 
-#### 11.0 SECTIE PREAMBULE
+#### 9.0 SECTIE PREAMBULE
 
 Dit sectie van de documentatie is bedoeld om mogelijke juridische overwegingen met betrekking tot het gebruik en de implementatie van het pakket te beschrijven, en om wat basisgerelateerde informatie te verstrekken. Dit kan voor sommige gebruikers belangrijk zijn om naleving van eventuele wettelijke vereisten in de landen waarin zij actief zijn te waarborgen, en sommige gebruikers moeten hun website-beleid mogelijk aanpassen in overeenstemming met deze informatie.
 
 Eerst en vooral, realiseer je alstublieft dat ik (de auteur van het pakket) geen advocaat en geen gekwalificeerde juridische professional van welke aard. Daarom ben ik niet juridisch gekwalificeerd om juridisch advies te geven. Ook in sommige gevallen, exacte wettelijke vereisten kunnen verschillen tussen verschillende landen en rechtsgebieden, en deze variërende wettelijke vereisten kunnen soms conflicteren (zoals bijvoorbeeld, in het geval van landen die voorrang geven aan [privacyrechten](https://nl.wikipedia.org/wiki/Privacy) en het [recht om te worden vergeten](https://nl.wikipedia.org/wiki/Recht_om_vergeten_te_worden), versus landen die de voorrang geven aan uitgebreide [dataretentie](https://nl.wikipedia.org/wiki/Dataretentie)). Overweeg ook dat toegang tot het pakket niet beperkt is tot specifieke landen of rechtsgebieden, en daarom is de gebruikersbasis van het pakket waarschijnlijk geografisch divers. Gezien deze punten, ben ik niet in de positie om aan te geven wat het betekent om "in overeenstemming met de wetgeving" te zijn voor alle gebruikers, in alle opzichten. Ik hoop echter dat de informatie hierin u zal helpen om zelf tot een beslissing te komen over wat u moet doen om wettelijk compatibel te blijven in de context van het pakket. Als u twijfels of zorgen hebt met betrekking tot de informatie hierin, of als u aanvullende hulp en advies nodig hebt vanuit een juridisch perspectief, ik zou aanraden een gekwalificeerde juridische professional te raadplegen.
 
-#### 11.1 AANSPRAKELIJKHEID EN VERANTWOORDELIJKHEID
+#### 9.1 AANSPRAKELIJKHEID EN VERANTWOORDELIJKHEID
 
 Zoals al aangegeven door de pakketlicentie, wordt het pakket geleverd zonder enige garantie. Dit omvat (maar is niet beperkt tot) alle reikwijdte van aansprakelijkheid. Het pakket wordt u aangeboden voor uw gemak, in de hoop dat dit nuttig zal zijn, en dat het u enig voordeel oplevert. Echter, of u het pakket gebruikt of implementeert, is uw eigen keuze. U bent niet gedwongen om het pakket te gebruiken of te implementeren, maar wanneer u dat doet, bent u verantwoordelijk voor dat besluit. Noch ik, noch andere bijdragers aan het pakket, zijn juridisch aansprakelijk voor de gevolgen van de beslissingen die u neemt, ongeacht of het direct, indirect, impliciet, of anderszins is.
 
-#### 11.2 DERDEN
+#### 9.2 DERDEN
 
 Afhankelijk van de precieze configuratie en implementatie, kan het pakket in sommige gevallen communiceren en informatie delen met derden. Deze informatie kan in sommige contexten door sommige rechtsgebieden worden gedefinieerd als "[persoonsgegevens](https://nl.wikipedia.org/wiki/Persoonsgegevens)".
 
@@ -1890,7 +1889,7 @@ Hoe deze informatie door deze derden kan worden gebruikt, is onderworpen aan de 
 
 Met het oog op transparantie wordt het type informatie dat wordt gedeeld en met wie, hieronder beschreven.
 
-##### 11.2.0 HOSTNAAM LOOKUPS
+##### 9.2.0 HOSTNAAM LOOKUPS
 
 Als u functies of modules gebruikt die bedoeld zijn om met hostnamen te werken (zoals de "slechte hosts blokkermodule", "tor project exit nodes block module", of "zoekmachine verificatie", bijvoorbeeld), moet CIDRAM in staat zijn om de hostnaam van inkomende verzoeken op de een of andere manier. Dit gebeurt meestal door de hostnaam van het IP-adres van inkomende verzoeken van een DNS-server op te vragen, of door de informatie op te vragen via functionaliteit die wordt geboden door het systeem waarop CIDRAM is geïnstalleerd (dit wordt meestal een "hostnaam lookup" verwezen naar). De DNS-servers die standaard worden gedefinieerd, behoren tot de [Google DNS](https://dns.google.com/)-service (maar dit kan eenvoudig via de configuratie worden gewijzigd). De exacte services waarmee wordt gecommuniceerd, kunnen worden geconfigureerd en zijn afhankelijk van de manier waarop u het pakket configureert. In het geval dat u functionaliteit gebruikt die wordt geboden door het systeem waarop CIDRAM is geïnstalleerd, moet u contact opnemen met uw systeembeheerder om te bepalen naar welke routes hostnaam lookups moeten worden gebruikt. Hostnaam lookups kunnen worden voorkomen in CIDRAM door de betreffende modules te vermijden of door de pakketconfiguratie aan te passen aan uw behoeften.
 
@@ -1902,7 +1901,7 @@ Als u functies of modules gebruikt die bedoeld zijn om met hostnamen te werken (
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.2 VERIFICATIE VAN ZOEKMACHINES EN SOCIALE MEDIA
+##### 9.2.1 VERIFICATIE VAN ZOEKMACHINES EN SOCIALE MEDIA
 
 Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward DNS-lookups" uit te voeren om te verifiëren of verzoeken die claimen afkomstig te zijn van zoekmachines authentiek zijn. Hetzelfde, wanneer verificatie van sociale media is ingeschakeld, CIDRAM doet hetzelfde voor schijnbare verzoeken van sociale media. Hiertoe gebruikt het de [Google DNS](https://dns.google.com/)-service om IP-adressen van de hostnamen van deze inkomende verzoeken op te lossen (in dit proces worden de hostnamen van deze inkomende verzoeken gedeeld met de service).
 
@@ -1911,25 +1910,25 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 CAPTCHA
+##### 9.2.2 CAPTCHA
 
 CIDRAM ondersteunt reCAPTCHA en hCAPTCHA. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
 
-##### 11.2.4 STOP FORUM SPAM
+##### 9.2.3 STOP FORUM SPAM
 
 [Stop Forum Spam](https://www.stopforumspam.com/) is een fantastische, vrij beschikbare service die kan helpen forums, blogs, en websites van spammers te beschermen. Het doet dit door een database van bekende spammers aan te bieden, en een API die kan worden gebruikt om te controleren of een IP-adres, gebruikersnaam, of e-mailadres in de database wordt vermeld.
 
 CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de Stop Forum Spam API in overeenstemming met het beoogde doel van de module. Wanneer de module is geïnstalleerd, communiceert CIDRAM met deze API wanneer een inkomende aanvraag een resource aanvraagt die door CIDRAM wordt herkend als een type resource dat vaak wordt getarget door spammers (zoals inlogpagina's, registratiepagina's, e-mailverificatiepagina's, opmerkingenformulieren, enz).
 
-##### 11.2.5 ABUSEIPDB
+##### 9.2.4 ABUSEIPDB
 
 CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de AbuseIPDB API in overeenstemming met het beoogde doel van de module.
 
-##### 11.2.6 BGPVIEW
+##### 9.2.5 BGPVIEW
 
 CIDRAM biedt een optionele module voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de BGPView API in overeenstemming met het beoogde doel van de module.
 
-#### 11.3 LOGGEN
+#### 9.3 LOGGEN
 
 Te loggen is om een aantal redenen een belangrijk onderdeel van CIDRAM. Het kan moeilijk zijn om valse positieven te diagnosticeren en op te lossen wanneer de blokgebeurtenissen die deze veroorzaken niet worden vastgelegd. Zonder blokgebeurtenissen te loggen, kan het moeilijk zijn om precies vast te stellen hoe performant CIDRAM zich in een bepaalde context bevindt, en het kan moeilijk zijn om te bepalen waar zijn tekortkomingen kunnen zijn, en welke veranderingen nodig kunnen zijn voor de configuratie of signatures dienovereenkomstig, zodat het blijft functioneren zoals bedoeld. Ongeacht, loggen is misschien niet wenselijk voor alle gebruikers, en blijft volledig optioneel. In CIDRAM te loggen is standaard uitgeschakeld. Om dit in te schakelen, moet CIDRAM dienovereenkomstig worden geconfigureerd.
 
@@ -1937,7 +1936,7 @@ Ook, als te loggen wettelijk toegestaan is, en voor zover dat wettelijk toegesta
 
 CIDRAM kan informatie op verschillende manieren loggen, wat verschillende soorten informatie inhoudt, om verschillende redenen.
 
-##### 11.3.0 BLOKGEBEURTENISSEN
+##### 9.3.0 BLOKGEBEURTENISSEN
 
 Het primaire type loggen dat CIDRAM kan uitvoeren, heeft betrekking op "blokgebeurtenissen". Dit type loggen heeft betrekking op wanneer CIDRAM een aanvraag blokkeert, en kan in drie verschillende indelingen worden aangeboden:
 - Door mensen leesbare logbestanden.
@@ -1986,7 +1985,7 @@ Een geregistreerde blokgebeurtenis bevat meestal de volgende informatie:
 
 Wanneer deze richtlijnen leeg worden gelaten, blijft dit type logboek uitgeschakeld.
 
-##### 11.3.1 CAPTCHA LOGGEN
+##### 9.3.1 CAPTCHA LOGGEN
 
 Dit type loggen heeft specifiek betrekking op CAPTCHA-instanties, en gebeurt alleen op wanneer een gebruiker een CAPTCHA-instantie probeert te voltooien.
 
@@ -2000,7 +1999,7 @@ IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State:
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
-##### 11.3.2 FRONTEND LOGGEN
+##### 9.3.2 FRONTEND LOGGEN
 
 Dit type loggen is bedoeld voor pogingen om bij de frontend in te loggen, en gebeurt alleen op wanneer een gebruiker zich probeert in te loggen bij de frontend (ervan uitgaande dat de frontend-toegang is ingeschakeld).
 
@@ -2013,7 +2012,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Ingelogd.
 *De configuratie-optie die verantwoordelijk is voor de frontend toegang te loggen is:*
 - `general` -> `frontend_log`
 
-##### 11.3.3 LOGROTATIE
+##### 9.3.3 LOGROTATIE
 
 Mogelijk wilt u logs na een bepaalde periode opschonen, of mogelijk bent u wettelijk verplicht (d.w.z., de hoeveelheid tijd die het wettelijk toelaatbaar is om logs te bewaren, kan bij wet beperkt zijn). U kunt dit bereiken door datum/tijd-markeringen op te nemen in de namen van uw logbestanden, zoals gespecificeerd door uw pakketconfiguratie (b.v., `{yyyy}-{mm}-{dd}.log`), en vervolgens logrotatie in te schakelen (logrotatie stelt u in staat om enige actie in logbestanden uit te voeren wanneer de gespecificeerde limieten worden overschreden).
 
@@ -2025,14 +2024,14 @@ Omgekeerd, als u verplicht bent om logs gedurende langere tijd te bewaren, kunt 
 - `general` -> `log_rotation_limit`
 - `general` -> `log_rotation_action`
 
-##### 11.3.4 LOGTRUNCATIE
+##### 9.3.4 LOGTRUNCATIE
 
 Het is ook mogelijk om afzonderlijke logbestanden af te kappen als ze een bepaalde grootte overschrijden, als dit iets is dat u misschien nodig heeft, of zou willen doen.
 
 *Relevante configuratie-opties:*
 - `general` -> `truncate`
 
-##### 11.3.5 IP-ADRES PSEUDONIMISATIE
+##### 9.3.5 IP-ADRES PSEUDONIMISATIE
 
 Ten eerste, als u niet bekend bent met de term, "pseudonimisatie" verwijst naar de verwerking van persoonsgegevens als zodanig, zodat deze niet meer kan worden geïdentificeerd aan een specifieke persoon zonder aanvullende informatie, en op voorwaarde dat dergelijke aanvullende informatie afzonderlijk wordt bijgehouden en onderworpen wordt aan technische en organisatorische maatregelen om ervoor te zorgen dat persoonsgegevens niet kunnen worden geïdentificeerd aan een natuurlijke persoon.
 
@@ -2051,7 +2050,7 @@ CIDRAM kan IP-adressen pseudonimiseren wanneer ze worden geregistreerd, als dit 
 *Relevante configuratie-opties:*
 - `legal` -> `pseudonymise_ip_addresses`
 
-##### 11.3.6 HET WEGLATEN VAN LOGINFORMATIE
+##### 9.3.6 HET WEGLATEN VAN LOGINFORMATIE
 
 Als u nog een stap verder wilt gaan door te voorkomen dat specifieke soorten informatie volledig worden vastgelegd, is dit ook mogelijk. CIDRAM biedt configuratie-opties om te bepalen of IP-adressen, hostnamen, en user agents in logs zijn opgenomen. Standaard worden alle drie deze gegevenspunten opgenomen in logs wanneer deze beschikbaar zijn. Als u een van deze configuratie-opties instelt op `true`, wordt de overeenkomstige informatie uit logs weggelaten.
 
@@ -2062,18 +2061,18 @@ Als u nog een stap verder wilt gaan door te voorkomen dat specifieke soorten inf
 - `legal` -> `omit_hostname`
 - `legal` -> `omit_ua`
 
-##### 11.3.7 STATISTIEKEN
+##### 9.3.7 STATISTIEKEN
 
 CIDRAM is optioneel in staat om statistieken bij te houden, zoals het totale aantal blokgebeurtenissen of CAPTCHA-instanties die zijn opgetreden sinds een bepaald tijdstip. Deze functie is standaard uitgeschakeld, maar kan worden ingeschakeld via de pakketconfiguratie. Deze functie houdt alleen het totale aantal opgetreden gebeurtenissen bij en bevat geen informatie over specifieke gebeurtenissen (en moet daarom niet als PII worden beschouwd).
 
 *Relevante configuratie-opties:*
 - `general` -> `statistics`
 
-##### 11.3.8 ENCRYPTIE
+##### 9.3.8 ENCRYPTIE
 
 CIDRAM codeert de cache of logboekinformatie niet. [Encryptie](https://nl.wikipedia.org/wiki/Encryptie) voor de cache en logs kunnen in de toekomst worden geïntroduceerd, maar er zijn momenteel geen specifieke plannen voor. Als u zich zorgen maakt over ongeautoriseerde derden die toegang krijgen tot delen van CIDRAM die mogelijk PII of gevoelige informatie bevatten, zoals de cache of logbestanden, raad ik CIDRAM aan niet te installeren op een openbare locatie (b.v., installeer CIDRAM buiten de standaard `public_html` directory of gelijkwaardig daarvan beschikbaar voor de meeste standaard webservers) en dat de juiste beperkende machtigingen worden afgedwongen voor de directory waar deze zich bevindt (in het bijzonder, voor de vault directory). Als dat niet voldoende is om uw zorgen weg te nemen, configureer dan CIDRAM als zodanig dat de soorten informatie die uw zorgen veroorzaken, niet zullen worden verzameld of ingelogd (zoals door loggen uit te schakelen).
 
-#### 11.4 COOKIES
+#### 9.4 COOKIES
 
 CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende aanvragen in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende aanvragen (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
 
@@ -2088,11 +2087,11 @@ In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het rel
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
-#### 11.5 MARKETING EN ADVERTEREN
+#### 9.5 MARKETING EN ADVERTEREN
 
 CIDRAM verzamelt of verwerkt geen informatie voor marketing of advertentie doeleinden, en verkoopt of profiteert niet van verzamelde of geregistreerde informatie. CIDRAM is geen commerciële onderneming, en houdt geen verband met commerciële belangen, dus het zou geen zin hebben om deze dingen te doen. Dit is sinds het begin van het project het geval geweest, en is nog steeds het geval. Bovendien zou het doen van deze dingen contraproductief zijn ten opzichte van de geest en het beoogde doel van het project als geheel, en zolang ik het project blijf onderhouden, zal het nooit gebeuren.
 
-#### 11.6 PRIVACYBELEID
+#### 9.6 PRIVACYBELEID
 
 In sommige omstandigheden kan het wettelijk verplicht zijn om duidelijk een link naar uw privacybeleid te tonen op alle pagina's en secties van uw website. Dit kan belangrijk zijn als middel om ervoor te zorgen dat gebruikers goed geïnformeerd zijn over uw exacte privacypraktijken, de soorten PII die u verzamelt, en hoe u van plan bent om het te gebruiken. Om een dergelijke link op de pagina "Toegang Geweigerd" van CIDRAM te kunnen opnemen, wordt een configuratie-optie verstrekt om de URL van uw privacybeleid op te geven.
 
@@ -2101,7 +2100,7 @@ In sommige omstandigheden kan het wettelijk verplicht zijn om duidelijk een link
 *Relevante configuratie-opties:*
 - `legal` -> `privacy_policy`
 
-#### 11.7 GDPR/DSGVO/AVG
+#### 9.7 GDPR/DSGVO/AVG
 
 De Algemene Verordening Gegevensbescherming (AVG, of GDPR/DSGVO) is een verordening van de Europese Unie, die met ingang van 25 Mei 2018 in werking treedt. Het primaire doel van de verordening is om burgers en inwoners van de EU controle te geven over hun eigen persoonsgegevens, en om regelgeving binnen de EU te verenigen met betrekking tot privacy en persoonsgegevens.
 

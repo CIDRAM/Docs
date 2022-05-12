@@ -5,12 +5,11 @@
 - 2. [HOW TO INSTALL](#SECTION2)
 - 3. [HOW TO USE](#SECTION3)
 - 4. [FRONT-END MANAGEMENT](#SECTION4)
-- 6. [CONFIGURATION OPTIONS](#SECTION6)
-- 7. [SIGNATURE FORMAT](#SECTION7)
-- 8. [KNOWN COMPATIBILITY PROBLEMS](#SECTION8)
-- 9. [FREQUENTLY ASKED QUESTIONS (FAQ)](#SECTION9)
-- 10. *Reserved for future additions to the documentation.*
-- 11. [LEGAL INFORMATION](#SECTION11)
+- 5. [CONFIGURATION OPTIONS](#SECTION5)
+- 6. [SIGNATURE FORMAT](#SECTION6)
+- 7. [KNOWN COMPATIBILITY PROBLEMS](#SECTION7)
+- 8. [FREQUENTLY ASKED QUESTIONS (FAQ)](#SECTION8)
+- 9. [LEGAL INFORMATION](#SECTION9)
 
 *Note regarding translations: In the event of errors (e.g., discrepancies between translations, typos, etc), the English version of the README is considered the original and authoritative version. If you find any errors, your assistance in correcting them would be welcomed.*
 
@@ -134,7 +133,7 @@ Note: Protecting your vault against unauthorised access (e.g., by hardening your
 ---
 
 
-### 6. <a name="SECTION6"></a>CONFIGURATION OPTIONS
+### 5. <a name="SECTION5"></a>CONFIGURATION OPTIONS
 
 The following is a list of the directives available to CIDRAM in the `config.ini` configuration file, along with a description of the purpose of these directives.
 
@@ -1122,12 +1121,12 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#HO
 ---
 
 
-### 7. <a name="SECTION7"></a>SIGNATURE FORMAT
+### 6. <a name="SECTION6"></a>SIGNATURE FORMAT
 
 *See also:*
 - *[What is a "signature"?](#WHAT_IS_A_SIGNATURE)*
 
-#### 7.0 BASICS (FOR SIGNATURE FILES)
+#### 6.0 BASICS (FOR SIGNATURE FILES)
 
 All IPv4 signatures follow the format: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
 - `xxx.xxx.xxx.xxx` represents the beginning of the CIDR block (the octets of the initial IP address in the block).
@@ -1183,9 +1182,9 @@ The available shorthand words are:
 - Proxy
 - Spam
 
-#### 7.1 TAGS
+#### 6.1 TAGS
 
-##### 7.1.0 SECTION TAGS
+##### 6.1.0 SECTION TAGS
 
 If you want to split your custom signatures into individual sections, you can identify these individual sections to the script by adding a "section tag" immediately after the signatures of each section, along with the name of your signature section (see the example below).
 
@@ -1216,7 +1215,7 @@ The same logic can be applied for separating other types of tags, too.
 
 In particular, section tags can be very useful for debugging when false positives occur, by providing an easy means of locating the exact source of the problem, and can be very useful for filtering logfile entries when viewing logfiles via the front-end logs page (section names are clickable via the front-end logs page and can be used as a filtering criteria). If section tags are omitted for some particular signatures, when those signatures are triggered, CIDRAM uses the name of the signature file along with the type of IP address blocked (IPv4 or IPv6) as a fallback, and thus, section tags are entirely optional. They may be recommend in some cases though, such as when signature files are vaguely named or when it may otherwise be difficult to clearly identify the source of the signatures causing a request to be blocked.
 
-##### 7.1.1 EXPIRY TAGS
+##### 6.1.1 EXPIRY TAGS
 
 If you want signatures to expire after some time, in a similar manner to section tags, you can use an "expiry tag" to specify when signatures should cease to be valid. Expiry tags use the format "YYYY.MM.DD" (see the example below).
 
@@ -1229,7 +1228,7 @@ Expires: 2016.12.31
 
 Expired signatures will never be triggered on any request, no matter what.
 
-##### 7.1.2 ORIGIN TAGS
+##### 6.1.2 ORIGIN TAGS
 
 If you want to specify the country of origin for some particular signature, you can do so using an "origin tag". An origin tag accepts an "[ISO 3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)" code corresponding to the country of origin for the signatures that it applies to. These codes must be written in upper-case (lower-case or mixed-case won't render correctly). When an origin tag is used, it is added to the "Why blocked" log field entry for any requests blocked as a result of the signatures that the tag is applied to.
 
@@ -1261,7 +1260,7 @@ Tag: Example Section
 Expires: 2016.12.31
 ```
 
-##### 7.1.3 DEFERENCE TAGS
+##### 6.1.3 DEFERENCE TAGS
 
 When large numbers of signature files are installed and actively used, installations can become quite complex, and there may be some signatures which overlap. In these cases, in order to prevent multiple, overlapping signatures being triggered during block events, deference tags may be used to defer specific signature sections in cases where some other specific signature file is installed and actively used. This may be useful in cases where some signatures are updated more frequently than others, in order to defer the less frequently updated signatures in favour of the more frequently updated signatures.
 
@@ -1277,7 +1276,7 @@ Origin: BB
 Defers to: preferred_signatures.dat
 ```
 
-##### 7.1.4 PROFILE TAGS
+##### 6.1.4 PROFILE TAGS
 
 Profile tags provide a means to display additional information at the IP test page, and can be leveraged by modules and auxiliary rules for more complex behaviour and fine-tuned decision making.
 
@@ -1292,9 +1291,9 @@ Profile: Example;Just some generic stuff;Foo;Bar
 Origin: BB
 ```
 
-#### 7.2 YAML
+#### 6.2 YAML
 
-##### 7.2.0 YAML BASICS
+##### 6.2.0 YAML BASICS
 
 A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCAPTCHA; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
 
@@ -1349,7 +1348,7 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCAPTCHA
+##### 6.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCAPTCHA
 
 When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
 
@@ -1364,9 +1363,9 @@ hcaptcha:
  enabled: true
 ```
 
-#### 7.3 AUXILIARY
+#### 6.3 AUXILIARY
 
-##### 7.3.0 IGNORING SIGNATURE SECTIONS
+##### 6.3.0 IGNORING SIGNATURE SECTIONS
 
 In addition, if you want CIDRAM to completely ignore some specific sections within any of the signature files, you can use the `ignore.dat` file to specify which sections to ignore. On a new line, write `Ignore`, followed by a space, followed by the name of the section that you want CIDRAM to ignore (see the example below).
 
@@ -1376,11 +1375,11 @@ Ignore Section 1
 
 This can also be achieved by using the interface provided by the "sections list" page of the CIDRAM front-end.
 
-##### 7.3.1 AUXILIARY RULES
+##### 6.3.1 AUXILIARY RULES
 
 If you feel that writing your own custom signature files or custom modules is too complicated for you, a simpler alternative may be to use the interface provided by the "auxiliary rules" page of the CIDRAM front-end. By selecting the appropriate options and specifying details about specific types of requests, you can instruct CIDRAM how to respond to those requests. "Auxiliary rules" are executed after all signature files and modules have already finished executing.
 
-#### 7.4 <a name="MODULE_BASICS"></a>BASICS (FOR MODULES)
+#### 6.4 <a name="MODULE_BASICS"></a>BASICS (FOR MODULES)
 
 Modules can be used to extend the functionality of CIDRAM, perform additional tasks, or process additional logic. Typically, they're used when it's necessary to block a request on a basis other than its originating IP address (and thus, when a CIDR signature won't suffice to block the request). Modules are written as PHP files, and thus, typically, module signatures are written as PHP code.
 
@@ -1396,9 +1395,9 @@ Due to that modules are written as PHP files, if you're adequately familiar with
 
 Some functionality is provided by CIDRAM for modules to use, which should make it simpler and easier to write your own modules. Information about this functionality is described below.
 
-#### 7.5 MODULE FUNCTIONALITY
+#### 6.5 MODULE FUNCTIONALITY
 
-##### 7.5.0 "$Trigger"
+##### 6.5.0 "$Trigger"
 
 Module signatures are typically written with `$Trigger`. In most cases, this closure will be more important than anything else for the purpose of writing modules.
 
@@ -1419,7 +1418,7 @@ To use this closure in your module, remember firstly to inherit it from the pare
 $Trigger = $CIDRAM['Trigger'];
 ```
 
-##### 7.5.1 "$Bypass"
+##### 6.5.1 "$Bypass"
 
 Signature bypasses are typically written with `$Bypass`.
 
@@ -1438,7 +1437,7 @@ To use this closure in your module, remember firstly to inherit it from the pare
 $Bypass = $CIDRAM['Bypass'];
 ```
 
-##### 7.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$CIDRAM['DNS-Reverse']"
 
 This can be used to fetch the hostname of an IP address. If you want to create a module to block hostnames, this closure could be useful.
 
@@ -1459,7 +1458,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 }
 ```
 
-#### 7.6 MODULE VARIABLES
+#### 6.6 MODULE VARIABLES
 
 Modules execute within their own scope, and any variables defined by a module, won't be accessible to other modules, or to the parent script, unless they're stored in the `$CIDRAM` array (everything else is flushed after the module execution finishes).
 
@@ -1482,7 +1481,7 @@ Variable | Description
 ---
 
 
-### 8. <a name="SECTION8"></a>KNOWN COMPATIBILITY PROBLEMS
+### 7. <a name="SECTION7"></a>KNOWN COMPATIBILITY PROBLEMS
 
 The following packages and products have been found to be incompatible with CIDRAM:
 - __[Endurance Page Cache](https://github.com/CIDRAM/CIDRAM/issues/52)__
@@ -1496,7 +1495,7 @@ Modules have been made available to ensure that the following packages and produ
 ---
 
 
-### 9. <a name="SECTION9"></a>FREQUENTLY ASKED QUESTIONS (FAQ)
+### 8. <a name="SECTION8"></a>FREQUENTLY ASKED QUESTIONS (FAQ)
 
 - [What is a "signature"?](#WHAT_IS_A_SIGNATURE)
 - [What is a "CIDR"?](#WHAT_IS_A_CIDR)
@@ -1849,19 +1848,19 @@ If you've tried all of those ideas and none of them worked for you, or if you ne
 ---
 
 
-### 11. <a name="SECTION11"></a>LEGAL INFORMATION
+### 9. <a name="SECTION9"></a>LEGAL INFORMATION
 
-#### 11.0 SECTION PREAMBLE
+#### 9.0 SECTION PREAMBLE
 
 This section of the documentation is intended to describe possible legal considerations regarding the use and implementation of the package, and to provide some basic related information. This may be important for some users as a means to ensure compliancy with any legal requirements that may exist in the countries that they operate in, and some users may need to adjust their website policies in accordance with this information.
 
 First and foremost, please realise that I (the package author) am not a lawyer, nor a qualified legal professional of any kind. Therefore, I am not legally qualified to provide legal advice. Also, in some cases, exact legal requirements may vary between different countries and jurisdictions, and these varying legal requirements may sometimes conflict (such as, for example, in the case of countries that favour [privacy rights](https://en.wikipedia.org/wiki/Right_to_privacy) and the [right to be forgotten](https://en.wikipedia.org/wiki/Right_to_be_forgotten), versus countries that favour extended [data retention](https://en.wikipedia.org/wiki/Data_retention)). Consider also that access to the package is not restricted to specific countries or jurisdictions, and therefore, the package userbase is likely to the geographically diverse. These points considered, I'm not in a position to state what it means to be "legally compliant" for all users, in all regards. However, I hope that the information herein will help you to come to a decision yourself regarding what you must do in order to remain legally compliant in the context of the package. If you have any doubts or concerns regarding the information herein, or if you need additional help and advice from a legal perspective, I would recommend consulting a qualified legal professional.
 
-#### 11.1 LIABILITY AND RESPONSIBILITY
+#### 9.1 LIABILITY AND RESPONSIBILITY
 
 As per already stated by the package license, the package is provided without any warranty. This includes (but is not limited to) all scope of liability. The package is provided to you for your convenience, in the hope that it will be useful, and that it will provide some benefit for you. However, whether you use or implement the package, is your own choice. You are not forced to use or implement the package, but when you do so, you are responsible for that decision. Neither I, nor any other contributors to the package, are legally responsible for the consequences of the decisions that you make, regardless of whether direct, indirect, implied, or otherwise.
 
-#### 11.2 THIRD PARTIES
+#### 9.2 THIRD PARTIES
 
 Depending on its exact configuration and implementation, the package may communicate and share information with third parties in some cases. This information may be defined as "[personally identifiable information](https://en.wikipedia.org/wiki/Personal_data)" (PII) in some contexts, by some jurisdictions.
 
@@ -1869,7 +1868,7 @@ How this information may be used by these third parties, is subject to the vario
 
 For the purpose of transparency, the type of information shared, and with whom, is described below.
 
-##### 11.2.0 HOSTNAME LOOKUP
+##### 9.2.0 HOSTNAME LOOKUP
 
 If you use any features or modules intended to work with hostnames (such as the "bad hosts blocker module", "tor project exit nodes block module", or "search engine verification", for example), CIDRAM needs to be able to obtain the hostname of inbound requests somehow. Typically, it does this by requesting the hostname of the IP address of inbound requests from a DNS server, or by requesting the information through functionality provided by the system where CIDRAM is installed (this is typically referred to as a "hostname lookup"). The DNS servers defined by default belong to the [Google DNS](https://dns.google.com/) service (but this can be easily changed via configuration). The exact services communicated with is configurable, and depends on how you configure the package. In the case of using functionality provided by the system where CIDRAM is installed, you'll need to contact your system administrator to determine which routes hostname lookups use. Hostname lookups can be prevented in CIDRAM by avoiding the affected modules or by modifying the package configuration in accordance with your needs.
 
@@ -1881,7 +1880,7 @@ If you use any features or modules intended to work with hostnames (such as the 
 - `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
 
-##### 11.2.2 SEARCH ENGINE VERIFICATION AND SOCIAL MEDIA VERIFICATION
+##### 9.2.1 SEARCH ENGINE VERIFICATION AND SOCIAL MEDIA VERIFICATION
 
 When search engine verification is enabled, CIDRAM attempts to perform "forward DNS lookups" to verify whether requests claiming to originate from search engines are authentic. Similarly, when social media verification is enabled, CIDRAM does the same for apparent social media requests. To do this, it uses the [Google DNS](https://dns.google.com/) service to attempt to resolve IP addresses from the hostnames of these inbound requests (in this process, the hostnames of these inbound requests is shared with the service).
 
@@ -1890,25 +1889,25 @@ When search engine verification is enabled, CIDRAM attempts to perform "forward 
 - `general` -> `social_media_verification`
 - `general` -> `other_verification`
 
-##### 11.2.3 CAPTCHA
+##### 9.2.2 CAPTCHA
 
 CIDRAM supports reCAPTCHA and hCAPTCHA. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
 
-##### 11.2.4 STOP FORUM SPAM
+##### 9.2.3 STOP FORUM SPAM
 
 [Stop Forum Spam](https://www.stopforumspam.com/) is a fantastic, freely available service that can help to protect forums, blogs, and websites from spammers. It does this by providing a database of known spammers, and an API that can be leveraged to check whether an IP address, username, or email address is listed on its database.
 
 CIDRAM provides an optional module that leverages this API to check whether the IP address of inbound requests belongs to a suspected spammer. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the Stop Forum Spam API in accordance with the intended purpose of the module. When the module is installed, CIDRAM communicates with this API whenever an inbound request requests a resource that CIDRAM recognises as a type of resource frequently targeted by spammers (such as login pages, registration pages, email verification pages, comment forms, etc).
 
-##### 11.2.5 ABUSEIPDB
+##### 9.2.4 ABUSEIPDB
 
 CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the AbuseIPDB API in accordance with the intended purpose of the module.
 
-##### 11.2.6 BGPVIEW
+##### 9.2.5 BGPVIEW
 
 CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the BGPView API in accordance with the intended purpose of the module.
 
-#### 11.3 LOGGING
+#### 9.3 LOGGING
 
 Logging is an important part of CIDRAM for a number of reasons. It may be difficult to diagnose and resolve false positives when the block events that cause them aren't logged. Without logging block events, it may be difficult to ascertain exactly how performant CIDRAM is in any particular context, and it may be difficult to determine where its shortfalls may be, and what changes may be required to its configuration or signatures accordingly, in order for it to continue functioning as intended. Regardless, logging mightn't be desirable for all users, and remains entirely optional. In CIDRAM, logging is disabled by default. To enable it, CIDRAM must be configured accordingly.
 
@@ -1916,7 +1915,7 @@ Additionally, whether logging is legally permissible, and to the extent that it 
 
 There are multiple types of logging that CIDRAM can perform. Different types of logging involves different types of information, for different reasons.
 
-##### 11.3.0 BLOCK EVENTS
+##### 9.3.0 BLOCK EVENTS
 
 The primary type of logging that CIDRAM can perform relates to "block events". This type of logging relates to when CIDRAM blocks a request, and can be provided in three different formats:
 - Human readable logfiles.
@@ -1965,7 +1964,7 @@ A logged block event typically includes the following information:
 
 When these directives are left empty, this type of logging will remain disabled.
 
-##### 11.3.1 CAPTCHA LOGGING
+##### 9.3.1 CAPTCHA LOGGING
 
 This type of logging relates specifically to CAPTCHA instances, and occurs only when a user attempts to complete a CAPTCHA instance.
 
@@ -1979,7 +1978,7 @@ IP Address: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State
 - `recaptcha` -> `logfile`
 - `hcaptcha` -> `logfile`
 
-##### 11.3.2 FRONT-END LOGGING
+##### 9.3.2 FRONT-END LOGGING
 
 This type of logging relates front-end login attempts, and occurs only when a user attempts to log into the front-end (assuming front-end access is enabled).
 
@@ -1992,7 +1991,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Logged in.
 *The configuration directive responsible for front-end logging is:*
 - `general` -> `frontend_log`
 
-##### 11.3.3 LOG ROTATION
+##### 9.3.3 LOG ROTATION
 
 You may want to purge logs after a period of time, or may be required to do so by law (i.e., the amount of time that it's legally permissible for you to retain logs may be limited by law). You can achieve this by including date/time markers in the names of your logfiles as per specified by your package configuration (e.g., `{yyyy}-{mm}-{dd}.log`), and then enabling log rotation (log rotation allows you to perform some action on logfiles when specified limits are exceeded).
 
@@ -2004,14 +2003,14 @@ Conversely, if you're required to retain logs for an extended period of time, yo
 - `general` -> `log_rotation_limit`
 - `general` -> `log_rotation_action`
 
-##### 11.3.4 LOG TRUNCATION
+##### 9.3.4 LOG TRUNCATION
 
 It's also possible to truncate individual logfiles when they exceed a certain size, if this is something you might need or want to do.
 
 *Relevant configuration directives:*
 - `general` -> `truncate`
 
-##### 11.3.5 IP ADDRESS PSEUDONYMISATION
+##### 9.3.5 IP ADDRESS PSEUDONYMISATION
 
 Firstly, if you're not familiar with the term, "pseudonymisation" refers to the processing of personal data as such that it can't be identified to any specific data subject anymore without supplementary information, and provided that such supplementary information is maintained separately and subject to technical and organisational measures to ensure that personal data can't be identified to any natural person.
 
@@ -2029,7 +2028,7 @@ CIDRAM is able to pseudonymise IP addresses when logging them, if this is someth
 *Relevant configuration directives:*
 - `legal` -> `pseudonymise_ip_addresses`
 
-##### 11.3.6 OMITTING LOG INFORMATION
+##### 9.3.6 OMITTING LOG INFORMATION
 
 If you want to take it a step further by preventing specific types of information from being logged entirely, this is also possible to do. CIDRAM provides configuration directives to control whether IP addresses, hostnames, and user agents are included in logs. By default, all three of these data points are included in logs when available. Setting any of these configuration directives to `true` will omit the corresponding information from logs.
 
@@ -2040,18 +2039,18 @@ If you want to take it a step further by preventing specific types of informatio
 - `legal` -> `omit_hostname`
 - `legal` -> `omit_ua`
 
-##### 11.3.7 STATISTICS
+##### 9.3.7 STATISTICS
 
 CIDRAM is optionally able to track statistics such as the total number of block events or CAPTCHA instances that have occurred since some particular point in time. This feature is disabled by default, but can be enabled via the package configuration. This feature only tracks the total number of events occurred, and doesn't include any information about specific events (and therefore, shouldn't be regarded as PII).
 
 *Relevant configuration directives:*
 - `general` -> `statistics`
 
-##### 11.3.8 ENCRYPTION
+##### 9.3.8 ENCRYPTION
 
 CIDRAM doesn't encrypt its cache or any log information. Cache and log [encryption](https://en.wikipedia.org/wiki/Encryption) may be introduced in the future, but there aren't any specific plans for it currently. If you're concerned about unauthorised third parties gaining access to parts of CIDRAM that may contain PII or sensitive information such as its cache or logs, I would recommend that CIDRAM not be installed at a publicly accessible location (e.g., install CIDRAM outside the standard `public_html` directory or equivalent thereof available to most standard webservers) and that appropriately restrictive permissions be enforced for the directory where it resides (in particular, for the vault directory). If that isn't sufficient to address your concerns, then configure CIDRAM as such that the types of information causing your concerns won't be collected or logged in the first place (such as, by disabling logging).
 
-#### 11.4 COOKIES
+#### 9.4 COOKIES
 
 CIDRAM sets [cookies](https://en.wikipedia.org/wiki/HTTP_cookie) at two points in its codebase. Firstly, when a user successfully completes a CAPTCHA instance (and assuming that `lockuser` is set to `true`), CIDRAM sets a cookie in order to be able to remember for subsequent requests that the user has already completed a CAPTCHA instance, so that it won't need to continuously ask the user to complete a CAPTCHA instance on subsequent requests. Secondly, when a user successfully logs into the front-end, CIDRAM sets a cookie in order to be able to remember the user for subsequent requests (i.e., cookies are used to authenticate the user to a login session).
 
@@ -2066,11 +2065,11 @@ In both cases, cookie warnings are displayed prominently (when applicable), warn
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
-#### 11.5 MARKETING AND ADVERTISING
+#### 9.5 MARKETING AND ADVERTISING
 
 CIDRAM doesn't collect or process any information for marketing or advertising purposes, and neither sells nor profits from any collected or logged information. CIDRAM is not a commercial enterprise, nor is related to any commercial interests, so doing these things wouldn't make any sense. This has been the case since the beginning of the project, and continues to be the case today. Additionally, doing these things would be counter-productive to the spirit and intended purpose of the project as a whole, and for as long as I continue to maintain the project, will never happen.
 
-#### 11.6 PRIVACY POLICY
+#### 9.6 PRIVACY POLICY
 
 In some circumstances, you may be legally required to clearly display a link to your privacy policy on all pages and sections of your website. This may be important as a means to ensure that users are well-informed of your exact privacy practices, the types of PII you collect, and how you intend to use it. In order to be able to include such a link on CIDRAM's "Access Denied" page, a configuration directive is provided to specify the URL to your privacy policy.
 
@@ -2079,7 +2078,7 @@ In some circumstances, you may be legally required to clearly display a link to 
 *Relevant configuration directives:*
 - `legal` -> `privacy_policy`
 
-#### 11.7 GDPR/DSGVO
+#### 9.7 GDPR/DSGVO
 
 The General Data Protection Regulation (GDPR) is a regulation of the European Union, which comes into effect as of May 25, 2018. The primary goal of the regulation is to give control to EU citizens and residents regarding their own personal data, and to unify regulation within the EU concerning privacy and personal data.
 
