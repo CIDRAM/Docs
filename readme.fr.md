@@ -122,7 +122,7 @@ Des instructions sont fournies sur chaque page de l'accès frontal, pour expliqu
 
 Il est possible de sécuriser l'accès frontal en activant l'authentification à deux facteurs (« 2FA »). Lors de la connexion à l'aide d'un compte sur lequel 2FA est activé, un e-mail est envoyé à l'adresse électronique associée à ce compte. Cet e-mail contient un « code 2FA », que l'utilisateur doit alors entrer, en plus du nom d'utilisateur et du mot de passe, afin de pouvoir authentifier ce compte. Cela signifie que l'obtention d'un mot de passe d'un compte ne serait pas suffisant pour qu'un attaquant potentiel puisse authentifier ce compte, comme ils auraient également besoin d'avoir déjà accès à l'adresse électronique associée à ce compte afin de pouvoir recevoir et utiliser le code 2FA associé à la session, rendant ainsi l'accès frontal plus sécurisé.
 
-Avant toute chose, pour activer l'authentification à deux facteurs, à l'aide de la page des mises à jour frontales, installez le composant PHPMailer. CIDRAM utilise PHPMailer pour envoyer des emails. Il convient de noter que bien que CIDRAM, en soi, est compatible avec PHP >= 5.4.0, PHPMailer a besoin de PHP >= 5.5.0, ce qui signifie que l'activation de l'authentification à deux facteurs pour l'accès frontal sur CIDRAM ne sera pas possible pour les utilisateurs de PHP 5.4.
+Avant toute chose, pour activer l'authentification à deux facteurs, à l'aide de la page des mises à jour frontales, installez le composant PHPMailer. CIDRAM utilise PHPMailer pour envoyer des emails.
 
 Après avoir installé PHPMailer, vous devez renseigner les directives de configuration de PHPMailer via la page de configuration ou le fichier de configuration de CIDRAM. Plus d'informations sur ces directives de configuration sont incluses dans la section de configuration de ce document. Après avoir rempli les directives de configuration de PHPMailer, mettre `enable_two_factor` à `true`. L'authentification à deux facteurs devrait maintenant être activée.
 
@@ -161,9 +161,6 @@ Configuration (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ Configuration (v3)
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ Configuration (v3)
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ Configuration (v3)
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ Configuration (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ Configuration (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### « general » (Catégorie)
@@ -589,15 +581,6 @@ emailaddr_display_style
 └─noclick ("Texte non-cliquable")
 ```
 
-##### « disable_frontend » `[bool]`
-- Désactiver l'accès frontal ? L'accès frontal peut rendre CIDRAM plus facile à gérer, mais peut aussi être un risque potentiel pour la sécurité. Il est recommandé de gérer CIDRAM via le back-end chaque fois que possible, mais l'accès frontal est prévu pour quand il est impossible. Seulement activer si vous avez besoin. False = Activer l'accès frontal ; True = Désactiver l'accès frontal [Défaut].
-
-##### « max_login_attempts » `[int]`
-- Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
-
-##### « frontend_log » `[string]`
-- Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
-
 ##### « signatures_update_event_log » `[string]`
 - Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
 
@@ -688,9 +671,6 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
-##### « protect_frontend » `[bool]`
-- Spécifie si les protections normalement fournies par CIDRAM doivent être appliquées à l'accès frontal. True = Oui [Défaut] ; False = Non.
-
 ##### « default_algo » `[string]`
 - Définit quel algorithme utiliser pour tous les mots de passe et les sessions à l'avenir.
 
@@ -743,20 +723,60 @@ disabled_channels
 ##### « default_timeout » `[int]`
 - Délai d'attente par défaut à utiliser pour les requêtes externes ? Défaut = 12 secondes.
 
-##### « config_imports » `[string]`
-- Une liste délimitée par des virgules de fichiers à importer dans la configuration par défaut du CIDRAM. Généralement renseigné par la page des mises à jour lors de l'activation des composants qui en ont besoin si nécessaire. Dans la plupart des cas, peut l'ignorer.
+#### « components » (Catégorie)
+Configuration pour l'activation et la désactivation des composants utilisés par le CIDRAM. Généralement rempli par la page des mises à jour, mais peut également être géré à partir d'ici pour un contrôle plus précis et pour les composants personnalisés non reconnus par la page des mises à jour.
+
+##### « ipv4 » `[string]`
+- Fichiers de signatures IPv4.
+
+##### « ipv6 » `[string]`
+- Fichiers de signatures IPv6.
+
+##### « modules » `[string]`
+- Modules.
+
+##### « imports » `[string]`
+- Importations. Généralement utilisé pour fournir les informations de configuration d'un composant au CIDRAM.
 
 ##### « events » `[string]`
-- Les fichiers répertoriés ici sont chargés directement après le fichier des gestionnaires d'événements. Généralement renseigné par la page des mises à jour lors de l'activation des composants qui en ont besoin si nécessaire. Dans la plupart des cas, peut l'ignorer.
+- Gestionnaires d'événements. Généralement utilisé pour modifier la façon dont CIDRAM se comporte en interne ou pour fournir des fonctionnalités supplémentaires.
+
+#### « frontend » (Catégorie)
+Configuration pour l'accès frontal.
+
+##### « frontend_log » `[string]`
+- Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « max_login_attempts » `[int]`
+- Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
+
+##### « theme » `[string]`
+- Le thème à utiliser par défaut pour l'accès frontal.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Autres
+```
+
+##### « magnification » `[float]`
+- Grossissement des fontes. Défaut = 1.
+
+##### « remotes » `[string]`
+- Une liste des adresses utilisées par la page des mises à jour pour procurer les métadonnées des composants. Cela peut devoir être ajusté lors du passage à une nouvelle version majeure, ou lors de l'acquisition d'une nouvelle source de mises à jour, mais dans des circonstances normales, il doit être laissé tel quel.
+
+##### « enable_two_factor » `[bool]`
+- Cette directive détermine s'il faut utiliser 2FA pour les comptes frontaux.
 
 #### « signatures » (Catégorie)
 Configuration pour les signatures, fichiers de signatures, modules, etc.
-
-##### « ipv4 » `[string]`
-- Une liste des fichiers du signatures IPv4 que CIDRAM devrait tenter d'utiliser, délimité par des virgules.
-
-##### « ipv6 » `[string]`
-- Une liste des fichiers du signatures IPv6 que CIDRAM devrait tenter d'utiliser, délimité par des virgules.
 
 ##### « block_attacks » `[bool]`
 - Bloquer les CIDRs associés aux attaques et autres trafics anormaux ? Par exemple, les analyses de ports, le piratage, la recherche de vulnérabilités, etc. Sauf si vous rencontrez des problèmes quand vous faire, en généralement, cette directive devrait toujours être fixé comme true.
@@ -781,9 +801,6 @@ Configuration pour les signatures, fichiers de signatures, modules, etc.
 
 ##### « block_spam » `[bool]`
 - Bloquer les CIDRs identifié comme étant risque élevé pour le spam ? Sauf si vous rencontrez des problèmes quand vous faire, en généralement, cette directive devrait toujours être fixé comme true.
-
-##### « modules » `[string]`
-- Une liste des fichiers modules à charger après exécuter des signatures IPv4/IPv6, délimité par des virgules.
 
 ##### « default_tracktime » `[int]`
 - Combien de secondes pour suivre les IP interdites par les modules. Défaut = 604800 (1 semaine).
@@ -973,7 +990,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1005,55 +1021,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Autres
 ```
-
-#### « PHPMailer » (Catégorie)
-Configuration pour PHPMailer (utilisé pour l'authentification à deux facteurs).
-
-##### « event_log » `[string]`
-- Fichier pour l'enregistrement de tous les événements relatifs à PHPMailer. Spécifier un fichier, ou laisser vide à désactiver.
-
-##### « skip_auth_process » `[bool]`
-- Définir cette directive sur `true` instruit à PHPMailer de sauter le processus d'authentification qui se produit normalement lors de l'envoi d'e-mail via SMTP. Cela doit être évité, car sauter du processus peut exposer l'e-mail sortant aux attaques MITM, mais peut être nécessaire dans les cas où ce processus empêche PHPMailer de se connecter à un serveur SMTP.
-
-##### « enable_two_factor » `[bool]`
-- Cette directive détermine s'il faut utiliser 2FA pour les comptes frontaux.
-
-##### « host » `[string]`
-- Hôte SMTP à utiliser pour les e-mails sortants.
-
-##### « port » `[int]`
-- Le numéro de port à utiliser pour l'e-mail sortant. Défaut = 587.
-
-##### « smtp_secure » `[string]`
-- Le protocole à utiliser lors de l'envoi d'e-mail via SMTP (TLS ou SSL).
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### « smtp_auth » `[bool]`
-- Cette directive détermine si les sessions SMTP doivent être authentifiées (elles doivent généralement être laissées seules).
-
-##### « username » `[string]`
-- Le nom d'utilisateur à utiliser lors de l'envoi d'e-mail via SMTP.
-
-##### « password » `[string]`
-- Le mot de passe à utiliser lors de l'envoi d'e-mail via SMTP.
-
-##### « set_from_address » `[string]`
-- L'adresse de l'expéditeur à citer lors de l'envoi d'e-mail via SMTP.
-
-##### « set_from_name » `[string]`
-- Le nom de l'expéditeur à citer lors de l'envoi d'e-mail via SMTP.
-
-##### « add_reply_to_address » `[string]`
-- L'adresse de réponse à citer lors de l'envoi d'e-mail via SMTP.
-
-##### « add_reply_to_name » `[string]`
-- Le nom pour répondre à citer lors de l'envoi d'e-mail via SMTP.
 
 #### « rate_limiting » (Catégorie)
 Configuration pour la limitation de débit (non recommandé pour d'utilisation générale).
@@ -1125,6 +1092,28 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#HO
 
 ##### « pdo_password » `[string]`
 - Mot de passe PDO.
+
+#### « bypasses » (Catégorie)
+Configuration pour les contournements de signatures défaut.
+
+##### « used » `[string]`
+- Lequels contournements faut-il utiliser ?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2113,4 +2102,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 12 Mai 2022 (2022.05.12).
+Dernière mise à jour : 23 Mai 2022 (2022.05.23).

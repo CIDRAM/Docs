@@ -122,7 +122,7 @@ CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 �
 
 2FA를 사용하면 프런트 엔드를 더욱 안전하게 만들 수 있습니다. 2FA를 사용하는 계정에 로그인하면 해당 계정과 연결된 이메일 주소로 이메일이 전송됩니다. 이 이메일에는 "2FA 코드"가 포함되어 있습니다. 사용자는이 계정을 사용하여 로그인 할 수 있도록 사용자 이름과 비밀번호 외에도 사용자가 입력해야합니다. 즉, 해커 또는 잠재적 공격자가 해당 계정에 로그인 할 수 있도록 계정 암호로는 충분하지 않습니다. 세션과 관련된 2FA 코드를 수신하고 활용하려면 해당 계정과 연결된 이메일 주소에 대한 액세스 권한이 있어야합니다.
 
-2FA를 사용하려면 프론트 엔드 업데이트 페이지를 사용하여 PHPMailer 구성 요소를 설치하십시오. CIDRAM은 PHPMailer를 사용하여 이메일을 전송합니다. 노트 : CIDRAM은 PHP >= 5.4.0와 호환되지만 PHPMailer에는 PHP >= 5.5.0가 필요합니다. 따라서 PHP 5.4 사용자는 CIDRAM 프론트 엔드에 2FA를 사용할 수 없습니다.
+2FA를 사용하려면 프론트 엔드 업데이트 페이지를 사용하여 PHPMailer 구성 요소를 설치하십시오. CIDRAM은 PHPMailer를 사용하여 이메일을 전송합니다.
 
 PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통해 PHPMailer의 구성 지시문을 채워야합니다. 이러한 구성 지시문에 대한 자세한 내용은이 설명서의 구성 섹션에 포함되어 있습니다. PHPMailer 설정 지시어를 채운 후에는 `enable_two_factor`를 `true`로 설정하십시오. 이제 2FA가 활성화되어야합니다.
 
@@ -161,9 +161,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (카테고리)
@@ -590,15 +582,6 @@ emailaddr_display_style
 └─noclick ("클릭 할 수없는 텍스트")
 ```
 
-##### "disable_frontend" `[bool]`
-- 프론트 엔드에 대한 액세스를 비활성화하거나? 프론트 엔드에 대한 액세스는 CIDRAM을 더 쉽게 관리 할 수 있습니다. 상기 그것은 또한 잠재적 인 보안 위험이 될 수 있습니다. 백엔드를 통해 관리하는 것이 좋습니다,하지만 이것이 불가능한 경우 프론트 엔드에 대한 액세스를 제공. 당신이 그것을 필요로하지 않는 한 그것을 해제합니다. `false` = 프론트 엔드에 대한 액세스를 활성화합니다; `true` = 프론트 엔드에 대한 액세스를 비활성화합니다 (Default / 기본 설정).
-
-##### "max_login_attempts" `[int]`
-- 로그인 시도 최대 횟수입니다 (프론트 엔드). Default / 기본 설정 = 5.
-
-##### "frontend_log" `[string]`
-- 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
-
 ##### "signatures_update_event_log" `[string]`
 - 프런트 엔드임를 통해 서명이 업데이트될 때 로깅을 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
@@ -690,9 +673,6 @@ __"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
-##### "protect_frontend" `[bool]`
-- CIDRAM 의해 보통 제공되는 보호를 프론트 엔드에 적용할지 여부를 지정합니다. True = 예 (Default / 기본값); False = 아니오.
-
 ##### "default_algo" `[string]`
 - 향후 모든 암호와 세션에 사용할 알고리즘을 정의합니다.
 
@@ -745,20 +725,60 @@ disabled_channels
 ##### "default_timeout" `[int]`
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
 
-##### "config_imports" `[string]`
-- CIDRAM 기본 구성으로 가져올 쉼표로 구분된 파일 목록입니다. 일반적으로 구성 요소를 활성화할 때 업데이트 페이지에서 필요에 따라 채워집니다. 대부분의 경우 무시할 수 있습니다.
+#### "components" (카테고리)
+CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위한 구성입니다. 일반적으로 업데이트 페이지에 의해 채워지지만, 세부 제어 및 업데이트 페이지에서 인식하지 못하는 사용자 지정 구성 요소를 위해 여기에서 관리할 수도 있습니다.
+
+##### "ipv4" `[string]`
+- IPv4 서명 파일.
+
+##### "ipv6" `[string]`
+- IPv6 서명 파일.
+
+##### "modules" `[string]`
+- 모듈.
+
+##### "imports" `[string]`
+- 수입품. 일반적으로 구성 요소의 구성 정보를 CIDRAM에 제공하는 데 사용됩니다.
 
 ##### "events" `[string]`
-- 여기에 나열된 파일은 이벤트 핸들러 파일 바로 다음에 로드됩니다. 일반적으로 구성 요소를 활성화할 때 업데이트 페이지에서 필요에 따라 채워집니다. 대부분의 경우 무시할 수 있습니다.
+- 이벤트 핸들러. 일반적으로 CIDRAM이 내부적으로 작동하는 방식을 수정하거나 추가 기능을 제공하는 데 사용됩니다.
+
+#### "frontend" (카테고리)
+프런트 엔드에 대한 구성입니다.
+
+##### "frontend_log" `[string]`
+- 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+##### "max_login_attempts" `[int]`
+- 로그인 시도 최대 횟수입니다 (프론트 엔드). Default / 기본 설정 = 5.
+
+##### "theme" `[string]`
+- 프런트 엔드에 사용할 기본 테마.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…다른
+```
+
+##### "magnification" `[float]`
+- 글꼴 배율. Default (기본 설정) = 1.
+
+##### "remotes" `[string]`
+- 구성 요소 메타데이터를 가져오기 위해 업데이트할 터에서 사용하는 주소 목록입니다. 이것은 새로운 주 버전으로 업그레이드하거나 업데이트를 위한 새로운 소스를 얻을 때 조정해야 할 수 있지만 일반적인 상황에서는 그대로 두어야 합니다.
+
+##### "enable_two_factor" `[bool]`
+- 이 지시문은 프런트 엔드 계정에 2FA를 사용할지 여부를 결정합니다.
 
 #### "signatures" (카테고리)
 서명, 서명 파일, 모듈, 등의 설정.
-
-##### "ipv4" `[string]`
-- IPv4의 서명 파일 목록 (CIDRAM는 이것을 사용합니다). 이것은 쉼표로 구분되어 있습니다.
-
-##### "ipv6" `[string]`
-- IPv6의 서명 파일 목록 (CIDRAM는 이것을 사용합니다). 이것은 쉼표로 구분되어 있습니다.
 
 ##### "block_attacks" `[bool]`
 - 공격 및 기타 비정상적인 트래픽과 관련된 CIDR을 차단하시겠습니까? 예: 포트 스캔, 해킹, 취약점 조사, 등등. 문제가있는 경우를 제외하고 일반적으로이를 true로 설정해야합니다.
@@ -783,9 +803,6 @@ disabled_channels
 
 ##### "block_spam" `[bool]`
 - 스팸 때문에 CIDR을 차단해야합니까? 문제가있는 경우를 제외하고 일반적으로이를 true로 설정해야합니다.
-
-##### "modules" `[string]`
-- IPv4/IPv6 서명을 체크 한 후로드 모듈 파일의 목록입니다. 이것은 쉼표로 구분되어 있습니다.
 
 ##### "default_tracktime" `[int]`
 - 모듈에 의해 금지 된 IP를 추적하는 초. Default (기본값) = 604800 (1 주).
@@ -975,7 +992,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1007,55 +1023,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…다른
 ```
-
-#### "PHPMailer" (카테고리)
-PHPMailer 설정 (이중 인증에 사용).
-
-##### "event_log" `[string]`
-- PHPMailer와 관련된 모든 이벤트를 기록하는 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
-
-##### "skip_auth_process" `[bool]`
-- `true` 일 때, PHPMailer는 전자 메일 전송을위한 SMTP 인증 프로세스를 건너 뛰도록 지시합니다. 이 프로세스를 건너 뛰면 아웃 바운드 전자 메일이 MITM 공격에 노출 될 수 있으므로 피해야합니다. 특정 경우에 필요할 수 있음 (예 : PHPMailer가 SMTP 서버에 제대로 연결할 수없는 경우).
-
-##### "enable_two_factor" `[bool]`
-- 이 지시문은 프런트 엔드 계정에 2FA를 사용할지 여부를 결정합니다.
-
-##### "host" `[string]`
-- 아웃 바운드 전자 메일에 사용할 SMTP 호스트입니다.
-
-##### "port" `[int]`
-- 아웃 바운드 이메일에 사용할 포트 번호입니다. Default (기본 설정) = 587.
-
-##### "smtp_secure" `[string]`
-- SMTP를 통해 이메일을 보낼 때 사용할 프로토콜 (TLS 또는 SSL).
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### "smtp_auth" `[bool]`
-- 이 지시문은 SMTP 세션을 인증할지 여부를 결정합니다 (보통 이것을 무시해야합니다).
-
-##### "username" `[string]`
-- SMTP를 통해 이메일을 보낼 때 사용할 사용자 이름입니다.
-
-##### "password" `[string]`
-- SMTP를 통해 이메일을 보낼 때 사용할 비밀번호입니다.
-
-##### "set_from_address" `[string]`
-- SMTP를 통해 전자 메일을 보낼 때 인용 할 보낸 사람 주소입니다.
-
-##### "set_from_name" `[string]`
-- SMTP를 통해 전자 메일을 보낼 때 인용 할 보낸 사람 이름입니다.
-
-##### "add_reply_to_address" `[string]`
-- SMTP를 통해 전자 메일을 보낼 때 인용 할 회신 주소입니다.
-
-##### "add_reply_to_name" `[string]`
-- SMTP를 통해 이메일을 보낼 때 인용 할 회신 이름입니다.
 
 #### "rate_limiting" (카테고리)
 속도 제한 설정 (일반적인 사용에는 권장되지 않습니다).
@@ -1127,6 +1094,28 @@ __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master
 
 ##### "pdo_password" `[string]`
 - PDO 암호.
+
+#### "bypasses" (카테고리)
+기본 서명 바이 패스 구성.
+
+##### "used" `[string]`
+- 어떤 바이 패스를 사용해야 합니까?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2098,4 +2087,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 5월 12일.
+최종 업데이트 : 2022년 5월 23일.

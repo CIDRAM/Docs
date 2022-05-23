@@ -122,7 +122,7 @@ Các hướng dẫn được cung cấp trên mỗi trang của front-end, để
 
 Việc bật xác thực hai yếu tố ("2FA") có thể làm cho front-end an toàn hơn. Khi đăng nhập vào tài khoản có hỗ trợ 2FA, một email sẽ được gửi đến địa chỉ email được liên kết với tài khoản đó. Email này chứa "mã 2FA", mà sau đó người dùng phải nhập, ngoài tên người dùng và mật khẩu, để có thể đăng nhập bằng tài khoản đó. Điều này có nghĩa là việc lấy mật khẩu tài khoản sẽ không đủ cho bất kỳ tin tặc hoặc kẻ tấn công tiềm năng nào có thể đăng nhập vào tài khoản đó, bởi vì họ cũng cần phải có quyền truy cập vào địa chỉ email được liên kết với tài khoản đó để có thể nhận và sử dụng mã 2FA được kết hợp với phiên, do đó làm cho front-end an toàn hơn.
 
-Thứ nhất, để bật xác thực hai yếu tố, sử dụng trang cập nhật front-end để cài đặt thành phần PHPMailer. CIDRAM sử dụng PHPMailer để gửi email. Lưu ý rằng mặc dù CIDRAM tương thích với PHP >= 5.4.0, PHPMailer cần PHP >= 5.5.0, do đó, xác thực hai yếu tố trong CIDRAM sẽ không thể cho người dùng PHP 5.4.
+Thứ nhất, để bật xác thực hai yếu tố, sử dụng trang cập nhật front-end để cài đặt thành phần PHPMailer. CIDRAM sử dụng PHPMailer để gửi email.
 
 Sau khi bạn đã cài đặt PHPMailer, bạn sẽ cần điền các chỉ thị cấu hình cho PHPMailer thông qua trang cấu hình CIDRAM hoặc tập tin cấu hình. Thông tin thêm về các chỉ thị cấu hình này được bao gồm trong phần cấu hình của tài liệu này. Sau khi bạn đã điền các chỉ thị cấu hình PHPMailer, hãy đặt `enable_two_factor` thành `true`. Xác thực hai yếu tố bây giờ sẽ được bật.
 
@@ -161,9 +161,6 @@ Cấu hình (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ Cấu hình (v3)
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ Cấu hình (v3)
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ Cấu hình (v3)
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ Cấu hình (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ Cấu hình (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Thể loại)
@@ -593,15 +585,6 @@ emailaddr_display_style
 └─noclick ("Văn bản không thể nhấp")
 ```
 
-##### "disable_frontend" `[bool]`
-- Vô hiệu hóa truy cập front-end? Truy cập front-end có thể làm cho CIDRAM dễ quản lý hơn, nhưng cũng có thể là một nguy cơ bảo mật tiềm năng. Đó là khuyến cáo để quản lý CIDRAM từ các back-end bất cứ khi nào có thể, nhưng truy cập front-end là cung cấp khi nó không phải là có thể. Giữ nó vô hiệu hóa trừ khi bạn cần nó. False = Kích hoạt truy cập front-end; True = Vô hiệu hóa truy cập front-end [Mặc định].
-
-##### "max_login_attempts" `[int]`
-- Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
-
-##### "frontend_log" `[string]`
-- Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
 ##### "signatures_update_event_log" `[string]`
 - Một tập tin để ghi nhật ký khi chữ ký được cập nhật qua front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
@@ -696,9 +679,6 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
 
-##### "protect_frontend" `[bool]`
-- Chỉ định liệu các bảo vệ thường được cung cấp bởi CIDRAM nên được áp dụng cho các front-end. True = Vâng [Mặc định]; False = Không.
-
 ##### "default_algo" `[string]`
 - Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai.
 
@@ -751,20 +731,60 @@ disabled_channels
 ##### "default_timeout" `[int]`
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
 
-##### "config_imports" `[string]`
-- Danh sách tập tin được phân tách bằng dấu phẩy để nhập vào cấu hình mặc định CIDRAM. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
+#### "components" (Thể loại)
+Cấu hình để kích hoạt và vô hiệu hóa các thành phần được sử dụng bởi CIDRAM. Thường được điền bởi trang cập nhật, nhưng cũng có thể được quản lý từ đây để kiểm soát tốt hơn và cho các thành phần tùy chỉnh không được công nhận bởi trang cập nhật.
+
+##### "ipv4" `[string]`
+- Tập tin chữ ký IPv4.
+
+##### "ipv6" `[string]`
+- Tập tin chữ ký IPv6.
+
+##### "modules" `[string]`
+- Mô-đun.
+
+##### "imports" `[string]`
+- Nhập khẩu. Thường được sử dụng để cung cấp thông tin cấu hình của một thành phần cho CIDRAM.
 
 ##### "events" `[string]`
-- Các tập tin được liệt kê ở đây được tải trực tiếp sau tập tin trình xử lý sự kiện. Thường được nhập bởi trang cập nhật khi cần thiết khi các thành phần được kích hoạt. Trong hầu hết các trường hợp, có thể bỏ qua nó.
+- Trình xử lý sự kiện. Thường được sử dụng để sửa đổi cách CIDRAM hoạt động trong nội bộ hoặc để cung cấp chức năng bổ sung.
+
+#### "frontend" (Thể loại)
+Cấu hình cho front-end.
+
+##### "frontend_log" `[string]`
+- Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "max_login_attempts" `[int]`
+- Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
+
+##### "theme" `[string]`
+- Chủ đề mặc định để sử dụng cho front-end.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Khác
+```
+
+##### "magnification" `[float]`
+- Phóng to chữ. Mặc định = 1.
+
+##### "remotes" `[string]`
+- Danh sách các địa chỉ được trình cập nhật sử dụng để tìm nạp siêu dữ liệu thành phần. Điều này có thể cần được điều chỉnh khi nâng cấp lên phiên bản chính mới, hoặc khi tìm một nguồn mới để cập nhật, nhưng trong các trường hợp bình thường thì nên để nguyên.
+
+##### "enable_two_factor" `[bool]`
+- Chỉ thị này xác định có nên sử dụng 2FA cho tài khoản front-end hay không.
 
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký, tập tin chữ ký, mô-đun, vv.
-
-##### "ipv4" `[string]`
-- Một danh sách các tập tin chữ ký IPv4 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy.
-
-##### "ipv6" `[string]`
-- Một danh sách các tập tin chữ ký IPv6 mà CIDRAM nên cố gắng để phân tích, ngăn cách bởi dấu phẩy.
 
 ##### "block_attacks" `[bool]`
 - Chặn CIDR liên quan đến các cuộc tấn công và lưu lượng truy cập bất thường khác? Ví dụ, quét cổng, tấn công, dò tìm lỗ hổng bảo mật, vv. Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
@@ -789,9 +809,6 @@ Cấu hình cho chữ ký, tập tin chữ ký, mô-đun, vv.
 
 ##### "block_spam" `[bool]`
 - Chặn CIDR xác định như có nguy cơ cao đối được thư rác? Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
-
-##### "modules" `[string]`
-- Một danh sách các tập tin mô-đun để tải sau khi kiểm tra các chữ ký IPv4/IPv6, ngăn cách bởi dấu phẩy.
 
 ##### "default_tracktime" `[int]`
 - Có bao nhiêu giây để giám sát các IP bị cấm bởi các mô-đun. Mặc định = 604800 (1 tuần).
@@ -983,7 +1000,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1015,55 +1031,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Khác
 ```
-
-#### "PHPMailer" (Thể loại)
-Cấu hình cho PHPMailer (được sử dụng để xác thực hai yếu tố).
-
-##### "event_log" `[string]`
-- Một tập tin để ghi nhật ký tất cả các sự kiện liên quan đến PHPMailer. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
-##### "skip_auth_process" `[bool]`
-- Đặt chỉ thị này thành `true` chỉ thị cho PHPMailer bỏ qua quy trình xác thực thông thường thường xảy ra khi gửi email qua SMTP. Điều này nên tránh, bởi vì bỏ qua quá trình này có thể tiết lộ email gửi đến các cuộc tấn công MITM, nhưng có thể cần thiết trong trường hợp quá trình này ngăn PHPMailer kết nối với máy chủ SMTP.
-
-##### "enable_two_factor" `[bool]`
-- Chỉ thị này xác định có nên sử dụng 2FA cho tài khoản front-end hay không.
-
-##### "host" `[string]`
-- Máy chủ SMTP để sử dụng cho email gửi đi.
-
-##### "port" `[int]`
-- Số cổng để sử dụng cho email gửi đi. Mặc định = 587.
-
-##### "smtp_secure" `[string]`
-- Giao thức sử dụng khi gửi email qua SMTP (TLS hoặc SSL).
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### "smtp_auth" `[bool]`
-- Chỉ thị này xác định xem có nên xác thực các phiên SMTP (thường nên để lại một mình).
-
-##### "username" `[string]`
-- Tên người dùng để sử dụng khi gửi email qua SMTP.
-
-##### "password" `[string]`
-- Mật khẩu để sử dụng khi gửi email qua SMTP.
-
-##### "set_from_address" `[string]`
-- Địa chỉ người gửi để trích dẫn khi gửi email qua SMTP.
-
-##### "set_from_name" `[string]`
-- Tên người gửi để trích dẫn khi gửi email qua SMTP.
-
-##### "add_reply_to_address" `[string]`
-- Địa chỉ trả lời để trích dẫn khi gửi email qua SMTP.
-
-##### "add_reply_to_name" `[string]`
-- Tên trả lời để trích dẫn khi gửi email qua SMTP.
 
 #### "rate_limiting" (Thể loại)
 Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chung).
@@ -1135,6 +1102,28 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 
 ##### "pdo_password" `[string]`
 - Mật khẩu PDO.
+
+#### "bypasses" (Thể loại)
+Cấu hình cho các đường tránh chữ ký mặc định.
+
+##### "used" `[string]`
+- Những đường tránh nào nên được sử dụng?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2107,4 +2096,4 @@ Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin
 ---
 
 
-Lần cuối cập nhật: 2022.05.12.
+Lần cuối cập nhật: 2022.05.23.

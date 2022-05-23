@@ -122,7 +122,7 @@ CIDRAMは、手動で、または、フロントエンド経由で更新でき�
 
 ２ＦＡ「二要素認証」を有効にすることで、フロントエンドをより安全にすることができます。​２ＦＡを使用するアカウントにログインすると、そのアカウントに関連付けられた電子Ｅメール・アドレスに電子Ｅメールが送信されます。​このＥメールには「２ＦＡコード」が含まれています。​このアカウントを使用してログインできるように、ユーザーはこの２ＦＡコードとユーザー名とパスワードを入力する必要があります。​つまり、アカウントのパスワードでは、ハッカーや潜在的な攻撃者がそのアカウントにログインするのに十分ではありません。​セッションに関連付けられた２ＦＡコードを受信して利用するには、そのアカウントに関連付けられた電子Ｅメールアドレスにアクセスする必要があります。
 
-まず、２ＦＡを有効にするには、フロントエンドのアップデイト・ページを使用して、PHPMailerコンポーネントをインストールします。​CIDRAMは、電子Ｅメールを送信するために、PHPMailerを利用します。​注意：CIDRAM自体はPHP >= 5.4.0と互換性がありますが、PHPMailerにはPHP >= 5.5.0が必要です。​したがって、PHP 5.4ユーザーはCIDRAMフロントエンドに２ＦＡを有効にすることはできません。
+まず、２ＦＡを有効にするには、フロントエンドのアップデイト・ページを使用して、PHPMailerコンポーネントをインストールします。​CIDRAMは、電子Ｅメールを送信するために、PHPMailerを利用します。
 
 PHPMailerをインストールしたら、CIDRAMコンフィギュレーション・ページまたはコンフィギュレーション・ファイルを使用して、PHPMailerのコンフィギュレーション・ディレクティブを設定する必要があります。​これらのコンフィギュレーション・ディレクティブの詳細については、このドキュメントのコンフィギュレーション・セクションに記載されています。​PHPMailerコンフィギュレーション・ディレクティブを設定したら、`enable_two_factor`を`true`に設定します。​２ＦＡが有効にされている。
 
@@ -161,9 +161,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" （カテゴリ）
@@ -542,7 +534,7 @@ numbers
 ├─Chinese-Simplified-Financial ("壹佰贰拾叁萬肆仟伍佰陆拾柒点捌玖")
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
-├─Fullwidth ("１２３４５６６.８９")
+├─Fullwidth ("１２３４５６７.８９")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -584,15 +576,6 @@ emailaddr_display_style
 ├─default ("クリック可能なリンク")
 └─noclick ("クリックできないテキスト")
 ```
-
-##### "disable_frontend" `[bool]`
-- フロントエンドへのアクセスを無効にするか？​フロントエンドへのアクセスは、​CIDRAMをより管理しやすくすることができます。​前記、​それはまた、​潜在的なセキュリティリスクになる可能性があります。​バックエンドを経由して管理することをお勧めします、​しかし、​これが不可能な場合、​フロントエンドへのアクセスが提供され。​あなたがそれを必要としない限り、​それを無効にします。​`false`（偽） = フロントエンドへのアクセスを有効にします；​`true`（真） = フロントエンドへのアクセスを無効にします（Default/デフォルルト）。
-
-##### "max_login_attempts" `[int]`
-- ログイン試行の最大回数（フロントエンド）。​Default（デフォルト設定） = ５。
-
-##### "frontend_log" `[string]`
-- フロントエンド・ログインの試みを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
 ##### "signatures_update_event_log" `[string]`
 - フロントエンドを介してシグネチャ・ファイルが更新されたときにログに記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
@@ -680,9 +663,6 @@ __「陽性」と「陰性」とは何ですか？__ リクエストによって
 
 __「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
 
-##### "protect_frontend" `[bool]`
-- CIDRAMによって通常提供される保護をフロントエンドに適用するかどうかを指定します。 True = はい（Default/デフォルルト）。 False = いいえ。
-
 ##### "default_algo" `[string]`
 - 将来のすべてのパスワードとセッションに使用するアルゴリズムを定義します。
 
@@ -735,20 +715,60 @@ disabled_channels
 ##### "default_timeout" `[int]`
 - 外部リクエストに使用するデフォルトのタイムアウト？ Default/デフォルルト = １２秒。
 
-##### "config_imports" `[string]`
-- CIDRAMのデフォルト・コンフィグレーションにインポートするファイルのコンマ区切りリスト。​通常、コンポーネントをアクティブ化するときに、アップデート・ページによって必要に応じて入力されます。​ほとんどの場合、それを無視することができます。
+#### "components" （カテゴリ）
+CIDRAMによって使用されるコンポーネントをアクティブ化および非アクティブ化するための設定。​通常、アップデート・ページに入力されますが、ここから管理して、より細かく制御したり、アップデート・ページで認識されないカスタム・コンポーネントを管理したりすることもできます。
+
+##### "ipv4" `[string]`
+- ＩＰｖ４シグネチャ・ファイル。
+
+##### "ipv6" `[string]`
+- ＩＰｖ６シグネチャ・ファイル。
+
+##### "modules" `[string]`
+- モジュール。
+
+##### "imports" `[string]`
+- 輸入。​通常、コンポーネントのコンフィギュレーション情報をCIDRAMに提供するために使用されます。
 
 ##### "events" `[string]`
-- ここにリストされているファイルは、イベント・ハンドラー・ファイルの直後にロードされます。​通常、コンポーネントをアクティブ化するときに、アップデート・ページによって必要に応じて入力されます。​ほとんどの場合、それを無視することができます。
+- イベント・ハンドラー。​通常、CIDRAMの内部動作を変更したり、追加機能を提供したりするために使用されます。
+
+#### "frontend" （カテゴリ）
+フロントエンドの設定。
+
+##### "frontend_log" `[string]`
+- フロントエンド・ログインの試みを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+
+##### "max_login_attempts" `[int]`
+- ログイン試行の最大回数（フロントエンド）。​Default（デフォルト設定） = ５。
+
+##### "theme" `[string]`
+- フロントエンドに使用するデフォルト・テーマ。
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…その他
+```
+
+##### "magnification" `[float]`
+- フォントの倍率。​Default/デフォルルト = １。
+
+##### "remotes" `[string]`
+- アップデーターがコンポーネント・メタデータをフェッチするために使用するアドレスのリスト。​これは、新しいメジャーバージョンにアップグレードするとき、または更新用の新しいソースを取得するときに調整する必要がある場合がありますが、通常の状況ではそのままにしておく必要があります。
+
+##### "enable_two_factor" `[bool]`
+- このディレクティブは、フロントエンド・アカウントに２ＦＡを使用するかどうかを決定します。
 
 #### "signatures" （カテゴリ）
 シグネチャ、シグネチャ・ファイル、モジュール、などの設定。
-
-##### "ipv4" `[string]`
-- ＩＰｖ４シグネチャ・ファイルのリスト（CIDRAMは、​これを使用します）。​これは、​カンマで区切られています。​必要に応じて、​項目を追加することができます。
-
-##### "ipv6" `[string]`
-- ＩＰｖ６シグネチャ・ファイルのリスト（CIDRAMは、​これを使用します）。​これは、​カンマで区切られています。​必要に応じて、​項目を追加することができます。
 
 ##### "block_attacks" `[bool]`
 - 攻撃やその他の異常なトラフィックに関連するＣＩＤＲをブロックしますか？​例：ポートスキャン、ハッキング、脆弱性の調査、など。​問題がある場合を除き、​一般的には、​これをtrueに設定する必要があります。
@@ -773,9 +793,6 @@ disabled_channels
 
 ##### "block_spam" `[bool]`
 - スパムのため、​ＣＩＤＲをブロックする必要がありますか？​問題がある場合を除き、​一般的には、​これをtrueに設定する必要があります。
-
-##### "modules" `[string]`
-- ＩＰｖ４/ＩＰｖ６シグネチャをチェックした後にロードするモジュールファイルのリスト。​これは、​カンマで区切られています。
 
 ##### "default_tracktime" `[int]`
 - モジュールによって禁止されているＩＰを追跡する秒数。​Default（デフォルト設定） = ６０４８００（１週間）。
@@ -953,7 +970,7 @@ nonblocked_status_code
 テンプレートとテーマの設定。
 
 ##### "theme" `[string]`
-- CIDRAMに使用するデフォルトテーマ。
+- CIDRAMに使用するデフォルト・テーマ。
 
 ```
 theme
@@ -961,7 +978,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -993,55 +1009,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…その他
 ```
-
-#### "PHPMailer" （カテゴリ）
-PHPMailerの設定（二要素認証に使用されます）。
-
-##### "event_log" `[string]`
-- PHPMailerに関連してすべてのイベントを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
-
-##### "skip_auth_process" `[bool]`
-- このディレクティブを`true`に設定すると、PHPMailerはSMTP経由で電子Ｅメールを送信する際に通常発生する認証プロセスをスキップします。​このプロセスをスキップすると、送信ＥメールがＭＩＴＭ攻撃にさらされる可能性があるため、これは避けるべきです。​しかし、PHPMailerがSMTPサーバに接続できない場合、このプロセスが必要な場合があります。
-
-##### "enable_two_factor" `[bool]`
-- このディレクティブは、フロントエンド・アカウントに２ＦＡを使用するかどうかを決定します。
-
-##### "host" `[string]`
-- 送信Ｅメールに使用するＳＭＴＰホスト。
-
-##### "port" `[int]`
-- 送信Ｅメールに使用するポート番号。​Default/デフォルルト = 587。
-
-##### "smtp_secure" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するプロトコル（ＴＬＳまたはＳＳＬ）。
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### "smtp_auth" `[bool]`
-- このディレクティブは、ＳＭＴＰセッションを認証するかどうかを決定します（通常はそれをそのまま残すべきです）。
-
-##### "username" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するユーザー名。
-
-##### "password" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに使用するパスワード。
-
-##### "set_from_address" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者アドレス。
-
-##### "set_from_name" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する送信者名。
-
-##### "add_reply_to_address" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信アドレス。
-
-##### "add_reply_to_name" `[string]`
-- ＳＭＴＰ経由で電子Ｅメールを送信するときに引用する返信名。
 
 #### "rate_limiting" （カテゴリ）
 レート制限の設定（一般的な使用には推奨されません）。
@@ -1113,6 +1080,28 @@ __ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.
 
 ##### "pdo_password" `[string]`
 - PDOのパスワード。
+
+#### "bypasses" （カテゴリ）
+デフォルト・シグネチャ・バイパスのコンフィグレーション。
+
+##### "used" `[string]`
+- どのバイパスを使用する必要がありますか？
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2086,4 +2075,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２２年５月１２日。
+最終アップデート：２０２２年５月２３日。

@@ -122,7 +122,7 @@ Instruksi disediakan pada setiap halaman dari manajemen bagian depan, untuk menj
 
 Mungkin untuk membuat bagian depan lebih aman dengan mengaktifkan otentikasi dua faktor ("2FA"). Saat masuk ke akun berkemampuan 2FA, email dikirim ke alamat email yang terkait dengan akun tersebut. Email ini berisi "kode 2FA", yang kemudian harus dimasukkan oleh pengguna, selain nama pengguna dan kata sandi, agar dapat masuk menggunakan akun tersebut. Ini berarti bahwa mendapatkan kata sandi akun tidak akan cukup bagi peretas atau penyerang potensial untuk dapat masuk ke akun tersebut, karena mereka juga harus sudah memiliki akses ke alamat email yang terkait dengan akun tersebut agar dapat menerima dan memanfaatkan kode 2FA yang terkait dengan sesi, sehingga membuat bagian depan lebih aman.
 
-Pertama, untuk mengaktifkan otentikasi dua faktor, menggunakan halaman pembaruan bagian depan, instal komponen PHPMailer. CIDRAM menggunakan PHPMailer untuk mengirim email. Perlu dicatat bahwa meskipun CIDRAM, dengan sendirinya, kompatibel dengan PHP >= 5.4.0, PHPMailer membutuhkan PHP >= 5.5.0, dengan demikian berarti bahwa mengaktifkan otentikasi dua faktor untuk bagian depan CIDRAM tidak akan mungkin bagi pengguna PHP 5.4.
+Pertama, untuk mengaktifkan otentikasi dua faktor, menggunakan halaman pembaruan bagian depan, instal komponen PHPMailer. CIDRAM menggunakan PHPMailer untuk mengirim email.
 
 Setelah Anda menginstal PHPMailer, Anda harus mengisi direktif konfigurasi untuk PHPMailer melalui halaman konfigurasi CIDRAM atau file konfigurasi. Informasi lebih lanjut tentang direktif konfigurasi ini termasuk dalam bagian konfigurasi dokumen ini. Setelah Anda mengisi direktif konfigurasi PHPMailer, atur `enable_two_factor` ke `true`. Otentikasi dua faktor sekarang harus diaktifkan.
 
@@ -161,9 +161,6 @@ Konfigurasi (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ Konfigurasi (v3)
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ Konfigurasi (v3)
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ Konfigurasi (v3)
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ Konfigurasi (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ Konfigurasi (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Kategori)
@@ -589,15 +581,6 @@ emailaddr_display_style
 └─noclick ("Teks yang tidak dapat diklik")
 ```
 
-##### "disable_frontend" `[bool]`
-- Menonaktifkan akses bagian depan? Akses bagian depan dapat membuat CIDRAM lebih mudah dikelola, tapi juga dapat menjadi potensial resiko keamanan. Itu direkomendasi untuk mengelola CIDRAM melalui bagian belakang bila mungkin, tapi akses bagian depan yang disediakan untuk saat itu tidak mungkin. Memilikinya dinonaktifkan kecuali jika Anda membutuhkannya. False = Mengaktifkan akses bagian depan; True = Menonaktifkan akses bagian depan [Default].
-
-##### "max_login_attempts" `[int]`
-- Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
-
-##### "frontend_log" `[string]`
-- File untuk mencatat upaya masuk bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
 ##### "signatures_update_event_log" `[string]`
 - File untuk mencatat ketika tanda tangan diperbarui melalui bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
@@ -688,9 +671,6 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-##### "protect_frontend" `[bool]`
-- Menentukan apakah perlindungan biasanya disediakan oleh CIDRAM harus diterapkan pada bagian depan. True = Ya [Default]; False = Tidak.
-
 ##### "default_algo" `[string]`
 - Mendefinisikan algoritma mana yang akan digunakan untuk semua password dan sesi di masa depan.
 
@@ -743,20 +723,60 @@ disabled_channels
 ##### "default_timeout" `[int]`
 - Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
 
-##### "config_imports" `[string]`
-- Sebuah daftar dipisahkan dengan koma untuk file untuk mengimpor ke konfigurasi default CIDRAM. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Dalam kebanyakan kasus, bisa mengabaikannya.
+#### "components" (Kategori)
+Konfigurasi untuk pengaktifan dan penonaktifan komponen yang digunakan oleh CIDRAM. Biasanya diisi oleh halaman pembaruan, tetapi juga dapat dikelola dari sini untuk kontrol yang lebih baik dan untuk komponen dipersonalisasi yang tidak dikenali oleh halaman pembaruan.
+
+##### "ipv4" `[string]`
+- File tanda tangan IPv4.
+
+##### "ipv6" `[string]`
+- File tanda tangan IPv6.
+
+##### "modules" `[string]`
+- Modul.
+
+##### "imports" `[string]`
+- Impor. Biasanya digunakan untuk memasok informasi konfigurasi komponen ke CIDRAM.
 
 ##### "events" `[string]`
-- File yang terdaftar disini dimuat langsung setelah file pengendali acara. Biasanya diisi oleh halaman pembaruan saat mengaktifkan komponen yang membutuhkannya saat diperlukan. Dalam kebanyakan kasus, bisa mengabaikannya.
+- Penangan acara. Biasanya digunakan untuk memodifikasi cara CIDRAM berperilaku secara internal atau untuk menyediakan fungsionalitas tambahan.
+
+#### "frontend" (Kategori)
+Konfigurasi untuk front-end.
+
+##### "frontend_log" `[string]`
+- File untuk mencatat upaya masuk bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "max_login_attempts" `[int]`
+- Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
+
+##### "theme" `[string]`
+- Tema default yang digunakan untuk front-end.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Lain
+```
+
+##### "magnification" `[float]`
+- Perbesaran font. Default = 1.
+
+##### "remotes" `[string]`
+- Daftar alamat yang digunakan oleh pembaru untuk mengambil metadata komponen. Ini mungkin perlu disesuaikan saat memutakhirkan ke versi utama baru, atau saat memperoleh sumber baru untuk pembaruan, tetapi dalam keadaan normal harus dibiarkan saja.
+
+##### "enable_two_factor" `[bool]`
+- Direktif ini menentukan apakah akan menggunakan 2FA untuk akun depan.
 
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan, file tanda tangan, modul, dll.
-
-##### "ipv4" `[string]`
-- Daftar file tanda tangan IPv4 yang CIDRAM harus berusaha untuk menggunakan, dipisahkan dengan koma.
-
-##### "ipv6" `[string]`
-- Daftar file tanda tangan IPv6 yang CIDRAM harus berusaha untuk menggunakan, dipisahkan dengan koma.
 
 ##### "block_attacks" `[bool]`
 - Memblokir CIDR yang terkait dengan serangan dan lalu lintas abnormal lainnya? Misalnya, pemindaian port, peretasan, pemeriksaan kerentanan, dll. Kecuali jika Anda mengalami masalah ketika melakukan itu, umumnya, ini harus selalu didefinisikan untuk true/benar.
@@ -781,9 +801,6 @@ Konfigurasi untuk tanda tangan, file tanda tangan, modul, dll.
 
 ##### "block_spam" `[bool]`
 - Memblokir CIDR yang diidentifikasi sebagai beresiko tinggi karena spam? Kecuali jika Anda mengalami masalah ketika melakukan itu, umumnya, ini harus selalu didefinisikan untuk true/benar.
-
-##### "modules" `[string]`
-- Daftar file modul untuk memuat setelah memeriksa tanda tangan IPv4/IPv6, dipisahkan dengan koma.
 
 ##### "default_tracktime" `[int]`
 - Berapa banyak detik untuk melacak IP dilarang oleh modul. Default = 604800 (1 seminggu).
@@ -963,7 +980,7 @@ Konfigurasi untuk persyaratan hukum.
 Konfigurasi untuk template dan tema.
 
 ##### "theme" `[string]`
-- Tema default untuk CIDRAM.
+- Tema default yang digunakan untuk CIDRAM.
 
 ```
 theme
@@ -971,7 +988,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1003,55 +1019,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Lain
 ```
-
-#### "PHPMailer" (Kategori)
-Konfigurasi untuk PHPMailer (digunakan untuk otentikasi dua-faktor).
-
-##### "event_log" `[string]`
-- File untuk mencatat semua kejadian yang terkait dengan PHPMailer. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
-##### "skip_auth_process" `[bool]`
-- Pengaturan direktif ini ke `true` menginstruksikan PHPMailer untuk melewati proses otentikasi normal yang biasanya terjadi ketika mengirim email melalui SMTP. Ini harus dihindari, karena melewatkan proses ini dapat mengekspos email keluar ke serangan MITM, tetapi mungkin diperlukan dalam kasus dimana proses ini mencegah PHPMailer menghubungkan ke server SMTP.
-
-##### "enable_two_factor" `[bool]`
-- Direktif ini menentukan apakah akan menggunakan 2FA untuk akun depan.
-
-##### "host" `[string]`
-- Host SMTP yang digunakan untuk email keluar.
-
-##### "port" `[int]`
-- Nomor port yang digunakan untuk email keluar. Default = 587.
-
-##### "smtp_secure" `[string]`
-- Protokol yang digunakan saat mengirim email melalui SMTP (TLS atau SSL).
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### "smtp_auth" `[bool]`
-- Direktif ini menentukan apakah akan mengotentikasi sesi SMTP (biasanya harus dibiarkan sendiri).
-
-##### "username" `[string]`
-- Nama pengguna yang digunakan saat mengirim email melalui SMTP.
-
-##### "password" `[string]`
-- Kata sandi yang digunakan saat mengirim email melalui SMTP.
-
-##### "set_from_address" `[string]`
-- Alamat pengirim yang dikutip saat mengirim email melalui SMTP.
-
-##### "set_from_name" `[string]`
-- Nama pengirim yang dikutip saat mengirim email melalui SMTP.
-
-##### "add_reply_to_address" `[string]`
-- Alamat balasan yang dikutip saat mengirim email melalui SMTP.
-
-##### "add_reply_to_name" `[string]`
-- Nama balasan yang dikutip saat mengirim email melalui SMTP.
 
 #### "rate_limiting" (Kategori)
 Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum).
@@ -1123,6 +1090,28 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HO
 
 ##### "pdo_password" `[string]`
 - Kata sandi PDO.
+
+#### "bypasses" (Kategori)
+Konfigurasi untuk bypass tanda tangan default.
+
+##### "used" `[string]`
+- Bypass mana yang harus digunakan?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2098,4 +2087,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 12 Mei 2022 (2022.05.12).
+Terakhir Diperbarui: 23 Mei 2022 (2022.05.23).

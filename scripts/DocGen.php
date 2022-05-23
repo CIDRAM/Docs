@@ -1,4 +1,5 @@
 <?php
+
 $loadL10N = function (string $Language) {
     $YAML = new \Maikuolan\Common\YAML();
     $Arr = [];
@@ -37,17 +38,19 @@ $ArrayFromL10NDataToArray = function ($References, &$L10N): array {
 if (!isset($_GET['language'])) {
     echo 'No language specified.';
 } else {
-    $CIDRAM = ['Vault' => __DIR__ . '/vault/'];
-    require $CIDRAM['Vault'] . 'functions.php';
-    require $CIDRAM['Vault'] . 'config.php';
+    // CIDRAM's autoloader.
+    require __DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'loader.php';
+
+    $CIDRAM = new \CIDRAM\CIDRAM\Core();
+
     header('Content-Type: text/plain');
 
     $Final = '';
     $Data = $loadL10N($_GET['language']);
     $First = "```\n" . $Data->getString('link_config') . " (v3)\n│\n";
-    $Cats = count($CIDRAM['Config Defaults']);
+    $Cats = count($CIDRAM->CIDRAM['Config Defaults']);
     $Current = 1;
-    foreach ($CIDRAM['Config Defaults'] as $Category => $Directives) {
+    foreach ($CIDRAM->CIDRAM['Config Defaults'] as $Category => $Directives) {
         if (!isset($Data->Data['config_' . $Category])) {
             continue;
         }
@@ -159,7 +162,7 @@ if (!isset($_GET['language'])) {
     if (!isset($_GET['autoupdate'])) {
         echo $First . "```\n\n" . $Final;
     } else {
-        $Try = $_GET['autoupdate'] . $_GET['language'] . '.md';
+        $Try = $_GET['autoupdate'] . 'readme.' . $_GET['language'] . '.md';
         if (is_file($Try) && is_writable($Try)) {
             $README = file_get_contents($Try);
             if (($Start = strpos($README, '<a name="SECTION5">')) !== false) {

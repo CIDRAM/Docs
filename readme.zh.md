@@ -122,7 +122,7 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 
 通过启用双因素身份验证，可以使前端更安全。​当登录使用2FA的帐户时，会向与该帐户关联的电子邮件地址发送电子邮件。​此电子邮件包含“2FA代码”，用户必须输入它（以及他们的用户名和密码），为了能够使用该帐户登录。​这意味着获取帐户密码不足以让任何黑客或潜在攻击者能够帐户登录，因为他们还需要访问帐户的电子邮件地址才能接收和使用会话的2FA代码（从而使前端更安全）。
 
-首先，为了启用双因素身份验证，请使用前端更新页面来安装PHPMailer组件。​CIDRAM使用PHPMailer发送电子邮件。​注意：虽然CIDRAM本身与`PHP >= 5.4.0`兼容，但PHPMailer需要`PHP >= 5.5.0`，因此，对于PHP 5.4用户来说，无法为CIDRAM前端启用双因素身份验证。
+首先，为了启用双因素身份验证，请使用前端更新页面来安装PHPMailer组件。​CIDRAM使用PHPMailer发送电子邮件。
 
 在安装PHPMailer后，您需要通过CIDRAM配置页面或配置文件填充PHPMailer的配置指令。​有关这些配置指令的更多信息包含在本文档的配置部分中。​在填充PHPMailer配置指令后，将`enable_two_factor`设置为`true`。​现在应启用双因素身份验证。
 
@@ -161,9 +161,6 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### “general” （类别）
@@ -578,15 +570,6 @@ emailaddr_display_style
 └─noclick ("不可点击的文字")
 ```
 
-##### “disable_frontend” `[bool]`
-- 关闭前端访问吗？​前端访问可以使CIDRAM更易于管理，​但也可能是潜在的安全风险。​建议管理CIDRAM通过后端只要有可能，​但前端访问提供当不可能。​保持关闭除非您需要它。​False（假）=激活前端访问；True（真）=关闭前端访问【标准】。
-
-##### “max_login_attempts” `[int]`
-- 最大前端登录尝试次数。​标准=5。
-
-##### “frontend_log” `[string]`
-- 前端登录尝试的录音文件。​指定一个文件名，​或留空以禁用。
-
 ##### “signatures_update_event_log” `[string]`
 - 通过前端更新签名时用于记录的文件。​指定一个文件名，​或留空以禁用。
 
@@ -666,9 +649,6 @@ __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-##### “protect_frontend” `[bool]`
-- 指定是否应将CIDRAM通常提供的保护应用于前端。​True（真）=是【标准】；False（假）=不是。
-
 ##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。
 
@@ -721,20 +701,60 @@ disabled_channels
 ##### “default_timeout” `[int]`
 - 用于外部请求的默认超时？ 标准 = 12秒。
 
-##### “config_imports” `[string]`
-- 要导入CIDRAM默认配置的以逗号分隔的文件列表。​通常在启用组件时由更新页面按需填充。​大多数情况下，可以忽略它。
+#### “components” （类别）
+CIDRAM使用的组件的启用和停用的配置。​通常由更新页面填充，但也可以从此处进行管理，以实现更好的控制以及更新页面无法识别的自定义组件。
+
+##### “ipv4” `[string]`
+- IPv4签名文件。
+
+##### “ipv6” `[string]`
+- IPv6签名文件。
+
+##### “modules” `[string]`
+- 模块。
+
+##### “imports” `[string]`
+- 进口。​通常用于向CIDRAM提供组件的配置信息。
 
 ##### “events” `[string]`
-- 此处列出的文件在事件处理程序文件之后直接加载。​通常在启用组件时由更新页面按需填充。​大多数情况下，可以忽略它。
+- 事件处理程序。​通常用于修改CIDRAM在内部的行为方式或提供附加功能。
+
+#### “frontend” （类别）
+前端的配置。
+
+##### “frontend_log” `[string]`
+- 前端登录尝试的录音文件。​指定一个文件名，​或留空以禁用。
+
+##### “max_login_attempts” `[int]`
+- 最大前端登录尝试次数。​标准=5。
+
+##### “theme” `[string]`
+- 用于前端的默认主题。
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…其他
+```
+
+##### “magnification” `[float]`
+- 字体放大。​标准 = 1。
+
+##### “remotes” `[string]`
+- 更新系统用于获取组件元数据的地址列表。​这可能需要在升级到新的主要版本时进行调整，或者在获取新的更新源时进行调整，但在正常情况下应该不理会。
+
+##### “enable_two_factor” `[bool]`
+- 该指令确定是否将2FA用于前端帐户。
 
 #### “signatures” （类别）
 签名，签名文件，模块，等的配置。
-
-##### “ipv4” `[string]`
-- 列表的IPv4签名文件，​CIDRAM应该尝试使用，​用逗号分隔。
-
-##### “ipv6” `[string]`
-- 列表的IPv6签名文件，​CIDRAM应该尝试使用，​用逗号分隔。
 
 ##### “block_attacks” `[bool]`
 - 阻止攻击和其他异常流量相关的CIDR吗？​例如，端口扫描、黑客攻击、漏洞探测、等等。​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
@@ -759,9 +779,6 @@ disabled_channels
 
 ##### “block_spam” `[bool]`
 - 阻止高风险垃圾邮件CIDR吗？​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
-
-##### “modules” `[string]`
-- 模块文件要加载的列表以后检查签名IPv4/IPv6，​用逗号分隔。
 
 ##### “default_tracktime” `[int]`
 - 多少秒钟来跟踪模块禁止的IP。​标准 = 604800 （1周）。
@@ -937,7 +954,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -969,55 +985,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…其他
 ```
-
-#### “PHPMailer” （类别）
-PHPMailer的配置（用于双因素身份验证）。
-
-##### “event_log” `[string]`
-- 用于记录与PHPMailer相关的所有事件的文件。​指定一个文件名，​或留空以禁用。
-
-##### “skip_auth_process” `[bool]`
-- 将此指令设置为`true`会指示PHPMailer跳过通过SMTP发送电子邮件时通常会发生的正常身份验证过程。​应该避免这种情况，因为跳过此过程可能会将出站电子邮件暴露给MITM攻击，但在此过程阻止PHPMailer连接到SMTP服务器的情况下可能是必要的。
-
-##### “enable_two_factor” `[bool]`
-- 该指令确定是否将2FA用于前端帐户。
-
-##### “host” `[string]`
-- 用于出站电子邮件的SMTP主机。
-
-##### “port” `[int]`
-- 用于出站电子邮件的端口号。​标准=587。
-
-##### “smtp_secure” `[string]`
-- 通过SMTP发送电子邮件时使用的协议（TLS或SSL）。
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### “smtp_auth” `[bool]`
-- 此指令确定是否对SMTP会话进行身份验证（通常应该保持不变）。
-
-##### “username” `[string]`
-- 通过SMTP发送电子邮件时使用的用户名。
-
-##### “password” `[string]`
-- 通过SMTP发送电子邮件时使用的密码。
-
-##### “set_from_address” `[string]`
-- 通过SMTP发送电子邮件时引用的发件人地址。
-
-##### “set_from_name” `[string]`
-- 通过SMTP发送电子邮件时引用的发件人姓名。
-
-##### “add_reply_to_address” `[string]`
-- 通过SMTP发送电子邮件时引用的回复地址。
-
-##### “add_reply_to_name” `[string]`
-- 通过SMTP发送电子邮件时引用的回复姓名。
 
 #### “rate_limiting” （类别）
 速率限制的配置（不建议一般使用）。
@@ -1089,6 +1056,28 @@ __常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/read
 
 ##### “pdo_password” `[string]`
 - PDO密码。
+
+#### “bypasses” （类别）
+默认签名绕过配置。
+
+##### “used” `[string]`
+- 应该使用哪些绕过？
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2065,4 +2054,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年5月12日。
+最后更新：2022年5月23日。

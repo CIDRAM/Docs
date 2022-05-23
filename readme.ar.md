@@ -124,7 +124,7 @@
 
 <div dir="rtl">من الممكن جعل front-end أكثر أمانًا عن طريق تمكين 2FA. عند تسجيل الدخول إلى حساب باستخدام 2FA، يتم إرسال بريد إلكتروني إلى عنوان البريد الإلكتروني المقترن بهذا الحساب. تحتوي هذه الرسالة الإلكترونية على "رمز 2FA"، والذي يجب على المستخدم إدخاله، بالإضافة إلى اسم المستخدم وكلمة المرور، حتى تتمكن من تسجيل الدخول باستخدام هذا الحساب. وهذا يعني أن الحصول على كلمة مرور الحساب لن يكون كافيًا لأي متسلل أو مهاجم محتمل ليتمكن من تسجيل الدخول إلى هذا الحساب، لأنهم سيحتاجون أيضًا إلى الوصول بالفعل إلى عنوان البريد الإلكتروني المرتبط بهذا الحساب حتى يتمكنوا من تلقي رمز 2FA واستخدامه في الجلسة.<br /><br /></div>
 
-<div dir="rtl">أولاً، لتمكين 2FA، استخدم صفحة تحديثات front-end لتثبيت مكون PHPMailer. CIDRAM يستخدم PHPMailer لإرسال رسائل البريد الإلكتروني. ملحوظة: على الرغم من أن CIDRAM متوافق مع <code dir="ltr">PHP &gt;= 5.4.0</code>، PHPMailer يتطلب <code dir="ltr">PHP &gt;= 5.5.0</code>، مما يعني أن تمكين 2FA لـ CIDRAM front-end لن يكون ممكنًا لمستخدمي <code dir="ltr">PHP 5.4</code>.<br /><br /></div>
+<div dir="rtl">أولاً، لتمكين 2FA، استخدم صفحة تحديثات front-end لتثبيت مكون PHPMailer. CIDRAM يستخدم PHPMailer لإرسال رسائل البريد الإلكتروني.<br /><br /></div>
 
 <div dir="rtl">بعد تثبيت PHPMailer، ستحتاج إلى تعبئة توجيهات التهيئة لـ PHPMailer عبر صفحة تهيئة CIDRAM أو ملف التكوين. يتم تضمين مزيد من المعلومات حول توجيهات التكوين هذه في قسم التكوين في هذا المستند. بعد ملء توجيهات تهيئة PHPMailer، اضبط <code dir="ltr">enable_two_factor</code> على <code dir="ltr">true</code>. 2FA ممكّن الآن.<br /><br /></div>
 
@@ -163,9 +163,6 @@
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -173,7 +170,6 @@
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -181,11 +177,20 @@
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -194,7 +199,6 @@
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -233,20 +237,6 @@
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -254,20 +244,22 @@
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### <div dir="rtl">"general" (التصنيف)<br /></div>
@@ -596,15 +588,6 @@ emailaddr_display_style
 └─noclick ("نص غير قابل للنقر")
 ```
 
-##### <div dir="rtl">"disable_frontend" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>تعطيل وصول front-end؟ وصول front-end يستطيع جعل CIDRAM أكثر قابلية للإدارة، ولكن يمكن أيضا أن تكون مخاطر أمنية محتملة. من المستحسن لإدارة CIDRAM عبر back-end متى أمكن، لكن وصول front-end متوفر عندما لم يكن ممكنا. يبقيه المعوقين إلا إذا كنت في حاجة إليها. زائفة/False = تمكين وصول front-end؛ صحيح/True = تعطيل وصول front-end [الافتراضي].</li></ul></div>
-
-##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
-
-##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
@@ -699,9 +682,6 @@ __ما هي "الإيجابيات" و "السلبيات"؟__ عند التحقق
 
 __ما هي "التجاوزات بضربة واحدة"؟__ في بعض الحالات، قد يظل طلب التحقق الإيجابي محظورًا نتيجة لملفات التوقيع أو الوحدات النمطية أو الشروط الأخرى للطلب، وقد تكون التجاوزات ضرورية لتجنب الإيجابيات الخاطئة. عندما يكون القصد من التجاوز التعامل مع مخالفة واحدة بالضبط، لا أكثر ولا أقل، يمكن وصف هذا التجاوز بأنه "التجاوزات بضربة واحدة".
 
-##### <div dir="rtl">"protect_frontend" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد ما إذا كانت الحماية التي توفرها عادة CIDRAM يجب أن تطبق الfront-end. صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
-
 ##### <div dir="rtl">"default_algo" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يحدد الخوارزمية التي سيتم استخدامها لكل كلمات المرور والجلسات المستقبلية.</li></ul></div>
 
@@ -754,20 +734,60 @@ disabled_channels
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>المهلة الافتراضية لاستخدامها للطلبات الخارجية؟ الافتراضي = 12 ثانية.</li></ul></div>
 
-##### <div dir="rtl">"config_imports" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>قائمة ملفات محددة بفواصل لاستيرادها إلى التكوين الافتراضي لـ CIDRAM. يتم ملؤها عادةً بصفحة التحديثات عند تنشيط المكونات التي تحتاج إليها عند الضرورة. في معظم الحالات، يمكن تجاهله.</li></ul></div>
+#### <div dir="rtl">"components" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لتنشيط وتعطيل المكونات المستخدمة من قبل CIDRAM. عادةً ما يتم ملؤها بواسطة صفحة التحديثات، ولكن يمكن أيضًا إدارتها من هنا لتحكم أفضل وللمكونات المخصصة التي لا تتعرف عليها صفحة التحديثات.<br /><br /></div>
+
+##### <div dir="rtl">"ipv4" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملفات توقيع IPv4.</li></ul></div>
+
+##### <div dir="rtl">"ipv6" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملفات توقيع IPv6.</li></ul></div>
+
+##### <div dir="rtl">"modules" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الوحدات.</li></ul></div>
+
+##### <div dir="rtl">"imports" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الواردات. تُستخدم عادةً لتزويد معلومات تكوين المكون إلى CIDRAM.</li></ul></div>
 
 ##### <div dir="rtl">"events" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>يتم تحميل الملفات المدرجة هنا مباشرة بعد ملف معالجات الأحداث. يتم ملؤها عادةً بصفحة التحديثات عند تنشيط المكونات التي تحتاج إليها عند الضرورة. في معظم الحالات، يمكن تجاهله.</li></ul></div>
+<div dir="rtl"><ul><li>معالجات الأحداث. تُستخدم عادةً لتعديل الطريقة التي يتصرف بها CIDRAM داخليًا أو لتوفير وظائف إضافية.</li></ul></div>
+
+#### <div dir="rtl">"frontend" (التصنيف)<br /></div>
+<div dir="rtl">التكوين للواجهة الأمامية.<br /><br /></div>
+
+##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
+
+##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الموضوع الافتراضي الذي سيتم استخدامه للواجهة الأمامية.</li></ul></div>
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…آخر
+```
+
+##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
+<div dir="rtl"><ul><li>تكبير الخط. افتراضي = 1.</li></ul></div>
+
+##### <div dir="rtl">"remotes" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة بالعناوين التي يستخدمها المُحدِّث لجلب البيانات الوصفية للمكون. قد يحتاج هذا إلى تعديل عند الترقية إلى إصدار رئيسي جديد، أو عند الحصول على مصدر جديد للتحديثات، ولكن في ظل الظروف العادية يجب تركه بمفرده.</li></ul></div>
+
+##### <div dir="rtl">"enable_two_factor" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>يحدد هذا التوجيه ما إذا كان سيتم استخدام 2FA للحسابات front-end أم لا.</li></ul></div>
 
 #### <div dir="rtl">"signatures" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للتوقيعات، ملفات التوقيع، الوحدات النمطية، إلخ.<br /><br /></div>
-
-##### <div dir="rtl">"ipv4" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>وهناك قائمة من الملفات توقيع عناوين IPv4 التي CIDRAM يجب أن تحاول معالجة، مفصولة بفواصل.</li></ul></div>
-
-##### <div dir="rtl">"ipv6" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>وهناك قائمة من الملفات توقيع عناوين IPv6 التي CIDRAM يجب أن تحاول معالجة، مفصولة بفواصل.</li></ul></div>
 
 ##### <div dir="rtl">"block_attacks" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>منع CIDRs المرتبطة بالهجمات وحركة المرور غير الطبيعية الأخرى؟ على سبيل المثال، عمليات فحص المنافذ والقرصنة والتحقيق في نقاط الضعف، وما إلى ذلك. عندما يكون ذلك ممكنا، عموما، وهذا ينبغي دائما أن يتم تعيين إلى true.</li></ul></div>
@@ -792,9 +812,6 @@ disabled_channels
 
 ##### <div dir="rtl">"block_spam" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>منع CIDRs التي تم تحديدها على أنها مخاطر البريد المزعج؟ عندما يكون ذلك ممكنا، عموما، وهذا ينبغي دائما أن يتم تعيين إلى true.</li></ul></div>
-
-##### <div dir="rtl">"modules" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>قائمة الملفات المكون لتحميل بعد التحقق من التوقيعات IPv4/IPv6، مفصولة بفواصل.</li></ul></div>
 
 ##### <div dir="rtl">"default_tracktime" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>كم ثانية لتعقب IP حظرت من قبل وحدات. افتراضي = 604800 (1 أسبوع).</li></ul></div>
@@ -988,7 +1005,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1020,55 +1036,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…آخر
 ```
-
-#### <div dir="rtl">"PHPMailer" (التصنيف)<br /></div>
-<div dir="rtl">التكوين ل PHPMailer (تستخدم لمصادقة ثنائية العامل).<br /><br /></div>
-
-##### <div dir="rtl">"event_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف لتسجيل جميع الأحداث المتعلقة ب PHPMailer. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
-##### <div dir="rtl">"skip_auth_process" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>تعيين هذا التوجيه إلى <code dir="ltr">true</code> يرشد PHPMailer لتخطي عملية المصادقة التي تحدث عادة عند إرسال البريد الإلكتروني عبر SMTP. يجب تجنب هذا، لأن تخطي هذه العملية قد يعرض البريد الإلكتروني الصادر إلى هجمات MITM، ولكنه قد يكون ضروريًا في الحالات التي تمنع فيها هذه العملية من اتصال PHPMailer بخادم SMTP.</li></ul></div>
-
-##### <div dir="rtl">"enable_two_factor" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد هذا التوجيه ما إذا كان سيتم استخدام 2FA للحسابات front-end أم لا.</li></ul></div>
-
-##### <div dir="rtl">"host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>مضيف SMTP الذي يستخدم للبريد الإلكتروني الصادر.</li></ul></div>
-
-##### <div dir="rtl">"port" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>رقم المنفذ المراد استخدامه للبريد الإلكتروني الصادر. افتراضي = 587.</li></ul></div>
-
-##### <div dir="rtl">"smtp_secure" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>البروتوكول المستخدم عند إرسال البريد الإلكتروني عبر SMTP (TLS أو SSL).</li></ul></div>
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### <div dir="rtl">"smtp_auth" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد هذا التوجيه ما إذا كنت تريد مصادقة جلسات SMTP (يجب ألا يغير هذا عادة).</li></ul></div>
-
-##### <div dir="rtl">"username" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>اسم المستخدم لاستخدامه عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
-
-##### <div dir="rtl">"password" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>كلمة المرور لاستخدامها عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
-
-##### <div dir="rtl">"set_from_address" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>عنوان المرسل للاستشهاد عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
-
-##### <div dir="rtl">"set_from_name" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>اسم المرسل للاستشهاد عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
-
-##### <div dir="rtl">"add_reply_to_address" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>عنوان الرد للاستشهاد عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
-
-##### <div dir="rtl">"add_reply_to_name" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>اسم الرد للاستشهاد عند إرسال البريد الإلكتروني عبر SMTP.</li></ul></div>
 
 #### <div dir="rtl">"rate_limiting" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للحد من معدل (غير مستحسن للاستخدام العام).<br /><br /></div>
@@ -1140,6 +1107,28 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#HO
 
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO كلمه السر.</li></ul></div>
+
+#### <div dir="rtl">"bypasses" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لتجاوز التوقيع الافتراضي.<br /><br /></div>
+
+##### <div dir="rtl">"used" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ما هي التجاوزات التي يجب استخدامها؟</li></ul></div>
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2161,4 +2150,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٢ مايو ٢٠٢٢ (٢٠٢٢.٠٥.١٢).</div>
+<div dir="rtl">آخر تحديث: ٢٣ مايو ٢٠٢٢ (٢٠٢٢.٠٥.٢٣).</div>

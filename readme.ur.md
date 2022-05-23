@@ -124,7 +124,7 @@
 
 <div dir="rtl">2FA کو چالو کرنے کے ذریعہ front-end کو مزید محفوظ بنانے کے لئے ممکن ہے. جب 2FA کے ساتھ اکاؤنٹ میں لاگ ان ہو تو، اس اکاؤنٹ سے منسلک ای میل ایڈریس پر ایک ای میل بھیجا جاتا ہے. اس ای میل میں "2FA کوڈ" شامل ہے، جو اس صارف کا استعمال کرتے ہوئے لاگ ان کرنے کے لۓ صارف کا نام اور پاسورڈ کے علاوہ صارف کو داخل ہونا ضروری ہے. اس کا مطلب یہ ہے کہ اکاؤنٹ اکاؤنٹ پاس ورڈ حاصل کرنے کے لئے کسی بھی ہیکر یا ممکنہ حملہ آور کو اس اکاؤنٹ میں لاگ ان کرنے کے قابل نہیں ہو گا، کیونکہ انہیں وصول کرنے کے قابل ہونے کے لئے ان اکاؤنٹ سے منسلک ای میل ایڈریس تک رسائی حاصل ہوگی. اور سیشن کے ساتھ منسلک 2FA کوڈ استعمال کریں.<br /><br /></div>
 
-<div dir="rtl">سب سے پہلے، 2FA کو چالو کرنے کے لئے، PHPMailer اجزاء کو انسٹال کرنے کے لئے front-end اپ ڈیٹس کا صفحہ استعمال کریں. ای میل بھیجنے کے لئے CIDRAM PHPMailer کا استعمال کرتا ہے. نوٹ: اگرچہ CIDRAM، خود ہی، <code dir="ltr">PHP &gt;= 5.4.0</code> کے ساتھ مطابقت رکھتا ہے، PHPMailer کی ضرورت ہے <code dir="ltr">PHP &gt;= 5.5.0</code>. اس کا مطلب ہے کہ <code dir="ltr">PHP 5.4</code> صارفوں کیلئے CIDRAM front-end 2FA کو چالو کرنا ممکن نہیں ہوگا.<br /><br /></div>
+<div dir="rtl">سب سے پہلے، 2FA کو چالو کرنے کے لئے، PHPMailer اجزاء کو انسٹال کرنے کے لئے front-end اپ ڈیٹس کا صفحہ استعمال کریں. ای میل بھیجنے کے لئے CIDRAM PHPMailer کا استعمال کرتا ہے.<br /><br /></div>
 
 <div dir="rtl">PHPMailer نصب کرنے کے بعد، آپ کو CIDRAM ترتیب کے صفحے یا ترتیب کی فائل کے ذریعے PHPMailer کے لئے ترتیب ہدایات کو آباد کرنے کی ضرورت ہوگی. ان ترتیبات کے ہدایات کے بارے میں مزید معلومات اس دستاویز کے ترتیب کے حصے میں شامل ہیں. PHPMailer ترتیب ہدایات آبادی کے بعد، <code dir="ltr">enable_two_factor</code> <code dir="ltr">true</code> سیٹ کریں. 2FA اب فعال ہونا چاہئے.<br /><br /></div>
 
@@ -163,9 +163,6 @@
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -173,7 +170,6 @@
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -181,11 +177,20 @@
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -194,7 +199,6 @@
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -233,20 +237,6 @@
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -254,20 +244,22 @@
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
@@ -596,15 +588,6 @@ emailaddr_display_style
 └─noclick ("متن جو کلک نہیں کیا جا سکتا")
 ```
 
-##### <div dir="rtl">"disable_frontend" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>سامنے کے آخر تک رسائی کو غیر فعال کریں؟ سامنے کے آخر میں رسائی CIDRAM زیادہ انتظام بنا سکتے ہیں، لیکن یہ بھی بہت ہے، ایک زبردست حفاظتی خطرہ ہو سکتا ہے. یہ جب بھی ممکن ہو واپس کے آخر کے ذریعے CIDRAM منظم کرنے کی سفارش کی جاتی ہے، لیکن سامنے کے آخر میں رسائی ممکن نہیں ہے جب کے لئے فراہم کی جاتی ہے. تمہیں اس کی ضرورت ہے جب تک کہ اس کو معذور رکھیں. False (جھوٹی) = سامنے کے آخر میں رسائی کو فعال کریں؛ True (سچے) = غیر فعال سامنے کے آخر میں رسائی [پہلے سے طے شدہ].</li></ul></div>
-
-##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
-
-##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
@@ -699,9 +682,6 @@ __"مثبت" اور "منفی" کیا ہیں؟__ درخواست کے ذریعے 
 
 __"سنگل ہٹ بائی پاس" کیا ہیں؟__ کچھ معاملات میں، ایک مثبت تصدیق شدہ درخواست اب بھی دستخط فائلوں، ماڈیولز، یا دیگر عوامل کے نتیجے میں مسدود ہو سکتی ہے، اور غلط مثبت سے بچنے کے لیے بائی پاس ضروری ہو سکتے ہیں. جب ایک بائی پاس کا مقصد بالکل ایک خلاف ورزی سے نمٹنا ہوتا ہے، تو ایسے بائی پاس کو "سنگل ہٹ بائی پاس" کے طور پر بیان کیا جا سکتا ہے.
 
-##### <div dir="rtl">"protect_frontend" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>متعین کرتا ہے جو عام طور پر CIDRAM طرف سے فراہم کردہ تحفظات سامنے کے آخر پر لاگو کیا جانا چاہئے کہ آیا. True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
 ##### <div dir="rtl">"default_algo" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اس بات کی وضاحت کرتا ہے جو تمام مستقبل کے پاس ورڈ اور سیشن کے لئے الگورتھم استعمال کرنا ہے.</li></ul></div>
 
@@ -754,20 +734,60 @@ disabled_channels
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی درخواستوں کے لئے استعمال کرنے کیلئے پہلے سے طے شدہ ٹائم آؤٹ؟ پہلے سے طے شدہ = 12 سیکنڈ.</li></ul></div>
 
-##### <div dir="rtl">"config_imports" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>CIDRAM ڈیفالٹ ترتیب میں درآمد کرنے والی فائلیں، کوما کے ذریعہ الگ کردی گئیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li></ul></div>
+#### <div dir="rtl">"components" (قسم)<br /></div>
+<div dir="rtl">CIDRAM کی طرف سے استعمال ہونے والے اجزاء کو چالو کرنے اور غیر فعال کرنے کے لئے ترتیب. عام طور پر اپ ڈیٹس صفحہ کے ذریعے آباد ہوتا ہے، لیکن بہتر کنٹرول کے لیے اور اپ ڈیٹس صفحہ کے ذریعے پہچانے جانے والے حسب ضرورت اجزاء کے لیے بھی یہاں سے منظم کیا جا سکتا ہے.<br /><br /></div>
+
+##### <div dir="rtl">"ipv4" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>IPv4 دستخطی فائلیں.</li></ul></div>
+
+##### <div dir="rtl">"ipv6" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>IPv6 دستخطی فائلیں.</li></ul></div>
+
+##### <div dir="rtl">"modules" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ماڈیولز.</li></ul></div>
+
+##### <div dir="rtl">"imports" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>درآمدات. عام طور پر CIDRAM کو جزو کی ترتیب کی معلومات فراہم کرنے کے لیے استعمال کیا جاتا ہے.</li></ul></div>
 
 ##### <div dir="rtl">"events" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>یہاں درج فائلیں براہ راست ایونٹ ہینڈلرز فائل کے بعد لوڈ کی جاتی ہیں. اجزاء کو چالو کرتے وقت اپ ڈیٹس کے صفحے سے بھرا ہوا. زیادہ تر معاملات میں، اسے نظرانداز کر سکتے ہیں.</li></ul></div>
+<div dir="rtl"><ul><li>ایونٹ ہینڈلرز. عام طور پر استعمال کیا جاتا ہے جس طرح سے CIDRAM اندرونی طور پر برتاؤ کرتا ہے یا اضافی فعالیت فراہم کرتا ہے.</li></ul></div>
+
+#### <div dir="rtl">"frontend" (قسم)<br /></div>
+<div dir="rtl">فرنٹ اینڈ کے لیے کنفیگریشن.<br /><br /></div>
+
+##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
+
+##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>فرنٹ اینڈ کے لیے استعمال کرنے کے لیے ڈیفالٹ تھیم.</li></ul></div>
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…دیگر
+```
+
+##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
+<div dir="rtl"><ul><li>فونٹ اضافہ. پہلے سے طے شدہ = 1.</li></ul></div>
+
+##### <div dir="rtl">"remotes" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اجزاء کے میٹا ڈیٹا کو حاصل کرنے کے لیے اپڈیٹر کے ذریعے استعمال کیے گئے پتوں کی فہرست. نئے بڑے ورژن میں اپ گریڈ کرتے وقت، یا اپ ڈیٹس کے لیے نیا ذریعہ حاصل کرتے وقت اسے ایڈجسٹ کرنے کی ضرورت پڑ سکتی ہے، لیکن عام حالات میں اسے تنہا چھوڑ دیا جانا چاہیے.</li></ul></div>
+
+##### <div dir="rtl">"enable_two_factor" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>یہ تعین کرتا ہے کہ 2FA استعمال کیا جانا چاہئے.</li></ul></div>
 
 #### <div dir="rtl">"signatures" (قسم)<br /></div>
 <div dir="rtl">دستخطوں، دستخط فائلوں، ماڈیولز، وغیرہ کے لئے تشکیل.<br /><br /></div>
-
-##### <div dir="rtl">"ipv4" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>IPv4 کی دستخط کی ایک فہرست فائلوں کہ CIDRAM، کا تجزیہ کرنے کی کوشش کرنا چاہئے کوما سے ختم ہونے والی.</li></ul></div>
-
-##### <div dir="rtl">"ipv6" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>IPv6 کی دستخط کی ایک فہرست فائلوں کہ CIDRAM، کا تجزیہ کرنے کی کوشش کرنا چاہئے کوما سے ختم ہونے والی.</li></ul></div>
 
 ##### <div dir="rtl">"block_attacks" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>حملوں اور دیگر غیر معمولی ٹریفک سے وابستہ CIDRs کو بلاک کریں؟ مثال کے طور پر، پورٹ اسکین، ہیکنگ، کمزوریوں کی تحقیقات وغیرہ. ایسا کرنے جب آپ کو مسائل کا سامنا ہوتا ہے جب تک، عام طور پر، یہ ہمیشہ سچ کے لئے مقرر کیا جانا چاہئے.</li></ul></div>
@@ -792,9 +812,6 @@ disabled_channels
 
 ##### <div dir="rtl">"block_spam" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>بلاک CIDRs سپیم کے لئے اعلی خطرے ہونے کے طور پر شناخت کیا؟ ایسا کرنے جب آپ کو مسائل کا سامنا ہوتا ہے جب تک، عام طور پر، یہ ہمیشہ سچ کے لئے مقرر کیا جانا چاہئے.</li></ul></div>
-
-##### <div dir="rtl">"modules" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ماڈیول فائلوں کی ایک فہرست کوما سے ختم ہونے والی، IPv4/IPv6 دستخط جانچ پڑتال کے بعد لوڈ کرنے کے لئے.</li></ul></div>
 
 ##### <div dir="rtl">"default_tracktime" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>ماڈیولز کی طرف سے پابندی لگا دی IP ایس کے ٹریک کرنے سیکنڈ کتنے. پہلے سے طے شدہ = 604800 (1 ہفتہ).</li></ul></div>
@@ -992,7 +1009,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1024,55 +1040,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…دیگر
 ```
-
-#### <div dir="rtl">"PHPMailer" (قسم)<br /></div>
-<div dir="rtl">PHPMailer کی ترتیبات (دو عنصر کی توثیق کے لئے استعمال کیا جاتا ہےn).<br /><br /></div>
-
-##### <div dir="rtl">"event_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>PHPMailer کے سلسلے میں تمام واقعات کو لاگ ان کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
-##### <div dir="rtl">"skip_auth_process" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>جب <code dir="ltr">true</code>، SMTP کی تصدیق کے عمل کو چھوڑ دیا گیا ہے. اس سے بچنا چاہئے. اگر عمل ختم ہو جاتا ہے تو، آؤٹ باؤنڈ ای میل MITM حملوں سے بے نقاب ہوسکتا ہے. مخصوص معاملات میں ضروری ہوسکتا ہے (مثال کے طور پر، جب SMTP سرور مناسب طریقے سے منسلک نہیں کرے گا).</li></ul></div>
-
-##### <div dir="rtl">"enable_two_factor" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>یہ تعین کرتا ہے کہ 2FA استعمال کیا جانا چاہئے.</li></ul></div>
-
-##### <div dir="rtl">"host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>آؤٹ پاؤنڈ ای میل کے لئے استعمال کرنے کے لئے SMTP میزبان.</li></ul></div>
-
-##### <div dir="rtl">"port" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>آؤٹ پاؤنڈ ای میل کے لئے استعمال کرنے کے لئے پورٹ نمبر. پہلے سے طے شدہ = 587.</li></ul></div>
-
-##### <div dir="rtl">"smtp_secure" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے پر پروٹوکول استعمال کرنے کے لئے (TLS یا SSL).</li></ul></div>
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### <div dir="rtl">"smtp_auth" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>کیا SMTP سیشن کو مستند کیا جاسکتا ہے؟ (عام طور پر اس کو نظر انداز کرنا چاہئے).</li></ul></div>
-
-##### <div dir="rtl">"username" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے کے لئے صارف کا نام.</li></ul></div>
-
-##### <div dir="rtl">"password" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے کے لئے پاس ورڈ.</li></ul></div>
-
-##### <div dir="rtl">"set_from_address" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے کے لئے بھیجنے والے کا پتہ.</li></ul></div>
-
-##### <div dir="rtl">"set_from_name" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے کے لئے بھیجنے کا نام.</li></ul></div>
-
-##### <div dir="rtl">"add_reply_to_address" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے پر جواب کا پتہ.</li></ul></div>
-
-##### <div dir="rtl">"add_reply_to_name" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ای میل بھیجنے پر جواب کا نام.</li></ul></div>
 
 #### <div dir="rtl">"rate_limiting" (قسم)<br /></div>
 <div dir="rtl">شرح کو محدود کرنے کی ترتیبات (عام استعمال کے لئے سفارش نہیں کی جاتی ہے).<br /><br /></div>
@@ -1144,6 +1111,28 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#HO
 
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کیلئے پاس ورڈ.</li></ul></div>
+
+#### <div dir="rtl">"bypasses" (قسم)<br /></div>
+<div dir="rtl">پہلے سے طے شدہ دستخط کو نظرانداز کرنے کیلئے تشکیل.<br /><br /></div>
+
+##### <div dir="rtl">"used" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کون سے بائی پاس کو استعمال کیا جانا چاہئے؟</li></ul></div>
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2165,4 +2154,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۲ مئی ۲۰۲۲ (۲۰۲۲.۰۵.۱۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۳ مئی ۲۰۲۲ (۲۰۲۲.۰۵.۲۳).</div>

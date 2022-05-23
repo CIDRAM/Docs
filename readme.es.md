@@ -122,7 +122,7 @@ Las instrucciones se proporcionan en cada página del front-end, para explicar l
 
 Es posible hacer que el front-end sea más seguro habilitando la autenticación de dos factores ("2FA"). Cuando se inicia una sesión usando una cuenta habilitada para 2FA, se envía un correo electrónico a la dirección de correo electrónico asociada con esa cuenta. Este correo electrónico contiene un "código 2FA", que el usuario debe ingresar, además del nombre de usuario y la contraseña, para poder iniciar sesión con esa cuenta. Esto significa que la obtención de una contraseña de cuenta no sería suficiente para que cualquier hacker o posible atacante pueda iniciar sesión en esa cuenta, ya que también necesitarían tener acceso a la dirección de correo electrónico asociada con esa cuenta para poder recibir y utilizar el código 2FA asociado a la sesión, por lo tanto haciendo el front-end más seguro.
 
-En primer lugar, para habilitar la autenticación de dos factores, utilizando la página de actualizaciones del front-end, instale el componente PHPMailer. CIDRAM utiliza PHPMailer para enviar correos electrónicos. Cabe señalar que aunque CIDRAM, por sí mismo, es compatible con PHP >= 5.4.0, PHPMailer requiere PHP >= 5.5.0, lo que significa que no será posible habilitar la autenticación de dos factores para el front-end CIDRAM para usuarios de PHP 5.4.
+En primer lugar, para habilitar la autenticación de dos factores, utilizando la página de actualizaciones del front-end, instale el componente PHPMailer. CIDRAM utiliza PHPMailer para enviar correos electrónicos.
 
 Después de instalar PHPMailer, deberá llenar las directivas de configuración de PHPMailer a través de la página de configuración de CIDRAM o el archivo de configuración. Se incluye más información sobre estas directivas de configuración en la sección de configuración de este documento. Después de haber llenado las directivas de configuración de PHPMailer, configure `enable_two_factor` a `true`. La autenticación de dos factores ahora debería estar habilitada.
 
@@ -161,9 +161,6 @@ Configuración (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       disable_frontend [bool]
-│       max_login_attempts [int]
-│       frontend_log [string]
 │       signatures_update_event_log [string]
 │       ban_override [int]
 │       log_banned_ips [bool]
@@ -171,7 +168,6 @@ Configuración (v3)
 │       search_engine_verification [string]
 │       social_media_verification [string]
 │       other_verification [string]
-│       protect_frontend [bool]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -179,11 +175,20 @@ Configuración (v3)
 │       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
-│       config_imports [string]
-│       events [string]
-├───signatures
+├───components
 │       ipv4 [string]
 │       ipv6 [string]
+│       modules [string]
+│       imports [string]
+│       events [string]
+├───frontend
+│       frontend_log [string]
+│       max_login_attempts [int]
+│       theme [string]
+│       magnification [float]
+│       remotes [string]
+│       enable_two_factor [bool]
+├───signatures
 │       block_attacks [bool]
 │       block_cloud [bool]
 │       block_bogons [bool]
@@ -192,7 +197,6 @@ Configuración (v3)
 │       block_malware [bool]
 │       block_proxies [bool]
 │       block_spam [bool]
-│       modules [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
@@ -231,20 +235,6 @@ Configuración (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
-├───PHPMailer
-│       event_log [string]
-│       skip_auth_process [bool]
-│       enable_two_factor [bool]
-│       host [string]
-│       port [int]
-│       smtp_secure [string]
-│       smtp_auth [bool]
-│       username [string]
-│       password [string]
-│       set_from_address [string]
-│       set_from_name [string]
-│       add_reply_to_address [string]
-│       add_reply_to_name [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -252,20 +242,22 @@ Configuración (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Categoría)
@@ -590,15 +582,6 @@ emailaddr_display_style
 └─noclick ("Texto que no se puede hacer clic")
 ```
 
-##### "disable_frontend" `[bool]`
-- ¿Desactivar el acceso front-end? El acceso front-end puede hacer CIDRAM más manejable, pero también puede ser un riesgo de seguridad. Se recomienda administrar CIDRAM a través del back-end cuando sea posible, pero el acceso front-end se proporciona para cuando no es posible. Mantenerlo desactivado a menos que lo necesite. False = Activar el acceso front-end; True = Desactivar el acceso front-end [Predefinido].
-
-##### "max_login_attempts" `[int]`
-- Número máximo de intentos de login al front-end. Predefinido = 5.
-
-##### "frontend_log" `[string]`
-- Archivo para registrar intentos de login al front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
-
 ##### "signatures_update_event_log" `[string]`
 - Un archivo para registrar cuando las firmas se actualizan a través del front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
@@ -690,9 +673,6 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
-##### "protect_frontend" `[bool]`
-- Especifica si las protecciones normalmente proporcionadas por CIDRAM deben aplicarse al front-end. True = Sí [Predefinido]; False = No.
-
 ##### "default_algo" `[string]`
 - Define qué algoritmo utilizar para todas las contraseñas y sesiones en el futuro.
 
@@ -745,20 +725,60 @@ disabled_channels
 ##### "default_timeout" `[int]`
 - ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
 
-##### "config_imports" `[string]`
-- Una lista delimitada por comas de archivos para importar a la configuración predeterminada de CIDRAM. Normalmente se llena con la página de actualizaciones al activar componentes que lo necesitan cuando sea necesario. En la mayoría de los casos, puede ignorarlo.
+#### "components" (Categoría)
+Configuración para la activación y la desactivación de los componentes utilizados por CIDRAM. Normalmente se administra desde la página de actualizaciones, pero también se puede administrar desde aquí para un control más preciso y para los componentes personalizados que la página de actualizaciones no reconoce.
+
+##### "ipv4" `[string]`
+- Archivos de firmas IPv4.
+
+##### "ipv6" `[string]`
+- Archivos de firmas IPv6.
+
+##### "modules" `[string]`
+- Módulos.
+
+##### "imports" `[string]`
+- Importaciones. Normalmente se utiliza para proporcionar información de configuración de un componente a CIDRAM.
 
 ##### "events" `[string]`
-- Los archivos listados aquí se cargan directamente después del archivo de los controladores de eventos. Normalmente se llena con la página de actualizaciones al activar componentes que lo necesitan cuando sea necesario. En la mayoría de los casos, puede ignorarlo.
+- Manejadores de eventos. Normalmente se usa para modificar la forma en que CIDRAM se comporta internamente o para proporcionar funcionalidad adicional.
+
+#### "frontend" (Categoría)
+Configuración para el front-end.
+
+##### "frontend_log" `[string]`
+- Archivo para registrar intentos de login al front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+##### "max_login_attempts" `[int]`
+- Número máximo de intentos de login al front-end. Predefinido = 5.
+
+##### "theme" `[string]`
+- Tema predefinido a utilizar para el front-end.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Otro
+```
+
+##### "magnification" `[float]`
+- Ampliación de fuente. Predefinido = 1.
+
+##### "remotes" `[string]`
+- Una lista de las direcciones utilizadas por el actualizador para obtener los metadatos de los componentes. Es posible que esto debe ajustarse al actualizar a una nueva versión principal, o al adquirir una nueva fuente de actualizaciones, pero en circunstancias normales debe dejarse así.
+
+##### "enable_two_factor" `[bool]`
+- Esta directiva determina si se debe usar 2FA para las cuentas del front-end.
 
 #### "signatures" (Categoría)
 Configuración para firmas, archivos de firma, módulos, etc.
-
-##### "ipv4" `[string]`
-- Una lista de los archivos de firmas IPv4 que CIDRAM debe tratar de utilizar, delimitado por comas.
-
-##### "ipv6" `[string]`
-- Una lista de los archivos de firmas IPv6 que CIDRAM debe tratar de utilizar, delimitado por comas.
 
 ##### "block_attacks" `[bool]`
 - ¿Bloquear CIDRs asociados con ataques y otro tráfico anormal? Por ejemplo, escaneos de puertos, piratería, sondeo de vulnerabilidades, etc. A menos que experimentar problemas cuando hacerlo, en general, esto siempre debe establecerse para true.
@@ -783,9 +803,6 @@ Configuración para firmas, archivos de firma, módulos, etc.
 
 ##### "block_spam" `[bool]`
 - ¿Bloquear CIDRs identificado como siendo de alto riesgo para el spam? A menos que experimentar problemas cuando hacerlo, en general, esto siempre debe establecerse para true.
-
-##### "modules" `[string]`
-- Una lista de archivos módulo a cargar después de comprobar las firmas IPv4/IPv6, delimitado por comas.
 
 ##### "default_tracktime" `[int]`
 - ¿Cuántos segundos para realizar el seguimiento de las IP prohibidas por los módulos? Predefinido = 604800 (1 semana).
@@ -975,7 +992,6 @@ theme
 ├─bluemetal ("Blue Metal")
 ├─fullmoon ("Full Moon")
 ├─moss ("Moss")
-├─obscured ("Obscured")
 ├─primer ("Primer")
 ├─primerdark ("Primer Dark")
 ├─rbi ("Red-Blue Inverted")
@@ -1007,55 +1023,6 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Otro
 ```
-
-#### "PHPMailer" (Categoría)
-Configuración para PHPMailer (utilizado para la autenticación de dos factores).
-
-##### "event_log" `[string]`
-- Un archivo para registrar todos los eventos en relación con PHPMailer. Especificar el nombre del archivo, o dejar en blanco para desactivar.
-
-##### "skip_auth_process" `[bool]`
-- Establecer esta directiva en `true` indica a PHPMailer que omita el proceso de autenticación normal que normalmente se produce cuando se envía un correo electrónico a través de SMTP. Esto debe evitarse, ya que omitir este proceso puede exponer el correo electrónico saliente a ataques MITM, pero puede ser necesario en los casos en que este proceso impida que PHPMailer se conecte a un servidor SMTP.
-
-##### "enable_two_factor" `[bool]`
-- Esta directiva determina si se debe usar 2FA para las cuentas del front-end.
-
-##### "host" `[string]`
-- El host SMTP para usar para el correo electrónico saliente.
-
-##### "port" `[int]`
-- El número de puerto a usar para el correo electrónico saliente. Predefinido = 587.
-
-##### "smtp_secure" `[string]`
-- El protocolo a usar cuando se envía un correo electrónico a través de SMTP (TLS o SSL).
-
-```
-smtp_secure
-├─default ("-")
-├─tls ("TLS")
-└─ssl ("SSL")
-```
-
-##### "smtp_auth" `[bool]`
-- Esta directiva determina si autenticar sesiones SMTP (generalmente debería dejarse solo).
-
-##### "username" `[string]`
-- El nombre de usuario a usar cuando se envía un correo electrónico a través de SMTP.
-
-##### "password" `[string]`
-- La contraseña a usar cuando se envía un correo electrónico a través de SMTP.
-
-##### "set_from_address" `[string]`
-- La dirección del remitente para citar cuando se envía un correo electrónico a través de SMTP.
-
-##### "set_from_name" `[string]`
-- El nombre del remitente para citar cuando se envía un correo electrónico a través de SMTP.
-
-##### "add_reply_to_address" `[string]`
-- La dirección de la respuesta para citar cuando se envía un correo electrónico a través de SMTP.
-
-##### "add_reply_to_name" `[string]`
-- El nombre de la respuesta para citar cuando se envía un correo electrónico a través de SMTP.
 
 #### "rate_limiting" (Categoría)
 Configuración para limitar la velocidad de acceso (no recomendado para uso general).
@@ -1127,6 +1094,28 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#HO
 
 ##### "pdo_password" `[string]`
 - Contraseña de PDO.
+
+#### "bypasses" (Categoría)
+La configuración de las bypasses de firmas estándar.
+
+##### "used" `[string]`
+- ¿Qué bypasses se deben utilizar?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
 
 ---
 
@@ -2109,4 +2098,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 12 de Mayo de 2022 (2022.05.12).
+Última Actualización: 23 de Mayo de 2022 (2022.05.23).
