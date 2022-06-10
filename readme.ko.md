@@ -50,7 +50,7 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 
 5) 그 다음에 시스템 또는 CMS에 CIDRAM를 연결합니다. 방법에는 여러 가지가 있지만 가장 쉬운 것은`require`과`include`에서 스크립트를 시스템 또는 CMS 코어 파일의 첫 부분에 기재하는 방법입니다. (코어 파일은 사이트의 어떤 페이지에 접근이 있어도 반드시로드되는 파일입니다). 일반적으로는 `/includes`또는 `/assets`또는 `/functions`같은 디렉토리에있는 파일에서 `init.php`, `common_functions.php`, `functions.php`라는 파일 이름을 붙일 수 있습니다. 실제로 어떤 파일인지는 찾아도 바닥입니다해야합니다. 잘 모르는 경우 CIDRAM 지원 포럼을 참조하거나 GitHub 때문에 CIDRAM 문제의 페이지 또는 알려주십시오 (CMS 정보 필수). 나 자신을 포함하여 사용자에 유사한 CMS를 다룬 경험이 있으면, 무엇인가의 지원을 제공 할 수 있습니다. 코어 파일이 발견 된 경우, (`require` 또는`include`을 사용하여) 다음 코드를 파일의 맨 위에 삽입하십시오. 그러나 따옴표로 둘러싸인 부분은`loader.php` 파일의 정확한 주소 (HTTP 주소가 아닌 로컬 주소 전술의 vault 주소와 유사)로 바꿉니다.
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 파일을 저장하고 닫은 다음 다시 업로드합니다.
 
@@ -58,25 +58,29 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 
 Apache 웹서버를 이용하고있어, 한편`php.ini`를 편집 할 수 있도록한다면, `auto_prepend_file` 지시어를 사용하여 PHP 요청이있을 경우에는 항상 CIDRAM을 앞에 추가하도록 할 있습니다. 예를 들면 다음과 같습니다.
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 또는 `.htaccess`에서 :
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) 설치가 완료되었습니다. :-)
 
 #### 2.1 COMPOSER를 사용하여 설치한다
 
-[CIDRAM는 Packagist에 등록되어 있습니다](https://packagist.org/packages/cidram/cidram). Composer를 익숙한 경우 Composer를 사용하여 CIDRAM를 설치할 수 있습니다 (그러나, 당신은 설정 옵션, 권한 및 후크를 준비해야합니다. "수동 설치"의 2, 4 단계와 5 단계를 참조하십시오).
+[CIDRAM는 Packagist에 등록되어 있습니다](https://packagist.org/packages/cidram/cidram). Composer를 익숙한 경우 Composer를 사용하여 CIDRAM를 설치할 수 있습니다.
 
 `composer require cidram/cidram`
 
 #### 2.2 WORDPRESS 위해 설치한다
 
-WordPress에 CIDRAM를 사용하려면 위의 단계를 모두 무시 할 수 있습니다. [CIDRAM은 WordPress 플러그인 데이터베이스에 플러그인으로 등록되어 있습니다](https://wordpress.org/plugins/cidram/). 플러그인 대시 보드에서 CIDRAM를 직접 설치할 수 있습니다. 다른 플러그인과 같은 방법으로 설치할 수 (추가 절차는 필요하지 않습니다). 다른 설치 방법과 마찬가지로, `config.ini` 파일의 내용을 변경 또는 프런트 엔드 구성 페이지를 사용하여 설치를 사용자 정의 할 수 있습니다. 프런트 엔드 업데이트 페이지에서 CIDRAM를 업데이트하면, 플러그인 버전 정보가 WordPress에 자동으로 동기화됩니다.
+[CIDRAM은 WordPress 플러그인 데이터베이스에 플러그인으로 등록되어 있습니다](https://wordpress.org/plugins/cidram/). 플러그인 대시 보드에서 CIDRAM를 직접 설치할 수 있습니다. 다른 플러그인과 같은 방법으로 설치할 수 (추가 절차는 필요하지 않습니다).
 
 *경고 : 플러그인 대시 보드를 통해 CIDRAM를 업데이트하면 클린 설치가 이루어집니다. 설치를 사용자 정의한 경우 (당신의 설정을 변경 한 모듈을 설치 한 등) 이러한 정의는 플러그인 대시 보드를 통해 업데이트하면 손실됩니다! 로그 파일도 손실됩니다! 로그 파일과 문화를 유지하려면 CIDRAM 프론트 엔드 업 데이트 페이지에 업데이트합니다.*
+
+#### 2.3 구성 및 사용자 정의
+
+필요에 따라 조정할 수 있도록 새 설치의 구성을 검토하는 것이 좋습니다. 필요에 가장 잘 맞는 설치를 위해 추가 모듈, 서명 파일을 설치하거나, 보조 규칙을 생성하거나, 기타 사용자 정의를 구현할 수도 있습니다. 이러한 작업을 수행하려면 프론트 엔드를 사용하는 것이 좋습니다.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 �
 #### 4.0 프론트 엔드는 무엇입니다.
 
 프론트 엔드는 CIDRAM 설치 유지 관리 업데이트하기위한 편리하고 쉬운 방법을 제공합니다. 로그 페이지를 사용하여 로그 파일을 공유, 다운로드 할 수있는 구성 페이지에서 구성을 변경할 수 있습니다, 업데이트 페이지를 사용하여 구성 요소를 설치 및 제거 할 수 있습니다, 그리고 파일 관리자를 사용하여 vault에 파일을 업로드, 다운로드 및 변경할 수 있습니다.
-
-무단 액세스를 방지하기 위해 프론트 엔드는 기본적으로 비활성화되어 있습니다 (무단 액세스가 웹 사이트와 보안에 중대한 영향을 미칠 수 있습니다). 그것을 가능하게하기위한 지침이 절 아래에 포함되어 있습니다.
 
 #### 4.1 프론트 엔드를 사용하는 방법.
 
@@ -256,8 +258,10 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (카테고리)
@@ -614,7 +618,7 @@ ban_override
 - 금지 된 IP에서 차단 된 요청을 로그 파일에 포함됩니까? True = 예 (Default / 기본값); False = 아니오.
 
 ##### "default_dns" `[string]`
-- 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 쉼표로 구분 된 목록입니다. Default (기본 설정) = "8.8.8.8,8.8.4.4" (Google DNS). 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
+- 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 목록입니다. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
 __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ko">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a></em>
 
@@ -750,7 +754,7 @@ CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위�
 - 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 ##### "max_login_attempts" `[int]`
-- 로그인 시도 최대 횟수입니다 (프론트 엔드). Default / 기본 설정 = 5.
+- 로그인 시도 최대 횟수입니다 (프론트 엔드). Default (기본 설정) = 5.
 
 ##### "theme" `[string]`
 - 프런트 엔드에 사용할 기본 테마.
@@ -889,7 +893,8 @@ nonblocked_status_code
 │ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
 │ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
 │ 권장되지 않습니다.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
+│ 다른 상황에서는 권장되지 않습니다.
 └─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
   상황에서는 권장되지 않습니다.
 ```
@@ -966,7 +971,8 @@ nonblocked_status_code
 │ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
 │ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
 │ 권장되지 않습니다.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
+│ 다른 상황에서는 권장되지 않습니다.
 └─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
   상황에서는 권장되지 않습니다.
 ```
@@ -1115,6 +1121,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (카테고리)
+선택적 보안 추가 모듈 구성.
+
+##### "signatures" `[string]`
+- 어떤 유형의 서명을 존중해야 합니까?
+
+```
+signatures
+├─empty_ua ("빈 사용자 에이전트.")
+├─query ("요청 질의를 기반으로 하는 서명.")
+├─raw ("원시 요청 입력을 기반으로 하는 서명.")
+├─ruri ("재구성된 URI를 기반으로 하는 서명.")
+└─uri ("요청 URI를 기반으로 하는 서명.")
 ```
 
 ---
@@ -2087,4 +2108,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 5월 23일.
+최종 업데이트 : 2022년 6월 10일.

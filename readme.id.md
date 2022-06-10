@@ -50,7 +50,7 @@ Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
 
 5) Selanjutnya Anda perlu menghubungkan CIDRAM ke sistem atau CMS. Ada beberapa cara yang berbeda untuk menghubungkan skrip seperti CIDRAM ke sistem atau CMS, tapi yang paling mudah adalah memasukkan skrip pada permulaan dari file murni dari sistem atau CMS (satu yang akan secara umum di muat ketika seseorang mengakses halaman apapun pada situs web) berdasarkan pernyataan `require` atau `include`. Umumnya, ini akan menjadi sesuatu yang disimpan di sebuah direktori seperti `/includes`, `/assets` atau `/functions` dan akan selalu di namai sesuatu seperti `init.php`, `common_functions.php`, `functions.php` atau yang sama. Anda harus bekerja pada file apa untuk situasi ini; Jika Anda mengalami kesulitan dalam menentukan ini untuk diri sendiri, kunjungi halaman issues (issues) CIDRAM di GitHub untuk bantuan. Untuk melakukannya [menggunakan `require` atau `include`], sisipkan baris kode dibawah pada file murni, menggantikan kata-kata berisikan didalam tanda kutip dari alamat file `loader.php` (alamat lokal, tidak alamat HTTP; akan terlihat seperti alamat vault yang di bicarakan sebelumnya).
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Simpan file dan tutup. Upload kembali.
 
@@ -58,25 +58,29 @@ Simpan file dan tutup. Upload kembali.
 
 Jika Anda menggunakan webserver Apache dan jika Anda memiliki akses ke `php.ini`, Anda dapat menggunakan `auto_prepend_file` direktif untuk tambahkan CIDRAM setiap kali ada permintaan PHP dibuat. Sesuatu seperti:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Atau ini di file `.htaccess`:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Itu semuanya! :-)
 
 #### 2.1 MENGINSTAL DENGAN COMPOSER
 
-[CIDRAM terdaftar dengan Packagist](https://packagist.org/packages/cidram/cidram). Jika Anda akrab dengan Composer, Anda dapat menggunakan Composer untuk menginstal CIDRAM (Anda masih perlu mempersiapkan konfigurasi, izin dan kait meskipun; melihat "menginstal secara manual" langkah 2, 4, dan 5).
+[CIDRAM terdaftar dengan Packagist](https://packagist.org/packages/cidram/cidram). Jika Anda akrab dengan Composer, Anda dapat menggunakan Composer untuk menginstal CIDRAM.
 
 `composer require cidram/cidram`
 
 #### 2.2 MENGINSTAL UNTUK WORDPRESS
 
-Jika Anda ingin menggunakan CIDRAM dengan WordPress, Anda dapat mengabaikan semua petunjuk di atas. [CIDRAM terdaftar sebagai plugin dengan database plugin WordPress](https://wordpress.org/plugins/cidram/), dan Anda dapat menginstal CIDRAM langsung dari plugin dashboard. Anda dapat menginstalnya dengan cara yang sama seperti plugin lainnya, dan tidak ada langkah-langkah selain diperlukan. Sama seperti dengan metode instalasi lain, Anda dapat menyesuaikan instalasi Anda dengan memodifikasi isi file `config.ini` atau dengan menggunakan akses bagian depan halaman konfigurasi. Jika Anda mengaktifkan bagian depan CIDRAM dan memperbarui CIDRAM menggunakan akses bagian depan halaman pembaruan, ini secara otomatis akan sinkron dengan informasi versi plugin ditampilkan di plugin dashboard.
+[CIDRAM terdaftar sebagai plugin dengan database plugin WordPress](https://wordpress.org/plugins/cidram/), dan Anda dapat menginstal CIDRAM langsung dari plugin dashboard. Anda dapat menginstalnya dengan cara yang sama seperti plugin lainnya, dan tidak ada langkah-langkah selain diperlukan.
 
 *Peringatan: Memperbarui CIDRAM melalui dashboard plugin menghasilkan instalasi yang bersih! Jika Anda telah menyesuaikan instalasi Anda (mengubah konfigurasi, modul terinstal, dll), kustomisasi ini akan hilang saat memperbarui melalui dashboard plugin! File log juga akan hilang saat memperbarui melalui dashboard plugin! Untuk menyimpan file log dan kustomisasi, perbarui melalui halaman pembaruan bagian depan CIDRAM.*
+
+#### 2.3 KONFIGURASI DAN KUSTOMISASI
+
+Sangat disarankan bagi Anda untuk meninjau konfigurasi instalasi baru Anda agar Anda dapat menyesuaikannya sesuai dengan kebutuhan Anda. Anda mungkin juga ingin menginstal modul tambahan, file tanda tangan, membuat aturan tambahan, atau menerapkan penyesuaian lain agar instalasi Anda dapat paling sesuai dengan kebutuhan Anda. Saya sarankan menggunakan front-end untuk melakukan hal-hal ini.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM dapat diperbarui secara manual atau melalui bagian depan. CIDRAM juga bis
 #### 4.0 APA YANG MANAJEMEN BAGIAN DEPAN.
 
 Manajemen bagian depan menyediakan cara yang nyaman dan mudah untuk mempertahankan, mengelola, dan memperbarui instalasi CIDRAM Anda. Anda dapat melihat, berbagi, dan download file log melalui halaman log, Anda dapat mengubah konfigurasi melalui halaman konfigurasi, Anda dapat instal dan uninstal/hapus komponen melalui halaman pembaruan, dan Anda dapat upload, download, dan memodifikasi file dalam vault Anda melalui file manager.
-
-Bagian depan adalah dinonaktifkan secara default untuk mencegah akses yang tidak sah (akses yang tidak sah bisa memiliki konsekuensi yang signifikan untuk website Anda dan keamanannya). Instruksi untuk mengaktifkannya termasuk dibawah paragraf ini.
 
 #### 4.1 BAGAIMANA CARA MENGAKTIFKAN MANAJEMEN BAGIAN DEPAN.
 
@@ -256,8 +258,10 @@ Konfigurasi (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Kategori)
@@ -612,7 +616,7 @@ ban_override
 - Termasuk permintaan diblokir dari IP dilarang dalam file log? True = Ya [Default]; False = Tidak.
 
 ##### "default_dns" `[string]`
-- Sebuah daftar dipisahkan dengan koma dari server DNS yang digunakan untuk pencarian nama host. Default = "8.8.8.8,8.8.4.4" (Google DNS). PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
+- Daftar server DNS yang digunakan untuk pencarian nama host. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="id">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
 
@@ -886,7 +890,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
 │ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
+│ untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
 └─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
   direkomendasikan dalam konteks lain.
 ```
@@ -962,7 +967,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
 │ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
+│ untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
 └─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
   direkomendasikan dalam konteks lain.
 ```
@@ -1111,6 +1117,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Kategori)
+Konfigurasi untuk modul tambahan keamanan opsional.
+
+##### "signatures" `[string]`
+- Jenis tanda tangan apa yang harus dihormati?
+
+```
+signatures
+├─empty_ua ("Agen pengguna yang kosong.")
+├─query ("Tanda tangan berdasarkan permintaan.")
+├─raw ("Tanda tangan berdasarkan input permintaan yang mentah.")
+├─ruri ("Tanda tangan berdasarkan URI yang direkonstruksi.")
+└─uri ("Tanda tangan berdasarkan URI permintaan.")
 ```
 
 ---
@@ -2087,4 +2108,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 23 Mei 2022 (2022.05.23).
+Terakhir Diperbarui: 10 Juni 2022 (2022.06.10).

@@ -50,7 +50,7 @@ Dit document en de bijbehorende pakket kunt gedownload gratis zijn van:
 
 5) Volgende, u nodig om "haak" CIDRAM om uw systeem of CMS. Er zijn verschillende manieren waarop u kunt "haak" scripts zoals CIDRAM om uw systeem of CMS, maar het makkelijkste is om gewoon omvatten voor het script aan het begin van een kern bestand van uw systeem of CMS (een die het algemeen altijd zal worden geladen wanneer iemand heeft toegang tot een pagina in uw website) met behulp van een `require` of `include` opdracht. Meestal is dit wel iets worden opgeslagen in een bestandsmap zoals `/includes`, `/assets` of `/functions`, en zal vaak zijn vernoemd iets als `init.php`, `common_functions.php`, `functions.php` of soortgelijk. U nodig om te bepalen welk bestand dit is voor uw situatie; Als u problemen ondervindt bij het bepalen van dit voor uzelf, ga naar de CIDRAM issues pagina op GitHub voor assistentie. Om dit te doen [te gebruiken `require` of `include`], plaatst u de volgende regel code aan het begin op die kern bestand, vervangen van de string die binnen de aanhalingstekens met het exacte adres van het `loader.php` bestand (lokaal adres, niet het HTTP-adres; zal vergelijkbaar zijn met de eerder genoemde vault adres).
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Opslaan bestand, sluiten, heruploaden.
 
@@ -58,25 +58,29 @@ Opslaan bestand, sluiten, heruploaden.
 
 Als u gebruik een Apache webserver en als u heeft toegang om `php.ini`, u kunt gebruiken de `auto_prepend_file` richtlijn naar prepend CIDRAM wanneer een PHP verzoek wordt gemaakt. Zoiets als:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Of dit in het `.htaccess` bestand:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Dat is alles! :-)
 
 #### 2.1 INSTALLEREN MET COMPOSER
 
-[CIDRAM is geregistreerd bij Packagist](https://packagist.org/packages/cidram/cidram), en dus, als u bekend bent met Composer, kunt u Composer gebruiken om CIDRAM installeren (u zult nog steeds nodig om de configuratie, rechten en haken te bereiden niettemin; zie "handmatig installeren" stappen 2, 4, en 5).
+[CIDRAM is geregistreerd bij Packagist](https://packagist.org/packages/cidram/cidram), en dus, als u bekend bent met Composer, kunt u Composer gebruiken om CIDRAM installeren.
 
 `composer require cidram/cidram`
 
 #### 2.2 INSTALLEREN VOOR WORDPRESS
 
-Als u wilt CIDRAM gebruiken met WordPress, u kunt alle bovenstaande instructies negeren. [CIDRAM is geregistreerd als een plugin met de WordPress plugins databank](https://wordpress.org/plugins/cidram/), en u kunt CIDRAM direct vanaf het plugin-dashboard installeren. U kunt het op dezelfde manier installeren als elke andere plugin, en geen toevoeging stappen nodig zijn. Net als bij de andere installatiemethoden, u kunt uw installatie aanpassen door het wijzigen van de inhoud van de `config.ini` bestand of door de frontend configuratie pagina. Als u de CIDRAM frontend activeren en bijwerken met behulp van de frontend updates pagina, dit zal automatisch synchroniseren met de plugin versie-informatie wordt weergegeven in het plugin-dashboard.
+[CIDRAM is geregistreerd als een plugin met de WordPress plugins databank](https://wordpress.org/plugins/cidram/), en u kunt CIDRAM direct vanaf het plugin-dashboard installeren. U kunt het op dezelfde manier installeren als elke andere plugin, en geen toevoeging stappen nodig zijn.
 
 *Waarschuwing: Het bijwerken van CIDRAM via het plugin-dashboard resulteert in een schone installatie! Als u uw installatie hebt aangepast (verander uw configuratie, geïnstalleerde modules, enz), deze aanpassingen worden verloren bij het updaten via het plugin-dashboard! Logbestanden worden ook verloren bij het updaten via het plugin-dashboard! Om de logbestanden en aanpassingen te bewaren, bijwerken via de CIDRAM frontend updates pagina.*
+
+#### 2.3 CONFIGURATIE EN PERSONALISATIE
+
+Het wordt ten zeerste aanbevolen om de configuratie van uw nieuwe installatie te bekijken, zodat u dit aan uw behoeften kunt aanpassen. Mogelijk wilt u ook aanvullende modules or signatuurbestanden te installeren, hulpregels te maken, of andere aanpassingen om uw installatie te doorvoeren, zodat dit het beste aansluit bij uw wensen. Ik raad aan om de frontend te gebruiken om deze dingen te doen.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM kan handmatig of via de frontend worden bijgewerkt. CIDRAM kan ook worden
 #### 4.0 WAT IS DE FRONTEND.
 
 De frontend biedt een gemakkelijke en eenvoudige manier te onderhouden, beheren en updaten van uw CIDRAM installatie. U kunt bekijken, delen en downloaden log bestanden via de pagina logs, u kunt de configuratie wijzigen via de configuratiepagina, u kunt installeren en verwijderen/desinstalleren van componenten via de pagina updates, en u kunt uploaden, downloaden en wijzigen bestanden in uw vault via de bestandsbeheer.
-
-De frontend is standaard uitgeschakeld om ongeautoriseerde toegang te voorkomen (ongeautoriseerde toegang kan belangrijke gevolgen hebben voor uw website en de beveiliging hebben). Instructies voor het inschakelen van deze zijn hieronder deze paragraaf opgenomen.
 
 #### 4.1 HOE DE FRONTEND TE INSCHAKELEN.
 
@@ -256,8 +258,10 @@ Configuratie (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categorie)
@@ -614,7 +618,7 @@ ban_override
 - Omvatten geblokkeerde verzoeken van verbannen IP-adressen in de logbestanden? True = Ja [Standaard]; False = Nee.
 
 ##### "default_dns" `[string]`
-- Een door komma's gescheiden lijst met DNS-servers te gebruiken voor de hostnaam lookups. Standaard = "8.8.8.8,8.8.4.4" (Google DNS). WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
+- Een lijst met DNS-servers te gebruiken voor de hostnaam lookups. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="nl">Wat kan ik gebruiken voor "default_dns"?</a></em>
 
@@ -738,7 +742,7 @@ Configuratie voor het activeren en het deactiveren van de door CIDRAM gebruikte 
 - Modules.
 
 ##### "imports" `[string]`
-- Invoer. Meestal gebruikt om de configuratie-informatie van een component aan CIDRAM te leveren.
+- Import. Meestal gebruikt om de configuratie-informatie van een component aan CIDRAM te leveren.
 
 ##### "events" `[string]`
 - Evenement-Behandelaars. Meestal gebruikt om de manier waarop CIDRAM zich intern gedraagt te wijzigen of om extra functionaliteit te bieden.
@@ -889,7 +893,8 @@ nonblocked_status_code
 │ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
 │ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
 │ aanbevolen.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
+│ het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
 └─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
   aanbevolen in andere contexten.
 ```
@@ -966,7 +971,8 @@ nonblocked_status_code
 │ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
 │ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
 │ aanbevolen.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
+│ het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
 └─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
   aanbevolen in andere contexten.
 ```
@@ -1115,6 +1121,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Categorie)
+Configuratie voor de module van optionele beveiligingsextra's.
+
+##### "signatures" `[string]`
+- Welke soorten signatures moeten worden gehonoreerd?
+
+```
+signatures
+├─empty_ua ("Lege gebruikersagenten.")
+├─query ("Signatures op basis van verzoekvragen.")
+├─raw ("Signatures op basis van onbewerkte verzoekinvoer.")
+├─ruri ("Signatures op basis van gereconstrueerde URI's.")
+└─uri ("Signatures op basis van verzoek-URI's.")
 ```
 
 ---
@@ -2108,4 +2129,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 23 Mei 2022 (2022.05.23).
+Laatste Bijgewerkt: 10 Juni 2022 (2022.06.10).

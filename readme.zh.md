@@ -50,7 +50,7 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 
 5） 接下来，​您需要为您的系统或CMS设定启动CIDRAM的钩子。​有几种不同的方式为您的系统或CMS设定钩子，​最简单的是在您的系统或CMS的核心文件的开头中使用`require`或`include`命令直接包含脚本（这个方法通常会导致在有人访问时每次都加载）。​平时，​这些都是存储的在文件夹中，​例如`/includes`，​`/assets`或`/functions`等文件夹，​和将经常被命名的某物例如`init.php`，​`common_functions.php`，​`functions.php`。​这是根据您自己的情况决定的，​并不需要完全遵守；如果您遇到困难，​参观GitHub上的CIDRAM issues页面；可能其他用户或者我自己也有这个问题并且解决了（您需要让我们您在使用哪些CMS）。​为了使用`require`或`include`，​插入下面的代码行到最开始的该核心文件，​更换里面的数据引号以确切的地址的`loader.php`文件（本地地址，​不是HTTP地址；它会类似于前面提到的vault地址）。
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 保存文件，​关闭，​重新上传。
 
@@ -58,25 +58,29 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 
 如果您使用Apache网络服务器并且您可以访问`php.ini`，​您可以使用该`auto_prepend_file`指令为任何PHP请求创建附上的CIDRAM。​就像是：
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 或在该`.htaccess`文件：
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) 这就是一切！​:-)
 
 #### 2.1 与COMPOSER安装
 
-[CIDRAM是在Packagist上](https://packagist.org/packages/cidram/cidram)，​所以，​如果您熟悉Composer，​您可以使用Composer安装CIDRAM（您仍然需要准备配置，权限，和钩子。参考“安装手工”步骤2，4，和5）。
+[CIDRAM是在Packagist上](https://packagist.org/packages/cidram/cidram)，​所以，​如果您熟悉Composer，​您可以使用Composer安装CIDRAM。
 
 `composer require cidram/cidram`
 
 #### 2.2 为WORDPRESS安装
 
-如果要使用CIDRAM与WordPress，​您可以忽略上述所有说明。​[CIDRAM在WordPress插件数据库中注册](https://wordpress.org/plugins/cidram/)，​您可以直接从插件仪表板安装CIDRAM。​您可以像其他插件一样安装，​不需要添加步骤。​与其他安装方法相同，​您可以通过修改`config.ini`来或通过使用前端配置页面自定义您的安装。​更新CIDRAM通过前端更新页面时，​插件版本信息将自动与WordPress同步。
+[CIDRAM在WordPress插件数据库中注册](https://wordpress.org/plugins/cidram/)，​您可以直接从插件仪表板安装CIDRAM。​您可以像其他插件一样安装，​不需要添加步骤。
 
 *警告：在插件仪表板里更新CIDRAM会导致干净的安装！​如果您已经自定义了您的安装（更改了您的配置，​安装的模块等），​在插件仪表板里进行更新时，​这些定制将会丢失！​日志文件也将丢失！​要保留日志文件和自定义，​请通过CIDRAM前端更新页面进行更新。​*
+
+#### 2.3 配置和定制
+
+强烈建议您检查新安装的配置，以便能够根据需要进行调整。​您可能还想安装其他模块、签名文件、创建辅助规则、或实施其他自定义，以便您的安装能够最好地满足您的需求。​我建议使用前端来做这些事情。
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 #### 4.0 什么是前端。
 
 前端提供了一种方便，​轻松的方式来维护，​管理和更新CIDRAM安装。​您可以通过日志页面查看，​共享和下载日志文件，​您可以通过配置页面修改配置，​您可以通过更新页面安装和卸载组件，​和您可以通过文件管理器上传，​下载和修改文件在vault。
-
-默认情况是禁用前端，​以防止未授权访问 （未授权访问可能会对您的网站及其安全性造成严重后果）。​启用它的说明包括在本段下面。
 
 #### 4.1 如何启用前端。
 
@@ -256,8 +258,10 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### “general” （类别）
@@ -590,7 +594,7 @@ ban_override
 - 包括IP禁止从阻止请求在日志文件吗？​True（真）=是【标准】；False（假）=不是。
 
 ##### “default_dns” `[string]`
-- 以逗号分隔的DNS服务器列表，​用于主机名查找。​标准 = “8.8.8.8,8.8.4.4” (Google DNS)。​警告：不要修改此除非您知道什么您做着！
+- DNS服务器列表，​用于主机名查找。​警告：不要修改此除非您知道什么您做着！
 
 __常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a></em>
 
@@ -859,7 +863,7 @@ nonblocked_status_code
 ├─200 (200 OK （好的）): 最不健壮，但最用户友好。​自动请求很可能将此响应解释为成功。
 ├─403 (403 Forbidden （禁止的）): 更健壮，但不太用户友好。​一般最推荐的。
 ├─418 (418 I'm a teapot （我是一个茶壶）): 引用愚人节的笑话【{{Links.RFC2324}}】。​任何客户端、机器人、浏览器、或其他方式都不太可能理解。​它是为了娱乐和方便而提供的，但是通常不推荐。
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests （请求过多）): 推荐用于速率限制、处理DDoS攻击、和防洪。​不推荐在其他情况下。
 └─451 (451 Unavailable For Legal Reasons （因法律原因不可用）): 主要出于法律原因被阻止时推荐。​不推荐在其他情况下。
 ```
 
@@ -929,7 +933,7 @@ nonblocked_status_code
 ├─200 (200 OK （好的）): 最不健壮，但最用户友好。​自动请求很可能将此响应解释为成功。
 ├─403 (403 Forbidden （禁止的）): 更健壮，但不太用户友好。​一般最推荐的。
 ├─418 (418 I'm a teapot （我是一个茶壶）): 引用愚人节的笑话【{{Links.RFC2324}}】。​任何客户端、机器人、浏览器、或其他方式都不太可能理解。​它是为了娱乐和方便而提供的，但是通常不推荐。
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests （请求过多）): 推荐用于速率限制、处理DDoS攻击、和防洪。​不推荐在其他情况下。
 └─451 (451 Unavailable For Legal Reasons （因法律原因不可用）): 主要出于法律原因被阻止时推荐。​不推荐在其他情况下。
 ```
 
@@ -1077,6 +1081,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### “extras” （类别）
+可选的安全附加模块配置。
+
+##### “signatures” `[string]`
+- 应该尊重哪些类型的签名？
+
+```
+signatures
+├─empty_ua ("空的用户代理。")
+├─query ("基于请求查询的签名。")
+├─raw ("基于原始请求输入的签名。")
+├─ruri ("基于重构URI的签名。")
+└─uri ("基于请求URI的签名。")
 ```
 
 ---
@@ -2054,4 +2073,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年5月23日。
+最后更新：2022年6月10日。

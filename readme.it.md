@@ -50,7 +50,7 @@ Questo documento ed il pacchetto associato ad esso possono essere scaricati libe
 
 5) Successivamente, sarà necessario "collegare" CIDRAM al vostro sistema o CMS. Ci sono diversi modi in cui è possibile collegare script come CIDRAM al vostro sistema o CMS, ma il più semplice è di inserire lo script all'inizio di un file del vostro sistema o CMS (quello che generalmente sarà caricato ogni volta che qualcuno accede a una pagina attraverso il vostro sito) utilizzando un comando `require` o `include`. Solitamente, questo file è memorizzato in una cartella, ad esempio `/includes`, `/assets` o `/functions`, e spesso può essere chiamato come `init.php`, `common_functions.php`, `functions.php` o simili. Scegliete accuratamente questo file tra quelli che compongono il vostro sistema o CMS; nel caso in cui trovate difficoltà nel determinare questo file, visitate la pagina di problemi/issues di CIDRAM per ricevere assistenza. Per fare ciò [utilizzare `require` o `include`], inserire la seguente riga di codice in cima al core file identificato in precedenza, sostituendo la stringa contenuta all'interno delle virgolette con l'indirizzo esatto del file `loader.php` (l'indirizzo locale, non l'indirizzo HTTP; sarà simile all'indirizzo citato in precedenza).
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Salvare il file, chiudere, caricare di nuovo.
 
@@ -58,25 +58,29 @@ Salvare il file, chiudere, caricare di nuovo.
 
 Se stai usando un web server Apache e se si ha accesso al file `php.ini`, è possibile utilizzare la direttiva `auto_prepend_file` per pre-caricare CIDRAM ogni volta che viene effettuata una qualsiasi richiesta PHP. Qualcosa come:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 O questo nel `.htaccess` file:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Questo è tutto! :-)
 
 #### 2.1 INSTALLARE CON COMPOSER
 
-[CIDRAM è registrata con Packagist](https://packagist.org/packages/cidram/cidram), e così, se si ha familiarità con Composer, è possibile utilizzare Composer per l'installazione di CIDRAM (è comunque necessario intervenire sul file di configurazione, impostare i permessi e includere `loader.php` però; vedere "Installazione manuale" passi 2, 4, e 5).
+[CIDRAM è registrata con Packagist](https://packagist.org/packages/cidram/cidram), e così, se si ha familiarità con Composer, è possibile utilizzare Composer per l'installazione di CIDRAM.
 
 `composer require cidram/cidram`
 
 #### 2.2 INSTALLARE PER WORDPRESS
 
-Se si desidera utilizzare CIDRAM con WordPress, è possibile ignorare tutte le istruzioni di cui sopra. [CIDRAM è registrato come un plugin con il database dei plugin di WordPress](https://wordpress.org/plugins/cidram/), ed è possibile installare CIDRAM direttamente dalla pagina dei Plugin. È possibile installarlo nello stesso modo di qualsiasi altro plugin, e non sono necessari altri interventi. Proprio come con gli altri metodi di installazione, è possibile personalizzare l'installazione modificando il contenuto del file `config.ini` o utilizzando la pagina di configurazione del front-end. Se si attiva il front-end per CIDRAM e si aggiorna CIDRAM utilizzando la pagina degli aggiornamenti, questo si sincronizza automaticamente con le informazioni sulla versione del plugin visualizzate nella pagina dei plugin.
+[CIDRAM è registrato come un plugin con il database dei plugin di WordPress](https://wordpress.org/plugins/cidram/), ed è possibile installare CIDRAM direttamente dalla pagina dei Plugin. È possibile installarlo nello stesso modo di qualsiasi altro plugin, e non sono necessari altri interventi.
 
 *Avvertimento: L'aggiornamento di CIDRAM tramite il dashboard dei plugin provoca un'installazione pulita! Se hai personalizzato l'installazione (cambiato la tua configurazione, installati i moduli, ecc), queste personalizzazioni verranno perse quando si aggiorna tramite la pagina dei plugin! I file di registro verranno persi anche quando vengono aggiornati tramite la pagina dei plugin! Per preservare i file di registro e le personalizzazioni, aggiorna tramite la pagina di aggiornamenti del front-end per CIDRAM.*
+
+#### 2.3 CONFIGURAZIONE E PERSONALIZZAZIONE
+
+Si consiglia vivamente di rivedere la configurazione della nuova installazione per poterla adattare alle proprie esigenze. Potresti anche voler installare moduli aggiuntivi, file di firma, creare regole ausiliarie, o implementare altre personalizzazioni in modo che la tua installazione sia in grado di soddisfare al meglio le tue esigenze. Consiglio di usare il front-end per fare queste cose.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM può essere aggiornato manualmente o tramite il front-end. CIDRAM può an
 #### 4.0 QUAL È IL FRONT-END.
 
 Il front-end fornisce un modo conveniente e facile da mantenere, gestire e aggiornare l'installazione CIDRAM. È possibile visualizzare, condividere e scaricare file di log attraverso la pagina di log, è possibile modificare la configurazione attraverso la pagina di configurazione, è possibile installare e disinstallare i componenti attraverso la pagina degli aggiornamenti, e si può caricare, scaricare e modificare i file nel vault tramite il file manager.
-
-Il front-end è disabilitato per impostazione predefinita al fine di prevenire l'accesso non autorizzato (l'accesso non autorizzato potrebbe avere conseguenze significative per il vostro sito e la sua sicurezza). Istruzioni per l'abilitazione si sono compresi sotto di questo paragrafo.
 
 #### 4.1 COME ATTIVARE IL FRONT-END.
 
@@ -256,8 +258,10 @@ Configurazione (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categoria)
@@ -612,7 +616,7 @@ ban_override
 - Includi richieste bloccate da IP vietati nei file di log? True = Sì [Predefinito]; False = No.
 
 ##### "default_dns" `[string]`
-- Un elenco delimitato con virgole di server DNS da utilizzare per le ricerche dei nomi di host. Predefinito = "8.8.8.8,8.8.4.4" (Google DNS). AVVISO: Non modificare questa se non sai quello che stai facendo!
+- Un elenco di server DNS da utilizzare per le ricerche dei nomi di host. AVVISO: Non modificare questa se non sai quello che stai facendo!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="it">Cosa posso usare per "default_dns"?</a></em>
 
@@ -886,7 +890,9 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
 │ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
 │ Fornito per divertimento e comodità, ma generalmente non consigliato.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Troppe richieste)): Consigliato per la limitazione della velocità, quando si tratta di attacchi
+│ DDoS, e per la prevenzione delle inondazioni. Non consigliato in altri
+│ contesti.
 └─451 (451 Unavailable For Legal Reasons (Non disponibile per motivi legali)): Consigliato in caso di blocco principalmente per motivi legali. Non
   consigliato in altri contesti.
 ```
@@ -962,7 +968,9 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
 │ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
 │ Fornito per divertimento e comodità, ma generalmente non consigliato.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Troppe richieste)): Consigliato per la limitazione della velocità, quando si tratta di attacchi
+│ DDoS, e per la prevenzione delle inondazioni. Non consigliato in altri
+│ contesti.
 └─451 (451 Unavailable For Legal Reasons (Non disponibile per motivi legali)): Consigliato in caso di blocco principalmente per motivi legali. Non
   consigliato in altri contesti.
 ```
@@ -1111,6 +1119,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Categoria)
+Configurazione per il modulo degli extra di sicurezza opzionali.
+
+##### "signatures" `[string]`
+- Quali tipi di firme dovrebbero essere onorati?
+
+```
+signatures
+├─empty_ua ("Agenti utente vuoti.")
+├─query ("Firme basate su domande di richiesta.")
+├─raw ("Firme basate sull'input della richiesta grezza.")
+├─ruri ("Firme basate su URI ricostruiti.")
+└─uri ("Firme basate sugli URI di richiesta.")
 ```
 
 ---
@@ -2090,4 +2113,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 23 Maggio 2022 (2022.05.23).
+Ultimo Aggiornamento: 10 Giugno 2022 (2022.06.10).

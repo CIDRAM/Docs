@@ -50,7 +50,7 @@ Dieses Dokument und das zugehörige Paket kann von folgenden Links kostenlos her
 
 5) Binden Sie CIDRAM in Ihr System oder CMS ein. Es gibt viele verschiedene Möglichkeiten, ein Script wie CIDRAM einzubinden, am einfachsten ist es, das Script am Anfang einer Haupt-Datei (eine Datei, die immer geladen wird, wenn irgendeine beliebige Seite Ihres Webauftritts aufgerufen wird) Ihres Systems oder CMS mit Hilfe des `require`- oder `include`-Befehls einzubinden. Üblicherweise wird eine solche Datei in Verzeichnissen wie `/includes`, `/assets` or `/functions` gespeichert und wird häufig `init.php`, `common_functions.php`, `functions.php` o.ä. genannt. Sie müssen herausfinden, welche Datei dies für Ihre Bedürfnisse ist; Wenn Sie dabei Schwierigkeiten haben dies herauszufinden, besuchen Sie die CIDRAM Issues-Seiten auf GitHub und lassen Sie es uns wissen; Es ist möglich, dass entweder ich oder ein anderer Benutzer mit dem CMS, das Sie verwenden, Erfahrung hat (Sie müssen Sie mitteilen, welche CMS Sie verwenden) und möglicherweise in der Lage ist, etwas Unterstützung anzubieten. Fügen Sie in dieser Datei folgenden Code direkt am Anfang ein:
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Ersetzen Sie den String zwischen den Anführungszeichen mit dem lokalen Pfad der Datei `loader.php`, nicht mit der HTTP-Adresse (ähnlich dem Pfad für das `vault`-Verzeichnis). Speichern und schließen Sie die Datei, laden Sie sie ggf. erneut hoch.
 
@@ -58,25 +58,29 @@ Ersetzen Sie den String zwischen den Anführungszeichen mit dem lokalen Pfad der
 
 Wenn Sie den Apache-Webserver verwenden oder wenn Sie Zugriff auf die `php.ini` oder eine ähnliche Datei haben, dann können Sie die `auto_prepend_file` Direktive verwenden um CIDRAM immer einzubinden wenn eine PHP-Anfrage erfolgt. Ungefähr so:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Oder in der `.htaccess` Datei:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Das ist alles! :-)
 
 #### 2.1 INSTALLATION MIT COMPOSER
 
-Da [CIDRAM bei Packagist registriert ist](https://packagist.org/packages/cidram/cidram), können Sie CIDRAM auch mittels Composer installieren. Allerdings müssen sie immer noch die Hooks und die Konfiguration vorbereiten. Siehe manuell installieren, Schritt 2, 4 und 5.
+Da [CIDRAM bei Packagist registriert ist](https://packagist.org/packages/cidram/cidram), können Sie CIDRAM auch mittels Composer installieren.
 
 `composer require cidram/cidram`
 
 #### 2.2 FÜR WORDPRESS INSTALLIEREN
 
-Wenn Sie CIDRAM mit WordPress verwenden möchten, können Sie alle oben genannten Anweisungen ignorieren. Da [CIDRAM als Plugin in der WordPress Plugin Datenbank registriert ist](https://wordpress.org/plugins/cidram/) können Sie CIDRAM direkt aus dem Plugins-Dashboard installieren. CIRDAM kann auf demselben Wege wie jedes andere Plugin installiert werden, es sind keine weiteren Schritte erforderlich. Genauso wie bei den anderen Installationsmethoden, können Ihre Installation anpassen, indem Sie den Inhalt der `config.ini`-Datei anpassen. Alternativ können Sie auch die Frontend-Konfigurationsseite verwenden. Wenn Sie das Frontend für CIDRAM aktivieren und CIDRAM mit der Frontend-Aktualisierungsseite aktualisieren, dies wird automatisch mit den Plugin-Versionsinformationen synchronisiert, die im Plugins-Dashboard angezeigt werden.
+Da [CIDRAM als Plugin in der WordPress Plugin Datenbank registriert ist](https://wordpress.org/plugins/cidram/) können Sie CIDRAM direkt aus dem Plugins-Dashboard installieren. CIRDAM kann auf demselben Wege wie jedes andere Plugin installiert werden, es sind keine weiteren Schritte erforderlich.
 
 *Warnung: Die Aktualisierung von CIDRAM über das Plugins-Dashboard führt zu einer sauberen Installation! Wenn Sie Ihre Installation angepasst haben (modifizierte Konfiguration, installierte Module, u.s.w.), gehen Anpassungen bei einer Aktualisierung über das Plugins-Dashboard verloren! Protokolldateien werden dabei ebenfalls gelöscht! Um Protokolldateien und Anpassungen zu erhalten, aktualisieren Sie CIDRAM über die CIDRAM-Frontend-Aktualisierungsseite.*
+
+#### 2.3 KONFIGURATION UND ANPASSUNG
+
+Es wird dringend empfohlen, dass Sie die Konfiguration Ihrer neuen Installation überprüfen. Möglicherweise möchten Sie auch zusätzliche Module oder Signaturdateien installieren, Hilfsregeln erstellen, oder andere Anpassungen vornehmen, damit Ihre Installation Ihren Anforderungen optimal entspricht. Ich empfehle die Verwendung des Front-Ends um diese Dinge zu tun.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM kann manuell oder über das Frontend aktualisiert werden. CIDRAM kann auc
 #### 4.0 WAS IST DAS FRONTEND.
 
 Das Frontend bietet eine bequeme und einfache Möglichkeit, für Ihre CIDRAM-Installation zu pflegen, zu verwalten und zu aktualisieren. Sie können Protokolldateien über die Protokollseite anzeigen, teilen und herunterladen, Sie können die Konfiguration über die Konfigurationsseite ändern, Sie können Komponenten über die Aktualisierungsseite installieren und deinstallieren, und Sie können Dateien in Ihrem vault über den Dateimanager hochladen, herunterladen und ändern.
-
-Das Frontend ist standardmäßig deaktiviert, um unautorisiert Zugriff zu verhindern (unautorisiert Zugriff könnte erhebliche Konsequenzen für Ihre Website und ihre Sicherheit haben). Aktivieren Sie es, indem Sie die unten aufgeführten Anweisungen befolgen.
 
 #### 4.1 WIE AKTIVIEREN SIE DAS FRONTEND.
 
@@ -256,8 +258,10 @@ Konfiguration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Kategorie)
@@ -612,7 +616,7 @@ ban_override
 - Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
 
 ##### "default_dns" `[string]`
-- Eine durch Kommata getrennte Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. Standardeinstellung = "8.8.8.8,8.8.4.4" (Google DNS). ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
+- Eine Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="de">Was kann ich für „default_dns“ verwenden?</a></em>
 
@@ -886,7 +890,9 @@ nonblocked_status_code
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Zu viele Anfragen)): Empfohlen zur Ratenbegrenzung, beim Umgang mit DDoS-Angriffen, und zur
+│ Verhinderung von Netzüberschwemmungen. Nicht in anderen Kontexten
+│ empfohlen.
 └─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
   anderen Kontexten empfohlen.
 ```
@@ -962,7 +968,9 @@ nonblocked_status_code
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Zu viele Anfragen)): Empfohlen zur Ratenbegrenzung, beim Umgang mit DDoS-Angriffen, und zur
+│ Verhinderung von Netzüberschwemmungen. Nicht in anderen Kontexten
+│ empfohlen.
 └─451 (451 Unavailable For Legal Reasons (Aus rechtlichen Gründen nicht verfügbar)): Empfohlen beim Blockieren vor allem aus rechtlichen Gründen. Nicht in
   anderen Kontexten empfohlen.
 ```
@@ -1111,6 +1119,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Kategorie)
+Konfiguration des optionalen Sicherheits-Extras-Modul.
+
+##### "signatures" `[string]`
+- Welche Arten von Signatures sollten eingehaltet werden?
+
+```
+signatures
+├─empty_ua ("Leere Benutzeragenten.")
+├─query ("Signaturen basierend auf Anfrageabfragen.")
+├─raw ("Signaturen basierend auf der Roheingabe des Anfrage.")
+├─ruri ("Signaturen basierend auf rekonstruierten URIs.")
+└─uri ("Signaturen basierend auf den URI des Anfrage.")
 ```
 
 ---
@@ -2104,4 +2127,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 23. Mai 2022 (2022.05.23).
+Zuletzt aktualisiert: 10. Juni 2022 (2022.06.10).

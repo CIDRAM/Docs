@@ -40,43 +40,53 @@ This document and its associated package can be downloaded for free from:
 
 #### 2.0 INSTALLING MANUALLY
 
-1) By your reading this, I'm assuming you've already downloaded an archived copy of the script, decompressed its contents and have it sitting somewhere on your local machine. From here, you'll want to work out where on your host or CMS you want to place those contents. A directory such as `/public_html/cidram/` or similar (though, it doesn't matter which you choose, so long as it's something secure and something you're happy with) will suffice. *Before you begin uploading, read on..*
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2) Rename `config.ini.RenameMe` to `config.ini` (located inside `vault`), and optionally (strongly recommended for advanced users, but not recommended for beginners or for the inexperienced), open it (this file contains all the directives available for CIDRAM; above each option should be a brief comment describing what it does and what it's for). Adjust these directives as you see fit, as per whatever is appropriate for your particular setup. Save file, close.
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3) Upload the contents (CIDRAM and its files) to the directory you'd decided on earlier (you don't need to include the `*.txt`/`*.md` files, but mostly, you should upload everything).
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4) CHMOD the `vault` directory to "755" (if there are problems, you can try "777"; this is less secure, though). The main directory storing the contents (the one you chose earlier), usually, can be left alone, but CHMOD status should be checked if you've had permissions issues in the past on your system (by default, should be something like "755"). In short: For the package to work properly, PHP needs to be able to read and write files inside the `vault` directory. Many things (updating, logging, etc) won't be possible, if PHP can't write to the `vault` directory, and the package won't work at all if PHP can't read from the `vault` directory. However, for optimal security, the `vault` directory must NOT be publicly accessible (sensitive information, such as the information contained by `config.ini` or `frontend.dat`, could be exposed to potential attackers if the `vault` directory is publicly accessible).
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5) Next, you'll need to "hook" CIDRAM to your system or CMS. There are several different ways you can "hook" scripts such as CIDRAM to your system or CMS, but the easiest is to simply include the script at the beginning of a core file of your system or CMS (one that'll generally always be loaded when someone accesses any page across your website) using a `require` or `include` statement. Usually, this'll be something stored in a directory such as `/includes`, `/assets` or `/functions`, and will often be named something like `init.php`, `common_functions.php`, `functions.php` or similar. You'll have to work out which file this is for your situation; If you encounter difficulties in working this out for yourself, visit the CIDRAM issues page on GitHub. To do this [to use `require` or `include`], insert the following line of code to the very beginning of that core file, replacing the string contained inside the quotation marks with the exact address of the `loader.php` file (local address, not the HTTP address; it'll look similar to the vault address mentioned earlier).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+A simple example:
 
-Save file, close, reupload.
+```PHP
+<?php
+require_once '/path/to/cidram/vault/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- OR ALTERNATIVELY --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-If you're using an Apache webserver and if you have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. Something like:
+Example:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
-6) That's everything! :-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 INSTALLING WITH COMPOSER
 
-[CIDRAM is registered with Packagist](https://packagist.org/packages/cidram/cidram), and so, if you're familiar with Composer, you can use Composer to install CIDRAM (you'll still need to prepare the configuration, permissions and hooks though; see "installing manually" steps 2, 4, and 5).
+[CIDRAM is registered with Packagist](https://packagist.org/packages/cidram/cidram), and so, if you're familiar with Composer, you can use Composer to install CIDRAM.
 
 `composer require cidram/cidram`
 
 #### 2.2 INSTALLING FOR WORDPRESS
 
-If you want to use CIDRAM with WordPress, you can ignore all the instructions above. [CIDRAM is registered as a plugin with the WordPress plugins database](https://wordpress.org/plugins/cidram/), and you can install CIDRAM directly from the plugins dashboard. You can install it in the same manner as any other plugin, and no addition steps are required. Just as with the other installation methods, you can customise your installation by modifying the contents of the `config.ini` file or by using the front-end configuration page. If you enable the CIDRAM front-end and update CIDRAM using the front-end updates page, this will automatically sync with the plugin version information displayed in the plugins dashboard.
+[CIDRAM is registered as a plugin with the WordPress plugins database](https://wordpress.org/plugins/cidram/), and you can install CIDRAM directly from the plugins dashboard. You can install it in the same manner as any other plugin, and no addition steps are required.
 
 *Warning: Updating CIDRAM via the plugins dashboard results in a clean installation! If you've customised your installation (changed your configuration, installed modules, etc), these customisations will be lost when updating via the plugins dashboard! Logfiles will also be lost when updating via the plugins dashboard! To preserve logfiles and customisations, update via the CIDRAM front-end updates page.*
+
+#### 2.3 CONFIGURATION AND CUSTOMISATION
+
+It's strongly recommended for you to review the configuration of your new installation in order for you to be able to adjust it according to your needs. You may also want to install additional modules, signature files, create auxiliary rules, or implement other customisations in order for your installation to be able to best suit your needs. I recommend using the front-end to do these things.
 
 ---
 
@@ -99,8 +109,6 @@ CIDRAM can be updated manually or via the front-end. CIDRAM can also be updated 
 #### 4.0 WHAT IS THE FRONT-END.
 
 The front-end provides a convenient and easy way to maintain, manage, and update your CIDRAM installation. You can view, share, and download logfiles via the logs page, you can modify configuration via the configuration page, you can install and uninstall components via the updates page, and you can upload, download, and modify files in your vault via the file manager.
-
-The front-end is disabled by default in order to prevent unauthorised access (unauthorised access could have significant consequences for your website and its security). Instructions for enabling it are included below this paragraph.
 
 #### 4.1 HOW TO ENABLE THE FRONT-END.
 
@@ -256,8 +264,10 @@ Configuration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Category)
@@ -608,7 +618,7 @@ ban_override
 - Include blocked requests from banned IPs in the logfiles? True = Yes [Default]; False = No.
 
 ##### "default_dns" `[string]`
-- A comma delimited list of DNS servers to use for hostname lookups. Default = "8.8.8.8,8.8.4.4" (Google DNS). WARNING: Don't change this unless you know what you're doing!
+- A list of DNS servers to use for hostname lookups. WARNING: Don't change this unless you know what you're doing!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="en-AU">What can I use for "default_dns"?</a></em>
 
@@ -881,7 +891,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests): Recommended for rate limiting, when dealing with DDoS attacks, and for flood
+│ prevention. Not recommended in other contexts.
 └─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
   other contexts.
 ```
@@ -956,7 +967,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests): Recommended for rate limiting, when dealing with DDoS attacks, and for flood
+│ prevention. Not recommended in other contexts.
 └─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
   other contexts.
 ```
@@ -1105,6 +1117,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Category)
+Optional security extras module configuration.
+
+##### "signatures" `[string]`
+- Which types of signatures should be honoured?
+
+```
+signatures
+├─empty_ua ("Empty user agents.")
+├─query ("Signatures based on request queries.")
+├─raw ("Signatures based on raw request input.")
+├─ruri ("Signatures based on reconstructed URIs.")
+└─uri ("Signatures based on request URIs.")
 ```
 
 ---
@@ -2089,4 +2116,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 23 May 2022 (2022.05.23).
+Last Updated: 10 June 2022 (2022.06.10).

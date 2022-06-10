@@ -50,7 +50,7 @@ Tài liệu này và các gói liên quan của nó có thể được tải v�
 
 5) Tiếp theo, bạn sẽ cần "nối" CIDRAM vào hệ thống của bạn hay CMS. Có một số cách mà bạn có thể "nối" bản chẳng hạn như CIDRAM vào hệ thống hoạc CMS, nhưng cách đơn giản nhất là cần có bản vào cốt lõi ở đầu của tập tin hoạc hệ thống hay CMS của bạn (một mà thường sẽ luôn luôn được nạp khi ai đó truy cập bất kỳ trang nào trên trang mạng của bạn) bằng cách sử dụng một lời chỉ thị `require` hoạc `include`. Thường, cái nàu sẽ được lưu trong một thư mục như `/includes`, `/assets` hoạc `/functions`, và sẽ thường được gọi là `init.php`, `common_functions.php`, `functions.php` hoạc tương tự. Bạn sẽ cần tiềm ra tập tin nào cho trường hợp của bạn; Nếu bạn gặp khó khăn trong việc này ra cho chính mình, hãy truy các trang issues (các vấn đề) của CIDRAM và cho chúng tôi biêt. Để làm chuyện này [sử dụng `require` họac `include`], đánh các dòng mã sao đây vào đầu của cốt lõi của tập tin, thay thế các dây chứa bên trong các dấu ngoặc kép với địa chỉ chính xác của tập tin `loader.php` (địa chỉ địa phương, chứ không phải địa chỉ HTTP; nó sẽ nhình gióng địa chỉ kho nói ở trên).
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Lưu tập tin, đóng lại, tải lên lại.
 
@@ -58,25 +58,29 @@ Lưu tập tin, đóng lại, tải lên lại.
 
 Nếu bạn đang sử dụng trang chủ Apache và nếu bạn có thể truy cập `php.ini`, bạn có thể sử dụng `auto_prepend_file` chỉ thị để thêm vào trước CIDRAM bất cứ khi nào bất kỳ yêu cầu PHP được xin. Gióng như:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Hoạc cái này trong tập tin `.htaccess`:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Đó là tất cả mọi thứ! :-)
 
 #### 2.1 CÀI ĐẶT VỚI COMPOSER
 
-[CIDRAM được đăng ký với Packagist](https://packagist.org/packages/cidram/cidram), và như vậy, nếu bạn đã quen với Composer, bạn có thể sử dụng Composer để cài đặt CIDRAM (bạn vẫn cần phải chuẩn bị cấu hình, quyền CHMOD và kết nối; xem "cài đặt thủ công" bước 2, 4, và 5).
+[CIDRAM được đăng ký với Packagist](https://packagist.org/packages/cidram/cidram), và như vậy, nếu bạn đã quen với Composer, bạn có thể sử dụng Composer để cài đặt CIDRAM.
 
 `composer require cidram/cidram`
 
 #### 2.2 CÀI ĐẶT CHO WORDPRESS
 
-Nếu bạn muốn sử dụng CIDRAM với WordPress, bạn có thể bỏ qua tất cả các hướng dẫn ở trên. [CIDRAM được đăng ký như một plugin với cơ sở dữ liệu plugin của WordPress](https://wordpress.org/plugins/cidram/), và bạn có thể cài đặt CIDRAM trực tiếp từ các bảng điều khiển plugin. Bạn có thể cài đặt nó theo cách tương tự như các plugin khác, và không có bước bổ sung được yêu cầu. Giống như với các phương pháp cài đặt khác, bạn có thể tùy chỉnh cài đặt của bạn bằng cách sửa đổi nội dung của tập tin `config.ini` hay bằng cách sử dụng trang cấu hình của front-end. Nếu bạn kích hoạt front-end của CIDRAM và cập nhật CIDRAM bằng cách sử dụng trang cập nhật của front-end, điều này sẽ tự động đồng bộ các thông tin phiên bản plugin với thông tin được hiển thị trong các bảng điều khiển plugin.
+[CIDRAM được đăng ký như một plugin với cơ sở dữ liệu plugin của WordPress](https://wordpress.org/plugins/cidram/), và bạn có thể cài đặt CIDRAM trực tiếp từ các bảng điều khiển plugin. Bạn có thể cài đặt nó theo cách tương tự như các plugin khác, và không có bước bổ sung được yêu cầu.
 
 *Cảnh báo: Đang nhật CIDRAM qua bảng điều khiển plugin kết quả trong một cài đặt sạch sẽ! Nếu bạn đã tùy chỉnh cài đặt (thay đổi cấu hình của bạn, cài đặt các mô-đun, vv), những tuỳ chỉnh này sẽ bị mất khi đang nhật thông qua bảng điều khiển plugin! Các tập tin đăng nhập cũng sẽ bị mất khi đang nhật thông qua bảng điều khiển plugin! Để bảo vệ các tập tin đăng nhập và tùy chỉnh, đang nhật thông qua trang đang nhật front-end CIDRAM.*
+
+#### 2.3 CẤU HÌNH VÀ TÙY CHỈNH
+
+Bạn nên kiểm tra cấu hình của cài đặt mới để có thể điều chỉnh nó theo nhu cầu của bạn. Bạn cũng có thể muốn cài đặt thêm mô-đun, tập tin chữ ký, tạo quy tắc phụ trợ, hoặc triển khai các tùy chỉnh khác để cài đặt của bạn có thể phù hợp nhất với nhu cầu của bạn. Tôi khuyên bạn nên sử dụng front-end để làm những việc này.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM có thể được cập nhật bằng tay hoặc thông qua front-end. C
 #### 4.0 FRONT-END LÀ GÌ.
 
 Các front-end cung cấp một cách thuận tiện và dễ dàng để duy trì, quản lý và cập nhật cài đặt CIDRAM của bạn. Bạn có thể xem, chia sẻ và tải về các tập tin bản ghi thông qua các trang bản ghi, bạn có thể sửa đổi cấu hình thông qua các trang cấu hình, bạn có thể cài đặt và gỡ bỏ cài đặt các thành phần thông qua các trang cập nhật, và bạn có thể tải lên, tải về, và sửa đổi các tập tin trong vault của bạn thông qua các quản lý tập tin.
-
-Các front-end được tắt theo mặc định để ngăn chặn truy cập trái phép (truy cập trái phép có thể có hậu quả đáng kể cho trang web của bạn và an ninh của mình). Hướng dẫn cho phép nó được bao gồm bên dưới đoạn này.
 
 #### 4.1 LÀM THẾ NÀO ĐỂ KÍCH HOẠT FRONT-END.
 
@@ -256,8 +258,10 @@ Cấu hình (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Thể loại)
@@ -465,8 +469,8 @@ http_response_header_code
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
-│ xuất cho hầu hết các trường hợp chung.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
+│ khích cho hầu hết các trường hợp chung.
 ├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
 │ một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo
 │ trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả
@@ -478,10 +482,10 @@ http_response_header_code
 │ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
 │ cung cấp để giải trí và tiện lợi, nhưng thường không
 │ được khuyến khích.
-├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
 │ được khuyến khích trong các ngữ cảnh khác.
 └─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
-  Được đề xuất khi bị tấn công, hoặc khi xử lý lưu
+  Được khuyến khích khi bị tấn công, hoặc khi xử lý lưu
   lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
@@ -596,8 +600,8 @@ ban_override
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
-│ xuất cho hầu hết các trường hợp chung.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
+│ khích cho hầu hết các trường hợp chung.
 ├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
 │ một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo
 │ trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả
@@ -609,10 +613,10 @@ ban_override
 │ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
 │ cung cấp để giải trí và tiện lợi, nhưng thường không
 │ được khuyến khích.
-├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
 │ được khuyến khích trong các ngữ cảnh khác.
 └─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
-  Được đề xuất khi bị tấn công, hoặc khi xử lý lưu
+  Được khuyến khích khi bị tấn công, hoặc khi xử lý lưu
   lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
@@ -620,7 +624,7 @@ ban_override
 - Bao gồm các yêu cầu bị chặn từ các IP bị cấm trong các tập tin đăng nhập? True = Vâng [Mặc định]; False = Không.
 
 ##### "default_dns" `[string]`
-- Một dấu phẩy phân cách danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. Mặc định = "8.8.8.8,8.8.4.4" (Google DNS). CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
+- Danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
 __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="vi">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
 
@@ -889,15 +893,17 @@ nonblocked_status_code
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
-│ xuất cho hầu hết các trường hợp chung.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
+│ khích cho hầu hết các trường hợp chung.
 ├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
 │ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
 │ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
 │ cung cấp để giải trí và tiện lợi, nhưng thường không
 │ được khuyến khích.
-├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+├─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
+│ các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
+│ được khuyến khích trong các ngữ cảnh khác.
+└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
   được khuyến khích trong các ngữ cảnh khác.
 ```
 
@@ -967,15 +973,17 @@ nonblocked_status_code
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được đề
-│ xuất cho hầu hết các trường hợp chung.
+├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
+│ khích cho hầu hết các trường hợp chung.
 ├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
 │ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
 │ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
 │ cung cấp để giải trí và tiện lợi, nhưng thường không
 │ được khuyến khích.
-├─429 (429 Too Many Requests)
-└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không
+├─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
+│ các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
+│ được khuyến khích trong các ngữ cảnh khác.
+└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
   được khuyến khích trong các ngữ cảnh khác.
 ```
 
@@ -1123,6 +1131,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Thể loại)
+Cấu hình cho mô-đun của các tính năng bổ sung bảo mật tùy chọn.
+
+##### "signatures" `[string]`
+- Những loại chữ ký nào nên được tôn vinh?
+
+```
+signatures
+├─empty_ua ("Tác nhân người dùng trống.")
+├─query ("Chữ ký dựa trên các truy vấn yêu cầu.")
+├─raw ("Chữ ký dựa trên đầu vào yêu cầu thô.")
+├─ruri ("Chữ ký dựa trên các URI được xây dựng lại.")
+└─uri ("Chữ ký dựa trên URI của yêu cầu.")
 ```
 
 ---
@@ -2089,11 +2112,11 @@ Dữ liệu có thể không được xử lý trừ khi có cơ sở hợp phá
 
 Bởi vì các khía cạnh của quy định có thể phát triển trong thời gian, để tránh việc truyền bá thông tin lỗi thời, nó có thể là tốt hơn để tìm hiểu về các quy định từ một nguồn có thẩm quyền, trái ngược với việc chỉ bao gồm các thông tin có liên quan ở đây trong tài liệu gói (mà cuối cùng có thể trở nên lỗi thời khi quy định phát triển).
 
-Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin:
+Một số tài nguyên được khuyến khích để tìm hiểu thêm thông tin:
 - [REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32016R0679)
 - [Quy định bảo vệ dữ liệu chung](https://vi.wikipedia.org/wiki/Quy_%C4%91%E1%BB%8Bnh_b%E1%BA%A3o_v%E1%BB%87_d%E1%BB%AF_li%E1%BB%87u_chung)
 
 ---
 
 
-Lần cuối cập nhật: 2022.05.23.
+Lần cuối cập nhật: 2022.06.10.

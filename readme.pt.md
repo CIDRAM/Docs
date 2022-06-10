@@ -50,7 +50,7 @@ Este documento e seu pacote associado pode ser baixado gratuitamente de:
 
 5) Seguida, você vai precisar "enganchar" CIDRAM ao seu sistema ou CMS. Existem várias diferentes maneiras em que você pode "enganchar" scripts como CIDRAM ao seu sistema ou CMS, mas o mais fácil é simplesmente incluir o script no início de um núcleo arquivo de seu sistema ou CMS (uma que vai geralmente sempre ser carregado quando alguém acessa qualquer página através de seu site) utilizando um `require` ou `include` comando. Normalmente, isso vai ser algo armazenado em um diretório como `/includes`, `/assets` ou `/functions`, e muitas vezes, ser nomeado algo como `init.php`, `common_functions.php`, `functions.php` ou semelhante. Você precisará determinar qual arquivo isso é para a sua situação; Se você encontrar dificuldades em determinar isso por si mesmo, para assistência, visite a página de issues CIDRAM no GitHub. Para fazer isso [usar `require` ou `include`], insira a seguinte linha de código para o início desse núcleo arquivo, substituindo a string contida dentro das aspas com o exato endereço do `loader.php` arquivo (endereço local, não o endereço HTTP; será semelhante ao vault endereço mencionado anteriormente).
 
-`<?php require '/user_name/public_html/cidram/loader.php'; ?>`
+`<?php require '/path/to/cidram/loader.php'; ?>`
 
 Salve o arquivo, fechar, recarregar-lo.
 
@@ -58,25 +58,29 @@ Salve o arquivo, fechar, recarregar-lo.
 
 Se você é usando um Apache web servidor e se você tem acesso a `php.ini`, você pode usar o `auto_prepend_file` directiva para pré-carga CIDRAM sempre que qualquer solicitação para PHP é feito. Algo como:
 
-`auto_prepend_file = "/user_name/public_html/cidram/loader.php"`
+`auto_prepend_file = "/path/to/cidram/loader.php"`
 
 Ou isso no `.htaccess` arquivo:
 
-`php_value auto_prepend_file "/user_name/public_html/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/cidram/loader.php"`
 
 6) Isso é tudo! :-)
 
 #### 2.1 INSTALANDO COM COMPOSER
 
-[CIDRAM está registrado no Packagist](https://packagist.org/packages/cidram/cidram), e então, se você estiver familiarizado com o Composer, poderá usar o Composer para instalar o CIDRAM (você ainda precisará preparar a configuração, permissões e ganchos embora; consulte "instalando manualmente" as etapas 2, 4, e 5).
+[CIDRAM está registrado no Packagist](https://packagist.org/packages/cidram/cidram), e então, se você estiver familiarizado com o Composer, poderá usar o Composer para instalar o CIDRAM.
 
 `composer require cidram/cidram`
 
 #### 2.2 INSTALANDO PARA WORDPRESS
 
-Se você quiser usar o CIDRAM com o WordPress, você pode ignorar todas as instruções acima. [CIDRAM está registrado como um plugin com o banco de dados de plugins do WordPress](https://wordpress.org/plugins/cidram/), e você pode instalar CIDRAM diretamente do painel de plugins. Você pode instalá-lo da mesma maneira que qualquer outro plugin, e nenhuma etapa de adição é necessária. Assim como com os outros métodos de instalação, você pode personalizar sua instalação por meio de modificando o conteúdo do `config.ini` arquivo ou usando o front-end página de atualizações. Se você ativar o front-end e atualizar CIDRAM usando a página de atualizações, isso será sincronizado automaticamente com as informações de versão do plugin exibidas no painel de plugins.
+[CIDRAM está registrado como um plugin com o banco de dados de plugins do WordPress](https://wordpress.org/plugins/cidram/), e você pode instalar CIDRAM diretamente do painel de plugins. Você pode instalá-lo da mesma maneira que qualquer outro plugin, e nenhuma etapa de adição é necessária.
 
 *Atenção: A atualização do CIDRAM através do painel de plugins resulta numa instalação limpa! Se você personalizou sua instalação (mudou sua configuração, instalados módulos, etc), estas personalizações serão perdidas quando atualizando através do painel de plugins! Os arquivos de log também serão perdidos ao atualizar através do painel de plugins! Para preservar arquivos de log e personalizações, atualize através da página de atualizações de front-end do CIDRAM.*
+
+#### 2.3 CONFIGURAÇÃO E CUSTOMIZAÇÃO
+
+É altamente recomendável que você revise a configuração de sua nova instalação para poder ajustá-la de acordo com suas necessidades. Você também pode querer instalar módulos adicionais, arquivos de assinatura, criar regras auxiliares, ou implementar outras personalizações para que sua instalação possa atender melhor às suas necessidades. Eu recomendo usar o front-end para fazer essas coisas.
 
 ---
 
@@ -99,8 +103,6 @@ CIDRAM pode ser atualizado manualmente ou através do front-end. CIDRAM também 
 #### 4.0 O QUE É O FRONT-END.
 
 O front-end fornece uma maneira conveniente e fácil de manter, gerenciar e atualizar sua instalação CIDRAM. Você pode visualizar, compartilhar e baixar arquivos de log através da página de logs, você pode modificar a configuração através da página de configuração, você pode instalar e desinstalar componentes através da página de atualizações, e você pode carregar, baixar e modificar arquivos no seu vault através do gerenciador de arquivos.
-
-O front-end é desativado por padrão para evitar acesso não autorizado (acesso não autorizado pode ter consequências significativas para o seu site e para a sua segurança). Instruções para habilitá-lo estão incluídas abaixo deste parágrafo.
 
 #### 4.1 COMO HABILITAR O FRONT-END.
 
@@ -256,8 +258,10 @@ Configuração (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-└───bypasses
-        used [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categoria)
@@ -610,7 +614,7 @@ ban_override
 - Incluir solicitações bloqueadas de IPs banidas nos arquivos de log? True = Sim [Padrão]; False = Não.
 
 ##### "default_dns" `[string]`
-- Uma lista delimitada por vírgulas de servidores DNS a serem usados para pesquisas de nomes de host. Padrão = "8.8.8.8,8.8.4.4" (Google DNS). ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
+- Uma lista de servidores DNS a serem usados para pesquisas de nomes de host. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="pt">O que posso usar para "default_dns"?</a></em>
 
@@ -884,7 +888,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
 │ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
 │ Fornecido para diversão e conveniência, mas geralmente não recomendado.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Pedidos em excesso)): Recomendado para limitação de taxa, ao lidar com ataques DDoS, e para
+│ prevenção de inundações. Não recomendado em outros contextos.
 └─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
   em outros contextos.
 ```
@@ -960,7 +965,8 @@ nonblocked_status_code
 ├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
 │ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
 │ Fornecido para diversão e conveniência, mas geralmente não recomendado.
-├─429 (429 Too Many Requests)
+├─429 (429 Too Many Requests (Pedidos em excesso)): Recomendado para limitação de taxa, ao lidar com ataques DDoS, e para
+│ prevenção de inundações. Não recomendado em outros contextos.
 └─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
   em outros contextos.
 ```
@@ -1109,6 +1115,21 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
+```
+
+#### "extras" (Categoria)
+Configuração para o módulo de extras de segurança opcionais.
+
+##### "signatures" `[string]`
+- Que tipos de assinaturas devem ser honradas?
+
+```
+signatures
+├─empty_ua ("Agentes de usuário vazios.")
+├─query ("Assinaturas baseadas em consultas de solicitação.")
+├─raw ("Assinaturas baseadas na entrada de solicitação bruta.")
+├─ruri ("Assinaturas baseadas em URIs reconstruídas.")
+└─uri ("Assinaturas baseadas em URIs da solicitação.")
 ```
 
 ---
@@ -2088,4 +2109,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 23 de Maio de 2022 (2022.05.23).
+Última Atualização: 10 de Junho de 2022 (2022.06.10).
