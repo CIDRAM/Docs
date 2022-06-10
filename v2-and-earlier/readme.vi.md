@@ -506,7 +506,7 @@ Cấu hình chung cho CIDRAM.
 ##### "ipaddr"
 - Nơi để tìm địa chỉ IP của các yêu cầu kết nối? (Hữu ích cho các dịch vụ như Cloudflare và vv). Mặc định = REMOTE_ADDR. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
-Giá trị được đề xuất cho "ipaddr":
+Giá trị được khuyến khích cho "ipaddr":
 
 Giá trị | Sử dụng
 ---|---
@@ -527,11 +527,11 @@ Giá trị hiện được hỗ trợ:
 Mã trạng thái | Thông thái trạng thái | Chi tiết
 ---|---|---
 `200` | `200 OK` | Giá trị mặc định. Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các yêu cầu tự động rất có thể sẽ diễn giải phản hồi này là dấu hiệu cho thấy yêu cầu đã thành công.
-`403` | `403 Forbidden` | Hơi mạnh mẽ, và thân thiện với người dùng. Được đề xuất cho hầu hết các trường hợp chung.
+`403` | `403 Forbidden` | Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến khích cho hầu hết các trường hợp chung.
 `410` | `410 Gone` | Có thể gây ra sự cố khi giải quyết các sai tích cực, vì một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả khi đã được bỏ chặn. Có thể thích hợp nhất trong một số ngữ cảnh, đối với một số loại lưu lượng truy cập nhất định.
 `418` | `418 I'm a teapot` | Điều này đề cập đến một trò đùa ngày cá tháng tư ([RFC 2324](https://tools.ietf.org/html/rfc2324#section-6.5.14)). Rất khó có thể được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được cung cấp để giải trí và tiện lợi, nhưng thường không được khuyến khích.
-`451` | `451 Unavailable For Legal Reasons` | Được đề xuất khi chặn chủ yếu vì lý do pháp lý. Không được khuyến khích trong các ngữ cảnh khác.
-`503` | `503 Service Unavailable` | Mạnh mẽ nhất, nhưng không thân thiện với người dùng. Được đề xuất khi bị tấn công, hoặc khi xử lý lưu lượng truy cập không mong muốn và cực kỳ dai dẳng.
+`451` | `451 Unavailable For Legal Reasons` | Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không được khuyến khích trong các ngữ cảnh khác.
+`503` | `503 Service Unavailable` | Mạnh mẽ nhất, nhưng không thân thiện với người dùng. Được khuyến khích khi bị tấn công, hoặc khi xử lý lưu lượng truy cập không mong muốn và cực kỳ dai dẳng.
 
 ##### "silent_mode"
 - CIDRAM nên âm thầm chuyển hướng cố gắng truy cập bị chặn thay vì hiển thị trang "Truy cập đã bị từ chối"? Nếu vâng, xác định vị trí để chuyển hướng cố gắng truy cập bị chặn để. Nếu không, để cho biến này được trống.
@@ -1967,11 +1967,11 @@ Dữ liệu có thể không được xử lý trừ khi có cơ sở hợp phá
 
 Bởi vì các khía cạnh của quy định có thể phát triển trong thời gian, để tránh việc truyền bá thông tin lỗi thời, nó có thể là tốt hơn để tìm hiểu về các quy định từ một nguồn có thẩm quyền, trái ngược với việc chỉ bao gồm các thông tin có liên quan ở đây trong tài liệu gói (mà cuối cùng có thể trở nên lỗi thời khi quy định phát triển).
 
-Một số tài nguyên được đề xuất để tìm hiểu thêm thông tin:
+Một số tài nguyên được khuyến khích để tìm hiểu thêm thông tin:
 - [REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32016R0679)
 - [Quy định bảo vệ dữ liệu chung](https://vi.wikipedia.org/wiki/Quy_%C4%91%E1%BB%8Bnh_b%E1%BA%A3o_v%E1%BB%87_d%E1%BB%AF_li%E1%BB%87u_chung)
 
 ---
 
 
-Lần cuối cập nhật: 2022.04.23.
+Lần cuối cập nhật: 2022.05.23.
