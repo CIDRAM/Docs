@@ -42,31 +42,37 @@
 
 #### <div dir="rtl">۲.۰ دستی طور پر نصب</div>
 
-<div dir="rtl">۱. آپ کے پڑھنے کی طرف سے اس، مجھے سنبھالنے رہا ہوں آپ کے پاس پہلے، اسکرپٹ کا ایک آرکائیو کاپی کو ڈاؤن لوڈ کیا اس کے مشمولات کو پھیلا اور اس کو اپنے مقامی مشین پر کہیں بیٹھے ہیں کیا ہے. یہاں سے، آپ نے جہاں رکھا یا CMS پر آپ ان کے مندرجات رکھنے کے لئے چاہتے ہیں باہر کام کرنے چاہیں گے. جیسے <code dir="ltr">"/public_html/cidram/"</code> یا اسی طرح کی (اگرچہ، یہ جو آپ کو اسے محفوظ ہے کچھ اور کچھ اور آپ کے ساتھ خوش ہیں ہے اتنی دیر کے طور پر انتخاب کرتے ہیں، کوئی فرق نہیں پڑتا) ایک ڈائریکٹری کافی ہوگا. <em>آپ کو اپ لوڈ کرنے شروع کرنے سے پہلے، پر پڑھیں ..</em><br /><br /></div>
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-<div dir="rtl">۲. config.ini" (اندر "vault" واقع کرنے <code dir="ltr">"config.ini.RenameMe"</code> نام تبدیل)، اور اختیاری پختہ اعلی درجے کی صارفین کے لئے سفارش کی جاتی ہے، لیکن (اس فائل پر مشتمل ابتدائی کے لئے یا ناتجربہ کار)، اسے کھولنے کے لئے سفارش کی نہیں CIDRAM لئے دستیاب تمام ہدایات؛ ہر آپشن کے اوپر ایک مختصر تبصرہ یہ کیا کرتا بیان اور کیا اس کے لئے ہے) ہونا چاہئے. آپ کو فٹ دیکھ کے طور جو بھی اپنے مخصوص سیٹ اپ کے لئے مناسب ہے کے مطابق ان ہدایات کو ایڈجسٹ کریں. فائل محفوظ کریں، قریب ہے.<br /><br /></div>
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-<div dir="rtl">۳. (اگر آپ پہلے پر فیصلہ کیا تھا ڈائریکٹری میں مندرجات (CIDRAM اور اس کی فائلوں) کو اپ لوڈ کریں آپ <code dir="ltr">"<code dir="ltr">*.txt/*.md</code>"</code> فائلوں کو شامل کرنے کی ضرورت نہیں ہے، لیکن زیادہ تر، تم سب کچھ اپ لوڈ کرنا چاہئے) .<br /><br /></div>
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-<div dir="rtl">۴. CHMOD<code dir="ltr">"755"</code> (مسائل ہیں تو، آپ کو کوشش "vault" ڈائریکٹری میں کر سکتے ہیں<code dir="ltr">"777"</code>؛ اس سے کم محفوظ ہے، اگرچہ). مندرجات (آپ اس سے قبل انتخاب کیا ایک) ذخیرہ کرنے کے اہم ڈائریکٹری، عام طور پر، آپ کو آپ کے سسٹم پر ماضی میں اجازتیں مسائل پڑا ہے تو اکیلے چھوڑ دیا جا سکتا ہے، لیکن CHMOD کی حیثیت کی جانچ پڑتال کی جانی چاہئے (ڈیفالٹ کی طرف سے، جیسے<code dir="ltr">"755"</code> کچھ ہونا چاہئے). مختصرا: پیکج کے لئے مناسب طریقے سے کام کرنے کے لئے، پی ایچ او کو <code dir="ltr">vault</code> ڈائریکٹری کے اندر فائلوں کو پڑھنے اور لکھنے کے قابل ہونے کی ضرورت ہے. اگر بہت سے چیزیں (اپ ڈیٹنگ، لاگنگ، وغیرہ) ممکن نہیں ہوسکتے، اگر PHP <code dir="ltr">vault</code> ڈائریکٹری میں نہیں لکھا جاسکتا ہے، اور پیکج بالکل کام نہیں کرے گا تو PHP <code dir="ltr">vault</code> ڈائرکٹری سے پڑھ نہیں سکتا. تاہم، زیادہ سے زیادہ سیکورٹی کے لئے، <code dir="ltr">vault</code> ڈائرکٹری عوامی طور پر قابل رسائی نہیں ہونا ضروری ہے (<code dir="ltr">vault</code> ڈائرکٹری عوامی طور پر قابل رسائی ہے تو حملہ آوروں کے بارے میں سنجیدگی سے متعلق معلومات سامنے آسکتی ہیں).<br /><br /></div>
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-<div dir="rtl">۵. اگلا، آپ کو "ہک" آپ کے سسٹم یا CMS کرنے CIDRAM کرنا ہوگا. کئی مختلف طریقے ہیں آپ کر سکتے ہیں جیسا کہ آپ کے سسٹم یا CMS، لیکن سب سے آسان ہے صرف عام طور پر ہمیشہ سے لوڈ کیا جائے گا کہ آپ کے سسٹم یا CMS (ایک کی ایک بنیادی فائل کے شروع میں سکرپٹ کو شامل کرنے کے لئے کرنا CIDRAM "ہک" اسکرپٹس اگر کوئی ویب سائٹ بھر میں کسی بھی صفحے تک رسائی حاصل کرتا ہے جب) ایک "require" یا "include" بیان کا استعمال کرتے ہوئے. عام طور پر، اس طرح کے طور پر "/includes"، "/assets" یا "/functions" ایک ڈائریکٹری میں محفوظ کیا کچھ ہو جائے گا، اور اکثر" init.php"، "common_functions.php"،" افعال کی طرح کچھ نام دیا جائے گا. php" یا اسی طرح کی. تم جس فائل اگر یہ آپ کی صورت حال کے لئے ہے باہر کام کرنا پڑے گا؛ تم اپنے لئے اس سے باہر کام کرنے میں مشکلات کا سامنا کرتے ہیں، GitHub کے پر CIDRAM مسائل کا صفحہ ملاحظہ کریں. [ "require" یا" استعمال کرنے کے لئے include"] ایسا کرنے کے لئے، جو کہ بنیادی فائل کے شروع کرنے کے لئے کوڈ کی مندرجہ ذیل لائن داخل، "loader.php" فائل کا عین مطابق ایڈریس کے ساتھ واوین کے اندر موجود سٹرنگ کی جگہ (مقامی پتہ، نہ HTTP ایڈریس؛ یہ پہلے ذکر والٹ ایڈریس کو اسی طرح دیکھ لیں گے).<br /><br /></div>
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-<div dir="rtl">فائل، قریب، ہٹادیا بچائیں.<br /><br /></div>
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
-<div dir="rtl">-- یا متبادل --<br /><br /></div>
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-<div dir="rtl">آپ ایک اپاچی ویب سرور استعمال کر رہے ہیں اور آپ کو "php.ini" تک رسائی ہے تو، تو آپ جب بھی کسی بھی PHP کی درخواست کی جاتی ہے CIDRAM prepend کے کو "auto_prepend_file" ہدایت کو استعمال کر سکتے ہیں. کی طرح کچھ:<br /><br /></div>
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-<div dir="rtl">یا ".htaccess" فائل میں اس:<br /><br /></div>
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-<div dir="rtl">۶. یہی سب کچھ ہے! 😄<br /><br /></div>
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### <div dir="rtl">۲.۱ COMPOSER کے ساتھ نصب</div>
 
@@ -106,13 +112,37 @@
 
 <div dir="rtl">سامنے کے آخر میں، برقرار رکھنے کا انتظام، اور آپ CIDRAM تنصیب کو اپ ڈیٹ کرنے کے لئے ایک آسان اور آسان طریقہ فراہم کرتا ہے. آپ صرف مسودہ دیکھ سکتے ہیں، اشتراک، اور نوشتہ صفحے کے ذریعے لاگ مسلیں لوڈ، آپ کی ترتیب کے صفحے کے ذریعے کی ترتیب تبدیل کر سکتے ہیں، آپ کو انسٹال کر سکتے ہیں اور اپ ڈیٹس صفحے کے ذریعے انسٹال اجزاء، اور آپ کو اپ لوڈ کر سکتے ہیں، ڈاؤن لوڈ، اتارنا، اور فائل کے ذریعے آپ کے والٹ میں فائلوں پر نظر ثانی مینیجر.<br /><br /></div>
 
-#### <div dir="rtl">۴.۱ سامنے کے آخر میں فعال کرنے کا طریقہ.<br /><br /></div>
+#### <div dir="rtl">۴.۱ فرنٹ اینڈ تک کیسے رسائی حاصل کی جائے.<br /><br /></div>
 
-<div dir="rtl">۱. اندر <code dir="ltr">"config.ini"</code>، <code dir="ltr">"disable_frontend"</code> ہدایت کو تلاش کریں اور "false" کرنے کے لئے مقرر (یہ ڈیفالٹ کی طرف سے "true" ہو جائے گا).<br /><br /></div>
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-<div dir="rtl">۲. رسائی اپنے براؤزر سے <code dir="ltr">"loader.php"</code> (جیسے، <code dir="ltr">"http://localhost/cidram/loader.php"</code>).<br /><br /></div>
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-<div dir="rtl">۳. پہلے سے طے شدہ صارف کا نام اور پاس ورڈ کے ساتھ لاگ ان کریں (admin/password).<br /><br /></div>
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 <div dir="rtl">نوٹ: اگر آپ کو پہلی بار کے لئے لاگ ان کرنے کے بعد، سامنے کے آخر تک غیر مجاز رسائی کو روکنے کے لئے، آپ کو فوری طور پر آپ کا صارف نام اور پاس ورڈ کو تبدیل کرنا چاہئے! یہ بہت اہم ہے، یہ سامنے کے آخر میں کے ذریعے آپ کی ویب سائٹ پر من مانی PHP کوڈ کو اپ لوڈ کرنا ممکن ہے کیونکہ.<br /><br /></div>
 
@@ -139,7 +169,7 @@
 
 ### <div dir="rtl">۵. <a name="SECTION5"></a>ترتیب کے اختیارات</div>
 
-<div dir="rtl">ندرجہ ذیل ان ہدایات کے مقصد کی وضاحت کے ساتھ ساتھ، <code dir="ltr">"config.ini"</code> ترتیب فائل میں CIDRAM کو دستیاب ہدایات کی ایک فہرست ہے.<br /><br /></div>
+<div dir="rtl">ندرجہ ذیل ان ہدایات کے مقصد کی وضاحت کے ساتھ ساتھ، <code dir="ltr">"config.yml"</code> ترتیب فائل میں CIDRAM کو دستیاب ہدایات کی ایک فہرست ہے.<br /><br /></div>
 
 ```
 کنفگریشن (v3)
@@ -1426,14 +1456,6 @@ Ignore سیکشن 1
 
 <div dir="rtl">ماڈیولز CIDRAM کی فعالیت کو بڑھانے کے لئے استعمال کیا جا سکتا ہے، اضافی کاموں کو انجام دینے کے لئے، یا اضافی منطق پر عمل درآمد. عام طور پر، ماڈیولز استعمال کیے جاتے ہیں جب اصل میں IP ایڈریس کے مقابلے میں دیگر وجوہات کی درخواست کو روکنے کے لئے ضروری ہے (اور اس طرح، جب CIDR دستخط درخواست کو روکنے کے لئے کافی نہیں ہوگا). ماڈیول PHP کی فائلوں کے طور پر لکھا جاتا ہے، اور اس طرح، عام طور پر، ماڈیول دستخط PHP کوڈ کے طور پر لکھا جاتا ہے.<br /><br /></div>
 
-<div dir="rtl">CIDRAM ماڈیولز کے کچھ اچھے مثال یہاں پایا جا سکتا ہے:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-<div dir="rtl">نئے ماڈیولز لکھنے کے لئے ایک سانچے یہاں پایا جا سکتا ہے:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 <div dir="rtl">کیونکہ ماڈیولز PHP کی فائلوں کے طور پر لکھی جاتی ہیں، اگر آپ CIDRAM کوڈ بیس کے ساتھ مناسب طریقے سے واقف ہیں تو، آپ اپنی ماڈیول اور ماڈیول دستخط کی تشکیل کرسکتے ہیں تاہم آپ چاہتے ہیں (PHP کے ساتھ کیا ممکن ہے کی مناسب حدود کے اندر اندر). تاہم، آپ کی سہولت اور موجودہ ماڈیولز اور آپ کے اپنے درمیان خود کار طریقے سے ذہنی سمجھداری کے لۓ، مندرجہ بالا منسلک ٹیمپلیٹ کا تجزیہ کرنے کی سفارش کی جاتی ہے، تاکہ وہ ڈھانچہ اور فارمیٹ استعمال کرسکیں جو اسے فراہم کرتی ہے.<br /><br /></div>
 
 <div dir="rtl"><em>نوٹ: اگر آپ PHP کے کوڈ کے ساتھ کام کرنے میں آرام دہ اور پرسکون نہیں ہیں تو، آپ کے اپنے ماڈیول لکھنے کی سفارش نہیں کی جاتی ہے.</em><br /><br /></div>
@@ -1442,11 +1464,11 @@ Ignore سیکشن 1
 
 #### <div dir="rtl">۶.۵ ماڈیول فعالیت<br /><br /></div>
 
-##### <div dir="rtl">۶.۵.۰ <code dir="ltr">$Trigger</code></div>
+##### <div dir="rtl">۶.۵.۰ <code dir="ltr">$this->trigger</code></div>
 
-<div dir="rtl">ماڈیول دستخط عام طور پر <code dir="ltr">$Trigger</code> کے ساتھ لکھا جاتا ہے. زیادہ تر معاملات میں، یہ بندش ماڈیول لکھنے کے مقصد کیلئے کسی اور سے کہیں زیادہ اہم ہو گی.<br /><br /></div>
+<div dir="rtl">ماڈیول دستخط عام طور پر <code dir="ltr">$this->trigger</code> کے ساتھ لکھا جاتا ہے. زیادہ تر معاملات میں، یہ بندش ماڈیول لکھنے کے مقصد کیلئے کسی اور سے کہیں زیادہ اہم ہو گی.<br /><br /></div>
 
-<div dir="rtl"><code dir="ltr">$Trigger</code> ۴ پیرامیٹرز کو قبول کرتا ہے: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$ReasonLong</code> (اختیاری)، <code dir="ltr">$DefineOptions</code> (اختیاری).<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->trigger</code> ۴ پیرامیٹرز کو قبول کرتا ہے: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$ReasonLong</code> (اختیاری)، <code dir="ltr">$DefineOptions</code> (اختیاری).<br /><br /></div>
 
 <div dir="rtl"><code dir="ltr">$Condition</code> سچائی کا اندازہ کیا جاتا ہے. اگر یہ سچ (true) ہے تو، دستخط چالو ہے. اگر یہ غلط (false) ہے تو، دستخط چالو نہیں ہے. <code dir="ltr">$Condition</code> عام طور پر ایک ایسی شرط پر مشتمل ہے جس کی وجہ سے کسی درخواست کو بلاک کرنا ہوگا.<br /><br /></div>
 
@@ -1456,19 +1478,13 @@ Ignore سیکشن 1
 
 <div dir="rtl"><code dir="ltr">$DefineOptions</code> ایک اختیاری سرنی ہے جس میں کلیدی/قدر شامل ہیں، درخواست کی مثال کے مطابق مخصوص ترتیبات کے اختیارات کی وضاحت کرنے کے لئے استعمال کیا جاتا ہے. جب دستخط چالو ہو تو ترتیب کے اختیارات لاگو کیے جائیں گے.<br /><br /></div>
 
-<div dir="rtl"><code dir="ltr">$Trigger</code> سچ ہے جب دستخط چالو ہوجاتا ہے، اور جب غلط نہیں ہوتا تو غلط ہوتا ہے.<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->trigger</code> سچ ہے جب دستخط چالو ہوجاتا ہے، اور جب غلط نہیں ہوتا تو غلط ہوتا ہے.<br /><br /></div>
 
-<div dir="rtl">اپنے ماڈیول میں اس بندش کو استعمال کرنے کے لئے، سب سے پہلے اسے والدین کی دائرہ داری سے وارث کرنے کے لئے یاد رکھیں:<br /><br /></div>
+##### <div dir="rtl">۶.۵.۱ <code dir="ltr">$this->bypass</code></div>
 
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+<div dir="rtl">دستخط بائی پاسز عام طور پر <code dir="ltr">$this->bypass</code> کے ساتھ لکھے جاتے ہیں.<br /><br /></div>
 
-##### <div dir="rtl">۶.۵.۱ <code dir="ltr">$Bypass</code></div>
-
-<div dir="rtl">دستخط بائی پاسز عام طور پر <code dir="ltr">$Bypass</code> کے ساتھ لکھے جاتے ہیں.<br /><br /></div>
-
-<div dir="rtl"><code dir="ltr">$Bypass</code> ۳ پیرامیٹرز کو قبول کرتا ہے: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$DefineOptions</code> (اختیاری).<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->bypass</code> ۳ پیرامیٹرز کو قبول کرتا ہے: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$DefineOptions</code> (اختیاری).<br /><br /></div>
 
 <div dir="rtl"><code dir="ltr">$Condition</code> سچائی کا اندازہ کیا جاتا ہے. اگر یہ سچ (true) ہے تو، بائی پاس چالو ہے. اگر یہ غلط (false) ہے تو، بائی پاس چالو نہیں ہے. <code dir="ltr">$Condition</code> عام طور پر ایک ایسی شرط پر مشتمل ہے جو کسی کو بلاک کرنے کی درخواست نہیں بننی چاہئے.<br /><br /></div>
 
@@ -1476,15 +1492,9 @@ $Trigger = $CIDRAM['Trigger'];
 
 <div dir="rtl"><code dir="ltr">$DefineOptions</code> ایک اختیاری سرنی ہے جس میں کلیدی/قدر شامل ہیں، درخواست کی مثال کے مطابق مخصوص ترتیبات کے اختیارات کی وضاحت کرنے کے لئے استعمال کیا جاتا ہے. جب دستخط چالو ہو تو ترتیب کے اختیارات لاگو کیے جائیں گے.<br /><br /></div>
 
-<div dir="rtl"><code dir="ltr">$Bypass</code> سچ ہے جب بائی پاس چالو ہوجاتا ہے، اور جب غلط نہیں ہوتا.<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->bypass</code> سچ ہے جب بائی پاس چالو ہوجاتا ہے، اور جب غلط نہیں ہوتا.<br /><br /></div>
 
-<div dir="rtl">اپنے ماڈیول میں اس بندش کو استعمال کرنے کے لئے، سب سے پہلے اسے والدین کی دائرہ داری سے وارث کرنے کے لئے یاد رکھیں:<br /><br /></div>
-
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
-
-##### <div dir="rtl">۶.۵.۲ <code dir="ltr">"$CIDRAM['DNS-Reverse']"</code></div>
+##### <div dir="rtl">۶.۵.۲ <code dir="ltr">"$this->dnsReverse"</code></div>
 
 <div dir="rtl">یہ ایک IP ایڈریس کے میزبان نام کو حاصل کرنے کے لئے استعمال کیا جا سکتا ہے. اگر آپ میزبانوں کو روکنے کے لئے ماڈیول بنانا چاہتے ہیں، تو یہ بندش مفید ثابت ہوسکتا ہے.<br /><br /></div>
 
@@ -1492,17 +1502,14 @@ $Bypass = $CIDRAM['Bypass'];
 
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1514,17 +1521,17 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 &nbsp; <div dir="rtl" style="display:inline">تفصیل</div> | <div dir="rtl">متغیر</div>
 ----|----
-&nbsp; <div dir="rtl" style="display:inline">موجودہ تاریخ اور وقت.</div> | `$CIDRAM['BlockInfo']['DateTime']`
-&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے IP ایڈریس.</div> | `$CIDRAM['BlockInfo']['IPAddr']`
-&nbsp; <div dir="rtl" style="display:inline">CIDRAM سکرپٹ ورژن.</div> | `$CIDRAM['BlockInfo']['ScriptIdent']`
-&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے سوال.</div> | `$CIDRAM['BlockInfo']['Query']`
-&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے ریفرر (اگر ایک موجود ہے).</div> | `$CIDRAM['BlockInfo']['Referrer']`
-&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے صارف ایجنٹ (user agent).</div> | `$CIDRAM['BlockInfo']['UA']`
-&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے کم کیس میں صارف ایجنٹ (user agent).</div> | `$CIDRAM['BlockInfo']['UALC']`
-&nbsp; <div dir="rtl" style="display:inline">جب صارف کو بلاک کردیا جاتا ہے تو صارف کو ظاہر کرنے کا پیغام.</div> | `$CIDRAM['BlockInfo']['ReasonMessage']`
-&nbsp; <div dir="rtl" style="display:inline">دستخط کی تعداد موجودہ درخواست کے لئے شروع ہوگئی ہے.</div> | `$CIDRAM['BlockInfo']['SignatureCount']`
-&nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لئے حوالہ کی معلومات موجودہ درخواست کے لئے تیار ہوئی.</div> | `$CIDRAM['BlockInfo']['Signatures']`
-&nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لئے حوالہ کی معلومات موجودہ درخواست کے لئے تیار ہوئی.</div> | `$CIDRAM['BlockInfo']['WhyReason']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ تاریخ اور وقت.</div> | `$this->BlockInfo['DateTime']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے IP ایڈریس.</div> | `$this->BlockInfo['IPAddr']`
+&nbsp; <div dir="rtl" style="display:inline">CIDRAM سکرپٹ ورژن.</div> | `$this->BlockInfo['ScriptIdent']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے سوال.</div> | `$this->BlockInfo['Query']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے ریفرر (اگر ایک موجود ہے).</div> | `$this->BlockInfo['Referrer']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے صارف ایجنٹ (user agent).</div> | `$this->BlockInfo['UA']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لئے کم کیس میں صارف ایجنٹ (user agent).</div> | `$this->BlockInfo['UALC']`
+&nbsp; <div dir="rtl" style="display:inline">جب صارف کو بلاک کردیا جاتا ہے تو صارف کو ظاہر کرنے کا پیغام.</div> | `$this->BlockInfo['ReasonMessage']`
+&nbsp; <div dir="rtl" style="display:inline">دستخط کی تعداد موجودہ درخواست کے لئے شروع ہوگئی ہے.</div> | `$this->BlockInfo['SignatureCount']`
+&nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لئے حوالہ کی معلومات موجودہ درخواست کے لئے تیار ہوئی.</div> | `$this->BlockInfo['Signatures']`
+&nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لئے حوالہ کی معلومات موجودہ درخواست کے لئے تیار ہوئی.</div> | `$this->BlockInfo['WhyReason']`
 
 ---
 
@@ -1588,7 +1595,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 <div dir="rtl">"ماڈیولز" کے لئے:<br /><br /></div>
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 <div dir="rtl">نوٹ: "دستخط فائلوں" کے لئے دستخط، اور "ماڈیولز" کے لئے دستخط وہی چیز نہیں ہیں.<em></em><br /><br /></div>
@@ -1650,7 +1657,7 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 #### <div dir="rtl"><a name="PROTECT_MULTIPLE_DOMAINS"></a>میں نے ایک سے زیادہ ڈومینز کی حفاظت کے لئے ایک واحد CIDRAM تنصیب کا استعمال کر سکتا ہوں؟<br /><br /></div>
 
-<div dir="rtl">جی ہاں. CIDRAM ایک سے زیادہ ڈومینز کی حفاظت کے لئے استعمال کیا جا سکتا ہے. ضرورت کی ترتیب مختلف ہے تو، ایسا کرنے کے لئے تحفظ کی ضرورت ہوتی ڈومینز کے مطابق نامی نئی ترتیب فائل، تخلیق کرتے ہیں. CIDRAM یہ ڈومین کیلئے کام کرنا چاہئے کہ کس طرح اس بات کا تعین کرنے کے لئے ان فائلوں کو استعمال کریں گے. سوف تستخدم CIDRAM هذه الملفات لتحديد كيفية تشغيلها للنطاق. ایک مثال کے طور، کے لئے <code dir="ltr">"https://www.some-domain.tld/"</code>، اس کا نام ہے <code dir="ltr">"some-domain.tld.config.ini"</code>. ڈومین نام <code dir="ltr">"HTTP_HOST"</code> سے آتا ہے. <code dir="ltr">"www"</code> نظر انداز کر دیا جاتا ہے.<br /><br /></div>
+<div dir="rtl">جی ہاں. CIDRAM ایک سے زیادہ ڈومینز کی حفاظت کے لئے استعمال کیا جا سکتا ہے. ضرورت کی ترتیب مختلف ہے تو، ایسا کرنے کے لئے تحفظ کی ضرورت ہوتی ڈومینز کے مطابق نامی نئی ترتیب فائل، تخلیق کرتے ہیں. CIDRAM یہ ڈومین کیلئے کام کرنا چاہئے کہ کس طرح اس بات کا تعین کرنے کے لئے ان فائلوں کو استعمال کریں گے. سوف تستخدم CIDRAM هذه الملفات لتحديد كيفية تشغيلها للنطاق. ایک مثال کے طور، کے لئے <code dir="ltr">"https://www.some-domain.tld/"</code>، اس کا نام ہے <code dir="ltr">"some-domain.tld.config.yml"</code>. ڈومین نام <code dir="ltr">"HTTP_HOST"</code> سے آتا ہے. <code dir="ltr">"www"</code> نظر انداز کر دیا جاتا ہے.<br /><br /></div>
 
 #### <div dir="rtl"><a name="PAY_YOU_TO_DO_IT"></a>میں نے اس پر وقت خرچ نہیں کرنا چاہتا (اسے انسٹال، اس کے قیام، وغیرہ)؛ میں نے آپ کو ایسا کرنے کے لئے ادا کر سکتے ہیں؟<br /><br /></div>
 
@@ -1735,15 +1742,37 @@ IP | آپریٹر
 
 <div dir="rtl">مثال کے طور پر، مندرجہ ذیل درج ذیل فائلوں کے ساتھ ایک ترتیب ڈائریکٹری کو فرض کرنا:<br /><br /></div>
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 <div dir="rtl">اگر آپ چاہتے تھے کہ <code dir="ltr">file3.php</code> سب سے پہلے عمل کرنے کیلئے، آپ فائل کے نام سے پہلے <code dir="ltr">aaa:</code> کی طرح کچھ شامل کرسکتے ہیں:<br /><br /></div>
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 <div dir="rtl">پھر، اگر ایک نئی فائل، <code dir="ltr">file6.php</code>، چالو کر دیا جاتا ہے، جب اپ ڈیٹس صفحہ ان کو دوبارہ دوبارہ تبدیل کرتا ہے، تو اسے اس طرح ختم کرنا چاہئے:<br /><br /></div>
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 <div dir="rtl">ایک ہی صورت حال حال ہی میں ایک فائل غیر فعال ہے. اس کے برعکس، اگر آپ چاہتے تھے کہ آخری فائل کو عمل کرنے کے لۓ، آپ فائل کے نام سے پہلے <code dir="ltr">zzz:</code> کی طرح کچھ شامل کرسکیں. کسی بھی صورت میں، آپ کو سوال میں فائل کا نام تبدیل کرنے کی ضرورت نہیں ہوگی.<br /><br /></div>
 
@@ -2053,7 +2082,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">frontend_log</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">frontend_log</code> &lt;- <code dir="ltr">frontend</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۳.۳ لاگ گھومنے<br /><br /></div>
@@ -2102,15 +2131,13 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 ##### <div dir="rtl">۹.۳.۶ لاگ ان معلومات کو چھوڑ دیں<br /><br /></div>
 
-<div dir="rtl">اگر آپ مخصوص قسم کی معلومات کو مکمل طور پر لاگ ان کرنے سے روکنا چاہتے ہیں تو، آپ ایسا کرسکتے ہیں. CIDRAM ترتیبات ہدایات فراہم کرتا ہے جس پر کنٹرول کرتا ہے کہ IP ایڈریس، ہوسٹ نام، اور صارف کے ایجنٹوں لاگ ان ہوتے ہیں. عام طور پر، اور جب دستیاب ہے، یہ سب کچھ لاگ ان ہوتے ہیں. جب ان ترتیبات کے ہدایات <code dir="ltr">true</code> میں مقرر ہوتے ہیں، تو متعلقہ معلومات لاگ ان نہیں کی جائیں گی.<br /><br /></div>
+<div dir="rtl">اگر آپ مخصوص قسم کی معلومات کو مکمل طور پر لاگ ان کرنے سے روکنا چاہتے ہیں تو، آپ ایسا کرسکتے ہیں. کنفیگریشن پیج پر، براہ کرم <code dir="ltr">fields</code> کنفیگریشن ڈائریکٹیو سے رجوع کریں تاکہ یہ کنٹرول کیا جا سکے کہ کون سے فیلڈز لاگ انٹریز میں ظاہر ہوتے ہیں اور "رسائی نہیں ہوئی" صفحہ پر.<br /><br /></div>
 
 <div dir="rtl"><em>نوٹ: IP پتے کے لئے pseudonymisation کا استعمال کرنے کی کوئی وجہ نہیں ہے جب IP پتے کو مکمل طور پر لاگ ان سے لے کر.</em><br /><br /></div>
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">omit_ip</code> &lt;- <code dir="ltr">legal</code></li>
- <li><code dir="ltr">omit_hostname</code> &lt;- <code dir="ltr">legal</code></li>
- <li><code dir="ltr">omit_ua</code> &lt;- <code dir="ltr">legal</code></li>
+ <li><code dir="ltr">fields</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۳.۷ اعداد و شمار<br /><br /></div>
@@ -2136,7 +2163,6 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">disable_frontend</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">recaptcha</code></li>
  <li><code dir="ltr">api</code> &lt;- <code dir="ltr">recaptcha</code></li>
  <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">hcaptcha</code></li>

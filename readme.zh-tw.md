@@ -40,31 +40,37 @@ CIDRAM （無類別域間路由訪問管理器）是一個PHP腳本，​旨在�
 
 #### 2.0 安裝手工
 
-1） 在閱讀到這里之前，​我假設您已經下載腳本的一個副本，​已解壓縮其內容並保存在您的機器的某個地方。​現在，​您要決定將腳本放在您服務器上的哪些文件夾中，​例如`/public_html/cidram/`或其他任何您覺得滿意和安全的地方。​*上傳完成後，​繼續閱讀。​。​*
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2） 重命名`config.ini.RenameMe`到`config.ini`（位於內`vault`），​和如果您想（強烈推薦高級用戶，​但不推薦業餘用戶或者新手使用這個方法），​打開它（這個文件包含所有CIDRAM的可用配置選項；以上的每一個配置選項應有一個簡介來說明它是做什麼的和它的具有的功能）。​按照您認為合適的參數來調整這些選項，​然後保存文件，​關閉。
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3） 上傳（CIDRAM和它的文件）到您選定的文件夾（不需要包括`*.txt`/`*.md`文件，​但大多數情況下，​您應上傳所有的文件）。
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4） 修改的`vault`文件夾權限為『755』（如果有問題，​您可以試試『777』，​但是這是不太安全）。​注意，​主文件夾也應該是該權限，​如果遇上其他權限問題，​請修改對應文件夾和文件的權限。​簡而言之：為了使包正常工作，PHP需要能夠在`vault`目錄中讀寫文件。​如果PHP無法寫入`vault`目錄，那麼很多事情（更新，記錄等）都是不可能的，如果PHP無法從`vault`目錄中讀取，則包將無法正常工作。​但是，為了獲得最佳安全性，`vault`目錄不得公開訪問（如果`vault`目錄可公開訪問，敏感信息，例如`config.ini`或`frontend.dat`包含的信息，可能會暴露給潛在的攻擊者）。
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5） 接下來，​您需要為您的系統或CMS設定啟動CIDRAM的鉤子。​有幾種不同的方式為您的系統或CMS設定鉤子，​最簡單的是在您的系統或CMS的核心文件的開頭中使用`require`或`include`命令直接包含腳本（這個方法通常會導致在有人訪問時每次都加載）。​平時，​這些都是存儲的在文件夾中，​例如`/includes`，​`/assets`或`/functions`等文件夾，​和將經常被命名的某物例如`init.php`，​`common_functions.php`，​`functions.php`。​這是根據您自己的情況決定的，​並不需要完全遵守；如果您遇到困難，​參觀GitHub上的CIDRAM issues頁面；可能其他用戶或者我自己也有這個問題並且解決了（您需要讓我們您在使用哪些CMS）。​為了使用`require`或`include`，​插入下面的代碼行到最開始的該核心文件，​更換裡面的數據引號以確切的地址的`loader.php`文件（本地地址，​不是HTTP地址；它會類似於前面提到的vault地址）。
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-保存文件，​關閉，​重新上傳。
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- 或替換 --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-如果您使用Apache網絡服務器並且您可以訪問`php.ini`，​您可以使用該`auto_prepend_file`指令為任何PHP請求創建附上的CIDRAM。​就像是：
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-或在該`.htaccess`文件：
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-6) 這就是一切！​:-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 與COMPOSER安裝
 
@@ -104,13 +110,37 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 
 前端提供了一種方便，​輕鬆的方式來維護，​管理和更新CIDRAM安裝。​您可以通過日誌頁面查看，​共享和下載日誌文件，​您可以通過配置頁面修改配置，​您可以通過更新頁面安裝和卸載組件，​和您可以通過文件管理器上傳，​下載和修改文件在vault。
 
-#### 4.1 如何啟用前端。
+#### 4.1 如何訪問前端。
 
-1) 裡面的`config.ini`文件，​找到指令`disable_frontend`，​並將其設置為`false` （默認值為`true`）。
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-2) 從瀏覽器訪問`loader.php` （例如，​`http://localhost/cidram/loader.php`）。
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-3) 使用默認用戶名和密碼（admin/password）登錄。
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 注意：第一次登錄後，​以防止未經授權的訪問前端，​您應該立即更改您的用戶名和密碼！​這是非常重要的，​因為它可以任意PHP代碼上傳到您的網站通過前端。
 
@@ -137,7 +167,7 @@ CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或Wor
 
 ### 5. <a name="SECTION5"></a>配置選項
 
-下列是一個列表的變量發現在`config.ini`配置文件的CIDRAM，​以及一個說明的他們的目的和功能。
+下列是一個列表的變量發現在`config.yml`配置文件的CIDRAM，​以及一個說明的他們的目的和功能。
 
 ```
 配置 (v3)
@@ -1363,12 +1393,6 @@ Ignore 章節一
 
 模塊可用於擴展CIDRAM的功能，執行額外的任務，或處理額外的邏輯。​通常，當除了起源IP地址之外的原因需要阻止請求時它們使用​（因此，當CIDR簽名不足以阻止請求）。​模塊被寫為PHP文件，因此，通常，模塊簽名被寫為PHP代碼。
 
-CIDRAM模塊的一些很好的例子可以在這裡找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-編寫新模塊的模板可以在這裡找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 由於模塊是作為PHP文件編寫的，如果您對CIDRAM代碼庫有足夠的了解，則可以根據需要構建模塊，並根據需要編寫模塊簽名​（在合理範圍的什麼可以用PHP來完成內）。​但是，為了您自己的方便，並為了介於存在的模塊和您自己的之間好的理解，建議分析上面鏈接的模板，以便能夠使用它提供的結構和格式。
 
 *注意：如果您不舒服使用PHP代碼，則不建議編寫自己的模塊。*
@@ -1377,11 +1401,11 @@ CIDRAM提供了一些用於模塊的功能，這將使編寫自己的模塊變�
 
 #### 6.5 模塊功能
 
-##### 6.5.0 『$Trigger』
+##### 6.5.0 『$this->trigger』
 
-模塊簽名通常使用`$Trigger`編寫。​在大多數情況下，為了編寫模塊，這個閉包比其他任何東西都重要。
+模塊簽名通常使用`$this->trigger`編寫。​在大多數情況下，為了編寫模塊，這個閉包比其他任何東西都重要。
 
-`$Trigger`接受4個參數：`$Condition`、`$ReasonShort`、`$ReasonLong`（可選的）、和`$DefineOptions`（可選的）。
+`$this->trigger`接受4個參數：`$Condition`、`$ReasonShort`、`$ReasonLong`（可選的）、和`$DefineOptions`（可選的）。
 
 `$Condition`感實性被評估，和如果是true（真），簽名是『觸發』。​如果是false（假），簽名不是『觸發』。​`$Condition`通常包含PHP代碼來評估應該導致請求被阻止的條件。
 
@@ -1391,18 +1415,13 @@ CIDRAM提供了一些用於模塊的功能，這將使編寫自己的模塊變�
 
 `$DefineOptions`是一個包含鍵/值對的可選數組，用於定義特定於請求實例的配置選項。​配置選項將在簽名被『觸發』時應用。
 
-`$Trigger`當簽名是『觸發』時將返回true（真），當簽名不是『觸發』時將返回false（假）。
+`$this->trigger`當簽名是『觸發』時將返回true（真），當簽名不是『觸發』時將返回false（假）。
 
-要在模塊中使用這個閉包，首先要記住從父範圍繼承它：
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+##### 6.5.1 『$this->bypass』
 
-##### 6.5.1 『$Bypass』
+簽名旁路通常使用`$this->bypass`編寫。
 
-簽名旁路通常使用`$Bypass`編寫。
-
-`$Bypass`接受3個參數：`$Condition`、`$ReasonShort`、和`$DefineOptions`（可選的）。
+`$this->bypass`接受3個參數：`$Condition`、`$ReasonShort`、和`$DefineOptions`（可選的）。
 
 `$Condition`感實性被評估，和如果是true（真），旁路是『觸發』。​如果是false（假），旁路不是『觸發』。​`$Condition`通常包含PHP代碼來評估應不該導致請求被阻止的條件。
 
@@ -1410,31 +1429,23 @@ $Trigger = $CIDRAM['Trigger'];
 
 `$DefineOptions`是一個包含鍵/值對的可選數組，用於定義特定於請求實例的配置選項。​配置選項將在旁路被『觸發』時應用。
 
-`$Bypass`當旁路是『觸發』時將返回true（真），當旁路不是『觸發』時將返回false（假）。
+`$this->bypass`當旁路是『觸發』時將返回true（真），當旁路不是『觸發』時將返回false（假）。
 
-要在模塊中使用這個閉包，首先要記住從父範圍繼承它：
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
-
-##### 6.5.2 『$CIDRAM['DNS-Reverse']』
+##### 6.5.2 『$this->dnsReverse』
 
 這可以用來獲取IP地址的主機名。​如果您想創建一個模塊來阻止主機名，這個閉包可能是有用的。
 
 例子：
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1446,17 +1457,17 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 變量 | 說明
 ----|----
-`$CIDRAM['BlockInfo']['DateTime']` | 當前日期和時間。
-`$CIDRAM['BlockInfo']['IPAddr']` | 當前請求的IP地址。
-`$CIDRAM['BlockInfo']['ScriptIdent']` | CIDRAM腳本版本。
-`$CIDRAM['BlockInfo']['Query']` | 當前請求的查詢。
-`$CIDRAM['BlockInfo']['Referrer']` | 當前請求的引用者（如果存在）。
-`$CIDRAM['BlockInfo']['UA']` | 當前請求的用戶代理【user agent】。
-`$CIDRAM['BlockInfo']['UALC']` | 當前請求的用戶代理【user agent】（小寫）。
-`$CIDRAM['BlockInfo']['ReasonMessage']` | 當前請求被阻止時顯示給用戶/客戶端的消息。
-`$CIDRAM['BlockInfo']['SignatureCount']` | 當前請求的觸發的簽名數量。
-`$CIDRAM['BlockInfo']['Signatures']` | 針對當前請求觸發的任何簽名的參考信息。
-`$CIDRAM['BlockInfo']['WhyReason']` | 針對當前請求觸發的任何簽名的參考信息。
+`$this->BlockInfo['DateTime']` | 當前日期和時間。
+`$this->BlockInfo['IPAddr']` | 當前請求的IP地址。
+`$this->BlockInfo['ScriptIdent']` | CIDRAM腳本版本。
+`$this->BlockInfo['Query']` | 當前請求的查詢。
+`$this->BlockInfo['Referrer']` | 當前請求的引用者（如果存在）。
+`$this->BlockInfo['UA']` | 當前請求的用戶代理【user agent】。
+`$this->BlockInfo['UALC']` | 當前請求的用戶代理【user agent】（小寫）。
+`$this->BlockInfo['ReasonMessage']` | 當前請求被阻止時顯示給用戶/客戶端的消息。
+`$this->BlockInfo['SignatureCount']` | 當前請求的觸發的簽名數量。
+`$this->BlockInfo['Signatures']` | 針對當前請求觸發的任何簽名的參考信息。
+`$this->BlockInfo['WhyReason']` | 針對當前請求觸發的任何簽名的參考信息。
 
 ---
 
@@ -1514,7 +1525,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 對於『模塊』：
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 *注意：『簽名文件』的簽名，和『模塊』的簽名，不是一回事。*
@@ -1575,7 +1586,7 @@ CIDRAM使網站所有者能夠阻止不良流量，​但網站所有者有責�
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>我可以使用單個CIDRAM安裝來保護多個域嗎？
 
-可以。​CIDRAM安裝未綁定到特定域，​因此可以用來保護多個域。​通常，​當CIDRAM安裝保護只一個域，​我們稱之為『單域安裝』，​和當CIDRAM安裝保護多個域和/或子域，​我們稱之為『多域安裝』。​如果您進行多域安裝並需要使用不同的簽名文件為不同的域，​或需要不同配置CIDRAM為不同的域，​這可以做到。​加載配置文件後（`config.ini`），​CIDRAM將尋找『配置覆蓋文件』特定於所請求的域（`xn--cjs74vvlieukn40a.tld.config.ini`），​並如果發現，​由配置覆蓋文件定義的任何配置值將用於執行實例而不是由配置文件定義的配置值。​配置覆蓋文件與配置文件相同，​並通過您的決定，​可能包含CIDRAM可用的所有配置指令，​或任何必需的章節當需要。​配置覆蓋文件根據它們旨在的域來命名（所以，​例如，​如果您需要一個配置覆蓋文件為域，​`https://www.some-domain.tld/`，​它的配置覆蓋文件應該被命名`some-domain.tld.config.ini`，​和它應該放置在`vault`與配置文件，​`config.ini`）。​域名是從標題`HTTP_HOST`派生的；『www』被忽略。
+可以。​CIDRAM安裝未綁定到特定域，​因此可以用來保護多個域。​通常，​當CIDRAM安裝保護只一個域，​我們稱之為『單域安裝』，​和當CIDRAM安裝保護多個域和/或子域，​我們稱之為『多域安裝』。​如果您進行多域安裝並需要使用不同的簽名文件為不同的域，​或需要不同配置CIDRAM為不同的域，​這可以做到。​加載配置文件後（`config.yml`），​CIDRAM將尋找『配置覆蓋文件』特定於所請求的域（`xn--cjs74vvlieukn40a.tld.config.yml`），​並如果發現，​由配置覆蓋文件定義的任何配置值將用於執行實例而不是由配置文件定義的配置值。​配置覆蓋文件與配置文件相同，​並通過您的決定，​可能包含CIDRAM可用的所有配置指令，​或任何必需的章節當需要。​配置覆蓋文件根據它們旨在的域來命名（所以，​例如，​如果您需要一個配置覆蓋文件為域，​`https://www.some-domain.tld/`，​它的配置覆蓋文件應該被命名`some-domain.tld.config.yml`，​和它應該放置在`vault`與配置文件，​`config.yml`）。​域名是從標題`HTTP_HOST`派生的；『www』被忽略。
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>我不想浪費時間安裝這個和確保它在我的網站上功能正常；我可以僱用您這樣做嗎？
 
@@ -1660,15 +1671,37 @@ IP | 操作者
 
 例如，假设配置指令包含如下列出的文件：
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 如果您想首先執行`file3.php`，您可以在文件名前添加`aaa:`或類似：
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 然後，如果啟用了新文件`file6.php`，當更新頁面再次對它們進行排序時，它應該像這樣結束：
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 當文件禁用時的情況是相同的。​相反，如果您希望文件最後執行，您可以在文件名前添加`zzz:`或類似。​在任何情況下，您都不需要重命名相關文件。
 
@@ -1962,7 +1995,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 已登錄。
 ```
 
 *負責前端日誌記錄的配置指令是：*
-- `general` -> `frontend_log`
+- `frontend` -> `frontend_log`
 
 ##### 9.3.3 日誌輪換
 
@@ -2002,14 +2035,12 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 已登錄。
 
 ##### 9.3.6 省略日誌信息
 
-如果要防止完全記錄特定類型的信息，也可以這樣做。​CIDRAM提供配置指令來控制IP地址，主機名，和用戶代理是否包含在日誌中。​默認情況下，所有這三個數據點都包含在日誌中（如果可用）。​將任何這些配置指令設置為`true`將省略日誌中的相應信息。
+如果要防止完全記錄特定類型的信息，也可以這樣做。​在配置頁面，請參考`fields`配置指令來控制哪些字段出現在日誌條目和『拒絕訪問』頁面上。
 
 *注意：當完全從日誌中省略IP地址時，沒有理由對IP地址進行pseudonymise。*
 
 *相關配置指令：*
-- `legal` -> `omit_ip`
-- `legal` -> `omit_hostname`
-- `legal` -> `omit_ua`
+- `general` -> `fields`
 
 ##### 9.3.7 統計
 
@@ -2031,7 +2062,6 @@ CIDRAM在其代碼庫中的兩個點設置[cookie](https://zh.wikipedia.org/wiki
 *注意：在某些司法管轄區中，『不可见的』 CAPTCHA API可能與Cookie法律不兼容，任何受這些法律約束的網站都應該避免這個API。​選擇改用其他提供的API，或完全禁用CAPTCHA，可能是更可取的選擇。*
 
 *相關配置指令：*
-- `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`

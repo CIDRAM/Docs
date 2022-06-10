@@ -40,31 +40,37 @@ Questo documento ed il pacchetto associato ad esso possono essere scaricati libe
 
 #### 2.0 INSTALLAZIONE MANUALE
 
-1) Continuando la lettura, si suppone che hai già scaricato una copia dello script, decompresso il contenuto e lo hai collocato da qualche parte sul tuo terminale. Da qui, ti consigliamo di determinare dove sulla macchina o CMS si desidera inserire quei contenuti. Una cartella come `/public_html/cidram/` o simile (sebbene, non è importante quale si sceglie, purché sia qualcosa di sicuro e che ti soddisfi) sarà sufficiente. *Prima di iniziare il caricamento, continua a leggere..*
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2) Rinomina `config.ini.RenameMe` in `config.ini` (situato nella cartella `vault`), e facoltativamente (fortemente consigliata per gli utenti avanzati, ma non è consigliata per i principianti o per gli inesperti) aprirlo e impostare le opzioni come meglio si crede, in qualsiasi modo risulti appropriato per la vostra particolare configurazione (questo file contiene tutte le direttive disponibili per CIDRAM; sopra ogni opzione dovrebbe esserci un breve commento di documentazione che descrive ciò che fa e ciò a cui serve). Salvare il file, chiudere.
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3) Carica i contenuti (CIDRAM e i suoi file) nella cartella che avete scelto in precedenza (non è necessario includere i file `*.txt`/`*.md`, ma in generale, si dovrebbe caricare tutto).
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4) Impostate i permessi (CHMOD) della cartella `vault` a "755" (se ci sono problemi si può provare "777", ma questo è meno sicuro). La cartella principale che comprende i contenuti (quella scelta in precedenza), solitamente, può essere lasciato solo, ma lo stato CHMOD dovrebbe essere controllato se hai avuto problemi di autorizzazioni in passato sul vostro sistema (di default, dovrebbe essere qualcosa simile a "755"). In breve: Perché il pacchetto funzioni correttamente, PHP deve essere in grado di leggere e scrivere file all'interno della cartella `vault`. Molte cose (aggiornamento, registrazione, ecc) non saranno possibili, se PHP non può scrivere nella cartella `vault`, e il pacchetto non funzionerà affatto se PHP non può leggere dalla cartella `vault`. Tuttavia, per una sicurezza ottimale, la cartella `vault` NON deve essere accessibile al pubblico (informazioni sensibili, come le informazioni contenute da `config.ini` o `frontend.dat`, potrebbero essere esposte a potenziali aggressori se la cartella `vault` è pubblicamente accessibile).
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5) Successivamente, sarà necessario "collegare" CIDRAM al vostro sistema o CMS. Ci sono diversi modi in cui è possibile collegare script come CIDRAM al vostro sistema o CMS, ma il più semplice è di inserire lo script all'inizio di un file del vostro sistema o CMS (quello che generalmente sarà caricato ogni volta che qualcuno accede a una pagina attraverso il vostro sito) utilizzando un comando `require` o `include`. Solitamente, questo file è memorizzato in una cartella, ad esempio `/includes`, `/assets` o `/functions`, e spesso può essere chiamato come `init.php`, `common_functions.php`, `functions.php` o simili. Scegliete accuratamente questo file tra quelli che compongono il vostro sistema o CMS; nel caso in cui trovate difficoltà nel determinare questo file, visitate la pagina di problemi/issues di CIDRAM per ricevere assistenza. Per fare ciò [utilizzare `require` o `include`], inserire la seguente riga di codice in cima al core file identificato in precedenza, sostituendo la stringa contenuta all'interno delle virgolette con l'indirizzo esatto del file `loader.php` (l'indirizzo locale, non l'indirizzo HTTP; sarà simile all'indirizzo citato in precedenza).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-Salvare il file, chiudere, caricare di nuovo.
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- IN ALTERNATIVA --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-Se stai usando un web server Apache e se si ha accesso al file `php.ini`, è possibile utilizzare la direttiva `auto_prepend_file` per pre-caricare CIDRAM ogni volta che viene effettuata una qualsiasi richiesta PHP. Qualcosa come:
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-O questo nel `.htaccess` file:
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-6) Questo è tutto! :-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 INSTALLARE CON COMPOSER
 
@@ -104,13 +110,37 @@ CIDRAM può essere aggiornato manualmente o tramite il front-end. CIDRAM può an
 
 Il front-end fornisce un modo conveniente e facile da mantenere, gestire e aggiornare l'installazione CIDRAM. È possibile visualizzare, condividere e scaricare file di log attraverso la pagina di log, è possibile modificare la configurazione attraverso la pagina di configurazione, è possibile installare e disinstallare i componenti attraverso la pagina degli aggiornamenti, e si può caricare, scaricare e modificare i file nel vault tramite il file manager.
 
-#### 4.1 COME ATTIVARE IL FRONT-END.
+#### 4.1 COME ACCEDERE IL FRONT-END.
 
-1) Trova la direttiva `disable_frontend` dentro `config.ini`, e impostarlo su `false` (sarà `true` per impostazione predefinita).
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-2) Accedi `loader.php` dal browser (per esempio, `http://localhost/cidram/loader.php`).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-3) Accedi con il nome utente e la password predefinita (admin/password).
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 Nota: Dopo aver effettuato l'accesso per la prima volta, al fine di impedire l'accesso non autorizzato al front-end, si dovrebbe cambiare immediatamente il nome utente e la password! Questo è molto importante, perché è possibile caricare codice PHP arbitrario al suo sito web attraverso il front-end.
 
@@ -137,7 +167,7 @@ Nota: Proteggere il tuo vault dall'accesso non autorizzato (per esempio, per mez
 
 ### 5. <a name="SECTION5"></a>OPZIONI DI CONFIGURAZIONE
 
-Il seguente è un elenco di variabili trovate nelle `config.ini` file di configurazione di CIDRAM, insieme con una descrizione del loro scopo e funzione.
+Il seguente è un elenco di variabili trovate nelle `config.yml` file di configurazione di CIDRAM, insieme con una descrizione del loro scopo e funzione.
 
 ```
 Configurazione (v3)
@@ -1401,12 +1431,6 @@ Se ritieni che scrivere i tuoi file di firme personalizzati o moduli personalizz
 
 I moduli possono essere utilizzati per estendere la funzionalità di CIDRAM, eseguire attività aggiuntive o elaborare una logica aggiuntiva. Tipicamente, vengono utilizzati quando è necessario bloccare una richiesta su una base diversa dal suo indirizzo IP di origine (e quindi, quando una firma CIDR non è sufficiente per bloccare la richiesta). I moduli sono scritti come file PHP e quindi, in genere, le firme dei moduli sono scritte come codice PHP.
 
-Alcuni buoni esempi di moduli CIDRAM possono essere trovati qui:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Un modello per scrivere nuovi moduli può essere trovato qui:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 Dato che i moduli sono scritti come file PHP, se hai familiarità con il codice CIDRAM, puoi strutturare i tuoi moduli come vuoi, e scrivi le tue firme del modulo come preferisci (entro i limiti di ciò che è possibile in PHP). Tuttavia, per tua comodità, e per una migliore intelligibilità reciproca tra i moduli esistenti e il tuo, è consigliabile analizzare il modello collegato sopra, per poter utilizzare la struttura e il formato che fornisce.
 
 *Nota: Se non ti piace lavorare con il codice PHP, non è consigliabile scrivere i tuoi moduli.*
@@ -1415,11 +1439,11 @@ Alcune funzionalità sono fornite da CIDRAM per essere utilizzato dai moduli, il
 
 #### 6.5 FUNZIONALITÀ DEL MODULO
 
-##### 6.5.0 "$Trigger"
+##### 6.5.0 "$this->trigger"
 
-Le firme dei moduli sono scritte tipicamente con `$Trigger`. Nella maggior parte dei casi, questa closure sarà più importante di ogni altra cosa allo scopo di scrivere moduli.
+Le firme dei moduli sono scritte tipicamente con `$this->trigger`. Nella maggior parte dei casi, questa method sarà più importante di ogni altra cosa allo scopo di scrivere moduli.
 
-`$Trigger` accetta 4 parametri: `$Condition`, `$ReasonShort`, `$ReasonLong` (opzionale), e `$DefineOptions` (opzionale).
+`$this->trigger` accetta 4 parametri: `$Condition`, `$ReasonShort`, `$ReasonLong` (opzionale), e `$DefineOptions` (opzionale).
 
 La veridicità di `$Condition` è valutata e, se è true/vera, la firma è "innescato". Se false, la firma *non* è "innescato". `$Condition` contiene tipicamente codice PHP per valutare una condizione che dovrebbe causa una richiesta essere bloccare.
 
@@ -1429,18 +1453,13 @@ La veridicità di `$Condition` è valutata e, se è true/vera, la firma è "inne
 
 `$DefineOptions` è un array opzionale contenente coppie chiave/valore, utilizzato per definire le opzioni di configurazione specifiche dell'istanza della richiesta. Le opzioni di configurazione verranno applicate quando la firma è "innescata".
 
-`$Trigger` restituisce true quando la firma è "innescata", e false quando non lo è.
+`$this->trigger` restituisce true quando la firma è "innescata", e false quando non lo è.
 
-Per utilizzare questa closure nel modulo, ricorda innanzitutto di ereditarlo dall'ambito principale:
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+##### 6.5.1 "$this->bypass"
 
-##### 6.5.1 "$Bypass"
+I bypass di firma sono scritte tipicamente con `$this->bypass`.
 
-I bypass di firma sono scritte tipicamente con `$Bypass`.
-
-`$Bypass` accetta 3 parametri: `$Condition`, `$ReasonShort`, e `$DefineOptions` (opzionale).
+`$this->bypass` accetta 3 parametri: `$Condition`, `$ReasonShort`, e `$DefineOptions` (opzionale).
 
 La veridicità di `$Condition` è valutata e, se è true/vera, il bypass è "innescato". Se false, il bypass *non* è "innescato". `$Condition` contiene tipicamente codice PHP per valutare una condizione che *non* dovrebbe causa una richiesta essere bloccare.
 
@@ -1448,31 +1467,23 @@ La veridicità di `$Condition` è valutata e, se è true/vera, il bypass è "inn
 
 `$DefineOptions` è un array opzionale contenente coppie chiave/valore, utilizzato per definire le opzioni di configurazione specifiche dell'istanza della richiesta. Le opzioni di configurazione verranno applicate quando il bypass è "innescata".
 
-`$Bypass` restituisce true quando il bypass è "innescata", e false quando non lo è.
+`$this->bypass` restituisce true quando il bypass è "innescata", e false quando non lo è.
 
-Per utilizzare questa closure nel modulo, ricorda innanzitutto di ereditarlo dall'ambito principale:
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
+##### 6.5.2 "$this->dnsReverse"
 
-##### 6.5.2 "$CIDRAM['DNS-Reverse']"
-
-Questo può essere usato per recuperare il nome host di un indirizzo IP. Se vuoi creare un modulo per bloccare i nomi degli host, questa closure potrebbe essere utile.
+Questo può essere usato per recuperare il nome host di un indirizzo IP. Se vuoi creare un modulo per bloccare i nomi degli host, questa method potrebbe essere utile.
 
 Esempio:
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1484,17 +1495,17 @@ Di seguito sono elencate alcune variabili comuni che potrebbero essere utili per
 
 Variabile | Descrizione
 ----|----
-`$CIDRAM['BlockInfo']['DateTime']` | La data e l'ora correnti.
-`$CIDRAM['BlockInfo']['IPAddr']` | L'indirizzo IP per la richiesta corrente.
-`$CIDRAM['BlockInfo']['ScriptIdent']` | Versione di script CIDRAM.
-`$CIDRAM['BlockInfo']['Query']` | La query per la richiesta corrente.
-`$CIDRAM['BlockInfo']['Referrer']` | Il referrer per la richiesta corrente (se esiste).
-`$CIDRAM['BlockInfo']['UA']` | L'agente utente (user agent) per la richiesta corrente.
-`$CIDRAM['BlockInfo']['UALC']` | L'agente utente (user agent) per la richiesta corrente (in minuscolo).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | Il messaggio visualizzato all'utente/cliente per la richiesta corrente se sono bloccati.
-`$CIDRAM['BlockInfo']['SignatureCount']` | Il numero di firme innescati per la richiesta corrente.
-`$CIDRAM['BlockInfo']['Signatures']` | Informazioni di riferimento per eventuali firme innescati per la richiesta corrente.
-`$CIDRAM['BlockInfo']['WhyReason']` | Informazioni di riferimento per eventuali firme innescati per la richiesta corrente.
+`$this->BlockInfo['DateTime']` | La data e l'ora correnti.
+`$this->BlockInfo['IPAddr']` | L'indirizzo IP per la richiesta corrente.
+`$this->BlockInfo['ScriptIdent']` | Versione di script CIDRAM.
+`$this->BlockInfo['Query']` | La query per la richiesta corrente.
+`$this->BlockInfo['Referrer']` | Il referrer per la richiesta corrente (se esiste).
+`$this->BlockInfo['UA']` | L'agente utente (user agent) per la richiesta corrente.
+`$this->BlockInfo['UALC']` | L'agente utente (user agent) per la richiesta corrente (in minuscolo).
+`$this->BlockInfo['ReasonMessage']` | Il messaggio visualizzato all'utente/cliente per la richiesta corrente se sono bloccati.
+`$this->BlockInfo['SignatureCount']` | Il numero di firme innescati per la richiesta corrente.
+`$this->BlockInfo['Signatures']` | Informazioni di riferimento per eventuali firme innescati per la richiesta corrente.
+`$this->BlockInfo['WhyReason']` | Informazioni di riferimento per eventuali firme innescati per la richiesta corrente.
 
 ---
 
@@ -1552,7 +1563,7 @@ Per "file di firma":
 Per "moduli":
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 *Nota: Le firme per "file di firma", e le firme per "moduli", non sono la stessa cosa.*
@@ -1613,7 +1624,7 @@ No. PHP >= 7.2.0 è un requisito minimo per CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Posso utilizzare un'installazione singola di CIDRAM per proteggere più domini?
 
-Sì. Le installazioni di CIDRAM non sono naturalmente legato a domini specifici, e quindi possono essere utilizzati per proteggere più domini. Generalmente, ci riferiamo alle installazioni di CIDRAM che proteggono un solo dominio come "installazioni per singolo dominio", e ci riferiamo a installazioni di CIDRAM che proteggono più domini e/o sottodomini come "installazioni per più domini". Se si esegue un'installazione per più domini e bisogno utilizzare diversi set di file di firma per diversi domini, o bisogno che CIDRAM essere configurato in modo diverso per diversi domini, è possibile farlo. Dopo aver caricato il file di configurazione (`config.ini`), CIDRAM verifica l'esistenza di un "file di sovrascrittura per la configurazione" specifico del dominio (o sottodominio) che viene richiesto (`il-dominio-che-viene-richiesto.tld.config.ini`), e se trovati, tutti i valori di configurazione definiti dal file di sovrascrittura per la configurazione verranno utilizzati per l'istanza di esecuzione invece dei valori di configurazione definiti dal file di configurazione. I file di sovrascrittura per la configurazione sono identiche al file di configurazione, e a vostra discrezione, può contenere l'insieme di tutte le direttive di configurazione disponibili a CIDRAM, o qualsiasi piccola sottosezione richiesta che differisca dai valori normalmente definiti dal file di configurazione. I file di sovrascrittura per la configurazione sono chiamati in base al dominio a cui sono destinati (così, per esempio, se hai bisogno di un file di sovrascrittura per la configurazione per il dominio, `https://www.some-domain.tld/`, la sua file di sovrascrittura per la configurazione deve essere denominato come `some-domain.tld.config.ini`, e deve essere collocato all'interno della vault insieme al file di configurazione, `config.ini`). Il nome di dominio per l'istanza di esecuzione è derivato dall'intestazione `HTTP_HOST` della richiesta; "www" viene ignorato.
+Sì. Le installazioni di CIDRAM non sono naturalmente legato a domini specifici, e quindi possono essere utilizzati per proteggere più domini. Generalmente, ci riferiamo alle installazioni di CIDRAM che proteggono un solo dominio come "installazioni per singolo dominio", e ci riferiamo a installazioni di CIDRAM che proteggono più domini e/o sottodomini come "installazioni per più domini". Se si esegue un'installazione per più domini e bisogno utilizzare diversi set di file di firma per diversi domini, o bisogno che CIDRAM essere configurato in modo diverso per diversi domini, è possibile farlo. Dopo aver caricato il file di configurazione (`config.yml`), CIDRAM verifica l'esistenza di un "file di sovrascrittura per la configurazione" specifico del dominio (o sottodominio) che viene richiesto (`il-dominio-che-viene-richiesto.tld.config.yml`), e se trovati, tutti i valori di configurazione definiti dal file di sovrascrittura per la configurazione verranno utilizzati per l'istanza di esecuzione invece dei valori di configurazione definiti dal file di configurazione. I file di sovrascrittura per la configurazione sono identiche al file di configurazione, e a vostra discrezione, può contenere l'insieme di tutte le direttive di configurazione disponibili a CIDRAM, o qualsiasi piccola sottosezione richiesta che differisca dai valori normalmente definiti dal file di configurazione. I file di sovrascrittura per la configurazione sono chiamati in base al dominio a cui sono destinati (così, per esempio, se hai bisogno di un file di sovrascrittura per la configurazione per il dominio, `https://www.some-domain.tld/`, la sua file di sovrascrittura per la configurazione deve essere denominato come `some-domain.tld.config.yml`, e deve essere collocato all'interno della vault insieme al file di configurazione, `config.yml`). Il nome di dominio per l'istanza di esecuzione è derivato dall'intestazione `HTTP_HOST` della richiesta; "www" viene ignorato.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Non voglio perdere tempo con l'installazione di questo e farlo funzionare con il mio sito web; Posso pagarti per farlo per me?
 
@@ -1698,15 +1709,37 @@ Sì. Se è necessario forzare alcuni file per l'esecuzione in un ordinamento spe
 
 Ad esempio, assumendo una direttiva di configurazione con file elencati come segue:
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 Se si desidera che `file3.php` esegua prima, potresti aggiungere qualcosa come `aaa:` prima del nome del file:
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 Quindi, se un nuovo file, `file6.php`, viene attivato, quando la pagina degli aggiornamenti li ordina di nuovo tutti, dovrebbe finire in questo modo:
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 Stessa situazione quando un file è disattivato. Al contrario, se si desidera che il file venga eseguito per ultimo, è possibile aggiungere qualcosa come `zzz:` prima del nome del file. In ogni caso, non sarà necessario rinominare il file in questione.
 
@@ -2010,7 +2043,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Connesso.
 ```
 
 *La direttiva di configurazione responsabile delle registri di front-end è:*
-- `general` -> `frontend_log`
+- `frontend` -> `frontend_log`
 
 ##### 9.3.3 ROTAZIONE DEL REGISTRO
 
@@ -2046,14 +2079,12 @@ CIDRAM è in grado di pseudonimizzare gli indirizzi IP durante la registrazione,
 
 ##### 9.3.6 OMETTENDO LE INFORMAZIONI DEL REGISTRO
 
-Se si desidera fare un ulteriore passo avanti impedendo che determinati tipi di informazioni vengano registrati interamente, è anche possibile farlo. CIDRAM fornisce direttive di configurazione per controllare se gli indirizzi IP, i nomi host, e gli agenti utente sono inclusi nei registri. Per impostazione predefinita, tutti e tre questi punti dati sono inclusi nei registri, se disponibili. L'impostazione di una qualsiasi di queste direttive di configurazione su `true` ometterà le informazioni corrispondenti dai registri.
+Se si desidera fare un ulteriore passo avanti impedendo che determinati tipi di informazioni vengano registrati interamente, è anche possibile farlo. Nella pagina di configurazione, fare riferimento alla direttiva di configurazione `fields` per controllare quali campi vengono visualizzati nelle voci di registro e nella pagina "Accesso Negato".
 
 *Nota: Non c'è motivo di pseudonimizzare gli indirizzi IP quando li si omette completamente dai log.*
 
 *Direttive di configurazione rilevanti:*
-- `legal` -> `omit_ip`
-- `legal` -> `omit_hostname`
-- `legal` -> `omit_ua`
+- `general` -> `fields`
 
 ##### 9.3.7 STATISTICA
 
@@ -2075,7 +2106,6 @@ In entrambi i casi, gli avvertimenti sui cookie vengono visualizzati in modo pro
 *Nota: Le API CAPTCHA "invisibili" potrebbero essere incompatibili con le leggi sui cookie in alcune giurisdizioni, e dovrebbe essere evitato da qualsiasi sito web soggetto a tali leggi. Scegliere di utilizzare invece le altre API fornite, o semplicemente disabilitare il CAPTCHA completamente, potrebbe essere preferibile.*
 
 *Direttive di configurazione rilevanti:*
-- `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`

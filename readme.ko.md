@@ -40,31 +40,37 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 
 #### 2.0 수동 설치
 
-1) 이 항목을 읽고 있다는 점에서 아카이브 스크립트의 로컬 컴퓨터에 다운로드 및 압축 해제는 종료하고 있다고 생각합니다. 호스트 또는 CMS에 `/public_html/cidram/`와 같은 디렉토리를 만들고 로컬 컴퓨터에서 거기에 콘텐츠를 업로드하는 것이 다음 단계입니다. 파일 저장 디렉토리 이름과 위치는 안전하고 만 있으면 물론 제약 등은 없기 때문에 자유롭게 결정 해주세요.
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2) `config.ini`에 `config.ini.RenameMe`의 이름을 변경합니다 (`vault`의 안쪽에 위치한다). 옵션 수정을 위해 (초보자는 권장하지 않지만, 경험이 풍부한 사용자는 좋습니다) 그것을여십시오 (이 파일은 CIDRAM이 가능한 지시자를 포함하고 있으며, 각각의 옵션에 대해 기능과 목적에 관한 간단한 설명이 있습니다). 설치 환경에 따라 적절한 수정을하고 파일을 저장하십시오.
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3) 콘텐츠 (CIDRAM 본체와 파일)을 먼저 정한 디렉토리에 업로드합니다. (`*.txt`또는 `*.md`파일 업로드 필요는 없지만, 대개는 모든 업로드 해달라고해도됩니다).
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4) `vault`디렉토리 "755"로 권한 변경 (문제가있는 경우 "777"을 시도 할 수 있습니다; 하지만 이것은 안전하지 않습니다). 콘텐츠를 업로드 한 디렉토리 자체는 보통 특히 아무것도 필요하지 않지만, 과거에 권한 문제가있을 경우 CHMOD의 상태는 확인하는 것이 좋습니다. (기본적으로 "755"가 일반적입니다). 간단히 말해서 : 패키지가 제대로 작동하려면 PHP가`vault` 디렉토리에서 파일을 읽고 쓸 수 있어야합니다. PHP가`vault` 디렉토리에 쓸 수 없다면 많은 것들 (업데이트, 로깅 등)은 불가능합니다. PHP가`vault` 디렉토리에서 읽을 수 없다면 패키지는 전혀 작동하지 않을 것입니다. 최적의 보안을 위해, `vault` 디렉토리는 공개적으로 접근 할 수 없어야합니다 (`vault` 디렉토리가 공개적으로 액세스 가능한 경우, `config.ini` 나`frontend.dat` 에 포함 된 정보와 같은 민감한 정보는 잠재적 인 공격자에게 노출 될 수 있습니다).
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5) 그 다음에 시스템 또는 CMS에 CIDRAM를 연결합니다. 방법에는 여러 가지가 있지만 가장 쉬운 것은`require`과`include`에서 스크립트를 시스템 또는 CMS 코어 파일의 첫 부분에 기재하는 방법입니다. (코어 파일은 사이트의 어떤 페이지에 접근이 있어도 반드시로드되는 파일입니다). 일반적으로는 `/includes`또는 `/assets`또는 `/functions`같은 디렉토리에있는 파일에서 `init.php`, `common_functions.php`, `functions.php`라는 파일 이름을 붙일 수 있습니다. 실제로 어떤 파일인지는 찾아도 바닥입니다해야합니다. 잘 모르는 경우 CIDRAM 지원 포럼을 참조하거나 GitHub 때문에 CIDRAM 문제의 페이지 또는 알려주십시오 (CMS 정보 필수). 나 자신을 포함하여 사용자에 유사한 CMS를 다룬 경험이 있으면, 무엇인가의 지원을 제공 할 수 있습니다. 코어 파일이 발견 된 경우, (`require` 또는`include`을 사용하여) 다음 코드를 파일의 맨 위에 삽입하십시오. 그러나 따옴표로 둘러싸인 부분은`loader.php` 파일의 정확한 주소 (HTTP 주소가 아닌 로컬 주소 전술의 vault 주소와 유사)로 바꿉니다.
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-파일을 저장하고 닫은 다음 다시 업로드합니다.
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- 다른 방법 --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-Apache 웹서버를 이용하고있어, 한편`php.ini`를 편집 할 수 있도록한다면, `auto_prepend_file` 지시어를 사용하여 PHP 요청이있을 경우에는 항상 CIDRAM을 앞에 추가하도록 할 있습니다. 예를 들면 다음과 같습니다.
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-또는 `.htaccess`에서 :
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-6) 설치가 완료되었습니다. :-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 COMPOSER를 사용하여 설치한다
 
@@ -104,13 +110,37 @@ CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 �
 
 프론트 엔드는 CIDRAM 설치 유지 관리 업데이트하기위한 편리하고 쉬운 방법을 제공합니다. 로그 페이지를 사용하여 로그 파일을 공유, 다운로드 할 수있는 구성 페이지에서 구성을 변경할 수 있습니다, 업데이트 페이지를 사용하여 구성 요소를 설치 및 제거 할 수 있습니다, 그리고 파일 관리자를 사용하여 vault에 파일을 업로드, 다운로드 및 변경할 수 있습니다.
 
-#### 4.1 프론트 엔드를 사용하는 방법.
+#### 4.1 프론트 엔드를 액세스하는 방법.
 
-1) `config.ini` 안에있는 `disable_frontend` 지시문을 찾습니다 그것을 "`false`"로 설정합니다 (기본값은 "`true`"입니다).
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-2) 브라우저에서 `loader.php`에 액세스하십시오 (예, `http://localhost/cidram/loader.php`).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-3) 기본 사용자 이름과 암호로 로그인 (admin/password).
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 주의 : 당신이 처음 로그인 한 후 프론트 엔드에 대한 무단 액세스를 방지하기 위해 신속하게 사용자 이름과 암호를 변경해야합니다! 이것은 매우 중요합니다, 왜냐하면 프론트 엔드에서 임의의 PHP 코드를 당신의 웹 사이트에 업로드 할 수 있기 때문입니다.
 
@@ -137,7 +167,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 ### 5. <a name="SECTION5"></a>설정 옵션
 
-다음은 `config.ini`설정 파일에있는 변수 및 그 목적과 기능의 목록입니다.
+다음은 `config.yml`설정 파일에있는 변수 및 그 목적과 기능의 목록입니다.
 
 ```
 구성 (v3)
@@ -1403,12 +1433,6 @@ CIDRAM 프런트 엔드의 "섹션 목록"페이지에서 제공하는 인터페
 
 모듈은 CIDRAM의 기능을 확장하거나, 추가 작업을 수행하거나 추가 논리를 처리하는 데 사용할 수 있습니다. 일반적으로, 모듈은 원래 IP 주소 이외의 이유로 요청을 차단해야 할 때 사용됩니다 (따라서 CIDR 서명으로 요청을 차단할 수 없을 때). 모듈은 PHP 파일로 작성되므로 일반적으로 모듈 서명은 PHP 코드로 작성됩니다.
 
-CIDRAM 모듈의 좋은 예는 다음에서 찾을 수 있습니다.
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-새 모듈 작성을위한 템플릿은 다음에서 찾을 수 있습니다.
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 모듈은 PHP 파일로 작성되기 때문에, CIDRAM 코드베이스에 대해 잘 알고 있다면, 원하는대로 모듈과 모듈 서명을 구성 할 수 있습니다 (합리적인 한도 내에서). 그러나 기존 모듈과 자신의 편의를 위해 더 나은 상호 명료성을 위해 위에서 링크 된 템플릿을 분석하여 제공되는 구조와 형식을 사용할 수 있도록하는 것이 좋습니다.
 
 *노트 : PHP 코드 작업에 익숙하지 않은 경우 자신 만의 모듈을 작성하는 것은 좋지 않습니다.*
@@ -1417,11 +1441,11 @@ CIDRAM이 제공하는 일부 기능을 사용하면 모듈을 더 간단하고 
 
 #### 6.5 모듈 기능
 
-##### 6.5.0 "$Trigger"
+##### 6.5.0 "$this->trigger"
 
-모듈 서명은 일반적으로 `$Trigger`로 작성됩니다. 대부분의 경우, 모듈 작성을 목적으로이 closure 다른 어떤 것보다 중요합니다.
+모듈 서명은 일반적으로 `$this->trigger`로 작성됩니다. 대부분의 경우, 모듈 작성을 목적으로이 method 다른 어떤 것보다 중요합니다.
 
-`$Trigger`는 4 개의 매개 변수를 허용합니다 : `$Condition`, `$ReasonShort`, `$ReasonLong` (선택 과목), 및 `$DefineOptions` (선택 과목).
+`$this->trigger`는 4 개의 매개 변수를 허용합니다 : `$Condition`, `$ReasonShort`, `$ReasonLong` (선택 과목), 및 `$DefineOptions` (선택 과목).
 
 `$Condition`의 진실성이 평가됩니다. True의 경우, 서명은 트리거됩니다. False의 경우, 서명은 트리거되지 않습니다. `$Condition`에는 대개 요청을 차단해야하는 조건을 평가하는 PHP 코드가 들어 있습니다.
 
@@ -1431,18 +1455,13 @@ CIDRAM이 제공하는 일부 기능을 사용하면 모듈을 더 간단하고 
 
 `$DefineOptions`는 키/값 쌍을 포함하는 선택적 배열입니다. 요청 인스턴스와 관련된 구성 옵션을 정의하는 데 사용됩니다. 구성 옵션은 서명이 트리거 될 때 적용됩니다.
 
-`$Trigger`는 서명이 트리거되면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+`$this->trigger`는 서명이 트리거되면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
 
-이 closure를 모듈에서 사용하려면 먼저 부모 범위에서 상속 받는다는 것을 기억하십시오 :
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+##### 6.5.1 "$this->bypass"
 
-##### 6.5.1 "$Bypass"
+서명 우회는 일반적으로 `$this->bypass`로 작성됩니다.
 
-서명 우회는 일반적으로 `$Bypass`로 작성됩니다.
-
-`$Bypass`는 3 개의 매개 변수를 허용합니다 : `$Condition`, `$ReasonShort`, 및 `$DefineOptions` (선택 과목).
+`$this->bypass`는 3 개의 매개 변수를 허용합니다 : `$Condition`, `$ReasonShort`, 및 `$DefineOptions` (선택 과목).
 
 `$Condition`의 진실성이 평가됩니다. True의 경우, 우회가은 트리거됩니다. False의 경우, 우회가은 트리거되지 않습니다. `$Condition`에는 일반적으로 요청을 차단해서는 안되는 조건을 평가하는 PHP 코드가 들어 있습니다.
 
@@ -1450,31 +1469,23 @@ $Trigger = $CIDRAM['Trigger'];
 
 `$DefineOptions`는 키/값 쌍을 포함하는 선택적 배열입니다. 요청 인스턴스와 관련된 구성 옵션을 정의하는 데 사용됩니다. 구성 옵션은 우회가이 트리거 될 때 적용됩니다.
 
-`$Bypass`는 우회가 트리거되면 true를, 그렇지 않으면 false를 반환합니다.
+`$this->bypass`는 우회가 트리거되면 true를, 그렇지 않으면 false를 반환합니다.
 
-이 closure를 모듈에서 사용하려면 먼저 부모 범위에서 상속 받는다는 것을 기억하십시오 :
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
+##### 6.5.2 "$this->dnsReverse"
 
-##### 6.5.2 "$CIDRAM['DNS-Reverse']"
-
-IP 주소의 호스트 이름을 가져 오는 데 사용할 수 있습니다. 호스트 이름을 차단하는 모듈을 만들려면이, closure가 유용 할 수 있습니다.
+IP 주소의 호스트 이름을 가져 오는 데 사용할 수 있습니다. 호스트 이름을 차단하는 모듈을 만들려면이, method가 유용 할 수 있습니다.
 
 예 :
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1486,17 +1497,17 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 변수 | 설명
 ----|----
-`$CIDRAM['BlockInfo']['DateTime']` | 현재 날짜와 시간.
-`$CIDRAM['BlockInfo']['IPAddr']` | 현재 요청의 IP 주소.
-`$CIDRAM['BlockInfo']['ScriptIdent']` | CIDRAM 스크립트 버전.
-`$CIDRAM['BlockInfo']['Query']` | 현재 요청에 대한 쿼리입니다.
-`$CIDRAM['BlockInfo']['Referrer']` | 현재 요청에 대한 리퍼러 (존재하는 경우).
-`$CIDRAM['BlockInfo']['UA']` | 현재 요청에 대한 사용자 에이전트입니다 (user agent).
-`$CIDRAM['BlockInfo']['UALC']` | 현재 요청에 대한 소문자의 사용자 에이전트입니다 (user agent).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | 현재 요청이 차단 된 경우 사용자/클라이언트에게 표시 할 메시지입니다.
-`$CIDRAM['BlockInfo']['SignatureCount']` | 현재 요청에 대해 트리거 된 서명 수입니다.
-`$CIDRAM['BlockInfo']['Signatures']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
-`$CIDRAM['BlockInfo']['WhyReason']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
+`$this->BlockInfo['DateTime']` | 현재 날짜와 시간.
+`$this->BlockInfo['IPAddr']` | 현재 요청의 IP 주소.
+`$this->BlockInfo['ScriptIdent']` | CIDRAM 스크립트 버전.
+`$this->BlockInfo['Query']` | 현재 요청에 대한 쿼리입니다.
+`$this->BlockInfo['Referrer']` | 현재 요청에 대한 리퍼러 (존재하는 경우).
+`$this->BlockInfo['UA']` | 현재 요청에 대한 사용자 에이전트입니다 (user agent).
+`$this->BlockInfo['UALC']` | 현재 요청에 대한 소문자의 사용자 에이전트입니다 (user agent).
+`$this->BlockInfo['ReasonMessage']` | 현재 요청이 차단 된 경우 사용자/클라이언트에게 표시 할 메시지입니다.
+`$this->BlockInfo['SignatureCount']` | 현재 요청에 대해 트리거 된 서명 수입니다.
+`$this->BlockInfo['Signatures']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
+`$this->BlockInfo['WhyReason']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
 
 ---
 
@@ -1554,7 +1565,7 @@ CIDRAM의 맥락에서 "서명"이라 함은 지표/식별자 역할을하는 �
 "모듈"의 경우 :
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 *노트 : "서명 파일"에 대한 서명과, "모듈"에 대한 서명은, 동일한 것이 아닙니다.*
@@ -1615,7 +1626,7 @@ CIDRAM는 웹 사이트 소유자가 원하지 않는 트래픽을 차단하는 
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>단일 CIDRAM 설치를 사용하여 여러 도메인을 보호 할 수 있습니까?
 
-예. CIDRAM 설치는 특정 도메인에 국한되지 않습니다, 따라서 여러 도메인을 보호하기 위해 사용할 수 있습니다. 일반적으로, 하나의 도메인 만 보호 설치 우리는 "단일 도메인 설치"이 라고 부릅니다에서 여러 도메인을 보호하는 설치 우리는 "멀티 도메인 설치"이 라고 있습니다. 다중 도메인 설치를 사용하는 경우 다른 도메인에 다른 서명 파일 세트를 사용할 필요가 있거나 다른 도메인에 CIDRAM을 다른 설정해야합니다 이것을 할 수 있습니다. 설정 파일을로드 한 후 (`config.ini`), CIDRAM 요청 된 도메인의 "구성 재정 파일"의 존재를 확인합니다 (`xn--hq1bngz0pl7nd2aqft27a.tld.config.ini`), 그리고 발견 된 경우, 구성 재정 파일에 의해 정의 된 구성 값은 설정 파일에 의해 정의 된 구성 값이 아니라 실행 인스턴스에 사용됩니다. 구성 재정 파일은 설정 파일과 동일합니다. 귀하의 재량에 따라 CIDRAM에서 사용할 수있는 모든 구성 지시문 전체 또는 필요한 하위 섹션을 포함 할 수 있습니다. 구성 재정 파일은 그들이 의도하는 도메인에 따라 지정됩니다 (그래서 예를 들면, 도메인 `https://www.some-domain.tld/` 컨피규레이션 재정 파일이 필요한 경우, 구성 재정 파일의 이름은 `some-domain.tld.config.ini` 할 필요가 있습니다. 일반 구성 파일과 동일한 위치에 보관해야합니다). 도메인 이름은 `HTTP_HOST` 에서옵니다. "www"는 무시됩니다.
+예. CIDRAM 설치는 특정 도메인에 국한되지 않습니다, 따라서 여러 도메인을 보호하기 위해 사용할 수 있습니다. 일반적으로, 하나의 도메인 만 보호 설치 우리는 "단일 도메인 설치"이 라고 부릅니다에서 여러 도메인을 보호하는 설치 우리는 "멀티 도메인 설치"이 라고 있습니다. 다중 도메인 설치를 사용하는 경우 다른 도메인에 다른 서명 파일 세트를 사용할 필요가 있거나 다른 도메인에 CIDRAM을 다른 설정해야합니다 이것을 할 수 있습니다. 설정 파일을로드 한 후 (`config.yml`), CIDRAM 요청 된 도메인의 "구성 재정 파일"의 존재를 확인합니다 (`xn--hq1bngz0pl7nd2aqft27a.tld.config.yml`), 그리고 발견 된 경우, 구성 재정 파일에 의해 정의 된 구성 값은 설정 파일에 의해 정의 된 구성 값이 아니라 실행 인스턴스에 사용됩니다. 구성 재정 파일은 설정 파일과 동일합니다. 귀하의 재량에 따라 CIDRAM에서 사용할 수있는 모든 구성 지시문 전체 또는 필요한 하위 섹션을 포함 할 수 있습니다. 구성 재정 파일은 그들이 의도하는 도메인에 따라 지정됩니다 (그래서 예를 들면, 도메인 `https://www.some-domain.tld/` 컨피규레이션 재정 파일이 필요한 경우, 구성 재정 파일의 이름은 `some-domain.tld.config.yml` 할 필요가 있습니다. 일반 구성 파일과 동일한 위치에 보관해야합니다). 도메인 이름은 `HTTP_HOST` 에서옵니다. "www"는 무시됩니다.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>나는 이것을 설치하거나 그것이 내 웹 사이트상에서 동작하는 것을 보장하는 시간을 보내고, 하고 싶지 않아; 그것을 할 수 있습니까? 나는 당신을 고용 할 수 있습니까?
 
@@ -1698,15 +1709,37 @@ IP | 운영자
 
 예를 들어, 다음과 같이 나열된 파일이있는 구성 지시문을 가정합니다 :
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 `file3.php`를 먼저 실행시키고 싶다면, 파일 이름 앞에 `aaa:`와 같은 것을 추가 할 수 있습니다 :
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 그런 다음 새 파일 `file6.php`가 활성화되면, 업데이트 페이지에서 모두 다시 정렬하면 다음과 같이 끝납니다 :
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 파일이 비활성화 될 때와 동일한 상황입니다. 반대로, 파일을 마지막으로 실행하려면, 파일 이름 앞에 `zzz:`와 같은 것을 추가 할 수 있습니다. 어떤 경우이든 해당 파일의 이름을 바꿀 필요가 없습니다.
 
@@ -2002,7 +2035,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 로그인 했습니다.
 ```
 
 *프런트 엔드 로깅을 담당하는 구성 지시문 :*
-- `general` -> `frontend_log`
+- `frontend` -> `frontend_log`
 
 ##### 9.3.3 로그 회전
 
@@ -2042,14 +2075,12 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 로그인 했습니다.
 
 ##### 9.3.6 로그 정보 생략
 
-특정 유형의 정보가 전적으로 기록되는 것을 방지하여 한 걸음 더 나아가고 싶다면 이렇게하는 것도 가능합니다. CIDRAM은 IP 주소, 호스트 이름 및 사용자 에이전트가 로그에 포함되는지 여부를 제어하는 구성 지정 문을 제공합니다. 기본적으로 이러한 데이터 포인트 세 개가 모두 사용 가능한 경우 로그에 포함됩니다. 이러한 설정 지시어를 `true`로 설정하면 로그에서 해당 정보가 생략됩니다.
+특정 유형의 정보가 전적으로 기록되는 것을 방지하여 한 걸음 더 나아가고 싶다면 이렇게하는 것도 가능합니다. 구성 페이지에서 `fields` 구성 지시문을 참조하여 로그 항목과 "액세스 거부" 페이지에 표시되는 필드를 제어하십시오.
 
 *노트 : 로그에서 IP 주소를 완전히 생략 할 때 IP 주소 pseudonymisation을 사용할 이유가 없습니다.*
 
 *관련 설정 지시어 :*
-- `legal` -> `omit_ip`
-- `legal` -> `omit_hostname`
-- `legal` -> `omit_ua`
+- `general` -> `fields`
 
 ##### 9.3.7 통계
 
@@ -2071,7 +2102,6 @@ CIDRAM은 [쿠키](https://ko.wikipedia.org/wiki/HTTP_%EC%BF%A0%ED%82%A4)를 코
 *노트 : "보이지 않는"CAPTCHA API는 일부 관할권에서 쿠키 법률과 호환되지 않을 수 있습니다. 쿠키 법이 적용되는 웹 사이트는을 피해 야합니다. 대신, 제공된 다른 API를 사용하거나, 단순히 CAPTCHA를 완전히 비활성화하는 것이, 바람직 할 수 있습니다.*
 
 *관련 설정 지시어 :*
-- `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`

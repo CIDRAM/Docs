@@ -40,31 +40,37 @@ Tài liệu này và các gói liên quan của nó có thể được tải v�
 
 #### 2.0 CÀI ĐẶT THỦ CÔNG
 
-1) Nếu bạn đang đọc cái này thì tôi hy vọng là bạn đã tải về một bản sao kho lưu trữ của bản, giải nén nội dung của nó và nó đang nằm ở một nơi nào đó trên máy tính của bạn. Từ đây, bạn sẽ muốn đặt nội dung ở một nơi trên máy chủ hoặc CMS của bạn. Một thư mục chẳng hạn như `/public_html/cidram/` hay tương tự (mặc dù sự lựa chọn của bạn không quan trọng, miễn là nó an toàn và bạn hài lòng với sự lựa chọn) sẽ đủ.. *Trước khi bạn bắt đầu tải lên, hảy tiếp tục đọc..*
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2) Đổi tên `config.ini.RenameMe` đến `config.ini` (nằm bên trong `vault`), và nếu bạn muốn (đề nghị mạnh mẽ cho người dùng cao cấp, nhưng không đề nghị cho người mới bắt đầu hay cho người thiếu kinh nghiệm), mở nó (tập tin này bao gồm tất cả các tùy chọn có sẵn cho CIDRAM; trên mỗi tùy chọn nên có một nhận xét ngắn gọn mô tả những gì nó làm và những gì nó cho). Điều chỉnh các tùy chọn như bạn thấy phù hợp, theo bất cứ điều gì là thích hợp cho tập hợp cụ thể của bạn lên. Lưu tập tin, đóng.
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3) Tải nội dung lên (CIDRAM và tập tin của nó) vào thư mục bạn đã chọn trước (bạn không cần phải dùng tập tin `*.txt`/`*.md`, nhưng chủ yếu, bạn nên tải lên tất cả mọi thứ).
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4) CHMOD thư mục `vault` thành "755" (nếu có vấn đề, bạn có thể thử "777", mặc dù này là kém an toàn). Các thư mục chính kho lưu trữ các nội dung (một trong những cái bạn đã chọn trước), bình thường, có thể riêng, nhưng tình hình CHMOD nên kiểm tra, nếu bạn đã có vấn đề cho phép trong quá khứ về hệ thống của bạn (theo mặc định, nên giống như "755"). Nói ngắn gọn: Đối với các gói để hoạt động đúng, PHP cần để có thể đọc và ghi các tập tin bên trong thư mục `vault`. Nhiều thứ (cập nhật, đăng nhập, vv) sẽ không thể, nếu PHP không thể ghi vào thư mục `vault`, và gói sẽ không hoạt động chút nào nếu PHP không thể đọc từ thư mục `vault`. Tuy nhiên, để bảo mật tối ưu, đảm bảo rằng thư mục `vault` KHÔNG được truy cập công khai (thông tin nhạy cảm, chẳng hạn như thông tin chứa bởi `config.ini` hoặc `frontend.dat`, có thể tiếp xúc với những kẻ tấn công tiềm năng nếu thư mục `vault` có thể truy cập công khai).
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5) Tiếp theo, bạn sẽ cần "nối" CIDRAM vào hệ thống của bạn hay CMS. Có một số cách mà bạn có thể "nối" bản chẳng hạn như CIDRAM vào hệ thống hoạc CMS, nhưng cách đơn giản nhất là cần có bản vào cốt lõi ở đầu của tập tin hoạc hệ thống hay CMS của bạn (một mà thường sẽ luôn luôn được nạp khi ai đó truy cập bất kỳ trang nào trên trang mạng của bạn) bằng cách sử dụng một lời chỉ thị `require` hoạc `include`. Thường, cái nàu sẽ được lưu trong một thư mục như `/includes`, `/assets` hoạc `/functions`, và sẽ thường được gọi là `init.php`, `common_functions.php`, `functions.php` hoạc tương tự. Bạn sẽ cần tiềm ra tập tin nào cho trường hợp của bạn; Nếu bạn gặp khó khăn trong việc này ra cho chính mình, hãy truy các trang issues (các vấn đề) của CIDRAM và cho chúng tôi biêt. Để làm chuyện này [sử dụng `require` họac `include`], đánh các dòng mã sao đây vào đầu của cốt lõi của tập tin, thay thế các dây chứa bên trong các dấu ngoặc kép với địa chỉ chính xác của tập tin `loader.php` (địa chỉ địa phương, chứ không phải địa chỉ HTTP; nó sẽ nhình gióng địa chỉ kho nói ở trên).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-Lưu tập tin, đóng lại, tải lên lại.
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- CÁCH KHÁC --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-Nếu bạn đang sử dụng trang chủ Apache và nếu bạn có thể truy cập `php.ini`, bạn có thể sử dụng `auto_prepend_file` chỉ thị để thêm vào trước CIDRAM bất cứ khi nào bất kỳ yêu cầu PHP được xin. Gióng như:
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Hoạc cái này trong tập tin `.htaccess`:
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-6) Đó là tất cả mọi thứ! :-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 CÀI ĐẶT VỚI COMPOSER
 
@@ -104,13 +110,37 @@ CIDRAM có thể được cập nhật bằng tay hoặc thông qua front-end. C
 
 Các front-end cung cấp một cách thuận tiện và dễ dàng để duy trì, quản lý và cập nhật cài đặt CIDRAM của bạn. Bạn có thể xem, chia sẻ và tải về các tập tin bản ghi thông qua các trang bản ghi, bạn có thể sửa đổi cấu hình thông qua các trang cấu hình, bạn có thể cài đặt và gỡ bỏ cài đặt các thành phần thông qua các trang cập nhật, và bạn có thể tải lên, tải về, và sửa đổi các tập tin trong vault của bạn thông qua các quản lý tập tin.
 
-#### 4.1 LÀM THẾ NÀO ĐỂ KÍCH HOẠT FRONT-END.
+#### 4.1 LÀM THẾ NÀO ĐỂ TRUY CẬP FRONT-END.
 
-1) Xác định vị trí các chỉ thị `disable_frontend` bên trong `config.ini`, và đặt nó vào `false` (nó sẽ là `true` bởi mặc định).
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-2) Truy cập `loader.php` từ trình duyệt của bạn (ví dụ, `http://localhost/cidram/loader.php`).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-3) Đăng nhập với tên người dùng và mật khẩu mặc định (admin/password).
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 Chú thích: Sau khi bạn đã đăng nhập lần đầu tiên, để ngăn chặn truy cập trái phép vào các front-end, bạn phải ngay lập tức thay đổi tên người dùng và mật khẩu của bạn! Điều này là rất quan trọng, bởi vì nó có thể tải lên các mã PHP tùy ý để trang web của bạn thông qua các front-end.
 
@@ -137,7 +167,7 @@ Chú thích: Bảo vệ vault của bạn khỏi bị truy cập trái phép (v�
 
 ### 5. <a name="SECTION5"></a>TÙY CHỌN CHO CẤU HÌNH
 
-Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho CIDRAM `config.ini`, cùng với một mô tả về mục đích và chức năng của chúng.
+Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho CIDRAM `config.yml`, cùng với một mô tả về mục đích và chức năng của chúng.
 
 ```
 Cấu hình (v3)
@@ -1413,12 +1443,6 @@ Nếu bạn cảm thấy việc viết các tập tin chữ ký tùy chỉnh ho�
 
 Các mô-đun có thể được sử dụng để mở rộng chức năng của CIDRAM, thực hiện các tác vụ bổ sung hay xử lý logic bổ sung. Thông thường, chúng được sử dụng khi cần thiết để chặn một yêu cho cầu lý do khác với địa chỉ IP có nguồn gốc (và như vậy, khi một chữ ký CIDR sẽ không đủ để chặn yêu cầu). Mô-đun được viết như tập tin PHP, và như vậy, thông thường, chữ ký mô-đun được viết như mã PHP.
 
-Một số ví dụ điển hình về mô-đun CIDRAM có thể được tìm thấy ở đây:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Bạn có thể tìm thấy khuôn mẫu để viết mô-đun mới ở đây:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 Bởi vì các mô-đun được viết như tập tin PHP, nếu bạn đã quen thuộc với mã nguồn CIDRAM, bạn có thể cấu trúc module của bạn tuy nhiên bạn muốn, và viết chữ ký mô-đun của bạn tuy nhiên bạn muốn (trong vòng suy luận những gì có thể với PHP). Tuy nhiên, để thuận tiện cho bạn, và vì lợi ích của hiểu rõ hơn giữa các mô-đun hiện tại và của riêng bạn, phân tích mẫu liên kết ở trên được khuyến nghị, để có thể sử dụng cấu trúc và định dạng mà nó cung cấp.
 
 *Lưu ý: Nếu bạn không cảm thấy thoải mái khi làm việc với mã PHP, bạn không nên viết mô-đun riêng của mình.*
@@ -1427,11 +1451,11 @@ Một số chức năng được cung cấp bởi CIDRAM cho các mô-đun để
 
 #### 6.5 CHỨC NĂNG MÔ-ĐUN
 
-##### 6.5.0 "$Trigger"
+##### 6.5.0 "$this->trigger"
 
-Chữ ký mô-đun thường được viết bằng `$Trigger`. Trong hầu hết các trường hợp, sự đóng này sẽ quan trọng hơn bất cứ thứ gì khác để viết mô-đun.
+Chữ ký mô-đun thường được viết bằng `$this->trigger`. Trong hầu hết các trường hợp, sự đóng này sẽ quan trọng hơn bất cứ thứ gì khác để viết mô-đun.
 
-`$Trigger` chấp nhận 4 tham số: `$Condition`, `$ReasonShort`, `$ReasonLong` (không bắt buộc), và `$DefineOptions` (không bắt buộc).
+`$this->trigger` chấp nhận 4 tham số: `$Condition`, `$ReasonShort`, `$ReasonLong` (không bắt buộc), và `$DefineOptions` (không bắt buộc).
 
 Thực tế của `$Condition` được đánh giá, và nếu true/đúng, chữ ký là "kích hoạt". Nếu false/sai, chữ ký không phải là "kích hoạt". `$Condition` thường có chứa mã PHP để đánh giá một điều kiện nên làm yêu cầu bị chặn.
 
@@ -1441,18 +1465,13 @@ Thực tế của `$Condition` được đánh giá, và nếu true/đúng, ch�
 
 `$DefineOptions` là một mảng tùy chọn có chứa cặp khóa / giá trị, được sử dụng để xác định các tùy chọn cấu hình cụ thể cho trường hợp yêu cầu. Tùy chọn cấu hình sẽ được áp dụng khi chữ ký được "kích hoạt".
 
-`$Trigger` trả về true/đúng khi chữ ký được "kích hoạt", và false/sai khi không.
+`$this->trigger` trả về true/đúng khi chữ ký được "kích hoạt", và false/sai khi không.
 
-Để sử dụng sự đóng này trong mô-đun của bạn, trước tiên hãy nhớ kế thừa nó từ phạm vi cha mẹ:
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+##### 6.5.1 "$this->bypass"
 
-##### 6.5.1 "$Bypass"
+Đường tránh chữ ký thường được viết bằng `$this->bypass`.
 
-Đường tránh chữ ký thường được viết bằng `$Bypass`.
-
-`$Bypass` chấp nhận 3 tham số: `$Condition`, `$ReasonShort`, và `$DefineOptions` (không bắt buộc).
+`$this->bypass` chấp nhận 3 tham số: `$Condition`, `$ReasonShort`, và `$DefineOptions` (không bắt buộc).
 
 Thực tế của `$Condition` được đánh giá, và nếu true/đúng, đường tránh là "kích hoạt". Nếu false/sai, đường tránh không phải là "kích hoạt". `$Condition` thường có chứa mã PHP để đánh giá một điều kiện *không* nên làm yêu cầu bị chặn.
 
@@ -1460,31 +1479,23 @@ Thực tế của `$Condition` được đánh giá, và nếu true/đúng, đư
 
 `$DefineOptions` là một mảng tùy chọn có chứa cặp khóa / giá trị, được sử dụng để xác định các tùy chọn cấu hình cụ thể cho trường hợp yêu cầu. Tùy chọn cấu hình sẽ được áp dụng khi đường tránh được "kích hoạt".
 
-`$Bypass` trả về true/đúng khi đường tránh được "kích hoạt", và false/sai khi không.
+`$this->bypass` trả về true/đúng khi đường tránh được "kích hoạt", và false/sai khi không.
 
-Để sử dụng sự đóng này trong mô-đun của bạn, trước tiên hãy nhớ kế thừa nó từ phạm vi cha mẹ:
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
-
-##### 6.5.2 "$CIDRAM['DNS-Reverse']"
+##### 6.5.2 "$this->dnsReverse"
 
 Điều này có thể được sử dụng để lấy tên máy chủ của một địa chỉ IP. Nếu bạn muốn tạo một mô-đun để chặn tên máy chủ, sự đóng này có thể hữu ích.
 
 Ví dụ:
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1496,17 +1507,17 @@ Dưới đây là một số biến phổ biến có thể hữu ích cho mô-đ
 
 Biến | Chi tiết
 ----|----
-`$CIDRAM['BlockInfo']['DateTime']` | Ngày hiện tại và thời gian.
-`$CIDRAM['BlockInfo']['IPAddr']` | Địa chỉ IP cho yêu cầu hiện tại.
-`$CIDRAM['BlockInfo']['ScriptIdent']` | Phiên bản kịch bản CIDRAM.
-`$CIDRAM['BlockInfo']['Query']` | Truy vấn (query) cho yêu cầu hiện tại.
-`$CIDRAM['BlockInfo']['Referrer']` | Người giới thiệu (referrer) cho yêu cầu hiện tại (nếu có).
-`$CIDRAM['BlockInfo']['UA']` | Đại lý người dùng (user agent) cho yêu cầu hiện tại.
-`$CIDRAM['BlockInfo']['UALC']` | Đại lý người dùng (user agent) cho yêu cầu hiện tại (trong trường hợp thấp).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | Thông báo sẽ được hiển thị cho người dùng / khách hàng cho yêu cầu hiện tại nếu chúng bị chặn.
-`$CIDRAM['BlockInfo']['SignatureCount']` | Số chữ ký kích hoạt cho yêu cầu hiện tại.
-`$CIDRAM['BlockInfo']['Signatures']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
-`$CIDRAM['BlockInfo']['WhyReason']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
+`$this->BlockInfo['DateTime']` | Ngày hiện tại và thời gian.
+`$this->BlockInfo['IPAddr']` | Địa chỉ IP cho yêu cầu hiện tại.
+`$this->BlockInfo['ScriptIdent']` | Phiên bản kịch bản CIDRAM.
+`$this->BlockInfo['Query']` | Truy vấn (query) cho yêu cầu hiện tại.
+`$this->BlockInfo['Referrer']` | Người giới thiệu (referrer) cho yêu cầu hiện tại (nếu có).
+`$this->BlockInfo['UA']` | Đại lý người dùng (user agent) cho yêu cầu hiện tại.
+`$this->BlockInfo['UALC']` | Đại lý người dùng (user agent) cho yêu cầu hiện tại (trong trường hợp thấp).
+`$this->BlockInfo['ReasonMessage']` | Thông báo sẽ được hiển thị cho người dùng / khách hàng cho yêu cầu hiện tại nếu chúng bị chặn.
+`$this->BlockInfo['SignatureCount']` | Số chữ ký kích hoạt cho yêu cầu hiện tại.
+`$this->BlockInfo['Signatures']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
+`$this->BlockInfo['WhyReason']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
 
 ---
 
@@ -1564,7 +1575,7 @@ Trong bối cảnh của CIDRAM, "chữ ký" đề cập đến dữ liệu ho�
 Đối với "mô-đun":
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 *Chú thích: Chữ ký cho "tập tin chữ ký", và chữ ký cho "mô-đun", không phải là cùng một điều.*
@@ -1625,7 +1636,7 @@ Không. PHP >= 7.2.0 là yêu cầu tối thiểu đối với CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Tôi có thể sử dụng một cài đặt CIDRAM để bảo vệ nhiều tên miền?
 
-Vâng. Cài đặt CIDRAM không bị khóa vào các tên miền cụ thể, và do đó có thể được sử dụng để bảo vệ nhiều tên miền. Nói chung là, chúng tôi đề cập đến cài đặt CIDRAM chỉ bảo vệ một miền như "cài đặt miền đơn" ("single-domain installations"), và chúng tôi đề cập đến cài đặt CIDRAM bảo vệ nhiều miền hay miền phụ như "cài đặt nhiều miền" ("multi-domain installations"). Nếu bạn sử dụng một cài đặt nhiều miền và cần phải sử dụng các bộ tập tin chữ ký khác nhau cho các miền khác nhau, hoặc cần CIDRAM được cấu hình khác nhau cho các miền khác nhau, điều này có thể làm được. Sau khi tải tập tin cấu hình (`config.ini`), CIDRAM sẽ kiểm tra sự tồn tại của một "tập tin ghi đè cấu hình" cụ thể cho miền được yêu cầu (`miền-được-yêu-cầu.tld.config.ini`), và nếu được tìm thấy, bất kỳ giá trị cấu hình nào được xác định bởi tập tin ghi đè cấu hình sẽ được sử dụng cho trường hợp thực hiện thay vì các giá trị cấu hình được định nghĩa bởi tập tin cấu hình. Các tập tin ghi đè cấu hình giống với tập tin cấu hình, và tùy theo quyết định của bạn, có thể chứa toàn bộ các chỉ thị cấu hình sẵn có cho CIDRAM, hoặc bất kỳ phần bắt buộc nào mà khác với các giá trị được xác định bởi tập tin cấu hình. Các tập tin ghi đè cấu hình được đặt tên theo miền mà chúng được dự định (vì vậy, ví dụ, nếu bạn cần một tập tin ghi đè cấu hình cho miền, `https://www.some-domain.tld/`, các tập tin ghi đè cấu hình của nó nên được đặt tên là `some-domain.tld.config.ini`, và nên được đặt trong vault với tập tin cấu hình, `config.ini`). Tên miền cho trường hợp thực hiện được bắt nguồn từ header (tiêu đề) `HTTP_HOST` của các yêu cầu; "www" bị bỏ qua.
+Vâng. Cài đặt CIDRAM không bị khóa vào các tên miền cụ thể, và do đó có thể được sử dụng để bảo vệ nhiều tên miền. Nói chung là, chúng tôi đề cập đến cài đặt CIDRAM chỉ bảo vệ một miền như "cài đặt miền đơn" ("single-domain installations"), và chúng tôi đề cập đến cài đặt CIDRAM bảo vệ nhiều miền hay miền phụ như "cài đặt nhiều miền" ("multi-domain installations"). Nếu bạn sử dụng một cài đặt nhiều miền và cần phải sử dụng các bộ tập tin chữ ký khác nhau cho các miền khác nhau, hoặc cần CIDRAM được cấu hình khác nhau cho các miền khác nhau, điều này có thể làm được. Sau khi tải tập tin cấu hình (`config.yml`), CIDRAM sẽ kiểm tra sự tồn tại của một "tập tin ghi đè cấu hình" cụ thể cho miền được yêu cầu (`miền-được-yêu-cầu.tld.config.yml`), và nếu được tìm thấy, bất kỳ giá trị cấu hình nào được xác định bởi tập tin ghi đè cấu hình sẽ được sử dụng cho trường hợp thực hiện thay vì các giá trị cấu hình được định nghĩa bởi tập tin cấu hình. Các tập tin ghi đè cấu hình giống với tập tin cấu hình, và tùy theo quyết định của bạn, có thể chứa toàn bộ các chỉ thị cấu hình sẵn có cho CIDRAM, hoặc bất kỳ phần bắt buộc nào mà khác với các giá trị được xác định bởi tập tin cấu hình. Các tập tin ghi đè cấu hình được đặt tên theo miền mà chúng được dự định (vì vậy, ví dụ, nếu bạn cần một tập tin ghi đè cấu hình cho miền, `https://www.some-domain.tld/`, các tập tin ghi đè cấu hình của nó nên được đặt tên là `some-domain.tld.config.yml`, và nên được đặt trong vault với tập tin cấu hình, `config.yml`). Tên miền cho trường hợp thực hiện được bắt nguồn từ header (tiêu đề) `HTTP_HOST` của các yêu cầu; "www" bị bỏ qua.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Tôi không muốn lãng phí thời gian bằng cách cài đặt này và đảm bảo rằng nó hoạt động với trang web của tôi; Tôi có thể trả tiền cho bạn để làm điều đó cho tôi?
 
@@ -1710,15 +1721,37 @@ Vâng. Nếu bạn cần buộc một số tập tin thực thi theo thứ tự 
 
 Ví dụ, giả sử một chỉ thị cấu hình với các tập tin được liệt kê như sau:
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 Nếu bạn muốn `file3.php` thực hiện trước, bạn có thể thêm một cái gì đó như `aaa:` trước tên của tập tin:
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 Sau đó, nếu một tập tin mới, `file6.php`, được kích hoạt, khi trang cập nhật sắp xếp lại tất cả, nó sẽ kết thúc như sau:
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 Tình huống tương tự khi một tập tin bị hủy kích hoạt. Ngược lại, nếu bạn muốn tập tin thực thi cuối cùng, bạn có thể thêm một cái gì đó như `zzz:` trước tên của tập tin. Trong mọi trường hợp, bạn sẽ không cần đổi tên tập tin đang được đề cập đến.
 
@@ -2018,7 +2051,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Đã đăng nhập.
 ```
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký front-end là:*
-- `general` -> `frontend_log`
+- `frontend` -> `frontend_log`
 
 ##### 9.3.3 XOAY VÒNG NHẬT KÝ
 
@@ -2054,14 +2087,12 @@ CIDRAM có thể sử dụng "pseudonymisation" cho các địa chỉ IP khi nh�
 
 ##### 9.3.6 BỎ QUA THÔNG TIN NHẬT KÝ
 
-Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn các loại thông tin cụ thể được ghi lại hoàn toàn, điều này cũng có thể thực hiện được. CIDRAM cung cấp chỉ thị cấu hình để kiểm soát xem địa chỉ IP, tên máy chủ, và đại lý người dùng có được bao gồm trong nhật ký hay không. Theo mặc định, tất cả ba trong số các điểm dữ liệu này được bao gồm trong nhật ký khi có sẵn. Việc đặt bất kỳ chỉ thị cấu hình nào thành `true` sẽ bỏ qua thông tin tương ứng từ nhật ký.
+Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn các loại thông tin cụ thể được ghi lại hoàn toàn, điều này cũng có thể thực hiện được. Tại trang cấu hình, vui lòng tham khảo chỉ thị cấu hình `fields` để kiểm soát trường nào xuất hiện trong các mục nhật ký và trên trang "truy cập đã bị từ chối".
 
 *Chú thích: Không có lý do gì để bút danh các địa chỉ IP khi bỏ qua chúng hoàn toàn từ các nhật ký.*
 
 *Chỉ thị cấu hình có liên quan:*
-- `legal` -> `omit_ip`
-- `legal` -> `omit_hostname`
-- `legal` -> `omit_ua`
+- `general` -> `fields`
 
 ##### 9.3.7 SỐ LIỆU THỐNG KÊ
 
@@ -2083,7 +2114,6 @@ Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi b
 *Chú thích: Các API CAPTCHA "vô hình" có thể không tương thích với luật cookie ở một số khu vực pháp lý, và nên được tránh bởi bất kỳ trang web nào tuân theo các luật đó. Thay vào đó, chọn sử dụng các API được cung cấp khác, hoặc đơn giản là vô hiệu hóa hoàn toàn CAPTCHA, có thể thích hợp hơn.*
 
 *Chỉ thị cấu hình có liên quan:*
-- `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`

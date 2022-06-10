@@ -42,31 +42,37 @@
 
 #### <div dir="rtl">٢.٠ تثبيت يدويا</div>
 
-<div dir="rtl">١. بقراءتك لهذا سنفرض بأنك قمت بتحميل السكربت، من هنا عليك العمل على جهازك المحلي أو نظام إدارة المحتوى لإضافة هذه الأمور، مجلد مثل <code dir="ltr">"/public_html/cidram/"</code> أو ما شابه سيكون كاف.<br /><br /></div>
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-<div dir="rtl">٢. إعادة تسمية <code dir="ltr">"config.ini.RenameMe"</code> إلى "config.ini" (تقع داخل "vault")، واختياريا (هذه الخطوة اختيارية ينصح بها للمستخدمين المتقدمين ولا ينصح بها للمبتدئين)، افتحه، وعدل الخيارات كما يناسبك (أعلى كل خيار يوجد وصف مختصر للوظيفة التي يقوم بها).<br /><br /></div>
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-<div dir="rtl">٣. إرفع الملفات للمجلد الذي اخترته(لست بحاجة لرفع <code dir="ltr">"<code dir="ltr">*.txt/*.md</code>"</code> لكن في الغالب يجب أن ترفع جميع الملفات).<br /><br /></div>
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-<div dir="rtl">٤. غير التصريح لمجلد vault للتصريح<code dir="ltr">"755"</code> (إذا كان هناك مشاكل، يمكنك محاولة<code dir="ltr">"777"</code>، ولكن هذه ليست آمنة). المجلد الرئيسي الذي يحتوي على الملفات-المجلد الذي اخترته سابقاً-، بالعادة يمكن تجاهله، لكن يجب التأكد من التصريح إذا واجهت مشاكل في الماضي(إفتراضيا يجب أن يكون<code dir="ltr">"755"</code>). باختصار: لكي تعمل الحزمة بشكل صحيح، يجب أن تكون PHP قادرة على قراءة وكتابة الملفات داخل دليل <code dir="ltr">vault</code>. العديد من الأشياء (التحديث، التسجيل، الخ) لن تكون ممكنة، إذا تعذر على PHP الكتابة إلى دليل <code dir="ltr">vault</code>، ولن تعمل الحزمة على الإطلاق إذا تعذر على PHP القراءة من دليل <code dir="ltr">vault</code>. ومع ذلك، للحصول على الأمان الأمثل، يجب ألا يكون دليل <code dir="ltr">vault</code> متاحًا للجميع (المعلومات الحساسة، مثل المعلومات التي يحتوي عليها <code dir="ltr">config.ini</code> أو <code dir="ltr">frontend.dat</code>، يمكن أن تتعرض لمهاجمين محتملين إذا كان دليل <code dir="ltr">vault</code> متاحًا للجميع).<br /><br /></div>
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-<div dir="rtl">٥. الآن أنت بحاجة لربط CIDRAM لنظام إدارة المحتوى أو النظام الذي تستخدمه، هناك عدة طرق لفعل هذا لكن أسهل طريقة ببساطة إضافة السكربت لبداية النواة في نظامك (سيتم إعادة التحميل لكل وصول لأي صفحة في الموقع) بإستخدام جمل "require" أو "include"، بالعادة سيتم التخزين في "/includes"، "/assets" أو "/functions"، وسيتم تسميته بالغالب مثل: "init.php"، "common_functions.php"، "functions.php" أو ما شابه. من الممكن أن تكون مستخدم ل CMS لذا يمكن أن أقدم بعض المساعدة بخصوص هذا الموضوع، لإستخدام "require" أو "include" قم بإضافة الكود التالي لبداية الملف الرئيسي لبرنامجك، عدل النص الموجود داخل علامات التنصيص لمسار "loader.php" لديك.<br /><br /></div>
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-<div dir="rtl">إحفظ الملف ثم قم بإعادة رفعه.<br /><br /></div>
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
-<div dir="rtl">-- أو بدلاً من ذلك --<br /><br /></div>
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-<div dir="rtl">إذا كنت تستخدم Apache webserver وتستطيع الوصول ل "php.ini"، بإستطاعتك إستخدام "auto_prepend_file" للتوجيه ل CIDRAM لكل طلب مثل:<br /><br /></div>
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-<div dir="rtl">أو هذا في ملف ".htaccess":<br /><br /></div>
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-<div dir="rtl">٦. هذا كل شئ. 😄<br /><br /></div>
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### <div dir="rtl">٢.١ تثبيت مع COMPOSER</div>
 
@@ -106,13 +112,37 @@
 
 <div dir="rtl">Front-end يوفر وسيلة سهلة للحفاظ على، وإدارة، وتحديث CIDRAM. يمكنك عرض، حصة، وتحميل ملفات الدخول، يمكنك تعديل تكوين، يمكنك تثبيت وإلغاء تثبيت مكونات، ويمكنك تحميل وتنزيل وتعديل الملفات.<br /><br /></div>
 
-#### <div dir="rtl">٤.١ كيفية تمكين FRONT-END.<br /><br /></div>
+#### <div dir="rtl">٤.١ كيفية الوصول إلى الواجهة الأمامية.<br /><br /></div>
 
-<div dir="rtl">١. العثور <code dir="ltr">"disable_frontend"</code> من في <code dir="ltr">"config.ini"</code>، وتعيينها إلى false (القيمة القياسية هي true).<br /><br /></div>
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-<div dir="rtl">٢. الوصول إلى <code dir="ltr">"loader.php"</code> من المتصفح (مثلا، <code dir="ltr">"http://localhost/cidram/loader.php"</code>).<br /><br /></div>
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-<div dir="rtl">٣. تسجيل الدخول باستخدام اسم المستخدم وكلمة المرور الافتراضية (admin/password).<br /><br /></div>
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 <div dir="rtl">ملحوظة: تغيير اسم المستخدم وكلمة المرور الخاصة بك بعد تسجيل الدخول للمرة الأولى، من أجل منع الوصول غير المصرح به (هذا مهم جدا)!<br /><br /></div>
 
@@ -139,7 +169,7 @@
 
 ### <div dir="rtl">٥. <a name="SECTION5"></a>خياراتالتكوين/التهيئة</div>
 
-<div dir="rtl">وفيما يلي قائمة من المتغيرات الموجودة في ملف تكوين "config.ini"، بالإضافة إلى وصف الغرض منه و وظيفته.<br /><br /></div>
+<div dir="rtl">وفيما يلي قائمة من المتغيرات الموجودة في ملف تكوين "config.yml"، بالإضافة إلى وصف الغرض منه و وظيفته.<br /><br /></div>
 
 ```
 التكوين (v3)
@@ -1422,14 +1452,6 @@ Ignore القسم ١
 
 <div dir="rtl">وحدات يمكن استخدامها لتوسيع وظائف CIDRAM، أداء مهام إضافية، أو معالجة منطق إضافي. عادة، يتم استخدامها عندما يكون من الضروري منع طلب على أساس آخر غير عنوان IP الأصل (وبالتالي، عندما لا يكون توقيع CIDR كافيا لمنع الطلب). PHP كتابة وحدات كملفات فب، وبالتالي، عادة، تكتب التوقيعات المكون كما كود PHP.<br /><br /></div>
 
-<div dir="rtl">بعض الأمثلة الجيدة على وحدات CIDRAM يمكن العثور عليها هنا:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-<div dir="rtl">يمكن العثور على نموذج لكتابة وحدات جديدة هنا:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 <div dir="rtl">لأن يتم كتابة وحدات كملفات PHP، إذا كنت على دراية كافية مع مصدر برنامج CIDRAM، يمكنك هيكلة وحدات المكون التواقيع ولكن تريد (في إطار ما هو ممكن مع فب). ومع ذلك، لراحتك ولأفضل وضوح متبادل بين وحدات القائمة الخاصة بك، ويوصى تحليل قالب ربط أعلاه، من أجل أن تكون قادرة على استخدام هيكل وشكل أنه يوفر.<br /><br /></div>
 
 <div dir="rtl"><em>ملحوظة: إذا كنت غير مريح العمل مع التعليمات البرمجية PHP، كتابة الوحدات الخاصة بك لا ينصح.</em><br /><br /></div>
@@ -1438,11 +1460,11 @@ Ignore القسم ١
 
 #### <div dir="rtl">٦.٥ المكون نمطية<br /><br /></div>
 
-##### <div dir="rtl">٦.٥.٠ <code dir="ltr">$Trigger</code></div>
+##### <div dir="rtl">٦.٥.٠ <code dir="ltr">$this->trigger</code></div>
 
-<div dir="rtl">وعادة ما تكتب تواقيع المكون مع <code dir="ltr">$Trigger</code>. في معظم الحالات، هذا الإغلاق سيكون أكثر أهمية من أي شيء آخر لغرض كتابة وحدات.<br /><br /></div>
+<div dir="rtl">وعادة ما تكتب تواقيع المكون مع <code dir="ltr">$this->trigger</code>. في معظم الحالات، هذا الإغلاق سيكون أكثر أهمية من أي شيء آخر لغرض كتابة وحدات.<br /><br /></div>
 
-<div dir="rtl"><code dir="ltr">$Trigger</code> يقبل ٤ المعلمات: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$ReasonLong</code> (اختياري)، <code dir="ltr">$DefineOptions</code> (اختياري).<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->trigger</code> يقبل ٤ المعلمات: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$ReasonLong</code> (اختياري)، <code dir="ltr">$DefineOptions</code> (اختياري).<br /><br /></div>
 
 <div dir="rtl">يتم تقييم <code dir="ltr">$Condition</code>، وإذا كان "صحيح" (<code dir="ltr">true</code>)، التوقيع نشط. إذا كان "خاطئة" (<code dir="ltr">false</code>)، التوقيع غير نشط. <code dir="ltr">$Condition</code> عادة ما تحتوي على التعليمات البرمجية PHP التي يجب منع الطلبات.<br /><br /></div>
 
@@ -1452,19 +1474,13 @@ Ignore القسم ١
 
 <div dir="rtl"><code dir="ltr">$DefineOptions</code> عبارة عن صفيف اختياري يحتوي على أزواج المفاتيح/القيم التي تحدد خيارات التكوين الخاصة بمثيل الطلب. سيتم تطبيق خيارات التهيئة عندما يكون التوقيع نشطا.<br /><br /></div>
 
-<div dir="rtl">ترجع <code dir="ltr">$Trigger</code> صحيح (<code dir="ltr">true</code>) عندما يكون التوقيع نشطا و خاطئة (<code dir="ltr">false</code>) عندما لا يكون.<br /><br /></div>
+<div dir="rtl">ترجع <code dir="ltr">$this->trigger</code> صحيح (<code dir="ltr">true</code>) عندما يكون التوقيع نشطا و خاطئة (<code dir="ltr">false</code>) عندما لا يكون.<br /><br /></div>
 
-<div dir="rtl">لاستخدام هذا الإغلاق في المكون النمطية الخاصة بك، تذكر أولا أن ترثه من النطاق الأصلي:<br /><br /></div>
+##### <div dir="rtl">٦.٥.١ <code dir="ltr">$this->bypass</code></div>
 
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+<div dir="rtl">وعادة ما تكتب الالتفافية التوقيع مع <code dir="ltr">$this->bypass</code>.<br /><br /></div>
 
-##### <div dir="rtl">٦.٥.١ <code dir="ltr">$Bypass</code></div>
-
-<div dir="rtl">وعادة ما تكتب الالتفافية التوقيع مع <code dir="ltr">$Bypass</code>.<br /><br /></div>
-
-<div dir="rtl"><code dir="ltr">$Bypass</code> يقبل ٣ المعلمات: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$DefineOptions</code> (اختياري).<br /><br /></div>
+<div dir="rtl"><code dir="ltr">$this->bypass</code> يقبل ٣ المعلمات: <code dir="ltr">$Condition</code>، <code dir="ltr">$ReasonShort</code>، <code dir="ltr">$DefineOptions</code> (اختياري).<br /><br /></div>
 
 <div dir="rtl">يتم تقييم <code dir="ltr">$Condition</code>، وإذا كان "صحيح" (<code dir="ltr">true</code>)، الالتفافية نشط. إذا كان "خاطئة" (<code dir="ltr">false</code>)، الالتفافية غير نشط. <code dir="ltr">$Condition</code> عادة ما تحتوي على رمز PHP التي يجب عدم منع الطلبات.<br /><br /></div>
 
@@ -1472,15 +1488,9 @@ $Trigger = $CIDRAM['Trigger'];
 
 <div dir="rtl"><code dir="ltr">$DefineOptions</code> عبارة عن صفيف اختياري يحتوي على أزواج المفاتيح/القيم التي تحدد خيارات التكوين الخاصة بمثيل الطلب. سيتم تطبيق خيارات التهيئة عندما يكون الالتفافية نشطا.<br /><br /></div>
 
-<div dir="rtl">ترجع <code dir="ltr">$Bypass</code> صحيح (<code dir="ltr">true</code>) عندما يكون الالتفافية نشطا و خاطئة (<code dir="ltr">false</code>) عندما لا يكون.<br /><br /></div>
+<div dir="rtl">ترجع <code dir="ltr">$this->bypass</code> صحيح (<code dir="ltr">true</code>) عندما يكون الالتفافية نشطا و خاطئة (<code dir="ltr">false</code>) عندما لا يكون.<br /><br /></div>
 
-<div dir="rtl">لاستخدام هذا الإغلاق في المكون النمطية الخاصة بك، تذكر أولا أن ترثه من النطاق الأصلي:<br /><br /></div>
-
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
-
-##### <div dir="rtl">٦.٥.٢ <code dir="ltr">"$CIDRAM['DNS-Reverse']"</code></div>
+##### <div dir="rtl">٦.٥.٢ <code dir="ltr">"$this->dnsReverse"</code></div>
 
 <div dir="rtl">يمكن استخدام هذا لجلب اسم المضيف لعنوان IP. إذا كنت ترغب في إنشاء المكون لمنع أسماء المضيفين، قد يكون هذا الإغلاق مفيدا.<br /><br /></div>
 
@@ -1488,17 +1498,14 @@ $Bypass = $CIDRAM['Bypass'];
 
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1510,17 +1517,17 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 &nbsp; <div dir="rtl" style="display:inline">وصف</div> | <div dir="rtl">متغير</div>
 ----|----
-&nbsp; <div dir="rtl" style="display:inline">التاريخ والوقت الحاليان.</div> | `$CIDRAM['BlockInfo']['DateTime']`
-&nbsp; <div dir="rtl" style="display:inline">عنوان IP للطلب الحالي.</div> | `$CIDRAM['BlockInfo']['IPAddr']`
-&nbsp; <div dir="rtl" style="display:inline">إصدار النص البرمجي CIDRAM.</div> | `$CIDRAM['BlockInfo']['ScriptIdent']`
-&nbsp; <div dir="rtl" style="display:inline">الاستعلام عن الطلب الحالي.</div> | `$CIDRAM['BlockInfo']['Query']`
-&nbsp; <div dir="rtl" style="display:inline">المحيل للطلب الحالي (إذا كان موجودا).</div> | `$CIDRAM['BlockInfo']['Referrer']`
-&nbsp; <div dir="rtl" style="display:inline">وكيل المستخدم (user agent) للطلب الحالي.</div> | `$CIDRAM['BlockInfo']['UA']`
-&nbsp; <div dir="rtl" style="display:inline">وكيل المستخدم (user agent) للطلب الحالي (في حالة أقل).</div> | `$CIDRAM['BlockInfo']['UALC']`
-&nbsp; <div dir="rtl" style="display:inline">الرسالة المراد عرضها للمستخدم عند حظرها.</div> | `$CIDRAM['BlockInfo']['ReasonMessage']`
-&nbsp; <div dir="rtl" style="display:inline">عدد التوقيعات التي أدت إلى الطلب الحالي.</div> | `$CIDRAM['BlockInfo']['SignatureCount']`
-&nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$CIDRAM['BlockInfo']['Signatures']`
-&nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$CIDRAM['BlockInfo']['WhyReason']`
+&nbsp; <div dir="rtl" style="display:inline">التاريخ والوقت الحاليان.</div> | `$this->BlockInfo['DateTime']`
+&nbsp; <div dir="rtl" style="display:inline">عنوان IP للطلب الحالي.</div> | `$this->BlockInfo['IPAddr']`
+&nbsp; <div dir="rtl" style="display:inline">إصدار النص البرمجي CIDRAM.</div> | `$this->BlockInfo['ScriptIdent']`
+&nbsp; <div dir="rtl" style="display:inline">الاستعلام عن الطلب الحالي.</div> | `$this->BlockInfo['Query']`
+&nbsp; <div dir="rtl" style="display:inline">المحيل للطلب الحالي (إذا كان موجودا).</div> | `$this->BlockInfo['Referrer']`
+&nbsp; <div dir="rtl" style="display:inline">وكيل المستخدم (user agent) للطلب الحالي.</div> | `$this->BlockInfo['UA']`
+&nbsp; <div dir="rtl" style="display:inline">وكيل المستخدم (user agent) للطلب الحالي (في حالة أقل).</div> | `$this->BlockInfo['UALC']`
+&nbsp; <div dir="rtl" style="display:inline">الرسالة المراد عرضها للمستخدم عند حظرها.</div> | `$this->BlockInfo['ReasonMessage']`
+&nbsp; <div dir="rtl" style="display:inline">عدد التوقيعات التي أدت إلى الطلب الحالي.</div> | `$this->BlockInfo['SignatureCount']`
+&nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$this->BlockInfo['Signatures']`
+&nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$this->BlockInfo['WhyReason']`
 
 ---
 
@@ -1584,7 +1591,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 <div dir="rtl">بالنسبة إلى "الوحدات النمطية":<br /><br /></div>
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 <div dir="rtl">ملاحظة: التوقيعات ل "ملفات التوقيع"، والتوقيعات ل "وحدات"، ليست هي نفس الشيء.<em></em><br /><br /></div>
@@ -1646,7 +1653,7 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 #### <div dir="rtl"><a name="PROTECT_MULTIPLE_DOMAINS"></a>هل يمكنني استخدام تثبيت CIDRAM واحد لحماية نطاقات متعددة؟<br /><br /></div>
 
-<div dir="rtl">نعم. يمكن استخدام CIDRAM لحماية نطاقات متعددة. إذا كان التكوين المطلوب مختلفا، للقيام بذلك، إنشاء ملفات تكوين جديدة، واسمه وفقا للنطاقات التي تتطلب الحماية. كمثال، ل <code dir="ltr">"https://www.some-domain.tld/"</code>، أطلق عليه اسما <code dir="ltr">"some-domain.tld.config.ini"</code>. اسم النطاق يأتي من <code dir="ltr">"HTTP_HOST"</code>. يتم تجاهل <code dir="ltr">"www"</code>.<br /><br /></div>
+<div dir="rtl">نعم. يمكن استخدام CIDRAM لحماية نطاقات متعددة. إذا كان التكوين المطلوب مختلفا، للقيام بذلك، إنشاء ملفات تكوين جديدة، واسمه وفقا للنطاقات التي تتطلب الحماية. كمثال، ل <code dir="ltr">"https://www.some-domain.tld/"</code>، أطلق عليه اسما <code dir="ltr">"some-domain.tld.config.yml"</code>. اسم النطاق يأتي من <code dir="ltr">"HTTP_HOST"</code>. يتم تجاهل <code dir="ltr">"www"</code>.<br /><br /></div>
 
 #### <div dir="rtl"><a name="PAY_YOU_TO_DO_IT"></a>أنا لا أريد أن تضيع الوقت مع تثبيت هذا أو ضمان أنه يعمل لموقع الويب الخاص بي؛ يمكنني دفع لك أن تفعل ذلك بالنسبة لي؟<br /><br /></div>
 
@@ -1731,15 +1738,37 @@ IP | المشغل
 
 <div dir="rtl">على سبيل المثال، بافتراض توجيه تكوين مع الملفات المسرودة كما يلي:<br /><br /></div>
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 <div dir="rtl">إذا كنت تريد <code dir="ltr">file3.php</code> تنفيذ أولاً، يمكنك إضافة شيء مثل <code dir="ltr">aaa:</code> قبل اسم الملف:<br /><br /></div>
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 <div dir="rtl">وبعد ذلك، إذا تم تنشيط ملف جديد، <code dir="ltr">file6.php</code>، فعندما تقوم صفحة التحديثات بفرزها مرة أخرى، يجب أن ينتهي الأمر بهذا الشكل:<br /><br /></div>
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 <div dir="rtl">نفس الموقف عندما يتم إلغاء تنشيط الملف. وبالعكس، إذا أردت تنفيذ الملف آخر، فيمكنك إضافة شيء مثل <code dir="ltr">zzz:</code> قبل اسم الملف. على أي حال، لن تحتاج إلى إعادة تسمية الملف المعني.<br /><br /></div>
 
@@ -2048,7 +2077,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 <div dir="rtl">توجيه التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">frontend_log</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">frontend_log</code> &lt;- <code dir="ltr">frontend</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٣.٣ دوران السجل<br /><br /></div>
@@ -2097,15 +2126,13 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 ##### <div dir="rtl">٩.٣.٦ حذف معلومات السجل<br /><br /></div>
 
-<div dir="rtl">إذا كنت ترغب في منع تسجيل أنواع معينة من المعلومات بالكامل، فيمكنك القيام بذلك. يوفر CIDRAM توجيهات التهيئة للتحكم في ما إذا كانت عناوين IP وأسماء المضيفات ووكلاء المستخدمين مدرجة في السجلات. بشكل افتراضي، وعند توفرها، يتم تسجيل نقاط البيانات الثلاثة جميعها. يؤدي تعيين أي من توجيهات التهيئة هذه إلى <code dir="ltr">true</code> إلى حذف المعلومات المقابلة من السجلات.<br /><br /></div>
+<div dir="rtl">إذا كنت ترغب في منع تسجيل أنواع معينة من المعلومات بالكامل، فيمكنك القيام بذلك. في صفحة التكوين ، يرجى الرجوع إلى توجيه تكوين <code dir="ltr">fields</code> للتحكم في الحقول التي تظهر في إدخالات السجل وفي صفحة "تم رفض الوصول".<br /><br /></div>
 
 <div dir="rtl"><em>ملحوظة: لا يوجد سبب لاستخدام pseudonymisation لعناوين IP عند حذف عناوين IP من السجلات بالكامل.</em><br /><br /></div>
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">omit_ip</code> &lt;- <code dir="ltr">legal</code></li>
- <li><code dir="ltr">omit_hostname</code> &lt;- <code dir="ltr">legal</code></li>
- <li><code dir="ltr">omit_ua</code> &lt;- <code dir="ltr">legal</code></li>
+ <li><code dir="ltr">fields</code> &lt;- <code dir="ltr">general</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٣.٧ الإحصاء<br /><br /></div>
@@ -2131,7 +2158,6 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">disable_frontend</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">recaptcha</code></li>
  <li><code dir="ltr">api</code> &lt;- <code dir="ltr">recaptcha</code></li>
  <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">hcaptcha</code></li>

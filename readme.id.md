@@ -40,31 +40,37 @@ Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
 
 #### 2.0 MENGINSTAL SECARA MANUAL
 
-1) Dengan membaca ini, Saya asumsikan Anda telah mengunduh dan menyimpan copy dari skrip, membuka data terkompres dan isinya dan Anda meletakkannya pada mesin komputer lokal Anda. Dari sini, Anda akan latihan dimana di host Anda atau CMS Anda untuk meletakkan isi data terkompres nya. Sebuah direktori seperti `/public_html/cidram/` atau yang lain (walaupun tidak masalah Anda memilih direktori apa, selama dia aman dan dimana pun yang Anda senangi) akan mencukupi. *Sebelum Anda mulai upload, mohon baca dulu..*
+Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
 
-2) Mengubah file nama `config.ini.RenameMe` ke `config.ini` (berada di dalam `vault`), dan secara fakultatif (sangat direkomendasikan untuk user dengan pengalaman lebih lanjut, tapi tidak untuk pemula atau yang tidak berpengalaman), membukanya (file ini berisikan semua opsi operasional yang tersedia untuk CIDRAM; di atas tiap opsi seharusnya ada komentar tegas menguraikan tentang apa yang dilakukan dan untuk apa). Atur opsi-opsi ini seperti Anda lihat cocok, seperti apapun yang cocok untuk setup tertentu. Simpan file, menutupnya.
+Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
 
-3) Upload isi (CIDRAM dan file-filenya) ke direktori yang telah kamu putuskan sebelumnya (Anda tidak memerlukan file-file `*.txt`/`*.md`, tapi kebanyakan Anda harus mengupload semuanya).
+When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
 
-4) Gunakan perinta CHMOD ke direktori `vault` dengan "755" (jika ada masalah, Anda dapat mencoba "777", tapi ini kurang aman). Direktori utama menyimpan isinya (yang Anda putuskan sebelumnya), umumnya dapat di biarkan sendirian, tapi status perintah "CHMOD" seharusnya di cek jika kamu punya izin di sistem Anda (defaultnya, seperti "755"). Pendeknya: Agar paket berfungsi dengan benar, PHP harus dapat membaca dan menulis file di dalam direktori `vault`. Banyak hal (memperbarui, pencatatan, dll) tidak akan mungkin, jika PHP tidak dapat menulis ke direktori `vault`, dan paket tidak akan berfungsi sama sekali jika PHP tidak dapat membaca dari direktori `vault`. Namun, untuk keamanan optimal, direktori `vault` TIDAK harus dapat diakses publik (informasi sensitif, seperti informasi yang dikandung oleh `config.ini` atau `frontend.dat`, dapat diekspos kepada penyerang potensial jika direktori `vault` dapat diakses oleh publik).
+Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
 
-5) Selanjutnya Anda perlu menghubungkan CIDRAM ke sistem atau CMS. Ada beberapa cara yang berbeda untuk menghubungkan skrip seperti CIDRAM ke sistem atau CMS, tapi yang paling mudah adalah memasukkan skrip pada permulaan dari file murni dari sistem atau CMS (satu yang akan secara umum di muat ketika seseorang mengakses halaman apapun pada situs web) berdasarkan pernyataan `require` atau `include`. Umumnya, ini akan menjadi sesuatu yang disimpan di sebuah direktori seperti `/includes`, `/assets` atau `/functions` dan akan selalu di namai sesuatu seperti `init.php`, `common_functions.php`, `functions.php` atau yang sama. Anda harus bekerja pada file apa untuk situasi ini; Jika Anda mengalami kesulitan dalam menentukan ini untuk diri sendiri, kunjungi halaman issues (issues) CIDRAM di GitHub untuk bantuan. Untuk melakukannya [menggunakan `require` atau `include`], sisipkan baris kode dibawah pada file murni, menggantikan kata-kata berisikan didalam tanda kutip dari alamat file `loader.php` (alamat lokal, tidak alamat HTTP; akan terlihat seperti alamat vault yang di bicarakan sebelumnya).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM core.
+3. Calling the "protect" method.
 
-`<?php require '/path/to/cidram/loader.php'; ?>`
+A simple example:
 
-Simpan file dan tutup. Upload kembali.
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\Core())->protect();
+```
 
--- ATAU ALTERNATIF --
+If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
 
-Jika Anda menggunakan webserver Apache dan jika Anda memiliki akses ke `php.ini`, Anda dapat menggunakan `auto_prepend_file` direktif untuk tambahkan CIDRAM setiap kali ada permintaan PHP dibuat. Sesuatu seperti:
+Example:
 
-`auto_prepend_file = "/path/to/cidram/loader.php"`
+`auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Atau ini di file `.htaccess`:
+Or this in the `.htaccess` file:
 
-`php_value auto_prepend_file "/path/to/cidram/loader.php"`
+`php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-6) Itu semuanya! :-)
+In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
 
 #### 2.1 MENGINSTAL DENGAN COMPOSER
 
@@ -104,13 +110,37 @@ CIDRAM dapat diperbarui secara manual atau melalui bagian depan. CIDRAM juga bis
 
 Manajemen bagian depan menyediakan cara yang nyaman dan mudah untuk mempertahankan, mengelola, dan memperbarui instalasi CIDRAM Anda. Anda dapat melihat, berbagi, dan download file log melalui halaman log, Anda dapat mengubah konfigurasi melalui halaman konfigurasi, Anda dapat instal dan uninstal/hapus komponen melalui halaman pembaruan, dan Anda dapat upload, download, dan memodifikasi file dalam vault Anda melalui file manager.
 
-#### 4.1 BAGAIMANA CARA MENGAKTIFKAN MANAJEMEN BAGIAN DEPAN.
+#### 4.1 BAGAIMANA CARA MENGAKSESKAN MANAJEMEN BAGIAN DEPAN.
 
-1) Menemukan direktif `disable_frontend` dalam `config.ini`, dan mengaturnya untuk `false` (akan menjadi `true` secara default).
+Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
 
-2) Mengakses `loader.php` dari browser Anda (misalnya, `http://localhost/cidram/loader.php`).
+1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
+2. Instantiation of the CIDRAM front-end.
+3. Calling the "view" method.
 
-3) Masuk dengan nama pengguna dan kata sandi default (admin/password).
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+(new \CIDRAM\CIDRAM\FrontEnd())->view();
+```
+
+The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+
+A simple example:
+
+```PHP
+<?php
+require_once '/path/to/the/vault/directory/loader.php';
+$CIDRAM = new \CIDRAM\CIDRAM\FrontEnd();
+$CIDRAM->protect();
+$CIDRAM->view();
+```
+
+The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+
+After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
 
 Catat: Setelah Anda dimasukkan untuk pertama kalinya, untuk mencegah akses tidak sah ke manajemen bagian depan, Anda harus segera mengubah nama pengguna dan kata sandi Anda! Ini sangat penting, karena itu mungkin untuk meng-upload kode PHP sewenang-wenang untuk situs web Anda melalui bagian depan.
 
@@ -137,7 +167,7 @@ Catat: Melindungi vault Anda terhadap akses yang tidak sah (misalnya, dengan mem
 
 ### 5. <a name="SECTION5"></a>OPSI KONFIGURASI
 
-Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.ini`, dengan deskripsi dari tujuan dan fungsi.
+Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.yml`, dengan deskripsi dari tujuan dan fungsi.
 
 ```
 Konfigurasi (v3)
@@ -1399,12 +1429,6 @@ Jika Anda merasa bahwa menulis file tanda tangan atau modul kustom Anda sendiri 
 
 Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan. Biasanya, mereka digunakan saat perlu memblokir permintaan untuk alasan selain alamat IP (dan dengan demikian, ketika tanda tangan CIDR tidak cukup untuk memblokir permintaan). Modul ditulis sebagai file PHP, dan dengan demikian, biasanya, tanda tangan modul ditulis sebagai kode PHP.
 
-Beberapa contoh bagus untuk modul CIDRAM dapat ditemukan disini:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Template untuk menulis modul baru dapat ditemukan disini:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
 Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRAM, Anda dapat menyusun modul Anda namun Anda inginkan, dan menulis tanda tangan modul Anda namun Anda inginkan (dalam batasan untuk apa yang mungkin di PHP). Namun, untuk kenyamanan Anda sendiri, dan demi saling pengertian antara modul yang ada dan modul Anda sendiri, menganalisis template yang terhubung di atas direkomendasikan, agar bisa menggunakan struktur dan format yang diberikannya.
 
 *Catat: Jika Anda tidak nyaman bekerja dengan kode PHP, menulis modul Anda sendiri tidak disarankan.*
@@ -1413,11 +1437,11 @@ Beberapa fungsi disediakan oleh CIDRAM yang dapat digunakan oleh modul, yang seh
 
 #### 6.5 FUNGSIONALITAS MODUL
 
-##### 6.5.0 "$Trigger"
+##### 6.5.0 "$this->trigger"
 
-Tanda tangan modul biasanya ditulis dengan `$Trigger`. Dalam kebanyakan kasus, closure ini akan lebih penting daripada hal lain untuk tujuan penulisan modul.
+Tanda tangan modul biasanya ditulis dengan `$this->trigger`. Dalam kebanyakan kasus, method ini akan lebih penting daripada hal lain untuk tujuan penulisan modul.
 
-`$Trigger` menerima 4 parameter: `$Condition`, `$ReasonShort`, `$ReasonLong` (opsional), dan `$DefineOptions` (opsional).
+`$this->trigger` menerima 4 parameter: `$Condition`, `$ReasonShort`, `$ReasonLong` (opsional), dan `$DefineOptions` (opsional).
 
 Kebenaran dari `$Condition` dievaluasi, dan jika true/benar, tanda tangan "dipicu". Jika false/salah, tanda tangan *tidak* "dipicu". `$Condition` biasanya berisi kode PHP untuk mengevaluasi suatu kondisi yang harus menyebabkan permintaan diblokir.
 
@@ -1427,18 +1451,13 @@ Kebenaran dari `$Condition` dievaluasi, dan jika true/benar, tanda tangan "dipic
 
 `$DefineOptions` adalah array opsional yang berisi pasangan kunci/nilai, digunakan untuk menentukan opsi konfigurasi yang spesifik untuk instance permintaan. Opsi konfigurasi akan diterapkan saat tanda tangan "dipicu".
 
-`$Trigger` kembali true/benar saat tanda tangan "dipicu", dan false/salah saat tidak.
+`$this->trigger` kembali true/benar saat tanda tangan "dipicu", dan false/salah saat tidak.
 
-Untuk menggunakan closure ini di modul Anda, ingat dulu untuk mewarisi dari lingkup luar:
-```PHP
-$Trigger = $CIDRAM['Trigger'];
-```
+##### 6.5.1 "$this->bypass"
 
-##### 6.5.1 "$Bypass"
+Tanda tangan bypass biasanya ditulis dengan `$this->bypass`.
 
-Tanda tangan bypass biasanya ditulis dengan `$Bypass`.
-
-`$Bypass` menerima 3 parameter: `$Condition`, `$ReasonShort`, dan `$DefineOptions` (opsional).
+`$this->bypass` menerima 3 parameter: `$Condition`, `$ReasonShort`, dan `$DefineOptions` (opsional).
 
 Kebenaran dari `$Condition` dievaluasi, dan jika true/benar, bypass "dipicu". Jika false/salah, bypass *tidak* "dipicu". `$Condition` biasanya berisi kode PHP untuk mengevaluasi suatu kondisi yang harus *tidak* menyebabkan permintaan diblokir.
 
@@ -1446,31 +1465,23 @@ Kebenaran dari `$Condition` dievaluasi, dan jika true/benar, bypass "dipicu". Ji
 
 `$DefineOptions` adalah array opsional yang berisi pasangan kunci/nilai, digunakan untuk menentukan opsi konfigurasi yang spesifik untuk instance permintaan. Opsi konfigurasi akan diterapkan saat bypass "dipicu".
 
-`$Bypass` kembali true/benar saat bypass "dipicu", dan false/salah saat tidak.
+`$this->bypass` kembali true/benar saat bypass "dipicu", dan false/salah saat tidak.
 
-Untuk menggunakan closure ini di modul Anda, ingat dulu untuk mewarisi dari lingkup luar:
-```PHP
-$Bypass = $CIDRAM['Bypass'];
-```
+##### 6.5.2 "$this->dnsReverse"
 
-##### 6.5.2 "$CIDRAM['DNS-Reverse']"
-
-Ini bisa digunakan untuk mengambil nama host dari alamat IP. Jika Anda ingin membuat modul untuk memblokir nama host, closure ini bisa bermanfaat.
+Ini bisa digunakan untuk mengambil nama host dari alamat IP. Jika Anda ingin membuat modul untuk memblokir nama host, method ini bisa bermanfaat.
 
 Contoh:
 ```PHP
 <?php
-/** Inherit trigger closure (see functions.php). */
-$Trigger = $CIDRAM['Trigger'];
-
 /** Fetch hostname. */
-if (empty($CIDRAM['Hostname'])) {
-    $CIDRAM['Hostname'] = $CIDRAM['DNS-Reverse']($CIDRAM['BlockInfo']['IPAddr']);
+if (empty($this->CIDRAM['Hostname'])) {
+    $this->CIDRAM['Hostname'] = $this->dnsReverse($this->BlockInfo['IPAddr']);
 }
 
 /** Example signature. */
-if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr']) {
-    $Trigger($CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
+if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->BlockInfo['IPAddr']) {
+    $this->trigger($this->CIDRAM['Hostname'] === 'www.foobar.tld', 'Foobar.tld', 'Hostname Foobar.tld is not allowed.');
 }
 ```
 
@@ -1482,17 +1493,17 @@ Tercantum dibawah ini adalah beberapa variabel umum yang mungkin berguna untuk m
 
 Variabel | Deskripsi
 ----|----
-`$CIDRAM['BlockInfo']['DateTime']` | Tanggal dan waktu sekarang.
-`$CIDRAM['BlockInfo']['IPAddr']` | Alamat IP untuk permintaan saat ini.
-`$CIDRAM['BlockInfo']['ScriptIdent']` | Versi skrip CIDRAM.
-`$CIDRAM['BlockInfo']['Query']` | "Query" untuk permintaan saat ini.
-`$CIDRAM['BlockInfo']['Referrer']` | Perujuk untuk permintaan saat ini (jika ada).
-`$CIDRAM['BlockInfo']['UA']` | Agen pengguna (user agent) untuk permintaan saat ini.
-`$CIDRAM['BlockInfo']['UALC']` | Agen pengguna (user agent) untuk permintaan saat ini (di huruf kecil).
-`$CIDRAM['BlockInfo']['ReasonMessage']` | Pesan yang akan ditampilkan ke pengguna/klien untuk permintaan saat ini jika diblokir.
-`$CIDRAM['BlockInfo']['SignatureCount']` | Jumlah tanda tangan dipicu untuk permintaan saat ini.
-`$CIDRAM['BlockInfo']['Signatures']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
-`$CIDRAM['BlockInfo']['WhyReason']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
+`$this->BlockInfo['DateTime']` | Tanggal dan waktu sekarang.
+`$this->BlockInfo['IPAddr']` | Alamat IP untuk permintaan saat ini.
+`$this->BlockInfo['ScriptIdent']` | Versi skrip CIDRAM.
+`$this->BlockInfo['Query']` | "Query" untuk permintaan saat ini.
+`$this->BlockInfo['Referrer']` | Perujuk untuk permintaan saat ini (jika ada).
+`$this->BlockInfo['UA']` | Agen pengguna (user agent) untuk permintaan saat ini.
+`$this->BlockInfo['UALC']` | Agen pengguna (user agent) untuk permintaan saat ini (di huruf kecil).
+`$this->BlockInfo['ReasonMessage']` | Pesan yang akan ditampilkan ke pengguna/klien untuk permintaan saat ini jika diblokir.
+`$this->BlockInfo['SignatureCount']` | Jumlah tanda tangan dipicu untuk permintaan saat ini.
+`$this->BlockInfo['Signatures']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
+`$this->BlockInfo['WhyReason']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
 
 ---
 
@@ -1550,7 +1561,7 @@ Untuk "file tanda tangan":
 Untuk "modul":
 
 ```PHP
-$Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
 ```
 
 *Catat: Tanda tangan untuk "file tanda tangan", dan tanda tangan untuk "modul", bukanlah hal yang sama.*
@@ -1611,7 +1622,7 @@ Tidak. PHP >= 7.2.0 adalah persyaratan minimum untuk CIDRAM v2.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Dapatkah saya menggunakan satu instalasi CIDRAM untuk melindungi beberapa domain?
 
-Ya. Instalasi CIDRAM tidak secara alami terkunci pada domain tertentu, dan dengan demikian dapat digunakan untuk melindungi beberapa domain. Umumnya, kami mengacu pada instalasi CIDRAM yang hanya melindungi satu domain as "instalasi domain tunggal" ("single-domain installations"), dan kami mengacu pada instalasi CIDRAM yang melindungi beberapa domain dan/atau sub-domain sebagai "instalasi domain beberapa" ("multi-domain installations"). Jika Anda mengoperasikan instalasi domain beberapa dan perlu menggunakan berbagai kumpulan file tanda tangan untuk berbagai domain, atau perlu CIDRAM untuk dikonfigurasi secara berbeda untuk domain berbeda, kamu bisa melakukan ini. Setelah memuat file konfigurasi (`config.ini`), CIDRAM akan memeriksa adanya "file untuk pengganti konfigurasi" spesifik untuk domain (atau sub-domain) yang diminta (`domain-yang-diminta.tld.config.ini`), dan jika ditemukan, setiap nilai konfigurasi yang ditentukan oleh file untuk pengganti konfigurasi akan digunakan untuk instance eksekusi daripada nilai konfigurasi yang ditentukan oleh file konfigurasi. File untuk pengganti konfigurasi identik dengan file konfigurasi, dan atas kebijaksanaan Anda, dapat berisi keseluruhan semua konfigurasi yang tersedia untuk CIDRAM, atau apapun bagian kecil yang dibutuhkan yang berbeda dari nilai yang biasanya ditentukan oleh file konfigurasi. File untuk pengganti konfigurasi diberi nama sesuai dengan domain yang mereka inginkan (jadi, misalnya, jika Anda memerlukan file untuk pengganti konfigurasi untuk domain, `https://www.some-domain.tld/`, file untuk pengganti konfigurasi harus diberi nama sebagai `some-domain.tld.config.ini`, dan harus ditempatkan di dalam vault bersama file konfigurasi, `config.ini`). Nama domain untuk instance eksekusi berasal dari header permintaan `HTTP_HOST`; "www" diabaikan.
+Ya. Instalasi CIDRAM tidak secara alami terkunci pada domain tertentu, dan dengan demikian dapat digunakan untuk melindungi beberapa domain. Umumnya, kami mengacu pada instalasi CIDRAM yang hanya melindungi satu domain as "instalasi domain tunggal" ("single-domain installations"), dan kami mengacu pada instalasi CIDRAM yang melindungi beberapa domain dan/atau sub-domain sebagai "instalasi domain beberapa" ("multi-domain installations"). Jika Anda mengoperasikan instalasi domain beberapa dan perlu menggunakan berbagai kumpulan file tanda tangan untuk berbagai domain, atau perlu CIDRAM untuk dikonfigurasi secara berbeda untuk domain berbeda, kamu bisa melakukan ini. Setelah memuat file konfigurasi (`config.yml`), CIDRAM akan memeriksa adanya "file untuk pengganti konfigurasi" spesifik untuk domain (atau sub-domain) yang diminta (`domain-yang-diminta.tld.config.yml`), dan jika ditemukan, setiap nilai konfigurasi yang ditentukan oleh file untuk pengganti konfigurasi akan digunakan untuk instance eksekusi daripada nilai konfigurasi yang ditentukan oleh file konfigurasi. File untuk pengganti konfigurasi identik dengan file konfigurasi, dan atas kebijaksanaan Anda, dapat berisi keseluruhan semua konfigurasi yang tersedia untuk CIDRAM, atau apapun bagian kecil yang dibutuhkan yang berbeda dari nilai yang biasanya ditentukan oleh file konfigurasi. File untuk pengganti konfigurasi diberi nama sesuai dengan domain yang mereka inginkan (jadi, misalnya, jika Anda memerlukan file untuk pengganti konfigurasi untuk domain, `https://www.some-domain.tld/`, file untuk pengganti konfigurasi harus diberi nama sebagai `some-domain.tld.config.yml`, dan harus ditempatkan di dalam vault bersama file konfigurasi, `config.yml`). Nama domain untuk instance eksekusi berasal dari header permintaan `HTTP_HOST`; "www" diabaikan.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Saya tidak ingin membuang waktu dengan menginstal ini dan membuatnya bekerja dengan situs web saya; Bisakah saya membayar Anda untuk melakukan semuanya untuk saya?
 
@@ -1696,15 +1707,37 @@ Ya. Jika Anda perlu memaksa beberapa file untuk dieksekusikan dalam urutan terte
 
 Misalnya, dengan asumsi direktif konfigurasi dengan file yang tercantum sebagai berikut:
 
-`file1.php,file2.php,file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ file3.php
+ file4.php
+ file5.php
+```
 
 Jika Anda ingin `file3.php` untuk mengeksekusi terlebih dahulu, Anda bisa menambahkan sesuatu seperti `aaa:` sebelum nama file:
 
-`file1.php,file2.php,aaa:file3.php,file4.php,file5.php`
+```YAML
+modules: |
+ file1.php
+ file2.php
+ aaa:file3.php
+ file4.php
+ file5.php
+```
 
 Kemudian, jika file baru, `file6.php`, diaktifkan, ketika halaman pembaruan mengurutkan semuanya lagi, itu akan berakhir seperti ini:
 
-`aaa:file3.php,file1.php,file2.php,file4.php,file5.php,file6.php`
+```YAML
+modules: |
+ aaa:file3.php
+ file1.php
+ file2.php
+ file4.php
+ file5.php
+ file6.php
+```
 
 Situasi adalah sama ketika file dinonaktifkan. Sebaliknya, jika Anda ingin file dieksekusi terakhir, Anda bisa menambahkan sesuatu seperti `zzz:` sebelum nama file. Dalam hal apapun, Anda tidak perlu mengganti nama file yang dimaksud.
 
@@ -2007,7 +2040,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Dimasuk.
 ```
 
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan bagian depan adalah:*
-- `general` -> `frontend_log`
+- `frontend` -> `frontend_log`
 
 ##### 9.3.3 ROTASI LOG
 
@@ -2043,14 +2076,12 @@ CIDRAM mampu mem-pseudonimisasi alamat IP ketika melakukan pencatatan, jika ini 
 
 ##### 9.3.6 MENGHILANGKAN INFORMASI LOG
 
-Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu sedang dicatat sepenuhnya, ini juga mungkin dilakukan. CIDRAM menyediakan direktif-direktif konfigurasi untuk mengontrol apakah alamat IP, nama host, dan agen pengguna termasuk dalam log. Secara default, ketiga titik data ini termasuk dalam log bila tersedia. Menetapkan apapun direktif-direktif konfigurasi ini ke `true` akan menghilangkan informasi terkait dari log.
+Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu sedang dicatat sepenuhnya, ini juga mungkin dilakukan. Di halaman konfigurasi, silakan merujuk ke direktif konfigurasi `fields` untuk mengontrol mana bidang yang muncul di entri log dan di halaman "Akses Ditolak".
 
 *Catat: Tidak ada alasan untuk menggunakan pseudonim dengan alamat IP ketika menghilangkannya dari log sepenuhnya.*
 
 *Direktif konfigurasi yang relevan:*
-- `legal` -> `omit_ip`
-- `legal` -> `omit_hostname`
-- `legal` -> `omit_ua`
+- `general` -> `fields`
 
 ##### 9.3.7 STATISTIK
 
@@ -2072,7 +2103,6 @@ Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), me
 *Catat: CAPTCHA API "tak terlihat" mungkin tidak kompatibel dengan hukum cookie di beberapa yurisdiksi, dan harus dihindari oleh situs web apapun yang tunduk pada hukum-hukum tersebut. Memilih untuk menggunakan API lain yang disediakan, atau menonaktifkan CAPTCHA sepenuhnya, mungkin lebih disukai.*
 
 *Direktif konfigurasi yang relevan:*
-- `general` -> `disable_frontend`
 - `recaptcha` -> `lockuser`
 - `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
