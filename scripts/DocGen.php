@@ -1,6 +1,13 @@
 <?php
-
 $loadL10N = function (string $Language) {
+    if (
+        !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml') ||
+        !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml') ||
+        !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . $Language . '.yml')
+    ) {
+        echo 'Unable to read the "' . $Language . '" language files!';
+        die;
+    }
     $YAML = new \Maikuolan\Common\YAML();
     $Arr = [];
     $DataDocGen = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml');
