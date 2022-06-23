@@ -1940,15 +1940,19 @@ CIDRAM supports reCAPTCHA and hCAPTCHA. They require API keys in order to be wor
 
 [Stop Forum Spam](https://www.stopforumspam.com/) is a fantastic, freely available service that can help to protect forums, blogs, and websites from spammers. It does this by providing a database of known spammers, and an API that can be leveraged to check whether an IP address, username, or email address is listed on its database.
 
-CIDRAM provides an optional module that leverages this API to check whether the IP address of inbound requests belongs to a suspected spammer. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the Stop Forum Spam API in accordance with the intended purpose of the module. When the module is installed, CIDRAM communicates with this API whenever an inbound request requests a resource that CIDRAM recognises as a type of resource frequently targeted by spammers (such as login pages, registration pages, email verification pages, comment forms, etc).
+CIDRAM provides an optional module that leverages this API to check whether the IP address of inbound requests belongs to a suspected spammer. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
 
 ##### 9.2.4 ABUSEIPDB
 
-CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the AbuseIPDB API in accordance with the intended purpose of the module.
+CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
 
 ##### 9.2.5 BGPVIEW
 
-CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the BGPView API in accordance with the intended purpose of the module.
+CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
+
+##### 9.2.6 PROJECT HONEYPOT
+
+CIDRAM provides an optional module to block abusive IP addresses using the [Project Honeypot](https://www.projecthoneypot.org/) API. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
 
 #### 9.3 LOGGING
 
@@ -2140,4 +2144,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 10 June 2022 (2022.06.10).
+Last Updated: 23 June 2022 (2022.06.23).

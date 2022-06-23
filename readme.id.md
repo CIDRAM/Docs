@@ -1948,15 +1948,19 @@ CIDRAM mendukung reCAPTCHA dan hCAPTCHA. Mereka membutuhkan kunci API agar berfu
 
 [Stop Forum Spam](https://www.stopforumspam.com/) adalah layanan fantastis, tersedia secara bebas yang dapat membantu melindungi forum, blog, dan situs web dari spammer. Ini dilakukan dengan menyediakan database spammer yang dikenal, dan API yang dapat dimanfaatkan untuk memeriksa apakah alamat IP, nama pengguna, atau alamat email tercantum dalam database-nya.
 
-CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apakah alamat IP dari permintaan masuk milik seorang spammer yang dicurigai. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API Stop Forum Spam sesuai dengan tujuan yang dimaksudkan dari modul. Ketika modul diinstal, CIDRAM berkomunikasi dengan API ini setiap kali permintaan masuk meminta sumber halaman yang diakui oleh CIDRAM sebagai jenis sumber halaman yang sering ditargetkan oleh pelaku spam (seperti halaman login, halaman registrasi, halaman verifikasi email, formulir komentar, dll).
+CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apakah alamat IP dari permintaan masuk milik seorang spammer yang dicurigai. Jika dan ketika modul diinstal dan diaktifkan, alamat IP pengguna dapat dibagikan dengan layanan sesuai dengan konfigurasi dan tujuan yang dimaksudkan dari modul.
 
 ##### 9.2.4 ABUSEIPDB
 
-CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API AbuseIPDB sesuai dengan tujuan yang dimaksudkan dari modul.
+CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Jika dan ketika modul diinstal dan diaktifkan, alamat IP pengguna dapat dibagikan dengan layanan sesuai dengan konfigurasi dan tujuan yang dimaksudkan dari modul.
 
 ##### 9.2.5 BGPVIEW
 
-CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API BGPView sesuai dengan tujuan yang dimaksudkan dari modul.
+CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Jika dan ketika modul diinstal dan diaktifkan, alamat IP pengguna dapat dibagikan dengan layanan sesuai dengan konfigurasi dan tujuan yang dimaksudkan dari modul.
+
+##### 9.2.6 PROJECT HONEYPOT
+
+CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [Project Honeypot](https://www.projecthoneypot.org/). Jika dan ketika modul diinstal dan diaktifkan, alamat IP pengguna dapat dibagikan dengan layanan sesuai dengan konfigurasi dan tujuan yang dimaksudkan dari modul.
 
 #### 9.3 PENCATATAN
 
@@ -2138,4 +2142,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 10 Juni 2022 (2022.06.10).
+Terakhir Diperbarui: 23 Juni 2022 (2022.06.23).

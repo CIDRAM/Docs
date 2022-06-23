@@ -1952,15 +1952,19 @@ CIDRAM suporte reCAPTCHA y hCAPTCHA. Requieren claves API para funcionar correct
 
 [Stop Forum Spam](https://www.stopforumspam.com/) es un fantástico servicio gratuito que puede ayudar a proteger los foros, blogs, y sitios web de los spammers. Lo hace al proporcionar una base de datos de spammers conocidos, y una API que se puede aprovechar para verificar si una dirección IP, nombre de usuario, o dirección de correo electrónico aparece en su base de datos.
 
-CIDRAM proporciona un módulo opcional que aprovecha esta API para verificar si la dirección IP de las solicitudes entrantes pertenece a un sospechoso de spammer. El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de Stop Forum Spam de acuerdo con el propósito del módulo. Cuando se instala el módulo, CIDRAM se comunica con esta API cada vez que una solicitud entrante solicita un recurso que CIDRAM reconoce como un tipo de recurso frecuentemente dirigido por los spammers (como páginas de inicio de sesión, páginas de registro, páginas de verificación de correo electrónico, formularios de comentarios, etc).
+CIDRAM proporciona un módulo opcional que aprovecha esta API para verificar si la dirección IP de las solicitudes entrantes pertenece a un sospechoso de spammer. Cuando el módulo está instalado y activado, las direcciones IP del usuario se pueden compartir con el servicio de acuerdo con la configuración y el propósito previsto del módulo.
 
 ##### 9.2.4 ABUSEIPDB
 
-CIDRAM proporciona un módulo opcional para bloquear direcciones IP abusivas utilizando la API de [AbuseIPDB](https://www.abuseipdb.com/). El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de AbuseIPDB de acuerdo con el propósito del módulo.
+CIDRAM proporciona un módulo opcional para bloquear direcciones IP abusivas utilizando la API de [AbuseIPDB](https://www.abuseipdb.com/). Cuando el módulo está instalado y activado, las direcciones IP del usuario se pueden compartir con el servicio de acuerdo con la configuración y el propósito previsto del módulo.
 
 ##### 9.2.5 BGPVIEW
 
-CIDRAM proporciona un módulo opcional para realizar búsquedas de código de país y ASN utilizando la API de [BGPView](https://bgpview.io/). Estas búsquedas proporcionan la capacidad de bloquear o incluir en la lista blanca las solicitudes en función de su ASN o país de origen. El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de BGPView de acuerdo con el propósito del módulo.
+CIDRAM proporciona un módulo opcional para realizar búsquedas de código de país y ASN utilizando la API de [BGPView](https://bgpview.io/). Estas búsquedas proporcionan la capacidad de bloquear o incluir en la lista blanca las solicitudes en función de su ASN o país de origen. Cuando el módulo está instalado y activado, las direcciones IP del usuario se pueden compartir con el servicio de acuerdo con la configuración y el propósito previsto del módulo.
+
+##### 9.2.6 PROJECT HONEYPOT
+
+CIDRAM proporciona un módulo opcional para bloquear direcciones IP abusivas utilizando la API de [Project Honeypot](https://www.projecthoneypot.org/). Cuando el módulo está instalado y activado, las direcciones IP del usuario se pueden compartir con el servicio de acuerdo con la configuración y el propósito previsto del módulo.
 
 #### 9.3 REGISTRO DE DATOS
 
@@ -2149,4 +2153,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 10 de Junio de 2022 (2022.06.10).
+Última Actualización: 23 de Junio de 2022 (2022.06.23).

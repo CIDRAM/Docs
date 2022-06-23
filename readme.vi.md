@@ -1959,15 +1959,19 @@ CIDRAM hỗ trợ reCAPTCHA và hCAPTCHA. Chúng yêu cầu các khóa API để
 
 [Stop Forum Spam](https://www.stopforumspam.com/) là một dịch vụ tuyệt vời, miễn phí có sẵn có thể giúp bảo vệ diễn đàn, blog và trang web từ chương trình thư rác. Nó thực hiện điều này bằng cách cung cấp một cơ sở dữ liệu của chương trình và những người gửi thư rác đã biết, và một API có thể được tận dụng để kiểm tra xem địa chỉ IP, tên người dùng hay địa chỉ email có được liệt kê trên cơ sở dữ liệu của nó hay không.
 
-CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm tra xem địa chỉ IP của các yêu cầu gửi đến thuộc về một chương trình và những người gửi thư rác bị nghi ngờ hay không. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của Stop Forum Spam theo đúng mục đích của mô-đun. Khi mô-đun được cài đặt, CIDRAM giao tiếp với API này bất cứ khi nào một yêu cầu gửi đến yêu cầu một nguồn tài nguyên mà CIDRAM nhận ra là một loại tài nguyên thường xuyên được nhắm mục tiêu bởi chương trình và những người gửi thư rác (ví dụ, trang đăng nhập, trang đăng ký, trang xác minh email, biểu mẫu nhận xét, vv).
+CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm tra xem địa chỉ IP của các yêu cầu gửi đến thuộc về một chương trình và những người gửi thư rác bị nghi ngờ hay không. Khi mô-đun được cài đặt và kích hoạt, địa chỉ IP của người dùng có thể được chia sẻ với dịch vụ theo hợp với cấu hình và mục đích dự kiến của mô-đun.
 
 ##### 9.2.4 ABUSEIPDB
 
-CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của AbuseIPDB theo đúng mục đích của mô-đun.
+CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Khi mô-đun được cài đặt và kích hoạt, địa chỉ IP của người dùng có thể được chia sẻ với dịch vụ theo hợp với cấu hình và mục đích dự kiến của mô-đun.
 
 ##### 9.2.5 BGPVIEW
 
-CIDRAM cung cấp một mô-đun tùy chọn để thực hiện tra cứu ASN và mã quốc gia bằng API của [BGPView](https://bgpview.io/) API. Các tra cứu này cung cấp khả năng chặn hoặc danh sách trắng yêu cầu trên cơ sở ASN hoặc quốc gia xuất xứ của họ. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của BGPView theo đúng mục đích của mô-đun.
+CIDRAM cung cấp một mô-đun tùy chọn để thực hiện tra cứu ASN và mã quốc gia bằng API của [BGPView](https://bgpview.io/) API. Các tra cứu này cung cấp khả năng chặn hoặc danh sách trắng yêu cầu trên cơ sở ASN hoặc quốc gia xuất xứ của họ. Khi mô-đun được cài đặt và kích hoạt, địa chỉ IP của người dùng có thể được chia sẻ với dịch vụ theo hợp với cấu hình và mục đích dự kiến của mô-đun.
+
+##### 9.2.6 PROJECT HONEYPOT
+
+CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [Project Honeypot](https://www.projecthoneypot.org/). Khi mô-đun được cài đặt và kích hoạt, địa chỉ IP của người dùng có thể được chia sẻ với dịch vụ theo hợp với cấu hình và mục đích dự kiến của mô-đun.
 
 #### 9.3 NHẬT KÝ
 
@@ -2149,4 +2153,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.06.10.
+Lần cuối cập nhật: 2022.06.23.

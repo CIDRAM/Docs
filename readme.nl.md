@@ -1961,15 +1961,19 @@ CIDRAM ondersteunt reCAPTCHA en hCAPTCHA. Ze nodig API-sleutels om correct te we
 
 [Stop Forum Spam](https://www.stopforumspam.com/) is een fantastische, vrij beschikbare service die kan helpen forums, blogs, en websites van spammers te beschermen. Het doet dit door een database van bekende spammers aan te bieden, en een API die kan worden gebruikt om te controleren of een IP-adres, gebruikersnaam, of e-mailadres in de database wordt vermeld.
 
-CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de Stop Forum Spam API in overeenstemming met het beoogde doel van de module. Wanneer de module is geïnstalleerd, communiceert CIDRAM met deze API wanneer een inkomende aanvraag een resource aanvraagt die door CIDRAM wordt herkend als een type resource dat vaak wordt getarget door spammers (zoals inlogpagina's, registratiepagina's, e-mailverificatiepagina's, opmerkingenformulieren, enz).
+CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. Wanneer de module is geïnstalleerd en geactiveerd, kunnen de gebruikers IP-adressen worden gedeeld met de service in overeenstemming met de configuratie en het beoogde doel van de module.
 
 ##### 9.2.4 ABUSEIPDB
 
-CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de AbuseIPDB API in overeenstemming met het beoogde doel van de module.
+CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. Wanneer de module is geïnstalleerd en geactiveerd, kunnen de gebruikers IP-adressen worden gedeeld met de service in overeenstemming met de configuratie en het beoogde doel van de module.
 
 ##### 9.2.5 BGPVIEW
 
-CIDRAM biedt een optionele module voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de BGPView API in overeenstemming met het beoogde doel van de module.
+CIDRAM biedt een optionele module voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. Wanneer de module is geïnstalleerd en geactiveerd, kunnen de gebruikers IP-adressen worden gedeeld met de service in overeenstemming met de configuratie en het beoogde doel van de module.
+
+##### 9.2.6 PROJECT HONEYPOT
+
+CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [Project Honeypot](https://www.projecthoneypot.org/) API. Wanneer de module is geïnstalleerd en geactiveerd, kunnen de gebruikers IP-adressen worden gedeeld met de service in overeenstemming met de configuratie en het beoogde doel van de module.
 
 #### 9.3 LOGGEN
 
@@ -2159,4 +2163,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 10 Juni 2022 (2022.06.10).
+Laatste Bijgewerkt: 23 Juni 2022 (2022.06.23).
