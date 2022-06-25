@@ -40,19 +40,19 @@ Tài liệu này và các gói liên quan của nó có thể được tải v�
 
 #### 2.0 CÀI ĐẶT THỦ CÔNG
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+Trước tiên, bạn sẽ cần một bản sao CIDRAM mới. Bạn có thể tải xuống bản lưu trữ của phiên bản CIDRAM mới nhất từ [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM). Cụ thể, bạn sẽ cần một bản sao mới của thư mục "vault" (mọi thứ khác trong lưu trữ có thể bị xóa hoặc bỏ qua mà không cần lo lắng).
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+Trước phiên bản v3, cần phải cài đặt CIDRAM ở đâu đó trong gốc công khai của bạn để có thể truy cập front-end CIDRAM. Tuy nhiên, từ phiên bản 3 trở đi, điều đó không cần thiết, và để tối đa bảo mật và ngăn chặn truy cập trái phép vào CIDRAM và các tập tin của nó, thay vào đó, bạn nên cài đặt CIDRAM *bên ngoài* thư mục gốc công khai của bạn. Bạn cài đặt CIDRAM ở đâu không quan trọng, miễn là PHP có thể truy cập nó, nó ở đâu đó an toàn hợp lý, và ở đâu đó bạn hài lòng. Bạn cũng không cần phải duy trì tên của thư mục "vault" nữa, vì vậy bạn có thể đổi tên "vault" thành bất kỳ tên nào bạn muốn (nhưng để thuận tiện, tài liệu sẽ tiếp tục gọi nó là thư mục "vault").
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+Khi bạn đã sẵn sàng, hãy tải thư mục "vault" lên vị trí bạn đã chọn, và đảm bảo rằng nó có các quyền cần thiết để PHP có thể ghi vào thư mục (tùy thuộc vào hệ thống được đề cập, đôi khi bạn không cần phải làm gì cả, hoặc đôi khi bạn cần đặt CHMOD 755 vào thư mục, hoặc nếu có vấn đề với 755, bạn có thể thử 777, nhưng 777 không được khuyến nghị do kém an toàn hơn).
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+Tiếp theo, để CIDRAM có thể bảo vệ cơ sở mã hoặc CMS của bạn, bạn cần tạo một "điểm vào". Một điểm vào như vậy bao gồm ba điều:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. Bao gồm tập tin "loader.php" tại một điểm thích hợp trong cơ sở mã hoặc CMS của bạn.
+2. Khởi tạo CIDRAM core.
+3. Gọi phương pháp "protect".
 
-A simple example:
+Một ví dụ đơn giản:
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Nếu bạn đang sử dụng máy chủ web Apache và có quyền truy cập vào `php.ini`, bạn có thể sử dụng chỉ thị `auto_prepend_file` để thêm trước CIDRAM bất cứ khi nào có bất kỳ yêu cầu PHP nào. Trong trường hợp như vậy, nơi thích hợp nhất để tạo điểm vào của bạn sẽ nằm trong tập tin của chính nó, và sau đó bạn sẽ trích dẫn tập tin đó tại chỉ thị `auto_prepend_file`.
 
-Example:
+Ví dụ:
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+Hoặc điều này trong tập tin `.htaccess`:
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+Trong các trường hợp khác, nơi thích hợp nhất để tạo điểm vào của bạn sẽ là điểm sớm nhất có thể trong cơ sở mã hoặc CMS của bạn để luôn được tải bất cứ khi nào ai đó truy cập bất kỳ trang nào trên toàn bộ trang web của bạn. Nếu cơ sở mã của bạn sử dụng một "bootstrap", một ví dụ điển hình sẽ là ở phần đầu của tập tin "bootstrap" của bạn. Nếu cơ sở mã của bạn có một tập tin trung tâm chịu trách nhiệm kết nối với cơ sở dữ liệu của bạn, thì một ví dụ điển hình khác sẽ nằm ở phần đầu của tập tin trung tâm đó.
 
 #### 2.1 CÀI ĐẶT VỚI COMPOSER
 

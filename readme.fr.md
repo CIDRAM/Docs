@@ -40,19 +40,19 @@ Ce document et son associé paquet peuvent être téléchargé gratuitement à s
 
 #### 2.0 INSTALLATION MANUELLE
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+Tout d'abord, vous aurez besoin d'une nouvelle copie de CIDRAM. Vous pouvez télécharger une archive de la dernière version de CIDRAM à partir du référentiel [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM). Plus précisément, vous aurez besoin d'une nouvelle copie du répertoire "vault" (tout ce qui se trouve dans l'archive autre que le répertoire "vault" et son contenu peut être supprimé ou ignoré sans encombre).
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+Avant la v3, il était nécessaire d'installer CIDRAM quelque part dans votre racine publique afin de pouvoir accéder au frontal de CIDRAM. Cependant, à partir de la v3, ce n'est plus nécessaire, et afin de maximiser la sécurité et d'empêcher tout accès non autorisé à CIDRAM et à ses fichiers, il est plutôt recommandé d'installer CIDRAM *en dehors* de votre racine publique. Peu importe où vous choisissez d'installer CIDRAM, tant qu'il est accessible par PHP, raisonnablement sécurisé, et que vous êtes satisfait. Il également n'est plus nécessaire de conserver le nom du répertoire « vault », vous pouvez donc renommer « vault » avec le nom que vous préférez (mais pour des raisons de commodité, la documentation continuera à s'y référer en tant que répertoire « vault »).
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+Lorsque vous êtes prêt, téléchargez le répertoire « vault » à l'emplacement de votre choix, et assurez-vous qu'il dispose des autorisations nécessaires pour que PHP puisse écrire dans le répertoire (selon le système en question, parfois vous n'aurez rien à faire, ou parfois vous devrez définir CHMOD 755 sur le répertoire, ou s'il y a des problèmes avec 755, vous pouvez essayer 777, mais 777 n'est pas recommandé car il est moins sécurisé).
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+Ensuite, pour que CIDRAM puisse protéger votre base de code ou votre CMS, vous devrez créer un « point d'entrée ». Un tel point d'entrée se compose de trois éléments :
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. Inclusion du fichier « loader.php » à un endroit approprié dans votre base de code ou votre CMS.
+2. Instanciation du CIDRAM core.
+3. Appel de la méthode « protect ».
 
-A simple example:
+Un exemple simple :
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Si vous utilisez un serveur Web Apache et que vous avez accès à `php.ini`, vous pouvez utiliser la directive `auto_prepend_file` pour éxécuter CIDRAM chaque fois qu'une requête PHP est effectuée. Dans un tel cas, l'endroit le plus approprié pour créer votre point d'entrée serait dans son propre fichier, et vous citeriez alors ce fichier à la directive `auto_prepend_file`.
 
-Example:
+Exemple :
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+Ou ceci dans le fichier `.htaccess` :
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+Dans d'autres cas, l'endroit le plus approprié pour créer votre point d'entrée serait le plus tôt possible dans votre base de code ou votre CMS pour qu'il soit toujours chargé chaque fois que quelqu'un accède à une page sur l'ensemble de votre site Web. Si votre base de code utilise un « bootstrap », un bon exemple serait au tout début de votre fichier « bootstrap ». Si votre base de code a un fichier central responsable de la connexion à votre base de données, un autre bon exemple serait au tout début de ce fichier central.
 
 #### 2.1 INSTALLATION AVEC COMPOSER
 

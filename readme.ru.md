@@ -40,19 +40,19 @@ CIDRAM/СИДРАМ (Бесклассовая Адресация Доступа 
 
 #### 2.0 ИНСТАЛЛЯЦИЯ ВРУЧНУЮ
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+Во-первых, вам понадобится свежая копия CIDRAM. Вы можете скачать архив последней версии CIDRAM из репозитория [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM). Чтобы быть конкретным, вам понадобится свежая копия каталога «vault» (все из архива, кроме каталога «vault» и его содержимого, можно безопасно удалить или проигнорировать).
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+До v3 необходимо было установить CIDRAM где-нибудь в вашем общедоступном root-каталоге, чтобы иметь доступ к фронтенду интерфейсу CIDRAM. Однако, начиная с версии 3, в этом нет необходимости, а для обеспечения максимальной безопасности и предотвращения несанкционированного доступа к CIDRAM и ее файлам рекомендуется вместо этого устанавливать CIDRAM за *пределами* общедоступного root. Не имеет особого значения, где именно вы решите установить CIDRAM, главное чтобы она была доступна для PHP, где-то достаточно безопасно, и где-то чем вы довольны. Также больше нет необходимости поддерживать имя каталога «vault», поэтому вы можете переименовать «vault» в любое имя, которое вы предпочитаете (но для ради удобства в документации он будет по-прежнему называться каталогом «vault»).
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+Когда вы будете готовы, загрузите каталог «vault» в выбранное вами место и убедитесь что у него есть разрешения необходимые для того чтобы PHP мог писать в каталог (в зависимости от рассматриваемой системы иногда вам не нужно ничего делать, а иногда вам нужно установить CHMOD 755 в каталог, или если есть проблемы с 755, вы можете попробовать 777, но 777 не рекомендуется из-за меньшей безопасности).
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+Далее, чтобы CIDRAM могла защитить вашу кодовую базу или CMS, вам необходимо создать «точку входа». Такая точка входа состоит из трех вещей:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. Включение файла «loader.php» в соответствующую точку вашей кодовой базы или CMS.
+2. Инстанциация CIDRAM core.
+3. Вызов метода «protect».
 
-A simple example:
+Простой пример:
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Если вы используете веб-сервер Apache и имеете доступ к `php.ini`, вы можете использовать директиву `auto_prepend_file` для запуска CIDRAM всякий раз, когда делается любой запрос PHP. В таком случае наиболее подходящим местом для создания вашей точки входа будет ее собственный файл, и вы должны указать этот файл в директиве `auto_prepend_file`.
 
-Example:
+Пример:
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+Или это в файле `.htaccess`:
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+В других случаях наиболее подходящим местом для создания вашей точки входа будет самая ранняя возможная точка в вашей кодовой базе или CMS, чтобы она всегда загружалась всякий раз, когда кто-то обращается к любой странице на всем вашем веб-сайте. Если в вашей кодовой базе используется «начальная загрузка», хорошим примером будет самое начало вашего «начальная загрузочного» файла. Если в вашей кодовой базе есть центральный файл, отвечающий за соединение с вашей базой данных, другим хорошим примером будет самое начало этого центрального файла.
 
 #### 2.1 ИНСТАЛЛЯЦИЯ С ПОМОЩЬЮ COMPOSER
 
