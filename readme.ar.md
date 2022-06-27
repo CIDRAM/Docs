@@ -42,19 +42,21 @@
 
 #### <div dir="rtl">٢.٠ تثبيت يدويا</div>
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+<div dir="rtl">أولاً، ستحتاج إلى نسخة حديثة من CIDRAM. يمكنك تنزيل أرشيف لأحدث إصدار من CIDRAM من المستودع <a dir="ltr" hreflang="en" href="https://github.com/CIDRAM/CIDRAM">CIDRAM/CIDRAM</a>. لكي تكون محددًا، ستحتاج إلى نسخة حديثة من دليل "vault" (يمكن حذف كل شيء آخر في الأرشيف أو تجاهله بأمان).<br /><br /></div>
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+<div dir="rtl">قبل v3، كان من الضروري تثبيت CIDRAM في مكان ما داخل الجذر العام الخاص بك حتى تتمكن من الوصول إلى الواجهة الأمامية لـ CIDRAM. ومع ذلك، من v3 فصاعدًا، هذا ليس ضروريًا. من أجل تحقيق أقصى قدر من الأمان ومنع الوصول غير المصرح به إلى CIDRAM وملفاته، يوصى بدلاً من ذلك بتثبيت CIDRAM خارج جذرك العام. لا يهم مكان تثبيت CIDRAM، طالما أنه يمكن الوصول إليه في مكان ما بواسطة PHP، في مكان ما آمن بشكل معقول، وفي مكان ما تسعد به. ليس من الضروري أيضًا الاحتفاظ باسم دليل "vault" بعد الآن، لذا يمكنك إعادة تسمية "vault" إلى أي شيء تريده (ولكن من أجل الملاءمة، ستستمر الوثائق في الإشارة إلى الدليل باسم "vault").<br /><br /></div>
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+<div dir="rtl">عندما تكون جاهزًا، قم بتحميل دليل "vault" إلى الموقع الذي اخترته، وتأكد من أنه يحتوي على الأذونات اللازمة حتى تتمكن PHP من الكتابة إلى الدليل (اعتمادًا على النظام، قد لا تحتاج إلى فعل أي شيء، أو قد تحتاج إلى ضبط CHMOD 755 على الدليل، أو إذا كانت هناك مشاكل مع 755، يمكنك تجربة 777، لكن 777 غير موصى به نظرًا لكونه أقل أمانًا).<br /><br /></div>
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+<div dir="rtl">بعد ذلك، لكي تتمكن CIDRAM من حماية قاعدة التعليمات البرمجية أو CMS، ستحتاج إلى إنشاء "نقطة دخول". تتكون نقطة الدخول هذه من ثلاثة أشياء:<br /><br /></div>
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+<div dir="rtl">
+  ١. تضمين ملف "loader.php" في نقطة مناسبة في قاعدة التعليمات البرمجية أو CMS.<br />
+  ٢. قم بإنشاء مثيل لـ CIDRAM core.<br />
+  ٣. استدعاء طريقة "protect".<br /><br />
+</div>
 
-A simple example:
+<div dir="rtl">مثال بسيط:<br /><br /></div>
 
 ```PHP
 <?php
@@ -62,17 +64,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+<div dir="rtl">إذا كنت تستخدم خادم ويب Apache ولديك حق الوصول إلى <code dir="ltr">php.ini</code>، فيمكنك استخدام التوجيه <code dir="ltr">auto_prepend_file</code> لإرفاق CIDRAM مسبقًا كلما تم إجراء أي طلب PHP. في مثل هذه الحالة، سيكون المكان الأنسب لإنشاء نقطة الإدخال في الملف الخاص به، ويمكنك بعد ذلك الاستشهاد بهذا الملف في التوجيه <code dir="ltr">auto_prepend_file</code>.<br /><br /></div>
 
-Example:
+<div dir="rtl">مثال:<br /><br /></div>
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+<div dir="rtl">أو هذا في ملف <code dir="ltr">.htaccess</code>:<br /><br /></div>
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+<div dir="rtl">في حالات أخرى، سيكون المكان الأنسب لإنشاء نقطة الدخول الخاصة بك في أقرب وقت ممكن داخل قاعدة التعليمات البرمجية أو CMS ليتم تحميلها دائمًا عندما يصل شخص ما إلى أي صفحة عبر موقع الويب بالكامل. إذا كان الكود الخاص بك يستخدم "bootstrap"، فإن المثال الجيد سيكون في بداية ملف "bootstrap" الخاص بك. إذا كانت قاعدة الشفرة الخاصة بك تحتوي على ملف مركزي مسؤول عن الاتصال بقاعدة البيانات الخاصة بك، فسيكون هناك مثال جيد آخر في بداية هذا الملف المركزي.<br /><br /></div>
 
 #### <div dir="rtl">٢.١ تثبيت مع COMPOSER</div>
 
@@ -2130,7 +2132,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 ##### <div dir="rtl">٩.٣.٦ حذف معلومات السجل<br /><br /></div>
 
-<div dir="rtl">إذا كنت ترغب في منع تسجيل أنواع معينة من المعلومات بالكامل، فيمكنك القيام بذلك. في صفحة التكوين ، يرجى الرجوع إلى توجيه تكوين <code dir="ltr">fields</code> للتحكم في الحقول التي تظهر في إدخالات السجل وفي صفحة "تم رفض الوصول".<br /><br /></div>
+<div dir="rtl">إذا كنت ترغب في منع تسجيل أنواع معينة من المعلومات بالكامل، فيمكنك القيام بذلك. في صفحة التكوين، يرجى الرجوع إلى توجيه تكوين <code dir="ltr">fields</code> للتحكم في الحقول التي تظهر في إدخالات السجل وفي صفحة "تم رفض الوصول".<br /><br /></div>
 
 <div dir="rtl"><em>ملحوظة: لا يوجد سبب لاستخدام pseudonymisation لعناوين IP عند حذف عناوين IP من السجلات بالكامل.</em><br /><br /></div>
 

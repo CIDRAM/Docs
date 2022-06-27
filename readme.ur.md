@@ -42,19 +42,21 @@
 
 #### <div dir="rtl">۲.۰ دستی طور پر نصب</div>
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+<div dir="rtl">سب سے پہلے، آپ کو CIDRAM کی ایک تازہ کاپی درکار ہوگی. آپ <a dir="ltr" hreflang="en" href="https://github.com/CIDRAM/CIDRAM">CIDRAM/CIDRAM</a> ذخیرے سے CIDRAM کے تازہ ترین ورژن کا آرکائیو ڈاؤن لوڈ کر سکتے ہیں. مخصوص ہونے کے لیے، آپ کو "vault" ڈائریکٹری کی ایک تازہ کاپی درکار ہوگی (محفوظ شدہ دستاویزات میں باقی سب کچھ محفوظ طریقے سے حذف یا نظر انداز کیا جا سکتا ہے).<br /><br /></div>
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+<div dir="rtl">v3 سے پہلے، CIDRAM فرنٹ اینڈ تک رسائی حاصل کرنے کے لیے آپ کے عوامی جڑ کے اندر کہیں CIDRAM انسٹال کرنا ضروری تھا. تاہم، v3 کے بعد سے، یہ ضروری نہیں ہے. سیکیورٹی کو زیادہ سے زیادہ بنانے اور CIDRAM اور اس کی فائلوں تک غیر مجاز رسائی کو روکنے کے لیے، یہ تجویز کیا جاتا ہے کہ CIDRAM کو اپنے عوامی جڑ سے باہر انسٹال کریں. اس سے کوئی فرق نہیں پڑتا کہ آپ CIDRAM کہاں انسٹال کرتے ہیں، جب تک کہ یہ PHP کے ذریعے قابل رسائی، کہیں معقول حد تک محفوظ، اور کہیں آپ خوش ہوں. اب "vault" ڈائرکٹری کے نام کو برقرار رکھنا بھی ضروری نہیں ہے، لہذا آپ "vault" کا نام بدل کر جو چاہیں رکھ سکتے ہیں (لیکن سہولت کی خاطر، دستاویزات اسے "vault" ڈائریکٹری کے طور پر حوالہ دیتی رہیں گی).<br /><br /></div>
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+<div dir="rtl">جب آپ تیار ہوں تو، "vault" ڈائرکٹری کو اپنے منتخب کردہ مقام پر اپ لوڈ کریں، اور یقینی بنائیں کہ اس میں PHP کے لیے ڈائرکٹری میں لکھنے کے قابل ہونے کے لیے ضروری اجازتیں ہیں (سسٹم پر منحصر ہے، ہو سکتا ہے آپ کو کچھ کرنے کی ضرورت نہ ہو، یا آپ کو ڈائرکٹری میں CHMOD 755 سیٹ کرنے کی ضرورت ہو، یا اگر 755 کے ساتھ مسائل ہیں، تو آپ 777 کو آزما سکتے ہیں، لیکن کم محفوظ ہونے کی وجہ سے 777 کی سفارش نہیں کی جاتی ہے).<br /><br /></div>
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+<div dir="rtl">اگلا، CIDRAM آپ کے کوڈ بیس یا CMS کی حفاظت کرنے کے قابل ہونے کے لیے، آپ کو ایک "انٹری پوائنٹ" بنانے کی ضرورت ہوگی. اس طرح کا داخلی نقطہ تین چیزوں پر مشتمل ہے:<br /><br /></div>
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+<div dir="rtl">
+  ۱. آپ کے کوڈ بیس یا CMS پر کہیں "loader.php" فائل کو شامل کرنا.<br />
+  ۲. CIDRAM core لانچ کرنا.<br />
+  ۳. "protect" کے طریقہ کار کو کال کرنا.<br /><br />
+</div>
 
-A simple example:
+<div dir="rtl">ایک سادہ مثال:<br /><br /></div>
 
 ```PHP
 <?php
@@ -62,17 +64,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+<div dir="rtl">اگر آپ Apache ویب سرور استعمال کر رہے ہیں اور آپ کو <code dir="ltr">php.ini</code> تک رسائی حاصل ہے، تو آپ جب بھی پی ایچ پی کی کوئی درخواست کی جاتی ہے تو آپ CIDRAM کو آگے بڑھانے کے لیے X ہدایت کا استعمال کر سکتے ہیں، جب بھی پی ایچ پی کی درخواست کی جاتی ہے تو آپ CIDRAM کو پہلے سے پینڈ کرنے کے لیے <code dir="ltr">auto_prepend_file</code> ہدایت استعمال کر سکتے. ایسی صورت میں، آپ کا انٹری پوائنٹ بنانے کے لیے سب سے مناسب جگہ اس کی اپنی فائل میں ہوگی، اور پھر آپ اس فائل کا حوالہ دیں گے <code dir="ltr">auto_prepend_file</code> ہدایت پر.<br /><br /></div>
 
-Example:
+<div dir="rtl">مثال:<br /><br /></div>
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+<div dir="rtl">یا یہ <code dir="ltr">.htaccess</code> فائل میں:<br /><br /></div>
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+<div dir="rtl">دوسری صورتوں میں، آپ کا داخلی نقطہ بنانے کے لیے سب سے مناسب جگہ آپ کے کوڈ بیس یا CMS کے اندر جلد از جلد ہوگی. یہ یقینی بنانے کے لیے ہے کہ جب بھی آپ کی ویب سائٹ پر کسی صفحہ تک رسائی حاصل کی جائے گی تو یہ لوڈ ہو جائے گا. اگر آپ کا کوڈ بیس ایک "بوٹسٹریپ" استعمال کرتا ہے، تو آپ کی "بوٹسٹریپ" فائل کا آغاز ہی ایک اچھی مثال ہوگی. اگر آپ کے کوڈ بیس میں ایک مرکزی فائل ہے جو آپ کے ڈیٹا بیس سے جڑنے کے لیے ذمہ دار ہے، تو یہ ایک اور اچھی مثال ہوگی.<br /><br /></div>
 
 #### <div dir="rtl">۲.۱ COMPOSER کے ساتھ نصب</div>
 

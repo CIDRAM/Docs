@@ -40,19 +40,19 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 
 #### 2.0 安装手工
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+首先，您需要一个新的CIDRAM副本。​您可以从[CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)存储库下载最新版本的CIDRAM存档。​具体来说，您需要一个“vault”目录的新副本​（存档中的所有其他内容都可以安全的删除或忽略）。
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+在v3之前，必须在公共根目录中的某个位置安装CIDRAM，以便能够访问CIDRAM前端。​但是，从v3开始，这不是必需的。​现在，为了最大限度地提高安全性并防止未经授权访问CIDRAM及其文件，建议将CIDRAM安装在公共根目录之外。​只要PHP可以访问它，只要它是安全的，只要您对它感到满意，您就可以在任何地方安装CIDRAM。​不再需要将目录名称保留为“vault”，因此您可以将其重命名为您想要的任何名称​（但为了方便起见，文档将继续将其称为“vault”目录）。
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+当您准备好，将“vault”目录上传到您选择的位置，并确保它具有必要的权限，以便PHP能够写入该目录​（根据系统，您可能不需要做任何事情，或者您可能需要将CHMOD 755设置为目录，或者如果755有问题，您可以试试777，但不推荐777因为它不太安全）。
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+接下来，为了让CIDRAM能够保护您的代码库或CMS，您需要创建一个“入口点”。​这样的入口点包括三件事：
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. 在代码库或CMS的适当位置包含“loader.php”文件。
+2. CIDRAM core的实例化。
+3. 调用“protect”方法。
 
-A simple example:
+简单的例子：
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+如果您使用Apache网络服务器并且可以访问`php.ini`，则可以使用`auto_prepend_file`指令在任何PHP请求发出时执行CIDRAM。​在这种情况下，创建入口点的最合适位置是在其自己的文件中，然后您将在`auto_prepend_file`指令中引用该文件。
 
-Example:
+例子：
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+或者在`.htaccess`文件中：
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+在其他情况下，创建入口点的最合适位置可能是在代码库或CMS中的最早点。​这确保了每当访问您网站上的页面时它总是会执行。​如果您的代码库使用“引导程序”，那么该文件的开头就是一个很好的例子。​如果您的代码库有一个中央文件负责连接到您的数据库，那么该文件的开头将是另一个很好的例子。
 
 #### 2.1 与COMPOSER安装
 

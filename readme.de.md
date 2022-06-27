@@ -40,19 +40,19 @@ Dieses Dokument und das zugehörige Paket kann von folgenden Links kostenlos her
 
 #### 2.0 MANUELL INSTALLIEREN
 
-Zunächst benötigen Sie eine neue Kopie von CIDRAM um damit arbeiten zu können. Sie können ein Archiv der neuesten Version von CIDRAM aus dem [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)-Repository herunterladen. Insbesondere benötigen Sie eine neue Kopie des „vault“-Verzeichnisses (alles aus dem Archiv außer dem „vault“-Verzeichnis und seinem Inhalt kann sicher gelöscht oder ignoriert werden).
+Zunächst benötigen Sie eine neue Kopie von CIDRAM um damit arbeiten zu können. Sie können ein Archiv der neuesten Version von CIDRAM aus dem [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)-Repository herunterladen. Insbesondere benötigen Sie eine neue Kopie des „vault“-Verzeichnis (alles aus dem Archiv außer dem „vault“-Verzeichnis und seinem Inhalt kann sicher gelöscht oder ignoriert werden).
 
 Vor v3 war es notwendig, CIDRAM irgendwo in Ihrem öffentlichen Root-Verzeichnis zu installieren, um auf das CIDRAM-Front-End zugreifen zu können. Jedoch, ab v3 ist das nicht mehr nötig, und um die Sicherheit zu maximieren und unbefugten Zugriff auf CIDRAM und seine Dateien zu verhindern, wird stattdessen empfohlen CIDRAM *außerhalb* Ihres öffentlichen Root-Verzeichnisses zu installieren. Es spielt keine besondere Rolle wo Sie CIDRAM installieren, solange es an einem Ort ist auf den PHP zugreifen kann, an einem einigermaßen sicheren Ort, und an einem Ort mit dem Sie zufrieden sind. Es ist auch nicht mehr erforderlich, den Name des „vault“-Verzeichnis beizubehalten, sodass Sie können „vault“ beliebig umbenennen (aber der Einfachheit halber wird es in der Dokumentation weiterhin als „vault“-Verzeichnis bezeichnet).
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+Wenn du bist bereit, laden Sie das „vault“-Verzeichnis hoch an den von Ihnen gewählten Ort, und stellen Sie sicher dass es die erforderlichen Berechtigungen verfügt damit PHP in das Verzeichnis schreiben kann (je nach System, manchmal müssen Sie nichts tun, oder manchmal müssen Sie CHMOD 755 auf das Verzeichnis setzen, oder wenn es Probleme mit 755 gibt, können Sie 777 versuchen, aber 777 wird nicht empfohlen da es weniger sicher ist).
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+Nächst, damit CIDRAM Ihre Codebasis oder CMS schützen kann, müssen Sie einen „Einstiegspunkt“ erstellen. Ein solcher Einstiegspunkt besteht aus drei Dingen:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. Einbindung der Datei „loader.php“ an geeigneter Stelle in Ihrer Codebase oder Ihrem CMS.
+2. Instanziierung des CIDRAM core.
+3. Aufruf der „protect“-Methode.
 
-A simple example:
+Ein einfaches Beispiel:
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Wenn Sie einen Apache-Webserver verwenden und Zugriff auf `php.ini` haben, können Sie die `auto_prepend_file`-Direktive verwenden um CIDRAM bei jeder PHP-Anfrage voranzustellen. In einem solchen Fall wäre der geeignetste Ort um Ihren Einstiegspunkt zu erstellen in seine eigene Datei, und Sie würden dann diese Datei bei der `auto_prepend_file`-Direktive zitieren.
 
-Example:
+Beispiel:
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+Oder das in der `.htaccess`-Datei:
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+In anderen Fällen wäre der geeignetste Ort zum Erstellen Ihres Einstiegspunkts der frühestmögliche Punkt in Ihrer Codebasis oder Ihrem CMS, damit er immer geladen wird wenn jemand auf eine Seite Ihrer Website zugreift. Wenn Ihre Codebasis einen „Bootstrap“ verwendet, wäre ein gutes Beispiel ganz am Anfang Ihrer „Bootstrap“-Datei. Wenn Ihre Codebasis eine zentrale Datei hat die für die Verbindung zu Ihrer Datenbank verantwortlich ist, wäre ein weiteres gutes Beispiel ganz am Anfang dieser zentralen Datei.
 
 #### 2.1 INSTALLATION MIT COMPOSER
 
@@ -158,7 +158,7 @@ Um die Zwei-Faktor-Authentifizierung zu aktivieren, verwenden Sie zunächst die 
 
 Nachdem Sie PHPMailer installiert haben, müssen Sie die Konfigurationsdirektiven für PHPMailer über die CIDRAM-Konfigurationsseite oder Konfigurationsdatei ausfüllen. Weitere Informationen zu diesen Konfigurationsanweisungen finden Sie im [Konfigurationsabschnitt](#SECTION5) dieses Dokuments. Nachdem Sie die PHPMailer-Konfigurationsdirektiven gefüllt haben, setzen Sie `enable_two_factor` auf `true`. Die Zwei-Faktor-Authentifizierung sollte jetzt aktiviert sein.
 
-Nächster, müssen Sie eine E-Mail-Adresse mit einem Konto verknüpfen, damit CIDRAM bei der Einloggen mit diesem Konto weiß, wohin die 2FA-Codes gesendet werden müssen. Um dies zu tun, verwenden Sie die E-Mail-Adresse als Nutzername für das Konto (wie `foo@bar.tld`), oder formatieren sie den Nutzernamen wie in Emails üblich (wie `Foo Bar <foo@bar.tld>`).
+Nächst, müssen Sie eine E-Mail-Adresse mit einem Konto verknüpfen, damit CIDRAM bei der Einloggen mit diesem Konto weiß, wohin die 2FA-Codes gesendet werden müssen. Um dies zu tun, verwenden Sie die E-Mail-Adresse als Nutzername für das Konto (wie `foo@bar.tld`), oder formatieren sie den Nutzernamen wie in Emails üblich (wie `Foo Bar <foo@bar.tld>`).
 
 Hinweis: Besonders wichtig ist hier der Schutz Ihres Vault vor unbefugtem Zugriff (z.B., durch die Stärkung der Sicherheit Ihres Servers und die Einschränkung der öffentlichen Zugriffsrechte), da ein unbefugter Zugriff auf Ihre Konfigurationsdatei (die in Ihrem Vault gespeichert ist), Ihre Einstellungen für ausgehenden SMTP (einschließlich SMTP-Benutzername und Passwort) gefährden könnte. Sie sollten sicherstellen, dass Ihr Vault ordnungsgemäß gesichert ist, bevor Sie die Zwei-Faktor-Authentifizierung aktivieren. Wenn dies nicht möglich ist, sollten Sie zumindest ein neues E-Mail-Konto erstellen, das speziell für diesen Zweck vorgesehen ist, um die mit freiliegenden SMTP-Einstellungen verbundenen Risiken zu verringern.
 

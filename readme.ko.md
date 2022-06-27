@@ -40,19 +40,19 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 
 #### 2.0 수동 설치
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+먼저, 작업할 CIDRAM의 새 복사본이 필요합니다. [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) 저장소에서 최신 버전의 CIDRAM 아카이브를 다운로드할 수 있습니다. 구체적으로 말하면, "vault" 디렉터리의 새 복사본이 필요합니다 ("vault" 디렉터리와 그 내용을 제외한 아카이브의 모든 항목을 안전하게 삭제하거나 무시할 수 있습니다).
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+v3 이전에는, CIDRAM 프런트 엔드에 액세스할 수 있으려면 공용 루트 내의 어딘가에 CIDRAM을 설치해야 했습니다. 그러나, v3부 터는 그럴 필요가 없습니다. 보안을 최대화하고 CIDRAM 및 해당 파일에 대한 무단 액세스를 방지하려면, 대신, 공용 루트 *외부에* CIDRAM을 설치하는 것이 좋습니다. PHP가 액세스할 수 있는 한, 위치가 안전한 한, 당신이 위치에 만족하는 한, CIDRAM을 어디에나 설치할 수 있습니다. 디렉터리 이름을 "vault"로 유지하는 것은 더 이상 필요하지 않으므로, 원하는 이름으로 이름을 변경할 수 있습니다 (그러나, 편의를 위해, 문서에서는 계속 이를 "vault" 디렉터리로 참조합니다).
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+준비되면, "vault" 디렉터리를 선택한 위치에 업로드하고, PHP가 디렉터리에 쓸 수 있도록 하는 데 필요한 권한이 있는지 확인하십시오 (시스템에 따라, 아무것도 할 필요가 없거나, CHMOD 755를 디렉터리로 설정해야 할 수도 있습니다. 또는, 755에 문제가 있는 경우, 777을 시도할 수, 있지만 777은 보안이 취약하므로 권장하지 않습니다).
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+다음으로, CIDRAM이 코드 베이스 또는 CMS를 보호할 수 있으려면 "진입점"을 만들어야 합니다. 이러한 진입점은 다음 세 가지로 구성됩니다 :
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+1. 코드 베이스 또는 CMS의 적절한 지점에 "loader.php" 파일을 포함합니다.
+2. CIDRAM core의 인스턴스화.
+3. "protect" 메서드를 호출합니다.
 
-A simple example:
+간단한 예 :
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Apache 웹 서버를 사용 중이고 `php.ini`에 액세스할 수 있는 경우, PHP 요청이 만들어질 때마다 CIDRAM을 실행하기 위해, `auto_prepend_file` 지시문을 사용할 수 있습니다. 이러면, 진입점을 생성하는 데 가장 적절한 위치는 자체 파일이며, `auto_prepend_file` 지시문에서 해당 파일을 인용합니다.
 
-Example:
+예 :
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+또는 `.htaccess` 파일에서 :
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+다른 경우에, 진입점을 생성하는 가장 적절한 위치는 웹사이트의 모든 페이지에 대해 항상 로드되도록 코드 베이스 또는 CMS 내에서 가능한 한 초기 하는 것입니다. 코드 베이스가 "bootstrap"을 사용한다면, "bootstrap" 파일의 시작 부분이 좋은 선택이 될 것입니다. 코드 베이스에 데이터베이스 연결을 담당하는 파일이 있는 경우, 해당 파일도 좋은 선택이 될 것입니다.
 
 #### 2.1 COMPOSER를 사용하여 설치한다
 
@@ -160,7 +160,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 해당 계정으로 로그인 할 때 2FA 코드를 보낼 위치를 CIDRAM이 알 수 있도록 이메일 주소를 계정과 연결해야합니다. 전자 메일 주소를 계정의 사용자 이름 (예 : `foo@bar.tld`)으로 사용하거나 정상적으로 전자 메일을 보낼 때와 동일한 방법 (예 : `Foo Bar <foo@bar.tld>`)으로 사용자 이름의 일부로 전자 메일 주소를 포함하십시오.
 
-노트 : 무단 액세스로부터 vault보호는 특히 중요합니다 (예 : 서버의 보안을 강화하고 공용 액세스 권한을 제한함으로써). 볼트에 저장되어있는 구성 파일에 대한 무단 액세스로 인해 SMTP 사용자 이름과 암호를 비롯한 아웃 바운드 SMTP 설정이 노출 될 수 있습니다. 2FA를 사용하기 전에 vault가 적절하게 보안되어 있는지 확인해야합니다. 이 작업을 수행 할 수 없으면 노출 된 SMTP 설정과 관련된 위험을 줄이기 위해 이러한 용도로 전용 된 새 전자 메일 계정을 만들어야합니다.
+노트 : 무단 액세스로부터 vault보호는 특히 중요합니다 (예 : 서버의 보안을 강화하고 공용 액세스 권한을 제한함으로써). vault에 저장되어있는 구성 파일에 대한 무단 액세스로 인해 SMTP 사용자 이름과 암호를 비롯한 아웃 바운드 SMTP 설정이 노출 될 수 있습니다. 2FA를 사용하기 전에 vault가 적절하게 보안되어 있는지 확인해야합니다. 이 작업을 수행 할 수 없으면 노출 된 SMTP 설정과 관련된 위험을 줄이기 위해 이러한 용도로 전용 된 새 전자 메일 계정을 만들어야합니다.
 
 ---
 

@@ -40,19 +40,19 @@ CIDRAM（シドラム、​クラスレス・ドメイン間・ルーティン�
 
 #### 2.0 手動インストール
 
-Firstly, you'll need a fresh copy of CIDRAM to work with. You can download an archive of the latest version of CIDRAM from the [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM) repository. Specifically, you'll need a fresh copy of the "vault" directory (everything from the archive other than the "vault" directory and its contents can be safely deleted or disregarded).
+まず、それを操作するためにCIDRAMの新しいコピーが必要になります。​「[CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)」リポジトリから最新バージョンのCIDRAMのアーカイブをダウンロードできます。​具体的には、「vault」ディレクトリの新しいコピーが必要になります（「vault」ディレクトリとその内容以外のアーカイブからのすべては、安全に削除または無視することができます）。
 
-Prior to v3, it was necessary to install CIDRAM somewhere within your public root in order to be able to access the CIDRAM front-end. However, from v3 onwards, that isn't necessary, and in order to maximise security and to prevent unauthorised access to CIDRAM and its files, it's recommended instead to install CIDRAM *outside* your public root. It doesn't particularly matter exactly where you choose to install CIDRAM, as long as it's somewhere accessible by PHP, somewhere reasonably secure, and somewhere you're happy with. It's also not necessary to maintain the name of the "vault" directory anymore, so you can rename "vault" to whatever name you'd prefer (but for the sake of convenience, the documentation will continue to refer to it as the "vault" directory).
+v3より前は、CIDRAMフロントエンドにアクセスできるようにするために、パブリック・ルート内のどこかにCIDRAMをインストールする必要がありました。​ただし、v3以降では、これは必要ありません。​セキュリティを最大化し、CIDRAMとそのファイルへの不正アクセスを防ぐために、代わりにパブリック・ルートの外部にCIDRAMをインストールすることをお勧めします。​ＰＨＰでアクセスできる限り、安全である限り、そして満足している限り、どこにでもCIDRAMをインストールできます。​ディレクトリ名を「vault」として保持する必要がなくなったため、好きなように名前を変更できます​（ただし、便宜上、ドキュメンテーションでは、引き続き「vault」ディレクトリと呼びます）。
 
-When you're ready, upload the "vault" directory to your chosen location, and ensure that it has the permissions necessary in order for PHP to be able to write to the directory (depending on the system in question, sometimes you won't need to do anything, or sometimes you'll need to set CHMOD 755 to the directory, or if there are problems with 755, you can try 777, but 777 isn't recommended due to being less secure).
+準備ができたら、「vault」ディレクトリを選択した場所にアップロードし、ＰＨＰがディレクトリに書き込めるようにするために必要な権限があることを確認します​（システムによっては、何もする必要がない場合や、ディレクトリでCHMODを「755」に設定する必要がある場合があります、または、「755」に問題がある場合は、「777」を試すことができますが、安全性が低いため、「777」はお勧めしません）。
 
-Next, in order for CIDRAM to be able to protect your codebase or CMS, you'll need to create an "entrypoint". Such an entrypoint consists of three things:
+次に、CIDRAMがコードベースまたはＣＭＳを保護できるようにするには、「エントリポイント」を作成する必要があります。​このようなエントリポイントは、次の3つで構成されます：
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM core.
-3. Calling the "protect" method.
+１. コードベースまたはＣＭＳの適切なポイントに「loader.php」ファイルを含める。
+２. 「CIDRAM core」のインスタンシエーション。
+３. 「protect」メソッドの呼び出し。
 
-A simple example:
+簡単な例：
 
 ```PHP
 <?php
@@ -60,17 +60,17 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\Core())->protect();
 ```
 
-If you're using an Apache webserver and have access to `php.ini`, you can use the `auto_prepend_file` directive to prepend CIDRAM whenever any PHP request is made. In such a case, the most appropriate place to create your entrypoint would be in its own file, and you would then cite that file at the `auto_prepend_file` directive.
+Apacheウェブサーバーを使用していて、`php.ini`ファイルにアクセスできる場合は、ＰＨＰリクエストが行われるたびにCIDRAMを実行するために、`auto_prepend_file`ディレクティブを使用できます。​このような場合、エントリポイントを作成するのに最も適切な場所は独自のファイルであり、`auto_prepend_file`ディレクティブで引用する必要になります。
 
-Example:
+例：
 
 `auto_prepend_file = "/path/to/your/entrypoint.php"`
 
-Or this in the `.htaccess` file:
+または、これは`.htaccess`ファイルになります：
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-In other cases, the most appropriate place to create your entrypoint would be at the earliest point possible within your codebase or CMS to always be loaded whenever someone accesses any page across your entire website. If your codebase utilises a "bootstrap", a good example would be at the very beginning of your "bootstrap" file. If your codebase has a central file responsible for connecting to your database, another good example would be at the very beginning of that central file.
+その他の場合、エントリポイントを作成するための最も適切な場所は、コードベースまたはCMS内の可能な限り早いポイントで、誰かがウェブサイト全体の任意のページにアクセスするたびに常にロードされることです。​コードベースが「ブートストラップ」を利用している場合、良い例は「ブートストラップ」ファイルの最初にあります。​コードベースにデータベースへの接続を担当する中央ファイルがある場合、別の良い例はその中央ファイルの最初にあります。
 
 #### 2.1 COMPOSERを使用してインストールする
 
