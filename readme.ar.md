@@ -116,13 +116,15 @@ require_once '/path/to/the/vault/directory/loader.php';
 
 #### <div dir="rtl">٤.١ كيفية الوصول إلى الواجهة الأمامية.<br /><br /></div>
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+<div dir="rtl">على غرار الطريقة التي احتجت إلى إنشاء نقطة إدخال لكي يحمي CIDRAM موقع الويب الخاص بك، ستحتاج أيضًا إلى إنشاء نقطة إدخال للوصول إلى الواجهة الأمامية. تتكون نقطة الدخول هذه من ثلاثة أشياء:<br /><br /></div>
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+<div dir="rtl">
+  ١. تضمين ملف "loader.php" في نقطة مناسبة في قاعدة التعليمات البرمجية أو CMS.<br />
+  ٢. قم بإنشاء مثيل لـ CIDRAM front-end.<br />
+  ٣. استدعاء طريقة "view".<br /><br />
+</div>
 
-A simple example:
+<div dir="rtl">مثال بسيط:<br /><br /></div>
 
 ```PHP
 <?php
@@ -130,9 +132,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+<div dir="rtl">تقوم فئة "FrontEnd" بتوسيع فئة "Core"، مما يعني أنه إذا أردت، يمكنك استدعاء طريقة "protect" قبل استدعاء طريقة "view" من أجل منع حركة المرور غير المرغوب فيها من الوصول إلى الواجهة الأمامية. القيام بذلك اختياري تمامًا.<br /><br /></div>
 
-A simple example:
+<div dir="rtl">مثال بسيط:<br /><br /></div>
 
 ```PHP
 <?php
@@ -142,9 +144,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+<div dir="rtl">المكان الأنسب لإنشاء نقطة إدخال للواجهة الأمامية هو في ملفها المخصص. على عكس نقطة الإدخال التي تم إنشاؤها مسبقًا، فأنت تريد أن يكون الوصول إلى نقطة الدخول الأمامية الخاصة بك متاحًا فقط عن طريق الطلب مباشرة للملف المحدد حيث توجد نقطة الإدخال، لذلك في هذه الحالة، لن ترغب في استخدام <code dir="ltr">auto_prepend_file</code> أو <code dir="ltr">.htaccess</code>.<br /><br /></div>
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+<div dir="rtl">بعد إنشاء نقطة الدخول الأمامية، استخدم متصفحك للوصول إليها. يجب أن يتم تقديمه مع صفحة تسجيل الدخول. في صفحة تسجيل الدخول، أدخل اسم المستخدم وكلمة المرور الافتراضيين (admin/password) واضغط على زر تسجيل الدخول.<br /><br /></div>
 
 <div dir="rtl">ملحوظة: تغيير اسم المستخدم وكلمة المرور الخاصة بك بعد تسجيل الدخول للمرة الأولى، من أجل منع الوصول غير المصرح به (هذا مهم جدا)!<br /><br /></div>
 

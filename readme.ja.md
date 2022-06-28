@@ -46,11 +46,11 @@ v3より前は、CIDRAMフロントエンドにアクセスできるようにす
 
 準備ができたら、「vault」ディレクトリを選択した場所にアップロードし、ＰＨＰがディレクトリに書き込めるようにするために必要な権限があることを確認します​（システムによっては、何もする必要がない場合や、ディレクトリでCHMODを「755」に設定する必要がある場合があります、または、「755」に問題がある場合は、「777」を試すことができますが、安全性が低いため、「777」はお勧めしません）。
 
-次に、CIDRAMがコードベースまたはＣＭＳを保護できるようにするには、「エントリポイント」を作成する必要があります。​このようなエントリポイントは、次の3つで構成されます：
+次に、CIDRAMがコードベースまたはＣＭＳを保護できるようにするには、「エントリポイント」を作成する必要があります。​このようなエントリポイントは、次の３つで構成されます：
 
-１. コードベースまたはＣＭＳの適切なポイントに「loader.php」ファイルを含める。
-２. 「CIDRAM core」のインスタンシエーション。
-３. 「protect」メソッドの呼び出し。
+1. コードベースまたはＣＭＳの適切なポイントに「loader.php」ファイルを含める。
+2. 「CIDRAM core」のインスタンシエーション。
+3. 「protect」メソッドの呼び出し。
 
 簡単な例：
 
@@ -112,13 +112,13 @@ CIDRAMは、手動で、または、フロントエンド経由で更新でき�
 
 #### 4.1 フロントエンドにアクセスする方法。
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+以前と同じように、フロントエンドにアクセスするにはエントリポイントを作成する必要があります。​このようなエントリポイントは、次の３つで構成されます：
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. コードベースまたはＣＭＳの適切なポイントに「loader.php」ファイルを含める。
+2. 「CIDRAM front-end」のインスタンシエーション。
+3. 「view」メソッドの呼び出し。
 
-A simple example:
+簡単な例：
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+「FrontEnd」クラスは「Core」クラスを拡張します。​これは、潜在的に不要なトラフィックがフロントエンドにアクセスするのをブロックするために、「view」メソッドを呼び出す前に「protect」メソッドを呼び出すことができることを意味します。​そうすることは完全にオプションです。
 
-A simple example:
+簡単な例：
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+フロントエンドのエントリポイントを作成するのに最も適切な場所は、専用のファイルです。​以前とは異なり、エントリポイントが存在する特定のファイルを直接要求することによってのみフロントエンド・エントリポイントにアクセス可能にする必要があります。​したがって、あなたはここで`auto_prepend_file`または`.htaccess`は使用したくない。
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+フロントエンド・エントリポイントを作成したら、ブラウザを使用してアクセスします。​ログイン・ページが表示されます。​ログイン・ページで、デフォルトのユーザー名とパスワード（admin/password）を入力し、ログイン・ボタンを押します。
 
 注意：あなたが初めてログインした後、​フロントエンドへの不正アクセスを防ぐために、​あなたはすぐにユーザー名とパスワードを変更する必要があります！​これは非常に重要です、​なぜなら、​フロントエンドから任意のＰＨＰコードをあなたのウェブサイトにアップロードすることができるからです。
 

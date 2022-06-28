@@ -116,13 +116,15 @@ require_once '/path/to/the/vault/directory/loader.php';
 
 #### <div dir="rtl">۴.۱ فرنٹ اینڈ تک کیسے رسائی حاصل کی جائے.<br /><br /></div>
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+<div dir="rtl">بالکل پہلے کی طرح، آپ کو فرنٹ اینڈ تک رسائی حاصل کرنے کے لیے ایک انٹری پوائنٹ بنانے کی ضرورت ہوگی. اس طرح کا داخلی نقطہ تین چیزوں پر مشتمل ہے:<br /><br /></div>
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+<div dir="rtl">
+  ۱. آپ کے کوڈ بیس یا CMS پر کہیں "loader.php" فائل کو شامل کرنا.<br />
+  ۲. CIDRAM front-end لانچ کرنا.<br />
+  ۳. "view" کے طریقہ کار کو کال کرنا.<br /><br />
+</div>
 
-A simple example:
+<div dir="rtl">ایک سادہ مثال:<br /><br /></div>
 
 ```PHP
 <?php
@@ -130,9 +132,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+<div dir="rtl">"FrontEnd" کلاس "Core" کلاس کو بڑھاتی ہے. اس کا مطلب ہے کہ آپ ممکنہ طور پر ناپسندیدہ ٹریفک کو فرنٹ اینڈ تک رسائی سے روکنے کے لیے "view" کے طریقے کو کال کرنے سے پہلے "protect" طریقہ کو کال کر سکتے ہیں. ایسا کرنا مکمل طور پر اختیاری ہے.<br /><br /></div>
 
-A simple example:
+<div dir="rtl">ایک سادہ مثال:<br /><br /></div>
 
 ```PHP
 <?php
@@ -142,9 +144,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+<div dir="rtl">فرنٹ اینڈ کے لیے انٹری پوائنٹ بنانے کے لیے سب سے مناسب جگہ اس کی اپنی مخصوص فائل میں ہے. پہلے کے برعکس، آپ چاہتے ہیں کہ آپ کا فرنٹ اینڈ انٹری پوائنٹ صرف اس مخصوص فائل کے لیے براہ راست درخواست کر کے قابل رسائی ہو جہاں انٹری پوائنٹ موجود ہو، تو اس صورت میں، آپ <code dir="ltr">auto_prepend_file</code> یا <code dir="ltr">.htaccess</code> استعمال نہیں کرنا چاہیں گے.<br /><br /></div>
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+<div dir="rtl">اپنا فرنٹ اینڈ انٹری پوائنٹ بنانے کے بعد، اس تک رسائی کے لیے اپنے براؤزر کا استعمال کریں. ایک لاگ ان صفحہ ظاہر ہونا چاہئے. لاگ ان صفحہ پر، پہلے سے طے شدہ صارف نام اور پاس ورڈ <span dir="ltr">(admin/password)</span> درج کریں اور لاگ ان بٹن دبائیں.<br /><br /></div>
 
 <div dir="rtl">نوٹ: اگر آپ کو پہلی بار کے لئے لاگ ان کرنے کے بعد، سامنے کے آخر تک غیر مجاز رسائی کو روکنے کے لئے، آپ کو فوری طور پر آپ کا صارف نام اور پاس ورڈ کو تبدیل کرنا چاہئے! یہ بہت اہم ہے، یہ سامنے کے آخر میں کے ذریعے آپ کی ویب سائٹ پر من مانی PHP کوڈ کو اپ لوڈ کرنا ممکن ہے کیونکہ.<br /><br /></div>
 

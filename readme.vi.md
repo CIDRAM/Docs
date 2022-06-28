@@ -112,13 +112,13 @@ Các front-end cung cấp một cách thuận tiện và dễ dàng để duy tr
 
 #### 4.1 LÀM THẾ NÀO ĐỂ TRUY CẬP FRONT-END.
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+Tương tự như cách bạn cần tạo một điểm vào để CIDRAM có thể bảo vệ trang web của bạn, bạn cũng sẽ cần tạo một điểm vào để truy cập front-end. Một điểm vào như vậy bao gồm ba điều:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. Bao gồm tập tin "loader.php" tại một điểm thích hợp trong cơ sở mã hoặc CMS của bạn.
+2. Khởi tạo CIDRAM front-end.
+3. Gọi phương pháp "view".
 
-A simple example:
+Một ví dụ đơn giản:
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+Lớp "FrontEnd" mở rộng lớp "Core", có nghĩa là nếu bạn muốn, bạn có thể gọi phương thức "protect" trước khi gọi phương thức "view" để chặn lưu lượng truy cập không mong muốn vào front-end. Làm như vậy là hoàn toàn tùy chọn.
 
-A simple example:
+Một ví dụ đơn giản:
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+Nơi tốt nhất để tạo điểm vào cho front-end là trong tập tin chuyên dụng của riêng nó. Không giống như điểm vào đã tạo trước đó, bạn muốn điểm vào front-end của bạn chỉ được truy cập bằng yêu cầu trực tiếp để tập tin cụ thể nơi điểm vào tồn tại, vì vậy trong trường hợp này, bạn sẽ không muốn sử dụng `auto_prepend_file` hoặc `.htaccess`.
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+Sau khi đã tạo điểm vào front-end, sử dụng trình duyệt của bạn để truy cập nó. Bạn sẽ được hiển thị với một trang đăng nhập. Tại trang đăng nhập, nhập tên người dùng và mật khẩu mặc định (admin/password) rồi nhấn nút đăng nhập.
 
 Chú thích: Sau khi bạn đã đăng nhập lần đầu tiên, để ngăn chặn truy cập trái phép vào các front-end, bạn phải ngay lập tức thay đổi tên người dùng và mật khẩu của bạn! Điều này là rất quan trọng, bởi vì nó có thể tải lên các mã PHP tùy ý để trang web của bạn thông qua các front-end.
 

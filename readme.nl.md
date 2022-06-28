@@ -42,7 +42,7 @@ Dit document en de bijbehorende pakket kunt gedownload gratis zijn van:
 
 Eerste, nodig u een nieuwe kopie van CIDRAM. U kunt een archief van de nieuwste versie van CIDRAM downloaden van de [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)-repository. In het bijzonder nodig u een nieuwe kopie van de "vault"-map (alles uit het archief behalve de "vault"-map en de inhoud ervan kan veilig worden verwijderd of genegeerd).
 
-Vóór v3 was het nodig om CIDRAM ergens in je openbare root te installeren om toegang te krijgen tot de CIDRAM-front-end. Vanaf v3 echter dat is niet meer nodig, en om de veiligheid te maximaliseren en ongeoorloofde toegang tot CIDRAM en zijn bestanden te voorkomen, wordt aanbevolen om in plaats om CIDRAM *buiten* uw openbare root te installeren. U kunt CIDRAM installeren waar u wilt, zolang het ergens toegankelijk met PHP, ergens redelijk veilig, en ergens u tevreden over. Het is ook niet meer nodig om de naam van de "vault"-map te behouden, dus u kunt de "vault"-map hernoemen naar elke gewenste naam (maar voor het gemak zal de documentatie ernaar blijven verwijzen als "vault").
+Vóór v3 was het nodig om CIDRAM ergens in je openbare root te installeren om toegang te krijgen tot de CIDRAM-frontend. Vanaf v3 echter dat is niet meer nodig, en om de veiligheid te maximaliseren en ongeoorloofde toegang tot CIDRAM en zijn bestanden te voorkomen, wordt aanbevolen om in plaats om CIDRAM *buiten* uw openbare root te installeren. U kunt CIDRAM installeren waar u wilt, zolang het ergens toegankelijk met PHP, ergens redelijk veilig, en ergens u tevreden over. Het is ook niet meer nodig om de naam van de "vault"-map te behouden, dus u kunt de "vault"-map hernoemen naar elke gewenste naam (maar voor het gemak zal de documentatie ernaar blijven verwijzen als "vault").
 
 Upload de "vault"-map naar de gekozen locatie en zorg ervoor dat het de benodigde machtigingen heeft zodat PHP kan schrijven naar de map (afhankelijk van het systeem hoeft u soms niets te doen, of soms moet u CHMOD 755 in de directory zetten, of als er problemen zijn met 755, u kunt 777 proberen, maar 777 wordt niet aanbevolen omdat het minder veilig is).
 
@@ -112,13 +112,13 @@ De frontend biedt een gemakkelijke en eenvoudige manier te onderhouden, beheren 
 
 #### 4.1 HOE TOEGANG TE KRIJGEN TOT DE FRONTEND.
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+Net zoals u een ingangspunt moest maken om CIDRAM uw website te laten beschermen, moet u ook een ingangspunt maken om toegang te krijgen tot de frontend. Zo'n ingangspunt bestaat uit drie dingen:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. Opname van het "loader.php"-bestand op een geschikt punt in uw codebase of CMS.
+2. Instantiatie van de CIDRAM frontend.
+3. Aanroepen van de "view"-methode.
 
-A simple example:
+Een eenvoudig voorbeeld:
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+De "FrontEnd"-klasse breidt de "Core"-klasse uit, wat inhoudt dat desgewenst u de "protect"-methode kunt aanroepen voordat de "view"-methode om te voorkomen dat mogelijk ongewenst verkeer toegang krijgt tot de frontend. Dit is geheel optioneel.
 
-A simple example:
+Een eenvoudig voorbeeld:
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+De beste plaats om een ingangspunt voor de frontend te maken is in een eigen speciaal bestand. In tegenstelling tot uw eerder gemaakte ingangspunt, wilt u dat uw frontend ingangspunt alleen toegankelijk is door rechtstreeks om het specifieke bestand waarin het ingangspunt bestaat te vragen, dus in dit geval wilt u hier geen `auto_prepend_file` of `.htaccess` gebruiken.
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+Nadat u uw frontend ingangspunt heeft gemaakt, toegang krijgen via uw browser. Er moet een inlogpagina worden weergegeven. Voer op de inlogpagina de standaard gebruikersnaam en wachtwoord (admin/password) in en druk op de inloggen-knop.
 
 Notitie: Nadat u hebt ingelogd voor de eerste keer, om ongeautoriseerde toegang tot de frontend te voorkomen, moet u onmiddellijk veranderen uw gebruikersnaam en wachtwoord! Dit is zeer belangrijk, want het is mogelijk om willekeurige PHP-code te uploaden naar uw website via de frontend.
 

@@ -112,13 +112,13 @@ Das Frontend bietet eine bequeme und einfache Möglichkeit, für Ihre CIDRAM-Ins
 
 #### 4.1 WIE ZUGREIFEN SIE DAS FRONTEND.
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+Ähnlich wie Sie einen Einstiegspunkt erstellen mussten, damit CIDRAM Ihre Website schützen kann, müssen Sie auch einen Einstiegspunkt erstellen um auf das Front-End zugreifen zu können. Ein solcher Einstiegspunkt besteht aus drei Dingen:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. Einbindung der Datei „loader.php“ an geeigneter Stelle in Ihrer Codebase oder Ihrem CMS.
+2. Instanziierung des CIDRAM Front-End.
+3. Aufruf der „view“-Methode.
 
-A simple example:
+Ein einfaches Beispiel:
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+Die „FrontEnd“-Klasse erweitert die „Core“-Klasse, was bedeutet dass, wenn Sie möchten, Sie kannst die „protect“-Methode bevor die „view“-Methode aufrufen um potenziell unerwünschten Datenverkehr am Zugriff auf das Frontend zu hindern. Dies ist völlig optional.
 
-A simple example:
+Ein einfaches Beispiel:
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+Der geeignetste Ort um einen Einstiegspunkt für das Front-End zu erstellen ist seine eigene dedizierte Datei. Im Gegensatz zu Ihrem zuvor erstellten Einstiegspunkt möchten Sie dass Ihren Front-End-Einstiegspunkt zugegriffen, nur direkt über die spezifische Datei in der der Einstiegspunkt vorhanden ist anfordern, daher möchten Sie weder `auto_prepend_file` noch `.htaccess` verwenden.
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+Nachdem Sie Ihren Front-End-Einstiegspunkt erstellt haben, verwenden Sie Ihren Browser um darauf zuzugreifen. Es sollte eine Anmeldeseite angezeigt werden. Geben Sie auf der Anmeldeseite den Standardbenutzernamen und das Standardkennwort (admin/password) ein und drücken Sie die Anmeldeschaltfläche.
 
 Hinweis: **Um unautorisierten zugriff auf das Frontend zu verhindern, sollten sie sofort nach dem ersten Login ihren Benutzernamen und Passwort ändern. Dies ist notwendig, da mithilfe des Frontend möglich ist, beliebigen PHP-Code auf Ihre Webseite hochzuladen.**
 

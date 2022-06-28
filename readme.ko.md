@@ -112,13 +112,13 @@ CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 �
 
 #### 4.1 프론트 엔드를 액세스하는 방법.
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+이전과 마찬가지로, 프런트 엔드에 액세스하려면 진입점을 만들어야 합니다. 이러한 진입점은 다음 세 가지로 구성됩니다 :
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. 코드 베이스 또는 CMS의 적절한 지점에 "loader.php" 파일을 포함합니다.
+2. CIDRAM front-end의 인스턴스화.
+3. "view" 메서드를 호출합니다.
 
-A simple example:
+간단한 예 :
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+"FrontEnd" 클래스는 "Core" 클래스를 확장합니다. 즉, 잠재적으로 원하지 않는 트래픽이 프런트 엔드에 액세스하는 것을 차단하기 위해 "view" 메서드를 호출하기 전에 "protect" 메서드를 호출할 수 있습니다. 그렇게 하는 것은 전적으로 선택 사항입니다.
 
-A simple example:
+간단한 예 :
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+프런트 엔드에 대한 진입점을 만드는 데 가장 적절한 위치는 자체 전용 파일입니다. 이전과 달리, 진입점이 존재하는 특정 파일을 직접 요청해야만 프런트 엔드 진입점에 액세스할 수 있기를 원합니다. 따라서, 여기에서 `auto_prepend_file` 또는 `.htaccess`를 사용하고 싶지 않습니다.
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+프런트 엔드 진입점을 만든 후, 브라우저를 사용하여 액세스합니다. 로그인 페이지가 표시되어야 합니다. 로그인 페이지에서 기본 사용자 이름과 비밀번호 (admin/password)를 입력하고 로그인 버튼을 누릅니다.
 
 주의 : 당신이 처음 로그인 한 후 프론트 엔드에 대한 무단 액세스를 방지하기 위해 신속하게 사용자 이름과 암호를 변경해야합니다! 이것은 매우 중요합니다, 왜냐하면 프론트 엔드에서 임의의 PHP 코드를 당신의 웹 사이트에 업로드 할 수 있기 때문입니다.
 

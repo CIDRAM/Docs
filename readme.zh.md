@@ -112,13 +112,13 @@ CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或Wor
 
 #### 4.1 如何访问前端。
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+就像以前一样，您需要创建一个入口点才能访问前端。​这样的入口点包括三件事：
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. 在代码库或CMS的适当位置包含“loader.php”文件。
+2. CIDRAM front-end的实例化。
+3. 调用“view”方法。
 
-A simple example:
+简单的例子：
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+“FrontEnd”类扩展了“Core”类。​这意味着您可以在调用“view”方法之前调用“protect”方法，以阻止可能不需要的流量访问前端。​这样做完全是可选的。
 
-A simple example:
+简单的例子：
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+为前端创建入口点的最合适位置是在其自己的专用文件中。​与以前不同，您希望前端入口点只能通过直接请求入口点所在的特定文件来访问。​因此，您不想在此处使用`auto_prepend_file`或`.htaccess`。
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+创建前端入口点后，使用浏览器访问它。​应该显示一个登录页面。​在登录页面，输入默认用户名和密码（admin/password），然后按登录按钮。
 
 注意：第一次登录后，​以防止未经授权的访问前端，​您应该立即更改您的用户名和密码！​这是非常重要的，​因为它可以任意PHP代码上传到您的网站通过前端。
 

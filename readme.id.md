@@ -112,13 +112,13 @@ Manajemen bagian depan menyediakan cara yang nyaman dan mudah untuk mempertahank
 
 #### 4.1 BAGAIMANA CARA MENGAKSESKAN MANAJEMEN BAGIAN DEPAN.
 
-Similar to how you needed to create an entrypoint in order for CIDRAM to protect your website, you'll also need to create an entrypoint in order to access the front-end. Such an entrypoint consists of three things:
+Mirip dengan bagaimana Anda perlu membuat titik masuk agar CIDRAM melindungi situs web Anda, Anda juga harus membuat titik masuk untuk mengakses front-end. Titik masuk ini terdiri dari tiga hal:
 
-1. Inclusion of the "loader.php" file at an appropriate point in your codebase or CMS.
-2. Instantiation of the CIDRAM front-end.
-3. Calling the "view" method.
+1. Menyertakan file "loader.php" pada titik yang sesuai dalam basis kode atau CMS Anda.
+2. Menginstansiasi CIDRAM front-end.
+3. Memanggil metode "view".
 
-A simple example:
+Contoh sederhana:
 
 ```PHP
 <?php
@@ -126,9 +126,9 @@ require_once '/path/to/the/vault/directory/loader.php';
 (new \CIDRAM\CIDRAM\FrontEnd())->view();
 ```
 
-The "FrontEnd" class extends the "Core" class, meaning that if you want, you can call the "protect" method before calling the "view" method in order to block potentially unwanted traffic from accessing the front-end. Doing so is entirely optional.
+Kelas "FrontEnd" memperluas kelas "Core", yang berarti bahwa jika Anda mau, Anda dapat memanggil metode "protect" sebelum memanggil metode "view" untuk memblokir lalu lintas yang mungkin tidak diinginkan dari mengakses front-end. Melakukannya sepenuhnya opsional.
 
-A simple example:
+Contoh sederhana:
 
 ```PHP
 <?php
@@ -138,9 +138,9 @@ $CIDRAM->protect();
 $CIDRAM->view();
 ```
 
-The most appropriate place to create an entrypoint for the front-end is in its own dedicated file. Unlike your previously created entrypoint, you want your front-end entrypoint to be accessible only by requesting directly for the specific file where the entrypoint exists, so in this case, you won't want to use `auto_prepend_file` or `.htaccess`.
+Tempat paling tepat untuk membuat titik masuk untuk front-end adalah di file miliknya sendiri. Tidak seperti titik masuk yang Anda dibuat sebelumnya, Anda ingin titik masuk front-end Anda menjadi hanya dapat diakses melalui permintaan langsung untuk file tertentu dimana titik masuk ada, jadi dalam kasus ini, Anda tidak ingin menggunakan `auto_prepend_file` atau `.htaccess`.
 
-After having created your front-end entrypoint, use your browser to access it. You should be presented with a login page. At the login page, enter the default username and password (admin/password) and press the login button.
+Setelah membuat titik masuk front-end Anda, gunakan browser Anda untuk mengaksesnya. Anda harus disajikan dengan halaman login. Pada halaman login, masukkan nama pengguna dan kata sandi default (admin/password) dan tekan tombol login.
 
 Catat: Setelah Anda dimasukkan untuk pertama kalinya, untuk mencegah akses tidak sah ke manajemen bagian depan, Anda harus segera mengubah nama pengguna dan kata sandi Anda! Ini sangat penting, karena itu mungkin untuk meng-upload kode PHP sewenang-wenang untuk situs web Anda melalui bagian depan.
 
@@ -706,7 +706,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
 ##### "default_algo" `[string]`
-- Mendefinisikan algoritma mana yang akan digunakan untuk semua password dan sesi di masa depan.
+- Mendefinisikan algoritma mana yang akan digunakan untuk semua kata sandi dan sesi di masa depan.
 
 ```
 default_algo
