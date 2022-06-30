@@ -466,7 +466,7 @@ Configuração geral por CIDRAM.
 - *v1: "logfileSerialized"*
 - Um arquivo serializado para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
-*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de registro através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
+*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de log através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
 
 *Exemplos:*
 - *`logfile='logfile.{yyyy}-{mm}-{dd}-{hh}.txt'`*
@@ -679,7 +679,7 @@ Atualmente suportado:
 - Como o CIDRAM deve manipular campos vazios ao registrar e exibir informações de eventos de bloco? "include" = Incluir campos vazios. "omit" = Omitir campos vazios [padrão].
 
 ##### "log_sanitisation"
-- Ao usar o front-end página para os arquivos de registro para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
+- Ao usar o front-end página para os arquivos de log para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
 
 ##### "disabled_channels"
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
@@ -782,9 +782,9 @@ Qualquer outro valor. | Nunca!
 - Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
 
 ##### "logfile"
-- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de registro. Se não, deixe esta variável em branco.
+- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de log. Se não, deixe esta variável em branco.
 
-*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de registro através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
+*Dica útil: Se você quiser, você pode acrescentar informações tempo/hora aos nomes dos seus arquivos de log através incluir estas em nome: `{yyyy}` para o ano completo, `{yy}` para o ano abreviado, `{mm}` por mês, `{dd}` por dia, `{hh}` por hora.*
 
 *Exemplos:*
 - *`logfile='captcha.{yyyy}-{mm}-{dd}-{hh}.txt'`*
@@ -1880,11 +1880,11 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Conectado.
 
 ##### 11.3.3 ROTAÇÃO DE REGISTRO
 
-Você pode querer purgar os registros após um período de tempo, ou pode ser obrigado a fazê-lo por lei (ou seja, a quantidade de tempo permitida legalmente para você manter registros pode ser limitada por lei). Você pode conseguir isso incluindo marcadores de data/hora nos nomes de seus arquivos de registro conforme especificado pela sua configuração de pacote (por exemplo, `{yyyy}-{mm}-{dd}.log`) e, em seguida, ativando a rotação de registro (a rotação de registro permite que você execute alguma ação nos arquivos de registro quando os limites especificados são excedidos).
+Você pode querer purgar os registros após um período de tempo, ou pode ser obrigado a fazê-lo por lei (ou seja, a quantidade de tempo permitida legalmente para você manter registros pode ser limitada por lei). Você pode conseguir isso incluindo marcadores de data/hora nos nomes de seus arquivos de log conforme especificado pela sua configuração de pacote (por exemplo, `{yyyy}-{mm}-{dd}.log`) e, em seguida, ativando a rotação de registro (a rotação de registro permite que você execute alguma ação nos arquivos de log quando os limites especificados são excedidos).
 
-Por exemplo: Se eu fosse legalmente obrigado a deletar registros após 30 dias, eu poderia especificar `{dd}.log` nos nomes dos meus arquivos de registro (`{dd}` representa dias), definir o valor de `log_rotation_limit` para 30 e, em seguida, definir o valor de `log_rotation_action` para `Delete`.
+Por exemplo: Se eu fosse legalmente obrigado a deletar registros após 30 dias, eu poderia especificar `{dd}.log` nos nomes dos meus arquivos de log (`{dd}` representa dias), definir o valor de `log_rotation_limit` para 30 e, em seguida, definir o valor de `log_rotation_action` para `Delete`.
 
-Por outro lado, se você precisar reter o registros por um longo período de tempo, você poderia optar por não usar a rotação de registro em tudo, ou você pode definir o valor de `log_rotation_action` para `Archive`, para compactar arquivos de registro, reduzindo assim a quantidade total de espaço em disco que eles ocupam.
+Por outro lado, se você precisar reter o registros por um longo período de tempo, você poderia optar por não usar a rotação de registro em tudo, ou você pode definir o valor de `log_rotation_action` para `Archive`, para compactar arquivos de log, reduzindo assim a quantidade total de espaço em disco que eles ocupam.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `log_rotation_limit`
@@ -1892,7 +1892,7 @@ Por outro lado, se você precisar reter o registros por um longo período de tem
 
 ##### 11.3.4 TRUNCAMENTO DE REGISTRO
 
-Também é possível truncar arquivos de registro individuais quando eles excedem um certo tamanho, se isso for algo que você possa precisar ou desejar fazer.
+Também é possível truncar arquivos de log individuais quando eles excedem um certo tamanho, se isso for algo que você possa precisar ou desejar fazer.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `truncate`
