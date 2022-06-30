@@ -1733,8 +1733,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
  <li><a href="#SIGNATURE_UPDATE_FREQUENCY">عدد المرات التي يتم تحديثها التوقيعات؟</a></li>
  <li><a href="#ENCOUNTERED_PROBLEM_WHAT_TO_DO">لقد واجهت مشكلة! أنا لا أعرف ما يجب القيام به! الرجاء المساعدة!</a></li>
  <li><a href="#BLOCKED_WHAT_TO_DO">لقد تم حظر من موقع على شبكة الانترنت! الرجاء المساعدة!</a></li>
- <li><a href="#MINIMUM_PHP_VERSION">أريد استخدام CIDRAM (قبل v2) مع نسخة PHP كبار السن من 5.4.0؛ يمكنك أن تساعد؟</a></li>
- <li><a href="#MINIMUM_PHP_VERSION_V2">أريد استخدام CIDRAM (v2) مع نسخة PHP كبار السن من 7.2.0؛ يمكنك أن تساعد؟</a></li>
+ <li><a href="#MINIMUM_PHP_VERSION_V3">أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟</a></li>
  <li><a href="#PROTECT_MULTIPLE_DOMAINS">هل يمكنني استخدام تثبيت CIDRAM واحد لحماية نطاقات متعددة؟</a></li>
  <li><a href="#PAY_YOU_TO_DO_IT">أنا لا أريد أن تضيع الوقت مع تثبيت هذا أو ضمان أنه يعمل لموقع الويب الخاص بي؛ يمكنني دفع لك أن تفعل ذلك بالنسبة لي؟</a></li>
  <li><a href="#HIRE_FOR_PRIVATE_WORK">هل يمكنني توظيفك أو أي من مطوري هذا المشروع للعمل الخاص؟</a></li>
@@ -1814,13 +1813,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 <div dir="rtl">CIDRAM يمكن أن تتوقف حركة المرور غير المرغوب فيها، ولكن اصحاب المواقع هي المسؤولة عن البت في كيفية استخدام هذه. ويمكننا تصحيح أخطائنا، ولكن في حالات أخرى، ستحتاج إلى الاتصال بأصحاب الموقع ذات الصلة. لا نستطيع أن نفعل أي شيء عن أشياء خارجة عن سيطرتنا.<br /><br /></div>
 
-#### <div dir="rtl"><a name="MINIMUM_PHP_VERSION"></a>أريد استخدام CIDRAM (قبل v2) مع نسخة PHP كبار السن من 5.4.0؛ يمكنك أن تساعد؟<br /><br /></div>
+#### <div dir="rtl"><a name="MINIMUM_PHP_VERSION_V3"></a>أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟<br /><br /></div>
 
-<div dir="rtl">لا. PHP >= 5.4.0 هو الحد الأدنى لمتطلبات CIDRAM < v2.<br /><br /></div>
-
-#### <div dir="rtl"><a name="MINIMUM_PHP_VERSION_V2"></a>أريد استخدام CIDRAM (v2) مع نسخة PHP كبار السن من 7.2.0؛ يمكنك أن تساعد؟<br /><br /></div>
-
-<div dir="rtl">لا. PHP >= 7.2.0 هو الحد الأدنى لمتطلبات CIDRAM v2.<br /><br /></div>
+<div dir="rtl">لا. PHP≥7.2 هو الحد الأدنى لمتطلبات CIDRAM v3.<br /><br /></div>
 
 <div dir="rtl"><em>انظر أيضا: <a href="https://maikuolan.github.io/Compatibility-Charts/">مخططات التوافق</a>.</em><br /><br /></div>
 

@@ -1684,8 +1684,7 @@ Os módulos foram disponibilizados para garantir que os seguintes pacotes e prod
 - [Com que frequência as assinaturas são atualizadas?](#SIGNATURE_UPDATE_FREQUENCY)
 - [Eu encontrei um problema ao usar CIDRAM e eu não sei o que fazer sobre isso! Ajude-me!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Eu fui bloqueado pelo CIDRAM de um site que eu quero visitar! Ajude-me!](#BLOCKED_WHAT_TO_DO)
-- [Eu quero usar CIDRAM (antes de v2) com uma versão PHP mais velha do que 5.4.0; Você pode ajudar?](#MINIMUM_PHP_VERSION)
-- [Eu quero usar CIDRAM (v2) com uma versão PHP mais velha do que 7.2.0; Você pode ajudar?](#MINIMUM_PHP_VERSION_V2)
+- [Eu quero usar CIDRAM v3 com uma versão PHP mais velha do que 7.2; Você pode ajudar?](#MINIMUM_PHP_VERSION_V3)
 - [Posso usar uma única instalação do CIDRAM para proteger vários domínios?](#PROTECT_MULTIPLE_DOMAINS)
 - [Eu não quero mexer com a instalação deste e fazê-lo funcionar com o meu site; Posso pagar-te para fazer tudo por mim?](#PAY_YOU_TO_DO_IT)
 - [Posso contratar você ou qualquer um dos desenvolvedores deste projeto para o trabalho privado?](#HIRE_FOR_PRIVATE_WORK)
@@ -1763,13 +1762,9 @@ A frequência das atualizações varia de acordo com os arquivos de assinatura e
 
 CIDRAM fornece um meio para proprietários de sites para bloquear tráfego indesejável, mas é da responsabilidade dos proprietários do site decidir por si mesmos como eles querem usar CIDRAM. No caso dos falsos positivos relativos aos arquivos de assinatura normalmente incluídos no CIDRAM, correções podem ser feitas, mas no que diz respeito a ser desbloqueado a partir de sites específicos, você precisará tomar isso com os proprietários dos sites em questão. Nos casos em que são feitas correções, pelo menos, eles precisarão atualizar seus arquivos de assinatura e/ou instalação, e em outros casos (tais como, por exemplo, onde eles modificaram sua instalação, criaram suas próprias assinaturas personalizadas, etc), a responsabilidade de resolver o seu problema é inteiramente deles, e está inteiramente fora de nosso controle.
 
-#### <a name="MINIMUM_PHP_VERSION"></a>Eu quero usar CIDRAM (antes de v2) com uma versão PHP mais velha do que 5.4.0; Você pode ajudar?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Eu quero usar CIDRAM v3 com uma versão PHP mais velha do que 7.2; Você pode ajudar?
 
-Não. PHP >= 5.4.0 é um requisito mínimo para CIDRAM < v2.
-
-#### <a name="MINIMUM_PHP_VERSION_V2"></a>Eu quero usar CIDRAM (v2) com uma versão PHP mais velha do que 7.2.0; Você pode ajudar?
-
-Não. PHP >= 7.2.0 é um requisito mínimo para CIDRAM v2.
+Não. PHP≥7.2 é um requisito mínimo para CIDRAM v3.
 
 *Veja também: [Gráficos de Compatibilidade](https://maikuolan.github.io/Compatibility-Charts/).*
 

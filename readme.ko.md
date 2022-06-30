@@ -1690,8 +1690,7 @@ CIDRAM과의 호환성을 보장하기 위해, 다음 패키지 및 제품에, �
 - [서명은 얼마나 자주 업데이트됩니까?](#SIGNATURE_UPDATE_FREQUENCY)
 - [CIDRAM을 사용하는 데 문제가 발생했지만 무엇을 해야할지 모르겠어요! 도와주세요!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [나는 CIDRAM 의해 웹 사이트에서 차단되어 있습니다! 도와주세요!](#BLOCKED_WHAT_TO_DO)
-- [5.4.0보다 오래된 PHP 버전에서 CIDRAM (v2 이전)을 사용하고 싶습니다; 도울 수 있니?](#MINIMUM_PHP_VERSION)
-- [7.2.0보다 오래된 PHP 버전에서 CIDRAM (v2)을 사용하고 싶습니다; 도울 수 있니?](#MINIMUM_PHP_VERSION_V2)
+- [7.2보다 오래된 PHP 버전에서 CIDRAM v3을 사용하고 싶습니다; 도울 수 있니?](#MINIMUM_PHP_VERSION_V3)
 - [단일 CIDRAM 설치를 사용하여 여러 도메인을 보호 할 수 있습니까?](#PROTECT_MULTIPLE_DOMAINS)
 - [나는 이것을 설치하거나 그것이 내 웹 사이트상에서 동작하는 것을 보장하는 시간을 보내고, 하고 싶지 않아; 그것을 할 수 있습니까? 나는 당신을 고용 할 수 있습니까?](#PAY_YOU_TO_DO_IT)
 - [당신 또는 이 프로젝트의 모든 개발자는 고용 가능합니까?](#HIRE_FOR_PRIVATE_WORK)
@@ -1769,13 +1768,9 @@ IP 주소를 CIDRAM 차단합니다 | __거짓 양성__ | 진실 양성 (올바�
 
 CIDRAM는 웹 사이트 소유자가 원하지 않는 트래픽을 차단하는 수단을 제공합니다, 하지만 웹 사이트 소유자는 그 사용 방법을 결정해야합니다. 서명 파일에 오류 검출이있는 경우, 정정을 할 수, 그러나 특정 웹 사이트에서 차단 해제되어 관해서, 당신은 웹 사이트 소유자에게 문의해야합니다. 수정이 이루어지면 업데이트가 필요합니다. 그렇지 않으면 문제를 해결하는 것은 그들의 책임입니다. 맞춤화와 개인 선택은 전적으로 우리가 통제 할 수없는 것입니다.
 
-#### <a name="MINIMUM_PHP_VERSION"></a>5.4.0보다 오래된 PHP 버전에서 CIDRAM (v2 이전)을 사용하고 싶습니다; 도울 수 있니?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>7.2보다 오래된 PHP 버전에서 CIDRAM v3을 사용하고 싶습니다; 도울 수 있니?
 
-아니오. PHP >= 5.4.0은 CIDRAM < v2의 최소 요구 사항입니다.
-
-#### <a name="MINIMUM_PHP_VERSION_V2"></a>7.2.0보다 오래된 PHP 버전에서 CIDRAM (v2)을 사용하고 싶습니다; 도울 수 있니?
-
-아니오. PHP >= 7.2.0은 CIDRAM v2의 최소 요구 사항입니다.
+아니오. PHP≥7.2은 CIDRAM v3의 최소 요구 사항입니다.
 
 *참조 : [호환성 차트](https://maikuolan.github.io/Compatibility-Charts/).*
 

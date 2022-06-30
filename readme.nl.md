@@ -1691,8 +1691,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Hoe vaak worden signatures bijgewerkt?](#SIGNATURE_UPDATE_FREQUENCY)
 - [Ik heb een fout tegengekomen tijdens het gebruik van CIDRAM en ik weet niet wat te doen! Help alstublieft!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Ik ben geblokkeerd door CIDRAM van een website die ik wil bezoeken! Help alstublieft!](#BLOCKED_WHAT_TO_DO)
-- [Ik wil CIDRAM (voorafgaand aan v2) gebruiken met een PHP-versie ouder dan 5.4.0; Kan u helpen?](#MINIMUM_PHP_VERSION)
-- [Ik wil CIDRAM (v2) gebruiken met een PHP-versie ouder dan 7.2.0; Kan u helpen?](#MINIMUM_PHP_VERSION_V2)
+- [Ik wil CIDRAM v3 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?](#MINIMUM_PHP_VERSION_V3)
 - [Kan ik een enkele CIDRAM-installatie gebruiken om meerdere domeinen te beschermen?](#PROTECT_MULTIPLE_DOMAINS)
 - [Ik wil niet tijd verspillen met het installeren van dit en om het te laten werken met mijn website; Kan ik u betalen om het te doen?](#PAY_YOU_TO_DO_IT)
 - [Kan ik u of een van de ontwikkelaars van dit project voor privéwerk huren?](#HIRE_FOR_PRIVATE_WORK)
@@ -1770,13 +1769,9 @@ Bijwerkfrequentie varieert afhankelijk van de signatuurbestanden betrokken. Alle
 
 CIDRAM biedt een manier voor website-eigenaren om ongewenst verkeer te blokkeren, maar het is de verantwoordelijkheid van de website-eigenaren om zelf te beslissen hoe ze willen CIDRAM gebruiken. In het geval van de valse positieven met betrekking tot de signatuurbestanden normaal meegeleverd met CIDRAM, correcties kunnen worden gemaakt, maar met betrekking tot het wordt gedeblokkeerd van specifieke websites, u nodig hebt om te communiceren met de eigenaren van de websites in kwestie. In gevallen waarin correcties worden gemaakt, op zijn minst, zullen ze nodig hebben om hun signatuurbestanden en/of installatie bij te werken, en in andere gevallen (zoals bijvoorbeeld, waarin ze hun installatie hebt gewijzigd, creëerden hun eigen aangepaste signatures, enz), het is hun verantwoordelijkheid om uw probleem op te lossen, en is geheel buiten onze controle.
 
-#### <a name="MINIMUM_PHP_VERSION"></a>Ik wil CIDRAM (voorafgaand aan v2) gebruiken met een PHP-versie ouder dan 5.4.0; Kan u helpen?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ik wil CIDRAM v3 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?
 
-Nee. PHP >= 5.4.0 is een minimale vereiste voor CIDRAM < v2.
-
-#### <a name="MINIMUM_PHP_VERSION_V2"></a>Ik wil CIDRAM (v2) gebruiken met een PHP-versie ouder dan 7.2.0; Kan u helpen?
-
-Nee. PHP >= 7.2.0 is een minimale vereiste voor CIDRAM v2.
+Nee. PHP≥7.2 is een minimale vereiste voor CIDRAM v3.
 
 *Zie ook: [Compatibiliteitskaarten](https://maikuolan.github.io/Compatibility-Charts/).*
 
