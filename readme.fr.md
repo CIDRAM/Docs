@@ -173,15 +173,8 @@ Ce qui suit est une liste des directives disponibles pour CIDRAM dans le `config
 Configuration (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Configuration (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Configuration (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Configuration (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Configuration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Configuration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Configuration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### « general » (Catégorie)
 Configuration générale (toute configuration de base n'appartenant pas à d'autres catégories).
-
-##### « logfile » `[string]`
-- Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
-
-##### « logfile_apache » `[string]`
-- Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
-
-##### « logfile_serialized » `[string]`
-- Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
-
-##### « error_log » `[string]`
-- Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
 
 ##### « stages » `[string]`
 - Contrôles des étapes de la chaîne d'exécution (s'il est activé, si les erreurs sont enregistrées, etc).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Méthode de requête")
 ├─Hostname ("Nom d'hôte")
 └─CAPTCHA ("État CAPTCHA")
-```
-
-##### « truncate » `[string]`
-- Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
-
-##### « log_rotation_limit » `[int]`
-- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier la limite souhaitée ici. Une valeur de 0 désactivera la rotation du journal.
-
-##### « log_rotation_action » `[string]`
-- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier l'action souhaitée ici.
-
-```
-log_rotation_action
-├─Delete ("Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
-└─Archive ("Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
 ```
 
 ##### « timezone » `[string]`
@@ -615,9 +613,6 @@ emailaddr_display_style
 └─noclick ("Texte non-cliquable")
 ```
 
-##### « signatures_update_event_log » `[string]`
-- Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
-
 ##### « ban_override » `[int]`
 - Remplacer « http_response_header_code » lorsque « infraction_limit » est dépassé ? En cas de remplacement : Les requêtes bloquées renvoient une page blanche (les fichiers modèles ne sont pas utilisés). 200 = Ne pas remplacer [Défaut]. Les autres valeurs sont les mêmes que les valeurs disponibles pour « http_response_header_code ».
 
@@ -642,9 +637,6 @@ ban_override
   en cas de trafic indésirable extrêmement persistant.
 ```
 
-##### « log_banned_ips » `[bool]`
-- Inclure les requêtes bloquées provenant d'IP interdites dans les fichiers journaux ? True = Oui [Défaut] ; False = Non.
-
 ##### « default_dns » `[string]`
 - Une liste de serveurs DNS à utiliser pour les recherches de noms d'hôtes. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
@@ -655,6 +647,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -741,9 +734,6 @@ statistics
 
 Remarque : Les recherches IPv6 peuvent ne pas fonctionner correctement sur certains systèmes 32 bits.
 
-##### « log_sanitisation » `[bool]`
-- Lorsque vous utilisez la page pour les fichiers journaux pour afficher les données de journaux, CIDRAM assainit les données de journaux avant de les afficher, pour protéger les utilisateurs contre les attaques XSS et autres menaces potentielles que les données de journalisation peuvent contenir. Cependant, par défaut, les données ne sont pas assainie lors de la journalisation. Cela garantit que les données du journalisation sont conservées avec précision, pour faciliter toute analyse heuristique qui pourrait être nécessaire à l'avenir. Cependant, dans le cas où un utilisateur tente de lire les données du journalisation à l'aide d'outils externes, et si ces outils externes n'effectuent pas leur propre processus d'assainissement, l'utilisateur pourrait être exposé à des attaques XSS. Si nécessaire, vous pouvez modifier le comportement par défaut à l'aide de cette directive de configuration. True = Assainir les données lors de la journalisation (les données sont moins bien préservées, mais le risque XSS est plus faible). False = Ne pas assainir les données lors de la journalisation (les données sont mieux préservées, mais le risque XSS est plus élevé) [Défaut].
-
 ##### « disabled_channels » `[string]`
 - Ceci peut être utilisé pour empêcher CIDRAM d'utiliser des canaux particuliers lors de l'envoi de requêtes (par exemple, lors de la mise à jour, lors de l'extraction de métadonnées de composant, etc).
 
@@ -775,11 +765,50 @@ Configuration pour l'activation et la désactivation des composants utilisés pa
 ##### « events » `[string]`
 - Gestionnaires d'événements. Généralement utilisé pour modifier la façon dont CIDRAM se comporte en interne ou pour fournir des fonctionnalités supplémentaires.
 
+#### « logging » (Catégorie)
+Configuration liée à la journalisation (à l'exclusion de ce qui est applicable aux autres catégories).
+
+##### « standard_log » `[string]`
+- Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « apache_style_log » `[string]`
+- Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « serialised_log » `[string]`
+- Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « error_log » `[string]`
+- Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « truncate » `[string]`
+- Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
+
+##### « log_rotation_limit » `[int]`
+- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier la limite souhaitée ici. Une valeur de 0 désactivera la rotation du journal.
+
+##### « log_rotation_action » `[string]`
+- La rotation du journal limite le nombre de fichiers journaux qui doivent exister à un moment donné. Lorsque de nouveaux fichiers journaux sont créés, si le nombre total de fichiers journaux dépasse la limite spécifiée, l'action spécifiée sera effectuée. Vous pouvez spécifier l'action souhaitée ici.
+
+```
+log_rotation_action
+├─Delete ("Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
+└─Archive ("Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
+```
+
+##### « log_banned_ips » `[bool]`
+- Inclure les requêtes bloquées provenant d'IP interdites dans les fichiers journaux ? True = Oui [Défaut] ; False = Non.
+
+##### « log_sanitisation » `[bool]`
+- Lorsque vous utilisez la page pour les fichiers journaux pour afficher les données de journaux, CIDRAM assainit les données de journaux avant de les afficher, pour protéger les utilisateurs contre les attaques XSS et autres menaces potentielles que les données de journalisation peuvent contenir. Cependant, par défaut, les données ne sont pas assainie lors de la journalisation. Cela garantit que les données du journalisation sont conservées avec précision, pour faciliter toute analyse heuristique qui pourrait être nécessaire à l'avenir. Cependant, dans le cas où un utilisateur tente de lire les données du journalisation à l'aide d'outils externes, et si ces outils externes n'effectuent pas leur propre processus d'assainissement, l'utilisateur pourrait être exposé à des attaques XSS. Si nécessaire, vous pouvez modifier le comportement par défaut à l'aide de cette directive de configuration. True = Assainir les données lors de la journalisation (les données sont moins bien préservées, mais le risque XSS est plus faible). False = Ne pas assainir les données lors de la journalisation (les données sont mieux préservées, mais le risque XSS est plus élevé) [Défaut].
+
 #### « frontend » (Catégorie)
 Configuration pour l'accès frontal.
 
 ##### « frontend_log » `[string]`
 - Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
+
+##### « signatures_update_event_log » `[string]`
+- Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
 
 ##### « max_login_attempts » `[int]`
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
@@ -886,7 +915,7 @@ Voir également :
 ##### « expiry » `[float]`
 - Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
 
-##### « logfile » `[string]`
+##### « recaptcha_log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
 ##### « signature_limit » `[int]`
@@ -964,7 +993,7 @@ Voir également :
 ##### « expiry » `[float]`
 - Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
 
-##### « logfile » `[string]`
+##### « hcaptcha_log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
 ##### « signature_limit » `[int]`
@@ -1129,6 +1158,89 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#HO
 ##### « pdo_password » `[string]`
 - Mot de passe PDO.
 
+#### « abuseipdb » (Catégorie)
+Configuration pour le module AbusIPDB.
+
+##### « api_key » `[string]`
+- Veuillez entrer votre clé API ici.
+
+Voir également :
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### « max_age_in_days » `[int]`
+- L'âge maximal en jours pour lequel les rapports seront pris en compte lors de l'exécution de recherches (doit être un nombre compris entre 1 et 365). Défaut = 365.
+
+##### « minimum_confidence_score » `[int]`
+- Le score de confiance minimum requis pour que CIDRAM bloque une adresse IP (doit être un nombre compris entre 0 et 100). Défaut = 50.
+
+##### « max_cs_for_captcha » `[int]`
+- Le score de confiance maximal autorisé pour que les CAPTCHA soient servis (doit être un nombre compris entre 0 et 100). Défaut = 10.
+
+##### « minimum_total_reports » `[int]`
+- Le nombre minimum de rapports totaux requis pour que CIDRAM bloque une adresse IP. Défaut = 1.
+
+##### « report_back » `[bool]`
+- Autoriser CIDRAM à rapporter les mauvais comportements détectés à AbuseIPDB à l'aide de votre clé API ? Défaut = False.
+
+##### « lookup_strategy » `[int]`
+- Pour quelles requêtes les recherches doivent-elles être effectuées ?
+
+```
+lookup_strategy
+├─0 (Aucun.): Si vous souhaitez utiliser le module seulement à des fins de création de
+│ rapports, sans rien rechercher, utilisez ceci.
+├─1 (Chaque requête.): Plus rigoureux et minutieux, mais aussi plus susceptible d'atteindre les
+│ limites et les quotas beaucoup plus rapidement, ce qui peut entraîner le
+│ blocage du service au moment où il est le plus nécessaire. De plus, bien
+│ que les résultats de la recherche soient toujours mis en cache, cela
+│ pourrait néanmoins avoir un impact négatif sur les performances du site
+│ Web dans certains cas. Peut être nécessaire dans certains cas, mais
+│ généralement pas recommandé.
+└─2 (Requêtes de pages sensibles seulement (par exemple, les pages de connexion, les formulaires d'enregistrement, etc).): Moins rigoureux et minutieux, mais plus prudent en termes de quotas et de
+  limites, et moins susceptible d'avoir un impact négatif sur les
+  performances. La stratégie recommandée dans la plupart des cas.
+```
+
+##### « build_profiles_from_usage_type » `[bool]`
+- Créer des profils à l'aide du type d'utilisation renvoyé par l'API ? False = Non. True = Oui. Défaut = True.
+
+#### « bgpview » (Catégorie)
+Configuration pour le module BGPView (fournit la fonctionnalité de recherche d'ASN et de code de pays pour CIDRAM).
+
+##### « blocked_asns » `[string]`
+- Une liste des ASN à bloquer lorsqu'ils sont mis en correspondance par le module BGPView.
+
+##### « whitelisted_asns » `[string]`
+- Une liste des ASN à ajouter à la liste blanche lorsqu'ils sont mis en correspondance par le module BGPView.
+
+##### « blocked_ccs » `[string]`
+- Une liste des pays (identifiés par leurs codes pays {{Links.ISO.3166}} à 2 chiffres) à bloquer lorsqu'ils sont mis en correspondance par le module BGPView.
+
+##### « whitelisted_ccs » `[string]`
+- Une liste de pays (identifiés par leurs codes pays {{Links.ISO.3166}} à 2 chiffres) à ajouter à la liste blanche lorsqu'ils sont mis en correspondance par le module BGPView.
+
+#### « bunnycdn » (Catégorie)
+Configuration pour le module de compatibilité BunnyCDN.
+
+##### « positive_action » `[string]`
+- Quelle action le CIDRAM doit-il effectuer lorsqu'il rencontre une requête de BunnyCDN ? Action par défaut = Contourner.
+
+```
+positive_action
+├─bypass ("Déclenchez un contournement.): Soustrait un compte du nombre de signatures déclenchées, tant qu'au moins
+│ une signature a déjà été déclenchée. Recommandé pour traiter les faux
+│ positifs simples potentiellement causés par les fichiers de signature
+│ défaut."
+├─greylist ("Mettez la requête en la liste grise.): Réinitialise le nombre de signatures déclenchées, mais poursuit le
+│ traitement de la requête. Recommandé quand vous ne souhaitez pas ajouter
+│ la requête à la liste blanche, mais que vous avez besoin de quelque chose
+│ de plus substantiel que de déclencher un contournement."
+└─whitelist ("Mettez la requête en la liste blanche.): Réinitialise le nombre de signatures déclenchées, et abandonne tout
+  traitement ultérieur de la requête. Garantit que le CIDRAM ne bloquera
+  jamais la requête."
+```
+
 #### « bypasses » (Catégorie)
 Configuration pour les contournements de signatures défaut.
 
@@ -1144,6 +1256,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1165,6 +1279,50 @@ signatures
 ├─ruri ("Signatures basés sur des URI reconstruits.")
 └─uri ("Signatures basés sur les URI des requêtes.")
 ```
+
+#### « projecthoneypot » (Catégorie)
+Configuration pour le module Project Honeypot.
+
+##### « api_key » `[string]`
+- Veuillez entrer votre clé API ici.
+
+Voir également :
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### « max_age_in_days » `[int]`
+- L'âge maximal en jours pour lequel les rapports seront pris en compte lors de l'exécution de recherches. Défaut = 365.
+
+##### « minimum_threat_score » `[int]`
+- Le score de menace minimum requis pour que CIDRAM bloque une adresse IP (doit être un nombre compris entre 1 et 100). Défaut = 10.
+
+##### « max_ts_for_captcha » `[int]`
+- Le score de menace maximum autorisé pour recevoir un CAPTCHA (doit être un nombre compris entre 1 et 100). Défaut = 10.
+
+##### « lookup_strategy » `[int]`
+- Pour quelles requêtes les recherches doivent-elles être effectuées ?
+
+```
+lookup_strategy
+├─0 (Aucun.): Si vous souhaitez utiliser le module seulement à des fins de création de
+│ rapports, sans rien rechercher, utilisez ceci.
+├─1 (Chaque requête.): Plus rigoureux et minutieux, mais aussi plus susceptible d'atteindre les
+│ limites et les quotas beaucoup plus rapidement, ce qui peut entraîner le
+│ blocage du service au moment où il est le plus nécessaire. De plus, bien
+│ que les résultats de la recherche soient toujours mis en cache, cela
+│ pourrait néanmoins avoir un impact négatif sur les performances du site
+│ Web dans certains cas. Peut être nécessaire dans certains cas, mais
+│ généralement pas recommandé.
+└─2 (Requêtes de pages sensibles seulement (par exemple, les pages de connexion, les formulaires d'enregistrement, etc).): Moins rigoureux et minutieux, mais plus prudent en termes de quotas et de
+  limites, et moins susceptible d'avoir un impact négatif sur les
+  performances. La stratégie recommandée dans la plupart des cas.
+```
+
+#### « sfs » (Catégorie)
+Configuration du module Stop Forum Spam.
+
+##### « offer_captcha » `[bool]`
+- Lorsque les requêtes sont bloquées par ce module, des CAPTCHA peuvent être servis. Défaut = True. Remarque : Ne remplace pas les autres directives. Pour que les CAPTCHA soient servis, toutes les directives doivent être d'accord, les clés nécessaires configurées, etc. Dans le cas où les CAPTCHA seraient normalement autorisés à être servis, définir cette directive sur false fournit un moyen d'empêcher les CAPTCHA d'être servis pour les requêtes bloquées spécifiquement par ce module.
 
 ---
 
@@ -2157,4 +2315,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 23 Juin 2022 (2022.06.23).
+Dernière mise à jour : 30 Juin 2022 (2022.06.30).

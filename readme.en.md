@@ -173,15 +173,8 @@ The following is a list of the directives available to CIDRAM in the `config.yml
 Configuration (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Configuration (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Configuration (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Configuration (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Configuration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Configuration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Configuration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Category)
 General configuration (any core configuration not belonging to other categories).
-
-##### "logfile" `[string]`
-- Human readable file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
-
-##### "logfile_apache" `[string]`
-- Apache-style file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
-
-##### "logfile_serialized" `[string]`
-- Serialised file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
-
-##### "error_log" `[string]`
-- A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
 
 ##### "stages" `[string]`
 - Controls for the stages of the execution chain (whether enabled, whether errors are logged, etc).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Request method")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("CAPTCHA State")
-```
-
-##### "truncate" `[string]`
-- Truncate logfiles when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a logfile may grow to before being truncated. The default value of 0KB disables truncation (logfiles can grow indefinitely). Note: Applies to individual logfiles! The size of logfiles is not considered collectively.
-
-##### "log_rotation_limit" `[int]`
-- Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired limit here. A value of 0 will disable log rotation.
-
-##### "log_rotation_action" `[string]`
-- Log rotation limits the number of logfiles that should exist at any one time. When new logfiles are created, if the total number of logfiles exceeds the specified limit, the specified action will be performed. You can specify the desired action here.
-
-```
-log_rotation_action
-├─Delete ("Delete the oldest logfiles, until the limit is no longer exceeded.")
-└─Archive ("Firstly archive, and then delete the oldest logfiles, until the limit is no longer exceeded.")
 ```
 
 ##### "timezone" `[string]`
@@ -613,9 +611,6 @@ emailaddr_display_style
 └─noclick ("Non-clickable text")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
-
 ##### "ban_override" `[int]`
 - Override "http_response_header_code" when "infraction_limit" is exceeded? When overriding: Blocked requests return a blank page (template files aren't used). 200 = Don't override [Default]. Other values are the same as the available values for "http_response_header_code".
 
@@ -638,9 +633,6 @@ ban_override
   for when dealing with extremely persistent unwanted traffic.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Include blocked requests from banned IPs in the logfiles? True = Yes [Default]; False = No.
-
 ##### "default_dns" `[string]`
 - A list of DNS servers to use for hostname lookups. WARNING: Don't change this unless you know what you're doing!
 
@@ -651,6 +643,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -730,15 +723,12 @@ statistics
 ```
 
 ##### "force_hostname_lookup" `[bool]`
-- Force hostname lookups? True = Yes; False = No [Default]. Hostname lookups are normally performed on an "as needed" basis, but can be forced for all requests. Doing so may be useful as a means of providing more detailed information in the logfiles, but may also have a slightly negative effect on performance.
+- Force hostname lookups? True = Yes; False = No [Default]. Hostname lookups are normally performed on an "as needed" basis, but can be forced for all requests. Doing so may be useful as a means of providing more detailed information in the log files, but may also have a slightly negative effect on performance.
 
 ##### "allow_gethostbyaddr_lookup" `[bool]`
 - Allow gethostbyaddr lookups when UDP is unavailable? True = Yes [Default]; False = No.
 
 Note: IPv6 lookups mightn't work correctly on some 32-bit systems.
-
-##### "log_sanitisation" `[bool]`
-- When using the front-end logs page to view log data, CIDRAM sanitises the log data before displaying it, to protect users from XSS attacks and other potential threats that log data could contain. However, by default, data isn't sanitised during logging. This is to ensure that log data is preserved accurately, to aid any heuristic or forensic analysis that might be necessary in the future. However, in the event that a user attempts to read log data using external tools, and if those external tools don't perform their own sanitisation process, the user could be exposed to XSS attacks. If necessary, you can change the default behaviour using this configuration directive. True = Sanitise data when logging it (data is preserved less accurately, but XSS risk is lower). False = Don't sanitise data when logging it (data is preserved more accurately, but XSS risk is higher) [Default].
 
 ##### "disabled_channels" `[string]`
 - This can be used to prevent CIDRAM from using particular channels when sending requests (e.g., when updating, when fetching component metadata, etc).
@@ -771,11 +761,50 @@ Configuration for the activation and the deactivation of the components used by 
 ##### "events" `[string]`
 - Event handlers. Typically used to modify the way CIDRAM behaves internally or to provide additional functionality.
 
+#### "logging" (Category)
+Configuration related to logging (excluding that applicable to other categories).
+
+##### "standard_log" `[string]`
+- Human-readable file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
+
+##### "apache_style_log" `[string]`
+- Apache-style file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
+
+##### "serialised_log" `[string]`
+- Serialised file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
+
+##### "error_log" `[string]`
+- A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
+
+##### "truncate" `[string]`
+- Truncate log files when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a log file may grow to before being truncated. The default value of 0KB disables truncation (log files can grow indefinitely). Note: Applies to individual log files! The size of log files is not considered collectively.
+
+##### "log_rotation_limit" `[int]`
+- Log rotation limits the number of log files that should exist at any one time. When new log files are created, if the total number of log files exceeds the specified limit, the specified action will be performed. You can specify the desired limit here. A value of 0 will disable log rotation.
+
+##### "log_rotation_action" `[string]`
+- Log rotation limits the number of log files that should exist at any one time. When new log files are created, if the total number of log files exceeds the specified limit, the specified action will be performed. You can specify the desired action here.
+
+```
+log_rotation_action
+├─Delete ("Delete the oldest log files, until the limit is no longer exceeded.")
+└─Archive ("Firstly archive, and then delete the oldest log files, until the limit is no longer exceeded.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Include blocked requests from banned IPs in logs? True = Yes [Default]; False = No.
+
+##### "log_sanitisation" `[bool]`
+- When using the front-end logs page to view log data, CIDRAM sanitises the log data before displaying it, to protect users from XSS attacks and other potential threats that log data could contain. However, by default, data isn't sanitised during logging. This is to ensure that log data is preserved accurately, to aid any heuristic or forensic analysis that might be necessary in the future. However, in the event that a user attempts to read log data using external tools, and if those external tools don't perform their own sanitisation process, the user could be exposed to XSS attacks. If necessary, you can change the default behaviour using this configuration directive. True = Sanitise data when logging it (data is preserved less accurately, but XSS risk is lower). False = Don't sanitise data when logging it (data is preserved more accurately, but XSS risk is higher) [Default].
+
 #### "frontend" (Category)
 Configuration for the front-end.
 
 ##### "frontend_log" `[string]`
 - File for logging front-end login attempts. Specify a filename, or leave blank to disable.
+
+##### "signatures_update_event_log" `[string]`
+- A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
 
 ##### "max_login_attempts" `[int]`
 - Maximum number of front-end login attempts. Default = 5.
@@ -882,8 +911,8 @@ See also:
 ##### "expiry" `[float]`
 - Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
 
-##### "logfile" `[string]`
-- Log all CAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
+##### "recaptcha_log" `[string]`
+- Log all CAPTCHA attempts? If yes, specify the name to use for the log file. If no, leave this variable blank.
 
 ##### "signature_limit" `[int]`
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
@@ -958,8 +987,8 @@ See also:
 ##### "expiry" `[float]`
 - Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
 
-##### "logfile" `[string]`
-- Log all CAPTCHA attempts? If yes, specify the name to use for the logfile. If no, leave this variable blank.
+##### "hcaptcha_log" `[string]`
+- Log all CAPTCHA attempts? If yes, specify the name to use for the log file. If no, leave this variable blank.
 
 ##### "signature_limit" `[int]`
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
@@ -1121,6 +1150,85 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#HO
 ##### "pdo_password" `[string]`
 - PDO password.
 
+#### "abuseipdb" (Category)
+Configuration for the AbuseIPDB module.
+
+##### "api_key" `[string]`
+- Please enter your API key here.
+
+See also:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- The maximum age in days for which reports will be considered when performing lookups (must be a number between 1 and 365). Default = 365.
+
+##### "minimum_confidence_score" `[int]`
+- The minimum confidence score required in order for CIDRAM to block an IP address (must be a number between 0 and 100). Default = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- The maximum confidence score allowed for being served a CAPTCHA (must be a number between 0 and 100). Default = 10.
+
+##### "minimum_total_reports" `[int]`
+- The minimum number of total reports required in order for CIDRAM to block an IP address. Default = 1.
+
+##### "report_back" `[bool]`
+- Allow CIDRAM to report detected bad behaviour back to AbuseIPDB using your API key? Default = False.
+
+##### "lookup_strategy" `[int]`
+- Which requests should lookups be performed for?
+
+```
+lookup_strategy
+├─0 (None.): If you want to use the module for reporting purposes only, without looking
+│ anything up, use this.
+├─1 (Every request.): More stringent and thorough, but also more likely to result in limits and
+│ quotas being met much more quickly, potentially resulting in being locked
+│ out of the service when it's most needed. Also, although lookup results are
+│ always cached regardless, it could still nonetheless negatively impact
+│ website performance in some cases. May be necessary in some cases, but not
+│ generally recommended.
+└─2 (Requests for sensitive pages only (e.g., login pages, registration forms, etc).): Less stringent and thorough, but more conservative in terms of quotas and
+  limits, and less likely to negatively impact performance. The recommended
+  strategy in most cases.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Build profiles using the usage type returned by the API? False = No. True = Yes. Default = True.
+
+#### "bgpview" (Category)
+Configuration for the BGPView module (provides an ASN and country code lookup facility for CIDRAM).
+
+##### "blocked_asns" `[string]`
+- A list of ASNs to be blocked when matched by the BGPView module.
+
+##### "whitelisted_asns" `[string]`
+- A list of ASNs to be whitelisted when matched by the BGPView module.
+
+##### "blocked_ccs" `[string]`
+- A list of countries (identified by their {{Links.ISO.3166}} 2-digit country codes) to be blocked when matched by the BGPView module.
+
+##### "whitelisted_ccs" `[string]`
+- A list of countries (identified by their {{Links.ISO.3166}} 2-digit country codes) to be whitelisted when matched by the BGPView module.
+
+#### "bunnycdn" (Category)
+BunnyCDN compatibility module configuration.
+
+##### "positive_action" `[string]`
+- Which action should CIDRAM perform when it encounters a request from BunnyCDN? Default action = Bypass.
+
+```
+positive_action
+├─bypass ("Trigger a bypass.): Subtracts one count from the number of signatures triggered, as long as at
+│ least one signature has already been triggered. Recommended for dealing with
+│ simple false positives potentially caused by the default signature files."
+├─greylist ("Greylist the request.): Resets the number of signatures triggered, but continues processing the
+│ request. Recommended when you don't want to whitelist the request, but need
+│ something more substantial than triggering a bypass."
+└─whitelist ("Whitelist the request.): Resets the number of signatures triggered, and aborts any further processing
+  of the request. Guarantees that CIDRAM will never block the request."
+```
+
 #### "bypasses" (Category)
 Default signature bypasses configuration.
 
@@ -1136,6 +1244,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1157,6 +1267,49 @@ signatures
 ├─ruri ("Signatures based on reconstructed URIs.")
 └─uri ("Signatures based on request URIs.")
 ```
+
+#### "projecthoneypot" (Category)
+Configuration for the Project Honeypot module.
+
+##### "api_key" `[string]`
+- Please enter your API key here.
+
+See also:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- The maximum age in days for which reports will be considered when performing lookups. Default = 365.
+
+##### "minimum_threat_score" `[int]`
+- The minimum threat score required in order for CIDRAM to block an IP address (must be a number between 1 and 100). Default = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- The maximum threat score allowed for being served a CAPTCHA (must be a number between 1 and 100). Default = 10.
+
+##### "lookup_strategy" `[int]`
+- Which requests should lookups be performed for?
+
+```
+lookup_strategy
+├─0 (None.): If you want to use the module for reporting purposes only, without looking
+│ anything up, use this.
+├─1 (Every request.): More stringent and thorough, but also more likely to result in limits and
+│ quotas being met much more quickly, potentially resulting in being locked
+│ out of the service when it's most needed. Also, although lookup results are
+│ always cached regardless, it could still nonetheless negatively impact
+│ website performance in some cases. May be necessary in some cases, but not
+│ generally recommended.
+└─2 (Requests for sensitive pages only (e.g., login pages, registration forms, etc).): Less stringent and thorough, but more conservative in terms of quotas and
+  limits, and less likely to negatively impact performance. The recommended
+  strategy in most cases.
+```
+
+#### "sfs" (Category)
+Configuration for the Stop Forum Spam module.
+
+##### "offer_captcha" `[bool]`
+- When requests are blocked by this module, CAPTCHAs may be served. Default = True. Note: Doesn't override other directives. For CAPTCHAs to be served, all directives must agree, necessary keys configured, etc. In the event that CAPTCHAs would normally be permitted to be served, setting this directive to false provides a way to prevent CAPTCHAs being served for requests blocked specifically by this module.
 
 ---
 
@@ -2144,4 +2297,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 23 June 2022 (2022.06.23).
+Last Updated: 30 June 2022 (2022.06.30).

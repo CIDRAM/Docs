@@ -173,15 +173,8 @@ Nachfolgend finden Sie eine Liste der Variablen in der Konfigurationsdatei (`con
 Konfiguration (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Konfiguration (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Konfiguration (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Konfiguration (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Konfiguration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Konfiguration (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Konfiguration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Kategorie)
 Allgemeine Konfiguration (jede Kernkonfiguration, die nicht zu anderen Kategorien gehört).
-
-##### "logfile" `[string]`
-- Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "logfile_apache" `[string]`
-- Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "logfile_serialized" `[string]`
-- Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "error_log" `[string]`
-- Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
 ##### "stages" `[string]`
 - Kontrollen für die Phasen der Ausführungskette (ob aktiviert, ob Fehler protokolliert, u.s.w.).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Methode anfordern")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("Status der CAPTCHA")
-```
-
-##### "truncate" `[string]`
-- Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
-
-##### "log_rotation_limit" `[int]`
-- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein dürfen. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier das gewünschte Limit angeben. Ein Wert von 0 deaktiviert die Protokollrotation.
-
-##### "log_rotation_action" `[string]`
-- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben.
-
-```
-log_rotation_action
-├─Delete ("Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
-└─Archive ("Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
 ```
 
 ##### "timezone" `[string]`
@@ -615,9 +613,6 @@ emailaddr_display_style
 └─noclick ("Nicht klickbarer Text")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
 ##### "ban_override" `[int]`
 - Überschreiben "http_response_header_code" Wenn "infraction_limit" überschritten wird? Beim überschreiben: Blockierte Anfragen geben eine leere Seite zurück (Template-Dateien werden nicht verwendet). 200 = Nicht überschreiben [Standardeinstellung]. Andere Werte entsprechen den verfügbaren Werten für "http_response_header_code".
 
@@ -642,9 +637,6 @@ ban_override
   Datenverkehr umgehen.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
-
 ##### "default_dns" `[string]`
 - Eine Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
@@ -655,6 +647,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -741,9 +734,6 @@ statistics
 
 Hinweis: IPv6-Lookups funktionieren auf einigen 32-Bit-Systemen möglicherweise nicht richtig.
 
-##### "log_sanitisation" `[bool]`
-- Wenn Sie die Frontend Protokolldateien-Seite verwenden, um Protokolldaten anzuzeigen, saniert CIDRAM die Protokolldaten vor der Anzeige, um Benutzer vor XSS-Angriffen und anderen potenziellen Bedrohungen zu schützen, die Protokolldaten enthalten könnten. Standardmäßig werden Daten während der Protokollierung jedoch nicht saniert. Dadurch wird sichergestellt, dass die Protokolldaten genau aufbewahrt werden, um eine eventuell erforderliche heuristische oder forensische Analyse zu unterstützen. Falls jedoch ein Benutzer versucht, Protokolldaten mit externen Werkzeuge zu lesen, und wenn diese externen Werkzeuge keinen eigenen Sanierungsprozess durchführen, der Benutzer könnte XSS-Angriffen ausgesetzt sein. Bei Bedarf können Sie das Standardverhalten mithilfe dieser Konfigurationsanweisung ändern. True = Sanieren der Daten, wenn der Daten protokolliert (Daten werden weniger genau aufbewahrt, jedoch das XSS-Risiko ist geringer). False = Sanieren der Daten nicht, wenn der Daten protokolliert (Daten werden genauer aufbewahrt, jedoch das XSS-Risiko ist höher) [Standardeinstellung].
-
 ##### "disabled_channels" `[string]`
 - Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
 
@@ -775,11 +765,50 @@ Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Kompo
 ##### "events" `[string]`
 - Ereignishandler. Wird normalerweise verwendet um das interne Verhalten von CIDRAM zu ändern oder um zusätzliche Funktionen bereitzustellen.
 
+#### "logging" (Kategorie)
+Konfiguration im Zusammenhang mit der Protokollierung (mit Ausnahme der Konfiguration die für andere Kategorien gilt).
+
+##### "standard_log" `[string]`
+- Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "apache_style_log" `[string]`
+- Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "serialised_log" `[string]`
+- Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "error_log" `[string]`
+- Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "truncate" `[string]`
+- Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
+
+##### "log_rotation_limit" `[int]`
+- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein dürfen. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier das gewünschte Limit angeben. Ein Wert von 0 deaktiviert die Protokollrotation.
+
+##### "log_rotation_action" `[string]`
+- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben.
+
+```
+log_rotation_action
+├─Delete ("Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
+└─Archive ("Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
+
+##### "log_sanitisation" `[bool]`
+- Wenn Sie die Frontend Protokolldateien-Seite verwenden, um Protokolldaten anzuzeigen, saniert CIDRAM die Protokolldaten vor der Anzeige, um Benutzer vor XSS-Angriffen und anderen potenziellen Bedrohungen zu schützen, die Protokolldaten enthalten könnten. Standardmäßig werden Daten während der Protokollierung jedoch nicht saniert. Dadurch wird sichergestellt, dass die Protokolldaten genau aufbewahrt werden, um eine eventuell erforderliche heuristische oder forensische Analyse zu unterstützen. Falls jedoch ein Benutzer versucht, Protokolldaten mit externen Werkzeuge zu lesen, und wenn diese externen Werkzeuge keinen eigenen Sanierungsprozess durchführen, der Benutzer könnte XSS-Angriffen ausgesetzt sein. Bei Bedarf können Sie das Standardverhalten mithilfe dieser Konfigurationsanweisung ändern. True = Sanieren der Daten, wenn der Daten protokolliert (Daten werden weniger genau aufbewahrt, jedoch das XSS-Risiko ist geringer). False = Sanieren der Daten nicht, wenn der Daten protokolliert (Daten werden genauer aufbewahrt, jedoch das XSS-Risiko ist höher) [Standardeinstellung].
+
 #### "frontend" (Kategorie)
 Konfiguration für das Front-End.
 
 ##### "frontend_log" `[string]`
 - Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### "signatures_update_event_log" `[string]`
+- Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
 ##### "max_login_attempts" `[int]`
 - Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
@@ -886,7 +915,7 @@ Siehe auch:
 ##### "expiry" `[float]`
 - Anzahl der Stunden an die sich CAPTCHA-Instanzen erinnern sollten. Standardeinstellung = 720 (1 Monat).
 
-##### "logfile" `[string]`
+##### "recaptcha_log" `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
 ##### "signature_limit" `[int]`
@@ -964,7 +993,7 @@ Siehe auch:
 ##### "expiry" `[float]`
 - Anzahl der Stunden an die sich CAPTCHA-Instanzen erinnern sollten. Standardeinstellung = 720 (1 Monat).
 
-##### "logfile" `[string]`
+##### "hcaptcha_log" `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
 ##### "signature_limit" `[int]`
@@ -1129,6 +1158,89 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#HO
 ##### "pdo_password" `[string]`
 - PDO Passwort.
 
+#### "abuseipdb" (Kategorie)
+Konfiguration für das AbuseIPDB-Modul.
+
+##### "api_key" `[string]`
+- Bitte geben Sie hier Ihren API-Schlüssel.
+
+Siehe auch:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- Beim Durchführen die Suchen, das maximale Alter in Tagen für Berichte zu berücksichtigende werden (muss eine Zahl zwischen 1 und 365 sein). Standardeinstellung = 365.
+
+##### "minimum_confidence_score" `[int]`
+- Der minimale Konfidenzwert, der erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann (muss eine Zahl zwischen 0 und 100 sein). Standardeinstellung = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- Die maximale Konfidenzwert, die für die Bereitstellung von CAPTCHAs zulässig sein (muss eine Zahl zwischen 0 und 100 sein). Standardeinstellung = 10.
+
+##### "minimum_total_reports" `[int]`
+- Die Mindestanzahl an Gesamtberichten, die erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann. Standardeinstellung = 1.
+
+##### "report_back" `[bool]`
+- Erlauben Sie CIDRAM, erkanntes schlechtes Verhalten mit Ihrem API-Schlüssel an AbuseIPDB zu melden? Standardeinstellung = False.
+
+##### "lookup_strategy" `[int]`
+- Für welche Anfragen sollen Lookups durchgeführt werden?
+
+```
+lookup_strategy
+├─0 (Keiner.): Wenn Sie das Modul nur für Berichtszwecke verwenden möchten, ohne etwas
+│ nachzuschlagen, verwenden Sie dies.
+├─1 (Alle Anfragen.): Strenger und gründlicher, aber auch mit größerer Wahrscheinlichkeit dass
+│ Limits und Quoten viel schneller erreicht werden, was möglicherweise dazu
+│ führt dass der Dienst gesperrt wird, wenn er am dringendsten benötigt
+│ wird. Obwohl Lookup-Ergebnisse unabhängig davon immer zwischengespeichert
+│ werden, kann dies in einigen Fällen dennoch die Leistung der Website
+│ beeinträchtigen. Kann in manchen Fällen notwendig sein, aber wird im
+│ Allgemeinen nicht empfohlen.
+└─2 (Anfragen nur für sensible Seiten (z.B., Anmeldeseiten, Registrierungsformulare, u.s.w.).): Weniger streng und gründlich, aber konservativer in Bezug auf Quoten und
+  Limits und mit geringerer Wahrscheinlichkeit negativer Auswirkungen auf die
+  Leistung. Die empfohlene Strategie in den meisten Fällen.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Erstellen Profile von der Verwendungstyp von der API zurückgegeben? False = Nein. True = Ja. Standardeinstellung = True.
+
+#### "bgpview" (Kategorie)
+Konfiguration für das BGPView-Modul (bietet eine ASN und Ländercode Suchfunktion für CIDRAM).
+
+##### "blocked_asns" `[string]`
+- Eine Liste von ASNs die blockiert werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
+
+##### "whitelisted_asns" `[string]`
+- Eine Liste von ASNs die auf die Whitelist gesetzt werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
+
+##### "blocked_ccs" `[string]`
+- Eine Liste der Länder (identifiziert durch ihre zweistelligen {{Links.ISO.3166}}-Ländercodes) die blockiert werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
+
+##### "whitelisted_ccs" `[string]`
+- Eine Liste der Länder (identifiziert durch ihre zweistelligen {{Links.ISO.3166}}-Ländercodes) die auf die Whitelist gesetzt werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
+
+#### "bunnycdn" (Kategorie)
+Konfiguration für das BunnyCDN-Kompatibilitätsmodul.
+
+##### "positive_action" `[string]`
+- Welche Aktion soll CIDRAM ausführen wenn es auf eine Anfrage von BunnyCDN trifft? Standardaktion = Bypass.
+
+```
+positive_action
+├─bypass ("Lösen einen Bypass aus.): Subtrahiert einen Zähler von der Anzahl der ausgelösten Signaturen,
+│ solange mindestens eine Signatur bereits ausgelöst wurde. Empfohlen für
+│ den Umgang mit einfachen Falsch-Positiven, die möglicherweise durch die
+│ Standardsignaturdateien verursacht werden."
+├─greylist ("Setzen die Anfrage auf die graue Liste.): Setzt die Anzahl der ausgelösten Signaturen zurück. Jedoch, verarbeitet
+│ die Anforderung weiter. Empfohlen wenn Sie möchten nicht dass die Anfrage
+│ auf die weiße Liste gesetzt wird, aber etwas Wesentlicheres als das
+│ Auslösen einer Bypass benötigen."
+└─whitelist ("Setzen die Anfrage auf die weiße Liste.): Setzt die Anzahl der ausgelösten Signaturen zurück, und bricht jede
+  weitere Bearbeitung der Anfrage ab. Garantiert dass CIDRAM die Anfrage
+  niemals blockiert."
+```
+
 #### "bypasses" (Kategorie)
 Die Konfiguration für die Standard-Signatur-Bypässe.
 
@@ -1144,6 +1256,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1165,6 +1279,50 @@ signatures
 ├─ruri ("Signaturen basierend auf rekonstruierten URIs.")
 └─uri ("Signaturen basierend auf den URI des Anfrage.")
 ```
+
+#### "projecthoneypot" (Kategorie)
+Konfiguration für das Project-Honeypot-Modul.
+
+##### "api_key" `[string]`
+- Bitte geben Sie hier Ihren API-Schlüssel.
+
+Siehe auch:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- Beim Durchführen die Suchen, das maximale Alter in Tagen für Berichte zu berücksichtigende werden. Standardeinstellung = 365.
+
+##### "minimum_threat_score" `[int]`
+- Die minimale Bedrohungsbewert, die erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann (muss eine Zahl zwischen 1 und 100 sein). Standardeinstellung = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- Die maximal zulässige Bedrohungsbewert für die Zustellung eines CAPTCHA (muss eine Zahl zwischen 1 und 100 sein). Standardeinstellung = 10.
+
+##### "lookup_strategy" `[int]`
+- Für welche Anfragen sollen Lookups durchgeführt werden?
+
+```
+lookup_strategy
+├─0 (Keiner.): Wenn Sie das Modul nur für Berichtszwecke verwenden möchten, ohne etwas
+│ nachzuschlagen, verwenden Sie dies.
+├─1 (Alle Anfragen.): Strenger und gründlicher, aber auch mit größerer Wahrscheinlichkeit dass
+│ Limits und Quoten viel schneller erreicht werden, was möglicherweise dazu
+│ führt dass der Dienst gesperrt wird, wenn er am dringendsten benötigt
+│ wird. Obwohl Lookup-Ergebnisse unabhängig davon immer zwischengespeichert
+│ werden, kann dies in einigen Fällen dennoch die Leistung der Website
+│ beeinträchtigen. Kann in manchen Fällen notwendig sein, aber wird im
+│ Allgemeinen nicht empfohlen.
+└─2 (Anfragen nur für sensible Seiten (z.B., Anmeldeseiten, Registrierungsformulare, u.s.w.).): Weniger streng und gründlich, aber konservativer in Bezug auf Quoten und
+  Limits und mit geringerer Wahrscheinlichkeit negativer Auswirkungen auf die
+  Leistung. Die empfohlene Strategie in den meisten Fällen.
+```
+
+#### "sfs" (Kategorie)
+Konfiguration für das Stop Forum Spam Modul.
+
+##### "offer_captcha" `[bool]`
+- Wenn Anfragen von diesem Modul blockiert werden, können CAPTCHAs bereitgestellt werden. Standardeinstellung = True. Hinweis: Überschreibt keine anderen Direktiven. Damit CAPTCHAs geliefert werden können, müssen alle Direktiven übereinstimmen, erforderliche Schlüssel konfiguriert sein, u.s.w. In dem Fall dass CAPTCHAs normalerweise zugelassen würden, die Einsetzung dieser Direktive auf „false“ bietet eine Möglichkeit für CAPTCHAs verhindert werden für den Anfragen die speziell von diesem Modul blockiert werden.
 
 ---
 
@@ -2161,4 +2319,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 23. Juni 2022 (2022.06.23).
+Zuletzt aktualisiert: 30. Juni 2022 (2022.06.30).

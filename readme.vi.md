@@ -173,15 +173,8 @@ Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho
 Cấu hình (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Cấu hình (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Cấu hình (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Cấu hình (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Cấu hình (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Cấu hình (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Cấu hình (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Thể loại)
 Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về các loại khác).
-
-##### "logfile" `[string]`
-- Tập tin có thể đọc con người cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
-##### "logfile_apache" `[string]`
-- Tập tin Apache phong cách cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
-##### "logfile_serialized" `[string]`
-- Tập tin tuần tự cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
-##### "error_log" `[string]`
-- Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
 ##### "stages" `[string]`
 - Kiểm soát các giai đoạn của chuỗi thực thi (có được bật hay không, có lỗi được ghi lại hay không, vv).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Phương thức yêu cầu")
 ├─Hostname ("Tên máy chủ")
 └─CAPTCHA ("Tình trạng CAPTCHA")
-```
-
-##### "truncate" `[string]`
-- Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
-
-##### "log_rotation_limit" `[int]`
-- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định giới hạn mong muốn tại đây. Giá trị 0 sẽ vô hiệu hóa xoay vòng nhật ký.
-
-##### "log_rotation_action" `[string]`
-- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định hành động mong muốn tại đây.
-
-```
-log_rotation_action
-├─Delete ("Xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
-└─Archive ("Trước tiên lưu trữ, và sau đó xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
 ```
 
 ##### "timezone" `[string]`
@@ -619,9 +617,6 @@ emailaddr_display_style
 └─noclick ("Văn bản không thể nhấp")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- Một tập tin để ghi nhật ký khi chữ ký được cập nhật qua front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
-
 ##### "ban_override" `[int]`
 - Ghi đè "http_response_header_code" khi "infraction_limit" bị vượt quá? Khi ghi đè: Các yêu cầu bị chặn sản xuất một trang trống (tập tin mẫu không được sử dụng). 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "http_response_header_code".
 
@@ -650,9 +645,6 @@ ban_override
   lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Bao gồm các yêu cầu bị chặn từ các IP bị cấm trong các tập tin đăng nhập? True = Vâng [Mặc định]; False = Không.
-
 ##### "default_dns" `[string]`
 - Danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
@@ -663,6 +655,7 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -749,9 +742,6 @@ statistics
 
 Lưu ý: Tra cứu IPv6 có thể không hoạt động chính xác trên một số hệ thống 32 bit.
 
-##### "log_sanitisation" `[bool]`
-- Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
-
 ##### "disabled_channels" `[string]`
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
 
@@ -783,11 +773,50 @@ Cấu hình để kích hoạt và vô hiệu hóa các thành phần được s
 ##### "events" `[string]`
 - Trình xử lý sự kiện. Thường được sử dụng để sửa đổi cách CIDRAM hoạt động trong nội bộ hoặc để cung cấp chức năng bổ sung.
 
+#### "logging" (Thể loại)
+Cấu hình liên quan đến ghi nhật ký (cái có thể áp dụng cho các danh mục khác bị loại trừ).
+
+##### "standard_log" `[string]`
+- Tập tin có thể đọc con người cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "apache_style_log" `[string]`
+- Tập tin Apache phong cách cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "serialised_log" `[string]`
+- Tập tin tuần tự cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "error_log" `[string]`
+- Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "truncate" `[string]`
+- Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
+
+##### "log_rotation_limit" `[int]`
+- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định giới hạn mong muốn tại đây. Giá trị 0 sẽ vô hiệu hóa xoay vòng nhật ký.
+
+##### "log_rotation_action" `[string]`
+- Xoay vòng nhật ký giới hạn số lượng của tập tin nhật ký có cần tồn tại cùng một lúc. Khi các tập tin nhật ký mới được tạo, nếu tổng số lượng tập tin nhật ký vượt quá giới hạn được chỉ định, hành động được chỉ định sẽ được thực hiện. Bạn có thể chỉ định hành động mong muốn tại đây.
+
+```
+log_rotation_action
+├─Delete ("Xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
+└─Archive ("Trước tiên lưu trữ, và sau đó xóa các tập tin nhật ký cũ nhất, cho đến khi giới hạn không còn vượt quá.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Bao gồm các yêu cầu bị chặn từ các IP bị cấm trong các tập tin đăng nhập? True = Vâng [Mặc định]; False = Không.
+
+##### "log_sanitisation" `[bool]`
+- Khi sử dụng trang bản ghi để xem dữ liệu bản ghi, CIDRAM vệ sinh dữ liệu bản ghi trước khi hiển thị nó, để bảo vệ người dùng khỏi các cuộc tấn công XSS và các mối đe dọa tiềm năng khác. Tuy nhiên, theo mặc định, dữ liệu không được vệ sinh trong quá ghi bản ghi. Điều này là để đảm bảo dữ liệu bản ghi được bảo quản chính xác, để hỗ trợ bất kỳ phân tích heuristic hoặc pháp y có thể cần thiết trong tương lai. Tuy nhiên, nếu người dùng cố gắng đọc dữ liệu bản ghi bằng các công cụ bên ngoài, và nếu những công cụ bên ngoài đó không thực hiện quy trình vệ sinh riêng của họ, người dùng có thể tiếp xúc với các cuộc tấn công XSS. Nếu cần, bạn có thể thay đổi hành vi mặc định bằng cách sử dụng chỉ thị cấu hình này. True = Vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản ít chính xác hơn, nhưng rủi ro XSS thấp hơn). False = Không vệ sinh dữ liệu khi ghi nó (dữ liệu được bảo quản chính xác hơn, nhưng rủi ro XSS cao hơn) [Mặc định].
+
 #### "frontend" (Thể loại)
 Cấu hình cho front-end.
 
 ##### "frontend_log" `[string]`
 - Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "signatures_update_event_log" `[string]`
+- Một tập tin để ghi nhật ký khi chữ ký được cập nhật qua front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
 ##### "max_login_attempts" `[int]`
 - Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
@@ -894,7 +923,7 @@ Xem thêm:
 ##### "expiry" `[float]`
 - Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
 
-##### "logfile" `[string]`
+##### "recaptcha_log" `[string]`
 - Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
 ##### "signature_limit" `[int]`
@@ -974,7 +1003,7 @@ Xem thêm:
 ##### "expiry" `[float]`
 - Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
 
-##### "logfile" `[string]`
+##### "hcaptcha_log" `[string]`
 - Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
 ##### "signature_limit" `[int]`
@@ -1141,6 +1170,91 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 ##### "pdo_password" `[string]`
 - Mật khẩu PDO.
 
+#### "abuseipdb" (Thể loại)
+Cấu hình cho mô-đun AbuseIPDB.
+
+##### "api_key" `[string]`
+- Vui lòng nhập khóa API của bạn tại đây.
+
+Xem thêm:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- Tuổi tối đa tính theo ngày mà các báo cáo sẽ được xem xét khi thực hiện tra cứu (phải là một số từ 1 đến 365). Mặc định = 365.
+
+##### "minimum_confidence_score" `[int]`
+- Điểm tin cậy tối thiểu bắt buộc để CIDRAM chặn địa chỉ IP (phải là một số từ 0 đến 100). Mặc định = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- Điểm tin cậy tối đa cho phép CAPTCHA được phân phát (phải là một số từ 0 đến 100). Mặc định = 10.
+
+##### "minimum_total_reports" `[int]`
+- Cần có tổng số báo cáo tối thiểu để CIDRAM chặn địa chỉ IP. Mặc định = 1.
+
+##### "report_back" `[bool]`
+- Cho phép CIDRAM báo cáo hành vi xấu đã phát hiện trở lại AbuseIPDB bằng cách sử dụng khóa API của bạn? Mặc định = False.
+
+##### "lookup_strategy" `[int]`
+- Những yêu cầu nào nên thực hiện tra cứu?
+
+```
+lookup_strategy
+├─0 (Không phải bất kỳ.): Nếu bạn chỉ muốn sử dụng mô-đun cho mục đích báo cáo mà
+│ không cần tra cứu gì, hãy sử dụng mô-đun này.
+├─1 (Tất cả các yêu cầu.): Nghiêm ngặt hơn, nhưng cũng có nhiều khả năng dẫn đến các
+│ giới hạn và hạn ngạch bị vượt quá nhanh hơn nhiều, có
+│ khả năng dẫn đến việc bị khóa dịch vụ khi cần thiết
+│ nhất. Ngoài ra, mặc dù kết quả tra cứu luôn được lưu vào
+│ bộ nhớ cache, nhưng nó vẫn có thể tác động tiêu cực đến
+│ hiệu suất trang web trong một số trường hợp. Có thể cần
+│ thiết trong một số trường hợp, nhưng thường không được
+│ khuyến khích.
+└─2 (Yêu cầu chỉ dành cho các trang nhạy cảm (ví dụ: trang đăng nhập, biểu mẫu đăng ký, vv).): Ít nghiêm ngặt hơn, nhưng thận trọng hơn về hạn ngạch và
+  giới hạn, và ít có khả năng tác động tiêu cực đến hiệu
+  suất. Chiến lược được khuyến khích trong hầu hết các
+  trường hợp.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Xây dựng hồ sơ bằng cách sử dụng loại sử dụng do API trả về? False = Không. True = Vâng. Mặc định = True.
+
+#### "bgpview" (Thể loại)
+Cấu hình cho mô-đun BGPView (cung cấp cơ sở tra cứu cho ASN và mã quốc gia cho CIDRAM).
+
+##### "blocked_asns" `[string]`
+- Danh sách các ASN sẽ bị chặn khi được đối sánh bởi mô-đun BGPView.
+
+##### "whitelisted_asns" `[string]`
+- Danh sách các ASN sẽ được đưa vào danh sách trắng khi được đối sánh bởi mô-đun BGPView.
+
+##### "blocked_ccs" `[string]`
+- Danh sách các quốc gia (được xác định bằng mã quốc gia 2 chữ số {{Links.ISO.3166}} của họ) bị chặn khi được đối sánh bởi mô-đun BGPView.
+
+##### "whitelisted_ccs" `[string]`
+- Danh sách các quốc gia (được xác định bằng mã quốc gia 2 chữ số {{Links.ISO.3166}} của họ) sẽ được đưa vào danh sách trắng khi được đối sánh bởi mô-đun BGPView.
+
+#### "bunnycdn" (Thể loại)
+Cấu hình cho mô-đun tương thích BunnyCDN.
+
+##### "positive_action" `[string]`
+- CIDRAM nên thực hiện hành động nào khi gặp yêu cầu từ BunnyCDN? Hành động mặc định = Đường tránh.
+
+```
+positive_action
+├─bypass ("Kích hoạt một đường tránh.): Trừ một số cho số chữ ký được kích hoạt, miễn là ít
+│ nhất một chữ ký đã được kích hoạt. Được khuyến khích
+│ cho xử lý các trường hợp sai tích cực đơn giản có thể
+│ được gây ra bởi các tập tin chữ ký mặc định."
+├─greylist ("Danh sách xám các yêu cầu.): Đặt lại số lượng chữ ký được kích hoạt, nhưng vẫn
+│ tiếp tục xử lý yêu cầu. Được khuyến khích khi bạn không
+│ muốn đưa yêu cầu vào danh sách trắng, nhưng cần điều gì
+│ đó thực chất hơn kích hoạt trường hợp."
+└─whitelist ("Danh sách trắng các yêu cầu.): Đặt lại số lượng chữ ký được kích hoạt, và hủy bỏ
+  mọi quá trình xử lý yêu cầu tiếp theo. Đảm bảo rằng
+  CIDRAM sẽ không bao giờ chặn yêu cầu."
+```
+
 #### "bypasses" (Thể loại)
 Cấu hình cho các đường tránh chữ ký mặc định.
 
@@ -1156,6 +1270,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1177,6 +1293,52 @@ signatures
 ├─ruri ("Chữ ký dựa trên các URI được xây dựng lại.")
 └─uri ("Chữ ký dựa trên URI của yêu cầu.")
 ```
+
+#### "projecthoneypot" (Thể loại)
+Cấu hình cho mô-đun Project Honeypot.
+
+##### "api_key" `[string]`
+- Vui lòng nhập khóa API của bạn tại đây.
+
+Xem thêm:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- Tuổi tối đa tính theo ngày mà các báo cáo sẽ được xem xét khi thực hiện tra cứu. Mặc định = 365.
+
+##### "minimum_threat_score" `[int]`
+- Điểm số mối đe dọa tối thiểu cần thiết để CIDRAM chặn một địa chỉ IP (phải là một số từ 1 đến 100). Mặc định = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- Điểm đe dọa tối đa được phép để được phân phát CAPTCHA (phải là một số từ 1 đến 100). Mặc định = 10.
+
+##### "lookup_strategy" `[int]`
+- Những yêu cầu nào nên thực hiện tra cứu?
+
+```
+lookup_strategy
+├─0 (Không phải bất kỳ.): Nếu bạn chỉ muốn sử dụng mô-đun cho mục đích báo cáo mà
+│ không cần tra cứu gì, hãy sử dụng mô-đun này.
+├─1 (Tất cả các yêu cầu.): Nghiêm ngặt hơn, nhưng cũng có nhiều khả năng dẫn đến các
+│ giới hạn và hạn ngạch bị vượt quá nhanh hơn nhiều, có
+│ khả năng dẫn đến việc bị khóa dịch vụ khi cần thiết
+│ nhất. Ngoài ra, mặc dù kết quả tra cứu luôn được lưu vào
+│ bộ nhớ cache, nhưng nó vẫn có thể tác động tiêu cực đến
+│ hiệu suất trang web trong một số trường hợp. Có thể cần
+│ thiết trong một số trường hợp, nhưng thường không được
+│ khuyến khích.
+└─2 (Yêu cầu chỉ dành cho các trang nhạy cảm (ví dụ: trang đăng nhập, biểu mẫu đăng ký, vv).): Ít nghiêm ngặt hơn, nhưng thận trọng hơn về hạn ngạch và
+  giới hạn, và ít có khả năng tác động tiêu cực đến hiệu
+  suất. Chiến lược được khuyến khích trong hầu hết các
+  trường hợp.
+```
+
+#### "sfs" (Thể loại)
+Cấu hình cho mô-đun Stop Forum Spam.
+
+##### "offer_captcha" `[bool]`
+- Khi mô-đun này chặn các yêu cầu, CAPTCHA có thể được phân phát. Mặc định = True. Lưu ý: Sẽ không ghi đè các chỉ thị khác. Để CAPTCHA được phân phát, tất cả các chỉ thị phải đồng ý, các khóa cần thiết được định cấu hình, vv. Trong trường hợp thông thường CAPTCHA sẽ được phép phân phát, việc đặt chỉ thị này thành false sẽ cung cấp một cách để ngăn CAPTCHA được phân phát cho các yêu cầu bị chặn cụ thể bởi mô-đun này.
 
 ---
 
@@ -2153,4 +2315,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.06.23.
+Lần cuối cập nhật: 2022.06.30.

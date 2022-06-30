@@ -179,15 +179,8 @@ $CIDRAM->view();
 التكوين (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -199,9 +192,7 @@ $CIDRAM->view();
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -210,7 +201,6 @@ $CIDRAM->view();
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -219,8 +209,19 @@ $CIDRAM->view();
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -245,7 +246,7 @@ $CIDRAM->view();
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -258,7 +259,7 @@ $CIDRAM->view();
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -294,26 +295,38 @@ $CIDRAM->view();
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### <div dir="rtl">"general" (التصنيف)<br /></div>
 <div dir="rtl">التكوين العام (أي التكوين الأساسي لا ينتمي إلى فئات أخرى).<br /><br /></div>
-
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف يمكن قراءته بالعين لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
-##### <div dir="rtl">"logfile_apache" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف على غرار أباتشي لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
-##### <div dir="rtl">"logfile_serialized" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف تسلسل لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
-##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
 ##### <div dir="rtl">"stages" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ضوابط لمراحل سلسلة التنفيذ (سواء تم التمكين، أو تسجيل الأخطاء، وما إلى ذلك).</li></ul></div>
@@ -368,21 +381,6 @@ fields
 ├─Request_Method ("Request method")
 ├─Hostname ("اسم المضيف")
 └─CAPTCHA ("الحالة CAPTCHA")
-```
-
-##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>اقتطاع ملفات السجل عندما تصل إلى حجم معين؟ القيمة هي الحجم الأقصى في بايت/كيلوبايت/ميغابايت/غيغابايت/تيرابايت الذي قد ينمو ملفات السجل إلى قبل اقتطاعه. القيمة الافتراضية 0KB تعطيل اقتطاع (ملفات السجل يمكن أن تنمو إلى أجل غير مسمى). ملاحظة: ينطبق على ملفات السجل الفردية! ولا يعتبر حجمها جماعيا.</li></ul></div>
-
-##### <div dir="rtl">"log_rotation_limit" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الحد المرغوب هنا. ستعمل القيمة 0 على تعطيل تدوير السجل.</li></ul></div>
-
-##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الإجراء المطلوب هنا.</li></ul></div>
-
-```
-log_rotation_action
-├─Delete ("احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
-└─Archive ("أرشفة أولاً، ثم احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
 ```
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
@@ -626,9 +624,6 @@ emailaddr_display_style
 └─noclick ("نص غير قابل للنقر")
 ```
 
-##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
-
 ##### <div dir="rtl">"ban_override" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>تجاوز "http_response_header_code" متى "infraction_limit" تجاوزت؟ عندما تجاوز: الطلبات الممنوعة بإرجاع صفحة فارغة (لا يتم استخدام ملفات قالب). 200 = لا تجاوز [الافتراضي]. القيم الأخرى هي نفس القيم المتاحة لـ "http_response_header_code".</li></ul></div>
 
@@ -657,9 +652,6 @@ ban_override
   بشكل دائم للغاية.
 ```
 
-##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>من IP المحظورة في ملفات السجل؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
-
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة من خوادم DNS لاستخدامها في عمليات البحث عن اسم المضيف. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
 
@@ -670,6 +662,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -756,9 +749,6 @@ statistics
 
 ملاحظة: قد لا تعمل عمليات بحث IPv6 بشكل صحيح على بعض أنظمة 32 بت.
 
-##### <div dir="rtl">"log_sanitisation" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>عند استخدام صفحة سجلات الواجهة الأمامية لعرض بيانات السجل، تقوم CIDRAM بتعقيم بيانات السجل قبل عرضها، لحماية المستخدمين من هجمات XSS والتهديدات المحتملة الأخرى التي قد تحتوي عليها بيانات السجل. ومع ذلك، بشكل افتراضي، لا يتم تعقيم البيانات أثناء التسجيل. هذا لضمان الحفاظ على بيانات السجل بدقة، للمساعدة في أي تحليل شرعي قد يكون ضروريًا في المستقبل. ومع ذلك، في حالة محاولة المستخدم قراءة بيانات السجل باستخدام أدوات خارجية، وإذا لم تقم تلك الأدوات الخارجية بعملية الصرف الصحي الخاصة بها، فقد يتعرض المستخدم لهجمات XSS. إذا لزم الأمر، يمكنك تغيير السلوك الافتراضي باستخدام توجيه التكوين هذا. True = قم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ بالبيانات بدقة أقل، لكن خطر XSS أقل). False = لا تقم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ البيانات بشكل أكثر دقة، ولكن خطر XSS أعلى) [افتراضي].</li></ul></div>
-
 ##### <div dir="rtl">"disabled_channels" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يمكن استخدام هذا لمنع CIDRAM من استخدام قنوات معينة عند إرسال الطلبات (على سبيل المثال، عند التحديث، عند جلب بيانات تعريف المكون، إلخ).</li></ul></div>
 
@@ -790,11 +780,50 @@ disabled_channels
 ##### <div dir="rtl">"events" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>معالجات الأحداث. تُستخدم عادةً لتعديل الطريقة التي يتصرف بها CIDRAM داخليًا أو لتوفير وظائف إضافية.</li></ul></div>
 
+#### <div dir="rtl">"logging" (التصنيف)<br /></div>
+<div dir="rtl">التكوين المتعلق بالتسجيل (باستثناء ما ينطبق على الفئات الأخرى).<br /><br /></div>
+
+##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف يمكن قراءته بالعين لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف على غرار أباتشي لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف تسلسل لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اقتطاع ملفات السجل عندما تصل إلى حجم معين؟ القيمة هي الحجم الأقصى في بايت/كيلوبايت/ميغابايت/غيغابايت/تيرابايت الذي قد ينمو ملفات السجل إلى قبل اقتطاعه. القيمة الافتراضية 0KB تعطيل اقتطاع (ملفات السجل يمكن أن تنمو إلى أجل غير مسمى). ملاحظة: ينطبق على ملفات السجل الفردية! ولا يعتبر حجمها جماعيا.</li></ul></div>
+
+##### <div dir="rtl">"log_rotation_limit" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الحد المرغوب هنا. ستعمل القيمة 0 على تعطيل تدوير السجل.</li></ul></div>
+
+##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>يحدد تدوير السجل عدد ملفات السجل التي يجب أن تكون موجودة في أي وقت. عند إنشاء ملفات السجل الجديدة، إذا تجاوز العدد الإجمالي لبيانات السجل الحد المحدد، فسيتم تنفيذ الإجراء المحدد. يمكنك تحديد الإجراء المطلوب هنا.</li></ul></div>
+
+```
+log_rotation_action
+├─Delete ("احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
+└─Archive ("أرشفة أولاً، ثم احذف أقدم السجلات، حتى لا يتم تجاوز الحد.")
+```
+
+##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>من IP المحظورة في ملفات السجل؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
+
+##### <div dir="rtl">"log_sanitisation" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>عند استخدام صفحة سجلات الواجهة الأمامية لعرض بيانات السجل، تقوم CIDRAM بتعقيم بيانات السجل قبل عرضها، لحماية المستخدمين من هجمات XSS والتهديدات المحتملة الأخرى التي قد تحتوي عليها بيانات السجل. ومع ذلك، بشكل افتراضي، لا يتم تعقيم البيانات أثناء التسجيل. هذا لضمان الحفاظ على بيانات السجل بدقة، للمساعدة في أي تحليل شرعي قد يكون ضروريًا في المستقبل. ومع ذلك، في حالة محاولة المستخدم قراءة بيانات السجل باستخدام أدوات خارجية، وإذا لم تقم تلك الأدوات الخارجية بعملية الصرف الصحي الخاصة بها، فقد يتعرض المستخدم لهجمات XSS. إذا لزم الأمر، يمكنك تغيير السلوك الافتراضي باستخدام توجيه التكوين هذا. True = قم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ بالبيانات بدقة أقل، لكن خطر XSS أقل). False = لا تقم بتعقيم البيانات عند تسجيلها (يتم الاحتفاظ البيانات بشكل أكثر دقة، ولكن خطر XSS أعلى) [افتراضي].</li></ul></div>
+
 #### <div dir="rtl">"frontend" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للواجهة الأمامية.<br /><br /></div>
 
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
@@ -903,7 +932,7 @@ usemode
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>عدد الساعات لنتذكر حالات اختبار CAPTCHA. الافتراضي = 720 (١ شهر).</li></ul></div>
 
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
+##### <div dir="rtl">"recaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
@@ -984,7 +1013,7 @@ usemode
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>عدد الساعات لنتذكر حالات اختبار CAPTCHA. الافتراضي = 720 (١ شهر).</li></ul></div>
 
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
+##### <div dir="rtl">"hcaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
@@ -1150,6 +1179,95 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#HO
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO كلمه السر.</li></ul></div>
 
+#### <div dir="rtl">"abuseipdb" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لوحدة AbuseIPDB.<br /><br /></div>
+
+##### <div dir="rtl">"api_key" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الرجاء إدخال مفتاح API الخاص بك هنا.</li></ul></div>
+
+<div dir="rtl">أنظر أيضا:<ul dir="rtl">
+<li><a dir="ltr" href="https://www.abuseipdb.com/register">Register - AbuseIPDB</a></li>
+<li><a dir="ltr" href="https://www.abuseipdb.com/account/api">link_get_api_key</a></li>
+</ul></div>
+
+##### <div dir="rtl">"max_age_in_days" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأقصى للعمر بالأيام التي سيتم وضع التقارير فيها في الاعتبار عند إجراء عمليات البحث (يجب أن يكون رقمًا بين 1 و 365). افتراضي = 365.</li></ul></div>
+
+##### <div dir="rtl">"minimum_confidence_score" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأدنى لدرجة الثقة المطلوبة لكي يحظر CIDRAM عنوان IP (يجب أن يكون رقمًا بين 0 و 100). افتراضي = 50.</li></ul></div>
+
+##### <div dir="rtl">"max_cs_for_captcha" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأقصى لدرجة الثقة المسموح به للحصول على اختبار CAPTCHA (يجب أن يكون رقمًا بين 0 و 100). افتراضي = 10.</li></ul></div>
+
+##### <div dir="rtl">"minimum_total_reports" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأدنى لعدد التقارير الإجمالية المطلوبة من أجل CIDRAM لحظر عنوان IP. افتراضي = 1.</li></ul></div>
+
+##### <div dir="rtl">"report_back" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>هل تسمح لـ CIDRAM بالإبلاغ عن السلوك السيئ الذي تم اكتشافه إلى AbuseIPDB باستخدام مفتاح API الخاص بك؟ افتراضي = False.</li></ul></div>
+
+##### <div dir="rtl">"lookup_strategy" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>ما الطلبات التي يجب إجراء عمليات البحث عنها؟</li></ul></div>
+
+```
+lookup_strategy
+├─0 (لا شيء.): إذا كنت تريد استخدام الوحدة لأغراض إعداد
+│ التقارير فقط، دون البحث عن أي شيء،
+│ فاستخدم هذا.
+├─1 (كل طلب.): أكثر صرامة وشمولية، ولكن من المرجح أيضًا
+│ أن تؤدي إلى تلبية الحدود والحصص بسرعة
+│ أكبر، مما قد يؤدي إلى منعك من الخدمة عندما
+│ تكون هناك حاجة ماسة إليها. أيضًا، على
+│ الرغم من تخزين نتائج البحث مؤقتًا دائمًا
+│ بغض النظر، إلا أنه لا يزال من الممكن أن
+│ يؤثر سلبًا على أداء موقع الويب في بعض
+│ الحالات. قد يكون ضروريًا في بعض الحالات،
+│ ولكن لا يوصى به بشكل عام.
+└─2 (طلبات الصفحات الحساسة فقط (على سبيل المثال، صفحات تسجيل الدخول، نماذج التسجيل، ما إلى ذلك).): أقل صرامة وشمولية، لكنها أكثر تحفظًا من
+  حيث الحصص والحدود، وأقل عرضة للتأثير
+  سلبًا على الأداء. الاستراتيجية الموصى بها
+  في معظم الحالات.
+```
+
+##### <div dir="rtl">"build_profiles_from_usage_type" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>إنشاء ملفات تعريف باستخدام نوع الاستخدام الذي تم إرجاعه بواسطة API؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
+
+#### <div dir="rtl">"bgpview" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لوحدة BGPView (يوفر مرفق بحث ASN ورمز البلد لـ CIDRAM).<br /><br /></div>
+
+##### <div dir="rtl">"blocked_asns" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة ASNs التي سيتم حظرها عند مطابقتها مع وحدة BGPView.</li></ul></div>
+
+##### <div dir="rtl">"whitelisted_asns" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة ASNs التي سيتم وضعها في القائمة البيضاء عند مطابقتها مع وحدة BGPView.</li></ul></div>
+
+##### <div dir="rtl">"blocked_ccs" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة البلدان (التي تم تحديدها من خلال رموز البلدان المكونة من رقمين {{Links.ISO.3166}}) التي سيتم حظرها عند مطابقتها مع وحدة BGPView.</li></ul></div>
+
+##### <div dir="rtl">"whitelisted_ccs" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة البلدان (التي تم تحديدها من خلال رموز البلدان المكونة من رقمين {{Links.ISO.3166}}) التي سيتم إدراجها في القائمة البيضاء عند مطابقتها مع وحدة BGPView.</li></ul></div>
+
+#### <div dir="rtl">"bunnycdn" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لوحدة التوافق BunnyCDN.<br /><br /></div>
+
+##### <div dir="rtl">"positive_action" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ما الإجراء الذي يجب أن يقوم به CIDRAM عندما يواجه طلبًا من BunnyCDN؟ الإجراء القياسي = تجاوز.</li></ul></div>
+
+```
+positive_action
+├─bypass ("تشغيل تجاوز.): يطرح عددًا واحدًا من عدد التوقيعات التي
+│ تم تشغيلها، طالما تم بالفعل تشغيل توقيع
+│ واحد على الأقل. يوصى به للتعامل مع
+│ الإيجابيات الخاطئة البسيطة التي قد تكون
+│ ناجمة عن ملفات التوقيع الافتراضية."
+├─greylist ("القائمة الرمادية.): يعيد تعيين عدد التوقيعات التي تم تشغيلها،
+│ ولكنه يستمر في معالجة الطلب. يوصى به عندما
+│ لا تريد إدراج الطلب في القائمة البيضاء،
+│ لكنك تحتاج إلى محتوى أكثر من تجاوز."
+└─whitelist ("القائمة البيضاء.): يعيد تعيين عدد التوقيعات التي تم تشغيلها،
+  ويحبط أي معالجة إضافية للطلب. يضمن أن CIDRAM
+  لن تمنع الطلب أبدًا."
+```
+
 #### <div dir="rtl">"bypasses" (التصنيف)<br /></div>
 <div dir="rtl">التكوين لتجاوز التوقيع الافتراضي.<br /><br /></div>
 
@@ -1165,6 +1283,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1186,6 +1306,55 @@ signatures
 ├─ruri ("التوقيعات على أساس URI المعاد بناؤه.")
 └─uri ("التوقيعات على طلب URI.")
 ```
+
+#### <div dir="rtl">"projecthoneypot" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لوحدة Project Honeypot.<br /><br /></div>
+
+##### <div dir="rtl">"api_key" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الرجاء إدخال مفتاح API الخاص بك هنا.</li></ul></div>
+
+<div dir="rtl">أنظر أيضا:<ul dir="rtl">
+<li><a dir="ltr" href="https://www.projecthoneypot.org/terms_of_service_use.php">Project Honeypot Terms of Service.</a></li>
+<li><a dir="ltr" href="https://www.projecthoneypot.org/httpbl_configure.php">link_get_api_key</a></li>
+</ul></div>
+
+##### <div dir="rtl">"max_age_in_days" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأقصى للعمر بالأيام التي سيتم وضع التقارير فيها في الاعتبار عند إجراء عمليات البحث. افتراضي = 365.</li></ul></div>
+
+##### <div dir="rtl">"minimum_threat_score" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأدنى لدرجة التهديد المطلوبة لكي يقوم CIDRAM بحظر عنوان IP (يجب أن يكون رقمًا بين 1 و 100). افتراضي = 10.</li></ul></div>
+
+##### <div dir="rtl">"max_ts_for_captcha" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>الحد الأقصى لدرجة التهديد المسموح به لتلقي اختبار CAPTCHA (يجب أن يكون رقمًا بين 1 و 100). افتراضي = 10.</li></ul></div>
+
+##### <div dir="rtl">"lookup_strategy" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>ما الطلبات التي يجب إجراء عمليات البحث عنها؟</li></ul></div>
+
+```
+lookup_strategy
+├─0 (لا شيء.): إذا كنت تريد استخدام الوحدة لأغراض إعداد
+│ التقارير فقط، دون البحث عن أي شيء،
+│ فاستخدم هذا.
+├─1 (كل طلب.): أكثر صرامة وشمولية، ولكن من المرجح أيضًا
+│ أن تؤدي إلى تلبية الحدود والحصص بسرعة
+│ أكبر، مما قد يؤدي إلى منعك من الخدمة عندما
+│ تكون هناك حاجة ماسة إليها. أيضًا، على
+│ الرغم من تخزين نتائج البحث مؤقتًا دائمًا
+│ بغض النظر، إلا أنه لا يزال من الممكن أن
+│ يؤثر سلبًا على أداء موقع الويب في بعض
+│ الحالات. قد يكون ضروريًا في بعض الحالات،
+│ ولكن لا يوصى به بشكل عام.
+└─2 (طلبات الصفحات الحساسة فقط (على سبيل المثال، صفحات تسجيل الدخول، نماذج التسجيل، ما إلى ذلك).): أقل صرامة وشمولية، لكنها أكثر تحفظًا من
+  حيث الحصص والحدود، وأقل عرضة للتأثير
+  سلبًا على الأداء. الاستراتيجية الموصى بها
+  في معظم الحالات.
+```
+
+#### <div dir="rtl">"sfs" (التصنيف)<br /></div>
+<div dir="rtl">التكوين للوحدة Stop Forum Spam.<br /><br /></div>
+
+##### <div dir="rtl">"offer_captcha" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>عندما يتم حظر الطلبات بواسطة هذه الوحدة، قد يتم تقديم كابتشا. افتراضي = True. ملاحظة: لا يتم تجاوز التوجيهات الأخرى. لكي يتم تقديم اختبارات كابتشا، يجب أن توافق جميع التوجيهات، ويتم تكوين المفاتيح الضرورية، وما إلى ذلك. في حالة السماح عادةً بتقديم اختبارات كابتشا، فإن تعيين هذا التوجيه على false يوفر طريقة لمنع تقديم كابتشا للطلبات المحظورة على وجه التحديد بواسطة هذه الوحدة.</li></ul></div>
 
 ---
 
@@ -2207,4 +2376,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٣ يونيو ٢٠٢٢ (٢٠٢٢.٠٦.٢٣).</div>
+<div dir="rtl">آخر تحديث: ٣٠ يونيو ٢٠٢٢ (٢٠٢٢.٠٦.٣٠).</div>

@@ -179,15 +179,8 @@ $CIDRAM->view();
 کنفگریشن (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -199,9 +192,7 @@ $CIDRAM->view();
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -210,7 +201,6 @@ $CIDRAM->view();
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -219,8 +209,19 @@ $CIDRAM->view();
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -245,7 +246,7 @@ $CIDRAM->view();
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -258,7 +259,7 @@ $CIDRAM->view();
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -294,26 +295,38 @@ $CIDRAM->view();
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
 <div dir="rtl">عام ترتیبات (کنفیگریشن جس کا تعلق دوسری قسموں سے نہیں ہے).<br /><br /></div>
-
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے انسانی قابل مطالعہ فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
-##### <div dir="rtl">"logfile_apache" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے اپاچی طرز فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
-##### <div dir="rtl">"logfile_serialized" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے serialized کی فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
-##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
 ##### <div dir="rtl">"stages" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>عمل درآمد کے مراحل کے لیے کنٹرول (فعال کرنے کے اقدامات، غلطی لاگنگ، وغیرہ).</li></ul></div>
@@ -368,21 +381,6 @@ fields
 ├─Request_Method ("درخواست کا طریقہ")
 ├─Hostname ("میزبان کا نام")
 └─CAPTCHA ("CAPTCHA کے ریاست")
-```
-
-##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>وہ ایک خاص سائز تک پہنچنے میں جب صاف لاگ مسلیں؟ ویلیو میں B/KB/MB/GB/TB زیادہ سے زیادہ سائز ہے. جب 0KB، وہ غیر معینہ مدت تک ترقی کر سکتا ہے (پہلے سے طے). نوٹ: واحد فائلوں پر لاگو ہوتا ہے! فائلیں اجتماعی غور نہیں کر رہے ہیں.</li></ul></div>
-
-##### <div dir="rtl">"log_rotation_limit" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ حد کی وضاحت کرسکتے ہیں. 0 کی قیمت لاگ گرد گردش کو غیر فعال کرے گی.</li></ul></div>
-
-##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ کارروائی کی وضاحت کرسکتے ہیں.</li></ul></div>
-
-```
-log_rotation_action
-├─Delete ("قدیم ترین لاگ ان کو حذف کریں، جب تک کہ حد تک زیادہ نہیں ہوسکتی ہے.")
-└─Archive ("سب سے پہلے آرکائیو، اور پھر سب سے پرانی لاگ ان کو حذف کریں، جب تک کہ حد زیادہ نہیں ہوسکتی.")
 ```
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
@@ -626,9 +624,6 @@ emailaddr_display_style
 └─noclick ("متن جو کلک نہیں کیا جا سکتا")
 ```
 
-##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
-
 ##### <div dir="rtl">"ban_override" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>"http_response_header_code" کی جگہ لے لے، جب "infraction_limit" حد سے تجاوز کر رہا ہے؟ زیرکر کب: التواء درخواستوں ایک خالی صفحہ (سانچے فائلوں کا استعمال نہیں کر رہے ہیں) واپس جائیں. 200 = جگہ لے لے نہیں ہے [پہلے سے طے شدہ]. دیگر اقدار "http_response_header_code" کے لئے دستیاب اقدار کے طور پر اسی ہیں.</li></ul></div>
 
@@ -657,9 +652,6 @@ ban_override
   ٹریفک سے نمٹنے کے لیے تجویز کردہ.
 ```
 
-##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>لاگ مسلیں میں کالعدم IP ایس سے مسدود درخواستوں شامل کریں? True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>میزبان نام تلاش کرنے کے لیے استعمال کرنے کے لیے DNS سرورز کی فہرست. انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li></ul></div>
 
@@ -670,6 +662,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -756,9 +749,6 @@ statistics
 
 نوٹ: ہو سکتا ہے IPv6 تلاش کچھ 32 بٹ سسٹمز پر صحیح طریقے سے کام نہ کرے.
 
-##### <div dir="rtl">"log_sanitisation" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>لاگز ڈیٹا دیکھنے کے لئے سامنے کے آخر لاگز صفحے کے کا استعمال کرتے وقت کب، XSS حملوں سے صارفین کی حفاظت کے لئے، یہ نمائش سے پہلے نظر ثانی شدہ ہے. لیکن، ہم ایسا نہیں کرتے جب سب سے پہلے اسے ریکارڈ کرنا پڑتا ہے. اگر یہ مستقبل میں اس کا تجزیہ کرنے کی ضرورت ہے تو اس سے مدد مل سکتی ہے. لیکن خارجہ قارئین کا استعمال کرتے وقت یہ کبھی کبھی غیر محفوظ ہوسکتا ہے. اگر ضرورت ہو تو آپ رویے کو تبدیل کرسکتے ہیں. True (سچے) = کم درست، لیکن کم خطرہ. False (جھوٹی) = زیادہ درست، لیکن زیادہ خطرہ [پہلے سے طے شدہ].</li></ul></div>
-
 ##### <div dir="rtl">"disabled_channels" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>درخواستوں کو بھیجنے کے لئے خاص طور پر چینلز کا استعمال کے لئے CIDRAM کو روکنے کے لئے یہ استعمال کیا جا سکتا ہے (مثال کے طور پر، جب اپ ڈیٹ کرنا، اجزاء میٹا ڈیٹا، وغیرہ کو پکڑنے کے بعد).</li></ul></div>
 
@@ -790,11 +780,50 @@ disabled_channels
 ##### <div dir="rtl">"events" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ایونٹ ہینڈلرز. عام طور پر استعمال کیا جاتا ہے جس طرح سے CIDRAM اندرونی طور پر برتاؤ کرتا ہے یا اضافی فعالیت فراہم کرتا ہے.</li></ul></div>
 
+#### <div dir="rtl">"logging" (قسم)<br /></div>
+<div dir="rtl">لاگنگ سے متعلق کنفیگریشن (اس کو چھوڑ کر جو دیگر زمروں پر لاگو ہوتا ہے).<br /><br /></div>
+
+##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے انسانی قابل مطالعہ فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے اپاچی طرز فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے serialized کی فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>وہ ایک خاص سائز تک پہنچنے میں جب صاف لاگ مسلیں؟ ویلیو میں B/KB/MB/GB/TB زیادہ سے زیادہ سائز ہے. جب 0KB، وہ غیر معینہ مدت تک ترقی کر سکتا ہے (پہلے سے طے). نوٹ: واحد فائلوں پر لاگو ہوتا ہے! فائلیں اجتماعی غور نہیں کر رہے ہیں.</li></ul></div>
+
+##### <div dir="rtl">"log_rotation_limit" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ حد کی وضاحت کرسکتے ہیں. 0 کی قیمت لاگ گرد گردش کو غیر فعال کرے گی.</li></ul></div>
+
+##### <div dir="rtl">"log_rotation_action" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>لاگ گرد گردش کسی بھی وقت کسی بھی وقت موجود ہونا لاگ ان کی تعداد محدود کرتا ہے. جب نیا لاگ ان کی تخلیق کی جاتی ہے تو، اگر لاگ ان کی کل تعداد مخصوص حد سے زیادہ ہوتی ہے تو مخصوص کارروائی کی جائے گی. آپ یہاں مطلوبہ کارروائی کی وضاحت کرسکتے ہیں.</li></ul></div>
+
+```
+log_rotation_action
+├─Delete ("قدیم ترین لاگ ان کو حذف کریں، جب تک کہ حد تک زیادہ نہیں ہوسکتی ہے.")
+└─Archive ("سب سے پہلے آرکائیو، اور پھر سب سے پرانی لاگ ان کو حذف کریں، جب تک کہ حد زیادہ نہیں ہوسکتی.")
+```
+
+##### <div dir="rtl">"log_banned_ips" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>لاگ مسلیں میں کالعدم IP ایس سے مسدود درخواستوں شامل کریں? True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
+
+##### <div dir="rtl">"log_sanitisation" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>لاگز ڈیٹا دیکھنے کے لئے سامنے کے آخر لاگز صفحے کے کا استعمال کرتے وقت کب، XSS حملوں سے صارفین کی حفاظت کے لئے، یہ نمائش سے پہلے نظر ثانی شدہ ہے. لیکن، ہم ایسا نہیں کرتے جب سب سے پہلے اسے ریکارڈ کرنا پڑتا ہے. اگر یہ مستقبل میں اس کا تجزیہ کرنے کی ضرورت ہے تو اس سے مدد مل سکتی ہے. لیکن خارجہ قارئین کا استعمال کرتے وقت یہ کبھی کبھی غیر محفوظ ہوسکتا ہے. اگر ضرورت ہو تو آپ رویے کو تبدیل کرسکتے ہیں. True (سچے) = کم درست، لیکن کم خطرہ. False (جھوٹی) = زیادہ درست، لیکن زیادہ خطرہ [پہلے سے طے شدہ].</li></ul></div>
+
 #### <div dir="rtl">"frontend" (قسم)<br /></div>
 <div dir="rtl">فرنٹ اینڈ کے لیے کنفیگریشن.<br /><br /></div>
 
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
@@ -903,8 +932,8 @@ usemode
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>گھنٹوں کی تعداد CAPTCHA کے واقعات کو یاد کرنے. پہلے سے طے شدہ = 720 (1 ماہ).</li></ul></div>
 
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، logfile پر کے لئے استعمال کرنے کا نام کی وضاحت. کوئی تو اس متغیر خالی چھوڑ دیں.</li></ul></div>
+##### <div dir="rtl">"recaptcha_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
 
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
@@ -986,8 +1015,8 @@ usemode
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>گھنٹوں کی تعداد CAPTCHA کے واقعات کو یاد کرنے. پہلے سے طے شدہ = 720 (1 ماہ).</li></ul></div>
 
-##### <div dir="rtl">"logfile" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، logfile پر کے لئے استعمال کرنے کا نام کی وضاحت. کوئی تو اس متغیر خالی چھوڑ دیں.</li></ul></div>
+##### <div dir="rtl">"hcaptcha_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
 
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
@@ -1154,6 +1183,95 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#HO
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کیلئے پاس ورڈ.</li></ul></div>
 
+#### <div dir="rtl">"abuseipdb" (قسم)<br /></div>
+<div dir="rtl">AbuseIPDB ماڈیول کے لیے کنفیگریشن.<br /><br /></div>
+
+##### <div dir="rtl">"api_key" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>براہ کرم اپنی API کلید یہاں درج کریں.</li></ul></div>
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://www.abuseipdb.com/register">Register - AbuseIPDB</a></li>
+<li><a dir="ltr" href="https://www.abuseipdb.com/account/api">link_get_api_key</a></li>
+</ul></div>
+
+##### <div dir="rtl">"max_age_in_days" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>تلاش کرتے وقت رپورٹس کو مدنظر رکھنے کے لیے دنوں میں زیادہ سے زیادہ عمر (1 اور 365 کے درمیان نمبر ہونا چاہیے). پہلے سے طے شدہ = 365.</li></ul></div>
+
+##### <div dir="rtl">"minimum_confidence_score" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>آئی پی ایڈریس کو بلاک کرنے کے لیے CIDRAM کے لیے کم از کم اعتماد کا اسکور درکار ہے (0 اور 100 کے درمیان نمبر ہونا چاہیے). پہلے سے طے شدہ = 50.</li></ul></div>
+
+##### <div dir="rtl">"max_cs_for_captcha" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>زیادہ سے زیادہ اعتماد کا سکور جو کیپچا کو پیش کرنے کی اجازت ہے (0 اور 100 کے درمیان نمبر ہونا چاہیے). پہلے سے طے شدہ = 10.</li></ul></div>
+
+##### <div dir="rtl">"minimum_total_reports" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>CIDRAM کے IP ایڈریس کو بلاک کرنے کے لیے مطلوبہ کل رپورٹس کی کم از کم تعداد. پہلے سے طے شدہ = 1.</li></ul></div>
+
+##### <div dir="rtl">"report_back" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>CIDRAM کو آپ کی API کلید کا استعمال کرتے ہوئے پتہ چلنے والے خراب رویے کی واپس AbuseIPDB کو رپورٹ کرنے کی اجازت دیں؟ پہلے سے طے شدہ = False.</li></ul></div>
+
+##### <div dir="rtl">"lookup_strategy" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>کن درخواستوں کے لیے تلاش کی جانی چاہیے؟</li></ul></div>
+
+```
+lookup_strategy
+├─0 (مت کرو.): اگر آپ ماڈیول کو صرف رپورٹنگ کے مقاصد کے
+│ لیے استعمال کرنا چاہتے ہیں تو استعمال
+│ کریں.
+├─1 (تمام درخواستیں.): زیادہ سخت اور مکمل، لیکن ممکنہ طور پر کوٹہ
+│ تک زیادہ تیزی سے پہنچنے کا امکان ہے، جس کے
+│ نتیجے میں سروس بند ہو جائے گی. اس کے علاوہ،
+│ نتائج کیش کیے جانے کے باوجود، یہ پھر بھی
+│ کچھ معاملات میں ویب سائٹ کی کارکردگی پر
+│ منفی اثر ڈال سکتا ہے. کچھ معاملات میں
+│ ضروری ہو سکتا ہے، لیکن عام طور پر سفارش
+│ نہیں کی جاتی ہے.
+└─2 (صرف حساس صفحات کے لیے درخواستیں (جیسے، لاگ ان صفحات، رجسٹریشن فارم، غیرہ).): کم سخت اور مکمل، لیکن کوٹے اور حدود کے
+  لحاظ سے زیادہ قدامت پسند، اور کارکردگی پر
+  منفی اثر ڈالنے کا امکان کم ہے. زیادہ تر
+  معاملات میں تجویز کردہ حکمت عملی.
+```
+
+##### <div dir="rtl">"build_profiles_from_usage_type" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>API کے ذریعہ واپس کردہ استعمال کی قسم کا استعمال کرتے ہوئے پروفائلز بنائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
+
+#### <div dir="rtl">"bgpview" (قسم)<br /></div>
+<div dir="rtl">BGPView ماڈیول کے لیے کنفیگریشن (CIDRAM کے لیے ASN اور کنٹری کوڈ تلاش کرنے کی سہولت فراہم کرتا ہے).<br /><br /></div>
+
+##### <div dir="rtl">"blocked_asns" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>BGPView ماڈیول کے ذریعے بلاک کیے جانے والے ASNs کی فہرست.</li></ul></div>
+
+##### <div dir="rtl">"whitelisted_asns" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>BGPView ماڈیول کے ذریعے وائٹ لسٹ کیے جانے والے ASNs کی فہرست.</li></ul></div>
+
+##### <div dir="rtl">"blocked_ccs" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>BGPView ماڈیول کے ذریعے بلاک کیے جانے والے ممالک کی فہرست (ان کے {{Links.ISO.3166}} دو حرفی کنٹری کوڈز سے شناخت کی گئی ہے).</li></ul></div>
+
+##### <div dir="rtl">"whitelisted_ccs" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>BGPView ماڈیول کے ذریعے وائٹ لسٹ کیے جانے والے ممالک کی فہرست (ان کے {{Links.ISO.3166}} دو حرفی کنٹری کوڈز سے شناخت کی گئی ہے).</li></ul></div>
+
+#### <div dir="rtl">"bunnycdn" (قسم)<br /></div>
+<div dir="rtl">BunnyCDN مطابقت ماڈیول کنفیگریشن.<br /><br /></div>
+
+##### <div dir="rtl">"positive_action" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>BunnyCDN کی درخواست کا سامنا کرنا پڑتا ہے تو CIDRAM کو کون سا عمل کرنا چاہئے؟ پہلے سے طے شدہ کارروائی = بائی پاس.</li></ul></div>
+
+```
+positive_action
+├─bypass ("بائی پاس کو متحرک کریں.): اگر کم از کم ایک دستخط پہلے ہی متحرک ہو چکا
+│ ہے، تو شمار سے ایک کو گھٹا دیتا ہے. دستخطی
+│ فائلوں سے سادہ جھوٹے مثبتات سے نمٹنے کے
+│ لیے تجویز کردہ."
+├─greylist ("درخواست کو گرے لسٹ کریں.): متحرک دستخطوں کی تعداد کو دوبارہ ترتیب
+│ دیتا ہے، لیکن درخواست پر کارروائی جاری
+│ رکھتا ہے. تجویز کیا جاتا ہے جب آپ درخواست
+│ کو وائٹ لسٹ نہیں کرنا چاہتے ہیں، لیکن آپ
+│ کو بائی پاس سے بہتر کچھ درکار ہے."
+└─whitelist ("درخواست کو وائٹ لسٹ کریں.): متحرک دستخطوں کی تعداد کو دوبارہ ترتیب
+  دیتا ہے، اور درخواست کی مزید کارروائی کو
+  روک دیتا ہے. ضمانت دیتا ہے کہ CIDRAM درخواست
+  کو کبھی بلاک نہیں کرے گا."
+```
+
 #### <div dir="rtl">"bypasses" (قسم)<br /></div>
 <div dir="rtl">پہلے سے طے شدہ دستخط کو نظرانداز کرنے کیلئے تشکیل.<br /><br /></div>
 
@@ -1169,6 +1287,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1190,6 +1310,54 @@ signatures
 ├─ruri ("دوبارہ تعمیر شدہ URI پر مبنی دستخط.")
 └─uri ("درخواست URI پر مبنی دستخط.")
 ```
+
+#### <div dir="rtl">"projecthoneypot" (قسم)<br /></div>
+<div dir="rtl">Project Honeypot ماڈیول کے لیے کنفیگریشن.<br /><br /></div>
+
+##### <div dir="rtl">"api_key" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>براہ کرم اپنی API کلید یہاں درج کریں.</li></ul></div>
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://www.projecthoneypot.org/terms_of_service_use.php">Project Honeypot Terms of Service.</a></li>
+<li><a dir="ltr" href="https://www.projecthoneypot.org/httpbl_configure.php">link_get_api_key</a></li>
+</ul></div>
+
+##### <div dir="rtl">"max_age_in_days" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>تلاش کرتے وقت رپورٹس کو مدنظر رکھنے کے لیے دنوں میں زیادہ سے زیادہ عمر. پہلے سے طے شدہ = 365.</li></ul></div>
+
+##### <div dir="rtl">"minimum_threat_score" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>IP ایڈریس کو بلاک کرنے کے لیے CIDRAM کے لیے درکار کم از کم خطرے کا سکور (1 اور 100 کے درمیان نمبر ہونا چاہیے). پہلے سے طے شدہ = 10.</li></ul></div>
+
+##### <div dir="rtl">"max_ts_for_captcha" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>کیپچا پیش کیے جانے کے لیے زیادہ سے زیادہ خطرے کے اسکور کی اجازت ہے (1 اور 100 کے درمیان نمبر ہونا چاہیے). پہلے سے طے شدہ = 10.</li></ul></div>
+
+##### <div dir="rtl">"lookup_strategy" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>کن درخواستوں کے لیے تلاش کی جانی چاہیے؟</li></ul></div>
+
+```
+lookup_strategy
+├─0 (مت کرو.): اگر آپ ماڈیول کو صرف رپورٹنگ کے مقاصد کے
+│ لیے استعمال کرنا چاہتے ہیں تو استعمال
+│ کریں.
+├─1 (تمام درخواستیں.): زیادہ سخت اور مکمل، لیکن ممکنہ طور پر کوٹہ
+│ تک زیادہ تیزی سے پہنچنے کا امکان ہے، جس کے
+│ نتیجے میں سروس بند ہو جائے گی. اس کے علاوہ،
+│ نتائج کیش کیے جانے کے باوجود، یہ پھر بھی
+│ کچھ معاملات میں ویب سائٹ کی کارکردگی پر
+│ منفی اثر ڈال سکتا ہے. کچھ معاملات میں
+│ ضروری ہو سکتا ہے، لیکن عام طور پر سفارش
+│ نہیں کی جاتی ہے.
+└─2 (صرف حساس صفحات کے لیے درخواستیں (جیسے، لاگ ان صفحات، رجسٹریشن فارم، غیرہ).): کم سخت اور مکمل، لیکن کوٹے اور حدود کے
+  لحاظ سے زیادہ قدامت پسند، اور کارکردگی پر
+  منفی اثر ڈالنے کا امکان کم ہے. زیادہ تر
+  معاملات میں تجویز کردہ حکمت عملی.
+```
+
+#### <div dir="rtl">"sfs" (قسم)<br /></div>
+<div dir="rtl">Stop Forum Spam ماڈیول کے لیے ترتیب.<br /><br /></div>
+
+##### <div dir="rtl">"offer_captcha" <code dir="ltr">[bool]</code><br /></div>
+<div dir="rtl"><ul><li>جب درخواستیں اس ماڈیول کے ذریعے بلاک کر دی جاتی ہیں تو CAPTCHA پیش کیے جا سکتے ہیں. پہلے سے طے شدہ = True. نوٹ: دیگر ہدایات کو اوور رائڈ نہیں کرتا ہے. CAPTCHA پیش کیے جانے کے لیے، تمام ہدایات کا متفق ہونا ضروری ہے، ضروری کلیدیں ترتیب دی گئی ہیں، وغیرہ. ایسی صورت میں جب CAPTCHA کو عام طور پر پیش کیے جانے کی اجازت ہو، اس ہدایت کو false پر سیٹ کرنا اس ماڈیول کے ذریعے خاص طور پر مسدود کردہ درخواستوں کے لیے CAPTCHA کو پیش کیے جانے سے روکنے کا ایک طریقہ فراہم کرتا ہے.</li></ul></div>
 
 ---
 
@@ -2211,4 +2379,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۳ جون ۲۰۲۲ (۲۰۲۲.۰۶.۲۳).</div>
+<div dir="rtl">آخری تازہ کاری: ۳۰ جون ۲۰۲۲ (۲۰۲۲.۰۶.۳۰).</div>

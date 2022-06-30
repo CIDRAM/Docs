@@ -173,15 +173,8 @@ Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.yml`, 
 Konfigurasi (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Konfigurasi (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Konfigurasi (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Konfigurasi (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Konfigurasi (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Konfigurasi (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Konfigurasi (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Kategori)
 Konfigurasi umum (konfigurasi inti apapun yang bukan milik kategori lain).
-
-##### "logfile" `[string]`
-- File yang dapat dibaca oleh manusia untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
-##### "logfile_apache" `[string]`
-- File yang dalam gaya Apache untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
-##### "logfile_serialized" `[string]`
-- File serial untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
-##### "error_log" `[string]`
-- File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
 ##### "stages" `[string]`
 - Kontrol untuk tahapan rantai eksekusi (apakah diaktifkan, apakah kesalahan dicatat, dll).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Metode permintaan")
 ├─Hostname ("Nama host")
 └─CAPTCHA ("Status CAPTCHA")
-```
-
-##### "truncate" `[string]`
-- Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
-
-##### "log_rotation_limit" `[int]`
-- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan batas yang diinginkan disini. Nilai 0 akan menonaktifkan rotasi log.
-
-##### "log_rotation_action" `[string]`
-- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan tindakan yang diinginkan disini.
-
-```
-log_rotation_action
-├─Delete ("Hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
-└─Archive ("Pertama arsipkan, lalu hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
 ```
 
 ##### "timezone" `[string]`
@@ -615,9 +613,6 @@ emailaddr_display_style
 └─noclick ("Teks yang tidak dapat diklik")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- File untuk mencatat ketika tanda tangan diperbarui melalui bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
-
 ##### "ban_override" `[int]`
 - Mengesampingkan "http_response_header_code" ketika "infraction_limit" adalah melampaui? Ketika mengesampingkan: Permintaan diblokir menghasilkan halaman kosong (file template tidak digunakan). 200 = Jangan mengesampingkan [Default]. Nilai lainnya sama dengan nilai yang tersedia untuk "http_response_header_code".
 
@@ -642,9 +637,6 @@ ban_override
   sangat persisten.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Termasuk permintaan diblokir dari IP dilarang dalam file log? True = Ya [Default]; False = Tidak.
-
 ##### "default_dns" `[string]`
 - Daftar server DNS yang digunakan untuk pencarian nama host. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
@@ -655,6 +647,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -741,9 +734,6 @@ statistics
 
 Catatan: Pencarian IPv6 mungkin tidak bekerja dengan benar pada beberapa sistem 32-bit.
 
-##### "log_sanitisation" `[bool]`
-- Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data. Namun, secara default, data tidak disanitasi selama pencatatan. Ini untuk memastikan bahwa data log dicatatan secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
-
 ##### "disabled_channels" `[string]`
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
 
@@ -775,11 +765,50 @@ Konfigurasi untuk pengaktifan dan penonaktifan komponen yang digunakan oleh CIDR
 ##### "events" `[string]`
 - Penangan acara. Biasanya digunakan untuk memodifikasi cara CIDRAM berperilaku secara internal atau untuk menyediakan fungsionalitas tambahan.
 
+#### "logging" (Kategori)
+Konfigurasi yang terkait dengan pencatatan (tidak termasuk yang berlaku untuk kategori lain).
+
+##### "standard_log" `[string]`
+- File yang dapat dibaca oleh manusia untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "apache_style_log" `[string]`
+- File yang dalam gaya Apache untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "serialised_log" `[string]`
+- File serial untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "error_log" `[string]`
+- File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "truncate" `[string]`
+- Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
+
+##### "log_rotation_limit" `[int]`
+- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan batas yang diinginkan disini. Nilai 0 akan menonaktifkan rotasi log.
+
+##### "log_rotation_action" `[string]`
+- Rotasi log membatasi jumlah file log yang seharusnya ada pada satu waktu. Ketika file log baru dibuat, jika jumlah total file log melebihi batas yang ditentukan, tindakan yang ditentukan akan dilakukan. Anda dapat menentukan tindakan yang diinginkan disini.
+
+```
+log_rotation_action
+├─Delete ("Hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
+└─Archive ("Pertama arsipkan, lalu hapus file log tertua, hingga batasnya tidak lagi terlampaui.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Termasuk permintaan diblokir dari IP dilarang dalam file log? True = Ya [Default]; False = Tidak.
+
+##### "log_sanitisation" `[bool]`
+- Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data. Namun, secara default, data tidak disanitasi selama pencatatan. Ini untuk memastikan bahwa data log dicatatan secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
+
 #### "frontend" (Kategori)
 Konfigurasi untuk front-end.
 
 ##### "frontend_log" `[string]`
 - File untuk mencatat upaya masuk bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "signatures_update_event_log" `[string]`
+- File untuk mencatat ketika tanda tangan diperbarui melalui bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
 ##### "max_login_attempts" `[int]`
 - Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
@@ -886,7 +915,7 @@ Lihat juga:
 ##### "expiry" `[float]`
 - Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
 
-##### "logfile" `[string]`
+##### "recaptcha_log" `[string]`
 - Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
 
 ##### "signature_limit" `[int]`
@@ -963,7 +992,7 @@ Lihat juga:
 ##### "expiry" `[float]`
 - Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
 
-##### "logfile" `[string]`
+##### "hcaptcha_log" `[string]`
 - Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
 
 ##### "signature_limit" `[int]`
@@ -1127,6 +1156,86 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HO
 ##### "pdo_password" `[string]`
 - Kata sandi PDO.
 
+#### "abuseipdb" (Kategori)
+Konfigurasi untuk modul AbuseIPDB.
+
+##### "api_key" `[string]`
+- Silahkan masukkan kunci API Anda disini.
+
+Lihat juga:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- Usia maksimum dalam hari dimana laporan akan dipertimbangkan saat melakukan pencarian (harus berupa angka diantara 1 dan 365). Default = 365.
+
+##### "minimum_confidence_score" `[int]`
+- Skor kepercayaan minimum yang diperlukan agar CIDRAM dapat memblokir alamat IP (harus berupa angka diantara 0 dan 100). Default = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- Skor kepercayaan maksimum yang diizinkan untuk CAPTCHA disajikan (harus berupa angka diantara 0 dan 100). Default = 10.
+
+##### "minimum_total_reports" `[int]`
+- Jumlah minimum total laporan yang diperlukan agar CIDRAM dapat memblokir alamat IP. Default = 1.
+
+##### "report_back" `[bool]`
+- Izinkan CIDRAM untuk melaporkan perilaku buruk yang terdeteksi kembali ke AbuseIPDB menggunakan kunci API Anda? Default = False.
+
+##### "lookup_strategy" `[int]`
+- Untuk permintaan mana pencarian harus dilakukan?
+
+```
+lookup_strategy
+├─0 (Tidak satupun.): Jika Anda ingin menggunakan modul hanya untuk tujuan pelaporan, tanpa
+│ mencari apapun, gunakan ini.
+├─1 (Setiap permintaan.): Lebih ketat dan menyeluruh, tetapi juga lebih mungkin menghasilkan batas dan
+│ kuota terpenuhi lebih cepat, berpotensi mengakibatkan terkuncinya layanan
+│ saat paling dibutuhkan. Selain itu, meskipun hasil pencarian selalu
+│ di-cache, tetap saja hal itu dapat berdampak negatif pada kinerja situs web
+│ dalam beberapa kasus. Mungkin diperlukan dalam beberapa kasus, tetapi
+│ umumnya tidak direkomendasikan.
+└─2 (Permintaan hanya untuk halaman sensitif (misalnya, halaman login, formulir pendaftaran, dll).): Kurang ketat dan menyeluruh, tetapi lebih konservatif dalam hal kuota dan
+  batasan, dan kecil kemungkinannya untuk berdampak negatif pada kinerja.
+  Strategi yang direkomendasikan dalam banyak kasus.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Buat profil menggunakan jenis penggunaan yang dikembalikan oleh API? False = Tidak. True = Ya. Default = True.
+
+#### "bgpview" (Kategori)
+Konfigurasi untuk modul BGPView (menyediakan fasilitas pencarian ASN dan kode negara untuk CIDRAM.
+
+##### "blocked_asns" `[string]`
+- Daftar ASN yang akan diblokir saat dicocokkan oleh modul BGPView.
+
+##### "whitelisted_asns" `[string]`
+- Daftar ASN yang akan terdaftar putih saat dicocokkan oleh modul BGPView.
+
+##### "blocked_ccs" `[string]`
+- Daftar negara (diidentifikasi oleh kode negara 2 digit {{Links.ISO.3166}} mereka) yang akan diblokir saat dicocokkan oleh modul BGPView.
+
+##### "whitelisted_ccs" `[string]`
+- Daftar negara (diidentifikasi oleh kode negara 2 digit {{Links.ISO.3166}} mereka) yang akan terdaftar putih saat dicocokkan oleh modul BGPView.
+
+#### "bunnycdn" (Kategori)
+Konfigurasi untuk modul kompatibilitas BunnyCDN.
+
+##### "positive_action" `[string]`
+- Tindakan mana yang harus dilakukan CIDRAM saat menangani permintaan dari BunnyCDN? Tindakan default = Melewatinya.
+
+```
+positive_action
+├─bypass ("Memicu bypass.): Mengurangi satu hitungan dari jumlah tanda tangan yang dipicu, selama
+│ setidaknya satu tanda tangan telah dipicu. Direkomendasikan untuk menangani
+│ kesalahan positif sederhana yang berpotensi disebabkan oleh file tanda
+│ tangan default."
+├─greylist ("Mendaftar abu-abu permintaan.): Reset jumlah tanda tangan yang dipicu, tetapi terus memproses permintaan.
+│ Direkomendasikan saat Anda tidak ingin mendaftar permintaan putih, tetapi
+│ membutuhkan sesuatu yang lebih substansial daripada memicu bypass."
+└─whitelist ("Mendaftar putih permintaan.): Reset jumlah tanda tangan yang dipicu, dan membatalkan pemrosesan permintaan
+  lebih lanjut. Menjamin bahwa CIDRAM tidak akan pernah memblokir permintaan."
+```
+
 #### "bypasses" (Kategori)
 Konfigurasi untuk bypass tanda tangan default.
 
@@ -1142,6 +1251,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1163,6 +1274,49 @@ signatures
 ├─ruri ("Tanda tangan berdasarkan URI yang direkonstruksi.")
 └─uri ("Tanda tangan berdasarkan URI permintaan.")
 ```
+
+#### "projecthoneypot" (Kategori)
+Konfigurasi untuk modul Project Honeypot.
+
+##### "api_key" `[string]`
+- Silahkan masukkan kunci API Anda disini.
+
+Lihat juga:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- Usia maksimum dalam hari dimana laporan akan dipertimbangkan saat melakukan pencarian. Default = 365.
+
+##### "minimum_threat_score" `[int]`
+- Skor ancaman minimum yang diperlukan agar CIDRAM memblokir alamat IP (harus berupa angka diantara 1 dan 100). Default = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- Skor ancaman maksimum yang diizinkan untuk CAPTCHA disajikan (harus berupa angka diantara 1 dan 100). Default = 10.
+
+##### "lookup_strategy" `[int]`
+- Untuk permintaan mana pencarian harus dilakukan?
+
+```
+lookup_strategy
+├─0 (Tidak satupun.): Jika Anda ingin menggunakan modul hanya untuk tujuan pelaporan, tanpa
+│ mencari apapun, gunakan ini.
+├─1 (Setiap permintaan.): Lebih ketat dan menyeluruh, tetapi juga lebih mungkin menghasilkan batas dan
+│ kuota terpenuhi lebih cepat, berpotensi mengakibatkan terkuncinya layanan
+│ saat paling dibutuhkan. Selain itu, meskipun hasil pencarian selalu
+│ di-cache, tetap saja hal itu dapat berdampak negatif pada kinerja situs web
+│ dalam beberapa kasus. Mungkin diperlukan dalam beberapa kasus, tetapi
+│ umumnya tidak direkomendasikan.
+└─2 (Permintaan hanya untuk halaman sensitif (misalnya, halaman login, formulir pendaftaran, dll).): Kurang ketat dan menyeluruh, tetapi lebih konservatif dalam hal kuota dan
+  batasan, dan kecil kemungkinannya untuk berdampak negatif pada kinerja.
+  Strategi yang direkomendasikan dalam banyak kasus.
+```
+
+#### "sfs" (Kategori)
+Konfigurasi untuk modul Stop Forum Spam.
+
+##### "offer_captcha" `[bool]`
+- Ketika permintaan diblokir oleh modul ini, CAPTCHA dapat disajikan. Default = True. Catatan: Tidak mengesampingkan direktif lain. Agar CAPTCHA disajikan, semua direktif harus setuju, kunci yang diperlukan harus dikonfigurasi, dll. Jika CAPTCHA biasanya diizinkan untuk disajikan, menyetel direktif ini ke false menyediakan cara untuk mencegah CAPTCHA disajikan untuk permintaan yang diblokir secara khusus oleh modul ini.
 
 ---
 
@@ -2142,4 +2296,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 23 Juni 2022 (2022.06.23).
+Terakhir Diperbarui: 30 Juni 2022 (2022.06.30).

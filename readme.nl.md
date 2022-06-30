@@ -173,15 +173,8 @@ Het volgende is een lijst van variabelen die in de `config.yml` configuratiebest
 Configuratie (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Configuratie (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Configuratie (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Configuratie (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Configuratie (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Configuratie (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Configuratie (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Categorie)
 Algemene configuratie (elke kernconfiguratie die niet tot andere categorieën behoort).
-
-##### "logfile" `[string]`
-- Mensen leesbare bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
-
-##### "logfile_apache" `[string]`
-- Apache-stijl bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
-
-##### "logfile_serialized" `[string]`
-- Geserialiseerd bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
-
-##### "error_log" `[string]`
-- Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
 ##### "stages" `[string]`
 - Controles voor de fasen van de uitvoeringsketen (of ingeschakeld, of fouten worden geregistreerd, enz).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Verzoek methode")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("CAPTCHA State")
-```
-
-##### "truncate" `[string]`
-- Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
-
-##### "log_rotation_limit" `[int]`
-- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste limiet opgeven. Een waarde van 0 zal logrotatie uitschakelen.
-
-##### "log_rotation_action" `[string]`
-- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste actie opgeven.
-
-```
-log_rotation_action
-├─Delete ("Verwijder de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
-└─Archive ("Eerst archiveer en verwijder vervolgens de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
 ```
 
 ##### "timezone" `[string]`
@@ -616,9 +614,6 @@ emailaddr_display_style
 └─noclick ("Niet-klikbare tekst")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- Een bestand om te loggen wanneer signatures worden bijgewerkt via de frontend. Geef een bestandsnaam, of laat leeg om uit te schakelen.
-
 ##### "ban_override" `[int]`
 - Overrijden "http_response_header_code" wanneer "infraction_limit" wordt overschreden? Wanneer het overrijdt: Geblokkeerde verzoeken retourneert een lege pagina (template bestanden worden niet gebruikt). 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "http_response_header_code".
 
@@ -644,9 +639,6 @@ ban_override
   ongewenst verkeer.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Omvatten geblokkeerde verzoeken van verbannen IP-adressen in de logbestanden? True = Ja [Standaard]; False = Nee.
-
 ##### "default_dns" `[string]`
 - Een lijst met DNS-servers te gebruiken voor de hostnaam lookups. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
@@ -657,6 +649,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -743,9 +736,6 @@ statistics
 
 Opmerking: IPv6-opzoeken mogelijk werken niet correct op sommige 32-bits systemen.
 
-##### "log_sanitisation" `[bool]`
-- Bij gebruik van de frontend logbestanden pagina om loggegevens te bekijken, CIDRAM sanitiseert de loggegevens voordat deze worden weergegeven, om gebruikers te beschermen tegen XSS-aanvallen en andere potentiële bedreigingen die logboekgegevens kunnen bevatten. Standaard echter, gegevens worden niet gesanitiseerd wanneer ze worden opgenomen. Dit is om ervoor te zorgen dat loggegevens nauwkeurig worden bewaard, om eventuele heuristische of forensische analyses te ondersteunen die in de toekomst nodig kunnen zijn. Echter, in het geval dat een gebruiker probeert om loggegevens te lezen met behulp van externe hulpmiddelen, en of die externe tools hun eigen sanitatieproces niet uitvoeren, de gebruiker kan worden blootgesteld aan XSS-aanvallen. Indien nodig kunt u het standaardgedrag wijzigen met behulp van deze configuratierichtlijn. True = Sanitiseren gegevens tijdens het opnemen (gegevens worden minder nauwkeurig bewaard, maar het XSS-risico is lager). False = Sanitiseren gegevens niet tijdens het opnemen (gegevens worden nauwkeuriger bewaard, maar het XSS-risico is hoger) [Standaard].
-
 ##### "disabled_channels" `[string]`
 - Dit kan worden gebruikt om te voorkomen dat CIDRAM bepaalde kanalen gebruikt bij het verzenden van verzoeken (b.v., bij het bijwerken, bij het ophalen van metagegevens van componenten, enzovoort).
 
@@ -777,11 +767,50 @@ Configuratie voor het activeren en het deactiveren van de door CIDRAM gebruikte 
 ##### "events" `[string]`
 - Evenement-Behandelaars. Meestal gebruikt om de manier waarop CIDRAM zich intern gedraagt te wijzigen of om extra functionaliteit te bieden.
 
+#### "logging" (Categorie)
+Configuratie gerelateerd aan logging (dat wat gerelateerd aan andere categorieën is uitgesloten).
+
+##### "standard_log" `[string]`
+- Mensen leesbare bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+##### "apache_style_log" `[string]`
+- Apache-stijl bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+##### "serialised_log" `[string]`
+- Geserialiseerd bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+##### "error_log" `[string]`
+- Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+##### "truncate" `[string]`
+- Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
+
+##### "log_rotation_limit" `[int]`
+- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste limiet opgeven. Een waarde van 0 zal logrotatie uitschakelen.
+
+##### "log_rotation_action" `[string]`
+- Logrotatie beperkt het aantal logbestanden dat op elk moment zou moeten bestaan. Wanneer nieuwe logbestanden worden gemaakt en het totale aantal logbestanden de opgegeven limiet overschrijdt, wordt de opgegeven actie uitgevoerd. U kunt hier de gewenste actie opgeven.
+
+```
+log_rotation_action
+├─Delete ("Verwijder de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
+└─Archive ("Eerst archiveer en verwijder vervolgens de oudste logbestanden, totdat de limiet niet langer wordt overschreden.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Omvatten geblokkeerde verzoeken van verbannen IP-adressen in de logbestanden? True = Ja [Standaard]; False = Nee.
+
+##### "log_sanitisation" `[bool]`
+- Bij gebruik van de frontend logbestanden pagina om loggegevens te bekijken, CIDRAM sanitiseert de loggegevens voordat deze worden weergegeven, om gebruikers te beschermen tegen XSS-aanvallen en andere potentiële bedreigingen die logboekgegevens kunnen bevatten. Standaard echter, gegevens worden niet gesanitiseerd wanneer ze worden opgenomen. Dit is om ervoor te zorgen dat loggegevens nauwkeurig worden bewaard, om eventuele heuristische of forensische analyses te ondersteunen die in de toekomst nodig kunnen zijn. Echter, in het geval dat een gebruiker probeert om loggegevens te lezen met behulp van externe hulpmiddelen, en of die externe tools hun eigen sanitatieproces niet uitvoeren, de gebruiker kan worden blootgesteld aan XSS-aanvallen. Indien nodig kunt u het standaardgedrag wijzigen met behulp van deze configuratierichtlijn. True = Sanitiseren gegevens tijdens het opnemen (gegevens worden minder nauwkeurig bewaard, maar het XSS-risico is lager). False = Sanitiseren gegevens niet tijdens het opnemen (gegevens worden nauwkeuriger bewaard, maar het XSS-risico is hoger) [Standaard].
+
 #### "frontend" (Categorie)
 Configuratie voor de frontend.
 
 ##### "frontend_log" `[string]`
 - Bestand om de frontend login pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+##### "signatures_update_event_log" `[string]`
+- Een bestand om te loggen wanneer signatures worden bijgewerkt via de frontend. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
 ##### "max_login_attempts" `[int]`
 - Maximum aantal frontend-inlogpogingen. Standaard = 5.
@@ -888,7 +917,7 @@ Zie ook:
 ##### "expiry" `[float]`
 - Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
 
-##### "logfile" `[string]`
+##### "recaptcha_log" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
 ##### "signature_limit" `[int]`
@@ -966,7 +995,7 @@ Zie ook:
 ##### "expiry" `[float]`
 - Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
 
-##### "logfile" `[string]`
+##### "hcaptcha_log" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
 ##### "signature_limit" `[int]`
@@ -1131,6 +1160,88 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HO
 ##### "pdo_password" `[string]`
 - PDO wachtwoord.
 
+#### "abuseipdb" (Categorie)
+Configuratie voor de AbuseIPDB-module.
+
+##### "api_key" `[string]`
+- Voer hier uw API-sleutel.
+
+Zie ook:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- De maximale leeftijd in dagen waarvoor rapporten worden overwogen bij het uitvoeren van zoekopdrachten (moet een getal zijn tussen 1 en 365). Standaard = 365.
+
+##### "minimum_confidence_score" `[int]`
+- De minimale betrouwbaarheidsscore die vereist is om CIDRAM een IP-adres te blokkeren (moet een getal zijn tussen 0 en 100). Standaard = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- De maximale betrouwbaarheidsscore die is toegestaan voor een CAPTCHA (moet een getal zijn tussen 0 en 100). Standaard = 10.
+
+##### "minimum_total_reports" `[int]`
+- Het minimale totale aantal rapporten dat nodig is om CIDRAM een IP-adres te blokkeren. Standaard = 1.
+
+##### "report_back" `[bool]`
+- Sta CIDRAM toe om gedetecteerd slecht gedrag te melden terug aan AbuseIPDB met behulp van uw API-sleutel? Standaard = False.
+
+##### "lookup_strategy" `[int]`
+- Voor welke verzoeken moeten zoekopdrachten worden uitgevoerd?
+
+```
+lookup_strategy
+├─0 (Geen.): Als u de module alleen voor rapportagedoeleinden wilt gebruiken, zonder iets
+│ op te zoeken, gebruik deze.
+├─1 (Elk verzoek.): Strenger en grondiger, maar het is ook waarschijnlijker dat limieten en
+│ quota veel sneller worden gehaald, wat kan leiden dat de service wordt
+│ buitengesloten wanneer dat het meest nodig is. Ook, hoewel opzoekresultaten
+│ altijd in de cache worden opgeslagen, dit kan in sommige gevallen toch een
+│ negatieve invloed hebben op de prestaties van de website. Kan in sommige
+│ gevallen nodig zijn, maar wordt het over algemeen niet aanbevolen.
+└─2 (Alleen verzoeken voor gevoelige pagina's (b.v., inlogpagina's, registratieformulieren, enz).): Minder streng en grondig, maar conservatiever in termen van quota en
+  limieten, en minder waarschijnlijk een negatieve invloed op de prestaties te
+  hebben. De aanbevolen strategie in de meeste gevallen.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Profielen bouwen met het gebruikstype dat door de API wordt geretourneerd? False = Nee. True = Ja. Standaard = True.
+
+#### "bgpview" (Categorie)
+Configuratie voor de BGPView-module (biedt een zoekfunctie voor ASN en landcodes voor CIDRAM).
+
+##### "blocked_asns" `[string]`
+- Een lijst met ASN's die moeten worden geblokkeerd wanneer ze worden gekoppeld mit de BGPView-module.
+
+##### "whitelisted_asns" `[string]`
+- Een lijst met ASN's die op de witte lijst moeten worden geplaatst wanneer ze worden gekoppeld mit de BGPView-module.
+
+##### "blocked_ccs" `[string]`
+- Een lijst met landen (geïdentificeerd door hun {{Links.ISO.3166}} 2-cijferige landcodes) die moeten worden geblokkeerd wanneer ze worden gekoppeld mit de BGPView-module.
+
+##### "whitelisted_ccs" `[string]`
+- Een lijst met landen (geïdentificeerd door hun {{Links.ISO.3166}} 2-cijferige landcodes) die op de witte lijst moeten worden geplaatst wanneer ze worden gekoppeld mit de BGPView-module.
+
+#### "bunnycdn" (Categorie)
+Configuratie voor de BunnyCDN-compatibiliteitsmodule.
+
+##### "positive_action" `[string]`
+- Welke actie moet CIDRAM uitvoeren wanneer het een verzoek van BunnyCDN tegenkomt? Standaard actie = Omzeil.
+
+```
+positive_action
+├─bypass ("Trigger een bypass.): Trekt één telling af van het aantal getriggerde signatures, zolang er
+│ minstens één signature is al getriggerd. Aanbevolen voor het omgaan met
+│ eenvoudige valse positieven die mogelijk worden veroorzaakt door de
+│ standaard signatuurbestanden."
+├─greylist ("Behandel het verzoek als op de grijze lijst.): Stelt het aantal getriggerde signatures in op nul, maar gaat door met het
+│ verwerken van het verzoek. Aanbevolen wanneer u het verzoek niet als op de
+│ witte lijst wilt behandelen, maar iets meer substantieel nodig hebt dan het
+│ triggeren van een bypass."
+└─whitelist ("Behandel het verzoek als op de witte lijst.): Stelt het aantal getriggerde signatures in op nul, en breekt elke verdere
+  verwerking van het verzoek af. Garandeert dat CIDRAM het verzoek nooit zal
+  blokkeren."
+```
+
 #### "bypasses" (Categorie)
 Configuratie voor de standaard bypasses voor signatures.
 
@@ -1146,6 +1257,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1167,6 +1280,49 @@ signatures
 ├─ruri ("Signatures op basis van gereconstrueerde URI's.")
 └─uri ("Signatures op basis van verzoek-URI's.")
 ```
+
+#### "projecthoneypot" (Categorie)
+Configuratie voor de Project Honeypot-module.
+
+##### "api_key" `[string]`
+- Voer hier uw API-sleutel.
+
+Zie ook:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- De maximale leeftijd in dagen waarvoor rapporten worden overwogen bij het uitvoeren van zoekopdrachten. Standaard = 365.
+
+##### "minimum_threat_score" `[int]`
+- De minimale dreigingsscore die vereist is om CIDRAM een IP-adres te blokkeren (moet een getal zijn tussen 1 en 100). Standaard = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- De maximale dreigingsscore die is toegestaan voor een CAPTCHA (moet een getal zijn tussen 1 en 100). Standaard = 10.
+
+##### "lookup_strategy" `[int]`
+- Voor welke verzoeken moeten zoekopdrachten worden uitgevoerd?
+
+```
+lookup_strategy
+├─0 (Geen.): Als u de module alleen voor rapportagedoeleinden wilt gebruiken, zonder iets
+│ op te zoeken, gebruik deze.
+├─1 (Elk verzoek.): Strenger en grondiger, maar het is ook waarschijnlijker dat limieten en
+│ quota veel sneller worden gehaald, wat kan leiden dat de service wordt
+│ buitengesloten wanneer dat het meest nodig is. Ook, hoewel opzoekresultaten
+│ altijd in de cache worden opgeslagen, dit kan in sommige gevallen toch een
+│ negatieve invloed hebben op de prestaties van de website. Kan in sommige
+│ gevallen nodig zijn, maar wordt het over algemeen niet aanbevolen.
+└─2 (Alleen verzoeken voor gevoelige pagina's (b.v., inlogpagina's, registratieformulieren, enz).): Minder streng en grondig, maar conservatiever in termen van quota en
+  limieten, en minder waarschijnlijk een negatieve invloed op de prestaties te
+  hebben. De aanbevolen strategie in de meeste gevallen.
+```
+
+#### "sfs" (Categorie)
+Configuratie voor de Stop Forum Spam module.
+
+##### "offer_captcha" `[bool]`
+- Wanneer verzoeken door deze module worden geblokkeerd, CAPTCHA's kunnen worden geleverd. Standaard = True. Opmerking: Heeft geen voorrang op andere richtlijnen. Om CAPTCHA's te kunnen bedienen, moeten alle richtlijnen overeenkomen, de benodigde sleutels zijn geconfigureerd, enz. In het geval dat CAPTCHA's normaal zouden mogen worden geleverd, biedt het instellen van deze richtlijn op false een manier om te voorkomen dat CAPTCHA's worden geleverd voor verzoeken die specifiek door deze module worden geblokkeerd.
 
 ---
 
@@ -2163,4 +2319,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 23 Juni 2022 (2022.06.23).
+Laatste Bijgewerkt: 30 Juni 2022 (2022.06.30).

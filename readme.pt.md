@@ -173,15 +173,8 @@ O seguinte é uma lista de variáveis encontradas no `config.yml` arquivo de con
 Configuração (v3)
 │
 ├───general
-│       logfile [string]
-│       logfile_apache [string]
-│       logfile_serialized [string]
-│       error_log [string]
 │       stages [string]
 │       fields [string]
-│       truncate [string]
-│       log_rotation_limit [int]
-│       log_rotation_action [string]
 │       timezone [string]
 │       time_offset [int]
 │       time_format [string]
@@ -193,9 +186,7 @@ Configuração (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       signatures_update_event_log [string]
 │       ban_override [int]
-│       log_banned_ips [bool]
 │       default_dns [string]
 │       search_engine_verification [string]
 │       social_media_verification [string]
@@ -204,7 +195,6 @@ Configuração (v3)
 │       statistics [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
-│       log_sanitisation [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
 ├───components
@@ -213,8 +203,19 @@ Configuração (v3)
 │       modules [string]
 │       imports [string]
 │       events [string]
+├───logging
+│       standard_log [string]
+│       apache_style_log [string]
+│       serialised_log [string]
+│       error_log [string]
+│       truncate [string]
+│       log_rotation_limit [int]
+│       log_rotation_action [string]
+│       log_banned_ips [bool]
+│       log_sanitisation [bool]
 ├───frontend
 │       frontend_log [string]
+│       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
@@ -239,7 +240,7 @@ Configuração (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       recaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -252,7 +253,7 @@ Configuração (v3)
 │       sitekey [string]
 │       secret [string]
 │       expiry [float]
-│       logfile [string]
+│       hcaptcha_log [string]
 │       signature_limit [int]
 │       api [string]
 │       show_cookie_warning [bool]
@@ -288,26 +289,38 @@ Configuração (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
+├───abuseipdb
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_confidence_score [int]
+│       max_cs_for_captcha [int]
+│       minimum_total_reports [int]
+│       report_back [bool]
+│       lookup_strategy [int]
+│       build_profiles_from_usage_type [bool]
+├───bgpview
+│       blocked_asns [string]
+│       whitelisted_asns [string]
+│       blocked_ccs [string]
+│       whitelisted_ccs [string]
+├───bunnycdn
+│       positive_action [string]
 ├───bypasses
 │       used [string]
-└───extras
-        signatures [string]
+├───extras
+│       signatures [string]
+├───projecthoneypot
+│       api_key [string]
+│       max_age_in_days [int]
+│       minimum_threat_score [int]
+│       max_ts_for_captcha [int]
+│       lookup_strategy [int]
+└───sfs
+        offer_captcha [bool]
 ```
 
 #### "general" (Categoria)
 Configuração geral (qualquer configuração principal que não pertença a outras categorias).
-
-##### "logfile" `[string]`
-- Um arquivo legível por humanos para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
-
-##### "logfile_apache" `[string]`
-- Um arquivo no estilo da Apache para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
-
-##### "logfile_serialized" `[string]`
-- Um arquivo serializado para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
-
-##### "error_log" `[string]`
-- Um arquivo para registrar erros detectados que não são fatais. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
 ##### "stages" `[string]`
 - Controles para as etapas da cadeia de execução (se ativado, se os erros são registrados, etc).
@@ -362,21 +375,6 @@ fields
 ├─Request_Method ("Método de solicitação")
 ├─Hostname ("Nome do host")
 └─CAPTCHA ("Estado CAPTCHA")
-```
-
-##### "truncate" `[string]`
-- Truncar arquivos de log quando atingem um determinado tamanho? Valor é o tamanho máximo em B/KB/MB/GB/TB que um arquivo de log pode crescer antes de ser truncado. O valor padrão de 0KB desativa o truncamento (arquivos de log podem crescer indefinidamente). Nota: Aplica-se a arquivos de log individuais! O tamanho dos arquivos de log não é considerado coletivamente.
-
-##### "log_rotation_limit" `[int]`
-- A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar o limite desejado aqui. Um valor de 0 desativará a rotação de log.
-
-##### "log_rotation_action" `[string]`
-- A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar a ação desejada aqui.
-
-```
-log_rotation_action
-├─Delete ("Deletar os arquivos de log mais antigos, até o limite não seja mais excedido.")
-└─Archive ("Primeiramente arquivar, e então deletar os arquivos de log mais antigos, até o limite não seja mais excedido.")
 ```
 
 ##### "timezone" `[string]`
@@ -614,9 +612,6 @@ emailaddr_display_style
 └─noclick ("Texto não-clicável")
 ```
 
-##### "signatures_update_event_log" `[string]`
-- Um arquivo para registrar quando as assinaturas são atualizadas por meio do front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
-
 ##### "ban_override" `[int]`
 - Sobrepor "http_response_header_code" quando "infraction_limit" é excedido? Quando sobrepõe: As solicitações bloqueadas retornam uma página em branco (os arquivos de modelo não são usados). 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "http_response_header_code".
 
@@ -640,9 +635,6 @@ ban_override
   ataque, ou para lidar com tráfego indesejado extremamente persistente.
 ```
 
-##### "log_banned_ips" `[bool]`
-- Incluir solicitações bloqueadas de IPs banidas nos arquivos de log? True = Sim [Padrão]; False = Não.
-
 ##### "default_dns" `[string]`
 - Uma lista de servidores DNS a serem usados para pesquisas de nomes de host. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
@@ -653,6 +645,7 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#WH
 
 ```
 search_engine_verification
+├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
@@ -739,9 +732,6 @@ statistics
 
 Nota: As pesquisas de IPv6 podem não funcionar corretamente em alguns sistemas de 32 bits.
 
-##### "log_sanitisation" `[bool]`
-- Ao usar o front-end página para os arquivos de registro para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
-
 ##### "disabled_channels" `[string]`
 - Isso pode ser usado para impedir que o CIDRAM use canais específicos ao enviar solicitações (por exemplo, ao atualizar, ao buscar metadados de componentes, etc).
 
@@ -773,11 +763,50 @@ Configuração para ativação e desativação dos componentes utilizados pelo C
 ##### "events" `[string]`
 - Manipuladores de eventos. Normalmente usado para modificar a maneira como o CIDRAM se comporta internamente ou para fornecer funcionalidade adicional.
 
+#### "logging" (Categoria)
+Configuração relacionada ao log (excluindo o que é aplicável a outras categorias).
+
+##### "standard_log" `[string]`
+- Um arquivo legível por humanos para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+##### "apache_style_log" `[string]`
+- Um arquivo no estilo da Apache para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+##### "serialised_log" `[string]`
+- Um arquivo serializado para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+##### "error_log" `[string]`
+- Um arquivo para registrar erros detectados que não são fatais. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+##### "truncate" `[string]`
+- Truncar arquivos de log quando atingem um determinado tamanho? Valor é o tamanho máximo em B/KB/MB/GB/TB que um arquivo de log pode crescer antes de ser truncado. O valor padrão de 0KB desativa o truncamento (arquivos de log podem crescer indefinidamente). Nota: Aplica-se a arquivos de log individuais! O tamanho dos arquivos de log não é considerado coletivamente.
+
+##### "log_rotation_limit" `[int]`
+- A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar o limite desejado aqui. Um valor de 0 desativará a rotação de log.
+
+##### "log_rotation_action" `[string]`
+- A rotação de log limita o número de arquivos de log que devem existir a qualquer momento. Quando novos arquivos de log são criados, se o número total de arquivos de log exceder o limite especificado, a ação especificada será executada. Você pode especificar a ação desejada aqui.
+
+```
+log_rotation_action
+├─Delete ("Deletar os arquivos de log mais antigos, até o limite não seja mais excedido.")
+└─Archive ("Primeiramente arquivar, e então deletar os arquivos de log mais antigos, até o limite não seja mais excedido.")
+```
+
+##### "log_banned_ips" `[bool]`
+- Incluir solicitações bloqueadas de IPs banidas nos arquivos de log? True = Sim [Padrão]; False = Não.
+
+##### "log_sanitisation" `[bool]`
+- Ao usar o front-end página para os arquivos de log para exibir dados de log, o CIDRAM sanitiza os dados de log antes de exibi-los, para proteger os usuários contra ataques XSS e outras ameaças potenciais que os dados de log podem conter. No entanto, por padrão, os dados não são sanitizados durante o registro. Isso é para assegurar que os dados de log sejam preservados com precisão, para auxiliar qualquer análise heurística ou forense que possa ser necessária no futuro. No entanto, no caso de um usuário tentar ler dados de log usando ferramentas externas, e se essas ferramentas externas não realizarem seu próprio processo de sanitização, o usuário pode estar exposto a ataques XSS. Se necessário, você pode alterar o comportamento padrão usando esta diretiva de configuração. True = Sanitize dados ao registrá-lo (os dados são preservados com menos precisão, mas o risco de XSS é menor). False = Não sanitize dados ao registrá-lo (os dados são preservados com mais precisão, mas o risco de XSS é maior) [Padrão].
+
 #### "frontend" (Categoria)
 Configuração para o front-end.
 
 ##### "frontend_log" `[string]`
 - Arquivo para registrar tentativas de login ao front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+##### "signatures_update_event_log" `[string]`
+- Um arquivo para registrar quando as assinaturas são atualizadas por meio do front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
 ##### "max_login_attempts" `[int]`
 - Número máximo de tentativas de login ao front-end. Padrão = 5.
@@ -884,8 +913,8 @@ Veja também:
 ##### "expiry" `[float]`
 - Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
 
-##### "logfile" `[string]`
-- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de registro. Se não, deixe esta variável em branco.
+##### "recaptcha_log" `[string]`
+- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de log. Se não, deixe esta variável em branco.
 
 ##### "signature_limit" `[int]`
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
@@ -961,8 +990,8 @@ Veja também:
 ##### "expiry" `[float]`
 - Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
 
-##### "logfile" `[string]`
-- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de registro. Se não, deixe esta variável em branco.
+##### "hcaptcha_log" `[string]`
+- Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de log. Se não, deixe esta variável em branco.
 
 ##### "signature_limit" `[int]`
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
@@ -1125,6 +1154,87 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#HO
 ##### "pdo_password" `[string]`
 - A senha do PDO.
 
+#### "abuseipdb" (Categoria)
+Configuração para o módulo AbuseIPDB.
+
+##### "api_key" `[string]`
+- Insira sua chave de API aqui.
+
+Veja também:
+- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
+- [link_get_api_key](https://www.abuseipdb.com/account/api)
+
+##### "max_age_in_days" `[int]`
+- A idade máxima em dias para a qual os relatórios serão considerados ao realizar pesquisas (deve ser um número entre 1 e 365). Padrão = 365.
+
+##### "minimum_confidence_score" `[int]`
+- A pontuação mínima de confiança necessária para que o CIDRAM bloqueie um endereço IP (deve ser um número entre 0 e 100). Padrão = 50.
+
+##### "max_cs_for_captcha" `[int]`
+- A pontuação máxima de confiança permitida para que os CAPTCHAs sejam veiculados (deve ser um número entre 0 e 100). Padrão = 10.
+
+##### "minimum_total_reports" `[int]`
+- O número mínimo de relatórios totais necessários para que o CIDRAM bloqueie um endereço IP. Padrão = 1.
+
+##### "report_back" `[bool]`
+- Permitir que o CIDRAM relate o mau comportamento detectado de volta ao AbuseIPDB usando sua chave de API? Padrão = False.
+
+##### "lookup_strategy" `[int]`
+- Para quais solicitações as pesquisas devem ser realizadas?
+
+```
+lookup_strategy
+├─0 (Nenhum.): Se você quiser usar o módulo apenas para fins de relatório, sem pesquisar
+│ nada, use isso.
+├─1 (Cada solicitação.): Mais rigoroso e completo, mas também é mais provável que os limites e
+│ cotas sejam cumpridos muito mais rapidamente, resultando potencialmente no
+│ bloqueio do serviço quando for mais necessário. Também, embora os
+│ resultados da pesquisa sejam sempre armazenados em cache, ainda assim, isso
+│ pode afetar negativamente o desempenho do site em alguns casos. Pode ser
+│ necessário em alguns casos, mas geralmente não é recomendado.
+└─2 (Solicitações apenas para páginas confidenciais (por exemplo, páginas de login, formulários de registro, etc).): Menos rigoroso e completo, mas mais conservador em termos de cotas e
+  limites, e menos propenso a afetar negativamente o desempenho do site. A
+  estratégia recomendada na maioria dos casos.
+```
+
+##### "build_profiles_from_usage_type" `[bool]`
+- Construir perfis usando o tipo de uso retornado pela API? False = Não. True = Sim. Padrão = True.
+
+#### "bgpview" (Categoria)
+Configuração para o módulo BGPView (fornece um recurso de pesquisa de código de país e ASN para CIDRAM).
+
+##### "blocked_asns" `[string]`
+- Uma lista de ASNs a serem bloqueados quando correspondidos pelo módulo BGPView.
+
+##### "whitelisted_asns" `[string]`
+- Uma lista de ASNs a serem incluídos na lista branca quando correspondidos pelo módulo BGPView.
+
+##### "blocked_ccs" `[string]`
+- Uma lista de países (identificados por seus códigos de país de 2 dígitos {{Links.ISO.3166}}) a serem bloqueados quando correspondidos pelo módulo BGPView.
+
+##### "whitelisted_ccs" `[string]`
+- Uma lista de países (identificados por seus códigos de país de 2 dígitos {{Links.ISO.3166}}) a serem incluídos na lista branca quando correspondidos pelo módulo BGPView.
+
+#### "bunnycdn" (Categoria)
+Configuração para o módulo de compatibilidade BunnyCDN.
+
+##### "positive_action" `[string]`
+- Qual ação o CIDRAM deve executar quando encontrar uma solicitação do BunnyCDN? Ação padrão = Contornar.
+
+```
+positive_action
+├─bypass ("Desencadear um bypass.): Subtrai uma contagem do número de assinaturas desencadeadas, desde que pelo
+│ menos uma assinatura já tenha sido desencadeada. Recomendado para lidar com
+│ falsos positivos simples potencialmente causados pelos arquivos de
+│ assinatura padrão."
+├─greylist ("Tratar a solicitação como na lista cinza.): Redefine o número de assinaturas desencadeadas, mas continua processando a
+│ solicitação. Recomendado quando você não deseja tratar a solicitação
+│ como na lista branca, mas precisa de algo mais substancial do que
+│ desencadear um bypass."
+└─whitelist ("Tratar a solicitação como na lista branca.): Redefine o número de assinaturas desencadeadas, e aborta qualquer
+  processamento adicional da solicitação."
+```
+
 #### "bypasses" (Categoria)
 Configuração para o bypass das assinaturas padrão.
 
@@ -1140,6 +1250,8 @@ used
 ├─Embedly ("Embedly")
 ├─Feedbot ("Feedbot")
 ├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
 ├─PetalBot ("PetalBot")
@@ -1161,6 +1273,49 @@ signatures
 ├─ruri ("Assinaturas baseadas em URIs reconstruídas.")
 └─uri ("Assinaturas baseadas em URIs da solicitação.")
 ```
+
+#### "projecthoneypot" (Categoria)
+Configuração para o módulo Project Honeypot.
+
+##### "api_key" `[string]`
+- Insira sua chave de API aqui.
+
+Veja também:
+- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
+- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
+
+##### "max_age_in_days" `[int]`
+- A idade máxima em dias para a qual os relatórios serão considerados ao realizar pesquisas. Padrão = 365.
+
+##### "minimum_threat_score" `[int]`
+- A pontuação mínima de ameaça necessária para que o CIDRAM bloqueie um endereço IP (deve ser um número entre 1 e 100). Padrão = 10.
+
+##### "max_ts_for_captcha" `[int]`
+- A pontuação máxima de ameaça permitida para receber um CAPTCHA (deve ser um número entre 1 e 100). Padrão = 10.
+
+##### "lookup_strategy" `[int]`
+- Para quais solicitações as pesquisas devem ser realizadas?
+
+```
+lookup_strategy
+├─0 (Nenhum.): Se você quiser usar o módulo apenas para fins de relatório, sem pesquisar
+│ nada, use isso.
+├─1 (Cada solicitação.): Mais rigoroso e completo, mas também é mais provável que os limites e
+│ cotas sejam cumpridos muito mais rapidamente, resultando potencialmente no
+│ bloqueio do serviço quando for mais necessário. Também, embora os
+│ resultados da pesquisa sejam sempre armazenados em cache, ainda assim, isso
+│ pode afetar negativamente o desempenho do site em alguns casos. Pode ser
+│ necessário em alguns casos, mas geralmente não é recomendado.
+└─2 (Solicitações apenas para páginas confidenciais (por exemplo, páginas de login, formulários de registro, etc).): Menos rigoroso e completo, mas mais conservador em termos de cotas e
+  limites, e menos propenso a afetar negativamente o desempenho do site. A
+  estratégia recomendada na maioria dos casos.
+```
+
+#### "sfs" (Categoria)
+Configuração para o módulo Stop Forum Spam.
+
+##### "offer_captcha" `[bool]`
+- Quando as solicitações são bloqueadas por este módulo, CAPTCHAs podem ser emitidos. Padrão = True. Nota: Não substitui outras diretivas. Para que os CAPTCHAs sejam emitidos, todas as diretivas devem estar de acordo, as chaves necessárias configuradas, etc. No caso de CAPTCHAs normalmente tenham permissão para serem emitidos, definir essa diretiva como false fornece uma maneira de impedir que os CAPTCHAs sejam emitidos para solicitações bloqueadas especificamente por este módulo.
 
 ---
 
@@ -2047,11 +2202,11 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Conectado.
 
 ##### 9.3.3 ROTAÇÃO DE REGISTRO
 
-Você pode querer purgar os registros após um período de tempo, ou pode ser obrigado a fazê-lo por lei (ou seja, a quantidade de tempo permitida legalmente para você manter registros pode ser limitada por lei). Você pode conseguir isso incluindo marcadores de data/hora nos nomes de seus arquivos de registro conforme especificado pela sua configuração de pacote (por exemplo, `{yyyy}-{mm}-{dd}.log`) e, em seguida, ativando a rotação de registro (a rotação de registro permite que você execute alguma ação nos arquivos de registro quando os limites especificados são excedidos).
+Você pode querer purgar os registros após um período de tempo, ou pode ser obrigado a fazê-lo por lei (ou seja, a quantidade de tempo permitida legalmente para você manter registros pode ser limitada por lei). Você pode conseguir isso incluindo marcadores de data/hora nos nomes de seus arquivos de log conforme especificado pela sua configuração de pacote (por exemplo, `{yyyy}-{mm}-{dd}.log`) e, em seguida, ativando a rotação de registro (a rotação de registro permite que você execute alguma ação nos arquivos de log quando os limites especificados são excedidos).
 
-Por exemplo: Se eu fosse legalmente obrigado a deletar registros após 30 dias, eu poderia especificar `{dd}.log` nos nomes dos meus arquivos de registro (`{dd}` representa dias), definir o valor de `log_rotation_limit` para 30 e, em seguida, definir o valor de `log_rotation_action` para `Delete`.
+Por exemplo: Se eu fosse legalmente obrigado a deletar registros após 30 dias, eu poderia especificar `{dd}.log` nos nomes dos meus arquivos de log (`{dd}` representa dias), definir o valor de `log_rotation_limit` para 30 e, em seguida, definir o valor de `log_rotation_action` para `Delete`.
 
-Por outro lado, se você precisar reter o registros por um longo período de tempo, você poderia optar por não usar a rotação de registro em tudo, ou você pode definir o valor de `log_rotation_action` para `Archive`, para compactar arquivos de registro, reduzindo assim a quantidade total de espaço em disco que eles ocupam.
+Por outro lado, se você precisar reter o registros por um longo período de tempo, você poderia optar por não usar a rotação de registro em tudo, ou você pode definir o valor de `log_rotation_action` para `Archive`, para compactar arquivos de log, reduzindo assim a quantidade total de espaço em disco que eles ocupam.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `log_rotation_limit`
@@ -2059,7 +2214,7 @@ Por outro lado, se você precisar reter o registros por um longo período de tem
 
 ##### 9.3.4 TRUNCAMENTO DE REGISTRO
 
-Também é possível truncar arquivos de registro individuais quando eles excedem um certo tamanho, se isso for algo que você possa precisar ou desejar fazer.
+Também é possível truncar arquivos de log individuais quando eles excedem um certo tamanho, se isso for algo que você possa precisar ou desejar fazer.
 
 *Diretivas de configuração relevantes:*
 - `general` -> `truncate`
@@ -2143,4 +2298,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 23 de Junho de 2022 (2022.06.23).
+Última Atualização: 30 de Junho de 2022 (2022.06.30).
