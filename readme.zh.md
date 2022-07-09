@@ -188,9 +188,6 @@ $CIDRAM->view();
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ $CIDRAM->view();
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ $CIDRAM->view();
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### “general” （类别）
@@ -620,62 +586,6 @@ ban_override
 
 __常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a></em>
 
-##### “search_engine_verification” `[string]`
-- 用于验证来自搜索引擎的请求的控件。
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
-
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
-
-##### “social_media_verification” `[string]`
-- 用于验证来自社交媒体平台的请求的控件。
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
-
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
-
-** 需要ASN查找功能（例如，通过BGPView模块）。
-
-##### “other_verification” `[string]`
-- 用于在可能的情况下，验证其他类型的请求的控件。
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
-
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
-
 ##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。
 
@@ -819,38 +729,108 @@ theme
 #### “signatures” （类别）
 签名，签名文件，模块，等的配置。
 
-##### “block_attacks” `[bool]`
-- 阻止攻击和其他异常流量相关的CIDR吗？​例如，端口扫描、黑客攻击、漏洞探测、等等。​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
+##### “shorthand” `[string]`
+- 当与使用给定速记词的签名匹配时，控制如何处理请求。
 
-##### “block_cloud” `[bool]`
-- 阻止CIDR认定为属于虚拟主机或云服务吗？​如果您操作一个API服务从您的网站或如果您预计其他网站连接到您的网站，​这应该被设置为“false”（假）。​如果不，​这应该被设置为“true”（真）。
+```
+shorthand
+├─Attacks ("攻击")
+├─Bogon ("⁰ 火星IP")
+├─Cloud ("云服务")
+├─Generic ("通用")
+├─Legal ("¹ 法律义务")
+├─Malware ("恶意软件")
+├─Proxy ("² 代理")
+├─Spam ("垃圾邮件的风险")
+├─Banned ("³ 禁止")
+├─BadIP ("³ 无效的IP！")
+├─RL ("³ 速率限制")
+└─Other ("⁴ 其他")
+```
 
-##### “block_bogons” `[bool]`
-- 阻止bogon(“ㄅㄡㄍㄛㄋ”)/martian（“火星”）CIDR吗？​如果您希望连接到您的网站从您的本地网络/本地主机/localhost/LAN/等等，​这应该被设置为“false”（假）。​如果不，​这应该被设置为“true”（真）。
+__0.__ 如果您的网站需要通过LAN或localhost访问，不要阻止它。​否则，您可以阻止它。
 
-##### “block_generic” `[bool]`
-- 阻止CIDR一般建议对于黑名单吗？​这包括签名不标记为的一章节任何其他更具体签名类别。
+__1.__ 标准签名文件不使用它，但它仍然受支持，因为它可能对某些用户有用。
 
-##### “block_legal” `[bool]`
-- 阻止CIDR因为法律义务吗？​这个指令通常不应该有任何作用，因为CIDRAM默认情况下不会将任何CIDR与“法律义务”相关联，​但它作为一个额外的控制措施存在，以利于任何可能因法律原因而存在的自定义签名文件或模块。
+__2.__ 如果您需要用户能够通过代理访问您的网站，不要阻止它。​否则，您可以阻止它。
 
-##### “block_malware” `[bool]`
-- 阻止与恶意软件相关的CIDR吗？​这包括C&C服务器，受感染的机器，涉及恶意软件分发的机器，等等。
+__3.__ 不支持直接在签名中使用，但在特定情况下可以通过其他方式调用。
 
-##### “block_proxies” `[bool]`
-- 阻止CIDR认定为属于代理服务或VPN吗？​如果您需要该用户可以访问您的网站从代理服务和VPN，​这应该被设置为“false”（假）。​除此以外，​如果您不需要代理服务或VPN，​这应该被设置为“true”（真）作为一个方式以提高安全性。
+__4.__ 当速记词不使用或CIDRAM不识别时。
 
-##### “block_spam” `[bool]`
-- 阻止高风险垃圾邮件CIDR吗？​除非您遇到问题当这样做，​通常，​这应该被设置为“true”（真）。
+__对于每个签名只有一个。__ 签名可以调用多个分类，但只能使用一个速记词。​多个速记词可能是合适的，但由于只能使用一个，我们试图始终只使用最合适的。
+
+__优先。__ 选定的选项始终优先于未选定的选项。​例如，如果多个速记词是生效的，但只有一个被设置为被阻止，则请求仍将被阻止。
+
+__人类端点和云服务。__ 云服务可能是指虚拟主机提供商、服务器场、数据中心、或许多其他事物。​人类端点是指人类访问互联网的方式，例如，通过互联网服务提供商。​网络通常只提供一个或另一个，但有时可能同时提供两者。​我们试图不将潜在的人类端点识别为云服务。​因此，如果云服务的范围由已知的人类端点共享，则可以将其识别为其他东西。​同样，如果范围不被任何已知的人类端点共享，我们会试图始终将云服务识别为云服务。​因此，明确标识为云服务的请求很可能不会与任何已知的人类端点共享其范围。​同样，由攻击或垃圾邮件的风险明确识别的请求很可能共享范围。​然而，互联网总是在不断变化，网络的目的可以改变，范围总是被买卖，所以关于假阳性的保持有意识和警惕。
 
 ##### “default_tracktime” `[int]`
-- 多少秒钟来跟踪模块禁止的IP。​标准 = 604800 （1周）。
+- 应该跟踪多少秒IP地址。​标准 = 604800 （1周）。
 
 ##### “infraction_limit” `[int]`
 - 从IP最大允许违规数量之前它被禁止。​标准=10。
 
 ##### “tracking_override” `[bool]`
 - 允许模块覆盖跟踪选项吗？​True（真）=允许【标准】；False（假）=不允许。
+
+#### “verification” （类别）
+请求来源验证配置。
+
+##### “search_engines” `[string]`
+- 用于验证来自搜索引擎的请求的控件。
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
+
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+##### “social_media” `[string]`
+- 用于验证来自社交媒体平台的请求的控件。
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
+
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+** 需要ASN查找功能（例如，通过BGPView模块）。
+
+##### “other” `[string]`
+- 用于在可能的情况下，验证其他类型的请求的控件。
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
+
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
 #### “recaptcha” （类别）
 ReCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
@@ -1119,146 +1099,6 @@ __常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/read
 
 ##### “pdo_password” `[string]`
 - PDO密码。
-
-#### “abuseipdb” （类别）
-AbuseIPDB模块的配置。
-
-##### “api_key” `[string]`
-- 请在此处输入您的API密钥。
-
-也可以看看：
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### “max_age_in_days” `[int]`
-- 执行查找时将考虑报告的最长天数（必须是1到365之间的数字）。标准=365。
-
-##### “minimum_confidence_score” `[int]`
-- 为了让CIDRAM阻止IP地址所需的最低置信度分数（必须是0到100之间的数字）。标准=50。
-
-##### “max_cs_for_captcha” `[int]`
-- 为了提供CAPTCHA的目的最大置信度分数（必须是0到100之间的数字）。标准=10。
-
-##### “minimum_total_reports” `[int]`
-- 为了让CIDRAM阻止IP地址所需的最小总报告数。标准=1。
-
-##### “report_back” `[bool]`
-- 允许CIDRAM使用您的API密钥将检测到的不良行为报告回AbuseIPDB马？标准=False。
-
-##### “lookup_strategy” `[int]`
-- 应该为哪些请求执行查找？
-
-```
-lookup_strategy
-├─0 (不要执行。): 使用如果您只想将该模块用于报告目的，而不是检查结果。
-├─1 (所有请求。): 更严格和彻底，但也可能更快地达到配额，可能导致被锁定在服务之外。​此外，尽管结果被缓存，但在某些情况下仍可能对网站性能产生负面影响。​在某些情况下可能是必要的，但通常不推荐。
-└─2 (仅对敏感页面的请求（例如，登录页面，注册表单，等等）。): 不那么严格和彻底，但在配额和限制方面更加保守，并且不太可能对性能产生负面影响。​大多数情况下推荐的策略。
-```
-
-##### “build_profiles_from_usage_type” `[bool]`
-- 使用API返回的使用类型构建分类？ False = 不要使用。 True = 使用。 标准 = True。
-
-#### “bgpview” （类别）
-BGPView模块的配置（为CIDRAM提供ASN和国家代码查找工具）。
-
-##### “blocked_asns” `[string]`
-- 被BGPView模块匹配时要阻止的ASN列表。
-
-##### “whitelisted_asns” `[string]`
-- 由BGPView模块匹配时要列入白名单的ASN列表。
-
-##### “blocked_ccs” `[string]`
-- 由BGPView模块匹配时要阻止的国家列表（由其{{Links.ISO.3166}}两个字母的国家代码标识）。
-
-##### “whitelisted_ccs” `[string]`
-- 由BGPView模块匹配时要列入白名单的国家列表（由其{{Links.ISO.3166}}两个字母的国家代码标识）。
-
-#### “bunnycdn” （类别）
-BunnyCDN兼容性模块配置。
-
-##### “positive_action” `[string]`
-- CIDRAM遇到BunnyCDN的请求时应该执行什么动作？ 默认操作 = 绕行。
-
-```
-positive_action
-├─bypass ("触发旁路。): 只要至少已经触发了一个签名，就从触发的签名数中减去一个计数。推荐用于处理可能由默认签名文件引起的简单假阳性。"
-├─greylist ("将请求列入灰名单。): 重置触发的签名数量，但继续处理请求。​当您不想将请求列入白名单，但需要比触发的绕过更实质的时推荐使用。"
-└─whitelist ("将请求列入白名单。): 重置触发的签名数量，并中止对请求的任何进一步处理。​保证CIDRAM永远不会阻止请求。"
-```
-
-#### “bypasses” （类别）
-默认签名绕过配置。
-
-##### “used” `[string]`
-- 应该使用哪些绕过？
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### “extras” （类别）
-可选的安全附加模块配置。
-
-##### “signatures” `[string]`
-- 应该尊重哪些类型的签名？
-
-```
-signatures
-├─empty_ua ("空的用户代理。")
-├─query ("基于请求查询的签名。")
-├─raw ("基于原始请求输入的签名。")
-├─ruri ("基于重构URI的签名。")
-└─uri ("基于请求URI的签名。")
-```
-
-#### “projecthoneypot” （类别）
-Project Honeypot模块的配置。
-
-##### “api_key” `[string]`
-- 请在此处输入您的API密钥。
-
-也可以看看：
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### “max_age_in_days” `[int]`
-- 执行查找时将考虑报告的最长天数。标准=365。
-
-##### “minimum_threat_score” `[int]`
-- 为了让CIDRAM阻止IP地址所需的最低威胁分数（必须是1到100之间的数字）。标准=10。
-
-##### “max_ts_for_captcha” `[int]`
-- 为了提供CAPTCHA的目的最大威胁分数（必须是1到100之间的数字）。标准=10。
-
-##### “lookup_strategy” `[int]`
-- 应该为哪些请求执行查找？
-
-```
-lookup_strategy
-├─0 (不要执行。): 使用如果您只想将该模块用于报告目的，而不是检查结果。
-├─1 (所有请求。): 更严格和彻底，但也可能更快地达到配额，可能导致被锁定在服务之外。​此外，尽管结果被缓存，但在某些情况下仍可能对网站性能产生负面影响。​在某些情况下可能是必要的，但通常不推荐。
-└─2 (仅对敏感页面的请求（例如，登录页面，注册表单，等等）。): 不那么严格和彻底，但在配额和限制方面更加保守，并且不太可能对性能产生负面影响。​大多数情况下推荐的策略。
-```
-
-#### “sfs” （类别）
-Stop Forum Spam模块的配置。
-
-##### “offer_captcha” `[bool]`
-- 当此模块阻止请求时，可能会提供验证码。​标准 = True。​注意：它不会覆盖其他指令。​要提供验证码，所有指令必须一致，必要的密钥必须配置，等等。​在通常允许提供验证码的情况下，将此指令设置为“false”可以防止为该模块专门阻止的请求提供验证码。
 
 ---
 
@@ -2234,4 +2074,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年6月30日。
+最后更新：2022年7月9日。

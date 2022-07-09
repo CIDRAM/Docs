@@ -188,9 +188,6 @@ Konfigurasi (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Konfigurasi (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ Konfigurasi (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Kategori)
@@ -549,7 +515,7 @@ lang
 ```
 
 ##### "lang_override" `[bool]`
-- Melokalisasikan sesuai dengan HTTP_ACCEPT_LANGUAGE jika memungkinkan? True = Ya [Default]; False = Tidak.
+- Melokalisasikan sesuai dengan HTTP_ACCEPT_LANGUAGE jika/bila memungkinkan? True = Ya [Default]; False = Tidak.
 
 ##### "numbers" `[string]`
 - Cara apa yang kamu suka nomor menjadi ditampilkan? Pilih contoh yang paling sesuai untuk Anda.
@@ -641,62 +607,6 @@ ban_override
 - Daftar server DNS yang digunakan untuk pencarian nama host. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="id">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
-
-##### "search_engine_verification" `[string]`
-- Kontrol untuk memverifikasi permintaan dari mesin pencari.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
-
-__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
-
-##### "social_media_verification" `[string]`
-- Kontrol untuk memverifikasi permintaan dari platform media sosial.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
-
-__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
-
-** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul BGPView).
-
-##### "other_verification" `[string]`
-- Kontrol untuk memverifikasi jenis permintaan lain jika memungkinkan.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
-
-__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
 ##### "default_algo" `[string]`
 - Mendefinisikan algoritma mana yang akan digunakan untuk semua kata sandi dan sesi di masa depan.
@@ -841,38 +751,108 @@ theme
 #### "signatures" (Kategori)
 Konfigurasi untuk tanda tangan, file tanda tangan, modul, dll.
 
-##### "block_attacks" `[bool]`
-- Memblokir CIDR yang terkait dengan serangan dan lalu lintas abnormal lainnya? Misalnya, pemindaian port, peretasan, pemeriksaan kerentanan, dll. Kecuali jika Anda mengalami masalah ketika melakukan itu, umumnya, ini harus selalu didefinisikan untuk true/benar.
+##### "shorthand" `[string]`
+- Kontrol untuk apa yang harus dilakukan dengan permintaan jika/ketika ada kecocokan yang positif dengan tanda tangan yang menggunakan kata-kata singkat yang diberikan.
 
-##### "block_cloud" `[bool]`
-- Memblokir CIDR yang diidentifikasi sebagai milik webhosting dan/atau layanan cloud? Jika Anda mengoperasikan layanan API dari website Anda atau jika Anda mengharapkan website lain untuk menghubungkan ke website Anda, direktif ini harus didefinisikan untuk false/palsu. Jika Anda tidak, maka, direktif ini harus didefinisikan untuk true/benar.
+```
+shorthand
+├─Attacks ("Serangan")
+├─Bogon ("⁰ IP yang bogon")
+├─Cloud ("Layanan komputasi awan")
+├─Generic ("Umum")
+├─Legal ("¹ Hukum")
+├─Malware ("Malware")
+├─Proxy ("² Proxy")
+├─Spam ("Risiko spam")
+├─Banned ("³ Dilarang")
+├─BadIP ("³ IP tidak valid!")
+├─RL ("³ Laju terbatas")
+└─Other ("⁴ Lain")
+```
 
-##### "block_bogons" `[bool]`
-- Memblokir CIDR bogon/martian? Jika Anda mengharapkan koneksi ke website Anda dari dalam jaringan lokal Anda, dari localhost, atau dari LAN Anda, direktif ini harus didefinisikan untuk false/palsu. Jika Anda tidak mengharapkan ini, direktif ini harus didefinisikan untuk true/benar.
+__0.__ Jika situs web Anda memerlukan akses melalui LAN atau localhost, jangan blokir ini. Jika tidak memerlukannya, Anda dapat memblokir ini.
 
-##### "block_generic" `[bool]`
-- Memblokir CIDR umumnya direkomendasikan untuk mendaftar hitam? Ini mencakup tanda tangan apapun yang tidak ditandai sebagai bagian dari apapun lainnya kategori tanda tangan lebih spesifik.
+__1.__ Tidak ada file tanda tangan default yang menggunakan ini, tapi tetap didukung dalam kasus mungkin berguna untuk beberapa pengguna.
 
-##### "block_legal" `[bool]`
-- Memblokir CIDR sebagai respons terhadap kewajiban hukum? Direktif ini seharusnya tidak memiliki efek apapun, karena CIDRAM tidak menghubungkan CIDR apapun dengan "kewajiban hukum" secara default, tetapi tetap ada sebagai ukuran kontrol tambahan untuk kepentingan file tanda tangan atau modul dipersonalisasi yang mungkin ada karena alasan hukum.
+__2.__ Jika Anda memerlukan pengguna untuk dapat mengakses situs web Anda melalui proxy, jangan blokir ini. Jika tidak memerlukannya, Anda dapat memblokir ini.
 
-##### "block_malware" `[bool]`
-- Memblokir CIDR yang terkait dengan malware? Ini termasuk server C&C, mesin yang terinfeksi, mesin yang terlibat dalam distribusi malware, dll.
+__3.__ Penggunaan langsung dalam tanda tangan tidak didukung, tetapi mungkin dipanggil dengan cara lain dalam keadaan tertentu.
 
-##### "block_proxies" `[bool]`
-- Memblokir CIDR yang diidentifikasi sebagai milik layanan proxy atau VPN? Jika Anda membutuhkan bahwa pengguna dapat mengakses situs web Anda dari layanan proxy atau VPN, direktif ini harus didefinisikan untuk false/palsu. Jika Anda tidak membutuhkannya, direktif ini harus didefinisikan untuk true/benar sebagai sarana untuk meningkatkan keamanan.
+__4.__ Mengacu pada kasus dimana kata-kata singkat tidak digunakan sama sekali, atau tidak dikenali oleh CIDRAM.
 
-##### "block_spam" `[bool]`
-- Memblokir CIDR yang diidentifikasi sebagai beresiko tinggi karena spam? Kecuali jika Anda mengalami masalah ketika melakukan itu, umumnya, ini harus selalu didefinisikan untuk true/benar.
+__Satu per tanda tangan.__ Tanda tangan dapat memanggil beberapa profil, tetapi hanya dapat menggunakan satu kata singkat. Ada kemungkinan bahwa beberapa kata singkat mungkin cocok, tetapi karena hanya satu dapat digunakan, kami bertujuan untuk selalu menggunakan hanya yang paling cocok.
+
+__Prioritas.__ Opsi yang dipilih selalu diprioritaskan daripada opsi yang tidak dipilih. Misalnya, jika beberapa kata-kata singkat sedang di tangan, tetapi hanya satu yang disetel sebagai diblokir, permintaan akan tetap diblokir.
+
+__Titik akhir manusia dan layanan komputasi awan.__ Layanan komputasi awan dapat merujuk ke penyedia hosting web, server farm, pusat data, atau sejumlah hal lainnya. Titik akhir manusia mengacu pada cara manusia mengakses internet, seperti melalui penyedia layanan internet. Jaringan biasanya menyediakan hanya satu atau lain, tetapi kadang-kadang dapat menyediakan keduanya. Kami bertujuan untuk tidak pernah mengidentifikasi titik akhir manusia potensial sebagai layanan komputasi awan. Demikian, layanan komputasi awan dapat diidentifikasi sebagai sesuatu lain jika rentangnya dibagi oleh titik akhir manusia yang dikenal. Dengan cara yang sama, kami bertujuan untuk selalu mengidentifikasi layanan cloud, yang rentangnya tidak dibagikan oleh titik akhir manusia yang dikenal, sebagai layanan komputasi awan. Akibatnya, permintaan yang diidentifikasi eksplisit sebagai layanan komputasi awan paling mungkin tidak berbagi rentangnya dengan titik akhir manusia yang diketahui. Demikian juga, permintaan yang diidentifikasi eksplisit oleh serangan atau oleh risiko spam paling mungkin membagikannya. Namun, internet selalu berubah, tujuan jaringan berubah dari waktu ke waktu, dan rentang-rentang selalu dibeli atau dijual, jadi tetaplah sadar dan waspada dalam hal positif palsu.
 
 ##### "default_tracktime" `[int]`
-- Berapa banyak detik untuk melacak IP dilarang oleh modul. Default = 604800 (1 seminggu).
+- Berapa detik alamat IP harus dilacak. Default = 604800 (1 seminggu).
 
 ##### "infraction_limit" `[int]`
 - Jumlah maksimum pelanggaran IP diperbolehkan untuk dikenakan sebelum dilarang oleh pelacakan IP. Default = 10.
 
 ##### "tracking_override" `[bool]`
 - Izinkan modul untuk mengganti opsi pelacakan? True = Ya [Default]; False = Tidak.
+
+#### "verification" (Kategori)
+Konfigurasi untuk memverifikasi dari mana permintaan berasal.
+
+##### "search_engines" `[string]`
+- Kontrol untuk memverifikasi permintaan dari mesin pencari.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
+
+__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
+
+##### "social_media" `[string]`
+- Kontrol untuk memverifikasi permintaan dari platform media sosial.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
+
+__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
+
+** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul BGPView).
+
+##### "other" `[string]`
+- Kontrol untuk memverifikasi jenis permintaan lain jika/bila memungkinkan.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi untuk dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
+
+__Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
 #### "recaptcha" (Kategori)
 Konfigurasi untuk ReCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
@@ -1155,168 +1135,6 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HO
 
 ##### "pdo_password" `[string]`
 - Kata sandi PDO.
-
-#### "abuseipdb" (Kategori)
-Konfigurasi untuk modul AbuseIPDB.
-
-##### "api_key" `[string]`
-- Silahkan masukkan kunci API Anda disini.
-
-Lihat juga:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- Usia maksimum dalam hari dimana laporan akan dipertimbangkan saat melakukan pencarian (harus berupa angka diantara 1 dan 365). Default = 365.
-
-##### "minimum_confidence_score" `[int]`
-- Skor kepercayaan minimum yang diperlukan agar CIDRAM dapat memblokir alamat IP (harus berupa angka diantara 0 dan 100). Default = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- Skor kepercayaan maksimum yang diizinkan untuk CAPTCHA disajikan (harus berupa angka diantara 0 dan 100). Default = 10.
-
-##### "minimum_total_reports" `[int]`
-- Jumlah minimum total laporan yang diperlukan agar CIDRAM dapat memblokir alamat IP. Default = 1.
-
-##### "report_back" `[bool]`
-- Izinkan CIDRAM untuk melaporkan perilaku buruk yang terdeteksi kembali ke AbuseIPDB menggunakan kunci API Anda? Default = False.
-
-##### "lookup_strategy" `[int]`
-- Untuk permintaan mana pencarian harus dilakukan?
-
-```
-lookup_strategy
-├─0 (Tidak satupun.): Jika Anda ingin menggunakan modul hanya untuk tujuan pelaporan, tanpa
-│ mencari apapun, gunakan ini.
-├─1 (Setiap permintaan.): Lebih ketat dan menyeluruh, tetapi juga lebih mungkin menghasilkan batas dan
-│ kuota terpenuhi lebih cepat, berpotensi mengakibatkan terkuncinya layanan
-│ saat paling dibutuhkan. Selain itu, meskipun hasil pencarian selalu
-│ di-cache, tetap saja hal itu dapat berdampak negatif pada kinerja situs web
-│ dalam beberapa kasus. Mungkin diperlukan dalam beberapa kasus, tetapi
-│ umumnya tidak direkomendasikan.
-└─2 (Permintaan hanya untuk halaman sensitif (misalnya, halaman login, formulir pendaftaran, dll).): Kurang ketat dan menyeluruh, tetapi lebih konservatif dalam hal kuota dan
-  batasan, dan kecil kemungkinannya untuk berdampak negatif pada kinerja.
-  Strategi yang direkomendasikan dalam banyak kasus.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Buat profil menggunakan jenis penggunaan yang dikembalikan oleh API? False = Tidak. True = Ya. Default = True.
-
-#### "bgpview" (Kategori)
-Konfigurasi untuk modul BGPView (menyediakan fasilitas pencarian ASN dan kode negara untuk CIDRAM.
-
-##### "blocked_asns" `[string]`
-- Daftar ASN yang akan diblokir saat dicocokkan oleh modul BGPView.
-
-##### "whitelisted_asns" `[string]`
-- Daftar ASN yang akan terdaftar putih saat dicocokkan oleh modul BGPView.
-
-##### "blocked_ccs" `[string]`
-- Daftar negara (diidentifikasi oleh kode negara 2 digit {{Links.ISO.3166}} mereka) yang akan diblokir saat dicocokkan oleh modul BGPView.
-
-##### "whitelisted_ccs" `[string]`
-- Daftar negara (diidentifikasi oleh kode negara 2 digit {{Links.ISO.3166}} mereka) yang akan terdaftar putih saat dicocokkan oleh modul BGPView.
-
-#### "bunnycdn" (Kategori)
-Konfigurasi untuk modul kompatibilitas BunnyCDN.
-
-##### "positive_action" `[string]`
-- Tindakan mana yang harus dilakukan CIDRAM saat menangani permintaan dari BunnyCDN? Tindakan default = Melewatinya.
-
-```
-positive_action
-├─bypass ("Memicu bypass.): Mengurangi satu hitungan dari jumlah tanda tangan yang dipicu, selama
-│ setidaknya satu tanda tangan telah dipicu. Direkomendasikan untuk menangani
-│ kesalahan positif sederhana yang berpotensi disebabkan oleh file tanda
-│ tangan default."
-├─greylist ("Mendaftar abu-abu permintaan.): Reset jumlah tanda tangan yang dipicu, tetapi terus memproses permintaan.
-│ Direkomendasikan saat Anda tidak ingin mendaftar permintaan putih, tetapi
-│ membutuhkan sesuatu yang lebih substansial daripada memicu bypass."
-└─whitelist ("Mendaftar putih permintaan.): Reset jumlah tanda tangan yang dipicu, dan membatalkan pemrosesan permintaan
-  lebih lanjut. Menjamin bahwa CIDRAM tidak akan pernah memblokir permintaan."
-```
-
-#### "bypasses" (Kategori)
-Konfigurasi untuk bypass tanda tangan default.
-
-##### "used" `[string]`
-- Bypass mana yang harus digunakan?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (Kategori)
-Konfigurasi untuk modul tambahan keamanan opsional.
-
-##### "signatures" `[string]`
-- Jenis tanda tangan apa yang harus dihormati?
-
-```
-signatures
-├─empty_ua ("Agen pengguna yang kosong.")
-├─query ("Tanda tangan berdasarkan permintaan.")
-├─raw ("Tanda tangan berdasarkan input permintaan yang mentah.")
-├─ruri ("Tanda tangan berdasarkan URI yang direkonstruksi.")
-└─uri ("Tanda tangan berdasarkan URI permintaan.")
-```
-
-#### "projecthoneypot" (Kategori)
-Konfigurasi untuk modul Project Honeypot.
-
-##### "api_key" `[string]`
-- Silahkan masukkan kunci API Anda disini.
-
-Lihat juga:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- Usia maksimum dalam hari dimana laporan akan dipertimbangkan saat melakukan pencarian. Default = 365.
-
-##### "minimum_threat_score" `[int]`
-- Skor ancaman minimum yang diperlukan agar CIDRAM memblokir alamat IP (harus berupa angka diantara 1 dan 100). Default = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- Skor ancaman maksimum yang diizinkan untuk CAPTCHA disajikan (harus berupa angka diantara 1 dan 100). Default = 10.
-
-##### "lookup_strategy" `[int]`
-- Untuk permintaan mana pencarian harus dilakukan?
-
-```
-lookup_strategy
-├─0 (Tidak satupun.): Jika Anda ingin menggunakan modul hanya untuk tujuan pelaporan, tanpa
-│ mencari apapun, gunakan ini.
-├─1 (Setiap permintaan.): Lebih ketat dan menyeluruh, tetapi juga lebih mungkin menghasilkan batas dan
-│ kuota terpenuhi lebih cepat, berpotensi mengakibatkan terkuncinya layanan
-│ saat paling dibutuhkan. Selain itu, meskipun hasil pencarian selalu
-│ di-cache, tetap saja hal itu dapat berdampak negatif pada kinerja situs web
-│ dalam beberapa kasus. Mungkin diperlukan dalam beberapa kasus, tetapi
-│ umumnya tidak direkomendasikan.
-└─2 (Permintaan hanya untuk halaman sensitif (misalnya, halaman login, formulir pendaftaran, dll).): Kurang ketat dan menyeluruh, tetapi lebih konservatif dalam hal kuota dan
-  batasan, dan kecil kemungkinannya untuk berdampak negatif pada kinerja.
-  Strategi yang direkomendasikan dalam banyak kasus.
-```
-
-#### "sfs" (Kategori)
-Konfigurasi untuk modul Stop Forum Spam.
-
-##### "offer_captcha" `[bool]`
-- Ketika permintaan diblokir oleh modul ini, CAPTCHA dapat disajikan. Default = True. Catatan: Tidak mengesampingkan direktif lain. Agar CAPTCHA disajikan, semua direktif harus setuju, kunci yang diperlukan harus dikonfigurasi, dll. Jika CAPTCHA biasanya diizinkan untuk disajikan, menyetel direktif ini ke false menyediakan cara untuk mencegah CAPTCHA disajikan untuk permintaan yang diblokir secara khusus oleh modul ini.
 
 ---
 
@@ -2291,4 +2109,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 30 Juni 2022 (2022.06.30).
+Terakhir Diperbarui: 9 Juli 2022 (2022.07.09).

@@ -188,9 +188,6 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (카테고리)
@@ -644,62 +610,6 @@ ban_override
 
 __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ko">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a></em>
 
-##### "search_engine_verification" `[string]`
-- 검색 엔진의 요청을 확인하기 위한 컨트롤입니다.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
-
-__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
-
-##### "social_media_verification" `[string]`
-- 소셜 미디어 플랫폼의 요청을 확인하기 위한 컨트롤입니다.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
-
-__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
-
-** ASN 조회 기능이 필요합니다 (예 : BGPView 모듈을 통해).
-
-##### "other_verification" `[string]`
-- 가능한 경우 다른 종류의 요청을 확인하기 위한 제어입니다.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
-
-__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
-
 ##### "default_algo" `[string]`
 - 향후 모든 암호와 세션에 사용할 알고리즘을 정의합니다.
 
@@ -843,38 +753,108 @@ theme
 #### "signatures" (카테고리)
 서명, 서명 파일, 모듈, 등의 설정.
 
-##### "block_attacks" `[bool]`
-- 공격 및 기타 비정상적인 트래픽과 관련된 CIDR을 차단하시겠습니까? 예: 포트 스캔, 해킹, 취약점 조사, 등등. 문제가있는 경우를 제외하고 일반적으로이를 true로 설정해야합니다.
+##### "shorthand" `[string]`
+- 주어진 속기 단어를 사용하는 서명에 대해 긍정적인 일치가 있을 때 요청을 처리하는 방법을 제어합니다.
 
-##### "block_cloud" `[bool]`
-- 클라우드 서비스에서 CIDR을 차단해야합니까? 당신의 웹 사이트에서 API 서비스를 운영하거나 당신이 웹 사이트 간 연결이 예상되는 경우, 이것은 false로 설정해야합니다. 없는 경우에는이를 true로 설정해야합니다.
+```
+shorthand
+├─Attacks ("공격")
+├─Bogon ("⁰ 보곤 IP")
+├─Cloud ("클라우드 서비스")
+├─Generic ("일반")
+├─Legal ("¹ 적법한")
+├─Malware ("멀웨어")
+├─Proxy ("² 프록시")
+├─Spam ("스팸 위험")
+├─Banned ("³ 금지 된")
+├─BadIP ("³ 잘못된 IP")
+├─RL ("³ 제한 속도")
+└─Other ("⁴ 다른")
+```
 
-##### "block_bogons" `[bool]`
-- 보곤 IP 주소의 CIDR을 차단해야합니까? 당신은 로컬 호스트에서 또는 귀하의 LAN에서 로컬 네트워크에서 연결을 수신 한 경우, 이것은 false로 설정해야합니다. 없는 경우에는이를 true로 설정해야합니다.
+__0.__ 웹 사이트에 LAN 또는 localhost를 통한 액세스가 필요한 경우, 이를 차단하지 마십시오. 그렇지 않은 경우, 이를 차단할 수 있습니다.
 
-##### "block_generic" `[bool]`
-- 일반적인 CIDR을 차단해야합니까? (다른 옵션과 관련되지 않은).
+__1.__ 기본 서명 파일은 이것을 사용하지 않습니다, 그러나 일부 사용자에게 유용한 경우를 위해 지원됩니다.
 
-##### "block_legal" `[bool]`
-- 법적 의무에 대응하여 CIDR을 차단 하시겠습니까? CIDRAM은 어떤 CIDR을 기본적으로 "법적 의무에" 연결할 수 없기 때문에이 지시문은 일반적으로 효과가 없습니다. 하지만, 법적 이유로 존재할 가능성이있는 모든 사용자 정의 시그니처 파일 또는 모듈의 이익을위한 추가 제어 수단으로 존재한다.
+__2.__ 사용자가 프록시를 통해 웹사이트에 액세스할 수 있도록 해야 하는 경우, 이를 차단하지 마십시오. 그렇지 않은 경우, 이를 차단할 수 있습니다.
 
-##### "block_malware" `[bool]`
-- 멀웨어와 관련된 CIDR를 차단 하시겠습니까? 여기에는 C&C 서버, 감염된 시스템, 맬웨어 배포와 관련된 컴퓨터 등이 포함됩니다.
+__3.__ 서명에서 직접 사용은 지원되지 않지만, 특정 상황에서는 다른 수단으로 호출될 수 있습니다.
 
-##### "block_proxies" `[bool]`
-- 프록시 서비스 또는 VPN에서 CIDR을 차단해야합니까? 프록시 서비스 또는 VPN이 필요한 경우는, false로 설정해야합니다. 없는 경우에는 보안을 향상시키기 위해이를 true로 설정해야합니다.
+__4.__ 속기 단어를 전혀 사용하지 않거나 CIDRAM에서 인식하지 못하는 경우를 말합니다.
 
-##### "block_spam" `[bool]`
-- 스팸 때문에 CIDR을 차단해야합니까? 문제가있는 경우를 제외하고 일반적으로이를 true로 설정해야합니다.
+__서명당 하나.__ 서명은 여러 프로필을 호출할 수 있지만, 하나의 속기 단어만 사용할 수 있습니다. 여러 개의 속기 단어가 적합할 수 있지만, 하나만 사용할 수 있으므로, 항상 가장 적합한 속기 단어만 사용하려고 합니다.
+
+__우선 사항.__ 선택한 옵션은 항상 선택되지 않은 옵션보다 우선합니다. 예를 들어, 여러 속기 단어가 사용 중이지만, 그중 하나만 차단된 것으로 설정된 경우, 요청은 계속 차단됩니다.
+
+__휴먼 엔드포인트 및 클라우드 서비스.__ 클라우드 서비스는 웹호스팅 제공자, 서버 팜, 데이터 센터 또는 기타 여러 가지를 참조할 수 있습니다. 휴먼 엔드포인트는 인간이 인터넷에 액세스하는 수단을 나타냅니다, 예를 들어, 인터넷 서비스 제공자를 통해. 네트워크는 일반적으로 둘 중 하나만, 제공하지만 때로는 둘 다를 제공할 수도 있습니다. 우리는 잠재적인 휴먼 엔드포인트를 클라우드 서비스로 식별하지 않으려고 합니다. 따라서, 클라우드 서비스는 알려진 인간 엔드포인트와 범위를 공유하는 경우 다른 것으로 식별될 수 있습니다. 마찬가지로, 알려진 인간 엔드포인트가 범위를 공유하지 않는 경우, 클라우드 서비스를 클라우드 서비스로 식별하려고 합니다. 따라서, 클라우드 서비스로 식별된 요청은 알려진 인간 엔드포인트와 범위를 공유하지 않을 가능성이 높습니다. 마찬가지로, 공격이나 스팸으로 식별된 요청은 범위를 공유할 가능성이 높습니다. 그러나, 인터넷은 항상 유동적이며, 네트워크의 목적은 시간이 지남에 따라 변경되며, 범위는 항상 구매 또는 판매되므로, 거짓 양성 관련하여 인식하고 경계하십시오.
 
 ##### "default_tracktime" `[int]`
-- 모듈에 의해 금지 된 IP를 추적하는 초. Default (기본값) = 604800 (1 주).
+- IP 주소를 추적해야 하는 시간(초)입니다. Default (기본값) = 604800 (1 주).
 
 ##### "infraction_limit" `[int]`
 - IP가 IP 추적에 의해 금지되기 전에 발생하는 것이 허용된다 위반의 최대 수. Default (기본값) = 10.
 
 ##### "tracking_override" `[bool]`
 - 모듈이 추적 옵션을 재정의하도록 허용하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
+
+#### "verification" (카테고리)
+요청의 출처를 확인하기 위한 구성.
+
+##### "search_engines" `[string]`
+- 검색 엔진의 요청을 확인하기 위한 컨트롤입니다.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+
+__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
+
+##### "social_media" `[string]`
+- 소셜 미디어 플랫폼의 요청을 확인하기 위한 컨트롤입니다.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+
+__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
+
+** ASN 조회 기능이 필요합니다 (예 : BGPView 모듈을 통해).
+
+##### "other" `[string]`
+- 가능한 경우 다른 종류의 요청을 확인하기 위한 제어입니다.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+
+__"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
 #### "recaptcha" (카테고리)
 ReCaptcha 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
@@ -1159,169 +1139,6 @@ __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master
 
 ##### "pdo_password" `[string]`
 - PDO 암호.
-
-#### "abuseipdb" (카테고리)
-AbuseIPDB 모듈 구성.
-
-##### "api_key" `[string]`
-- 여기에 API 키를 입력하세요.
-
-또한보십시오 :
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- 조회를 수행할 때 보고서가 고려되는 최대 기간(일). 1에서 365 사이의 숫자여야 합니다. Default (기본 설정) = 365.
-
-##### "minimum_confidence_score" `[int]`
-- CIDRAM이 IP 주소를 차단하는 데 필요한 최소 신뢰도 점수 (0에서 100 사이의 숫자여야 합니다). Default (기본 설정) = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- CAPTCHA 제공에 허용되는 최대 신뢰도 점수입니다 (0에서 100 사이의 숫자여야 합니다). Default (기본 설정) = 10.
-
-##### "minimum_total_reports" `[int]`
-- CIDRAM이 IP 주소를 차단하는 데 필요한 최소 총보고서 수입니다. Default (기본 설정) = 1.
-
-##### "report_back" `[bool]`
-- CIDRAM이 API 키를 사용하여 감지된 나쁜 동작을 AbuseIPDB에 다시 보고하도록 허용하시겠습니까? Default (기본 설정) = False.
-
-##### "lookup_strategy" `[int]`
-- 어떤 요청에 대해 조회를 수행해야 합니까?
-
-```
-lookup_strategy
-├─0 (하지 마라.): 아무것도 조회하지 않고 보고 목적으로만 모듈을
-│ 사용하려면 이것을 사용하십시오.
-├─1 (모든 요청.): 더 엄격하고 철저하지만, 제한 및 할당량이 훨씬 더 빨리
-│ 충족될 가능성이 높아, 가장 필요할 때 서비스가 잠길
-│ 가능성이 있습니다. 또한, 조회 결과는 관계없이 항상
-│ 캐시 되지만, 어떤 경우에는 여전히 웹 사이트 성능에
-│ 부정적인 영향을 미칠 수 있습니다. 때에 따라 필요할 수
-│ 있지만, 일반적으로 권장되지는 않습니다.
-└─2 (민감한 페이지만 요청 (예 : 로그인 페이지, 등록 양식, 등등).): 덜 엄격하고 철저하지만, 할당량 및 제한 측면에서보다
-  보수적이며, 성능에 부정적인 영향을 미칠 가능성이
-  작습니다. 대부분의 경우 권장되는 전략입니다.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- API에서 반환된 사용 유형을 사용하여 프로필을 작성하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
-
-#### "bgpview" (카테고리)
-BGPView 모듈 구성 (CIDRAM에 대한 ASN 및 국가 코드 조회 기능을 제공합니다).
-
-##### "blocked_asns" `[string]`
-- BGPView 모듈에서 차단할 ASN 목록입니다.
-
-##### "whitelisted_asns" `[string]`
-- BGPView 모듈에서 화이트리스트에 추가할 ASN 목록입니다.
-
-##### "blocked_ccs" `[string]`
-- BGPView 모듈에서 차단할 국가 목록 ({{Links.ISO.3166}} 2자리 국가 코드로 식별) 목록입니다.
-
-##### "whitelisted_ccs" `[string]`
-- BGPView 모듈에서 허용 목록에 추가할 국가 ({{Links.ISO.3166}} 2자리 국가 코드로 식별) 목록입니다.
-
-#### "bunnycdn" (카테고리)
-BunnyCDN 호환 모듈 구성.
-
-##### "positive_action" `[string]`
-- CIDRAM은 BunnyCDN의 요청을 만났을 때 어떤 작업을 수행해야 합니까? 기본 동작 = 우회.
-
-```
-positive_action
-├─bypass ("바이패스를 트리거합니다.): 하나 이상의 서명이 이미 트리거 된 경우 트리거 된 서명
-│ 수에서 하나의 카운트를 뺍니다. 기본 서명 파일로 인해
-│ 발생할 수 있는 단순 오탄지 처리에 권장됩니다."
-├─greylist ("요청을 그레이리스트에합니다.): 트리거 된 서명 수를 재설정하지만, 요청 처리를
-│ 계속합니다. 요청을 화이트리스트에하고 싶지 않지만,
-│ 우회를 트리거 하는 것보다 더 실질적인 것이 필요할 때
-│ 권장됩니다."
-└─whitelist ("요청을 화이트리스트합니다.): 트리거 된 서명 수를 재설정하고 추가 요청 처리를
-  중단합니다. CIDRAM이 요청을 차단하지 않을 것임을
-  보장합니다."
-```
-
-#### "bypasses" (카테고리)
-기본 서명 바이 패스 구성.
-
-##### "used" `[string]`
-- 어떤 바이 패스를 사용해야 합니까?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (카테고리)
-선택적 보안 추가 모듈 구성.
-
-##### "signatures" `[string]`
-- 어떤 유형의 서명을 존중해야 합니까?
-
-```
-signatures
-├─empty_ua ("빈 사용자 에이전트.")
-├─query ("요청 질의를 기반으로 하는 서명.")
-├─raw ("원시 요청 입력을 기반으로 하는 서명.")
-├─ruri ("재구성된 URI를 기반으로 하는 서명.")
-└─uri ("요청 URI를 기반으로 하는 서명.")
-```
-
-#### "projecthoneypot" (카테고리)
-Project Honeypot 모듈 구성.
-
-##### "api_key" `[string]`
-- 여기에 API 키를 입력하세요.
-
-또한보십시오 :
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- 조회를 수행할 때 보고서가 고려되는 최대 기간(일). Default (기본 설정) = 365.
-
-##### "minimum_threat_score" `[int]`
-- CIDRAM이 IP 주소를 차단하는 데 필요한 최소 위협 점수입니다 (1에서 100 사이의 숫자여야 합니다). Default (기본 설정) = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- CAPTCHA를 제공하는 데 허용되는 최대 위협 점수입니다 (1에서 100 사이의 숫자여야 합니다). Default (기본 설정) = 10.
-
-##### "lookup_strategy" `[int]`
-- 어떤 요청에 대해 조회를 수행해야 합니까?
-
-```
-lookup_strategy
-├─0 (하지 마라.): 아무것도 조회하지 않고 보고 목적으로만 모듈을
-│ 사용하려면 이것을 사용하십시오.
-├─1 (모든 요청.): 더 엄격하고 철저하지만, 제한 및 할당량이 훨씬 더 빨리
-│ 충족될 가능성이 높아, 가장 필요할 때 서비스가 잠길
-│ 가능성이 있습니다. 또한, 조회 결과는 관계없이 항상
-│ 캐시 되지만, 어떤 경우에는 여전히 웹 사이트 성능에
-│ 부정적인 영향을 미칠 수 있습니다. 때에 따라 필요할 수
-│ 있지만, 일반적으로 권장되지는 않습니다.
-└─2 (민감한 페이지만 요청 (예 : 로그인 페이지, 등록 양식, 등등).): 덜 엄격하고 철저하지만, 할당량 및 제한 측면에서보다
-  보수적이며, 성능에 부정적인 영향을 미칠 가능성이
-  작습니다. 대부분의 경우 권장되는 전략입니다.
-```
-
-#### "sfs" (카테고리)
-Stop Forum Spam 모듈에 대한 구성입니다.
-
-##### "offer_captcha" `[bool]`
-- 이 모듈에 의해 요청이 차단되면, 보안 문자가 제공될 수 있습니다. Default (기본값) = True. 참고 : 다른 지시문을 무시하지 않습니다. CAPTCHA가 제공되려면, 모든 지시문이 동의해야 하고, 필요한 키가 구성되어야 합니다. CAPTCHA가 제공되도록 허용되는 경우, 이 지시문을 false로 설정하면 이 모듈에서 특별히 차단된 요청에 대해 CAPTCHA가 제공되지 않도록 방지할 수 있습니다.
 
 ---
 
@@ -2292,4 +2109,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 6월 30일.
+최종 업데이트 : 2022년 7월 9일.

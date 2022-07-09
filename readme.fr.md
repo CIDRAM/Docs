@@ -188,9 +188,6 @@ Configuration (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Configuration (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ Configuration (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### « general » (Catégorie)
@@ -642,62 +608,6 @@ ban_override
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="fr">Que puis-je utiliser pour « default_dns » ?</a></em>
 
-##### « search_engine_verification » `[string]`
-- Contrôles pour vérifier les requêtes des moteurs de recherche.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
-
-__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
-
-##### « social_media_verification » `[string]`
-- Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
-
-__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
-
-** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module BGPView).
-
-##### « other_verification » `[string]`
-- Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
-
-__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
-
 ##### « default_algo » `[string]`
 - Définit quel algorithme utiliser pour tous les mots de passe et les sessions à l'avenir.
 
@@ -841,38 +751,108 @@ theme
 #### « signatures » (Catégorie)
 Configuration pour les signatures, fichiers de signatures, modules, etc.
 
-##### « block_attacks » `[bool]`
-- Bloquer les CIDRs associés aux attaques et autres trafics anormaux ? Par exemple, les analyses de ports, le piratage, la recherche de vulnérabilités, etc. Sauf si vous rencontrez des problèmes quand vous faire, en généralement, cette directive devrait toujours être fixé comme true.
+##### « shorthand » `[string]`
+- Contrôle ce qu'il faut faire avec une requête lorsqu'il y a une correspondance positive avec une signature qui utilise les mots abrégés donnés.
 
-##### « block_cloud » `[bool]`
-- Bloquer les CIDRs identifié comme appartenant aux services d'hébergement/cloud ? Si vous utilisez un service d'API à partir de votre site web ou si vous attendez d'autres sites à connecter avec votre site web, cette directive devrait être fixé sur false. Si vous ne pas, puis, cette directive doit être fixé comme true.
+```
+shorthand
+├─Attacks ("Attaques")
+├─Bogon ("⁰ Bogon IP")
+├─Cloud ("Service de cloud")
+├─Generic ("Générique")
+├─Legal ("¹ Légal")
+├─Malware ("Logiciels malveillants")
+├─Proxy ("² Proxy")
+├─Spam ("Spam risque")
+├─Banned ("³ Interdit")
+├─BadIP ("³ Invalide IP !")
+├─RL ("³ Débit limité")
+└─Other ("⁴ Autres")
+```
 
-##### « block_bogons » `[bool]`
-- Bloquer les CIDRs bogon/martian ? Si vous attendre connexions à votre site web à partir de dans votre réseau local, à partir de localhost, ou à partir de votre LAN, cette directive devrait être fixé sur false. Si vous ne attendez pas à ces telles connexions, cette directive doit être fixé comme true.
+__0.__ Si votre site Web a besoin d'accès via LAN ou localhost, ne bloquez pas cela. Sinon, vous pouvez bloquer cela.
 
-##### « block_generic » `[bool]`
-- Bloquer les CIDRs recommandé en généralement pour les listes noires ? Cela couvre toutes les signatures qui ne sont pas marqué comme étant partie de l'autre plus spécifique catégories de signatures.
+__1.__ Aucun des fichiers de signature défaut n'utilisent pas cela, mais il est néanmoins supporté au cas où cela pourrait être utile à certains utilisateurs.
 
-##### « block_legal » `[bool]`
-- Bloquer les CIDRs en réponse à des obligations légales ? Cette directive ne devrait normalement pas avoir d'effet, car CIDRAM n'associe aucun CIDR avec des « obligations légales » par défaut, mais il existe néanmoins comme une mesure de contrôle supplémentaire au profit de tous les fichiers de signatures personnalisées ou des modules qui pourraient exister pour des raisons légales.
+__2.__ Si vous avez besoin que les utilisateurs puissent accéder à votre site Web via des proxys, ne bloquez pas cela. Sinon, vous pouvez bloquer cela.
 
-##### « block_malware » `[bool]`
-- Bloquer les CIDRs associés à des logiciels malveillants ? Cela inclut les serveurs C&C, les machines infectées, les machines impliquées dans la distribution de logiciels malveillants, etc.
+__3.__ L'utilisation directe dans les signatures n'est pas supporté, mais elle peut être invoqué par d'autres moyens dans des circonstances particulières.
 
-##### « block_proxies » `[bool]`
-- Bloquer les CIDRs identifié comme appartenant aux services proxy ou VPNs ? Si vous avez besoin que les utilisateurs puissent accéder à votre site web à partir des services de proxy ou des VPNs, cette directive devrait être fixé sur false. Autrement, si vous n'avez besoin pas des services de proxy ou des VPNs, cette directive devrait être fixé sur true comme moyen d'améliorer la sécurité.
+__4.__ Fait référence aux cas où les mots abrégés ne sont pas du tout utilisés, ou ne sont pas reconnus par le CIDRAM.
 
-##### « block_spam » `[bool]`
-- Bloquer les CIDRs identifié comme étant risque élevé pour le spam ? Sauf si vous rencontrez des problèmes quand vous faire, en généralement, cette directive devrait toujours être fixé comme true.
+__Un par signature.__ Une signature peut invoquer plusieurs profils, mais ne peut utiliser qu'un seul mot abrégé. Il est possible que plusieurs mots abrégés sont appropriés, mais comme un seul peut être utilisé, nous efforçons de toujours n'utiliser que le plus approprié.
+
+__Priorité.__ Une option sélectionnée est toujours prioritaire sur une option non sélectionnée. Par exemple, si plusieurs mots abrégés sont en jeu mais qu'un seul d'entre eux est défini comme étant bloqué, la demande sera toujours bloqué.
+
+__Points de terminaison humains et services de cloud.__ Service de cloud peut faire référence aux fournisseurs d'hébergement Web, aux fermes de serveurs, aux centres de données, ou à un certain nombre d'autres choses. Point de terminaison humain fait référence aux moyens par lesquels un humain accède à Internet, par exemple, par le biais d'un fournisseur de services internet. Un réseau ne fournit généralement que l'un ou l'autre, mais peut parfois fournir les deux. Nous visons à ne jamais identifier les points de terminaison humains potentiels comme des services de cloud. Par conséquent, un service de cloud peut être identifié comme autre chose si sa gamme est partagé par des points de terminaison humains connus. À l'inverse, nous visons à toujours identifier les services de cloud, dont les gammes ne sont partagés par aucun point de terminaison humain connu, comme des services de cloud. Par conséquent, une requête identifié explicitement comme un service de cloud ne partage probablement pas sa gamme avec des points de terminaison humains connus. De même, une requête identifié explicitement par des attaques ou des spam risque les partage probablement. Cela dit, l'internet est toujours en mouvement, les objectifs des réseaux changent avec le temps, et les gammes sont toujours achetés ou vendues, alors restez conscient et vigilant en ce qui concerne les faux positifs.
 
 ##### « default_tracktime » `[int]`
-- Combien de secondes pour suivre les IP interdites par les modules. Défaut = 604800 (1 semaine).
+- Combien de secondes les adresses IP doivent être suivies. Défaut = 604800 (1 semaine).
 
 ##### « infraction_limit » `[int]`
 - Nombre maximal d'infractions qu'une IP est autorisée à engager avant d'être interdite par la surveillance des IPs. Défaut = 10.
 
 ##### « tracking_override » `[bool]`
 - Autoriser les modules à remplacer les options de suivi ? True = Oui [Défaut] ; False = Non.
+
+#### « verification » (Catégorie)
+Configuration pour vérifier d'où proviennent les requêtes.
+
+##### « search_engines » `[string]`
+- Contrôles pour vérifier les requêtes des moteurs de recherche.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
+
+__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
+
+##### « social_media » `[string]`
+- Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
+
+__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
+
+** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module BGPView).
+
+##### « other » `[string]`
+- Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
+
+__Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
 #### « recaptcha » (Catégorie)
 Configuration pour ReCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
@@ -1157,172 +1137,6 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#HO
 
 ##### « pdo_password » `[string]`
 - Mot de passe PDO.
-
-#### « abuseipdb » (Catégorie)
-Configuration pour le module AbusIPDB.
-
-##### « api_key » `[string]`
-- Veuillez entrer votre clé API ici.
-
-Voir également :
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### « max_age_in_days » `[int]`
-- L'âge maximal en jours pour lequel les rapports seront pris en compte lors de l'exécution de recherches (doit être un nombre compris entre 1 et 365). Défaut = 365.
-
-##### « minimum_confidence_score » `[int]`
-- Le score de confiance minimum requis pour que CIDRAM bloque une adresse IP (doit être un nombre compris entre 0 et 100). Défaut = 50.
-
-##### « max_cs_for_captcha » `[int]`
-- Le score de confiance maximal autorisé pour que les CAPTCHA soient servis (doit être un nombre compris entre 0 et 100). Défaut = 10.
-
-##### « minimum_total_reports » `[int]`
-- Le nombre minimum de rapports totaux requis pour que CIDRAM bloque une adresse IP. Défaut = 1.
-
-##### « report_back » `[bool]`
-- Autoriser CIDRAM à rapporter les mauvais comportements détectés à AbuseIPDB à l'aide de votre clé API ? Défaut = False.
-
-##### « lookup_strategy » `[int]`
-- Pour quelles requêtes les recherches doivent-elles être effectuées ?
-
-```
-lookup_strategy
-├─0 (Aucun.): Si vous souhaitez utiliser le module seulement à des fins de création de
-│ rapports, sans rien rechercher, utilisez ceci.
-├─1 (Chaque requête.): Plus rigoureux et minutieux, mais aussi plus susceptible d'atteindre les
-│ limites et les quotas beaucoup plus rapidement, ce qui peut entraîner le
-│ blocage du service au moment où il est le plus nécessaire. De plus, bien
-│ que les résultats de la recherche soient toujours mis en cache, cela
-│ pourrait néanmoins avoir un impact négatif sur les performances du site
-│ Web dans certains cas. Peut être nécessaire dans certains cas, mais
-│ généralement pas recommandé.
-└─2 (Requêtes de pages sensibles seulement (par exemple, les pages de connexion, les formulaires d'enregistrement, etc).): Moins rigoureux et minutieux, mais plus prudent en termes de quotas et de
-  limites, et moins susceptible d'avoir un impact négatif sur les
-  performances. La stratégie recommandée dans la plupart des cas.
-```
-
-##### « build_profiles_from_usage_type » `[bool]`
-- Créer des profils à l'aide du type d'utilisation renvoyé par l'API ? False = Non. True = Oui. Défaut = True.
-
-#### « bgpview » (Catégorie)
-Configuration pour le module BGPView (fournit la fonctionnalité de recherche d'ASN et de code de pays pour CIDRAM).
-
-##### « blocked_asns » `[string]`
-- Une liste des ASN à bloquer lorsqu'ils sont mis en correspondance par le module BGPView.
-
-##### « whitelisted_asns » `[string]`
-- Une liste des ASN à ajouter à la liste blanche lorsqu'ils sont mis en correspondance par le module BGPView.
-
-##### « blocked_ccs » `[string]`
-- Une liste des pays (identifiés par leurs codes pays {{Links.ISO.3166}} à 2 chiffres) à bloquer lorsqu'ils sont mis en correspondance par le module BGPView.
-
-##### « whitelisted_ccs » `[string]`
-- Une liste de pays (identifiés par leurs codes pays {{Links.ISO.3166}} à 2 chiffres) à ajouter à la liste blanche lorsqu'ils sont mis en correspondance par le module BGPView.
-
-#### « bunnycdn » (Catégorie)
-Configuration pour le module de compatibilité BunnyCDN.
-
-##### « positive_action » `[string]`
-- Quelle action le CIDRAM doit-il effectuer lorsqu'il rencontre une requête de BunnyCDN ? Action par défaut = Contourner.
-
-```
-positive_action
-├─bypass ("Déclenchez un contournement.): Soustrait un compte du nombre de signatures déclenchées, tant qu'au moins
-│ une signature a déjà été déclenchée. Recommandé pour traiter les faux
-│ positifs simples potentiellement causés par les fichiers de signature
-│ défaut."
-├─greylist ("Mettez la requête en la liste grise.): Réinitialise le nombre de signatures déclenchées, mais poursuit le
-│ traitement de la requête. Recommandé quand vous ne souhaitez pas ajouter
-│ la requête à la liste blanche, mais que vous avez besoin de quelque chose
-│ de plus substantiel que de déclencher un contournement."
-└─whitelist ("Mettez la requête en la liste blanche.): Réinitialise le nombre de signatures déclenchées, et abandonne tout
-  traitement ultérieur de la requête. Garantit que le CIDRAM ne bloquera
-  jamais la requête."
-```
-
-#### « bypasses » (Catégorie)
-Configuration pour les contournements de signatures défaut.
-
-##### « used » `[string]`
-- Lequels contournements faut-il utiliser ?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### « extras » (Catégorie)
-Configuration du module de sécurité en option.
-
-##### « signatures » `[string]`
-- Quels types de signatures doivent être honorés ?
-
-```
-signatures
-├─empty_ua ("Agents utilisateurs vides.")
-├─query ("Signatures basés sur les requêtes.")
-├─raw ("Signatures basés sur l'entré brute de la requête.")
-├─ruri ("Signatures basés sur des URI reconstruits.")
-└─uri ("Signatures basés sur les URI des requêtes.")
-```
-
-#### « projecthoneypot » (Catégorie)
-Configuration pour le module Project Honeypot.
-
-##### « api_key » `[string]`
-- Veuillez entrer votre clé API ici.
-
-Voir également :
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### « max_age_in_days » `[int]`
-- L'âge maximal en jours pour lequel les rapports seront pris en compte lors de l'exécution de recherches. Défaut = 365.
-
-##### « minimum_threat_score » `[int]`
-- Le score de menace minimum requis pour que CIDRAM bloque une adresse IP (doit être un nombre compris entre 1 et 100). Défaut = 10.
-
-##### « max_ts_for_captcha » `[int]`
-- Le score de menace maximum autorisé pour recevoir un CAPTCHA (doit être un nombre compris entre 1 et 100). Défaut = 10.
-
-##### « lookup_strategy » `[int]`
-- Pour quelles requêtes les recherches doivent-elles être effectuées ?
-
-```
-lookup_strategy
-├─0 (Aucun.): Si vous souhaitez utiliser le module seulement à des fins de création de
-│ rapports, sans rien rechercher, utilisez ceci.
-├─1 (Chaque requête.): Plus rigoureux et minutieux, mais aussi plus susceptible d'atteindre les
-│ limites et les quotas beaucoup plus rapidement, ce qui peut entraîner le
-│ blocage du service au moment où il est le plus nécessaire. De plus, bien
-│ que les résultats de la recherche soient toujours mis en cache, cela
-│ pourrait néanmoins avoir un impact négatif sur les performances du site
-│ Web dans certains cas. Peut être nécessaire dans certains cas, mais
-│ généralement pas recommandé.
-└─2 (Requêtes de pages sensibles seulement (par exemple, les pages de connexion, les formulaires d'enregistrement, etc).): Moins rigoureux et minutieux, mais plus prudent en termes de quotas et de
-  limites, et moins susceptible d'avoir un impact négatif sur les
-  performances. La stratégie recommandée dans la plupart des cas.
-```
-
-#### « sfs » (Catégorie)
-Configuration du module Stop Forum Spam.
-
-##### « offer_captcha » `[bool]`
-- Lorsque les requêtes sont bloquées par ce module, des CAPTCHA peuvent être servis. Défaut = True. Remarque : Ne remplace pas les autres directives. Pour que les CAPTCHA soient servis, toutes les directives doivent être d'accord, les clés nécessaires configurées, etc. Dans le cas où les CAPTCHA seraient normalement autorisés à être servis, définir cette directive sur false fournit un moyen d'empêcher les CAPTCHA d'être servis pour les requêtes bloquées spécifiquement par ce module.
 
 ---
 
@@ -2310,4 +2124,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 30 Juin 2022 (2022.06.30).
+Dernière mise à jour : 9 Juillet 2022 (2022.07.09).

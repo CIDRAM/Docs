@@ -20,7 +20,7 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) ist ein PHP-Skript gestaltete für Websites zu schützen, durch das Blockieren von IP-Adressen als Quellen von unerwünschten Verkehr angesehen, einschließlich (aber nicht beschränkt auf) Datenverkehr von nicht-menschlichen Zugang Endpunkte, Cloud-Services, spambots, Website Schaber, u.s.w. Es tut dies durch die möglichen CIDRs von IP-Adressen zu berechnen, von eingehenden Anfragen geliefert, und dann versuchen, diese gegen ihre Signaturdateien zu entsprechen (Diese Signaturdateien enthalten Listen von CIDRs von IP-Adressen als Ursachen für unerwünschte Verkehrs angesehen); Wenn Übereinstimmungen gefunden werden, die Anfragen ist blockiert.
 
-*(Beziehen auf: [Was ist ein "CIDR"?](#WHAT_IS_A_CIDR)).*
+*(Beziehen auf: [Was ist ein „CIDR“?](#WHAT_IS_A_CIDR)).*
 
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 und darüber hinaus GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
@@ -97,7 +97,7 @@ CIDRAM sollte automatisch unerwünschte Verkehr auf Ihre Website blockieren, ohn
 
 Sie können Ihre Konfiguration anpassen, und Sie können welche CIDRs blockiert festlegen, durch Sie Ihre Konfigurationsdatei und/oder Signaturdateien Modifizieren.
 
-Wenn Sie Falsch-Positivs begegnen, bitte kontaktieren Sie mich zu informieren. *(Beziehen auf: [Was ist ein "Falsch-Positiv"?](#WHAT_IS_A_FALSE_POSITIVE)).*
+Wenn Sie Falsch-Positivs begegnen, bitte kontaktieren Sie mich zu informieren. *(Beziehen auf: [Was ist ein „Falsch-Positiv“?](#WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM kann manuell oder über das Frontend aktualisiert werden. CIDRAM kann auch über Composer oder WordPress aktualisiert werden, wenn es ursprünglich mit diesen Mitteln installiert wurde.
 
@@ -144,7 +144,7 @@ Nachdem Sie Ihren Front-End-Einstiegspunkt erstellt haben, verwenden Sie Ihren B
 
 Hinweis: **Um unautorisierten zugriff auf das Frontend zu verhindern, sollten sie sofort nach dem ersten Login ihren Benutzernamen und Passwort ändern. Dies ist notwendig, da mithilfe des Frontend möglich ist, beliebigen PHP-Code auf Ihre Webseite hochzuladen.**
 
-Für eine optimale Sicherheit wird außerdem empfohlen, die "Zwei-Faktor-Authentifizierung" für alle Frontend-Konten zu aktivieren (Anweisungen unten).
+Für eine optimale Sicherheit wird außerdem empfohlen, die „Zwei-Faktor-Authentifizierung“ für alle Frontend-Konten zu aktivieren (Anweisungen unten).
 
 #### 4.2 WIE MAN DAS FRONTEND BENUTZT.
 
@@ -152,7 +152,7 @@ Anweisungen sind auf jeder Seite des Frontends vorhanden, um die richtige Verwen
 
 #### 4.3 ZWEI-FAKTOR-AUTHENTIFIZIERUNG
 
-Es ist möglich, das Frontend sicherer zu machen, indem Sie die Zwei-Faktor-Authentifizierung ("2FA") aktivieren. Wenn Sie sich bei einem 2FA-aktivierten Konto eingeloggt, wird eine E-Mail an die zugehörige E-Mail-Adresse gesendet. Diese E-Mail enthält einen "2FA-Code", den der Nutzer zusätzlich zum Benutzernamen und Passwort eingeben muss, um sich mit diesem Konto einloggen zu können. Das bedeutet, dass das Erlangen eines Kontopassworts nicht ausreicht, um ein Konto zu übernehmen, da sie auch bereits Zugriff auf die mit diesem Konto verknüpfte E-Mail-Adresse haben müssen, um den mit der Sitzung verbundenen 2FA-Code empfangen und verwenden zu können, dadurch wird das Frontend sicherer.
+Es ist möglich, das Frontend sicherer zu machen, indem Sie die Zwei-Faktor-Authentifizierung ("2FA") aktivieren. Wenn Sie sich bei einem 2FA-aktivierten Konto eingeloggt, wird eine E-Mail an die zugehörige E-Mail-Adresse gesendet. Diese E-Mail enthält einen „2FA-Code“, den der Nutzer zusätzlich zum Benutzernamen und Passwort eingeben muss, um sich mit diesem Konto einloggen zu können. Das bedeutet, dass das Erlangen eines Kontopassworts nicht ausreicht, um ein Konto zu übernehmen, da sie auch bereits Zugriff auf die mit diesem Konto verknüpfte E-Mail-Adresse haben müssen, um den mit der Sitzung verbundenen 2FA-Code empfangen und verwenden zu können, dadurch wird das Frontend sicherer.
 
 Um die Zwei-Faktor-Authentifizierung zu aktivieren, verwenden Sie zunächst die Frontend-Aktualisierungsseite, um die PHPMailer-Komponente zu installieren. CIDRAM verwendet PHPMailer zum Senden von E-Mails.
 
@@ -188,9 +188,6 @@ Konfiguration (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Konfiguration (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,54 +269,26 @@ Konfiguration (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
-#### "general" (Kategorie)
+#### „general“ (Kategorie)
 Allgemeine Konfiguration (jede Kernkonfiguration, die nicht zu anderen Kategorien gehört).
 
-##### "stages" `[string]`
+##### „stages“ `[string]`
 - Kontrollen für die Phasen der Ausführungskette (ob aktiviert, ob Fehler protokolliert, u.s.w.).
 
 ```
@@ -347,7 +313,7 @@ stages
 └─NonBlockedCAPTCHA ("Richten die CAPTCHAs ein (non-blockierte Anfragen)")
 ```
 
-##### "fields" `[string]`
+##### „fields“ `[string]`
 - Kontrollen für die Felder während Blockereignissen (wenn eine Anfrage blockiert wird).
 
 ```
@@ -377,8 +343,8 @@ fields
 └─CAPTCHA ("Status der CAPTCHA")
 ```
 
-##### "timezone" `[string]`
-- Gibt welche Zeitzone verwendet werden soll an (z.B., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, u.s.w.). Damit PHP dies automatisch für Sie erledigt, geben Sie "SYSTEM" an.
+##### „timezone“ `[string]`
+- Gibt welche Zeitzone verwendet werden soll an (z.B., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, u.s.w.). Damit PHP dies automatisch für Sie erledigt, geben Sie „SYSTEM“ an.
 
 ```
 timezone
@@ -387,10 +353,10 @@ timezone
 └─…Andere
 ```
 
-##### "time_offset" `[int]`
+##### „time_offset“ `[int]`
 - Zeitzonenversatz in Minuten.
 
-##### "time_format" `[string]`
+##### „time_format“ `[string]`
 - Das Datumsformat verwendet von CIDRAM. Zusätzliche Optionen können auf Anfrage hinzugefügt werden.
 
 ```
@@ -469,7 +435,7 @@ time_format
 └─…Andere
 ```
 
-##### "ipaddr" `[string]`
+##### „ipaddr“ `[string]`
 - Ort der IP-Adresse der aktuellen Verbindung im gesamten Datenstrom (nützlich für Cloud-Services). Standardeinstellung = REMOTE_ADDR. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
 ```
@@ -489,7 +455,7 @@ Siehe auch:
 - [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
 
-##### "http_response_header_code" `[int]`
+##### „http_response_header_code“ `[int]`
 - Welche HTTP-Status-Message sollte CIDRAM senden, wenn Anfragen blockiert werden?
 
 ```
@@ -513,10 +479,10 @@ http_response_header_code
   Datenverkehr umgehen.
 ```
 
-##### "silent_mode" `[string]`
+##### „silent_mode“ `[string]`
 - Anstatt die „Zugriff verweigert“ Meldung auszugeben, sollte CIDRAM leise die Zugriffe umleiten? Wenn ja, geben Sie den Speicherort an auf welchen die Zugriffe umgeleitet werden sollen. Wenn nein, diese Variable leer lassen.
 
-##### "lang" `[string]`
+##### „lang“ `[string]`
 - Gibt die Standardsprache für CIDRAM an.
 
 ```
@@ -548,10 +514,10 @@ lang
 └─zh-tw ("中文（傳統）")
 ```
 
-##### "lang_override" `[bool]`
+##### „lang_override“ `[bool]`
 - Nach HTTP_ACCEPT_LANGUAGE lokalisieren wann möglich? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "numbers" `[string]`
+##### „numbers“ `[string]`
 - Wie willst du Nummern anzeigen? Wählen Sie das Beispiel aus, das Ihnen am besten entspricht.
 
 ```
@@ -601,10 +567,10 @@ numbers
 └─Tibetan ("༡༢༣༤༥༦༧.༨༩")
 ```
 
-##### "emailaddr" `[string]`
+##### „emailaddr“ `[string]`
 - Wenn Sie möchten, können Sie hier eine E-Mail-Adresse angeben, geben auf den Benutzern wenn sie blockiert, für Unterstützung für den Fall dass sie ist blockiert versehentlich oder im fehler. WARNUNG: Jede E-Mail-Adresse die Sie hier angeben wird sicherlich durch Spambots erworben werden im Zuge ihrer Verwendung hier, und so, es wird dringend empfohlen, wenn Sie hier eine E-Mail-Adresse angeben, dass die E-Mail-Adresse die Sie hier angeben, eine Einwegadresse ist, und/oder eine Adresse die Sie nichts dagegen haben Spam (mit anderen Worten, möchten Sie wahrscheinlich nicht Ihre primären persönlichen oder primären geschäftlichen E-Mail-Adressen verwenden).
 
-##### "emailaddr_display_style" `[string]`
+##### „emailaddr_display_style“ `[string]`
 - Wie möchten Sie die E-Mail-Adresse für die Nutzer anzeigen?
 
 ```
@@ -613,8 +579,8 @@ emailaddr_display_style
 └─noclick ("Nicht klickbarer Text")
 ```
 
-##### "ban_override" `[int]`
-- Überschreiben "http_response_header_code" Wenn "infraction_limit" überschritten wird? Beim überschreiben: Blockierte Anfragen geben eine leere Seite zurück (Template-Dateien werden nicht verwendet). 200 = Nicht überschreiben [Standardeinstellung]. Andere Werte entsprechen den verfügbaren Werten für "http_response_header_code".
+##### „ban_override“ `[int]`
+- Überschreiben „http_response_header_code“ Wenn „infraction_limit“ überschritten wird? Beim überschreiben: Blockierte Anfragen geben eine leere Seite zurück (Template-Dateien werden nicht verwendet). 200 = Nicht überschreiben [Standardeinstellung]. Andere Werte entsprechen den verfügbaren Werten für „http_response_header_code“.
 
 ```
 ban_override
@@ -637,16 +603,206 @@ ban_override
   Datenverkehr umgehen.
 ```
 
-##### "default_dns" `[string]`
+##### „default_dns“ `[string]`
 - Eine Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="de">Was kann ich für „default_dns“ verwenden?</a></em>
 
-##### "search_engine_verification" `[string]`
+##### „default_algo“ `[string]`
+- Definiert den Algorithmus für alle zukünftigen Passwörter und Sitzungen.
+
+```
+default_algo
+├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
+├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
+├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I")
+└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
+```
+
+##### „statistics“ `[string]`
+- Kontrollen für welche statistischen Informationen nachverfolgt werden sollen.
+
+```
+statistics
+├─Blocked-IPv4 ("Anfragen blockiert – IPv4")
+├─Blocked-IPv6 ("Anfragen blockiert – IPv6")
+├─Blocked-Other ("Anfragen blockiert – Andere")
+├─Banned-IPv4 ("Anfragen verbannt – IPv4")
+├─Banned-IPv6 ("Anfragen verbannt – IPv6")
+├─Passed-IPv4 ("Anfragen erlaubt – IPv4")
+├─Passed-IPv6 ("Anfragen erlaubt – IPv6")
+├─Passed-Other ("Anfragen erlaubt – Andere")
+├─CAPTCHAs-Failed ("CAPTCHA versucht – Gescheitert!")
+└─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
+```
+
+##### „force_hostname_lookup“ `[bool]`
+- Hostnamen-Suchen werden normalerweise auf einer „wie benötigt“-Basis durchgeführt, können jedoch für alle Anforderungen erzwungen werden. Dies kann nützlich sein, um detailliertere Informationen in der Protokolldateien bereitzustellen, aber auch kann sich leicht negativ auf die Performance auswirken. Erzwinge Hostnamen-Suche? True = Ja; False = Nein [Standardeinstellung].
+
+##### „allow_gethostbyaddr_lookup“ `[bool]`
+- gethostbyaddr-Suche erlauben, wenn UDP nicht verfügbar ist? True = Ja [Standardeinstellung]; False = Nein.
+
+Hinweis: IPv6-Lookups funktionieren auf einigen 32-Bit-Systemen möglicherweise nicht richtig.
+
+##### „disabled_channels“ `[string]`
+- Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
+
+```
+disabled_channels
+├─GitHub ("GitHub")
+├─BitBucket ("BitBucket")
+└─GoogleDNS ("GoogleDNS")
+```
+
+##### „default_timeout“ `[int]`
+- Standardzeitlimit für externe Anforderungen? Standardeinstellung = 12 Sekunden.
+
+#### „components“ (Kategorie)
+Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Komponenten. Wird normalerweise von der Update-Seite ausgefüllt, aber kann auch von hier aus verwaltet werden, um eine genauere Kontrolle zu haben und für benutzerdefinierte Komponenten die von der Update-Seite nicht erkannt werden.
+
+##### „ipv4“ `[string]`
+- IPv4-Signaturdateien.
+
+##### „ipv6“ `[string]`
+- IPv6-Signaturdateien.
+
+##### „modules“ `[string]`
+- Module.
+
+##### „imports“ `[string]`
+- Importe. Wird normalerweise verwendet um die Konfigurationsinformationen einer Komponente an CIDRAM zu liefern.
+
+##### „events“ `[string]`
+- Ereignishandler. Wird normalerweise verwendet um das interne Verhalten von CIDRAM zu ändern oder um zusätzliche Funktionen bereitzustellen.
+
+#### „logging“ (Kategorie)
+Konfiguration im Zusammenhang mit der Protokollierung (mit Ausnahme der Konfiguration die für andere Kategorien gilt).
+
+##### „standard_log“ `[string]`
+- Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „apache_style_log“ `[string]`
+- Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „serialised_log“ `[string]`
+- Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „error_log“ `[string]`
+- Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „truncate“ `[string]`
+- Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
+
+##### „log_rotation_limit“ `[int]`
+- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein dürfen. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier das gewünschte Limit angeben. Ein Wert von 0 deaktiviert die Protokollrotation.
+
+##### „log_rotation_action“ `[string]`
+- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben.
+
+```
+log_rotation_action
+├─Delete ("Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
+└─Archive ("Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
+```
+
+##### „log_banned_ips“ `[bool]`
+- Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
+
+##### „log_sanitisation“ `[bool]`
+- Wenn Sie die Frontend Protokolldateien-Seite verwenden, um Protokolldaten anzuzeigen, saniert CIDRAM die Protokolldaten vor der Anzeige, um Benutzer vor XSS-Angriffen und anderen potenziellen Bedrohungen zu schützen, die Protokolldaten enthalten könnten. Standardmäßig werden Daten während der Protokollierung jedoch nicht saniert. Dadurch wird sichergestellt, dass die Protokolldaten genau aufbewahrt werden, um eine eventuell erforderliche heuristische oder forensische Analyse zu unterstützen. Falls jedoch ein Benutzer versucht, Protokolldaten mit externen Werkzeuge zu lesen, und wenn diese externen Werkzeuge keinen eigenen Sanierungsprozess durchführen, der Benutzer könnte XSS-Angriffen ausgesetzt sein. Bei Bedarf können Sie das Standardverhalten mithilfe dieser Konfigurationsanweisung ändern. True = Sanieren der Daten, wenn der Daten protokolliert (Daten werden weniger genau aufbewahrt, jedoch das XSS-Risiko ist geringer). False = Sanieren der Daten nicht, wenn der Daten protokolliert (Daten werden genauer aufbewahrt, jedoch das XSS-Risiko ist höher) [Standardeinstellung].
+
+#### „frontend“ (Kategorie)
+Konfiguration für das Front-End.
+
+##### „frontend_log“ `[string]`
+- Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „signatures_update_event_log“ `[string]`
+- Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+##### „max_login_attempts“ `[int]`
+- Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
+
+##### „theme“ `[string]`
+- Standard-Thema für das Front-End zu verwenden.
+
+```
+theme
+├─default ("Default")
+├─bluemetal ("Blue Metal")
+├─fullmoon ("Full Moon")
+├─moss ("Moss")
+├─primer ("Primer")
+├─primerdark ("Primer Dark")
+├─rbi ("Red-Blue Inverted")
+├─slate ("Slate")
+└─…Andere
+```
+
+##### „magnification“ `[float]`
+- Schriftvergrößerung. Standardeinstellung = 1.
+
+##### „remotes“ `[string]`
+- Eine Liste der Adressen an denen der Updater Komponenten-Metadaten abruft. Dies muss möglicherweise beim Upgrade auf eine neue Hauptversion oder beim Erwerb einer neuen Quelle für Updates angepasst werden, aber sollte unter normalen Umständen in Ruhe gelassen werden.
+
+##### „enable_two_factor“ `[bool]`
+- Diese Direktive bestimmt, ob 2FA für Frontend-Konten verwendet werden soll.
+
+#### „signatures“ (Kategorie)
+Konfiguration für Signaturen, Signaturdateien, Module, u.s.w.
+
+##### „shorthand“ `[string]`
+- Kontrollen für was mit einer Anfrage zu tun wenn es gibt eine positive Übereinstimmung mit einer Signatur die die angegebenen Kurzwörter verwendet.
+
+```
+shorthand
+├─Attacks ("Angriffe")
+├─Bogon ("⁰ Bogon-IP")
+├─Cloud ("Cloud-Service")
+├─Generic ("Generisches")
+├─Legal ("¹ Gesetzliche")
+├─Malware ("Malware")
+├─Proxy ("² Proxy-Service")
+├─Spam ("Spam Risiko")
+├─Banned ("³ Verbannt")
+├─BadIP ("³ Ungültige IP!")
+├─RL ("³ Rate begrenzt")
+└─Other ("⁴ Andere")
+```
+
+__0.__ Wenn Ihre Website Zugriff über LAN oder localhost benötigt, blockieren Sie dies nicht. Andernfalls können Sie dies blockieren.
+
+__1.__ Keine der Standard-Signaturdateien verwendet dies, aber es wird trotzdem unterstützt für in dem Fall es für einige Benutzer nützlich sein könnte.
+
+__2.__ Wenn Sie möchten dass Benutzer können über Proxys auf Ihre Website zugreifen können, blockieren Sie dies nicht. Andernfalls können Sie dies blockieren.
+
+__3.__ Die direkte Verwendung in Signaturen wird nicht unterstützt, aber es kann unter bestimmten Umständen auf andere Weise aufgerufen werden.
+
+__4.__ Dies bezieht auf Fälle, in denen Kurzwörter überhaupt nicht verwendet werden, oder von CIDRAM nicht erkannt werden.
+
+__Eine pro Signature.__ Eine Signatur kann mehrere Profile aufrufen, aber kann nur ein Kurzwort verwenden. Es ist möglich dass mehrere Kurzwörter geeignet sind, aber da nur eines verwendet werden kann, wir bemühen immer nur das geeignetste zu verwenden.
+
+__Priorität.__ Eine ausgewählte Option hat immer Vorrang vor eine nicht ausgewählte Option. Wenn beispielsweise mehrere Kurzwörter im Spiel sind, aber nur eines davon als blockiert festgelegt ist, die Anfrage trotzdem blockiert wird sein.
+
+__Menschliche Endpunkte und Cloud-Service.__ Cloud-Service können sich auf Webhosting-Anbieter, Serverfarmen, Rechenzentren, oder eine Reihe anderer Dinge beziehen. Menschliche Endpunkt bezieht sich auf die Mittel mit denen ein Mensch auf das Internet zugreift, beispielsweise über einen Internetdienstanbieter. Ein Netzwerk bietet normalerweise nur eine oder das andere, aber manchmal bietet beides. Wir bemühen potenzielle menschliche Endpunkte niemals als Cloud-Service zu identifizieren. Daher ein Cloud-Service als etwas anderes identifiziert werden kann wenn sein Bereiche von bekannten menschlichen Endpunkten geteilt wird. Ebenso, wir bemühen immer zum Cloud-Service, deren Bereiche mit keiner bekannten Menschlichen-Endpunkten geteilt werden, als Cloud-Service zu identifizieren. Daher eine Anfrage explizit als Cloud-Service identifizierte, wahrscheinlich ihren Bereich geteilt wird mit keiner bekannten menschlichen Endpunkten. Ebenso, eine Anfrage explizit als Angriffe oder Spam Risiko identifiziert wurde wahrscheinlich ihren Bereich doch teilt. Das Internet ist jedoch ständig in Bewegung, die Zwecke von Netzwerken ändern sich im Laufe der Zeit, und Bereiche werden ständig gekauft oder verkauft, also bleiben Sie aufmerksam und wachsam in Bezug auf Falsch-Positive.
+
+##### „default_tracktime“ `[int]`
+- Wie viele Sekunden sollen IP-Adressen getrackt werden. Standardeinstellung = 604800 (1 Woche).
+
+##### „infraction_limit“ `[int]`
+- Maximale Anzahl von Verstöße, die eine IP zulassen darf, bevor sie durch IP-Tracking verbannt ist. Standardeinstellung = 10.
+
+##### „tracking_override“ `[bool]`
+- Sollten Module erlaubt sein Tracking-Optionen zu überschreiben? True = Ja [Standardeinstellung]; False = Nein.
+
+#### „verification“ (Kategorie)
+Konfiguration zur Verifizierung woher Anfragen stammen.
+
+##### „search_engines“ `[string]`
 - Kontrollen für die Verifizierung von Anfragen von Suchmaschinen.
 
 ```
-search_engine_verification
+search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("Baiduspider/百度")
@@ -667,11 +823,11 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-##### "social_media_verification" `[string]`
+##### „social_media“ `[string]`
 - Kontrollen für die Verifizierung von Anfragen von Social-Media-Plattformen.
 
 ```
-social_media_verification
+social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
@@ -684,11 +840,11 @@ __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv ver
 
 ** Erfordert ASN-Lookup-Funktionalität (z.B., über das BGPView-Modul).
 
-##### "other_verification" `[string]`
+##### „other“ `[string]`
 - Kontrollen für die Verifizierung die anderer Arten von Anfragen sofern möglich.
 
 ```
-other_verification
+other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("AmazonAdBot")
 └─Grapeshot ("Oracle Data Cloud Crawler")
@@ -698,186 +854,10 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-##### "default_algo" `[string]`
-- Definiert den Algorithmus für alle zukünftigen Passwörter und Sitzungen.
-
-```
-default_algo
-├─PASSWORD_DEFAULT ("PASSWORD_DEFAULT")
-├─PASSWORD_BCRYPT ("PASSWORD_BCRYPT")
-├─PASSWORD_ARGON2I ("PASSWORD_ARGON2I")
-└─PASSWORD_ARGON2ID ("PASSWORD_ARGON2ID (PHP >= 7.3.0)")
-```
-
-##### "statistics" `[string]`
-- Kontrollen für welche statistischen Informationen nachverfolgt werden sollen.
-
-```
-statistics
-├─Blocked-IPv4 ("Anfragen blockiert – IPv4")
-├─Blocked-IPv6 ("Anfragen blockiert – IPv6")
-├─Blocked-Other ("Anfragen blockiert – Andere")
-├─Banned-IPv4 ("Anfragen verbannt – IPv4")
-├─Banned-IPv6 ("Anfragen verbannt – IPv6")
-├─Passed-IPv4 ("Anfragen erlaubt – IPv4")
-├─Passed-IPv6 ("Anfragen erlaubt – IPv6")
-├─Passed-Other ("Anfragen erlaubt – Andere")
-├─CAPTCHAs-Failed ("CAPTCHA versucht – Gescheitert!")
-└─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
-```
-
-##### "force_hostname_lookup" `[bool]`
-- Hostnamen-Suchen werden normalerweise auf einer "wie benötigt"-Basis durchgeführt, können jedoch für alle Anforderungen erzwungen werden. Dies kann nützlich sein, um detailliertere Informationen in der Protokolldateien bereitzustellen, aber auch kann sich leicht negativ auf die Performance auswirken. Erzwinge Hostnamen-Suche? True = Ja; False = Nein [Standardeinstellung].
-
-##### "allow_gethostbyaddr_lookup" `[bool]`
-- gethostbyaddr-Suche erlauben, wenn UDP nicht verfügbar ist? True = Ja [Standardeinstellung]; False = Nein.
-
-Hinweis: IPv6-Lookups funktionieren auf einigen 32-Bit-Systemen möglicherweise nicht richtig.
-
-##### "disabled_channels" `[string]`
-- Dies kann verwendet werden, um zu verhindern, dass CIDRAM beim Senden von Anforderungen bestimmte Kanäle verwendet (z.B., beim Aktualisieren, beim Abrufen von Komponentenmetadaten, u.s.w.).
-
-```
-disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
-```
-
-##### "default_timeout" `[int]`
-- Standardzeitlimit für externe Anforderungen? Standardeinstellung = 12 Sekunden.
-
-#### "components" (Kategorie)
-Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Komponenten. Wird normalerweise von der Update-Seite ausgefüllt, aber kann auch von hier aus verwaltet werden, um eine genauere Kontrolle zu haben und für benutzerdefinierte Komponenten die von der Update-Seite nicht erkannt werden.
-
-##### "ipv4" `[string]`
-- IPv4-Signaturdateien.
-
-##### "ipv6" `[string]`
-- IPv6-Signaturdateien.
-
-##### "modules" `[string]`
-- Module.
-
-##### "imports" `[string]`
-- Importe. Wird normalerweise verwendet um die Konfigurationsinformationen einer Komponente an CIDRAM zu liefern.
-
-##### "events" `[string]`
-- Ereignishandler. Wird normalerweise verwendet um das interne Verhalten von CIDRAM zu ändern oder um zusätzliche Funktionen bereitzustellen.
-
-#### "logging" (Kategorie)
-Konfiguration im Zusammenhang mit der Protokollierung (mit Ausnahme der Konfiguration die für andere Kategorien gilt).
-
-##### "standard_log" `[string]`
-- Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "apache_style_log" `[string]`
-- Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "serialised_log" `[string]`
-- Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "error_log" `[string]`
-- Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "truncate" `[string]`
-- Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
-
-##### "log_rotation_limit" `[int]`
-- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein dürfen. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier das gewünschte Limit angeben. Ein Wert von 0 deaktiviert die Protokollrotation.
-
-##### "log_rotation_action" `[string]`
-- Die Protokollrotation begrenzt die Anzahl der Protokolldateien, die gleichzeitig vorhanden sein sollten. Wenn neue Protokolldateien erstellt werden, und wenn die Gesamtzahl der Protokolldateien den angegebenen Limit überschreitet, wird die angegebene Aktion ausgeführt. Sie können hier die gewünschte Aktion angeben.
-
-```
-log_rotation_action
-├─Delete ("Löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
-└─Archive ("Zuerst archivieren, und dann löschen Sie die ältesten Protokolldateien, bis das Limit nicht mehr überschritten wird.")
-```
-
-##### "log_banned_ips" `[bool]`
-- Sollen auch blockierte Anfragen von verbannten IPs protokolliert werden? True = Ja [Standardeinstellung]; False = Nein.
-
-##### "log_sanitisation" `[bool]`
-- Wenn Sie die Frontend Protokolldateien-Seite verwenden, um Protokolldaten anzuzeigen, saniert CIDRAM die Protokolldaten vor der Anzeige, um Benutzer vor XSS-Angriffen und anderen potenziellen Bedrohungen zu schützen, die Protokolldaten enthalten könnten. Standardmäßig werden Daten während der Protokollierung jedoch nicht saniert. Dadurch wird sichergestellt, dass die Protokolldaten genau aufbewahrt werden, um eine eventuell erforderliche heuristische oder forensische Analyse zu unterstützen. Falls jedoch ein Benutzer versucht, Protokolldaten mit externen Werkzeuge zu lesen, und wenn diese externen Werkzeuge keinen eigenen Sanierungsprozess durchführen, der Benutzer könnte XSS-Angriffen ausgesetzt sein. Bei Bedarf können Sie das Standardverhalten mithilfe dieser Konfigurationsanweisung ändern. True = Sanieren der Daten, wenn der Daten protokolliert (Daten werden weniger genau aufbewahrt, jedoch das XSS-Risiko ist geringer). False = Sanieren der Daten nicht, wenn der Daten protokolliert (Daten werden genauer aufbewahrt, jedoch das XSS-Risiko ist höher) [Standardeinstellung].
-
-#### "frontend" (Kategorie)
-Konfiguration für das Front-End.
-
-##### "frontend_log" `[string]`
-- Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "signatures_update_event_log" `[string]`
-- Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
-
-##### "max_login_attempts" `[int]`
-- Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
-
-##### "theme" `[string]`
-- Standard-Thema für das Front-End zu verwenden.
-
-```
-theme
-├─default ("Default")
-├─bluemetal ("Blue Metal")
-├─fullmoon ("Full Moon")
-├─moss ("Moss")
-├─primer ("Primer")
-├─primerdark ("Primer Dark")
-├─rbi ("Red-Blue Inverted")
-├─slate ("Slate")
-└─…Andere
-```
-
-##### "magnification" `[float]`
-- Schriftvergrößerung. Standardeinstellung = 1.
-
-##### "remotes" `[string]`
-- Eine Liste der Adressen an denen der Updater Komponenten-Metadaten abruft. Dies muss möglicherweise beim Upgrade auf eine neue Hauptversion oder beim Erwerb einer neuen Quelle für Updates angepasst werden, aber sollte unter normalen Umständen in Ruhe gelassen werden.
-
-##### "enable_two_factor" `[bool]`
-- Diese Direktive bestimmt, ob 2FA für Frontend-Konten verwendet werden soll.
-
-#### "signatures" (Kategorie)
-Konfiguration für Signaturen, Signaturdateien, Module, u.s.w.
-
-##### "block_attacks" `[bool]`
-- Blockieren Sie CIDRs, die mit Angriffen und anderem abnormalem Datenverkehr verbunden sind? z.B., Port-Scans, Hacking, Sondieren nach Schwachstellen, u.s.w. Solange Sie keine Probleme haben während Sie dies tun, allgemein, dies immer auf true sollte gesetzt sein.
-
-##### "block_cloud" `[bool]`
-- CIDRs blockieren, welche zu Web-/Server- Hostern gehören. Wenn Sie eine API betreiben oder erwarten, dass Sie oft Aufrufe von solchen Servern bekommen sollten Sie diese Option auf false (nicht blockieren) setzen. Wenn Sie solche Anfragen blockieren möchten, setzen Sie diese Option auf true [Standarteinstellung].
-
-##### "block_bogons" `[bool]`
-- Blockieren Sie Bogon/Martian CIDRs? Wenn Sie Verbindungen zu Ihrer Website von localhost, von Ihrem LAN, oder von innerhalb Ihres lokalen Netzwerks erwarten, diese Richtlinie auf false sollte gesetzt werden. Wenn Sie diese Verbindungen nicht erwarten, dies auf true sollte gesetzt werden.
-
-##### "block_generic" `[bool]`
-- Blockieren Sie CIDRs allgemein empfohlen für eine schwarze Liste? Dies gilt für alle Signaturen, die nicht als Teil einer der anderen spezifischen Signaturkategorien markiert sind.
-
-##### "block_legal" `[bool]`
-- Blockieren Sie CIDRs als Antwort auf gesetzliche Verpflichtungen? Diese Richtlinie sollte normalerweise keine Wirkung haben, da CIDRAM standardmäßig keine CIDRs mit "gesetzliche Verpflichtungen" assoziiert, aber es existiert dennoch als zusätzliche Kontrollmaßnahme für den Vorteil von benutzerdefinierten Signaturdateien oder Modulen, die aus gesetzlichen Gründen existieren könnten.
-
-##### "block_malware" `[bool]`
-- Blockieren Sie CIDRs in Verbindung mit Malware? Dazu gehören C&C-Server, infizierte Computer, Malware-Verteilung beteiligte Computer, u.s.w.
-
-##### "block_proxies" `[bool]`
-- Blockieren Sie CIDRs identifiziert als zu Proxy-Dienste oder VPNs gehören? Wenn Sie benötigen dass Benutzer auf Ihre Website von Proxy-Dienste und VPNs zugreifen können, diese Richtlinie auf false sollte gesetzt werden. Andernfalls, Wenn Sie Proxy-Dienste oder VPNs nicht benötigen, diese Richtlinie auf true sollte gesetzt werden, als Mittel zur Verbesserung der Sicherheit.
-
-##### "block_spam" `[bool]`
-- Blockieren Sie CIDRs identifiziert als ein hohem Risiko für Spam? Solange Sie keine Probleme haben während Sie dies tun, allgemein, dies immer auf true sollte gesetzt sein.
-
-##### "default_tracktime" `[int]`
-- Wie viele Sekunden sollen durch Module blockierte IPs getrackt werden? Standardeinstellung = 604800 (1 Woche).
-
-##### "infraction_limit" `[int]`
-- Maximale Anzahl von Verstöße, die eine IP zulassen darf, bevor sie durch IP-Tracking verbannt ist. Standardeinstellung = 10.
-
-##### "tracking_override" `[bool]`
-- Sollten Module erlaubt sein Tracking-Optionen zu überschreiben? True = Ja [Standardeinstellung]; False = Nein.
-
-#### "recaptcha" (Kategorie)
+#### „recaptcha“ (Kategorie)
 Konfiguration für ReCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
 
-##### "usemode" `[int]`
+##### „usemode“ `[int]`
 - Wann sollte das CAPTCHA angeboten werden? Hinweis: Whitelist markierte oder verifizierte und nicht blockierte Anfragen müssen niemals ein CAPTCHA abschließen. Auch: CAPTCHAs können eine nützliche zusätzliche Schutzebene gegen Bots und verschiedene Arten von böswilligen automatisierten Anfragen bieten, aber bieten keinen Schutz gegen böswilligen Menschen.
 
 ```
@@ -890,13 +870,13 @@ usemode
 └─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
 ```
 
-##### "lockip" `[bool]`
+##### „lockip“ `[bool]`
 - Sperren Sie CAPTCHA auf IPs?
 
-##### "lockuser" `[bool]`
+##### „lockuser“ `[bool]`
 - Sperren Sie CAPTCHA auf Benutzer?
 
-##### "sitekey" `[string]`
+##### „sitekey“ `[string]`
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
 
 Siehe auch:
@@ -904,7 +884,7 @@ Siehe auch:
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
 - [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
-##### "secret" `[string]`
+##### „secret“ `[string]`
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
 
 Siehe auch:
@@ -912,16 +892,16 @@ Siehe auch:
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
 - [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
-##### "expiry" `[float]`
+##### „expiry“ `[float]`
 - Anzahl der Stunden an die sich CAPTCHA-Instanzen erinnern sollten. Standardeinstellung = 720 (1 Monat).
 
-##### "recaptcha_log" `[string]`
+##### „recaptcha_log“ `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-##### "signature_limit" `[int]`
+##### „signature_limit“ `[int]`
 - Maximal zulässige Anzahl von Signaturen, bevor das CAPTCHA-Angebot zurückgezogen wird. Standardeinstellung = 1.
 
-##### "api" `[string]`
+##### „api“ `[string]`
 - Welche API soll verwendet werden?
 
 ```
@@ -930,13 +910,13 @@ api
 └─Invisible ("V2 (Unsichtbar)")
 ```
 
-##### "show_cookie_warning" `[bool]`
+##### „show_cookie_warning“ `[bool]`
 - Cookie-Warnung anzeigen? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "show_api_message" `[bool]`
+##### „show_api_message“ `[bool]`
 - API-Nachricht anzeigen? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "nonblocked_status_code" `[int]`
+##### „nonblocked_status_code“ `[int]`
 - Welcher Statuscode sollte verwendet werden, wenn nicht-blockierte CAPTCHAs Anforderungen angezeigt werden?
 
 ```
@@ -956,10 +936,10 @@ nonblocked_status_code
   anderen Kontexten empfohlen.
 ```
 
-#### "hcaptcha" (Kategorie)
+#### „hcaptcha“ (Kategorie)
 Konfiguration für HCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
 
-##### "usemode" `[int]`
+##### „usemode“ `[int]`
 - Wann sollte das CAPTCHA angeboten werden? Hinweis: Whitelist markierte oder verifizierte und nicht blockierte Anfragen müssen niemals ein CAPTCHA abschließen. Auch: CAPTCHAs können eine nützliche zusätzliche Schutzebene gegen Bots und verschiedene Arten von böswilligen automatisierten Anfragen bieten, aber bieten keinen Schutz gegen böswilligen Menschen.
 
 ```
@@ -972,34 +952,34 @@ usemode
 └─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
 ```
 
-##### "lockip" `[bool]`
+##### „lockip“ `[bool]`
 - Sperren Sie CAPTCHA auf IPs?
 
-##### "lockuser" `[bool]`
+##### „lockuser“ `[bool]`
 - Sperren Sie CAPTCHA auf Benutzer?
 
-##### "sitekey" `[string]`
+##### „sitekey“ `[string]`
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
 
 Siehe auch:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
-##### "secret" `[string]`
+##### „secret“ `[string]`
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
 
 Siehe auch:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
-##### "expiry" `[float]`
+##### „expiry“ `[float]`
 - Anzahl der Stunden an die sich CAPTCHA-Instanzen erinnern sollten. Standardeinstellung = 720 (1 Monat).
 
-##### "hcaptcha_log" `[string]`
+##### „hcaptcha_log“ `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-##### "signature_limit" `[int]`
+##### „signature_limit“ `[int]`
 - Maximal zulässige Anzahl von Signaturen, bevor das CAPTCHA-Angebot zurückgezogen wird. Standardeinstellung = 1.
 
-##### "api" `[string]`
+##### „api“ `[string]`
 - Welche API soll verwendet werden?
 
 ```
@@ -1008,13 +988,13 @@ api
 └─Invisible ("V1 (Unsichtbar)")
 ```
 
-##### "show_cookie_warning" `[bool]`
+##### „show_cookie_warning“ `[bool]`
 - Cookie-Warnung anzeigen? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "show_api_message" `[bool]`
+##### „show_api_message“ `[bool]`
 - API-Nachricht anzeigen? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "nonblocked_status_code" `[int]`
+##### „nonblocked_status_code“ `[int]`
 - Welcher Statuscode sollte verwendet werden, wenn nicht-blockierte CAPTCHAs Anforderungen angezeigt werden?
 
 ```
@@ -1034,19 +1014,19 @@ nonblocked_status_code
   anderen Kontexten empfohlen.
 ```
 
-#### "legal" (Kategorie)
+#### „legal“ (Kategorie)
 Konfiguration für gesetzliche Anforderungen.
 
-##### "pseudonymise_ip_addresses" `[bool]`
+##### „pseudonymise_ip_addresses“ `[bool]`
 - Pseudonymisieren IP-Adressen beim Schreiben der Protokolldateien? True = Ja [Standardeinstellung]; False = Nein.
 
-##### "privacy_policy" `[string]`
+##### „privacy_policy“ `[string]`
 - Die Adresse einer relevanten Datenschutz-Bestimmungen, die in der Fußzeile aller generierten Seiten angezeigt werden soll. Geben Sie eine URL ein, oder lassen Sie sie leer, um sie zu deaktivieren.
 
-#### "template_data" (Kategorie)
+#### „template_data“ (Kategorie)
 Konfiguration für Vorlagen und Themen.
 
-##### "theme" `[string]`
+##### „theme“ `[string]`
 - Standard-Thema für CIDRAM zu verwenden.
 
 ```
@@ -1062,13 +1042,13 @@ theme
 └─…Andere
 ```
 
-##### "magnification" `[float]`
+##### „magnification“ `[float]`
 - Schriftvergrößerung. Standardeinstellung = 1.
 
-##### "css_url" `[string]`
+##### „css_url“ `[string]`
 - CSS-Datei URL für benutzerdefinierte Themen.
 
-##### "block_event_title" `[string]`
+##### „block_event_title“ `[string]`
 - Der Seitentitel, der für Blockereignisse angezeigt werden soll.
 
 ```
@@ -1078,7 +1058,7 @@ block_event_title
 └─…Andere
 ```
 
-##### "captcha_title" `[string]`
+##### „captcha_title“ `[string]`
 - Der Seitentitel, der für CAPTCHA-Anforderungen angezeigt werden soll.
 
 ```
@@ -1087,25 +1067,25 @@ captcha_title
 └─…Andere
 ```
 
-#### "rate_limiting" (Kategorie)
+#### „rate_limiting“ (Kategorie)
 Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohlen).
 
-##### "max_bandwidth" `[string]`
+##### „max_bandwidth“ `[string]`
 - Die maximal zulässige Bandbreite innerhalb der Zulassungsperiode, bevor die Ratenbegrenzung für zukünftige Anforderungen aktiviert wird. Ein Wert von 0 deaktiviert diese Art der Ratenbegrenzung. Standardeinstellung = 0KB.
 
-##### "max_requests" `[int]`
+##### „max_requests“ `[int]`
 - Die maximale Anzahl von Anforderungen, die innerhalb der Zulassungsperiode zulässig sind, bevor die Ratenbegrenzung für zukünftige Anforderungen aktiviert wird. Ein Wert von 0 deaktiviert diese Art der Ratenbegrenzung. Standardeinstellung = 0.
 
-##### "precision_ipv4" `[int]`
+##### „precision_ipv4“ `[int]`
 - Die Präzision für das Monitoring der IPv4-Nutzung. Der Wert spiegelt die CIDR-Blockgröße. Für beste Präzision auf 32 einstellen. Standardeinstellung = 32.
 
-##### "precision_ipv6" `[int]`
+##### „precision_ipv6“ `[int]`
 - Die Präzision für das Monitoring der IPv6-Nutzung. Der Wert spiegelt die CIDR-Blockgröße. Für beste Präzision auf 128 einstellen. Standardeinstellung = 128.
 
-##### "allowance_period" `[float]`
+##### „allowance_period“ `[float]`
 - Die Anzahl der Stunden, um die Nutzung zu überwachen. Standardeinstellung = 0.
 
-##### "exceptions" `[string]`
+##### „exceptions“ `[string]`
 - Ausnahmen (d.h., Anfragen die nicht ratenbegrenzt sein sollten). Nur relevant wenn die Ratenbegrenzung aktiviert ist.
 
 ```
@@ -1114,215 +1094,49 @@ exceptions
 └─Verified ("Verifizierte Suchmaschinen und Social Media Anfragen")
 ```
 
-#### "supplementary_cache_options" (Kategorie)
+#### „supplementary_cache_options“ (Kategorie)
 Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglicherweise ausloggen.
 
-##### "prefix" `[string]`
-- Dieser Wert hier wird zu allen Cache-Eintragsschlüsseln vorangestellt. Standardeinstellung = "CIDRAM_". Wenn mehrere Installationen auf demselben Server vorhanden sind, kann dies nützlich sein, um ihre Caches getrennt zu halten.
+##### „prefix“ `[string]`
+- Dieser Wert hier wird zu allen Cache-Eintragsschlüsseln vorangestellt. Standardeinstellung = „CIDRAM_“. Wenn mehrere Installationen auf demselben Server vorhanden sind, kann dies nützlich sein, um ihre Caches getrennt zu halten.
 
-##### "enable_apcu" `[bool]`
+##### „enable_apcu“ `[bool]`
 - Dies gibt an, ob APCu für das Caching verwendet werden soll. Standardeinstellung = True.
 
-##### "enable_memcached" `[bool]`
+##### „enable_memcached“ `[bool]`
 - Dies gibt an, ob Memcached für das Caching verwendet werden soll. Standardeinstellung = False.
 
-##### "enable_redis" `[bool]`
+##### „enable_redis“ `[bool]`
 - Dies gibt an, ob Redis für das Caching verwendet werden soll. Standardeinstellung = False.
 
-##### "enable_pdo" `[bool]`
+##### „enable_pdo“ `[bool]`
 - Dies gibt an, ob PDO für das Caching verwendet werden soll. Standardeinstellung = False.
 
-##### "memcached_host" `[string]`
-- Memcached Hostwert. Standardeinstellung = "localhost".
+##### „memcached_host“ `[string]`
+- Memcached Hostwert. Standardeinstellung = „localhost“.
 
-##### "memcached_port" `[int]`
-- Memcached Portwert. Standardeinstellung = "11211".
+##### „memcached_port“ `[int]`
+- Memcached Portwert. Standardeinstellung = „11211“.
 
-##### "redis_host" `[string]`
-- Redis Hostwert. Standardeinstellung = "localhost".
+##### „redis_host“ `[string]`
+- Redis Hostwert. Standardeinstellung = „localhost“.
 
-##### "redis_port" `[int]`
-- Redis Portwert. Standardeinstellung = "6379".
+##### „redis_port“ `[int]`
+- Redis Portwert. Standardeinstellung = „6379“.
 
-##### "redis_timeout" `[float]`
-- Redis Timeout-Wert. Standardeinstellung = "2.5".
+##### „redis_timeout“ `[float]`
+- Redis Timeout-Wert. Standardeinstellung = „2.5“.
 
-##### "pdo_dsn" `[string]`
+##### „pdo_dsn“ `[string]`
 - PDO DSN-Wert. Standardeinstellung = "mysql:dbname=cidram;host=localhost;port=3306".
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#HOW_TO_USE_PDO" hreflang="de">Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?</a></em>
 
-##### "pdo_username" `[string]`
+##### „pdo_username“ `[string]`
 - PDO Nutzername.
 
-##### "pdo_password" `[string]`
+##### „pdo_password“ `[string]`
 - PDO Passwort.
-
-#### "abuseipdb" (Kategorie)
-Konfiguration für das AbuseIPDB-Modul.
-
-##### "api_key" `[string]`
-- Bitte geben Sie hier Ihren API-Schlüssel.
-
-Siehe auch:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- Beim Durchführen die Suchen, das maximale Alter in Tagen für Berichte zu berücksichtigende werden (muss eine Zahl zwischen 1 und 365 sein). Standardeinstellung = 365.
-
-##### "minimum_confidence_score" `[int]`
-- Der minimale Konfidenzwert, der erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann (muss eine Zahl zwischen 0 und 100 sein). Standardeinstellung = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- Die maximale Konfidenzwert, die für die Bereitstellung von CAPTCHAs zulässig sein (muss eine Zahl zwischen 0 und 100 sein). Standardeinstellung = 10.
-
-##### "minimum_total_reports" `[int]`
-- Die Mindestanzahl an Gesamtberichten, die erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann. Standardeinstellung = 1.
-
-##### "report_back" `[bool]`
-- Erlauben Sie CIDRAM, erkanntes schlechtes Verhalten mit Ihrem API-Schlüssel an AbuseIPDB zu melden? Standardeinstellung = False.
-
-##### "lookup_strategy" `[int]`
-- Für welche Anfragen sollen Lookups durchgeführt werden?
-
-```
-lookup_strategy
-├─0 (Keiner.): Wenn Sie das Modul nur für Berichtszwecke verwenden möchten, ohne etwas
-│ nachzuschlagen, verwenden Sie dies.
-├─1 (Alle Anfragen.): Strenger und gründlicher, aber auch mit größerer Wahrscheinlichkeit dass
-│ Limits und Quoten viel schneller erreicht werden, was möglicherweise dazu
-│ führt dass der Dienst gesperrt wird, wenn er am dringendsten benötigt
-│ wird. Obwohl Lookup-Ergebnisse unabhängig davon immer zwischengespeichert
-│ werden, kann dies in einigen Fällen dennoch die Leistung der Website
-│ beeinträchtigen. Kann in manchen Fällen notwendig sein, aber wird im
-│ Allgemeinen nicht empfohlen.
-└─2 (Anfragen nur für sensible Seiten (z.B., Anmeldeseiten, Registrierungsformulare, u.s.w.).): Weniger streng und gründlich, aber konservativer in Bezug auf Quoten und
-  Limits und mit geringerer Wahrscheinlichkeit negativer Auswirkungen auf die
-  Leistung. Die empfohlene Strategie in den meisten Fällen.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Erstellen Profile von der Verwendungstyp von der API zurückgegeben? False = Nein. True = Ja. Standardeinstellung = True.
-
-#### "bgpview" (Kategorie)
-Konfiguration für das BGPView-Modul (bietet eine ASN und Ländercode Suchfunktion für CIDRAM).
-
-##### "blocked_asns" `[string]`
-- Eine Liste von ASNs die blockiert werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
-
-##### "whitelisted_asns" `[string]`
-- Eine Liste von ASNs die auf die Whitelist gesetzt werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
-
-##### "blocked_ccs" `[string]`
-- Eine Liste der Länder (identifiziert durch ihre zweistelligen {{Links.ISO.3166}}-Ländercodes) die blockiert werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
-
-##### "whitelisted_ccs" `[string]`
-- Eine Liste der Länder (identifiziert durch ihre zweistelligen {{Links.ISO.3166}}-Ländercodes) die auf die Whitelist gesetzt werden sollen wenn sie vom BGPView-Modul abgeglichen werden.
-
-#### "bunnycdn" (Kategorie)
-Konfiguration für das BunnyCDN-Kompatibilitätsmodul.
-
-##### "positive_action" `[string]`
-- Welche Aktion soll CIDRAM ausführen wenn es auf eine Anfrage von BunnyCDN trifft? Standardaktion = Bypass.
-
-```
-positive_action
-├─bypass ("Lösen einen Bypass aus.): Subtrahiert einen Zähler von der Anzahl der ausgelösten Signaturen,
-│ solange mindestens eine Signatur bereits ausgelöst wurde. Empfohlen für
-│ den Umgang mit einfachen Falsch-Positiven, die möglicherweise durch die
-│ Standardsignaturdateien verursacht werden."
-├─greylist ("Setzen die Anfrage auf die graue Liste.): Setzt die Anzahl der ausgelösten Signaturen zurück. Jedoch, verarbeitet
-│ die Anforderung weiter. Empfohlen wenn Sie möchten nicht dass die Anfrage
-│ auf die weiße Liste gesetzt wird, aber etwas Wesentlicheres als das
-│ Auslösen einer Bypass benötigen."
-└─whitelist ("Setzen die Anfrage auf die weiße Liste.): Setzt die Anzahl der ausgelösten Signaturen zurück, und bricht jede
-  weitere Bearbeitung der Anfrage ab. Garantiert dass CIDRAM die Anfrage
-  niemals blockiert."
-```
-
-#### "bypasses" (Kategorie)
-Die Konfiguration für die Standard-Signatur-Bypässe.
-
-##### "used" `[string]`
-- Welche Bypässe sollten verwendet werden?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (Kategorie)
-Konfiguration des optionalen Sicherheits-Extras-Modul.
-
-##### "signatures" `[string]`
-- Welche Arten von Signatures sollten eingehaltet werden?
-
-```
-signatures
-├─empty_ua ("Leere Benutzeragenten.")
-├─query ("Signaturen basierend auf Anfrageabfragen.")
-├─raw ("Signaturen basierend auf der Roheingabe des Anfrage.")
-├─ruri ("Signaturen basierend auf rekonstruierten URIs.")
-└─uri ("Signaturen basierend auf den URI des Anfrage.")
-```
-
-#### "projecthoneypot" (Kategorie)
-Konfiguration für das Project-Honeypot-Modul.
-
-##### "api_key" `[string]`
-- Bitte geben Sie hier Ihren API-Schlüssel.
-
-Siehe auch:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- Beim Durchführen die Suchen, das maximale Alter in Tagen für Berichte zu berücksichtigende werden. Standardeinstellung = 365.
-
-##### "minimum_threat_score" `[int]`
-- Die minimale Bedrohungsbewert, die erforderlich ist, damit CIDRAM eine IP-Adresse blockieren kann (muss eine Zahl zwischen 1 und 100 sein). Standardeinstellung = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- Die maximal zulässige Bedrohungsbewert für die Zustellung eines CAPTCHA (muss eine Zahl zwischen 1 und 100 sein). Standardeinstellung = 10.
-
-##### "lookup_strategy" `[int]`
-- Für welche Anfragen sollen Lookups durchgeführt werden?
-
-```
-lookup_strategy
-├─0 (Keiner.): Wenn Sie das Modul nur für Berichtszwecke verwenden möchten, ohne etwas
-│ nachzuschlagen, verwenden Sie dies.
-├─1 (Alle Anfragen.): Strenger und gründlicher, aber auch mit größerer Wahrscheinlichkeit dass
-│ Limits und Quoten viel schneller erreicht werden, was möglicherweise dazu
-│ führt dass der Dienst gesperrt wird, wenn er am dringendsten benötigt
-│ wird. Obwohl Lookup-Ergebnisse unabhängig davon immer zwischengespeichert
-│ werden, kann dies in einigen Fällen dennoch die Leistung der Website
-│ beeinträchtigen. Kann in manchen Fällen notwendig sein, aber wird im
-│ Allgemeinen nicht empfohlen.
-└─2 (Anfragen nur für sensible Seiten (z.B., Anmeldeseiten, Registrierungsformulare, u.s.w.).): Weniger streng und gründlich, aber konservativer in Bezug auf Quoten und
-  Limits und mit geringerer Wahrscheinlichkeit negativer Auswirkungen auf die
-  Leistung. Die empfohlene Strategie in den meisten Fällen.
-```
-
-#### "sfs" (Kategorie)
-Konfiguration für das Stop Forum Spam Modul.
-
-##### "offer_captcha" `[bool]`
-- Wenn Anfragen von diesem Modul blockiert werden, können CAPTCHAs bereitgestellt werden. Standardeinstellung = True. Hinweis: Überschreibt keine anderen Direktiven. Damit CAPTCHAs geliefert werden können, müssen alle Direktiven übereinstimmen, erforderliche Schlüssel konfiguriert sein, u.s.w. In dem Fall dass CAPTCHAs normalerweise zugelassen würden, die Einsetzung dieser Direktive auf „false“ bietet eine Möglichkeit für CAPTCHAs verhindert werden für den Anfragen die speziell von diesem Modul blockiert werden.
 
 ---
 
@@ -1330,7 +1144,7 @@ Konfiguration für das Stop Forum Spam Modul.
 ### 6. <a name="SECTION6"></a>SIGNATURENFORMAT
 
 *Siehe auch:*
-- *[Was ist eine "Signatur"?](#WHAT_IS_A_SIGNATURE)*
+- *[Was ist eine „Signatur“?](#WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 GRUNDLAGEN (FÜR SIGNATURDATEIEN)
 
@@ -1358,25 +1172,25 @@ Die möglichen Werte für `[Funktion]` sind wie folgt:
 - Greylist
 - Deny
 
-Wenn "Run" verwendet wird, wenn die Signatur ausgelöst wird, das Skript ausgeführt (mittels `require_once`) welches durch `[Param]` angegeben wurde (das Arbeitsverzeichnis sollte das Verzeichnis "/vault/" des Skripts sein).
+Wenn „Run“ verwendet wird, wenn die Signatur ausgelöst wird, das Skript ausgeführt (mittels `require_once`) welches durch `[Param]` angegeben wurde (das Arbeitsverzeichnis sollte das Verzeichnis "/vault/" des Skripts sein).
 
 *Beispiel: `127.0.0.0/8 Run example.php`*
 
 Das kann nützlich sein wenn Sie für einige spezifische IPs und/oder CIDRs eigene PHP-Scripte ausführen möchten.
 
-Wenn "Whitelist" verwendet wird, wenn die Signatur ausgelöst wird, wird das Script alle Erkennungen zurücksetzen (wenn es Entdeckungen gab) und bricht die Testfunktion ab. `[Param]` wird ignoriert. Diese Funktion entspricht dem Whitelisting einer bestimmten IP oder CIDR so dass keine Erkennung stattfindet.
+Wenn „Whitelist“ verwendet wird, wenn die Signatur ausgelöst wird, wird das Script alle Erkennungen zurücksetzen (wenn es Entdeckungen gab) und bricht die Testfunktion ab. `[Param]` wird ignoriert. Diese Funktion entspricht dem Whitelisting einer bestimmten IP oder CIDR so dass keine Erkennung stattfindet.
 
 Beispiel: `127.0.0.1/32 Whitelist`
 
-Wenn "Greylist" verwendet wird, wenn die Signatur ausgelöst wird, wird das Skript alle Erkennungen zurücksetzen (wenn es irgendwelche Entdeckungen gab) und springt zur nächsten Signaturdatei, um die Verarbeitung fortzusetzen. `[Param]` wird ignoriert.
+Wenn „Greylist“ verwendet wird, wenn die Signatur ausgelöst wird, wird das Skript alle Erkennungen zurücksetzen (wenn es irgendwelche Entdeckungen gab) und springt zur nächsten Signaturdatei, um die Verarbeitung fortzusetzen. `[Param]` wird ignoriert.
 
 Beispiel: `127.0.0.1/32 Greylist`
 
-Wenn "Deny" verwendet wird, wenn die Signatur ausgelöst wird, vorausgesetzt keine Whitelist-Signatur für die angegebene IP-Adresse und/oder angegebene CIDR ausgelöst wurde, wird der Zugriff auf die geschützte Seite verweigert. "Deny" ist was Sie verwenden möchten, um tatsächlich eine IP-Adresse und/oder CIDR zu blockieren. Wenn eine Signatur asugelöst wird, die "Deny" verwendet, wird die "Zugriff verweigert" Seite generiert und die Anforderung an die geschützte Seite getötet.
+Wenn „Deny“ verwendet wird, wenn die Signatur ausgelöst wird, vorausgesetzt keine Whitelist-Signatur für die angegebene IP-Adresse und/oder angegebene CIDR ausgelöst wurde, wird der Zugriff auf die geschützte Seite verweigert. „Deny“ ist was Sie verwenden möchten, um tatsächlich eine IP-Adresse und/oder CIDR zu blockieren. Wenn eine Signatur asugelöst wird, die „Deny“ verwendet, wird die „Zugriff verweigert“ Seite generiert und die Anforderung an die geschützte Seite getötet.
 
-Der `[Param]`-Wert welcher von "Deny" akzeptiert udn verarbeitet wird wird auf der "Zugriff verweigert" Seite verwendet und wird dem Kunden/Benutzer als Sperrgrund zur Verfügung gestellt. Es kann ein kurzer und einfacher Satz sein um zu erklären, warum Sie sich dazu entschieden haben, diese Blockierregel zu erstellen (alles sollte genügen, sogar eine einfaches "Ich will Sie nicht auf meiner Website"), oder eines von einer Handvoll von Kurzwörter welche von dem Script zur Verfügung gestellt werden.
+Der `[Param]`-Wert welcher von „Deny“ akzeptiert udn verarbeitet wird wird auf der „Zugriff verweigert“ Seite verwendet und wird dem Kunden/Benutzer als Sperrgrund zur Verfügung gestellt. Es kann ein kurzer und einfacher Satz sein um zu erklären, warum Sie sich dazu entschieden haben, diese Blockierregel zu erstellen (alles sollte genügen, sogar eine einfaches „Ich will Sie nicht auf meiner Website“), oder eines von einer Handvoll von Kurzwörter welche von dem Script zur Verfügung gestellt werden.
 
-Die vorbereiteten Erklärungen haben L10N-Unterstützung und können durch das Skript übersetzt werden. Dies geschieht basierend auf der Sprache welche Sie in der `lang` Richtlinie der Skript-Konfiguration angeben. Zusätzlich, können Sie das Skript anweisen dies für "Deny" Signaturen zu ignorieren, basierend auf ihrem `[Param]`-Wert (wenn sie diese Kurzwörter verwenden) über die in der Skript-Konfiguration spezifizierten Richtlinien (jedes Kurzwort hat eine entsprechende Richtlinie für die entsprechenden Signaturen diese entweder zu verarbeiten oder zu ignorieren). `[Param]`-Werte welche diese Kurzwörter nicht verwenden haben jedoch keine L10N-Unterstützung, und werden daher nicht NICHT durch das Skript übersetzt, und sind des weiteren nicht direkt durch die Skript-Konfiguration kontrollierbar.
+Die vorbereiteten Erklärungen haben L10N-Unterstützung und können durch das Skript übersetzt werden. Dies geschieht basierend auf der Sprache welche Sie in der `lang` Richtlinie der Skript-Konfiguration angeben. Zusätzlich, können Sie das Skript anweisen dies für „Deny“ Signaturen zu ignorieren, basierend auf ihrem `[Param]`-Wert (wenn sie diese Kurzwörter verwenden) über die in der Skript-Konfiguration spezifizierten Richtlinien (jedes Kurzwort hat eine entsprechende Richtlinie für die entsprechenden Signaturen diese entweder zu verarbeiten oder zu ignorieren). `[Param]`-Werte welche diese Kurzwörter nicht verwenden haben jedoch keine L10N-Unterstützung, und werden daher nicht NICHT durch das Skript übersetzt, und sind des weiteren nicht direkt durch die Skript-Konfiguration kontrollierbar.
 
 Die verfügbaren Kurzwörter sind:
 - Attacks   ("Angriffe")
@@ -1394,7 +1208,7 @@ Die Übersetzungen für die jeweilige Sprache können in der Datei `/vault/lang/
 
 ##### 6.1.0 SEKTION-TAGS
 
-Wenn Sie Ihre benutzerdefinierten Signaturen in einzelne Sektionen aufteilen möchten, können Sie diese einzelne Sektionen gegenüber dem Skript identifizieren indem sie einen "Sektions-Tag" unmittelbar nach dem Signaturen der jeder Sektion, zusammen mit dem Namen ihrer Signatur-Sektion (siehe Beispiel unten), hinzufügen.
+Wenn Sie Ihre benutzerdefinierten Signaturen in einzelne Sektionen aufteilen möchten, können Sie diese einzelne Sektionen gegenüber dem Skript identifizieren indem sie einen „Sektions-Tag“ unmittelbar nach dem Signaturen der jeder Sektion, zusammen mit dem Namen ihrer Signatur-Sektion (siehe Beispiel unten), hinzufügen.
 
 ```
 # Sektion 1.
@@ -1406,7 +1220,7 @@ Wenn Sie Ihre benutzerdefinierten Signaturen in einzelne Sektionen aufteilen mö
 Tag: Sektion 1
 ```
 
-Um das Abschnitts-Tagging zu unterbrechen und sicherzustellen, dass Tags nicht falsch für Signaturabschnitte aus früheren Signaturdateien identifiziert werden, stellen Sie einfach sicher, dass es mindestens zwei aufeinanderfolgende Zeilenumbrüche zwischen Ihrem Tag und Ihren früheren Signaturabschnitten gibt. Alle nicht markierten Signaturen werden standardmäßig entweder auf "IPv4" oder "IPv6" gesetzt (je nachdem, welche Arten von Signaturen ausgelöst werden).
+Um das Abschnitts-Tagging zu unterbrechen und sicherzustellen, dass Tags nicht falsch für Signaturabschnitte aus früheren Signaturdateien identifiziert werden, stellen Sie einfach sicher, dass es mindestens zwei aufeinanderfolgende Zeilenumbrüche zwischen Ihrem Tag und Ihren früheren Signaturabschnitten gibt. Alle nicht markierten Signaturen werden standardmäßig entweder auf „IPv4“ oder „IPv6“ gesetzt (je nachdem, welche Arten von Signaturen ausgelöst werden).
 
 ```
 1.2.3.4/32 Deny Bogon
@@ -1417,7 +1231,7 @@ Um das Abschnitts-Tagging zu unterbrechen und sicherzustellen, dass Tags nicht f
 Tag: Sektion 1
 ```
 
-In dem obigen Beispiel, wird `1.2.3.4/32` und `2.3.4.5/32` als "IPv4" markiert werden, wohingegen `4.5.6.7/32` und `5.6.7.8/32` als "Sektion 1" markiert wird.
+In dem obigen Beispiel, wird `1.2.3.4/32` und `2.3.4.5/32` als „IPv4“ markiert werden, wohingegen `4.5.6.7/32` und `5.6.7.8/32` als „Sektion 1“ markiert wird.
 
 Die gleiche Logik kann auch zum Trennen anderer Arten von Tags angewendet werden.
 
@@ -1425,7 +1239,7 @@ Insbesondere, Sektion-Tags können beim Debuggen sehr nützlich sein, wenn Falsc
 
 ##### 6.1.1 ABLAUF-TAGS
 
-Wenn Sie möchten dass Signaturen nach einiger Zeit ablaufen, in einer Weise ähnlicher wie Sektion-Tags, können Sie ein "Ablauf-Tag" verwenden um anzugeben wann Signaturen nicht mehr gültig sind. Ablauf-Tags verwenden das Format "JJJJ.MM.TT" (siehe Beispiel unten).
+Wenn Sie möchten dass Signaturen nach einiger Zeit ablaufen, in einer Weise ähnlicher wie Sektion-Tags, können Sie ein „Ablauf-Tag“ verwenden um anzugeben wann Signaturen nicht mehr gültig sind. Ablauf-Tags verwenden das Format „JJJJ.MM.TT“ (siehe Beispiel unten).
 
 ```
 # Sektion 1.
@@ -1438,9 +1252,9 @@ Abgelaufene Signaturen werden niemals in Reaktion irgendeine Anfrage ausgelöst,
 
 ##### 6.1.2 URSPRUNGS-TAGS
 
-Wenn Sie das Herkunftsland für eine bestimmte Signatur angeben möchten, können Sie dies mit einem "Ursprungs-Tag" tun. Ein Ursprungs-Tag akzeptiert einen "[ISO 3166-1 Alpha-2](https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste)"-Code, der dem Ursprungsland für die Signaturen entspricht, auf die es angewendet wird. Diese Codes müssen in Großbuchstaben geschrieben werden (Kleinbuchstaben oder Groß-/Kleinschreibung werden nicht korrekt dargestellt). Wenn ein Ursprungs-Tag verwendet wird, wird es zum Log-Feld für alle Anfragen "Warum blockiert" hinzugefügt, die aufgrund der Signaturen blockiert wurden, auf die das Tag angewendet wurde.
+Wenn Sie das Herkunftsland für eine bestimmte Signatur angeben möchten, können Sie dies mit einem „Ursprungs-Tag“ tun. Ein Ursprungs-Tag akzeptiert einen "[ISO 3166-1 Alpha-2](https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste)"-Code, der dem Ursprungsland für die Signaturen entspricht, auf die es angewendet wird. Diese Codes müssen in Großbuchstaben geschrieben werden (Kleinbuchstaben oder Groß-/Kleinschreibung werden nicht korrekt dargestellt). Wenn ein Ursprungs-Tag verwendet wird, wird es zum Log-Feld für alle Anfragen „Warum blockiert“ hinzugefügt, die aufgrund der Signaturen blockiert wurden, auf die das Tag angewendet wurde.
 
-Wenn die optionale Komponente "flags CSS" installiert ist, und Log-Dateien im Frontend angezeigt werden, werden die angehängten Ursprungs-Informationen in die Flaggen der entsprechenden Länder umgewandelt. Diese Information ist anklickbar um nach Ähnlichen Logeinträgen zu filtern (denjenigen, die auf die Protokollseite zugreifen, die Möglichkeit zu geben, nach dem Herkunftsland zu filtern).
+Wenn die optionale Komponente „flags CSS“ installiert ist, und Log-Dateien im Frontend angezeigt werden, werden die angehängten Ursprungs-Informationen in die Flaggen der entsprechenden Länder umgewandelt. Diese Information ist anklickbar um nach Ähnlichen Logeinträgen zu filtern (denjenigen, die auf die Protokollseite zugreifen, die Möglichkeit zu geben, nach dem Herkunftsland zu filtern).
 
 Hinweis: Technisch gesehen ist, dies keine Form von Geolokalisierung, weil es keine spezifischen Informationen sucht in Bezug auf eingehende IPs, aber stattdessen, erlaubt uns einfach, ein Herkunftsland für alle Anfragen anzugeben, die durch bestimmte Signaturen blockiert werden. Innerhalb derselben Signatur-Sektionen sind mehrere Ursprungs-Tags zulässig.
 
@@ -1556,9 +1370,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 WIE MAN "SPEZIELL MARKIEREN" DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCAPTCHA NUTZT
+##### 6.2.1 WIE MAN „SPEZIELL MARKIEREN“ DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCAPTCHA NUTZT
 
-Wenn "usemode" 2 oder 5 ist, um Signatur-Sektionen "besonders zumarkiert" für die Verwendung mit reCAPTCHA/hCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
+Wenn „usemode“ 2 oder 5 ist, um Signatur-Sektionen „besonders zumarkiert“ für die Verwendung mit reCAPTCHA/hCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1581,11 +1395,11 @@ In Ergänzung, wenn Sie möchten dass CIDRAM wird bestimmte Sektionen innerhalb 
 Ignore Sektion 1
 ```
 
-Dies kann auch erreicht werden, indem die Schnittstelle verwendet wird, die auf der Seite "Sektionsliste" des CIDRAM-Frontend bereitgestellt wird.
+Dies kann auch erreicht werden, indem die Schnittstelle verwendet wird, die auf der Seite „Sektionsliste“ des CIDRAM-Frontend bereitgestellt wird.
 
 ##### 6.3.1 HILFSREGELN
 
-Wenn Sie das Schreiben Ihrer eigenen benutzerdefinierten Signaturdateien oder benutzerdefinierten Module für zu kompliziert halten, könnte die Verwendung der unter "Hilfsregeln" im CIDRAM-Frontend bereitgestellten Schnittstelle eine hilfe sein. Indem Sie die entsprechenden Optionen auswählen und Details zu bestimmten Anforderungsarten angeben, können Sie CIDRAM anweisen, wie auf diese Anfragen zu reagieren ist. "Hilfsregeln" werden ausgeführt, nachdem die Ausführung alle der Signaturdateien und Module bereits abgeschlossen ist.
+Wenn Sie das Schreiben Ihrer eigenen benutzerdefinierten Signaturdateien oder benutzerdefinierten Module für zu kompliziert halten, könnte die Verwendung der unter „Hilfsregeln“ im CIDRAM-Frontend bereitgestellten Schnittstelle eine hilfe sein. Indem Sie die entsprechenden Optionen auswählen und Details zu bestimmten Anforderungsarten angeben, können Sie CIDRAM anweisen, wie auf diese Anfragen zu reagieren ist. „Hilfsregeln“ werden ausgeführt, nachdem die Ausführung alle der Signaturdateien und Module bereits abgeschlossen ist.
 
 #### 6.4 <a name="MODULE_BASICS"></a>GRUNDLAGEN (FÜR MODULE)
 
@@ -1605,15 +1419,15 @@ Modul-Signaturen werden typischerweise mit `$this->trigger` geschrieben. In den 
 
 `$this->trigger` akzeptiert 4 Parameter: `$Condition`, `$ReasonShort`, `$ReasonLong` (optional), und `$DefineOptions` (optional).
 
-Die Wahrheit von `$Condition` wird ausgewertet, und wenn dies wahr/true, wird die Signatur "ausgelöst". Wenn falsch/false, wird die Signatur *nicht* "ausgelöst". `$Condition` enthält typischerweise PHP-Code, um eine Bedingung auszuwerten, die dazu führen sollte, dass eine Anfrage blockiert wird.
+Die Wahrheit von `$Condition` wird ausgewertet, und wenn dies wahr/true, wird die Signatur „ausgelöst“. Wenn falsch/false, wird die Signatur *nicht* „ausgelöst“. `$Condition` enthält typischerweise PHP-Code, um eine Bedingung auszuwerten, die dazu führen sollte, dass eine Anfrage blockiert wird.
 
-`$ReasonShort` wird im Feld "Warum blockierte" angegeben, wenn die Signatur "ausgelöst" wird.
+`$ReasonShort` wird im Feld „Warum blockierte“ angegeben, wenn die Signatur „ausgelöst“ wird.
 
-`$ReasonLong` ist eine optionale Nachricht, die dem Benutzer/Client angezeigt wird, wenn sie blockiert werden, um zu erklären, warum sie blockiert wurden. "Zugriff verweigert" wenn leer.
+`$ReasonLong` ist eine optionale Nachricht, die dem Benutzer/Client angezeigt wird, wenn sie blockiert werden, um zu erklären, warum sie blockiert wurden. „Zugriff verweigert“ wenn leer.
 
-`$DefineOptions` ist ein optionales Array, das Schlüssel/Wert-Paare enthält, mit denen Konfigurationsoptionen definiert werden, die für die Anforderungsinstanz spezifisch sind. Konfigurationsoptionen werden angewendet, wenn die Signatur "ausgelöst" wird.
+`$DefineOptions` ist ein optionales Array, das Schlüssel/Wert-Paare enthält, mit denen Konfigurationsoptionen definiert werden, die für die Anforderungsinstanz spezifisch sind. Konfigurationsoptionen werden angewendet, wenn die Signatur „ausgelöst“ wird.
 
-`$this->trigger` gibt wahr/true zurück, wenn die Signatur "ausgelöst" wird, und falsch/false, wenn dies nicht der Fall ist.
+`$this->trigger` gibt wahr/true zurück, wenn die Signatur „ausgelöst“ wird, und falsch/false, wenn dies nicht der Fall ist.
 
 ##### 6.5.1 "$this->bypass"
 
@@ -1621,13 +1435,13 @@ Signatur-Bypass wird normalerweise mit `$this->bypass` geschrieben.
 
 `$this->bypass` akzeptiert 3 Parameter: `$Condition`, `$ReasonShort`, und `$DefineOptions` (optional).
 
-Die Wahrheit von `$Condition` wird ausgewertet, und wenn dies wahr/true, wird die Signatur "ausgelöst". Wenn falsch/false, wird die Signatur *nicht* "ausgelöst". `$Condition` enthält typischerweise PHP-Code, um eine Bedingung auszuwerten, die dazu führen sollte, dass eine Anfrage *nicht* blockiert wird.
+Die Wahrheit von `$Condition` wird ausgewertet, und wenn dies wahr/true, wird die Signatur „ausgelöst“. Wenn falsch/false, wird die Signatur *nicht* „ausgelöst“. `$Condition` enthält typischerweise PHP-Code, um eine Bedingung auszuwerten, die dazu führen sollte, dass eine Anfrage *nicht* blockiert wird.
 
-`$ReasonShort` wird im Feld "Warum blockierte" angegeben, wenn der Bypass "ausgelöst" wird.
+`$ReasonShort` wird im Feld „Warum blockierte“ angegeben, wenn der Bypass „ausgelöst“ wird.
 
-`$DefineOptions` ist ein optionales Array, das Schlüssel/Wert-Paare enthält, mit denen Konfigurationsoptionen definiert werden, die für die Anforderungsinstanz spezifisch sind. Konfigurationsoptionen werden angewendet, wenn die Bypass "ausgelöst" wird.
+`$DefineOptions` ist ein optionales Array, das Schlüssel/Wert-Paare enthält, mit denen Konfigurationsoptionen definiert werden, die für die Anforderungsinstanz spezifisch sind. Konfigurationsoptionen werden angewendet, wenn die Bypass „ausgelöst“ wird.
 
-`$this->bypass` gibt wahr/true zurück, wenn die Bypass "ausgelöst" wird, und falsch/false, wenn dies nicht der Fall ist.
+`$this->bypass` gibt wahr/true zurück, wenn die Bypass „ausgelöst“ wird, und falsch/false, wenn dies nicht der Fall ist.
 
 ##### 6.5.2 "$this->dnsReverse"
 
@@ -1686,9 +1500,9 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 
 ### 8. <a name="SECTION8"></a>HÄUFIG GESTELLTE FRAGEN (FAQ)
 
-- [Was ist eine "Signatur"?](#WHAT_IS_A_SIGNATURE)
-- [Was ist ein "CIDR"?](#WHAT_IS_A_CIDR)
-- [Was ist ein "Falsch-Positiv"?](#WHAT_IS_A_FALSE_POSITIVE)
+- [Was ist eine „Signatur“?](#WHAT_IS_A_SIGNATURE)
+- [Was ist ein „CIDR“?](#WHAT_IS_A_CIDR)
+- [Was ist ein „Falsch-Positiv“?](#WHAT_IS_A_FALSE_POSITIVE)
 - [Kann CIDRAM ganze Länder blockieren?](#BLOCK_ENTIRE_COUNTRIES)
 - [Wie häufig werden Signaturen aktualisiert?](#SIGNATURE_UPDATE_FREQUENCY)
 - [Ich habe ein Problem bei der Verwendung von CIDRAM und ich weiß nicht was ich tun soll! Bitte helfen Sie!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1701,7 +1515,7 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Ich bin ein Entwickler, Website-Designer oder Programmierer. Kann ich die Arbeit an diesem Projekt annehmen oder anbieten?](#ACCEPT_OR_OFFER_WORK)
 - [Ich möchte zum Projekt beitragen; Darf ich dies machen?](#WANT_TO_CONTRIBUTE)
 - [Kann ich cron verwenden, um automatisch zu aktualisieren?](#CRON_TO_UPDATE_AUTOMATICALLY)
-- [Was sind "Verstöße"?](#WHAT_ARE_INFRACTIONS)
+- [Was sind „Verstöße“?](#WHAT_ARE_INFRACTIONS)
 - [Kann CIDRAM Hostnamen blockieren?](#BLOCK_HOSTNAMES)
 - [Was kann ich für „default_dns“ verwenden?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
 - [Kann ich CIDRAM verwenden, um andere Dinge als Websites zu schützen (z.B. E-Mail-Server, FTP, SSH, IRC u.s.w.)?](#PROTECT_OTHER_THINGS)
@@ -1711,39 +1525,39 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?](#HOW_TO_USE_PDO)
 - [CIDRAM blockiert Cronjobs; Wie kann das behoben werden?](#BLOCK_CRON)
 
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Was ist eine "Signatur"?
+#### <a name="WHAT_IS_A_SIGNATURE"></a>Was ist eine „Signatur“?
 
-Im Kontext von CIDRAM, eine "Signatur" bezieht sich auf Daten, die als Indikator/Identifikator fungieren, für etwas Bestimmtes dass wir suchen (normalerweise eine IP-Adresse oder CIDR), und enthält einige Anweisungen für CIDRAM, wie am besten zu reagieren ist, wenn der angegebene Fall eintritt. Eine typische CIDRAM Signatur sieht in etwa so aus:
+Im Kontext von CIDRAM, eine „Signatur“ bezieht sich auf Daten, die als Indikator/Identifikator fungieren, für etwas Bestimmtes dass wir suchen (normalerweise eine IP-Adresse oder CIDR), und enthält einige Anweisungen für CIDRAM, wie am besten zu reagieren ist, wenn der angegebene Fall eintritt. Eine typische CIDRAM Signatur sieht in etwa so aus:
 
-Für "Signaturdateien":
+Für „Signaturdateien“:
 
 `1.2.3.4/32 Deny Generic`
 
-Für "Module":
+Für „Module“:
 
 ```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
+$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent „Foobar“ not allowed.');
 ```
 
-*Beachten: Signaturen für "Signaturdateien", und Signaturen für "Module", sind nicht dasselbe.*
+*Beachten: Signaturen für „Signaturdateien“, und Signaturen für „Module“, sind nicht dasselbe.*
 
-Oft (aber nicht immer) werden Signaturen in Gruppen zusammengebunden, um "Signatur-Sektionen" zu bilden, oft begleitet von Kommentaren, Markup und/oder verwandten Metadaten welche dazu verwendet werden, um zusätzlichen Kontext für die Signaturen bereitstellen zu können, oder enthalten weitere Informationen.
+Oft (aber nicht immer) werden Signaturen in Gruppen zusammengebunden, um „Signatur-Sektionen“ zu bilden, oft begleitet von Kommentaren, Markup und/oder verwandten Metadaten welche dazu verwendet werden, um zusätzlichen Kontext für die Signaturen bereitstellen zu können, oder enthalten weitere Informationen.
 
-#### <a name="WHAT_IS_A_CIDR"></a>Was ist ein "CIDR"?
+#### <a name="WHAT_IS_A_CIDR"></a>Was ist ein „CIDR“?
 
-"CIDR" ist ein Akronym für "Classless Inter-Domain Routing" *[[1](https://de.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, und es ist dieses Akronym, das als Teil des Namens für dieses Paket, "CIDRAM", verwendet wird, um ein größeres Akronym zu bilden, "Classless Inter-Domain Routing Access Manager".
+„CIDR“ ist ein Akronym für „Classless Inter-Domain Routing“ *[[1](https://de.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, und es ist dieses Akronym, das als Teil des Namens für dieses Paket, „CIDRAM“, verwendet wird, um ein größeres Akronym zu bilden, „Classless Inter-Domain Routing Access Manager“.
 
-Aber, im Kontext von CIDRAM (sowie, in dieser Dokumentation, in Diskussionen über CIDRAM, oder in den CIDRAM-Sprachdaten), wann immer ein "CIDR" (Singular) oder "CIDRs" (Plural) ist erwähnt (und somit, wobei wir diese Wörter als Substantive in ihrem eigenen Recht verwenden, im Gegensatz zu Akronymen), was beabsichtigt und gemeint ist ein Subnetz (oder Subnetze), ausgedrückt mit CIDR-Notation. Der Grund dafür, dass CIDR (oder CIDRs) verwendet wird, anstelle von Subnetz (oder Subnetze) ist um zu klären, es ist Subnetze mit CIDR-Notation ausgedrückt auf die wir uns beziehen (weil CIDR-Notation ist nur eine von verschiedenen Möglichkeiten, wie Subnetze ausgedrückt werden können). CIDRAM könnte daher als "Subnetz Access Manager" betrachtet werden.
+Aber, im Kontext von CIDRAM (sowie, in dieser Dokumentation, in Diskussionen über CIDRAM, oder in den CIDRAM-Sprachdaten), wann immer ein „CIDR“ (Singular) oder „CIDRs“ (Plural) ist erwähnt (und somit, wobei wir diese Wörter als Substantive in ihrem eigenen Recht verwenden, im Gegensatz zu Akronymen), was beabsichtigt und gemeint ist ein Subnetz (oder Subnetze), ausgedrückt mit CIDR-Notation. Der Grund dafür, dass CIDR (oder CIDRs) verwendet wird, anstelle von Subnetz (oder Subnetze) ist um zu klären, es ist Subnetze mit CIDR-Notation ausgedrückt auf die wir uns beziehen (weil CIDR-Notation ist nur eine von verschiedenen Möglichkeiten, wie Subnetze ausgedrückt werden können). CIDRAM könnte daher als „Subnetz Access Manager“ betrachtet werden.
 
-Obwohl diese doppelte Bedeutung von "CIDR" in einigen Fällen mehrdeutig werden kann, diese erklärung, zusammen mit dem Kontext zur Verfügung gestellt, sollte helfen diese Mehrdeutigkeit zu lösen.
+Obwohl diese doppelte Bedeutung von „CIDR“ in einigen Fällen mehrdeutig werden kann, diese erklärung, zusammen mit dem Kontext zur Verfügung gestellt, sollte helfen diese Mehrdeutigkeit zu lösen.
 
-#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Was ist ein "Falsch-Positiv"?
+#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Was ist ein „Falsch-Positiv“?
 
-Der Begriff "Falsch-Positiv" (*Alternative: "falsch-positiv Fehler"; "falscher Alarm"*; Englisch: *false positive*; *false positive error*; *false alarm*), sehr einfach beschrieben, und in einem verallgemeinerten Kontext, wird verwendet, wenn eine Bedingung zu testen ist und wenn die Ergebnisse positiv sind (also wenn die Bedingung als positiv bewertet wird) jedoch die Bedingung als negativ erwartet (oder negativ sein sollte) wird. In der Medizin ist ein "falsch Positiv" ein Begriff dafür, wenn Patienten mit einer Krankheit identifiziert wurden
+Der Begriff „Falsch-Positiv“ (*Alternative: „falsch-positiv Fehler“; „falscher Alarm“*; Englisch: *false positive*; *false positive error*; *false alarm*), sehr einfach beschrieben, und in einem verallgemeinerten Kontext, wird verwendet, wenn eine Bedingung zu testen ist und wenn die Ergebnisse positiv sind (also wenn die Bedingung als positiv bewertet wird) jedoch die Bedingung als negativ erwartet (oder negativ sein sollte) wird. In der Medizin ist ein „falsch Positiv“ ein Begriff dafür, wenn Patienten mit einer Krankheit identifiziert wurden
 
-Einige andere Begriffe verwendet: "Wahr-Positiv", "Wahr-Negativ" und "Falsch-Negativ". Eine "Wahr-Positiv" ist, wenn die Ergebnisse des Tests und der wahren Zustand beide wahr sind (oder "Positiv"), und eine "Wahr-Negativ" ist, wenn die Ergebnisse des Tests und der wahren Zustand beide falsch sind (oder "Negativ"); Eine "Wahr-Positiv" oder Eine "Wahr-Negativ" gilt als eine "korrekte Folgerung". Die Antithese von einem "Falsch-Positiv" ist ein "Falsch-Negativ"; Ein "Falsch-Negativ" ist, wenn die Ergebnisse des Tests negativ sind (d.h., die Bedingung bestimmt wird negativ oder falsch zu sein), aber ein positives Resultat zu erwarten ist (oder sollte gewesen, d.h., der Zustand, in Wirklichkeit, ist "positiv", oder "wahr").
+Einige andere Begriffe verwendet: „Wahr-Positiv“, „Wahr-Negativ“ und „Falsch-Negativ“. Eine „Wahr-Positiv“ ist, wenn die Ergebnisse des Tests und der wahren Zustand beide wahr sind (oder „Positiv“), und eine „Wahr-Negativ“ ist, wenn die Ergebnisse des Tests und der wahren Zustand beide falsch sind (oder „Negativ“); Eine „Wahr-Positiv“ oder Eine „Wahr-Negativ“ gilt als eine „korrekte Folgerung“. Die Antithese von einem „Falsch-Positiv“ ist ein „Falsch-Negativ“; Ein „Falsch-Negativ“ ist, wenn die Ergebnisse des Tests negativ sind (d.h., die Bedingung bestimmt wird negativ oder falsch zu sein), aber ein positives Resultat zu erwarten ist (oder sollte gewesen, d.h., der Zustand, in Wirklichkeit, ist „positiv“, oder „wahr“).
 
-Im Kontext der CIDRAM, Diese Begriffe beziehen sich auf der Signaturen von CIDRAM, und was/wen sie blockieren. Wenn CIDRAM Blöcke eine IP-Adresse wegen schlechten, veralteten oder falschen Signaturen blockieren, sollten dies aber nicht so getan haben, oder wenn sie es aus den falschen Gründen, beziehen wir uns auf dieses Ergebnis als "Falsch-Positiv". Wenn CIDRAM, aufgrund unvorhergesehener Bedrohungen, fehlenden Signaturen oder Defiziten in ihren Signaturen, versagt eine IP-Adresse zu blockieren, die blockiert werden sollte, beziehen wir uns auf dieses Ereignis als eine "verpasste Erkennung" (das entspricht einem "Falsch-Negativ").
+Im Kontext der CIDRAM, Diese Begriffe beziehen sich auf der Signaturen von CIDRAM, und was/wen sie blockieren. Wenn CIDRAM Blöcke eine IP-Adresse wegen schlechten, veralteten oder falschen Signaturen blockieren, sollten dies aber nicht so getan haben, oder wenn sie es aus den falschen Gründen, beziehen wir uns auf dieses Ergebnis als „Falsch-Positiv“. Wenn CIDRAM, aufgrund unvorhergesehener Bedrohungen, fehlenden Signaturen oder Defiziten in ihren Signaturen, versagt eine IP-Adresse zu blockieren, die blockiert werden sollte, beziehen wir uns auf dieses Ereignis als eine „verpasste Erkennung“ (das entspricht einem „Falsch-Negativ“).
 
 Dies kann durch die folgende Tabelle zusammengefasst werden:
 
@@ -1779,7 +1593,7 @@ Nein. PHP≥7.2 ist eine Mindestanforderung für CIDRAM v3.
 
 #### <a name="PROTECT_MULTIPLE_DOMAINS"></a>Kann ich eine einzige CIDRAM-Installation verwenden, um mehrere Domains zu schützen?
 
-Ja. CIDRAM-Installationen sind natürlich nicht auf bestimmte Domains festgelegt, und können daher zum Schutz mehrerer Domains verwendet werden. Allgemein, verweisen wir darauf, CIDRAM-Installationen die nur eine Domain schützen als "Single-Domain-Installationen" zu Konfigurieren, und CIDRAM-Installationen die mehrere Domains und/oder Subdomains schützen als "Multi-Domain-Installationen" zu Konfigurieren. Wenn Sie eine Multi-Domain-Installation betreiben und verschiedene Sätze von Signaturdateien für verschiedene Domains verwenden müssen, oder für verschiedene Domains unterschiedliche Konfigurationen verwenden müssen, ist dies möglich. Nach dem Laden der Konfigurationsdatei (`config.yml`), prüft CIDRAM auf die Existenz einer "Konfiguration-Überschreib Datei", die für die angefordert Domain (oder Subdomain) spezifisch ist (`die-domain-angefordert.tld.config.yml`), und wenn gefunden, alle von der Konfiguration-Überschreibt Datei definierten Konfigurationswerte werden für die Ausführungsinstanz verwendet, anstelle der von der Konfigurationsdatei definierten Konfigurationswerten. Konfiguration-Überschreibt Dateien sind identisch mit der Konfigurationsdatei, und nach eigenem Ermessen, kann entweder die Gesamtheit aller Konfigurationsdirektiven für CIDRAM enthalten, oder was auch immer kleiner Unterabschnitt erforderlich ist, die sich normalerweise von den in der Konfigurationsdatei definierten Konfigurationswerte unterscheidet. Konfiguration-Überschreibt Dateien werden nach der Domain für die sie bestimmt sind benannt (so zum Beispiel, wenn Sie eine Konfiguration-Überschreibt Dateien benötigen für die Domäne, `https://www.some-domain.tld/`, seine Konfiguration-Überschreibt Datei sollte benannt werden als `some-domain.tld.config.yml`, und sollte in dem vault neben der Konfigurationsdatei `config.yml` platziert werden). Der Domains-Name für die Ausführungsinstanz wird aus dem `HTTP_HOST`-Header der Anforderung abgeleitet; "www" wird ignoriert.
+Ja. CIDRAM-Installationen sind natürlich nicht auf bestimmte Domains festgelegt, und können daher zum Schutz mehrerer Domains verwendet werden. Allgemein, verweisen wir darauf, CIDRAM-Installationen die nur eine Domain schützen als „Single-Domain-Installationen“ zu Konfigurieren, und CIDRAM-Installationen die mehrere Domains und/oder Subdomains schützen als „Multi-Domain-Installationen“ zu Konfigurieren. Wenn Sie eine Multi-Domain-Installation betreiben und verschiedene Sätze von Signaturdateien für verschiedene Domains verwenden müssen, oder für verschiedene Domains unterschiedliche Konfigurationen verwenden müssen, ist dies möglich. Nach dem Laden der Konfigurationsdatei (`config.yml`), prüft CIDRAM auf die Existenz einer „Konfiguration-Überschreib Datei“, die für die angefordert Domain (oder Subdomain) spezifisch ist (`die-domain-angefordert.tld.config.yml`), und wenn gefunden, alle von der Konfiguration-Überschreibt Datei definierten Konfigurationswerte werden für die Ausführungsinstanz verwendet, anstelle der von der Konfigurationsdatei definierten Konfigurationswerten. Konfiguration-Überschreibt Dateien sind identisch mit der Konfigurationsdatei, und nach eigenem Ermessen, kann entweder die Gesamtheit aller Konfigurationsdirektiven für CIDRAM enthalten, oder was auch immer kleiner Unterabschnitt erforderlich ist, die sich normalerweise von den in der Konfigurationsdatei definierten Konfigurationswerte unterscheidet. Konfiguration-Überschreibt Dateien werden nach der Domain für die sie bestimmt sind benannt (so zum Beispiel, wenn Sie eine Konfiguration-Überschreibt Dateien benötigen für die Domäne, `https://www.some-domain.tld/`, seine Konfiguration-Überschreibt Datei sollte benannt werden als `some-domain.tld.config.yml`, und sollte in dem vault neben der Konfigurationsdatei `config.yml` platziert werden). Der Domains-Name für die Ausführungsinstanz wird aus dem `HTTP_HOST`-Header der Anforderung abgeleitet; „www“ wird ignoriert.
 
 #### <a name="PAY_YOU_TO_DO_IT"></a>Ich möchte keine Zeit damit verbringen (es zu installieren, es richtig zu ordnen, u.s.w.); Kann ich dich einfach bezahlen, um alles für mich zu tun?
 
@@ -1799,13 +1613,13 @@ Ja. Unsere Lizenz verbietet dies nicht.
 
 #### <a name="WANT_TO_CONTRIBUTE"></a>Ich möchte zum Projekt beitragen; Darf ich dies machen?
 
-Ja. Beiträge zum Projekt sind sehr willkommen. Bitte beachten Sie "CONTRIBUTING.md" für weitere Informationen.
+Ja. Beiträge zum Projekt sind sehr willkommen. Bitte beachten Sie „CONTRIBUTING.md“ für weitere Informationen.
 
 #### <a name="CRON_TO_UPDATE_AUTOMATICALLY"></a>Kann ich cron verwenden, um automatisch zu aktualisieren?
 
 Ja. Eine API ist in das Frontend integriert, um über externe Skripte mit der Aktualisierungsseite zu interagieren. Ein separates Skript, "[Cronable](https://github.com/Maikuolan/Cronable)", ist verfügbar, und kann von Ihrem Cron-Manager oder Cron-Scheduler verwendet werden, um dieses und andere unterstützte Pakete automatisch zu aktualisieren (dieses Skript enthält eine eigene Dokumentation).
 
-#### <a name="WHAT_ARE_INFRACTIONS"></a>Was sind "Verstöße"?
+#### <a name="WHAT_ARE_INFRACTIONS"></a>Was sind „Verstöße“?
 
 „Zählung den Signaturen“ und „Verstöße“ beziehen sich beide auf die Schwere und die Anzahl der Signaturen, die während einer bestimmten Anfrage ausgelöst werden, sei es aufgrund von Signaturdateien, Modulen, Hilfsregeln, oder anderweitig, aber während die „Zählung den Signaturen“ nur für diese Spezifische Anfrage bestehen bleibt, können „Verstöße“ über eine beliebige Anzahl von Anfragen bestehen bleiben, solange dies durch das `default_tracktime` bestimmt wird.
 
@@ -1900,9 +1714,9 @@ Gleiche Situation, wenn eine Datei deaktiviert ist. Umgekehrt, wenn Sie möchten
 
 #### <a name="HOW_TO_USE_PDO"></a>Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?
 
-"PDO" ist eine Akronym für "[PHP Data Objects](https://www.php.net/manual/de/intro.pdo.php)". Es bietet eine Schnittstelle zum Verbinden von PHP mit einigen Datenbanksystemen die häufig von verschiedenen PHP-Anwendungen verwendet werden.
+„PDO“ ist eine Akronym für "[PHP Data Objects](https://www.php.net/manual/de/intro.pdo.php)". Es bietet eine Schnittstelle zum Verbinden von PHP mit einigen Datenbanksystemen die häufig von verschiedenen PHP-Anwendungen verwendet werden.
 
-"DSN" ist eine Akronym für "[data source name](https://de.wikipedia.org/wiki/Data_Source_Name)". Der "PDO DSN" beschreibt wie PDO zum einer Datenbank verbindet.
+„DSN“ ist eine Akronym für "[data source name](https://de.wikipedia.org/wiki/Data_Source_Name)". Der „PDO DSN“ beschreibt wie PDO zum einer Datenbank verbindet.
 
 CIDRAM bietet die Option, PDO für Caching-Zwecke zu verwenden. Damit dies ordnungsgemäß funktioniert, müssen Sie CIDRAM entsprechend konfigurieren, PDO aktivieren, eine neue Datenbank für CIDRAM erstellen (falls Sie noch keine Datenbank für CIDRAM in Betracht gezogen haben) und eine neue Tabelle erstellen in Ihrer Datenbank entsprechend der unten beschriebenen Struktur.
 
@@ -1910,7 +1724,7 @@ Wenn eine Datenbankverbindung erfolgreich hergestellt wurde, aber die erforderli
 
 Dies gilt natürlich nur, wenn CIDRAM tatsächlich PDO verwenden soll. Wenn Sie zufrieden sind, dass CIDRAM Flatfile-Caching (gemäß Standardkonfiguration) oder eine der verschiedenen anderen Caching-Optionen verwendet, müssen Sie sich nicht mit dem Einrichten von Datenbanken, Tabellen u.s.w. befassen.
 
-In der unten beschriebenen Struktur wird "cidram" als Datenbankname verwendet. Sie können jedoch einen beliebigen Namen für Ihre Datenbank verwenden, sofern dieser Name in Ihrer DSN-Konfiguration repliziert wird.
+In der unten beschriebenen Struktur wird „cidram“ als Datenbankname verwendet. Sie können jedoch einen beliebigen Namen für Ihre Datenbank verwenden, sofern dieser Name in Ihrer DSN-Konfiguration repliziert wird.
 
 ```
 ╔══════════════════════════════════════════════╗
@@ -2067,7 +1881,7 @@ Wenn Sie all diese Ideen ausprobiert haben und keine davon für Sie funktioniert
 
 Dieser Abschnitt der Dokumentation beschreibt mögliche rechtliche Überlegungen zur Verwendung und Implementierung des Pakets, und um einige grundlegende verwandte Informationen zur Verfügung zu stellen. Dies kann für einige Benutzer wichtig sein, um sicherzustellen, dass die gesetzlichen Anforderungen in den Ländern eingehalten werden, in denen sie tätig sind, und einige Benutzer müssen möglicherweise ihre Website-Richtlinien in Übereinstimmung mit diesen Informationen anpassen.
 
-Zuallererst, bitte beachten Sie, dass ich (der Autor des Pakets) weder Rechtsanwalt noch qualifizierter Jurist bin. Daher bin ich rechtlich nicht zur Rechtsberatung qualifiziert. Auch, in einigen Fällen können die genauen rechtlichen Anforderungen zwischen verschiedenen Ländern und Rechtsordnungen variieren, und diese unterschiedlichen rechtlichen Anforderungen können sich manchmal widersprechen (wie zum Beispiel, in Ländern, die [Privatsphäre](https://de.wikipedia.org/wiki/Privatsph%C3%A4re) und das [Recht auf Vergessenwerden bevorzugen](https://de.wikipedia.org/wiki/Recht_auf_Vergessenwerden), gegenüber Ländern, die eine erweiterte [Vorratsdatenspeicherung](https://de.wikipedia.org/wiki/Vorratsdatenspeicherung) bevorzugen). Berücksichtigen Sie auch, dass der Zugriff auf das Paket nicht auf bestimmte Länder oder Gerichtsbarkeiten beschränkt ist und daher die Paket-Nutzerbasis wahrscheinlich geografisch-vielfältig ist. Nach diesen Punkten kann ich nicht sagen, was es heißt, in allen Belangen für alle Nutzer "rechtskonform" zu sein. Jedoch, ich hoffe, dass die hier enthaltenen Informationen Ihnen helfen, selbst zu einer Entscheidung zu kommen, was Sie tun müssen, um im Kontext des Pakets rechtskonform zu bleiben. Wenn Sie Zweifel oder Bedenken hinsichtlich der hierin enthaltenen Informationen haben, oder wenn Sie aus rechtlicher Sicht zusätzliche Hilfe und Rat benötigen, würde ich Ihnen empfehlen, einen qualifizierten Rechtsberater zu konsultieren.
+Zuallererst, bitte beachten Sie, dass ich (der Autor des Pakets) weder Rechtsanwalt noch qualifizierter Jurist bin. Daher bin ich rechtlich nicht zur Rechtsberatung qualifiziert. Auch, in einigen Fällen können die genauen rechtlichen Anforderungen zwischen verschiedenen Ländern und Rechtsordnungen variieren, und diese unterschiedlichen rechtlichen Anforderungen können sich manchmal widersprechen (wie zum Beispiel, in Ländern, die [Privatsphäre](https://de.wikipedia.org/wiki/Privatsph%C3%A4re) und das [Recht auf Vergessenwerden bevorzugen](https://de.wikipedia.org/wiki/Recht_auf_Vergessenwerden), gegenüber Ländern, die eine erweiterte [Vorratsdatenspeicherung](https://de.wikipedia.org/wiki/Vorratsdatenspeicherung) bevorzugen). Berücksichtigen Sie auch, dass der Zugriff auf das Paket nicht auf bestimmte Länder oder Gerichtsbarkeiten beschränkt ist und daher die Paket-Nutzerbasis wahrscheinlich geografisch-vielfältig ist. Nach diesen Punkten kann ich nicht sagen, was es heißt, in allen Belangen für alle Nutzer „rechtskonform“ zu sein. Jedoch, ich hoffe, dass die hier enthaltenen Informationen Ihnen helfen, selbst zu einer Entscheidung zu kommen, was Sie tun müssen, um im Kontext des Pakets rechtskonform zu bleiben. Wenn Sie Zweifel oder Bedenken hinsichtlich der hierin enthaltenen Informationen haben, oder wenn Sie aus rechtlicher Sicht zusätzliche Hilfe und Rat benötigen, würde ich Ihnen empfehlen, einen qualifizierten Rechtsberater zu konsultieren.
 
 #### 9.1 HAFTUNG UND VERANTWORTUNG
 
@@ -2075,7 +1889,7 @@ Wie bereits in der Paketlizenz angegeben, wird das Paket ohne jegliche Gewährle
 
 #### 9.2 DRITTE
 
-Abhängig von seiner genauen Konfiguration und Implementierung kann das Paket in einigen Fällen mit Dritten kommunizieren und Informationen teilen. Diese Informationen können in einigen Kontexten von einigen Gerichtsbarkeiten als "[personenbezogene Daten](https://de.wikipedia.org/wiki/Personenbezogene_Daten)" (oder "PII") definiert werden.
+Abhängig von seiner genauen Konfiguration und Implementierung kann das Paket in einigen Fällen mit Dritten kommunizieren und Informationen teilen. Diese Informationen können in einigen Kontexten von einigen Gerichtsbarkeiten als "[personenbezogene Daten](https://de.wikipedia.org/wiki/Personenbezogene_Daten)" (oder „PII“) definiert werden.
 
 Wie diese Informationen von diesen Dritten verwendet werden können, unterliegt den verschiedenen Richtlinien, die von diesen Dritten festgelegt wurden, und liegt außerhalb des Anwendungsbereichs dieser Dokumentation. In allen diesen Fällen jedoch kann der Austausch von Informationen mit diesen Dritten deaktiviert werden. In allen diesen Fällen liegt es in Ihrer Verantwortung, wenn Sie sich dafür entscheiden, Ihre Bedenken hinsichtlich der Vertraulichkeit, Sicherheit, und Verwendung von personenbezogenen Daten durch diese Dritten zu untersuchen. Wenn irgendwelche Zweifel bestehen oder wenn Sie mit dem Verhalten dieser Dritten in Bezug auf PII nicht zufrieden sind, ist es möglicherweise am besten, den gesamten Informationsaustausch mit diesen Dritten zu deaktivieren.
 
@@ -2083,7 +1897,7 @@ Aus Gründen der Transparenz wird im Folgenden beschrieben, welche Art von Infor
 
 ##### 9.2.0 HOSTNAME-SUCHE
 
-Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., "Schlechte Hosts Blocker-Modul", "tor project exit nodes block module", oder "Suchmaschinen-Verifizierung", u.s.w.), muss CIDRAM in der Lage sein, den Hostnamen eingehender Anfragen irgendwie zu erhalten. Typischerweise wird dazu der Hostname der IP-Adresse eingehender Anforderungen von einem DNS-Server angefordert, oder die Informationen über die Funktionalität angefordert, die vom System bereitgestellt werden, auf dem CIDRAM installiert ist (dies wird typischerweise als "Hostname-Suche" bezeichnet). Die standardmäßig definierten DNS-Server gehören zu [Google DNS](https://dns.google.com/) (dies kann jedoch einfach über die Konfiguration geändert werden). Die genauen Dienste, mit denen kommuniziert wird, sind konfigurierbar und hängen von der Konfiguration des Pakets ab. Wenn Sie Funktionen verwenden, die von dem System bereitgestellt werden, auf dem CIDRAM installiert ist, müssen Sie sich an Ihren Systemadministrator wenden, um zu ermitteln, welche Routen Hostnamen-Lookups verwenden. Hostnamen-Suchen können in CIDRAM verhindert werden, indem die betroffenen Module vermieden oder die Paketkonfiguration entsprechend Ihren Anforderungen geändert wird.
+Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., „Schlechte Hosts Blocker-Modul“, „tor project exit nodes block module“, oder „Suchmaschinen-Verifizierung“, u.s.w.), muss CIDRAM in der Lage sein, den Hostnamen eingehender Anfragen irgendwie zu erhalten. Typischerweise wird dazu der Hostname der IP-Adresse eingehender Anforderungen von einem DNS-Server angefordert, oder die Informationen über die Funktionalität angefordert, die vom System bereitgestellt werden, auf dem CIDRAM installiert ist (dies wird typischerweise als „Hostname-Suche“ bezeichnet). Die standardmäßig definierten DNS-Server gehören zu [Google DNS](https://dns.google.com/) (dies kann jedoch einfach über die Konfiguration geändert werden). Die genauen Dienste, mit denen kommuniziert wird, sind konfigurierbar und hängen von der Konfiguration des Pakets ab. Wenn Sie Funktionen verwenden, die von dem System bereitgestellt werden, auf dem CIDRAM installiert ist, müssen Sie sich an Ihren Systemadministrator wenden, um zu ermitteln, welche Routen Hostnamen-Lookups verwenden. Hostnamen-Suchen können in CIDRAM verhindert werden, indem die betroffenen Module vermieden oder die Paketkonfiguration entsprechend Ihren Anforderungen geändert wird.
 
 *Relevante Konfigurationsdirektiven:*
 - `general` -> `default_dns`
@@ -2095,7 +1909,7 @@ Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., "Sc
 
 ##### 9.2.1 VERIFIZIERUNG VON SUCHMASCHINEN UND SOCIAL MEDIA
 
-Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM "Forward-DNS-Lookups" durchzuführen, um zu überprüfen, ob Anfragen, die behaupten, von Suchmaschinen zu stammen, authentisch sind. Gleichfalls, wenn die Verifizierung von Social Media aktiviert ist, macht CIDRAM das gleiche für scheinbare Social-Media-Anfragen. Um dies zu tun, verwendet es den [Google DNS](https://dns.google.com/)-Dienst, um IP-Adressen aus den Hostnamen dieser eingehenden Anfragen aufzulösen (in diesem Prozess werden die Hostnamen dieser eingehenden Anfragen für den Dienst freigegeben).
+Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM „Forward-DNS-Lookups“ durchzuführen, um zu überprüfen, ob Anfragen, die behaupten, von Suchmaschinen zu stammen, authentisch sind. Gleichfalls, wenn die Verifizierung von Social Media aktiviert ist, macht CIDRAM das gleiche für scheinbare Social-Media-Anfragen. Um dies zu tun, verwendet es den [Google DNS](https://dns.google.com/)-Dienst, um IP-Adressen aus den Hostnamen dieser eingehenden Anfragen aufzulösen (in diesem Prozess werden die Hostnamen dieser eingehenden Anfragen für den Dienst freigegeben).
 
 *Relevante Konfigurationsdirektiven:*
 - `general` -> `search_engine_verification`
@@ -2134,7 +1948,7 @@ Es gibt mehrere Arten der Protokollierung, die CIDRAM ausführen kann. Verschied
 
 ##### 9.3.0 BLOCKEREIGNISSE
 
-Der primäre Art der Protokollierung, den CIDRAM ausführen kann, bezieht sich auf "Blockereignisse". Diese Art der Protokollierung bezieht sich auf das Blockieren einer Anforderung durch CIDRAM und kann in drei verschiedenen Formaten bereitgestellt werden:
+Der primäre Art der Protokollierung, den CIDRAM ausführen kann, bezieht sich auf „Blockereignisse“. Diese Art der Protokollierung bezieht sich auf das Blockieren einer Anforderung durch CIDRAM und kann in drei verschiedenen Formaten bereitgestellt werden:
 - Menschenlesbar oder benutzerfreundliche Protokolldateien.
 - Apache-Stil Protokolldateien.
 - Serialisierte Protokolldateien.
@@ -2158,7 +1972,7 @@ Status der CAPTCHA: Aktiviert.
 Das gleiche Blockereignis, das in einer Protokolldatei im Apache-Stil protokolliert wird, würde ungefähr so aussehen:
 
 ```
-x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
+x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx „-“ "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
 ```
 
 Ein protokolliertes Blockereignis enthält normalerweise die folgenden Informationen:
@@ -2202,7 +2016,7 @@ Diese Art der Protokollierung bezieht sich auf Frontend-Einloggen-Versuchen und 
 Ein Frontend-Protokolleintrag enthält die IP-Adresse des Benutzers, der sich anzumelden versucht, das Datum und die Uhrzeit des Versuchs, und die Ergebnisse des Versuchs (erfolgreich eingeloggt oder könnte sich nicht einloggen). Ein Frontend-Protokolleintrag sieht in etwa wie folgt aus (als Beispiel):
 
 ```
-x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - Eingeloggt.
+x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - „admin“ - Eingeloggt.
 ```
 
 *Die für die Frontend-Protokollierung verantwortliche Konfigurationsdirektiven lautet:*
@@ -2229,16 +2043,16 @@ Es ist auch möglich, um einzelne Protokolldateien zu trunkieren, wenn sie eine 
 
 ##### 9.3.5 IP-ADRESSE PSEUDONYMISIERUNG
 
-Erstens, wenn Sie mit dem Begriff nicht vertraut sind, "Pseudonymisierung" bezieht sich auf die Verarbeitung personenbezogener Daten, so dass sie ohne zusätzliche Informationen nicht mehr für eine bestimmte Person identifiziert werden können, und vorausgesetzt, dass diese zusätzlichen Informationen getrennt aufbewahrt werden, und vorbehaltlich technischer und organisatorischer Maßnahmen, um sicherzustellen, dass personenbezogene Daten für keine natürliche Person identifiziert werden können.
+Erstens, wenn Sie mit dem Begriff nicht vertraut sind, „Pseudonymisierung“ bezieht sich auf die Verarbeitung personenbezogener Daten, so dass sie ohne zusätzliche Informationen nicht mehr für eine bestimmte Person identifiziert werden können, und vorausgesetzt, dass diese zusätzlichen Informationen getrennt aufbewahrt werden, und vorbehaltlich technischer und organisatorischer Maßnahmen, um sicherzustellen, dass personenbezogene Daten für keine natürliche Person identifiziert werden können.
 
 Die folgenden Ressourcen können helfen, es genauer zu erklären:
 - [[johner-institut.de] Anonymisierung und Pseudonymisierung](https://www.johner-institut.de/blog/gesundheitswesen/anonymisierung-und-pseudonymisierung/)
 - [[datenschutzbeauftragter-info.de] Pseudonymisierung – was ist das eigentlich?](https://www.datenschutzbeauftragter-info.de/pseudonymisierung-was-ist-das-eigentlich/)
 - [[Wikipedia] Anonymisierung und Pseudonymisierung](https://de.wikipedia.org/wiki/Anonymisierung_und_Pseudonymisierung)
 
-Unter gewissen Umständen sind Sie gesetzlich dazu verpflichtet, alle PII, die gesammelt, verarbeitet oder gespeichert werden, zu anonymisieren oder zu pseudonymisieren. Obwohl dieses Konzept schon seit einiger Zeit besteht, erwähnt und ermutigt die GDPR/DSGVO ausdrücklich die "Pseudonymisierung" der PII.
+Unter gewissen Umständen sind Sie gesetzlich dazu verpflichtet, alle PII, die gesammelt, verarbeitet oder gespeichert werden, zu anonymisieren oder zu pseudonymisieren. Obwohl dieses Konzept schon seit einiger Zeit besteht, erwähnt und ermutigt die GDPR/DSGVO ausdrücklich die „Pseudonymisierung“ der PII.
 
-CIDRAM ist in der Lage, IP-Adressen zu pseudonymisieren, wenn Sie sie protokollieren, wenn Sie dies benötigen oder tun möchten. Wenn CIDRAM IP-Adressen pseudonymisiert, wird das letzte Oktett von IPv4-Adressen und alles nach dem zweiten Teil von IPv6-Adressen durch ein "x" dargestellt (runden effektiv IPv4-Adressen in Subnetz 24 und IPv6-Adressen in Subnetz 32 ab).
+CIDRAM ist in der Lage, IP-Adressen zu pseudonymisieren, wenn Sie sie protokollieren, wenn Sie dies benötigen oder tun möchten. Wenn CIDRAM IP-Adressen pseudonymisiert, wird das letzte Oktett von IPv4-Adressen und alles nach dem zweiten Teil von IPv6-Adressen durch ein „x“ dargestellt (runden effektiv IPv4-Adressen in Subnetz 24 und IPv6-Adressen in Subnetz 32 ab).
 
 *Hinweis: Der IP-Adress-Pseudonymisierungsprozess von CIDRAM hat keinen Einfluss auf die IP-Tracking-Funktion von CIDRAM. Wenn dies ein Problem für Sie darstellt, ist es möglicherweise am besten, das IP-Tracking vollständig zu deaktivieren.*
 
@@ -2247,7 +2061,7 @@ CIDRAM ist in der Lage, IP-Adressen zu pseudonymisieren, wenn Sie sie protokolli
 
 ##### 9.3.6 WEGLASSUNG VON PROTOKOLLINFORMATIONEN
 
-Wenn Sie einen Schritt weiter gehen wollen, indem Sie verhindern, dass bestimmte Arten von Informationen vollständig protokolliert werden, ist dies ebenfalls möglich. Auf der Konfigurationsseite, beachten Sie bitte die Konfigurationsdirektive `fields`, um zu kontrollieren welche Felder in Protokolleinträgen und auf der "Zugriff verweigert"-Seite erscheinen.
+Wenn Sie einen Schritt weiter gehen wollen, indem Sie verhindern, dass bestimmte Arten von Informationen vollständig protokolliert werden, ist dies ebenfalls möglich. Auf der Konfigurationsseite, beachten Sie bitte die Konfigurationsdirektive `fields`, um zu kontrollieren welche Felder in Protokolleinträgen und auf der „Zugriff verweigert“-Seite erscheinen.
 
 *Hinweis: Es gibt keinen Grund, um IP-Adressen zu pseudonymisieren, wenn sie vollständig aus den Protokollen entfernt werden.*
 
@@ -2271,7 +2085,7 @@ CIDRAM setzt [Cookies](https://de.wikipedia.org/wiki/HTTP-Cookie) an zwei Stelle
 
 In beiden Fällen werden Cookie-Warnungen angezeigt (falls zutreffend), die den Benutzer warnen, dass Cookies gesetzt werden, wenn sie die relevanten Aktionen ausführt. An anderen Stellen in der Codebasis werden keine Cookies gesetzt.
 
-*Hinweis: Die "unsichtbaren" CAPTCHA-APIs sind in einigen Ländern möglicherweise nicht mit den Cookie-Gesetzen kompatibel, und sollte von Websites die solchen Gesetzen unterliegen vermieden werden. Es kann vorzuziehen sein stattdessen die anderen bereitgestellten APIs zu verwenden, oder CAPTCHA vollständig zu deaktivieren.*
+*Hinweis: Die „unsichtbaren“ CAPTCHA-APIs sind in einigen Ländern möglicherweise nicht mit den Cookie-Gesetzen kompatibel, und sollte von Websites die solchen Gesetzen unterliegen vermieden werden. Es kann vorzuziehen sein stattdessen die anderen bereitgestellten APIs zu verwenden, oder CAPTCHA vollständig zu deaktivieren.*
 
 *Relevante Konfigurationsdirektiven:*
 - `recaptcha` -> `lockuser`
@@ -2285,7 +2099,7 @@ CIDRAM sammelt und verarbeitet keine Informationen für der Zweck des Vermarktun
 
 #### 9.6 DATENSCHUTZERKLÄRUNG
 
-Unter bestimmten Umständen können Sie gesetzlich dazu verpflichtet sein, auf allen Seiten und Abschnitten Ihrer Website einen Link zu Ihrer Datenschutzerklärung deutlich anzuzeigen. Dies kann wichtig sein, um sicherzustellen, dass die Benutzer genau über Ihre genauen Datenschutzpraktiken, die Arten von personenbezogenen Daten, die Sie sammeln, und über Ihre beabsichtigte Verwendung informiert sind. Um einen solchen Link auf der Seite "Zugriff verweigert" von CIDRAM einzubinden, wird eine Konfigurationsdirektive bereitgestellt, um die URL zu Ihrer Datenschutzerklärung anzugeben.
+Unter bestimmten Umständen können Sie gesetzlich dazu verpflichtet sein, auf allen Seiten und Abschnitten Ihrer Website einen Link zu Ihrer Datenschutzerklärung deutlich anzuzeigen. Dies kann wichtig sein, um sicherzustellen, dass die Benutzer genau über Ihre genauen Datenschutzpraktiken, die Arten von personenbezogenen Daten, die Sie sammeln, und über Ihre beabsichtigte Verwendung informiert sind. Um einen solchen Link auf der Seite „Zugriff verweigert“ von CIDRAM einzubinden, wird eine Konfigurationsdirektive bereitgestellt, um die URL zu Ihrer Datenschutzerklärung anzugeben.
 
 *Hinweis: Es wird dringend empfohlen, dass Ihre Datenschutzerklärung nicht hinter dem Schutz von CIDRAM steht. Wenn CIDRAM Ihre Datenschutzerklärung schützt und ein von CIDRAM blockierter Benutzer auf den Link zu Ihrer Datenschutzerklärung klickt, sie werden nur erneut blockiert, und können Ihre Datenschutzerklärung nicht sehen. Idealerweise sollten Sie eine Link zu einer statischen Kopie Ihrer Datenschutzerklärung erstellen, z.B. eine HTML-Seite oder eine Nur-Text-Datei, die nicht durch CIDRAM geschützt ist.*
 
@@ -2296,7 +2110,7 @@ Unter bestimmten Umständen können Sie gesetzlich dazu verpflichtet sein, auf a
 
 Die Datenschutz-Grundverordnung (DSGVO) ist eine Verordnung der Europäischen Union, die am 25. Mai 2018 in Kraft tritt. Das Hauptziel der Verordnung besteht darin, den EU-Bürgern und EU-Anwohnern die Kontrolle über ihre eigenen personenbezogenen Daten zu ermöglichen und die Regulierung innerhalb der EU in Bezug auf Privatsphäre und personenbezogene Daten zu vereinheitlichen.
 
-Die Verordnung enthält spezifische Bestimmungen für die Verarbeitung "[personenbezogenen Daten](https://de.wikipedia.org/wiki/Personenbezogene_Daten)" (PII) von "betroffenen Personen" (jede identifizierte oder identifizierbare natürliche Person) aus oder innerhalb der EU. Um der Verordnung zu entsprechen, müssen "Unternehmen" (gemäß der Definition in der Verordnung) und alle relevanten Systeme und Prozesse "[Datenschutz durch Design](https://digitalcourage.de/blog/2015/was-ist-privacy-design)" standardmäßig implementieren, müssen die höchstmögliche Privatsphäre Einstellungen verwenden, müssen die erforderlichen Sicherheitsmaßnahmen für gespeicherte oder verarbeitete Informationen implementieren (einschließlich, aber nicht beschränkt auf die Durchführung der Pseudonymisierung oder vollständigen Anonymisierung von Daten), müssen die Art der Daten, die sie sammeln, eindeutig und eindeutig angeben, aus welchen Gründen, für wie lange sie diese Daten speichern und ob sie diese Daten an Dritte weitergeben, die Arten von Daten, die mit Dritten geteilt werden, wie, warum, u.s.w.
+Die Verordnung enthält spezifische Bestimmungen für die Verarbeitung "[personenbezogenen Daten](https://de.wikipedia.org/wiki/Personenbezogene_Daten)" (PII) von „betroffenen Personen“ (jede identifizierte oder identifizierbare natürliche Person) aus oder innerhalb der EU. Um der Verordnung zu entsprechen, müssen „Unternehmen“ (gemäß der Definition in der Verordnung) und alle relevanten Systeme und Prozesse "[Datenschutz durch Design](https://digitalcourage.de/blog/2015/was-ist-privacy-design)" standardmäßig implementieren, müssen die höchstmögliche Privatsphäre Einstellungen verwenden, müssen die erforderlichen Sicherheitsmaßnahmen für gespeicherte oder verarbeitete Informationen implementieren (einschließlich, aber nicht beschränkt auf die Durchführung der Pseudonymisierung oder vollständigen Anonymisierung von Daten), müssen die Art der Daten, die sie sammeln, eindeutig und eindeutig angeben, aus welchen Gründen, für wie lange sie diese Daten speichern und ob sie diese Daten an Dritte weitergeben, die Arten von Daten, die mit Dritten geteilt werden, wie, warum, u.s.w.
 
 Daten dürfen nicht verarbeitet werden, es sei denn, es gibt eine gesetzliche Grundlage dafür, wie in der Verordnung definiert. Im Allgemeinen bedeutet dies, dass die Verarbeitung der Daten eines Datensubjekts auf gesetzlicher Grundlage gemäß den gesetzlichen Verpflichtungen oder nur nach ausdrücklicher, gut informierter und eindeutiger Zustimmung der betroffenen Person erfolgen muss.
 
@@ -2314,4 +2128,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 30. Juni 2022 (2022.06.30).
+Zuletzt aktualisiert: 9. Juli 2022 (2022.07.09).

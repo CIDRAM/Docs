@@ -2297,4 +2297,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 30 Giugno 2022 (2022.06.30).
+Ultimo Aggiornamento: 9 Luglio 2022 (2022.07.09).

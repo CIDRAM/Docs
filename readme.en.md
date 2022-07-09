@@ -188,9 +188,6 @@ Configuration (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Configuration (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ Configuration (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Category)
@@ -638,62 +604,6 @@ ban_override
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="en-AU">What can I use for "default_dns"?</a></em>
 
-##### "search_engine_verification" `[string]`
-- Controls for verifying requests from search engines.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
-
-__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
-
-##### "social_media_verification" `[string]`
-- Controls for verifying requests from social media platforms.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
-
-__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
-
-** Requires ASN lookup functionality (e.g., via the BGPView module).
-
-##### "other_verification" `[string]`
-- Controls for verifying other kinds of requests where possible.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
-
-__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
-
 ##### "default_algo" `[string]`
 - Defines which algorithm to use for all future passwords and sessions.
 
@@ -837,38 +747,108 @@ theme
 #### "signatures" (Category)
 Configuration for signatures, signature files, modules, etc.
 
-##### "block_attacks" `[bool]`
-- Block CIDRs associated with attacks and other abnormal traffic? E.g., port scans, hacking, probing for vulnerabilities, etc. Unless you experience problems when doing so, generally, this should always be set to true.
+##### "shorthand" `[string]`
+- Controls for what to do with a request when there's a positive match against a signature which utilises the given shorthand words.
 
-##### "block_cloud" `[bool]`
-- Block CIDRs identified as belonging to webhosting/cloud services? If you operate an API service from your website or if you expect other websites to connect to your website, this should be set to false. If you don't, then, this directive should be set to true.
+```
+shorthand
+├─Attacks ("Attacks")
+├─Bogon ("⁰ Bogon IP")
+├─Cloud ("Cloud service")
+├─Generic ("Generic")
+├─Legal ("¹ Legal")
+├─Malware ("Malware")
+├─Proxy ("² Proxy")
+├─Spam ("Spam risk")
+├─Banned ("³ Banned")
+├─BadIP ("³ Invalid IP")
+├─RL ("³ Rate limited")
+└─Other ("⁴ Other")
+```
 
-##### "block_bogons" `[bool]`
-- Block bogon/martian CIDRs? If you expect connections to your website from within your local network, from localhost, or from your LAN, this directive should be set to false. If you don't expect these such connections, this directive should be set to true.
+__0.__ If your website needs access via LAN or localhost, don't block this. Otherwise though, you can block this.
 
-##### "block_generic" `[bool]`
-- Block CIDRs generally recommended for blacklisting? This covers any signatures that aren't marked as being part of any of the other more specific signature categories.
+__1.__ None of the default signature files use this, but it's supported nonetheless in case it might be useful for some users.
 
-##### "block_legal" `[bool]`
-- Block CIDRs in response to legal obligations? This directive shouldn't normally have any effect, because CIDRAM doesn't associate any CIDRs with "legal obligations" by default, but it exists nonetheless as an additional control measure for the benefit of any custom signature files or modules that might exist for legal reasons.
+__2.__ If you need users to be able to access your website via proxies, don't block this. Otherwise though, you can block this.
 
-##### "block_malware" `[bool]`
-- Block CIDRs associated with malware? This includes C&C servers, infected machines, machines involved in malware distribution, etc.
+__3.__ Direct usage in signatures isn't supported, but it may be invoked by other means in particular circumstances.
 
-##### "block_proxies" `[bool]`
-- Block CIDRs identified as belonging to proxy services or VPNs? If you require that users be able to access your website from proxy services and VPNs, this directive should be set to false. Otherwise, if you don't require proxy services or VPNs, this directive should be set to true as a means of improving security.
+__4.__ Refers to cases where shorthand words aren't used at all, or aren't recognised by CIDRAM.
 
-##### "block_spam" `[bool]`
-- Block CIDRs identified as being high-risk for spam? Unless you experience problems when doing so, generally, this should always be set to true.
+__One per signature.__ A signature may invoke multiple profiles, but can use only one shorthand word. It's possible that multiple shorthand words may be suitable, but as only one can be used, we aim to always use only the most suitable.
+
+__Priority.__ An option selected always takes priority over an option not selected. E.g., if multiple shorthand words are in play but only one of them is set as being blocked, the request will still be blocked.
+
+__Human endpoints and cloud services.__ Cloud service may refer to webhosting providers, server farms, data centers, or any number of other things. Human endpoint refers to the means by which a human accesses the internet, such as by way of an internet service provider. A network usually provides just one or the other, but may sometimes provide both. We aim to never identify potential human endpoints as cloud services. Therefore, a cloud service may be identified as something else if its range is shared by known human endpoints. Conversely, we aim to always identify cloud services, whose ranges are not shared by any known human endpoints, as cloud services. Therefore, a request identified explicitly as a cloud service probably doesn't share its range with any known human endpoints. Likewise, a request identified explicitly by attacks or spam probably does. However, the internet is always in flux, the purposes of networks changes over time, and ranges are always being bought or sold, so remain cognisant and vigilant in regards to false positives.
 
 ##### "default_tracktime" `[int]`
-- How many seconds to track IPs banned by modules. Default = 604800 (1 week).
+- How many seconds IP addresses should be tracked for. Default = 604800 (1 week).
 
 ##### "infraction_limit" `[int]`
 - Maximum number of infractions an IP is allowed to incur before it is banned by IP tracking. Default = 10.
 
 ##### "tracking_override" `[bool]`
 - Allow modules to override tracking options? True = Yes [Default]; False = No.
+
+#### "verification" (Category)
+Configuration for verifying where requests originate from.
+
+##### "search_engines" `[string]`
+- Controls for verifying requests from search engines.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
+
+##### "social_media" `[string]`
+- Controls for verifying requests from social media platforms.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
+
+** Requires ASN lookup functionality (e.g., via the BGPView module).
+
+##### "other" `[string]`
+- Controls for verifying other kinds of requests where possible.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+
+__What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
 #### "recaptcha" (Category)
 Configuration for ReCaptcha (provides a way for humans to regain access when blocked).
@@ -1149,167 +1129,6 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#HO
 
 ##### "pdo_password" `[string]`
 - PDO password.
-
-#### "abuseipdb" (Category)
-Configuration for the AbuseIPDB module.
-
-##### "api_key" `[string]`
-- Please enter your API key here.
-
-See also:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- The maximum age in days for which reports will be considered when performing lookups (must be a number between 1 and 365). Default = 365.
-
-##### "minimum_confidence_score" `[int]`
-- The minimum confidence score required in order for CIDRAM to block an IP address (must be a number between 0 and 100). Default = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- The maximum confidence score allowed for being served a CAPTCHA (must be a number between 0 and 100). Default = 10.
-
-##### "minimum_total_reports" `[int]`
-- The minimum number of total reports required in order for CIDRAM to block an IP address. Default = 1.
-
-##### "report_back" `[bool]`
-- Allow CIDRAM to report detected bad behaviour back to AbuseIPDB using your API key? Default = False.
-
-##### "lookup_strategy" `[int]`
-- Which requests should lookups be performed for?
-
-```
-lookup_strategy
-├─0 (None.): If you want to use the module for reporting purposes only, without looking
-│ anything up, use this.
-├─1 (Every request.): More stringent and thorough, but also more likely to result in limits and
-│ quotas being met much more quickly, potentially resulting in being locked
-│ out of the service when it's most needed. Also, although lookup results are
-│ always cached regardless, it could still nonetheless negatively impact
-│ website performance in some cases. May be necessary in some cases, but not
-│ generally recommended.
-└─2 (Requests for sensitive pages only (e.g., login pages, registration forms, etc).): Less stringent and thorough, but more conservative in terms of quotas and
-  limits, and less likely to negatively impact performance. The recommended
-  strategy in most cases.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Build profiles using the usage type returned by the API? False = No. True = Yes. Default = True.
-
-#### "bgpview" (Category)
-Configuration for the BGPView module (provides an ASN and country code lookup facility for CIDRAM).
-
-##### "blocked_asns" `[string]`
-- A list of ASNs to be blocked when matched by the BGPView module.
-
-##### "whitelisted_asns" `[string]`
-- A list of ASNs to be whitelisted when matched by the BGPView module.
-
-##### "blocked_ccs" `[string]`
-- A list of countries (identified by their {{Links.ISO.3166}} 2-digit country codes) to be blocked when matched by the BGPView module.
-
-##### "whitelisted_ccs" `[string]`
-- A list of countries (identified by their {{Links.ISO.3166}} 2-digit country codes) to be whitelisted when matched by the BGPView module.
-
-#### "bunnycdn" (Category)
-BunnyCDN compatibility module configuration.
-
-##### "positive_action" `[string]`
-- Which action should CIDRAM perform when it encounters a request from BunnyCDN? Default action = Bypass.
-
-```
-positive_action
-├─bypass ("Trigger a bypass.): Subtracts one count from the number of signatures triggered, as long as at
-│ least one signature has already been triggered. Recommended for dealing with
-│ simple false positives potentially caused by the default signature files."
-├─greylist ("Greylist the request.): Resets the number of signatures triggered, but continues processing the
-│ request. Recommended when you don't want to whitelist the request, but need
-│ something more substantial than triggering a bypass."
-└─whitelist ("Whitelist the request.): Resets the number of signatures triggered, and aborts any further processing
-  of the request. Guarantees that CIDRAM will never block the request."
-```
-
-#### "bypasses" (Category)
-Default signature bypasses configuration.
-
-##### "used" `[string]`
-- Which bypasses should be used?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (Category)
-Optional security extras module configuration.
-
-##### "signatures" `[string]`
-- Which types of signatures should be honoured?
-
-```
-signatures
-├─empty_ua ("Empty user agents.")
-├─query ("Signatures based on request queries.")
-├─raw ("Signatures based on raw request input.")
-├─ruri ("Signatures based on reconstructed URIs.")
-└─uri ("Signatures based on request URIs.")
-```
-
-#### "projecthoneypot" (Category)
-Configuration for the Project Honeypot module.
-
-##### "api_key" `[string]`
-- Please enter your API key here.
-
-See also:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- The maximum age in days for which reports will be considered when performing lookups. Default = 365.
-
-##### "minimum_threat_score" `[int]`
-- The minimum threat score required in order for CIDRAM to block an IP address (must be a number between 1 and 100). Default = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- The maximum threat score allowed for being served a CAPTCHA (must be a number between 1 and 100). Default = 10.
-
-##### "lookup_strategy" `[int]`
-- Which requests should lookups be performed for?
-
-```
-lookup_strategy
-├─0 (None.): If you want to use the module for reporting purposes only, without looking
-│ anything up, use this.
-├─1 (Every request.): More stringent and thorough, but also more likely to result in limits and
-│ quotas being met much more quickly, potentially resulting in being locked
-│ out of the service when it's most needed. Also, although lookup results are
-│ always cached regardless, it could still nonetheless negatively impact
-│ website performance in some cases. May be necessary in some cases, but not
-│ generally recommended.
-└─2 (Requests for sensitive pages only (e.g., login pages, registration forms, etc).): Less stringent and thorough, but more conservative in terms of quotas and
-  limits, and less likely to negatively impact performance. The recommended
-  strategy in most cases.
-```
-
-#### "sfs" (Category)
-Configuration for the Stop Forum Spam module.
-
-##### "offer_captcha" `[bool]`
-- When requests are blocked by this module, CAPTCHAs may be served. Default = True. Note: Doesn't override other directives. For CAPTCHAs to be served, all directives must agree, necessary keys configured, etc. In the event that CAPTCHAs would normally be permitted to be served, setting this directive to false provides a way to prevent CAPTCHAs being served for requests blocked specifically by this module.
 
 ---
 
@@ -2292,4 +2111,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 30 June 2022 (2022.06.30).
+Last Updated: 9 July 2022 (2022.07.09).

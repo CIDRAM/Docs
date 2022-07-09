@@ -188,9 +188,6 @@ Cấu hình (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Cấu hình (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ Cấu hình (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Thể loại)
@@ -650,62 +616,6 @@ ban_override
 
 __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="vi">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
 
-##### "search_engine_verification" `[string]`
-- Kiểm soát để xác minh các yêu cầu từ các máy tìm kiếm.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
-
-__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
-
-##### "social_media_verification" `[string]`
-- Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
-
-__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
-
-** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun BGPView).
-
-##### "other_verification" `[string]`
-- Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
-
-__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
-
 ##### "default_algo" `[string]`
 - Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai.
 
@@ -849,38 +759,108 @@ theme
 #### "signatures" (Thể loại)
 Cấu hình cho chữ ký, tập tin chữ ký, mô-đun, vv.
 
-##### "block_attacks" `[bool]`
-- Chặn CIDR liên quan đến các cuộc tấn công và lưu lượng truy cập bất thường khác? Ví dụ, quét cổng, tấn công, dò tìm lỗ hổng bảo mật, vv. Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
+##### "shorthand" `[string]`
+- Kiểm soát những việc cần làm với một yêu cầu khi có sự trùng khớp tích cực với một chữ ký sử dụng các từ viết tắt đã cho.
 
-##### "block_cloud" `[bool]`
-- Chặn CIDR xác định là thuộc về các dịch vụ lưu trữ mạng hay dịch vụ điện toán đám mây? Nếu bạn điều hành một dịch vụ API từ trang mạng của bạn hay nếu bạn mong đợi các trang mạng khác để kết nối với trang mạng của bạn, điều này cần được thiết lập để false. Nếu bạn không, sau đó, tùy chọn này cần được thiết lập để true.
+```
+shorthand
+├─Attacks ("Cuộc tấn công")
+├─Bogon ("⁰ IP bogon")
+├─Cloud ("Dịch vụ điện toán đám mây")
+├─Generic ("Chủng loại")
+├─Legal ("¹ Nghĩa vụ hợp pháp")
+├─Malware ("Phần mềm độc hại")
+├─Proxy ("² Proxy")
+├─Spam ("Nguy cơ rác")
+├─Banned ("³ Bị cấm")
+├─BadIP ("³ IP không hợp lệ")
+├─RL ("³ Giới hạn tốc độ")
+└─Other ("⁴ Khác")
+```
 
-##### "block_bogons" `[bool]`
-- Chặn CIDR bogon/martian? Nếu bạn mong đợi các kết nối đến trang mạng của bạn từ bên trong mạng nội bộ của bạn, từ localhost, hay từ LAN của bạn, tùy chọn này cần được thiết lập để false. Nếu bạn không mong đợi những kết nối như vậy, tùy chọn này cần được thiết lập để true.
+__0.__ Nếu trang web của bạn cần truy cập qua mạng LAN hoặc localhost, đừng chặn điều này. Nếu không cần, bạn có thể chặn điều này.
 
-##### "block_generic" `[bool]`
-- Chặn CIDR thường được khuyến cáo cho danh sách đen? Điều này bao gồm bất kỳ chữ ký không được đánh dấu như một phần của bất kỳ các loại chữ ký cụ thể khác.
+__1.__ Không có tập tin chữ ký mặc định nào sử dụng điều này, nhưng nó vẫn được hỗ trợ trong trường hợp nó có thể hữu ích cho một số người dùng.
 
-##### "block_legal" `[bool]`
-- Chặn CIDR theo các nghĩa vụ hợp pháp? Chỉ thị này thường không có bất kỳ hiệu lực, vì CIDRAM không liên kết bất kỳ CIDR nào với "nghĩa vụ hợp pháp" theo mặc định, nhưng nó vẫn tồn tại tuy nhiên như một biện pháp kiểm soát bổ sung vì lợi ích của bất kỳ tập tin chữ ký hay mô-đun tùy chỉnh nào có thể tồn tại vì lý do hợp pháp.
+__2.__ Nếu bạn cần người dùng có thể truy cập trang web của bạn thông qua proxy, đừng chặn điều này. Nếu không cần, bạn có thể chặn điều này.
 
-##### "block_malware" `[bool]`
-- Chặn CIDR liên quan đến phần mềm độc hại? Điều này bao gồm các máy chủ C&C, máy chủ bị nhiễm, máy chủ liên quan đến phân phối phần mềm độc hại, vv.
+__3.__ Sử dụng trực tiếp trong chữ ký không được hỗ trợ, nhưng nó có thể được sử dụng bằng các phương tiện khác trong các trường hợp cụ thể.
 
-##### "block_proxies" `[bool]`
-- Chặn CIDR xác định là thuộc về các dịch vụ proxy hay VPN? Nếu bạn yêu cầu mà người dùng có thể truy cập trang mạng của bạn từ các dịch vụ proxy hay VPN, điều này cần được thiết lập để false. Nếu không thì, nếu bạn không yêu cầu các dịch vụ proxy hay VPN, tùy chọn này cần được thiết lập để true như một phương tiện để cải thiện an ninh.
+__4.__ Đề cập đến các trường hợp mà các từ viết tắt hoàn toàn không được sử dụng, hoặc không được nhận dạng bởi CIDRAM.
 
-##### "block_spam" `[bool]`
-- Chặn CIDR xác định như có nguy cơ cao đối được thư rác? Trừ khi bạn gặp vấn đề khi làm như vậy, nói chung, điều này cần phải luôn được true.
+__Chỉ một cho mỗi chữ ký.__ Một chữ ký có thể gọi nhiều hồ sơ, nhưng chỉ có thể sử dụng một từ viết tắt. Có thể nhiều từ viết tắt có thể thích hợp, nhưng vì chỉ một có thể được sử dụng, chúng tôi luôn hướng tới việc chỉ sử dụng thích hợp nhất.
+
+__Ưu tiên.__ Một tùy chọn được chọn luôn được ưu tiên hơn một tùy chọn không được chọn. Ví dụ, nếu nhiều từ viết tắt có hiệu lực nhưng chỉ một trong số chúng được đặt là bị chặn, yêu cầu sẽ vẫn bị chặn.
+
+__Điểm cuối của con người và dịch vụ điện toán đám mây.__ Dịch vụ điện toán đám mây có thể đề cập đến các nhà cung cấp dịch vụ lưu trữ web, trang trại máy chủ, trung tâm dữ liệu, hoặc một số thứ khác. Điểm cuối của con người đề cập đến phương tiện mà con người truy cập internet, chẳng hạn như bằng cách của một nhà cung cấp dịch vụ internet. Một mạng thường chỉ cung cấp cái này hoặc cái kia, nhưng đôi khi có thể cung cấp cả hai. Chúng tôi mong muốn không bao giờ xác định các điểm cuối tiềm năng của con người là các dịch vụ điện toán đám mây. Do đó, một dịch vụ điện toán đám mây có thể được xác định là một thứ khác nếu phạm vi của nó được chia sẻ bởi các điểm cuối của con người đã biết. Tương tự như vậy, chúng tôi luôn hướng tới xác định các dịch vụ điện toán đám mây, có phạm vi không được chia sẻ bởi bất kỳ điểm cuối của con người nào đã biết, là dịch vụ điện toán đám mây. Do đó, một yêu cầu được xác định rõ ràng là một dịch vụ điện toán đám mây rất có lẽ không chia sẻ phạm vi của nó với bất kỳ điểm cuối của con người nào đã biết. Tương tự như vậy, một yêu cầu được xác định rõ ràng bởi các cuộc tấn công hoặc nguy cơ rác là có lẽ chia sẻ chúng. Tuy nhiên, internet luôn ở trạng thái thay đổi, mục đích của các mạng thay đổi theo thời gian, và các phạm vi luôn được mua hay bán, vì vậy hãy luôn nhận thức và cảnh giác có liên quan đến nguy cơ sai tích cực.
 
 ##### "default_tracktime" `[int]`
-- Có bao nhiêu giây để giám sát các IP bị cấm bởi các mô-đun. Mặc định = 604800 (1 tuần).
+- Địa chỉ IP sẽ được giám sát trong bao nhiêu giây. Mặc định = 604800 (1 tuần).
 
 ##### "infraction_limit" `[int]`
 - Số lượng tối đa các vi phạm một IP được phép chịu trước khi nó bị cấm bởi các giám sát IP. Mặc định = 10.
 
 ##### "tracking_override" `[bool]`
 - Cho phép các mô-đun ghi đè các tùy chọn giám sát? True = Vâng [Mặc định]; False = Không.
+
+#### "verification" (Thể loại)
+Cấu hình để xác minh yêu cầu bắt nguồn từ đâu.
+
+##### "search_engines" `[string]`
+- Kiểm soát để xác minh các yêu cầu từ các máy tìm kiếm.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
+
+##### "social_media" `[string]`
+- Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
+
+** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun BGPView).
+
+##### "other" `[string]`
+- Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+
+__"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
 
 #### "recaptcha" (Thể loại)
 Cấu hình cho ReCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
@@ -1169,176 +1149,6 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 
 ##### "pdo_password" `[string]`
 - Mật khẩu PDO.
-
-#### "abuseipdb" (Thể loại)
-Cấu hình cho mô-đun AbuseIPDB.
-
-##### "api_key" `[string]`
-- Vui lòng nhập khóa API của bạn tại đây.
-
-Xem thêm:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- Tuổi tối đa tính theo ngày mà các báo cáo sẽ được xem xét khi thực hiện tra cứu (phải là một số từ 1 đến 365). Mặc định = 365.
-
-##### "minimum_confidence_score" `[int]`
-- Điểm tin cậy tối thiểu bắt buộc để CIDRAM chặn địa chỉ IP (phải là một số từ 0 đến 100). Mặc định = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- Điểm tin cậy tối đa cho phép CAPTCHA được phân phát (phải là một số từ 0 đến 100). Mặc định = 10.
-
-##### "minimum_total_reports" `[int]`
-- Cần có tổng số báo cáo tối thiểu để CIDRAM chặn địa chỉ IP. Mặc định = 1.
-
-##### "report_back" `[bool]`
-- Cho phép CIDRAM báo cáo hành vi xấu đã phát hiện trở lại AbuseIPDB bằng cách sử dụng khóa API của bạn? Mặc định = False.
-
-##### "lookup_strategy" `[int]`
-- Những yêu cầu nào nên thực hiện tra cứu?
-
-```
-lookup_strategy
-├─0 (Không phải bất kỳ.): Nếu bạn chỉ muốn sử dụng mô-đun cho mục đích báo cáo mà
-│ không cần tra cứu gì, hãy sử dụng mô-đun này.
-├─1 (Tất cả các yêu cầu.): Nghiêm ngặt hơn, nhưng cũng có nhiều khả năng dẫn đến các
-│ giới hạn và hạn ngạch bị vượt quá nhanh hơn nhiều, có
-│ khả năng dẫn đến việc bị khóa dịch vụ khi cần thiết
-│ nhất. Ngoài ra, mặc dù kết quả tra cứu luôn được lưu vào
-│ bộ nhớ cache, nhưng nó vẫn có thể tác động tiêu cực đến
-│ hiệu suất trang web trong một số trường hợp. Có thể cần
-│ thiết trong một số trường hợp, nhưng thường không được
-│ khuyến khích.
-└─2 (Yêu cầu chỉ dành cho các trang nhạy cảm (ví dụ: trang đăng nhập, biểu mẫu đăng ký, vv).): Ít nghiêm ngặt hơn, nhưng thận trọng hơn về hạn ngạch và
-  giới hạn, và ít có khả năng tác động tiêu cực đến hiệu
-  suất. Chiến lược được khuyến khích trong hầu hết các
-  trường hợp.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Xây dựng hồ sơ bằng cách sử dụng loại sử dụng do API trả về? False = Không. True = Vâng. Mặc định = True.
-
-#### "bgpview" (Thể loại)
-Cấu hình cho mô-đun BGPView (cung cấp cơ sở tra cứu cho ASN và mã quốc gia cho CIDRAM).
-
-##### "blocked_asns" `[string]`
-- Danh sách các ASN sẽ bị chặn khi được đối sánh bởi mô-đun BGPView.
-
-##### "whitelisted_asns" `[string]`
-- Danh sách các ASN sẽ được đưa vào danh sách trắng khi được đối sánh bởi mô-đun BGPView.
-
-##### "blocked_ccs" `[string]`
-- Danh sách các quốc gia (được xác định bằng mã quốc gia 2 chữ số {{Links.ISO.3166}} của họ) bị chặn khi được đối sánh bởi mô-đun BGPView.
-
-##### "whitelisted_ccs" `[string]`
-- Danh sách các quốc gia (được xác định bằng mã quốc gia 2 chữ số {{Links.ISO.3166}} của họ) sẽ được đưa vào danh sách trắng khi được đối sánh bởi mô-đun BGPView.
-
-#### "bunnycdn" (Thể loại)
-Cấu hình cho mô-đun tương thích BunnyCDN.
-
-##### "positive_action" `[string]`
-- CIDRAM nên thực hiện hành động nào khi gặp yêu cầu từ BunnyCDN? Hành động mặc định = Đường tránh.
-
-```
-positive_action
-├─bypass ("Kích hoạt một đường tránh.): Trừ một số cho số chữ ký được kích hoạt, miễn là ít
-│ nhất một chữ ký đã được kích hoạt. Được khuyến khích
-│ cho xử lý các trường hợp sai tích cực đơn giản có thể
-│ được gây ra bởi các tập tin chữ ký mặc định."
-├─greylist ("Danh sách xám các yêu cầu.): Đặt lại số lượng chữ ký được kích hoạt, nhưng vẫn
-│ tiếp tục xử lý yêu cầu. Được khuyến khích khi bạn không
-│ muốn đưa yêu cầu vào danh sách trắng, nhưng cần điều gì
-│ đó thực chất hơn kích hoạt trường hợp."
-└─whitelist ("Danh sách trắng các yêu cầu.): Đặt lại số lượng chữ ký được kích hoạt, và hủy bỏ
-  mọi quá trình xử lý yêu cầu tiếp theo. Đảm bảo rằng
-  CIDRAM sẽ không bao giờ chặn yêu cầu."
-```
-
-#### "bypasses" (Thể loại)
-Cấu hình cho các đường tránh chữ ký mặc định.
-
-##### "used" `[string]`
-- Những đường tránh nào nên được sử dụng?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (Thể loại)
-Cấu hình cho mô-đun của các tính năng bổ sung bảo mật tùy chọn.
-
-##### "signatures" `[string]`
-- Những loại chữ ký nào nên được tôn vinh?
-
-```
-signatures
-├─empty_ua ("Tác nhân người dùng trống.")
-├─query ("Chữ ký dựa trên các truy vấn yêu cầu.")
-├─raw ("Chữ ký dựa trên đầu vào yêu cầu thô.")
-├─ruri ("Chữ ký dựa trên các URI được xây dựng lại.")
-└─uri ("Chữ ký dựa trên URI của yêu cầu.")
-```
-
-#### "projecthoneypot" (Thể loại)
-Cấu hình cho mô-đun Project Honeypot.
-
-##### "api_key" `[string]`
-- Vui lòng nhập khóa API của bạn tại đây.
-
-Xem thêm:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- Tuổi tối đa tính theo ngày mà các báo cáo sẽ được xem xét khi thực hiện tra cứu. Mặc định = 365.
-
-##### "minimum_threat_score" `[int]`
-- Điểm số mối đe dọa tối thiểu cần thiết để CIDRAM chặn một địa chỉ IP (phải là một số từ 1 đến 100). Mặc định = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- Điểm đe dọa tối đa được phép để được phân phát CAPTCHA (phải là một số từ 1 đến 100). Mặc định = 10.
-
-##### "lookup_strategy" `[int]`
-- Những yêu cầu nào nên thực hiện tra cứu?
-
-```
-lookup_strategy
-├─0 (Không phải bất kỳ.): Nếu bạn chỉ muốn sử dụng mô-đun cho mục đích báo cáo mà
-│ không cần tra cứu gì, hãy sử dụng mô-đun này.
-├─1 (Tất cả các yêu cầu.): Nghiêm ngặt hơn, nhưng cũng có nhiều khả năng dẫn đến các
-│ giới hạn và hạn ngạch bị vượt quá nhanh hơn nhiều, có
-│ khả năng dẫn đến việc bị khóa dịch vụ khi cần thiết
-│ nhất. Ngoài ra, mặc dù kết quả tra cứu luôn được lưu vào
-│ bộ nhớ cache, nhưng nó vẫn có thể tác động tiêu cực đến
-│ hiệu suất trang web trong một số trường hợp. Có thể cần
-│ thiết trong một số trường hợp, nhưng thường không được
-│ khuyến khích.
-└─2 (Yêu cầu chỉ dành cho các trang nhạy cảm (ví dụ: trang đăng nhập, biểu mẫu đăng ký, vv).): Ít nghiêm ngặt hơn, nhưng thận trọng hơn về hạn ngạch và
-  giới hạn, và ít có khả năng tác động tiêu cực đến hiệu
-  suất. Chiến lược được khuyến khích trong hầu hết các
-  trường hợp.
-```
-
-#### "sfs" (Thể loại)
-Cấu hình cho mô-đun Stop Forum Spam.
-
-##### "offer_captcha" `[bool]`
-- Khi mô-đun này chặn các yêu cầu, CAPTCHA có thể được phân phát. Mặc định = True. Lưu ý: Sẽ không ghi đè các chỉ thị khác. Để CAPTCHA được phân phát, tất cả các chỉ thị phải đồng ý, các khóa cần thiết được định cấu hình, vv. Trong trường hợp thông thường CAPTCHA sẽ được phép phân phát, việc đặt chỉ thị này thành false sẽ cung cấp một cách để ngăn CAPTCHA được phân phát cho các yêu cầu bị chặn cụ thể bởi mô-đun này.
 
 ---
 
@@ -2310,4 +2120,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.06.30.
+Lần cuối cập nhật: 2022.07.09.

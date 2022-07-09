@@ -188,9 +188,6 @@ Configuratie (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Configuratie (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -275,48 +269,20 @@ Configuratie (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-├───supplementary_cache_options
-│       prefix [string]
-│       enable_apcu [bool]
-│       enable_memcached [bool]
-│       enable_redis [bool]
-│       enable_pdo [bool]
-│       memcached_host [string]
-│       memcached_port [int]
-│       redis_host [string]
-│       redis_port [int]
-│       redis_timeout [float]
-│       pdo_dsn [string]
-│       pdo_username [string]
-│       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
-├───bypasses
-│       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───supplementary_cache_options
+        prefix [string]
+        enable_apcu [bool]
+        enable_memcached [bool]
+        enable_redis [bool]
+        enable_pdo [bool]
+        memcached_host [string]
+        memcached_port [int]
+        redis_host [string]
+        redis_port [int]
+        redis_timeout [float]
+        pdo_dsn [string]
+        pdo_username [string]
+        pdo_password [string]
 ```
 
 #### "general" (Categorie)
@@ -644,62 +610,6 @@ ban_override
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="nl">Wat kan ik gebruiken voor "default_dns"?</a></em>
 
-##### "search_engine_verification" `[string]`
-- Controles voor het verifiëren van verzoeken van zoekmachines.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
-
-__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
-
-##### "social_media_verification" `[string]`
-- Controles voor het verifiëren van verzoeken van sociale media platforms.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
-
-__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
-
-** Vereist ASN-opzoekfunctionaliteit (b.v., via de BGPView-module).
-
-##### "other_verification" `[string]`
-- Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
-
-__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
-
 ##### "default_algo" `[string]`
 - Definieert welk algoritme u wilt gebruiken voor alle toekomstige wachtwoorden en sessies.
 
@@ -843,38 +753,108 @@ theme
 #### "signatures" (Categorie)
 Configuratie voor signatures, signatuurbestanden, modules, enz.
 
-##### "block_attacks" `[bool]`
-- Blokkeren CIDR's die verband houden met aanvallen en ander abnormaal verkeer? B.v., poortscans, hacken, zoeken naar kwetsbaarheden, etc. Tenzij u problemen ondervindt wanneer u dit doet, in algemeen, dit moet altijd worden ingesteld op true.
+##### "shorthand" `[string]`
+- Controles voor wat te doen met een verzoek wanneer er een positieve overeenkomst is met een signature die de gegeven stenowoorden gebruikt.
 
-##### "block_cloud" `[bool]`
-- Blokkeren CIDR's geïdentificeerd als behorend tot webhosting/cloud-diensten? Als u een api te bedienen vanaf uw website of als u verwacht dat andere websites aan te sluiten op uw website, dit richtlijn moet worden ingesteld op false. Als u niet, dan, dit richtlijn moet worden ingesteld op true.
+```
+shorthand
+├─Attacks ("Aanvallen")
+├─Bogon ("⁰ Bogon IP")
+├─Cloud ("Cloud Service")
+├─Generic ("Algemeen")
+├─Legal ("¹ Wettelijke")
+├─Malware ("Malware")
+├─Proxy ("² Proxy")
+├─Spam ("Spam risico")
+├─Banned ("³ Verbannen")
+├─BadIP ("³ Ongeldig IP!")
+├─RL ("³ Tarief beperkt")
+└─Other ("⁴ Anders")
+```
 
-##### "block_bogons" `[bool]`
-- Blokkeren bogon/martian CIDR's? Als u verwacht aansluitingen om uw website vanuit uw lokale netwerk, vanuit localhost, of vanuit uw LAN, dit richtlijn moet worden ingesteld op false. Als u niet verwacht deze aansluitingen, dit richtlijn moet worden ingesteld op true.
+__0.__ Als uw website nodig toegang via LAN of localhost, blokkeer dit dan niet. Anders u kunt dit blokkeren.
 
-##### "block_generic" `[bool]`
-- Blokkeren CIDR's algemeen aanbevolen voor blacklisting? Dit omvat alle signatures die niet zijn gemarkeerd als onderdeel van elke van de andere, meer specifieke signature categorieën.
+__1.__ Geen van de standaard signatuurbestanden gebruikt dit, maar het wordt niettemin ondersteund voor het geval het voor sommige gebruikers nuttig kan zijn.
 
-##### "block_legal" `[bool]`
-- Blokkeren CIDR's als reactie op wettelijke verplichtingen? Dit richtlijn zou normaal gesproken geen effect moeten hebben, omdat CIDRAM als standaard geen CIDR's met "wettelijke verplichtingen" associeert, maar het bestaat niettemin als een extra beheersmaatregel ten behoeve van eventuele aangepaste signatuurbestanden of modules die mogelijk bestaan om wettelijke redenen.
+__2.__ Als uw gebruikers nodig toegang tot uw website via proxy's, blokkeer dit dan niet. Anders u kunt dit blokkeren.
 
-##### "block_malware" `[bool]`
-- Blokkeren CIDR's die zijn gekoppeld aan malware? Dit omvat C&C-servers, geïnfecteerde machines, machines die betrokken zijn bij de distributie van malware, enz.
+__3.__ Direct gebruik in signatures wordt niet ondersteund, maar kan in bepaalde omstandigheden op andere manieren worden aangeroepen.
 
-##### "block_proxies" `[bool]`
-- Blokkeren CIDR's geïdentificeerd als behorend tot proxy-services of VPN's? Als u vereisen dat gebruikers kan toegang tot uw website van proxy-services en VPN's, dit richtlijn moet worden ingesteld op false. Anders, als u geen proxy-services of VPN's nodig, dit richtlijn moet worden ingesteld op true als een middel ter verbetering van de beveiliging.
+__4.__ Verwijst naar gevallen waarin stenowoorden helemaal niet worden gebruikt, of niet worden herkend door CIDRAM.
 
-##### "block_spam" `[bool]`
-- Blokkeren CIDR's geïdentificeerd als zijnde hoog risico voor spam? Tenzij u problemen ondervindt wanneer u dit doet, in algemeen, dit moet altijd worden ingesteld op true.
+__Eén per signature.__ Een signature kan meerdere profielen oproepen, maar kan slechts één stenowoord gebruiken. Het is mogelijk dat meerdere stenowoorden geschikt zijn, maar aangezien er maar één kan worden gebruikt, we streven ernaar altijd alleen de meest geschikte te gebruiken.
+
+__Prioriteit.__ Een geselecteerde optie heeft altijd voorrang op een niet geselecteerde optie. B.v., als er meerdere stenowoorden in het spel zijn, maar slechts één ervan als geblokkeerd is ingesteld, wordt het verzoek nog steeds geblokkeerd.
+
+__Menselijke eindpunten en cloud services.__ Cloud service kan verwijzen naar webhosting providers, server farms, data centers of een aantal andere dingen. Menselijk eindpunt verwijst naar de manier waarop een mens toegang krijgt tot internet, b.v., via een internetprovider. Een netwerk biedt meestal slechts een of het ander, maar kan soms beide bieden. We streven ernaar om potentiële menselijke eindpunten nooit als cloudservices te identificeren. Daarom een cloud service kan worden geïdentificeerd als iets anders als het bereik wordt gedeeld door bekende menselijke eindpunten. Evenzo, we streven ernaar om cloud services, waarvan het bereik niet wordt gedeeld door bekende menselijke eindpunten, altijd als cloud services te identificeren. Daarom een aanvraag dat expliciet als een cloud service wordt geïdentificeerd waarschijnlijk niet deelt het bereik met bekende menselijke eindpunten. Evenzo, een verzoek dat expliciet wordt geïdentificeerd door aanvallen of spam risico waarschijnlijk deelt het bereik. Het internet is echter altijd in beweging, de doeleinden van netwerken veranderen in de loop van de tijd, en bereik worden altijd gekocht of verkocht, dus blijf bewust en waakzaam met betrekking tot valse positieven.
 
 ##### "default_tracktime" `[int]`
-- Hoeveel seconden om IP's verbannen door modules te volgen. Standaard = 604800 (1 week).
+- Hoeveel seconden IP-adressen moeten worden gevolgd. Standaard = 604800 (1 week).
 
 ##### "infraction_limit" `[int]`
 - Maximum aantal overtredingen een IP mag worden gesteld voordat hij wordt verbannen door IP-tracking. Standaard = 10.
 
 ##### "tracking_override" `[bool]`
 - Moeten modules worden toegestaan om opties voor tracking te overschrijven? True = Ja [Standaard]; False = Nee.
+
+#### "verification" (Categorie)
+Configuratie om te verifiëren waar verzoeken vandaan komen.
+
+##### "search_engines" `[string]`
+- Controles voor het verifiëren van verzoeken van zoekmachines.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
+
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
+
+##### "social_media" `[string]`
+- Controles voor het verifiëren van verzoeken van sociale media platforms.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
+
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
+
+** Vereist ASN-opzoekfunctionaliteit (b.v., via de BGPView-module).
+
+##### "other" `[string]`
+- Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
+
+__Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
 #### "recaptcha" (Categorie)
 Configuratie voor ReCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
@@ -1159,170 +1139,6 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HO
 
 ##### "pdo_password" `[string]`
 - PDO wachtwoord.
-
-#### "abuseipdb" (Categorie)
-Configuratie voor de AbuseIPDB-module.
-
-##### "api_key" `[string]`
-- Voer hier uw API-sleutel.
-
-Zie ook:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- De maximale leeftijd in dagen waarvoor rapporten worden overwogen bij het uitvoeren van zoekopdrachten (moet een getal zijn tussen 1 en 365). Standaard = 365.
-
-##### "minimum_confidence_score" `[int]`
-- De minimale betrouwbaarheidsscore die vereist is om CIDRAM een IP-adres te blokkeren (moet een getal zijn tussen 0 en 100). Standaard = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- De maximale betrouwbaarheidsscore die is toegestaan voor een CAPTCHA (moet een getal zijn tussen 0 en 100). Standaard = 10.
-
-##### "minimum_total_reports" `[int]`
-- Het minimale totale aantal rapporten dat nodig is om CIDRAM een IP-adres te blokkeren. Standaard = 1.
-
-##### "report_back" `[bool]`
-- Sta CIDRAM toe om gedetecteerd slecht gedrag te melden terug aan AbuseIPDB met behulp van uw API-sleutel? Standaard = False.
-
-##### "lookup_strategy" `[int]`
-- Voor welke verzoeken moeten zoekopdrachten worden uitgevoerd?
-
-```
-lookup_strategy
-├─0 (Geen.): Als u de module alleen voor rapportagedoeleinden wilt gebruiken, zonder iets
-│ op te zoeken, gebruik deze.
-├─1 (Elk verzoek.): Strenger en grondiger, maar het is ook waarschijnlijker dat limieten en
-│ quota veel sneller worden gehaald, wat kan leiden dat de service wordt
-│ buitengesloten wanneer dat het meest nodig is. Ook, hoewel opzoekresultaten
-│ altijd in de cache worden opgeslagen, dit kan in sommige gevallen toch een
-│ negatieve invloed hebben op de prestaties van de website. Kan in sommige
-│ gevallen nodig zijn, maar wordt het over algemeen niet aanbevolen.
-└─2 (Alleen verzoeken voor gevoelige pagina's (b.v., inlogpagina's, registratieformulieren, enz).): Minder streng en grondig, maar conservatiever in termen van quota en
-  limieten, en minder waarschijnlijk een negatieve invloed op de prestaties te
-  hebben. De aanbevolen strategie in de meeste gevallen.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Profielen bouwen met het gebruikstype dat door de API wordt geretourneerd? False = Nee. True = Ja. Standaard = True.
-
-#### "bgpview" (Categorie)
-Configuratie voor de BGPView-module (biedt een zoekfunctie voor ASN en landcodes voor CIDRAM).
-
-##### "blocked_asns" `[string]`
-- Een lijst met ASN's die moeten worden geblokkeerd wanneer ze worden gekoppeld mit de BGPView-module.
-
-##### "whitelisted_asns" `[string]`
-- Een lijst met ASN's die op de witte lijst moeten worden geplaatst wanneer ze worden gekoppeld mit de BGPView-module.
-
-##### "blocked_ccs" `[string]`
-- Een lijst met landen (geïdentificeerd door hun {{Links.ISO.3166}} 2-cijferige landcodes) die moeten worden geblokkeerd wanneer ze worden gekoppeld mit de BGPView-module.
-
-##### "whitelisted_ccs" `[string]`
-- Een lijst met landen (geïdentificeerd door hun {{Links.ISO.3166}} 2-cijferige landcodes) die op de witte lijst moeten worden geplaatst wanneer ze worden gekoppeld mit de BGPView-module.
-
-#### "bunnycdn" (Categorie)
-Configuratie voor de BunnyCDN-compatibiliteitsmodule.
-
-##### "positive_action" `[string]`
-- Welke actie moet CIDRAM uitvoeren wanneer het een verzoek van BunnyCDN tegenkomt? Standaard actie = Omzeil.
-
-```
-positive_action
-├─bypass ("Trigger een bypass.): Trekt één telling af van het aantal getriggerde signatures, zolang er
-│ minstens één signature is al getriggerd. Aanbevolen voor het omgaan met
-│ eenvoudige valse positieven die mogelijk worden veroorzaakt door de
-│ standaard signatuurbestanden."
-├─greylist ("Behandel het verzoek als op de grijze lijst.): Stelt het aantal getriggerde signatures in op nul, maar gaat door met het
-│ verwerken van het verzoek. Aanbevolen wanneer u het verzoek niet als op de
-│ witte lijst wilt behandelen, maar iets meer substantieel nodig hebt dan het
-│ triggeren van een bypass."
-└─whitelist ("Behandel het verzoek als op de witte lijst.): Stelt het aantal getriggerde signatures in op nul, en breekt elke verdere
-  verwerking van het verzoek af. Garandeert dat CIDRAM het verzoek nooit zal
-  blokkeren."
-```
-
-#### "bypasses" (Categorie)
-Configuratie voor de standaard bypasses voor signatures.
-
-##### "used" `[string]`
-- Welke bypasses moeten worden gebruikt?
-
-```
-used
-├─AbuseIPDB ("AbuseIPDB")
-├─AmazonAdBot ("AmazonAdBot")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Embedly ("Embedly")
-├─Feedbot ("Feedbot")
-├─Feedspot ("Feedspot")
-├─GoogleFiber ("Google Fiber")
-├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
-├─Jetpack ("Jetpack")
-├─PetalBot ("PetalBot")
-├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
-```
-
-#### "extras" (Categorie)
-Configuratie voor de module van optionele beveiligingsextra's.
-
-##### "signatures" `[string]`
-- Welke soorten signatures moeten worden gehonoreerd?
-
-```
-signatures
-├─empty_ua ("Lege gebruikersagenten.")
-├─query ("Signatures op basis van verzoekvragen.")
-├─raw ("Signatures op basis van onbewerkte verzoekinvoer.")
-├─ruri ("Signatures op basis van gereconstrueerde URI's.")
-└─uri ("Signatures op basis van verzoek-URI's.")
-```
-
-#### "projecthoneypot" (Categorie)
-Configuratie voor de Project Honeypot-module.
-
-##### "api_key" `[string]`
-- Voer hier uw API-sleutel.
-
-Zie ook:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- De maximale leeftijd in dagen waarvoor rapporten worden overwogen bij het uitvoeren van zoekopdrachten. Standaard = 365.
-
-##### "minimum_threat_score" `[int]`
-- De minimale dreigingsscore die vereist is om CIDRAM een IP-adres te blokkeren (moet een getal zijn tussen 1 en 100). Standaard = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- De maximale dreigingsscore die is toegestaan voor een CAPTCHA (moet een getal zijn tussen 1 en 100). Standaard = 10.
-
-##### "lookup_strategy" `[int]`
-- Voor welke verzoeken moeten zoekopdrachten worden uitgevoerd?
-
-```
-lookup_strategy
-├─0 (Geen.): Als u de module alleen voor rapportagedoeleinden wilt gebruiken, zonder iets
-│ op te zoeken, gebruik deze.
-├─1 (Elk verzoek.): Strenger en grondiger, maar het is ook waarschijnlijker dat limieten en
-│ quota veel sneller worden gehaald, wat kan leiden dat de service wordt
-│ buitengesloten wanneer dat het meest nodig is. Ook, hoewel opzoekresultaten
-│ altijd in de cache worden opgeslagen, dit kan in sommige gevallen toch een
-│ negatieve invloed hebben op de prestaties van de website. Kan in sommige
-│ gevallen nodig zijn, maar wordt het over algemeen niet aanbevolen.
-└─2 (Alleen verzoeken voor gevoelige pagina's (b.v., inlogpagina's, registratieformulieren, enz).): Minder streng en grondig, maar conservatiever in termen van quota en
-  limieten, en minder waarschijnlijk een negatieve invloed op de prestaties te
-  hebben. De aanbevolen strategie in de meeste gevallen.
-```
-
-#### "sfs" (Categorie)
-Configuratie voor de Stop Forum Spam module.
-
-##### "offer_captcha" `[bool]`
-- Wanneer verzoeken door deze module worden geblokkeerd, CAPTCHA's kunnen worden geleverd. Standaard = True. Opmerking: Heeft geen voorrang op andere richtlijnen. Om CAPTCHA's te kunnen bedienen, moeten alle richtlijnen overeenkomen, de benodigde sleutels zijn geconfigureerd, enz. In het geval dat CAPTCHA's normaal zouden mogen worden geleverd, biedt het instellen van deze richtlijn op false een manier om te voorkomen dat CAPTCHA's worden geleverd voor verzoeken die specifiek door deze module worden geblokkeerd.
 
 ---
 
@@ -2314,4 +2130,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 30 Juni 2022 (2022.06.30).
+Laatste Bijgewerkt: 9 Juli 2022 (2022.07.09).
