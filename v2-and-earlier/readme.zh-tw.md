@@ -1260,15 +1260,9 @@ Ignore 章節一
 
 #### 7.4 <a name="MODULE_BASICS"></a>基本概念（對於模塊）
 
-模塊可用於擴展CIDRAM的功能，執行額外的任務，或處理額外的邏輯。​通常，當除了起源IP地址之外的原因需要阻止請求時它們使用​（因此，當CIDR簽名不足以阻止請求）。​模塊被寫為PHP文件，因此，通常，模塊簽名被寫為PHP代碼。
+模塊可用於擴展CIDRAM的功能，執行額外的任務，或處理額外的邏輯。
 
-CIDRAM模塊的一些很好的例子可以在這裡找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-編寫新模塊的模板可以在這裡找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-由於模塊是作為PHP文件編寫的，如果您對CIDRAM代碼庫有足夠的了解，則可以根據需要構建模塊，並根據需要編寫模塊簽名​（在合理範圍的什麼可以用PHP來完成內）。​但是，為了您自己的方便，並為了介於存在的模塊和您自己的之間好的理解，建議分析上面鏈接的模板，以便能夠使用它提供的結構和格式。
+由於模塊是作為PHP文件編寫的，如果您對CIDRAM代碼庫有足夠的了解，則可以根據需要構建模塊，並根據需要編寫模塊簽名​（在合理範圍的什麼可以用PHP來完成內）。
 
 *注意：如果您不舒服使用PHP代碼，則不建議編寫自己的模塊。*
 
@@ -1506,7 +1500,9 @@ CIDRAM使網站所有者能夠阻止不良流量，​但網站所有者有責�
 
 #### <a name="BLOCK_HOSTNAMES"></a>CIDRAM可以阻止主機名？
 
-可以做。您將需要創建一個自定義模塊文件。 *看到：[基本概念（對於模塊）](#MODULE_BASICS)*.
+可以做。這可以通過創建輔助規則或自定義模塊來實現。
+
+![阻止主機名的輔助規則](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>在『default_dns』中我可以使用什麼？
 
@@ -1978,4 +1974,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2022年4月23日。
+最後更新：2022年7月27日。

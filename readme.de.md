@@ -1403,9 +1403,9 @@ Wenn Sie das Schreiben Ihrer eigenen benutzerdefinierten Signaturdateien oder be
 
 #### 6.4 <a name="MODULE_BASICS"></a>GRUNDLAGEN (FÜR MODULE)
 
-Module können verwendet werden, um die Funktionalität von CIDRAM zu erweitern, zusätzliche Aufgaben auszuführen oder zusätzliche Logik zu verarbeiten. Typischerweise werden sie Verwendet, wenn eine Anforderung auf einer anderen Basis als der ursprünglichen IP-Adresse blockiert werden muss (und daher, wenn eine CIDR-Signatur nicht ausreicht, um die Anfrage zu blockieren). Module werden als PHP-Dateien geschrieben, und daher werden Modul-Signaturen typischerweise als PHP-Code geschrieben.
+Module können verwendet werden, um die Funktionalität von CIDRAM zu erweitern, zusätzliche Aufgaben auszuführen oder zusätzliche Logik zu verarbeiten.
 
-Da Module als PHP-Dateien geschrieben werden, können Sie Ihre Module beliebig strukturieren und schreiben Sie Ihre Modul-Signaturen wie Sie wollen (im Rahmen des Zumutbaren für was mit PHP möglich ist), wenn Sie mit der CIDRAM-Codebasis ausreichend vertraut sind. Jedoch, zu Ihrer eigenen Bequemlichkeit und aus Gründen der besseren gegenseitigen Verständlichkeit zwischen vorhandenen Modulen und Ihren eigenen, es wird empfohlen, die oben verlinkte Vorlage zu analysieren, um die von ihr bereitgestellte Struktur und das Format verwenden zu können.
+Da Module als PHP-Dateien geschrieben werden, können Sie Ihre Module beliebig strukturieren und schreiben Sie Ihre Modul-Signaturen wie Sie wollen (im Rahmen des Zumutbaren für was mit PHP möglich ist), wenn Sie mit der CIDRAM-Codebasis ausreichend vertraut sind.
 
 *Beachten: Wenn Sie nicht komfortabel im Umgang mit PHP sind, wird das Schreiben eigener Module nicht empfohlen.*
 
@@ -1627,7 +1627,9 @@ Dies bietet einer Mechanismus um sicherzustellen dass Anforderungen von potenzie
 
 #### <a name="BLOCK_HOSTNAMES"></a>Kann CIDRAM Hostnamen blockieren?
 
-Ja. Dazu müssen Sie eine benutzerdefinierte Moduldatei erstellen. *Siehe: [GRUNDLAGEN (FÜR MODULE)](#MODULE_BASICS)*.
+Ja. Dies kann durch Erstellen einer Hilfsregel oder eines benutzerdefinierten Moduls erreicht werden.
+
+![Eine Hilfsregel zum Blockieren von Hostnamen](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Was kann ich für „default_dns“ verwenden?
 
@@ -2063,6 +2065,8 @@ CIDRAM ist in der Lage, IP-Adressen zu pseudonymisieren, wenn Sie sie protokolli
 
 Wenn Sie einen Schritt weiter gehen wollen, indem Sie verhindern, dass bestimmte Arten von Informationen vollständig protokolliert werden, ist dies ebenfalls möglich. Auf der Konfigurationsseite, beachten Sie bitte die Konfigurationsdirektive `fields`, um zu kontrollieren welche Felder in Protokolleinträgen und auf der „Zugriff verweigert“-Seite erscheinen.
 
+![fields](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/fields.png)
+
 *Hinweis: Es gibt keinen Grund, um IP-Adressen zu pseudonymisieren, wenn sie vollständig aus den Protokollen entfernt werden.*
 
 *Relevante Konfigurationsdirektiven:*
@@ -2128,4 +2132,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 9. Juli 2022 (2022.07.09).
+Zuletzt aktualisiert: 27. Juli 2022 (2022.07.27).

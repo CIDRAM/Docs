@@ -1260,15 +1260,9 @@ Se você acha que escrever seus próprios arquivos de assinatura personalizados 
 
 #### 7.4 <a name="MODULE_BASICS"></a>NOÇÕES BÁSICAS (PARA MÓDULOS)
 
-Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional. Tipicamente, eles são usados quando é necessário bloquear uma solicitação com base diferente do endereço IP de origem (portanto, quando uma assinatura do CIDR não será suficiente para bloquear a solicitação). Os módulos são escritos como arquivos PHP e portanto, tipicamente, as assinaturas dos módulos são escritas como código PHP.
+Os módulos podem ser usados para ampliar a funcionalidade do CIDRAM, executar tarefas adicionais, ou processar lógica adicional.
 
-Alguns bons exemplos de módulos do CIDRAM podem ser encontrados aqui:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Um modelo para escrever novos módulos pode ser encontrado aqui:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-Devido a que os módulos são escritos como arquivos PHP, se você estiver adequadamente familiarizado com a base de códigos CIDRAM, você pode estruturar seus módulos e escreva as assinaturas do módulo, como quiser (em razão do que é possível com o PHP). Mas, para sua própria conveniência, e por uma melhor inteligibilidade mútua entre os módulos existentes e os seus próprios, é recomendável analisar o modelo acima, para poder usar a estrutura e o formato que ele fornece.
+Devido a que os módulos são escritos como arquivos PHP, se você estiver adequadamente familiarizado com a base de códigos CIDRAM, você pode estruturar seus módulos e escreva as assinaturas do módulo, como quiser (em razão do que é possível com o PHP).
 
 *Nota: Se você não está confortável trabalhando com o código PHP, não é recomendável escrever seus próprios módulos.*
 
@@ -1506,7 +1500,9 @@ Sim. Uma API é integrada no front-end para interagir com a página de atualiza�
 
 #### <a name="BLOCK_HOSTNAMES"></a>O CIDRAM pode bloquear nomes de host?
 
-Sim. Para fazer isso, você precisará criar um arquivo de módulo personalizado. *Vejo: [NOÇÕES BÁSICAS (PARA MÓDULOS)](#MODULE_BASICS)*.
+Sim. Isso pode ser feito criando uma regra auxiliar ou um módulo personalizado.
+
+![Uma regra auxiliar para bloquear nomes de host](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>O que posso usar para "default_dns"?
 
@@ -1980,4 +1976,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 23 de Abril de 2022 (2022.04.23).
+Última Atualização: 27 de Julho de 2022 (2022.07.27).

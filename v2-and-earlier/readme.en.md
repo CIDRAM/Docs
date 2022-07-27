@@ -1270,15 +1270,9 @@ If you feel that writing your own custom signature files or custom modules is to
 
 #### 7.4 <a name="MODULE_BASICS"></a>BASICS (FOR MODULES)
 
-Modules can be used to extend the functionality of CIDRAM, perform additional tasks, or process additional logic. Typically, they're used when it's necessary to block a request on a basis other than its originating IP address (and thus, when a CIDR signature won't suffice to block the request). Modules are written as PHP files, and thus, typically, module signatures are written as PHP code.
+Modules can be used to extend the functionality of CIDRAM, perform additional tasks, or process additional logic.
 
-Some good examples of CIDRAM modules can be found here:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-A template for writing new modules can be found here:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-Due to that modules are written as PHP files, if you're adequately familiar with the CIDRAM codebase, you can structure your modules however you want, and write your module signatures however you want (within reason of what is possible with PHP). However, for your own convenience, and for the sake of better mutual intelligibility between existing modules and your own, analysing the template linked above is recommended, in order to be able to use the structure and format that it provides.
+Due to that modules are written as PHP files, if you're adequately familiar with the CIDRAM codebase, you can structure your modules however you want, and write your module signatures however you want (within reason of what is possible with PHP).
 
 *Note: If you're not comfortable working with PHP code, writing your own modules is not recommended.*
 
@@ -1516,7 +1510,9 @@ Yes. An API is built into the front-end for interacting with the updates page vi
 
 #### <a name="BLOCK_HOSTNAMES"></a>Can CIDRAM block hostnames?
 
-Yes. To do this, you'll need to create a custom module file. *See: [BASICS (FOR MODULES)](#MODULE_BASICS)*.
+Yes. This can be achieved by creating an auxiliary rule or custom module.
+
+![An auxiliary rule for blocking hostnames](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>What can I use for "default_dns"?
 
@@ -1995,4 +1991,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 23 April 2022 (2022.04.23).
+Last Updated: 27 July 2022 (2022.07.27).

@@ -1260,15 +1260,9 @@ Ignore 章节一
 
 #### 7.4 <a name="MODULE_BASICS"></a>基本概念（对于模块）
 
-模块可用于扩展CIDRAM的功能，执行额外的任务，或处理额外的逻辑。​通常，当除了起源IP地址之外的原因需要阻止请求时它们使用​（因此，当CIDR签名不足以阻止请求）。​模块被写为PHP文件，因此，通常，模块签名被写为PHP代码。
+模块可用于扩展CIDRAM的功能，执行额外的任务，或处理额外的逻辑。
 
-CIDRAM模块的一些很好的例子可以在这里找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-编写新模块的模板可以在这里找到：
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-由于模块是作为PHP文件编写的，如果您对CIDRAM代码库有足够的了解，则可以根据需要构建模块，并根据需要编写模块签名​（在合理范围的什么可以用PHP来完成内）。​但是，为了您自己的方便，并为了介于存在的模块和您自己的之间好的理解，建议分析上面链接的模板，以便能够使用它提供的结构和格式。
+由于模块是作为PHP文件编写的，如果您对CIDRAM代码库有足够的了解，则可以根据需要构建模块，并根据需要编写模块签名​（在合理范围的什么可以用PHP来完成内）。
 
 *注意：如果您不舒服使用PHP代码，则不建议编写自己的模块。*
 
@@ -1506,7 +1500,9 @@ CIDRAM使网站所有者能够阻止不良流量，​但网站所有者有责�
 
 #### <a name="BLOCK_HOSTNAMES"></a>CIDRAM可以阻止主机名？
 
-可以做。您将需要创建一个自定义模块文件。 *看到：[基本概念（对于模块）](#MODULE_BASICS)*.
+可以做。这可以通过创建辅助规则或自定义模块来实现。
+
+![阻止主机名的辅助规则](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>在“default_dns”中我可以使用什么？
 
@@ -1978,4 +1974,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年4月23日。
+最后更新：2022年7月27日。

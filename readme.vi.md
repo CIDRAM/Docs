@@ -1413,9 +1413,9 @@ Nếu bạn cảm thấy việc viết các tập tin chữ ký tùy chỉnh ho�
 
 #### 6.4 <a name="MODULE_BASICS"></a>KHÁI NIỆM CƠ BẢN (CHO MÔ-ĐUN)
 
-Các mô-đun có thể được sử dụng để mở rộng chức năng của CIDRAM, thực hiện các tác vụ bổ sung hay xử lý logic bổ sung. Thông thường, chúng được sử dụng khi cần thiết để chặn một yêu cho cầu lý do khác với địa chỉ IP có nguồn gốc (và như vậy, khi một chữ ký CIDR sẽ không đủ để chặn yêu cầu). Mô-đun được viết như tập tin PHP, và như vậy, thông thường, chữ ký mô-đun được viết như mã PHP.
+Các mô-đun có thể được sử dụng để mở rộng chức năng của CIDRAM, thực hiện các tác vụ bổ sung hay xử lý logic bổ sung.
 
-Bởi vì các mô-đun được viết như tập tin PHP, nếu bạn đã quen thuộc với mã nguồn CIDRAM, bạn có thể cấu trúc module của bạn tuy nhiên bạn muốn, và viết chữ ký mô-đun của bạn tuy nhiên bạn muốn (trong vòng suy luận những gì có thể với PHP). Tuy nhiên, để thuận tiện cho bạn, và vì lợi ích của hiểu rõ hơn giữa các mô-đun hiện tại và của riêng bạn, phân tích mẫu liên kết ở trên được khuyến nghị, để có thể sử dụng cấu trúc và định dạng mà nó cung cấp.
+Bởi vì các mô-đun được viết như tập tin PHP, nếu bạn đã quen thuộc với mã nguồn CIDRAM, bạn có thể cấu trúc module của bạn tuy nhiên bạn muốn, và viết chữ ký mô-đun của bạn tuy nhiên bạn muốn (trong vòng suy luận những gì có thể với PHP).
 
 *Lưu ý: Nếu bạn không cảm thấy thoải mái khi làm việc với mã PHP, bạn không nên viết mô-đun riêng của mình.*
 
@@ -1637,7 +1637,9 @@ Vâng. API được tích hợp trong front-end để tương tác với trang c
 
 #### <a name="BLOCK_HOSTNAMES"></a>CIDRAM có thể chặn tên máy chủ không?
 
-Vâng. Để làm điều này, bạn sẽ cần tạo tập tin mô-đun tùy chỉnh. *Xem: [KHÁI NIỆM CƠ BẢN (CHO MÔ-ĐUN)](#MODULE_BASICS)*.
+Vâng. Điều này có thể đạt được bằng cách tạo một quy tắc phụ trợ hoặc mô-đun.
+
+![Quy tắc phụ trợ để chặn tên máy chủ](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Những gì tôi có thể sử dụng cho "default_dns"?
 
@@ -2060,6 +2062,8 @@ CIDRAM có thể sử dụng "pseudonymisation" cho các địa chỉ IP khi nh�
 
 Nếu bạn muốn tiến thêm một bước nữa bằng cách ngăn chặn các loại thông tin cụ thể được ghi lại hoàn toàn, điều này cũng có thể thực hiện được. Tại trang cấu hình, vui lòng tham khảo chỉ thị cấu hình `fields` để kiểm soát trường nào xuất hiện trong các mục nhật ký và trên trang "truy cập đã bị từ chối".
 
+![fields](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/fields.png)
+
 *Chú thích: Không có lý do gì để bút danh các địa chỉ IP khi bỏ qua chúng hoàn toàn từ các nhật ký.*
 
 *Chỉ thị cấu hình có liên quan:*
@@ -2120,4 +2124,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.07.09.
+Lần cuối cập nhật: 2022.07.27.

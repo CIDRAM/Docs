@@ -1399,9 +1399,9 @@ Jika Anda merasa bahwa menulis file tanda tangan atau modul kustom Anda sendiri 
 
 #### 6.4 <a name="MODULE_BASICS"></a>DASAR-DASAR (UNTUK MODUL)
 
-Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan. Biasanya, mereka digunakan saat perlu memblokir permintaan untuk alasan selain alamat IP (dan dengan demikian, ketika tanda tangan CIDR tidak cukup untuk memblokir permintaan). Modul ditulis sebagai file PHP, dan dengan demikian, biasanya, tanda tangan modul ditulis sebagai kode PHP.
+Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan.
 
-Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRAM, Anda dapat menyusun modul Anda namun Anda inginkan, dan menulis tanda tangan modul Anda namun Anda inginkan (dalam batasan untuk apa yang mungkin di PHP). Namun, untuk kenyamanan Anda sendiri, dan demi saling pengertian antara modul yang ada dan modul Anda sendiri, menganalisis template yang terhubung di atas direkomendasikan, agar bisa menggunakan struktur dan format yang diberikannya.
+Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRAM, Anda dapat menyusun modul Anda namun Anda inginkan, dan menulis tanda tangan modul Anda namun Anda inginkan (dalam batasan untuk apa yang mungkin di PHP).
 
 *Catat: Jika Anda tidak nyaman bekerja dengan kode PHP, menulis modul Anda sendiri tidak disarankan.*
 
@@ -1623,7 +1623,9 @@ Ini menyediakan mekanisme untuk memastikan bahwa permintaan dari sumber yang ber
 
 #### <a name="BLOCK_HOSTNAMES"></a>Dapatkah CIDRAM memblokir nama host?
 
-Ya. Untuk melakukan ini, Anda harus membuat file modul disesuaikan. *Lihat: [DASAR-DASAR (UNTUK MODUL)](#MODULE_BASICS)*.
+Ya. Ini dapat dicapai dengan membuat aturan tambahan atau modul kustom.
+
+![Aturan tambahan untuk memblokir nama host](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Apa yang bisa saya gunakan untuk "default_dns"?
 
@@ -2049,6 +2051,8 @@ CIDRAM mampu mem-pseudonimisasi alamat IP ketika melakukan pencatatan, jika ini 
 
 Jika Anda ingin melangkah lebih jauh dengan mencegah jenis informasi tertentu sedang dicatat sepenuhnya, ini juga mungkin dilakukan. Di halaman konfigurasi, silakan merujuk ke direktif konfigurasi `fields` untuk mengontrol mana bidang yang muncul di entri log dan di halaman "Akses Ditolak".
 
+![fields](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/fields.png)
+
 *Catat: Tidak ada alasan untuk menggunakan pseudonim dengan alamat IP ketika menghilangkannya dari log sepenuhnya.*
 
 *Direktif konfigurasi yang relevan:*
@@ -2109,4 +2113,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 9 Juli 2022 (2022.07.09).
+Terakhir Diperbarui: 27 Juli 2022 (2022.07.27).

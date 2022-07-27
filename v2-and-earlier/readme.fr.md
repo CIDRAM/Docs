@@ -1260,15 +1260,9 @@ Si vous estimez que l'écriture de vos propres fichiers de signatures ou de modu
 
 #### 7.4 <a name="MODULE_BASICS"></a>BASES (POUR LES MODULES)
 
-Les modules peuvent être utilisés pour étendre les fonctionnalités de CIDRAM, effectuer des tâches supplémentaires ou traiter les logiques supplémentaires. Typiquement, ils sont utilisés lorsqu'il est nécessaire de bloquer une requête sur une base autre que son adresse IP d'origine (et donc, quand une signature CIDR ne suffira pas à bloquer la requête). Les modules sont écrits en tant que fichiers PHP, et donc, typiquement, les signatures de module sont écrites en tant que code PHP.
+Les modules peuvent être utilisés pour étendre les fonctionnalités de CIDRAM, effectuer des tâches supplémentaires ou traiter les logiques supplémentaires.
 
-Quelques bons exemples de modules pour CIDRAM peuvent être trouvés ici :
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Un modèle pour écrire de nouveaux modules peut être trouvé ici :
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-En raison de ce que les modules sont écrits en tant que fichiers PHP, si vous connaissez bien la base de code pour CIDRAM, vous pouvez structurer vos modules comme vous le souhaitez, et écrivez vos signatures de module comme vous le souhaitez (en raison de ce qui est possible avec PHP). Cependant, pour votre propre commodité, et dans l'intérêt d'une meilleure intelligibilité mutuelle entre les modules existants et les vôtres, l'analyse du modèle lié ci-dessus est recommandée, afin de pouvoir utiliser la structure et le format qu'il fournit.
+En raison de ce que les modules sont écrits en tant que fichiers PHP, si vous connaissez bien la base de code pour CIDRAM, vous pouvez structurer vos modules comme vous le souhaitez, et écrivez vos signatures de module comme vous le souhaitez (en raison de ce qui est possible avec PHP).
 
 *Remarque : Si vous n'êtes pas à l'aise de travailler avec du code PHP, il n'est pas recommandé d'écrire vos propres modules.*
 
@@ -1506,7 +1500,9 @@ Oui. Une API est intégrée dans le frontal pour interagir avec la page des mise
 
 #### <a name="BLOCK_HOSTNAMES"></a>Est-ce que CIDRAM peut bloquer les noms d'hôtes ?
 
-Oui. Pour ce faire, vous devez créer un fichier de module personnalisé. *Voir : [BASES (POUR LES MODULES)](#MODULE_BASICS)*.
+Oui. Ceci peut être réalisé en créant une règle auxiliaire ou un module personnalisé.
+
+![Une règle auxiliaire pour bloquer les noms d'hôte](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Que puis-je utiliser pour « default_dns » ?
 
@@ -1990,4 +1986,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 23 Avril 2022 (2022.04.23).
+Dernière mise à jour : 27 Juillet 2022 (2022.07.27).

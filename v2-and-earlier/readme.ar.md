@@ -1506,17 +1506,9 @@ Ignore القسم ١
 
 #### <div dir="rtl">٧.٤ <a name="MODULE_BASICS"></a>مبادئ (للوحدات)<br /><br /></div>
 
-<div dir="rtl">وحدات يمكن استخدامها لتوسيع وظائف CIDRAM، أداء مهام إضافية، أو معالجة منطق إضافي. عادة، يتم استخدامها عندما يكون من الضروري منع طلب على أساس آخر غير عنوان IP الأصل (وبالتالي، عندما لا يكون توقيع CIDR كافيا لمنع الطلب). PHP كتابة وحدات كملفات فب، وبالتالي، عادة، تكتب التوقيعات المكون كما كود PHP.<br /><br /></div>
+<div dir="rtl">وحدات يمكن استخدامها لتوسيع وظائف CIDRAM، أداء مهام إضافية، أو معالجة منطق إضافي.<br /><br /></div>
 
-<div dir="rtl">بعض الأمثلة الجيدة على وحدات CIDRAM يمكن العثور عليها هنا:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-<div dir="rtl">يمكن العثور على نموذج لكتابة وحدات جديدة هنا:</div>
-
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-<div dir="rtl">لأن يتم كتابة وحدات كملفات PHP، إذا كنت على دراية كافية مع مصدر برنامج CIDRAM، يمكنك هيكلة وحدات المكون التواقيع ولكن تريد (في إطار ما هو ممكن مع فب). ومع ذلك، لراحتك ولأفضل وضوح متبادل بين وحدات القائمة الخاصة بك، ويوصى تحليل قالب ربط أعلاه، من أجل أن تكون قادرة على استخدام هيكل وشكل أنه يوفر.<br /><br /></div>
+<div dir="rtl">لأن يتم كتابة وحدات كملفات PHP، إذا كنت على دراية كافية مع مصدر برنامج CIDRAM، يمكنك هيكلة وحدات المكون التواقيع ولكن تريد (في إطار ما هو ممكن مع فب).<br /><br /></div>
 
 <div dir="rtl"><em>ملحوظة: إذا كنت غير مريح العمل مع التعليمات البرمجية PHP، كتابة الوحدات الخاصة بك لا ينصح.</em><br /><br /></div>
 
@@ -1764,7 +1756,9 @@ $Trigger(strpos($CIDRAM['BlockInfo']['UA'], 'Foobar') !== false, 'Foobar-UA', 'U
 
 #### <div dir="rtl"><a name="BLOCK_HOSTNAMES"></a>هل يمكن لأسماء المضيفين في CIDRAM حظر؟<br /><br /></div>
 
-<div dir="rtl">نعم. للقيام بذلك، ستحتاج إلى إنشاء ملف المكون نمطية مخصصة. <em>نرى: <a href="#MODULE_BASICS">مبادئ (للوحدات)</a></em>.<br /><br /></div>
+<div dir="rtl">نعم. يمكن تحقيق ذلك عن طريق إنشاء قاعدة مساعدة أو وحدة مخصصة.<br /><br /></div>
+
+![قاعدة مساعدة لحظر أسماء المضيفين](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <div dir="rtl"><a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>ما الذي يمكنني استخدامه لـ "default_dns"؟<br /><br /></div>
 
@@ -2267,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٣ أبريل ٢٠٢٢ (٢٠٢٢.٠٤.٢٣).</div>
+<div dir="rtl">آخر تحديث: ٢٧ يوليو ٢٠٢٢ (٢٠٢٢.٠٧.٢٧).</div>

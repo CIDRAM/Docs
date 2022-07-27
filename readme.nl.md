@@ -1403,9 +1403,9 @@ Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aang
 
 #### 6.4 <a name="MODULE_BASICS"></a>BASICS (VOOR MODULES)
 
-Modules kunnen worden gebruikt om de functionaliteit van CIDRAM uit te breiden, extra taken uit te voeren, of aanvullende logica te verwerken. Meestal worden ze gebruikt wanneer een verzoek op een andere manier dan het oorspronkelijke IP-adres moet worden geblokkeerd (en dus, wanneer een CIDR-signature niet voldoende is om de aanvraag te blokkeren). Modules worden geschreven als PHP-bestanden, en dus worden module-signatures doorgaans geschreven als PHP-code.
+Modules kunnen worden gebruikt om de functionaliteit van CIDRAM uit te breiden, extra taken uit te voeren, of aanvullende logica te verwerken.
 
-Vanwege dat modules worden geschreven als PHP-bestanden, als je voldoende bekend bent met de CIDRAM-codebase, kun je je modules structureren zoals u wilt, en schrijf uw module-signatures zoals u dat wilt (op grond van wat mogelijk is met PHP). Voor uw gemak echter, en voor een betere wederzijdse verstaanbaarheid tussen bestaande modules en uw eigen modules, het is aan te raden de bovenstaande sjabloon te analyseren om de structuur en het formaat die het biedt te kunnen gebruiken.
+Vanwege dat modules worden geschreven als PHP-bestanden, als je voldoende bekend bent met de CIDRAM-codebase, kun je je modules structureren zoals u wilt, en schrijf uw module-signatures zoals u dat wilt (op grond van wat mogelijk is met PHP).
 
 *Notitie: Als u het niet prettig vindt om met PHP-code te werken, wordt het niet aanbevolen om uw eigen modules te schrijven.*
 
@@ -1627,7 +1627,9 @@ Dit biedt een mechanisme om ervoor te zorgen dat verzoeken van potentieel gevaar
 
 #### <a name="BLOCK_HOSTNAMES"></a>Kan CIDRAM hostnamen blokkeren?
 
-Ja. Hiervoor moet u een aangepast modulebestand maken. *Zien: [BASICS (VOOR MODULES)](#MODULE_BASICS)*.
+Ja. Dit kan worden bereikt door een hulpregel of aangepaste module te maken.
+
+![Een hulpregel voor het blokkeren van hostnamen](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Wat kan ik gebruiken voor "default_dns"?
 
@@ -2068,6 +2070,8 @@ CIDRAM kan IP-adressen pseudonimiseren wanneer ze worden geregistreerd, als dit 
 
 Als u nog een stap verder wilt gaan door te voorkomen dat specifieke soorten informatie volledig worden vastgelegd, is dit ook mogelijk. Raadpleeg op de configuratiepagina de configuratierichtlijn `fields` om te bepalen welke velden worden weergegeven in logboekvermeldingen en op de pagina "Toegang Geweigerd".
 
+![fields](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/fields.png)
+
 *Notitie: Er is geen reden om IP-adressen te pseudonimiseren wanneer ze volledig uit logs worden weggelaten.*
 
 *Relevante configuratie-opties:*
@@ -2130,4 +2134,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 9 Juli 2022 (2022.07.09).
+Laatste Bijgewerkt: 27 Juli 2022 (2022.07.27).

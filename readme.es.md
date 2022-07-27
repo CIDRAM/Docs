@@ -1403,9 +1403,9 @@ Si cree que escribir sus propios archivos de firmas personalizadas o módulos pe
 
 #### 6.4 <a name="MODULE_BASICS"></a>LOS FUNDAMENTOS (PARA MÓDULOS)
 
-Los módulos se pueden usar para ampliar la funcionalidad de CIDRAM, realizar tareas adicionales o procesar lógica adicional. Típicamente, se usan cuando es necesario bloquear una solicitud por razones distintas de la dirección IP de origen (y por lo tanto, cuando una firma CIDR no sea suficiente para bloquear la solicitud). Los módulos se escriben como archivos PHP y, por lo tanto, típicamente, las firmas de los módulos se escriben como código PHP.
+Los módulos se pueden usar para ampliar la funcionalidad de CIDRAM, realizar tareas adicionales o procesar lógica adicional.
 
-Debido a que los módulos se escriben como archivos PHP, si está familiarizado adecuadamente con la base de código de CIDRAM, puede estructurar los módulos de la forma que desee, y escribe las firmas de tu módulo como quieras (dentro de lo que es posible con PHP). Pero, para su propia conveniencia, y en aras de una mejor inteligibilidad mutua entre los módulos existentes y su propio, se recomienda analizar la plantilla vinculada anteriormente, para poder usar la estructura y el formato que proporciona.
+Debido a que los módulos se escriben como archivos PHP, si está familiarizado adecuadamente con la base de código de CIDRAM, puede estructurar los módulos de la forma que desee, y escribe las firmas de tu módulo como quieras (dentro de lo que es posible con PHP).
 
 *Nota: Si no se siente cómodo trabajando con código PHP, no se recomienda escribir sus propios módulos.*
 
@@ -1627,7 +1627,9 @@ Esto proporciona un mecanismo para garantizar que las solicitudes de fuentes pot
 
 #### <a name="BLOCK_HOSTNAMES"></a>¿Puede CIDRAM bloquear nombres de host?
 
-Sí. Para hacer esto, necesitarás crear un archivo de módulo personalizado. *Ver: [LOS FUNDAMENTOS (PARA MÓDULOS)](#MODULE_BASICS)*.
+Sí. Esto se puede lograr creando una regla auxiliar o un módulo personalizado.
+
+![Una regla auxiliar para bloquear nombres de host](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>¿Qué puedo usar para "default_dns"?
 
@@ -2058,6 +2060,8 @@ CIDRAM es capaz de seudonimizar las direcciones IP cuando las registra, si es al
 
 Si desea ir un paso más allá al evitar que se registren por completo los tipos de información específicos, también es posible hacerlo. En la página de configuración, consulte la directiva de configuración `fields` para controlar qué campos aparecen en las entradas de registro y en la página "Acceso Denegado".
 
+![fields](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/fields.png)
+
 *Nota: No hay ninguna razón para seudonimizar direcciones IP al omitirlas de los registros por completo.*
 
 *Directivas de configuración relevantes:*
@@ -2120,4 +2124,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 9 de Julio de 2022 (2022.07.09).
+Última Actualización: 27 de Julio de 2022 (2022.07.27).

@@ -1260,15 +1260,9 @@ Jika Anda merasa bahwa menulis file tanda tangan atau modul kustom Anda sendiri 
 
 #### 7.4 <a name="MODULE_BASICS"></a>DASAR-DASAR (UNTUK MODUL)
 
-Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan. Biasanya, mereka digunakan saat perlu memblokir permintaan untuk alasan selain alamat IP (dan dengan demikian, ketika tanda tangan CIDR tidak cukup untuk memblokir permintaan). Modul ditulis sebagai file PHP, dan dengan demikian, biasanya, tanda tangan modul ditulis sebagai kode PHP.
+Modul dapat digunakan untuk memperluas fungsionalitas CIDRAM, melakukan tugas tambahan, atau memproses logika tambahan.
 
-Beberapa contoh bagus untuk modul CIDRAM dapat ditemukan disini:
-- https://github.com/CIDRAM/CIDRAM-Extras/tree/master/modules
-
-Template untuk menulis modul baru dapat ditemukan disini:
-- https://github.com/CIDRAM/CIDRAM-Extras/blob/master/modules/module_template.php
-
-Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRAM, Anda dapat menyusun modul Anda namun Anda inginkan, dan menulis tanda tangan modul Anda namun Anda inginkan (dalam batasan untuk apa yang mungkin di PHP). Namun, untuk kenyamanan Anda sendiri, dan demi saling pengertian antara modul yang ada dan modul Anda sendiri, menganalisis template yang terhubung di atas direkomendasikan, agar bisa menggunakan struktur dan format yang diberikannya.
+Karena modul ditulis sebagai file PHP, jika Anda cukup mengenal basis kode CIDRAM, Anda dapat menyusun modul Anda namun Anda inginkan, dan menulis tanda tangan modul Anda namun Anda inginkan (dalam batasan untuk apa yang mungkin di PHP).
 
 *Catat: Jika Anda tidak nyaman bekerja dengan kode PHP, menulis modul Anda sendiri tidak disarankan.*
 
@@ -1506,7 +1500,9 @@ Ya. API dibangun dalam bagian depan untuk berinteraksi dengan halaman pembaruan 
 
 #### <a name="BLOCK_HOSTNAMES"></a>Dapatkah CIDRAM memblokir nama host?
 
-Ya. Untuk melakukan ini, Anda harus membuat file modul disesuaikan. *Lihat: [DASAR-DASAR (UNTUK MODUL)](#MODULE_BASICS)*.
+Ya. Ini dapat dicapai dengan membuat aturan tambahan atau modul kustom.
+
+![Aturan tambahan untuk memblokir nama host](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Apa yang bisa saya gunakan untuk "default_dns"?
 
@@ -1977,4 +1973,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 23 April 2022 (2022.04.23).
+Terakhir Diperbarui: 27 Juli 2022 (2022.07.27).
