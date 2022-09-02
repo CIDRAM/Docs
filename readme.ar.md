@@ -13,7 +13,7 @@
  <li>٩. <a href="#SECTION9">المعلومات القانونية</a></li>
 </ul></div>
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -275,20 +275,24 @@ $CIDRAM->view();
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### <div dir="rtl">"general" (التصنيف)<br /></div>
@@ -510,6 +514,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -591,7 +596,7 @@ emailaddr_display_style
 ```
 
 ##### <div dir="rtl">"ban_override" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>تجاوز "http_response_header_code" متى "infraction_limit" تجاوزت؟ عندما تجاوز: الطلبات الممنوعة بإرجاع صفحة فارغة (لا يتم استخدام ملفات قالب). 200 = لا تجاوز [الافتراضي]. القيم الأخرى هي نفس القيم المتاحة لـ "http_response_header_code".</li></ul></div>
+<div dir="rtl"><ul><li>تجاوز "http_response_header_code" متى "infraction_limit" تجاوزت؟ 200 = لا تجاوز [الافتراضي]. القيم الأخرى هي نفس القيم المتاحة لـ "http_response_header_code".</li></ul></div>
 
 ```
 ban_override
@@ -1158,6 +1163,45 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#HO
 
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO كلمه السر.</li></ul></div>
+
+#### <div dir="rtl">"bypasses" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لتجاوز التوقيع الافتراضي.<br /><br /></div>
+
+##### <div dir="rtl">"used" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ما هي التجاوزات التي يجب استخدامها؟</li></ul></div>
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### <div dir="rtl">"extras" (التصنيف)<br /></div>
+<div dir="rtl">التكوين لوحدة الأمان الاختيارية الإضافية.<br /><br /></div>
+
+##### <div dir="rtl">"signatures" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ما أنواع التوقيعات التي يجب تكريمها؟</li></ul></div>
+
+```
+signatures
+├─empty_ua ("وكلاء المستخدم الفارغون.")
+├─query ("التوقيعات على طلب الاستفسارات.")
+├─raw ("التوقيعات على أساس مدخلات الطلب الخام.")
+├─ruri ("التوقيعات على أساس URI المعاد بناؤه.")
+└─uri ("التوقيعات على طلب URI.")
+```
 
 ---
 
@@ -2178,4 +2222,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٧ يوليو ٢٠٢٢ (٢٠٢٢.٠٧.٢٧).</div>
+<div dir="rtl">آخر تحديث: ٢ سبتمبر ٢٠٢٢ (٢٠٢٢.٠٩.٠٢).</div>

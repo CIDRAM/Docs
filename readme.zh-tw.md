@@ -11,7 +11,7 @@
 - 8. [常見問題（FAQ）](#SECTION8)
 - 9. [法律信息](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -269,20 +269,24 @@ $CIDRAM->view();
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### 『general』 （類別）
@@ -488,6 +492,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -569,7 +574,7 @@ emailaddr_display_style
 ```
 
 ##### 『ban_override』 `[int]`
-- 覆蓋『http_response_header_code』當『infraction_limit』已被超過？​當覆蓋：已阻止的請求返回一個空白頁（不使用模板文件）。​200 = 不要覆蓋【標準】。​其他值與『http_response_header_code』的可用值相同。
+- 覆蓋『http_response_header_code』當『infraction_limit』已被超過？ 200 = 不要覆蓋【標準】。​其他值與『http_response_header_code』的可用值相同。
 
 ```
 ban_override
@@ -1099,6 +1104,45 @@ __常問問題。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/read
 
 ##### 『pdo_password』 `[string]`
 - PDO密碼。
+
+#### 『bypasses』 （類別）
+默認簽名繞過配置。
+
+##### 『used』 `[string]`
+- 應該使用哪些繞過？
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### 『extras』 （類別）
+可選的安全附加模塊配置。
+
+##### 『signatures』 `[string]`
+- 應該尊重哪些類型的簽名？
+
+```
+signatures
+├─empty_ua ("空的用戶代理。")
+├─query ("基於請求查詢的簽名。")
+├─raw ("基於原始請求輸入的簽名。")
+├─ruri ("基於重構URI的簽名。")
+└─uri ("基於請求URI的簽名。")
+```
 
 ---
 
@@ -2076,4 +2120,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2022年7月27日。
+最後更新：2022年9月2日。

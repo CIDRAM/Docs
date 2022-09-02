@@ -11,7 +11,7 @@
 - 8. [자주 묻는 질문 (FAQ)](#SECTION8)
 - 9. [법률 정보](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -269,20 +269,24 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (카테고리)
@@ -500,6 +504,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -581,7 +586,7 @@ emailaddr_display_style
 ```
 
 ##### "ban_override" `[int]`
-- "infraction_limit"를 초과하면 "http_response_header_code"를 덮어 쓰시겠습니까? 덮어 쓸 때 : 차단 된 요청은 빈 페이지를 반환합니다 (템플릿 파일은 사용되지 않습니다). 200 = 덮어 쓰지 (Default / 기본값). 다른 값은 "http_response_header_code"에 사용할 수있는 값과 같습니다.
+- "infraction_limit"를 초과하면 "http_response_header_code"를 덮어 쓰시겠습니까? 200 = 덮어 쓰지 (Default / 기본값). 다른 값은 "http_response_header_code"에 사용할 수있는 값과 같습니다.
 
 ```
 ban_override
@@ -1139,6 +1144,45 @@ __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master
 
 ##### "pdo_password" `[string]`
 - PDO 암호.
+
+#### "bypasses" (카테고리)
+기본 서명 바이 패스 구성.
+
+##### "used" `[string]`
+- 어떤 바이 패스를 사용해야 합니까?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### "extras" (카테고리)
+선택적 보안 추가 모듈 구성.
+
+##### "signatures" `[string]`
+- 어떤 유형의 서명을 존중해야 합니까?
+
+```
+signatures
+├─empty_ua ("빈 사용자 에이전트.")
+├─query ("요청 질의를 기반으로 하는 서명.")
+├─raw ("원시 요청 입력을 기반으로 하는 서명.")
+├─ruri ("재구성된 URI를 기반으로 하는 서명.")
+└─uri ("요청 URI를 기반으로 하는 서명.")
+```
 
 ---
 
@@ -2113,4 +2157,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 7월 27일.
+최종 업데이트 : 2022년 9월 2일.

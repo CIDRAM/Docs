@@ -11,7 +11,7 @@
 - 8. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#SECTION8)
 - 9. [THÔNG TIN HỢP PHÁP](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -269,20 +269,24 @@ Cấu hình (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Thể loại)
@@ -503,6 +507,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -584,7 +589,7 @@ emailaddr_display_style
 ```
 
 ##### "ban_override" `[int]`
-- Ghi đè "http_response_header_code" khi "infraction_limit" bị vượt quá? Khi ghi đè: Các yêu cầu bị chặn sản xuất một trang trống (tập tin mẫu không được sử dụng). 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "http_response_header_code".
+- Ghi đè "http_response_header_code" khi "infraction_limit" bị vượt quá? 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "http_response_header_code".
 
 ```
 ban_override
@@ -1149,6 +1154,45 @@ __Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob
 
 ##### "pdo_password" `[string]`
 - Mật khẩu PDO.
+
+#### "bypasses" (Thể loại)
+Cấu hình cho các đường tránh chữ ký mặc định.
+
+##### "used" `[string]`
+- Những đường tránh nào nên được sử dụng?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### "extras" (Thể loại)
+Cấu hình cho mô-đun của các tính năng bổ sung bảo mật tùy chọn.
+
+##### "signatures" `[string]`
+- Những loại chữ ký nào nên được tôn vinh?
+
+```
+signatures
+├─empty_ua ("Tác nhân người dùng trống.")
+├─query ("Chữ ký dựa trên các truy vấn yêu cầu.")
+├─raw ("Chữ ký dựa trên đầu vào yêu cầu thô.")
+├─ruri ("Chữ ký dựa trên các URI được xây dựng lại.")
+└─uri ("Chữ ký dựa trên URI của yêu cầu.")
+```
 
 ---
 
@@ -2124,4 +2168,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.07.27.
+Lần cuối cập nhật: 2022.09.02.

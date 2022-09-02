@@ -11,7 +11,7 @@
 - 8. [PERGUNTAS MAIS FREQUENTES (FAQ)](#SECTION8)
 - 9. [INFORMAÇÃO LEGAL](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -269,20 +269,24 @@ Configuração (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categoria)
@@ -498,6 +502,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -579,7 +584,7 @@ emailaddr_display_style
 ```
 
 ##### "ban_override" `[int]`
-- Sobrepor "http_response_header_code" quando "infraction_limit" é excedido? Quando sobrepõe: As solicitações bloqueadas retornam uma página em branco (os arquivos de modelo não são usados). 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "http_response_header_code".
+- Sobrepor "http_response_header_code" quando "infraction_limit" é excedido? 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "http_response_header_code".
 
 ```
 ban_override
@@ -763,7 +768,7 @@ shorthand
 ├─Proxy ("² Proxy")
 ├─Spam ("Risco de spam")
 ├─Banned ("³ Banido")
-├─BadIP ("³ IP inválido!")
+├─BadIP ("³ IP inválido")
 ├─RL ("³ Taxa limitada")
 └─Other ("⁴ Outros")
 ```
@@ -1133,6 +1138,45 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#HO
 
 ##### "pdo_password" `[string]`
 - A senha do PDO.
+
+#### "bypasses" (Categoria)
+Configuração para o bypass das assinaturas padrão.
+
+##### "used" `[string]`
+- Quais bypass devem ser usados?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### "extras" (Categoria)
+Configuração para o módulo de extras de segurança opcionais.
+
+##### "signatures" `[string]`
+- Que tipos de assinaturas devem ser honradas?
+
+```
+signatures
+├─empty_ua ("Agentes de usuário vazios.")
+├─query ("Assinaturas baseadas em consultas de solicitação.")
+├─raw ("Assinaturas baseadas na entrada de solicitação bruta.")
+├─ruri ("Assinaturas baseadas em URIs reconstruídas.")
+└─uri ("Assinaturas baseadas em URIs da solicitação.")
+```
 
 ---
 
@@ -2114,4 +2158,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 27 de Julho de 2022 (2022.07.27).
+Última Atualização: 2 de Setembro de 2022 (2022.09.02).

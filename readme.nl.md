@@ -11,7 +11,7 @@
 - 8. [VEELGESTELDE VRAGEN (FAQ)](#SECTION8)
 - 9. [LEGALE INFORMATIE](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -269,20 +269,24 @@ Configuratie (v3)
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categorie)
@@ -500,6 +504,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -581,7 +586,7 @@ emailaddr_display_style
 ```
 
 ##### "ban_override" `[int]`
-- Overrijden "http_response_header_code" wanneer "infraction_limit" wordt overschreden? Wanneer het overrijdt: Geblokkeerde verzoeken retourneert een lege pagina (template bestanden worden niet gebruikt). 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "http_response_header_code".
+- Overrijden "http_response_header_code" wanneer "infraction_limit" wordt overschreden? 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "http_response_header_code".
 
 ```
 ban_override
@@ -767,7 +772,7 @@ shorthand
 ├─Proxy ("² Proxy")
 ├─Spam ("Spam risico")
 ├─Banned ("³ Verbannen")
-├─BadIP ("³ Ongeldig IP!")
+├─BadIP ("³ Ongeldig IP")
 ├─RL ("³ Tarief beperkt")
 └─Other ("⁴ Anders")
 ```
@@ -1139,6 +1144,45 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HO
 
 ##### "pdo_password" `[string]`
 - PDO wachtwoord.
+
+#### "bypasses" (Categorie)
+Configuratie voor de standaard bypasses voor signatures.
+
+##### "used" `[string]`
+- Welke bypasses moeten worden gebruikt?
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### "extras" (Categorie)
+Configuratie voor de module van optionele beveiligingsextra's.
+
+##### "signatures" `[string]`
+- Welke soorten signatures moeten worden gehonoreerd?
+
+```
+signatures
+├─empty_ua ("Lege gebruikersagenten.")
+├─query ("Signatures op basis van verzoekvragen.")
+├─raw ("Signatures op basis van onbewerkte verzoekinvoer.")
+├─ruri ("Signatures op basis van gereconstrueerde URI's.")
+└─uri ("Signatures op basis van verzoek-URI's.")
+```
 
 ---
 
@@ -2134,4 +2178,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 27 Juli 2022 (2022.07.27).
+Laatste Bijgewerkt: 2 September 2022 (2022.09.02).

@@ -11,7 +11,7 @@
 - 8. [DOMANDE FREQUENTI (FAQ)](#SECTION8)
 - 9. [INFORMAZIONE LEGALE](#SECTION9)
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -188,9 +188,6 @@ Configurazione (v3)
 │       emailaddr_display_style [string]
 │       ban_override [int]
 │       default_dns [string]
-│       search_engine_verification [string]
-│       social_media_verification [string]
-│       other_verification [string]
 │       default_algo [string]
 │       statistics [string]
 │       force_hostname_lookup [bool]
@@ -222,17 +219,14 @@ Configurazione (v3)
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
-│       block_attacks [bool]
-│       block_cloud [bool]
-│       block_bogons [bool]
-│       block_generic [bool]
-│       block_legal [bool]
-│       block_malware [bool]
-│       block_proxies [bool]
-│       block_spam [bool]
+│       shorthand [string]
 │       default_tracktime [int]
 │       infraction_limit [int]
 │       tracking_override [bool]
+├───verification
+│       search_engines [string]
+│       social_media [string]
+│       other [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -289,34 +283,10 @@ Configurazione (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───abuseipdb
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_confidence_score [int]
-│       max_cs_for_captcha [int]
-│       minimum_total_reports [int]
-│       report_back [bool]
-│       lookup_strategy [int]
-│       build_profiles_from_usage_type [bool]
-├───bgpview
-│       blocked_asns [string]
-│       whitelisted_asns [string]
-│       blocked_ccs [string]
-│       whitelisted_ccs [string]
-├───bunnycdn
-│       positive_action [string]
 ├───bypasses
 │       used [string]
-├───extras
-│       signatures [string]
-├───projecthoneypot
-│       api_key [string]
-│       max_age_in_days [int]
-│       minimum_threat_score [int]
-│       max_ts_for_captcha [int]
-│       lookup_strategy [int]
-└───sfs
-        offer_captcha [bool]
+└───extras
+        signatures [string]
 ```
 
 #### "general" (Categoria)
@@ -533,6 +503,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -614,7 +585,7 @@ emailaddr_display_style
 ```
 
 ##### "ban_override" `[int]`
-- Sostituire "http_response_header_code" quando "infraction_limit" è superato? Quando si sostituisce: Richieste bloccate restituire una pagina vuota (file di modello non vengono utilizzati). 200 = Non sostituire [Predefinito]. Altri valori sono uguali ai valori disponibili per "http_response_header_code".
+- Sostituire "http_response_header_code" quando "infraction_limit" è superato? 200 = Non sostituire [Predefinito]. Altri valori sono uguali ai valori disponibili per "http_response_header_code".
 
 ```
 ban_override
@@ -641,62 +612,6 @@ ban_override
 - Un elenco di server DNS da utilizzare per le ricerche dei nomi di host. AVVISO: Non modificare questa se non sai quello che stai facendo!
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="it">Cosa posso usare per "default_dns"?</a></em>
-
-##### "search_engine_verification" `[string]`
-- Controlli per la verifica delle richieste dai motori di ricerca.
-
-```
-search_engine_verification
-├─Amazonbot ("Amazonbot")
-├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
-├─MojeekBot ("MojeekBot")
-├─PetalBot ("PetalBot")
-├─Qwantify ("Qwantify/Bleriot")
-├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
-├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
-└─YoudaoBot ("YoudaoBot")
-```
-
-__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
-
-__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
-
-##### "social_media_verification" `[string]`
-- Controlli per la verifica delle richieste dalle piattaforme dei social media.
-
-```
-social_media_verification
-├─Embedly ("Embedly")
-├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-└─Twitterbot ("Twitterbot")
-```
-
-__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
-
-__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
-
-** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo BGPView).
-
-##### "other_verification" `[string]`
-- Controlli per la verifica di altri tipi di richieste ove possibile.
-
-```
-other_verification
-├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
-```
-
-__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
-
-__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
 ##### "default_algo" `[string]`
 - Definisce quale algoritmo da utilizzare per tutte le password e le sessioni in futuro.
@@ -841,38 +756,108 @@ theme
 #### "signatures" (Categoria)
 Configurazione per firme, file di firma, moduli, ecc.
 
-##### "block_attacks" `[bool]`
-- Blocca i CIDR associati ad attacchi e altro traffico anomalo? Ad esempio, scansioni delle porte, hacking, rilevamento di vulnerabilità, ecc. A meno che si sperimentare problemi quando si fa così, generalmente, questo dovrebbe essere sempre impostata su true.
+##### "shorthand" `[string]`
+- Controlla cosa fare con una richiesta quando c'è una corrispondenza positiva con una firma che utilizza le parole abbreviate fornite.
 
-##### "block_cloud" `[bool]`
-- Blocca i CIDR identificati come appartenente alla servizi webhosting/cloud? Se si utilizza un servizio di API dal suo sito o se si aspetta altri siti a collegare al suo sito, questa direttiva deve essere impostata su false. Se non, questa direttiva deve essere impostata su true.
+```
+shorthand
+├─Attacks ("Attacchi")
+├─Bogon ("⁰ Bogon IP")
+├─Cloud ("Servizio cloud")
+├─Generic ("Generico")
+├─Legal ("¹ Legale")
+├─Malware ("Malware")
+├─Proxy ("² Proxy")
+├─Spam ("Rischio per lo spam")
+├─Banned ("³ Vietato")
+├─BadIP ("³ IP non valido")
+├─RL ("³ Velocità limitato")
+└─Other ("⁴ Altro")
+```
 
-##### "block_bogons" `[bool]`
-- Blocca i CIDR bogone/marziano? Se aspetta i collegamenti al suo sito dall'interno della rete locale, da localhost, o dalla LAN, questa direttiva deve essere impostata su false. Se si non aspetta queste tali connessioni, questa direttiva deve essere impostata su true.
+__0.__ Se il tuo sito web necessita di accesso tramite LAN o localhost, non bloccarlo. Altrimenti, puoi bloccarlo.
 
-##### "block_generic" `[bool]`
-- Blocca i CIDR generalmente consigliati per la lista nera? Questo copre qualsiasi firme che non sono contrassegnate come parte del qualsiasi delle altre più specifiche categorie di firme.
+__1.__ Nessuno dei file di firma predefiniti lo utilizza, ma è comunque supportato nel caso in cui possa essere utile per alcuni utenti.
 
-##### "block_legal" `[bool]`
-- Blocca i CIDR in risposta agli obblighi legali? Normalmente, questa direttiva non dovrebbe avere alcun effetto, poiché CIDRAM non associa alcun CIDR a "obblighi legali" per impostazione predefinita, ma esiste comunque come misura di controllo aggiuntiva a vantaggio di eventuali file di firme o moduli personalizzati che potrebbero esistere per motivi legali.
+__2.__ Se hai bisogno che gli utenti possano accedere al tuo sito web tramite proxy, non bloccarlo. Altrimenti, puoi bloccarlo.
 
-##### "block_malware" `[bool]`
-- Blocca i CIDR associati al malware? Ciò include server C&C, macchine infette, macchine coinvolte nella distribuzione di malware, ecc.
+__3.__ L'utilizzo diretto nelle firme non è supportato, ma può essere invocato con altri mezzi in circostanze particolari.
 
-##### "block_proxies" `[bool]`
-- Blocca i CIDR identificati come appartenente a servizi proxy o VPN? Se si richiede che gli utenti siano in grado di accedere al suo sito web dai servizi proxy o VPN, questa direttiva deve essere impostata su false. Altrimenti, se non hanno bisogno di servizi proxy o VPN, questa direttiva deve essere impostata su true come un mezzo per migliorare la sicurezza.
+__4.__ Si riferisce a casi in cui le parole abbreviate non vengono utilizzate affatto, o non vengono riconosciute da CIDRAM.
 
-##### "block_spam" `[bool]`
-- Blocca i CIDR identificati come alto rischio per spam? A meno che si sperimentare problemi quando si fa così, generalmente, questo dovrebbe essere sempre impostata su true.
+__Uno per firma.__ Una firma può invocare più profili, ma può utilizzare solo una parola abbreviata. È possibile che più parole abbreviate possano essere adatte, ma poiché solo una può essere utilizzata, miriamo a utilizzare sempre solo le più adatte.
+
+__Priorità.__ Un'opzione selezionata ha sempre la priorità su un'opzione non selezionata. Ad esempio, se sono in gioco più parole abbreviate ma solo una di esse è impostata come bloccata, la richiesta sarà comunque bloccata.
+
+__Punti finali umani e servizi cloud.__ Il servizio cloud può fare riferimento a provider di web hosting, server farm, data center, o una serie di altre cose. Punto finale umano si riferisce ai mezzi con cui un umano accede a internet, ad esempio tramite un provider di servizi internet. Una rete di solito fornisce solo l'uno o l'altro, ma a volte può fornire entrambi. Miriamo a non identificare mai potenziali punti finali umani come servizi cloud. Pertanto, un servizio cloud può essere identificato come qualcos'altro se il suo gamme è condiviso da punti finali umani noti. Allo stesso modo, miriamo a identificare sempre i servizi cloud, i cui gamme non sono condivisi da alcun punto finale umano noto, come servizi cloud. Pertanto, una richiesta identificata esplicitamente come servizio cloud probabilmente non condivide il suo gamme con nessun punto finale umano noto. Allo stesso modo, una richiesta identificata esplicitamente da attacchi o rischio per lo spam probabilmente li condivide. Tuttavia, internet è sempre in evoluzione, gli scopi delle reti cambiano nel tempo, e le gamme vengono sempre acquistate o vendute, quindi rimani consapevole e vigile riguardo ai falsi positivi.
 
 ##### "default_tracktime" `[int]`
-- Quanti secondi per tracciare IP vietati dai moduli. Predefinito = 604800 (1 settimana).
+- Per quanti secondi devono essere tracciati gli indirizzi IP. Predefinito = 604800 (1 settimana).
 
 ##### "infraction_limit" `[int]`
 - Numero massimo di infrazioni un IP è permesso di incorrere prima di essere vietato dalle tracciamento IP. Predefinito = 10.
 
 ##### "tracking_override" `[bool]`
 - I moduli dovrebbero essere autorizzati a sostituire le opzioni di tracciamento? True = Sì [Predefinito]; False = No.
+
+#### "verification" (Categoria)
+Configurazione per verificare da dove provengono le richieste.
+
+##### "search_engines" `[string]`
+- Controlli per la verifica delle richieste dai motori di ricerca.
+
+```
+search_engines
+├─Amazonbot ("Amazonbot")
+├─Applebot ("Applebot")
+├─Baidu ("Baiduspider/百度")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Googlebot ("Googlebot")
+├─MojeekBot ("MojeekBot")
+├─PetalBot ("PetalBot")
+├─Qwantify ("Qwantify/Bleriot")
+├─SeznamBot ("SeznamBot")
+├─Sogou ("Sogou/搜狗")
+├─Yahoo ("Yahoo/Slurp")
+├─Yandex ("Yandex/Яндекс")
+└─YoudaoBot ("YoudaoBot")
+```
+
+__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
+
+__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
+
+##### "social_media" `[string]`
+- Controlli per la verifica delle richieste dalle piattaforme dei social media.
+
+```
+social_media
+├─Embedly ("Embedly")
+├─Facebook ("** Facebook")
+├─Pinterest ("Pinterest")
+└─Twitterbot ("Twitterbot")
+```
+
+__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
+
+__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
+
+** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo BGPView).
+
+##### "other" `[string]`
+- Controlli per la verifica di altri tipi di richieste ove possibile.
+
+```
+other
+├─AdSense ("AdSense")
+├─AmazonAdBot ("AmazonAdBot")
+└─Grapeshot ("Oracle Data Cloud Crawler")
+```
+
+__Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
+
+__Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
 #### "recaptcha" (Categoria)
 Configurazione per ReCaptcha (fornisce un modo per gli umani di riottenere l'accesso quando bloccato).
@@ -1158,87 +1143,6 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#HO
 ##### "pdo_password" `[string]`
 - La password per PDO.
 
-#### "abuseipdb" (Categoria)
-Configurazione per il modulo AbuseIPDB.
-
-##### "api_key" `[string]`
-- Inserisci qui la vostra chiave API.
-
-Guarda anche:
-- [Register - AbuseIPDB](https://www.abuseipdb.com/register)
-- [link_get_api_key](https://www.abuseipdb.com/account/api)
-
-##### "max_age_in_days" `[int]`
-- L'età massima in giorni per cui verranno presi in considerazione i rapporti durante l'esecuzione delle ricerche (deve essere un numero compreso tra 1 e 365). Predefinito = 365.
-
-##### "minimum_confidence_score" `[int]`
-- Il punteggio di affidabilità minimo richiesto affinché CIDRAM blocca un indirizzo IP (deve essere un numero compreso tra 0 e 100). Predefinito = 50.
-
-##### "max_cs_for_captcha" `[int]`
-- Il punteggio di confidenza massimo consentito per i CAPTCHA da servire (deve essere un numero compreso tra 0 e 100). Predefinito = 10.
-
-##### "minimum_total_reports" `[int]`
-- Il numero minimo di rapporti totali necessari affinché CIDRAM blocca un indirizzo IP. Predefinito = 1.
-
-##### "report_back" `[bool]`
-- Consenti a CIDRAM di rapportare il comportamento errato rilevato su AbuseIPDB utilizzando la vostra chiave API? Predefinito = False.
-
-##### "lookup_strategy" `[int]`
-- Per quali richieste devono essere eseguite le ricerche?
-
-```
-lookup_strategy
-├─0 (Nessuno.): Se si desidera utilizzare il modulo solo a scopo di reportistica, senza
-│ cercare nulla, utilizzare questo.
-├─1 (Ogni richiesta.): Più rigoroso e completo, ma anche più probabile che portino al
-│ raggiungimento di limiti e quote molto più rapidamente, con conseguente
-│ potenziale blocco del servizio quando è più necessario. Inoltre, sebbene i
-│ risultati della ricerca siano sempre memorizzati nella cache, in alcuni casi
-│ potrebbero comunque incida negativamente sulle prestazioni del sito Web.
-│ Può essere necessario in alcuni casi, ma generalmente non consigliato.
-└─2 (Richieste solo per pagine sensibili (ad es., pagine di accesso, moduli di registrazione, ecc).): Meno rigoroso e completo, ma più prudente in termini di quote e limiti, e
-  meno probabile che incida negativamente sulla performance. La strategia
-  consigliata nella maggior parte dei casi.
-```
-
-##### "build_profiles_from_usage_type" `[bool]`
-- Creare profili utilizzando il tipo di utilizzo restituito dall'API? False = No. True = Sì. Predefinito = True.
-
-#### "bgpview" (Categoria)
-Configurazione per il modulo BGPView (fornisce la funzionalità di ricerca del codice ASN e del paese per CIDRAM).
-
-##### "blocked_asns" `[string]`
-- Un elenco di ASN che verranno bloccati quando corrispondono dal modulo BGPView.
-
-##### "whitelisted_asns" `[string]`
-- Un elenco di ASN da inserire nella lista bianca quando corrispondono dal modulo BGPView.
-
-##### "blocked_ccs" `[string]`
-- Un elenco di paesi (identificati dai loro codici paese {{Links.ISO.3166}} a 2 cifre) che verranno bloccati quando corrispondono dal modulo BGPView.
-
-##### "whitelisted_ccs" `[string]`
-- Un elenco di paesi (identificati dai loro codici paese {{Links.ISO.3166}} a 2 cifre) da inserire nella lista bianca quando corrispondono dal modulo BGPView.
-
-#### "bunnycdn" (Categoria)
-Configurazione per il modulo di compatibilità BunnyCDN.
-
-##### "positive_action" `[string]`
-- Quale azione dovrebbe eseguire da CIDRAM quando incontra una richiesta da BunnyCDN? Azione predefinita = Bypassarlo.
-
-```
-positive_action
-├─bypass ("Innesca un bypass.): Sottrae un conteggio dal numero di firme innescate, purché almeno una firma
-│ sia già stata innescata. Consigliato per gestire semplici falsi positivi
-│ potenzialmente causati dai file di firme predefiniti."
-├─greylist ("Lista grigia.): Reimposta il numero di firme innescate, ma continua a elaborare la
-│ richiesta. Consigliato quando non si desidera applicare un'azione di lista
-│ bianca alla richiesta, ma è necessario qualcosa di più sostanziale
-│ dell'innescando di un bypass."
-└─whitelist ("Lista bianca.): Reimposta il numero di firme innescate, e impedisce qualsiasi ulteriore
-  elaborazione della richiesta. Garantisce che CIDRAM non bloccherà mai la
-  richiesta."
-```
-
 #### "bypasses" (Categoria)
 Configurazione per i bypass di firma predefiniti.
 
@@ -1277,49 +1181,6 @@ signatures
 ├─ruri ("Firme basate su URI ricostruiti.")
 └─uri ("Firme basate sugli URI di richiesta.")
 ```
-
-#### "projecthoneypot" (Categoria)
-Configurazione per il modulo Project Honeypot.
-
-##### "api_key" `[string]`
-- Inserisci qui la vostra chiave API.
-
-Guarda anche:
-- [Project Honeypot Terms of Service.](https://www.projecthoneypot.org/terms_of_service_use.php)
-- [link_get_api_key](https://www.projecthoneypot.org/httpbl_configure.php)
-
-##### "max_age_in_days" `[int]`
-- L'età massima in giorni per cui verranno presi in considerazione i rapporti durante l'esecuzione delle ricerche. Predefinito = 365.
-
-##### "minimum_threat_score" `[int]`
-- Il punteggio minimo di minaccia richiesto affinché CIDRAM blocca un indirizzo IP (deve essere un numero compreso tra 1 e 100). Predefinito = 10.
-
-##### "max_ts_for_captcha" `[int]`
-- Il punteggio massimo di minaccia consentito per ricevere un CAPTCHA (deve essere un numero compreso tra 1 e 100). Predefinito = 10.
-
-##### "lookup_strategy" `[int]`
-- Per quali richieste devono essere eseguite le ricerche?
-
-```
-lookup_strategy
-├─0 (Nessuno.): Se si desidera utilizzare il modulo solo a scopo di reportistica, senza
-│ cercare nulla, utilizzare questo.
-├─1 (Ogni richiesta.): Più rigoroso e completo, ma anche più probabile che portino al
-│ raggiungimento di limiti e quote molto più rapidamente, con conseguente
-│ potenziale blocco del servizio quando è più necessario. Inoltre, sebbene i
-│ risultati della ricerca siano sempre memorizzati nella cache, in alcuni casi
-│ potrebbero comunque incida negativamente sulle prestazioni del sito Web.
-│ Può essere necessario in alcuni casi, ma generalmente non consigliato.
-└─2 (Richieste solo per pagine sensibili (ad es., pagine di accesso, moduli di registrazione, ecc).): Meno rigoroso e completo, ma più prudente in termini di quote e limiti, e
-  meno probabile che incida negativamente sulla performance. La strategia
-  consigliata nella maggior parte dei casi.
-```
-
-#### "sfs" (Categoria)
-Configurazione per il modulo Stop Forum Spam.
-
-##### "offer_captcha" `[bool]`
-- Quando le richieste vengono bloccate da questo modulo, possono essere serviti CAPTCHA. Predefinito = True. Nota: Non sovrascrive altre direttive. Affinché i CAPTCHA vengano serviti, tutte le direttive devono essere d'accordo, le chiavi necessarie configurate, ecc. Nel caso in cui i CAPTCHA possano essere normalmente serviti, l'impostazione di questa direttiva su false fornisce un modo per impedire che i CAPTCHA vengano serviti per richieste bloccate specificamente da questo modulo.
 
 ---
 
@@ -2301,4 +2162,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 27 Luglio 2022 (2022.07.27).
+Ultimo Aggiornamento: 2 Settembre 2022 (2022.09.02).

@@ -13,7 +13,7 @@
  <li>۹. <a href="#SECTION9">قانونی معلومات</a></li>
 </ul></div>
 
-*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is totally irredeemably incomprehensible, let me know which, and I can just delete them entirely. If you're not sure how to perform pull requests, ask. I can help.*
+*Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
 ---
 
@@ -275,20 +275,24 @@ $CIDRAM->view();
 │       precision_ipv6 [int]
 │       allowance_period [float]
 │       exceptions [string]
-└───supplementary_cache_options
-        prefix [string]
-        enable_apcu [bool]
-        enable_memcached [bool]
-        enable_redis [bool]
-        enable_pdo [bool]
-        memcached_host [string]
-        memcached_port [int]
-        redis_host [string]
-        redis_port [int]
-        redis_timeout [float]
-        pdo_dsn [string]
-        pdo_username [string]
-        pdo_password [string]
+├───supplementary_cache_options
+│       prefix [string]
+│       enable_apcu [bool]
+│       enable_memcached [bool]
+│       enable_redis [bool]
+│       enable_pdo [bool]
+│       memcached_host [string]
+│       memcached_port [int]
+│       redis_host [string]
+│       redis_port [int]
+│       redis_timeout [float]
+│       pdo_dsn [string]
+│       pdo_username [string]
+│       pdo_password [string]
+├───bypasses
+│       used [string]
+└───extras
+        signatures [string]
 ```
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
@@ -510,6 +514,7 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
 ├─pl ("Polski")
@@ -591,7 +596,7 @@ emailaddr_display_style
 ```
 
 ##### <div dir="rtl">"ban_override" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>"http_response_header_code" کی جگہ لے لے، جب "infraction_limit" حد سے تجاوز کر رہا ہے؟ زیرکر کب: التواء درخواستوں ایک خالی صفحہ (سانچے فائلوں کا استعمال نہیں کر رہے ہیں) واپس جائیں. 200 = جگہ لے لے نہیں ہے [پہلے سے طے شدہ]. دیگر اقدار "http_response_header_code" کے لئے دستیاب اقدار کے طور پر اسی ہیں.</li></ul></div>
+<div dir="rtl"><ul><li>"http_response_header_code" کی جگہ لے لے، جب "infraction_limit" حد سے تجاوز کر رہا ہے؟ 200 = جگہ لے لے نہیں ہے [پہلے سے طے شدہ]. دیگر اقدار "http_response_header_code" کے لئے دستیاب اقدار کے طور پر اسی ہیں.</li></ul></div>
 
 ```
 ban_override
@@ -1162,6 +1167,45 @@ __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#HO
 
 ##### <div dir="rtl">"pdo_password" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کیلئے پاس ورڈ.</li></ul></div>
+
+#### <div dir="rtl">"bypasses" (قسم)<br /></div>
+<div dir="rtl">پہلے سے طے شدہ دستخط کو نظرانداز کرنے کیلئے تشکیل.<br /><br /></div>
+
+##### <div dir="rtl">"used" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کون سے بائی پاس کو استعمال کیا جانا چاہئے؟</li></ul></div>
+
+```
+used
+├─AbuseIPDB ("AbuseIPDB")
+├─AmazonAdBot ("AmazonAdBot")
+├─Bingbot ("Bingbot")
+├─DuckDuckBot ("DuckDuckBot")
+├─Embedly ("Embedly")
+├─Feedbot ("Feedbot")
+├─Feedspot ("Feedspot")
+├─GoogleFiber ("Google Fiber")
+├─Googlebot ("Googlebot")
+├─Grapeshot ("Grapeshot")
+├─Jetpack ("Jetpack")
+├─PetalBot ("PetalBot")
+├─Pinterest ("Pinterest")
+└─Redditbot ("Redditbot")
+```
+
+#### <div dir="rtl">"extras" (قسم)<br /></div>
+<div dir="rtl">اختیاری سیکورٹی اضافی ماڈیول ترتیب.<br /><br /></div>
+
+##### <div dir="rtl">"signatures" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کس قسم کے دستخطوں کا احترام کیا جانا چاہئے؟</li></ul></div>
+
+```
+signatures
+├─empty_ua ("خالی صارف ایجنٹ.")
+├─query ("درخواست کے سوالات پر مبنی دستخط.")
+├─raw ("خام درخواست ان پٹ پر مبنی دستخط.")
+├─ruri ("دوبارہ تعمیر شدہ URI پر مبنی دستخط.")
+└─uri ("درخواست URI پر مبنی دستخط.")
+```
 
 ---
 
@@ -2182,4 +2226,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۷ جولائی ۲۰۲۲ (۲۰۲۲.۰۷.۲۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۲ ستمبر ۲۰۲۲ (۲۰۲۲.۰۹.۰۲).</div>
