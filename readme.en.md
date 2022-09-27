@@ -216,6 +216,8 @@ Configuration (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configuration (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -511,6 +515,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -742,6 +747,12 @@ theme
 
 ##### "magnification" `[float]`
 - Font magnification. Default = 1.
+
+##### "custom_header" `[string]`
+- Inserted as HTML at the very beginning of all front-end pages. This could be useful in case you want to include a website logo, personalised header, scripts, or similar at all such pages.
+
+##### "custom_footer" `[string]`
+- Inserted as HTML at the very bottom of all front-end pages. This could be useful in case you want to include a legal notice, contact link, business information or similar at all such pages.
 
 ##### "remotes" `[string]`
 - A list of the addresses used by the updater to fetch component metadata. This may need to be adjusted when upgrading to a new major version, or when acquiring a new source for updates, but under normal circumstances should be left alone.
@@ -1063,6 +1074,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Other
 ```
+
+##### "custom_header" `[string]`
+- Inserted as HTML at the very beginning of all "access denied" pages. This could be useful in case you want to include a website logo, personalised header, scripts, or similar at all such pages.
+
+##### "custom_footer" `[string]`
+- Inserted as HTML at the very bottom of all "access denied" pages. This could be useful in case you want to include a legal notice, contact link, business information or similar at all such pages.
 
 #### "rate_limiting" (Category)
 Configuration for rate limiting (not recommended for general use).
@@ -2159,4 +2176,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 2 September 2022 (2022.09.02).
+Last Updated: 27 September 2022 (2022.09.27).

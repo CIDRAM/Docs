@@ -216,6 +216,8 @@ Konfiguration (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Konfiguration (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -513,6 +517,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -746,6 +751,12 @@ theme
 
 ##### „magnification“ `[float]`
 - Schriftvergrößerung. Standardeinstellung = 1.
+
+##### „custom_header“ `[string]`
+- Als HTML ganz am Anfang aller Frontend-Seiten eingefügt. Dies kann nützlich sein, wenn Sie auf allen solchen Seiten ein Website-Logo, einen personalisierten Header, Skripte, oder ähnliches einfügen möchten.
+
+##### „custom_footer“ `[string]`
+- Als HTML ganz am Unten aller Frontend-Seiten eingefügt. Dies kann nützlich sein, wenn Sie auf allen solchen Seiten einen rechtlichen Hinweis, einen Kontaktlink, Geschäftsinformationen, oder ähnliches einfügen möchten.
 
 ##### „remotes“ `[string]`
 - Eine Liste der Adressen an denen der Updater Komponenten-Metadaten abruft. Dies muss möglicherweise beim Upgrade auf eine neue Hauptversion oder beim Erwerb einer neuen Quelle für Updates angepasst werden, aber sollte unter normalen Umständen in Ruhe gelassen werden.
@@ -1072,6 +1083,12 @@ captcha_title
 └─…Andere
 ```
 
+##### „custom_header“ `[string]`
+- Als HTML ganz am Anfang aller "Zugriff verweigert"-Seiten eingefügt. Dies kann nützlich sein, wenn Sie auf allen solchen Seiten ein Website-Logo, einen personalisierten Header, Skripte, oder ähnliches einfügen möchten.
+
+##### „custom_footer“ `[string]`
+- Als HTML ganz am Unten aller "Zugriff verweigert"-Seiten eingefügt. Dies kann nützlich sein, wenn Sie auf allen solchen Seiten einen rechtlichen Hinweis, einen Kontaktlink, Geschäftsinformationen, oder ähnliches einfügen möchten.
+
 #### „rate_limiting“ (Kategorie)
 Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohlen).
 
@@ -1133,7 +1150,7 @@ Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglich
 - Redis Timeout-Wert. Standardeinstellung = „2.5“.
 
 ##### „pdo_dsn“ `[string]`
-- PDO DSN-Wert. Standardeinstellung = "mysql:dbname=cidram;host=localhost;port=3306".
+- PDO DSN-Wert. Standardeinstellung = „mysql:dbname=cidram;host=localhost;port=3306“.
 
 __FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#HOW_TO_USE_PDO" hreflang="de">Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?</a></em>
 
@@ -2176,4 +2193,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 2. September 2022 (2022.09.02).
+Zuletzt aktualisiert: 27. September 2022 (2022.09.27).

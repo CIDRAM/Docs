@@ -216,6 +216,8 @@ Cấu hình (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Cấu hình (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -517,6 +521,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -754,6 +759,12 @@ theme
 
 ##### "magnification" `[float]`
 - Phóng to chữ. Mặc định = 1.
+
+##### "custom_header" `[string]`
+- Được chèn dưới dạng HTML ở đầu tất cả các trang front-end. Điều này có thể hữu ích trong trường hợp bạn muốn bao gồm biểu trưng trang web, tiêu đề được cá nhân hóa, tập lệnh, hoặc tương tự ở tất cả các trang như vậy.
+
+##### "custom_footer" `[string]`
+- Được chèn dưới dạng HTML ở cuối tất cả các trang front-end. Điều này có thể hữu ích trong trường hợp bạn muốn bao gồm thông báo pháp lý, liên kết liên hệ, thông tin doanh nghiệp, hoặc tương tự ở tất cả các trang như vậy.
 
 ##### "remotes" `[string]`
 - Danh sách các địa chỉ được trình cập nhật sử dụng để tìm nạp siêu dữ liệu thành phần. Điều này có thể cần được điều chỉnh khi nâng cấp lên phiên bản chính mới, hoặc khi tìm một nguồn mới để cập nhật, nhưng trong các trường hợp bình thường thì nên để nguyên.
@@ -1083,6 +1094,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Khác
 ```
+
+##### "custom_header" `[string]`
+- Được chèn dưới dạng HTML ở đầu tất cả các trang "truy cập đã bị từ chối". Điều này có thể hữu ích trong trường hợp bạn muốn bao gồm biểu trưng trang web, tiêu đề được cá nhân hóa, tập lệnh, hoặc tương tự ở tất cả các trang như vậy.
+
+##### "custom_footer" `[string]`
+- Được chèn dưới dạng HTML ở cuối tất cả các trang "truy cập đã bị từ chối". Điều này có thể hữu ích trong trường hợp bạn muốn bao gồm thông báo pháp lý, liên kết liên hệ, thông tin doanh nghiệp, hoặc tương tự ở tất cả các trang như vậy.
 
 #### "rate_limiting" (Thể loại)
 Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chung).
@@ -2168,4 +2185,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.09.02.
+Lần cuối cập nhật: 2022.09.27.

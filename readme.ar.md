@@ -222,6 +222,8 @@ $CIDRAM->view();
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -268,6 +270,8 @@ $CIDRAM->view();
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -524,6 +528,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -761,6 +766,12 @@ theme
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>تكبير الخط. افتراضي = 1.</li></ul></div>
+
+##### <div dir="rtl">"custom_header" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تم إدراجها بتنسيق HTML في بداية جميع الصفحات الأمامية. قد يكون هذا مفيدًا في حالة رغبتك في تضمين شعار موقع ويب أو رأس مخصص أو نصوص أو ما شابه ذلك في جميع هذه الصفحات.</li></ul></div>
+
+##### <div dir="rtl">"custom_footer" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تم إدراجها بتنسيق HTML في الجزء السفلي من جميع الصفحات الأمامية. قد يكون هذا مفيدًا في حالة رغبتك في تضمين إشعار قانوني أو رابط اتصال أو معلومات تجارية أو ما شابه ذلك في كل هذه الصفحات.</li></ul></div>
 
 ##### <div dir="rtl">"remotes" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة بالعناوين التي يستخدمها المُحدِّث لجلب البيانات الوصفية للمكون. قد يحتاج هذا إلى تعديل عند الترقية إلى إصدار رئيسي جديد، أو عند الحصول على مصدر جديد للتحديثات، ولكن في ظل الظروف العادية يجب تركه بمفرده.</li></ul></div>
@@ -1092,6 +1103,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…آخر
 ```
+
+##### <div dir="rtl">"custom_header" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تم إدراجها بتنسيق HTML في بداية كافة صفحات "تم رفض الوصول". قد يكون هذا مفيدًا في حالة رغبتك في تضمين شعار موقع ويب أو رأس مخصص أو نصوص أو ما شابه ذلك في جميع هذه الصفحات.</li></ul></div>
+
+##### <div dir="rtl">"custom_footer" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تم إدراجها بتنسيق HTML في الجزء السفلي من كافة صفحات "تم رفض الوصول". قد يكون هذا مفيدًا في حالة رغبتك في تضمين إشعار قانوني أو رابط اتصال أو معلومات تجارية أو ما شابه ذلك في كل هذه الصفحات.</li></ul></div>
 
 #### <div dir="rtl">"rate_limiting" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للحد من معدل (غير مستحسن للاستخدام العام).<br /><br /></div>
@@ -2222,4 +2239,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢ سبتمبر ٢٠٢٢ (٢٠٢٢.٠٩.٠٢).</div>
+<div dir="rtl">آخر تحديث: ٢٧ سبتمبر ٢٠٢٢ (٢٠٢٢.٠٩.٢٧).</div>

@@ -216,6 +216,8 @@ Configuração (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configuração (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -512,6 +516,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -744,6 +749,12 @@ theme
 
 ##### "magnification" `[float]`
 - Ampliação de fonte. Padrão = 1.
+
+##### "custom_header" `[string]`
+- Inserido como HTML no início de todas as páginas do front-end. Isso pode ser útil caso você queira incluir um logotipo de site, cabeçalho personalizado, scripts, ou similares em todas essas páginas.
+
+##### "custom_footer" `[string]`
+- Inserido como HTML no final de todas as páginas do front-end. Isso pode ser útil caso você queira incluir um aviso legal, link de contato, informações comerciais, ou similares em todas essas páginas.
 
 ##### "remotes" `[string]`
 - Uma lista dos endereços usados pelo atualizador para buscar metadados de componentes. Isso pode precisar ser ajustado ao atualizar para uma nova versão principal, ou ao adquirir uma nova fonte para atualizações, mas em circunstâncias normais deve ser deixado de lado.
@@ -1067,6 +1078,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Outros
 ```
+
+##### "custom_header" `[string]`
+- Inserido como HTML no início de todas as páginas de "acesso negado". Isso pode ser útil caso você queira incluir um logotipo de site, cabeçalho personalizado, scripts, ou similares em todas essas páginas.
+
+##### "custom_footer" `[string]`
+- Inserido como HTML no final de todas as páginas de "acesso negado". Isso pode ser útil caso você queira incluir um aviso legal, link de contato, informações comerciais, ou similares em todas essas páginas.
 
 #### "rate_limiting" (Categoria)
 Configuração para limitação de taxa (não recomendado para uso geral).
@@ -2158,4 +2175,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 2 de Setembro de 2022 (2022.09.02).
+Última Atualização: 27 de Setembro de 2022 (2022.09.27).

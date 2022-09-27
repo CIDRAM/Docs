@@ -216,6 +216,8 @@ Configuration (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configuration (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -513,6 +517,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -746,6 +751,12 @@ theme
 
 ##### « magnification » `[float]`
 - Grossissement des fontes. Défaut = 1.
+
+##### « custom_header » `[string]`
+- Inséré en tant que HTML au tout début de toutes les pages frontales. Cela peut être utile si vous souhaitez inclure un logo de site Web, un en-tête personnalisé, des scripts, ou similaires sur toutes ces pages.
+
+##### « custom_footer » `[string]`
+- Inséré en tant que HTML au tout bas de toutes les pages frontales. Cela peut être utile si vous souhaitez inclure une notice légale, un lien de contact, des informations commerciales, ou similaires sur toutes ces pages.
 
 ##### « remotes » `[string]`
 - Une liste des adresses utilisées par la page des mises à jour pour procurer les métadonnées des composants. Cela peut devoir être ajusté lors du passage à une nouvelle version majeure, ou lors de l'acquisition d'une nouvelle source de mises à jour, mais dans des circonstances normales, il doit être laissé tel quel.
@@ -1071,6 +1082,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Autres
 ```
+
+##### « custom_header » `[string]`
+- Inséré en tant que HTML au tout début de toutes les pages « accès refusé ». Cela peut être utile si vous souhaitez inclure un logo de site Web, un en-tête personnalisé, des scripts, ou similaires sur toutes ces pages.
+
+##### « custom_footer » `[string]`
+- Inséré en tant que HTML au tout bas de toutes les pages « accès refusé ». Cela peut être utile si vous souhaitez inclure une notice légale, un lien de contact, des informations commerciales, ou similaires sur toutes ces pages.
 
 #### « rate_limiting » (Catégorie)
 Configuration pour la limitation de débit (non recommandé pour d'utilisation générale).
@@ -2172,4 +2189,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 2 Septembre 2022 (2022.09.02).
+Dernière mise à jour : 27 Septembre 2022 (2022.09.27).

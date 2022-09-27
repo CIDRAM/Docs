@@ -222,6 +222,8 @@ $CIDRAM->view();
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -268,6 +270,8 @@ $CIDRAM->view();
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -524,6 +528,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -761,6 +766,12 @@ theme
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
 <div dir="rtl"><ul><li>فونٹ اضافہ. پہلے سے طے شدہ = 1.</li></ul></div>
+
+##### <div dir="rtl">"custom_header" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام فرنٹ اینڈ پیجز کے شروع میں HTML کے بطور داخل کیا گیا. اگر آپ ویب سائٹ کا لوگو، پرسنلائزڈ ہیڈر، اسکرپٹس، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
+
+##### <div dir="rtl">"custom_footer" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام فرنٹ اینڈ پیجز کے آخر میں HTML کے بطور داخل کیا گیا. اگر آپ قانونی نوٹس، رابطہ لنک، کاروباری معلومات، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
 
 ##### <div dir="rtl">"remotes" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اجزاء کے میٹا ڈیٹا کو حاصل کرنے کے لیے اپڈیٹر کے ذریعے استعمال کیے گئے پتوں کی فہرست. نئے بڑے ورژن میں اپ گریڈ کرتے وقت، یا اپ ڈیٹس کے لیے نیا ذریعہ حاصل کرتے وقت اسے ایڈجسٹ کرنے کی ضرورت پڑ سکتی ہے، لیکن عام حالات میں اسے تنہا چھوڑ دیا جانا چاہیے.</li></ul></div>
@@ -1096,6 +1107,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…دیگر
 ```
+
+##### <div dir="rtl">"custom_header" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام "رسائی نہیں ہوئی" صفحات کے شروع میں بطور HTML داخل کیا گیا. اگر آپ ویب سائٹ کا لوگو، پرسنلائزڈ ہیڈر، اسکرپٹس، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
+
+##### <div dir="rtl">"custom_footer" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام "رسائی نہیں ہوئی" صفحات کے آخر میں بطور HTML داخل کیا گیا. اگر آپ قانونی نوٹس، رابطہ لنک، کاروباری معلومات، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
 
 #### <div dir="rtl">"rate_limiting" (قسم)<br /></div>
 <div dir="rtl">شرح کو محدود کرنے کی ترتیبات (عام استعمال کے لئے سفارش نہیں کی جاتی ہے).<br /><br /></div>
@@ -2226,4 +2243,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲ ستمبر ۲۰۲۲ (۲۰۲۲.۰۹.۰۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۷ ستمبر ۲۰۲۲ (۲۰۲۲.۰۹.۲۷).</div>

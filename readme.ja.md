@@ -216,6 +216,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -509,6 +513,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -738,6 +743,12 @@ theme
 
 ##### "magnification" `[float]`
 - フォントの倍率。​Default/デフォルルト = １。
+
+##### "custom_header" `[string]`
+- すべてのフロントエンド・ページの最初にＨＴＭＬとして挿入されます。​ウェブサイトのロゴ、パーソナライズされたヘッダー、スクリプト、などに役立ちます。
+
+##### "custom_footer" `[string]`
+- すべてのフロントエンド・ページの最下部にＨＴＭＬとして挿入されます。​法的通知、連絡先リンク、ビジネス情報、などに役立ちます。
 
 ##### "remotes" `[string]`
 - アップデーターがコンポーネント・メタデータをフェッチするために使用するアドレスのリスト。​これは、新しいメジャーバージョンにアップグレードするとき、または更新用の新しいソースを取得するときに調整する必要がある場合がありますが、通常の状況ではそのままにしておく必要があります。
@@ -1059,6 +1070,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…その他
 ```
+
+##### "custom_header" `[string]`
+- すべての「アクセス拒否」ページの最初にＨＴＭＬとして挿入されます。​ウェブサイトのロゴ、パーソナライズされたヘッダー、スクリプト、などに役立ちます。
+
+##### "custom_footer" `[string]`
+- すべての「アクセス拒否」ページの最下部にＨＴＭＬとして挿入されます。​法的通知、連絡先リンク、ビジネス情報、などに役立ちます。
 
 #### "rate_limiting" （カテゴリ）
 レート制限の設定（一般的な使用には推奨されません）。
@@ -2145,4 +2162,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２２年９月２日。
+最終アップデート：２０２２年９月２７日。

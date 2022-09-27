@@ -216,6 +216,8 @@ Configurazione (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configurazione (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -513,6 +517,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -746,6 +751,12 @@ theme
 
 ##### "magnification" `[float]`
 - Ingrandimento del carattere. Predefinito = 1.
+
+##### "custom_header" `[string]`
+- Inserito come HTML all'inizio di tutte le pagine del front-end. Questo potrebbe essere utile nel caso in cui desideri includere il logo di un sito web, un'intestazione personalizzata, script, o simili in tutte queste pagine.
+
+##### "custom_footer" `[string]`
+- Inserito come HTML alla fine di tutte le pagine del front-end. Questo potrebbe essere utile nel caso in cui desideri includere un avviso legale, un link di contatto, informazioni commerciali, o simili in tutte queste pagine.
 
 ##### "remotes" `[string]`
 - Un elenco degli indirizzi utilizzati dal sistema di aggiornamenti per recuperare i metadati dei componenti. Potrebbe essere necessario modificarlo durante l'aggiornamento a una nuova versione principale, o quando si acquisisce una nuova fonte per gli aggiornamenti, ma in circostanze normali dovrebbe essere lasciato in pace.
@@ -1071,6 +1082,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Altro
 ```
+
+##### "custom_header" `[string]`
+- Inserito come HTML all'inizio di tutte le pagine di "accesso negato". Questo potrebbe essere utile nel caso in cui desideri includere il logo di un sito web, un'intestazione personalizzata, script, o simili in tutte queste pagine.
+
+##### "custom_footer" `[string]`
+- Inserito come HTML alla fine di tutte le pagine di "accesso negato". Questo potrebbe essere utile nel caso in cui desideri includere un avviso legale, un link di contatto, informazioni commerciali, o simili in tutte queste pagine.
 
 #### "rate_limiting" (Categoria)
 Configurazione per la limitazione della velocità (non raccomandato per uso generale).
@@ -2162,4 +2179,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 2 Settembre 2022 (2022.09.02).
+Ultimo Aggiornamento: 27 Settembre 2022 (2022.09.27).

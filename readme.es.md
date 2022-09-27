@@ -216,6 +216,8 @@ Configuración (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configuración (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -514,6 +518,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -748,6 +753,12 @@ theme
 
 ##### "magnification" `[float]`
 - Ampliación de fuente. Predefinido = 1.
+
+##### "custom_header" `[string]`
+- Insertado como HTML al principio de todas las páginas del front-end. Esto podría ser útil en caso de que desee incluir un logotipo de sitio web, un encabezado personalizado, scripts, o similar en todas dichas páginas.
+
+##### "custom_footer" `[string]`
+- Insertado como HTML al final de todas las páginas del front-end. Esto podría ser útil en caso de que desee incluir un aviso legal, enlace de contacto, información comercial, o similar en todas dichas páginas.
 
 ##### "remotes" `[string]`
 - Una lista de las direcciones utilizadas por el actualizador para obtener los metadatos de los componentes. Es posible que esto debe ajustarse al actualizar a una nueva versión principal, o al adquirir una nueva fuente de actualizaciones, pero en circunstancias normales debe dejarse así.
@@ -1073,6 +1084,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Otro
 ```
+
+##### "custom_header" `[string]`
+- Insertado como HTML al principio de todas las páginas "acceso denegado". Esto podría ser útil en caso de que desee incluir un logotipo de sitio web, un encabezado personalizado, scripts, o similar en todas dichas páginas.
+
+##### "custom_footer" `[string]`
+- Insertado como HTML al final de todas las páginas "acceso denegado". Esto podría ser útil en caso de que desee incluir un aviso legal, enlace de contacto, información comercial, o similar en todas dichas páginas.
 
 #### "rate_limiting" (Categoría)
 Configuración para limitar la velocidad de acceso (no recomendado para uso general).
@@ -2168,4 +2185,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 2 de Septiembre de 2022 (2022.09.02).
+Última Actualización: 27 de Septiembre de 2022 (2022.09.27).

@@ -216,6 +216,8 @@ Konfigurasi (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Konfigurasi (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -513,6 +517,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -746,6 +751,12 @@ theme
 
 ##### "magnification" `[float]`
 - Perbesaran font. Default = 1.
+
+##### "custom_header" `[string]`
+- Disisipkan sebagai HTML di awal semua halaman front-end. Ini dapat berguna jika Anda ingin menyertakan logo situs web, header yang dipersonalisasi, skrip, atau sejenisnya di semua halaman tersebut.
+
+##### "custom_footer" `[string]`
+- Disisipkan sebagai HTML di akhir semua halaman front-end. Ini dapat berguna jika Anda ingin menyertakan pemberitahuan hukum, tautan kontak, informasi bisnis, atau sejenisnya di semua halaman tersebut.
 
 ##### "remotes" `[string]`
 - Daftar alamat yang digunakan oleh pembaru untuk mengambil metadata komponen. Ini mungkin perlu disesuaikan saat memutakhirkan ke versi utama baru, atau saat memperoleh sumber baru untuk pembaruan, tetapi dalam keadaan normal harus dibiarkan saja.
@@ -1069,6 +1080,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Lain
 ```
+
+##### "custom_header" `[string]`
+- Disisipkan sebagai HTML di awal semua halaman "akses ditolak". Ini dapat berguna jika Anda ingin menyertakan logo situs web, header yang dipersonalisasi, skrip, atau sejenisnya di semua halaman tersebut.
+
+##### "custom_footer" `[string]`
+- Disisipkan sebagai HTML di akhir semua halaman "akses ditolak". Ini dapat berguna jika Anda ingin menyertakan pemberitahuan hukum, tautan kontak, informasi bisnis, atau sejenisnya di semua halaman tersebut.
 
 #### "rate_limiting" (Kategori)
 Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum).
@@ -2157,4 +2174,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 2 September 2022 (2022.09.02).
+Terakhir Diperbarui: 27 September 2022 (2022.09.27).

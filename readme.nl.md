@@ -216,6 +216,8 @@ Configuratie (v3)
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ Configuratie (v3)
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -302,7 +306,7 @@ stages
 ├─SearchEngineVerification ("Voer zoekmachine verificatie")
 ├─SocialMediaVerification ("Voer sociale media verificatie")
 ├─OtherVerification ("Voer andere verificatie")
-├─Aux ("Voer hulpregels")
+├─Aux ("Voer aanvullende regels")
 ├─Reporting ("Voer rapportage")
 ├─Tracking ("Voer IP-tracking")
 ├─RL ("Voer tarieflimiet")
@@ -313,7 +317,7 @@ stages
 ├─Output ("Genereren uitvoer (geblokkeerde verzoeken)")
 ├─WriteLogs ("Schrijf naar logs (geblokkeerde verzoeken)")
 ├─Terminate ("Beëindig het verzoek (geblokkeerde verzoeken)")
-├─AuxRedirect ("Omleiden volgens hulpregels")
+├─AuxRedirect ("Omleiden volgens aanvullende regels")
 └─NonBlockedCAPTCHA ("Voeg CAPTCHA's (niet-geblokkeerde verzoeken)")
 ```
 
@@ -514,6 +518,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -748,6 +753,12 @@ theme
 
 ##### "magnification" `[float]`
 - Lettergrootte vergroting. Standaard = 1.
+
+##### "custom_header" `[string]`
+- Ingevoegd als HTML aan het begin van alle frontend pagina's. Dit kan handig zijn als u op al dergelijke pagina's een websitelogo, gepersonaliseerde koptekst, scripts, of iets dergelijks wilt opnemen.
+
+##### "custom_footer" `[string]`
+- Ingevoegd als HTML onderaan alle frontend pagina's. Dit kan handig zijn als u op al dergelijke pagina's een juridische kennisgeving, een contactlink, bedrijfsinformatie, of iets dergelijks wilt opnemen.
 
 ##### "remotes" `[string]`
 - Een lijst met de adressen die door de updater worden gebruikt om metagegevens van componenten op te halen. Dit moet mogelijk worden aangepast bij het upgraden naar een nieuwe hoofdversie, of bij het verkrijgen van een nieuwe bron voor updates, maar onder normale omstandigheden moet dit met rust worden gelaten.
@@ -1073,6 +1084,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…Anders
 ```
+
+##### "custom_header" `[string]`
+- Ingevoegd als HTML aan het begin van alle "toegang geweigerd" pagina's. Dit kan handig zijn als u op al dergelijke pagina's een websitelogo, gepersonaliseerde koptekst, scripts, of iets dergelijks wilt opnemen.
+
+##### "custom_footer" `[string]`
+- Ingevoegd als HTML onderaan alle "toegang geweigerd" pagina's. Dit kan handig zijn als u op al dergelijke pagina's een juridische kennisgeving, een contactlink, bedrijfsinformatie, of iets dergelijks wilt opnemen.
 
 #### "rate_limiting" (Categorie)
 Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
@@ -2178,4 +2195,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 2 September 2022 (2022.09.02).
+Laatste Bijgewerkt: 27 September 2022 (2022.09.27).

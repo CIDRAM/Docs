@@ -216,6 +216,8 @@ $CIDRAM->view();
 │       max_login_attempts [int]
 │       theme [string]
 │       magnification [float]
+│       custom_header [string]
+│       custom_footer [string]
 │       remotes [string]
 │       enable_two_factor [bool]
 ├───signatures
@@ -262,6 +264,8 @@ $CIDRAM->view();
 │       css_url [string]
 │       block_event_title [string]
 │       captcha_title [string]
+│       custom_header [string]
+│       custom_footer [string]
 ├───rate_limiting
 │       max_bandwidth [string]
 │       max_requests [int]
@@ -502,6 +506,7 @@ lang
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
+├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
@@ -724,6 +729,12 @@ theme
 
 ##### “magnification” `[float]`
 - 字体放大。​标准 = 1。
+
+##### “custom_header” `[string]`
+- 在所有前端页面的开头作为HTML插入。​如果您想在所有此类页面中包含网站徽标、个性化标题、脚本、或类似，这可能会很有用。
+
+##### “custom_footer” `[string]`
+- 在所有前端页面的末尾作为HTML插入。​如果您想在所有此类页面中包含法律声明、联系链接、业务信息、或类似，这可能会很有用。
 
 ##### “remotes” `[string]`
 - 更新系统用于获取组件元数据的地址列表。​这可能需要在升级到新的主要版本时进行调整，或者在获取新的更新源时进行调整，但在正常情况下应该不理会。
@@ -1033,6 +1044,12 @@ captcha_title
 ├─CIDRAM ("CIDRAM")
 └─…其他
 ```
+
+##### “custom_header” `[string]`
+- 在所有“拒绝访问”页面的开头作为HTML插入。​如果您想在所有此类页面中包含网站徽标、个性化标题、脚本、或类似，这可能会很有用。
+
+##### “custom_footer” `[string]`
+- 在所有“拒绝访问”页面的末尾作为HTML插入。​如果您想在所有此类页面中包含法律声明、联系链接、业务信息、或类似，这可能会很有用。
 
 #### “rate_limiting” （类别）
 速率限制的配置（不建议一般使用）。
@@ -2122,4 +2139,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年9月2日。
+最后更新：2022年9月27日。
