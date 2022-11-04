@@ -222,13 +222,14 @@ Configuração (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configuração (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -499,7 +501,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -800,8 +804,8 @@ __Prioridade.__ Uma opção selecionada sempre tem prioridade sobre uma opção 
 
 __Pontos finais humanos e serviços em nuvem.__ O serviço em nuvem pode se referir a provedores de hospedagem na web, farms de servidores, data centers, ou uma série de coisas diferentes. Ponto final humano refere-se ao meio pelo qual um humano acessa a internet, como por meio de um provedor de serviços de internet. Uma rede geralmente fornece apenas um ou outro, mas às vezes pode fornecer ambos. Visamos nunca identificar pontos finais humanos potenciais como serviços em nuvem. Portanto, um serviço de nuvem pode ser identificado como outra coisa se seu alcance for compartilhado por pontos finais humanos conhecidos. Vice versa, visamos sempre identificar serviços em nuvem, cujos alcances não são compartilhados por nenhum ponto final humano conhecido, como serviços em nuvem. Portanto, uma solicitação identificada explicitamente como um serviço de nuvem provavelmente não compartilha seu alcances com nenhum pontos finais humanos conhecidos. Da mesma forma, uma solicitação identificada explicitamente por ataques ou risco de spam provavelmente os compartilha. No entanto, a internet está sempre em fluxo, os propósitos das redes mudam ao longo do tempo, e os alcances estão sempre sendo comprados ou vendidos, portanto, permaneça ciente e vigilante em relação a falsos positivos.
 
-##### "default_tracktime" `[int]`
-- Por quantos segundos os endereços IP devem ser rastreados. Padrão = 604800 (1 semana).
+##### "default_tracktime" `[string]`
+- A duração pela qual os endereços IP devem ser rastreados. Padrão = 7d0°0′0″ (1 semana).
 
 ##### "infraction_limit" `[int]`
 - Número máximo de infrações que um IP pode incorrer antes de ser banido por monitoração IP. Padrão = 10.
@@ -867,6 +871,15 @@ other
 __O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
+
+##### "adjust" `[string]`
+- Controles para ajustar outros recursos no contexto de verificação.
+
+```
+adjust
+├─Negatives ("Os negativos bloqueados")
+└─NonVerified ("Os não verificados bloqueados")
+```
 
 #### "recaptcha" (Categoria)
 Configuração para ReCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
@@ -1100,8 +1113,8 @@ Configuração para limitação de taxa (não recomendado para uso geral).
 ##### "precision_ipv6" `[int]`
 - A precisão a ser usada ao monitorar o uso do IPv6. Valor espelha o tamanho do bloco CIDR. Defina para 128 para melhor precisão. Padrão = 128.
 
-##### "allowance_period" `[float]`
-- O número de horas para monitorar o uso. Padrão = 0.
+##### "allowance_period" `[string]`
+- A duração para monitorar o uso. Padrão = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Exceções (ou seja, solicitações que não devem ser limitadas à taxa). Relevante apenas quando a limitação de taxa está ativada.
@@ -1111,6 +1124,9 @@ exceptions
 ├─Whitelisted ("Solicitações marcadas como na lista branca")
 └─Verified ("Solicitações verificadas de mecanismos de pesquisa e mídias sociais")
 ```
+
+##### "segregate" `[bool]`
+- As cotas para diferentes domínios e hosts devem ser segregadas ou compartilhadas? True = As cotas serão segregadas. False = As cotas serão compartilhadas [Padrão].
 
 #### "supplementary_cache_options" (Categoria)
 Opções de cache suplementares. Nota: Alterar estes valores podem potencialmente fazer você ser estar desconectado.
@@ -2175,4 +2191,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 27 de Setembro de 2022 (2022.09.27).
+Última Atualização: 5 de Novembro de 2022 (2022.11.05).

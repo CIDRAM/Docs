@@ -222,13 +222,14 @@ $CIDRAM->view();
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ $CIDRAM->view();
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -489,7 +491,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -780,8 +784,8 @@ __优先。__ 选定的选项始终优先于未选定的选项。​例如，如
 
 __人类端点和云服务。__ 云服务可能是指虚拟主机提供商、服务器场、数据中心、或许多其他事物。​人类端点是指人类访问互联网的方式，例如，通过互联网服务提供商。​网络通常只提供一个或另一个，但有时可能同时提供两者。​我们试图不将潜在的人类端点识别为云服务。​因此，如果云服务的范围由已知的人类端点共享，则可以将其识别为其他东西。​同样，如果范围不被任何已知的人类端点共享，我们会试图始终将云服务识别为云服务。​因此，明确标识为云服务的请求很可能不会与任何已知的人类端点共享其范围。​同样，由攻击或垃圾邮件的风险明确识别的请求很可能共享范围。​然而，互联网总是在不断变化，网络的目的可以改变，范围总是被买卖，所以关于假阳性的保持有意识和警惕。
 
-##### “default_tracktime” `[int]`
-- 应该跟踪多少秒IP地址。​标准 = 604800 （1周）。
+##### “default_tracktime” `[string]`
+- 应跟踪IP地址的持续时间。​标准 = 7d0°0′0″ （1周）。
 
 ##### “infraction_limit” `[int]`
 - 从IP最大允许违规数量之前它被禁止。​标准=10。
@@ -847,6 +851,15 @@ other
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+##### “adjust” `[string]`
+- 在验证上下文中调整其他功能的控件。
+
+```
+adjust
+├─Negatives ("被阻止的阴性")
+└─NonVerified ("被阻止的未验证")
+```
 
 #### “recaptcha” （类别）
 ReCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
@@ -1066,8 +1079,8 @@ captcha_title
 ##### “precision_ipv6” `[int]`
 - 监视IPv6使用时的精度。​值镜像CIDR块大小。​设置为128以获得最佳精度。​标准=128。
 
-##### “allowance_period” `[float]`
-- 监视使用情况的小时数。​标准=0。
+##### “allowance_period” `[string]`
+- 监视使用情况的持续时间。​标准=0°0′0″。
 
 ##### “exceptions” `[string]`
 - 例外（即，不应限制速率的请求）。​仅在启用速率限制时有效。
@@ -1077,6 +1090,9 @@ exceptions
 ├─Whitelisted ("在白名单中的请求")
 └─Verified ("经过验证的搜索引擎和社交媒体请求")
 ```
+
+##### “segregate” `[bool]`
+- 域名和主机的配额应该分开还是共享？ True = 配额将被分开。 False = 配额将被共享【标准】。
 
 #### “supplementary_cache_options” （类别）
 补充缓存选项。​注意：更改这些值可能会使您注销。
@@ -2139,4 +2155,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年9月27日。
+最后更新：2022年11月5日。

@@ -222,13 +222,14 @@ Cấu hình (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Cấu hình (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -504,7 +506,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -638,7 +642,7 @@ default_algo
 ```
 
 ##### "statistics" `[string]`
-- Kiểm soát thông tin thống kê cần theo dõi.
+- Kiểm soát thông tin thống kê cần giám sát.
 
 ```
 statistics
@@ -810,8 +814,8 @@ __Ưu tiên.__ Một tùy chọn được chọn luôn được ưu tiên hơn m
 
 __Điểm cuối của con người và dịch vụ điện toán đám mây.__ Dịch vụ điện toán đám mây có thể đề cập đến các nhà cung cấp dịch vụ lưu trữ web, trang trại máy chủ, trung tâm dữ liệu, hoặc một số thứ khác. Điểm cuối của con người đề cập đến phương tiện mà con người truy cập internet, chẳng hạn như bằng cách của một nhà cung cấp dịch vụ internet. Một mạng thường chỉ cung cấp cái này hoặc cái kia, nhưng đôi khi có thể cung cấp cả hai. Chúng tôi mong muốn không bao giờ xác định các điểm cuối tiềm năng của con người là các dịch vụ điện toán đám mây. Do đó, một dịch vụ điện toán đám mây có thể được xác định là một thứ khác nếu phạm vi của nó được chia sẻ bởi các điểm cuối của con người đã biết. Tương tự như vậy, chúng tôi luôn hướng tới xác định các dịch vụ điện toán đám mây, có phạm vi không được chia sẻ bởi bất kỳ điểm cuối của con người nào đã biết, là dịch vụ điện toán đám mây. Do đó, một yêu cầu được xác định rõ ràng là một dịch vụ điện toán đám mây rất có lẽ không chia sẻ phạm vi của nó với bất kỳ điểm cuối của con người nào đã biết. Tương tự như vậy, một yêu cầu được xác định rõ ràng bởi các cuộc tấn công hoặc nguy cơ rác là có lẽ chia sẻ chúng. Tuy nhiên, internet luôn ở trạng thái thay đổi, mục đích của các mạng thay đổi theo thời gian, và các phạm vi luôn được mua hay bán, vì vậy hãy luôn nhận thức và cảnh giác có liên quan đến nguy cơ sai tích cực.
 
-##### "default_tracktime" `[int]`
-- Địa chỉ IP sẽ được giám sát trong bao nhiêu giây. Mặc định = 604800 (1 tuần).
+##### "default_tracktime" `[string]`
+- Khoảng thời gian mà địa chỉ IP sẽ được giám sát. Mặc định = 7d0°0′0″ (1 tuần).
 
 ##### "infraction_limit" `[int]`
 - Số lượng tối đa các vi phạm một IP được phép chịu trước khi nó bị cấm bởi các giám sát IP. Mặc định = 10.
@@ -877,6 +881,15 @@ other
 __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
+
+##### "adjust" `[string]`
+- Kiểm soát để điều chỉnh các tính năng khác trong bối cảnh xác minh.
+
+```
+adjust
+├─Negatives ("Tiêu cực bị chặn")
+└─NonVerified ("Chưa được xác minh bị chặn")
+```
 
 #### "recaptcha" (Thể loại)
 Cấu hình cho ReCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
@@ -1111,13 +1124,13 @@ Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chu
 - Số lượng yêu cầu tối đa được phép trong khoảng thời gian cho phép trước khi cho phép giới hạn tốc độ cho các yêu cầu trong tương lai. Giá trị 0 sẽ vô hiệu hóa loại giới hạn tốc độ này. Mặc định = 0.
 
 ##### "precision_ipv4" `[int]`
-- Độ chính xác để sử dụng khi theo dõi việc sử dụng IPv4. Giá trị phản ánh kích thước khối CIDR. Đặt thành 32 để có độ chính xác cao nhất. Mặc định = 32.
+- Độ chính xác để sử dụng khi giám sát việc sử dụng IPv4. Giá trị phản ánh kích thước khối CIDR. Đặt thành 32 để có độ chính xác cao nhất. Mặc định = 32.
 
 ##### "precision_ipv6" `[int]`
-- Độ chính xác để sử dụng khi theo dõi việc sử dụng IPv6. Giá trị phản ánh kích thước khối CIDR. Đặt thành 128 để có độ chính xác cao nhất. Mặc định = 128.
+- Độ chính xác để sử dụng khi giám sát việc sử dụng IPv6. Giá trị phản ánh kích thước khối CIDR. Đặt thành 128 để có độ chính xác cao nhất. Mặc định = 128.
 
-##### "allowance_period" `[float]`
-- Số giờ để theo dõi việc sử dụng. Mặc định = 0.
+##### "allowance_period" `[string]`
+- Thời lượng để giám sát việc sử dụng. Mặc định = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Ngoại lệ (tức là, các yêu cầu không nên giới hạn). Chỉ có hiệu lực khi giới hạn tốc độ được kích hoạt.
@@ -1127,6 +1140,9 @@ exceptions
 ├─Whitelisted ("Yêu cầu trong danh sách trắng")
 └─Verified ("Yêu cầu máy tìm kiếm và truyền thông xã hội đã xác minh")
 ```
+
+##### "segregate" `[bool]`
+- Hạn ngạch cho miền và máy chủ lưu trữ nên được tách biệt hoặc chia sẻ? True = Hạn ngạch sẽ được tách biệt. False = Hạn ngạch sẽ được chia sẻ [Mặc định].
 
 #### "supplementary_cache_options" (Thể loại)
 Tùy chọn bộ nhớ cache bổ sung. Lưu ý: Việc thay đổi các giá trị này có thể khiến bạn bị đăng xuất.
@@ -2185,4 +2201,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.09.27.
+Lần cuối cập nhật: 2022.11.05.

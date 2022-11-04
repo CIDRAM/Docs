@@ -222,13 +222,14 @@ Konfiguration (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Konfiguration (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -500,7 +502,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -802,8 +806,8 @@ __Priorität.__ Eine ausgewählte Option hat immer Vorrang vor eine nicht ausgew
 
 __Menschliche Endpunkte und Cloud-Service.__ Cloud-Service können sich auf Webhosting-Anbieter, Serverfarmen, Rechenzentren, oder eine Reihe anderer Dinge beziehen. Menschliche Endpunkt bezieht sich auf die Mittel mit denen ein Mensch auf das Internet zugreift, beispielsweise über einen Internetdienstanbieter. Ein Netzwerk bietet normalerweise nur eine oder das andere, aber manchmal bietet beides. Wir bemühen potenzielle menschliche Endpunkte niemals als Cloud-Service zu identifizieren. Daher ein Cloud-Service als etwas anderes identifiziert werden kann wenn sein Bereiche von bekannten menschlichen Endpunkten geteilt wird. Ebenso, wir bemühen immer zum Cloud-Service, deren Bereiche mit keiner bekannten Menschlichen-Endpunkten geteilt werden, als Cloud-Service zu identifizieren. Daher eine Anfrage explizit als Cloud-Service identifizierte, wahrscheinlich ihren Bereich geteilt wird mit keiner bekannten menschlichen Endpunkten. Ebenso, eine Anfrage explizit als Angriffe oder Spam Risiko identifiziert wurde wahrscheinlich ihren Bereich doch teilt. Das Internet ist jedoch ständig in Bewegung, die Zwecke von Netzwerken ändern sich im Laufe der Zeit, und Bereiche werden ständig gekauft oder verkauft, also bleiben Sie aufmerksam und wachsam in Bezug auf Falsch-Positive.
 
-##### „default_tracktime“ `[int]`
-- Wie viele Sekunden sollen IP-Adressen getrackt werden. Standardeinstellung = 604800 (1 Woche).
+##### „default_tracktime“ `[string]`
+- Die Dauer für die IP-Adressen getrackt werden sollen. Standardeinstellung = 7d0°0′0″ (1 Woche).
 
 ##### „infraction_limit“ `[int]`
 - Maximale Anzahl von Verstöße, die eine IP zulassen darf, bevor sie durch IP-Tracking verbannt ist. Standardeinstellung = 10.
@@ -869,6 +873,15 @@ other
 __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Verifizierung der durch eine Anfrage präsentierten Identität könnte als „positiv“ oder „negativ“ beschrieben werden. In dem Fall dass die präsentierte Identität als die wahre Identität bestätigt wird, würde sie als „positiv“ bezeichnet werden. In dem Fall dass die präsentierten Identität als gefälscht bestätigt, würde sie als „negativ“ bezeichnet werden. Ein erfolgloses Ergebnis (z.B., die Verifizierung fehlschlägt, oder die Echtheit der präsentierten Identität kann nicht festgestellt werden) würde jedoch nicht als „positiv“ oder „negativ“ beschrieben. Stattdessen würde ein erfolgloses Ergebnis einfach als nicht verifiziert beschrieben. Wenn kein Versuch unternommen wird für die durch eine Anfrage präsentierte Identität zu verifizieren, würde die Anfrage ebenfalls als nicht verifiziert beschrieben. Die Begriffe sind nur in dem Kontext sinnvoll, in dem die durch eine Anfrage präsentierte Identität anerkannt wird und daher der Verifizierung möglich ist. In dem Fall in denen die präsentierte Identität nicht mit den oben bereitgestellten Optionen übereinstimmt, oder wenn keine Identität präsentiert wird, werden die oben bereitgestellten Optionen irrelevant.
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
+
+##### „adjust“ `[string]`
+- Kontrollen zum Anpassen anderer Funktionen im Zusammenhang mit der Verifizierung.
+
+```
+adjust
+├─Negatives ("Blockierte Negative")
+└─NonVerified ("Blockierte nicht verifizierte")
+```
 
 #### „recaptcha“ (Kategorie)
 Konfiguration für ReCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
@@ -1104,8 +1117,8 @@ Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohle
 ##### „precision_ipv6“ `[int]`
 - Die Präzision für das Monitoring der IPv6-Nutzung. Der Wert spiegelt die CIDR-Blockgröße. Für beste Präzision auf 128 einstellen. Standardeinstellung = 128.
 
-##### „allowance_period“ `[float]`
-- Die Anzahl der Stunden, um die Nutzung zu überwachen. Standardeinstellung = 0.
+##### „allowance_period“ `[string]`
+- Die Dauer um die Nutzung zu überwachen. Standardeinstellung = 0°0′0″.
 
 ##### „exceptions“ `[string]`
 - Ausnahmen (d.h., Anfragen die nicht ratenbegrenzt sein sollten). Nur relevant wenn die Ratenbegrenzung aktiviert ist.
@@ -1115,6 +1128,9 @@ exceptions
 ├─Whitelisted ("Anfragen die als auf der Whitelist markiert sind")
 └─Verified ("Verifizierte Suchmaschinen und Social Media Anfragen")
 ```
+
+##### „segregate“ `[bool]`
+- Sollten Kontingente für verschiedene Domains und Hosts getrennt oder geteilt werden? True = Quoten werden getrennt. False = Quoten werden geteilt [Standardeinstellung].
 
 #### „supplementary_cache_options“ (Kategorie)
 Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglicherweise ausloggen.
@@ -2193,4 +2209,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 27. September 2022 (2022.09.27).
+Zuletzt aktualisiert: 5. November 2022 (2022.11.05).

@@ -222,13 +222,14 @@ Konfigurasi (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Konfigurasi (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -500,7 +502,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -802,8 +806,8 @@ __Prioritas.__ Opsi yang dipilih selalu diprioritaskan daripada opsi yang tidak 
 
 __Titik akhir manusia dan layanan komputasi awan.__ Layanan komputasi awan dapat merujuk ke penyedia hosting web, server farm, pusat data, atau sejumlah hal lainnya. Titik akhir manusia mengacu pada cara manusia mengakses internet, seperti melalui penyedia layanan internet. Jaringan biasanya menyediakan hanya satu atau lain, tetapi kadang-kadang dapat menyediakan keduanya. Kami bertujuan untuk tidak pernah mengidentifikasi titik akhir manusia potensial sebagai layanan komputasi awan. Demikian, layanan komputasi awan dapat diidentifikasi sebagai sesuatu lain jika rentangnya dibagi oleh titik akhir manusia yang dikenal. Dengan cara yang sama, kami bertujuan untuk selalu mengidentifikasi layanan cloud, yang rentangnya tidak dibagikan oleh titik akhir manusia yang dikenal, sebagai layanan komputasi awan. Akibatnya, permintaan yang diidentifikasi eksplisit sebagai layanan komputasi awan paling mungkin tidak berbagi rentangnya dengan titik akhir manusia yang diketahui. Demikian juga, permintaan yang diidentifikasi eksplisit oleh serangan atau oleh risiko spam paling mungkin membagikannya. Namun, internet selalu berubah, tujuan jaringan berubah dari waktu ke waktu, dan rentang-rentang selalu dibeli atau dijual, jadi tetaplah sadar dan waspada dalam hal positif palsu.
 
-##### "default_tracktime" `[int]`
-- Berapa detik alamat IP harus dilacak. Default = 604800 (1 seminggu).
+##### "default_tracktime" `[string]`
+- Durasi yang alamat IP harus dilacak. Default = 7d0°0′0″ (1 seminggu).
 
 ##### "infraction_limit" `[int]`
 - Jumlah maksimum pelanggaran IP diperbolehkan untuk dikenakan sebelum dilarang oleh pelacakan IP. Default = 10.
@@ -869,6 +873,15 @@ other
 __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi sebagai dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
+
+##### "adjust" `[string]`
+- Kontrol untuk menyesuaikan fitur lain saat dalam konteks verifikasi.
+
+```
+adjust
+├─Negatives ("Negatif yang diblokir")
+└─NonVerified ("Tidak diverifikasi yang diblokir")
+```
 
 #### "recaptcha" (Kategori)
 Konfigurasi untuk ReCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
@@ -1097,13 +1110,13 @@ Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum)
 - Jumlah maksimum permintaan yang diizinkan dalam periode tunjangan sebelum mengaktifkan pembatasan laju untuk permintaan di masa mendatang. Nilai 0 menonaktifkan jenis pembatasan laju ini. Default = 0.
 
 ##### "precision_ipv4" `[int]`
-- Presisi yang akan digunakan saat memonitor penggunaan IPv4. Nilai mencerminkan ukuran blok CIDR. Atur ke 32 untuk presisi terbaik. Default = 32.
+- Presisi yang akan digunakan saat melacak penggunaan IPv4. Nilai mencerminkan ukuran blok CIDR. Atur ke 32 untuk presisi terbaik. Default = 32.
 
 ##### "precision_ipv6" `[int]`
-- Presisi yang akan digunakan saat memonitor penggunaan IPv6. Nilai mencerminkan ukuran blok CIDR. Atur ke 128 untuk presisi terbaik. Default = 128.
+- Presisi yang akan digunakan saat melacak penggunaan IPv6. Nilai mencerminkan ukuran blok CIDR. Atur ke 128 untuk presisi terbaik. Default = 128.
 
-##### "allowance_period" `[float]`
-- Jumlah jam untuk memonitor penggunaan. Default = 0.
+##### "allowance_period" `[string]`
+- Durasi untuk melacak penggunaan. Default = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Pengecualian (yaitu, permintaan yang seharusnya tidak dibatasi). Hanya relevan ketika pembatasan laju diaktifkan.
@@ -1113,6 +1126,9 @@ exceptions
 ├─Whitelisted ("Permintaan yang masuk daftar putih")
 └─Verified ("Permintaan yang diverifikasi dari mesin pencari dan media sosial")
 ```
+
+##### "segregate" `[bool]`
+- Haruskah kuota untuk domain dan host yang berbeda dipisahkan atau dibagikan? True = Kuota akan dipisahkan. False = Kuota akan dibagikan [Default].
 
 #### "supplementary_cache_options" (Kategori)
 Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
@@ -2174,4 +2190,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 27 September 2022 (2022.09.27).
+Terakhir Diperbarui: 5 November 2022 (2022.11.05).

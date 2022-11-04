@@ -222,13 +222,14 @@ Configurazione (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configurazione (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -500,7 +502,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -802,8 +806,8 @@ __Priorità.__ Un'opzione selezionata ha sempre la priorità su un'opzione non s
 
 __Punti finali umani e servizi cloud.__ Il servizio cloud può fare riferimento a provider di web hosting, server farm, data center, o una serie di altre cose. Punto finale umano si riferisce ai mezzi con cui un umano accede a internet, ad esempio tramite un provider di servizi internet. Una rete di solito fornisce solo l'uno o l'altro, ma a volte può fornire entrambi. Miriamo a non identificare mai potenziali punti finali umani come servizi cloud. Pertanto, un servizio cloud può essere identificato come qualcos'altro se il suo gamme è condiviso da punti finali umani noti. Allo stesso modo, miriamo a identificare sempre i servizi cloud, i cui gamme non sono condivisi da alcun punto finale umano noto, come servizi cloud. Pertanto, una richiesta identificata esplicitamente come servizio cloud probabilmente non condivide il suo gamme con nessun punto finale umano noto. Allo stesso modo, una richiesta identificata esplicitamente da attacchi o rischio per lo spam probabilmente li condivide. Tuttavia, internet è sempre in evoluzione, gli scopi delle reti cambiano nel tempo, e le gamme vengono sempre acquistate o vendute, quindi rimani consapevole e vigile riguardo ai falsi positivi.
 
-##### "default_tracktime" `[int]`
-- Per quanti secondi devono essere tracciati gli indirizzi IP. Predefinito = 604800 (1 settimana).
+##### "default_tracktime" `[string]`
+- La durata per la quale devono essere tracciati gli indirizzi IP. Predefinito = 7d0°0′0″ (1 settimana).
 
 ##### "infraction_limit" `[int]`
 - Numero massimo di infrazioni un IP è permesso di incorrere prima di essere vietato dalle tracciamento IP. Predefinito = 10.
@@ -869,6 +873,15 @@ other
 __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
+
+##### "adjust" `[string]`
+- Controlli per regolare altre funzionalità nel contesto della verifica.
+
+```
+adjust
+├─Negatives ("I negativi che sono bloccati")
+└─NonVerified ("I non verificati che sono bloccati")
+```
 
 #### "recaptcha" (Categoria)
 Configurazione per ReCaptcha (fornisce un modo per gli umani di riottenere l'accesso quando bloccato).
@@ -1104,8 +1117,8 @@ Configurazione per la limitazione della velocità (non raccomandato per uso gene
 ##### "precision_ipv6" `[int]`
 - La precisione da utilizzare durante il monitoraggio dell'utilizzo di IPv6. Il valore riflette la dimensione del blocco CIDR. Impostare su 128 per la massima precisione. Predefinito = 128.
 
-##### "allowance_period" `[float]`
-- Il numero di ore per monitorare l'utilizzo. Predefinito = 0.
+##### "allowance_period" `[string]`
+- La durata per monitorare l'utilizzo. Predefinito = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Eccezioni (cioè, richieste che non dovrebbero essere limitate). Rilevante solo quando è abilitata la limitazione della velocità.
@@ -1115,6 +1128,9 @@ exceptions
 ├─Whitelisted ("Richieste nella lista bianca")
 └─Verified ("Richieste verificate da motori di ricerca e social media")
 ```
+
+##### "segregate" `[bool]`
+- Le quote per domini e host diversi devono essere segregate o condivise? True = Le quote saranno segregate. False = Le quote saranno condivise [Predefinito].
 
 #### "supplementary_cache_options" (Categoria)
 Opzioni di cache supplementari. Nota: La modifica di questi valori potrebbe potenzialmente disconnettersi.
@@ -2179,4 +2195,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 27 Settembre 2022 (2022.09.27).
+Ultimo Aggiornamento: 5 Novembre 2022 (2022.11.05).

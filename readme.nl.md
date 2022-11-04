@@ -222,13 +222,14 @@ Configuratie (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configuratie (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -501,7 +503,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -804,8 +808,8 @@ __Prioriteit.__ Een geselecteerde optie heeft altijd voorrang op een niet gesele
 
 __Menselijke eindpunten en cloud services.__ Cloud service kan verwijzen naar webhosting providers, server farms, data centers of een aantal andere dingen. Menselijk eindpunt verwijst naar de manier waarop een mens toegang krijgt tot internet, b.v., via een internetprovider. Een netwerk biedt meestal slechts een of het ander, maar kan soms beide bieden. We streven ernaar om potentiële menselijke eindpunten nooit als cloudservices te identificeren. Daarom een cloud service kan worden geïdentificeerd als iets anders als het bereik wordt gedeeld door bekende menselijke eindpunten. Evenzo, we streven ernaar om cloud services, waarvan het bereik niet wordt gedeeld door bekende menselijke eindpunten, altijd als cloud services te identificeren. Daarom een aanvraag dat expliciet als een cloud service wordt geïdentificeerd waarschijnlijk niet deelt het bereik met bekende menselijke eindpunten. Evenzo, een verzoek dat expliciet wordt geïdentificeerd door aanvallen of spam risico waarschijnlijk deelt het bereik. Het internet is echter altijd in beweging, de doeleinden van netwerken veranderen in de loop van de tijd, en bereik worden altijd gekocht of verkocht, dus blijf bewust en waakzaam met betrekking tot valse positieven.
 
-##### "default_tracktime" `[int]`
-- Hoeveel seconden IP-adressen moeten worden gevolgd. Standaard = 604800 (1 week).
+##### "default_tracktime" `[string]`
+- De duur dat IP-adressen moeten worden gevolgd. Standaard = 7d0°0′0″ (1 week).
 
 ##### "infraction_limit" `[int]`
 - Maximum aantal overtredingen een IP mag worden gesteld voordat hij wordt verbannen door IP-tracking. Standaard = 10.
@@ -871,6 +875,15 @@ other
 __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
+
+##### "adjust" `[string]`
+- Controles om andere functionaliteit aan te passen in de context van verificatie.
+
+```
+adjust
+├─Negatives ("Geblokkeerde negatieven")
+└─NonVerified ("Geblokkeerde niet-geverifieerde")
+```
 
 #### "recaptcha" (Categorie)
 Configuratie voor ReCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
@@ -1106,8 +1119,8 @@ Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
 ##### "precision_ipv6" `[int]`
 - De precisie om te gebruiken bij het monitoren op het gebruik van IPv6. Waarde weerspiegelt de CIDR-blokgrootte. Stel in op 128 voor de beste precisie. Standaard = 128.
 
-##### "allowance_period" `[float]`
-- Het aantal uren om het gebruik te controleren. Standaard = 0.
+##### "allowance_period" `[string]`
+- De duur om het gebruik bij te controleren. Standaard = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Excepties (d.w.z., verzoeken die moet niet worden beperkt). Alleen relevant wanneer tarieflimiet is ingeschakeld.
@@ -1117,6 +1130,9 @@ exceptions
 ├─Whitelisted ("Verzoeken gemarkeerd als op de witte lijst")
 └─Verified ("Geverifieerde verzoeken van zoekmachines en sociale media")
 ```
+
+##### "segregate" `[bool]`
+- Moeten quota voor verschillende domeinen en hosts worden gescheiden of gedeeld? True = Quota zullen worden gescheiden. False = Quota zullen worden gedeeld [Standaard].
 
 #### "supplementary_cache_options" (Categorie)
 Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u uitgelogd.
@@ -2195,4 +2211,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 27 September 2022 (2022.09.27).
+Laatste Bijgewerkt: 5 November 2022 (2022.11.05).

@@ -222,13 +222,14 @@ Configuration (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configuration (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -500,7 +502,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -802,8 +806,8 @@ __Priorité.__ Une option sélectionnée est toujours prioritaire sur une option
 
 __Points de terminaison humains et services de cloud.__ Service de cloud peut faire référence aux fournisseurs d'hébergement Web, aux fermes de serveurs, aux centres de données, ou à un certain nombre d'autres choses. Point de terminaison humain fait référence aux moyens par lesquels un humain accède à Internet, par exemple, par le biais d'un fournisseur de services internet. Un réseau ne fournit généralement que l'un ou l'autre, mais peut parfois fournir les deux. Nous visons à ne jamais identifier les points de terminaison humains potentiels comme des services de cloud. Par conséquent, un service de cloud peut être identifié comme autre chose si sa gamme est partagé par des points de terminaison humains connus. À l'inverse, nous visons à toujours identifier les services de cloud, dont les gammes ne sont partagés par aucun point de terminaison humain connu, comme des services de cloud. Par conséquent, une requête identifié explicitement comme un service de cloud ne partage probablement pas sa gamme avec des points de terminaison humains connus. De même, une requête identifié explicitement par des attaques ou des spam risque les partage probablement. Cela dit, l'internet est toujours en mouvement, les objectifs des réseaux changent avec le temps, et les gammes sont toujours achetés ou vendues, alors restez conscient et vigilant en ce qui concerne les faux positifs.
 
-##### « default_tracktime » `[int]`
-- Combien de secondes les adresses IP doivent être suivies. Défaut = 604800 (1 semaine).
+##### « default_tracktime » `[string]`
+- La durée pendant laquelle les adresses IP doivent être suivies. Défaut = 7d0°0′0″ (1 semaine).
 
 ##### « infraction_limit » `[int]`
 - Nombre maximal d'infractions qu'une IP est autorisée à engager avant d'être interdite par la surveillance des IPs. Défaut = 10.
@@ -869,6 +873,15 @@ other
 __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
+
+##### « adjust » `[string]`
+- Contrôles pour ajuster d'autres fonctionnalités dans le contexte de la vérification.
+
+```
+adjust
+├─Negatives ("Négatifs bloqués")
+└─NonVerified ("Non vérifiés bloqués")
+```
 
 #### « recaptcha » (Catégorie)
 Configuration pour ReCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
@@ -1104,8 +1117,8 @@ Configuration pour la limitation de débit (non recommandé pour d'utilisation g
 ##### « precision_ipv6 » `[int]`
 - La précision à utiliser lors de la surveillance de l'utilisation d'IPv6. La valeur reflète la taille du bloc CIDR. Réglez sur 128 pour une meilleure précision. Défaut = 128.
 
-##### « allowance_period » `[float]`
-- Le nombre d'heures pour surveiller l'utilisation. Défaut = 0.
+##### « allowance_period » `[string]`
+- La durée pour surveiller l'utilisation Défaut = 0°0′0″.
 
 ##### « exceptions » `[string]`
 - Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation de débit est activée.
@@ -1115,6 +1128,9 @@ exceptions
 ├─Whitelisted ("Requêtes qui ont été listé blanche")
 └─Verified ("Les requêtes vérifiés des moteur de recherche et médias sociaux")
 ```
+
+##### « segregate » `[bool]`
+- Les quotas pour différents domaines et hôtes doivent-ils être séparés ou partagés ? True = Les quotas seront séparés. False = Les quotas seront partagés [Défaut].
 
 #### « supplementary_cache_options » (Catégorie)
 Options de cache supplémentaires. Remarque : La modification de ces valeurs peut potentiellement vous déconnecter.
@@ -2189,4 +2205,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 27 Septembre 2022 (2022.09.27).
+Dernière mise à jour : 5 Novembre 2022 (2022.11.05).

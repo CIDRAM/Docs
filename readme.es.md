@@ -222,13 +222,14 @@ Configuración (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configuración (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -501,7 +503,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -804,8 +808,8 @@ __Prioridad.__ Una opción seleccionada siempre tiene prioridad sobre una opció
 
 __Puntos finales humanos y servicios en la nube.__ Servicio en la nube puede referirse a proveedores de alojamiento web, granjas de servidores, centros de datos, o una serie de otras cosas. Punto final humano se refiere a los medios por los cuales un humano accede a internet, por ejemplo, a través de un proveedor de servicios de internet. Una red generalmente proporciona solo uno u otro, pero a veces puede proporcionar ambos. Apuntamos nunca identificar puntos finales humanos potenciales como servicios en la nube. Por lo tanto, un servicio en la nube puede identificarse como algo más si su rango es compartido por puntos finales humanos conocidos. Del mismo modo, apuntamos identificar siempre los servicios en la nube, cuyos rangos no son compartidos por ningún punto final humano conocido, como servicios en la nube. Por lo tanto, una solicitud identificada explícitamente como un servicio en la nube probablemente no comparta su rango con ningún punto final humano conocido. Asimismo, una solicitud identificada explícitamente por ataques o riesgo de spam probablemente los comparta. Sin embargo, internet siempre está en constante cambio, los propósitos de las redes cambian con el tiempo, y los rangos siempre se compran o venden, así que manténgase consciente y vigilante a los falsos positivos.
 
-##### "default_tracktime" `[int]`
-- Durante cuántos segundos se deben seguir las direcciones IP. Predefinido = 604800 (1 semana).
+##### "default_tracktime" `[string]`
+- La duración que se deben seguir las direcciones IP. Predefinido = 7d0°0′0″ (1 semana).
 
 ##### "infraction_limit" `[int]`
 - Número máximo de infracciones a las que un IP puede incurrir antes de ser prohibido por el rastreo IP. Predefinido = 10.
@@ -871,6 +875,15 @@ other
 __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presentada por una solicitud, un resultado exitoso podría describirse como "positivo" o "negativo". Cuando se confirma que la identidad presentada es la verdadera identidad, se describiría como "positiva". Cuando se confirma que la identidad presentada es falsa, se describirá como "negativa". Sin embargo, un resultado fallido (por ejemplo, la verificación falló, o no se puede determinar la veracidad de la identidad presentada) no se describiría como "positivo" o "negativo". En cambio, un resultado fallido se describiría simplemente como no verificado. Cuando no se intenta verificar la identidad presentada por una solicitud, la solicitud también se describiría como no verificado. Los términos tienen sentido solo en el contexto en el que se reconoce la identidad presentada por una solicitud y, por lo tanto, donde la verificación es posible. En los casos en que la identidad presentada no coincida con las opciones proporcionadas anteriormente, o cuando no se presente ninguna identidad, las opciones proporcionadas anteriormente se vuelven irrelevantes.
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
+
+##### "adjust" `[string]`
+- Controles para ajustar otras funciones en el contexto de la verificación.
+
+```
+adjust
+├─Negatives ("Negativos que están bloqueados")
+└─NonVerified ("No verificados que están bloqueados")
+```
 
 #### "recaptcha" (Categoría)
 Configuración para ReCaptcha (proporciona una forma para que los humanos recuperen el acceso cuando están bloqueados).
@@ -1106,8 +1119,8 @@ Configuración para limitar la velocidad de acceso (no recomendado para uso gene
 ##### "precision_ipv6" `[int]`
 - La precisión a utilizar cuando se monitorea el uso de IPv6. El valor refleja el tamaño del bloque CIDR. Establecer en 128 para la mejor precisión. Predefinido = 128.
 
-##### "allowance_period" `[float]`
-- El número de horas para monitorear el uso. Predefinido = 0.
+##### "allowance_period" `[string]`
+- La duración para monitorear el uso. Predefinido = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Excepciones (es decir, solicitudes que no deberían limitada). Relevante solo cuando la limitación de velocidad está habilitada.
@@ -1117,6 +1130,9 @@ exceptions
 ├─Whitelisted ("Solicitudes en la lista blanca")
 └─Verified ("Solicitudes verificadas de motores de búsqueda y redes sociales")
 ```
+
+##### "segregate" `[bool]`
+- ¿Deberían segregarse o compartirse las cuotas para diferentes dominios y hosts? True = Las cuotas serán segregadas. False = Las cuotas serán compartidas [Predefinido].
 
 #### "supplementary_cache_options" (Categoría)
 Opciones de caché suplementarias. Nota: Cambiar estos valores puede potencialmente cerrar la sesión.
@@ -2185,4 +2201,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 27 de Septiembre de 2022 (2022.09.27).
+Última Actualización: 5 de Noviembre de 2022 (2022.11.05).

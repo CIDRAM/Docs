@@ -222,13 +222,14 @@ Configuration (v3)
 │       enable_two_factor [bool]
 ├───signatures
 │       shorthand [string]
-│       default_tracktime [int]
+│       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
 │       other [string]
+│       adjust [string]
 ├───recaptcha
 │       usemode [int]
 │       lockip [bool]
@@ -271,8 +272,9 @@ Configuration (v3)
 │       max_requests [int]
 │       precision_ipv4 [int]
 │       precision_ipv6 [int]
-│       allowance_period [float]
+│       allowance_period [string]
 │       exceptions [string]
+│       segregate [bool]
 ├───supplementary_cache_options
 │       prefix [string]
 │       enable_apcu [bool]
@@ -498,7 +500,9 @@ lang
 ├─bn ("বাংলা")
 ├─de ("Deutsch")
 ├─es ("Español")
+├─fa ("فارسی")
 ├─fr ("Français")
+├─he ("עברית")
 ├─hi ("हिंदी")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
@@ -798,8 +802,8 @@ __Priority.__ An option selected always takes priority over an option not select
 
 __Human endpoints and cloud services.__ Cloud service may refer to webhosting providers, server farms, data centers, or any number of other things. Human endpoint refers to the means by which a human accesses the internet, such as by way of an internet service provider. A network usually provides just one or the other, but may sometimes provide both. We aim to never identify potential human endpoints as cloud services. Therefore, a cloud service may be identified as something else if its range is shared by known human endpoints. Conversely, we aim to always identify cloud services, whose ranges are not shared by any known human endpoints, as cloud services. Therefore, a request identified explicitly as a cloud service probably doesn't share its range with any known human endpoints. Likewise, a request identified explicitly by attacks or spam probably does. However, the internet is always in flux, the purposes of networks changes over time, and ranges are always being bought or sold, so remain cognisant and vigilant in regards to false positives.
 
-##### "default_tracktime" `[int]`
-- How many seconds IP addresses should be tracked for. Default = 604800 (1 week).
+##### "default_tracktime" `[string]`
+- The duration that IP addresses should be tracked for. Default = 7d0°0′0″ (1 week).
 
 ##### "infraction_limit" `[int]`
 - Maximum number of infractions an IP is allowed to incur before it is banned by IP tracking. Default = 10.
@@ -831,7 +835,7 @@ search_engines
 └─YoudaoBot ("YoudaoBot")
 ```
 
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
@@ -846,7 +850,7 @@ social_media
 └─Twitterbot ("Twitterbot")
 ```
 
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
@@ -862,9 +866,18 @@ other
 └─Grapeshot ("Oracle Data Cloud Crawler")
 ```
 
-__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would be likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
+__What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
+
+##### "adjust" `[string]`
+- Controls to adjust other features when in the context of verification.
+
+```
+adjust
+├─Negatives ("Blocked negatives")
+└─NonVerified ("Blocked non-verified")
+```
 
 #### "recaptcha" (Category)
 Configuration for ReCaptcha (provides a way for humans to regain access when blocked).
@@ -1096,8 +1109,8 @@ Configuration for rate limiting (not recommended for general use).
 ##### "precision_ipv6" `[int]`
 - The precision to use for tracking IPv6 usage. Value mirrors CIDR block size. Set to 128 for best precision. Default = 128.
 
-##### "allowance_period" `[float]`
-- The number of hours to track usage. Default = 0.
+##### "allowance_period" `[string]`
+- The duration to track usage. Default = 0°0′0″.
 
 ##### "exceptions" `[string]`
 - Exceptions (i.e., requests which shouldn't be rate limited). Relevant only when rate limiting is enabled.
@@ -1107,6 +1120,9 @@ exceptions
 ├─Whitelisted ("Whitelisted requests")
 └─Verified ("Verified search engine and social media requests")
 ```
+
+##### "segregate" `[bool]`
+- Should quotas for different domains and hosts be segregated or shared? True = Quotas will be segregated. False = Quotas will be shared [Default].
 
 #### "supplementary_cache_options" (Category)
 Supplementary cache options. Note: Changing these values may potentially log you out.
@@ -2176,4 +2192,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 27 September 2022 (2022.09.27).
+Last Updated: 5 November 2022 (2022.11.05).
