@@ -923,22 +923,22 @@ Actuellement, CIDRAM utilise PHPMailer uniquement pour l'authentification à deu
 - Le nom pour répondre à citer lors de l'envoi d'e-mail via SMTP.
 
 #### « rate_limiting » (Catégorie)
-Directives de configuration facultatives pour la limitation de débit.
+Directives de configuration facultatives pour la limitation du débit.
 
 Cette fonctionnalité a été implémentée dans CIDRAM car elle a été demandée par suffisamment d'utilisateurs pour justifier son implémentation. Cependant, parce que c'est un peu en dehors de l'objectif initial prévu pour le CIDRAM, la plupart des utilisateurs n'en auront probablement pas besoin. Si vous avez spécifiquement besoin de CIDRAM pour gérer la limitation du débit de votre site Web, cette fonctionnalité pourrait vous être utile. Cependant, il y a quelques points importants à considérer :
 - Cette fonctionnalité, comme toutes les autres fonctionnalités de CIDRAM, fonctionnera seulement pour les pages protégées par CIDRAM. Par conséquent, les actifs de site Web qui ne sont pas spécifiquement acheminés via CIDRAM ne peuvent pas être limités par CIDRAM.
-- Si vous pouvez utiliser un module serveur, cPanel, ou un autre outil réseau pour appliquer la limitation de débit, il serait préférable de l'utiliser pour limitation de débit, au lieu de CIDRAM.
-- Si un utilisateur particulier souhaite vivement continuer à accéder à votre site Web après avoir été limité, dans la plupart des cas, il leur sera très facile de contourner la limitation de débit (par exemple, s'ils changent d'adresse IP, ou s'ils utilisent un proxy ou un VPN, et en supposant que vous avez configuré CIDRAM pour ne pas bloquer les proxy et les VPN, ou que CIDRAM n'est pas au courant du proxy ou du VPN qu'ils utilisent).
-- La limitation de débit peut être très gênante pour les vrais utilisateurs. Cela peut être nécessaire si votre bande passante disponible est très limitée, et si vous découvrez qu'il existe des sources de trafic spécifiques, non encore bloquées, qui utilisent la majeure partie de votre bande passante disponible. Donc, si ce n'est pas nécessaire, cela devrait probablement être évité.
+- Si vous pouvez utiliser un module serveur, cPanel, ou un autre outil réseau pour appliquer la limitation du débit, il serait préférable de l'utiliser pour limitation du débit, au lieu de CIDRAM.
+- Si un utilisateur particulier souhaite vivement continuer à accéder à votre site Web après avoir été limité, dans la plupart des cas, il leur sera très facile de contourner la limitation du débit (par exemple, s'ils changent d'adresse IP, ou s'ils utilisent un proxy ou un VPN, et en supposant que vous avez configuré CIDRAM pour ne pas bloquer les proxy et les VPN, ou que CIDRAM n'est pas au courant du proxy ou du VPN qu'ils utilisent).
+- La limitation du débit peut être très gênante pour les vrais utilisateurs. Cela peut être nécessaire si votre bande passante disponible est très limitée, et si vous découvrez qu'il existe des sources de trafic spécifiques, non encore bloquées, qui utilisent la majeure partie de votre bande passante disponible. Donc, si ce n'est pas nécessaire, cela devrait probablement être évité.
 - Vous pouvez parfois risquer de bloquer des utilisateurs légitimes, voire vous-même.
 
-Si vous estimez que vous n'avez pas besoin de CIDRAM pour imposer une limitation de débit à votre site Web, conservez les directives ci-dessous définies comme leurs valeurs par défaut. Sinon, vous pouvez modifier leurs valeurs pour répondre à vos besoins.
+Si vous estimez que vous n'avez pas besoin de CIDRAM pour imposer une limitation du débit à votre site Web, conservez les directives ci-dessous définies comme leurs valeurs par défaut. Sinon, vous pouvez modifier leurs valeurs pour répondre à vos besoins.
 
 ##### « max_bandwidth »
-- La quantité maximale de bande passante autorisée dans la période de tolérance avant de permettre la limitation de débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation de débit. Défaut = 0KB.
+- La quantité maximale de bande passante autorisée dans la période de tolérance avant de permettre la limitation du débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation du débit. Défaut = 0KB.
 
 ##### « max_requests »
-- Le nombre maximal de requêtes autorisées dans la période de tolérance avant de permettre la limitation de débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation de débit. Défaut = 0.
+- Le nombre maximal de requêtes autorisées dans la période de tolérance avant de permettre la limitation du débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation du débit. Défaut = 0.
 
 ##### « precision_ipv4 »
 - La précision à utiliser lors de la surveillance de l'utilisation d'IPv4. La valeur reflète la taille du bloc CIDR. Réglez sur 32 pour une meilleure précision. Défaut = 32.
@@ -950,7 +950,7 @@ Si vous estimez que vous n'avez pas besoin de CIDRAM pour imposer une limitation
 - Le nombre d'heures pour surveiller l'utilisation. Défaut = 0.
 
 ##### « exceptions »
-- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation de débit est activée.
+- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation du débit est activée.
 - *Options disponibles : `Whitelisted,Verified`*
 
 #### « supplementary_cache_options » (Catégorie)
@@ -1986,4 +1986,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 27 Juillet 2022 (2022.07.27).
+Dernière mise à jour : 6 Novembre 2022 (2022.11.06).

@@ -311,7 +311,7 @@ stages
 ├─Aux ("Exécuter les règles auxiliaires")
 ├─Reporting ("Traiter les rapports")
 ├─Tracking ("Exécuter le surveillance d'IP")
-├─RL ("Exécuter la limitation de débit")
+├─RL ("Exécuter la limitation du débit")
 ├─CAPTCHA ("Déployer les CAPTCHAs (requêtes bloquées)")
 ├─Statistics ("Mettre à jour les statistiques")
 ├─Webhooks ("Exécuter des webhooks")
@@ -1103,13 +1103,13 @@ captcha_title
 - Inséré en tant que HTML au tout bas de toutes les pages « accès refusé ». Cela peut être utile si vous souhaitez inclure une notice légale, un lien de contact, des informations commerciales, ou similaires sur toutes ces pages.
 
 #### « rate_limiting » (Catégorie)
-Configuration pour la limitation de débit (non recommandé pour d'utilisation générale).
+Configuration pour la limitation du débit (non recommandé pour d'utilisation générale).
 
 ##### « max_bandwidth » `[string]`
-- La quantité maximale de bande passante autorisée dans la période de tolérance avant de permettre la limitation de débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation de débit. Défaut = 0KB.
+- La quantité maximale de bande passante autorisée dans la période de tolérance avant de permettre la limitation du débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation du débit. Défaut = 0KB.
 
 ##### « max_requests » `[int]`
-- Le nombre maximal de requêtes autorisées dans la période de tolérance avant de permettre la limitation de débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation de débit. Défaut = 0.
+- Le nombre maximal de requêtes autorisées dans la période de tolérance avant de permettre la limitation du débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation du débit. Défaut = 0.
 
 ##### « precision_ipv4 » `[int]`
 - La précision à utiliser lors de la surveillance de l'utilisation d'IPv4. La valeur reflète la taille du bloc CIDR. Réglez sur 32 pour une meilleure précision. Défaut = 32.
@@ -1121,7 +1121,7 @@ Configuration pour la limitation de débit (non recommandé pour d'utilisation g
 - La durée pour surveiller l'utilisation Défaut = 0°0′0″.
 
 ##### « exceptions » `[string]`
-- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation de débit est activée.
+- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation du débit est activée.
 
 ```
 exceptions
@@ -2205,4 +2205,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 5 Novembre 2022 (2022.11.05).
+Dernière mise à jour : 6 Novembre 2022 (2022.11.06).
