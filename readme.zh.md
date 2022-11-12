@@ -205,6 +205,7 @@ $CIDRAM->view();
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -681,6 +682,9 @@ CIDRAM使用的组件的启用和停用的配置。​通常由更新页面填�
 
 ##### “error_log” `[string]`
 - 用于记录检测到的任何非致命错误的文件。​指定一个文件名，​或留空以禁用。
+
+##### “report_log” `[string]`
+- 用于记录发送到外部API的任何报告的文件。​指定一个文件名，​或留空以禁用。
 
 ##### “truncate” `[string]`
 - 截断日志文件当他们达到一定的大小吗？​值是在B/KB/MB/GB/TB，​是日志文件允许的最大大小直到它被截断。​默认值为“0KB”将禁用截断（日志文件可以无限成长）。​注意：适用于单个日志文件！​日志文件大小不被算集体的。
@@ -2155,4 +2159,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年11月5日。
+最后更新：2022年11月12日。

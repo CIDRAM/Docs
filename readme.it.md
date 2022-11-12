@@ -205,6 +205,7 @@ Configurazione (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -703,6 +704,9 @@ Configurazione relativa alla registrazione (escluso quello che è applicabile al
 
 ##### "error_log" `[string]`
 - Un file per la registrazione di eventuali errori non fatali rilevati. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
+##### "report_log" `[string]`
+- Un file per la registrazione di tutti i rapporti inviati ad API esterne. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
 ##### "truncate" `[string]`
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -2195,4 +2199,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 5 Novembre 2022 (2022.11.05).
+Ultimo Aggiornamento: 12 Novembre 2022 (2022.11.12).

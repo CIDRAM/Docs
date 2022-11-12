@@ -211,6 +211,7 @@ $CIDRAM->view();
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -718,6 +719,9 @@ disabled_channels
 
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>بیرونی API کو بھیجی گئی کسی بھی رپورٹ کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>وہ ایک خاص سائز تک پہنچنے میں جب صاف لاگ مسلیں؟ ویلیو میں B/KB/MB/GB/TB زیادہ سے زیادہ سائز ہے. جب 0KB، وہ غیر معینہ مدت تک ترقی کر سکتا ہے (پہلے سے طے). نوٹ: واحد فائلوں پر لاگو ہوتا ہے! فائلیں اجتماعی غور نہیں کر رہے ہیں.</li></ul></div>
@@ -2259,4 +2263,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۵ نومبر ۲۰۲۲ (۲۰۲۲.۱۱.۰۵).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۲ نومبر ۲۰۲۲ (۲۰۲۲.۱۱.۱۲).</div>

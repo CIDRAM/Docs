@@ -205,6 +205,7 @@ Konfigurasi (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -703,6 +704,9 @@ Konfigurasi yang terkait dengan pencatatan (tidak termasuk yang berlaku untuk ka
 
 ##### "error_log" `[string]`
 - File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+##### "report_log" `[string]`
+- File untuk mencatat setiap laporan yang dikirim ke API eksternal. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
 ##### "truncate" `[string]`
 - Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
@@ -2190,4 +2194,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 5 November 2022 (2022.11.05).
+Terakhir Diperbarui: 12 November 2022 (2022.11.12).

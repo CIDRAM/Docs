@@ -205,6 +205,7 @@ Configuration (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -699,6 +700,9 @@ Configuration related to logging (excluding that applicable to other categories)
 
 ##### "error_log" `[string]`
 - A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
+
+##### "report_log" `[string]`
+- A file for logging any reports sent to external APIs. Specify a filename, or leave blank to disable.
 
 ##### "truncate" `[string]`
 - Truncate log files when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a log file may grow to before being truncated. The default value of 0KB disables truncation (log files can grow indefinitely). Note: Applies to individual log files! The size of log files is not considered collectively.
@@ -2192,4 +2196,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 5 November 2022 (2022.11.05).
+Last Updated: 12 November 2022 (2022.11.12).

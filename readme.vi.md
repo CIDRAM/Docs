@@ -205,6 +205,7 @@ Cấu hình (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -711,6 +712,9 @@ Cấu hình liên quan đến ghi nhật ký (cái có thể áp dụng cho các
 
 ##### "error_log" `[string]`
 - Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+##### "report_log" `[string]`
+- Một tập tin để ghi lại bất kỳ báo cáo nào được gửi đến các API bên ngoài. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
 ##### "truncate" `[string]`
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
@@ -2201,4 +2205,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.11.05.
+Lần cuối cập nhật: 2022.11.12.

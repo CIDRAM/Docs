@@ -205,6 +205,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -705,6 +706,9 @@ CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위�
 
 ##### "error_log" `[string]`
 - 치명적이지 않은 오류를 탐지하기위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+##### "report_log" `[string]`
+- 외부 API로 전송된 보고서를 기록하기 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
 ##### "truncate" `[string]`
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -2190,4 +2194,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 11월 5일.
+최종 업데이트 : 2022년 11월 12일.

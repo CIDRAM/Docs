@@ -205,6 +205,7 @@ Configuración (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
 │       log_rotation_action [string]
@@ -705,6 +706,9 @@ Configuración relacionada con el registro (excluyendo lo que es aplicable a otr
 
 ##### "error_log" `[string]`
 - Un archivo para registrar cualquier error detectado que no sea fatal. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+##### "report_log" `[string]`
+- Un archivo para registrar cualquier informe enviado a las API externas. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
 ##### "truncate" `[string]`
 - ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predeterminado de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
@@ -2201,4 +2205,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 5 de Noviembre de 2022 (2022.11.05).
+Última Actualización: 12 de Noviembre de 2022 (2022.11.12).
