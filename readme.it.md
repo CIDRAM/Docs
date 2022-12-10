@@ -194,6 +194,7 @@ Configurazione (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configurazione (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Categoria)
@@ -671,6 +670,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Il tempo scaduto predefinito da utilizzare per le richieste esterne? Predefinito = 12 secondi.
+
+##### "sensitive" `[string]`
+- Un elenco di percorsi da considerare come pagine sensibili. Ogni percorso elencato verrà confrontato con l'URI ricostruito quando necessario. Un percorso che inizia con una barra verrà trattato come letterale, e confrontato dal componente del percorso della richiesta in poi. In alternativa, un percorso che inizia con un carattere non alfanumerico, e termina con lo stesso carattere (o lo stesso carattere più un flag "i" facoltativo) verrà trattato come un'espressione regolare. Qualsiasi altro tipo di percorso verrà trattato come letterale, e può corrispondere a qualsiasi parte dell'URI. Il fatto che un percorso sia considerato una pagina sensibile può influire sul comportamento di alcuni moduli, ma non ha alcun effetto in altri casi.
 
 #### "components" (Categoria)
 Configurazione per l'attivazione e la disattivazione dei componenti utilizzati da CIDRAM. Tipicamente popolato dalla pagina degli aggiornamenti, ma può anche essere gestito da qui per un controllo più accurato e per componenti personalizzati non riconosciuti dalla pagina degli aggiornamenti.
@@ -1202,21 +1204,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Categoria)
-Configurazione per il modulo degli extra di sicurezza opzionali.
-
-##### "signatures" `[string]`
-- Quali tipi di firme dovrebbero essere onorati?
-
-```
-signatures
-├─empty_ua ("Agenti utente vuoti.")
-├─query ("Firme basate su domande di richiesta.")
-├─raw ("Firme basate sull'input della richiesta grezza.")
-├─ruri ("Firme basate su URI ricostruiti.")
-└─uri ("Firme basate sugli URI di richiesta.")
 ```
 
 ---
@@ -2199,4 +2186,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 12 Novembre 2022 (2022.11.12).
+Ultimo Aggiornamento: 10 Dicembre 2022 (2022.12.10).

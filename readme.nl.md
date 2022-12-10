@@ -194,6 +194,7 @@ Configuratie (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configuratie (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Categorie)
@@ -330,18 +329,18 @@ stages
 ```
 fields
 ├─ID ("ID")
-├─ScriptIdent ("Script Versie")
+├─ScriptIdent ("Script versie")
 ├─DateTime ("Datum/Tijd")
 ├─IPAddr ("IP-Adres")
 ├─IPAddrResolved ("IP-Adres (Vastbesloten)")
 ├─Query ("Query")
 ├─Referrer ("Verwijzer")
-├─UA ("User Agent")
-├─UALC ("User Agent (kleine letters)")
-├─SignatureCount ("Signatures Tellen")
-├─Signatures ("Signatures Verwijzing")
-├─WhyReason ("Waarom Geblokkeerd")
-├─ReasonMessage ("Waarom Geblokkeerd (gedetailleerd)")
+├─UA ("Gebruikersagent")
+├─UALC ("Gebruikersagent (kleine letters)")
+├─SignatureCount ("Signatures tellen")
+├─Signatures ("Signatures verwijzing")
+├─WhyReason ("Waarom geblokkeerd")
+├─ReasonMessage ("Waarom geblokkeerd (gedetailleerd)")
 ├─rURI ("Gereconstrueerde URI")
 ├─Infractions ("Overtredingen")
 ├─ASNLookup ("ASN opzoeken")
@@ -673,6 +672,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Standaard time-out om te gebruiken voor externe verzoeken? Standaard = 12 seconden.
+
+##### "sensitive" `[string]`
+- Een lijst met paden die als gevoelige pagina's moeten worden beschouwd. Elk vermeld pad wordt indien nodig gecontroleerd aan de hand van de gereconstrueerde URI. Een pad dat begint met een schuine streep naar voren wordt behandeld als een letterlijke waarde en wordt gematcht vanaf de padcomponent van het verzoek. Anders wordt een pad dat begint met een niet-alfanumeriek teken en eindigt met datzelfde teken (of datzelfde teken plus een optionele "i"-vlag) behandeld als een reguliere expressie. Elk ander pad wordt behandeld als een letterlijk pad en kan overeenkomen met elk deel van de URI. Of een pad als een gevoelige pagina wordt beschouwd, kan van invloed zijn op het gedrag van sommige modules, maar heeft verder geen effect.
 
 #### "components" (Categorie)
 Configuratie voor het activeren en het deactiveren van de door CIDRAM gebruikte componenten. Meestal gevuld door de updates-pagina, maar kan ook vanaf hier worden beheerd voor fijnere controle en voor aangepaste componenten die niet worden herkend door de updates-pagina.
@@ -1204,21 +1206,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Categorie)
-Configuratie voor de module van optionele beveiligingsextra's.
-
-##### "signatures" `[string]`
-- Welke soorten signatures moeten worden gehonoreerd?
-
-```
-signatures
-├─empty_ua ("Lege gebruikersagenten.")
-├─query ("Signatures op basis van verzoekvragen.")
-├─raw ("Signatures op basis van onbewerkte verzoekinvoer.")
-├─ruri ("Signatures op basis van gereconstrueerde URI's.")
-└─uri ("Signatures op basis van verzoek-URI's.")
 ```
 
 ---
@@ -2215,4 +2202,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 12 November 2022 (2022.11.12).
+Laatste Bijgewerkt: 10 December 2022 (2022.12.10).

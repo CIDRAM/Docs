@@ -194,6 +194,7 @@ $CIDRAM->view();
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ $CIDRAM->view();
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### “general” （类别）
@@ -649,6 +648,9 @@ disabled_channels
 
 ##### “default_timeout” `[int]`
 - 用于外部请求的默认超时？ 标准 = 12秒。
+
+##### “sensitive” `[string]`
+- 视为敏感页面的路径列表。​需要时，将根据重建的URI检查列出的每个路径。​以正斜杠开头的路径将被视为文字，并从请求的路径部分开始匹配。​否则，以非字母数字字符开头并以相同字符（或相同字符加上可选的“i”标志）结束的路径将被视为正则表达式。​任何其他类型的路径都将被视为文字，并且可以匹配URI的任何部分。​被视为敏感页面的路径可能会影响某些模块的行为方式，但不会产生任何其他影响。
 
 #### “components” （类别）
 CIDRAM使用的组件的启用和停用的配置。​通常由更新页面填充，但也可以从此处进行管理，以实现更好的控制以及更新页面无法识别的自定义组件。
@@ -1164,21 +1166,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### “extras” （类别）
-可选的安全附加模块配置。
-
-##### “signatures” `[string]`
-- 应该尊重哪些类型的签名？
-
-```
-signatures
-├─empty_ua ("空的用户代理。")
-├─query ("基于请求查询的签名。")
-├─raw ("基于原始请求输入的签名。")
-├─ruri ("基于重构URI的签名。")
-└─uri ("基于请求URI的签名。")
 ```
 
 ---
@@ -2159,4 +2146,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2022年11月12日。
+最后更新：2022年12月10日。

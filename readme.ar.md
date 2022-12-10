@@ -200,6 +200,7 @@ $CIDRAM->view();
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -296,10 +297,8 @@ $CIDRAM->view();
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### <div dir="rtl">"general" (التصنيف)<br /></div>
@@ -686,6 +685,9 @@ disabled_channels
 
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>المهلة الافتراضية لاستخدامها للطلبات الخارجية؟ الافتراضي = 12 ثانية.</li></ul></div>
+
+##### <div dir="rtl">"sensitive" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>قائمة المسارات التي يجب اعتبارها صفحات حساسة. ستتم مقارنة كل مسار مدرج مع URI المعاد بناؤه عند الحاجة. سيتم التعامل مع المسار الذي يبدأ بشرطة مائلة للأمام على أنه حرفي، ويتم مطابقته من مكون المسار للطلب فصاعدًا. سيتم التعامل مع المسار الذي يبدأ بحرف غير أبجدي رقمي وينتهي بنفس الحرف (أو نفس الحرف بالإضافة إلى علامة اختيارية "i") كتعبير عادي. سيتم التعامل مع أي نوع آخر من المسارات على أنه حرفي، ويمكن أن يتطابق مع أي جزء من URI. قد يؤثر المسار الذي يتم اعتباره صفحة حساسة على كيفية تصرف بعض الوحدات، ولكن ليس له أي تأثير آخر.</li></ul></div>
 
 #### <div dir="rtl">"components" (التصنيف)<br /></div>
 <div dir="rtl">التكوين لتنشيط وتعطيل المكونات المستخدمة من قبل CIDRAM. عادةً ما يتم ملؤها بواسطة صفحة التحديثات، ولكن يمكن أيضًا إدارتها من هنا لتحكم أفضل وللمكونات المخصصة التي لا تتعرف عليها صفحة التحديثات.<br /><br /></div>
@@ -1223,21 +1225,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### <div dir="rtl">"extras" (التصنيف)<br /></div>
-<div dir="rtl">التكوين لوحدة الأمان الاختيارية الإضافية.<br /><br /></div>
-
-##### <div dir="rtl">"signatures" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>ما أنواع التوقيعات التي يجب تكريمها؟</li></ul></div>
-
-```
-signatures
-├─empty_ua ("وكلاء المستخدم الفارغون.")
-├─query ("التوقيعات على طلب الاستفسارات.")
-├─raw ("التوقيعات على أساس مدخلات الطلب الخام.")
-├─ruri ("التوقيعات على أساس URI المعاد بناؤه.")
-└─uri ("التوقيعات على طلب URI.")
 ```
 
 ---
@@ -2259,4 +2246,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٢ نوفمبر ٢٠٢٢ (٢٠٢٢.١١.١٢).</div>
+<div dir="rtl">آخر تحديث: ١٠ ديسمبر ٢٠٢٢ (٢٠٢٢.١٢.١٠).</div>

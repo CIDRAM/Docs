@@ -194,6 +194,7 @@ Konfigurasi (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Konfigurasi (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Kategori)
@@ -671,6 +670,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Batas waktu default yang digunakan untuk permintaan eksternal? Default = 12 detik.
+
+##### "sensitive" `[string]`
+- Daftar jalur yang dianggap sebagai halaman sensitif. Setiap jalur yang terdaftar akan diperiksa terhadap URI yang direkonstruksi bila diperlukan. Jalur yang dimulai dengan garis miring ke depan akan diperlakukan sebagai literal, dan dicocokkan dari komponen jalur permintaan selanjutnya. Jika tidak, jalur yang dimulai dengan karakter non-alfanumerik, dan diakhiri dengan karakter yang sama (atau karakter yang sama ditambah tanda "i" opsional) akan diperlakukan sebagai ekspresi reguler. Jenis jalur lain apapun akan diperlakukan sebagai literal, dan dapat dicocokkan dari bagian manapun dari URI. Apakah jalur dianggap sebagai halaman sensitif dapat memengaruhi perilaku beberapa modul, tetapi sebaliknya tidak berpengaruh apapun.
 
 #### "components" (Kategori)
 Konfigurasi untuk pengaktifan dan penonaktifan komponen yang digunakan oleh CIDRAM. Biasanya diisi oleh halaman pembaruan, tetapi juga dapat dikelola dari sini untuk kontrol yang lebih baik dan untuk komponen dipersonalisasi yang tidak dikenali oleh halaman pembaruan.
@@ -1200,21 +1202,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Kategori)
-Konfigurasi untuk modul tambahan keamanan opsional.
-
-##### "signatures" `[string]`
-- Jenis tanda tangan apa yang harus dihormati?
-
-```
-signatures
-├─empty_ua ("Agen pengguna yang kosong.")
-├─query ("Tanda tangan berdasarkan permintaan.")
-├─raw ("Tanda tangan berdasarkan input permintaan yang mentah.")
-├─ruri ("Tanda tangan berdasarkan URI yang direkonstruksi.")
-└─uri ("Tanda tangan berdasarkan URI permintaan.")
 ```
 
 ---
@@ -2194,4 +2181,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 12 November 2022 (2022.11.12).
+Terakhir Diperbarui: 10 Desember 2022 (2022.12.10).

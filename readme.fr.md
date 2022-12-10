@@ -194,6 +194,7 @@ Configuration (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configuration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### « general » (Catégorie)
@@ -671,6 +670,9 @@ disabled_channels
 
 ##### « default_timeout » `[int]`
 - Délai d'attente par défaut à utiliser pour les requêtes externes ? Défaut = 12 secondes.
+
+##### « sensitive » `[string]`
+- Une liste de chemins à considérer comme des pages sensibles. Chaque chemin listé sera vérifié par rapport à l'URI reconstruit si nécessaire. Un chemin qui commence par une barre oblique sera traité comme un littéral, et mis en correspondance à partir du composant de chemin de la requête. Sinon, un chemin qui commence par un caractère non alphanumérique, et se termine par ce même caractère (ou ce même caractère plus un indicateur « i » facultatif) sera traité comme une expression régulière. Tout autre type de chemin sera traité comme un littéral, et peut correspondre à partir de n'importe quelle partie de l'URI. Le fait qu'un chemin soit considéré comme une page sensible peut affecter le comportement de certains modules, mais n'a aucun effet autrement.
 
 #### « components » (Catégorie)
 Configuration pour l'activation et la désactivation des composants utilisés par le CIDRAM. Généralement rempli par la page des mises à jour, mais peut également être géré à partir d'ici pour un contrôle plus précis et pour les composants personnalisés non reconnus par la page des mises à jour.
@@ -1202,21 +1204,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### « extras » (Catégorie)
-Configuration du module de sécurité en option.
-
-##### « signatures » `[string]`
-- Quels types de signatures doivent être honorés ?
-
-```
-signatures
-├─empty_ua ("Agents utilisateurs vides.")
-├─query ("Signatures basés sur les requêtes.")
-├─raw ("Signatures basés sur l'entré brute de la requête.")
-├─ruri ("Signatures basés sur des URI reconstruits.")
-└─uri ("Signatures basés sur les URI des requêtes.")
 ```
 
 ---
@@ -2209,4 +2196,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 12 Novembre 2022 (2022.11.12).
+Dernière mise à jour : 10 Décembre 2022 (2022.12.10).

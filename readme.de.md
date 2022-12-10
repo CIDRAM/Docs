@@ -194,6 +194,7 @@ Konfiguration (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Konfiguration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### „general“ (Kategorie)
@@ -671,6 +670,9 @@ disabled_channels
 
 ##### „default_timeout“ `[int]`
 - Standardzeitlimit für externe Anforderungen? Standardeinstellung = 12 Sekunden.
+
+##### „sensitive“ `[string]`
+- Eine Liste von Pfaden die als vertrauliche Seiten betrachtet werden sollen. Jeder aufgelistete Pfad wird bei Bedarf mit dem rekonstruierten URI verglichen. Ein Pfad, der mit einem Schrägstrich beginnt, wird als Literal behandelt und ab der Pfadkomponente der Anforderung abgeglichen. Andernfalls wird ein Pfad, der mit einem nicht alphanumerischen Zeichen beginnt, und mit demselben Zeichen (oder demselben Zeichen plus einem optionalen „i“-Flag) endet, als regulärer Ausdruck behandelt. Jede andere Art von Pfad wird als Literal behandelt, und kann mit jedem Teil des URI abgeglichen. Ob ein Pfad als sensible Seite betrachtet wird, kann sich auf das Verhalten einiger Module auswirken, aber hat ansonsten keine Auswirkungen.
 
 #### „components“ (Kategorie)
 Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Komponenten. Wird normalerweise von der Update-Seite ausgefüllt, aber kann auch von hier aus verwaltet werden, um eine genauere Kontrolle zu haben und für benutzerdefinierte Komponenten die von der Update-Seite nicht erkannt werden.
@@ -1202,21 +1204,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### „extras“ (Kategorie)
-Konfiguration des optionalen Sicherheits-Extras-Modul.
-
-##### „signatures“ `[string]`
-- Welche Arten von Signatures sollten eingehaltet werden?
-
-```
-signatures
-├─empty_ua ("Leere Benutzeragenten.")
-├─query ("Signaturen basierend auf Anfrageabfragen.")
-├─raw ("Signaturen basierend auf der Roheingabe des Anfrage.")
-├─ruri ("Signaturen basierend auf rekonstruierten URIs.")
-└─uri ("Signaturen basierend auf den URI des Anfrage.")
 ```
 
 ---
@@ -2213,4 +2200,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 12. November 2022 (2022.11.12).
+Zuletzt aktualisiert: 10. Dezember 2022 (2022.12.10).

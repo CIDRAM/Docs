@@ -194,6 +194,7 @@ Configuration (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configuration (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Category)
@@ -330,18 +329,18 @@ stages
 ```
 fields
 ├─ID ("ID")
-├─ScriptIdent ("Script Version")
+├─ScriptIdent ("Script version")
 ├─DateTime ("Date/Time")
-├─IPAddr ("IP Address")
-├─IPAddrResolved ("IP Address (Resolved)")
+├─IPAddr ("IP address")
+├─IPAddrResolved ("IP address (resolved)")
 ├─Query ("Query")
 ├─Referrer ("Referrer")
-├─UA ("User Agent")
-├─UALC ("User Agent (lower-case)")
-├─SignatureCount ("Signatures Count")
-├─Signatures ("Signatures Reference")
-├─WhyReason ("Why Blocked")
-├─ReasonMessage ("Why Blocked (detailed)")
+├─UA ("User agent")
+├─UALC ("User agent (lower-case)")
+├─SignatureCount ("Signatures count")
+├─Signatures ("Signatures reference")
+├─WhyReason ("Why blocked")
+├─ReasonMessage ("Why blocked (detailed)")
 ├─rURI ("Reconstructed URI")
 ├─Infractions ("Infractions")
 ├─ASNLookup ("ASN lookup")
@@ -667,6 +666,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Default timeout to use for external requests? Default = 12 seconds.
+
+##### "sensitive" `[string]`
+- A list of paths to regard as sensitive pages. Each path listed will be checked against the reconstructed URI when needed. A path which begins with a forward slash will be treated as a literal, and matched from the path component of the request onward. Otherwise, a path which begins with a non-alphanumeric character, and ends with that same character (or that same character plus an optional "i" flag) will be treated as a regular expression. Any other kind of path will be treated as a literal, and can match from any part of the URI. Whether a path is regarded as a sensitive page may affect how some modules behave, but doesn't have any effect otherwise.
 
 #### "components" (Category)
 Configuration for the activation and the deactivation of the components used by CIDRAM. Typically populated by the updates page, but can also be managed from here for finer control and for custom components not recognised by the updates page.
@@ -1194,21 +1196,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Category)
-Optional security extras module configuration.
-
-##### "signatures" `[string]`
-- Which types of signatures should be honoured?
-
-```
-signatures
-├─empty_ua ("Empty user agents.")
-├─query ("Signatures based on request queries.")
-├─raw ("Signatures based on raw request input.")
-├─ruri ("Signatures based on reconstructed URIs.")
-└─uri ("Signatures based on request URIs.")
 ```
 
 ---
@@ -2196,4 +2183,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 12 November 2022 (2022.11.12).
+Last Updated: 10 December 2022 (2022.12.10).

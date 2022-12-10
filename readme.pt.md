@@ -194,6 +194,7 @@ Configuração (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configuração (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Categoria)
@@ -669,6 +668,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Tempo limite padrão a ser usado para solicitações externas? Padrão = 12 segundos.
+
+##### "sensitive" `[string]`
+- Uma lista de caminhos a serem considerados como páginas confidenciais. Cada caminho listado será verificado em relação ao URI reconstruído quando necessário. Um caminho que começa com uma barra será tratado como um literal, e correspondido a partir do componente de caminho da solicitação em diante. Como alternativa, um caminho que começa com um caractere não alfanumérico, e termina com o mesmo caractere (ou o mesmo caractere mais um sinalizador "i" opcional) será tratado como uma expressão regular. Qualquer outro tipo de caminho será tratado como um literal, e pode corresponder a qualquer parte do URI. O fato de um caminho ser considerado uma página confidencial pode afetar o comportamento de alguns módulos, mas não tem nenhum efeito de outra forma.
 
 #### "components" (Categoria)
 Configuração para ativação e desativação dos componentes utilizados pelo CIDRAM. Normalmente preenchido pela página de atualizações, mas também pode ser gerenciado aqui para um controle mais preciso e para componentes personalizados não reconhecidos pela página de atualizações.
@@ -1198,21 +1200,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Categoria)
-Configuração para o módulo de extras de segurança opcionais.
-
-##### "signatures" `[string]`
-- Que tipos de assinaturas devem ser honradas?
-
-```
-signatures
-├─empty_ua ("Agentes de usuário vazios.")
-├─query ("Assinaturas baseadas em consultas de solicitação.")
-├─raw ("Assinaturas baseadas na entrada de solicitação bruta.")
-├─ruri ("Assinaturas baseadas em URIs reconstruídas.")
-└─uri ("Assinaturas baseadas em URIs da solicitação.")
 ```
 
 ---
@@ -2195,4 +2182,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 12 de Novembro de 2022 (2022.11.12).
+Última Atualização: 10 de Dezembro de 2022 (2022.12.10).

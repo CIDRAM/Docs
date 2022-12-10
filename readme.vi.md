@@ -194,6 +194,7 @@ Cấu hình (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Cấu hình (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Thể loại)
@@ -679,6 +678,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
+
+##### "sensitive" `[string]`
+- Một danh sách các đường dẫn được coi là các trang nhạy cảm. Mỗi đường dẫn được liệt kê sẽ, khi cần, được kiểm tra dựa trên URI được xây dựng lại. Một đường dẫn bắt đầu bằng dấu gạch chéo lên phía trước sẽ được coi là một nghĩa đen, và được so khớp từ thành phần đường dẫn của yêu cầu trở đi. Mặt khác, một đường dẫn bắt đầu bằng một ký tự không phải chữ và số, và kết thúc bằng cùng ký tự đó (hoặc cùng ký tự đó cộng với "i") sẽ được coi là biểu thức chính quy. Bất kỳ loại đường dẫn nào khác sẽ được coi là theo nghĩa đen, và có thể khớp từ bất kỳ phần nào của URI. Việc một đường dẫn có được coi là một trang nhạy cảm hay không có thể ảnh hưởng đến cách một số mô-đun hoạt động, nhưng không có bất kỳ ảnh hưởng nào khác.
 
 #### "components" (Thể loại)
 Cấu hình để kích hoạt và vô hiệu hóa các thành phần được sử dụng bởi CIDRAM. Thường được điền bởi trang cập nhật, nhưng cũng có thể được quản lý từ đây để kiểm soát tốt hơn và cho các thành phần tùy chỉnh không được công nhận bởi trang cập nhật.
@@ -1214,21 +1216,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Thể loại)
-Cấu hình cho mô-đun của các tính năng bổ sung bảo mật tùy chọn.
-
-##### "signatures" `[string]`
-- Những loại chữ ký nào nên được tôn vinh?
-
-```
-signatures
-├─empty_ua ("Tác nhân người dùng trống.")
-├─query ("Chữ ký dựa trên các truy vấn yêu cầu.")
-├─raw ("Chữ ký dựa trên đầu vào yêu cầu thô.")
-├─ruri ("Chữ ký dựa trên các URI được xây dựng lại.")
-└─uri ("Chữ ký dựa trên URI của yêu cầu.")
 ```
 
 ---
@@ -2205,4 +2192,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.11.12.
+Lần cuối cập nhật: 2022.12.10.

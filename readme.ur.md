@@ -200,6 +200,7 @@ $CIDRAM->view();
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -296,10 +297,8 @@ $CIDRAM->view();
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### <div dir="rtl">"general" (قسم)<br /></div>
@@ -686,6 +685,9 @@ disabled_channels
 
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی درخواستوں کے لئے استعمال کرنے کیلئے پہلے سے طے شدہ ٹائم آؤٹ؟ پہلے سے طے شدہ = 12 سیکنڈ.</li></ul></div>
+
+##### <div dir="rtl">"sensitive" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>حساس صفحات کے طور پر شمار کرنے کے لیے راستوں کی فہرست. فہرست میں شامل ہر راستے کو ضرورت پڑنے پر دوبارہ تعمیر شدہ URI کے خلاف چیک کیا جائے گا. ایک راستہ جو فارورڈ سلیش سے شروع ہوتا ہے اسے لغوی سمجھا جائے گا، اور درخواست کے پاتھ جزو سے مماثل ہوگا. ایک راستہ جو ایک غیر حروفِ عددی کریکٹر سے شروع ہوتا ہے، اور اسی کریکٹر (یا وہی کریکٹر کے علاوہ ایک اختیاری "i" جھنڈا) پر ختم ہوتا ہے اسے ریگولر ایکسپریشن سمجھا جائے گا. کسی دوسرے قسم کے راستے کو لفظی سمجھا جائے گا، اور URI کے کسی بھی حصے سے مماثل ہو سکتا ہے. ایک پاتھ کو حساس صفحہ کے طور پر سمجھا جا سکتا ہے کچھ ماڈیولز کے برتاؤ کو متاثر کر سکتا ہے، لیکن اس کا کوئی دوسرا اثر نہیں ہوتا ہے.</li></ul></div>
 
 #### <div dir="rtl">"components" (قسم)<br /></div>
 <div dir="rtl">CIDRAM کی طرف سے استعمال ہونے والے اجزاء کو چالو کرنے اور غیر فعال کرنے کے لئے ترتیب. عام طور پر اپ ڈیٹس صفحہ کے ذریعے آباد ہوتا ہے، لیکن بہتر کنٹرول کے لیے اور اپ ڈیٹس صفحہ کے ذریعے پہچانے جانے والے حسب ضرورت اجزاء کے لیے بھی یہاں سے منظم کیا جا سکتا ہے.<br /><br /></div>
@@ -1227,21 +1229,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### <div dir="rtl">"extras" (قسم)<br /></div>
-<div dir="rtl">اختیاری سیکورٹی اضافی ماڈیول ترتیب.<br /><br /></div>
-
-##### <div dir="rtl">"signatures" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>کس قسم کے دستخطوں کا احترام کیا جانا چاہئے؟</li></ul></div>
-
-```
-signatures
-├─empty_ua ("خالی صارف ایجنٹ.")
-├─query ("درخواست کے سوالات پر مبنی دستخط.")
-├─raw ("خام درخواست ان پٹ پر مبنی دستخط.")
-├─ruri ("دوبارہ تعمیر شدہ URI پر مبنی دستخط.")
-└─uri ("درخواست URI پر مبنی دستخط.")
 ```
 
 ---
@@ -2263,4 +2250,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۲ نومبر ۲۰۲۲ (۲۰۲۲.۱۱.۱۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۰ دسمبر ۲۰۲۲ (۲۰۲۲.۱۲.۱۰).</div>

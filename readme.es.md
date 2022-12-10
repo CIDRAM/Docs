@@ -194,6 +194,7 @@ Configuración (v3)
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ Configuración (v3)
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (Categoría)
@@ -673,6 +672,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
+
+##### "sensitive" `[string]`
+- Una lista de rutas para considerar como páginas confidenciales. Cada ruta listada se comparará con el URI reconstruido cuando sea necesario. Una ruta que comienza con una barra inclinada se tratará como un literal, y se comparará desde el componente de ruta de la solicitud en adelante. Alternativamente, una ruta que comienza con un carácter no alfanumérico, y termina con ese mismo carácter (o ese mismo carácter más un indicador "i" opcional) se tratará como una expresión regular. Cualquier otro tipo de ruta se tratará como un literal, y puede coincidir con cualquier parte del URI. Si una ruta se considera una página confidencial puede afectar el comportamiento de algunos módulos, pero no tiene ningún efecto en otros casos.
 
 #### "components" (Categoría)
 Configuración para la activación y la desactivación de los componentes utilizados por CIDRAM. Normalmente se administra desde la página de actualizaciones, pero también se puede administrar desde aquí para un control más preciso y para los componentes personalizados que la página de actualizaciones no reconoce.
@@ -1204,21 +1206,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (Categoría)
-Configuración del módulo de extras de seguridad.
-
-##### "signatures" `[string]`
-- ¿Qué tipos de firmas deben respetarse?
-
-```
-signatures
-├─empty_ua ("Agentes de usuario vacíos.")
-├─query ("Firmas basadas en consultas de solicitudes.")
-├─raw ("Firmas basadas en la entrada de solicitud sin procesar.")
-├─ruri ("Firmas basadas en URI reconstruidos.")
-└─uri ("Firmas basadas en la URI de solicitudes.")
 ```
 
 ---
@@ -2205,4 +2192,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 12 de Noviembre de 2022 (2022.11.12).
+Última Actualización: 10 de Diciembre de 2022 (2022.12.10).

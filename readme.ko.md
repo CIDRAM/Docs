@@ -194,6 +194,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
 │       default_timeout [int]
+│       sensitive [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -290,10 +291,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
-├───bypasses
-│       used [string]
-└───extras
-        signatures [string]
+└───bypasses
+        used [string]
 ```
 
 #### "general" (카테고리)
@@ -673,6 +672,9 @@ disabled_channels
 
 ##### "default_timeout" `[int]`
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
+
+##### "sensitive" `[string]`
+- 민감한 페이지로 간주할 경로 목록입니다. 나열된 각 경로는 필요할 때 재구성된 URI에 관해 확인됩니다. 슬래시로 시작하는 경로는 리터럴로 처리되며 요청의 경로 구성 요소부터 일치합니다. 영숫자가 아닌 문자로 시작하고 동일한 문자(또는 동일한 문자와 선택적 "i" 플래그)로 끝나는 경로는 정규식으로 처리됩니다. 다른 종류의 경로는 리터럴로 취급되며 URI의 모든 부분에서 일치할 수 있습니다. 경로가 민감한 페이지로 간주하는지 여부는 일부 모듈의 작동 방식에 영향을 미칠 수 있지만 다른 것에는 영향을 미치지 않습니다.
 
 #### "components" (카테고리)
 CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위한 구성입니다. 일반적으로 업데이트 페이지에 의해 채워지지만, 세부 제어 및 업데이트 페이지에서 인식하지 못하는 사용자 지정 구성 요소를 위해 여기에서 관리할 수도 있습니다.
@@ -1204,21 +1206,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 └─Redditbot ("Redditbot")
-```
-
-#### "extras" (카테고리)
-선택적 보안 추가 모듈 구성.
-
-##### "signatures" `[string]`
-- 어떤 유형의 서명을 존중해야 합니까?
-
-```
-signatures
-├─empty_ua ("빈 사용자 에이전트.")
-├─query ("요청 질의를 기반으로 하는 서명.")
-├─raw ("원시 요청 입력을 기반으로 하는 서명.")
-├─ruri ("재구성된 URI를 기반으로 하는 서명.")
-└─uri ("요청 URI를 기반으로 하는 서명.")
 ```
 
 ---
@@ -2194,4 +2181,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 11월 12일.
+최종 업데이트 : 2022년 12월 10일.
