@@ -349,6 +349,7 @@ fields
 ├─Expired ("Expiré")
 ├─Ignored ("Ignoré")
 ├─Request_Method ("Méthode de requête")
+├─Protocol ("Protocole")
 ├─Hostname ("Nom d'hôte")
 └─CAPTCHA ("État CAPTCHA")
 ```
@@ -490,7 +491,7 @@ http_response_header_code
 ```
 
 ##### « silent_mode » `[string]`
-- Devrait CIDRAM rediriger silencieusement les tentatives d'accès bloquées à la place de l'affichage de la page « Accès Refusé » ? Si oui, spécifiez l'emplacement pour rediriger les tentatives d'accès bloquées. Si non, laisser cette variable vide.
+- Devrait CIDRAM rediriger silencieusement les tentatives d'accès bloquées à la place de l'affichage de la page « accès refusé » ? Si oui, spécifiez l'emplacement pour rediriger les tentatives d'accès bloquées. Si non, laisser cette variable vide.
 
 ##### « lang » `[string]`
 - Spécifiez la langue défaut pour CIDRAM.
@@ -864,7 +865,7 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
-** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module BGPView).
+** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module IP-API ou BGPView).
 
 ##### « other » `[string]`
 - Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
@@ -1089,7 +1090,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("Accès Refusé !")
+├─denied ("Accès refusé !")
 └─…Autres
 ```
 
@@ -2196,4 +2197,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 10 Décembre 2022 (2022.12.10).
+Dernière mise à jour : 24 Janvier 2023 (2023.01.24).

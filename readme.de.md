@@ -349,6 +349,7 @@ fields
 ├─Expired ("Abgelaufen")
 ├─Ignored ("Ignoriert")
 ├─Request_Method ("Methode anfordern")
+├─Protocol ("Protokoll")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("Status der CAPTCHA")
 ```
@@ -864,7 +865,7 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-** Erfordert ASN-Lookup-Funktionalität (z.B., über das BGPView-Modul).
+** Erfordert ASN-Lookup-Funktionalität (z.B., über das IP-API-Modul oder BGPView-Modul).
 
 ##### „other“ `[string]`
 - Kontrollen für die Verifizierung die anderer Arten von Anfragen sofern möglich.
@@ -2200,4 +2201,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 10. Dezember 2022 (2022.12.10).
+Zuletzt aktualisiert: 24. Januar 2023 (2023.01.24).

@@ -349,6 +349,7 @@ fields
 ├─Expired ("Đã hết hạn")
 ├─Ignored ("Bị bỏ qua")
 ├─Request_Method ("Phương thức yêu cầu")
+├─Protocol ("Giao thức")
 ├─Hostname ("Tên máy chủ")
 └─CAPTCHA ("Tình trạng CAPTCHA")
 ```
@@ -872,7 +873,7 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Bỏ qua một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và bỏ qua có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một bỏ qua như vậy có thể được mô tả là "bỏ qua một cú đánh".
 
-** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun BGPView).
+** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun IP-API hoặc BGPView).
 
 ##### "other" `[string]`
 - Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
@@ -2192,4 +2193,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2022.12.10.
+Lần cuối cập nhật: 2023.01.24.

@@ -349,6 +349,7 @@ fields
 ├─Expired ("Expired")
 ├─Ignored ("Ignored")
 ├─Request_Method ("Request method")
+├─Protocol ("Protocol")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("CAPTCHA State")
 ```
@@ -488,7 +489,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- Should CIDRAM silently redirect blocked access attempts instead of displaying the "Access Denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
+- Should CIDRAM silently redirect blocked access attempts instead of displaying the "access denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
 
 ##### "lang" `[string]`
 - Specify the default language for CIDRAM.
@@ -860,7 +861,7 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-** Requires ASN lookup functionality (e.g., via the BGPView module).
+** Requires ASN lookup functionality (e.g., via the IP-API or BGPView module).
 
 ##### "other" `[string]`
 - Controls for verifying other kinds of requests where possible.
@@ -1081,7 +1082,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("Access Denied!")
+├─denied ("Access denied!")
 └─…Other
 ```
 
@@ -2183,4 +2184,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 10 December 2022 (2022.12.10).
+Last Updated: 24 January 2023 (2023.01.24).

@@ -349,6 +349,7 @@ fields
 ├─Expired ("Scaduta")
 ├─Ignored ("Ignorato")
 ├─Request_Method ("Metodo di richiesta")
+├─Protocol ("Protocollo")
 ├─Hostname ("Nome host")
 └─CAPTCHA ("Stato CAPTCHA")
 ```
@@ -490,7 +491,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- CIDRAM dovrebbe reindirizzare silenziosamente tutti i tentativi di accesso bloccati invece di visualizzare la pagina "Accesso Negato"? Se si, specificare la localizzazione di reindirizzare i tentativi di accesso bloccati. Se no, lasciare questo variabile vuoto.
+- CIDRAM dovrebbe reindirizzare silenziosamente tutti i tentativi di accesso bloccati invece di visualizzare la pagina "accesso negato"? Se si, specificare la localizzazione di reindirizzare i tentativi di accesso bloccati. Se no, lasciare questo variabile vuoto.
 
 ##### "lang" `[string]`
 - Specifica la lingua predefinita per CIDRAM.
@@ -864,7 +865,7 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
-** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo BGPView).
+** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo IP-API o BGPView).
 
 ##### "other" `[string]`
 - Controlli per la verifica di altri tipi di richieste ove possibile.
@@ -1089,7 +1090,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("Accesso Negato!")
+├─denied ("Accesso negato!")
 └─…Altro
 ```
 
@@ -2186,4 +2187,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 10 Dicembre 2022 (2022.12.10).
+Ultimo Aggiornamento: 24 Gennaio 2023 (2023.01.24).

@@ -349,6 +349,7 @@ fields
 ├─Expired ("Expirado")
 ├─Ignored ("Ignorado")
 ├─Request_Method ("Método de solicitação")
+├─Protocol ("Protocolo")
 ├─Hostname ("Nome do host")
 └─CAPTCHA ("Estado CAPTCHA")
 ```
@@ -489,7 +490,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- Deve CIDRAM silenciosamente redirecionar as tentativas de acesso bloqueadas em vez de exibir o "Acesso Negado" página? Se sim, especificar o local para redirecionar as tentativas de acesso bloqueadas para. Se não, deixe esta variável em branco.
+- Deve CIDRAM silenciosamente redirecionar as tentativas de acesso bloqueadas em vez de exibir o "acesso negado" página? Se sim, especificar o local para redirecionar as tentativas de acesso bloqueadas para. Se não, deixe esta variável em branco.
 
 ##### "lang" `[string]`
 - Especificar o padrão da linguagem por CIDRAM.
@@ -862,7 +863,7 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-** Requer funcionalidade de pesquisa ASN (por exemplo, através do módulo BGPView).
+** Requer funcionalidade de pesquisa ASN (por exemplo, através do módulo IP-API ou BGPView).
 
 ##### "other" `[string]`
 - Controles para verificar outros tipos de solicitações sempre que possível.
@@ -1085,7 +1086,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("Acesso Negado!")
+├─denied ("Acesso negado!")
 └─…Outros
 ```
 
@@ -2182,4 +2183,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 10 de Dezembro de 2022 (2022.12.10).
+Última Atualização: 24 de Janeiro de 2023 (2023.01.24).

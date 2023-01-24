@@ -349,6 +349,7 @@ fields
 ├─Expired ("Expirado")
 ├─Ignored ("Ignorado")
 ├─Request_Method ("Método de solicitud")
+├─Protocol ("Protocolo")
 ├─Hostname ("Nombre de host")
 └─CAPTCHA ("Estado CAPTCHA")
 ```
@@ -491,7 +492,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- Debería CIDRAM silencio redirigir los intentos de acceso bloqueados en lugar de mostrar la página "Acceso Denegado"? En caso afirmativo, especifique la ubicación para redirigir los intentos de acceso bloqueados. Si no, dejar esta variable en blanco.
+- Debería CIDRAM silencio redirigir los intentos de acceso bloqueados en lugar de mostrar la página "acceso denegado"? En caso afirmativo, especifique la ubicación para redirigir los intentos de acceso bloqueados. Si no, dejar esta variable en blanco.
 
 ##### "lang" `[string]`
 - Especifique la predefinido del lenguaje para CIDRAM.
@@ -866,7 +867,7 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
-** Requiere la funcionalidad de búsqueda de ASN (por ejemplo, a través del módulo BGPView).
+** Requiere la funcionalidad de búsqueda de ASN (por ejemplo, a través del módulo IP-API o BGPView).
 
 ##### "other" `[string]`
 - Controles para verificar otros tipos de solicitudes cuando sea posible.
@@ -1091,7 +1092,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("¡Acceso Denegado!")
+├─denied ("¡Acceso denegado!")
 └─…Otro
 ```
 
@@ -2192,4 +2193,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 10 de Diciembre de 2022 (2022.12.10).
+Última Actualización: 24 de Enero de 2023 (2023.01.24).

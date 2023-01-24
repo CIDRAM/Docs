@@ -349,6 +349,7 @@ fields
 ├─Expired ("Kedaluwarsa")
 ├─Ignored ("Diabaikan")
 ├─Request_Method ("Metode permintaan")
+├─Protocol ("Protokol")
 ├─Hostname ("Nama host")
 └─CAPTCHA ("Status CAPTCHA")
 ```
@@ -864,7 +865,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul BGPView).
+** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
 
 ##### "other" `[string]`
 - Kontrol untuk memverifikasi jenis permintaan lain jika/bila memungkinkan.
@@ -2181,4 +2182,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 10 Desember 2022 (2022.12.10).
+Terakhir Diperbarui: 24 Januari 2023 (2023.01.24).

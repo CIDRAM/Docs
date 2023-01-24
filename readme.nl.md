@@ -349,6 +349,7 @@ fields
 ├─Expired ("Verlopen")
 ├─Ignored ("Genegeerd")
 ├─Request_Method ("Verzoek methode")
+├─Protocol ("Protocol")
 ├─Hostname ("Hostname")
 └─CAPTCHA ("CAPTCHA State")
 ```
@@ -491,7 +492,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "Toegang Geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
+- Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "toegang geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
 
 ##### "lang" `[string]`
 - Geef de standaardtaal voor CIDRAM.
@@ -866,7 +867,7 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-** Vereist ASN-opzoekfunctionaliteit (b.v., via de BGPView-module).
+** Vereist ASN-opzoekfunctionaliteit (b.v., via de IP-API-module of BGPView-module).
 
 ##### "other" `[string]`
 - Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
@@ -1091,7 +1092,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("Toegang Geweigerd!")
+├─denied ("Toegang geweigerd!")
 └─…Anders
 ```
 
@@ -2202,4 +2203,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 10 December 2022 (2022.12.10).
+Laatste Bijgewerkt: 24 Januari 2023 (2023.01.24).
