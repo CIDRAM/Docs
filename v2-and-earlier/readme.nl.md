@@ -1157,9 +1157,9 @@ Defers to: preferred_signatures.dat
 
 ##### 7.1.4 PROFIEL ETIKETTEN
 
-Profiel etiketten bieden een middel om aanvullende informatie op de IP-testpagina weer te geven, en kunnen worden gebruikt door modules en hulpregels voor complexer gedrag en nauwkeurigere besluitvorming.
+Profiel etiketten bieden een middel om aanvullende informatie op de IP-testpagina weer te geven, en kunnen worden gebruikt door modules en aanvullende regels voor complexer gedrag en nauwkeurigere besluitvorming.
 
-Profiel etiketten worden op dezelfde manier gebruikt als andere soorten etiketten. De waarden van profiel etiketten kunnen worden gebruikt als voorwaarde voor modules en hulpregels. Profiel etiketten kunnen meerdere waarden bieden door deze waarden te scheiden met een puntkomma. De eindgebruiker ziet nooit de waarden van profiel etiketten.
+Profiel etiketten worden op dezelfde manier gebruikt als andere soorten etiketten. De waarden van profiel etiketten kunnen worden gebruikt als voorwaarde voor modules en aanvullende regels. Profiel etiketten kunnen meerdere waarden bieden door deze waarden te scheiden met een puntkomma. De eindgebruiker ziet nooit de waarden van profiel etiketten.
 
 Voorbeeld:
 
@@ -1254,9 +1254,9 @@ Ignore Sectie 1
 
 Dit kan ook worden bereikt door de interface te gebruiken die wordt geboden door de pagina "sectielijst" van de frontend van CIDRAM.
 
-##### 7.3.1 HULPREGELS
+##### 7.3.1 AANVULLENDE REGELS
 
-Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aangepaste modules te ingewikkeld voor u is, kan een eenvoudiger alternatief zijn om de interface te gebruiken die wordt geboden door de "hulpregels"-pagina van de front-end van CIDRAM. Door de juiste opties te selecteren en details over specifieke soorten verzoeken op te geven, kunt u CIDRAM instrueren hoe op die verzoeken moet worden gereageerd. "Hulpregels" worden uitgevoerd nadat alle signatuurbestanden en modules al zijn uitgevoerd.
+Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aangepaste modules te ingewikkeld voor u is, kan een eenvoudiger alternatief zijn om de interface te gebruiken die wordt geboden door de "aanvullende regels"-pagina van de front-end van CIDRAM. Door de juiste opties te selecteren en details over specifieke soorten verzoeken op te geven, kunt u CIDRAM instrueren hoe op die verzoeken moet worden gereageerd. "Aanvullende regels" worden uitgevoerd nadat alle signatuurbestanden en modules al zijn uitgevoerd.
 
 #### 7.4 <a name="MODULE_BASICS"></a>BASICS (VOOR MODULES)
 
@@ -1500,9 +1500,9 @@ Ja. Een API is ingebouwd in het frontend voor interactie met de updates pagina v
 
 #### <a name="BLOCK_HOSTNAMES"></a>Kan CIDRAM hostnamen blokkeren?
 
-Ja. Dit kan worden bereikt door een hulpregel of aangepaste module te maken.
+Ja. Dit kan worden bereikt door een aanvullende regel of aangepaste module te maken.
 
-![Een hulpregel voor het blokkeren van hostnamen](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
+![Een aanvullende regel voor het blokkeren van hostnamen](https://raw.githubusercontent.com/CIDRAM/Docs/master/assets/auxrule_block_hostname.png)
 
 #### <a name="WHAT_CAN_I_USE_FOR_DEFAULT_DNS"></a>Wat kan ik gebruiken voor "default_dns"?
 
@@ -1725,7 +1725,7 @@ Merk op dat `pdo_username` en `pdo_password` hetzelfde moeten zijn als de gebrui
 
 Als u een toegewijd bestand gebruikt voor cronjobs, en als dat bestand niet hoeft te worden aangeroepen tijdens normale gebruikersverzoeken (d.w.z., buiten de context van cronjobs), de meest eenvoudige manier om dit op te lossen, is om ervoor te zorgen dat CIDRAM helemaal niet wordt uitgevoerd tijdens uw cronjobs (d.w.z., haak CIDRAM niet vast aan het bestand dat verantwoordelijk is voor de afhandeling van uw cronjobs).
 
-Als alternatief, als dat niet mogelijk is, maar het IP-adres van uw cron-server is relatief consistent en voorspelbaar, u kunt proberen het IP-adres van uw cron-server op de witte lijst te zetten door er een signature op de witte lijst voor te maken in een aangepast signatuurbestand of door er een hulpregel voor te maken. Als het IP-adres van uw cron-server regelmatig roteert en niet bijzonder voorspelbaar is, maar blijft toch binnen hetzelfde netwerk, u zou kunnen proberen in uw `ignore.dat` bestand de naam te vermelden van de signatuursectie die verantwoordelijk is voor het blokkeren van het in de eerste plaats.
+Als alternatief, als dat niet mogelijk is, maar het IP-adres van uw cron-server is relatief consistent en voorspelbaar, u kunt proberen het IP-adres van uw cron-server op de witte lijst te zetten door er een signature op de witte lijst voor te maken in een aangepast signatuurbestand of door er een aanvullende regel voor te maken. Als het IP-adres van uw cron-server regelmatig roteert en niet bijzonder voorspelbaar is, maar blijft toch binnen hetzelfde netwerk, u zou kunnen proberen in uw `ignore.dat` bestand de naam te vermelden van de signatuursectie die verantwoordelijk is voor het blokkeren van het in de eerste plaats.
 
 Als u al die ideeën hebt geprobeerd en geen van hen voor jou werkte, of als u hulp nodig hebt om uit te vinden hoe u het moet doen, u kunt een nieuw issue maken op de issues-pagina van CIDRAM om hulp te vragen.
 
@@ -1990,4 +1990,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 27 Juli 2022 (2022.07.27).
+Laatste Bijgewerkt: 28 Januari 2023 (2023.01.28).
