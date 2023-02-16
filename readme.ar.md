@@ -1993,12 +1993,12 @@ modules: |
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">default_dns</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">force_hostname_lookup</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">allow_gethostbyaddr_lookup</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">default_dns</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">force_hostname_lookup</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">search_engines</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">social_media</code> &lt;- <code dir="ltr">verification</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٢.١ التحقق من محركات البحث ووسائل الإعلام الاجتماعية<br /><br /></div>
@@ -2007,9 +2007,9 @@ modules: |
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">search_engines</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">social_media</code> &lt;- <code dir="ltr">verification</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٢.٢ CAPTCHA<br /><br /></div>
@@ -2109,8 +2109,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 <div dir="rtl">توجيه التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">recaptcha</code></li>
- <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">hcaptcha</code></li>
+ <li><code dir="ltr">hcaptcha_log</code> &lt;- <code dir="ltr">hcaptcha</code></li>
+ <li><code dir="ltr">recaptcha_log</code> &lt;- <code dir="ltr">recaptcha</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٣.٢ سجلات الواجهة الأمامية<br /><br /></div>

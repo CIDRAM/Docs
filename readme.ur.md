@@ -1997,12 +1997,12 @@ modules: |
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">default_dns</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">force_hostname_lookup</code> &lt;- <code dir="ltr">general</code></li>
  <li><code dir="ltr">allow_gethostbyaddr_lookup</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">default_dns</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">force_hostname_lookup</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">search_engines</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">social_media</code> &lt;- <code dir="ltr">verification</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۲.۱ تلاش انجن اور سوشل میڈیا کی توثیق<br /><br /></div>
@@ -2011,9 +2011,9 @@ modules: |
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">search_engine_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">social_media_verification</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">other_verification</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">other</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">search_engines</code> &lt;- <code dir="ltr">verification</code></li>
+ <li><code dir="ltr">social_media</code> &lt;- <code dir="ltr">verification</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۲.۲ CAPTCHA<br /><br /></div>
@@ -2114,8 +2114,8 @@ IP پتہ: x.x.x.x - تاریخ وقت: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCH
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">recaptcha</code></li>
- <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">hcaptcha</code></li>
+ <li><code dir="ltr">hcaptcha_log</code> &lt;- <code dir="ltr">hcaptcha</code></li>
+ <li><code dir="ltr">recaptcha_log</code> &lt;- <code dir="ltr">recaptcha</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۳.۲ سامنے کے آخر لاگ<br /><br /></div>
