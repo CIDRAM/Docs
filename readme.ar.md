@@ -1425,19 +1425,20 @@ Origin: BB
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1446,10 +1447,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1458,7 +1460,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -2088,9 +2090,9 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 <div dir="rtl">توجيهات التهيئة ذات الصلة:</div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">logfile</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">logfile_apache</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">logfile_serialized</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">apache_style_log</code> &lt;- <code dir="ltr">logging</code></li>
+ <li><code dir="ltr">serialised_log</code> &lt;- <code dir="ltr">logging</code></li>
+ <li><code dir="ltr">standard_log</code> &lt;- <code dir="ltr">logging</code></li>
 </ul></div>
 
 <div dir="rtl">عندما يتم ترك هذه التوجيهات فارغة، سيظل هذا النوع من التسجيل معطلاً.<br /><br /></div>
@@ -2136,8 +2138,8 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">log_rotation_limit</code> &lt;- <code dir="ltr">general</code></li>
- <li><code dir="ltr">log_rotation_action</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">log_rotation_action</code> &lt;- <code dir="ltr">logging</code></li>
+ <li><code dir="ltr">log_rotation_limit</code> &lt;- <code dir="ltr">logging</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٣.٤ سجل اقتطاع<br /><br /></div>
@@ -2146,7 +2148,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 <div dir="rtl">خيارات التكوين ذات الصلة:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">truncate</code> &lt;- <code dir="ltr">general</code></li>
+ <li><code dir="ltr">truncate</code> &lt;- <code dir="ltr">logging</code></li>
 </ul></div>
 
 ##### <div dir="rtl">٩.٣.٥ عنوان IP PSEUDONYMISATION<br /><br /></div>
@@ -2247,4 +2249,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٤ يناير ٢٠٢٣ (٢٠٢٣.٠١.٢٤).</div>
+<div dir="rtl">آخر تحديث: ١٧ فبراير ٢٠٢٣ (٢٠٢٣.٠٢.١٧).</div>

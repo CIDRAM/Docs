@@ -1362,19 +1362,20 @@ Origin: BB
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1383,10 +1384,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1395,7 +1397,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1919,21 +1921,21 @@ CIDRAM的`pdo_dsn`应配置如下。
 如果您使用任何旨在与主机名配合使用的功能或模块（例如，​“坏主机阻塞模块”，​“tor project exit nodes block module”，​“搜索引擎验证”），​CIDRAM需要能够以某种获得入站请求的主机名。​通常，它通过请求来自DNS服务器的入站请求的IP地址的主机名来执行此操作，或者通过安装CIDRAM的系统提供的功能请求信息（这通常被称为“主机名查找”）。​默认定义的DNS服务器属于[Google DNS](https://dns.google.com/)服务（但可以通过配置轻松更改）。​与之交流的确切服务是可配置的，并取决于您如何配置软件包。​在使用安装CIDRAM的系统提供的功能的情况下，您需要联系您的系统管理员以确定哪些为主机名查找的路由使用。​通过避免受影响的模块或根据您的需要修改软件包配置，可以防止CIDRAM中的主机名查找。
 
 *相关配置指令：*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 搜索引擎验证和社交媒体验证
 
 当启用搜索引擎验证时，CIDRAM尝试执行“正向DNS查找”以验证声称源自搜索引擎的请求是否真实。​同样，当启用社交媒体验证时，CIDRAM对为社交媒体请求做同样的事情。​为此，它使用[Google DNS](https://dns.google.com/)服务尝试从这些入站请求的主机名解析IP地址（在这个过程中，这些入站请求的主机名与服务共享）。
 
 *相关配置指令：*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2008,9 +2010,9 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 - 当前请求的CAPTCHA状态（相关时）。
 
 *负责此类日志记录的配置指令，适用于以下三种格式中的每一种：*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 当这些指令保留为空时，这种类型的日志记录将保持禁用状态。
 
@@ -2025,8 +2027,8 @@ IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA状态�
 ```
 
 *负责CAPTCHA日志记录的配置指令是：*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 前端日志记录
 
@@ -2050,15 +2052,15 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 已登录。
 相反，如果您需要长时间保留日志，你可以选择完全不使用日志轮换，或者你可以将`log_rotation_action`的值设置为`Archive`，以压缩日志文件，从而减少它们占用的磁盘空间总量。
 
 *相关配置指令：*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 日志截断
 
 如果这是您想要做的事情，也可以在超过特定大小时截断个别日志文件。
 
 *相关配置指令：*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 IP地址“PSEUDONYMISATION”
 
@@ -2147,4 +2149,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2023年1月24日。
+最后更新：2023年2月17日。

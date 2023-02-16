@@ -1402,19 +1402,20 @@ In CIDRAM werden YAML-Markup-Segmente durch drei Bindestriche ("---") gegenüber
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1423,10 +1424,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1435,7 +1437,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1971,21 +1973,21 @@ Aus Gründen der Transparenz wird im Folgenden beschrieben, welche Art von Infor
 Wenn Sie Funktionen oder Module verwenden, die mit Hostnamen arbeiten (z.B., „Schlechte Hosts Blocker-Modul“, „tor project exit nodes block module“, oder „Suchmaschinen-Verifizierung“, u.s.w.), muss CIDRAM in der Lage sein, den Hostnamen eingehender Anfragen irgendwie zu erhalten. Typischerweise wird dazu der Hostname der IP-Adresse eingehender Anforderungen von einem DNS-Server angefordert, oder die Informationen über die Funktionalität angefordert, die vom System bereitgestellt werden, auf dem CIDRAM installiert ist (dies wird typischerweise als „Hostname-Suche“ bezeichnet). Die standardmäßig definierten DNS-Server gehören zu [Google DNS](https://dns.google.com/) (dies kann jedoch einfach über die Konfiguration geändert werden). Die genauen Dienste, mit denen kommuniziert wird, sind konfigurierbar und hängen von der Konfiguration des Pakets ab. Wenn Sie Funktionen verwenden, die von dem System bereitgestellt werden, auf dem CIDRAM installiert ist, müssen Sie sich an Ihren Systemadministrator wenden, um zu ermitteln, welche Routen Hostnamen-Lookups verwenden. Hostnamen-Suchen können in CIDRAM verhindert werden, indem die betroffenen Module vermieden oder die Paketkonfiguration entsprechend Ihren Anforderungen geändert wird.
 
 *Relevante Konfigurationsdirektiven:*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 VERIFIZIERUNG VON SUCHMASCHINEN UND SOCIAL MEDIA
 
 Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM „Forward-DNS-Lookups“ durchzuführen, um zu überprüfen, ob Anfragen, die behaupten, von Suchmaschinen zu stammen, authentisch sind. Gleichfalls, wenn die Verifizierung von Social Media aktiviert ist, macht CIDRAM das gleiche für scheinbare Social-Media-Anfragen. Um dies zu tun, verwendet es den [Google DNS](https://dns.google.com/)-Dienst, um IP-Adressen aus den Hostnamen dieser eingehenden Anfragen aufzulösen (in diesem Prozess werden die Hostnamen dieser eingehenden Anfragen für den Dienst freigegeben).
 
 *Relevante Konfigurationsdirektiven:*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2060,9 +2062,9 @@ Ein protokolliertes Blockereignis enthält normalerweise die folgenden Informati
 - Der CAPTCHA-Status für die aktuelle Anfrage (falls relevant).
 
 *Die Konfigurationsdirektiven, die für diese Art der Protokollierung und für jedes der drei verfügbaren Formate verantwortlich sind:*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 Wenn diese Direktiven leer bleiben, bleibt diese Art der Protokollierung deaktiviert.
 
@@ -2077,8 +2079,8 @@ IP-Adresse: x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - Status der CA
 ```
 
 *Die für die CAPTCHA-Protokollierung verantwortliche Konfigurationsdirektiven lautet:*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 FRONTEND PROTOKOLLIERUNG
 
@@ -2102,15 +2104,15 @@ Beispielsweise: Wenn ich gesetzlich dazu verpflichtet wäre, Protokolldateien na
 Umgekehrt, wenn Sie Protokolldateien für einen längeren Zeitraum aufbewahren müssen, Sie könnten entweder überhaupt keine Protokollrotation verwenden, oder Sie könnten den Wert von `log_rotation_action` auf `Archive` setzen, um Protokolldateien zu komprimieren, wodurch der Gesamtbetrag des belegten Speicherplatzes reduziert wird.
 
 *Relevante Konfigurationsdirektiven:*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 PROTOKOLL-TRUNKIERUNG
 
 Es ist auch möglich, um einzelne Protokolldateien zu trunkieren, wenn sie eine bestimmte Größe überschreiten, falls Sie dies benötigen oder tun möchten.
 
 *Relevante Konfigurationsdirektiven:*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 IP-ADRESSE PSEUDONYMISIERUNG
 
@@ -2201,4 +2203,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 24. Januar 2023 (2023.01.24).
+Zuletzt aktualisiert: 17. Februar 2023 (2023.02.17).

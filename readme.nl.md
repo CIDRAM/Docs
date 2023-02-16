@@ -1402,19 +1402,20 @@ In CIDRAM, YAML markup segmenten worden geïdentificeerd aan het script door dri
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1423,10 +1424,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1435,7 +1437,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1975,21 +1977,21 @@ Met het oog op transparantie wordt het type informatie dat wordt gedeeld en met 
 Als u functies of modules gebruikt die bedoeld zijn om met hostnamen te werken (zoals de "slechte hosts blokkermodule", "tor project exit nodes block module", of "zoekmachine verificatie", bijvoorbeeld), moet CIDRAM in staat zijn om de hostnaam van inkomende verzoeken op de een of andere manier. Dit gebeurt meestal door de hostnaam van het IP-adres van inkomende verzoeken van een DNS-server op te vragen, of door de informatie op te vragen via functionaliteit die wordt geboden door het systeem waarop CIDRAM is geïnstalleerd (dit wordt meestal een "hostnaam lookup" verwezen naar). De DNS-servers die standaard worden gedefinieerd, behoren tot de [Google DNS](https://dns.google.com/)-service (maar dit kan eenvoudig via de configuratie worden gewijzigd). De exacte services waarmee wordt gecommuniceerd, kunnen worden geconfigureerd en zijn afhankelijk van de manier waarop u het pakket configureert. In het geval dat u functionaliteit gebruikt die wordt geboden door het systeem waarop CIDRAM is geïnstalleerd, moet u contact opnemen met uw systeembeheerder om te bepalen naar welke routes hostnaam lookups moeten worden gebruikt. Hostnaam lookups kunnen worden voorkomen in CIDRAM door de betreffende modules te vermijden of door de pakketconfiguratie aan te passen aan uw behoeften.
 
 *Relevante configuratie-opties:*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 VERIFICATIE VAN ZOEKMACHINES EN SOCIALE MEDIA
 
 Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward DNS-lookups" uit te voeren om te verifiëren of verzoeken die claimen afkomstig te zijn van zoekmachines authentiek zijn. Hetzelfde, wanneer verificatie van sociale media is ingeschakeld, CIDRAM doet hetzelfde voor schijnbare verzoeken van sociale media. Hiertoe gebruikt het de [Google DNS](https://dns.google.com/)-service om IP-adressen van de hostnamen van deze inkomende verzoeken op te lossen (in dit proces worden de hostnamen van deze inkomende verzoeken gedeeld met de service).
 
 *Relevante configuratie-opties:*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2064,9 +2066,9 @@ Een geregistreerde blokgebeurtenis bevat meestal de volgende informatie:
 - De CAPTCHA state voor het huidige verzoek (indien relevant).
 
 *De configuratie richtlijnen die verantwoordelijk zijn voor dit type loggen, en voor elk van de drie beschikbare indelingen, zijn:*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 Wanneer deze richtlijnen leeg worden gelaten, blijft dit type logboek uitgeschakeld.
 
@@ -2081,8 +2083,8 @@ IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State:
 ```
 
 *De configuratie richtlijn die verantwoordelijk is voor CAPTCHA loggen is:*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 FRONTEND LOGGEN
 
@@ -2106,15 +2108,15 @@ Bijvoorbeeld: Als ik wettelijk verplicht was om logs na 30 dagen te verwijderen,
 Omgekeerd, als u verplicht bent om logs gedurende langere tijd te bewaren, kunt u überhaupt geen logrotatie gebruiken, of kunt u de waarde van `log_rotation_action` op `Archive` zetten, om logbestanden te comprimeren, waardoor de totale hoeveelheid schijfruimte die ze innemen, wordt verminderd.
 
 *Relevante configuratie-opties:*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 LOGTRUNCATIE
 
 Het is ook mogelijk om afzonderlijke logbestanden af te kappen als ze een bepaalde grootte overschrijden, als dit iets is dat u misschien nodig heeft, of zou willen doen.
 
 *Relevante configuratie-opties:*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 IP-ADRES PSEUDONIMISATIE
 
@@ -2203,4 +2205,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 28 Januari 2023 (2023.01.28).
+Laatste Bijgewerkt: 17 Februari 2023 (2023.02.17).

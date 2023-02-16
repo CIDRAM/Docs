@@ -1388,19 +1388,20 @@ CIDRAMでは、​ＹＡＭＬマークアップセグメントはスクリプ�
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1409,10 +1410,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1421,7 +1423,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1943,21 +1945,21 @@ Cronjobsの目的で専用ファイルを使用している場合、通常のユ
 ホスト名を扱う機能やモジュールを使用している場合（例えば、「危険なホスト・ブロッカー・モジュール」、「tor project exit nodes block module」、「サーチ・エンジン・ベリフィケーション」）、CIDRAMは、インバウンド要求のホスト名を何らかの形で取得できる必要があります。​通常、ＤＮＳサーバーからの着信要求のＩＰアドレスのホスト名を要求するか、またはCIDRAMがインストールされているシステムによって提供される機能によって情報を要求します（これは通常、「ホスト名検索」として知られています）。​デフォルトで定義されているＤＮＳサーバーは[Google DNS](https://dns.google.com/)サービスに属しています（これはコンフィギュレーションによって簡単に変更できます）。​通信される正確なサービスは構成可能であり、パッケージの構成方法によって異なります。​CIDRAMがインストールされているシステムで提供される機能を使用する場合は、システム管理者に連絡して、ホスト名検索で使用するルートを判断する必要があります。​影響を受けるモジュールを避けるか、必要に応じてパッケージ構成を変更して、CIDRAMでホスト名検索を防止できます。
 
 *関連するコンフィギュレーション・ディレクティブ：*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 検索エンジンの検証 （サーチ・エンジン・ベリフィケーション） ＋ ソーシャル・メディアの検証 （ソーシャル・メディア・ベリフィケーション）
 
 これらのコンフィギュレーション・ディレクティブを有効にすると、CIDRAMは、検索エンジンやソーシャルメディアから発信されたと思われるリクエストの信憑性を検証するために、「転送ＤＮＳルックアップ」を実行しようとします。​これを行うために、[Google DNS](https://dns.google.com/)サービスを使用して、これらのインバウンド・リクエストのホスト名からＩＰアドレスを解決しようとします（このプロセスでは、これらのインバウンド・リクエストのホスト名はサービスと共有されます）。
 
 *関連するコンフィギュレーション・ディレクティブ：*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 キャプチャ
 
@@ -2032,9 +2034,9 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 - 現在のリクエストのキャプチャ・ステータス（該当する場合）。
 
 *このタイプのロギングを担当するコンフィギュレーション・ディレクティブは、利用可能な３つのフォーマットのそれぞれについて。*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 これらのディレクティブを空のままにすると、このタイプのロギングは無効のままです。
 
@@ -2049,8 +2051,8 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 ```
 
 *キャプチャ・ロギングを担当するコンフィギュレーション・ディレクティブ：*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 フロントエンド・ロギング
 
@@ -2074,15 +2076,15 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - ログインしました�
 逆に、長期間ログを保持する必要がある場合は、ログ・ローテーションを無効にするか、ログ・ファイルを圧縮するために`log_rotation_action`の値を`Archive`に設定することができます（占有するディスク・スペースの総量が削減されます）。
 
 *関連するコンフィギュレーション・ディレクティブ：*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 ログ切り捨て
 
 必要に応じて、特定のサイズを超えた個々のログ・ファイルを切り捨てることができます。
 
 *関連するコンフィギュレーション・ディレクティブ：*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 ＩＰアドレス・スドニマイゼーション
 
@@ -2170,4 +2172,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２３年１月２４日。
+最終アップデート：２０２３年２月１７日。

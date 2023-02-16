@@ -1412,19 +1412,20 @@ Trong CIDRAM, phân khúc YAML được xác định để kịch bản bằng b
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1433,10 +1434,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1445,7 +1447,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1973,21 +1975,21 @@ Với mục đích minh bạch, loại thông tin được chia sẻ, và với 
 Nếu bạn sử dụng bất kỳ tính năng hay mô-đun nào để làm việc với tên máy chủ (chẳng hạn như "mô-đun cho chặn các host xấu", "tor project exit nodes block module", hay "xác minh máy tìm kiếm", ví dụ), CIDRAM cần để có thể có được tên máy chủ của các yêu cầu gửi đến bằng cách nào đó. Thông thường, nó thực hiện điều này bằng cách yêu cầu tên máy chủ của địa chỉ IP của các yêu cầu gửi đến từ một máy chủ DNS, hoặc bằng cách yêu cầu thông tin thông qua chức năng được cung cấp bởi hệ thống nơi CIDRAM được cài đặt (điều này thường được gọi là "tra cứu tên máy chủ"). Các máy chủ DNS được xác định theo mặc định thuộc về dịch vụ [Google DNS](https://dns.google.com/) (nhưng điều này có thể dễ dàng thay đổi thông qua cấu hình). Các dịch vụ chính xác được truyền thông phụ thuộc vào cách bạn định cấu hình gói (nó có thể được cấu hình dễ dàng). Trong trường hợp sử dụng chức năng được cung cấp bởi hệ thống nơi CIDRAM được cài đặt, bạn sẽ cần phải liên hệ với quản trị viên hệ thống của bạn để xác định các tuyến đường để sử dụng cho tra cứu tên máy chủ. Tra cứu tên máy chủ có thể được ngăn chặn trong CIDRAM bằng cách tránh các mô-đun bị ảnh hưởng hay bằng cách sửa đổi cấu hình gói để phù hợp với nhu cầu của bạn.
 
 *Chỉ thị cấu hình có liên quan:*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 XÁC MINH MÁY TÌM KIẾM VÀ TRUYỀN THÔNG XÃ HỘI
 
 Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực hiện "tra cứu DNS chuyển tiếp" để xác minh tính xác thực của các yêu cầu nói rằng bắt nguồn từ các máy tìm kiếm. Tương tự như vậy, khi xác minh truyền thông xã hội được kích hoạt, CIDRAM thực hiện tương tự cho các yêu cầu truyền thông xã hội bị nghi ngờ. Để thực hiện điều này, nó sử dụng dịch vụ [Google DNS](https://dns.google.com/) để cố gắng giải quyết các địa chỉ IP từ tên máy chủ của các yêu cầu gửi đến này (trong quá trình này, tên máy chủ của các yêu cầu gửi đến này được chia sẻ với dịch vụ).
 
 *Chỉ thị cấu hình có liên quan:*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2062,9 +2064,9 @@ Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
 - Trạng thái CAPTCHA cho yêu cầu hiện tại (khi có liên quan).
 
 *Các chỉ thị cấu hình chịu trách nhiệm về loại ghi nhật ký này và cho mỗi một trong ba định dạng có sẵn:*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 Khi các chỉ thị này được để trống, loại ghi nhật ký này sẽ vẫn bị vô hiệu hóa.
 
@@ -2079,8 +2081,8 @@ Mục nhập nhật ký CAPTCHA chứa địa chỉ IP của người dùng đan
 ```
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký CAPTCHA là:*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 NHẬT KÝ FRONT-END
 
@@ -2104,15 +2106,15 @@ Ví dụ: Nếu tôi được yêu cầu xóa nhật ký sau 30 ngày theo pháp
 Ngược lại, nếu bạn được yêu cầu giữ lại nhật ký trong một khoảng thời gian dài, bạn có thể cân nhắc không sử dụng xoay vòng nhật ký, hoặc bạn có thể đặt giá trị của `log_rotation_action` để `Archive`, để nén tập tin nhật ký, do đó làm giảm tổng dung lượng đĩa mà họ chiếm.
 
 *Chỉ thị cấu hình có liên quan:*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 CẮT NGẮN NHẬT KÝ
 
 Cũng có thể cắt ngắn các tập tin nhật ký riêng lẻ khi chúng vượt quá một kích thước nhất định, nếu đây bạn có thể cần hay muốn làm.
 
 *Chỉ thị cấu hình có liên quan:*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 PSEUDONYMISATION ĐỊA CHỈ IP
 
@@ -2193,4 +2195,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.01.24.
+Lần cuối cập nhật: 2023.02.17.

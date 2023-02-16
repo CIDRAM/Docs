@@ -1402,19 +1402,20 @@ CIDRAM는 YAML 마크 업 세그먼트는 스크립트에 3 개의 대시 ("---"
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1423,10 +1424,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1435,7 +1437,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1957,21 +1959,21 @@ cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에
 호스트 이름으로 작업하도록 의도 된 기능 또는 모듈을 사용하는 경우 (예를 들어, "위험한 호스트 차단 모듈", "tor project exit nodes block module", "검색 엔진 검증"), CIDRAM은 인바운드 요청의 호스트 이름을 어떻게 든 얻을 수 있어야합니다. 일반적으로 DNS 서버에서 인바운드 요청의 IP 주소 호스트 이름을 요청하거나 CIDRAM이 설치된 시스템에서 제공하는 기능을 통해 정보를 요청하여이 작업을 수행합니다 (이것은 일반적으로 "호스트 이름 조회"로 알려져 있습니다). 기본적으로 정의 된 DNS 서버는 [Google DNS](https://dns.google.com/) 서비스에 속합니다 (그러나 구성을 통해 쉽게 변경할 수 있음). 전달 된 정확한 서비스는 구성 할 수 있으며 패키지를 구성하는 방법에 따라 다릅니다. CIDRAM이 설치된 시스템에서 제공하는 기능을 사용하는 경우 시스템 관리자에게 문의하여 호스트 이름 조회에서 사용하는 경로를 확인해야합니다. 영향을받는 모듈을 피하거나 필요에 따라 패키지 구성을 수정하여 CIDRAM에서 호스트 이름 조회를 방지 할 수 있습니다.
 
 *관련 설정 지시어 :*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 검색 엔진 검증 및 소셜 미디어 검증
 
 이러한 구성 지시문을 사용하면, CIDRAM은 "순방향 DNS 조회"를 수행하여 검색 엔진 및 소셜 미디어에서 발생했다고 추정되는 요청의 진위 여부를 확인합니다. 이렇게하기 위해 [Google DNS](https://dns.google.com/) 서비스를 사용하여 이러한 인바운드 요청의 호스트 이름에서 IP 주소를 확인합니다 (이 프로세스에서 이러한 인바운드 요청의 호스트 이름은 서비스와 공유됩니다).
 
 *관련 설정 지시어 :*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2046,9 +2048,9 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 - 현재 요청에 대한 CAPTCHA 상태 (관련성이있는 경우).
 
 *다음 세 가지 형식 각각에 대해 이러한 유형의 로깅을 담당하는 구성 지시문입니다.*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 이러한 지시문을 비워두면이, 유형의 로깅은 비활성화 된 상태로 유지됩니다.
 
@@ -2063,8 +2065,8 @@ IP 주소 : x.x.x.x - 일·월·년·시간 : Day, dd Mon 20xx hh:ii:ss +0000 
 ```
 
 *CAPTCHA 로깅을 담당하는 구성 지시문 :*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 프론트 엔드 로깅
 
@@ -2088,15 +2090,15 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - 로그인 했습니다.
 또는, 오랜 시간 동안 로그를 유지해야하는 경우, 로그 회전을 비활성화하거나, 로그 파일을 압축하기 위해 `log_rotation_action` 값을 `Archive`로 설정하십시오 (이렇게하면 점유하는 디스크 공간의 총량이 줄어 듭니다).
 
 *관련 설정 지시어 :*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 로그 자르기
 
 원하는 경우 특정 크기를 초과하면 개별 로그 파일을자를 수 있습니다.
 
 *관련 설정 지시어 :*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 IP 주소 PSEUDONYMISATION
 
@@ -2182,4 +2184,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2023년 1월 24일.
+최종 업데이트 : 2023년 2월 17일.

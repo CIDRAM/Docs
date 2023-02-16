@@ -1400,19 +1400,20 @@ Dans CIDRAM, segments YAML sont identifiés au script par trois tirets (« ---�
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1421,10 +1422,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1433,7 +1435,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1971,21 +1973,21 @@ Dans un souci de transparence, le type d'informations partagées, et avec qui, e
 Si vous utilisez des fonctionnalités ou des modules destinés à fonctionner avec des noms d'hôte (tel que le « module de blocage pour les hôtes mauvais », « tor project exit nodes block module », ou la « vérification des moteurs de recherche », par exemple), CIDRAM doit pouvoir obtenir le nom d'hôte des requêtes entrantes en quelque sorte. Généralement, il le fait en demandant le nom d'hôte de l'adresse IP des requêtes entrantes provenant d'un serveur DNS, ou en demandant l'information via la fonctionnalité fournie par le système sur lequel CIDRAM est installé (ceci est généralement appelé « recherche de nom d'hôte »). Les serveurs DNS définis par défaut appartiennent au [service DNS de Google](https://dns.google.com/) (mais cela peut être facilement modifié via la configuration). Les services précis communiqués sont configurables et dépendent de la configuration du package. Dans le cas de l'utilisation des fonctionnalités fournies par le système sur lequel CIDRAM est installé, vous devrez contacter votre administrateur système pour déterminer les routes qu'utilisent les recherches de nom d'hôte. Les recherches de noms d'hôtes peuvent être évitées dans CIDRAM en évitant les modules affectés ou en modifiant la configuration du package en fonction de vos besoins.
 
 *Directives de configuration pertinentes :*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 VÉRIFICATION DES MOTEURS DE RECHERCHE ET DES MÉDIAS SOCIAUX
 
 Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'effectuer des « recherches DNS directes » pour vérifier si les requêtes qui prétendent provenir des moteurs de recherche sont authentiques. Également, lorsque la vérification des médias sociaux est activée, CIDRAM fait de même pour les requêtes apparentes de médias sociaux. Pour ce faire, il utilise le service [Google DNS](https://dns.google.com/) pour tenter de résoudre les adresses IP à partir des noms d'hôte de ces requêtes entrantes (dans ce processus, les noms d'hôte de ces requêtes entrantes sont partagés avec le service).
 
 *Directives de configuration pertinentes :*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2060,9 +2062,9 @@ Un événement blocage journalisé inclut généralement les informations suivan
 - L'état CAPTCHA pour la requête en cours (le cas échéant).
 
 *Les directives de configuration responsables de ce type de journalisation, et pour chacun des trois formats disponibles, sont :*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 Lorsque ces directives sont laissées vides, ce type de journalisation reste désactivé.
 
@@ -2077,8 +2079,8 @@ IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CA
 ```
 
 *La directive de configuration responsable de la journalisation CAPTCHA est :*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 JOURNALISATION FRONTALE
 
@@ -2102,15 +2104,15 @@ Par exemple : Si j'étais légalement requis de supprimer les journaux après 3
 À l'inverse, si vous devez conserver les journaux pendant une période prolongée, vous ne pouvez pas utiliser la rotation des journaux, ou vous pouvez définir la valeur de `log_rotation_action` à `Archive`, pour compresser les fichiers journaux, réduisant ainsi la quantité totale d'espace disque qu'ils occupent.
 
 *Directives de configuration pertinentes :*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 TRONCATION DES JOURNAUX
 
 Il est également possible de tronquer des fichiers journaux individuels lorsqu'ils dépassent une certaine taille, si c'est quelque chose que vous pourriez avoir besoin ou que vous voulez faire.
 
 *Directives de configuration pertinentes :*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 PSEUDONYMISATION D'ADRESSE IP
 
@@ -2197,4 +2199,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 24 Janvier 2023 (2023.01.24).
+Dernière mise à jour : 17 Février 2023 (2023.02.17).

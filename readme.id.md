@@ -1398,19 +1398,20 @@ Dalam CIDRAM, segmen markup YAML diidentifikasi untuk skrip oleh tiga tanda hubu
 Tag: Foobar 1
 ---
 general:
- logfile: logfile.{yyyy}-{mm}-{dd}.txt
- logfile_apache: access.{yyyy}-{mm}-{dd}.txt
- logfile_serialized: serial.{yyyy}-{mm}-{dd}.txt
- forbid_on_block: false
+ http_response_header_code: 403
  emailaddr: username@domain.tld
+logging:
+ standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
 recaptcha:
  lockip: false
  lockuser: true
  expiry: 720
- logfile: recaptcha.{yyyy}-{mm}-{dd}.txt
+ recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
  enabled: true
 template_data:
- css_url: https://domain.tld/cidram.css
+ css_url: "https://domain.tld/cidram.css"
 
 # Foobar 2.
 1.2.3.4/32 Deny Generic
@@ -1419,10 +1420,11 @@ template_data:
 Tag: Foobar 2
 ---
 general:
- logfile: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_apache: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
- logfile_serialized: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
- forbid_on_block: 503
+ http_response_header_code: 503
+logging:
+ standard_log: "logfile.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ apache_style_log: "access.Foobar2.{yyyy}-{mm}-{dd}.txt"
+ serialised_log: "serial.Foobar2.{yyyy}-{mm}-{dd}.txt"
 
 # Foobar 3.
 1.2.3.4/32 Deny Generic
@@ -1431,7 +1433,7 @@ general:
 Tag: Foobar 3
 ---
 general:
- forbid_on_block: 403
+ http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
 
@@ -1962,21 +1964,21 @@ Untuk tujuan transparansi, jenis informasi yang dibagikan, dan dengan siapa, dij
 Jika Anda menggunakan fitur atau modul yang dimaksudkan untuk bekerja dengan nama host (seperti "modul pemblokir untuk host buruk", "tor project exit nodes block module", atau "verifikasi mesin pencari", misalnya), CIDRAM harus dapat memperoleh nama host dari permintaan masuk entah bagaimana. Biasanya, ini dilakukan dengan meminta nama host dari alamat IP permintaan masuk dari server DNS, atau dengan meminta informasi melalui fungsionalitas yang disediakan oleh sistem tempat CIDRAM diinstal (ini biasanya disebut sebagai "pencarian nama host"). Server DNS yang ditentukan secara default adalah milik layanan [Google DNS](https://dns.google.com/) (tetapi ini dapat dengan mudah diubah melalui konfigurasi). Layanan yang tepat yang dikomunikasikan dapat dikonfigurasi, dan tergantung pada cara Anda mengonfigurasi paket. Dalam kasus menggunakan fungsionalitas yang disediakan oleh sistem tempat CIDRAM diinstal, Anda harus menghubungi administrator sistem Anda untuk menentukan rute mana yang digunakan oleh pencarian nama host. Pencarian nama host dapat dicegah dalam CIDRAM dengan menghindari modul yang terpengaruh atau dengan memodifikasi konfigurasi paket sesuai dengan kebutuhan Anda.
 
 *Direktif konfigurasi yang relevan:*
-- `general` -> `default_dns`
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
-- `general` -> `force_hostname_lookup`
 - `general` -> `allow_gethostbyaddr_lookup`
+- `general` -> `default_dns`
+- `general` -> `force_hostname_lookup`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.1 VERIFIKASI MESIN PENCARI DAN MEDIA SOSIAL
 
 Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian DNS ke depan" untuk memverifikasi apakah permintaan yang mengaku berasal dari mesin pencari adalah asli. Juga, ketika verifikasi media sosial diaktifkan, CIDRAM melakukan hal yang sama untuk permintaan media sosial dugaan. Untuk melakukan ini, verifikasi mesin pencari menggunakan layanan [Google DNS](https://dns.google.com/) untuk mencoba menyelesaikan alamat IP dari nama host dari permintaan masuk ini (dalam proses ini, nama host dari permintaan masuk ini dibagikan dengan layanan).
 
 *Direktif konfigurasi yang relevan:*
-- `general` -> `search_engine_verification`
-- `general` -> `social_media_verification`
-- `general` -> `other_verification`
+- `verification` -> `other`
+- `verification` -> `search_engines`
+- `verification` -> `social_media`
 
 ##### 9.2.2 CAPTCHA
 
@@ -2051,9 +2053,9 @@ Kejadian blokir yang dicatat biasanya mencakup informasi berikut:
 - Status CAPTCHA untuk permintaan saat ini (bila relevan).
 
 *Direktif konfigurasi yang bertanggung jawab untuk jenis pencatatan ini, dan untuk masing-masing dari tiga format yang tersedia, adalah:*
-- `general` -> `logfile`
-- `general` -> `logfile_apache`
-- `general` -> `logfile_serialized`
+- `logging` -> `apache_style_log`
+- `logging` -> `serialised_log`
+- `logging` -> `standard_log`
 
 Ketika direktif ini dibiarkan kosong, jenis pencatatan ini akan tetap dinonaktifkan.
 
@@ -2068,8 +2070,8 @@ Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status CAP
 ```
 
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan CAPTCHA adalah:*
-- `recaptcha` -> `logfile`
-- `hcaptcha` -> `logfile`
+- `hcaptcha` -> `hcaptcha_log`
+- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 LOG BAGIAN DEPAN
 
@@ -2093,15 +2095,15 @@ Sebagai contoh: Jika saya secara hukum diminta untuk menghapus log setelah 30 ha
 Sebaliknya, jika Anda diminta untuk menyimpan log untuk jangka waktu yang panjang, Anda bisa memilih untuk tidak menggunakan rotasi log sama sekali, atau Anda bisa mengatur nilai `log_rotation_action` ke `Archive`, untuk mengompres file log, sehingga mengurangi jumlah total ruang disk yang mereka tempati.
 
 *Direktif konfigurasi yang relevan:*
-- `general` -> `log_rotation_limit`
-- `general` -> `log_rotation_action`
+- `logging` -> `log_rotation_action`
+- `logging` -> `log_rotation_limit`
 
 ##### 9.3.4 PEMOTONGAN LOG
 
 Ini juga memungkinkan untuk memotong file log individu ketika mereka melebihi ukuran tertentu, jika ini adalah sesuatu yang mungkin Anda butuhkan atau ingin lakukan.
 
 *Direktif konfigurasi yang relevan:*
-- `general` -> `truncate`
+- `logging` -> `truncate`
 
 ##### 9.3.5 PSEUDONIMISASI ALAMAT IP
 
@@ -2182,4 +2184,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 24 Januari 2023 (2023.01.24).
+Terakhir Diperbarui: 17 Februari 2023 (2023.02.17).
