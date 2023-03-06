@@ -1,15 +1,15 @@
 ## Tài liệu của CIDRAM v3 (Tiếng Việt).
 
 ### Nội dung
-- 1. [LỜI GIỚI THIỆU](#SECTION1)
-- 2. [CÁCH CÀI ĐẶT](#SECTION2)
-- 3. [CÁCH SỬ DỤNG](#SECTION3)
-- 4. [QUẢN LÝ FRONT-END](#SECTION4)
-- 5. [TÙY CHỌN CHO CẤU HÌNH](#SECTION5)
-- 6. [ĐỊNH DẠNG CỦA CHỬ KÝ](#SECTION6)
-- 7. [NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH](#SECTION7)
-- 8. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#SECTION8)
-- 9. [THÔNG TIN HỢP PHÁP](#SECTION9)
+- 1. [LỜI GIỚI THIỆU](#user-content-SECTION1)
+- 2. [CÁCH CÀI ĐẶT](#user-content-SECTION2)
+- 3. [CÁCH SỬ DỤNG](#user-content-SECTION3)
+- 4. [QUẢN LÝ FRONT-END](#user-content-SECTION4)
+- 5. [TÙY CHỌN CHO CẤU HÌNH](#user-content-SECTION5)
+- 6. [ĐỊNH DẠNG CỦA CHỬ KÝ](#user-content-SECTION6)
+- 7. [NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH](#user-content-SECTION7)
+- 8. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#user-content-SECTION8)
+- 9. [THÔNG TIN HỢP PHÁP](#user-content-SECTION9)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -20,7 +20,7 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) là một kịch bản PHP được thiết kế để bảo vệ các trang mạng bằng cách ngăn chặn các yêu cầu có nguồn gốc từ các địa chỉ IP coi như là nguồn của lưu lượng không mong muốn, bao gồm (nhưng không giới hạn) giao thông từ thiết bị đầu cuối truy cập không phải con người, dịch vụ điện toán đám mây, chương trình gửi thư rác, công cụ cào, vv. Nó làm điều này bằng cách tính toán CIDR có thể các địa chỉ IP cung cấp từ các yêu cầu gửi đến và sau đó cố gắng để phù hợp với những CIDR có thể chống lại các tập tin chữ ký của nó (các tập tin chữ ký chứa danh sách các CIDR các địa chỉ IP coi như là nguồn của lưu lượng không mong muốn); Nếu trận đấu được tìm thấy, các yêu cầu được chặn.
 
-*(Xem: ["CIDR" là gì?](#WHAT_IS_A_CIDR)).*
+*(Xem: ["CIDR" là gì?](#user-content-WHAT_IS_A_CIDR)).*
 
 BẢN QUYỀN [CIDRAM](https://cidram.github.io/) 2016 và hơn GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
@@ -97,7 +97,7 @@ CIDRAM nên tự động chặn các yêu cầu không mong muốn để trang m
 
 Bạn có thể tùy chỉnh cấu hình của bạn và tùy chỉnh mà CIDR bị chặn bằng cách sửa đổi tập tin cấu hình hay tập tin chữ ký của bạn.
 
-Nếu bạn gặp bất kỳ sai tích cực, xin vui lòng liên hệ với tôi để cho tôi biết về nó. *(Xem: ["Sai tích cực" là gì?](#WHAT_IS_A_FALSE_POSITIVE)).*
+Nếu bạn gặp bất kỳ sai tích cực, xin vui lòng liên hệ với tôi để cho tôi biết về nó. *(Xem: ["Sai tích cực" là gì?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM có thể được cập nhật bằng tay hoặc thông qua front-end. CIDRAM cũng có thể được cập nhật qua Composer hoặc WordPress, nếu ban đầu được cài đặt qua các phương tiện đó.
 
@@ -629,7 +629,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
-__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="vi">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
+__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#những-gì-tôi-có-thể-sử-dụng-cho-default_dns" hreflang="vi">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
 
 ##### "default_algo" `[string]`
 - Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai.
@@ -1225,7 +1225,7 @@ used
 ### 6. <a name="SECTION6"></a>ĐỊNH DẠNG CỦA CHỬ KÝ
 
 *Xem thêm:*
-- *["Chữ ký" là gì?](#WHAT_IS_A_SIGNATURE)*
+- *["Chữ ký" là gì?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 KHÁI NIỆM CƠ BẢN (ĐỐI VỚI TẬP TIN CHỮ KÝ)
 
@@ -1581,30 +1581,30 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 
 ### 8. <a name="SECTION8"></a>NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)
 
-- ["Chữ ký" là gì?](#WHAT_IS_A_SIGNATURE)
-- ["CIDR" là gì?](#WHAT_IS_A_CIDR)
-- ["Sai tích cực" là gì?](#WHAT_IS_A_FALSE_POSITIVE)
-- [CIDRAM có thể chặn toàn bộ quốc gia?](#BLOCK_ENTIRE_COUNTRIES)
-- [Tần suất cập nhật chữ ký là bao nhiêu?](#SIGNATURE_UPDATE_FREQUENCY)
-- [Tôi đã gặp một vấn đề trong khi sử dụng CIDRAM và tôi không biết phải làm gì về nó! Hãy giúp tôi!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [Tôi đã bị chặn bởi CIDRAM từ một trang web mà tôi muốn ghé thăm! Hãy giúp tôi!](#BLOCKED_WHAT_TO_DO)
-- [Tôi muốn sử dụng CIDRAM v3 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#MINIMUM_PHP_VERSION_V3)
-- [Tôi có thể sử dụng một cài đặt CIDRAM để bảo vệ nhiều tên miền?](#PROTECT_MULTIPLE_DOMAINS)
-- [Tôi không muốn lãng phí thời gian bằng cách cài đặt này và đảm bảo rằng nó hoạt động với trang web của tôi; Tôi có thể trả tiền cho bạn để làm điều đó cho tôi?](#PAY_YOU_TO_DO_IT)
-- [Tôi có thể thuê bạn hay bất kỳ nhà phát triển nào của dự án này cho công việc riêng tư?](#HIRE_FOR_PRIVATE_WORK)
-- [Tôi cần sửa đổi chuyên môn, tuỳ chỉnh, vv; Bạn có thể giúp?](#SPECIALIST_MODIFICATIONS)
-- [Tôi là nhà phát triển, nhà thiết kế trang web, hay lập trình viên. Tôi có thể chấp nhận hay cung cấp các công việc liên quan đến dự án này không?](#ACCEPT_OR_OFFER_WORK)
-- [Tôi muốn đóng góp cho dự án; Tôi có thể làm được điều này?](#WANT_TO_CONTRIBUTE)
-- [Tôi có thể sử dụng cron để cập nhật tự động không?](#CRON_TO_UPDATE_AUTOMATICALLY)
-- ["Vi phạm" là gì?](#WHAT_ARE_INFRACTIONS)
-- [CIDRAM có thể chặn tên máy chủ không?](#BLOCK_HOSTNAMES)
-- [Những gì tôi có thể sử dụng cho "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [Tôi có thể sử dụng CIDRAM để bảo vệ những thứ khác ngoài trang web (v.d., máy chủ email, FTP, SSH, IRC, vv)?](#PROTECT_OTHER_THINGS)
-- [Sẽ xảy ra sự cố nếu tôi sử dụng CIDRAM cùng lúc với việc sử dụng các CDN hoặc các dịch vụ bộ nhớ đệm?](#CDN_CACHING_PROBLEMS)
-- [CIDRAM có bảo vệ trang web của tôi khỏi các cuộc tấn công DDoS không?](#DDOS_ATTACKS)
-- [Khi tôi kích hoạt hoặc hủy kích hoạt các mô-đun hay các tập tin chữ ký thông qua trang cập nhật, nó sắp xếp chúng theo thứ tự chữ và số trong cấu hình. Tôi có thể thay đổi cách họ được sắp xếp không?](#CHANGE_COMPONENT_SORT_ORDER)
-- ["PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?](#HOW_TO_USE_PDO)
-- [CIDRAM đang chặn cronjobs; Làm thế nào để khắc phục điều này?](#BLOCK_CRON)
+- ["Chữ ký" là gì?](#user-content-WHAT_IS_A_SIGNATURE)
+- ["CIDR" là gì?](#user-content-WHAT_IS_A_CIDR)
+- ["Sai tích cực" là gì?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [CIDRAM có thể chặn toàn bộ quốc gia?](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [Tần suất cập nhật chữ ký là bao nhiêu?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [Tôi đã gặp một vấn đề trong khi sử dụng CIDRAM và tôi không biết phải làm gì về nó! Hãy giúp tôi!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [Tôi đã bị chặn bởi CIDRAM từ một trang web mà tôi muốn ghé thăm! Hãy giúp tôi!](#user-content-BLOCKED_WHAT_TO_DO)
+- [Tôi muốn sử dụng CIDRAM v3 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Tôi có thể sử dụng một cài đặt CIDRAM để bảo vệ nhiều tên miền?](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [Tôi không muốn lãng phí thời gian bằng cách cài đặt này và đảm bảo rằng nó hoạt động với trang web của tôi; Tôi có thể trả tiền cho bạn để làm điều đó cho tôi?](#user-content-PAY_YOU_TO_DO_IT)
+- [Tôi có thể thuê bạn hay bất kỳ nhà phát triển nào của dự án này cho công việc riêng tư?](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [Tôi cần sửa đổi chuyên môn, tuỳ chỉnh, vv; Bạn có thể giúp?](#user-content-SPECIALIST_MODIFICATIONS)
+- [Tôi là nhà phát triển, nhà thiết kế trang web, hay lập trình viên. Tôi có thể chấp nhận hay cung cấp các công việc liên quan đến dự án này không?](#user-content-ACCEPT_OR_OFFER_WORK)
+- [Tôi muốn đóng góp cho dự án; Tôi có thể làm được điều này?](#user-content-WANT_TO_CONTRIBUTE)
+- [Tôi có thể sử dụng cron để cập nhật tự động không?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- ["Vi phạm" là gì?](#user-content-WHAT_ARE_INFRACTIONS)
+- [CIDRAM có thể chặn tên máy chủ không?](#user-content-BLOCK_HOSTNAMES)
+- [Những gì tôi có thể sử dụng cho "default_dns"?](#user-content-những-gì-tôi-có-thể-sử-dụng-cho-default_dns)
+- [Tôi có thể sử dụng CIDRAM để bảo vệ những thứ khác ngoài trang web (v.d., máy chủ email, FTP, SSH, IRC, vv)?](#user-content-PROTECT_OTHER_THINGS)
+- [Sẽ xảy ra sự cố nếu tôi sử dụng CIDRAM cùng lúc với việc sử dụng các CDN hoặc các dịch vụ bộ nhớ đệm?](#user-content-CDN_CACHING_PROBLEMS)
+- [CIDRAM có bảo vệ trang web của tôi khỏi các cuộc tấn công DDoS không?](#user-content-DDOS_ATTACKS)
+- [Khi tôi kích hoạt hoặc hủy kích hoạt các mô-đun hay các tập tin chữ ký thông qua trang cập nhật, nó sắp xếp chúng theo thứ tự chữ và số trong cấu hình. Tôi có thể thay đổi cách họ được sắp xếp không?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- ["PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM đang chặn cronjobs; Làm thế nào để khắc phục điều này?](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>"Chữ ký" là gì?
 
@@ -2195,4 +2195,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.02.17.
+Lần cuối cập nhật: 2023.03.05.

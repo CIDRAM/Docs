@@ -1,17 +1,17 @@
 ## CIDRAM v2 中文（傳統）文檔。
 
 ### 內容
-- 1. [前言](#SECTION1)
-- 2. [如何安裝](#SECTION2)
-- 3. [如何使用](#SECTION3)
-- 4. [前端管理](#SECTION4)
-- 5. [文件在包](#SECTION5)
-- 6. [配置選項](#SECTION6)
-- 7. [簽名格式](#SECTION7)
-- 8. [已知的兼容問題](#SECTION8)
-- 9. [常見問題（FAQ）](#SECTION9)
+- 1. [前言](#user-content-SECTION1)
+- 2. [如何安裝](#user-content-SECTION2)
+- 3. [如何使用](#user-content-SECTION3)
+- 4. [前端管理](#user-content-SECTION4)
+- 5. [文件在包](#user-content-SECTION5)
+- 6. [配置選項](#user-content-SECTION6)
+- 7. [簽名格式](#user-content-SECTION7)
+- 8. [已知的兼容問題](#user-content-SECTION8)
+- 9. [常見問題（FAQ）](#user-content-SECTION9)
 - 10. *保留以備將來添加到文檔中。*
-- 11. [法律信息](#SECTION11)
+- 11. [法律信息](#user-content-SECTION11)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -22,7 +22,7 @@
 
 CIDRAM （無類別域間路由訪問管理器）是一個PHP腳本，​旨在保護網站途經阻止請求該從始發IP地址視為不良的流量來源，​包括（但不限於）流量該從非人類的訪問端點，​雲服務，​垃圾郵件發送者，​網站鏟運機，​等等。​它通過計算CIDR的提供的IP地址從入站請求和試圖匹配這些CIDR反對它的簽名文件（這些簽名文件包含CIDR的IP地址視為不良的流量來源）；如果找到匹配，​請求被阻止。
 
-*(看到：[什麼是『CIDR』？​](#WHAT_IS_A_CIDR))。​*
+*(看到：[什麼是『CIDR』？​](#user-content-WHAT_IS_A_CIDR))。​*
 
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 和走向未來 GNU/GPLv2 由 [Caleb M (Maikuolan)](https://github.com/Maikuolan)。
 
@@ -89,7 +89,7 @@ CIDRAM 應自動阻止不良的請求至您的網站，​沒有任何需求除�
 
 您可以定制您的配置和您可以定制什麼CIDR被阻止通過修改您的配置文件和/或您的簽名文件.
 
-如果您遇到任何假陽性，​請聯繫我讓我知道這件事。 *(看到：[什麼是『假陽性』？​](#WHAT_IS_A_FALSE_POSITIVE))。​*
+如果您遇到任何假陽性，​請聯繫我讓我知道這件事。 *(看到：[什麼是『假陽性』？​](#user-content-WHAT_IS_A_FALSE_POSITIVE))。​*
 
 CIDRAM可以手動或通過前端更新。​CIDRAM也可以通過Composer或WordPress更新，如果最初通過這些方式安裝的話。
 
@@ -608,7 +608,7 @@ Configuration (v2)
 ##### 『default_dns』
 - 以逗號分隔的DNS服務器列表，​用於主機名查找。​標準 = 『8.8.8.8,8.8.4.4』 (Google DNS)。​警告：不要修改此除非您知道什麼您做著！
 
-*也可以看看：​[在『default_dns』中我可以使用什麼？](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+*也可以看看：​[在『default_dns』中我可以使用什麼？](#user-content-在default_dns中我可以使用什麼)*
 
 ##### 『search_engine_verification』
 - 嘗試驗證來自搜索引擎的請求？​驗證搜索引擎確保他們不會因超過違規限製而被禁止 （禁止在您的網站上使用搜索引擎通常會有產生負面影響對您的搜索引擎排名，​SEO，​等等）。​當被驗證，​搜索引擎可以被阻止，​但不會被禁止。​當不被驗證，​他們可以由於超過違規限製而被禁止。​另外，​搜索引擎驗證提供保護針對假搜索引擎請求和針對潛在的惡意實體偽裝成搜索引擎（當搜索引擎驗證是啟用，​這些請求將被阻止）。​True（真）=搜索引擎驗證是啟用【標準】；​False（假）=搜索引擎驗證是禁用。
@@ -833,7 +833,7 @@ api
 #### 『legal』 （類別）
 有關法律義務的配置。
 
-*請參閱文檔的『[法律信息](#SECTION11)』章節以獲取更多有關法律義務的信息，以及它可以如何影響您的配置義務。*
+*請參閱文檔的『[法律信息](#user-content-SECTION11)』章節以獲取更多有關法律義務的信息，以及它可以如何影響您的配置義務。*
 
 ##### 『pseudonymise_ip_addresses』
 - 編寫日誌文件時使用假名的IP地址嗎？​True（真）=使用假名【標準】；False（假）=不使用假名。
@@ -989,7 +989,7 @@ PHPMailer配置。
 ##### 『pdo_dsn』
 - PDO DSN值。​默認 = 『`mysql:dbname=cidram;host=localhost;port=3306`』。
 
-*也可以看看：​[『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？](#HOW_TO_USE_PDO)*
+*也可以看看：​[『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？](#user-content-HOW_TO_USE_PDO)*
 
 ##### 『pdo_username』
 - PDO用戶名。
@@ -1003,7 +1003,7 @@ PHPMailer配置。
 ### 7. <a name="SECTION7"></a>簽名格式
 
 *也可以看看：*
-- *[什麼是『簽名』？](#WHAT_IS_A_SIGNATURE)*
+- *[什麼是『簽名』？](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 7.0 基本概念（對於簽名文件）
 
@@ -1370,31 +1370,31 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 
 ### 9. <a name="SECTION9"></a>常見問題（FAQ）
 
-- [什麼是『簽名』？](#WHAT_IS_A_SIGNATURE)
-- [什麼是『CIDR』？](#WHAT_IS_A_CIDR)
-- [什麼是『假陽性』？](#WHAT_IS_A_FALSE_POSITIVE)
-- [CIDRAM可以阻止整個國家嗎？](#BLOCK_ENTIRE_COUNTRIES)
-- [什麼是簽名更新頻率？](#SIGNATURE_UPDATE_FREQUENCY)
-- [我在使用CIDRAM時遇到問題和我不知道該怎麼辦！​請幫忙！](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [因為CIDRAM，​我被阻止從我想訪問的網站！​請幫忙！](#BLOCKED_WHAT_TO_DO)
-- [我想使用CIDRAM（在v2之前）與早於5.4.0的PHP版本；​您能幫我嗎？](#MINIMUM_PHP_VERSION)
-- [我想使用CIDRAM（在v2期间）與早於7.2.0的PHP版本；​您能幫我嗎？](#MINIMUM_PHP_VERSION_V2)
-- [我可以使用單個CIDRAM安裝來保護多個域嗎？](#PROTECT_MULTIPLE_DOMAINS)
-- [我不想浪費時間安裝這個和確保它在我的網站上功能正常；我可以僱用您這樣做嗎？](#PAY_YOU_TO_DO_IT)
-- [我可以聘請您或這個項目的任何開發者私人工作嗎？](#HIRE_FOR_PRIVATE_WORK)
-- [我需要專家修改，​的定制，​等等；您能幫我嗎？](#SPECIALIST_MODIFICATIONS)
-- [我是開發人員，​網站設計師，​或程序員。​我可以接受還是提供與這個項目有關的工作？](#ACCEPT_OR_OFFER_WORK)
-- [我想為這個項目做出貢獻；我可以這樣做嗎？](#WANT_TO_CONTRIBUTE)
-- [可以使用cron自動更新嗎？](#CRON_TO_UPDATE_AUTOMATICALLY)
-- [什麼是『違規』？](#WHAT_ARE_INFRACTIONS)
-- [CIDRAM可以阻止主機名？](#BLOCK_HOSTNAMES)
-- [在『default_dns』中我可以使用什麼？](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [我可以使用CIDRAM保護網站以外的東西嗎（例如，電子郵件服務器，FTP，SSH，IRC，等）？](#PROTECT_OTHER_THINGS)
-- [如果我在使用CDN或緩存服務的同時使用CIDRAM，會發生問題嗎？](#CDN_CACHING_PROBLEMS)
-- [CIDRAM會保護我的網站免受DDoS攻擊嗎？](#DDOS_ATTACKS)
-- [當我通過更新頁面啟用或禁用模塊或簽名文件時，它會在配置中它們將按字母數字排序。​我可以改變他們排序的方式嗎？](#CHANGE_COMPONENT_SORT_ORDER)
-- [『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？](#HOW_TO_USE_PDO)
-- [CIDRAM正在阻止cronjobs。​如何解決這個問題？](#BLOCK_CRON)
+- [什麼是『簽名』？](#user-content-WHAT_IS_A_SIGNATURE)
+- [什麼是『CIDR』？](#user-content-WHAT_IS_A_CIDR)
+- [什麼是『假陽性』？](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [CIDRAM可以阻止整個國家嗎？](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [什麼是簽名更新頻率？](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [我在使用CIDRAM時遇到問題和我不知道該怎麼辦！​請幫忙！](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [因為CIDRAM，​我被阻止從我想訪問的網站！​請幫忙！](#user-content-BLOCKED_WHAT_TO_DO)
+- [我想使用CIDRAM（在v2之前）與早於5.4.0的PHP版本；​您能幫我嗎？](#user-content-MINIMUM_PHP_VERSION)
+- [我想使用CIDRAM（在v2期间）與早於7.2.0的PHP版本；​您能幫我嗎？](#user-content-MINIMUM_PHP_VERSION_V2)
+- [我可以使用單個CIDRAM安裝來保護多個域嗎？](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [我不想浪費時間安裝這個和確保它在我的網站上功能正常；我可以僱用您這樣做嗎？](#user-content-PAY_YOU_TO_DO_IT)
+- [我可以聘請您或這個項目的任何開發者私人工作嗎？](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [我需要專家修改，​的定制，​等等；您能幫我嗎？](#user-content-SPECIALIST_MODIFICATIONS)
+- [我是開發人員，​網站設計師，​或程序員。​我可以接受還是提供與這個項目有關的工作？](#user-content-ACCEPT_OR_OFFER_WORK)
+- [我想為這個項目做出貢獻；我可以這樣做嗎？](#user-content-WANT_TO_CONTRIBUTE)
+- [可以使用cron自動更新嗎？](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- [什麼是『違規』？](#user-content-WHAT_ARE_INFRACTIONS)
+- [CIDRAM可以阻止主機名？](#user-content-BLOCK_HOSTNAMES)
+- [在『default_dns』中我可以使用什麼？](#user-content-在default_dns中我可以使用什麼)
+- [我可以使用CIDRAM保護網站以外的東西嗎（例如，電子郵件服務器，FTP，SSH，IRC，等）？](#user-content-PROTECT_OTHER_THINGS)
+- [如果我在使用CDN或緩存服務的同時使用CIDRAM，會發生問題嗎？](#user-content-CDN_CACHING_PROBLEMS)
+- [CIDRAM會保護我的網站免受DDoS攻擊嗎？](#user-content-DDOS_ATTACKS)
+- [當我通過更新頁面啟用或禁用模塊或簽名文件時，它會在配置中它們將按字母數字排序。​我可以改變他們排序的方式嗎？](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- [『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM正在阻止cronjobs。​如何解決這個問題？](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>什麼是『簽名』？
 
@@ -1974,4 +1974,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2022年7月27日。
+最後更新：2023年3月5日。

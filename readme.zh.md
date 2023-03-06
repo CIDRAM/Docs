@@ -1,15 +1,15 @@
 ## CIDRAM v3 中文（简体）文档。
 
 ### 内容
-- 1. [前言](#SECTION1)
-- 2. [如何安装](#SECTION2)
-- 3. [如何使用](#SECTION3)
-- 4. [前端管理](#SECTION4)
-- 5. [配置选项](#SECTION5)
-- 6. [签名格式](#SECTION6)
-- 7. [已知的兼容问题](#SECTION7)
-- 8. [常见问题（FAQ）](#SECTION8)
-- 9. [法律信息](#SECTION9)
+- 1. [前言](#user-content-SECTION1)
+- 2. [如何安装](#user-content-SECTION2)
+- 3. [如何使用](#user-content-SECTION3)
+- 4. [前端管理](#user-content-SECTION4)
+- 5. [配置选项](#user-content-SECTION5)
+- 6. [签名格式](#user-content-SECTION6)
+- 7. [已知的兼容问题](#user-content-SECTION7)
+- 8. [常见问题（FAQ）](#user-content-SECTION8)
+- 9. [法律信息](#user-content-SECTION9)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -20,7 +20,7 @@
 
 CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在保护网站途经阻止请求该从始发IP地址视为不良的流量来源，​包括（但不限于）流量该从非人类的访问端点，​云服务，​垃圾邮件发送者，​网站铲运机，​等等。​它通过计算CIDR的提供的IP地址从入站请求和试图匹配这些CIDR反对它的签名文件（这些签名文件包含CIDR的IP地址视为不良的流量来源）；如果找到匹配，​请求被阻止。
 
-*(看到：[什么是“CIDR”？​](#WHAT_IS_A_CIDR))。​*
+*(看到：[什么是“CIDR”？​](#user-content-WHAT_IS_A_CIDR))。​*
 
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 和走向未来 GNU/GPLv2 由 [[Caleb M (Maikuolan)](https://github.com/Maikuolan)](https://github.com/Maikuolan)。
 
@@ -97,7 +97,7 @@ CIDRAM 应自动阻止不良的请求至您的网站，​没有任何需求除�
 
 您可以定制您的配置和您可以定制什么CIDR被阻止通过修改您的配置文件和/或您的签名文件.
 
-如果您遇到任何假阳性，​请联系我让我知道这件事。 *(看到：[什么是“假阳性”？​](#WHAT_IS_A_FALSE_POSITIVE))。​*
+如果您遇到任何假阳性，​请联系我让我知道这件事。 *(看到：[什么是“假阳性”？​](#user-content-WHAT_IS_A_FALSE_POSITIVE))。​*
 
 CIDRAM可以手动或通过前端更新。​CIDRAM也可以通过Composer或WordPress更新，如果最初通过这些方式安装的话。
 
@@ -599,7 +599,7 @@ ban_override
 ##### “default_dns” `[string]`
 - DNS服务器列表，​用于主机名查找。​警告：不要修改此除非您知道什么您做着！
 
-__常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a></em>
+__常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#在default_dns中我可以使用什么" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a></em>
 
 ##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。
@@ -1175,7 +1175,7 @@ used
 ### 6. <a name="SECTION6"></a>签名格式
 
 *也可以看看：*
-- *[什么是“签名”？](#WHAT_IS_A_SIGNATURE)*
+- *[什么是“签名”？](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 基本概念（对于签名文件）
 
@@ -1531,30 +1531,30 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 
 ### 8. <a name="SECTION8"></a>常见问题（FAQ）
 
-- [什么是“签名”？](#WHAT_IS_A_SIGNATURE)
-- [什么是“CIDR”？](#WHAT_IS_A_CIDR)
-- [什么是“假阳性”？](#WHAT_IS_A_FALSE_POSITIVE)
-- [CIDRAM可以阻止整个国家吗？](#BLOCK_ENTIRE_COUNTRIES)
-- [什么是签名更新频率？](#SIGNATURE_UPDATE_FREQUENCY)
-- [我在使用CIDRAM时遇到问题和我不知道该怎么办！​请帮忙！](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [因为CIDRAM，​我被阻止从我想访问的网站！​请帮忙！](#BLOCKED_WHAT_TO_DO)
-- [我想使用CIDRAM（在v2期间）与早于7.2的PHP版本；​您能帮我吗？](#MINIMUM_PHP_VERSION_V3)
-- [我可以使用单个CIDRAM安装来保护多个域吗？](#PROTECT_MULTIPLE_DOMAINS)
-- [我不想浪费时间安装这个和确保它在我的网站上功能正常；我可以雇用您这样做吗？](#PAY_YOU_TO_DO_IT)
-- [我可以聘请您或这个项目的任何开发者私人工作吗？](#HIRE_FOR_PRIVATE_WORK)
-- [我需要专家修改，​的定制，​等等；您能帮我吗？](#SPECIALIST_MODIFICATIONS)
-- [我是开发人员，​网站设计师，​或程序员。​我可以接受还是提供与这个项目有关的工作？](#ACCEPT_OR_OFFER_WORK)
-- [我想为这个项目做出贡献；我可以这样做吗？](#WANT_TO_CONTRIBUTE)
-- [可以使用cron自动更新吗？](#CRON_TO_UPDATE_AUTOMATICALLY)
-- [什么是“违规”？](#WHAT_ARE_INFRACTIONS)
-- [CIDRAM可以阻止主机名？](#BLOCK_HOSTNAMES)
-- [在“default_dns”中我可以使用什么？](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [我可以使用CIDRAM保护网站以外的东西吗（例如，电子邮件服务器，FTP，SSH，IRC，等）？](#PROTECT_OTHER_THINGS)
-- [如果我在使用CDN或缓存服务的同时使用CIDRAM，会发生问题吗？](#CDN_CACHING_PROBLEMS)
-- [CIDRAM会保护我的网站免受DDoS攻击吗？](#DDOS_ATTACKS)
-- [当我通过更新页面启用或禁用模块或签名文件时，它会在配置中它们将按字母数字排序。​我可以改变他们排序的方式吗？](#CHANGE_COMPONENT_SORT_ORDER)
-- [“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？](#HOW_TO_USE_PDO)
-- [CIDRAM正在阻止cronjobs。​如何解决这个问题？](#BLOCK_CRON)
+- [什么是“签名”？](#user-content-WHAT_IS_A_SIGNATURE)
+- [什么是“CIDR”？](#user-content-WHAT_IS_A_CIDR)
+- [什么是“假阳性”？](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [CIDRAM可以阻止整个国家吗？](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [什么是签名更新频率？](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [我在使用CIDRAM时遇到问题和我不知道该怎么办！​请帮忙！](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [因为CIDRAM，​我被阻止从我想访问的网站！​请帮忙！](#user-content-BLOCKED_WHAT_TO_DO)
+- [我想使用CIDRAM（在v2期间）与早于7.2的PHP版本；​您能帮我吗？](#user-content-MINIMUM_PHP_VERSION_V3)
+- [我可以使用单个CIDRAM安装来保护多个域吗？](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [我不想浪费时间安装这个和确保它在我的网站上功能正常；我可以雇用您这样做吗？](#user-content-PAY_YOU_TO_DO_IT)
+- [我可以聘请您或这个项目的任何开发者私人工作吗？](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [我需要专家修改，​的定制，​等等；您能帮我吗？](#user-content-SPECIALIST_MODIFICATIONS)
+- [我是开发人员，​网站设计师，​或程序员。​我可以接受还是提供与这个项目有关的工作？](#user-content-ACCEPT_OR_OFFER_WORK)
+- [我想为这个项目做出贡献；我可以这样做吗？](#user-content-WANT_TO_CONTRIBUTE)
+- [可以使用cron自动更新吗？](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- [什么是“违规”？](#user-content-WHAT_ARE_INFRACTIONS)
+- [CIDRAM可以阻止主机名？](#user-content-BLOCK_HOSTNAMES)
+- [在“default_dns”中我可以使用什么？](#user-content-在default_dns中我可以使用什么)
+- [我可以使用CIDRAM保护网站以外的东西吗（例如，电子邮件服务器，FTP，SSH，IRC，等）？](#user-content-PROTECT_OTHER_THINGS)
+- [如果我在使用CDN或缓存服务的同时使用CIDRAM，会发生问题吗？](#user-content-CDN_CACHING_PROBLEMS)
+- [CIDRAM会保护我的网站免受DDoS攻击吗？](#user-content-DDOS_ATTACKS)
+- [当我通过更新页面启用或禁用模块或签名文件时，它会在配置中它们将按字母数字排序。​我可以改变他们排序的方式吗？](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- [“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM正在阻止cronjobs。​如何解决这个问题？](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>什么是“签名”？
 
@@ -2149,4 +2149,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2023年2月17日。
+最后更新：2023年3月5日。

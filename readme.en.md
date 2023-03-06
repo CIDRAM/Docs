@@ -1,15 +1,15 @@
 ## Documentation for CIDRAM v3 (English).
 
 ### Contents
-- 1. [PREAMBLE](#SECTION1)
-- 2. [HOW TO INSTALL](#SECTION2)
-- 3. [HOW TO USE](#SECTION3)
-- 4. [FRONT-END MANAGEMENT](#SECTION4)
-- 5. [CONFIGURATION OPTIONS](#SECTION5)
-- 6. [SIGNATURE FORMAT](#SECTION6)
-- 7. [KNOWN COMPATIBILITY PROBLEMS](#SECTION7)
-- 8. [FREQUENTLY ASKED QUESTIONS (FAQ)](#SECTION8)
-- 9. [LEGAL INFORMATION](#SECTION9)
+- 1. [PREAMBLE](#user-content-SECTION1)
+- 2. [HOW TO INSTALL](#user-content-SECTION2)
+- 3. [HOW TO USE](#user-content-SECTION3)
+- 4. [FRONT-END MANAGEMENT](#user-content-SECTION4)
+- 5. [CONFIGURATION OPTIONS](#user-content-SECTION5)
+- 6. [SIGNATURE FORMAT](#user-content-SECTION6)
+- 7. [KNOWN COMPATIBILITY PROBLEMS](#user-content-SECTION7)
+- 8. [FREQUENTLY ASKED QUESTIONS (FAQ)](#user-content-SECTION8)
+- 9. [LEGAL INFORMATION](#user-content-SECTION9)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -20,7 +20,7 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) is a PHP script designed to protect websites by blocking requests originating from IP addresses regarded as being sources of undesirable traffic, including (but not limited to) traffic from non-human access endpoints, cloud services, spambots, scrapers, etc. It does this by calculating the possible CIDRs of the IP addresses supplied from inbound requests and then attempting to match these possible CIDRs against its signature files (these signature files contain lists of CIDRs of IP addresses regarded as being sources of undesirable traffic); If matches are found, the requests are blocked.
 
-*(See: [What is a "CIDR"?](#WHAT_IS_A_CIDR)).*
+*(See: [What is a "CIDR"?](#user-content-WHAT_IS_A_CIDR)).*
 
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 and beyond GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
@@ -97,7 +97,7 @@ CIDRAM should automatically block undesirable requests to your website without r
 
 You can customise your configuration and customise which CIDRs are blocked by modifying your configuration file and/or your signature files.
 
-If you encounter any false positives, please contact me to let me know about it. *(See: [What is a "false positive"?](#WHAT_IS_A_FALSE_POSITIVE)).*
+If you encounter any false positives, please contact me to let me know about it. *(See: [What is a "false positive"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM can be updated manually or via the front-end. CIDRAM can also be updated via Composer or WordPress, if originally installed via those means.
 
@@ -617,7 +617,7 @@ ban_override
 ##### "default_dns" `[string]`
 - A list of DNS servers to use for hostname lookups. WARNING: Don't change this unless you know what you're doing!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="en-AU">What can I use for "default_dns"?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#what-can-i-use-for-default_dns" hreflang="en-AU">What can I use for "default_dns"?</a></em>
 
 ##### "default_algo" `[string]`
 - Defines which algorithm to use for all future passwords and sessions.
@@ -1205,7 +1205,7 @@ used
 ### 6. <a name="SECTION6"></a>SIGNATURE FORMAT
 
 *See also:*
-- *[What is a "signature"?](#WHAT_IS_A_SIGNATURE)*
+- *[What is a "signature"?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 BASICS (FOR SIGNATURE FILES)
 
@@ -1561,30 +1561,30 @@ Modules have been made available to ensure that the following packages and produ
 
 ### 8. <a name="SECTION8"></a>FREQUENTLY ASKED QUESTIONS (FAQ)
 
-- [What is a "signature"?](#WHAT_IS_A_SIGNATURE)
-- [What is a "CIDR"?](#WHAT_IS_A_CIDR)
-- [What is a "false positive"?](#WHAT_IS_A_FALSE_POSITIVE)
-- [Can CIDRAM block entire countries?](#BLOCK_ENTIRE_COUNTRIES)
-- [How frequently are signatures updated?](#SIGNATURE_UPDATE_FREQUENCY)
-- [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [I've been blocked by CIDRAM from a website that I want to visit! Please help!](#BLOCKED_WHAT_TO_DO)
-- [I want to use CIDRAM v3 with a PHP version older than 7.2; Can you help?](#MINIMUM_PHP_VERSION_V3)
-- [Can I use a single CIDRAM installation to protect multiple domains?](#PROTECT_MULTIPLE_DOMAINS)
-- [I don't want to mess around with installing this and getting it to work with my website; Can I just pay you to do it all for me?](#PAY_YOU_TO_DO_IT)
-- [Can I hire you or any of the developers of this project for private work?](#HIRE_FOR_PRIVATE_WORK)
-- [I need specialist modifications, customisations, etc; Can you help?](#SPECIALIST_MODIFICATIONS)
-- [I'm a developer, website designer, or programmer. Can I accept or offer work relating to this project?](#ACCEPT_OR_OFFER_WORK)
-- [I want to contribute to the project; Can I do this?](#WANT_TO_CONTRIBUTE)
-- [Can I use cron to update automatically?](#CRON_TO_UPDATE_AUTOMATICALLY)
-- [What are "infractions"?](#WHAT_ARE_INFRACTIONS)
-- [Can CIDRAM block hostnames?](#BLOCK_HOSTNAMES)
-- [What can I use for "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [Can I use CIDRAM to protect things other than websites (e.g., email servers, FTP, SSH, IRC, etc)?](#PROTECT_OTHER_THINGS)
-- [Will problems occur if I use CIDRAM at the same time as using CDNs or caching services?](#CDN_CACHING_PROBLEMS)
-- [Will CIDRAM protect my website from DDoS attacks?](#DDOS_ATTACKS)
-- [When I activate or deactivate modules or signature files via the updates page, it sorts them alphanumerically in the configuration. Can I change the way that they get sorted?](#CHANGE_COMPONENT_SORT_ORDER)
-- [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#HOW_TO_USE_PDO)
-- [CIDRAM is blocking cronjobs; How to fix this?](#BLOCK_CRON)
+- [What is a "signature"?](#user-content-WHAT_IS_A_SIGNATURE)
+- [What is a "CIDR"?](#user-content-WHAT_IS_A_CIDR)
+- [What is a "false positive"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [Can CIDRAM block entire countries?](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [How frequently are signatures updated?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [I've been blocked by CIDRAM from a website that I want to visit! Please help!](#user-content-BLOCKED_WHAT_TO_DO)
+- [I want to use CIDRAM v3 with a PHP version older than 7.2; Can you help?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Can I use a single CIDRAM installation to protect multiple domains?](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [I don't want to mess around with installing this and getting it to work with my website; Can I just pay you to do it all for me?](#user-content-PAY_YOU_TO_DO_IT)
+- [Can I hire you or any of the developers of this project for private work?](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [I need specialist modifications, customisations, etc; Can you help?](#user-content-SPECIALIST_MODIFICATIONS)
+- [I'm a developer, website designer, or programmer. Can I accept or offer work relating to this project?](#user-content-ACCEPT_OR_OFFER_WORK)
+- [I want to contribute to the project; Can I do this?](#user-content-WANT_TO_CONTRIBUTE)
+- [Can I use cron to update automatically?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- [What are "infractions"?](#user-content-WHAT_ARE_INFRACTIONS)
+- [Can CIDRAM block hostnames?](#user-content-BLOCK_HOSTNAMES)
+- [What can I use for "default_dns"?](#user-content-what-can-i-use-for-default_dns)
+- [Can I use CIDRAM to protect things other than websites (e.g., email servers, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
+- [Will problems occur if I use CIDRAM at the same time as using CDNs or caching services?](#user-content-CDN_CACHING_PROBLEMS)
+- [Will CIDRAM protect my website from DDoS attacks?](#user-content-DDOS_ATTACKS)
+- [When I activate or deactivate modules or signature files via the updates page, it sorts them alphanumerically in the configuration. Can I change the way that they get sorted?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM is blocking cronjobs; How to fix this?](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>What is a "signature"?
 
@@ -2186,4 +2186,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 17 February 2023 (2023.02.17).
+Last Updated: 5 March 2023 (2023.03.05).

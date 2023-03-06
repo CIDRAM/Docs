@@ -1,17 +1,17 @@
 ## Dokumentasi untuk CIDRAM v2 (Bahasa Indonesia).
 
 ### Isi
-- 1. [SEPATAH KATA](#SECTION1)
-- 2. [BAGAIMANA CARA MENGINSTAL](#SECTION2)
-- 3. [BAGAIMANA CARA MENGGUNAKAN](#SECTION3)
-- 4. [MANAJEMEN BAGIAN DEPAN](#SECTION4)
-- 5. [FILE YANG DIIKUTKAN DALAM PAKET INI](#SECTION5)
-- 6. [OPSI KONFIGURASI](#SECTION6)
-- 7. [FORMAT TANDA TANGAN](#SECTION7)
-- 8. [MASALAH KOMPATIBILITAS DIKETAHUI](#SECTION8)
-- 9. [PERTANYAAN YANG SERING DIAJUKAN (FAQ)](#SECTION9)
+- 1. [SEPATAH KATA](#user-content-SECTION1)
+- 2. [BAGAIMANA CARA MENGINSTAL](#user-content-SECTION2)
+- 3. [BAGAIMANA CARA MENGGUNAKAN](#user-content-SECTION3)
+- 4. [MANAJEMEN BAGIAN DEPAN](#user-content-SECTION4)
+- 5. [FILE YANG DIIKUTKAN DALAM PAKET INI](#user-content-SECTION5)
+- 6. [OPSI KONFIGURASI](#user-content-SECTION6)
+- 7. [FORMAT TANDA TANGAN](#user-content-SECTION7)
+- 8. [MASALAH KOMPATIBILITAS DIKETAHUI](#user-content-SECTION8)
+- 9. [PERTANYAAN YANG SERING DIAJUKAN (FAQ)](#user-content-SECTION9)
 - 10. *Dicadangkan untuk penambahan dokumentasi di masa mendatang.*
-- 11. [INFORMASI HUKUM](#SECTION11)
+- 11. [INFORMASI HUKUM](#user-content-SECTION11)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -22,7 +22,7 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) adalah skrip PHP dirancang untuk melindungi situs oleh memblokir permintaan-permintaan berasal dari alamat IP yang dianggap sumber lalu lintas yang tidak diinginkan, termasuk (tapi tidak terbatas pada) lalu lintas dari jalur akses yang tidak manusia, layanan cloud, spambots, pencakar/scrapers, dll. Hal ini dilakukan melalui menghitung kisaran CIDR alamat IP dipasok dari permintaan dan mencoba untuk mencocokkan ini kisaran CIDR terhadap file tanda tangan (file tanda tangan ini berisi daftar CIDR alamat IP dianggap sumber lalu lintas yang tidak diinginkan); Jika dicocokkan, permintaan yang diblokir.
 
-*(Lihat: [Apa yang "CIDR"?](#WHAT_IS_A_CIDR)).*
+*(Lihat: [Apa yang "CIDR"?](#user-content-WHAT_IS_A_CIDR)).*
 
 [CIDRAM](https://cidram.github.io/) HAK CIPTA 2016 dan di atas GNU/GPLv2 oleh [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
@@ -89,7 +89,7 @@ CIDRAM harus secara otomatis memblokir permintaan yang tidak diinginkan ke websi
 
 Anda dapat menyesuaikan konfigurasi Anda dan menyesuaikan apa CIDRs diblokir oleh memodifikasi file konfigurasi Anda dan/atau file tanda tangan Anda.
 
-Jika Anda menemukan positif palsu, tolong hubungi saya untuk membiarkan saya tahu tentang hal itu. *(Lihat: [Apa yang dimaksud dengan "positif palsu"?](#WHAT_IS_A_FALSE_POSITIVE)).*
+Jika Anda menemukan positif palsu, tolong hubungi saya untuk membiarkan saya tahu tentang hal itu. *(Lihat: [Apa yang dimaksud dengan "positif palsu"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM dapat diperbarui secara manual atau melalui bagian depan. CIDRAM juga bisa diperbarui via Composer atau WordPress, jika sudah diinstal dengan cara ini.
 
@@ -608,7 +608,7 @@ Nilai | Menghasilkan | Deskripsi
 ##### "default_dns"
 - Sebuah daftar dipisahkan dengan koma dari server DNS yang digunakan untuk pencarian nama host. Default = "8.8.8.8,8.8.4.4" (Google DNS). PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
-*Lihat juga: [Apa yang bisa saya gunakan untuk "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+*Lihat juga: [Apa yang bisa saya gunakan untuk "default_dns"?](#user-content-apa-yang-bisa-saya-gunakan-untuk-default_dns)*
 
 ##### "search_engine_verification"
 - Mencoba memverifikasi permintaan dari mesin pencari? Verifikasi mesin pencari memastikan bahwa mereka tidak akan dilarang sebagai akibat dari melebihi batas pelanggaran (melarang mesin pencari dari situs web Anda biasanya akan memiliki efek negatif pada peringkat mesin pencari Anda, SEO, dll). Ketika diverifikasi, mesin pencari dapat diblokir seperti biasa, tapi tidak akan dilarang. Ketika tidak diverifikasi, itu mungkin bagi mereka untuk dilarang sebagai akibat dari melebihi batas pelanggaran. Juga, verifikasi mesin pencari memberikan proteksi terhadap permintaan mesin pencari palsu dan terhadap entitas yang berpotensi berbahaya yang menyamar sebagai mesin pencari (permintaan tersebut akan diblokir ketika verifikasi mesin pencari diaktifkan). True = Mengaktifkan verifikasi mesin pencari [Default]; False = Menonaktifkan verifikasi mesin pencari.
@@ -833,7 +833,7 @@ Kode status | Pesan status
 #### "legal" (Kategori)
 Konfigurasi yang berkaitan dengan persyaratan hukum.
 
-*Untuk informasi lebih lanjut tentang persyaratan hukum dan bagaimana ini dapat mempengaruhi persyaratan konfigurasi Anda, silahkan lihat bagian "[LEGAL INFORMATION](#SECTION11)" pada dokumentasi.*
+*Untuk informasi lebih lanjut tentang persyaratan hukum dan bagaimana ini dapat mempengaruhi persyaratan konfigurasi Anda, silahkan lihat bagian "[LEGAL INFORMATION](#user-content-SECTION11)" pada dokumentasi.*
 
 ##### "pseudonymise_ip_addresses"
 - Pseudonymise alamat IP saat menulis file log? True = Ya [Default]; False = Tidak.
@@ -989,7 +989,7 @@ Opsi cache tambahan.
 ##### "pdo_dsn"
 - Nilai DSN PDO. Default = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
-*Lihat juga: [Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?](#HOW_TO_USE_PDO)*
+*Lihat juga: [Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?](#user-content-HOW_TO_USE_PDO)*
 
 ##### "pdo_username"
 - Nama pengguna PDO.
@@ -1003,7 +1003,7 @@ Opsi cache tambahan.
 ### 7. <a name="SECTION7"></a>FORMAT TANDA TANGAN
 
 *Lihat juga:*
-- *[Apa yang "tanda tangan"?](#WHAT_IS_A_SIGNATURE)*
+- *[Apa yang "tanda tangan"?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 7.0 DASAR-DASAR (UNTUK FILE TANDA TANGAN)
 
@@ -1370,31 +1370,31 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 
 ### 9. <a name="SECTION9"></a>PERTANYAAN YANG SERING DIAJUKAN (FAQ)
 
-- [Apa yang "tanda tangan"?](#WHAT_IS_A_SIGNATURE)
-- [Apa yang "CIDR"?](#WHAT_IS_A_CIDR)
-- [Apa yang dimaksud dengan "positif palsu"?](#WHAT_IS_A_FALSE_POSITIVE)
-- [Dapat CIDRAM blok seluruh negara?](#BLOCK_ENTIRE_COUNTRIES)
-- [Seberapa sering tanda tangan diperbarui?](#SIGNATURE_UPDATE_FREQUENCY)
-- [Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [Saya diblokir oleh CIDRAM dari situs web yang saya ingin mengunjungi! Tolong bantu!](#BLOCKED_WHAT_TO_DO)
-- [Saya ingin menggunakan CIDRAM (sebelum v2) dengan versi PHP yang lebih tua dari 5.4.0; Anda dapat membantu?](#MINIMUM_PHP_VERSION)
-- [Saya ingin menggunakan CIDRAM (v2) dengan versi PHP yang lebih tua dari 7.2.0; Anda dapat membantu?](#MINIMUM_PHP_VERSION_V2)
-- [Dapatkah saya menggunakan satu instalasi CIDRAM untuk melindungi beberapa domain?](#PROTECT_MULTIPLE_DOMAINS)
-- [Saya tidak ingin membuang waktu dengan menginstal ini dan membuatnya bekerja dengan situs web saya; Bisakah saya membayar Anda untuk melakukan semuanya untuk saya?](#PAY_YOU_TO_DO_IT)
-- [Dapatkah saya mempekerjakan Anda atau pengembang proyek ini untuk pekerjaan pribadi?](#HIRE_FOR_PRIVATE_WORK)
-- [Saya perlu modifikasi khusus, customisasi, dll; Apakah kamu bisa membantu?](#SPECIALIST_MODIFICATIONS)
-- [Saya seorang pengembang, perancang situs web, atau programmer. Dapatkah saya menerima atau menawarkan pekerjaan yang berkaitan dengan proyek ini?](#ACCEPT_OR_OFFER_WORK)
-- [Saya ingin berkontribusi pada proyek ini; Dapatkah saya melakukan ini?](#WANT_TO_CONTRIBUTE)
-- [Dapatkah saya menggunakan cron untuk mengupdate secara otomatis?](#CRON_TO_UPDATE_AUTOMATICALLY)
-- [Apa "pelanggaran"?](#WHAT_ARE_INFRACTIONS)
-- [Dapatkah CIDRAM memblokir nama host?](#BLOCK_HOSTNAMES)
-- [Apa yang bisa saya gunakan untuk "default_dns"?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [Dapatkah saya menggunakan CIDRAM untuk melindungi hal-hal selain daripada situs web (misalnya, server email, FTP, SSH, IRC, dll)?](#PROTECT_OTHER_THINGS)
-- [Akankah masalah terjadi jika saya menggunakan CIDRAM pada saat yang sama dengan menggunakan layanan CDN atau cache?](#CDN_CACHING_PROBLEMS)
-- [Akankah CIDRAM melindungi situs web saya dari serangan DDoS?](#DDOS_ATTACKS)
-- [Ketika saya mengaktifkan atau menonaktifkan modul atau file tanda tangan melalui halaman pembaruan, itu memilah mereka secara alfanumerik dalam konfigurasi. Bisakah saya mengubah cara mereka disortir?](#CHANGE_COMPONENT_SORT_ORDER)
-- [Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?](#HOW_TO_USE_PDO)
-- [CIDRAM memblokir cronjobs; Bagaimana cara memperbaikinya?](#BLOCK_CRON)
+- [Apa yang "tanda tangan"?](#user-content-WHAT_IS_A_SIGNATURE)
+- [Apa yang "CIDR"?](#user-content-WHAT_IS_A_CIDR)
+- [Apa yang dimaksud dengan "positif palsu"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [Dapat CIDRAM blok seluruh negara?](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [Seberapa sering tanda tangan diperbarui?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [Saya diblokir oleh CIDRAM dari situs web yang saya ingin mengunjungi! Tolong bantu!](#user-content-BLOCKED_WHAT_TO_DO)
+- [Saya ingin menggunakan CIDRAM (sebelum v2) dengan versi PHP yang lebih tua dari 5.4.0; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION)
+- [Saya ingin menggunakan CIDRAM (v2) dengan versi PHP yang lebih tua dari 7.2.0; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION_V2)
+- [Dapatkah saya menggunakan satu instalasi CIDRAM untuk melindungi beberapa domain?](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [Saya tidak ingin membuang waktu dengan menginstal ini dan membuatnya bekerja dengan situs web saya; Bisakah saya membayar Anda untuk melakukan semuanya untuk saya?](#user-content-PAY_YOU_TO_DO_IT)
+- [Dapatkah saya mempekerjakan Anda atau pengembang proyek ini untuk pekerjaan pribadi?](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [Saya perlu modifikasi khusus, customisasi, dll; Apakah kamu bisa membantu?](#user-content-SPECIALIST_MODIFICATIONS)
+- [Saya seorang pengembang, perancang situs web, atau programmer. Dapatkah saya menerima atau menawarkan pekerjaan yang berkaitan dengan proyek ini?](#user-content-ACCEPT_OR_OFFER_WORK)
+- [Saya ingin berkontribusi pada proyek ini; Dapatkah saya melakukan ini?](#user-content-WANT_TO_CONTRIBUTE)
+- [Dapatkah saya menggunakan cron untuk mengupdate secara otomatis?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- [Apa "pelanggaran"?](#user-content-WHAT_ARE_INFRACTIONS)
+- [Dapatkah CIDRAM memblokir nama host?](#user-content-BLOCK_HOSTNAMES)
+- [Apa yang bisa saya gunakan untuk "default_dns"?](#user-content-apa-yang-bisa-saya-gunakan-untuk-default_dns)
+- [Dapatkah saya menggunakan CIDRAM untuk melindungi hal-hal selain daripada situs web (misalnya, server email, FTP, SSH, IRC, dll)?](#user-content-PROTECT_OTHER_THINGS)
+- [Akankah masalah terjadi jika saya menggunakan CIDRAM pada saat yang sama dengan menggunakan layanan CDN atau cache?](#user-content-CDN_CACHING_PROBLEMS)
+- [Akankah CIDRAM melindungi situs web saya dari serangan DDoS?](#user-content-DDOS_ATTACKS)
+- [Ketika saya mengaktifkan atau menonaktifkan modul atau file tanda tangan melalui halaman pembaruan, itu memilah mereka secara alfanumerik dalam konfigurasi. Bisakah saya mengubah cara mereka disortir?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- [Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM memblokir cronjobs; Bagaimana cara memperbaikinya?](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>Apa yang "tanda tangan"?
 
@@ -1973,4 +1973,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 27 Juli 2022 (2022.07.27).
+Terakhir Diperbarui: 5 Maret 2023 (2023.03.05).

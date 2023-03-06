@@ -1,17 +1,17 @@
 ## CIDRAM v2 설명서 (한국어).
 
 ### 목차
-- 1. [서문](#SECTION1)
-- 2. [설치 방법](#SECTION2)
-- 3. [사용 방법](#SECTION3)
-- 4. [프론트엔드 관리](#SECTION4)
-- 5. [패키지에 포함된 파일](#SECTION5)
-- 6. [설정 옵션](#SECTION6)
-- 7. [서명 형식](#SECTION7)
-- 8. [알려진 호환성 문제](#SECTION8)
-- 9. [자주 묻는 질문 (FAQ)](#SECTION9)
+- 1. [서문](#user-content-SECTION1)
+- 2. [설치 방법](#user-content-SECTION2)
+- 3. [사용 방법](#user-content-SECTION3)
+- 4. [프론트엔드 관리](#user-content-SECTION4)
+- 5. [패키지에 포함된 파일](#user-content-SECTION5)
+- 6. [설정 옵션](#user-content-SECTION6)
+- 7. [서명 형식](#user-content-SECTION7)
+- 8. [알려진 호환성 문제](#user-content-SECTION8)
+- 9. [자주 묻는 질문 (FAQ)](#user-content-SECTION9)
 - 10. *나중에 문서에 추가 할 수 있도록 예약되어 있습니다.*
-- 11. [법률 정보](#SECTION11)
+- 11. [법률 정보](#user-content-SECTION11)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -22,7 +22,7 @@
 
 CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저; "Classless Inter-Domain Routing Access Manager")는 PHP 스크립트입니다. 웹 사이트를 보호하도록 설계되어 IP 주소 (원치 않는 트래픽이있는 소스로 간주합니다)에서 전송 요청을 차단하여 (인간 이외의 액세스 엔드 포인트 클라우드 서비스 스팸봇 스크레이퍼 등). IP 주소의 수 CIDR을 계산하여 CIDR은 시그니처 파일과 비교할 수 있습니다 (이 서명 파일은 불필요한 IP 주소에 해당하는 CIDR의 목록이 포함되어 있습니다); 일치가 발견되면 요청이 차단됩니다.
 
-*(참조하십시오 : ["CIDR"이란 무엇입니까?](#WHAT_IS_A_CIDR)).*
+*(참조하십시오 : ["CIDR"이란 무엇입니까?](#user-content-WHAT_IS_A_CIDR)).*
 
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 and beyond GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
@@ -89,7 +89,7 @@ CIDRAM은 자동으로 원치 않는 요청을 차단해야합니다; 지원이 
 
 당신의 설정 파일을 수정하여 구성 설정을 사용자 정의 할 수 있습니다. 당신의 서명 파일을 변경하여 CIDRs이 차단 된 변경 할 수 있습니다.
 
-오진 (거짓 양성)과 신종 의심스러운 것으로 발생, 관한 것에 대해서는 무엇이든 알려주세요. *(참조하십시오 : ["거짓 양성"는 무엇입니까?](#WHAT_IS_A_FALSE_POSITIVE)).*
+오진 (거짓 양성)과 신종 의심스러운 것으로 발생, 관한 것에 대해서는 무엇이든 알려주세요. *(참조하십시오 : ["거짓 양성"는 무엇입니까?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM은 수동으로 또는 프런트 엔드를 통해 업데이트 할 수 있습니다. CIDRAM은 원래 이러한 수단을 통해 설치된 경우 Composer 또는 WordPress를 통해 업데이트 할 수도 있습니다.
 
@@ -608,7 +608,7 @@ Configuration (v2)
 ##### "default_dns"
 - 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 쉼표로 구분 된 목록입니다. Default (기본 설정) = "8.8.8.8,8.8.4.4" (Google DNS). 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
-*참조 : ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+*참조 : ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#user-content-default_dns에-사용할-수있는-항목은-무엇입니까)*
 
 ##### "search_engine_verification"
 - 검색 엔진의 요청을 확인해야합니까? 검색 엔진을 확인하여, 위반의 최대 수를 초과했기 때문에 검색 엔진이 금지되지 않는 것이 보증됩니다 (검색 엔진을 금지하는 것은 일반적으로 검색 엔진 순위의, SEO 등에 악영향을 미칩니다). 확인되면, 검색 엔진이 차단 될 수 있지만, 그러나 금지되지 않습니다. 검증되지 않은 경우는, 위반의 최대를 초과 한 결과, 금지 될 수 있습니다. 또한 검색 엔진의 검증은 사칭 된 검색 엔진으로부터 보호합니다 (이러한 요청은 차단됩니다). True = 검색 엔진의 검증을 활성화한다 (Default / 기본 설정); False = 검색 엔진의 검증을 무효로한다.
@@ -833,7 +833,7 @@ api
 #### "legal" (카테고리)
 법적 요구 사항과 관련된 구성.
 
-*법적 요구 사항 및 이것이 구성 요구 사항에 미치는 영향에 대한 자세한 내용은 설명서의 "[법률 정보](#SECTION11)"절을 참조하십시오.*
+*법적 요구 사항 및 이것이 구성 요구 사항에 미치는 영향에 대한 자세한 내용은 설명서의 "[법률 정보](#user-content-SECTION11)"절을 참조하십시오.*
 
 ##### "pseudonymise_ip_addresses"
 - 로그 파일을 쓸 때 가명으로 하다 IP 주소? True = 예 (Default / 기본 설정); False = 아니오.
@@ -989,7 +989,7 @@ PHPMailer 구성.
 ##### "pdo_dsn"
 - PDO DSN 값. Default (기본값) = "`mysql:dbname=cidram;host=localhost;port=3306`".
 
-*또한보십시오 : ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#HOW_TO_USE_PDO)*
+*또한보십시오 : ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#user-content-HOW_TO_USE_PDO)*
 
 ##### "pdo_username"
 - PDO 사용자 이름.
@@ -1003,7 +1003,7 @@ PHPMailer 구성.
 ### 7. <a name="SECTION7"></a>서명 형식
 
 *참조 :*
-- *["서명"이란 무엇입니까?](#WHAT_IS_A_SIGNATURE)*
+- *["서명"이란 무엇입니까?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 7.0 기초 (서명 파일의 경우)
 
@@ -1370,31 +1370,31 @@ CIDRAM과의 호환성을 보장하기 위해, 다음 패키지 및 제품에, �
 
 ### 9. <a name="SECTION9"></a>자주 묻는 질문 (FAQ)
 
-- ["서명"이란 무엇입니까?](#WHAT_IS_A_SIGNATURE)
-- ["CIDR"이란 무엇입니까?](#WHAT_IS_A_CIDR)
-- ["거짓 양성"는 무엇입니까?](#WHAT_IS_A_FALSE_POSITIVE)
-- [CIDRAM는 나라 전체를 차단할 수 있습니까?](#BLOCK_ENTIRE_COUNTRIES)
-- [서명은 얼마나 자주 업데이트됩니까?](#SIGNATURE_UPDATE_FREQUENCY)
-- [CIDRAM을 사용하는 데 문제가 발생했지만 무엇을 해야할지 모르겠어요! 도와주세요!](#ENCOUNTERED_PROBLEM_WHAT_TO_DO)
-- [나는 CIDRAM 의해 웹 사이트에서 차단되어 있습니다! 도와주세요!](#BLOCKED_WHAT_TO_DO)
-- [5.4.0보다 오래된 PHP 버전에서 CIDRAM (v2 이전)을 사용하고 싶습니다; 도울 수 있니?](#MINIMUM_PHP_VERSION)
-- [7.2.0보다 오래된 PHP 버전에서 CIDRAM (v2)을 사용하고 싶습니다; 도울 수 있니?](#MINIMUM_PHP_VERSION_V2)
-- [단일 CIDRAM 설치를 사용하여 여러 도메인을 보호 할 수 있습니까?](#PROTECT_MULTIPLE_DOMAINS)
-- [나는 이것을 설치하거나 그것이 내 웹 사이트상에서 동작하는 것을 보장하는 시간을 보내고, 하고 싶지 않아; 그것을 할 수 있습니까? 나는 당신을 고용 할 수 있습니까?](#PAY_YOU_TO_DO_IT)
-- [당신 또는 이 프로젝트의 모든 개발자는 고용 가능합니까?](#HIRE_FOR_PRIVATE_WORK)
-- [나는 전문가의 변경 및 사용자 맞춤형 등이 필요합니다; 도울 수 있니?](#SPECIALIST_MODIFICATIONS)
-- [나는 개발자, 웹 사이트 디자이너, 또는 프로그래머입니다. 이 프로젝트 관련 작업을 할 수 있습니까?](#ACCEPT_OR_OFFER_WORK)
-- [나는 프로젝트에 공헌하고 싶다; 이것은 수 있습니까?](#WANT_TO_CONTRIBUTE)
-- [Cron을 사용하여 자동으로 업데이트 할 수 있습니까?](#CRON_TO_UPDATE_AUTOMATICALLY)
-- ["위반"이란 무엇입니까?](#WHAT_ARE_INFRACTIONS)
-- [CIDRAM이 호스트 이름을 차단할 수 있습니까?](#BLOCK_HOSTNAMES)
-- ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
-- [CIDRAM을 사용하여 웹 사이트 (예 : 이메일 서버, FTP, SSH, IRC, 등) 이외의 것을 보호 할 수 있습니까?](#PROTECT_OTHER_THINGS)
-- [CDN 또는 캐싱 서비스를 사용하는 것과 동시에 CIDRAM을 사용하면 문제가 발생합니까?](#CDN_CACHING_PROBLEMS)
-- [CIDRAM이 내 웹 사이트를 DDoS 공격으로부터 보호합니까?](#DDOS_ATTACKS)
-- [모듈 또는 서명 파일이 업데이트 페이지를 통해 활성화되거나 비활성화되면, 구성에서 문자 또는 숫자로 정렬됩니다. 분류 방식을 변경할 수 있습니까?](#CHANGE_COMPONENT_SORT_ORDER)
-- ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#HOW_TO_USE_PDO)
-- [CIDRAM이 cronjobs을 차단하고 있습니다. 문제를 해결하는 방법?](#BLOCK_CRON)
+- ["서명"이란 무엇입니까?](#user-content-WHAT_IS_A_SIGNATURE)
+- ["CIDR"이란 무엇입니까?](#user-content-WHAT_IS_A_CIDR)
+- ["거짓 양성"는 무엇입니까?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
+- [CIDRAM는 나라 전체를 차단할 수 있습니까?](#user-content-BLOCK_ENTIRE_COUNTRIES)
+- [서명은 얼마나 자주 업데이트됩니까?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
+- [CIDRAM을 사용하는 데 문제가 발생했지만 무엇을 해야할지 모르겠어요! 도와주세요!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
+- [나는 CIDRAM 의해 웹 사이트에서 차단되어 있습니다! 도와주세요!](#user-content-BLOCKED_WHAT_TO_DO)
+- [5.4.0보다 오래된 PHP 버전에서 CIDRAM (v2 이전)을 사용하고 싶습니다; 도울 수 있니?](#user-content-MINIMUM_PHP_VERSION)
+- [7.2.0보다 오래된 PHP 버전에서 CIDRAM (v2)을 사용하고 싶습니다; 도울 수 있니?](#user-content-MINIMUM_PHP_VERSION_V2)
+- [단일 CIDRAM 설치를 사용하여 여러 도메인을 보호 할 수 있습니까?](#user-content-PROTECT_MULTIPLE_DOMAINS)
+- [나는 이것을 설치하거나 그것이 내 웹 사이트상에서 동작하는 것을 보장하는 시간을 보내고, 하고 싶지 않아; 그것을 할 수 있습니까? 나는 당신을 고용 할 수 있습니까?](#user-content-PAY_YOU_TO_DO_IT)
+- [당신 또는 이 프로젝트의 모든 개발자는 고용 가능합니까?](#user-content-HIRE_FOR_PRIVATE_WORK)
+- [나는 전문가의 변경 및 사용자 맞춤형 등이 필요합니다; 도울 수 있니?](#user-content-SPECIALIST_MODIFICATIONS)
+- [나는 개발자, 웹 사이트 디자이너, 또는 프로그래머입니다. 이 프로젝트 관련 작업을 할 수 있습니까?](#user-content-ACCEPT_OR_OFFER_WORK)
+- [나는 프로젝트에 공헌하고 싶다; 이것은 수 있습니까?](#user-content-WANT_TO_CONTRIBUTE)
+- [Cron을 사용하여 자동으로 업데이트 할 수 있습니까?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
+- ["위반"이란 무엇입니까?](#user-content-WHAT_ARE_INFRACTIONS)
+- [CIDRAM이 호스트 이름을 차단할 수 있습니까?](#user-content-BLOCK_HOSTNAMES)
+- ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#user-content-default_dns에-사용할-수있는-항목은-무엇입니까)
+- [CIDRAM을 사용하여 웹 사이트 (예 : 이메일 서버, FTP, SSH, IRC, 등) 이외의 것을 보호 할 수 있습니까?](#user-content-PROTECT_OTHER_THINGS)
+- [CDN 또는 캐싱 서비스를 사용하는 것과 동시에 CIDRAM을 사용하면 문제가 발생합니까?](#user-content-CDN_CACHING_PROBLEMS)
+- [CIDRAM이 내 웹 사이트를 DDoS 공격으로부터 보호합니까?](#user-content-DDOS_ATTACKS)
+- [모듈 또는 서명 파일이 업데이트 페이지를 통해 활성화되거나 비활성화되면, 구성에서 문자 또는 숫자로 정렬됩니다. 분류 방식을 변경할 수 있습니까?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
+- ["PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?](#user-content-HOW_TO_USE_PDO)
+- [CIDRAM이 cronjobs을 차단하고 있습니다. 문제를 해결하는 방법?](#user-content-BLOCK_CRON)
 
 #### <a name="WHAT_IS_A_SIGNATURE"></a>"서명"이란 무엇입니까?
 
@@ -1969,4 +1969,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2022년 7월 27일.
+최종 업데이트 : 2023년 3월 5일.

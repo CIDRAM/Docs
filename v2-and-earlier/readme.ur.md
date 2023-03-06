@@ -2,17 +2,17 @@
 
 ### <div dir="rtl">فہرست:</div>
 <div dir="rtl"><ul>
- <li>۱. <a href="#SECTION1">تمہید</a></li>
- <li>۲. <a href="#SECTION2">انسٹال کرنے کا طریقہ</a></li>
- <li>۳. <a href="#SECTION3">کس طرح استعمال</a></li>
- <li>۴. <a href="#SECTION4">سامنے کے آخر میں انتظام</a></li>
- <li>۵. <a href="#SECTION5">فائل اس پیکیج میں شامل</a></li>
- <li>۶. <a href="#SECTION6">ترتیب کے اختیارات</a></li>
- <li>۷. <a href="#SECTION7">دستخط فارمیٹ</a></li>
- <li>۸. <a href="#SECTION8">جانا جاتا مطابقت کے مسائل</a></li>
- <li>۹. <a href="#SECTION9">اکثر پوچھے گئے سوالات (FAQ)</a></li>
+ <li>۱. <a href="#user-content-SECTION1">تمہید</a></li>
+ <li>۲. <a href="#user-content-SECTION2">انسٹال کرنے کا طریقہ</a></li>
+ <li>۳. <a href="#user-content-SECTION3">کس طرح استعمال</a></li>
+ <li>۴. <a href="#user-content-SECTION4">سامنے کے آخر میں انتظام</a></li>
+ <li>۵. <a href="#user-content-SECTION5">فائل اس پیکیج میں شامل</a></li>
+ <li>۶. <a href="#user-content-SECTION6">ترتیب کے اختیارات</a></li>
+ <li>۷. <a href="#user-content-SECTION7">دستخط فارمیٹ</a></li>
+ <li>۸. <a href="#user-content-SECTION8">جانا جاتا مطابقت کے مسائل</a></li>
+ <li>۹. <a href="#user-content-SECTION9">اکثر پوچھے گئے سوالات (FAQ)</a></li>
  <li>۱۰. (مستقبل کی معلومات - ابھی تک موجود نہیں ہے)</li>
- <li>۱۱. <a href="#SECTION11">قانونی معلومات</a></li>
+ <li>۱۱. <a href="#user-content-SECTION11">قانونی معلومات</a></li>
 </ul></div>
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
@@ -24,7 +24,7 @@
 
 <div dir="rtl">CIDRAM (غیر طبقاتی انٹر ڈومین روٹنگ رسائی مینیجر) بشمول (لیکن تک محدود نہیں) غیر انسانی رسائی endpoints کے، کلاؤڈ سروسز سے ٹریفک ناپسندیدہ ٹریفک کے ہونے کی وجہ سے ذرائع، کے طور پر شمار IP پتوں سے شروع کی درخواستوں کو مسدود کرنے کی طرف سے ویب سائٹس کی حفاظت کے لئے ڈیزائن کیا ایک PHP کی سکرپٹ ہے، اسپیم بوٹس، سکراپارس، وغیرہ یہ باؤنڈ درخواستوں سے فراہم IP پتوں کی ممکنہ CIDR کو شمار کرتے ہیں اور پھر (ان کے دستخط فائلوں ہونے کے ذرائع کے طور پر شمار IP پتوں کی CIDR کی فہرستوں پر مشتمل اس کے دستخط فائلوں کے خلاف ان ممکن CIDR سے ملنے کے لئے کی کوشش کر کے اس کرتا ہے ناپسندیدہ ٹریفک کے)؛ موازنہ نہیں ملا رہے ہیں تو، درخواستوں مسدود ہیں.<br /><br /></div>
 
-<div dir="rtl"><em>(دیکھیں: <a href="#WHAT_IS_A_CIDR">ایک "CIDR" کیا ہے؟</a>).</em><br /><br /></div>
+<div dir="rtl"><em>(دیکھیں: <a href="#user-content-WHAT_IS_A_CIDR">ایک "CIDR" کیا ہے؟</a>).</em><br /><br /></div>
 
 <div dir="rtl"><a dir="ltr" href="https://cidram.github.io/">CIDRAM</a> کاپی رائٹ 2016 اور <a dir="ltr" href="https://github.com/Maikuolan">Caleb M (Maikuolan)</a> کی طرف GNU/GPLv2 اجازت سے آگے.<br /><br /></div>
 
@@ -91,7 +91,7 @@
 
 <div dir="rtl">آپ کو آپ کی ترتیب اپنی مرضی کے مطابق اور اپنی مرضی کے مطابق جس CIDR آپ کی کنفیگریشن فائل اور/یا آپ کے دستخط کی فائلوں میں تبدیلی کرنے کی طرف سے بلاک کر رہے ہیں کر سکتے ہیں.<br /><br /></div>
 
-<div dir="rtl">آپ کو کسی بھی جھوٹے مثبت سامنا کرتے ہیں، مجھے اس کے بارے میں مطلع کرنے کے لئے مجھ سے رابطہ کریں. <em>(دیکھیں: <a href="#WHAT_IS_A_FALSE_POSITIVE">ایک "جھوٹی مثبت" سے کیا مراد ہے؟</a>).</em><br /><br /></div>
+<div dir="rtl">آپ کو کسی بھی جھوٹے مثبت سامنا کرتے ہیں، مجھے اس کے بارے میں مطلع کرنے کے لئے مجھ سے رابطہ کریں. <em>(دیکھیں: <a href="#user-content-WHAT_IS_A_FALSE_POSITIVE">ایک "جھوٹی مثبت" سے کیا مراد ہے؟</a>).</em><br /><br /></div>
 
 <div dir="rtl">CIDRAM دستی طور پر یا سامنے کے اختتام کے ذریعے اپ ڈیٹ کیا جا سکتا ہے. CIDRAM بھی Composer یا WordPress کے ذریعہ اپ ڈیٹ کیا جا سکتا ہے، اگر اصل میں ان کے ذریعہ نصب ہوجائے.<br /><br /></div>
 
@@ -669,7 +669,7 @@ Configuration (v2)
  <li>میزبان نام لک اپ کے لئے استعمال کرنے کے لئے DNS سرورز کی کوما ختم ہونے والی فہرست. پہلے سے طے شدہ = "8.8.8.8,8.8.4.4" (گوگل DNS). انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li>
 </ul></div>
 
-<div dir="rtl">بھی دیکھو: <a href="#WHAT_CAN_I_USE_FOR_DEFAULT_DNS">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a><br /><br /></div>
+<div dir="rtl">بھی دیکھو: <a href="#user-content-میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a><br /><br /></div>
 
 ##### <div dir="rtl">"search_engine_verification"<br /></div>
 <div dir="rtl"><ul>
@@ -993,7 +993,7 @@ api
 #### <div dir="rtl">"legal" (قسم)<br /></div>
 <div dir="rtl">قانونی ضروریات سے متعلق ترتیب.<br /><br /></div>
 
-<div dir="rtl">قانونی ضروریات کے بارے میں مزید معلومات کے لئے اور یہ آپ کی ترتیبات کی ضروریات کو کس طرح اثر انداز کر سکتا ہے، براہ کرم دستاویزات کے "<a href="#SECTION11">قانونی معلومات</a>" حصے کا حوالہ دیتے ہیں.<br /><br /></div>
+<div dir="rtl">قانونی ضروریات کے بارے میں مزید معلومات کے لئے اور یہ آپ کی ترتیبات کی ضروریات کو کس طرح اثر انداز کر سکتا ہے، براہ کرم دستاویزات کے "<a href="#user-content-SECTION11">قانونی معلومات</a>" حصے کا حوالہ دیتے ہیں.<br /><br /></div>
 
 ##### <div dir="rtl">"pseudonymise_ip_addresses"<br /></div>
 <div dir="rtl"><ul>
@@ -1227,7 +1227,7 @@ api
  <li>PDO کے لئے DSN. پہلے سے طے شدہ = "<code dir="ltr">mysql:dbname=cidram;host=localhost;port=3306</code>".</li>
 </ul></div>
 
-<div dir="rtl"><em>(بھی دیکھو: <a href="#HOW_TO_USE_PDO">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a>)</em><br /><br /></div>
+<div dir="rtl"><em>(بھی دیکھو: <a href="#user-content-HOW_TO_USE_PDO">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a>)</em><br /><br /></div>
 
 ##### <div dir="rtl">"pdo_username"<br /></div>
 <div dir="rtl"><ul>
@@ -1246,7 +1246,7 @@ api
 
 <div dir="rtl">بھی دیکھو:<br /></div>
 <div dir="rtl"><ul>
- <li><a href="#WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
 </ul></div>
 
 #### <div dir="rtl">۷.۰ مبادیات (دستخط فائلوں کیلئے)<br /><br /></div>
@@ -1624,31 +1624,31 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 ### <div dir="rtl">۹. <a name="SECTION9">اکثر پوچھے گئے سوالات (FAQ)</div>
 
 <div dir="rtl"><ul>
- <li><a href="#WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
- <li><a href="#WHAT_IS_A_CIDR">ایک "CIDR" کیا ہے؟</a></li>
- <li><a href="#WHAT_IS_A_FALSE_POSITIVE">ایک "جھوٹی مثبت" سے کیا مراد ہے؟</a></li>
- <li><a href="#BLOCK_ENTIRE_COUNTRIES">بلاک تمام ممالک CIDRAM کر سکتا ہوں؟</a></li>
- <li><a href="#SIGNATURE_UPDATE_FREQUENCY">دستخط کیسے بیشتر اپ ڈیٹ کر رہے ہیں؟</a></li>
- <li><a href="#ENCOUNTERED_PROBLEM_WHAT_TO_DO">CIDRAM استعمال کرتے ہوئے میں ایک مسئلہ کا سامنا کرنا پڑا ہے اور میں اس کے بارے میں کیا پتہ نہیں ہے! مدد کریں!</a></li>
- <li><a href="#BLOCKED_WHAT_TO_DO">میں نے دورہ کرنا چاہتے ہیں کہ ایک ویب سائٹ سے CIDRAM کی طرف سے بلاک کیا گیا ہے! مدد کریں!</a></li>
- <li><a href="#MINIMUM_PHP_VERSION">میں 5.4.0 سے زیادہ پرانے ایک PHP ورژن کے ساتھ CIDRAM (v2 سے پہلے) استعمال کرنا چاہتے ہیں؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
- <li><a href="#MINIMUM_PHP_VERSION_V2">میں 7.2.0 سے زیادہ پرانے ایک PHP ورژن کے ساتھ CIDRAM (v2) استعمال کرنا چاہتے ہیں؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
- <li><a href="#PROTECT_MULTIPLE_DOMAINS">میں نے ایک سے زیادہ ڈومینز کی حفاظت کے لئے ایک واحد CIDRAM تنصیب کا استعمال کر سکتا ہوں؟</a></li>
- <li><a href="#PAY_YOU_TO_DO_IT">میں نے اس پر وقت خرچ نہیں کرنا چاہتا (اسے انسٹال، اس کے قیام، وغیرہ)؛ میں نے آپ کو ایسا کرنے کے لئے ادا کر سکتے ہیں؟</a></li>
- <li><a href="#HIRE_FOR_PRIVATE_WORK">میں ذاتی کام کے لئے آپ کی خدمات حاصل کر سکتے ہیں؟</a></li>
- <li><a href="#SPECIALIST_MODIFICATIONS">مجھے خصوصی ترمیم کی ضرورت؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
- <li><a href="#ACCEPT_OR_OFFER_WORK">میں نے ایک ڈویلپر، ویب سائٹ ڈیزائنر، یا پروگرامر ہوں. میں اس منصوبے سے متعلق کام کر سکتے ہیں؟</a></li>
- <li><a href="#WANT_TO_CONTRIBUTE">میں نے اس منصوبے میں شراکت کے لئے چاہتے ہیں؛ میں یہ کر سکتا ہوں؟</a></li>
- <li><a href="#CRON_TO_UPDATE_AUTOMATICALLY">کیا میں خود کار طریقے سے اپ ڈیٹ کرنے کیلئے cron استعمال کرسکتا ہوں؟</a></li>
- <li><a href="#WHAT_ARE_INFRACTIONS">"خلاف ورزی" کیا ہیں؟</a></li>
- <li><a href="#BLOCK_HOSTNAMES">CIDRAM بلاک میزبانوں کو کر سکتے ہیں؟</a></li>
- <li><a href="#WHAT_CAN_I_USE_FOR_DEFAULT_DNS">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></li>
- <li><a href="#PROTECT_OTHER_THINGS">کیا ویب سائٹس کے علاوہ چیزوں کی حفاظت کے لئے میں CIDRAM استعمال کرسکتا ہوں (مثال کے طور پر، ای میل سرورز، FTP سرورز، SSH سرورز، IRC سرورز، وغیرہ)؟</a></li>
- <li><a href="#CDN_CACHING_PROBLEMS">مواد ترسیل کے نیٹ ورک یا کیشنگ کی خدمات کا استعمال کرتے ہوئے ایک ہی وقت میں CIDRAM کا استعمال کرتے ہوئے، کیا مسائل ہو گی؟</a></li>
- <li><a href="#DDOS_ATTACKS">کیا CIDRAM DDoS حملوں کے خلاف میری ویب سائٹ کی حفاظت کرتا ہے؟</a></li>
- <li><a href="#CHANGE_COMPONENT_SORT_ORDER">جب میں اپ ڈیٹس کے صفحے کے ذریعہ ماڈیولز یا دستخط شدہ فائلوں کو چالو یا غیر فعال کروں تو، یہ انفرادی طور پر ترتیب میں تبدیل کرتا ہے. کیا میں اس راستہ کو تبدیل کر سکتا ہوں جسے وہ ترتیب دیں گے؟</a></li>
- <li><a href="#HOW_TO_USE_PDO">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></li>
- <li><a href="#BLOCK_CRON">CIDRAM cronjobs کو مسدود کررہا ہے؛ اس کو کیسے ٹھیک کریں؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_CIDR">ایک "CIDR" کیا ہے؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_FALSE_POSITIVE">ایک "جھوٹی مثبت" سے کیا مراد ہے؟</a></li>
+ <li><a href="#user-content-BLOCK_ENTIRE_COUNTRIES">بلاک تمام ممالک CIDRAM کر سکتا ہوں؟</a></li>
+ <li><a href="#user-content-SIGNATURE_UPDATE_FREQUENCY">دستخط کیسے بیشتر اپ ڈیٹ کر رہے ہیں؟</a></li>
+ <li><a href="#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO">CIDRAM استعمال کرتے ہوئے میں ایک مسئلہ کا سامنا کرنا پڑا ہے اور میں اس کے بارے میں کیا پتہ نہیں ہے! مدد کریں!</a></li>
+ <li><a href="#user-content-BLOCKED_WHAT_TO_DO">میں نے دورہ کرنا چاہتے ہیں کہ ایک ویب سائٹ سے CIDRAM کی طرف سے بلاک کیا گیا ہے! مدد کریں!</a></li>
+ <li><a href="#user-content-MINIMUM_PHP_VERSION">میں 5.4.0 سے زیادہ پرانے ایک PHP ورژن کے ساتھ CIDRAM (v2 سے پہلے) استعمال کرنا چاہتے ہیں؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-MINIMUM_PHP_VERSION_V2">میں 7.2.0 سے زیادہ پرانے ایک PHP ورژن کے ساتھ CIDRAM (v2) استعمال کرنا چاہتے ہیں؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-PROTECT_MULTIPLE_DOMAINS">میں نے ایک سے زیادہ ڈومینز کی حفاظت کے لئے ایک واحد CIDRAM تنصیب کا استعمال کر سکتا ہوں؟</a></li>
+ <li><a href="#user-content-PAY_YOU_TO_DO_IT">میں نے اس پر وقت خرچ نہیں کرنا چاہتا (اسے انسٹال، اس کے قیام، وغیرہ)؛ میں نے آپ کو ایسا کرنے کے لئے ادا کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-HIRE_FOR_PRIVATE_WORK">میں ذاتی کام کے لئے آپ کی خدمات حاصل کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-SPECIALIST_MODIFICATIONS">مجھے خصوصی ترمیم کی ضرورت؛ کیا آپ مدد کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-ACCEPT_OR_OFFER_WORK">میں نے ایک ڈویلپر، ویب سائٹ ڈیزائنر، یا پروگرامر ہوں. میں اس منصوبے سے متعلق کام کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-WANT_TO_CONTRIBUTE">میں نے اس منصوبے میں شراکت کے لئے چاہتے ہیں؛ میں یہ کر سکتا ہوں؟</a></li>
+ <li><a href="#user-content-CRON_TO_UPDATE_AUTOMATICALLY">کیا میں خود کار طریقے سے اپ ڈیٹ کرنے کیلئے cron استعمال کرسکتا ہوں؟</a></li>
+ <li><a href="#user-content-WHAT_ARE_INFRACTIONS">"خلاف ورزی" کیا ہیں؟</a></li>
+ <li><a href="#user-content-BLOCK_HOSTNAMES">CIDRAM بلاک میزبانوں کو کر سکتے ہیں؟</a></li>
+ <li><a href="#user-content-میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></li>
+ <li><a href="#user-content-PROTECT_OTHER_THINGS">کیا ویب سائٹس کے علاوہ چیزوں کی حفاظت کے لئے میں CIDRAM استعمال کرسکتا ہوں (مثال کے طور پر، ای میل سرورز، FTP سرورز، SSH سرورز، IRC سرورز، وغیرہ)؟</a></li>
+ <li><a href="#user-content-CDN_CACHING_PROBLEMS">مواد ترسیل کے نیٹ ورک یا کیشنگ کی خدمات کا استعمال کرتے ہوئے ایک ہی وقت میں CIDRAM کا استعمال کرتے ہوئے، کیا مسائل ہو گی؟</a></li>
+ <li><a href="#user-content-DDOS_ATTACKS">کیا CIDRAM DDoS حملوں کے خلاف میری ویب سائٹ کی حفاظت کرتا ہے؟</a></li>
+ <li><a href="#user-content-CHANGE_COMPONENT_SORT_ORDER">جب میں اپ ڈیٹس کے صفحے کے ذریعہ ماڈیولز یا دستخط شدہ فائلوں کو چالو یا غیر فعال کروں تو، یہ انفرادی طور پر ترتیب میں تبدیل کرتا ہے. کیا میں اس راستہ کو تبدیل کر سکتا ہوں جسے وہ ترتیب دیں گے؟</a></li>
+ <li><a href="#user-content-HOW_TO_USE_PDO">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></li>
+ <li><a href="#user-content-BLOCK_CRON">CIDRAM cronjobs کو مسدود کررہا ہے؛ اس کو کیسے ٹھیک کریں؟</a></li>
 </ul></div>
 
 #### <div dir="rtl"><a name="WHAT_IS_A_SIGNATURE"></a>ایک "دستخط" کیا ہے؟<br /><br /></div>
@@ -2261,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۷ جولائی ۲۰۲۲ (۲۰۲۲.۰۷.۲۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۵ مارچ ۲۰۲۳ (۲۰۲۳.۰۳.۰۵).</div>

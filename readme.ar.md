@@ -2,15 +2,15 @@
 
 ### <div dir="rtl">المحتويات:</div>
 <div dir="rtl"><ul>
- <li>١. <a href="#SECTION1">مقدمة</a></li>
- <li>٢. <a href="#SECTION2">كيفية التحميل</a></li>
- <li>٣. <a href="#SECTION3">كيفية الإستخدام</a></li>
- <li>٤. <a href="#SECTION4">إدارة FRONT-END</a></li>
- <li>٥. <a href="#SECTION5">خياراتالتكوين/التهيئة</a></li>
- <li>٦. <a href="#SECTION6">شكل/تنسيق التوقيع</a></li>
- <li>٧. <a href="#SECTION7">مشاكل التوافق المعروفة</a></li>
- <li>٨. <a href="#SECTION8">أسئلة وأجوبة (FAQ)</a></li>
- <li>٩. <a href="#SECTION9">المعلومات القانونية</a></li>
+ <li>١. <a href="#user-content-SECTION1">مقدمة</a></li>
+ <li>٢. <a href="#user-content-SECTION2">كيفية التحميل</a></li>
+ <li>٣. <a href="#user-content-SECTION3">كيفية الإستخدام</a></li>
+ <li>٤. <a href="#user-content-SECTION4">إدارة FRONT-END</a></li>
+ <li>٥. <a href="#user-content-SECTION5">خياراتالتكوين/التهيئة</a></li>
+ <li>٦. <a href="#user-content-SECTION6">شكل/تنسيق التوقيع</a></li>
+ <li>٧. <a href="#user-content-SECTION7">مشاكل التوافق المعروفة</a></li>
+ <li>٨. <a href="#user-content-SECTION8">أسئلة وأجوبة (FAQ)</a></li>
+ <li>٩. <a href="#user-content-SECTION9">المعلومات القانونية</a></li>
 </ul></div>
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
@@ -22,7 +22,7 @@
 
 <div dir="rtl">CIDRAM (توجيه بين المجالات لافئويا وصول مدير) هو السيناريو PHP، المصممة لحماية المواقع من طلبات الحجب تنشأ من عناوين IP تعتبر مصادر من حركة المرور غير مرغوب فيه، بما في ذلك (ولكن ليس على سبيل الحصر) حركة المرور من نقاط النهاية الوصول غير البشرية، خدمات سحابية، المتطفلين و برامج التطفل، كاشطات الموقع، إلخ. وهي تفعل ذلك عن طريق حساب CIDRs ممكن من عناوين IP الموردة من طلبات واردة وبعد ذلك محاولة لتتناسب مع هذه ضد الملفات توقيعه (هذه الملفات توقيع تحتوي CIDRs من عناوين IP تعتبر مصادر من حركة المرور غير مرغوب فيه)؛ إذا تم العثور على المباريات، يتم حظر الطلبات.<br /><br /></div>
 
-<div dir="rtl"><em>(نرى: <a href="#WHAT_IS_A_CIDR">ما هو "CIDR"؟</a>).</em><br /><br /></div>
+<div dir="rtl"><em>(نرى: <a href="#user-content-WHAT_IS_A_CIDR">ما هو "CIDR"؟</a>).</em><br /><br /></div>
 
 <div dir="rtl">حقوق النشر محفوظة ل <a dir="ltr" href="https://cidram.github.io/">CIDRAM</a> لعام ٢٠١٦ وما بعده تحت رخصة GNU/GPLv2 للمبرمج <a dir="ltr" href="https://github.com/Maikuolan">Caleb M (Maikuolan)</a>.<br /><br /></div>
 
@@ -101,7 +101,7 @@ require_once '/path/to/the/vault/directory/loader.php';
 
 <div dir="rtl">يمكنك تخصيص التكوين الخاص بك وتخصيص التي CIDRs مسدودة عن طريق تعديل التكوين الخاص بك و ملفات توقيعك.<br /><br /></div>
 
-<div dir="rtl">إذا واجهت أي إيجابية خاطئة، يرجى رسالة لي أن اسمحوا لي أن أعرف عن ذلك. <em>(نرى: <a href="#WHAT_IS_A_FALSE_POSITIVE">ما هو "إيجابية خاطئة"؟</a>).</em><br /><br /></div>
+<div dir="rtl">إذا واجهت أي إيجابية خاطئة، يرجى رسالة لي أن اسمحوا لي أن أعرف عن ذلك. <em>(نرى: <a href="#user-content-WHAT_IS_A_FALSE_POSITIVE">ما هو "إيجابية خاطئة"؟</a>).</em><br /><br /></div>
 
 <div dir="rtl">يمكن تحديث CIDRAM يدويا أو عن طريق الfront-end. يمكن أيضا تحديث CIDRAM عبر Composer أو WordPress، إذا تم تثبيتها أصلا عبر تلك الوسائل.<br /><br /></div>
 
@@ -636,7 +636,7 @@ ban_override
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة من خوادم DNS لاستخدامها في عمليات البحث عن اسم المضيف. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="ar">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#ما-الذي-يمكنني-استخدامه-لـ-default_dns" hreflang="ar">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></em>
 
 ##### <div dir="rtl">"default_algo" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يحدد الخوارزمية التي سيتم استخدامها لكل كلمات المرور والجلسات المستقبلية.</li></ul></div>
@@ -1235,7 +1235,7 @@ used
 
 <div dir="rtl">أنظر أيضا:<br /></div>
 <div dir="rtl"><ul>
- <li><a href="#WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
 </ul></div>
 
 #### <div dir="rtl">٦.٠ مبادئ (بالنسبة إلى ملفات التوقيع)<br /><br /></div>
@@ -1600,30 +1600,30 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ### <div dir="rtl">٨. <a name="SECTION8"></a>أسئلة وأجوبة (FAQ)</div>
 
 <div dir="rtl"><ul>
- <li><a href="#WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
- <li><a href="#WHAT_IS_A_CIDR">ما هو "CIDR"؟</a></li>
- <li><a href="#WHAT_IS_A_FALSE_POSITIVE">ما هو "إيجابية خاطئة"؟</a></li>
- <li><a href="#BLOCK_ENTIRE_COUNTRIES">يمكن CIDRAM منع الدول؟</a></li>
- <li><a href="#SIGNATURE_UPDATE_FREQUENCY">عدد المرات التي يتم تحديثها التوقيعات؟</a></li>
- <li><a href="#ENCOUNTERED_PROBLEM_WHAT_TO_DO">لقد واجهت مشكلة! أنا لا أعرف ما يجب القيام به! الرجاء المساعدة!</a></li>
- <li><a href="#BLOCKED_WHAT_TO_DO">لقد تم حظر من موقع على شبكة الانترنت! الرجاء المساعدة!</a></li>
- <li><a href="#MINIMUM_PHP_VERSION_V3">أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟</a></li>
- <li><a href="#PROTECT_MULTIPLE_DOMAINS">هل يمكنني استخدام تثبيت CIDRAM واحد لحماية نطاقات متعددة؟</a></li>
- <li><a href="#PAY_YOU_TO_DO_IT">أنا لا أريد أن تضيع الوقت مع تثبيت هذا أو ضمان أنه يعمل لموقع الويب الخاص بي؛ يمكنني دفع لك أن تفعل ذلك بالنسبة لي؟</a></li>
- <li><a href="#HIRE_FOR_PRIVATE_WORK">هل يمكنني توظيفك أو أي من مطوري هذا المشروع للعمل الخاص؟</a></li>
- <li><a href="#SPECIALIST_MODIFICATIONS">أنا بحاجة إلى تعديلات متخصصة، والتخصيصات، الخ؛ يمكنك أن تساعد؟</a></li>
- <li><a href="#ACCEPT_OR_OFFER_WORK">أنا مطور، مصمم موقع، أو مبرمج. هل يمكنني قبول أو عرض العمل المتعلق بهذا المشروع؟</a></li>
- <li><a href="#WANT_TO_CONTRIBUTE">أريد أن أساهم في المشروع؛ هل يمكنني فعل هذا؟</a></li>
- <li><a href="#CRON_TO_UPDATE_AUTOMATICALLY">هل يمكنني استخدام cron لتحديث تلقائيا؟</a></li>
- <li><a href="#WHAT_ARE_INFRACTIONS">ما هي "المخالفات"؟</a></li>
- <li><a href="#BLOCK_HOSTNAMES">هل يمكن لأسماء المضيفين في CIDRAM حظر؟</a></li>
- <li><a href="#WHAT_CAN_I_USE_FOR_DEFAULT_DNS">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
- <li><a href="#PROTECT_OTHER_THINGS">هل يمكنني استخدام CIDRAM لحماية الأشياء بخلاف مواقع الويب (مثل خوادم البريد الإلكتروني، FTP، SSH، IRC، إلخ)؟</a></li>
- <li><a href="#CDN_CACHING_PROBLEMS">هل تحدث مشكلات إذا كنت أستخدم CIDRAM في نفس وقت استخدام خدمات CDN أو خدمات التخزين المؤقت؟</a></li>
- <li><a href="#DDOS_ATTACKS">هل CIDRAM حماية موقعي على الويب ضد هجمات DDoS؟</a></li>
- <li><a href="#CHANGE_COMPONENT_SORT_ORDER">عندما أقوم بتنشيط أو إلغاء تنشيط الوحدات النمطية أو ملفات التوقيع عبر صفحة التحديثات، فإنها تقوم بترتيبها أبجديًا في التكوين. هل يمكنني تغيير الطريقة التي يتم تصنيفها بها؟</a></li>
- <li><a href="#HOW_TO_USE_PDO">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></li>
- <li><a href="#BLOCK_CRON">CIDRAM يحظر cronjobs؛ كيف يمكن اصلاح هذا؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_CIDR">ما هو "CIDR"؟</a></li>
+ <li><a href="#user-content-WHAT_IS_A_FALSE_POSITIVE">ما هو "إيجابية خاطئة"؟</a></li>
+ <li><a href="#user-content-BLOCK_ENTIRE_COUNTRIES">يمكن CIDRAM منع الدول؟</a></li>
+ <li><a href="#user-content-SIGNATURE_UPDATE_FREQUENCY">عدد المرات التي يتم تحديثها التوقيعات؟</a></li>
+ <li><a href="#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO">لقد واجهت مشكلة! أنا لا أعرف ما يجب القيام به! الرجاء المساعدة!</a></li>
+ <li><a href="#user-content-BLOCKED_WHAT_TO_DO">لقد تم حظر من موقع على شبكة الانترنت! الرجاء المساعدة!</a></li>
+ <li><a href="#user-content-MINIMUM_PHP_VERSION_V3">أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟</a></li>
+ <li><a href="#user-content-PROTECT_MULTIPLE_DOMAINS">هل يمكنني استخدام تثبيت CIDRAM واحد لحماية نطاقات متعددة؟</a></li>
+ <li><a href="#user-content-PAY_YOU_TO_DO_IT">أنا لا أريد أن تضيع الوقت مع تثبيت هذا أو ضمان أنه يعمل لموقع الويب الخاص بي؛ يمكنني دفع لك أن تفعل ذلك بالنسبة لي؟</a></li>
+ <li><a href="#user-content-HIRE_FOR_PRIVATE_WORK">هل يمكنني توظيفك أو أي من مطوري هذا المشروع للعمل الخاص؟</a></li>
+ <li><a href="#user-content-SPECIALIST_MODIFICATIONS">أنا بحاجة إلى تعديلات متخصصة، والتخصيصات، الخ؛ يمكنك أن تساعد؟</a></li>
+ <li><a href="#user-content-ACCEPT_OR_OFFER_WORK">أنا مطور، مصمم موقع، أو مبرمج. هل يمكنني قبول أو عرض العمل المتعلق بهذا المشروع؟</a></li>
+ <li><a href="#user-content-WANT_TO_CONTRIBUTE">أريد أن أساهم في المشروع؛ هل يمكنني فعل هذا؟</a></li>
+ <li><a href="#user-content-CRON_TO_UPDATE_AUTOMATICALLY">هل يمكنني استخدام cron لتحديث تلقائيا؟</a></li>
+ <li><a href="#user-content-WHAT_ARE_INFRACTIONS">ما هي "المخالفات"؟</a></li>
+ <li><a href="#user-content-BLOCK_HOSTNAMES">هل يمكن لأسماء المضيفين في CIDRAM حظر؟</a></li>
+ <li><a href="#user-content-ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
+ <li><a href="#user-content-PROTECT_OTHER_THINGS">هل يمكنني استخدام CIDRAM لحماية الأشياء بخلاف مواقع الويب (مثل خوادم البريد الإلكتروني، FTP، SSH، IRC، إلخ)؟</a></li>
+ <li><a href="#user-content-CDN_CACHING_PROBLEMS">هل تحدث مشكلات إذا كنت أستخدم CIDRAM في نفس وقت استخدام خدمات CDN أو خدمات التخزين المؤقت؟</a></li>
+ <li><a href="#user-content-DDOS_ATTACKS">هل CIDRAM حماية موقعي على الويب ضد هجمات DDoS؟</a></li>
+ <li><a href="#user-content-CHANGE_COMPONENT_SORT_ORDER">عندما أقوم بتنشيط أو إلغاء تنشيط الوحدات النمطية أو ملفات التوقيع عبر صفحة التحديثات، فإنها تقوم بترتيبها أبجديًا في التكوين. هل يمكنني تغيير الطريقة التي يتم تصنيفها بها؟</a></li>
+ <li><a href="#user-content-HOW_TO_USE_PDO">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></li>
+ <li><a href="#user-content-BLOCK_CRON">CIDRAM يحظر cronjobs؛ كيف يمكن اصلاح هذا؟</a></li>
 </ul></div>
 
 #### <div dir="rtl"><a name="WHAT_IS_A_SIGNATURE"></a>ما هو "التوقيع"؟<br /><br /></div>
@@ -2249,4 +2249,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٧ فبراير ٢٠٢٣ (٢٠٢٣.٠٢.١٧).</div>
+<div dir="rtl">آخر تحديث: ٥ مارس ٢٠٢٣ (٢٠٢٣.٠٣.٠٥).</div>
