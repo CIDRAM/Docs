@@ -1578,7 +1578,7 @@ Modules have been made available to ensure that the following packages and produ
 - [Can I use cron to update automatically?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [What are "infractions"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Can CIDRAM block hostnames?](#user-content-BLOCK_HOSTNAMES)
-- [What can I use for "default_dns"?](#user-content-what-can-i-use-for-default_dns)
+- [What can I use for "default_dns"?](#what-can-i-use-for-default_dns)
 - [Can I use CIDRAM to protect things other than websites (e.g., email servers, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
 - [Will problems occur if I use CIDRAM at the same time as using CDNs or caching services?](#user-content-CDN_CACHING_PROBLEMS)
 - [Will CIDRAM protect my website from DDoS attacks?](#user-content-DDOS_ATTACKS)

@@ -1626,7 +1626,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 - [Могу ли я использовать cron для автоматического обновления?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [Что такое «нарушения»?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Может ли CIDRAM блокировать имена хостов?](#user-content-BLOCK_HOSTNAMES)
-- [Что я могу использовать для «default_dns»?](#user-content-что-я-могу-использовать-для-default_dns)
+- [Что я могу использовать для «default_dns»?](#что-я-могу-использовать-для-default_dns)
 - [Могу ли я использовать CIDRAM для защиты других вещей, помимо веб-сайтов (например, серверов электронной почты, FTP, SSH, IRC и т.д.)?](#user-content-PROTECT_OTHER_THINGS)
 - [Будут ли возникать проблемы, если я буду использовать CIDRAM одновременно с использованием CDN или кэширования?](#user-content-CDN_CACHING_PROBLEMS)
 - [Будет ли CIDRAM защищать мой сайт от атак DDoS?](#user-content-DDOS_ATTACKS)

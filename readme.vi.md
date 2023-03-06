@@ -1598,7 +1598,7 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 - [Tôi có thể sử dụng cron để cập nhật tự động không?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - ["Vi phạm" là gì?](#user-content-WHAT_ARE_INFRACTIONS)
 - [CIDRAM có thể chặn tên máy chủ không?](#user-content-BLOCK_HOSTNAMES)
-- [Những gì tôi có thể sử dụng cho "default_dns"?](#user-content-những-gì-tôi-có-thể-sử-dụng-cho-default_dns)
+- [Những gì tôi có thể sử dụng cho "default_dns"?](#những-gì-tôi-có-thể-sử-dụng-cho-default_dns)
 - [Tôi có thể sử dụng CIDRAM để bảo vệ những thứ khác ngoài trang web (v.d., máy chủ email, FTP, SSH, IRC, vv)?](#user-content-PROTECT_OTHER_THINGS)
 - [Sẽ xảy ra sự cố nếu tôi sử dụng CIDRAM cùng lúc với việc sử dụng các CDN hoặc các dịch vụ bộ nhớ đệm?](#user-content-CDN_CACHING_PROBLEMS)
 - [CIDRAM có bảo vệ trang web của tôi khỏi các cuộc tấn công DDoS không?](#user-content-DDOS_ATTACKS)

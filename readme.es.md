@@ -623,7 +623,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Una lista de los servidores DNS que se utilizarán para las búsquedas de nombres del host. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#WHAT_CAN_I_USE_FOR_DEFAULT_DNS" hreflang="es">¿Qué puedo usar para "default_dns"?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#qué-puedo-usar-para-default_dns" hreflang="es">¿Qué puedo usar para "default_dns"?</a></em>
 
 ##### "default_algo" `[string]`
 - Define qué algoritmo utilizar para todas las contraseñas y sesiones en el futuro.
@@ -1588,7 +1588,7 @@ Los módulos se han puesto a disposición para garantizar que los siguientes paq
 - [¿Puedo usar cron para actualizar automáticamente?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [¿Qué son "infracciones"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [¿Puede CIDRAM bloquear nombres de host?](#user-content-BLOCK_HOSTNAMES)
-- [¿Qué puedo usar para "default_dns"?](#user-content-WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
+- [¿Qué puedo usar para "default_dns"?](#qué-puedo-usar-para-default_dns)
 - [¿Puedo usar CIDRAM para proteger cosas que no sean sitios web (por ejemplo, servidores de correo electrónico, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
 - [¿Se producirán problemas si uso CIDRAM al mismo tiempo que uso CDN o servicios de caché?](#user-content-CDN_CACHING_PROBLEMS)
 - [¿CIDRAM protegerá mi sitio web de los ataques DDoS?](#user-content-DDOS_ATTACKS)

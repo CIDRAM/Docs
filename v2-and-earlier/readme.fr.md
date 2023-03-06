@@ -608,7 +608,7 @@ Valeur | Produit | Description
 ##### « default_dns »
 - Une liste délimitée par des virgules de serveurs DNS à utiliser pour les recherches de noms d'hôtes. Par Défaut = « 8.8.8.8,8.8.4.4 » (Google DNS). AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
-*Voir également : [Que puis-je utiliser pour « default_dns » ?](#user-content-que-puis-je-utiliser-pour-default_dns)*
+*Voir également : [Que puis-je utiliser pour « default_dns » ?](#que-puis-je-utiliser-pour-default_dns)*
 
 ##### « search_engine_verification »
 - Essayez de vérifier les moteurs de recherche ? Vérification des moteurs de recherche assure qu'ils ne seront pas interdits en raison de dépassement de la limite d'infraction (l'interdiction des moteurs de recherche de votre site web aura généralement un effet négatif sur votre moteur de recherche classement, SEO, etc). Lorsqu'ils sont vérifiés, les moteurs de recherche peuvent être bloqués comme d'habitude, mais ne seront pas interdits. Lorsqu'ils ne sont pas vérifiés, il est possible qu'ils soient interdits en raison du dépassement de la limite d'infraction. Aussi, la vérification des moteurs de recherche offre une protection contre les fausses requêtes des moteurs de recherche et contre les entités potentiellement malveillantes masquer comme moteurs de recherche (ces requêtes seront bloquées lorsque la vérification des moteurs de recherche est activée). True = Activer la vérification du moteurs de recherche [Défaut] ; False = Désactiver la vérification du moteurs de recherche.
@@ -1388,7 +1388,7 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 - [Puis-je utiliser cron pour mettre à jour automatiquement ?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [Quelles sont les « infractions » ?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Est-ce que CIDRAM peut bloquer les noms d'hôtes ?](#user-content-BLOCK_HOSTNAMES)
-- [Que puis-je utiliser pour « default_dns » ?](#user-content-que-puis-je-utiliser-pour-default_dns)
+- [Que puis-je utiliser pour « default_dns » ?](#que-puis-je-utiliser-pour-default_dns)
 - [Puis-je utiliser CIDRAM pour protéger des éléments autres que des sites Web (par exemple, serveurs de messagerie, FTP, SSH, IRC, etc) ?](#user-content-PROTECT_OTHER_THINGS)
 - [Des problèmes surviendront-ils si j'utilise CIDRAM en même temps que des CDN ou des services de cache ?](#user-content-CDN_CACHING_PROBLEMS)
 - [Est-ce que CIDRAM va protéger mon site web contre les attaques DDoS ?](#user-content-DDOS_ATTACKS)

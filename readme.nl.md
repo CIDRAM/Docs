@@ -1588,7 +1588,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Kan ik cron gebruiken om automatisch bij te werken?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [Wat zijn "overtredingen"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Kan CIDRAM hostnamen blokkeren?](#user-content-BLOCK_HOSTNAMES)
-- [Wat kan ik gebruiken voor "default_dns"?](#user-content-wat-kan-ik-gebruiken-voor-default_dns)
+- [Wat kan ik gebruiken voor "default_dns"?](#wat-kan-ik-gebruiken-voor-default_dns)
 - [Kan ik CIDRAM gebruiken om andere dingen dan websites te beschermen (b.v., e-mailservers, FTP, SSH, IRC, enz)?](#user-content-PROTECT_OTHER_THINGS)
 - [Zullen er problemen optreden als ik CIDRAM tegelijk gebruik met CDN's of cacheservices?](#user-content-CDN_CACHING_PROBLEMS)
 - [Zal CIDRAM mijn website beschermen tegen DDoS-aanvallen?](#user-content-DDOS_ATTACKS)

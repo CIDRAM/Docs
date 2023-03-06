@@ -669,7 +669,7 @@ Configuration (v2)
  <li>قائمة بفواصل من خوادم DNS لاستخدامها في عمليات البحث عن اسم المضيف. الافتراضي = "8.8.8.8,8.8.4.4" (Google DNS). تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li>
 </ul></div>
 
-<div dir="rtl">أنظر أيضا: <a href="#user-content-ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a><br /><br /></div>
+<div dir="rtl">أنظر أيضا: <a href="#ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a><br /><br /></div>
 
 ##### <div dir="rtl">"search_engine_verification"<br /></div>
 <div dir="rtl"><ul>
@@ -1642,7 +1642,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
  <li><a href="#user-content-CRON_TO_UPDATE_AUTOMATICALLY">هل يمكنني استخدام cron لتحديث تلقائيا؟</a></li>
  <li><a href="#user-content-WHAT_ARE_INFRACTIONS">ما هي "المخالفات"؟</a></li>
  <li><a href="#user-content-BLOCK_HOSTNAMES">هل يمكن لأسماء المضيفين في CIDRAM حظر؟</a></li>
- <li><a href="#user-content-ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
+ <li><a href="#ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
  <li><a href="#user-content-PROTECT_OTHER_THINGS">هل يمكنني استخدام CIDRAM لحماية الأشياء بخلاف مواقع الويب (مثل خوادم البريد الإلكتروني، FTP، SSH، IRC، إلخ)؟</a></li>
  <li><a href="#user-content-CDN_CACHING_PROBLEMS">هل تحدث مشكلات إذا كنت أستخدم CIDRAM في نفس وقت استخدام خدمات CDN أو خدمات التخزين المؤقت؟</a></li>
  <li><a href="#user-content-DDOS_ATTACKS">هل CIDRAM حماية موقعي على الويب ضد هجمات DDoS؟</a></li>

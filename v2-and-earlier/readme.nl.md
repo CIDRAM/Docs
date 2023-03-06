@@ -608,7 +608,7 @@ Waarde | Produceert | Beschrijving
 ##### "default_dns"
 - Een door komma's gescheiden lijst met DNS-servers te gebruiken voor de hostnaam lookups. Standaard = "8.8.8.8,8.8.4.4" (Google DNS). WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
-*Zie ook: [Wat kan ik gebruiken voor "default_dns"?](#user-content-wat-kan-ik-gebruiken-voor-default_dns)*
+*Zie ook: [Wat kan ik gebruiken voor "default_dns"?](#wat-kan-ik-gebruiken-voor-default_dns)*
 
 ##### "search_engine_verification"
 - Poging om aanvragen van zoekmachines te bevestigen? Verificatie van zoekmachines zorgt ervoor dat ze niet zullen worden verbannen als gevolg van het overschrijden van de overtreding limiet (verbod op zoekmachines van uw website zal meestal een negatief effect hebben op uw zoekmachine ranking, SEO, enz). Wanneer geverifieerd, zoekmachines kunnen worden geblokkeerd als per normaal, maar zal niet worden verbannen. Wanneer niet geverifieerd, het is mogelijk dat zij worden verbannen ten gevolge van het overschrijden van de overtreding limiet. Bovendien, het verifiëren van zoekmachines biedt bescherming tegen nep-zoekmachine aanvragen en tegen de mogelijk schadelijke entiteiten vermomd als zoekmachines (dergelijke aanvragen zal worden geblokkeerd wanneer het verifiëren van zoekmachines is ingeschakeld). True = Inschakelen het verifiëren van zoekmachines [Standaard]; False = Uitschakelen het verifiëren van zoekmachines.
@@ -1388,7 +1388,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Kan ik cron gebruiken om automatisch bij te werken?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [Wat zijn "overtredingen"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Kan CIDRAM hostnamen blokkeren?](#user-content-BLOCK_HOSTNAMES)
-- [Wat kan ik gebruiken voor "default_dns"?](#user-content-wat-kan-ik-gebruiken-voor-default_dns)
+- [Wat kan ik gebruiken voor "default_dns"?](#wat-kan-ik-gebruiken-voor-default_dns)
 - [Kan ik CIDRAM gebruiken om andere dingen dan websites te beschermen (b.v., e-mailservers, FTP, SSH, IRC, enz)?](#user-content-PROTECT_OTHER_THINGS)
 - [Zullen er problemen optreden als ik CIDRAM tegelijk gebruik met CDN's of cacheservices?](#user-content-CDN_CACHING_PROBLEMS)
 - [Zal CIDRAM mijn website beschermen tegen DDoS-aanvallen?](#user-content-DDOS_ATTACKS)

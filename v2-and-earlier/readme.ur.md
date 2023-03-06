@@ -669,7 +669,7 @@ Configuration (v2)
  <li>میزبان نام لک اپ کے لئے استعمال کرنے کے لئے DNS سرورز کی کوما ختم ہونے والی فہرست. پہلے سے طے شدہ = "8.8.8.8,8.8.4.4" (گوگل DNS). انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li>
 </ul></div>
 
-<div dir="rtl">بھی دیکھو: <a href="#user-content-میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a><br /><br /></div>
+<div dir="rtl">بھی دیکھو: <a href="#میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a><br /><br /></div>
 
 ##### <div dir="rtl">"search_engine_verification"<br /></div>
 <div dir="rtl"><ul>
@@ -1642,7 +1642,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
  <li><a href="#user-content-CRON_TO_UPDATE_AUTOMATICALLY">کیا میں خود کار طریقے سے اپ ڈیٹ کرنے کیلئے cron استعمال کرسکتا ہوں؟</a></li>
  <li><a href="#user-content-WHAT_ARE_INFRACTIONS">"خلاف ورزی" کیا ہیں؟</a></li>
  <li><a href="#user-content-BLOCK_HOSTNAMES">CIDRAM بلاک میزبانوں کو کر سکتے ہیں؟</a></li>
- <li><a href="#user-content-میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></li>
+ <li><a href="#میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></li>
  <li><a href="#user-content-PROTECT_OTHER_THINGS">کیا ویب سائٹس کے علاوہ چیزوں کی حفاظت کے لئے میں CIDRAM استعمال کرسکتا ہوں (مثال کے طور پر، ای میل سرورز، FTP سرورز، SSH سرورز، IRC سرورز، وغیرہ)؟</a></li>
  <li><a href="#user-content-CDN_CACHING_PROBLEMS">مواد ترسیل کے نیٹ ورک یا کیشنگ کی خدمات کا استعمال کرتے ہوئے ایک ہی وقت میں CIDRAM کا استعمال کرتے ہوئے، کیا مسائل ہو گی؟</a></li>
  <li><a href="#user-content-DDOS_ATTACKS">کیا CIDRAM DDoS حملوں کے خلاف میری ویب سائٹ کی حفاظت کرتا ہے؟</a></li>

@@ -1548,7 +1548,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 - [可以使用cron自动更新吗？](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [什么是“违规”？](#user-content-WHAT_ARE_INFRACTIONS)
 - [CIDRAM可以阻止主机名？](#user-content-BLOCK_HOSTNAMES)
-- [在“default_dns”中我可以使用什么？](#user-content-在default_dns中我可以使用什么)
+- [在“default_dns”中我可以使用什么？](#在default_dns中我可以使用什么)
 - [我可以使用CIDRAM保护网站以外的东西吗（例如，电子邮件服务器，FTP，SSH，IRC，等）？](#user-content-PROTECT_OTHER_THINGS)
 - [如果我在使用CDN或缓存服务的同时使用CIDRAM，会发生问题吗？](#user-content-CDN_CACHING_PROBLEMS)
 - [CIDRAM会保护我的网站免受DDoS攻击吗？](#user-content-DDOS_ATTACKS)

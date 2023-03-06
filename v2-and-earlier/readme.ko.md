@@ -608,7 +608,7 @@ Configuration (v2)
 ##### "default_dns"
 - 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 쉼표로 구분 된 목록입니다. Default (기본 설정) = "8.8.8.8,8.8.4.4" (Google DNS). 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
-*참조 : ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#user-content-default_dns에-사용할-수있는-항목은-무엇입니까)*
+*참조 : ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#default_dns에-사용할-수있는-항목은-무엇입니까)*
 
 ##### "search_engine_verification"
 - 검색 엔진의 요청을 확인해야합니까? 검색 엔진을 확인하여, 위반의 최대 수를 초과했기 때문에 검색 엔진이 금지되지 않는 것이 보증됩니다 (검색 엔진을 금지하는 것은 일반적으로 검색 엔진 순위의, SEO 등에 악영향을 미칩니다). 확인되면, 검색 엔진이 차단 될 수 있지만, 그러나 금지되지 않습니다. 검증되지 않은 경우는, 위반의 최대를 초과 한 결과, 금지 될 수 있습니다. 또한 검색 엔진의 검증은 사칭 된 검색 엔진으로부터 보호합니다 (이러한 요청은 차단됩니다). True = 검색 엔진의 검증을 활성화한다 (Default / 기본 설정); False = 검색 엔진의 검증을 무효로한다.
@@ -1388,7 +1388,7 @@ CIDRAM과의 호환성을 보장하기 위해, 다음 패키지 및 제품에, �
 - [Cron을 사용하여 자동으로 업데이트 할 수 있습니까?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - ["위반"이란 무엇입니까?](#user-content-WHAT_ARE_INFRACTIONS)
 - [CIDRAM이 호스트 이름을 차단할 수 있습니까?](#user-content-BLOCK_HOSTNAMES)
-- ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#user-content-default_dns에-사용할-수있는-항목은-무엇입니까)
+- ["default_dns"에 사용할 수있는 항목은 무엇입니까?](#default_dns에-사용할-수있는-항목은-무엇입니까)
 - [CIDRAM을 사용하여 웹 사이트 (예 : 이메일 서버, FTP, SSH, IRC, 등) 이외의 것을 보호 할 수 있습니까?](#user-content-PROTECT_OTHER_THINGS)
 - [CDN 또는 캐싱 서비스를 사용하는 것과 동시에 CIDRAM을 사용하면 문제가 발생합니까?](#user-content-CDN_CACHING_PROBLEMS)
 - [CIDRAM이 내 웹 사이트를 DDoS 공격으로부터 보호합니까?](#user-content-DDOS_ATTACKS)
@@ -1965,6 +1965,7 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 - [유럽 개인정보 보호법 GDPR 안내](https://www.privacy.go.kr/gdpr)
 - [유럽 개인정보보호법, GDPR을 알아보자 | HACKTAGON](https://hacktagon.github.io/chinnie/law/gdpr/privacy/GDPR_01)
 - [REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32016R0679)
+- [일반 데이터 보호 규칙](https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%B3%B4%ED%98%B8_%EA%B7%9C%EC%B9%99)
 
 ---
 

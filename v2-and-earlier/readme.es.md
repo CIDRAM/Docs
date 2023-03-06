@@ -608,7 +608,7 @@ Valor | Produce | Descripción
 ##### "default_dns"
 - Una lista delimitada por comas de los servidores DNS que se utilizarán para las búsquedas de nombres del host. Predefinido = "8.8.8.8,8.8.4.4" (Google DNS). ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
-*Ver también: [¿Qué puedo usar para "default_dns"?](#user-content-WHAT_CAN_I_USE_FOR_DEFAULT_DNS)*
+*Ver también: [¿Qué puedo usar para "default_dns"?](#qué-puedo-usar-para-default_dns)*
 
 ##### "search_engine_verification"
 - ¿Intentar verificar las solicitudes de los motores de búsqueda? La verificación de los motores de búsqueda asegura que no serán prohibidos como resultado de exceder el número máximo de infracciones (la prohibición de los motores de búsqueda de su sitio web por lo general tendrán un efecto negativo sobre su ranking de motores de búsqueda, SEO, etc). Cuando se verifica, los motores de búsqueda se pueden bloquear como de costumbre, pero no se prohibirá. Cuando no se verifica, es posible que se les prohíba como resultado de exceder el número máximo de infracciones. Adicionalmente, la verificación de motores de búsqueda proporciona protección contra las solicitudes de motor de búsqueda falsas y contra entidades potencialmente maliciosas disfrazadas de motores de búsqueda (tales solicitudes serán bloqueadas cuando la verificación del motor de búsqueda esté habilitada). True = Activar la verificación del motores de búsqueda [Predefinido]; False = Desactivar la verificación del motores de búsqueda.
@@ -1388,7 +1388,7 @@ Los módulos se han puesto a disposición para garantizar que los siguientes paq
 - [¿Puedo usar cron para actualizar automáticamente?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [¿Qué son "infracciones"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [¿Puede CIDRAM bloquear nombres de host?](#user-content-BLOCK_HOSTNAMES)
-- [¿Qué puedo usar para "default_dns"?](#user-content-WHAT_CAN_I_USE_FOR_DEFAULT_DNS)
+- [¿Qué puedo usar para "default_dns"?](#qué-puedo-usar-para-default_dns)
 - [¿Puedo usar CIDRAM para proteger cosas que no sean sitios web (por ejemplo, servidores de correo electrónico, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
 - [¿Se producirán problemas si uso CIDRAM al mismo tiempo que uso CDN o servicios de caché?](#user-content-CDN_CACHING_PROBLEMS)
 - [¿CIDRAM protegerá mi sitio web de los ataques DDoS?](#user-content-DDOS_ATTACKS)

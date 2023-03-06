@@ -1584,7 +1584,7 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 - [Dapatkah saya menggunakan cron untuk mengupdate secara otomatis?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [Apa "pelanggaran"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Dapatkah CIDRAM memblokir nama host?](#user-content-BLOCK_HOSTNAMES)
-- [Apa yang bisa saya gunakan untuk "default_dns"?](#user-content-apa-yang-bisa-saya-gunakan-untuk-default_dns)
+- [Apa yang bisa saya gunakan untuk "default_dns"?](#apa-yang-bisa-saya-gunakan-untuk-default_dns)
 - [Dapatkah saya menggunakan CIDRAM untuk melindungi hal-hal selain daripada situs web (misalnya, server email, FTP, SSH, IRC, dll)?](#user-content-PROTECT_OTHER_THINGS)
 - [Akankah masalah terjadi jika saya menggunakan CIDRAM pada saat yang sama dengan menggunakan layanan CDN atau cache?](#user-content-CDN_CACHING_PROBLEMS)
 - [Akankah CIDRAM melindungi situs web saya dari serangan DDoS?](#user-content-DDOS_ATTACKS)

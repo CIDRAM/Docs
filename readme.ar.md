@@ -1617,7 +1617,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
  <li><a href="#user-content-CRON_TO_UPDATE_AUTOMATICALLY">هل يمكنني استخدام cron لتحديث تلقائيا؟</a></li>
  <li><a href="#user-content-WHAT_ARE_INFRACTIONS">ما هي "المخالفات"؟</a></li>
  <li><a href="#user-content-BLOCK_HOSTNAMES">هل يمكن لأسماء المضيفين في CIDRAM حظر؟</a></li>
- <li><a href="#user-content-ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
+ <li><a href="#ما-الذي-يمكنني-استخدامه-لـ-default_dns">ما الذي يمكنني استخدامه لـ "default_dns"؟</a></li>
  <li><a href="#user-content-PROTECT_OTHER_THINGS">هل يمكنني استخدام CIDRAM لحماية الأشياء بخلاف مواقع الويب (مثل خوادم البريد الإلكتروني، FTP، SSH، IRC، إلخ)؟</a></li>
  <li><a href="#user-content-CDN_CACHING_PROBLEMS">هل تحدث مشكلات إذا كنت أستخدم CIDRAM في نفس وقت استخدام خدمات CDN أو خدمات التخزين المؤقت؟</a></li>
  <li><a href="#user-content-DDOS_ATTACKS">هل CIDRAM حماية موقعي على الويب ضد هجمات DDoS؟</a></li>

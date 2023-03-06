@@ -618,7 +618,7 @@ Value | Produces | Description
 ##### "default_dns"
 - A comma delimited list of DNS servers to use for hostname lookups. Default = "8.8.8.8,8.8.4.4" (Google DNS). WARNING: Don't change this unless you know what you're doing!
 
-*See also: [What can I use for "default_dns"?](#user-content-what-can-i-use-for-default_dns)*
+*See also: [What can I use for "default_dns"?](#what-can-i-use-for-default_dns)*
 
 ##### "search_engine_verification"
 - Attempt to verify requests from search engines? Verifying search engines ensures that they won't be banned as a result of exceeding the infraction limit (banning search engines from your website will usually have a negative effect upon your search engine ranking, SEO, etc). When verified, search engines can be blocked as per normal, but won't be banned. When not verified, it's possible for them to be banned as a result of exceeding the infraction limit. Additionally, search engine verification provides protection against fake search engine requests and against potentially malicious entities masquerading as search engines (such requests will be blocked when search engine verification is enabled). True = Enable search engine verification [Default]; False = Disable search engine verification.
@@ -1398,7 +1398,7 @@ Modules have been made available to ensure that the following packages and produ
 - [Can I use cron to update automatically?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [What are "infractions"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [Can CIDRAM block hostnames?](#user-content-BLOCK_HOSTNAMES)
-- [What can I use for "default_dns"?](#user-content-what-can-i-use-for-default_dns)
+- [What can I use for "default_dns"?](#what-can-i-use-for-default_dns)
 - [Can I use CIDRAM to protect things other than websites (e.g., email servers, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
 - [Will problems occur if I use CIDRAM at the same time as using CDNs or caching services?](#user-content-CDN_CACHING_PROBLEMS)
 - [Will CIDRAM protect my website from DDoS attacks?](#user-content-DDOS_ATTACKS)

@@ -608,7 +608,7 @@ Configuration (v2)
 ##### “default_dns”
 - 以逗号分隔的DNS服务器列表，​用于主机名查找。​标准 = “8.8.8.8,8.8.4.4” (Google DNS)。​警告：不要修改此除非您知道什么您做着！
 
-*也可以看看：​[在“default_dns”中我可以使用什么？](#user-content-在default_dns中我可以使用什么)*
+*也可以看看：​[在“default_dns”中我可以使用什么？](#在default_dns中我可以使用什么)*
 
 ##### “search_engine_verification”
 - 尝试验证来自搜索引擎的请求？​验证搜索引擎确保他们不会因超过违规限制而被禁止 （禁止在您的网站上使用搜索引擎通常会有产生负面影响对您的搜索引擎排名，​SEO，​等等）。​当被验证，​搜索引擎可以被阻止，​但不会被禁止。​当不被验证，​他们可以由于超过违规限制而被禁止。​另外，​搜索引擎验证提供保护针对假搜索引擎请求和针对潜在的恶意实体伪装成搜索引擎（当搜索引擎验证是启用，​这些请求将被阻止）。​True（真）=搜索引擎验证是启用【标准】；​False（假）=搜索引擎验证是禁用。
@@ -1388,7 +1388,7 @@ if ($CIDRAM['Hostname'] && $CIDRAM['Hostname'] !== $CIDRAM['BlockInfo']['IPAddr'
 - [可以使用cron自动更新吗？](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [什么是“违规”？](#user-content-WHAT_ARE_INFRACTIONS)
 - [CIDRAM可以阻止主机名？](#user-content-BLOCK_HOSTNAMES)
-- [在“default_dns”中我可以使用什么？](#user-content-在default_dns中我可以使用什么)
+- [在“default_dns”中我可以使用什么？](#在default_dns中我可以使用什么)
 - [我可以使用CIDRAM保护网站以外的东西吗（例如，电子邮件服务器，FTP，SSH，IRC，等）？](#user-content-PROTECT_OTHER_THINGS)
 - [如果我在使用CDN或缓存服务的同时使用CIDRAM，会发生问题吗？](#user-content-CDN_CACHING_PROBLEMS)
 - [CIDRAM会保护我的网站免受DDoS攻击吗？](#user-content-DDOS_ATTACKS)

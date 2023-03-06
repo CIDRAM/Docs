@@ -1574,7 +1574,7 @@ CIDRAMとの互換性を確保するために、以下のパッケージと製�
 - [Cronを使って自動的にアップデートできますか？](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [「違反」とは何ですか？](#user-content-WHAT_ARE_INFRACTIONS)
 - [CIDRAMはホスト名をブロックできますか？](#user-content-BLOCK_HOSTNAMES)
-- [「default_dns」には何が使えますか？](#user-content-default_dnsには何が使えますか)
+- [「default_dns」には何が使えますか？](#default_dnsには何が使えますか)
 - [CIDRAMを使用してウェブサイト以外のもの（メールサーバー、ＦＴＰ、ＳＳＨ、ＩＲＣ、など）を保護することはできますか？](#user-content-PROTECT_OTHER_THINGS)
 - [ＣＤＮやキャッシュ・サービスを使用するのと同時にCIDRAMを使用すると問題が発生しますか？](#user-content-CDN_CACHING_PROBLEMS)
 - [CIDRAMは、私のウェブサイトをＤＤｏＳ攻撃から守りますか？](#user-content-DDOS_ATTACKS)

@@ -1582,7 +1582,7 @@ Os módulos foram disponibilizados para garantir que os seguintes pacotes e prod
 - [Posso usar o cron para atualizar automaticamente?](#user-content-CRON_TO_UPDATE_AUTOMATICALLY)
 - [O que são "infrações"?](#user-content-WHAT_ARE_INFRACTIONS)
 - [O CIDRAM pode bloquear nomes de host?](#user-content-BLOCK_HOSTNAMES)
-- [O que posso usar para "default_dns"?](#user-content-o-que-posso-usar-para-default_dns)
+- [O que posso usar para "default_dns"?](#o-que-posso-usar-para-default_dns)
 - [Posso usar o CIDRAM para proteger outras coisas além de sites (por exemplo, servidores de e-mail, FTP, SSH, IRC, etc)?](#user-content-PROTECT_OTHER_THINGS)
 - [Ocorrerão problemas se eu usar o CIDRAM ao mesmo tempo que usando CDNs ou serviços de cache?](#user-content-CDN_CACHING_PROBLEMS)
 - [A CIDRAM protegerá meu site contra ataques DDoS?](#user-content-DDOS_ATTACKS)
