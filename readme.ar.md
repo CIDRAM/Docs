@@ -212,6 +212,7 @@ $CIDRAM->view();
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -349,16 +350,21 @@ fields
 ├─ReasonMessage ("سبب الحظر (مفصلة)")
 ├─rURI ("أعيد بناؤها URI")
 ├─Infractions ("مخالفات")
-├─ASNLookup ("بحث ASN")
-├─CCLookup ("بحث عن كود البلد")
+├─ASNLookup ("** بحث ASN")
+├─CCLookup ("** بحث عن كود البلد")
 ├─Verified ("التحقق من الهوية")
 ├─Expired ("منتهية الصلاحية")
 ├─Ignored ("تجاهل")
 ├─Request_Method ("Request method")
 ├─Protocol ("بروتوكول")
 ├─Hostname ("اسم المضيف")
-└─CAPTCHA ("الحالة CAPTCHA")
+├─CAPTCHA ("الحالة CAPTCHA")
+└─Inspection ("* فحص الشروط")
 ```
+
+* مخصص فقط من أجل تصحيح أخطاء القواعد المساعدة. غير معروض أمام المستخدمين المحظورين.
+
+** يتطلب وظيفة بحث ASN (على سبيل المثال، عبر وحدة IP-API أو وحدة BGPView).
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يتم استخدام هذا لتحديد المنطقة الزمنية للاستخدام (على سبيل المثال، Africa/Cairo، America/New_York، Asia/Tokyo، Australia/Perth، Europe/Berlin، Pacific/Guam، إلخ). حدد "SYSTEM" للسماح لـ PHP بمعالجة هذا الأمر تلقائيًا.</li></ul></div>
@@ -723,6 +729,9 @@ disabled_channels
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
+##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>ملف لتسجيل نتائج أي طلبات صادرة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي تقارير يتم إرسالها إلى واجهات برمجة التطبيقات الخارجية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
@@ -852,6 +861,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -873,6 +883,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1196,7 +1207,7 @@ exceptions
 ##### <div dir="rtl">"pdo_dsn" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قيمة PDO DSN. افتراضي = "mysql:dbname=cidram;host=localhost;port=3306".</li></ul></div>
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#HOW_TO_USE_PDO" hreflang="ar">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ar.md#user-content-HOW_TO_USE_PDO" hreflang="ar">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></em>
 
 ##### <div dir="rtl">"pdo_username" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO اسم المستخدم.</li></ul></div>
@@ -1223,9 +1234,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2249,4 +2262,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٥ مارس ٢٠٢٣ (٢٠٢٣.٠٣.٠٥).</div>
+<div dir="rtl">آخر تحديث: ٢٥ مارس ٢٠٢٣ (٢٠٢٣.٠٣.٢٥).</div>

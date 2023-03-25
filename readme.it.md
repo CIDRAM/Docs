@@ -206,6 +206,7 @@ Configurazione (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("Perché bloccato (dettagliato)")
 ├─rURI ("URI Ricostruito")
 ├─Infractions ("Infrazioni")
-├─ASNLookup ("Ricerca per ASN")
-├─CCLookup ("Ricerca per codice paese")
+├─ASNLookup ("** Ricerca per ASN")
+├─CCLookup ("** Ricerca per codice paese")
 ├─Verified ("Identità verificata")
 ├─Expired ("Scaduta")
 ├─Ignored ("Ignorato")
 ├─Request_Method ("Metodo di richiesta")
 ├─Protocol ("Protocollo")
 ├─Hostname ("Nome host")
-└─CAPTCHA ("Stato CAPTCHA")
+├─CAPTCHA ("Stato CAPTCHA")
+└─Inspection ("* Ispezione delle condizioni")
 ```
+
+* Destinato solo al debug delle regole ausiliarie. Non mostrato agli utenti bloccati.
+
+** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo IP-API o BGPView).
 
 ##### "timezone" `[string]`
 - Questo è usato per specificare il fuso orario da usare (per esempio, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, ecc). Specifica "SYSTEM" per consentire a PHP di gestirlo automaticamente.
@@ -708,6 +714,9 @@ Configurazione relativa alla registrazione (escluso quello che è applicabile al
 ##### "error_log" `[string]`
 - Un file per la registrazione di eventuali errori non fatali rilevati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
+##### "outbound_request_log" `[string]`
+- Un file per la registrazione dei risultati di eventuali richieste in uscita. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
 ##### "report_log" `[string]`
 - Un file per la registrazione di tutti i rapporti inviati ad API esterne. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
@@ -837,6 +846,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -858,6 +868,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1175,7 +1186,7 @@ Opzioni di cache supplementari. Nota: La modifica di questi valori potrebbe pote
 ##### "pdo_dsn" `[string]`
 - Il valore della DSN per PDO. Predefinito = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#HOW_TO_USE_PDO" hreflang="it">Che cos'è un "DSN PDO"? Come posso usare PDO con CIDRAM?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#user-content-HOW_TO_USE_PDO" hreflang="it">Che cos'è un "DSN PDO"? Come posso usare PDO con CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Il nome utente per PDO.
@@ -1202,9 +1213,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2189,4 +2202,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 5 Marzo 2023 (2023.03.05).
+Ultimo Aggiornamento: 25 Marzo 2023 (2023.03.25).

@@ -206,6 +206,7 @@ $CIDRAM->view();
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("為什麼被阻止（詳細）")
 ├─rURI ("重建URI")
 ├─Infractions ("違規")
-├─ASNLookup ("ASN查詢")
-├─CCLookup ("國家代碼查詢")
+├─ASNLookup ("** ASN查詢")
+├─CCLookup ("** 國家代碼查詢")
 ├─Verified ("身份驗證")
 ├─Expired ("已過期")
 ├─Ignored ("忽略了")
 ├─Request_Method ("請求方法")
 ├─Protocol ("協議")
 ├─Hostname ("主機名")
-└─CAPTCHA ("CAPTCHA狀態")
+├─CAPTCHA ("CAPTCHA狀態")
+└─Inspection ("* 條件檢查")
 ```
+
+* 僅用於調試輔助規則。​不向被阻止的用戶顯示。
+
+** 需要ASN查找功能（例如，通過IP-API或BGPView模塊）。
 
 ##### 『timezone』 `[string]`
 - 這用於指定要使用的時區​（例如，Africa/Cairo，America/New_York，Asia/Tokyo，Australia/Perth，Europe/Berlin，Pacific/Guam，等等）。​指定『SYSTEM』使PHP自動為您處理。
@@ -686,6 +692,9 @@ CIDRAM使用的組件的啟用和停用的配置。​通常由更新頁面填�
 ##### 『error_log』 `[string]`
 - 用於記錄檢測到的任何非致命錯誤的文件。​指定一個文件名，​或留空以禁用。
 
+##### 『outbound_request_log』 `[string]`
+- 用於記錄任何出站請求結果的文件。​指定一個文件名，​或留空以禁用。
+
 ##### 『report_log』 `[string]`
 - 用於記錄發送到外部API的任何報告的文件。​指定一個文件名，​或留空以禁用。
 
@@ -815,6 +824,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -836,6 +846,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1137,7 +1148,7 @@ exceptions
 ##### 『pdo_dsn』 `[string]`
 - PDO DSN值。​默認 = 『mysql:dbname=cidram;host=localhost;port=3306』。
 
-__常問問題。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh-tw.md#HOW_TO_USE_PDO" hreflang="zh-TW">『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？</a></em>
+__常問問題。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh-tw.md#user-content-HOW_TO_USE_PDO" hreflang="zh-TW">『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？</a></em>
 
 ##### 『pdo_username』 `[string]`
 - PDO用戶名。
@@ -1164,9 +1175,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2147,4 +2160,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2023年3月5日。
+最後更新：2023年3月25日。

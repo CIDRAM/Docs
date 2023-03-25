@@ -206,6 +206,7 @@ Configuratie (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("Waarom geblokkeerd (gedetailleerd)")
 ├─rURI ("Gereconstrueerde URI")
 ├─Infractions ("Overtredingen")
-├─ASNLookup ("ASN opzoeken")
-├─CCLookup ("Landcode opzoeken")
+├─ASNLookup ("** ASN opzoeken")
+├─CCLookup ("** Landcode opzoeken")
 ├─Verified ("Geverifieerde identiteit")
 ├─Expired ("Verlopen")
 ├─Ignored ("Genegeerd")
 ├─Request_Method ("Verzoek methode")
 ├─Protocol ("Protocol")
 ├─Hostname ("Hostname")
-└─CAPTCHA ("CAPTCHA State")
+├─CAPTCHA ("CAPTCHA State")
+└─Inspection ("* Inspectie van de voorwaarden")
 ```
+
+* Alleen bedoeld voor het debuggen van aanvullende regels. Niet weergegeven voor geblokkeerde gebruikers.
+
+** Vereist ASN-opzoekfunctionaliteit (b.v., via de IP-API-module of BGPView-module).
 
 ##### "timezone" `[string]`
 - Dit wordt gebruikt om de te gebruiken tijdzone op te geven (b.v., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, enz). Geef "SYSTEM" op om PHP dit automatisch voor u te laten afhandelen.
@@ -710,6 +716,9 @@ Configuratie gerelateerd aan logging (dat wat gerelateerd aan andere categorieë
 ##### "error_log" `[string]`
 - Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
+##### "outbound_request_log" `[string]`
+- Een bestand voor het loggen van de resultaten van eventuele uitgaande verzoeken. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
 ##### "report_log" `[string]`
 - Een bestand voor het loggen van rapporten die naar externe API's zijn verzonden. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
@@ -839,6 +848,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -860,6 +870,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1177,7 +1188,7 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 ##### "pdo_dsn" `[string]`
 - PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#HOW_TO_USE_PDO" hreflang="nl">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#user-content-HOW_TO_USE_PDO" hreflang="nl">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO gebruikersnaam.
@@ -1204,9 +1215,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2205,4 +2218,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 5 Maart 2023 (2023.03.05).
+Laatste Bijgewerkt: 25 Maart 2023 (2023.03.25).

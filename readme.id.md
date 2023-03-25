@@ -206,6 +206,7 @@ Konfigurasi (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("Mengapa diblokir (terperinci)")
 ├─rURI ("Direkonstruksi URI")
 ├─Infractions ("Pelanggaran")
-├─ASNLookup ("Pencarian ASN")
-├─CCLookup ("Pencarian kode negara")
+├─ASNLookup ("** Pencarian ASN")
+├─CCLookup ("** Pencarian kode negara")
 ├─Verified ("Identitas terverifikasi")
 ├─Expired ("Kedaluwarsa")
 ├─Ignored ("Diabaikan")
 ├─Request_Method ("Metode permintaan")
 ├─Protocol ("Protokol")
 ├─Hostname ("Nama host")
-└─CAPTCHA ("Status CAPTCHA")
+├─CAPTCHA ("Status CAPTCHA")
+└─Inspection ("* Pemeriksaan kondisi")
 ```
+
+* Dimaksudkan hanya untuk men-debug aturan tambahan. Tidak ditampilkan kepada pengguna yang diblokir.
+
+** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
 
 ##### "timezone" `[string]`
 - Ini digunakan untuk menentukan zona waktu yang akan digunakan (misalnya, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, dll). Menentukan "SYSTEM" untuk membiarkan PHP menangani ini untuk Anda secara otomatis.
@@ -708,6 +714,9 @@ Konfigurasi yang terkait dengan pencatatan (tidak termasuk yang berlaku untuk ka
 ##### "error_log" `[string]`
 - File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
+##### "outbound_request_log" `[string]`
+- File untuk mencatat hasil permintaan keluar apapun. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
 ##### "report_log" `[string]`
 - File untuk mencatat setiap laporan yang dikirim ke API eksternal. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
@@ -837,6 +846,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -858,6 +868,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1173,7 +1184,7 @@ Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
 ##### "pdo_dsn" `[string]`
 - Nilai DSN PDO. Default = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#HOW_TO_USE_PDO" hreflang="id">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#user-content-HOW_TO_USE_PDO" hreflang="id">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Nama pengguna PDO.
@@ -1200,9 +1211,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2184,4 +2197,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 5 Maret 2023 (2023.03.05).
+Terakhir Diperbarui: 25 Maret 2023 (2023.03.25).

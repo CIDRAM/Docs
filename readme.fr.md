@@ -206,6 +206,7 @@ Configuration (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("Raison bloquée (détaillée)")
 ├─rURI ("Reconstruite URI")
 ├─Infractions ("Infractions")
-├─ASNLookup ("Recherche d'ASN")
-├─CCLookup ("Recherche de code de pays")
+├─ASNLookup ("** Recherche d'ASN")
+├─CCLookup ("** Recherche de code de pays")
 ├─Verified ("Identité vérifiée")
 ├─Expired ("Expiré")
 ├─Ignored ("Ignoré")
 ├─Request_Method ("Méthode de requête")
 ├─Protocol ("Protocole")
 ├─Hostname ("Nom d'hôte")
-└─CAPTCHA ("État CAPTCHA")
+├─CAPTCHA ("État CAPTCHA")
+└─Inspection ("* Inspection des conditions")
 ```
+
+* Destiné uniquement au débogage des règles auxiliaires. Non affiché pour les utilisateurs bloqués.
+
+** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module IP-API ou BGPView).
 
 ##### « timezone » `[string]`
 - Ceci est utilisé pour spécifier le fuseau horaire à utiliser (par exemple, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Spécifiez « SYSTEM » pour laisser PHP gérer cela automatiquement pour vous.
@@ -708,6 +714,9 @@ Configuration liée à la journalisation (à l'exclusion de ce qui est applicabl
 ##### « error_log » `[string]`
 - Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
 
+##### « outbound_request_log » `[string]`
+- Un fichier pour l'enregistrement des résultats de toutes les requêtes sortantes. Spécifier un fichier, ou laisser vide à désactiver.
+
 ##### « report_log » `[string]`
 - Un fichier pour l'enregistrement des rapports envoyés aux API externes. Spécifier un fichier, ou laisser vide à désactiver.
 
@@ -837,6 +846,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -858,6 +868,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1175,7 +1186,7 @@ Options de cache supplémentaires. Remarque : La modification de ces valeurs pe
 ##### « pdo_dsn » `[string]`
 - Valeur de DSN de PDO. Défaut = « mysql:dbname=cidram;host=localhost;port=3306 ».
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#HOW_TO_USE_PDO" hreflang="fr">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#user-content-HOW_TO_USE_PDO" hreflang="fr">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
 
 ##### « pdo_username » `[string]`
 - Nom d'utilisateur PDO.
@@ -1202,9 +1213,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2199,4 +2212,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 5 Mars 2023 (2023.03.05).
+Dernière mise à jour : 25 Mars 2023 (2023.03.25).

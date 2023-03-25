@@ -212,6 +212,7 @@ $CIDRAM->view();
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -349,16 +350,21 @@ fields
 ├─ReasonMessage ("کیوں بلاک شدہ (تفصیلی)")
 ├─rURI ("دوبارہ تعمیر URI")
 ├─Infractions ("خلاف ورزی")
-├─ASNLookup ("ASN کی تلاش")
-├─CCLookup ("ملک کا کوڈ کی تلاش")
+├─ASNLookup ("** ASN کی تلاش")
+├─CCLookup ("** ملک کا کوڈ کی تلاش")
 ├─Verified ("تصدیق شدہ شناخت")
 ├─Expired ("میعاد ختم")
 ├─Ignored ("نظر انداز")
 ├─Request_Method ("درخواست کا طریقہ")
 ├─Protocol ("پروٹوکول")
 ├─Hostname ("میزبان کا نام")
-└─CAPTCHA ("CAPTCHA کے ریاست")
+├─CAPTCHA ("CAPTCHA کے ریاست")
+└─Inspection ("* حالات کا معائنہ")
 ```
+
+* صرف معاون قواعد کو ڈیبگ کرنے کے لیے بنایا گیا ہے. مسدود صارفین کو ظاہر نہیں کیا گیا.
+
+** ASN تلاش کی فعالیت کی ضرورت ہے (مثال کے طور پر، IP-API یا BGPView ماڈیول کے ذریعے).
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>استعمال کرنے کے لئے ٹائم زون کی وضاحت کرتا ہے (جیسے، Africa/Cairo، America/New_York، Asia/Tokyo، Australia/Perth، Europe/Berlin، Pacific/Guam، وغیرہ). SYSTEM کی وضاحت کریں تاکہ PHP کو آپ کے لئے خود بخود یہ سنبھل سکے.</li></ul></div>
@@ -502,7 +508,7 @@ http_response_header_code
 ```
 
 ##### <div dir="rtl">"silent_mode" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>خاموشی CIDRAM چاہئے "رسائی نہیں ہوئی" کے صفحے کی نمائش سے بلاک رسائی کی کوششوں کو ری ڈائریکٹ کرنے کے بجائے؟ ہاں تو، کو بلاک کر تک رسائی کی کوششوں کو ری ڈائریکٹ کرنے کے محل وقوع کی وضاحت. کوئی تو اس متغیر خالی چھوڑ.</li></ul></div>
+<div dir="rtl"><ul><li>خاموشی CIDRAM چاہئے "رسائی مسترد کر دی" کے صفحے کی نمائش سے بلاک رسائی کی کوششوں کو ری ڈائریکٹ کرنے کے بجائے؟ ہاں تو، کو بلاک کر تک رسائی کی کوششوں کو ری ڈائریکٹ کرنے کے محل وقوع کی وضاحت. کوئی تو اس متغیر خالی چھوڑ.</li></ul></div>
 
 ##### <div dir="rtl">"lang" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>CIDRAM لئے پہلے سے طے شدہ زبان کی وضاحت.</li></ul></div>
@@ -723,6 +729,9 @@ disabled_channels
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
+##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کسی بھی آؤٹ باؤنڈ درخواستوں کے نتائج کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی API کو بھیجی گئی کسی بھی رپورٹ کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
@@ -852,6 +861,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -873,6 +883,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1115,7 +1126,7 @@ theme
 ```
 block_event_title
 ├─CIDRAM ("CIDRAM")
-├─denied ("رسائی نہیں ہوئی!")
+├─denied ("رسائی مسترد کر دی!")
 └─…دیگر
 ```
 
@@ -1129,10 +1140,10 @@ captcha_title
 ```
 
 ##### <div dir="rtl">"custom_header" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام "رسائی نہیں ہوئی" صفحات کے شروع میں بطور HTML داخل کیا گیا. اگر آپ ویب سائٹ کا لوگو، پرسنلائزڈ ہیڈر، اسکرپٹس، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
+<div dir="rtl"><ul><li>تمام "رسائی مسترد کر دی" صفحات کے شروع میں بطور HTML داخل کیا گیا. اگر آپ ویب سائٹ کا لوگو، پرسنلائزڈ ہیڈر، اسکرپٹس، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
 
 ##### <div dir="rtl">"custom_footer" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام "رسائی نہیں ہوئی" صفحات کے آخر میں بطور HTML داخل کیا گیا. اگر آپ قانونی نوٹس، رابطہ لنک، کاروباری معلومات، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
+<div dir="rtl"><ul><li>تمام "رسائی مسترد کر دی" صفحات کے آخر میں بطور HTML داخل کیا گیا. اگر آپ قانونی نوٹس، رابطہ لنک، کاروباری معلومات، وغیرہ شامل کرنا چاہتے ہیں، تو یہ مفید ہو سکتا ہے.</li></ul></div>
 
 #### <div dir="rtl">"rate_limiting" (قسم)<br /></div>
 <div dir="rtl">شرح کو محدود کرنے کی ترتیبات (عام استعمال کے لئے سفارش نہیں کی جاتی ہے).<br /><br /></div>
@@ -1200,7 +1211,7 @@ exceptions
 ##### <div dir="rtl">"pdo_dsn" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے DSN. پہلے سے طے شدہ = "mysql:dbname=cidram;host=localhost;port=3306".</li></ul></div>
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#HOW_TO_USE_PDO" hreflang="ur">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#user-content-HOW_TO_USE_PDO" hreflang="ur">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></em>
 
 ##### <div dir="rtl">"pdo_username" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے صارف نام.</li></ul></div>
@@ -1227,9 +1238,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2253,4 +2266,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۵ مارچ ۲۰۲۳ (۲۰۲۳.۰۳.۰۵).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۵ مارچ ۲۰۲۳ (۲۰۲۳.۰۳.۲۵).</div>

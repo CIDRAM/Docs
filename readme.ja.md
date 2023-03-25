@@ -206,6 +206,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("なぜブロックされましたか（詳細な）")
 ├─rURI ("ＵＲＩ再構築された")
 ├─Infractions ("違反")
-├─ASNLookup ("ＡＳＮルックアップ")
-├─CCLookup ("国コード・ルックアップ")
+├─ASNLookup ("** ＡＳＮルックアップ")
+├─CCLookup ("** 国コード・ルックアップ")
 ├─Verified ("確認済みの身元")
 ├─Expired ("期限切れ")
 ├─Ignored ("無視された")
 ├─Request_Method ("リクエスト・メソッド")
 ├─Protocol ("プロトコル")
 ├─Hostname ("ホスト名")
-└─CAPTCHA ("キャプチャ・ステータス")
+├─CAPTCHA ("キャプチャ・ステータス")
+└─Inspection ("* 条件検査")
 ```
+
+* 補助ルールのデバッグのみを目的としています。​ブロックされたユーザーには表示されません。
+
+** ＡＳＮルックアップ機能が必要です（たとえば、IP-APIモジュールまたはBGPViewモジュールを介して）。
 
 ##### "timezone" `[string]`
 - 使用するタイムゾーンを指定します​（例えば、「Africa/Cairo」、「America/New_York」、「Asia/Tokyo」、「Australia/Perth」、「Europe/Berlin」、「Pacific/Guam」、等等）。​「SYSTEM」を指定すると、ＰＨＰがこれを自動的に処理します。
@@ -700,6 +706,9 @@ CIDRAMによって使用されるコンポーネントをアクティブ化お�
 ##### "error_log" `[string]`
 - 検出された致命的でないエラーを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
+##### "outbound_request_log" `[string]`
+- アウトバウンド要求の結果を記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
+
 ##### "report_log" `[string]`
 - 外部ＡＰＩに送信されたレポートを記録するためのファイル。​ファイル名指定するか、​無効にしたい場合は空白のままにして下さい。
 
@@ -829,6 +838,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -850,6 +860,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1163,7 +1174,7 @@ exceptions
 ##### "pdo_dsn" `[string]`
 - PDOのDSN値。 Default/デフォルルト = 「mysql:dbname=cidram;host=localhost;port=3306」。
 
-__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#HOW_TO_USE_PDO" hreflang="ja">「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？</a></em>
+__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#user-content-HOW_TO_USE_PDO" hreflang="ja">「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？</a></em>
 
 ##### "pdo_username" `[string]`
 - PDOのユーザー名。
@@ -1190,9 +1201,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2172,4 +2185,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２３年３月５日。
+最終アップデート：２０２３年３月２５日。

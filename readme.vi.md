@@ -206,6 +206,7 @@ Cấu hình (v3)
 │       apache_style_log [string]
 │       serialised_log [string]
 │       error_log [string]
+│       outbound_request_log [string]
 │       report_log [string]
 │       truncate [string]
 │       log_rotation_limit [int]
@@ -343,16 +344,21 @@ fields
 ├─ReasonMessage ("Tại sao bị chặn (chi tiết hơn)")
 ├─rURI ("URI được xây dựng lại")
 ├─Infractions ("Vi phạm")
-├─ASNLookup ("Tra cứu ASN")
-├─CCLookup ("Tra cứu mã quốc gia")
+├─ASNLookup ("** Tra cứu ASN")
+├─CCLookup ("** Tra cứu mã quốc gia")
 ├─Verified ("Xác minh danh tính")
 ├─Expired ("Đã hết hạn")
 ├─Ignored ("Bị bỏ qua")
 ├─Request_Method ("Phương thức yêu cầu")
 ├─Protocol ("Giao thức")
 ├─Hostname ("Tên máy chủ")
-└─CAPTCHA ("Tình trạng CAPTCHA")
+├─CAPTCHA ("Tình trạng CAPTCHA")
+└─Inspection ("* Kiểm tra điều kiện")
 ```
+
+* Chỉ dành cho việc gỡ lỗi các quy tắc phụ trợ. Không hiển thị cho người dùng bị chặn.
+
+** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun IP-API hoặc BGPView).
 
 ##### "timezone" `[string]`
 - Điều này được sử dụng để chỉ định múi giờ sử dụng (ví dụ, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, vv). Chỉ định "SYSTEM" để cho phép PHP tự động xử lý việc này cho bạn.
@@ -716,6 +722,9 @@ Cấu hình liên quan đến ghi nhật ký (cái có thể áp dụng cho các
 ##### "error_log" `[string]`
 - Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
+##### "outbound_request_log" `[string]`
+- Một tập tin để ghi nhật ký kết quả của bất kỳ yêu cầu gửi đi nào. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
 ##### "report_log" `[string]`
 - Một tập tin để ghi lại bất kỳ báo cáo nào được gửi đến các API bên ngoài. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
@@ -845,6 +854,7 @@ search_engines
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Googlebot ("Googlebot")
 ├─MojeekBot ("MojeekBot")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -866,6 +876,7 @@ social_media
 ├─Embedly ("Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("Pinterest")
+├─Snapchat ("Snapchat")
 └─Twitterbot ("Twitterbot")
 ```
 
@@ -1187,7 +1198,7 @@ Tùy chọn bộ nhớ cache bổ sung. Lưu ý: Việc thay đổi các giá tr
 ##### "pdo_dsn" `[string]`
 - Giá trị DSN PDO. Mặc định = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#HOW_TO_USE_PDO" hreflang="vi">"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?</a></em>
+__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#user-content-HOW_TO_USE_PDO" hreflang="vi">"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Tên người dùng PDO.
@@ -1214,9 +1225,11 @@ used
 ├─Googlebot ("Googlebot")
 ├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
+├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
-└─Redditbot ("Redditbot")
+├─Redditbot ("Redditbot")
+└─Snapchat ("Snapchat")
 ```
 
 ---
@@ -2195,4 +2208,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.03.05.
+Lần cuối cập nhật: 2023.03.25.
