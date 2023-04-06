@@ -876,7 +876,7 @@ Hiện tại, CIDRAM chỉ sử dụng PHPMailer để xác thực hai yếu t�
 
 ##### "skip_auth_process"
 - *v1: "SkipAuthProcess"*
-- Đặt chỉ thị này thành `true` chỉ thị cho PHPMailer bỏ qua quy trình xác thực thông thường thường xảy ra khi gửi email qua SMTP. Điều này nên tránh, bởi vì bỏ qua quá trình này có thể tiết lộ email gửi đến các cuộc tấn công MITM, nhưng có thể cần thiết trong trường hợp quá trình này ngăn PHPMailer kết nối với máy chủ SMTP.
+- Đặt chỉ thị này thành `true` chỉ thị cho PHPMailer để bỏ qua quy trình xác thực thông thường thường xảy ra khi gửi email qua SMTP. Điều này nên tránh, bởi vì bỏ qua quá trình này có thể tiết lộ email gửi đến các cuộc tấn công MITM, nhưng có thể cần thiết trong trường hợp quá trình này ngăn PHPMailer kết nối với máy chủ SMTP.
 
 ##### "enable_two_factor"
 - *v1: "Enable2FA"*
@@ -1970,4 +1970,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.03.05.
+Lần cuối cập nhật: 2023.04.06.
