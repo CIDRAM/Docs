@@ -642,7 +642,7 @@ ban_override
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>میزبان نام تلاش کرنے کے لیے استعمال کرنے کے لیے DNS سرورز کی فہرست. انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li></ul></div>
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں" hreflang="ur">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#میں-default_dns-کے-لئے-کیا-استعمال-کر-سکتا-ہوں" hreflang="ur-PK">میں "default_dns" کے لئے کیا استعمال کر سکتا ہوں؟</a></em>
 
 ##### <div dir="rtl">"default_algo" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اس بات کی وضاحت کرتا ہے جو تمام مستقبل کے پاس ورڈ اور سیشن کے لئے الگورتھم استعمال کرنا ہے.</li></ul></div>
@@ -1211,7 +1211,7 @@ exceptions
 ##### <div dir="rtl">"pdo_dsn" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے DSN. پہلے سے طے شدہ = "mysql:dbname=cidram;host=localhost;port=3306".</li></ul></div>
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#user-content-HOW_TO_USE_PDO" hreflang="ur">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ur.md#user-content-HOW_TO_USE_PDO" hreflang="ur-PK">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></em>
 
 ##### <div dir="rtl">"pdo_username" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>PDO کے لئے صارف نام.</li></ul></div>
@@ -2266,4 +2266,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۵ مارچ ۲۰۲۳ (۲۰۲۳.۰۳.۲۵).</div>
+<div dir="rtl">آخری تازہ کاری: ۵ مئی ۲۰۲۳ (۲۰۲۳.۰۵.۰۵).</div>

@@ -619,7 +619,7 @@ ban_override
 ##### "default_dns" `[string]`
 - ホスト名検索に使用する、​ＤＮＳ（ドメイン・ネーム・システム）サーバーのリスト。​注意：あなたが何をしているのか、​分からない限り、​これを変更しないでください。
 
-__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#default_dnsには何が使えますか" hreflang="ja">「default_dns」には何が使えますか？</a></em>
+__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#default_dnsには何が使えますか" hreflang="ja-JP">「default_dns」には何が使えますか？</a></em>
 
 ##### "default_algo" `[string]`
 - 将来のすべてのパスワードとセッションに使用するアルゴリズムを定義します。
@@ -945,7 +945,7 @@ usemode
 
 ```
 api
-├─V2 ("V2 (チェック・ボックス)")
+├─V2 ("V2 (チェックボックス)")
 └─Invisible ("V2 (インビジブル)")
 ```
 
@@ -1174,7 +1174,7 @@ exceptions
 ##### "pdo_dsn" `[string]`
 - PDOのDSN値。 Default/デフォルルト = 「mysql:dbname=cidram;host=localhost;port=3306」。
 
-__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#user-content-HOW_TO_USE_PDO" hreflang="ja">「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？</a></em>
+__ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ja.md#user-content-HOW_TO_USE_PDO" hreflang="ja-JP">「PDO DSN」とは何ですか？​CIDRAMでPDOを使用するにはどうすればよいですか？</a></em>
 
 ##### "pdo_username" `[string]`
 - PDOのユーザー名。
@@ -2185,4 +2185,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２３年３月２５日。
+最終アップデート：２０２３年５月５日。

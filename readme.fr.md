@@ -627,7 +627,7 @@ ban_override
 ##### « default_dns » `[string]`
 - Une liste de serveurs DNS à utiliser pour les recherches de noms d'hôtes. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#que-puis-je-utiliser-pour-default_dns" hreflang="fr">Que puis-je utiliser pour « default_dns » ?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#que-puis-je-utiliser-pour-default_dns" hreflang="fr-FR">Que puis-je utiliser pour « default_dns » ?</a></em>
 
 ##### « default_algo » `[string]`
 - Définit quel algorithme utiliser pour tous les mots de passe et les sessions à l'avenir.
@@ -1186,7 +1186,7 @@ Options de cache supplémentaires. Remarque : La modification de ces valeurs pe
 ##### « pdo_dsn » `[string]`
 - Valeur de DSN de PDO. Défaut = « mysql:dbname=cidram;host=localhost;port=3306 ».
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#user-content-HOW_TO_USE_PDO" hreflang="fr">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#user-content-HOW_TO_USE_PDO" hreflang="fr-FR">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
 
 ##### « pdo_username » `[string]`
 - Nom d'utilisateur PDO.
@@ -2212,4 +2212,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 25 Mars 2023 (2023.03.25).
+Dernière mise à jour : 5 Mai 2023 (2023.05.05).

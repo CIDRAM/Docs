@@ -629,7 +629,7 @@ ban_override
 ##### "default_dns" `[string]`
 - 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 목록입니다. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
-__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#default_dns에-사용할-수있는-항목은-무엇입니까" hreflang="ko">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a></em>
+__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#default_dns에-사용할-수있는-항목은-무엇입니까" hreflang="ko-KR">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a></em>
 
 ##### "default_algo" `[string]`
 - 향후 모든 암호와 세션에 사용할 알고리즘을 정의합니다.
@@ -1188,7 +1188,7 @@ exceptions
 ##### "pdo_dsn" `[string]`
 - PDO DSN 값. Default (기본값) = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#user-content-HOW_TO_USE_PDO" hreflang="ko">"PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?</a></em>
+__자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#user-content-HOW_TO_USE_PDO" hreflang="ko-KR">"PDO DSN"은 무엇입니까? CIDRAM과 함께 PDO를 사용하려면 어떻게해야합니까?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO 사용자 이름.
@@ -2198,4 +2198,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2023년 3월 25일.
+최종 업데이트 : 2023년 5월 5일.

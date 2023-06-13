@@ -629,7 +629,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Een lijst met DNS-servers te gebruiken voor de hostnaam lookups. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#wat-kan-ik-gebruiken-voor-default_dns" hreflang="nl">Wat kan ik gebruiken voor "default_dns"?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#wat-kan-ik-gebruiken-voor-default_dns" hreflang="nl-NL">Wat kan ik gebruiken voor "default_dns"?</a></em>
 
 ##### "default_algo" `[string]`
 - Definieert welk algoritme u wilt gebruiken voor alle toekomstige wachtwoorden en sessies.
@@ -1188,7 +1188,7 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 ##### "pdo_dsn" `[string]`
 - PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#user-content-HOW_TO_USE_PDO" hreflang="nl">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#user-content-HOW_TO_USE_PDO" hreflang="nl-NL">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - PDO gebruikersnaam.
@@ -2218,4 +2218,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 25 Maart 2023 (2023.03.25).
+Laatste Bijgewerkt: 5 Mei 2023 (2023.05.05).

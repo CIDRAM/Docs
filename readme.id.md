@@ -627,7 +627,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Daftar server DNS yang digunakan untuk pencarian nama host. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#apa-yang-bisa-saya-gunakan-untuk-default_dns" hreflang="id">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#apa-yang-bisa-saya-gunakan-untuk-default_dns" hreflang="id-ID">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
 
 ##### "default_algo" `[string]`
 - Mendefinisikan algoritma mana yang akan digunakan untuk semua kata sandi dan sesi di masa depan.
@@ -1184,7 +1184,7 @@ Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
 ##### "pdo_dsn" `[string]`
 - Nilai DSN PDO. Default = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#user-content-HOW_TO_USE_PDO" hreflang="id">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
+__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#user-content-HOW_TO_USE_PDO" hreflang="id-ID">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
 
 ##### "pdo_username" `[string]`
 - Nama pengguna PDO.
@@ -2197,4 +2197,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 25 Maret 2023 (2023.03.25).
+Terakhir Diperbarui: 5 Mei 2023 (2023.05.05).
