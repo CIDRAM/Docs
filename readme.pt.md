@@ -181,6 +181,7 @@ Configuração (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -498,15 +499,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - Deve CIDRAM silenciosamente redirecionar as tentativas de acesso bloqueadas em vez de exibir o "acesso negado" página? Se sim, especificar o local para redirecionar as tentativas de acesso bloqueadas para. Se não, deixe esta variável em branco.
 
+##### "silent_mode_response_header_code" `[int]`
+- Qual mensagem de status HTTP deve enviar o CIDRAM ao redirecionar silenciosamente as tentativas de acesso bloqueados?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Movido Permanentemente)): Instrui o cliente que o redirecionamento é PERMANENTE, e que o método de
+│ solicitação usado para o redirecionamento PODE ser diferente do método de
+│ solicitação usado na solicitação inicial.
+├─302 (302 Found (Encontrado)): Instrui o cliente que o redirecionamento é TEMPORÁRIO, e que o método de
+│ solicitação usado para o redirecionamento PODE ser diferente do método de
+│ solicitação usado na solicitação inicial.
+├─307 (307 Temporary Redirect (Redirecionamento Temporário)): Instrui o cliente que o redirecionamento é TEMPORÁRIO, e que o método de
+│ solicitação usado para o redirecionamento NÃO pode ser diferente do
+│ método de solicitação usado para a solicitação inicial.
+└─308 (308 Permanent Redirect (Redirecionamento Permanente)): Instrui o cliente que o redirecionamento é PERMANENTE, e que o método de
+  solicitação usado para o redirecionamento NÃO pode ser diferente do
+  método de solicitação usado para a solicitação inicial.
+```
+
+Independentemente de como instruímos o cliente, é importante lembrar que não temos controle sobre o que o cliente escolhe fazer, e não há garantia de que o cliente honrará nossas instruções.
+
 ##### "lang" `[string]`
 - Especificar o padrão da linguagem por CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -520,8 +545,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -531,7 +558,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -652,7 +679,11 @@ statistics
 ├─Passed-IPv6 ("Solicitações aprovadas – IPv6")
 ├─Passed-Other ("Solicitações aprovadas – Outros")
 ├─CAPTCHAs-Failed ("CAPTCHA tentativas – Falha!")
-└─CAPTCHAs-Passed ("CAPTCHA tentativas – Sucesso!")
+├─CAPTCHAs-Passed ("CAPTCHA tentativas – Sucesso!")
+├─Reported-IPv4-OK ("Solicitações relatados para APIs externos – IPv4 – OK")
+├─Reported-IPv4-Failed ("Solicitações relatados para APIs externos – IPv4 – Falhou")
+├─Reported-IPv6-OK ("Solicitações relatados para APIs externos – IPv6 – OK")
+└─Reported-IPv6-Failed ("Solicitações relatados para APIs externos – IPv6 – Falhou")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -839,18 +870,18 @@ Configuração para verificar a origem das solicitações.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -858,23 +889,29 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
+* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+
 ##### "social_media" `[string]`
 - Controles para verificar solicitações de plataformas de mídia social.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
+* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+
 ** Requer funcionalidade de pesquisa ASN (por exemplo, através do módulo IP-API ou BGPView).
+
+*!! Alta probabilidade de causar falsos positivos devido a iMessage.
 
 ##### "other" `[string]`
 - Controles para verificar outros tipos de solicitações sempre que possível.
@@ -882,13 +919,15 @@ __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação c
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
+
+* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
 
 ##### "adjust" `[string]`
 - Controles para ajustar outros recursos no contexto de verificação.
@@ -1140,7 +1179,8 @@ Configuração para limitação de taxa (não recomendado para uso geral).
 ```
 exceptions
 ├─Whitelisted ("Solicitações marcadas como na lista branca")
-└─Verified ("Solicitações verificadas de mecanismos de pesquisa e mídias sociais")
+├─Verified ("Solicitações verificadas de mecanismos de pesquisa e mídias sociais")
+└─FE ("Solicitações ao front-end do CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1200,6 +1240,7 @@ Configuração para o bypass das assinaturas padrão.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1213,7 +1254,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2198,4 +2241,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 25 de Março de 2023 (2023.03.25).
+Última Atualização: 14 de Junho de 2023 (2023.06.14).

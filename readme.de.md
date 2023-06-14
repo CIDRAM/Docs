@@ -181,6 +181,7 @@ Konfiguration (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -499,15 +500,39 @@ http_response_header_code
 ##### „silent_mode“ `[string]`
 - Anstatt die „Zugriff verweigert“ Meldung auszugeben, sollte CIDRAM leise die Zugriffe umleiten? Wenn ja, geben Sie den Speicherort an auf welchen die Zugriffe umgeleitet werden sollen. Wenn nein, diese Variable leer lassen.
 
+##### „silent_mode_response_header_code“ `[int]`
+- Welche HTTP-Status-Message sollte CIDRAM senden, wenn blockierte Zugriffsversuche stillschweigend umgeleitet werden?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Dauerhaft umgezogen)): Weist den Client an, dass die Weiterleitung DAUERHAFT ist, und die
+│ Anfragemethode der Weiterleitung KANN sich von der der ursprünglichen
+│ Anfrage unterscheiden.
+├─302 (302 Found (Gefunden)): Weist den Client an, dass die Weiterleitung TEMPORÄR ist, und die
+│ Anfragemethode der Weiterleitung KANN sich von der der ursprünglichen
+│ Anfrage unterscheiden.
+├─307 (307 Temporary Redirect (Temporäre Weiterleitung)): Weist den Client an, dass die Weiterleitung TEMPORÄR ist, und die
+│ Anfragemethode der Weiterleitung kann NICHT sich von der der ursprünglichen
+│ Anfrage unterscheiden.
+└─308 (308 Permanent Redirect (Permanente Weiterleitung)): Weist den Client an, dass die Weiterleitung DAUERHAFT ist, und die
+  Anfragemethode der Weiterleitung kann NICHT sich von der der ursprünglichen
+  Anfrage unterscheiden.
+```
+
+Egal was wir dem Client sagen, Es ist wichtig zu bedenken, dass wir letztendlich keine Kontrolle darüber haben, was der Client tut, und es gibt keine Garantie dafür, dass der Client unseren Anweisungen Folge leistet.
+
 ##### „lang“ `[string]`
 - Gibt die Standardsprache für CIDRAM an.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -521,8 +546,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -532,7 +559,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### „lang_override“ `[bool]`
@@ -654,7 +681,11 @@ statistics
 ├─Passed-IPv6 ("Anfragen erlaubt – IPv6")
 ├─Passed-Other ("Anfragen erlaubt – Andere")
 ├─CAPTCHAs-Failed ("CAPTCHA versucht – Gescheitert!")
-└─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
+├─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
+├─Reported-IPv4-OK ("An externe APIs gemeldete Anfragen – IPv4 – OK")
+├─Reported-IPv4-Failed ("An externe APIs gemeldete Anfragen – IPv4 – Nicht bestanden")
+├─Reported-IPv6-OK ("An externe APIs gemeldete Anfragen – IPv6 – OK")
+└─Reported-IPv6-Failed ("An externe APIs gemeldete Anfragen – IPv6 – Nicht bestanden")
 ```
 
 ##### „force_hostname_lookup“ `[bool]`
@@ -841,18 +872,18 @@ Konfiguration zur Verifizierung woher Anfragen stammen.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -860,23 +891,29 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
+* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+
 ##### „social_media“ `[string]`
 - Kontrollen für die Verifizierung von Anfragen von Social-Media-Plattformen.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Verifizierung der durch eine Anfrage präsentierten Identität könnte als „positiv“ oder „negativ“ beschrieben werden. In dem Fall dass die präsentierte Identität als die wahre Identität bestätigt wird, würde sie als „positiv“ bezeichnet werden. In dem Fall dass die präsentierten Identität als gefälscht bestätigt, würde sie als „negativ“ bezeichnet werden. Ein erfolgloses Ergebnis (z.B., die Verifizierung fehlschlägt, oder die Echtheit der präsentierten Identität kann nicht festgestellt werden) würde jedoch nicht als „positiv“ oder „negativ“ beschrieben. Stattdessen würde ein erfolgloses Ergebnis einfach als nicht verifiziert beschrieben. Wenn kein Versuch unternommen wird für die durch eine Anfrage präsentierte Identität zu verifizieren, würde die Anfrage ebenfalls als nicht verifiziert beschrieben. Die Begriffe sind nur in dem Kontext sinnvoll, in dem die durch eine Anfrage präsentierte Identität anerkannt wird und daher der Verifizierung möglich ist. In dem Fall in denen die präsentierte Identität nicht mit den oben bereitgestellten Optionen übereinstimmt, oder wenn keine Identität präsentiert wird, werden die oben bereitgestellten Optionen irrelevant.
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
+* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+
 ** Erfordert ASN-Lookup-Funktionalität (z.B., über das IP-API-Modul oder BGPView-Modul).
+
+*!! Aufgrund von iMessage Falsch-Positive zu verursachen Wahrscheinlichkeit Hohe ist.
 
 ##### „other“ `[string]`
 - Kontrollen für die Verifizierung die anderer Arten von Anfragen sofern möglich.
@@ -884,13 +921,15 @@ __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv ver
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Verifizierung der durch eine Anfrage präsentierten Identität könnte als „positiv“ oder „negativ“ beschrieben werden. In dem Fall dass die präsentierte Identität als die wahre Identität bestätigt wird, würde sie als „positiv“ bezeichnet werden. In dem Fall dass die präsentierten Identität als gefälscht bestätigt, würde sie als „negativ“ bezeichnet werden. Ein erfolgloses Ergebnis (z.B., die Verifizierung fehlschlägt, oder die Echtheit der präsentierten Identität kann nicht festgestellt werden) würde jedoch nicht als „positiv“ oder „negativ“ beschrieben. Stattdessen würde ein erfolgloses Ergebnis einfach als nicht verifiziert beschrieben. Wenn kein Versuch unternommen wird für die durch eine Anfrage präsentierte Identität zu verifizieren, würde die Anfrage ebenfalls als nicht verifiziert beschrieben. Die Begriffe sind nur in dem Kontext sinnvoll, in dem die durch eine Anfrage präsentierte Identität anerkannt wird und daher der Verifizierung möglich ist. In dem Fall in denen die präsentierte Identität nicht mit den oben bereitgestellten Optionen übereinstimmt, oder wenn keine Identität präsentiert wird, werden die oben bereitgestellten Optionen irrelevant.
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
+
+* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
 
 ##### „adjust“ `[string]`
 - Kontrollen zum Anpassen anderer Funktionen im Zusammenhang mit der Verifizierung.
@@ -1144,7 +1183,8 @@ Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohle
 ```
 exceptions
 ├─Whitelisted ("Anfragen die als auf der Whitelist markiert sind")
-└─Verified ("Verifizierte Suchmaschinen und Social Media Anfragen")
+├─Verified ("Verifizierte Suchmaschinen und Social Media Anfragen")
+└─FE ("Anfragen an das CIDRAM-Front-End")
 ```
 
 ##### „segregate“ `[bool]`
@@ -1204,6 +1244,7 @@ Die Konfiguration für die Standard-Signatur-Bypässe.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1217,7 +1258,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2216,4 +2259,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 5. Mai 2023 (2023.05.05).
+Zuletzt aktualisiert: 14. Juni 2023 (2023.06.14).

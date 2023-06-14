@@ -181,6 +181,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -500,15 +501,35 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - "액세스 거부" 페이지를 표시하는 대신 CIDRAM는 차단 된 액세스 시도를 자동으로 리디렉션해야합니까? 그렇다면 리디렉션 위치를 지정합니다. 아니오의 경우이 변수를 비워 둡니다.
 
+##### "silent_mode_response_header_code" `[int]`
+- 차단된 액세스 시도를 자동으로 리디렉션할 때 CIDRAM이 전송해야하는 HTTP 상태 메시지는 무엇입니까?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (영구 이동)): 리디렉션이 영구적임을 클라이언트에 지시합니다.
+│ 리디렉션 및 초기 요청의 요청 방법은 다를 수 있습니다.
+├─302 (302 Found (임시 이동)): 리디렉션이 일시적임을 클라이언트에 지시합니다.
+│ 리디렉션 및 초기 요청의 요청 방법은 다를 수 있습니다.
+├─307 (307 Temporary Redirect (임시 리다이렉션)): 리디렉션이 일시적임을 클라이언트에 지시합니다.
+│ 리디렉션 및 초기 요청의 요청 방법은 다를 수 없습니다.
+└─308 (308 Permanent Redirect (영구 리다이렉션)): 리디렉션이 영구적임을 클라이언트에 지시합니다.
+  리디렉션 및 초기 요청의 요청 방법은 다를 수 없습니다.
+```
+
+우리가 고객에게 지시하는 방법에 상관없이, 궁극적으로 고객이 선택하는 것을 제어할 수 없으며 고객이 우리의 지시를 존중할 것이라는 보장이 전혀 없다는 점을 기억하는 것이 중요합니다.
+
 ##### "lang" `[string]`
 - CIDRAM의 기본 언어를 설정합니다.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -522,8 +543,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -533,7 +556,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -656,7 +679,11 @@ statistics
 ├─Passed-IPv6 ("허용된 요청 – IPv6")
 ├─Passed-Other ("허용된 요청 – 다른")
 ├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – 실패!")
-└─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격!")
+├─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격!")
+├─Reported-IPv4-OK ("외부 API에 보고된 요청 – IPv4 – 확인")
+├─Reported-IPv4-Failed ("외부 API에 보고된 요청 – IPv4 – 실패했습니다")
+├─Reported-IPv6-OK ("외부 API에 보고된 요청 – IPv6 – 확인")
+└─Reported-IPv6-Failed ("외부 API에 보고된 요청 – IPv6 – 실패했습니다")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -843,18 +870,18 @@ __휴먼 엔드포인트 및 클라우드 서비스.__ 클라우드 서비스는
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -862,23 +889,29 @@ __"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
+* 이 옵션은 <code class="s">bypasses➡used</code> 아래에 해당 바이패스가 있습니다. 해당 바이패스의 확인란이 이 옵션의 확인을 위한 확인란과 동일한 방식으로 표시되어 있는지 확인하는 것이 좋습니다.
+
 ##### "social_media" `[string]`
 - 소셜 미디어 플랫폼의 요청을 확인하기 위한 컨트롤입니다.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
+* 이 옵션은 <code class="s">bypasses➡used</code> 아래에 해당 바이패스가 있습니다. 해당 바이패스의 확인란이 이 옵션의 확인을 위한 확인란과 동일한 방식으로 표시되어 있는지 확인하는 것이 좋습니다.
+
 ** ASN 조회 기능이 필요합니다 (예 : IP-API 또는 BGPView 모듈을 통해).
+
+*!! iMessage로 인해 오탐이 발생할 가능성이 높습니다.
 
 ##### "other" `[string]`
 - 가능한 경우 다른 종류의 요청을 확인하기 위한 제어입니다.
@@ -886,13 +919,15 @@ __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
+
+* 이 옵션은 <code class="s">bypasses➡used</code> 아래에 해당 바이패스가 있습니다. 해당 바이패스의 확인란이 이 옵션의 확인을 위한 확인란과 동일한 방식으로 표시되어 있는지 확인하는 것이 좋습니다.
 
 ##### "adjust" `[string]`
 - 검증과 관련하여 다른 기능을 조정하는 컨트롤입니다.
@@ -1146,7 +1181,8 @@ captcha_title
 ```
 exceptions
 ├─Whitelisted ("화이트리스트 된 것으로 표시된 요청")
-└─Verified ("확인 된 검색 엔진 및 소셜 미디어 요청")
+├─Verified ("확인 된 검색 엔진 및 소셜 미디어 요청")
+└─FE ("CIDRAM 프런트 엔드에 대한 요청")
 ```
 
 ##### "segregate" `[bool]`
@@ -1206,6 +1242,7 @@ __자주하는 질문.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1219,7 +1256,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2198,4 +2237,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2023년 5월 5일.
+최종 업데이트 : 2023년 6월 14일.

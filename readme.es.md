@@ -181,6 +181,7 @@ Configuración (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -312,7 +313,7 @@ stages
 ├─Aux ("Ejecutar reglas auxiliares")
 ├─Reporting ("Ejecutar informes")
 ├─Tracking ("Ejecutar seguimiento de IP")
-├─RL ("Ejecutar limitación de velocidad")
+├─RL ("Ejecutar la limitación de tasa")
 ├─CAPTCHA ("Desplegar CAPTCHAs (solicitudes bloqueadas)")
 ├─Statistics ("Actualizar estadísticas")
 ├─Webhooks ("Ejecutar webhooks")
@@ -330,14 +331,14 @@ stages
 ```
 fields
 ├─ID ("ID")
-├─ScriptIdent ("Guión Versión")
+├─ScriptIdent ("Guión versión")
 ├─DateTime ("Fecha/Hora")
 ├─IPAddr ("Dirección IP")
 ├─IPAddrResolved ("Dirección IP (Resuelto)")
 ├─Query ("Query")
 ├─Referrer ("Referente")
-├─UA ("Agente de Usuario")
-├─UALC ("Agente de Usuario (minúscula)")
+├─UA ("Agente de usuario")
+├─UALC ("Agente de usuario (minúscula)")
 ├─SignatureCount ("Recuento de firmas")
 ├─Signatures ("Firmas referencias")
 ├─WhyReason ("Razón bloqueado")
@@ -500,15 +501,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - Debería CIDRAM silencio redirigir los intentos de acceso bloqueados en lugar de mostrar la página "acceso denegado"? En caso afirmativo, especifique la ubicación para redirigir los intentos de acceso bloqueados. Si no, dejar esta variable en blanco.
 
+##### "silent_mode_response_header_code" `[int]`
+- ¿Cuál mensaje de estado HTTP debe enviar CIDRAM al redirigir silenciosamente los intentos de acceso bloqueados?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Movido permanentemente)): Indica al cliente que la redirección es PERMANENTE, y que el método de
+│ solicitud utilizado para la redirección PUEDE ser diferente del método de
+│ solicitud utilizado para la solicitud inicial.
+├─302 (302 Found (Encontrado)): Indica al cliente que la redirección es TEMPORAL, y que el método de
+│ solicitud utilizado para la redirección PUEDE ser diferente del método de
+│ solicitud utilizado para la solicitud inicial.
+├─307 (307 Temporary Redirect (Redirección temporal)): Indica al cliente que la redirección es TEMPORAL, y que el método de
+│ solicitud utilizado para la redirección NO puede ser diferente del método
+│ de solicitud utilizado para la solicitud inicial.
+└─308 (308 Permanent Redirect (Redirección permanente)): Indica al cliente que la redirección es PERMANENTE, y que el método de
+  solicitud utilizado para la redirección NO puede ser diferente del método
+  de solicitud utilizado para la solicitud inicial.
+```
+
+Independientemente de como instruimos al cliente, es importante recordar que no tenemos control sobre lo que el cliente elige hacer, y no hay garantía de que el cliente cumplirá con nuestras instrucciones.
+
 ##### "lang" `[string]`
 - Especifique la predefinido del lenguaje para CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -522,8 +547,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -533,7 +560,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -656,7 +683,11 @@ statistics
 ├─Passed-IPv6 ("Solicitudes aprobadas – IPv6")
 ├─Passed-Other ("Solicitudes aprobadas – Otro")
 ├─CAPTCHAs-Failed ("Intentos de CAPTCHA – ¡Fallado!")
-└─CAPTCHAs-Passed ("Intentos de CAPTCHA – ¡Éxito!")
+├─CAPTCHAs-Passed ("Intentos de CAPTCHA – ¡Éxito!")
+├─Reported-IPv4-OK ("Solicitudes reportados a API externos – IPv4 – OK")
+├─Reported-IPv4-Failed ("Solicitudes reportados a API externos – IPv4 – Fallado")
+├─Reported-IPv6-OK ("Solicitudes reportados a API externos – IPv6 – OK")
+└─Reported-IPv6-Failed ("Solicitudes reportados a API externos – IPv6 – Fallado")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -843,18 +874,18 @@ Configuración para verificar de dónde se originan las solicitudes.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -862,23 +893,29 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
+* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+
 ##### "social_media" `[string]`
 - Controles para verificar las solicitudes de las plataformas de redes sociales.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presentada por una solicitud, un resultado exitoso podría describirse como "positivo" o "negativo". Cuando se confirma que la identidad presentada es la verdadera identidad, se describiría como "positiva". Cuando se confirma que la identidad presentada es falsa, se describirá como "negativa". Sin embargo, un resultado fallido (por ejemplo, la verificación falló, o no se puede determinar la veracidad de la identidad presentada) no se describiría como "positivo" o "negativo". En cambio, un resultado fallido se describiría simplemente como no verificado. Cuando no se intenta verificar la identidad presentada por una solicitud, la solicitud también se describiría como no verificado. Los términos tienen sentido solo en el contexto en el que se reconoce la identidad presentada por una solicitud y, por lo tanto, donde la verificación es posible. En los casos en que la identidad presentada no coincida con las opciones proporcionadas anteriormente, o cuando no se presente ninguna identidad, las opciones proporcionadas anteriormente se vuelven irrelevantes.
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
+* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+
 ** Requiere la funcionalidad de búsqueda de ASN (por ejemplo, a través del módulo IP-API o BGPView).
+
+*!! Alta probabilidad de causar falsos positivos debido a iMessage.
 
 ##### "other" `[string]`
 - Controles para verificar otros tipos de solicitudes cuando sea posible.
@@ -886,13 +923,15 @@ __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud 
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presentada por una solicitud, un resultado exitoso podría describirse como "positivo" o "negativo". Cuando se confirma que la identidad presentada es la verdadera identidad, se describiría como "positiva". Cuando se confirma que la identidad presentada es falsa, se describirá como "negativa". Sin embargo, un resultado fallido (por ejemplo, la verificación falló, o no se puede determinar la veracidad de la identidad presentada) no se describiría como "positivo" o "negativo". En cambio, un resultado fallido se describiría simplemente como no verificado. Cuando no se intenta verificar la identidad presentada por una solicitud, la solicitud también se describiría como no verificado. Los términos tienen sentido solo en el contexto en el que se reconoce la identidad presentada por una solicitud y, por lo tanto, donde la verificación es posible. En los casos en que la identidad presentada no coincida con las opciones proporcionadas anteriormente, o cuando no se presente ninguna identidad, las opciones proporcionadas anteriormente se vuelven irrelevantes.
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
+
+* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
 
 ##### "adjust" `[string]`
 - Controles para ajustar otras funciones en el contexto de la verificación.
@@ -979,7 +1018,7 @@ nonblocked_status_code
 │ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
 │ entiendará. Provisto por diversión y conveniencia, pero generalmente no
 │ recomendado.
-├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para limitar la velocidad, cuando se trata de ataques DDoS, y
+├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para la limitación de tasa, cuando se trata de ataques DDoS, y
 │ para la prevención de inundaciones. No recomendado en otros contextos.
 └─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
   recomendado en otros contextos.
@@ -1057,7 +1096,7 @@ nonblocked_status_code
 │ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
 │ entiendará. Provisto por diversión y conveniencia, pero generalmente no
 │ recomendado.
-├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para limitar la velocidad, cuando se trata de ataques DDoS, y
+├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para la limitación de tasa, cuando se trata de ataques DDoS, y
 │ para la prevención de inundaciones. No recomendado en otros contextos.
 └─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
   recomendado en otros contextos.
@@ -1123,7 +1162,7 @@ captcha_title
 - Insertado como HTML al final de todas las páginas "acceso denegado". Esto podría ser útil en caso de que desee incluir un aviso legal, enlace de contacto, información comercial, o similar en todas dichas páginas.
 
 #### "rate_limiting" (Categoría)
-Configuración para limitar la velocidad de acceso (no recomendado para uso general).
+Configuración para limitar la tasa de acceso (no recomendado para uso general).
 
 ##### "max_bandwidth" `[string]`
 - La cantidad máxima de ancho de banda permitida dentro del período de asignación antes de habilitar los límites de tarifas para solicitudes futuras. Un valor de 0 desactiva este tipo de limitación de la tarifa. Predefinido = 0KB.
@@ -1141,12 +1180,13 @@ Configuración para limitar la velocidad de acceso (no recomendado para uso gene
 - La duración para monitorear el uso. Predefinido = 0°0′0″.
 
 ##### "exceptions" `[string]`
-- Excepciones (es decir, solicitudes que no deberían limitada). Relevante solo cuando la limitación de velocidad está habilitada.
+- Excepciones (es decir, solicitudes que no deberían limitada). Relevante solo cuando la limitación de tasa está habilitada.
 
 ```
 exceptions
 ├─Whitelisted ("Solicitudes en la lista blanca")
-└─Verified ("Solicitudes verificadas de motores de búsqueda y redes sociales")
+├─Verified ("Solicitudes verificadas de motores de búsqueda y redes sociales")
+└─FE ("Solicitudes al front-end de CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1206,6 +1246,7 @@ La configuración de las bypasses de firmas estándar.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1219,7 +1260,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2208,4 +2251,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 5 de Mayo de 2023 (2023.05.05).
+Última Actualización: 14 de Junio de 2023 (2023.06.14).

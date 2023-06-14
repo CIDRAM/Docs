@@ -181,6 +181,7 @@ Configuration (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -352,7 +353,7 @@ fields
 ├─Request_Method ("Request method")
 ├─Protocol ("Protocol")
 ├─Hostname ("Hostname")
-├─CAPTCHA ("CAPTCHA State")
+├─CAPTCHA ("CAPTCHA state")
 └─Inspection ("* Conditions inspection")
 ```
 
@@ -497,15 +498,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - Should CIDRAM silently redirect blocked access attempts instead of displaying the "access denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
 
+##### "silent_mode_response_header_code" `[int]`
+- Which HTTP status message should CIDRAM send when silently redirecting blocked access attempts?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently): Instructs the client that the redirect is PERMANENT, and that the request
+│ method used for the redirect MAY be different than the request method used
+│ for the initial request.
+├─302 (302 Found): Instructs the client that the redirect is TEMPORARY, and that the request
+│ method used for the redirect MAY be different than the request method used
+│ for the initial request.
+├─307 (307 Temporary Redirect): Instructs the client that the redirect is TEMPORARY, and that the request
+│ method used for the redirect may NOT be different than the request method
+│ used for the initial request.
+└─308 (308 Permanent Redirect): Instructs the client that the redirect is PERMANENT, and that the request
+  method used for the redirect may NOT be different than the request method
+  used for the initial request.
+```
+
+No matter how we instruct the client, it's important to remember that we ultimately have no control over what the client chooses to do, and there's zero guarantee that the client will honour our instructions.
+
 ##### "lang" `[string]`
 - Specify the default language for CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -519,8 +544,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -530,7 +557,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -650,7 +677,11 @@ statistics
 ├─Passed-IPv6 ("Requests passed – IPv6")
 ├─Passed-Other ("Requests passed – Other")
 ├─CAPTCHAs-Failed ("CAPTCHA attempts – Failed!")
-└─CAPTCHAs-Passed ("CAPTCHA attempts – Passed!")
+├─CAPTCHAs-Passed ("CAPTCHA attempts – Passed!")
+├─Reported-IPv4-OK ("Requests reported to external APIs – IPv4 – OK")
+├─Reported-IPv4-Failed ("Requests reported to external APIs – IPv4 – Failed")
+├─Reported-IPv6-OK ("Requests reported to external APIs – IPv6 – OK")
+└─Reported-IPv6-Failed ("Requests reported to external APIs – IPv6 – Failed")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -816,7 +847,7 @@ __One per signature.__ A signature may invoke multiple profiles, but can use onl
 
 __Priority.__ An option selected always takes priority over an option not selected. E.g., if multiple shorthand words are in play but only one of them is set as being blocked, the request will still be blocked.
 
-__Human endpoints and cloud services.__ Cloud service may refer to webhosting providers, server farms, data centers, or any number of other things. Human endpoint refers to the means by which a human accesses the internet, such as by way of an internet service provider. A network usually provides just one or the other, but may sometimes provide both. We aim to never identify potential human endpoints as cloud services. Therefore, a cloud service may be identified as something else if its range is shared by known human endpoints. Conversely, we aim to always identify cloud services, whose ranges are not shared by any known human endpoints, as cloud services. Therefore, a request identified explicitly as a cloud service probably doesn't share its range with any known human endpoints. Likewise, a request identified explicitly by attacks or spam probably does. However, the internet is always in flux, the purposes of networks changes over time, and ranges are always being bought or sold, so remain cognisant and vigilant in regards to false positives.
+__Human endpoints and cloud services.__ Cloud service may refer to webhosting providers, server farms, data centres, or any number of other things. Human endpoint refers to the means by which a human accesses the internet, such as by way of an internet service provider. A network usually provides just one or the other, but may sometimes provide both. We aim to never identify potential human endpoints as cloud services. Therefore, a cloud service may be identified as something else if its range is shared by known human endpoints. Conversely, we aim to always identify cloud services, whose ranges are not shared by any known human endpoints, as cloud services. Therefore, a request identified explicitly as a cloud service probably doesn't share its range with any known human endpoints. Likewise, a request identified explicitly by attacks or spam probably does. However, the internet is always in flux, the purposes of networks changes over time, and ranges are always being bought or sold, so remain cognisant and vigilant in regards to false positives.
 
 ##### "default_tracktime" `[string]`
 - The duration that IP addresses should be tracked for. Default = 7d0°0′0″ (1 week).
@@ -837,18 +868,18 @@ Configuration for verifying where requests originate from.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -856,23 +887,29 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
+* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+
 ##### "social_media" `[string]`
 - Controls for verifying requests from social media platforms.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
+* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+
 ** Requires ASN lookup functionality (e.g., via the IP-API or BGPView module).
+
+*!! High likelihood of causing false positives due to iMessage.
 
 ##### "other" `[string]`
 - Controls for verifying other kinds of requests where possible.
@@ -880,13 +917,15 @@ __What are "single-hit bypasses"?__ In some cases, a positive-verified request m
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __What are "positives" and "negatives"?__ When verifying the identity presented by a request, a successful outcome could be described as "positive" or "negative". In the case that the identity presented is confirmed to be the true identity, it would be described as "positive". In the case that the identity presented is confirmed to be falsified, it would be described as "negative". However, an unsuccessful outcome (e.g., verification fails, or the veracity of the identity presented isn't able to be determined) would not be described as "positive" or "negative". Instead, an unsuccessful outcome would be described simply as non-verified. When no attempt to verify the identity presented by a request is made, the request would likewise be described as non-verified. The terms make sense only in the context where the identity presented by a request is recognised, and therefore, where verification is possible. In cases where the identity presented doesn't match the options provided above, or where no identity is presented, the options provided above become irrelevant.
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
+
+* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
 
 ##### "adjust" `[string]`
 - Controls to adjust other features when in the context of verification.
@@ -1136,7 +1175,8 @@ Configuration for rate limiting (not recommended for general use).
 ```
 exceptions
 ├─Whitelisted ("Whitelisted requests")
-└─Verified ("Verified search engine and social media requests")
+├─Verified ("Verified search engine and social media requests")
+└─FE ("Requests to the CIDRAM front-end")
 ```
 
 ##### "segregate" `[bool]`
@@ -1196,6 +1236,7 @@ Default signature bypasses configuration.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1209,7 +1250,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2199,4 +2242,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 25 March 2023 (2023.03.25).
+Last Updated: 14 June 2023 (2023.06.14).

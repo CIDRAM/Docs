@@ -181,6 +181,7 @@ Configuration (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -332,14 +333,14 @@ fields
 ├─ID ("ID")
 ├─ScriptIdent ("La version du script")
 ├─DateTime ("Date/Heure")
-├─IPAddr ("IP Adresse")
-├─IPAddrResolved ("IP Adresse (Résolu)")
+├─IPAddr ("IP adresse")
+├─IPAddrResolved ("IP adresse (résolu)")
 ├─Query ("Query")
 ├─Referrer ("Referrer")
-├─UA ("Agent Utilisateur")
-├─UALC ("Agent Utilisateur (minuscule)")
+├─UA ("Agent utilisateur")
+├─UALC ("Agent utilisateur (minuscule)")
 ├─SignatureCount ("Compte des signatures")
-├─Signatures ("Signatures Référence")
+├─Signatures ("Référence des signatures")
 ├─WhyReason ("Raison bloquée")
 ├─ReasonMessage ("Raison bloquée (détaillée)")
 ├─rURI ("Reconstruite URI")
@@ -352,7 +353,7 @@ fields
 ├─Request_Method ("Méthode de requête")
 ├─Protocol ("Protocole")
 ├─Hostname ("Nom d'hôte")
-├─CAPTCHA ("État CAPTCHA")
+├─CAPTCHA ("État du CAPTCHA")
 └─Inspection ("* Inspection des conditions")
 ```
 
@@ -499,15 +500,39 @@ http_response_header_code
 ##### « silent_mode » `[string]`
 - Devrait CIDRAM rediriger silencieusement les tentatives d'accès bloquées à la place de l'affichage de la page « accès refusé » ? Si oui, spécifiez l'emplacement pour rediriger les tentatives d'accès bloquées. Si non, laisser cette variable vide.
 
+##### « silent_mode_response_header_code » `[int]`
+- Quel message d'état HTTP devrait être envoyé par CIDRAM lors de la redirection silencieuse des tentatives d'accès bloquées ?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Déménagé permanente)): Indique au client que la redirection est PERMANENTE, et que la méthode de
+│ requête utilisé pour la redirection PEUT être différente de la méthode
+│ de requête utilisé pour la requête initiale.
+├─302 (302 Found (Trouvé)): Indique au client que la redirection est TEMPORAIRE, et que la méthode de
+│ requête utilisé pour la redirection PEUT être différente de la méthode
+│ de requête utilisé pour la requête initiale.
+├─307 (307 Temporary Redirect (Redirection temporaire)): Indique au client que la redirection est TEMPORAIRE, et que la méthode de
+│ requête utilisé pour la redirection ne peut PAS être différente de la
+│ méthode de requête utilisé pour la requête initiale.
+└─308 (308 Permanent Redirect (Redirection permanente)): Indique au client que la redirection est PERMANENTE, et que la méthode de
+  requête utilisé pour la redirection ne peut PAS être différente de la
+  méthode de requête utilisé pour la requête initiale.
+```
+
+Quelle que soit la manière dont nous donnons des instructions au client, il est important de se rappeler que nous n'avons aucun contrôle sur ce que le client choisit de faire, et qu'il n'y a aucune garantie que le client honorera nos instructions.
+
 ##### « lang » `[string]`
 - Spécifiez la langue défaut pour CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -521,8 +546,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -532,7 +559,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### « lang_override » `[bool]`
@@ -654,7 +681,11 @@ statistics
 ├─Passed-IPv6 ("Requêtes passées – IPv6")
 ├─Passed-Other ("Requêtes passées – Autres")
 ├─CAPTCHAs-Failed ("Tentatives de CAPTCHA – Échoué !")
-└─CAPTCHAs-Passed ("Tentatives de CAPTCHA – Passé !")
+├─CAPTCHAs-Passed ("Tentatives de CAPTCHA – Passé !")
+├─Reported-IPv4-OK ("Requêtes rapportés aux API externes – IPv4 – D'accord")
+├─Reported-IPv4-Failed ("Requêtes rapportés aux API externes – IPv4 – Échoué")
+├─Reported-IPv6-OK ("Requêtes rapportés aux API externes – IPv6 – D'accord")
+└─Reported-IPv6-Failed ("Requêtes rapportés aux API externes – IPv6 – Échoué")
 ```
 
 ##### « force_hostname_lookup » `[bool]`
@@ -731,8 +762,8 @@ Configuration liée à la journalisation (à l'exclusion de ce qui est applicabl
 
 ```
 log_rotation_action
-├─Delete ("Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
-└─Archive ("Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassée.")
+├─Delete ("Supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassé.")
+└─Archive ("Tout d'abord archiver, puis supprimez les fichiers journaux les plus anciens, jusqu'à ce que la limite ne soit plus dépassé.")
 ```
 
 ##### « log_banned_ips » `[bool]`
@@ -841,18 +872,18 @@ Configuration pour vérifier d'où proviennent les requêtes.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -860,23 +891,29 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
+* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+
 ##### « social_media » `[string]`
 - Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
+* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+
 ** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module IP-API ou BGPView).
+
+*!! Forte probabilité de provoquer des faux positifs en raison de iMessage.
 
 ##### « other » `[string]`
 - Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
@@ -884,13 +921,15 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
+
+* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
 
 ##### « adjust » `[string]`
 - Contrôles pour ajuster d'autres fonctionnalités dans le contexte de la vérification.
@@ -1139,12 +1178,13 @@ Configuration pour la limitation du débit (non recommandé pour d'utilisation g
 - La durée pour surveiller l'utilisation Défaut = 0°0′0″.
 
 ##### « exceptions » `[string]`
-- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation du débit est activée.
+- Exceptions (c'est à dire, requêtes qui ne devraient pas être limitées). Pertinent uniquement lorsque la limitation du débit est activé.
 
 ```
 exceptions
 ├─Whitelisted ("Requêtes qui ont été listé blanche")
-└─Verified ("Les requêtes vérifiés des moteur de recherche et médias sociaux")
+├─Verified ("Les requêtes vérifiés des moteur de recherche et médias sociaux")
+└─FE ("Requêtes d'accès frontal de CIDRAM")
 ```
 
 ##### « segregate » `[bool]`
@@ -1204,6 +1244,7 @@ Configuration pour les contournements de signatures défaut.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1217,7 +1258,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2212,4 +2255,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 5 Mai 2023 (2023.05.05).
+Dernière mise à jour : 14 Juin 2023 (2023.06.14).

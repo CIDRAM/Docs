@@ -181,6 +181,7 @@ Konfigurasi (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -330,14 +331,14 @@ stages
 ```
 fields
 ├─ID ("ID")
-├─ScriptIdent ("Versi Skrip")
+├─ScriptIdent ("Versi skrip")
 ├─DateTime ("Tanggal/Waktu")
 ├─IPAddr ("Alamat IP")
-├─IPAddrResolved ("Alamat IP (Terselesaikan)")
+├─IPAddrResolved ("Alamat IP (terselesaikan)")
 ├─Query ("Kueri")
-├─Referrer ("Halaman Mengacu")
-├─UA ("Agen Pengguna")
-├─UALC ("Agen Pengguna (huruf kecil)")
+├─Referrer ("Halaman mengacu")
+├─UA ("Agen pengguna")
+├─UALC ("Agen pengguna (huruf kecil)")
 ├─SignatureCount ("Penghitungan tanda tangan")
 ├─Signatures ("Referensi tanda tangan")
 ├─WhyReason ("Mengapa diblokir")
@@ -499,15 +500,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - Seharusnya CIDRAM diam-diam mengarahkan diblokir upaya akses bukannya menampilkan halaman "akses ditolak"? Jika ya, menentukan lokasi untuk mengarahkan diblokir upaya akses. Jika tidak, kosongkan variabel ini.
 
+##### "silent_mode_response_header_code" `[int]`
+- Pesan status HTTP mana yang harus dikirim oleh CIDRAM saat secara diam-diam mengarahkan upaya akses yang diblokir?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Dipindahkan Secara Permanen)): Menginstruksikan klien bahwa pengalihan adalah PERMANEN, dan bahwa metode
+│ permintaan yang digunakan untuk pengalihan MUNGKIN berbeda dari metode
+│ permintaan yang digunakan untuk permintaan awal.
+├─302 (302 Found (Ditemukan)): Menginstruksikan klien bahwa pengalihan adalah SEMENTARA, dan bahwa metode
+│ permintaan yang digunakan untuk pengalihan MUNGKIN berbeda dari metode
+│ permintaan yang digunakan untuk permintaan awal.
+├─307 (307 Temporary Redirect (Pengalihan Sementara)): Menginstruksikan klien bahwa pengalihan adalah SEMENTARA, dan bahwa metode
+│ permintaan yang digunakan untuk pengalihan TIDAK mungkin berbeda dari metode
+│ permintaan yang digunakan untuk permintaan awal.
+└─308 (308 Permanent Redirect (Pengalihan Permanen)): Menginstruksikan klien bahwa pengalihan adalah PERMANEN, dan bahwa metode
+  permintaan yang digunakan untuk pengalihan TIDAK mungkin berbeda dari metode
+  permintaan yang digunakan untuk permintaan awal.
+```
+
+Terlepas dari bagaimana kami menginstruksikan klien, penting untuk diingat bahwa pada akhirnya kami tidak memiliki kendali atas apa yang klien pilih untuk dilakukan, dan tidak ada jaminan bahwa klien akan menghormati instruksi kami.
+
 ##### "lang" `[string]`
 - Tentukan bahasa default untuk CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -521,8 +546,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -532,7 +559,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -654,7 +681,11 @@ statistics
 ├─Passed-IPv6 ("Permintaan berlalu – IPv6")
 ├─Passed-Other ("Permintaan berlalu – Lain")
 ├─CAPTCHAs-Failed ("Upaya CAPTCHA – Gagal!")
-└─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus!")
+├─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus!")
+├─Reported-IPv4-OK ("Permintaan dilaporkan ke API eksternal – IPv4 – OK")
+├─Reported-IPv4-Failed ("Permintaan dilaporkan ke API eksternal – IPv4 – Gagal")
+├─Reported-IPv6-OK ("Permintaan dilaporkan ke API eksternal – IPv6 – OK")
+└─Reported-IPv6-Failed ("Permintaan dilaporkan ke API eksternal – IPv6 – Gagal")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -841,18 +872,18 @@ Konfigurasi untuk memverifikasi dari mana permintaan berasal.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -860,23 +891,29 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+
 ##### "social_media" `[string]`
 - Kontrol untuk memverifikasi permintaan dari platform media sosial.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi sebagai dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+
 ** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
+
+*!! Kemungkinan tinggi menyebabkan positif palsu karena iMessage.
 
 ##### "other" `[string]`
 - Kontrol untuk memverifikasi jenis permintaan lain jika/bila memungkinkan.
@@ -884,13 +921,15 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi sebagai dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
+
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 ##### "adjust" `[string]`
 - Kontrol untuk menyesuaikan fitur lain saat dalam konteks verifikasi.
@@ -1142,7 +1181,8 @@ Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum)
 ```
 exceptions
 ├─Whitelisted ("Permintaan yang masuk daftar putih")
-└─Verified ("Permintaan yang diverifikasi dari mesin pencari dan media sosial")
+├─Verified ("Permintaan yang diverifikasi dari mesin pencari dan media sosial")
+└─FE ("Permintaan ke bagian depan CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1202,6 +1242,7 @@ Konfigurasi untuk bypass tanda tangan default.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1215,7 +1256,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2197,4 +2240,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 5 Mei 2023 (2023.05.05).
+Terakhir Diperbarui: 14 Juni 2023 (2023.06.14).

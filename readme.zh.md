@@ -181,6 +181,7 @@ $CIDRAM->view();
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -488,15 +489,31 @@ http_response_header_code
 ##### “silent_mode” `[string]`
 - CIDRAM应该默默重定向被拦截的访问而不是显示该“拒绝访问”页吗？​指定位置至重定向被拦截的访问，​或让它空将其禁用。
 
+##### “silent_mode_response_header_code” `[int]`
+- 当静默重定向被阻止的访问尝试时，CIDRAM应发送哪个HTTP状态消息？
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently （永久移动）): 指示客户端重定向是永久的。​重定向和初始请求的请求方法允许不同。
+├─302 (302 Found （找到）): 指示客户端重定向是临时的。​重定向和初始请求的请求方法允许不同。
+├─307 (307 Temporary Redirect （临时重定向）): 指示客户端重定向是临时的。​重定向和初始请求的请求方法不允许不同。
+└─308 (308 Permanent Redirect （永久重定向）): 指示客户端重定向是永久的。​重定向和初始请求的请求方法不允许不同。
+```
+
+无论我们如何指示客户，重要的是要记住，我们无法控制客户选择做什么，而且客户会遵守我们的指示的没有保证。
+
 ##### “lang” `[string]`
 - 指定标准CIDRAM语言。
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -510,8 +527,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -521,7 +540,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### “lang_override” `[bool]`
@@ -632,7 +651,11 @@ statistics
 ├─Passed-IPv6 ("允许的请求 – IPv6")
 ├─Passed-Other ("允许的请求 – 其他")
 ├─CAPTCHAs-Failed ("CAPTCHA尝试 – 失败！")
-└─CAPTCHAs-Passed ("CAPTCHA尝试 – 成功！")
+├─CAPTCHAs-Passed ("CAPTCHA尝试 – 成功！")
+├─Reported-IPv4-OK ("向外部API报告的请求 – IPv4 – OK")
+├─Reported-IPv4-Failed ("向外部API报告的请求 – IPv4 – 失败")
+├─Reported-IPv6-OK ("向外部API报告的请求 – IPv6 – OK")
+└─Reported-IPv6-Failed ("向外部API报告的请求 – IPv6 – 失败")
 ```
 
 ##### “force_hostname_lookup” `[bool]`
@@ -819,42 +842,48 @@ __人类端点和云服务。__ 云服务可能是指虚拟主机提供商、服
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 ##### “social_media” `[string]`
 - 用于验证来自社交媒体平台的请求的控件。
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 ** 需要ASN查找功能（例如，通过IP-API或BGPView模块）。
+
+*!! 由于iMessage而导致假阳性的可能性很高。
 
 ##### “other” `[string]`
 - 用于在可能的情况下，验证其他类型的请求的控件。
@@ -862,13 +891,15 @@ __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。
 
-__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免误报，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
+
+* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 ##### “adjust” `[string]`
 - 在验证上下文中调整其他功能的控件。
@@ -1106,7 +1137,8 @@ captcha_title
 ```
 exceptions
 ├─Whitelisted ("在白名单中的请求")
-└─Verified ("经过验证的搜索引擎和社交媒体请求")
+├─Verified ("经过验证的搜索引擎和社交媒体请求")
+└─FE ("对CIDRAM前端的请求")
 ```
 
 ##### “segregate” `[bool]`
@@ -1166,6 +1198,7 @@ __常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/read
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1179,7 +1212,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2162,4 +2197,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2023年3月25日。
+最后更新：2023年6月14日。

@@ -181,6 +181,7 @@ Cấu hình (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -503,15 +504,43 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - CIDRAM nên âm thầm chuyển hướng cố gắng truy cập bị chặn thay vì hiển thị trang "Truy cập đã bị từ chối"? Nếu vâng, xác định vị trí để chuyển hướng cố gắng truy cập bị chặn để. Nếu không, để cho biến này được trống.
 
+##### "silent_mode_response_header_code" `[int]`
+- Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi âm thầm chuyển hướng các nỗ lực truy cập bị chặn?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Đã di chuyển vĩnh viễn)): Hướng dẫn khách hàng rằng chuyển hướng là VĨNH VIỄN, và
+│ rằng phương thức yêu cầu được sử dụng cho chuyển hướng
+│ CÓ THỂ khác với phương thức yêu cầu được sử dụng cho
+│ yêu cầu ban đầu.
+├─302 (302 Found (Tìm thấy)): Hướng dẫn khách hàng rằng chuyển hướng là TẠM THỜI, và
+│ rằng phương thức yêu cầu được sử dụng cho chuyển hướng
+│ CÓ THỂ khác với phương thức yêu cầu được sử dụng cho
+│ yêu cầu ban đầu.
+├─307 (307 Temporary Redirect (Chuyển hướng tạm thời)): Hướng dẫn khách hàng rằng chuyển hướng là TẠM THỜI, và
+│ rằng phương thức yêu cầu được sử dụng cho chuyển hướng
+│ có thể KHÔNG khác với phương thức yêu cầu được sử dụng
+│ cho yêu cầu ban đầu.
+└─308 (308 Permanent Redirect (Chuyển hướng vĩnh viễn)): Hướng dẫn khách hàng rằng chuyển hướng là VĨNH VIỄN, và
+  rằng phương thức yêu cầu được sử dụng cho chuyển hướng
+  có thể KHÔNG khác với phương thức yêu cầu được sử dụng
+  cho yêu cầu ban đầu.
+```
+
+Bất kể chúng tôi hướng dẫn khách hàng như thế nào, điều quan trọng cần nhớ là cuối cùng chúng tôi không kiểm soát được những gì khách hàng chọn làm, và không có gì đảm bảo rằng khách hàng sẽ tôn trọng hướng dẫn của chúng tôi.
+
 ##### "lang" `[string]`
 - Xác định tiếng mặc định cho CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -525,8 +554,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -536,7 +567,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -662,7 +693,11 @@ statistics
 ├─Passed-IPv6 ("Yêu cầu được phép – IPv6")
 ├─Passed-Other ("Yêu cầu được phép – Khác")
 ├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – Thất bại!")
-└─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công!")
+├─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công!")
+├─Reported-IPv4-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – OK")
+├─Reported-IPv4-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – Thất bại")
+├─Reported-IPv6-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – OK")
+└─Reported-IPv6-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – Thất bại")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -849,18 +884,18 @@ Cấu hình để xác minh yêu cầu bắt nguồn từ đâu.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -868,23 +903,29 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
+* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+
 ##### "social_media" `[string]`
 - Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
+* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+
 ** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun IP-API hoặc BGPView).
+
+*!! Khả năng cao gây ra sai tích cực do iMessage.
 
 ##### "other" `[string]`
 - Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
@@ -892,13 +933,15 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
+
+* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
 
 ##### "adjust" `[string]`
 - Kiểm soát để điều chỉnh các tính năng khác trong bối cảnh xác minh.
@@ -1156,7 +1199,8 @@ Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chu
 ```
 exceptions
 ├─Whitelisted ("Yêu cầu trong danh sách trắng")
-└─Verified ("Yêu cầu máy tìm kiếm và truyền thông xã hội đã xác minh")
+├─Verified ("Yêu cầu máy tìm kiếm và truyền thông xã hội đã xác minh")
+└─FE ("Yêu cầu đối với front-end CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1216,6 +1260,7 @@ Cấu hình cho các đường tránh chữ ký mặc định.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1229,7 +1274,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2208,4 +2255,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.05.05.
+Lần cuối cập nhật: 2023.06.14.

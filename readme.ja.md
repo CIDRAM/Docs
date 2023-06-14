@@ -181,6 +181,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -495,15 +496,31 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - 「アクセス拒否」ページを表示する代わりに、​CIDRAMはブロックされたアクセス試行を自動的にリダイレクトする必要がありますか？​はいの場合は、​リダイレクトの場所を指定します。​いいえの場合は、​この変数を空白のままにします。
 
+##### "silent_mode_response_header_code" `[int]`
+- ブロックされたアクセス試行をサイレントにリダイレクトする場合、CIDRAMが送信するＨＴＴＰステータス・メッセージはどれですか？
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently （永久に移動されました）): リダイレクトが永続的であることをクライアントに指示します。​リダイレクトのリクエスト・メソッドと最初のリクエストのリクエスト・メソッドは異なるものであってができます。
+├─302 (302 Found （見つかった）): リダイレクトが一時的であることをクライアントに指示します。​リダイレクトのリクエスト・メソッドと最初のリクエストのリクエスト・メソッドは異なるものであってができます。
+├─307 (307 Temporary Redirect （一時的なリダイレクト）): リダイレクトが一時的であることをクライアントに指示します。​リダイレクトのリクエスト・メソッドと最初のリクエストのリクエスト・メソッドは異なるものであってはできません。
+└─308 (308 Permanent Redirect （永続的なリダイレクト）): リダイレクトが永続的であることをクライアントに指示します。​リダイレクトのリクエスト・メソッドと最初のリクエストのリクエスト・メソッドは異なるものであってはできません。
+```
+
+私たちがクライアントにどのように指示しても、クライアントが何を選択するかを最終的には制御できず、クライアントが私たちの指示に従うという保証はゼロであることを覚えておくことが重要です。
+
 ##### "lang" `[string]`
 - CIDRAMのデフォルト言語を設定します。
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -517,8 +534,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -528,7 +547,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -646,7 +665,11 @@ statistics
 ├─Passed-IPv6 ("許可されたリクエスト – IPv6")
 ├─Passed-Other ("許可されたリクエスト – その他")
 ├─CAPTCHAs-Failed ("キャプチャの試み – 失敗！")
-└─CAPTCHAs-Passed ("キャプチャの試み – 合格！")
+├─CAPTCHAs-Passed ("キャプチャの試み – 合格！")
+├─Reported-IPv4-OK ("外部ＡＰＩに報告されたリクエスト – IPv4 – ＯＫ")
+├─Reported-IPv4-Failed ("外部ＡＰＩに報告されたリクエスト – IPv4 – 失敗しました")
+├─Reported-IPv6-OK ("外部ＡＰＩに報告されたリクエスト – IPv6 – ＯＫ")
+└─Reported-IPv6-Failed ("外部ＡＰＩに報告されたリクエスト – IPv6 – 失敗しました")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -833,18 +856,18 @@ __ヒューマン・エンドポイントとクラウド・サービス。__ ク
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -852,23 +875,29 @@ __「陽性」と「陰性」とは何ですか？__ リクエストによって
 
 __「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
 
+* このオプションには、<code class="s">bypasses➡used</code>の下に対応するバイパスがあります。​対応するバイパスのチェックボックスが、このオプションの検証のチェックボックスと同じようにマークされていることを確認することをお勧めします。
+
 ##### "social_media" `[string]`
 - ソーシャル・メディア・プラットフォームからのリクエストを検証するためのコントロール。
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
 
 __「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
 
+* このオプションには、<code class="s">bypasses➡used</code>の下に対応するバイパスがあります。​対応するバイパスのチェックボックスが、このオプションの検証のチェックボックスと同じようにマークされていることを確認することをお勧めします。
+
 ** ＡＳＮルックアップ機能が必要です（たとえば、IP-APIモジュールまたはBGPViewモジュールを介して）。
+
+*!! iMessageによる誤検知の可能性が高い。
 
 ##### "other" `[string]`
 - 可能な場合は、他の種類のリクエストを検証するためのコントロール。
@@ -876,13 +905,15 @@ __「シングル・ヒット・バイパス」とは何ですか？__ 場合に
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
 
 __「シングル・ヒット・バイパス」とは何ですか？__ 場合によっては、シグネチャ・ファイル、モジュール、またはリクエストの他の条件の結果として、肯定的に検証されたリクエストがブロックされることがあります、誤検知を回避するためにバイパスが必要になる場合があります。​バイパスが正確に一つの違反を処理することを目的としている場合、そのようなバイパスは「シングル・ヒット・バイパス」として記述できます。
+
+* このオプションには、<code class="s">bypasses➡used</code>の下に対応するバイパスがあります。​対応するバイパスのチェックボックスが、このオプションの検証のチェックボックスと同じようにマークされていることを確認することをお勧めします。
 
 ##### "adjust" `[string]`
 - 検証のコンテキストで他の機能を調整するためのコントロール。
@@ -1132,7 +1163,8 @@ captcha_title
 ```
 exceptions
 ├─Whitelisted ("ホワイトリストに登録されたリクエスト")
-└─Verified ("検証済みの検索エンジンとソーシャル・メディアのリクエスト")
+├─Verified ("検証済みの検索エンジンとソーシャル・メディアのリクエスト")
+└─FE ("CIDRAMフロントエンドへのリクエスト")
 ```
 
 ##### "segregate" `[bool]`
@@ -1192,6 +1224,7 @@ __ＦＡＱ。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1205,7 +1238,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2185,4 +2220,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２３年５月５日。
+最終アップデート：２０２３年６月１４日。

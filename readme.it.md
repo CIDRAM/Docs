@@ -181,6 +181,7 @@ Configurazione (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -333,13 +334,13 @@ fields
 ├─ScriptIdent ("Versione dello script")
 ├─DateTime ("Data/Tempo")
 ├─IPAddr ("Indirizzo IP")
-├─IPAddrResolved ("Indirizzo IP (Risoluto)")
+├─IPAddrResolved ("Indirizzo IP (risoluto)")
 ├─Query ("Query")
 ├─Referrer ("Referente")
-├─UA ("User Agent")
-├─UALC ("User Agent (minuscolo)")
+├─UA ("Agente utente")
+├─UALC ("Agente utente (minuscolo)")
 ├─SignatureCount ("Conteggio delle firme")
-├─Signatures ("Firme Riferimento")
+├─Signatures ("Riferimento delle firme")
 ├─WhyReason ("Perché bloccato")
 ├─ReasonMessage ("Perché bloccato (dettagliato)")
 ├─rURI ("URI Ricostruito")
@@ -499,15 +500,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - CIDRAM dovrebbe reindirizzare silenziosamente tutti i tentativi di accesso bloccati invece di visualizzare la pagina "accesso negato"? Se si, specificare la localizzazione di reindirizzare i tentativi di accesso bloccati. Se no, lasciare questo variabile vuoto.
 
+##### "silent_mode_response_header_code" `[int]`
+- Quale messaggio di stato HTTP dovrebbe inviare CIDRAM quando reindirizza silenziosamente i tentativi di accesso bloccati?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Spostato definitivamente)): Indica al client che il reindirizzamento è PERMANENTE, e che il metodo di
+│ richiesta utilizzato per il reindirizzamento PUÒ essere diverso dal metodo
+│ di richiesta utilizzato per la richiesta iniziale.
+├─302 (302 Found (Trovato)): Indica al client che il reindirizzamento è TEMPORANEO, e che il metodo di
+│ richiesta utilizzato per il reindirizzamento PUÒ essere diverso dal metodo
+│ di richiesta utilizzato per la richiesta iniziale.
+├─307 (307 Temporary Redirect (Reindirizzamento temporaneo)): Indica al client che il reindirizzamento è TEMPORANEO, e che il metodo di
+│ richiesta utilizzato per il reindirizzamento NON può essere diverso dal
+│ metodo di richiesta utilizzato per la richiesta iniziale.
+└─308 (308 Permanent Redirect (Reindirizzamento permanente)): Indica al client che il reindirizzamento è PERMANENTE, e che il metodo di
+  richiesta utilizzato per il reindirizzamento NON può essere diverso dal
+  metodo di richiesta utilizzato per la richiesta iniziale.
+```
+
+Indipendentemente da come istruiamo il cliente, è importante ricordare che alla fine non abbiamo alcun controllo su ciò che il cliente sceglie di fare, e non c'è alcuna garanzia che il cliente rispetti le nostre istruzioni.
+
 ##### "lang" `[string]`
 - Specifica la lingua predefinita per CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -521,8 +546,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -532,7 +559,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -654,7 +681,11 @@ statistics
 ├─Passed-IPv6 ("Richieste accettate – IPv6")
 ├─Passed-Other ("Richieste accettate – Altro")
 ├─CAPTCHAs-Failed ("Tentativi di CAPTCHA – Fallito!")
-└─CAPTCHAs-Passed ("Tentativi di CAPTCHA – Successo!")
+├─CAPTCHAs-Passed ("Tentativi di CAPTCHA – Successo!")
+├─Reported-IPv4-OK ("Richieste segnalate ad API esterne – IPv4 – OK")
+├─Reported-IPv4-Failed ("Richieste segnalate ad API esterne – IPv4 – Fallito")
+├─Reported-IPv6-OK ("Richieste segnalate ad API esterne – IPv6 – OK")
+└─Reported-IPv6-Failed ("Richieste segnalate ad API esterne – IPv6 – Fallito")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -841,18 +872,18 @@ Configurazione per verificare da dove provengono le richieste.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -860,23 +891,29 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
+* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+
 ##### "social_media" `[string]`
 - Controlli per la verifica delle richieste dalle piattaforme dei social media.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
+* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+
 ** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo IP-API o BGPView).
+
+*!! Alta probabilità di causare falsi positivi a causa di iMessage.
 
 ##### "other" `[string]`
 - Controlli per la verifica di altri tipi di richieste ove possibile.
@@ -884,13 +921,15 @@ __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verifica
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
+
+* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
 
 ##### "adjust" `[string]`
 - Controlli per regolare altre funzionalità nel contesto della verifica.
@@ -1144,7 +1183,8 @@ Configurazione per la limitazione della velocità (non raccomandato per uso gene
 ```
 exceptions
 ├─Whitelisted ("Richieste nella lista bianca")
-└─Verified ("Richieste verificate da motori di ricerca e social media")
+├─Verified ("Richieste verificate da motori di ricerca e social media")
+└─FE ("Richieste al front-end CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1204,6 +1244,7 @@ Configurazione per i bypass di firma predefiniti.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1217,7 +1258,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2202,4 +2245,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 5 Maggio 2023 (2023.05.05).
+Ultimo Aggiornamento: 14 Giugno 2023 (2023.06.14).

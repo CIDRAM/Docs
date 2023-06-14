@@ -181,6 +181,7 @@ Configuratie (v3)
 │       ipaddr [string]
 │       http_response_header_code [int]
 │       silent_mode [string]
+│       silent_mode_response_header_code [int]
 │       lang [string]
 │       lang_override [bool]
 │       numbers [string]
@@ -352,7 +353,7 @@ fields
 ├─Request_Method ("Verzoek methode")
 ├─Protocol ("Protocol")
 ├─Hostname ("Hostname")
-├─CAPTCHA ("CAPTCHA State")
+├─CAPTCHA ("CAPTCHA state")
 └─Inspection ("* Inspectie van de voorwaarden")
 ```
 
@@ -500,15 +501,39 @@ http_response_header_code
 ##### "silent_mode" `[string]`
 - Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "toegang geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
 
+##### "silent_mode_response_header_code" `[int]`
+- Welk HTTP-statusbericht moet CIDRAM verzenden bij het stilzwijgend omleiden van geblokkeerde toegangspogingen?
+
+```
+silent_mode_response_header_code
+├─301 (301 Moved Permanently (Permanent verhuisd)): Instrueert de client dat de omleiding PERMANENT is, en dat de verzoekmethode
+│ die wordt gebruikt voor de omleiding KAN verschillen van de verzoekmethode
+│ die wordt gebruikt voor het oorspronkelijke verzoek.
+├─302 (302 Found (Gevonden)): Instrueert de client dat de omleiding TIJDELIJK is, en dat de verzoekmethode
+│ die wordt gebruikt voor de omleiding KAN verschillen van de verzoekmethode
+│ die wordt gebruikt voor het oorspronkelijke verzoek.
+├─307 (307 Temporary Redirect (Tijdelijke omleiding)): Instrueert de client dat de omleiding TIJDELIJK is, en dat de verzoekmethode
+│ die wordt gebruikt voor de omleiding NIET mag verschillen van de
+│ verzoekmethode die wordt gebruikt voor het oorspronkelijke verzoek.
+└─308 (308 Permanent Redirect (Permanente omleiding)): Instrueert de client dat de omleiding PERMANENT is, en dat de verzoekmethode
+  die wordt gebruikt voor de omleiding NIET mag verschillen van de
+  verzoekmethode die wordt gebruikt voor het oorspronkelijke verzoek.
+```
+
+Het maakt niet uit hoe we de klant instrueren, het is belangrijk om te onthouden dat we uiteindelijk geen controle hebben over wat de klant kiest om te doen, en er is geen enkele garantie dat de klant onze instructies zal opvolgen.
+
 ##### "lang" `[string]`
 - Geef de standaardtaal voor CIDRAM.
 
 ```
 lang
-├─en ("English")
 ├─ar ("العربية")
+├─bg ("Български")
 ├─bn ("বাংলা")
+├─cs ("Čeština")
 ├─de ("Deutsch")
+├─en ("English (AU/GB/NZ)")
+├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
@@ -522,8 +547,10 @@ lang
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
+├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português")
+├─pt ("Português (Brasil)")
+├─pt-PT ("Português (Europeu)")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -533,7 +560,7 @@ lang
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
 ├─zh ("中文（简体）")
-└─zh-tw ("中文（傳統）")
+└─zh-TW ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -656,7 +683,11 @@ statistics
 ├─Passed-IPv6 ("Verzoeken toegestaan – IPv6")
 ├─Passed-Other ("Verzoeken toegestaan – Anders")
 ├─CAPTCHAs-Failed ("CAPTCHA pogingen – Mislukt!")
-└─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes!")
+├─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes!")
+├─Reported-IPv4-OK ("Verzoeken gerapporteerd aan externe API's – IPv4 – OK")
+├─Reported-IPv4-Failed ("Verzoeken gerapporteerd aan externe API's – IPv4 – Mislukt")
+├─Reported-IPv6-OK ("Verzoeken gerapporteerd aan externe API's – IPv6 – OK")
+└─Reported-IPv6-Failed ("Verzoeken gerapporteerd aan externe API's – IPv6 – Mislukt")
 ```
 
 ##### "force_hostname_lookup" `[bool]`
@@ -843,18 +874,18 @@ Configuratie om te verifiëren waar verzoeken vandaan komen.
 search_engines
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
-├─Baidu ("Baiduspider/百度")
-├─Bingbot ("Bingbot")
-├─DuckDuckBot ("DuckDuckBot")
-├─Googlebot ("Googlebot")
+├─Baidu ("* Baiduspider/百度")
+├─Bingbot ("* Bingbot")
+├─DuckDuckBot ("* DuckDuckBot")
+├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("Neevabot")
-├─PetalBot ("PetalBot")
+├─Neevabot ("* Neevabot")
+├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
-├─Sogou ("Sogou/搜狗")
+├─Sogou ("* Sogou/搜狗")
 ├─Yahoo ("Yahoo/Slurp")
-├─Yandex ("Yandex/Яндекс")
+├─Yandex ("* Yandex/Яндекс")
 └─YoudaoBot ("YoudaoBot")
 ```
 
@@ -862,23 +893,29 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
+* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+
 ##### "social_media" `[string]`
 - Controles voor het verifiëren van verzoeken van sociale media platforms.
 
 ```
 social_media
-├─Embedly ("Embedly")
+├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
-├─Pinterest ("Pinterest")
-├─Snapchat ("Snapchat")
-└─Twitterbot ("Twitterbot")
+├─Pinterest ("* Pinterest")
+├─Snapchat ("* Snapchat")
+└─Twitterbot ("*!! Twitterbot")
 ```
 
 __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
+* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+
 ** Vereist ASN-opzoekfunctionaliteit (b.v., via de IP-API-module of BGPView-module).
+
+*!! Grote kans op het veroorzaken van valse positieven vanwege iMessage.
 
 ##### "other" `[string]`
 - Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
@@ -886,13 +923,15 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 ```
 other
 ├─AdSense ("AdSense")
-├─AmazonAdBot ("AmazonAdBot")
-└─Grapeshot ("Oracle Data Cloud Crawler")
+├─AmazonAdBot ("* AmazonAdBot")
+└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
 __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
+
+* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
 
 ##### "adjust" `[string]`
 - Controles om andere functionaliteit aan te passen in de context van verificatie.
@@ -1146,7 +1185,8 @@ Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
 ```
 exceptions
 ├─Whitelisted ("Verzoeken gemarkeerd als op de witte lijst")
-└─Verified ("Geverifieerde verzoeken van zoekmachines en sociale media")
+├─Verified ("Geverifieerde verzoeken van zoekmachines en sociale media")
+└─FE ("Verzoeken aan de front-end van CIDRAM")
 ```
 
 ##### "segregate" `[bool]`
@@ -1206,6 +1246,7 @@ Configuratie voor de standaard bypasses voor signatures.
 used
 ├─AbuseIPDB ("AbuseIPDB")
 ├─AmazonAdBot ("AmazonAdBot")
+├─Baidu ("Baiduspider/百度")
 ├─Bingbot ("Bingbot")
 ├─DuckDuckBot ("DuckDuckBot")
 ├─Embedly ("Embedly")
@@ -1219,7 +1260,9 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-└─Snapchat ("Snapchat")
+├─Snapchat ("Snapchat")
+├─Sogou ("Sogou/搜狗")
+└─Yandex ("Yandex/Яндекс")
 ```
 
 ---
@@ -2218,4 +2261,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 5 Mei 2023 (2023.05.05).
+Laatste Bijgewerkt: 14 Juni 2023 (2023.06.14).
