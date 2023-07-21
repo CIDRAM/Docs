@@ -10,6 +10,7 @@
 - 7. [KNOWN COMPATIBILITY PROBLEMS](#user-content-SECTION7)
 - 8. [FREQUENTLY ASKED QUESTIONS (FAQ)](#user-content-SECTION8)
 - 9. [LEGAL INFORMATION](#user-content-SECTION9)
+- 10. [UPGRADING FROM PREVIOUS MAJOR VERSIONS](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2242,4 +2243,31 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 14 June 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>UPGRADING FROM PREVIOUS MAJOR VERSIONS
+
+#### 10.0 CIDRAM v3
+
+There are significant differences between v3 and previous major versions. Importantly, the way entrypoints work, the way modules are structured, and the way the updater works for v3 is different to the way those things worked for previous major versions. Because of these differences, the best way to ugprade to v3 from previous major versions would be to perform a fresh installation.
+
+If you want to keep your configuration and your auxiliary rules, before beginning the upgrade process, go to the front-end backup page. From there, configuration and auxiliary rules can be exported. Exporting will cause a file to be downloaded. After upgrading to the new major version, that file can be used to import the previously exported data to the installation.
+
+Because of changes to the way modules are structured, modules intended for previous major versions would need to be rewritten in order to work properly for v3. Direct migration won't work. The same is true for events and imports.
+
+The way signature files are structured has not changed, so signature files intended for previous major verions can be directly migrated into v3 without any problems anticipated.
+
+Modules, signature files, imports, and events each have their own dedicated directories, which is a new addition v3 (so, for v3, they would each go into their respective dedicated directories, instead of the root of the vault).
+
+Some of the signature files, modules, and blocklists publicly available for previous major versions have been deprecated, so not everything will be available for v3. In most cases, they won't be needed anyway, due to new features and core functionality added since v3.
+
+There are some subtle changes to the way auxiliary rules are structured, and there are changes to the configuration, but if you use the import/export feature at the front-end backup page, you don't need to manually rewrite, adjust, or recreate anything. When importing, CIDRAM knows what's needed, and will handle it for you automatically.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 doesn't yet exist. However, when the time comes to upgrade from v3 to v4, the upgrade process should be much simpler. We won't know exactly how significantly different it will be until the time comes, but I anticipate the differences to be much less than before, and mechanisms have already been implemented into v3 right from the start to facilitate a smoother upgrade process. As long as there aren't significant changes to the updater or the way that entrypoints work, it should, in theory, be possible to upgrade entirely via the front-end, without the need to perform a fresh installation.
+
+More detailed information will be included here, in the documentation, at an appropriate time in the future.
+
+---
+
+
+Last Updated: 21 July 2023 (2023.07.21).
