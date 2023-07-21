@@ -10,6 +10,7 @@
 - 7. [MASALAH KOMPATIBILITAS DIKETAHUI](#user-content-SECTION7)
 - 8. [PERTANYAAN YANG SERING DIAJUKAN (FAQ)](#user-content-SECTION8)
 - 9. [INFORMASI HUKUM](#user-content-SECTION9)
+- 10. [MEMUTAKHIRKAN DARI VERSI UTAMA SEBELUMNYA](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2240,4 +2241,31 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 14 Juni 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>MEMUTAKHIRKAN DARI VERSI UTAMA SEBELUMNYA
+
+#### 10.0 CIDRAM v3
+
+Ada perbedaan yang signifikan antara v3 dan versi utama sebelumnya. Cara kerja titik masuk, cara menyusun modul, dan cara kerja pembaru untuk v3 berbeda dengan cara kerja hal-hal tersebut untuk versi utama sebelumnya. Karena perbedaan ini, cara terbaik untuk memutakhirkan ke v3 dari versi utama sebelumnya adalah dengan melakukan penginstalan baru.
+
+Jika Anda ingin mempertahankan konfigurasi dan aturan tambahan Anda, sebelum memulai proses pemutakhiran, buka halaman backup dari front-end. Dari sana, konfigurasi dan aturan tambahan dapat diekspor. Mengekspor akan menyebabkan file diunduh. Setelah memutakhirkan ke versi utama yang baru, file tersebut dapat digunakan untuk mengimpor data yang diekspor sebelumnya ke penginstalan baru.
+
+Karena perubahan struktur modul, modul yang dimaksudkan untuk versi utama sebelumnya perlu ditulis ulang agar berfungsi dengan baik untuk v3. Migrasi langsung tidak akan berhasil. Hal yang sama berlaku untuk acara.
+
+Struktur file tanda tangan tidak berubah, jadi file tanda tangan yang dimaksudkan untuk versi utama sebelumnya dapat langsung dimigrasikan ke v3 tanpa mengantisipasi masalah.
+
+Modul, file tanda tangan, dan acara masing-masing memiliki direktori tersendiri, yang merupakan tambahan baru sejak v3 (jadi, untuk v3, mereka masing-masing akan masuk ke direktori masing-masing, bukan ke root vault).
+
+Beberapa file tanda tangan, modul, dan daftar blokir yang tersedia untuk umum untuk versi utama sebelumnya telah dihentikan, jadi tidak semuanya akan tersedia untuk v3. Dalam kebanyakan kasus, mereka tidak akan diperlukan, karena fitur baru dan fungsionalitas ditambahkan sejak v3.
+
+Ada beberapa perubahan halus pada struktur aturan tambahan, dan ada perubahan pada konfigurasi, tetapi jika Anda menggunakan fitur impor/ekspor di halaman backup dari front-end, Anda tidak perlu menulis ulang, menyesuaikan, atau membuat ulang apapun secara manual. Saat mengimpor, CIDRAM mengetahui apa yang dibutuhkan, dan akan menanganinya untuk Anda secara otomatis.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 belum ada. Namun, ketika saatnya tiba untuk memutakhirkan dari v3 ke v4, proses pemutakhiran seharusnya jauh lebih sederhana. Kami tidak akan tahu persis seberapa signifikan perbedaannya sampai saatnya tiba, tetapi saya memperkirakan perbedaannya akan jauh lebih sedikit dari sebelumnya, dan mekanisme telah diterapkan ke v3 sejak awal untuk memfasilitasi proses pemutakhiran yang lebih lancar. Selama tidak ada perubahan signifikan pada pembaru atau cara kerja titik masuk, secara teori, dimungkinkan untuk memutakhirkan seluruhnya melalui front-end, tanpa perlu melakukan penginstalan baru.
+
+Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang tepat di masa mendatang.
+
+---
+
+
+Terakhir Diperbarui: 21 Juli 2023 (2023.07.21).

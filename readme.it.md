@@ -10,6 +10,7 @@
 - 7. [CONOSCIUTI COMPATIBILITÀ PROBLEMI](#user-content-SECTION7)
 - 8. [DOMANDE FREQUENTI (FAQ)](#user-content-SECTION8)
 - 9. [INFORMAZIONE LEGALE](#user-content-SECTION9)
+- 10. [AGGIORNAMENTO DA VERSIONI PRINCIPALI PRECEDENTI](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2197,7 +2198,7 @@ CIDRAM è facoltativamente in grado di tracciare statistiche come il numero tota
 
 ##### 9.3.8 CRITTOGRAFIA
 
-CIDRAM non crittografa la sua cache o alcuna informazione di registro. La [crittografia](https://it.wikipedia.org/wiki/Crittografia) della cache e del registro potrebbe essere introdotta in futuro, ma al momento non sono previsti piani specifici. Se sei preoccupato per le terze parti non autorizzate che accedono a parti di CIDRAM che potrebbero contenere informazioni personali o riservate quali la cache o i registri, ti consiglio di non installare CIDRAM in una posizione accessibile al pubblico (per esempio, installare CIDRAM al di fuori della cartella `public_html` standard o equivalente di quella disponibile per la maggior parte dei server Web standard) e che le autorizzazioni appropriatamente restrittive siano applicate per la cartella in cui risiede (in particolare, per la cartella del vault). Se ciò non è sufficiente per risolvere i tuoi dubbi, allora configura CIDRAM in modo tale che i tipi di informazioni che causano i tuoi dubbi non saranno raccolti o registrati in primo luogo (ad esempio, di disabilitando la registrazione).
+CIDRAM non crittografa la sua cache o alcuna informazione di registro. La [crittografia](https://it.wikipedia.org/wiki/Crittografia) della cache e del registro potrebbe essere introdotta in futuro, ma al momento non sono previsti piani specifici. Se sei preoccupato per le terze parti non autorizzate che accedono a parti di CIDRAM che potrebbero contenere informazioni personali o riservate quali la cache o i registri, ti consiglio di non installare CIDRAM in una posizione accessibile al pubblico (per esempio, installare CIDRAM al di fuori della directory `public_html` standard o equivalente di quella disponibile per la maggior parte dei server Web standard) e che le autorizzazioni appropriatamente restrittive siano applicate per la directory in cui risiede (in particolare, per la directory del vault). Se ciò non è sufficiente per risolvere i tuoi dubbi, allora configura CIDRAM in modo tale che i tipi di informazioni che causano i tuoi dubbi non saranno raccolti o registrati in primo luogo (ad esempio, di disabilitando la registrazione).
 
 #### 9.4 COOKIE
 
@@ -2245,4 +2246,31 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 14 Giugno 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>AGGIORNAMENTO DA VERSIONI PRINCIPALI PRECEDENTI
+
+#### 10.0 CIDRAM v3
+
+Esistono differenze significative tra la v3 e le versioni principali precedenti. Il modo in cui funzionano gli punti di ingresso, il modo in cui i moduli sono strutturati, e il modo in cui il programma di aggiornamento funziona per v3 è diverso dal modo in cui queste cose funzionavano per le versioni principali precedenti. A causa di queste differenze, il modo migliore per eseguire l'aggiornamento alla v3 dalle versioni principali precedenti sarebbe eseguire una nuova installazione.
+
+Se vuoi mantenere la tua configurazione e le tue regole ausiliarie, prima di iniziare il processo di aggiornamento, vai alla pagina di backup front-end. Da qui è possibile esportare la configurazione e le regole ausiliarie. L'esportazione causerà il download di un file. Dopo l'aggiornamento alla nuova versione principale, tale file può essere utilizzato per importare nell'installazione i dati precedentemente esportati.
+
+A causa delle modifiche al modo in cui i moduli sono strutturati, i moduli destinati alle versioni principali precedenti dovrebbero essere riscritti per funzionare correttamente per v3. La migrazione diretta non funzionerà. Lo stesso vale per gli eventi.
+
+Il modo in cui sono strutturati i file delle firme non è cambiato, quindi i file delle firme destinati alle versioni principali precedenti possono essere migrati direttamente nella v3 senza alcun problema previsto.
+
+I moduli, i file delle firme, e gli eventi hanno ciascuno le proprie directory dedicate, che è una nuova aggiunta dalla v3 (quindi, per v3, andrebbero ciascuno nelle rispettive directory dedicate, invece che nella radice del vault).
+
+Alcuni dei file delle firme, dei moduli, e delle liste di blocco disponibili pubblicamente per le versioni principali precedenti sono stati deprecati, quindi non tutto sarà disponibile per la v3. Nella maggior parte dei casi, non saranno comunque necessari, a causa delle nuove funzionalità aggiunte dalla v3.
+
+Ci sono alcune sottili modifiche al modo in cui sono strutturate le regole ausiliarie, e ci sono modifiche alla configurazione, ma se utilizzi la funzione di importazione/esportazione nella pagina di backup front-end, non avrai bisogno di riscrivere, regolare, o ricreare manualmente nulla. Durante l'importazione, CIDRAM sa cosa è necessario e lo gestirà automaticamente per te.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 non esiste in questo momento. Tuttavia, quando arriva il momento di aggiornare dalla v3 alla v4, il processo di aggiornamento dovrebbe essere molto più semplice. Non sapremo quanto saranno significative le differenze fino a quando non sarà disponibile, ma prevedo che le differenze saranno molto inferiori rispetto a prima, e i meccanismi sono già stati implementati nella v3 fin dall'inizio per facilitare un processo di aggiornamento più agevole. Finché non ci sono modifiche significative al programma di aggiornamento o al modo in cui funzionano gli punti di ingresso, in teoria dovrebbe essere possibile eseguire l'aggiornamento interamente tramite il front-end, senza la necessità di eseguire una nuova installazione.
+
+Informazioni più dettagliate saranno incluse qui, nella documentazione, in un momento opportuno in futuro.
+
+---
+
+
+Ultimo Aggiornamento: 21 Luglio 2023 (2023.07.21).

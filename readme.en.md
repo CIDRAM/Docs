@@ -2251,15 +2251,15 @@ There are significant differences between v3 and previous major versions. Import
 
 If you want to keep your configuration and your auxiliary rules, before beginning the upgrade process, go to the front-end backup page. From there, configuration and auxiliary rules can be exported. Exporting will cause a file to be downloaded. After upgrading to the new major version, that file can be used to import the previously exported data to the installation.
 
-Because of changes to the way modules are structured, modules intended for previous major versions would need to be rewritten in order to work properly for v3. Direct migration won't work. The same is true for events and imports.
+Because of changes to the way modules are structured, modules intended for previous major versions would need to be rewritten in order to work properly for v3. Direct migration won't work. The same is true for events.
 
 The way signature files are structured has not changed, so signature files intended for previous major verions can be directly migrated into v3 without any problems anticipated.
 
-Modules, signature files, imports, and events each have their own dedicated directories, which is a new addition v3 (so, for v3, they would each go into their respective dedicated directories, instead of the root of the vault).
+Modules, signature files, and events each have their own dedicated directories, which is a new addition since v3 (so, for v3, they would each go into their respective dedicated directories, instead of the root of the vault).
 
 Some of the signature files, modules, and blocklists publicly available for previous major versions have been deprecated, so not everything will be available for v3. In most cases, they won't be needed anyway, due to new features and core functionality added since v3.
 
-There are some subtle changes to the way auxiliary rules are structured, and there are changes to the configuration, but if you use the import/export feature at the front-end backup page, you don't need to manually rewrite, adjust, or recreate anything. When importing, CIDRAM knows what's needed, and will handle it for you automatically.
+There are some subtle changes to the way auxiliary rules are structured, and there are changes to the configuration, but if you use the import/export feature at the front-end backup page, you won't need to manually rewrite, adjust, or recreate anything. When importing, CIDRAM knows what's needed, and will handle it for you automatically.
 
 #### 10.1 CIDRAM v4
 

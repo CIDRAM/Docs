@@ -10,6 +10,7 @@
 - 7. [PROBLEMAS DE COMPATIBILIDADE CONHECIDOS](#user-content-SECTION7)
 - 8. [PERGUNTAS MAIS FREQUENTES (FAQ)](#user-content-SECTION8)
 - 9. [INFORMAÇÃO LEGAL](#user-content-SECTION9)
+- 10. [ATUALIZANDO DE VERSÕES PRINCIPAIS ANTERIORES](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2241,4 +2242,31 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 14 de Junho de 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>ATUALIZANDO DE VERSÕES PRINCIPAIS ANTERIORES
+
+#### 10.0 CIDRAM v3
+
+Existem diferenças significativas entre a v3 e as versões principais anteriores. A maneira como os pontos de entrada funcionam, a maneira como os módulos são estruturados, e a maneira como o atualizador funciona para v3 é diferente da maneira como essas coisas funcionavam nas versões principais anteriores. Devido a essas diferenças, a melhor maneira de atualizar para v3 de versões principais anteriores seria realizar uma nova instalação.
+
+Se você deseja manter sua configuração e suas regras auxiliares, antes de iniciar o processo de atualização, acesse a página de backup do front-end. A partir daí, a configuração e as regras auxiliares podem ser exportados. A exportação fará com que um arquivo seja baixado. Depois de atualizar para a nova versão principal, esse arquivo pode ser usado para importar os dados exportados anteriormente para a instalação.
+
+Devido às mudanças na forma como os módulos são estruturados, os módulos destinados às versões principais anteriores precisariam ser reescritos para funcionar corretamente na v3. A migração direta não funcionará. O mesmo vale para eventos.
+
+A forma como os arquivos de assinatura são estruturados não mudou, portanto, os arquivos de assinatura destinados a versões principais anteriores podem ser migrados diretamente para a v3 sem nenhum problema antecipado.
+
+Módulos, arquivos de assinatura, e eventos têm seus próprios diretórios dedicados, o que é uma novidade desde a v3 (então, para v3, cada um deles seria colocado em seus respectivos diretórios dedicados, em vez da raiz do vault).
+
+Alguns dos arquivos de assinatura, módulos, e listas de bloqueio disponíveis publicamente para versões principais anteriores foram obsoletos, portanto, nem tudo estará disponível para v3. Na maioria dos casos, eles não serão necessários de qualquer maneira, devido aos novos recursos e funcionalidades principais adicionados desde a v3.
+
+Há algumas mudanças sutis na forma como as regras auxiliares são estruturadas, e há mudanças na configuração, mas se você usar o recurso de importação/exportação na página de backup do front-end, não precisará reescrever, ajustar, ou recriar qualquer coisa. Ao importar, o CIDRAM sabe o que é necessário e cuidará disso para você automaticamente.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 ainda não existe. Mas, quando chegar a hora de atualizar de v3 para v4, o processo de atualização deve ser muito mais simples. Não saberemos exatamente o quão significativamente diferente será até chegar a hora, mas prevejo que as diferenças serão muito menores do que antes, e os mecanismos já foram implementados na v3 desde o início para facilitar um processo de atualização mais suave. Supondo que não haja mudanças significativas no atualizador ou na forma como os pontos de entrada funcionam, deveria, em teoria, ser possível atualizar totalmente pelo front-end, sem a necessidade de realizar uma nova instalação.
+
+Informações mais detalhadas serão incluídas aqui, na documentação, em um momento apropriado no futuro.
+
+---
+
+
+Última Atualização: 21 de Julho de 2023 (2023.07.21).

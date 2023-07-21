@@ -10,6 +10,7 @@
 - 7. [PROBLÈMES DE COMPATIBILITÉ CONNUS](#user-content-SECTION7)
 - 8. [QUESTIONS FRÉQUEMMENT POSÉES (FAQ)](#user-content-SECTION8)
 - 9. [INFORMATION LÉGALE](#user-content-SECTION9)
+- 10. [MISE À NIVEAU À PARTIR DES VERSIONS MAJEURES PRÉCÉDENTES](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2255,4 +2256,31 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 14 Juin 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>MISE À NIVEAU À PARTIR DES VERSIONS MAJEURES PRÉCÉDENTES
+
+#### 10.0 CIDRAM v3
+
+Il existe des différences significatives entre la v3 et les versions majeures précédentes. Il est important de noter que la façon dont les points d'entrée fonctionnent, la façon dont les modules sont structurés, et la façon dont le programme de mise à jour fonctionne pour la v3 est différente de la façon dont ces choses fonctionnaient pour les versions majeures précédentes. En raison de ces différences, la meilleure façon de mettre à niveau vers la v3 à partir des versions majeures précédentes serait d'effectuer une nouvelle installation.
+
+Si vous souhaitez conserver votre configuration et vos règles auxiliaires, avant de commencer le processus de mise à niveau, rendez-vous sur la page de sauvegarde de données frontale. De là, la configuration et les règles auxiliaires peuvent être exportés. L'exportation entraînera le téléchargement d'un fichier. Après la mise à niveau vers la nouvelle version majeure, ce fichier peut être utilisé pour importer les données précédemment exportées vers l'installation.
+
+En raison des changements apportés à la façon dont les modules sont structurés, les modules destinés aux versions majeures précédentes devraient être réécrits afin de fonctionner correctement pour la v3. La migration directe ne fonctionnera pas. Il en est de même pour les événements.
+
+La façon dont les fichiers de signature sont structurés n'a pas changé, de sorte que les fichiers de signature destinés aux versions majeures précédentes peuvent être directement migrés vers la v3 sans aucun problème anticipé.
+
+Les modules, les fichiers de signature, et les événements ont chacun leurs propres répertoires dédiés, ce qui est un nouvel ajout depuis la v3 (ainsi, pour la v3, ils iraient chacun dans leurs répertoires dédiés respectifs, au lieu de la racine du vault).
+
+Certains des fichiers de signature, des modules, et des listes de blocage disponibles publiquement pour les versions majeures précédentes ont été obsolètes, donc tout ne sera pas disponible pour la v3. Dans la plupart des cas, ils ne seront de toute façon pas nécessaires, en raison des nouvelles fonctionnalités et des fonctionnalités de base ajoutées depuis la v3.
+
+Il y a quelques changements subtils dans la façon dont les règles auxiliaires sont structurées, et il y a des changements dans la configuration, mais si vous utilisez la fonction d'importation/exportation sur la page de sauvegarde de données frontale, vous n'aurez pas besoin de réécrire, d'ajuster, ou de recréer n'importe quoi. Lors de l'importation, CIDRAM sait ce dont vous avez besoin et le gère automatiquement pour vous.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 n'existe pas pour le moment. Cependant, lorsque vient le temps de passer de la v3 à la v4, le processus de mise à niveau devrait être beaucoup plus simple. Nous ne saurons pas exactement à quel point ce sera différent avant le moment venu, mais je prévois que les différences seront bien moindres qu'auparavant, et des mécanismes ont déjà été implémentés dans la v3 dès le début pour faciliter un processus de mise à niveau plus fluide. Tant qu'il n'y a pas de changements significatifs dans le programme de mise à jour ou dans le fonctionnement des points d'entrée, il devrait, en théorie, être possible de mettre à niveau entièrement via le frontal, sans avoir besoin d'effectuer une nouvelle installation.
+
+Des informations plus détaillées seront incluses ici, dans la documentation, à un moment approprié dans le futur.
+
+---
+
+
+Dernière mise à jour : 21 Juillet 2023 (2023.07.21).
