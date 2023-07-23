@@ -11,6 +11,7 @@
  <li>۷. <a href="#user-content-SECTION7">جانا جاتا مطابقت کے مسائل</a></li>
  <li>۸. <a href="#user-content-SECTION8">اکثر پوچھے گئے سوالات (FAQ)</a></li>
  <li>۹. <a href="#user-content-SECTION9">قانونی معلومات</a></li>
+ <li>۱۰. <a href="#user-content-SECTION10">پچھلے بڑے ورژن سے اپ گریڈ کرنا</a></li>
 </ul></div>
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
@@ -2319,4 +2320,31 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۴ جون ۲۰۲۳ (۲۰۲۳.۰۶.۱۴).</div>
+### <div dir="rtl">۱۰. <a name="SECTION10"></a>پچھلے بڑے ورژن سے اپ گریڈ کرنا</div>
+
+#### <div dir="rtl">۱۰.۰ CIDRAM v3<br /><br /></div>
+
+<div dir="rtl">v3 اور پچھلے بڑے ورژن کے درمیان اہم فرق ہیں. جس طرح سے انٹری پوائنٹس کام کرتے ہیں، جس طرح سے ماڈیولز کی ساخت ہوتی ہے، اور جس طرح سے اپڈیٹر v3 کے لیے کام کرتا ہے وہ اس طرح سے مختلف ہے جس طرح ان چیزوں نے پچھلے بڑے ورژنز کے لیے کام کیا. ان اختلافات کی وجہ سے، پچھلے بڑے ورژنز سے v3 میں اپ گریڈ کرنے کا بہترین طریقہ یہ ہوگا کہ ایک تازہ انسٹالیشن انجام دی جائے.<br /><br /></div>
+
+<div dir="rtl">اگر آپ اپنی ترتیب اور اپنے معاون قواعد کو برقرار رکھنا چاہتے ہیں، اپ گریڈ کا عمل شروع کرنے سے پہلے، فرنٹ اینڈ بیک اپ پیج پر جائیں. وہاں سے، ترتیب اور معاون قواعد برآمد کیے جا سکتے ہیں. برآمد کرنے سے فائل ڈاؤن لوڈ ہو جائے گی. نئے بڑے ورژن میں اپ گریڈ کرنے کے بعد، اس فائل کو پہلے سے برآمد شدہ ڈیٹا کو انسٹالیشن میں درآمد کرنے کے لیے استعمال کیا جا سکتا ہے.<br /><br /></div>
+
+<div dir="rtl">ماڈیولز کی ساخت میں تبدیلیوں کی وجہ سے، پچھلے بڑے ورژنز کے لیے بنائے گئے ماڈیولز کو v3 کے لیے صحیح طریقے سے کام کرنے کے لیے دوبارہ لکھنے کی ضرورت ہوگی. براہ راست منتقلی کام نہیں کرے گی. واقعات کا بھی یہی حال ہے.<br /><br /></div>
+
+<div dir="rtl">دستخطی فائلوں کے ڈھانچے کا طریقہ تبدیل نہیں ہوا ہے، اس لیے دستخطی فائلیں جو پچھلے بڑے ورژن کے لیے ہیں، بغیر کسی پریشانی کے براہ راست v3 میں منتقل کی جا سکتی ہیں.<br /><br /></div>
+
+<div dir="rtl">ماڈیولز، دستخطی فائلیں، اور ایونٹس میں سے ہر ایک کی اپنی مخصوص ڈائریکٹریز ہوتی ہیں، جو کہ v3 کے بعد ایک نیا اضافہ ہے (لہذا، v3 کے لیے، وہ ہر ایک vault کی جڑ کے بجائے اپنی اپنی مخصوص ڈائریکٹریوں میں جائیں گے).<br /><br /></div>
+
+<div dir="rtl">پچھلے بڑے ورژنز کے لیے عوامی طور پر دستیاب دستخطی فائلوں، ماڈیولز، اور بلاک لسٹوں میں سے کچھ کو فرسودہ کر دیا گیا ہے، اس لیے ہر چیز v3 کے لیے دستیاب نہیں ہوگی. زیادہ تر معاملات میں، v3 کے بعد سے شامل کردہ نئی خصوصیات اور بنیادی فعالیت کی وجہ سے، بہرحال ان کی ضرورت نہیں ہوگی.<br /><br /></div>
+
+<div dir="rtl">معاون قوانین کے ڈھانچے کے طریقے میں کچھ ٹھیک ٹھیک تبدیلیاں ہیں، اور ترتیب میں تبدیلیاں ہیں، لیکن اگر آپ فرنٹ اینڈ بیک اپ صفحہ پر درآمد/برآمد خصوصیت استعمال کرتے ہیں، تو آپ کو دستی طور پر کچھ کرنے کی ضرورت نہیں ہوگی. درآمد کرتے وقت، CIDRAM جانتا ہے کہ کس چیز کی ضرورت ہے، اور اسے آپ کے لیے خود بخود سنبھال لے گا.<br /><br /></div>
+
+#### <div dir="rtl">۱۰.۱ CIDRAM v4<br /><br /></div>
+
+<div dir="rtl">v4 ابھی تک موجود نہیں ہے. تاہم، جب v3 سے v4 میں اپ گریڈ کرنے کا وقت آتا ہے، تو اپ گریڈ کا عمل بہت آسان ہونا چاہیے. ہم نہیں جان سکیں گے کہ وقت آنے تک یہ کتنا نمایاں طور پر مختلف ہو گا، لیکن میں توقع کرتا ہوں کہ اختلافات پہلے کے مقابلے بہت کم ہوں گے، اور اپ گریڈ کے عمل کو آسان بنانے کے لیے میکانزم کو شروع سے ہی v3 میں لاگو کر دیا گیا ہے. جب تک اپڈیٹر میں اہم تبدیلیاں نہیں ہوتی ہیں یا انٹری پوائنٹس کے کام کرنے کے طریقے میں، نظریہ طور پر، اسے مکمل طور پر فرنٹ اینڈ کے ذریعے اپ گریڈ کرنا ممکن ہونا چاہیے، بغیر کسی نئی تنصیب کی ضرورت کے.<br /><br /></div>
+
+<div dir="rtl">مزید تفصیلی معلومات مستقبل میں کسی مناسب وقت پر، دستاویزات میں، یہاں شامل کی جائیں گی.<br /><br /></div>
+
+---
+
+
+<div dir="rtl">آخری تازہ کاری: ۲۳ جولائی ۲۰۲۳ (۲۰۲۳.۰۷.۲۳).</div>

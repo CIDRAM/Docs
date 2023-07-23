@@ -10,6 +10,7 @@
 - 7. [BEKENDE COMPATIBILITEITSPROBLEMEN](#user-content-SECTION7)
 - 8. [VEELGESTELDE VRAGEN (FAQ)](#user-content-SECTION8)
 - 9. [LEGALE INFORMATIE](#user-content-SECTION9)
+- 10. [UPGRADEN VAN EERDERE HOOFDVERSIES](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2261,4 +2262,31 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 14 Juni 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>UPGRADEN VAN EERDERE HOOFDVERSIES
+
+#### 10.0 CIDRAM v3
+
+Er zijn aanzienlijke verschillen tussen v3 en eerdere hoofdversies. Belangrijk is dat de manier waarop ingangspunten werken, de manier waarop modules zijn gestructureerd, en de manier waarop de updater werkt voor v3 anders is dan de manier waarop die dingen werkten voor eerdere hoofdversies. Vanwege deze verschillen is het uitvoeren van een nieuwe installatie de beste manier om te upgraden naar v3 van eerdere hoofdversies.
+
+Als u uw configuratie en uw aanvullende regels wilt behouden, gaat u voordat u met het upgradeproces begint naar de front-end back-up-pagina. Van daaruit kunnen configuratie en aanvullende regels worden geëxporteerd. Bij het exporteren wordt een bestand gedownload. Na het upgraden naar de nieuwe hoofdversie kan dat bestand worden gebruikt om de eerder geëxporteerde gegevens naar de installatie te importeren.
+
+Vanwege wijzigingen in de manier waarop modules zijn gestructureerd, zouden modules die bedoeld waren voor eerdere hoofdversies moeten worden herschreven om correct te werken voor v3. Directe migratie werkt niet. Hetzelfde geldt voor evenementen.
+
+De manier waarop signatuurbestanden zijn gestructureerd, is niet veranderd, dus signatuurbestanden die bedoeld zijn voor eerdere hoofdversies kunnen zonder problemen rechtstreeks naar v3 worden gemigreerd.
+
+Een nieuwe toevoeging sinds v3, modules, signatuurbestanden, en gebeurtenissen hebben elk hun eigen speciale mappen (dus voor v3 zouden ze elk naar hun respectievelijke speciale mappen gaan, in plaats van naar de root van de vault).
+
+Sommige signatuurbestanden, modules, en blokkeerlijsten die openbaar beschikbaar waren voor eerdere hoofdversies, zijn verouderd, dus niet alles zal beschikbaar zijn voor v3. In de meeste gevallen zullen ze toch niet nodig zijn, vanwege nieuwe functies en kernfunctionaliteit die zijn toegevoegd sinds v3.
+
+Er zijn enkele subtiele wijzigingen in de manier waarop aanvullende regels zijn gestructureerd en er zijn wijzigingen in de configuratie, maar als u de import/export functie op de front-end back-up-pagina gebruikt, hoeft u niets handmatig te herschrijven, aan te passen, of opnieuw te maken. Bij het importeren weet CIDRAM wat er nodig is en regelt het automatisch voor u.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 bestaat nog niet. Wanneer het echter tijd is om te upgraden van v3 naar v4, zou het upgradeproces veel eenvoudiger moeten zijn. We zullen niet precies weten hoeveel verschil het zal zijn tot de tijd daar is, maar ik verwacht dat de verschillen veel kleiner zullen zijn dan voorheen, en mechanismen zijn vanaf het begin al in v3 geïmplementeerd om een soepeler upgradeproces te vergemakkelijken. Zolang er geen significante wijzigingen zijn in de updater of de manier waarop ingangspunten werken, zou het in theorie mogelijk moeten zijn om volledig via de front-end te upgraden, zonder dat een nieuwe installatie nodig is.
+
+Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in de toekomst worden opgenomen.
+
+---
+
+
+Laatste Bijgewerkt: 23 Juli 2023 (2023.07.23).

@@ -11,6 +11,7 @@
  <li>٧. <a href="#user-content-SECTION7">مشاكل التوافق المعروفة</a></li>
  <li>٨. <a href="#user-content-SECTION8">أسئلة وأجوبة (FAQ)</a></li>
  <li>٩. <a href="#user-content-SECTION9">المعلومات القانونية</a></li>
+ <li>١٠. <a href="#user-content-SECTION10">الترقية من الإصدارات الرئيسية السابقة</a></li>
 </ul></div>
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
@@ -2309,4 +2310,31 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٤ يونيو ٢٠٢٣ (٢٠٢٣.٠٦.١٤).</div>
+### <div dir="rtl">١٠. <a name="SECTION10"></a>الترقية من الإصدارات الرئيسية السابقة</div>
+
+#### <div dir="rtl">١٠.٠ CIDRAM v3<br /><br /></div>
+
+<div dir="rtl">توجد اختلافات كبيرة بين الإصدار 3 والإصدارات الرئيسية السابقة. تختلف طريقة عمل نقاط الدخول، وطريقة تنظيم الوحدات، وطريقة عمل المحدث للإصدار 3 عن طريقة عمل هذه الأشياء للإصدارات الرئيسية السابقة. بسبب هذه الاختلافات، فإن أفضل طريقة للترقية إلى الإصدار 3 من الإصدارات الرئيسية السابقة هي إجراء تثبيت جديد.<br /><br /></div>
+
+<div dir="rtl">إذا كنت تريد الاحتفاظ بالتكوين والقواعد الإضافية، فقبل بدء عملية الترقية، انتقل إلى صفحة النسخ الاحتياطي للواجهة الأمامية. من هناك، يمكن تصدير التكوين والقواعد المساعدة. سيؤدي التصدير إلى تنزيل ملف. بعد الترقية إلى الإصدار الرئيسي الجديد، يمكن استخدام هذا الملف لاستيراد البيانات التي تم تصديرها مسبقًا إلى التثبيت.<br /><br /></div>
+
+<div dir="rtl">بسبب التغييرات التي تم إجراؤها على طريقة تنظيم الوحدات النمطية، يجب إعادة كتابة الوحدات المخصصة للإصدارات الرئيسية السابقة من أجل العمل بشكل صحيح مع الإصدار 3. الهجرة المباشرة لن تعمل. نفس الشيء صحيح بالنسبة للأحداث.<br /><br /></div>
+
+<div dir="rtl">لم تتغير طريقة هيكلة ملفات التوقيع، لذا يمكن نقل ملفات التوقيع المخصصة للإصدارات الرئيسية السابقة مباشرة إلى الإصدار 3 دون أي مشاكل متوقعة.<br /><br /></div>
+
+<div dir="rtl">تحتوي كل من الوحدات النمطية وملفات التوقيع والأحداث على أدلة مخصصة خاصة بها، وهي إضافة جديدة منذ الإصدار 3 (لذلك، بالنسبة إلى الإصدار 3، سينتقل كل منهم إلى الدلائل المخصصة له، بدلاً من جذر vault).<br /><br /></div>
+
+<div dir="rtl">تم إهمال بعض ملفات التوقيع والوحدات وقوائم الحظر المتاحة للجمهور للإصدارات الرئيسية السابقة، لذلك لن يكون كل شيء متاحًا للإصدار v3. في معظم الحالات، لن تكون هناك حاجة إليها على أي حال، بسبب الميزات والوظائف الجديدة المضافة منذ الإصدار 3.<br /><br /></div>
+
+<div dir="rtl">هناك بعض التغييرات الطفيفة في طريقة هيكلة القواعد المساعدة، وهناك تغييرات على التكوين، ولكن إذا كنت تستخدم ميزات الاستيراد والتصدير في صفحة النسخ الاحتياطي للواجهة الأمامية، فلن تحتاج إلى إعادة كتابة أي شيء يدويًا أو ضبطه أو إعادة إنشائه. عند الاستيراد، يعرف CIDRAM ما هو مطلوب، وسوف يتعامل معه تلقائيًا.<br /><br /></div>
+
+#### <div dir="rtl">١٠.١ CIDRAM v4<br /><br /></div>
+
+<div dir="rtl">الإصدار 4 غير موجود بعد. ومع ذلك، عندما يحين وقت الترقية من الإصدار 3 إلى الإصدار 4، يجب أن تكون عملية الترقية أبسط بكثير. لن نعرف بالضبط مدى الاختلاف الكبير حتى يحين الوقت، لكنني أتوقع أن تكون الاختلافات أقل بكثير من ذي قبل، وقد تم بالفعل تنفيذ الآليات في الإصدار 3 منذ البداية لتسهيل عملية ترقية أكثر سلاسة. طالما لم تكن هناك تغييرات كبيرة في المحدث أو طريقة عمل نقاط الدخول، فمن المفترض، من الناحية النظرية، أن يكون من الممكن الترقية بالكامل عبر الواجهة الأمامية، دون الحاجة إلى إجراء تثبيت جديد.<br /><br /></div>
+
+<div dir="rtl">سيتم تضمين المزيد من المعلومات التفصيلية هنا، في الوثائق، في وقت مناسب في المستقبل.<br /><br /></div>
+
+---
+
+
+<div dir="rtl">آخر تحديث: ٢٣ يوليو ٢٠٢٣ (٢٠٢٣.٠٧.٢٣).</div>

@@ -10,6 +10,7 @@
 - 7. [NHỮNG VẤN ĐỀ HỢP TƯƠNG TÍCH](#user-content-SECTION7)
 - 8. [NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)](#user-content-SECTION8)
 - 9. [THÔNG TIN HỢP PHÁP](#user-content-SECTION9)
+- 10. [NÂNG CẤP TỪ CÁC PHIÊN BẢN CHÍNH TRƯỚC ĐÓ](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2255,4 +2256,31 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.06.14.
+### 10. <a name="SECTION10"></a>NÂNG CẤP TỪ CÁC PHIÊN BẢN CHÍNH TRƯỚC ĐÓ
+
+#### 10.0 CIDRAM v3
+
+Có sự khác biệt đáng kể giữa v3 và các phiên bản chính trước đó. Cách thức hoạt động của các điểm vào, cách thức cấu trúc các mô-đun, và cách thức hoạt động của trình cập nhật đối với v3 khác với cách thức hoạt động của những thứ đó đối với các phiên bản chính trước đó. Do những khác biệt này, cách tốt nhất để nâng cấp lên v3 từ các phiên bản chính trước đó là thực hiện cài đặt mới.
+
+Nếu bạn muốn giữ nguyên cấu hình và các quy tắc phụ trợ của mình, trước khi bắt đầu quá trình nâng cấp, hãy truy cập trang sao lưu front-end. Từ đó, có thể xuất cấu hình và các quy tắc phụ trợ. Xuất sẽ khiến một tập tin được tải xuống. Sau khi nâng cấp lên phiên bản chính mới, tập tin đó có thể được sử dụng để nhập dữ liệu đã xuất trước đó vào bản cài đặt mới.
+
+Do những thay đổi về cách cấu trúc các mô-đun, các mô-đun dành cho các phiên bản chính trước đây sẽ cần phải được viết lại để hoạt động bình thường cho v3. Di chuyển trực tiếp sẽ không hoạt động. Điều này cũng đúng với các sự kiện.
+
+Cách cấu trúc các tập tin chữ ký không thay đổi, vì vậy các tập tin chữ ký dành cho các phiên bản chính trước đó có thể được di chuyển trực tiếp vào v3 mà không gặp bất kỳ sự cố nào.
+
+Mới kể từ v3, mỗi mô-đun, tập tin chữ ký, và sự kiện đều có các thư mục chuyên dụng của riêng chúng (vì vậy, đối với v3, mỗi sẽ đi vào các thư mục chuyên dụng tương ứng của họ, thay vì thư mục gốc của vault).
+
+Một số tập tin chữ ký, mô-đun, và danh sách chặn có sẵn công khai cho các phiên bản chính trước đó đã không còn được dùng nữa, vì vậy không phải mọi thứ sẽ có sẵn cho v3. Trong hầu hết các trường hợp, chúng sẽ không cần thiết nữa do các tính năng và chức năng mới được thêm vào kể từ v3.
+
+Có một số thay đổi tinh tế đối với cách cấu trúc các quy tắc phụ trợ và có những thay đổi đối với cấu hình, nhưng nếu bạn sử dụng tính năng nhập/xuất tại trang sao lưu front-end, thì bạn sẽ không cần phải viết lại, điều chỉnh, hoặc tạo lại bất kỳ thứ gì theo cách thủ công. Khi nhập, CIDRAM biết những gì cần thiết và sẽ tự động xử lý cho bạn.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 chưa tồn tại. Tuy nhiên, trong tương lai, khi nâng cấp từ v3 lên v4, quá trình nâng cấp sẽ đơn giản hơn nhiều. Chúng tôi sẽ không biết chính xác nó sẽ khác như thế nào cho đến thời điểm đó, nhưng tôi dự đoán sự khác biệt sẽ ít hơn trước, và các cơ chế đã được triển khai vào v3 ngay từ đầu để tạo điều kiện cho quá trình nâng cấp diễn ra suôn sẻ hơn. Miễn là không có thay đổi đáng kể nào đối với trình cập nhật hoặc cách thức hoạt động của các điểm vào, thì theo lý thuyết, có thể nâng cấp hoàn toàn thông qua front-end mà không cần thực hiện cài đặt mới.
+
+Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, vào thời điểm thích hợp trong tương lai.
+
+---
+
+
+Lần cuối cập nhật: 2023.07.23.
