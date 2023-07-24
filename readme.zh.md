@@ -10,6 +10,7 @@
 - 7. [已知的兼容问题](#user-content-SECTION7)
 - 8. [常见问题（FAQ）](#user-content-SECTION8)
 - 9. [法律信息](#user-content-SECTION9)
+- 10. [从以前的主要版本升级](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2197,4 +2198,31 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2023年6月14日。
+### 10. <a name="SECTION10"></a>从以前的主要版本升级
+
+#### 10.0 CIDRAM v3
+
+v3与之前的主要版本之间存在显着差异。​特别是，入口点、模块、和更新程序的工作方式不同。​因此，从以前的主要版本升级到v3的最佳方法是执行全新安装。
+
+如果您想保留配置和辅助规则，在开始升级过程之前，转到前端备份页面。​从那里，可以导出配置和辅助规则。​导出将导致下载文件。​升级到新的主要版本后，该文件可用于将之前导出的数据导入到安装中。
+
+由于模块结构的差异，要适用于v3，旧模块需要重写。​直接迁移不行。​对于事件来说也是如此。
+
+签名文件结构没有改变，所以旧签名文件可以直接迁移到v3。​预计没有问题。
+
+从v3开始，模块、签名文件、和事件都有专用目录（所以他们会进入这些目录而不是根目录）。
+
+一些签名文件、模块、和阻止列表已被弃用并且不可用于v3。​在大多数情况下，由于自v3以来添加了新功能，因此不需要它们。
+
+辅助规则结构和配置有一些细微的变化，但如果您在前端备份页面使用导入/导出功能，则无需手动执行任何操作。​导入时，CIDRAM知道需要什么，并会自动为您处理。
+
+#### 10.1 CIDRAM v4
+
+v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会简单得多。​在那之前，我们不会确切地知道会有多大的不同，但我预计差异会比以前小得多。​v3中已经实施了一些机制，使升级过程更加简单。​如果更新程序和入口点差别不大，则应该可以完全通过前端进行升级，而无需执行全新安装。
+
+未来将包含更详细的信息。
+
+---
+
+
+最后更新：2023年7月24日。

@@ -10,6 +10,7 @@
 - 7. [알려진 호환성 문제](#user-content-SECTION7)
 - 8. [자주 묻는 질문 (FAQ)](#user-content-SECTION8)
 - 9. [법률 정보](#user-content-SECTION9)
+- 10. [이전 주 버전에서 업그레이드](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2237,4 +2238,31 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2023년 6월 14일.
+### 10. <a name="SECTION10"></a>이전 주 버전에서 업그레이드
+
+#### 10.0 CIDRAM v3
+
+v3와 이전 주 버전 간에는 상당한 차이가 있습니다. 진입점이 작동하는 방식, 모듈이 구성되는 방식, 및 업데이터가 v3에서 작동하는 방식은 이전 주요 버전에서 작동하는 방식과 다릅니다. 이러한 차이점 때문에, 이전 주 버전에서 v3로 업그레이드하는 가장 좋은 방법은 새로 설치하는 것입니다.
+
+구성 및 보조 규칙을 유지하려면, 업그레이드 프로세스를 시작하기 전에, 프런트 엔드 백업 페이지로 이동하십시오. 여기에서, 구성 및 보조 규칙을 내보낼 수 있습니다. 내보내면 파일이 다운로드됩니다. 새 주 버전으로 업그레이드한 후, 해당 파일을 사용하여 이전에 내보낸 데이터를 설치로 가져올 수 있습니다.
+
+모듈이 구성되는 방식이 변경되었기 때문에, v3에서 제대로 작동하려면 이전 주 버전용 모듈을 다시 작성해야 합니다. 직접 마이그레이션이 작동하지 않습니다. 이벤트도 마찬가지입니다.
+
+서명 파일이 구성되는 방식은 변경되지, 않았으므로 이전 주요 버전용 서명 파일을 예상되는 문제 없이 v3로 직접 마이그레이션할 수 있습니다.
+
+v3부터, 모듈, 서명 파일, 및 이벤트에는 각각 고유한 전용 디렉터리가 있습니다 (그래서 그들은 vault 바닥 대신에 거기로 갈 것입니다).
+
+이전 주 버전의 서명 파일, 모듈, 및 차단 목록 중 일부는 v3에서 사용할 수 없습니다. 대부분의 경우, v3 이후에 추가된 새로운 기능으로 인해, 필요하지 않습니다.
+
+보조 규칙 및 구성이 약간 변경되었지만, 프런트 엔드 백업 페이지에서 가져오기/내보내기 기능을 사용하면, 수동으로 수행할 작업이 불필요. 가져올 때, CIDRAM은 무엇이 필요한지 알고 자동으로 처리합니다.
+
+#### 10.1 CIDRAM v4
+
+v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이드할 때가 되면 업그레이드 프로세스가 훨씬 간단해집니다. 때가 오기 전까지는, 얼마나 크게 달라질지 정확히 알 수 없지만, 그 차이는 이전보다 훨씬 적을 것으로 예상되며, 업그레이드 프로세스를 더 간단하게 만들기 위해 메커니즘이 v3에 이미 구현되었습니다. 업데이터나 진입점이 작동하는 방식에 큰 변화가 없는 한, 이론상 새로 설치할 필요 없이 프런트 엔드를 통해 완전히 업그레이드할 수 있어야 합니다.
+
+더 자세한 정보는 향후 적절한 시기에 설명서에 포함됩니다.
+
+---
+
+
+최종 업데이트 : 2023년 7월 24일.

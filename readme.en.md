@@ -2247,7 +2247,7 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 
 #### 10.0 CIDRAM v3
 
-There are significant differences between v3 and previous major versions. Importantly, the way entrypoints work, the way modules are structured, and the way the updater works for v3 is different to the way those things worked for previous major versions. Because of these differences, the best way to ugprade to v3 from previous major versions would be to perform a fresh installation.
+There are significant differences between v3 and previous major versions. Importantly, the way entrypoints work, the way modules are structured, and the way the updater works for v3 is different to the way those things worked for previous major versions. Because of these differences, the best way to upgrade to v3 from previous major versions would be to perform a fresh installation.
 
 If you want to keep your configuration and your auxiliary rules, before beginning the upgrade process, go to the front-end backup page. From there, configuration and auxiliary rules can be exported. Exporting will cause a file to be downloaded. After upgrading to the new major version, that file can be used to import the previously exported data to the installation.
 
@@ -2255,7 +2255,7 @@ Because of changes to the way modules are structured, modules intended for previ
 
 The way signature files are structured has not changed, so signature files intended for previous major verions can be directly migrated into v3 without any problems anticipated.
 
-Modules, signature files, and events each have their own dedicated directories, which is a new addition since v3 (so, for v3, they would each go into their respective dedicated directories, instead of the root of the vault).
+Since v3, modules, signature files, and events each have their own dedicated directories (so, for v3, they would each go into their respective dedicated directories, instead of the root of the vault).
 
 Some of the signature files, modules, and blocklists publicly available for previous major versions have been deprecated, so not everything will be available for v3. In most cases, they won't be needed anyway, due to new features and core functionality added since v3.
 
@@ -2270,4 +2270,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 21 July 2023 (2023.07.21).
+Last Updated: 24 July 2023 (2023.07.24).

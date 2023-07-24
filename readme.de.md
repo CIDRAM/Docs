@@ -10,6 +10,7 @@
 - 7. [BEKANNTE KOMPATIBILITÄTSPROBLEME](#user-content-SECTION7)
 - 8. [HÄUFIG GESTELLTE FRAGEN (FAQ)](#user-content-SECTION8)
 - 9. [RECHTSINFORMATION](#user-content-SECTION9)
+- 10. [UPGRADE VON FRÜHEREN HAUPTVERSIONEN](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2259,4 +2260,31 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 14. Juni 2023 (2023.06.14).
+### 10. <a name="SECTION10"></a>UPGRADE VON FRÜHEREN HAUPTVERSIONEN
+
+#### 10.0 CIDRAM v3
+
+Es gibt erhebliche Unterschiede zwischen v3 und früheren Hauptversionen. Einstiegspunkte, Module, und der Updater unterscheiden sich in v3 im Vergleich zu früheren Hauptversionen. Aufgrund der Unterschiede wäre die Durchführung einer Neuinstallation die beste Möglichkeit, von früheren Hauptversionen auf v3 zu aktualisieren.
+
+Wenn Sie Ihre Konfiguration und Ihre Hilfsregeln behalten möchten, rufen Sie vor Beginn des Upgrade-Vorgangs die Front-End-Datensicherung-Seite auf. Von dort aus können Konfigurations und Hilfsregeln exportiert werden. Beim Exportieren wird eine Datei heruntergeladen. Nach dem Upgrade auf die neue Hauptversion können mit dieser Datei die zuvor exportierten Daten in die Installation importiert werden.
+
+Module, die für frühere Hauptversionen vorgesehen waren, müssten aufgrund von Änderungen in der Struktur der Module umgeschrieben werden, damit sie für v3 ordnungsgemäß funktionieren. Eine direkte Migration wird nicht funktionieren. Dasselbe gilt auch für Ereignissen.
+
+v3 bringt keine Änderungen an Signaturdateien, so Signaturdateien die für frühere Hauptversionen gedacht waren, ohne zu erwartende Probleme direkt in v3 migriert werden können.
+
+Seit v3 haben Module, Signaturdateien, und Ereignisse jeweils eigene Verzeichnisse (so Sie werden in diese Verzeichnisse und nicht in das Stammverzeichnis).
+
+Einige der für frühere Hauptversionen öffentlich verfügbaren Signaturdateien, Module, und Blocklisten sind obsolet, so für v3 nicht alles verfügbar sein wird. In den meisten Fällen werden sie aufgrund der seit v3 hinzugefügten neuen Funktionen ohnehin nicht benötigt.
+
+Es gibt einige subtile Änderungen an der Struktur der Hilfsregeln und an der Konfiguration, aber wenn Sie die Import/Export Funktionalität auf der Front-End-Datensicherung-Seite verwenden, müssen Sie nichts manuell umschreiben, anpassen, oder neu erstellen. Beim Import weiß CIDRAM, was benötigt wird, und erledigt dies automatisch für Sie.
+
+#### 10.1 CIDRAM v4
+
+CIDRAM v4 existiert derzeit nicht. Wenn jedoch die Zeit für ein Upgrade von v3 auf v4 gekommen ist, sollte der Upgrade-Prozess viel einfacher sein. Bis dahin werden wir nicht genau wissen, wie unterschiedlich es sein wird, aber ich antizipieren, dass die Unterschiede viel geringer sein werden als zuvor, und bereits von Anfang an Mechanismen in v3 implementiert wurden, um den Upgrade-Prozess einfacher zu gestalten. Solange es keine wesentlichen Änderungen am Updater oder an der Einstiegspunkte gibt, sollte es theoretisch möglich sein, ein Upgrade vollständig über das Front-End durchzuführen, keine Neuinstallation erforderlich.
+
+Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dokumentation enthalten sein.
+
+---
+
+
+Zuletzt aktualisiert: 24. Juli 2023 (2023.07.24).

@@ -10,6 +10,7 @@
 - 7. [已知的兼容問題](#user-content-SECTION7)
 - 8. [常見問題（FAQ）](#user-content-SECTION8)
 - 9. [法律信息](#user-content-SECTION9)
+- 10. [從以前的主要版本升級](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2195,4 +2196,31 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2023年6月14日。
+### 10. <a name="SECTION10"></a>從以前的主要版本升級
+
+#### 10.0 CIDRAM v3
+
+v3與之前的主要版本之間存在顯著差異。​特別是，入口點、模塊、和更新程序的工作方式不同。​因此，從以前的主要版本升級到v3的最佳方法是執行全新安裝。
+
+如果您想保留配置和輔助規則，在開始升級過程之前，轉到前端備份頁面。​從那裡，可以導出配置和輔助規則。​導出將導致下載文件。​升級到新的主要版本後，該文件可用於將之前導出的數據導入到安裝中。
+
+由於模塊結構的差異，要適用於v3，舊模塊需要重寫。​直接遷移不行。​對於事件來說也是如此。
+
+簽名文件結構沒有改變，所以舊簽名文件可以直接遷移到v3。​預計沒有問題。
+
+從v3開始，模塊、簽名文件、和事件都有專用目錄（所以他們會進入這些目錄而不是根目錄）。
+
+一些簽名文件、模塊、和阻止列表已被棄用並且不可用於v3。​在大多數情況下，由於自v3以來添加了新功能，因此不需要它們。
+
+輔助規則結構和配置有一些細微的變化，但如果您在前端備份頁面使用導入/導出功能，則無需手動執行任何操作。​導入時，CIDRAM知道需要什麼，並會自動為您處理。
+
+#### 10.1 CIDRAM v4
+
+v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會簡單得多。​在那之前，我們不會確切地知道會有多大的不同，但我預計差異會比以前小得多。​v3中已經實施了一些機制，使升級過程更加簡單。​如果更新程序和入口點差別不大，則應該可以完全通過前端進行升級，而無需執行全新安裝。
+
+未來將包含更詳細的信息。
+
+---
+
+
+最後更新：2023年7月24日。

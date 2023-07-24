@@ -10,6 +10,7 @@
 - ７.[適合性問題](#user-content-SECTION7)
 - ８.[よくある質問（ＦＡＱ）](#user-content-SECTION8)
 - ９.[法律情報](#user-content-SECTION9)
+- １０.[以前のメジャー・バージョンからのアップグレード](#user-content-SECTION10)
 
 *Regarding translations: My native language is English. Because this is a free and open-source hobby project which generates zero income, and translatable content is likely to change as the features and functionality supported by the project changes, it doesn't make sense for me to spend money for translations. Because I'm the sole author/developer/maintainer for the project and I'm not a ployglot, any translations I produce are very likely to contain errors. Sorry, but realistically, that won't ever change. If you find any such errors/typos/mistakes/etc, your assistance to correct them would be very much appreciated. Pull requests are invited and encouraged. Otherwise, if you find these errors too much to handle, just stick with the original English source. If a translation is irredeemably incomprehensible, let me know which, and I can delete it. If you're not sure how to perform pull requests, ask. I can help.*
 
@@ -2220,4 +2221,31 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２３年６月１４日。
+### １０.<a name="SECTION10"></a>以前のメジャー・バージョンからのアップグレード
+
+#### 10.0 CIDRAM v3
+
+v3と以前のメジャー・バージョンの間には大きな違いがあります。​特に、エントリポイントの動作方法、モジュールの構造化方法、およびv3でのアップデータの動作方法は、以前のメジャー・バージョンでの動作方法とは異なります。​これらの違いのため、以前のメジャー・バージョンからv3にアップグレードする最善の方法は、新規インストールを実行することです。
+
+コンフィギュレーションと補助ルールを保持したい場合は、アップグレード・プロセスを開始する前に、フロントエンド・バックアップ・ページに移動してください。​そこから、コンフィギュレーションと補助ルールをエクスポートできます。​エクスポートすると、ファイルがダウンロードされます。​新しいメジャー・バージョンにアップグレードした後、そのファイルを使用して、以前にエクスポートしたデータをインストール環境にインポートできます。
+
+モジュールの構造が変更されたため、v3で適切に動作するには、以前のメジャー・バージョン向けのモジュールを書き直す必要があります。​直接移行は機能しません。​同じことがイベントにも当てはまります。
+
+シグネチャ・ファイルの構造は変更されていないため、以前のメジャー・バージョン向けのシグネチャ・ファイルは問題なくv3に直接移行できます。
+
+v3以降、モジュール、シグネチャ・ファイル、イベントにはそれぞれ専用のディレクトリがあります（したがって、ルートではなく、これらのディレクトリに配置されます）。
+
+陳腐化により、以前のメジャー・バージョンのシグネチャ・ファイル、モジュール、ブロックリストの一部（ほんの一部）は、v3では利用できなくなります。​v3以降に追加された新機能により、ほとんどの場合、それらは必要ありません。
+
+補助ルールの構造には微妙な変更がいくつかあり、コンフィギュレーションにも変更がありますが、フロントエンド・バックアップ・ページでインポートおよびエクスポート機能を使用する場合は、手動で書き換えたり、調整したり、再作成したりする必要はありません。​インポート時に、CIDRAMは何が必要かを認識し、自動的に処理します。
+
+#### 10.1 CIDRAM v4
+
+v4はまだ存在しません。​ただし、v3からv4にアップグレードするときは、アップグレード・プロセスがはるかに簡単になるはずです。​その時が来るまで、どれほど大きな違いがあるのか正確にはわかりませんが、違いは以前よりもはるかに小さくなると予想しており、アップグレード・プロセスを簡素化するためのメカニズムが最初からv3に実装されています。​アップデーターやエントリポイントの動作方法に大きな変更がない限り、理論的には、新規インストールを実行することなく、フロントエンド経由で完全にアップグレードできるはずです。
+
+より詳細な情報は、将来の適切な時期にドキュメントに追加される予定です。
+
+---
+
+
+最終アップデート：２０２３年７月２４日。
