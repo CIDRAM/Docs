@@ -1719,7 +1719,7 @@ Se você estiver usando um arquivo dedicado para os cronjobs, e se esse arquivo 
 
 Como alternativa, se isso não for possível, mas o endereço IP do seu servidor cron é relativamente consistente e previsível, você pode tentar colocar na lista branca o endereço IP do seu servidor cron, por criando uma assinatura da lista branca em um arquivo de assinaturas personalizados, ou por criando uma regra auxiliar para a lista branca. Se o endereço IP do seu servidor cron é mudado regularmente e não é particularmente previsível, mas ainda assim permanece de dentro da mesma rede específica, você pode tentar listar no seu arquivo `ignore.dat` o nome da seção de assinaturas responsável por bloqueá-lo em primeiro lugar.
 
-Se você tentou todas essas idéias e nenhuma delas funcionou para você, ou se precisar de ajuda para descobrir como fazê-lo, você pode criar um novo issue na página de issues do CIDRAM para solicitar ajuda.
+Se você tentou todas essas ideias e nenhuma delas funcionou para você, ou se precisar de ajuda para descobrir como fazê-lo, você pode criar um novo issue na página de issues do CIDRAM para solicitar ajuda.
 
 ---
 
@@ -1976,4 +1976,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 5 de Março de 2023 (2023.03.05).
+Última Atualização: 24 de Julho de 2023 (2023.07.24).
