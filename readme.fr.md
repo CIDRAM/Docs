@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Exécuter la vérification des médias sociaux")
 ├─OtherVerification ("Exécuter une autre vérification")
 ├─Aux ("Exécuter les règles auxiliaires")
-├─Reporting ("Traiter les rapports")
 ├─Tracking ("Exécuter le surveillance d'IP")
 ├─RL ("Exécuter la limitation du débit")
 ├─CAPTCHA ("Déployer les CAPTCHAs (requêtes bloquées)")
+├─Reporting ("Traiter les rapports")
 ├─Statistics ("Mettre à jour les statistiques")
 ├─Webhooks ("Exécuter des webhooks")
 ├─PrepareFields ("Préparer les champs pour la sortie et les journaux")
@@ -689,6 +689,8 @@ statistics
 └─Reported-IPv6-Failed ("Requêtes rapportés aux API externes – IPv6 – Échoué")
 ```
 
+Remarque : Le suivi des statistiques pour les règles auxiliaires peut être contrôlé à partir de la page des règles auxiliaires.
+
 ##### « force_hostname_lookup » `[bool]`
 - Forcer les recherches de nom d'hôte ? True = Oui ; False = Non [Défaut]. Les recherches de nom d'hôte sont normalement effectuées « au besoin », mais peuvent être forcées pour toutes les requêtes. Cela peut être utile pour fournir des informations plus détaillées dans les fichiers journaux, mais peut également avoir un effet légèrement négatif sur les performances.
 
@@ -923,6 +925,8 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -931,6 +935,8 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
 * Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+
+!! La plupart des utilisateurs voudront probablement que cela soit bloqué, indépendamment de qu'il soit réel ou falsifié. Cela peut être réalisé en faisant en sorte que « essayer de vérifier » ne soit pas sélectionné et que « bloquer les requêtes non vérifiés » soit sélectionné. Cependant, étant donné que certains utilisateurs peuvent souhaiter pouvoir vérifier ces requêtes (afin de bloquer les négatifs tout en autorisant les positifs), au lieu de bloquer ces requêtes via des modules, des options de traitement de ces requêtes sont fournies ici.
 
 ##### « adjust » `[string]`
 - Contrôles pour ajuster d'autres fonctionnalités dans le contexte de la vérification.
@@ -2283,4 +2289,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 21 Juillet 2023 (2023.07.21).
+Dernière mise à jour : 23 Août 2023 (2023.08.23).

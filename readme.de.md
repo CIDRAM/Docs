@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Social-Media-Verifizierung ausführen")
 ├─OtherVerification ("Andere Verifizierung ausführen")
 ├─Aux ("Hilfsregeln ausführen")
-├─Reporting ("Berichterstattung ausführen")
 ├─Tracking ("IP-Tracking ausführen")
 ├─RL ("Ratenbegrenzung ausführen")
 ├─CAPTCHA ("Richten die CAPTCHAs ein (blockierte Anfragen)")
+├─Reporting ("Berichterstattung ausführen")
 ├─Statistics ("Statistiken aktualisieren")
 ├─Webhooks ("Webhooks ausführen")
 ├─PrepareFields ("Bereiten Felder für Ausgabe und Protokolle")
@@ -684,10 +684,12 @@ statistics
 ├─CAPTCHAs-Failed ("CAPTCHA versucht – Gescheitert!")
 ├─CAPTCHAs-Passed ("CAPTCHA versucht – Gelungen!")
 ├─Reported-IPv4-OK ("An externe APIs gemeldete Anfragen – IPv4 – OK")
-├─Reported-IPv4-Failed ("An externe APIs gemeldete Anfragen – IPv4 – Nicht bestanden")
+├─Reported-IPv4-Failed ("An externe APIs gemeldete Anfragen – IPv4 – Gescheitert")
 ├─Reported-IPv6-OK ("An externe APIs gemeldete Anfragen – IPv6 – OK")
-└─Reported-IPv6-Failed ("An externe APIs gemeldete Anfragen – IPv6 – Nicht bestanden")
+└─Reported-IPv6-Failed ("An externe APIs gemeldete Anfragen – IPv6 – Gescheitert")
 ```
+
+Hinweis: Ob Statistiken für Hilfsregeln verfolgt werden sollen, kann auf der Seite „Hilfsregeln“ kontrolliert werden.
 
 ##### „force_hostname_lookup“ `[bool]`
 - Hostnamen-Suchen werden normalerweise auf einer „wie benötigt“-Basis durchgeführt, können jedoch für alle Anforderungen erzwungen werden. Dies kann nützlich sein, um detailliertere Informationen in der Protokolldateien bereitzustellen, aber auch kann sich leicht negativ auf die Performance auswirken. Erzwinge Hostnamen-Suche? True = Ja; False = Nein [Standardeinstellung].
@@ -923,6 +925,8 @@ __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv ver
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -931,6 +935,8 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
 * Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+
+!! Die meisten Benutzer möchten wahrscheinlich dass dies blockiert wird, unabhängig davon ob es echt oder gefälscht ist. Dies kann dadurch erreicht werden, dass „versuchen zu verifizieren“ nicht ausgewählt wird und „nicht verifizierte Anfragen blockieren“ ausgewählt wird. Da einige Benutzer jedoch möglicherweise in der Lage sein möchten, solche Anfragen zu verifizieren (um Negative zu blockieren und gleichzeitig Positive zuzulassen), werden hier Optionen für die Bearbeitung solcher Anfragen bereitgestellt, anstatt solche Anfragen über Module blockieren.
 
 ##### „adjust“ `[string]`
 - Kontrollen zum Anpassen anderer Funktionen im Zusammenhang mit der Verifizierung.
@@ -2287,4 +2293,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 24. Juli 2023 (2023.07.24).
+Zuletzt aktualisiert: 23. August 2023 (2023.08.23).

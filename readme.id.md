@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Jalankan verifikasi media sosial")
 ├─OtherVerification ("Jalankan verifikasi lainnya")
 ├─Aux ("Jalankan aturan tambahan")
-├─Reporting ("Jalankan pelaporan")
 ├─Tracking ("Jalankan pelacakan IP")
 ├─RL ("Jalankan pembatasan laju")
 ├─CAPTCHA ("Terapkan CAPTCHA (permintaan yang diblokir)")
+├─Reporting ("Jalankan pelaporan")
 ├─Statistics ("Memperbarui statistik")
 ├─Webhooks ("Jalankan webhook")
 ├─PrepareFields ("Siapkan bidang untuk keluaran dan log")
@@ -689,6 +689,8 @@ statistics
 └─Reported-IPv6-Failed ("Permintaan dilaporkan ke API eksternal – IPv6 – Gagal")
 ```
 
+Catatan: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dari halaman aturan tambahan.
+
 ##### "force_hostname_lookup" `[bool]`
 - Memaksa periksa untuk nama host? True = Ya; False = Tidak [Default]. Periksa untuk nama host biasanya dilakukan pada dasar "sesuai kebutuhan", tapi bisa dipaksakan untuk semua permintaan. Melakukan hal tersebut mungkin berguna sebagai sarana untuk memberikan informasi lebih rinci di log, tapi mungkin juga memiliki sedikit efek negatif pada kinerja.
 
@@ -923,6 +925,8 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -931,6 +935,8 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
 * Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+
+!! Mayoritas pengguna mungkin ingin ini diblokir, terlepas dari apakah itu asli atau dipalsukan. Ini dapat dicapai dengan tidak memilih "mencoba memverifikasi" dan pilih "blokir permintaan yang tidak diverifikasi". Namun, karena beberapa pengguna mungkin ingin dapat memverifikasi permintaan semacam ini (untuk memblokir permintaan negatif sambil mengizinkan permintaan positif), alih-alih memblokir permintaan tersebut melalui modul, opsi untuk menangani permintaan tersebut disediakan disini.
 
 ##### "adjust" `[string]`
 - Kontrol untuk menyesuaikan fitur lain saat dalam konteks verifikasi.
@@ -2268,4 +2274,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 21 Juli 2023 (2023.07.21).
+Terakhir Diperbarui: 23 Agustus 2023 (2023.08.23).

@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Esegui la verifica dei social media")
 ├─OtherVerification ("Esegui un'altra verifica")
 ├─Aux ("Esegui regole ausiliarie")
-├─Reporting ("Esegui segnalazione")
 ├─Tracking ("Esegui il tracciamento IP")
 ├─RL ("Esegui la limitazione della velocità")
 ├─CAPTCHA ("Presenta i CAPTCHA (richieste bloccate)")
+├─Reporting ("Esegui segnalazione")
 ├─Statistics ("Aggiorna le statistiche")
 ├─Webhooks ("Esegui webhook")
 ├─PrepareFields ("Preparare i campi per l'output e i registri")
@@ -689,6 +689,8 @@ statistics
 └─Reported-IPv6-Failed ("Richieste segnalate ad API esterne – IPv6 – Fallito")
 ```
 
+Nota: È possibile controllare se tenere traccia delle statistiche per le regole ausiliarie dalla pagina delle regole ausiliarie.
+
 ##### "force_hostname_lookup" `[bool]`
 - Forzare la ricerca degli nome di host? True = Sì; False = No [Predefinito]. Le ricerche di nome di host vengono normalmente eseguite su base della necessità, ma può essere forzato a tutte le richieste. Ciò può essere utile come mezzo per fornire informazioni più dettagliate nei file di log, ma può anche avere un effetto leggermente negativo sulle prestazioni.
 
@@ -923,6 +925,8 @@ __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verifica
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -931,6 +935,8 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
 * Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+
+!! La maggior parte degli utenti probabilmente vorrà che questo venga bloccato, indipendentemente dal fatto che sia reale o falsificato. Ciò può essere ottenuto non selezionando "prova a verificare" e selezionando "blocca le richieste non verificate". Tuttavia, poiché alcuni utenti potrebbero voler essere in grado di verificare tali richieste (per bloccare le richieste negative pur consentendo quelle positive), invece di bloccare tali richieste tramite moduli, qui vengono fornite le opzioni per la gestione di tali richieste.
 
 ##### "adjust" `[string]`
 - Controlli per regolare altre funzionalità nel contesto della verifica.
@@ -2273,4 +2279,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 21 Luglio 2023 (2023.07.21).
+Ultimo Aggiornamento: 23 Agosto 2023 (2023.08.23).

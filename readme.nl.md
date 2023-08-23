@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Voer sociale media verificatie")
 ├─OtherVerification ("Voer andere verificatie")
 ├─Aux ("Voer aanvullende regels")
-├─Reporting ("Voer rapportage")
 ├─Tracking ("Voer IP-tracking")
 ├─RL ("Voer tarieflimiet")
 ├─CAPTCHA ("Voeg CAPTCHA's (geblokkeerde verzoeken)")
+├─Reporting ("Voer rapportage")
 ├─Statistics ("Bijwerk statistieken")
 ├─Webhooks ("Voer webhooks")
 ├─PrepareFields ("Voorbereiden velden voor uitvoer en logs")
@@ -691,6 +691,8 @@ statistics
 └─Reported-IPv6-Failed ("Verzoeken gerapporteerd aan externe API's – IPv6 – Mislukt")
 ```
 
+Opmerking: Het bijhouden van statistieken voor aanvullende regels kan worden beheerd vanaf de pagina met aanvullende regels.
+
 ##### "force_hostname_lookup" `[bool]`
 - Hostname-opzoekingen afdwingen? True = Ja; False = Nee [Standaard]. Hostname-opzoekingen worden normaal uitgevoerd op basis van noodzaak, maar kan voor alle verzoeken worden gedwongen. Dit kan nuttig zijn als een middel om meer gedetailleerde informatie in de logbestanden te verstrekken, maar kan ook een licht negatief effect hebben op de prestaties.
 
@@ -925,6 +927,8 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -933,6 +937,8 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
 * Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+
+!! De meeste gebruikers zullen waarschijnlijk willen dat dit wordt geblokkeerd, ongeacht of het echt of vervalst is. Dat kan worden bereikt door "proberen te verifiëren" niet te selecteren en "niet-geverifieerde verzoeken blokkeren" te selecteren. Omdat sommige gebruikers dergelijke verzoeken echter willen kunnen verifiëren (om negatieven te blokkeren en positieven toe te staan), in plaats van dergelijke verzoeken via modules te blokkeren, worden hier opties geboden voor het afhandelen van dergelijke verzoeken.
 
 ##### "adjust" `[string]`
 - Controles om andere functionaliteit aan te passen in de context van verificatie.
@@ -2289,4 +2295,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 23 Juli 2023 (2023.07.23).
+Laatste Bijgewerkt: 23 Augustus 2023 (2023.08.23).

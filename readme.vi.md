@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Thực hiện xác minh của truyền thông xã hội")
 ├─OtherVerification ("Thực hiện xác minh khác")
 ├─Aux ("Thực hiện quy tắc phụ trợ")
-├─Reporting ("Thực hiện báo cáo")
 ├─Tracking ("Thực hiện giám sát IP")
 ├─RL ("Thực hiện giới hạn tốc độ")
 ├─CAPTCHA ("Triển khai CAPTCHA (yêu cầu bị chặn)")
+├─Reporting ("Thực hiện báo cáo")
 ├─Statistics ("Cập nhật số liệu thống kê")
 ├─Webhooks ("Thực hiện webhook")
 ├─PrepareFields ("Chuẩn bị các trường cho đầu ra và nhật ký")
@@ -701,6 +701,8 @@ statistics
 └─Reported-IPv6-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – Thất bại")
 ```
 
+Lưu ý: Giám sát thống kê cho các quy tắc phụ trợ có thể được kiểm soát từ trang quy tắc phụ trợ.
+
 ##### "force_hostname_lookup" `[bool]`
 - Thực hiện tìm kiếm tên máy chủ cho tất cả các yêu cầu? True = Vâng; False = Không [Mặc định]. Tìm kiếm tên máy chủ thường được thực hiện trên cơ sở cần thiết, nhưng có thể được thực hiện cho tất cả các yêu cầu. Điều này có thể hữu ích như một phương tiện cung cấp thông tin chi tiết hơn trong các tập tin đăng nhập, nhưng cũng có thể có tác động tiêu cực đến hiệu suất.
 
@@ -935,6 +937,8 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -943,6 +947,8 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
 * Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+
+!! Hầu hết người dùng có thể sẽ muốn điều này bị chặn, bất kể đó là thật hay giả mạo. Điều đó có thể đạt được bằng cách không chọn "cố gắng xác minh" và chọn "chặn các yêu cầu chưa được xác minh". Tuy nhiên, vì một số người dùng có thể muốn xác minh các yêu cầu đó (để chặn các yêu cầu tiêu cực trong khi cho phép các yêu cầu tích cực), thay vì chặn các yêu cầu đó thông qua các mô-đun, các tùy chọn để xử lý các yêu cầu đó được cung cấp tại đây.
 
 ##### "adjust" `[string]`
 - Kiểm soát để điều chỉnh các tính năng khác trong bối cảnh xác minh.
@@ -2283,4 +2289,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2023.07.23.
+Lần cuối cập nhật: 2023.08.23.

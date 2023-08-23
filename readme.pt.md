@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Executar verificação de mídia social")
 ├─OtherVerification ("Executar outra verificação")
 ├─Aux ("Executar regras auxiliares")
-├─Reporting ("Executar relatórios")
 ├─Tracking ("Executar monitoração de IP")
 ├─RL ("Executar a limitação de taxa")
 ├─CAPTCHA ("Implantar CAPTCHAs (solicitações bloqueadas)")
+├─Reporting ("Executar relatórios")
 ├─Statistics ("Atualizar estatísticas")
 ├─Webhooks ("Executar webhooks")
 ├─PrepareFields ("Preparar campos para saída e logs")
@@ -679,13 +679,15 @@ statistics
 ├─Passed-IPv4 ("Solicitações aprovadas – IPv4")
 ├─Passed-IPv6 ("Solicitações aprovadas – IPv6")
 ├─Passed-Other ("Solicitações aprovadas – Outros")
-├─CAPTCHAs-Failed ("CAPTCHA tentativas – Falha!")
+├─CAPTCHAs-Failed ("CAPTCHA tentativas – Falhou!")
 ├─CAPTCHAs-Passed ("CAPTCHA tentativas – Sucesso!")
 ├─Reported-IPv4-OK ("Solicitações relatados para APIs externos – IPv4 – OK")
 ├─Reported-IPv4-Failed ("Solicitações relatados para APIs externos – IPv4 – Falhou")
 ├─Reported-IPv6-OK ("Solicitações relatados para APIs externos – IPv6 – OK")
 └─Reported-IPv6-Failed ("Solicitações relatados para APIs externos – IPv6 – Falhou")
 ```
+
+Nota: O rastreamento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
 
 ##### "force_hostname_lookup" `[bool]`
 - Forçar pesquisas de nome de anfitrião? True = Sim; False = Não [Padrão]. As pesquisas de nome de anfitrião normalmente são realizadas com base na necessidade, mas pode ser forçado para todos os solicitações. Isso pode ser útil como forma de fornecer informações mais detalhadas nos arquivos de log, mas também pode ter um efeito ligeiramente negativo sobre o desempenho.
@@ -921,6 +923,8 @@ __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação c
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -929,6 +933,8 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
 * Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+
+!! A maioria dos usuários provavelmente deseja que isso seja bloqueado, independentemente de ser real ou falsificado. Ao não selecionar "tente verificar" e selecionar "bloquear solicitações não verificados", isso pode ser alcançado. Mas, devido alguns usuários podem querer verificar tais solicitações (a fim de bloquear os negativos enquanto permitem os positivos), em vez de bloquear tais solicitações por meio de módulos, as opções para lidar com essas solicitações são fornecidas aqui.
 
 ##### "adjust" `[string]`
 - Controles para ajustar outros recursos no contexto de verificação.
@@ -2269,4 +2275,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 24 de Julho de 2023 (2023.07.24).
+Última Atualização: 23 de Agosto de 2023 (2023.08.23).

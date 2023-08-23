@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Execute social media verification")
 ├─OtherVerification ("Execute other verification")
 ├─Aux ("Execute auxiliary rules")
-├─Reporting ("Execute reporting")
 ├─Tracking ("Execute IP tracking")
 ├─RL ("Execute rate limiting")
 ├─CAPTCHA ("Deploy CAPTCHAs (blocked requests)")
+├─Reporting ("Execute reporting")
 ├─Statistics ("Update statistics")
 ├─Webhooks ("Execute webhooks")
 ├─PrepareFields ("Prepare fields for output and logs")
@@ -685,6 +685,8 @@ statistics
 └─Reported-IPv6-Failed ("Requests reported to external APIs – IPv6 – Failed")
 ```
 
+Note: Whether to track statistics for auxiliary rules can be controlled from the auxiliary rules page.
+
 ##### "force_hostname_lookup" `[bool]`
 - Force hostname lookups? True = Yes; False = No [Default]. Hostname lookups are normally performed on an "as needed" basis, but can be forced for all requests. Doing so may be useful as a means of providing more detailed information in the log files, but may also have a slightly negative effect on performance.
 
@@ -919,6 +921,8 @@ __What are "single-hit bypasses"?__ In some cases, a positive-verified request m
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -927,6 +931,8 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
 * This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+
+!! Most users will likely want this to be blocked, regardless of whether it's real or falsified. That can be achieved by having "attempt to verify" be not selected and "block non-verified requests" be selected. However, because some users may want to be able to verify such requests (in order to block negatives while allowing positives), instead of blocking such requests via modules, options for handling such requests are provided here.
 
 ##### "adjust" `[string]`
 - Controls to adjust other features when in the context of verification.
@@ -2270,4 +2276,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 24 July 2023 (2023.07.24).
+Last Updated: 23 August 2023 (2023.08.23).

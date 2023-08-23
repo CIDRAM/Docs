@@ -312,10 +312,10 @@ stages
 ├─SocialMediaVerification ("Ejecutar la verificación de las redes sociales")
 ├─OtherVerification ("Ejecutar otra verificación")
 ├─Aux ("Ejecutar reglas auxiliares")
-├─Reporting ("Ejecutar informes")
 ├─Tracking ("Ejecutar seguimiento de IP")
 ├─RL ("Ejecutar la limitación de tasa")
 ├─CAPTCHA ("Desplegar CAPTCHAs (solicitudes bloqueadas)")
+├─Reporting ("Ejecutar informes")
 ├─Statistics ("Actualizar estadísticas")
 ├─Webhooks ("Ejecutar webhooks")
 ├─PrepareFields ("Preparar campos para salida y registros")
@@ -691,6 +691,8 @@ statistics
 └─Reported-IPv6-Failed ("Solicitudes reportados a API externos – IPv6 – Fallado")
 ```
 
+Nota: Desde la página de reglas auxiliares se puede controlar si realizar un rastreo de las estadísticas de las reglas auxiliares.
+
 ##### "force_hostname_lookup" `[bool]`
 - ¿Forzar búsquedas de nombres de host? True = Sí; False = No [Predefinido]. Las búsquedas de nombres de host normalmente se realizan según sea necesario, pero se pueden forzar para todas las solicitudes. Hacerlo puede ser útil como un medio para proporcionar información más detallada en los archivos de registro, pero también puede tener un efecto ligeramente negativo en el rendimiento.
 
@@ -925,6 +927,8 @@ __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud 
 other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
+├─ChatGPT-User ("!! ChatGPT-User")
+├─GPTBot ("!! GPTBot")
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
@@ -933,6 +937,8 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
 * Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+
+!! La mayoría de los usuarios probablemente querrán que esto se bloquee, independientemente de si es real o falso. Eso se puede lograr si no se selecciona "intentar verificar" y se selecciona "bloquear solicitudes no verificadas". Pero, debido a que algunos usuarios pueden querer poder verificar dichas solicitudes (para bloquear las negativas y permitir las positivas), en lugar de bloquear dichas solicitudes a través de módulos, aquí se proporcionan opciones para manejar dichas solicitudes.
 
 ##### "adjust" `[string]`
 - Controles para ajustar otras funciones en el contexto de la verificación.
@@ -2279,4 +2285,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 21 de Julio de 2023 (2023.07.21).
+Última Actualización: 23 de Agosto de 2023 (2023.08.23).
