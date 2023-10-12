@@ -527,12 +527,14 @@ Terlepas dari bagaimana kami menginstruksikan klien, penting untuk diingat bahwa
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -549,8 +551,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -559,7 +562,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -655,7 +658,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Daftar server DNS yang digunakan untuk pencarian nama host. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#apa-yang-bisa-saya-gunakan-untuk-default_dns" hreflang="id-ID">Apa yang bisa saya gunakan untuk "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#apa-yang-bisa-saya-gunakan-untuk-default_dns" hreflang="id-ID">Apa yang bisa saya gunakan untuk "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Mendefinisikan algoritma mana yang akan digunakan untuk semua kata sandi dan sesi di masa depan.
@@ -894,7 +897,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 ##### "social_media" `[string]`
 - Kontrol untuk memverifikasi permintaan dari platform media sosial.
@@ -912,7 +915,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 ** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
 
@@ -934,7 +937,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used</code>. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 !! Mayoritas pengguna mungkin ingin ini diblokir, terlepas dari apakah itu asli atau dipalsukan. Ini dapat dicapai dengan tidak memilih "mencoba memverifikasi" dan pilih "blokir permintaan yang tidak diverifikasi". Namun, karena beberapa pengguna mungkin ingin dapat memverifikasi permintaan semacam ini (untuk memblokir permintaan negatif sambil mengizinkan permintaan positif), alih-alih memblokir permintaan tersebut melalui modul, opsi untuk menangani permintaan tersebut disediakan disini.
 
@@ -1231,7 +1234,7 @@ Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
 ##### "pdo_dsn" `[string]`
 - Nilai DSN PDO. Default = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#user-content-HOW_TO_USE_PDO" hreflang="id-ID">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.id.md#user-content-HOW_TO_USE_PDO" hreflang="id-ID">Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - Nama pengguna PDO.
@@ -2274,4 +2277,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 23 Agustus 2023 (2023.08.23).
+Terakhir Diperbarui: 12 Oktober 2023 (2023.10.12).

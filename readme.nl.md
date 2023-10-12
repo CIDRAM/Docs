@@ -500,7 +500,7 @@ http_response_header_code
 ```
 
 ##### "silent_mode" `[string]`
-- Moet CIDRAM stilletjes redirect geblokkeerd toegang pogingen in plaats van het weergeven van de "toegang geweigerd" pagina? Als ja, geef de locatie te redirect geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
+- Moet CIDRAM stilletjes omleiden geblokkeerd toegang pogingen in plaats van het weergeven van de "toegang geweigerd" pagina? Als ja, geef de locatie te omleiden geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
 
 ##### "silent_mode_response_header_code" `[int]`
 - Welk HTTP-statusbericht moet CIDRAM verzenden bij het stilzwijgend omleiden van geblokkeerde toegangspogingen?
@@ -528,12 +528,14 @@ Het maakt niet uit hoe we de klant instrueren, het is belangrijk om te onthouden
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -550,8 +552,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -560,7 +563,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -657,7 +660,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Een lijst met DNS-servers te gebruiken voor de hostnaam lookups. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#wat-kan-ik-gebruiken-voor-default_dns" hreflang="nl-NL">Wat kan ik gebruiken voor "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#wat-kan-ik-gebruiken-voor-default_dns" hreflang="nl-NL">Wat kan ik gebruiken voor "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Definieert welk algoritme u wilt gebruiken voor alle toekomstige wachtwoorden en sessies.
@@ -896,7 +899,7 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+* Deze optie heeft een bijbehorende bypass onder `bypasses➡used`. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
 
 ##### "social_media" `[string]`
 - Controles voor het verifiëren van verzoeken van sociale media platforms.
@@ -914,7 +917,7 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+* Deze optie heeft een bijbehorende bypass onder `bypasses➡used`. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
 
 ** Vereist ASN-opzoekfunctionaliteit (b.v., via de IP-API-module of BGPView-module).
 
@@ -936,7 +939,7 @@ __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit
 
 __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-geverifieerd verzoek nog steeds worden geblokkeerd als gevolg van de signatuurbestanden, modules, of andere voorwaarden van het verzoek, en bypasses kunnen nodig zijn om valse positieven te voorkomen. In het geval dat een bypass bedoeld is om precies één overtreding af te handelen, niet meer en niet minder, dergelijke een bypass zou kunnen worden omschreven als een "enkele-treffer bypass".
 
-* Deze optie heeft een bijbehorende bypass onder <code class="s">bypasses➡used</code>. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
+* Deze optie heeft een bijbehorende bypass onder `bypasses➡used`. Ongeacht of het selectievakje om te proberen deze optie te verifiëren is ingeschakeld, het wordt aanbevolen om ervoor te zorgen dat het selectievakje voor de corresponderende bypass hetzelfde is.
 
 !! De meeste gebruikers zullen waarschijnlijk willen dat dit wordt geblokkeerd, ongeacht of het echt of vervalst is. Dat kan worden bereikt door "proberen te verifiëren" niet te selecteren en "niet-geverifieerde verzoeken blokkeren" te selecteren. Omdat sommige gebruikers dergelijke verzoeken echter willen kunnen verifiëren (om negatieven te blokkeren en positieven toe te staan), in plaats van dergelijke verzoeken via modules te blokkeren, worden hier opties geboden voor het afhandelen van dergelijke verzoeken.
 
@@ -1235,7 +1238,7 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 ##### "pdo_dsn" `[string]`
 - PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#user-content-HOW_TO_USE_PDO" hreflang="nl-NL">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.nl.md#user-content-HOW_TO_USE_PDO" hreflang="nl-NL">Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - PDO gebruikersnaam.
@@ -2295,4 +2298,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 3 September 2023 (2023.09.03).
+Laatste Bijgewerkt: 12 Oktober 2023 (2023.10.12).

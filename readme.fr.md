@@ -527,12 +527,14 @@ Quelle que soit la manière dont nous donnons des instructions au client, il est
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -549,8 +551,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -559,7 +562,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -655,7 +658,7 @@ ban_override
 ##### « default_dns » `[string]`
 - Une liste de serveurs DNS à utiliser pour les recherches de noms d'hôtes. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#que-puis-je-utiliser-pour-default_dns" hreflang="fr-FR">Que puis-je utiliser pour « default_dns » ?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#que-puis-je-utiliser-pour-default_dns" hreflang="fr-FR">Que puis-je utiliser pour « default_dns » ?</a>*
 
 ##### « default_algo » `[string]`
 - Définit quel algorithme utiliser pour tous les mots de passe et les sessions à l'avenir.
@@ -894,7 +897,7 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
-* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+* Cette option a un contournement correspondant sous `bypasses➡used`. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
 
 ##### « social_media » `[string]`
 - Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
@@ -912,7 +915,7 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
-* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+* Cette option a un contournement correspondant sous `bypasses➡used`. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
 
 ** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module IP-API ou BGPView).
 
@@ -934,7 +937,7 @@ __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérifi
 
 __Que sont les « contournements en un seul coup » ?__ Dans certains cas, une requête vérifié positive peut toujours être bloquée en raison des fichiers de signature, des modules, ou d'autres conditions de la requête, et des contournements peuvent être nécessaires pour éviter les faux positifs. Dans le cas où un contournement est destiné à traiter exactement une infraction, ni plus ni moins, un tel contournement pourrait être décrit comme « contournements en un seul coup ».
 
-* Cette option a un contournement correspondant sous <code class="s">bypasses➡used</code>. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
+* Cette option a un contournement correspondant sous `bypasses➡used`. Il est recommandé de s'assurer que la case à cocher pour le contournement correspondant est coché de la même manière que la case à cocher pour tenter de vérifier cette option.
 
 !! La plupart des utilisateurs voudront probablement que cela soit bloqué, indépendamment de qu'il soit réel ou falsifié. Cela peut être réalisé en faisant en sorte que « essayer de vérifier » ne soit pas sélectionné et que « bloquer les requêtes non vérifiés » soit sélectionné. Cependant, étant donné que certains utilisateurs peuvent souhaiter pouvoir vérifier ces requêtes (afin de bloquer les négatifs tout en autorisant les positifs), au lieu de bloquer ces requêtes via des modules, des options de traitement de ces requêtes sont fournies ici.
 
@@ -1233,7 +1236,7 @@ Options de cache supplémentaires. Remarque : La modification de ces valeurs pe
 ##### « pdo_dsn » `[string]`
 - Valeur de DSN de PDO. Défaut = « mysql:dbname=cidram;host=localhost;port=3306 ».
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#user-content-HOW_TO_USE_PDO" hreflang="fr-FR">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.fr.md#user-content-HOW_TO_USE_PDO" hreflang="fr-FR">Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?</a>*
 
 ##### « pdo_username » `[string]`
 - Nom d'utilisateur PDO.
@@ -2289,4 +2292,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 23 Août 2023 (2023.08.23).
+Dernière mise à jour : 12 Octobre 2023 (2023.10.12).

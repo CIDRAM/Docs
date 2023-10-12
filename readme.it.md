@@ -527,12 +527,14 @@ Indipendentemente da come istruiamo il cliente, è importante ricordare che alla
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -549,8 +551,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -559,7 +562,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -655,7 +658,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Un elenco di server DNS da utilizzare per le ricerche dei nomi di host. AVVISO: Non modificare questa se non sai quello che stai facendo!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#cosa-posso-usare-per-default_dns" hreflang="it-IT">Cosa posso usare per "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#cosa-posso-usare-per-default_dns" hreflang="it-IT">Cosa posso usare per "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Definisce quale algoritmo da utilizzare per tutte le password e le sessioni in futuro.
@@ -894,7 +897,7 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
-* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+* Questa opzione ha un bypass corrispondente sotto `bypasses➡used`. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
 
 ##### "social_media" `[string]`
 - Controlli per la verifica delle richieste dalle piattaforme dei social media.
@@ -912,7 +915,7 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
-* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+* Questa opzione ha un bypass corrispondente sotto `bypasses➡used`. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
 
 ** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo IP-API o BGPView).
 
@@ -934,7 +937,7 @@ __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da 
 
 __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verificata positivamente potrebbe comunque essere bloccata a causa dei file di firma, dei moduli, o di altre condizioni della richiesta, e potrebbero essere necessari bypass per evitare falsi positivi. Nel caso in cui un bypass sia destinato a trattare esattamente un'infrazione, né più né meno, tale bypass potrebbe essere descritto come un "bypass a colpo singolo".
 
-* Questa opzione ha un bypass corrispondente sotto <code class="s">bypasses➡used</code>. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
+* Questa opzione ha un bypass corrispondente sotto `bypasses➡used`. Si consiglia di assicurarsi che la casella di controllo per il bypass corrispondente sia contrassegnato allo stesso modo della casella di controllo per tentare di verificare questa opzione.
 
 !! La maggior parte degli utenti probabilmente vorrà che questo venga bloccato, indipendentemente dal fatto che sia reale o falsificato. Ciò può essere ottenuto non selezionando "prova a verificare" e selezionando "blocca le richieste non verificate". Tuttavia, poiché alcuni utenti potrebbero voler essere in grado di verificare tali richieste (per bloccare le richieste negative pur consentendo quelle positive), invece di bloccare tali richieste tramite moduli, qui vengono fornite le opzioni per la gestione di tali richieste.
 
@@ -1233,7 +1236,7 @@ Opzioni di cache supplementari. Nota: La modifica di questi valori potrebbe pote
 ##### "pdo_dsn" `[string]`
 - Il valore della DSN per PDO. Predefinito = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#user-content-HOW_TO_USE_PDO" hreflang="it-IT">Che cos'è un "DSN PDO"? Come posso usare PDO con CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.it.md#user-content-HOW_TO_USE_PDO" hreflang="it-IT">Che cos'è un "DSN PDO"? Come posso usare PDO con CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - Il nome utente per PDO.
@@ -2279,4 +2282,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 3 Settembre 2023 (2023.09.03).
+Ultimo Aggiornamento: 12 Ottobre 2023 (2023.10.12).

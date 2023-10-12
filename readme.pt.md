@@ -526,12 +526,14 @@ Independentemente de como instruímos o cliente, é importante lembrar que não 
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -548,8 +550,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -558,7 +561,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -653,7 +656,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Uma lista de servidores DNS a serem usados para pesquisas de nomes de host. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#o-que-posso-usar-para-default_dns" hreflang="pt">O que posso usar para "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#o-que-posso-usar-para-default_dns" hreflang="pt">O que posso usar para "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Define qual algoritmo usar para todas as futuras senhas e sessões.
@@ -892,7 +895,7 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+* Esta opção tem um bypass correspondente em `bypasses➡used`. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
 
 ##### "social_media" `[string]`
 - Controles para verificar solicitações de plataformas de mídia social.
@@ -910,7 +913,7 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+* Esta opção tem um bypass correspondente em `bypasses➡used`. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
 
 ** Requer funcionalidade de pesquisa ASN (por exemplo, através do módulo IP-API ou BGPView).
 
@@ -932,7 +935,7 @@ __O que são "positivos" e "negativos"?__ Quando verificando a identidade aprese
 
 __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação com verificação positiva ainda pode ser bloqueada como resultado dos arquivos de assinatura, módulos, ou outras condições da solicitação, e bypasses podem ser necessários para evitar falsos positivos. No caso em que um bypass se destina a lidar com exatamente uma infração, nem mais nem menos, tal bypass pode ser descrito como um "bypass de acerto único".
 
-* Esta opção tem um bypass correspondente em <code class="s">bypasses➡used</code>. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
+* Esta opção tem um bypass correspondente em `bypasses➡used`. É recomendável que a caixa de seleção para o bypass correspondente esteja marcado da mesma forma que a caixa de seleção para tentar verificar esta opção.
 
 !! A maioria dos usuários provavelmente deseja que isso seja bloqueado, independentemente de ser real ou falsificado. Ao não selecionar "tente verificar" e selecionar "bloquear solicitações não verificados", isso pode ser alcançado. Mas, devido alguns usuários podem querer verificar tais solicitações (a fim de bloquear os negativos enquanto permitem os positivos), em vez de bloquear tais solicitações por meio de módulos, as opções para lidar com essas solicitações são fornecidas aqui.
 
@@ -1229,7 +1232,7 @@ Opções de cache suplementares. Nota: Alterar estes valores podem potencialment
 ##### "pdo_dsn" `[string]`
 - Valor DSN do PDO. Padrão = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#user-content-HOW_TO_USE_PDO" hreflang="pt">O que é um "PDO DSN"? Como posso usar o PDO com o CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.pt.md#user-content-HOW_TO_USE_PDO" hreflang="pt">O que é um "PDO DSN"? Como posso usar o PDO com o CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - O nome de usuário do PDO.
@@ -2275,4 +2278,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 23 de Agosto de 2023 (2023.08.23).
+Última Atualização: 12 de Outubro de 2023 (2023.10.12).

@@ -528,12 +528,14 @@ Independientemente de como instruimos al cliente, es importante recordar que no 
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -550,8 +552,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -560,7 +563,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -657,7 +660,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Una lista de los servidores DNS que se utilizarán para las búsquedas de nombres del host. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#qué-puedo-usar-para-default_dns" hreflang="es-ES">¿Qué puedo usar para "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#qué-puedo-usar-para-default_dns" hreflang="es-ES">¿Qué puedo usar para "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Define qué algoritmo utilizar para todas las contraseñas y sesiones en el futuro.
@@ -896,7 +899,7 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
-* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+* Esta opción tiene un bypass correspondiente bajo `bypasses➡used`. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
 
 ##### "social_media" `[string]`
 - Controles para verificar las solicitudes de las plataformas de redes sociales.
@@ -914,7 +917,7 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
-* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+* Esta opción tiene un bypass correspondiente bajo `bypasses➡used`. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
 
 ** Requiere la funcionalidad de búsqueda de ASN (por ejemplo, a través del módulo IP-API o BGPView).
 
@@ -936,7 +939,7 @@ __¿Qué son "positivos" y "negativos"?__ Cuando verificando la identidad presen
 
 __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud con verificación positiva aún puede bloquearse como resultado de los archivos de firma, módulos, u otras condiciones de la solicitud, y las bypasses pueden ser necesarias para evitar falsos positivos. En el caso de que una bypass esté destinada a tratar exactamente una infracción, ni más ni menos, dicha bypass podría describirse como una "bypass de un solo golpe".
 
-* Esta opción tiene un bypass correspondiente bajo <code class="s">bypasses➡used</code>. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
+* Esta opción tiene un bypass correspondiente bajo `bypasses➡used`. Se recomienda asegurarse de que la casilla de verificación para la bypass correspondiente esté marcado de la misma manera que la casilla de verificación para intentar verificar esta opción.
 
 !! La mayoría de los usuarios probablemente querrán que esto se bloquee, independientemente de si es real o falso. Eso se puede lograr si no se selecciona "intentar verificar" y se selecciona "bloquear solicitudes no verificadas". Pero, debido a que algunos usuarios pueden querer poder verificar dichas solicitudes (para bloquear las negativas y permitir las positivas), en lugar de bloquear dichas solicitudes a través de módulos, aquí se proporcionan opciones para manejar dichas solicitudes.
 
@@ -1235,7 +1238,7 @@ Opciones de caché suplementarias. Nota: Cambiar estos valores puede potencialme
 ##### "pdo_dsn" `[string]`
 - Valor del DSN de PDO. Predefinido = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#user-content-HOW_TO_USE_PDO" hreflang="es-ES">¿Qué es un "PDO DSN"? Cómo puedo usar PDO con CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.es.md#user-content-HOW_TO_USE_PDO" hreflang="es-ES">¿Qué es un "PDO DSN"? Cómo puedo usar PDO con CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - Nombre del usuario de PDO.
@@ -2285,4 +2288,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 23 de Agosto de 2023 (2023.08.23).
+Última Actualización: 12 de Octubre de 2023 (2023.10.12).

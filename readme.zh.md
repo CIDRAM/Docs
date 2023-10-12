@@ -508,12 +508,14 @@ silent_mode_response_header_code
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -530,8 +532,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -540,7 +543,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -625,7 +628,7 @@ ban_override
 ##### “default_dns” `[string]`
 - DNS服务器列表，​用于主机名查找。​警告：不要修改此除非您知道什么您做着！
 
-__常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#在default_dns中我可以使用什么" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a></em>
+__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#在default_dns中我可以使用什么" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a>*
 
 ##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。
@@ -864,7 +867,7 @@ __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
+* 这个选项在`bypasses➡used`下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 ##### “social_media” `[string]`
 - 用于验证来自社交媒体平台的请求的控件。
@@ -882,7 +885,7 @@ __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
+* 这个选项在`bypasses➡used`下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 ** 需要ASN查找功能（例如，通过IP-API或BGPView模块）。
 
@@ -904,7 +907,7 @@ __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，
 
 __什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
 
-* 这个选项在<code class="s">bypasses➡used</code>下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
+* 这个选项在`bypasses➡used`下有相应的绕过。​建议确保相应旁路的复选框标记方式与尝试验证此选项的复选框相同。
 
 !! 大多数用户可能希望将其阻止，无论它是真实的还是伪造的。​这可以通过不选择“尝试验证”并选择“阻止未验证的请求”来实现。​但是，由于某些用户可能希望能够验证此类请求（以便阻止阴性请求同时允许阳性请求），因此此处提供了处理此类请求的选项，而不是通过模块阻止此类请求。
 
@@ -1187,7 +1190,7 @@ exceptions
 ##### “pdo_dsn” `[string]`
 - PDO DSN值。​标准 = “mysql:dbname=cidram;host=localhost;port=3306”。
 
-__常问问题。__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#user-content-HOW_TO_USE_PDO" hreflang="zh-CN">“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？</a></em>
+__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#user-content-HOW_TO_USE_PDO" hreflang="zh-CN">“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？</a>*
 
 ##### “pdo_username” `[string]`
 - PDO用户名。
@@ -2231,4 +2234,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2023年8月23日。
+最后更新：2023年10月12日。

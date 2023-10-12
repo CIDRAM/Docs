@@ -527,12 +527,14 @@ Egal was wir dem Client sagen, Es ist wichtig zu bedenken, dass wir letztendlich
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -549,8 +551,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -559,7 +562,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -655,7 +658,7 @@ ban_override
 ##### „default_dns“ `[string]`
 - Eine Liste von DNS-Servern, die für Hostnamen-Lookups verwendet werden sollen. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#was-kann-ich-für-default_dns-verwenden" hreflang="de-DE">Was kann ich für „default_dns“ verwenden?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#was-kann-ich-für-default_dns-verwenden" hreflang="de-DE">Was kann ich für „default_dns“ verwenden?</a>*
 
 ##### „default_algo“ `[string]`
 - Definiert den Algorithmus für alle zukünftigen Passwörter und Sitzungen.
@@ -894,7 +897,7 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+* Diese Option hat einen entsprechenden Bypass unter `bypasses➡used`. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
 
 ##### „social_media“ `[string]`
 - Kontrollen für die Verifizierung von Anfragen von Social-Media-Plattformen.
@@ -912,7 +915,7 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+* Diese Option hat einen entsprechenden Bypass unter `bypasses➡used`. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
 
 ** Erfordert ASN-Lookup-Funktionalität (z.B., über das IP-API-Modul oder BGPView-Modul).
 
@@ -934,7 +937,7 @@ __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Ve
 
 __Was sind „Single-Hit-Bypässe“?__ In einigen Fällen kann eine positiv verifizierte Anfrage aufgrund der Signaturdateien, Module, oder anderer Bedingungen der Anfrage immer noch blockiert werden, und Bypässe können erforderlich sein um Falsch-Positive zu vermeiden. In dem Fall in dem eine Bypass genau einen Verstoß behandeln beabsichtigt ist, nicht mehr und nicht weniger, könnte solche eine Bypass als „Single-Hit-Bypass“ beschrieben werden.
 
-* Diese Option hat einen entsprechenden Bypass unter <code class="s">bypasses➡used</code>. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
+* Diese Option hat einen entsprechenden Bypass unter `bypasses➡used`. Es wird empfohlen sicherzustellen dass das Kontrollkästchen für die entsprechende Bypass genauso markiert ist wie das Kontrollkästchen für den Versuch aus diese Option zu überprüfen.
 
 !! Die meisten Benutzer möchten wahrscheinlich dass dies blockiert wird, unabhängig davon ob es echt oder gefälscht ist. Dies kann dadurch erreicht werden, dass „versuchen zu verifizieren“ nicht ausgewählt wird und „nicht verifizierte Anfragen blockieren“ ausgewählt wird. Da einige Benutzer jedoch möglicherweise in der Lage sein möchten, solche Anfragen zu verifizieren (um Negative zu blockieren und gleichzeitig Positive zuzulassen), werden hier Optionen für die Bearbeitung solcher Anfragen bereitgestellt, anstatt solche Anfragen über Module blockieren.
 
@@ -1233,7 +1236,7 @@ Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglich
 ##### „pdo_dsn“ `[string]`
 - PDO DSN-Wert. Standardeinstellung = „mysql:dbname=cidram;host=localhost;port=3306“.
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#user-content-HOW_TO_USE_PDO" hreflang="de-DE">Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.de.md#user-content-HOW_TO_USE_PDO" hreflang="de-DE">Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?</a>*
 
 ##### „pdo_username“ `[string]`
 - PDO Nutzername.
@@ -2293,4 +2296,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 23. August 2023 (2023.08.23).
+Zuletzt aktualisiert: 12. Oktober 2023 (2023.10.12).

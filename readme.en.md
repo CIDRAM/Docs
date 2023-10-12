@@ -525,12 +525,14 @@ No matter how we instruct the client, it's important to remember that we ultimat
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -547,8 +549,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -557,7 +560,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -651,7 +654,7 @@ ban_override
 ##### "default_dns" `[string]`
 - A list of DNS servers to use for hostname lookups. WARNING: Don't change this unless you know what you're doing!
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#what-can-i-use-for-default_dns" hreflang="en-AU">What can I use for "default_dns"?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#what-can-i-use-for-default_dns" hreflang="en-AU">What can I use for "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Defines which algorithm to use for all future passwords and sessions.
@@ -806,7 +809,7 @@ theme
 - Inserted as HTML at the very beginning of all front-end pages. This could be useful in case you want to include a website logo, personalised header, scripts, or similar at all such pages.
 
 ##### "custom_footer" `[string]`
-- Inserted as HTML at the very bottom of all front-end pages. This could be useful in case you want to include a legal notice, contact link, business information or similar at all such pages.
+- Inserted as HTML at the very bottom of all front-end pages. This could be useful in case you want to include a legal notice, contact link, business information, or similar at all such pages.
 
 ##### "remotes" `[string]`
 - A list of the addresses used by the updater to fetch component metadata. This may need to be adjusted when upgrading to a new major version, or when acquiring a new source for updates, but under normal circumstances should be left alone.
@@ -890,7 +893,7 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+* This option has a corresponding bypass under `bypasses➡used`. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
 
 ##### "social_media" `[string]`
 - Controls for verifying requests from social media platforms.
@@ -908,7 +911,7 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+* This option has a corresponding bypass under `bypasses➡used`. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
 
 ** Requires ASN lookup functionality (e.g., via the IP-API or BGPView module).
 
@@ -930,7 +933,7 @@ __What are "positives" and "negatives"?__ When verifying the identity presented 
 
 __What are "single-hit bypasses"?__ In some cases, a positive-verified request may still blocked as a result of the signature files, modules, or other conditions of the request, and bypasses may be necessary in order to avoid false positives. In the case where a bypass is intended to deal with exactly one infraction, no more and no less, such a bypass could be described as a "single-hit bypass".
 
-* This option has a corresponding bypass under <code class="s">bypasses➡used</code>. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
+* This option has a corresponding bypass under `bypasses➡used`. It's recommended to ensure that the checkbox for the corresponding bypass is marked the same way as the checkbox for attempting to verify this option.
 
 !! Most users will likely want this to be blocked, regardless of whether it's real or falsified. That can be achieved by having "attempt to verify" be not selected and "block non-verified requests" be selected. However, because some users may want to be able to verify such requests (in order to block negatives while allowing positives), instead of blocking such requests via modules, options for handling such requests are provided here.
 
@@ -1156,7 +1159,7 @@ captcha_title
 - Inserted as HTML at the very beginning of all "access denied" pages. This could be useful in case you want to include a website logo, personalised header, scripts, or similar at all such pages.
 
 ##### "custom_footer" `[string]`
-- Inserted as HTML at the very bottom of all "access denied" pages. This could be useful in case you want to include a legal notice, contact link, business information or similar at all such pages.
+- Inserted as HTML at the very bottom of all "access denied" pages. This could be useful in case you want to include a legal notice, contact link, business information, or similar at all such pages.
 
 #### "rate_limiting" (Category)
 Configuration for rate limiting (not recommended for general use).
@@ -1225,7 +1228,7 @@ Supplementary cache options. Note: Changing these values may potentially log you
 ##### "pdo_dsn" `[string]`
 - PDO DSN value. Default = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__FAQ.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#user-content-HOW_TO_USE_PDO" hreflang="en-AU">What is a "PDO DSN"? How can I use PDO with CIDRAM?</a></em>
+__FAQ.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#user-content-HOW_TO_USE_PDO" hreflang="en-AU">What is a "PDO DSN"? How can I use PDO with CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - PDO username.
@@ -2276,4 +2279,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 23 August 2023 (2023.08.23).
+Last Updated: 12 October 2023 (2023.10.12).

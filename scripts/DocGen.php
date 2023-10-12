@@ -1,4 +1,5 @@
 <?php
+
 $loadL10N = function (string $Language) {
     if (
         !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml') ||
@@ -19,48 +20,6 @@ $loadL10N = function (string $Language) {
     return new \Maikuolan\Common\L10N($Arr, []);
 };
 
-$ArrayFromL10NDataToArray = function ($References, &$L10N): array {
-    if (!is_array($References)) {
-        $References = [$References];
-    }
-    $Out = [];
-    foreach ($References as $Reference) {
-        $Try = '';
-        if (isset($L10N->Data[$Reference])) {
-            $Try = $L10N->Data[$Reference];
-        } elseif (is_array($L10N->Fallback)) {
-            if (isset($L10N->Fallback[$Reference])) {
-                $Try = $L10N->Fallback[$Reference];
-            }
-        } elseif ($L10N->Fallback instanceof \Maikuolan\Common\L10N) {
-            if (isset($L10N->Fallback->Data[$Reference])) {
-                $Try = $L10N->Fallback->Data[$Reference];
-            } elseif (is_array($L10N->Fallback->Fallback) && isset($L10N->Fallback->Fallback[$Reference])) {
-                $Try = $L10N->Fallback->Fallback[$Reference];
-            }
-        }
-        if ($Try === '') {
-            if (($SPos = strpos($Reference, ' ')) !== '') {
-                $Try = (($TryFrom = $L10N->getString(substr($Reference, 0, $SPos))) !== '' && strpos($TryFrom, '%s') !== '') ? sprintf($TryFrom, substr($Reference, $SPos + 1)) : $Reference;
-            } else {
-                $Try = $Reference;
-            }
-        }
-        $Reference = $Try;
-        if (!is_array($Reference)) {
-            $Reference = [$Reference];
-        }
-        foreach ($Reference as $Key => $Value) {
-            if (is_int($Key)) {
-                $Out[] = $Value;
-                continue;
-            }
-            $Out[$Key] = $Value;
-        }
-    }
-    return $Out;
-};
-
 if (!isset($_GET['language'])) {
     echo 'No language specified.';
 } else {
@@ -73,39 +32,26 @@ if (!isset($_GET['language'])) {
 
     $Final = '';
     $Data = $loadL10N($_GET['language']);
-    $First = "```\n" . $Data->getString('link_config') . " (v3)\n│\n";
+    $Data->PreferredVariant = $_GET['language'];
+    $First = "```\n" . $Data->getString('link.Configuration') . " (v3)\n│\n";
     $Cats = count($CIDRAM->CIDRAM['Config Defaults']);
     $Current = 1;
     foreach ($CIDRAM->CIDRAM['Config Defaults'] as $Category => $Directives) {
-        if (!isset($Data->Data['config_' . $Category])) {
-            continue;
-        }
         $First .= ($Current === $Cats ? '└───' : '├───') . $Category . "\n";
-        if (strpos($Data->Data['category'], '<div') === false) {
+        $Out = str_replace(
+            ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
+            ['`', '`', '`', '`', '__', '__', '*', '*'],
+            html_entity_decode($Data->getString('config.' . $Category))
+        );
+        $Final .= sprintf($Data->getString('category'), $Category, $Out) . "\n\n";
+        foreach ($Directives as $Directive => $Info) {
             $Out = str_replace(
                 ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
                 ['`', '`', '`', '`', '__', '__', '*', '*'],
-                html_entity_decode($Data->getString('config_' . $Category))
+                html_entity_decode($Data->getString('config.' . $Category . '_' . $Directive))
             );
-        } else {
-            $Out = $Data->getString('config_' . $Category);
-        }
-        $Final .= sprintf($Data->getString('category'), $Category, $Out) . "\n\n";
-        foreach ($Directives as $Directive => $Info) {
-            if (!isset($Data->Data['config_' . $Category . '_' . $Directive], $Info['type'])) {
-                continue;
-            }
-            if (strpos($Data->Data['directive'], '<div') === false) {
-                $Out = str_replace(
-                    ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
-                    ['`', '`', '`', '`', '__', '__', '*', '*'],
-                    html_entity_decode($Data->getString('config_' . $Category . '_' . $Directive))
-                );
-            } else {
-                $Out = $Data->getString('config_' . $Category . '_' . $Directive);
-            }
             $Default = $Info['default'] ?? '';
-            if (in_array($Info['type'], ['string', 'timezone', 'checkbox', 'url', 'email', 'kb'], true)) {
+            if (in_array($Info['type'], ['duration', 'string', 'timezone', 'checkbox', 'url', 'email', 'kb'], true)) {
                 $Type = 'string';
                 $Default = '"' . $Default . '"';
             } elseif ($Info['type'] === 'float') {
@@ -118,7 +64,7 @@ if (!isset($_GET['language'])) {
             }
             $Choices = [];
             if ($Info['type'] === 'timezone') {
-                $Choices = ['SYSTEM' => $Data->getString('field_system_timezone'), 'UTC' => 'UTC'];
+                $Choices = ['SYSTEM' => $Data->getString('field.Use system default timezone'), 'UTC' => 'UTC'];
                 $Info['allow_other'] = true;
             } elseif (isset($Info['choices'])) {
                 $Choices = $Info['choices'];
@@ -149,14 +95,18 @@ if (!isset($_GET['language'])) {
                     $Iterant++;
                 }
                 if (!empty($Info['allow_other'])) {
-                    $Final .= '└─…' . $Data->getString('label_other') . "\n";
+                    $Final .= '└─…' . $Data->getString('label.Other') . "\n";
                 }
                 $Final .= "```\n\n";
             }
             if (!empty($Info['hints'])) {
-                $Hints = $ArrayFromL10NDataToArray($Info['hints'], $Data);
-                foreach ($Hints as $HintKey => $HintValue) {
-                    if (is_int($HintKey)) {
+                foreach ($Data->arrayFromL10nToArray($Info['hints']) as $HintKey => $HintValue) {
+                    $HintValue = str_replace(
+                        ['<code>', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
+                        ['`', '`', '`', '`', '__', '__', '*', '*'],
+                        html_entity_decode($HintValue)
+                    );
+                    if (!is_string($HintKey)) {
                         $Final .= $HintValue . "\n\n";
                         continue;
                     }
@@ -164,7 +114,7 @@ if (!isset($_GET['language'])) {
                 }
             }
             if (!empty($Info['See also'])) {
-                $Final .= sprintf($Data->getString('menu_open'), $Data->getString('label_see_also')) . "\n";
+                $Final .= sprintf($Data->getString('menu_open'), $Data->getString('label.See also')) . "\n";
                 foreach ($Info['See also'] as $RefKey => $RefLink) {
                     $RefKey = addcslashes($RefKey, '|');
                     $Final .= sprintf($Data->getString('menu_item'), $RefKey, $RefLink) . "\n";
@@ -177,7 +127,7 @@ if (!isset($_GET['language'])) {
         }
     }
     $Matches = [];
-    if (preg_match_all('~\{([a-z_]+)\}~i', $Final, $Matches)) {
+    if (preg_match_all('~\{([.,%_ ?!\dA-Za-z()-]+)\}~', $Final, $Matches)) {
         $Matches = array_unique($Matches[1]);
         foreach ($Matches as $Match) {
             if ($Try = $Data->getString($Match)) {

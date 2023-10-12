@@ -535,12 +535,14 @@ Bất kể chúng tôi hướng dẫn khách hàng như thế nào, điều quan
 
 ```
 lang
+├─af ("Afrikaans")
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
+├─en-CA ("English (CA)")
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
@@ -557,8 +559,9 @@ lang
 ├─no ("Norsk")
 ├─pa ("ਪੰਜਾਬੀ")
 ├─pl ("Polski")
-├─pt ("Português (Brasil)")
+├─pt-BR ("Português (Brasil)")
 ├─pt-PT ("Português (Europeu)")
+├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
 ├─ta ("தமிழ்")
@@ -567,7 +570,7 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh ("中文（简体）")
+├─zh-CN ("中文（简体）")
 └─zh-TW ("中文（傳統）")
 ```
 
@@ -667,7 +670,7 @@ ban_override
 ##### "default_dns" `[string]`
 - Danh sách các máy chủ DNS để sử dụng cho tra cứu tên máy. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
-__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#những-gì-tôi-có-thể-sử-dụng-cho-default_dns" hreflang="vi-VN">Những gì tôi có thể sử dụng cho "default_dns"?</a></em>
+__Câu hỏi thường gặp.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#những-gì-tôi-có-thể-sử-dụng-cho-default_dns" hreflang="vi-VN">Những gì tôi có thể sử dụng cho "default_dns"?</a>*
 
 ##### "default_algo" `[string]`
 - Xác định thuật toán nào sẽ sử dụng cho tất cả các mật khẩu và phiên trong tương lai.
@@ -906,7 +909,7 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
-* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+* Tùy chọn này có một đường tránh tương ứng dưới `bypasses➡used`. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
 
 ##### "social_media" `[string]`
 - Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
@@ -924,7 +927,7 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
-* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+* Tùy chọn này có một đường tránh tương ứng dưới `bypasses➡used`. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
 
 ** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun IP-API hoặc BGPView).
 
@@ -946,7 +949,7 @@ __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được t
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
-* Tùy chọn này có một đường tránh tương ứng dưới <code class="s">bypasses➡used</code>. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
+* Tùy chọn này có một đường tránh tương ứng dưới `bypasses➡used`. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
 
 !! Hầu hết người dùng có thể sẽ muốn điều này bị chặn, bất kể đó là thật hay giả mạo. Điều đó có thể đạt được bằng cách không chọn "cố gắng xác minh" và chọn "chặn các yêu cầu chưa được xác minh". Tuy nhiên, vì một số người dùng có thể muốn xác minh các yêu cầu đó (để chặn các yêu cầu tiêu cực trong khi cho phép các yêu cầu tích cực), thay vì chặn các yêu cầu đó thông qua các mô-đun, các tùy chọn để xử lý các yêu cầu đó được cung cấp tại đây.
 
@@ -1249,7 +1252,7 @@ Tùy chọn bộ nhớ cache bổ sung. Lưu ý: Việc thay đổi các giá tr
 ##### "pdo_dsn" `[string]`
 - Giá trị DSN PDO. Mặc định = "mysql:dbname=cidram;host=localhost;port=3306".
 
-__Câu hỏi thường gặp.__ <em><a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#user-content-HOW_TO_USE_PDO" hreflang="vi-VN">"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?</a></em>
+__Câu hỏi thường gặp.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.vi.md#user-content-HOW_TO_USE_PDO" hreflang="vi-VN">"PDO DSN" là gì? Làm cách nào tôi có thể sử dụng PDO với CIDRAM?</a>*
 
 ##### "pdo_username" `[string]`
 - Tên người dùng PDO.
@@ -2289,4 +2292,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2023.08.23.
+Lần cuối cập nhật: 2023.10.12.
