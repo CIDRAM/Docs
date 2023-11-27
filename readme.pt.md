@@ -961,7 +961,8 @@ usemode
 ├─2 (Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
 ├─3 (Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).)
 ├─4 (Somente quando não está bloqueado.)
-└─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+├─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+└─6 (Somente quando não está bloqueado, em solicitações de páginas confidenciais.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1042,7 +1043,8 @@ usemode
 ├─2 (Somente quando bloqueado, especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
 ├─3 (Somente quando dentro do limite de assinaturas, e não banido (independentemente de estar bloqueado).)
 ├─4 (Somente quando não está bloqueado.)
-└─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+├─5 (Somente quando não está bloqueado, ou quando especialmente marcado para uso, dentro do limite de assinaturas, e não banido.)
+└─6 (Somente quando não está bloqueado, em solicitações de páginas confidenciais.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2278,4 +2280,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 12 de Outubro de 2023 (2023.10.12).
+Última Atualização: 27 de Novembro de 2023 (2023.11.27).

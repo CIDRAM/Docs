@@ -959,7 +959,8 @@ usemode
 ├─2 (Only when blocked, specially marked for use, within the signature limit, and not banned.)
 ├─3 (Only when within the signature limit, and not banned (regardless of whether blocked).)
 ├─4 (Only when not blocked.)
-└─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+├─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+└─6 (Only when not blocked, at sensitive page requests.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1039,7 +1040,8 @@ usemode
 ├─2 (Only when blocked, specially marked for use, within the signature limit, and not banned.)
 ├─3 (Only when within the signature limit, and not banned (regardless of whether blocked).)
 ├─4 (Only when not blocked.)
-└─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+├─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
+└─6 (Only when not blocked, at sensitive page requests.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2279,4 +2281,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 12 October 2023 (2023.10.12).
+Last Updated: 27 November 2023 (2023.11.27).

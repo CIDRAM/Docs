@@ -963,7 +963,8 @@ usemode
 ├─2 (Solo quando bloccato, appositamente contrassegnato per l'uso, entro il limite di firme, e non vietato.)
 ├─3 (Solo quando entro il limite di firme, e non vietato (indipendentemente dal fatto che sia bloccato).)
 ├─4 (Solo quando non è bloccato.)
-└─5 (Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.)
+├─5 (Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.)
+└─6 (Solo quando non è bloccato, in caso di richieste di pagine sensibili.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1045,7 +1046,8 @@ usemode
 ├─2 (Solo quando bloccato, appositamente contrassegnato per l'uso, entro il limite di firme, e non vietato.)
 ├─3 (Solo quando entro il limite di firme, e non vietato (indipendentemente dal fatto che sia bloccato).)
 ├─4 (Solo quando non è bloccato.)
-└─5 (Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.)
+├─5 (Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.)
+└─6 (Solo quando non è bloccato, in caso di richieste di pagine sensibili.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2282,4 +2284,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 12 Ottobre 2023 (2023.10.12).
+Ultimo Aggiornamento: 27 Novembre 2023 (2023.11.27).

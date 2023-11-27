@@ -897,7 +897,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah `bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 ##### "social_media" `[string]`
 - Kontrol untuk memverifikasi permintaan dari platform media sosial.
@@ -915,7 +915,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah `bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 ** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
 
@@ -937,7 +937,7 @@ __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan
 
 __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifikasi secara positif mungkin masih diblokir sebagai akibat dari file tanda tangan, modul, atau kondisi permintaan lainnya, dan bypass mungkin diperlukan untuk menghindari positif palsu. Dalam kasus dimana bypass dimaksudkan untuk menangani tepat satu pelanggaran, tidak lebih dan tidak kurang, bypass seperti itu dapat digambarkan sebagai "bypass satu pelanggaran".
 
-* Opsi ini memiliki bypass terkait dibawah <code class="s">bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
+* Opsi ini memiliki bypass terkait dibawah `bypasses➡used`. Direkomendasikan untuk memastikan bahwa kotak centang untuk bypass terkait ditandai dengan cara yang sama seperti kotak centang untuk mencoba memverifikasi opsi ini.
 
 !! Mayoritas pengguna mungkin ingin ini diblokir, terlepas dari apakah itu asli atau dipalsukan. Ini dapat dicapai dengan tidak memilih "mencoba memverifikasi" dan pilih "blokir permintaan yang tidak diverifikasi". Namun, karena beberapa pengguna mungkin ingin dapat memverifikasi permintaan semacam ini (untuk memblokir permintaan negatif sambil mengizinkan permintaan positif), alih-alih memblokir permintaan tersebut melalui modul, opsi untuk menangani permintaan tersebut disediakan disini.
 
@@ -963,7 +963,8 @@ usemode
 ├─2 (Hanya jika diblokir, ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
 ├─3 (Hanya jika dalam batas tanda tangan, dan tidak dilarang (terlepas dari apakah diblokir).)
 ├─4 (Hanya jika tidak diblokir.)
-└─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
+├─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
+└─6 (Hanya jika tidak diblokir, pada permintaan halaman sensitif.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1044,7 +1045,8 @@ usemode
 ├─2 (Hanya jika diblokir, ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
 ├─3 (Hanya jika dalam batas tanda tangan, dan tidak dilarang (terlepas dari apakah diblokir).)
 ├─4 (Hanya jika tidak diblokir.)
-└─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
+├─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
+└─6 (Hanya jika tidak diblokir, pada permintaan halaman sensitif.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2277,4 +2279,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 12 Oktober 2023 (2023.10.12).
+Terakhir Diperbarui: 27 November 2023 (2023.11.27).

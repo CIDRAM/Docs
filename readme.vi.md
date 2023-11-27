@@ -975,7 +975,8 @@ usemode
 ├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
 ├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
 ├─4 (Chỉ khi không bị chặn.)
-└─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+├─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+└─6 (Chỉ khi không bị chặn, ở những yêu cầu trang nhạy cảm.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1059,7 +1060,8 @@ usemode
 ├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
 ├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
 ├─4 (Chỉ khi không bị chặn.)
-└─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+├─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
+└─6 (Chỉ khi không bị chặn, ở những yêu cầu trang nhạy cảm.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2292,4 +2294,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2023.10.12.
+Lần cuối cập nhật: 2023.11.27.

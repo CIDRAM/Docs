@@ -963,7 +963,8 @@ usemode
 ├─2 (Nur wenn blockiert, speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
 ├─3 (Nur wenn innerhalb des Signaturgrenze, und nicht verbannt (unabhängig ob blockiert).)
 ├─4 (Nur wenn nicht blockiert.)
-└─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
+├─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
+└─6 (Nur wenn nicht blockiert, bei Anfragen für sensible Seiten.)
 ```
 
 ##### „lockip“ `[bool]`
@@ -1045,7 +1046,8 @@ usemode
 ├─2 (Nur wenn blockiert, speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
 ├─3 (Nur wenn innerhalb des Signaturgrenze, und nicht verbannt (unabhängig ob blockiert).)
 ├─4 (Nur wenn nicht blockiert.)
-└─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
+├─5 (Nur wenn nicht blockiert, oder wenn speziell für die Verwendung markiert, innerhalb der Signaturgrenze, und nicht verbannt.)
+└─6 (Nur wenn nicht blockiert, bei Anfragen für sensible Seiten.)
 ```
 
 ##### „lockip“ `[bool]`
@@ -2296,4 +2298,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 12. Oktober 2023 (2023.10.12).
+Zuletzt aktualisiert: 27. November 2023 (2023.11.27).

@@ -962,10 +962,11 @@ Configuración para ReCaptcha (proporciona una forma para que los humanos recupe
 usemode
 ├─0 (Nunca !!!)
 ├─1 (Solo cuando está bloqueado, dentro del límite de firmas y no está prohibido.)
-├─2 (Solo cuando está bloqueado, marcado especialmente para su uso, dentro del límite de firmas y no prohibido.)
+├─2 (Solo cuando está bloqueado, marcado especialmente para su uso, dentro del límite de firmas y no está prohibido.)
 ├─3 (Solo cuando está dentro del límite de firmas y no está prohibido (independientemente de si está bloqueado).)
 ├─4 (Solo cuando no está bloqueado.)
-└─5 (Solo cuando no esté bloqueado, o cuando esté especialmente marcado para su uso, dentro del límite de firmas y no esté prohibido.)
+├─5 (Solo cuando no está bloqueado, o cuando está especialmente marcado para su uso, dentro del límite de firmas y no está prohibido.)
+└─6 (Solo cuando no está bloqueado, en solicitudes de páginas sensibles.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1044,10 +1045,11 @@ Configuración para HCaptcha (proporciona una forma para que los humanos recuper
 usemode
 ├─0 (Nunca !!!)
 ├─1 (Solo cuando está bloqueado, dentro del límite de firmas y no está prohibido.)
-├─2 (Solo cuando está bloqueado, marcado especialmente para su uso, dentro del límite de firmas y no prohibido.)
+├─2 (Solo cuando está bloqueado, marcado especialmente para su uso, dentro del límite de firmas y no está prohibido.)
 ├─3 (Solo cuando está dentro del límite de firmas y no está prohibido (independientemente de si está bloqueado).)
 ├─4 (Solo cuando no está bloqueado.)
-└─5 (Solo cuando no esté bloqueado, o cuando esté especialmente marcado para su uso, dentro del límite de firmas y no esté prohibido.)
+├─5 (Solo cuando no está bloqueado, o cuando está especialmente marcado para su uso, dentro del límite de firmas y no está prohibido.)
+└─6 (Solo cuando no está bloqueado, en solicitudes de páginas sensibles.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1233,7 +1235,7 @@ Opciones de caché suplementarias. Nota: Cambiar estos valores puede potencialme
 - Valor del puerto de Redis. Predefinido = "6379".
 
 ##### "redis_timeout" `[float]`
-- Valor de tiempo de espera de Redis. Predefinido = "2.5".
+- Valor del tiempo de espera de Redis. Predefinido = "2.5".
 
 ##### "pdo_dsn" `[string]`
 - Valor del DSN de PDO. Predefinido = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -2288,4 +2290,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 12 de Octubre de 2023 (2023.10.12).
+Última Actualización: 27 de Noviembre de 2023 (2023.11.27).

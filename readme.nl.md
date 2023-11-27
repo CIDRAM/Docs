@@ -965,7 +965,8 @@ usemode
 ├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
 ├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
 ├─4 (Alleen wanneer niet geblokkeerd.)
-└─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+├─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+└─6 (Alleen wanneer niet geblokkeerd, bij verzoek van gevoelige pagina's.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1047,7 +1048,8 @@ usemode
 ├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
 ├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
 ├─4 (Alleen wanneer niet geblokkeerd.)
-└─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+├─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
+└─6 (Alleen wanneer niet geblokkeerd, bij verzoek van gevoelige pagina's.)
 ```
 
 ##### "lockip" `[bool]`
@@ -2298,4 +2300,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 12 Oktober 2023 (2023.10.12).
+Laatste Bijgewerkt: 27 November 2023 (2023.11.27).

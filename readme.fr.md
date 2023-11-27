@@ -963,7 +963,8 @@ usemode
 ├─2 (Seulement lorsqu'il est bloqué, spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
 ├─3 (Seulement dans la limite de signatures, et non interdite (qu'elle soit bloquée ou non).)
 ├─4 (Seulement lorsqu'il n'est pas bloqué.)
-└─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
+├─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
+└─6 (Seulement lorsqu'il n'est pas bloqué, lors de requêtes de pages sensibles.)
 ```
 
 ##### « lockip » `[bool]`
@@ -1045,7 +1046,8 @@ usemode
 ├─2 (Seulement lorsqu'il est bloqué, spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
 ├─3 (Seulement dans la limite de signatures, et non interdite (qu'elle soit bloquée ou non).)
 ├─4 (Seulement lorsqu'il n'est pas bloqué.)
-└─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
+├─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
+└─6 (Seulement lorsqu'il n'est pas bloqué, lors de requêtes de pages sensibles.)
 ```
 
 ##### « lockip » `[bool]`
@@ -2292,4 +2294,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 12 Octobre 2023 (2023.10.12).
+Dernière mise à jour : 27 Novembre 2023 (2023.11.27).
