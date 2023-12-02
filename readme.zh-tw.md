@@ -291,6 +291,7 @@ $CIDRAM->view();
 │       redis_host [string]
 │       redis_port [int]
 │       redis_timeout [float]
+│       redis_database_number [int]
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
@@ -455,7 +456,7 @@ time_format
 ```
 
 ##### 『ipaddr』 `[string]`
-- 在哪裡可以找到連接請求IP地址？​（可以使用為服務例如Cloudflare和類似）。​標準 = REMOTE_ADDR。​警告：不要修改此除非您知道什麼您做著！
+- 在哪裡可以找到連接請求IP地址？​（可以使用為服務例如Cloudflare和類似）。 標準 = REMOTE_ADDR。​警告：不要修改此除非您知道什麼您做著！
 
 ```
 ipaddr
@@ -777,7 +778,7 @@ theme
 ```
 
 ##### 『magnification』 `[float]`
-- 字體放大。​標準 = 1。
+- 字體放大。 標準 = 1。
 
 ##### 『custom_header』 `[string]`
 - 在所有前端頁面的開頭作為HTML插入。​如果您想在所有此類頁面中包含網站徽標、個性化標題、腳本、或類似，這可能會很有用。
@@ -830,7 +831,7 @@ __優先。__ 選定的選項始終優先於未選定的選項。​例如，如
 __人類端點和雲服務。__ 雲服務可能是指虛擬主機提供商、服務器場、數據中心、或許多其他事物。​人類端點是指人類訪問互聯網的方式，例如，通過互聯網服務提供商。​網絡通常只提供一個或另一個，但有時可能同時提供兩者。​我們試圖不將潛在的人類端點識別為雲服務。​因此，如果雲服務的範圍由已知的人類端點共享，則可以將其識別為其他東西。​同樣，如果範圍不被任何已知的人類端點共享，我們會試圖始終將雲服務識別為雲服務。​因此，明確標識為雲服務的請求很可能不會與任何已知的人類端點共享其範圍。​同樣，由攻擊或垃圾郵件的風險明確識別的請求很可能共享範圍。​然而，互聯網總是在不斷變化，網絡的目的可以改變，範圍總是被買賣，所以關於假陽性的保持有意識和警惕。
 
 ##### 『default_tracktime』 `[string]`
-- 應跟踪IP地址的持續時間。​標準 = 7d0°0′0″ （1週）。
+- 應跟踪IP地址的持續時間。 標準 = 7d0°0′0″ （1週）。
 
 ##### 『infraction_limit』 `[int]`
 - 從IP最大允許違規數量之前它被禁止。​標準=10。
@@ -1095,7 +1096,7 @@ theme
 ```
 
 ##### 『magnification』 `[float]`
-- 字體放大。​標準 = 1。
+- 字體放大。 標準 = 1。
 
 ##### 『css_url』 `[string]`
 - 自定義主題的CSS文件URL。
@@ -1160,45 +1161,48 @@ exceptions
 補充緩存選項。​注意：更改這些值可能會使您註銷。
 
 ##### 『prefix』 `[string]`
-- 該值將附加到所有緩存條目的鍵的開頭。​默認 = 『CIDRAM_』。​當同一服務器上存在多個安裝時，這對於將它們的緩存彼此分開非常有用。
+- 該值將附加到所有緩存條目的鍵的開頭。 默認 = 『CIDRAM_』。​當同一服務器上存在多個安裝時，這對於將它們的緩存彼此分開非常有用。
 
 ##### 『enable_apcu』 `[bool]`
-- 指定是否嘗試使用APCu進行緩存。​默認 = True。
+- 指定是否嘗試使用APCu進行緩存。 默認 = True。
 
 ##### 『enable_memcached』 `[bool]`
-- 指定是否嘗試使用Memcached進行緩存。​默認 = False。
+- 指定是否嘗試使用Memcached進行緩存。 默認 = False。
 
 ##### 『enable_redis』 `[bool]`
-- 指定是否嘗試使用Redis進行緩存。​默認 = False。
+- 指定是否嘗試使用Redis進行緩存。 默認 = False。
 
 ##### 『enable_pdo』 `[bool]`
-- 指定是否嘗試使用PDO進行緩存。​默認 = False。
+- 指定是否嘗試使用PDO進行緩存。 默認 = False。
 
 ##### 『memcached_host』 `[string]`
-- Memcached主機值。​默認 = 『localhost』。
+- Memcached 主機值。 默認 = 『localhost』。
 
 ##### 『memcached_port』 `[int]`
-- Memcached端口值。​默認 = 『11211』。
+- Memcached 端口值。 默認 = 『11211』。
 
 ##### 『redis_host』 `[string]`
-- Redis主機值。​默認 = 『localhost』。
+- Redis 主機值。 默認 = 『localhost』。
 
 ##### 『redis_port』 `[int]`
-- Redis端口值。​默認 = 『6379』。
+- Redis 端口值。 默認 = 『6379』。
 
 ##### 『redis_timeout』 `[float]`
-- Redis超時值。​默認 = 『2.5』。
+- Redis 超時值。 默認 = 『2.5』。
+
+##### 『redis_database_number』 `[int]`
+- Redis 資料庫編號。 默認 = 『0』。 注意：不能在 Redis Cluster 中使用 0 以外的值。
 
 ##### 『pdo_dsn』 `[string]`
-- PDO DSN值。​默認 = 『mysql:dbname=cidram;host=localhost;port=3306』。
+- PDO DSN值。 默認 = 『mysql:dbname=cidram;host=localhost;port=3306』。
 
 __常問問題。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh-tw.md#user-content-HOW_TO_USE_PDO" hreflang="zh-TW">『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？</a>*
 
 ##### 『pdo_username』 `[string]`
-- PDO用戶名。
+- PDO 用戶名。
 
 ##### 『pdo_password』 `[string]`
-- PDO密碼。
+- PDO 密碼。
 
 #### 『bypasses』 （類別）
 默認簽名繞過配置。
@@ -2234,4 +2238,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2023年11月27日。
+最後更新：2023年12月2日。

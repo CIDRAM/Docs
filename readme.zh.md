@@ -291,6 +291,7 @@ $CIDRAM->view();
 │       redis_host [string]
 │       redis_port [int]
 │       redis_timeout [float]
+│       redis_database_number [int]
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
@@ -455,7 +456,7 @@ time_format
 ```
 
 ##### “ipaddr” `[string]`
-- 在哪里可以找到连接请求IP地址？​（可以使用为服务例如Cloudflare和类似）。​标准 = REMOTE_ADDR。​警告：不要修改此除非您知道什么您做着！
+- 在哪里可以找到连接请求IP地址？​（可以使用为服务例如Cloudflare和类似）。 标准 = REMOTE_ADDR。​警告：不要修改此除非您知道什么您做着！
 
 ```
 ipaddr
@@ -777,7 +778,7 @@ theme
 ```
 
 ##### “magnification” `[float]`
-- 字体放大。​标准 = 1。
+- 字体放大。 标准 = 1。
 
 ##### “custom_header” `[string]`
 - 在所有前端页面的开头作为HTML插入。​如果您想在所有此类页面中包含网站徽标、个性化标题、脚本、或类似，这可能会很有用。
@@ -830,7 +831,7 @@ __优先。__ 选定的选项始终优先于未选定的选项。​例如，如
 __人类端点和云服务。__ 云服务可能是指虚拟主机提供商、服务器场、数据中心、或许多其他事物。​人类端点是指人类访问互联网的方式，例如，通过互联网服务提供商。​网络通常只提供一个或另一个，但有时可能同时提供两者。​我们试图不将潜在的人类端点识别为云服务。​因此，如果云服务的范围由已知的人类端点共享，则可以将其识别为其他东西。​同样，如果范围不被任何已知的人类端点共享，我们会试图始终将云服务识别为云服务。​因此，明确标识为云服务的请求很可能不会与任何已知的人类端点共享其范围。​同样，由攻击或垃圾邮件的风险明确识别的请求很可能共享范围。​然而，互联网总是在不断变化，网络的目的可以改变，范围总是被买卖，所以关于假阳性的保持有意识和警惕。
 
 ##### “default_tracktime” `[string]`
-- 应跟踪IP地址的持续时间。​标准 = 7d0°0′0″ （1周）。
+- 应跟踪IP地址的持续时间。 标准 = 7d0°0′0″ （1周）。
 
 ##### “infraction_limit” `[int]`
 - 从IP最大允许违规数量之前它被禁止。​标准=10。
@@ -1095,7 +1096,7 @@ theme
 ```
 
 ##### “magnification” `[float]`
-- 字体放大。​标准 = 1。
+- 字体放大。 标准 = 1。
 
 ##### “css_url” `[string]`
 - 自定义主题的CSS文件URL。
@@ -1160,45 +1161,48 @@ exceptions
 补充缓存选项。​注意：更改这些值可能会使您注销。
 
 ##### “prefix” `[string]`
-- 该值将附加到所有缓存条目的键的开头。​标准 = “CIDRAM_”。​当同一服务器上存在多个安装时，这对于将它们的缓存彼此分开非常有用。
+- 该值将附加到所有缓存条目的键的开头。 标准 = “CIDRAM_”。​当同一服务器上存在多个安装时，这对于将它们的缓存彼此分开非常有用。
 
 ##### “enable_apcu” `[bool]`
-- 指定是否尝试使用APCu进行缓存。​标准 = True。
+- 指定是否尝试使用APCu进行缓存。 标准 = True。
 
 ##### “enable_memcached” `[bool]`
-- 指定是否尝试使用Memcached进行缓存。​标准 = False。
+- 指定是否尝试使用Memcached进行缓存。 标准 = False。
 
 ##### “enable_redis” `[bool]`
-- 指定是否尝试使用Redis进行缓存。​标准 = False。
+- 指定是否尝试使用Redis进行缓存。 标准 = False。
 
 ##### “enable_pdo” `[bool]`
-- 指定是否尝试使用PDO进行缓存。​标准 = False。
+- 指定是否尝试使用PDO进行缓存。 标准 = False。
 
 ##### “memcached_host” `[string]`
-- Memcached主机值。​标准 = “localhost”。
+- Memcached 主机值。 标准 = “localhost”。
 
 ##### “memcached_port” `[int]`
-- Memcached端口值。​标准 = “11211”。
+- Memcached 端口值。 标准 = “11211”。
 
 ##### “redis_host” `[string]`
-- Redis主机值。​标准 = “localhost”。
+- Redis 主机值。 标准 = “localhost”。
 
 ##### “redis_port” `[int]`
-- Redis端口值。​标准 = “6379”。
+- Redis 端口值。 标准 = “6379”。
 
 ##### “redis_timeout” `[float]`
-- Redis超时值。​标准 = “2.5”。
+- Redis 超时值。 标准 = “2.5”。
+
+##### “redis_database_number” `[int]`
+- Redis 数据库编号。 标准 = “0”。 注意：不能在 Redis Cluster 中使用 0 以外的值。
 
 ##### “pdo_dsn” `[string]`
-- PDO DSN值。​标准 = “mysql:dbname=cidram;host=localhost;port=3306”。
+- PDO DSN值。 标准 = “mysql:dbname=cidram;host=localhost;port=3306”。
 
 __常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#user-content-HOW_TO_USE_PDO" hreflang="zh-CN">“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？</a>*
 
 ##### “pdo_username” `[string]`
-- PDO用户名。
+- PDO 用户名。
 
 ##### “pdo_password” `[string]`
-- PDO密码。
+- PDO 密码。
 
 #### “bypasses” （类别）
 默认签名绕过配置。
@@ -2236,4 +2240,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2023年11月27日。
+最后更新：2023年12月2日。

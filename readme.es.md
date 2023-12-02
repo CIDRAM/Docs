@@ -291,6 +291,7 @@ Configuración (v3)
 │       redis_host [string]
 │       redis_port [int]
 │       redis_timeout [float]
+│       redis_database_number [int]
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
@@ -1236,6 +1237,9 @@ Opciones de caché suplementarias. Nota: Cambiar estos valores puede potencialme
 
 ##### "redis_timeout" `[float]`
 - Valor del tiempo de espera de Redis. Predefinido = "2.5".
+
+##### "redis_database_number" `[int]`
+- Número de base de datos de Redis. Predefinido = 0. Nota: No se pueden utilizar valores distintos de 0 con Redis Cluster.
 
 ##### "pdo_dsn" `[string]`
 - Valor del DSN de PDO. Predefinido = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -2290,4 +2294,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 27 de Noviembre de 2023 (2023.11.27).
+Última Actualización: 2 de Diciembre de 2023 (2023.12.02).

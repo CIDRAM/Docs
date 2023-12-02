@@ -291,6 +291,7 @@ Configuratie (v3)
 │       redis_host [string]
 │       redis_port [int]
 │       redis_timeout [float]
+│       redis_database_number [int]
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
@@ -1236,6 +1237,9 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 
 ##### "redis_timeout" `[float]`
 - Redis timeoutwaarde. Standaard = "2.5".
+
+##### "redis_database_number" `[int]`
+- Redis-databasenummer. Standaard = 0. Opmerking: Kan geen andere waarden dan 0 gebruiken met Redis Cluster.
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN-waarde. Standaard = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -2300,4 +2304,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 27 November 2023 (2023.11.27).
+Laatste Bijgewerkt: 2 December 2023 (2023.12.02).

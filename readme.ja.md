@@ -291,6 +291,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       redis_host [string]
 │       redis_port [int]
 │       redis_timeout [float]
+│       redis_database_number [int]
 │       pdo_dsn [string]
 │       pdo_username [string]
 │       pdo_password [string]
@@ -1214,6 +1215,9 @@ exceptions
 
 ##### "redis_timeout" `[float]`
 - Redisのタイムアウト値。 Default/デフォルルト = 「2.5」。
+
+##### "redis_database_number" `[int]`
+- Redisのデータベース番号。 Default/デフォルルト = 0。 注：Redis Clusterでは、0 以外の値を使用できません。
 
 ##### "pdo_dsn" `[string]`
 - PDOのDSN値。 Default/デフォルルト = 「mysql:dbname=cidram;host=localhost;port=3306」。
@@ -2259,4 +2263,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２３年１１月２７日。
+最終アップデート：２０２３年１２月２日。
