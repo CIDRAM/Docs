@@ -2065,9 +2065,9 @@ O CIDRAM fornece um módulo opcional que aproveita essa API para verificar se o 
 
 O CIDRAM fornece um módulo opcional para bloquear endereços IP abusivos usando a API [AbuseIPDB](https://www.abuseipdb.com/). Quando o módulo é instalado e ativado, os endereços IP do usuário podem ser compartilhados com o serviço de acordo com a configuração e finalidade do módulo.
 
-##### 9.2.5 BGPVIEW
+##### 9.2.5 BGPVIEW, IP-API
 
-O CIDRAM fornece um módulo opcional para executar pesquisas de ASN e de código de país usando a API [BGPView](https://bgpview.io/). Essas pesquisas fornecem a capacidade de bloquear ou colocar na lista branca com base no ASN ou no país de origem. Quando o módulo é instalado e ativado, os endereços IP do usuário podem ser compartilhados com o serviço de acordo com a configuração e finalidade do módulo.
+O CIDRAM fornece módulos opcionais para executar pesquisas de ASN e de código de país usando a API [BGPView](https://bgpview.io/) e a API [IP-API](https://ip-api.com/). Essas pesquisas fornecem a capacidade de bloquear ou colocar na lista branca com base no ASN ou no país de origem. Quando um deles está instalado e ativado, os endereços IP do usuário podem ser compartilhados com o serviço de acordo com a configuração e finalidade do módulo.
 
 ##### 9.2.6 PROJECT HONEYPOT
 
@@ -2284,4 +2284,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 2 de Dezembro de 2023 (2023.12.02).
+Última Atualização: 28 de Janeiro de 2024 (2024.01.28).

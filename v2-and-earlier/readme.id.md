@@ -1785,9 +1785,9 @@ CIDRAM menyediakan modul opsional yang memanfaatkan API ini untuk memeriksa apak
 
 CIDRAM menyediakan modul opsional untuk memblokir alamat IP yang memiliki catatan penyalahgunaan oleh menggunakan API [AbuseIPDB](https://www.abuseipdb.com/). Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API AbuseIPDB sesuai dengan tujuan yang dimaksudkan dari modul.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan API BGPView sesuai dengan tujuan yang dimaksudkan dari modul.
+CIDRAM menyediakan modul opsional untuk melakukan pencarian ASN dan kode negara menggunakan API [BGPView](https://bgpview.io/) dan API [IP-API](https://ip-api.com/). Pencarian ini menyediakan kemampuan untuk memblokir atau memasukkan daftar putih berdasarkan ASN atau negara asal mereka. Modul ini tidak diinstal secara default, tetapi jika Anda memilih untuk menginstalnya, alamat IP pengguna dapat dibagikan dengan layanan sesuai dengan tujuan yang dimaksudkan dari modul.
 
 #### 11.3 PENCATATAN
 
@@ -1973,4 +1973,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 15 Desember 2023 (2023.12.15).
+Terakhir Diperbarui: 28 Januari 2024 (2024.01.28).

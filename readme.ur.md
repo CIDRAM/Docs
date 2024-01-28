@@ -32,9 +32,9 @@
 - <https://opensource.org/licenses/>.
 
 <div dir="rtl">یہ دستاویز اور اس کے متعلقہ پیکجوں کے لئے مفت سے ڈاؤن لوڈ کیا جا سکتا ہے:</div>
-- [GitHub](https://github.com/CIDRAM/CIDRAM).
-- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
+- <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
+- <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://sourceforge.net/projects/cidram/">SourceForge</a>.
 
 ---
 
@@ -2112,9 +2112,9 @@ modules: |
 
 <div dir="rtl"><a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a> API کا استعمال کرتے ہوئے بدسلوکی IP پتے کو بلاک کرنے کے لئے CIDRAM ایک اختیاری ماڈیول فراہم کرتا ہے. جب ماڈیول انسٹال اور چالو ہوجاتا ہے، صارف IP پتے کو خدمت کے ساتھ اشتراک کیا جا سکتا ہے، ماڈیول کی ترتیب اور مطلوبہ مقصد کے مطابق.<br /><br /></div>
 
-##### <div dir="rtl">۹.۲.۵ BGPVIEW<br /><br /></div>
+##### <div dir="rtl">۹.۲.۵ BGPVIEW, IP-API<br /><br /></div>
 
-<div dir="rtl"><a dir="ltr" href="https://bgpview.io/">BGPView</a> API کا استعمال کرتے ہوئے ASN اور ملکی کوڈ تلاش کرنے کیلئے CIDRAM ایک اختیاری ماڈیول فراہم کرتا ہے. یہ تلاشیں اپنے ASN یا ملک کے اصل کی بنیاد پر درخواستوں کو مسدود کرنے یا وائٹ لسٹ کرنے کی اہلیت فراہم کرتی ہیں. جب ماڈیول انسٹال اور چالو ہوجاتا ہے، صارف IP پتے کو خدمت کے ساتھ اشتراک کیا جا سکتا ہے، ماڈیول کی ترتیب اور مطلوبہ مقصد کے مطابق.<br /><br /></div>
+<div dir="rtl"><a dir="ltr" href="https://bgpview.io/">BGPView</a> API اور <a dir="ltr" href="https://ip-api.com/">IP-API</a> API کا استعمال کرتے ہوئے ASN اور ملکی کوڈ تلاش کرنے کیلئے CIDRAM لیے اختیاری ماڈیول فراہم کرتا ہے. یہ تلاشیں اپنے ASN یا ملک کے اصل کی بنیاد پر درخواستوں کو مسدود کرنے یا وائٹ لسٹ کرنے کی اہلیت فراہم کرتی ہیں. جب ماڈیول انسٹال اور چالو ہوجاتا ہے، صارف IP پتے کو خدمت کے ساتھ اشتراک کیا جا سکتا ہے، ماڈیول کی ترتیب اور مطلوبہ مقصد کے مطابق.<br /><br /></div>
 
 ##### <div dir="rtl">۹.۲.۶ PROJECT HONEYPOT<br /><br /></div>
 
@@ -2362,4 +2362,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲ دسمبر ۲۰۲۳ (۲۰۲۳.۱۲.۰۲).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۸ جنوری ۲۰۲۴ (۲۰۲۴.۰۱.۲۸).</div>

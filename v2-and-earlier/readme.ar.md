@@ -33,9 +33,9 @@
 - <https://opensource.org/licenses/>.
 
 <div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
-- [GitHub](https://github.com/CIDRAM/CIDRAM).
-- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
+- <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
+- <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://sourceforge.net/projects/cidram/">SourceForge</a>.
 
 ---
 
@@ -2040,9 +2040,9 @@ IP | المشغل
 
 <div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لحظر عناوين IP المسيئة باستخدام واجهة برمجة تطبيقات <a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a>. لم يتم تثبيت المكون النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات AbuseIPDB API وفقًا للغرض المقصود من المكون.<br /><br /></div>
 
-##### <div dir="rtl">١١.٢.٦ BGPVIEW<br /><br /></div>
+##### <div dir="rtl">١١.٢.٦ BGPVIEW, IP-API<br /><br /></div>
 
-<div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لإجراء عمليات البحث ASN ورمز البلد باستخدام API [BGPView](https://bgpview.io/). توفر عمليات البحث هذه القدرة على حظر أو إدراج طلبات القائمة البيضاء على أساس ASN أو بلد المنشأ. لم يتم تثبيت المكون النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع واجهة برمجة تطبيقات BGPView API وفقًا للغرض المقصود من المكون.<br /><br /></div>
+<div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لإجراء عمليات البحث ASN ورمز البلد باستخدام API <a dir="ltr" href="https://bgpview.io/">BGPView</a> وAPI <a dir="ltr" href="https://ip-api.com/">IP-API</a>. توفر عمليات البحث هذه القدرة على حظر أو إدراج طلبات القائمة البيضاء على أساس ASN أو بلد المنشأ. لم يتم تثبيت المكون النمطية بشكل افتراضي، ولكن إذا اخترت تثبيتها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع الخدمة وفقًا للغرض المقصود من المكون.<br /><br /></div>
 
 #### <div dir="rtl">١١.٣ تسجيل<br /><br /></div>
 
@@ -2261,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٥ مارس ٢٠٢٣ (٢٠٢٣.٠٣.٠٥).</div>
+<div dir="rtl">آخر تحديث: ٢٨ يناير ٢٠٢٤ (٢٠٢٤.٠١.٢٨).</div>

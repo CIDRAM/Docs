@@ -1783,11 +1783,11 @@ CIDRAM proporciona un módulo opcional que aprovecha esta API para verificar si 
 
 ##### 11.2.5 ABUSEIPDB
 
-CIDRAM proporciona un módulo opcional para bloquear direcciones IP abusivas utilizando la API de [AbuseIPDB](https://www.abuseipdb.com/). El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de AbuseIPDB de acuerdo con el propósito del módulo.
+CIDRAM proporciona módulos opcionales para bloquear direcciones IP abusivas utilizando la API de [AbuseIPDB](https://www.abuseipdb.com/). El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de AbuseIPDB de acuerdo con el propósito del módulo.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM proporciona un módulo opcional para realizar búsquedas de código de país y ASN utilizando la API de [BGPView](https://bgpview.io/). Estas búsquedas proporcionan la capacidad de bloquear o incluir en la lista blanca las solicitudes en función de su ASN o país de origen. El módulo no está instalado de manera predeterminada, pero si decide instalarlo, las direcciones IP del usuario se pueden compartir con la API de BGPView de acuerdo con el propósito del módulo.
+CIDRAM proporciona un módulo opcional para realizar búsquedas de código de país y ASN utilizando la API de [BGPView](https://bgpview.io/) y la API de [IP-API](https://ip-api.com/). Estas búsquedas proporcionan la capacidad de bloquear o incluir en la lista blanca las solicitudes en función de su ASN o país de origen. Los módulos no están instalados de manera predeterminada, pero si uno de ellos está instalado, las direcciones IP del usuario se pueden compartir con el servicio de acuerdo con el propósito del módulo.
 
 #### 11.3 REGISTRO DE DATOS
 
@@ -1980,4 +1980,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 5 de Marzo de 2023 (2023.03.05).
+Última Actualización: 28 de Enero de 2024 (2024.01.28).

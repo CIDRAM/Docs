@@ -1786,9 +1786,9 @@ CIDRAM fornisce un modulo opzionale che sfrutta questa API per verificare se l'i
 
 CIDRAM fornisce un modulo opzionale per bloccare indirizzi IP offensivi utilizzando l'API [AbuseIPDB](https://www.abuseipdb.com/). Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API AbuseIPDB in conformità con lo scopo previsto del modulo.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM fornisce un modulo opzionale per eseguire ricerche di ASN e codice paese utilizzando l'API [BGPView](https://bgpview.io/). Queste ricerche offrono la possibilità di bloccare o evitare di bloccare le richieste in base al loro ASN o paese di origine. Il modulo non è installato per impostazione predefinita, ma se si sceglie di installarlo, gli indirizzi IP dell'utente possono essere condivisi con l'API BGPView in conformità con lo scopo previsto del modulo.
+CIDRAM fornisce moduli opzionali per eseguire ricerche di ASN e codice paese utilizzando l'API [BGPView](https://bgpview.io/) e l'API [IP-API](https://ip-api.com/). Queste ricerche offrono la possibilità di bloccare o evitare di bloccare le richieste in base al loro ASN o paese di origine. I moduli non sono installati per impostazione predefinita, ma se si uno di essi è installato, gli indirizzi IP dell'utente possono essere condivisi con il servizio in conformità con lo scopo previsto del modulo.
 
 #### 11.3 REGISTRAZIONE
 
@@ -1976,4 +1976,4 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 ---
 
 
-Ultimo Aggiornamento: 3 Settembre 2023 (2023.09.03).
+Ultimo Aggiornamento: 28 Gennaio 2024 (2024.01.28).

@@ -1776,9 +1776,9 @@ CIDRAM은이 API를 활용하는 선택적 모듈을 제공합니다. 인바운�
 
 CIDRAM은 [AbuseIPDB](https://www.abuseipdb.com/) API를 사용하여 까다로운 IP 주소를 차단하는 모듈을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 AbuseIPDB API와 공유 할 수 있습니다.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM은 [BGPView](https://bgpview.io/) API를 사용하여 ASN 및 국가 코드 조회를 수행하는 선택적 모듈을 제공합니다. 이러한 조회는 ASN 또는 출신 국가를 기준으로 요청을 차단하거나 허용하는 기능을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 BGPView API와 공유 할 수 있습니다.
+CIDRAM은 [BGPView](https://bgpview.io/) API와 [IP-API](https://ip-api.com/) API를 사용하여 ASN 및 국가 코드 조회를 수행하는 선택적 모듈을 제공합니다. 이러한 조회는 ASN 또는 출신 국가를 기준으로 요청을 차단하거나 허용하는 기능을 제공합니다. 모듈은 기본적으로 설치되지 않습니다. 이를 설치하면 사용자 IP 주소를 BGPView API와 공유 할 수 있습니다.
 
 #### 11.3 로깅
 
@@ -1970,4 +1970,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2023년 3월 5일.
+최종 업데이트 : 2024년 1월 28일.

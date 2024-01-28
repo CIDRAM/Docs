@@ -1780,9 +1780,9 @@ CIDRAM cung cấp một mô-đun tùy chọn tận dụng API này để kiểm 
 
 ##### 11.2.5 ABUSEIPDB
 
-CIDRAM cung cấp một mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/). Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của AbuseIPDB theo đúng mục đích của mô-đun.
+CIDRAM cung cấp các mô-đun tùy chọn để chặn các địa chỉ IP lạm dụng bằng cách sử dụng API của [AbuseIPDB](https://www.abuseipdb.com/) và API của [IP-API](https://ip-api.com/). Các mô-đun không được cài đặt theo mặc định, nhưng nếu một trong số chúng được cài đặt, địa chỉ IP của người dùng có thể được chia sẻ với dịch vụ theo đúng mục đích của mô-đun.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
 CIDRAM cung cấp một mô-đun tùy chọn để thực hiện tra cứu ASN và mã quốc gia bằng API của [BGPView](https://bgpview.io/) API. Các tra cứu này cung cấp khả năng chặn hoặc danh sách trắng yêu cầu trên cơ sở ASN hoặc quốc gia xuất xứ của họ. Mô-đun không được cài đặt theo mặc định, nhưng nếu bạn chọn cài đặt nó, địa chỉ IP của người dùng có thể được chia sẻ với API của BGPView theo đúng mục đích của mô-đun.
 
@@ -1970,4 +1970,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2023.04.06.
+Lần cuối cập nhật: 2024.01.28.

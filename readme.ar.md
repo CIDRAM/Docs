@@ -32,9 +32,9 @@
 - <https://opensource.org/licenses/>.
 
 <div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
-- [GitHub](https://github.com/CIDRAM/CIDRAM).
-- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
+- <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
+- <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://sourceforge.net/projects/cidram/">SourceForge</a>.
 
 ---
 
@@ -2102,9 +2102,9 @@ modules: |
 
 <div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لحظر عناوين IP المسيئة باستخدام واجهة برمجة تطبيقات <a dir="ltr" href="https://www.abuseipdb.com/">AbuseIPDB</a>. عندما يتم تثبيت الوحدة وتنشيطها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع الخدمة وفقًا للتكوين والغرض المقصود من الوحدة.<br /><br /></div>
 
-##### <div dir="rtl">٩.٢.٥ BGPVIEW<br /><br /></div>
+##### <div dir="rtl">٩.٢.٥ BGPVIEW, IP-API<br /><br /></div>
 
-<div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لإجراء عمليات البحث ASN ورمز البلد باستخدام API [BGPView](https://bgpview.io/). توفر عمليات البحث هذه القدرة على حظر أو إدراج طلبات القائمة البيضاء على أساس ASN أو بلد المنشأ. عندما يتم تثبيت الوحدة وتنشيطها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع الخدمة وفقًا للتكوين والغرض المقصود من الوحدة.<br /><br /></div>
+<div dir="rtl">يوفر CIDRAM المكون نمطية اختيارية لإجراء عمليات البحث ASN ورمز البلد باستخدام API <a dir="ltr" href="https://bgpview.io/">BGPView</a> وAPI <a dir="ltr" href="https://ip-api.com/">IP-API</a>. توفر عمليات البحث هذه القدرة على حظر أو إدراج طلبات القائمة البيضاء على أساس ASN أو بلد المنشأ. عندما يتم تثبيت الوحدة وتنشيطها، فقد تتم مشاركة عناوين IP الخاصة بالمستخدمين مع الخدمة وفقًا للتكوين والغرض المقصود من الوحدة.<br /><br /></div>
 
 ##### <div dir="rtl">٩.٢.٦ PROJECT HONEYPOT<br /><br /></div>
 
@@ -2352,4 +2352,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢ ديسمبر ٢٠٢٣ (٢٠٢٣.١٢.٠٢).</div>
+<div dir="rtl">آخر تحديث: ٢٨ يناير ٢٠٢٤ (٢٠٢٤.٠١.٢٨).</div>

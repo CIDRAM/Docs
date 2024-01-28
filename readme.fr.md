@@ -2075,9 +2075,9 @@ CIDRAM fournit un module facultatif qui exploite cette API pour vérifier si l'a
 
 CIDRAM fournit un module optionnel permettant de bloquer les adresses IP abusives à l'aide de l'API [AbuseIPDB](https://www.abuseipdb.com/). Lorsque le module est installé et activé, les adresses IP des utilisateurs peuvent être partagés avec le service conformément à la configuration et à l'usage prévu du module.
 
-##### 9.2.5 BGPVIEW
+##### 9.2.5 BGPVIEW, IP-API
 
-CIDRAM fournit un module facultatif pour effectuer des recherches de ASN et de code de pays à l'aide de l'API [BGPView](https://bgpview.io/). Ces recherches permettent de bloquer ou de mettre en liste blanche les requêtes en fonction de leur ASN ou de leur pays d'origine. Lorsque le module est installé et activé, les adresses IP des utilisateurs peuvent être partagés avec le service conformément à la configuration et à l'usage prévu du module.
+CIDRAM fournit des modules optionnels pour effectuer des recherches de ASN et de code de pays à l'aide de l'API [BGPView](https://bgpview.io/) et l'API [IP-API](https://ip-api.com/). Ces recherches permettent de bloquer ou de mettre en liste blanche les requêtes en fonction de leur ASN ou de leur pays d'origine. Lorsque l'un d'eux est installé et activé, les adresses IP des utilisateurs peuvent être partagés avec le service conformément à la configuration et à l'usage prévu du module.
 
 ##### 9.2.6 PROJECT HONEYPOT
 
@@ -2298,4 +2298,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 2 Décembre 2023 (2023.12.02).
+Dernière mise à jour : 28 Janvier 2024 (2024.01.28).

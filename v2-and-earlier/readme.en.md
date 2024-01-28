@@ -1793,9 +1793,9 @@ CIDRAM provides an optional module that leverages this API to check whether the 
 
 CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the AbuseIPDB API in accordance with the intended purpose of the module.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. The module is not installed by default, but if you choose to install it, user IP addresses may be shared with the BGPView API in accordance with the intended purpose of the module.
+CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. The modules are not installed by default, but if you choose to install one of them, user IP addresses may be shared with the service in accordance with the intended purpose of the module.
 
 #### 11.3 LOGGING
 
@@ -1991,4 +1991,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 5 March 2023 (2023.03.05).
+Last Updated: 28 January 2024 (2024.01.28).

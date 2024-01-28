@@ -1792,9 +1792,9 @@ CIDRAM bietet ein optionales Modul, das diese API nutzt, um zu prüfen, ob die I
 
 CIDRAM bietet ein optionales Modul zum Blockieren missbräuchlicher IP-Adressen mithilfe der [AbuseIPDB](https://www.abuseipdb.com/) API. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der AbuseIPDB API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM bietet ein optionales Modul für die Suche nach ASNs und Ländercodes mithilfe der [BGPView](https://bgpview.io/)-API. Diese Suchvorgänge bieten die Möglichkeit, Anfragen auf der Grundlage ihres ASNs oder ihres Herkunftslandes zu blockieren oder auf die Whitelist zu setzen. Das Modul wird nicht standardmäßig installiert, aber wenn Sie es installieren, können Benutzer-IP-Adressen mit der BGPView API in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
+CIDRAM bietet optionale Module für die Suche nach ASNs und Ländercodes mithilfe der [BGPView](https://bgpview.io/)-API und der [IP-API](https://ip-api.com/)-API. Diese Suchvorgänge bieten die Möglichkeit, Anfragen auf der Grundlage ihres ASNs oder ihres Herkunftslandes zu blockieren oder auf die Whitelist zu setzen. Das Modul wird nicht standardmäßig installiert, aber wenn Sie eines der Module installieren, können Benutzer-IP-Adressen mit dem Dienst in Übereinstimmung mit dem beabsichtigten Zweck des Moduls geteilt werden.
 
 #### 11.3 PROTOKOLLIERUNG
 
@@ -1990,4 +1990,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 5. März 2023 (2023.03.05).
+Zuletzt aktualisiert: 28. Januar 2024 (2024.01.28).

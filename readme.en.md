@@ -2058,9 +2058,9 @@ CIDRAM provides an optional module that leverages this API to check whether the 
 
 CIDRAM provides an optional module to block abusive IP addresses using the [AbuseIPDB](https://www.abuseipdb.com/) API. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
 
-##### 9.2.5 BGPVIEW
+##### 9.2.5 BGPVIEW, IP-API
 
-CIDRAM provides an optional module to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. When the module is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
+CIDRAM provides optional modules to perform ASN and country code lookups using the [BGPView](https://bgpview.io/) API and the [IP-API](https://ip-api.com/) API. These lookups provide the ability to block or whitelist requests on the basis of their ASN or country of origin. When one of the modules is installed and activated, user IP addresses may be shared with the service in accordance with the configuration and the intended purpose of the module.
 
 ##### 9.2.6 PROJECT HONEYPOT
 
@@ -2285,4 +2285,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 2 December 2023 (2023.12.02).
+Last Updated: 28 January 2024 (2024.01.28).

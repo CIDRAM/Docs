@@ -1794,9 +1794,9 @@ CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controlere
 
 CIDRAM biedt een optionele module om misbruik van IP-adressen te blokkeren met behulp van de [AbuseIPDB](https://www.abuseipdb.com/) API. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de AbuseIPDB API in overeenstemming met het beoogde doel van de module.
 
-##### 11.2.6 BGPVIEW
+##### 11.2.6 BGPVIEW, IP-API
 
-CIDRAM biedt een optionele module voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de BGPView API in overeenstemming met het beoogde doel van de module.
+CIDRAM biedt optionele modules voor het uitvoeren van ASN en landcode zoekopdrachten met behulp van de [BGPView](https://bgpview.io/) API en de [IP-API](https://ip-api.com/) API. Deze zoekopdrachten bieden de mogelijkheid om verzoeken te blokkeren of op de witte lijst te zetten op basis van hun ASN of land van herkomst. De modules zijn niet standaard geïnstalleerd, maar als een van deze is geïnstalleerd, kunnen de gebruikers IP-adressen worden gedeeld met de service in overeenstemming met het beoogde doel van de module.
 
 #### 11.3 LOGGEN
 
@@ -1990,4 +1990,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 3 September 2023 (2023.09.03).
+Laatste Bijgewerkt: 28 Januari 2024 (2024.01.28).
