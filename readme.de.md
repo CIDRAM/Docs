@@ -197,6 +197,8 @@ Konfiguration (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -532,6 +534,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -540,8 +544,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -557,6 +564,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -718,6 +726,12 @@ disabled_channels
 
 ##### „sensitive“ `[string]`
 - Eine Liste von Pfaden die als vertrauliche Seiten betrachtet werden sollen. Jeder aufgelistete Pfad wird bei Bedarf mit dem rekonstruierten URI verglichen. Ein Pfad, der mit einem Schrägstrich beginnt, wird als Literal behandelt und ab der Pfadkomponente der Anforderung abgeglichen. Andernfalls wird ein Pfad, der mit einem nicht alphanumerischen Zeichen beginnt, und mit demselben Zeichen (oder demselben Zeichen plus einem optionalen „i“-Flag) endet, als regulärer Ausdruck behandelt. Jede andere Art von Pfad wird als Literal behandelt, und kann mit jedem Teil des URI abgeglichen. Ob ein Pfad als sensible Seite betrachtet wird, kann sich auf das Verhalten einiger Module auswirken, aber hat ansonsten keine Auswirkungen.
+
+##### „email_notification_address“ `[string]`
+- Wenn Sie Benachrichtigungen von CIDRAM per E-Mail wünschen, z.B., wenn bestimmte Hilfsregeln ausgelöst werden, hier können Sie die Empfängeradresse für diese Benachrichtigungen angeben.
+
+##### „email_notification_name“ `[string]`
+- Wenn Sie Benachrichtigungen von CIDRAM per E-Mail wünschen, z.B., wenn bestimmte Hilfsregeln ausgelöst werden, hier können Sie den Empfängernamen für diese Benachrichtigungen angeben.
 
 #### „components“ (Kategorie)
 Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Komponenten. Wird normalerweise von der Update-Seite ausgefüllt, aber kann auch von hier aus verwaltet werden, um eine genauere Kontrolle zu haben und für benutzerdefinierte Komponenten die von der Update-Seite nicht erkannt werden.
@@ -2302,4 +2316,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 28. Januar 2024 (2024.01.28).
+Zuletzt aktualisiert: 21. April 2024 (2024.04.21).

@@ -197,6 +197,8 @@ Configuração (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -531,6 +533,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -539,8 +543,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -556,6 +563,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -620,7 +628,7 @@ numbers
 ```
 
 ##### "emailaddr" `[string]`
-- Se você desejar, você pode fornecer um endereço de e-mail aqui a ser dado para os usuários quando eles estão bloqueadas, para eles para usar como um ponto de contato para suporte e/ou assistência no caso de eles sendo bloqueado por engano ou em erro. AVISO: Qualquer endereço de e-mail que você fornecer aqui certamente vai ser adquirido por spambots e raspadores/scrapers durante o curso de seu ser usada aqui, e assim, é fortemente recomendado que, se você optar por fornecer um endereço de e-mail aqui, que você garantir que o endereço de email você fornecer aqui é um endereço descartável e/ou um endereço que você não é importante (em outras palavras, você provavelmente não quer usar seu pessoal principal ou negócio principal endereço de e-mail).
+- Se você desejar, você pode fornecer um endereço de e-mail aqui a ser dado para os usuários quando eles estão bloqueadas, para eles para usar como um ponto de contato para suporte e/ou assistência no caso de eles sendo bloqueado por engano ou em erro. AVISO: Qualquer endereço de e-mail que você fornecer aqui certamente vai ser adquirido por spambots e raspadores/scrapers durante o curso de seu ser usada aqui, e assim, é fortemente recomendado que, se você optar por fornecer um endereço de e-mail aqui, que você garantir que o endereço de e-mail você fornecer aqui é um endereço descartável e/ou um endereço que você não é importante (em outras palavras, você provavelmente não quer usar seu pessoal principal ou negócio principal endereço de e-mail).
 
 ##### "emailaddr_display_style" `[string]`
 - Como você prefere que o endereço de e-mail seja apresentado aos usuários?
@@ -716,6 +724,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - Uma lista de caminhos a serem considerados como páginas confidenciais. Cada caminho listado será verificado em relação ao URI reconstruído quando necessário. Um caminho que começa com uma barra será tratado como um literal, e correspondido a partir do componente de caminho da solicitação em diante. Como alternativa, um caminho que começa com um caractere não alfanumérico, e termina com o mesmo caractere (ou o mesmo caractere mais um sinalizador "i" opcional) será tratado como uma expressão regular. Qualquer outro tipo de caminho será tratado como um literal, e pode corresponder a qualquer parte do URI. O fato de um caminho ser considerado uma página confidencial pode afetar o comportamento de alguns módulos, mas não tem nenhum efeito de outra forma.
+
+##### "email_notification_address" `[string]`
+- Se você optou por receber notificações do CIDRAM por e-mail, por exemplo, quando regras auxiliares específicas são desencadeadas, você pode especificar o endereço do destinatário dessas notificações aqui.
+
+##### "email_notification_name" `[string]`
+- Se você optou por receber notificações do CIDRAM por e-mail, por exemplo, quando regras auxiliares específicas são desencadeadas, você pode especificar o nome do destinatário dessas notificações aqui.
 
 #### "components" (Categoria)
 Configuração para ativação e desativação dos componentes utilizados pelo CIDRAM. Normalmente preenchido pela página de atualizações, mas também pode ser gerenciado aqui para um controle mais preciso e para componentes personalizados não reconhecidos pela página de atualizações.
@@ -2284,4 +2298,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 28 de Janeiro de 2024 (2024.01.28).
+Última Atualização: 21 de Abril de 2024 (2024.04.21).

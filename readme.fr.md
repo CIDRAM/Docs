@@ -197,6 +197,8 @@ Configuration (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -532,6 +534,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -540,8 +544,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -557,6 +564,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -718,6 +726,12 @@ disabled_channels
 
 ##### « sensitive » `[string]`
 - Une liste de chemins à considérer comme des pages sensibles. Chaque chemin listé sera vérifié par rapport à l'URI reconstruit si nécessaire. Un chemin qui commence par une barre oblique sera traité comme un littéral, et mis en correspondance à partir du composant de chemin de la requête. Sinon, un chemin qui commence par un caractère non alphanumérique, et se termine par ce même caractère (ou ce même caractère plus un indicateur « i » facultatif) sera traité comme une expression régulière. Tout autre type de chemin sera traité comme un littéral, et peut correspondre à partir de n'importe quelle partie de l'URI. Le fait qu'un chemin soit considéré comme une page sensible peut affecter le comportement de certains modules, mais n'a aucun effet autrement.
+
+##### « email_notification_address » `[string]`
+- Si vous avez choisi de recevoir des notifications de CIDRAM par e-mail, par exemple, lorsque des règles auxiliaires spécifiques sont déclenchées, vous pouvez spécifier ici l'adresse du destinataire de ces notifications.
+
+##### « email_notification_name » `[string]`
+- Si vous avez choisi de recevoir des notifications de CIDRAM par e-mail, par exemple, lorsque des règles auxiliaires spécifiques sont déclenchées, vous pouvez spécifier ici le nom du destinataire de ces notifications.
 
 #### « components » (Catégorie)
 Configuration pour l'activation et la désactivation des composants utilisés par le CIDRAM. Généralement rempli par la page des mises à jour, mais peut également être géré à partir d'ici pour un contrôle plus précis et pour les composants personnalisés non reconnus par la page des mises à jour.
@@ -2298,4 +2312,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 28 Janvier 2024 (2024.01.28).
+Dernière mise à jour : 21 Avril 2024 (2024.04.21).

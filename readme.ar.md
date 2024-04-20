@@ -203,6 +203,8 @@ $CIDRAM->view();
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -547,6 +549,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -555,8 +559,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -572,6 +579,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -737,6 +745,12 @@ disabled_channels
 
 ##### <div dir="rtl">"sensitive" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة المسارات التي يجب اعتبارها صفحات حساسة. ستتم مقارنة كل مسار مدرج مع URI المعاد بناؤه عند الحاجة. سيتم التعامل مع المسار الذي يبدأ بشرطة مائلة للأمام على أنه حرفي، ويتم مطابقته من مكون المسار للطلب فصاعدًا. سيتم التعامل مع المسار الذي يبدأ بحرف غير أبجدي رقمي وينتهي بنفس الحرف (أو نفس الحرف بالإضافة إلى علامة اختيارية "i") كتعبير عادي. سيتم التعامل مع أي نوع آخر من المسارات على أنه حرفي، ويمكن أن يتطابق مع أي جزء من URI. قد يؤثر المسار الذي يتم اعتباره صفحة حساسة على كيفية تصرف بعض الوحدات، ولكن ليس له أي تأثير آخر.</li></ul></div>
+
+##### <div dir="rtl">"email_notification_address" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>إذا اخترت تلقي الإشعارات من CIDRAM عبر البريد الإلكتروني، على سبيل المثال، عند تفعيل قواعد مساعدة محددة، يمكنك تحديد عنوان المستلم لهذه الإشعارات هنا.</li></ul></div>
+
+##### <div dir="rtl">"email_notification_name" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>إذا اخترت تلقي الإشعارات من CIDRAM عبر البريد الإلكتروني، على سبيل المثال، عند تفعيل قواعد مساعدة محددة، يمكنك تحديد اسم المستلم لتلك الإشعارات هنا.</li></ul></div>
 
 #### <div dir="rtl">"components" (التصنيف)<br /></div>
 <div dir="rtl">التكوين لتنشيط وتعطيل المكونات المستخدمة من قبل CIDRAM. عادةً ما يتم ملؤها بواسطة صفحة التحديثات، ولكن يمكن أيضًا إدارتها من هنا لتحكم أفضل وللمكونات المخصصة التي لا تتعرف عليها صفحة التحديثات.<br /><br /></div>
@@ -2352,4 +2366,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٨ يناير ٢٠٢٤ (٢٠٢٤.٠١.٢٨).</div>
+<div dir="rtl">آخر تحديث: ٢١ أبريل ٢٠٢٤ (٢٠٢٤.٠٤.٢١).</div>

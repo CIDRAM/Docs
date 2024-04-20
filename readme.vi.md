@@ -197,6 +197,8 @@ Cấu hình (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -540,6 +542,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -548,8 +552,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -565,6 +572,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -730,6 +738,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - Một danh sách các đường dẫn được coi là các trang nhạy cảm. Mỗi đường dẫn được liệt kê sẽ, khi cần, được kiểm tra dựa trên URI được xây dựng lại. Một đường dẫn bắt đầu bằng dấu gạch chéo lên phía trước sẽ được coi là một nghĩa đen, và được so khớp từ thành phần đường dẫn của yêu cầu trở đi. Mặt khác, một đường dẫn bắt đầu bằng một ký tự không phải chữ và số, và kết thúc bằng cùng ký tự đó (hoặc cùng ký tự đó cộng với "i") sẽ được coi là biểu thức chính quy. Bất kỳ loại đường dẫn nào khác sẽ được coi là theo nghĩa đen, và có thể khớp từ bất kỳ phần nào của URI. Việc một đường dẫn có được coi là một trang nhạy cảm hay không có thể ảnh hưởng đến cách một số mô-đun hoạt động, nhưng không có bất kỳ ảnh hưởng nào khác.
+
+##### "email_notification_address" `[string]`
+- Nếu bạn đã chọn nhận thông báo từ CIDRAM qua email, ví dụ, khi các quy tắc phụ trợ cụ thể được kích hoạt, bạn có thể chỉ định địa chỉ người nhận cho những thông báo đó tại đây.
+
+##### "email_notification_name" `[string]`
+- Nếu bạn đã chọn nhận thông báo từ CIDRAM qua email, ví dụ, khi các quy tắc phụ trợ cụ thể được kích hoạt, bạn có thể chỉ định tên người nhận cho những thông báo đó tại đây.
 
 #### "components" (Thể loại)
 Cấu hình để kích hoạt và vô hiệu hóa các thành phần được sử dụng bởi CIDRAM. Thường được điền bởi trang cập nhật, nhưng cũng có thể được quản lý từ đây để kiểm soát tốt hơn và cho các thành phần tùy chỉnh không được công nhận bởi trang cập nhật.
@@ -2298,4 +2312,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2024.01.28.
+Lần cuối cập nhật: 2024.04.21.

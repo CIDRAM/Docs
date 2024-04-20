@@ -197,6 +197,8 @@ $CIDRAM->view();
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -513,6 +515,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -521,8 +525,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -538,6 +545,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -688,6 +696,12 @@ disabled_channels
 
 ##### “sensitive” `[string]`
 - 视为敏感页面的路径列表。​需要时，将根据重建的URI检查列出的每个路径。​以正斜杠开头的路径将被视为文字，并从请求的路径部分开始匹配。​否则，以非字母数字字符开头并以相同字符（或相同字符加上可选的“i”标志）结束的路径将被视为正则表达式。​任何其他类型的路径都将被视为文字，并且可以匹配URI的任何部分。​被视为敏感页面的路径可能会影响某些模块的行为方式，但不会产生任何其他影响。
+
+##### “email_notification_address” `[string]`
+- 如果您选择通过电子邮件接收CIDRAM的通知，例如，当特定的辅助规则被触发时，您可以在此处指定这些通知的收件人地址。
+
+##### “email_notification_name” `[string]`
+- 如果您选择通过电子邮件接收CIDRAM的通知，例如，当特定的辅助规则被触发时，您可以在此处指定这些通知的收件人姓名。
 
 #### “components” （类别）
 CIDRAM使用的组件的启用和停用的配置。​通常由更新页面填充，但也可以从此处进行管理，以实现更好的控制以及更新页面无法识别的自定义组件。
@@ -2240,4 +2254,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2024年1月28日。
+最后更新：2024年4月21日。

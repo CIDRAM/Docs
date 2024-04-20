@@ -197,6 +197,8 @@ Configuratie (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -533,6 +535,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -541,8 +545,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -558,6 +565,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -720,6 +728,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - Een lijst met paden die als gevoelige pagina's moeten worden beschouwd. Elk vermeld pad wordt indien nodig gecontroleerd aan de hand van de gereconstrueerde URI. Een pad dat begint met een schuine streep naar voren wordt behandeld als een letterlijke waarde en wordt gematcht vanaf de padcomponent van het verzoek. Anders wordt een pad dat begint met een niet-alfanumeriek teken en eindigt met datzelfde teken (of datzelfde teken plus een optionele "i"-vlag) behandeld als een reguliere expressie. Elk ander pad wordt behandeld als een letterlijk pad en kan overeenkomen met elk deel van de URI. Of een pad als een gevoelige pagina wordt beschouwd, kan van invloed zijn op het gedrag van sommige modules, maar heeft verder geen effect.
+
+##### "email_notification_address" `[string]`
+- Als u ervoor heeft gekozen om meldingen van CIDRAM via e-mail te ontvangen, b.v., wanneer specifieke aanvullende regels worden geactiveerd, u kunt hier het adres van de ontvanger voor deze meldingen opgeven.
+
+##### "email_notification_name" `[string]`
+- Als u ervoor heeft gekozen om meldingen van CIDRAM via e-mail te ontvangen, b.v., wanneer specifieke aanvullende regels worden geactiveerd, u kunt hier de naam van de ontvanger voor die meldingen opgeven.
 
 #### "components" (Categorie)
 Configuratie voor het activeren en het deactiveren van de door CIDRAM gebruikte componenten. Meestal gevuld door de updates-pagina, maar kan ook vanaf hier worden beheerd voor fijnere controle en voor aangepaste componenten die niet worden herkend door de updates-pagina.
@@ -2304,4 +2318,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 28 Januari 2024 (2024.01.28).
+Laatste Bijgewerkt: 21 April 2024 (2024.04.21).

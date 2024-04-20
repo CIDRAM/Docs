@@ -197,6 +197,8 @@ Konfigurasi (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -532,6 +534,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -540,8 +544,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -557,6 +564,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -718,6 +726,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - Daftar jalur yang dianggap sebagai halaman sensitif. Setiap jalur yang terdaftar akan diperiksa terhadap URI yang direkonstruksi bila diperlukan. Jalur yang dimulai dengan garis miring ke depan akan diperlakukan sebagai literal, dan dicocokkan dari komponen jalur permintaan selanjutnya. Jika tidak, jalur yang dimulai dengan karakter non-alfanumerik, dan diakhiri dengan karakter yang sama (atau karakter yang sama ditambah tanda "i" opsional) akan diperlakukan sebagai ekspresi reguler. Jenis jalur lain apapun akan diperlakukan sebagai literal, dan dapat dicocokkan dari bagian manapun dari URI. Apakah jalur dianggap sebagai halaman sensitif dapat memengaruhi perilaku beberapa modul, tetapi sebaliknya tidak berpengaruh apapun.
+
+##### "email_notification_address" `[string]`
+- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan alamat penerima notifikasi tersebut disini.
+
+##### "email_notification_name" `[string]`
+- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan nama penerima notifikasi tersebut disini.
 
 #### "components" (Kategori)
 Konfigurasi untuk pengaktifan dan penonaktifan komponen yang digunakan oleh CIDRAM. Biasanya diisi oleh halaman pembaruan, tetapi juga dapat dikelola dari sini untuk kontrol yang lebih baik dan untuk komponen dipersonalisasi yang tidak dikenali oleh halaman pembaruan.
@@ -2283,4 +2297,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 28 Januari 2024 (2024.01.28).
+Terakhir Diperbarui: 21 April 2024 (2024.04.21).

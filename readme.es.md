@@ -197,6 +197,8 @@ Configuración (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -316,7 +318,7 @@ stages
 ├─Tracking ("Ejecutar seguimiento de IP")
 ├─RL ("Ejecutar la limitación de tasa")
 ├─CAPTCHA ("Desplegar CAPTCHAs (solicitudes bloqueadas)")
-├─Reporting ("Ejecutar informes")
+├─Reporting ("Ejecutar reportes")
 ├─Statistics ("Actualizar estadísticas")
 ├─Webhooks ("Ejecutar webhooks")
 ├─PrepareFields ("Preparar campos para salida y registros")
@@ -533,6 +535,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -541,8 +545,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -558,6 +565,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -721,6 +729,12 @@ disabled_channels
 ##### "sensitive" `[string]`
 - Una lista de rutas para considerar como páginas confidenciales. Cada ruta listada se comparará con el URI reconstruido cuando sea necesario. Una ruta que comienza con una barra inclinada se tratará como un literal, y se comparará desde el componente de ruta de la solicitud en adelante. Alternativamente, una ruta que comienza con un carácter no alfanumérico, y termina con ese mismo carácter (o ese mismo carácter más un indicador "i" opcional) se tratará como una expresión regular. Cualquier otro tipo de ruta se tratará como un literal, y puede coincidir con cualquier parte del URI. Si una ruta se considera una página confidencial puede afectar el comportamiento de algunos módulos, pero no tiene ningún efecto en otros casos.
 
+##### "email_notification_address" `[string]`
+- Si ha optado por recibir notificaciones del CIDRAM por correo electrónico, por ejemplo, cuando se activan reglas auxiliares específicas, puede especificar la dirección del destinatario de esas notificaciones aquí.
+
+##### "email_notification_name" `[string]`
+- Si ha optado por recibir notificaciones del CIDRAM por correo electrónico, por ejemplo, cuando se activan reglas auxiliares específicas, puede especificar el nombre del destinatario de esas notificaciones aquí.
+
 #### "components" (Categoría)
 Configuración para la activación y la desactivación de los componentes utilizados por CIDRAM. Normalmente se administra desde la página de actualizaciones, pero también se puede administrar desde aquí para un control más preciso y para los componentes personalizados que la página de actualizaciones no reconoce.
 
@@ -758,7 +772,7 @@ Configuración relacionada con el registro (excluyendo lo que es aplicable a otr
 - Un archivo para registrar los resultados de cualquier solicitud saliente. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
 ##### "report_log" `[string]`
-- Un archivo para registrar cualquier informe enviado a las API externas. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+- Un archivo para registrar cualquier reportes enviados a las API externas. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
 ##### "truncate" `[string]`
 - ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predeterminado de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
@@ -2294,4 +2308,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 28 de Enero de 2024 (2024.01.28).
+Última Actualización: 21 de Abril de 2024 (2024.04.21).

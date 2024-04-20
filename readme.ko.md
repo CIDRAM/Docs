@@ -197,6 +197,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -529,6 +531,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -537,8 +541,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -554,6 +561,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -716,6 +724,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - 민감한 페이지로 간주할 경로 목록입니다. 나열된 각 경로는 필요할 때 재구성된 URI에 관해 확인됩니다. 슬래시로 시작하는 경로는 리터럴로 처리되며 요청의 경로 구성 요소부터 일치합니다. 영숫자가 아닌 문자로 시작하고 동일한 문자(또는 동일한 문자와 선택적 "i" 플래그)로 끝나는 경로는 정규식으로 처리됩니다. 다른 종류의 경로는 리터럴로 취급되며 URI의 모든 부분에서 일치할 수 있습니다. 경로가 민감한 페이지로 간주하는지 여부는 일부 모듈의 작동 방식에 영향을 미칠 수 있지만 다른 것에는 영향을 미치지 않습니다.
+
+##### "email_notification_address" `[string]`
+- 이메일을 통해 CIDRAM으로부터 알림을 받기로 선택한 경우, 예를 들어 특정 보조 규칙이 트리거되는 경우, 여기서 해당 알림의 수신자 주소를 지정할 수 있습니다.
+
+##### "email_notification_name" `[string]`
+- 이메일을 통해 CIDRAM으로부터 알림을 받기로 선택한 경우, 예를 들어 특정 보조 규칙이 트리거되는 경우, 여기서 해당 알림의 수신자 이름을 지정할 수 있습니다.
 
 #### "components" (카테고리)
 CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위한 구성입니다. 일반적으로 업데이트 페이지에 의해 채워지지만, 세부 제어 및 업데이트 페이지에서 인식하지 못하는 사용자 지정 구성 요소를 위해 여기에서 관리할 수도 있습니다.
@@ -2280,4 +2294,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2024년 1월 28일.
+최종 업데이트 : 2024년 4월 21일.

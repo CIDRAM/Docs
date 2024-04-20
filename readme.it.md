@@ -197,6 +197,8 @@ Configurazione (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -316,7 +318,7 @@ stages
 ├─Tracking ("Esegui il tracciamento IP")
 ├─RL ("Esegui la limitazione della velocità")
 ├─CAPTCHA ("Presenta i CAPTCHA (richieste bloccate)")
-├─Reporting ("Esegui segnalazione")
+├─Reporting ("Esegui rapporti")
 ├─Statistics ("Aggiorna le statistiche")
 ├─Webhooks ("Esegui webhook")
 ├─PrepareFields ("Preparare i campi per l'output e i registri")
@@ -532,6 +534,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -540,8 +544,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -557,6 +564,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -687,10 +695,10 @@ statistics
 ├─Passed-Other ("Richieste accettate – Altro")
 ├─CAPTCHAs-Failed ("Tentativi di CAPTCHA – Fallito!")
 ├─CAPTCHAs-Passed ("Tentativi di CAPTCHA – Successo!")
-├─Reported-IPv4-OK ("Richieste segnalate ad API esterne – IPv4 – OK")
-├─Reported-IPv4-Failed ("Richieste segnalate ad API esterne – IPv4 – Fallito")
-├─Reported-IPv6-OK ("Richieste segnalate ad API esterne – IPv6 – OK")
-└─Reported-IPv6-Failed ("Richieste segnalate ad API esterne – IPv6 – Fallito")
+├─Reported-IPv4-OK ("Richieste rapportate ad API esterne – IPv4 – OK")
+├─Reported-IPv4-Failed ("Richieste rapportate ad API esterne – IPv4 – Fallito")
+├─Reported-IPv6-OK ("Richieste rapportate ad API esterne – IPv6 – OK")
+└─Reported-IPv6-Failed ("Richieste rapportate ad API esterne – IPv6 – Fallito")
 ```
 
 Nota: È possibile controllare se tenere traccia delle statistiche per le regole ausiliarie dalla pagina delle regole ausiliarie.
@@ -718,6 +726,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - Un elenco di percorsi da considerare come pagine sensibili. Ogni percorso elencato verrà confrontato con l'URI ricostruito quando necessario. Un percorso che inizia con una barra verrà trattato come letterale, e confrontato dal componente del percorso della richiesta in poi. In alternativa, un percorso che inizia con un carattere non alfanumerico, e termina con lo stesso carattere (o lo stesso carattere più un flag "i" facoltativo) verrà trattato come un'espressione regolare. Qualsiasi altro tipo di percorso verrà trattato come letterale, e può corrispondere a qualsiasi parte dell'URI. Il fatto che un percorso sia considerato una pagina sensibile può influire sul comportamento di alcuni moduli, ma non ha alcun effetto in altri casi.
+
+##### "email_notification_address" `[string]`
+- Se hai scelto di ricevere notifiche da CIDRAM via la posta elettronica, ad esempio, quando vengono innescate regole ausiliarie specifiche, puoi specificare l'indirizzo del destinatario per tali notifiche qui.
+
+##### "email_notification_name" `[string]`
+- Se hai scelto di ricevere notifiche da CIDRAM via la posta elettronica, ad esempio, quando vengono innescate regole ausiliarie specifiche, puoi specificare il nome del destinatario per tali notifiche qui.
 
 #### "components" (Categoria)
 Configurazione per l'attivazione e la disattivazione dei componenti utilizzati da CIDRAM. Tipicamente popolato dalla pagina degli aggiornamenti, ma può anche essere gestito da qui per un controllo più accurato e per componenti personalizzati non riconosciuti dalla pagina degli aggiornamenti.
@@ -2288,4 +2302,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 28 Gennaio 2024 (2024.01.28).
+Ultimo Aggiornamento: 21 Aprile 2024 (2024.04.21).

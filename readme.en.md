@@ -197,6 +197,8 @@ Configuration (v3)
 │       disabled_channels [string]
 │       default_timeout [int]
 │       sensitive [string]
+│       email_notification_address [string]
+│       email_notification_name [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -530,6 +532,8 @@ lang
 ├─ar ("العربية")
 ├─bg ("Български")
 ├─bn ("বাংলা")
+├─bs ("Bosanski")
+├─ca ("Català")
 ├─cs ("Čeština")
 ├─de ("Deutsch")
 ├─en ("English (AU/GB/NZ)")
@@ -538,8 +542,11 @@ lang
 ├─es ("Español")
 ├─fa ("فارسی")
 ├─fr ("Français")
+├─gl ("Galego")
+├─gu ("ગુજરાતી")
 ├─he ("עברית")
 ├─hi ("हिंदी")
+├─hr ("Hrvatski")
 ├─id ("Bahasa Indonesia")
 ├─it ("Italiano")
 ├─ja ("日本語")
@@ -555,6 +562,7 @@ lang
 ├─ro ("Română")
 ├─ru ("Русский")
 ├─sv ("Svenska")
+├─sr ("Српски")
 ├─ta ("தமிழ்")
 ├─th ("ภาษาไทย")
 ├─tr ("Türkçe")
@@ -714,6 +722,12 @@ disabled_channels
 
 ##### "sensitive" `[string]`
 - A list of paths to regard as sensitive pages. Each path listed will be checked against the reconstructed URI when needed. A path which begins with a forward slash will be treated as a literal, and matched from the path component of the request onward. Otherwise, a path which begins with a non-alphanumeric character, and ends with that same character (or that same character plus an optional "i" flag) will be treated as a regular expression. Any other kind of path will be treated as a literal, and can match from any part of the URI. Whether a path is regarded as a sensitive page may affect how some modules behave, but doesn't have any effect otherwise.
+
+##### "email_notification_address" `[string]`
+- If you've opted to receive notifications from CIDRAM via email, e.g., when specific auxiliary rules are triggered, you can specify the recipient address for those notifications here.
+
+##### "email_notification_name" `[string]`
+- If you've opted to receive notifications from CIDRAM via email, e.g., when specific auxiliary rules are triggered, you can specify the recipient name for those notifications here.
 
 #### "components" (Category)
 Configuration for the activation and the deactivation of the components used by CIDRAM. Typically populated by the updates page, but can also be managed from here for finer control and for custom components not recognised by the updates page.
@@ -2285,4 +2299,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 28 January 2024 (2024.01.28).
+Last Updated: 21 April 2024 (2024.04.21).
