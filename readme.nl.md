@@ -572,8 +572,8 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh-CN ("中文（简体）")
-└─zh-TW ("中文（傳統）")
+├─zh-Hans ("中文（简体）")
+└─zh-Hant ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -2318,4 +2318,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 21 April 2024 (2024.04.21).
+Laatste Bijgewerkt: 1 Juli 2024 (2024.07.01).

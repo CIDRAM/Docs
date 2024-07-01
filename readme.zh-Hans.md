@@ -552,8 +552,8 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh-CN ("中文（简体）")
-└─zh-TW ("中文（傳統）")
+├─zh-Hans ("中文（简体）")
+└─zh-Hant ("中文（傳統）")
 ```
 
 ##### “lang_override” `[bool]`
@@ -637,7 +637,7 @@ ban_override
 ##### “default_dns” `[string]`
 - DNS服务器列表，​用于主机名查找。​警告：不要修改此除非您知道什么您做着！
 
-__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#在default_dns中我可以使用什么" hreflang="zh-CN">在“default_dns”中我可以使用什么？</a>*
+__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh-Hans.md#在default_dns中我可以使用什么" hreflang="zh-Hans">在“default_dns”中我可以使用什么？</a>*
 
 ##### “default_algo” `[string]`
 - 定义要用于所有未来密码和会话的算法。
@@ -1210,7 +1210,7 @@ exceptions
 ##### “pdo_dsn” `[string]`
 - PDO DSN值。 标准 = “mysql:dbname=cidram;host=localhost;port=3306”。
 
-__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh.md#user-content-HOW_TO_USE_PDO" hreflang="zh-CN">“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？</a>*
+__常问问题。__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.zh-Hans.md#user-content-HOW_TO_USE_PDO" hreflang="zh-Hans">“PDO DSN”是什么？如何能PDO与CIDRAM一起使用？</a>*
 
 ##### “pdo_username” `[string]`
 - PDO 用户名。
@@ -2254,4 +2254,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2024年4月21日。
+最后更新：2024年7月1日。

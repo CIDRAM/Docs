@@ -569,8 +569,8 @@ lang
 ├─uk ("Українська")
 ├─ur ("اردو")
 ├─vi ("Tiếng Việt")
-├─zh-CN ("中文（简体）")
-└─zh-TW ("中文（傳統）")
+├─zh-Hans ("中文（简体）")
+└─zh-Hant ("中文（傳統）")
 ```
 
 ##### "lang_override" `[bool]`
@@ -2299,4 +2299,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 21 April 2024 (2024.04.21).
+Last Updated: 1 July 2024 (2024.07.01).
