@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignored")
 ├─Request_Method ("Request method")
 ├─Protocol ("Protocol")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Hostname")
 ├─CAPTCHA ("CAPTCHA state")
-└─Inspection ("* Conditions inspection")
+├─Inspection ("* Conditions inspection")
+└─ClientL10NAccepted ("Language resolution")
 ```
 
 * Intended only for debugging auxiliary rules. Not displayed to blocked users.
 
 ** Requires ASN lookup functionality (e.g., via the IP-API or BGPView module).
+
+!! This is a low-entropy client hint. Client hints are a new, experimental web technology which isn't yet widely supported across all browsers and major clients. *See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Though client hints can be useful for fingerprinting, as they aren't widely supported, their presence in requests should not be assumed nor relied upon (i.e., blocking based on their absence is a bad idea).
 
 ##### "timezone" `[string]`
 - This is used to specify the timezone to use (e.g., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Specify "SYSTEM" to let PHP handle this for you automatically.
@@ -457,6 +463,24 @@ time_format
 └─…Other
 ```
 
+__*Placeholder – Explanation – Example based on 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – The year – E.g., 2024.<br />
+`{yy}` – The abbreviated year – E.g., 24.<br />
+`{Mon}` – The abbreviated name of the month (in English) – E.g., Apr.<br />
+`{mm}` – The month with leading zeros – E.g., 04.<br />
+`{m}` – The month – E.g., 4.<br />
+`{Day}` – The abbreviated name of the day (in English) – E.g., Tue.<br />
+`{dd}` – The day with leading zeros – E.g., 30.<br />
+`{d}` – The day – E.g., 30.<br />
+`{hh}` – The hour with leading zeros (uses 24-hour time) – E.g., 18.<br />
+`{h}` – The hour (uses 24-hour time) – E.g., 18.<br />
+`{ii}` – The minute with leading zeros – E.g., 27.<br />
+`{i}` – The minute – E.g., 27.<br />
+`{ss}` – The second with leading zeros – E.g., 49.<br />
+`{s}` – The second – E.g., 49.<br />
+`{tz}` – The timezone (without colon) – E.g., +0800.<br />
+`{t:z}` – The timezone (with colon) – E.g., +08:00.
+
 ##### "ipaddr" `[string]`
 - Where to find the IP address of connecting requests? (Useful for services such as Cloudflare and the likes). Default = REMOTE_ADDR. WARNING: Don't change this unless you know what you're doing!
 
@@ -490,7 +514,9 @@ http_response_header_code
 │ will cache this status message and not send subsequent requests, even after
 │ having been unblocked. May be the most preferable in some contexts, for
 │ certain kinds of traffic.
-├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+├─418 (418 I'm a teapot): References an April Fools' joke (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
 ├─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
@@ -585,7 +611,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -596,6 +622,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -651,7 +678,9 @@ ban_override
 │ will cache this status message and not send subsequent requests, even after
 │ having been unblocked. May be the most preferable in some contexts, for
 │ certain kinds of traffic.
-├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+├─418 (418 I'm a teapot): References an April Fools' joke (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
 ├─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
@@ -753,20 +782,32 @@ Configuration related to logging (excluding that applicable to other categories)
 ##### "standard_log" `[string]`
 - Human-readable file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Apache-style file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
+
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Serialised file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
+
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - A file for logging the results of any outbound requests. Specify a filename, or leave blank to disable.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - A file for logging any reports sent to external APIs. Specify a filename, or leave blank to disable.
+
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Truncate log files when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a log file may grow to before being truncated. The default value of 0KB disables truncation (log files can grow indefinitely). Note: Applies to individual log files! The size of log files is not considered collectively.
@@ -795,8 +836,12 @@ Configuration for the front-end.
 ##### "frontend_log" `[string]`
 - File for logging front-end login attempts. Specify a filename, or leave blank to disable.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
+
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Maximum number of front-end login attempts. Default = 5.
@@ -1006,6 +1051,8 @@ See also:
 ##### "recaptcha_log" `[string]`
 - Log all CAPTCHA attempts? If yes, specify the name to use for the log file. If no, leave this variable blank.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
 
@@ -1033,7 +1080,9 @@ nonblocked_status_code
 │ interpret this response as indication that the request was successful.
 ├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
 │ circumstances.
-├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+├─418 (418 I'm a teapot): References an April Fools' joke (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
 ├─429 (429 Too Many Requests): Recommended for rate limiting, when dealing with DDoS attacks, and for flood
@@ -1083,6 +1132,8 @@ See also:
 ##### "hcaptcha_log" `[string]`
 - Log all CAPTCHA attempts? If yes, specify the name to use for the log file. If no, leave this variable blank.
 
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Maximum number of signatures allowed before the CAPTCHA offer is withdrawn. Default = 1.
 
@@ -1110,7 +1161,9 @@ nonblocked_status_code
 │ interpret this response as indication that the request was successful.
 ├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
 │ circumstances.
-├─418 (418 I'm a teapot): References an April Fools' joke ({{Links.RFC2324}}). Very unlikely to be
+├─418 (418 I'm a teapot): References an April Fools' joke (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Very unlikely to be
 │ understood by any client, bot, browser, or otherwise. Provided for amusement
 │ and convenience, but not generally recommended.
 ├─429 (429 Too Many Requests): Recommended for rate limiting, when dealing with DDoS attacks, and for flood
@@ -2299,4 +2352,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 1 July 2024 (2024.07.01).
+Last Updated: 3 July 2024 (2024.07.03).

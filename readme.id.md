@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Diabaikan")
 ├─Request_Method ("Metode permintaan")
 ├─Protocol ("Protokol")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nama host")
 ├─CAPTCHA ("Status CAPTCHA")
-└─Inspection ("* Pemeriksaan kondisi")
+├─Inspection ("* Pemeriksaan kondisi")
+└─ClientL10NAccepted ("Resolusi bahasa")
 ```
 
 * Dimaksudkan hanya untuk men-debug aturan tambahan. Tidak ditampilkan kepada pengguna yang diblokir.
 
 ** Memerlukan fungsionalitas pencarian ASN (misalnya, melalui modul IP-API atau BGPView).
+
+!! Ini adalah petunjuk klien dengan entropi rendah. Petunjuk klien adalah teknologi web eksperimental baru yang belum didukung secara luas di semua browser dan klien utama. *Melihat: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Meskipun petunjuk klien dapat berguna untuk sidik jari, karena petunjuk tersebut tidak didukung secara luas, kehadiran petunjuk klien tersebut dalam permintaan tidak boleh diasumsikan atau diandalkan (yaitu, memblokir berdasarkan ketidakhadiran mereka adalah ide yang buruk).
 
 ##### "timezone" `[string]`
 - Ini digunakan untuk menentukan zona waktu yang akan digunakan (misalnya, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, dll). Menentukan "SYSTEM" untuk membiarkan PHP menangani ini untuk Anda secara otomatis.
@@ -457,6 +463,24 @@ time_format
 └─…Lain
 ```
 
+__*Placeholder – Penjelasan – Contoh berdasarkan 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – Tahun – Misalnya, 2024.<br />
+`{yy}` – Tahun yang disingkat – Misalnya, 24.<br />
+`{Mon}` – Nama bulan yang disingkat (dalam bahasa Inggris) – Misalnya, Apr.<br />
+`{mm}` – Bulan dengan angka nol di depannya – Misalnya, 04.<br />
+`{m}` – Bulan – Misalnya, 4.<br />
+`{Day}` – Nama hari yang disingkat (dalam bahasa Inggris) – Misalnya, Tue.<br />
+`{dd}` – Hari dengan angka nol di depannya – Misalnya, 30.<br />
+`{d}` – Hari – Misalnya, 30.<br />
+`{hh}` – Jam dengan angka nol di depannya (menggunakan waktu 24 jam) – Misalnya, 18.<br />
+`{h}` – Jam (menggunakan waktu 24 jam) – Misalnya, 18.<br />
+`{ii}` – Menit dengan angka nol di depannya – Misalnya, 27.<br />
+`{i}` – Menit – Misalnya, 27.<br />
+`{ss}` – Detik dengan angka nol di depannya – Misalnya, 49.<br />
+`{s}` – Detik – Misalnya, 49.<br />
+`{tz}` – Zona waktu (tanpa titik dua) – Misalnya, +0800.<br />
+`{t:z}` – Zona waktu (dengan titik dua) – Misalnya, +08:00.
+
 ##### "ipaddr" `[string]`
 - Dimana menemukan alamat IP dari menghubungkan permintaan? (Berguna untuk pelayanan-pelayanan seperti Cloudflare dan sejenisnya). Default = REMOTE_ADDR. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
@@ -491,8 +515,10 @@ http_response_header_code
 │ beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim
 │ permintaan berikutnya, bahkan setelah tidak diblokir lagi. Mungkin yang
 │ paling disukai dalam beberapa konteks, untuk jenis lalu lintas tertentu.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
-│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
+│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
 │ direkomendasikan dalam konteks lain.
@@ -587,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -598,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -654,8 +681,10 @@ ban_override
 │ beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim
 │ permintaan berikutnya, bahkan setelah tidak diblokir lagi. Mungkin yang
 │ paling disukai dalam beberapa konteks, untuk jenis lalu lintas tertentu.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
-│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
+│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
 │ direkomendasikan dalam konteks lain.
@@ -701,7 +730,7 @@ statistics
 └─Reported-IPv6-Failed ("Permintaan dilaporkan ke API eksternal – IPv6 – Gagal")
 ```
 
-Catatan: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dari halaman aturan tambahan.
+Catat: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dari halaman aturan tambahan.
 
 ##### "force_hostname_lookup" `[bool]`
 - Memaksa periksa untuk nama host? True = Ya; False = Tidak [Default]. Periksa untuk nama host biasanya dilakukan pada dasar "sesuai kebutuhan", tapi bisa dipaksakan untuk semua permintaan. Melakukan hal tersebut mungkin berguna sebagai sarana untuk memberikan informasi lebih rinci di log, tapi mungkin juga memiliki sedikit efek negatif pada kinerja.
@@ -709,7 +738,7 @@ Catatan: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dar
 ##### "allow_gethostbyaddr_lookup" `[bool]`
 - Izinkan menggunakan gethostbyaddr saat UDP tidak tersedia? True = Ya [Default]; False = Tidak.
 
-Catatan: Pencarian IPv6 mungkin tidak bekerja dengan benar pada beberapa sistem 32-bit.
+Catat: Pencarian IPv6 mungkin tidak bekerja dengan benar pada beberapa sistem 32-bit.
 
 ##### "disabled_channels" `[string]`
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
@@ -757,20 +786,32 @@ Konfigurasi yang terkait dengan pencatatan (tidak termasuk yang berlaku untuk ka
 ##### "standard_log" `[string]`
 - File yang dapat dibaca oleh manusia untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - File yang dalam gaya Apache untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - File serial untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - File untuk mencatat hasil permintaan keluar apapun. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - File untuk mencatat setiap laporan yang dikirim ke API eksternal. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
@@ -791,7 +832,7 @@ log_rotation_action
 - Termasuk permintaan diblokir dari IP dilarang dalam file log? True = Ya [Default]; False = Tidak.
 
 ##### "log_sanitisation" `[bool]`
-- Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data tersebut. Namun, secara default, data tidak disanitasikan selama pencatatan. Ini untuk memastikan bahwa data log dicatatan secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
+- Saat menggunakan halaman log untuk melihat data log, CIDRAM mensanitasikan data log sebelum menampilkannya, untuk melindungi pengguna dari serangan XSS dan potensi ancaman lain yang bisa terkandung dalam data tersebut. Namun, secara default, data tidak disanitasikan selama pencatatan. Ini untuk memastikan bahwa data log dicatat secara akurat, untuk membantu analisis heuristik atau forensik yang mungkin diperlukan di masa depan. Namun, jika pengguna mencoba membaca data log menggunakan alat eksternal, dan jika alat eksternal itu tidak melakukan proses sanitasi sendiri, pengguna bisa terkena serangan XSS. Jika perlu, Anda dapat mengubah perilaku default menggunakan direktif konfigurasi ini. True = Mensanitasikan data saat mencatatnya (data disimpan kurang akurat, tetapi risiko XSS lebih rendah). False = Jangan mensanitasikan data saat mencatatnya (data disimpan lebih akurat, tetapi risiko XSS lebih tinggi) [Default].
 
 #### "frontend" (Kategori)
 Konfigurasi untuk front-end.
@@ -799,8 +840,12 @@ Konfigurasi untuk front-end.
 ##### "frontend_log" `[string]`
 - File untuk mencatat upaya masuk bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - File untuk mencatat ketika tanda tangan diperbarui melalui bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
@@ -1008,7 +1053,9 @@ Lihat juga:
 - Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
 
 ##### "recaptcha_log" `[string]`
-- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
+- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signature_limit" `[int]`
 - Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
@@ -1038,8 +1085,10 @@ nonblocked_status_code
 │ permintaan berhasil.
 ├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
 │ keadaan umum.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
-│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
+│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
 │ untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
@@ -1086,7 +1135,9 @@ Lihat juga:
 - Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
 
 ##### "hcaptcha_log" `[string]`
-- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file catatan. Jika tidak, variabel ini harus kosong.
+- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signature_limit" `[int]`
 - Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
@@ -1116,8 +1167,10 @@ nonblocked_status_code
 │ permintaan berhasil.
 ├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
 │ keadaan umum.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop ({{Links.RFC2324}}). Probabilitas rendah
-│ bahwa akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
+├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
+│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
 │ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
 ├─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
 │ untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
@@ -1216,7 +1269,7 @@ exceptions
 - Haruskah kuota untuk domain dan host yang berbeda dipisahkan atau dibagikan? True = Kuota akan dipisahkan. False = Kuota akan dibagikan [Default].
 
 #### "supplementary_cache_options" (Kategori)
-Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
+Opsi cache tambahan. Catat: Mengubah nilai ini berpotensi membuat Anda keluar.
 
 ##### "prefix" `[string]`
 - Nilai yang ditentukan disini akan ditambahkan ke awal kunci untuk semua entri di cache. Default = "CIDRAM_". Ketika beberapa instalasi ada di server, ini dapat berguna untuk menjaga cache mereka terpisah.
@@ -1249,7 +1302,7 @@ Opsi cache tambahan. Catatan: Mengubah nilai ini berpotensi membuat Anda keluar.
 - Nilai batas waktu Redis. Default = "2.5".
 
 ##### "redis_database_number" `[int]`
-- Nomor basis data Redis. Default = 0. Catatan: Tidak dapat menggunakan nilai selain 0 dengan Redis Cluster.
+- Nomor basis data Redis. Default = 0. Catat: Tidak dapat menggunakan nilai selain 0 dengan Redis Cluster.
 
 ##### "pdo_dsn" `[string]`
 - Nilai DSN PDO. Default = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -2297,4 +2350,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 1 Juli 2024 (2024.07.01).
+Terakhir Diperbarui: 3 Juli 2024 (2024.07.03).

@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignorato")
 ├─Request_Method ("Metodo di richiesta")
 ├─Protocol ("Protocollo")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nome host")
 ├─CAPTCHA ("Stato CAPTCHA")
-└─Inspection ("* Ispezione delle condizioni")
+├─Inspection ("* Ispezione delle condizioni")
+└─ClientL10NAccepted ("Risoluzione della lingua")
 ```
 
 * Destinato solo al debug delle regole ausiliarie. Non mostrato agli utenti bloccati.
 
 ** Richiede la funzionalità di ricerca ASN (ad es., tramite il modulo IP-API o BGPView).
+
+!! Questo è un suggerimento client a bassa entropia. I suggerimenti client sono una nuova tecnologia Web sperimentale che non è ancora ampiamente supportata in tutti i browser e nei principali client. *Guarda anche: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Sebbene i suggerimenti client possano essere utili per il rilevamento delle impronte digitali, poiché non sono ampiamente supportati, la loro presenza nelle richieste non deve essere presupposta né considerata attendibile (cioè, bloccare in base alla loro assenza è una cattiva idea).
 
 ##### "timezone" `[string]`
 - Questo è usato per specificare il fuso orario da usare (per esempio, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, ecc). Specifica "SYSTEM" per consentire a PHP di gestirlo automaticamente.
@@ -457,6 +463,24 @@ time_format
 └─…Altro
 ```
 
+__*Segnaposto – Spiegazione – Esempio basato sul 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – L'anno – Per esempio, 2024.<br />
+`{yy}` – L'anno abbreviato – Per esempio, 24.<br />
+`{Mon}` – Il nome abbreviato del mese (in inglese) – Per esempio, Apr.<br />
+`{mm}` – Il mese con gli zeri iniziali – Per esempio, 04.<br />
+`{m}` – Il mese – Per esempio, 4.<br />
+`{Day}` – Il nome abbreviato del giorno (in inglese) – Per esempio, Tue.<br />
+`{dd}` – Il giorno con gli zeri iniziali – Per esempio, 30.<br />
+`{d}` – Il giorno – Per esempio, 30.<br />
+`{hh}` – L'ora con gli zeri iniziali (utilizza il formato 24 ore) – Per esempio, 18.<br />
+`{h}` – L'ora (utilizza il formato 24 ore) – Per esempio, 18.<br />
+`{ii}` – I minuti con gli zeri iniziali – Per esempio, 27.<br />
+`{i}` – I minuti – Per esempio, 27.<br />
+`{ss}` – Il secondo con zeri iniziali – Per esempio, 49.<br />
+`{s}` – Il secondo – Per esempio, 49.<br />
+`{tz}` – Il fuso orario (senza i due punti) – Per esempio, +0800.<br />
+`{t:z}` – Il fuso orario (con i due punti) – Per esempio, +08:00.
+
 ##### "ipaddr" `[string]`
 - Dove trovare l'indirizzo IP di collegamento richiesta? (Utile per servizi come Cloudflare e simili). Predefinito = REMOTE_ADDR. AVVISO: Non modificare questa se non sai quello che stai facendo!
 
@@ -491,9 +515,11 @@ http_response_header_code
 │ alcuni browser memorizzano nella cache questo messaggio di stato e non
 │ inviano richieste successive, anche dopo essere stati sbloccati. Può essere
 │ il più preferibile in alcuni contesti, per specifici tipi di traffico.
-├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
-│ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
-│ Fornito per divertimento e comodità, ma generalmente non consigliato.
+├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). È molto improbabile che
+│ venga compreso da qualsiasi client, bot, browser, o altro. Fornito per
+│ divertimento e comodità, ma generalmente non consigliato.
 ├─451 (451 Unavailable For Legal Reasons (Non disponibile per motivi legali)): Consigliato in caso di blocco principalmente per motivi legali. Non
 │ consigliato in altri contesti.
 └─503 (503 Service Unavailable (Servizio non disponibile)): Più robusto, ma meno facile da usare. Consigliato per quando si è sotto
@@ -587,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -598,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -654,9 +681,11 @@ ban_override
 │ alcuni browser memorizzano nella cache questo messaggio di stato e non
 │ inviano richieste successive, anche dopo essere stati sbloccati. Può essere
 │ il più preferibile in alcuni contesti, per specifici tipi di traffico.
-├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
-│ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
-│ Fornito per divertimento e comodità, ma generalmente non consigliato.
+├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). È molto improbabile che
+│ venga compreso da qualsiasi client, bot, browser, o altro. Fornito per
+│ divertimento e comodità, ma generalmente non consigliato.
 ├─451 (451 Unavailable For Legal Reasons (Non disponibile per motivi legali)): Consigliato in caso di blocco principalmente per motivi legali. Non
 │ consigliato in altri contesti.
 └─503 (503 Service Unavailable (Servizio non disponibile)): Più robusto, ma meno facile da usare. Consigliato per quando si è sotto
@@ -757,20 +786,32 @@ Configurazione relativa alla registrazione (escluso quello che è applicabile al
 ##### "standard_log" `[string]`
 - Un file leggibile dagli umani per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Un file nello stile di apache per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Un file serializzato per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - Un file per la registrazione di eventuali errori non fatali rilevati. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Un file per la registrazione dei risultati di eventuali richieste in uscita. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - Un file per la registrazione di tutti i rapporti inviati ad API esterne. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -799,8 +840,12 @@ Configurazione per il front-end.
 ##### "frontend_log" `[string]`
 - File per la registrazione di tentativi di accesso al front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - Un file per la registrazione quando le firme vengono aggiornate tramite il front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
+
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Numero massimo di tentativi di accesso al front-end. Predefinito = 5.
@@ -1010,6 +1055,8 @@ Guarda anche:
 ##### "recaptcha_log" `[string]`
 - Registrare tutti i tentativi per CAPTCHA? Se sì, specificare il nome da usare per il file di registrazione. Se non, lasciare questo variabile vuoto.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Il numero massimo di firme consentito prima che l'offerta di CAPTCHA venga ritirata. Predefinito = 1.
 
@@ -1038,9 +1085,11 @@ nonblocked_status_code
 │ richiesta riuscito.
 ├─403 (403 Forbidden (Vietato)): Un po' più robusto, ma un po' meno facile da usare. Consigliato per la
 │ maggior parte delle circostanze generali.
-├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
-│ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
-│ Fornito per divertimento e comodità, ma generalmente non consigliato.
+├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). È molto improbabile che
+│ venga compreso da qualsiasi client, bot, browser, o altro. Fornito per
+│ divertimento e comodità, ma generalmente non consigliato.
 ├─429 (429 Too Many Requests (Troppe richieste)): Consigliato per la limitazione della velocità, quando si tratta di attacchi
 │ DDoS, e per la prevenzione delle inondazioni. Non consigliato in altri
 │ contesti.
@@ -1089,6 +1138,8 @@ Guarda anche:
 ##### "hcaptcha_log" `[string]`
 - Registrare tutti i tentativi per CAPTCHA? Se sì, specificare il nome da usare per il file di registrazione. Se non, lasciare questo variabile vuoto.
 
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Il numero massimo di firme consentito prima che l'offerta di CAPTCHA venga ritirata. Predefinito = 1.
 
@@ -1117,9 +1168,11 @@ nonblocked_status_code
 │ richiesta riuscito.
 ├─403 (403 Forbidden (Vietato)): Un po' più robusto, ma un po' meno facile da usare. Consigliato per la
 │ maggior parte delle circostanze generali.
-├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile ({{Links.RFC2324}}). È molto
-│ improbabile che venga compreso da qualsiasi client, bot, browser, o altro.
-│ Fornito per divertimento e comodità, ma generalmente non consigliato.
+├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). È molto improbabile che
+│ venga compreso da qualsiasi client, bot, browser, o altro. Fornito per
+│ divertimento e comodità, ma generalmente non consigliato.
 ├─429 (429 Too Many Requests (Troppe richieste)): Consigliato per la limitazione della velocità, quando si tratta di attacchi
 │ DDoS, e per la prevenzione delle inondazioni. Non consigliato in altri
 │ contesti.
@@ -2302,4 +2355,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 1 Luglio 2024 (2024.07.01).
+Ultimo Aggiornamento: 3 Luglio 2024 (2024.07.03).

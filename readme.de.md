@@ -338,7 +338,7 @@ fields
 ├─ScriptIdent ("Script-Version")
 ├─DateTime ("Datum/Uhrzeit")
 ├─IPAddr ("IP-Adresse")
-├─IPAddrResolved ("IP-Adresse (Aufgelöst)")
+├─IPAddrResolved ("IP-Adresse (aufgelöst)")
 ├─Query ("Abfrage/Query")
 ├─Referrer ("Referrer")
 ├─UA ("Benutzeragent")
@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignoriert")
 ├─Request_Method ("Methode anfordern")
 ├─Protocol ("Protokoll")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Hostname")
 ├─CAPTCHA ("Status der CAPTCHA")
-└─Inspection ("* Überprüfung der Bedingungen")
+├─Inspection ("* Überprüfung der Bedingungen")
+└─ClientL10NAccepted ("Sprachauflösung")
 ```
 
 * Nur zum Debuggen von Hilfsregeln vorgesehen. Blockierten Benutzern nicht angezeigt.
 
 ** Erfordert ASN-Lookup-Funktionalität (z.B., über das IP-API-Modul oder BGPView-Modul).
+
+!! Dies ist ein Client-Hinweis mit niedriger Entropie. Client-Hinweise sind eine neue, experimentelle Webtechnologie, die noch nicht von allen Browsern und wichtigen Clients allgemein unterstützt wird. *Sehen: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Client-Hinweise können für das Fingerprinting nützlich sein, aber da sie nicht allgemein unterstützt werden, sollte man weder davon ausgehen dass sie in Anfragen vorhanden sind, noch sich darauf verlassen (d.h., eine Blockierung aufgrund ihrer Abwesenheit ist keine gute Idee).
 
 ##### „timezone“ `[string]`
 - Gibt welche Zeitzone verwendet werden soll an (z.B., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, u.s.w.). Damit PHP dies automatisch für Sie erledigt, geben Sie „SYSTEM“ an.
@@ -457,6 +463,24 @@ time_format
 └─…Andere
 ```
 
+__*Platzhalter – Erläuterung – Beispiel basierend auf 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – Das Jahr – Z.B., 2024.<br />
+`{yy}` – Das abgekürzte Jahr – Z.B., 24.<br />
+`{Mon}` – Der abgekürzte Name des Monats (auf Englisch) – Z.B., Apr.<br />
+`{mm}` – Der Monat mit führenden Nullen – Z.B., 04.<br />
+`{m}` – Der Monat – Z.B., 4.<br />
+`{Day}` – Der abgekürzte Name des Tages (auf Englisch) – Z.B., Tue.<br />
+`{dd}` – Der Tag mit führenden Nullen – Z.B., 30.<br />
+`{d}` – Der Tag – Z.B., 30.<br />
+`{hh}` – Die Stunde mit führenden Nullen (verwendet 24-Stunden-Zeit) – Z.B., 18.<br />
+`{h}` – Die Stunde (verwendet 24-Stunden-Zeit) – Z.B., 18.<br />
+`{ii}` – Die Minute mit führenden Nullen – Z.B., 27.<br />
+`{i}` – Die Minute – Z.B., 27.<br />
+`{ss}` – Die Sekunde mit führenden Nullen – Z.B., 49.<br />
+`{s}` – Die Sekunde – Z.B., 49.<br />
+`{tz}` – Die Zeitzone (ohne Doppelpunkt) – Z.B., +0800.<br />
+`{t:z}` – Die Zeitzone (mit Doppelpunkt) – Z.B., +08:00.
+
 ##### „ipaddr“ `[string]`
 - Ort der IP-Adresse der aktuellen Verbindung im gesamten Datenstrom (nützlich für Cloud-Services). Standardeinstellung = REMOTE_ADDR. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
@@ -490,7 +514,9 @@ http_response_header_code
 │ einiger Browser diese Statusmeldung zwischenspeichern und keine
 │ nachfolgenden Anfragen senden, selbst nachdem sie entsperrt wurden. Kann in
 │ einigen Kontexten für bestimmte Arten von Datenverkehr am besten sein.
-├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es ist sehr
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
@@ -587,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -598,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -653,7 +680,9 @@ ban_override
 │ einiger Browser diese Statusmeldung zwischenspeichern und keine
 │ nachfolgenden Anfragen senden, selbst nachdem sie entsperrt wurden. Kann in
 │ einigen Kontexten für bestimmte Arten von Datenverkehr am besten sein.
-├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es ist sehr
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
@@ -757,20 +786,32 @@ Konfiguration im Zusammenhang mit der Protokollierung (mit Ausnahme der Konfigur
 ##### „standard_log“ `[string]`
 - Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „apache_style_log“ `[string]`
 - Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
 
 ##### „serialised_log“ `[string]`
 - Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „error_log“ `[string]`
 - Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
 
 ##### „outbound_request_log“ `[string]`
 - Eine Datei zum Protokollieren der Ergebnisse aller ausgehenden Anforderungen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „report_log“ `[string]`
 - Eine Datei zum Protokollieren aller an externe APIs gesendeten Berichte. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
 
 ##### „truncate“ `[string]`
 - Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
@@ -799,8 +840,12 @@ Konfiguration für das Front-End.
 ##### „frontend_log“ `[string]`
 - Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „signatures_update_event_log“ `[string]`
 - Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
+
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
 
 ##### „max_login_attempts“ `[int]`
 - Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
@@ -1010,6 +1055,8 @@ Siehe auch:
 ##### „recaptcha_log“ `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „signature_limit“ `[int]`
 - Maximal zulässige Anzahl von Signaturen, bevor das CAPTCHA-Angebot zurückgezogen wird. Standardeinstellung = 1.
 
@@ -1037,7 +1084,9 @@ nonblocked_status_code
 │ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
 ├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
 │ allgemeinen Umstände.
-├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es ist sehr
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
@@ -1089,6 +1138,8 @@ Siehe auch:
 ##### „hcaptcha_log“ `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+
 ##### „signature_limit“ `[int]`
 - Maximal zulässige Anzahl von Signaturen, bevor das CAPTCHA-Angebot zurückgezogen wird. Standardeinstellung = 1.
 
@@ -1116,7 +1167,9 @@ nonblocked_status_code
 │ werden dies höchstwahrscheinlich als erfolgreich interpretieren.
 ├─403 (403 Forbidden (Verboten)): Robuster, aber weniger benutzerfreundlich. Empfohlen für die meisten
 │ allgemeinen Umstände.
-├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz ({{Links.RFC2324}}). Es ist sehr
+├─418 (418 I'm a teapot (Ich bin eine Teekanne)): Bezieht sich auf einen Aprilscherz (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es ist sehr
 │ unwahrscheinlich, dass es von einem Client, Bot, Browser, oder anderem
 │ verstanden wird. Zur Unterhaltung und Bequemlichkeit bereitgestellt, aber
 │ nicht allgemein empfohlen.
@@ -2316,4 +2369,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 1. Juli 2024 (2024.07.01).
+Zuletzt aktualisiert: 3. Juli 2024 (2024.07.03).

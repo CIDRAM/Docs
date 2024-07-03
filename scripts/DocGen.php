@@ -1,8 +1,12 @@
 <?php
-
 $loadL10N = function (string $Language) {
+    if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml')) {
+        echo 'Unable to read the "' . $Language . '" language files!';
+        die;
+    }
+    $DataDocGen = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml');
+    $Language = preg_replace('~-.*$~', '', $Language);
     if (
-        !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml') ||
         !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml') ||
         !file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . $Language . '.yml')
     ) {
@@ -10,8 +14,11 @@ $loadL10N = function (string $Language) {
         die;
     }
     $YAML = new \Maikuolan\Common\YAML();
+    if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'defaults.yml')) {
+        $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'defaults.yml');
+        $YAML->process($Data, $YAML->Refs);
+    }
     $Arr = [];
-    $DataDocGen = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml');
     $YAML->process($DataDocGen, $Arr);
     $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml');
     $YAML->process($Data, $Arr);

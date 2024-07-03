@@ -362,14 +362,20 @@ fields
 ├─Ignored ("تجاهل")
 ├─Request_Method ("Request method")
 ├─Protocol ("بروتوكول")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("اسم المضيف")
 ├─CAPTCHA ("الحالة CAPTCHA")
-└─Inspection ("* فحص الشروط")
+├─Inspection ("* فحص الشروط")
+└─ClientL10NAccepted ("تم حل اللغة")
 ```
 
 * مخصص فقط من أجل تصحيح أخطاء القواعد المساعدة. غير معروض أمام المستخدمين المحظورين.
 
 ** يتطلب وظيفة بحث ASN (على سبيل المثال، عبر وحدة IP-API أو وحدة BGPView).
+
+!! هذا تلميح عميل منخفض الإنتروبيا. تلميحات العميل بمثابة تقنية ويب تجريبية جديدة، وهي غير مدعومة على نطاق واسع حتى الآن عبر جميع المتصفحات والعملاء الرئيسيين. <em>يرى: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.</em> يمكن أن تكون تلميحات العميل مفيدة في أخذ البصمات، ولكن بما أنها غير مدعومة على نطاق واسع، فلا ينبغي افتراض وجودها في الطلبات أو الاعتماد عليها (أي أن، الحظر بناءً على غيابهم فكرة سيئة).
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يتم استخدام هذا لتحديد المنطقة الزمنية للاستخدام (على سبيل المثال، Africa/Cairo، America/New_York، Asia/Tokyo، Australia/Perth، Europe/Berlin، Pacific/Guam، إلخ). حدد "SYSTEM" للسماح لـ PHP بمعالجة هذا الأمر تلقائيًا.</li></ul></div>
@@ -463,6 +469,24 @@ time_format
 └─…آخر
 ```
 
+<strong><em>العنصر النائب – تفسير – مثال يعتمد على <span dir="ltr">2024-04-30T18:27:49+08:00</span>.</em></strong><br />
+<code dir="ltr" class="s">{yyyy}</code> – السنة – على سبيل المثال، 2024.<br />
+<code dir="ltr" class="s">{yy}</code> – السنة المختصرة – على سبيل المثال، 24.<br />
+<code dir="ltr" class="s">{Mon}</code> – اسم الشهر المختصر (باللغة الإنجليزية) – على سبيل المثال، Apr.<br />
+<code dir="ltr" class="s">{mm}</code> – الشهر الذي مع الأصفار البادئة – على سبيل المثال، 04.<br />
+<code dir="ltr" class="s">{m}</code> – الشهر – على سبيل المثال، 4.<br />
+<code dir="ltr" class="s">{Day}</code> – اسم اليوم المختصر (باللغة الإنجليزية) – على سبيل المثال، Tue.<br />
+<code dir="ltr" class="s">{dd}</code> – اليوم مع الأصفار البادئة – على سبيل المثال، 30.<br />
+<code dir="ltr" class="s">{d}</code> – اليوم – على سبيل المثال، 30.<br />
+<code dir="ltr" class="s">{hh}</code> – الساعة مع الأصفار البادئة (تستخدم نظام 24 ساعة) – على سبيل المثال، 18.<br />
+<code dir="ltr" class="s">{h}</code> – الساعة (تستخدم نظام 24 ساعة) – على سبيل المثال، 18.<br />
+<code dir="ltr" class="s">{ii}</code> – الدقيقة مع الأصفار البادئة – على سبيل المثال، 27.<br />
+<code dir="ltr" class="s">{i}</code> – الدقيقة – على سبيل المثال، 27.<br />
+<code dir="ltr" class="s">{ss}</code> – الثواني مع الأصفار البادئة – على سبيل المثال، 49.<br />
+<code dir="ltr" class="s">{s}</code> – الثواني – على سبيل المثال، 49.<br />
+<code dir="ltr" class="s">{tz}</code> – المنطقة الزمنية (بدون النقطتين) – على سبيل المثال، <span dir="ltr">+0800</span>.<br />
+<code dir="ltr" class="s">{t:z}</code> – المنطقة الزمنية (مع النقطتين) – على سبيل المثال، <span dir="ltr">+08:00</span>.
+
 ##### <div dir="rtl">"ipaddr" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>أين يمكن العثور على عنوان IP لربط الطلبات؟ (مفيدة للخدمات مثل لايتكلاود و مثلها). الافتراضي = REMOTE_ADDR. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
 
@@ -500,10 +524,12 @@ http_response_header_code
 │ حتى بعد إلغاء الحظر. قد يكون الأكثر
 │ تفضيلاً في بعض السياقات، لأنواع معينة من
 │ حركة المرور.
-├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
-│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
-│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
-│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). من غير المحتمل
+│ جدًا أن يفهمه أي عميل أو روبوت أو متصفح أو
+│ غير ذلك. يتم توفيرها للتسلية والراحة،
+│ ولكن لا يوصى بها بشكل عام.
 ├─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
 │ المقام الأول. لا ينصح به في سياقات أخرى.
 └─503 (503 Service Unavailable (الخدمة غير متوفرة)): الأكثر قوة، ولكن الأقل سهولة في
@@ -602,7 +628,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -613,6 +639,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -671,10 +698,12 @@ ban_override
 │ حتى بعد إلغاء الحظر. قد يكون الأكثر
 │ تفضيلاً في بعض السياقات، لأنواع معينة من
 │ حركة المرور.
-├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
-│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
-│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
-│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). من غير المحتمل
+│ جدًا أن يفهمه أي عميل أو روبوت أو متصفح أو
+│ غير ذلك. يتم توفيرها للتسلية والراحة،
+│ ولكن لا يوصى بها بشكل عام.
 ├─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
 │ المقام الأول. لا ينصح به في سياقات أخرى.
 └─503 (503 Service Unavailable (الخدمة غير متوفرة)): الأكثر قوة، ولكن الأقل سهولة في
@@ -776,20 +805,32 @@ disabled_channels
 ##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف يمكن قراءته بالعين لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف على غرار أباتشي لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
 
 ##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف تسلسل لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
 
 ##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل نتائج أي طلبات صادرة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي تقارير يتم إرسالها إلى واجهات برمجة التطبيقات الخارجية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اقتطاع ملفات السجل عندما تصل إلى حجم معين؟ القيمة هي الحجم الأقصى في بايت/كيلوبايت/ميغابايت/غيغابايت/تيرابايت الذي قد ينمو ملفات السجل إلى قبل اقتطاعه. القيمة الافتراضية 0KB تعطيل اقتطاع (ملفات السجل يمكن أن تنمو إلى أجل غير مسمى). ملاحظة: ينطبق على ملفات السجل الفردية! ولا يعتبر حجمها جماعيا.</li></ul></div>
@@ -818,8 +859,12 @@ log_rotation_action
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
+
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
@@ -1031,6 +1076,8 @@ usemode
 ##### <div dir="rtl">"recaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد التوقيعات المسموح بها قبل سحب عرض CAPTCHA. افتراضي = 1.</li></ul></div>
 
@@ -1059,10 +1106,12 @@ nonblocked_status_code
 │ الاستجابة على أنها إشارة إلى نجاح الطلب.
 ├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
 │ موصى به لمعظم الظروف العامة.
-├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
-│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
-│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
-│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). من غير المحتمل
+│ جدًا أن يفهمه أي عميل أو روبوت أو متصفح أو
+│ غير ذلك. يتم توفيرها للتسلية والراحة،
+│ ولكن لا يوصى بها بشكل عام.
 ├─429 (429 Too Many Requests (طلبات كثيرة جدا)): يوصى به لتحدود معدل، عند التعامل مع هجمات
 │ DDoS، وللوقاية من الفيضانات. لا ينصح به في
 │ سياقات أخرى.
@@ -1113,6 +1162,8 @@ usemode
 ##### <div dir="rtl">"hcaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد التوقيعات المسموح بها قبل سحب عرض CAPTCHA. افتراضي = 1.</li></ul></div>
 
@@ -1141,10 +1192,12 @@ nonblocked_status_code
 │ الاستجابة على أنها إشارة إلى نجاح الطلب.
 ├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
 │ موصى به لمعظم الظروف العامة.
-├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل ({{Links.RFC2324}}). من
-│ غير المحتمل جدًا أن يفهمه أي عميل أو روبوت
-│ أو متصفح أو غير ذلك. يتم توفيرها للتسلية
-│ والراحة، ولكن لا يوصى بها بشكل عام.
+├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). من غير المحتمل
+│ جدًا أن يفهمه أي عميل أو روبوت أو متصفح أو
+│ غير ذلك. يتم توفيرها للتسلية والراحة،
+│ ولكن لا يوصى بها بشكل عام.
 ├─429 (429 Too Many Requests (طلبات كثيرة جدا)): يوصى به لتحدود معدل، عند التعامل مع هجمات
 │ DDoS، وللوقاية من الفيضانات. لا ينصح به في
 │ سياقات أخرى.
@@ -2366,4 +2419,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١ يوليو ٢٠٢٤ (٢٠٢٤.٠٧.٠١).</div>
+<div dir="rtl">آخر تحديث: ٣ يوليو ٢٠٢٤ (٢٠٢٤.٠٧.٠٣).</div>

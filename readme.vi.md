@@ -305,7 +305,7 @@ Cấu hình (v3)
 Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về các loại khác).
 
 ##### "stages" `[string]`
-- Kiểm soát các giai đoạn của chuỗi thực thi (có được bật hay không, có lỗi được ghi lại hay không, vv).
+- Điều khiển cho các giai đoạn của chuỗi thực thi (có được bật hay không, có lỗi được ghi lại hay không, vv).
 
 ```
 stages
@@ -330,7 +330,7 @@ stages
 ```
 
 ##### "fields" `[string]`
-- Kiểm soát các trường trong các sự kiện khối (khi một yêu cầu bị chặn).
+- Điều khiển cho các trường trong các sự kiện chặn (khi một yêu cầu bị chặn).
 
 ```
 fields
@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Bị bỏ qua")
 ├─Request_Method ("Phương thức yêu cầu")
 ├─Protocol ("Giao thức")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Tên máy chủ")
 ├─CAPTCHA ("Tình trạng CAPTCHA")
-└─Inspection ("* Kiểm tra điều kiện")
+├─Inspection ("* Kiểm tra điều kiện")
+└─ClientL10NAccepted ("Độ phân giải ngôn ngữ")
 ```
 
 * Chỉ dành cho việc gỡ lỗi các quy tắc phụ trợ. Không hiển thị cho người dùng bị chặn.
 
 ** Yêu cầu chức năng tra cứu ASN (v.d., thông qua mô-đun IP-API hoặc BGPView).
+
+!! Đây là gợi ý khách hàng có entropy thấp. Gợi ý khách hàng là một công nghệ web thử nghiệm mới, chưa được hỗ trợ rộng rãi trên tất cả các trình duyệt và khách hàng lớn. *Nhìn thấy: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Mặc dù gợi ý khách hàng có thể hữu ích cho việc lấy dấu vân tay, vì chúng không được hỗ trợ rộng rãi, không nên giả định hay dựa vào sự hiện diện của chúng trong các yêu cầu (tức là, chặn dựa trên sự vắng mặt của họ là một ý tưởng tồi).
 
 ##### "timezone" `[string]`
 - Điều này được sử dụng để chỉ định múi giờ sử dụng (ví dụ, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, vv). Chỉ định "SYSTEM" để cho phép PHP tự động xử lý việc này cho bạn.
@@ -379,7 +385,7 @@ timezone
 - Múi giờ bù đắp trong phút.
 
 ##### "time_format" `[string]`
-- Định dạng ngày tháng sử dụng bởi CIDRAM. Các tùy chọn bổ sung có thể được bổ sung theo yêu cầu.
+- Định dạng ngày/giờ tháng sử dụng bởi CIDRAM. Tùy chọn bổ sung có thể được bổ sung theo yêu cầu.
 
 ```
 time_format
@@ -457,6 +463,24 @@ time_format
 └─…Khác
 ```
 
+__*Phần giữ chỗ – Giải trình – Ví dụ dựa trên 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – Năm – Ví dụ, 2024.<br />
+`{yy}` – Năm viết tắt – Ví dụ, 24.<br />
+`{Mon}` – Tên viết tắt của tháng (bằng tiếng Anh) – Ví dụ, Apr.<br />
+`{mm}` – Tháng với số 0 đứng đầu – Ví dụ, 04.<br />
+`{m}` – Tháng – Ví dụ, 4.<br />
+`{Day}` – Tên viết tắt của ngày (bằng tiếng Anh) – Ví dụ, Tue.<br />
+`{dd}` – Ngày với số 0 đứng đầu – Ví dụ, 30.<br />
+`{d}` – Ngày – Ví dụ, 30.<br />
+`{hh}` – Giờ với số 0 đứng đầu (sử dụng thời gian 24 giờ) – Ví dụ, 18.<br />
+`{h}` – Giờ (sử dụng thời gian 24 giờ) – Ví dụ, 18.<br />
+`{ii}` – Phút với số 0 đứng đầu – Ví dụ, 27.<br />
+`{i}` – Phút – Ví dụ, 27.<br />
+`{ss}` – Giây với số 0 đứng đầu – Ví dụ, 49.<br />
+`{s}` – Giây – Ví dụ, 49.<br />
+`{tz}` – Múi giờ (không có dấu hai chấm) – Ví dụ, +0800.<br />
+`{t:z}` – Múi giờ (có dấu hai chấm) – Ví dụ, +08:00.
+
 ##### "ipaddr" `[string]`
 - Nơi để tìm địa chỉ IP của các yêu cầu kết nối? (Hữu ích cho các dịch vụ như Cloudflare và vv). Mặc định = REMOTE_ADDR. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
@@ -493,11 +517,12 @@ http_response_header_code
 │ khi đã được bỏ chặn. Có thể thích hợp nhất trong một
 │ số ngữ cảnh, đối với một số loại lưu lượng truy cập
 │ nhất định.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
-│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
-│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
-│ cung cấp để giải trí và tiện lợi, nhưng thường không
-│ được khuyến khích.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
+│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
+│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
+│ lợi, nhưng thường không được khuyến khích.
 ├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
 │ được khuyến khích trong các ngữ cảnh khác.
 └─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
@@ -595,7 +620,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -606,6 +631,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -664,11 +690,12 @@ ban_override
 │ khi đã được bỏ chặn. Có thể thích hợp nhất trong một
 │ số ngữ cảnh, đối với một số loại lưu lượng truy cập
 │ nhất định.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
-│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
-│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
-│ cung cấp để giải trí và tiện lợi, nhưng thường không
-│ được khuyến khích.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
+│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
+│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
+│ lợi, nhưng thường không được khuyến khích.
 ├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
 │ được khuyến khích trong các ngữ cảnh khác.
 └─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
@@ -769,20 +796,32 @@ Cấu hình liên quan đến ghi nhật ký (cái có thể áp dụng cho các
 ##### "standard_log" `[string]`
 - Tập tin có thể đọc con người cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Tập tin Apache phong cách cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Tập tin tuần tự cho ghi tất cả các nỗ lực truy cập bị chặn. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - Một tập tin để ghi lại bất kỳ lỗi không nghiêm trọng được phát hiện. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Một tập tin để ghi nhật ký kết quả của bất kỳ yêu cầu gửi đi nào. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - Một tập tin để ghi lại bất kỳ báo cáo nào được gửi đến các API bên ngoài. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Dọn dẹp các bản ghi khi họ được một kích thước nhất định? Giá trị là kích thước tối đa bằng B/KB/MB/GB/TB mà một tập tin bản ghi có thể tăng lên trước khi bị dọn dẹp. Giá trị mặc định 0KB sẽ vô hiệu hoá dọn dẹp (các bản ghi có thể tăng lên vô hạn). Lưu ý: Áp dụng cho tập tin riêng biệt! Kích thước tập tin bản ghi không được coi là tập thể.
@@ -811,8 +850,12 @@ Cấu hình cho front-end.
 ##### "frontend_log" `[string]`
 - Tập tin cho ghi cố gắng đăng nhập front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - Một tập tin để ghi nhật ký khi chữ ký được cập nhật qua front-end. Chỉ định một tên tập tin, hoặc để trống để vô hiệu hóa.
+
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
@@ -899,7 +942,7 @@ __Điểm cuối của con người và dịch vụ điện toán đám mây.__ 
 Cấu hình để xác minh yêu cầu bắt nguồn từ đâu.
 
 ##### "search_engines" `[string]`
-- Kiểm soát để xác minh các yêu cầu từ các máy tìm kiếm.
+- Điều khiển cho xác minh các yêu cầu từ các máy tìm kiếm.
 
 ```
 search_engines
@@ -927,7 +970,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 * Tùy chọn này có một đường tránh tương ứng dưới `bypasses➡used`. Bạn nên đảm bảo rằng hộp kiểm cho đường tránh tương ứng được đánh dấu giống như hộp kiểm để cố gắng xác minh tùy chọn này.
 
 ##### "social_media" `[string]`
-- Kiểm soát để xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
+- Điều khiển cho xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
 
 ```
 social_media
@@ -949,7 +992,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 *!! Khả năng cao gây ra sai tích cực do iMessage.
 
 ##### "other" `[string]`
-- Kiểm soát để xác minh các loại yêu cầu khác nếu có thể.
+- Điều khiển cho xác minh các loại yêu cầu khác nếu có thể.
 
 ```
 other
@@ -969,7 +1012,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 !! Hầu hết người dùng có thể sẽ muốn điều này bị chặn, bất kể đó là thật hay giả mạo. Điều đó có thể đạt được bằng cách không chọn "cố gắng xác minh" và chọn "chặn các yêu cầu chưa được xác minh". Tuy nhiên, vì một số người dùng có thể muốn xác minh các yêu cầu đó (để chặn các yêu cầu tiêu cực trong khi cho phép các yêu cầu tích cực), thay vì chặn các yêu cầu đó thông qua các mô-đun, các tùy chọn để xử lý các yêu cầu đó được cung cấp tại đây.
 
 ##### "adjust" `[string]`
-- Kiểm soát để điều chỉnh các tính năng khác trong bối cảnh xác minh.
+- Điều khiển cho các điều chỉnh các tính năng khác trong bối cảnh xác minh.
 
 ```
 adjust
@@ -1022,6 +1065,8 @@ Xem thêm:
 ##### "recaptcha_log" `[string]`
 - Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
 
@@ -1050,11 +1095,12 @@ nonblocked_status_code
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
 ├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
 │ khích cho hầu hết các trường hợp chung.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
-│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
-│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
-│ cung cấp để giải trí và tiện lợi, nhưng thường không
-│ được khuyến khích.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
+│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
+│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
+│ lợi, nhưng thường không được khuyến khích.
 ├─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
 │ các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
 │ được khuyến khích trong các ngữ cảnh khác.
@@ -1103,6 +1149,8 @@ Xem thêm:
 ##### "hcaptcha_log" `[string]`
 - Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
 
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
 
@@ -1131,11 +1179,12 @@ nonblocked_status_code
 │ là dấu hiệu cho thấy yêu cầu đã thành công.
 ├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
 │ khích cho hầu hết các trường hợp chung.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư
-│ ({{Links.RFC2324}}). Rất khó có thể được hiểu bởi bất kỳ
-│ ứng dụng khách, bot, trình duyệt, hoặc cách nào khác. Được
-│ cung cấp để giải trí và tiện lợi, nhưng thường không
-│ được khuyến khích.
+├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
+│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
+│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
+│ lợi, nhưng thường không được khuyến khích.
 ├─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
 │ các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
 │ được khuyến khích trong các ngữ cảnh khác.
@@ -1178,7 +1227,7 @@ theme
 - URL của tập tin CSS cho các chủ đề tùy chỉnh.
 
 ##### "block_event_title" `[string]`
-- Tiêu đề trang để hiển thị cho các sự kiện khối.
+- Tiêu đề trang để hiển thị cho các sự kiện chặn.
 
 ```
 block_event_title
@@ -2312,4 +2361,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2024.07.01.
+Lần cuối cập nhật: 2024.07.03.

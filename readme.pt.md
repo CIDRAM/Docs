@@ -330,7 +330,7 @@ stages
 ```
 
 ##### "fields" `[string]`
-- Controles para os campos durante eventos de bloco (quando uma solicitação é bloqueada).
+- Controles para os campos durante eventos de bloqueio (quando uma solicitação é bloqueada).
 
 ```
 fields
@@ -338,7 +338,7 @@ fields
 ├─ScriptIdent ("Versão do script")
 ├─DateTime ("Data/Hora")
 ├─IPAddr ("Endereço IP")
-├─IPAddrResolved ("Endereço IP (Resolvido)")
+├─IPAddrResolved ("Endereço IP (resolvido)")
 ├─Query ("Query")
 ├─Referrer ("Referenciador")
 ├─UA ("Agente do usuário")
@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignorado")
 ├─Request_Method ("Método de solicitação")
 ├─Protocol ("Protocolo")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nome do host")
 ├─CAPTCHA ("Estado CAPTCHA")
-└─Inspection ("* Inspeção do condições")
+├─Inspection ("* Inspeção do condições")
+└─ClientL10NAccepted ("Resolução de idioma")
 ```
 
 * Destina-se apenas à depuração de regras auxiliares. Não exibido para usuários bloqueados.
 
 ** Requer funcionalidade de pesquisa ASN (por exemplo, através do módulo IP-API ou BGPView).
+
+!! Esta é uma dica do cliente de baixa entropia. As dicas de cliente são uma tecnologia web nova e experimental que ainda não é amplamente suportada em todos os navegadores e principais clientes. *Ver: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Embora as dicas do cliente possam ser úteis para impressão digital, já que não são amplamente suportadas, sua presença nas solicitações não deve ser assumida nem confiável. (ou seja, bloquear com base na ausência é uma má ideia).
 
 ##### "timezone" `[string]`
 - Isso é usado para especificar o fuso horário a ser usado (por exemplo, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Especifique "SYSTEM" para permitir que o PHP lide com isso automaticamente.
@@ -457,6 +463,24 @@ time_format
 └─…Outros
 ```
 
+__*Espaço reservado – Explicação – Exemplo baseado em 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – O ano – Por exemplo, 2024.<br />
+`{yy}` – O ano abreviado – Por exemplo, 24.<br />
+`{Mon}` – O nome abreviado do mês (em inglês) – Por exemplo, Apr.<br />
+`{mm}` – O mês com zeros à esquerda – Por exemplo, 04.<br />
+`{m}` – O mês – Por exemplo, 4.<br />
+`{Day}` – O nome abreviado do dia (em inglês) – Por exemplo, Tue.<br />
+`{dd}` – O dia com zeros à esquerda – Por exemplo, 30.<br />
+`{d}` – O dia – Por exemplo, 30.<br />
+`{hh}` – A hora com zeros à esquerda (usa o formato de 24 horas) – Por exemplo, 18.<br />
+`{h}` – A hora (usa o formato de 24 horas) – Por exemplo, 18.<br />
+`{ii}` – O minuto com zeros à esquerda – Por exemplo, 27.<br />
+`{i}` – O minuto – Por exemplo, 27.<br />
+`{ss}` – O segundo com zeros à esquerda – Por exemplo, 49.<br />
+`{s}` – O segundo – Por exemplo, 49.<br />
+`{tz}` – O fuso horário (sem dois pontos) – Por exemplo, +0800.<br />
+`{t:z}` – O fuso horário (com dois pontos) – Por exemplo, +08:00.
+
 ##### "ipaddr" `[string]`
 - Onde encontrar o IP endereço das solicitações? (Útil por serviços como o Cloudflare e tal). Padrão = REMOTE_ADDR. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
@@ -491,9 +515,11 @@ http_response_header_code
 │ armazenam em cache essa mensagem de status e não enviam solicitações
 │ subsequentes, mesmo após terem sido desbloqueadas. Pode ser o mais
 │ preferível em alguns contextos, para certos tipos de tráfego.
-├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
-│ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
-│ Fornecido para diversão e conveniência, mas geralmente não recomendado.
+├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Muito improvável de ser
+│ entendido por qualquer cliente, bot, navegador, ou outro. Fornecido para
+│ diversão e conveniência, mas geralmente não recomendado.
 ├─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
 │ em outros contextos.
 └─503 (503 Service Unavailable (Serviço indisponível)): Mais robusto, mas menos amigável de usar. Recomendado para quando sob
@@ -586,7 +612,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -597,6 +623,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -653,9 +680,11 @@ ban_override
 │ armazenam em cache essa mensagem de status e não enviam solicitações
 │ subsequentes, mesmo após terem sido desbloqueadas. Pode ser o mais
 │ preferível em alguns contextos, para certos tipos de tráfego.
-├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
-│ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
-│ Fornecido para diversão e conveniência, mas geralmente não recomendado.
+├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Muito improvável de ser
+│ entendido por qualquer cliente, bot, navegador, ou outro. Fornecido para
+│ diversão e conveniência, mas geralmente não recomendado.
 ├─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
 │ em outros contextos.
 └─503 (503 Service Unavailable (Serviço indisponível)): Mais robusto, mas menos amigável de usar. Recomendado para quando sob
@@ -755,20 +784,32 @@ Configuração relacionada ao log (excluindo o que é aplicável a outras catego
 ##### "standard_log" `[string]`
 - Um arquivo legível por humanos para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Um arquivo no estilo da Apache para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Um arquivo serializado para registrar todas as tentativas de acesso bloqueadas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - Um arquivo para registrar erros detectados que não são fatais. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Um arquivo para registrar os resultados de quaisquer solicitações de saída. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - Um arquivo para registrar quaisquer relatórios enviados para APIs externas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Truncar arquivos de log quando atingem um determinado tamanho? Valor é o tamanho máximo em B/KB/MB/GB/TB que um arquivo de log pode crescer antes de ser truncado. O valor padrão de 0KB desativa o truncamento (arquivos de log podem crescer indefinidamente). Nota: Aplica-se a arquivos de log individuais! O tamanho dos arquivos de log não é considerado coletivamente.
@@ -797,8 +838,12 @@ Configuração para o front-end.
 ##### "frontend_log" `[string]`
 - Arquivo para registrar tentativas de login ao front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - Um arquivo para registrar quando as assinaturas são atualizadas por meio do front-end. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Número máximo de tentativas de login ao front-end. Padrão = 5.
@@ -856,7 +901,7 @@ shorthand
 └─Other ("⁴ Outros")
 ```
 
-__0.__ Se o seu site precisar de acesso via LAN ou localhost, não bloqueie isso. Caso contrário, você pode bloquear isso.
+__0.__ Se seu site precisar de acesso via LAN ou localhost, não bloqueie isso. Caso contrário, você pode bloquear isso.
 
 __1.__ Nenhum dos arquivos de assinatura padrão usa isso, mas é suportado mesmo assim, caso possa ser útil para alguns usuários.
 
@@ -987,7 +1032,7 @@ usemode
 - Ligar CAPTCHA para os usuários?
 
 ##### "sitekey" `[string]`
-- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+- Este valor pode ser encontrado no painel do seu serviço CAPTCHA.
 
 Veja também:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
@@ -995,7 +1040,7 @@ Veja também:
 - [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
-- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+- Este valor pode ser encontrado no painel do seu serviço CAPTCHA.
 
 Veja também:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
@@ -1007,6 +1052,8 @@ Veja também:
 
 ##### "recaptcha_log" `[string]`
 - Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de log. Se não, deixe esta variável em branco.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signature_limit" `[int]`
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
@@ -1036,9 +1083,11 @@ nonblocked_status_code
 │ solicitação foi bem-sucedida.
 ├─403 (403 Forbidden (Proibido)): Um pouco mais robusto, mas um pouco menos amigável de usar. Recomendado
 │ para a maioria das circunstâncias gerais.
-├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
-│ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
-│ Fornecido para diversão e conveniência, mas geralmente não recomendado.
+├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Muito improvável de ser
+│ entendido por qualquer cliente, bot, navegador, ou outro. Fornecido para
+│ diversão e conveniência, mas geralmente não recomendado.
 ├─429 (429 Too Many Requests (Pedidos em excesso)): Recomendado para limitação de taxa, ao lidar com ataques DDoS, e para
 │ prevenção de inundações. Não recomendado em outros contextos.
 └─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
@@ -1069,13 +1118,13 @@ usemode
 - Ligar CAPTCHA para os usuários?
 
 ##### "sitekey" `[string]`
-- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+- Este valor pode ser encontrado no painel do seu serviço CAPTCHA.
 
 Veja também:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
 ##### "secret" `[string]`
-- Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
+- Este valor pode ser encontrado no painel do seu serviço CAPTCHA.
 
 Veja também:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
@@ -1085,6 +1134,8 @@ Veja também:
 
 ##### "hcaptcha_log" `[string]`
 - Registrar todas as tentativas de CAPTCHA? Se sim, especificar o nome a ser usado para o arquivo de log. Se não, deixe esta variável em branco.
+
+Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signature_limit" `[int]`
 - O número máximo de assinaturas permitidas antes que o CAPTCHA seja retirado. Padrão = 1.
@@ -1114,9 +1165,11 @@ nonblocked_status_code
 │ solicitação foi bem-sucedida.
 ├─403 (403 Forbidden (Proibido)): Um pouco mais robusto, mas um pouco menos amigável de usar. Recomendado
 │ para a maioria das circunstâncias gerais.
-├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril ({{Links.RFC2324}}). Muito
-│ improvável de ser entendido por qualquer cliente, bot, navegador, ou outro.
-│ Fornecido para diversão e conveniência, mas geralmente não recomendado.
+├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Muito improvável de ser
+│ entendido por qualquer cliente, bot, navegador, ou outro. Fornecido para
+│ diversão e conveniência, mas geralmente não recomendado.
 ├─429 (429 Too Many Requests (Pedidos em excesso)): Recomendado para limitação de taxa, ao lidar com ataques DDoS, e para
 │ prevenção de inundações. Não recomendado em outros contextos.
 └─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
@@ -1158,7 +1211,7 @@ theme
 - URL de arquivo CSS para temas personalizados.
 
 ##### "block_event_title" `[string]`
-- O título da página a ser exibido para eventos de bloco.
+- O título da página a ser exibido para eventos de bloqueio.
 
 ```
 block_event_title
@@ -2298,4 +2351,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 1 de Julho de 2024 (2024.07.01).
+Última Atualização: 3 de Julho de 2024 (2024.07.03).

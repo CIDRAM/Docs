@@ -356,14 +356,20 @@ fields
 ├─Ignored ("無視された")
 ├─Request_Method ("リクエスト・メソッド")
 ├─Protocol ("プロトコル")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("ホスト名")
 ├─CAPTCHA ("キャプチャ・ステータス")
-└─Inspection ("* 条件検査")
+├─Inspection ("* 条件検査")
+└─ClientL10NAccepted ("言語解決")
 ```
 
 * 補助ルールのデバッグのみを目的としています。​ブロックされたユーザーには表示されません。
 
 ** ＡＳＮルックアップ機能が必要です（たとえば、IP-APIモジュールまたはBGPViewモジュールを介して）。
+
+!! これは低エントロピーのクライアント・ヒントです。​クライアント・ヒントは、新しい実験的なウェブ・テクノロジーであり、まだすべてのブラウザや主要なクライアントで広くサポートされているわけではありません。 *見る：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>。* クライアント・ヒントは、フィンガープリンティングに役立ちますが、広くサポートされていないため、リクエストでクライアント・ヒントが存在すると想定したり、それに頼ったりしないでください（つまり、不在を理由にブロックするのは悪い考えだ）。
 
 ##### "timezone" `[string]`
 - 使用するタイムゾーンを指定します​（例えば、「Africa/Cairo」、「America/New_York」、「Asia/Tokyo」、「Australia/Perth」、「Europe/Berlin」、「Pacific/Guam」、等）。​「SYSTEM」を指定すると、ＰＨＰがこれを自動的に処理します。
@@ -457,6 +463,24 @@ time_format
 └─…その他
 ```
 
+__*プレースホルダー – 説明 – 例は2024-04-30T18:27:49+08:00に基づいています。*__<br />
+`{yyyy}` – 年 – 例えば、2024。<br />
+`{yy}` – 短縮年 – 例えば、24。<br />
+`{Mon}` – 月の略称（英語） – 例えば、Apr。<br />
+`{mm}` – 先頭にゼロが付いた月 – 例えば、04。<br />
+`{m}` – 月 – 例えば、4。<br />
+`{Day}` – 曜日の略称（英語） – 例えば、Tue。<br />
+`{dd}` – 先頭にゼロが付いた日 – 例えば、30。<br />
+`{d}` – 日 – 例えば、30。<br />
+`{hh}` – 先頭にゼロが付いた時間（24時間制を使用） – 例えば、18。<br />
+`{h}` – 時間（24時間制を使用） – 例えば、18。<br />
+`{ii}` – 先頭にゼロが付いた分 – 例えば、27。<br />
+`{i}` – 分 – 例えば、27。<br />
+`{ss}` – 先頭にゼロが付いた秒 – 例えば、49。<br />
+`{s}` – 秒 – 例えば、49。<br />
+`{tz}` – タイムゾーン（コロンなし） – 例えば、+0800。<br />
+`{t:z}` – タイムゾーン（コロン付き） – 例えば、+08:00。
+
 ##### "ipaddr" `[string]`
 - 接続リクエストのＩＰアドレスをどこで見つけるべきかについて（Cloudflareのようなサービスに対して有効）。​Default（デフォルト設定） = REMOTE_ADDR。​注意：あなたが何をしているのか、分からない限り、これを変更しないでください。
 
@@ -488,7 +512,9 @@ http_response_header_code
 │ ほとんどの場合に推奨されます。
 ├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
 │ 特定の種類のトラフィックでは、状況によっては最も望ましい場合があります。
-├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>）。
 │ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
 │ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
@@ -575,7 +601,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -586,6 +612,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -639,7 +666,9 @@ ban_override
 │ ほとんどの場合に推奨されます。
 ├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
 │ 特定の種類のトラフィックでは、状況によっては最も望ましい場合があります。
-├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>）。
 │ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
 │ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
@@ -741,20 +770,32 @@ CIDRAMによって使用されるコンポーネントをアクティブ化お�
 ##### "standard_log" `[string]`
 - アクセス試行阻止の記録、人間によって読み取り可能。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "apache_style_log" `[string]`
 - アクセス試行阻止の記録、Apacheスタイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
+
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
 
 ##### "serialised_log" `[string]`
 - アクセス試行阻止の記録、シリアル化されました。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "error_log" `[string]`
 - 検出された致命的でないエラーを記録するためのファイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
+
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
 
 ##### "outbound_request_log" `[string]`
 - アウトバウンド要求の結果を記録するためのファイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "report_log" `[string]`
 - 外部ＡＰＩに送信されたレポートを記録するためのファイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
+
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
 
 ##### "truncate" `[string]`
 - ログ・ファイルが一定のサイズに達したら切り詰めますか？​値は、ログ・ファイルが切り捨てられる前に大きくなる可能性があるＢ/ＫＢ/ＭＢ/ＧＢ/ＴＢ単位の最大サイズです。​デフォルト値の０ＫＢは切り捨てを無効にします （ログ・ファイルは無期限に拡張できます）。​注：個々のログ・ファイルに適用されます。​ログ・ファイルのサイズは一括して考慮されません。
@@ -783,8 +824,12 @@ log_rotation_action
 ##### "frontend_log" `[string]`
 - フロントエンド・ログインの試みを記録するためのファイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "signatures_update_event_log" `[string]`
 - フロントエンドを介してシグネチャ・ファイルが更新されたときにログに記録するためのファイル。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
+
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
 
 ##### "max_login_attempts" `[int]`
 - ログイン試行の最大回数（フロントエンド）。​Default（デフォルト設定） = ５。
@@ -994,6 +1039,8 @@ usemode
 ##### "recaptcha_log" `[string]`
 - キャプチャ試行の記録。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "signature_limit" `[int]`
 - キャプチャが取り消される前に許可されるシグネチャの最大数。​Default/デフォルルト = １。
 
@@ -1021,7 +1068,9 @@ nonblocked_status_code
 │ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
 ├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
 │ ほとんどの場合に推奨されます。
-├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>）。
 │ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
 │ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─429 (429 Too Many Requests （リクエストが多すぎます）): レート制限、ＤＤｏＳ攻撃に対処する場合、およびフラッド防止に推奨されます。
@@ -1071,6 +1120,8 @@ usemode
 ##### "hcaptcha_log" `[string]`
 - キャプチャ試行の記録。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
 
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
+
 ##### "signature_limit" `[int]`
 - キャプチャが取り消される前に許可されるシグネチャの最大数。​Default/デフォルルト = １。
 
@@ -1098,7 +1149,9 @@ nonblocked_status_code
 │ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
 ├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
 │ ほとんどの場合に推奨されます。
-├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（{{Links.RFC2324}}）。
+├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>）。
 │ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
 │ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
 ├─429 (429 Too Many Requests （リクエストが多すぎます）): レート制限、ＤＤｏＳ攻撃に対処する場合、およびフラッド防止に推奨されます。
@@ -2277,4 +2330,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２４年７月１日。
+最終アップデート：２０２４年７月３日。

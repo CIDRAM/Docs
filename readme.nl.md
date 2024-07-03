@@ -338,7 +338,7 @@ fields
 ├─ScriptIdent ("Script versie")
 ├─DateTime ("Datum/Tijd")
 ├─IPAddr ("IP-Adres")
-├─IPAddrResolved ("IP-Adres (Vastbesloten)")
+├─IPAddrResolved ("IP-adres (vastbesloten)")
 ├─Query ("Query")
 ├─Referrer ("Verwijzer")
 ├─UA ("Gebruikersagent")
@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Genegeerd")
 ├─Request_Method ("Verzoek methode")
 ├─Protocol ("Protocol")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Hostname")
 ├─CAPTCHA ("CAPTCHA state")
-└─Inspection ("* Inspectie van de voorwaarden")
+├─Inspection ("* Inspectie van de voorwaarden")
+└─ClientL10NAccepted ("Taalresolutie")
 ```
 
 * Alleen bedoeld voor het debuggen van aanvullende regels. Niet weergegeven voor geblokkeerde gebruikers.
 
 ** Vereist ASN-opzoekfunctionaliteit (b.v., via de IP-API-module of BGPView-module).
+
+!! Dit is een clienthint met een lage entropie. Clienthints zijn een nieuwe, experimentele webtechnologie die nog niet breed wordt ondersteund door alle browsers en grote clients. *Zien: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Clienthints kunnen nuttig zijn voor het nemen van vingerafdrukken, maar omdat ze niet breed worden ondersteund, er mag niet van worden uitgegaan of op vertrouwd dat ze aanwezig zullen zijn in verzoeken (d.w.z., blokkeren op basis van hun afwezigheid is een slecht idee).
 
 ##### "timezone" `[string]`
 - Dit wordt gebruikt om de te gebruiken tijdzone op te geven (b.v., Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, enz). Geef "SYSTEM" op om PHP dit automatisch voor u te laten afhandelen.
@@ -457,6 +463,24 @@ time_format
 └─…Anders
 ```
 
+__*Tijdelijke aanduiding – Uitleg – Voorbeeld gebaseerd op 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – Het jaartal – B.v., 2024.<br />
+`{yy}` – Het afgekorte jaartal – B.v., 24.<br />
+`{Mon}` – De afgekorte naam van de maand (in het Engels) – B.v., Apr.<br />
+`{mm}` – De maand met voorloopnullen – B.v., 04.<br />
+`{m}` – De maand – B.v., 4.<br />
+`{Day}` – De afgekorte naam van de dag (in het Engels) – B.v., Tue.<br />
+`{dd}` – De dag met voorloopnullen – B.v., 30.<br />
+`{d}` – De dag – B.v., 30.<br />
+`{hh}` – Het uur met voorloopnullen (gebruikt 24-uurs tijd) – B.v., 18.<br />
+`{h}` – Het uur (gebruikt 24-uurs tijd) – B.v., 18.<br />
+`{ii}` – De minuut met voorloopnullen – B.v., 27.<br />
+`{i}` – De minuut – B.v., 27.<br />
+`{ss}` – De seconde met voorloopnullen – B.v., 49.<br />
+`{s}` – De seconde – B.v., 49.<br />
+`{tz}` – De tijdzone (zonder dubbele punt) – B.v., +0800.<br />
+`{t:z}` – De tijdzone (met dubbele punt) – B.v., +08:00.
+
 ##### "ipaddr" `[string]`
 - Waar het IP-adres van het aansluiten verzoek te vinden? (Handig voor diensten zoals Cloudflare en dergelijke). Standaard = REMOTE_ADDR. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
@@ -491,10 +515,11 @@ http_response_header_code
 │ sommige browsers dit statusbericht in de cache opslaan en geen volgende
 │ verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in
 │ sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
-│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
-│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
-│ aanbevolen.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
+│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
+│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
+│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
+│ algemeen niet aanbevolen.
 ├─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
 │ aanbevolen in andere contexten.
 └─503 (503 Service Unavailable (Dienst onbeschikbaar)): Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u
@@ -588,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -599,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -655,10 +681,11 @@ ban_override
 │ sommige browsers dit statusbericht in de cache opslaan en geen volgende
 │ verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in
 │ sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
-│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
-│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
-│ aanbevolen.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
+│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
+│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
+│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
+│ algemeen niet aanbevolen.
 ├─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
 │ aanbevolen in andere contexten.
 └─503 (503 Service Unavailable (Dienst onbeschikbaar)): Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u
@@ -759,20 +786,32 @@ Configuratie gerelateerd aan logging (dat wat gerelateerd aan andere categorieë
 ##### "standard_log" `[string]`
 - Mensen leesbare bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Apache-stijl bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Geserialiseerd bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Een bestand voor het loggen van de resultaten van eventuele uitgaande verzoeken. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - Een bestand voor het loggen van rapporten die naar externe API's zijn verzonden. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
@@ -801,8 +840,12 @@ Configuratie voor de frontend.
 ##### "frontend_log" `[string]`
 - Bestand om de frontend login pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - Een bestand om te loggen wanneer signatures worden bijgewerkt via de frontend. Geef een bestandsnaam, of laat leeg om uit te schakelen.
+
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Maximum aantal frontend-inlogpogingen. Standaard = 5.
@@ -1012,6 +1055,8 @@ Zie ook:
 ##### "recaptcha_log" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
 
@@ -1040,10 +1085,11 @@ nonblocked_status_code
 │ het verzoek was succesvol.
 ├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
 │ algemene omstandigheden.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
-│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
-│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
-│ aanbevolen.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
+│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
+│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
+│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
+│ algemeen niet aanbevolen.
 ├─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
 │ het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
 └─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
@@ -1091,6 +1137,8 @@ Zie ook:
 ##### "hcaptcha_log" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
 
@@ -1119,10 +1167,11 @@ nonblocked_status_code
 │ het verzoek was succesvol.
 ├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
 │ algemene omstandigheden.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap ({{Links.RFC2324}}). Het is zeer
-│ onwaarschijnlijk dat deze door een client, bot, browser, of anderszins wordt
-│ begrepen. Geleverd voor amusement en gemak, maar over het algemeen niet
-│ aanbevolen.
+├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
+│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
+│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
+│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
+│ algemeen niet aanbevolen.
 ├─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
 │ het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
 └─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
@@ -2318,4 +2367,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 1 Juli 2024 (2024.07.01).
+Laatste Bijgewerkt: 3 Juli 2024 (2024.07.03).

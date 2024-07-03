@@ -356,14 +356,20 @@ fields
 ├─Ignored ("무시 됨")
 ├─Request_Method ("요청 방법")
 ├─Protocol ("프로토콜")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("호스트 이름")
 ├─CAPTCHA ("CAPTCHA의 상태")
-└─Inspection ("* 조건 검사")
+├─Inspection ("* 조건 검사")
+└─ClientL10NAccepted ("언어 해상도")
 ```
 
 * 보조 규칙 디버깅 전용입니다. 차단된 사용자에게는 표시되지 않습니다.
 
 ** ASN 조회 기능이 필요합니다 (예 : IP-API 또는 BGPView 모듈을 통해).
+
+!! 이는 낮은 엔트로피 클라이언트 힌트입니다. 클라이언트 힌트는 새로운 실험적 웹 기술이지만 아직 모든 브라우저와 주요 클라이언트에서 널리 지원되지는 않습니다. *보다 : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* 클라이언트 힌트는 핑거프린팅에 유용할 수 있지만 광범위하게 지원되지 않으므로 요청에 클라이언트 힌트가 있다고 가정하거나 의존해서는 안 됩니다 (즉, 부재를 기준으로 차단하는 것은 나쁜 생각입니다).
 
 ##### "timezone" `[string]`
 - 사용할 시간대를 지정합니다 (예 : Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, 등등). PHP가 자동으로 처리하도록하려면, "SYSTEM"을 지정하십시오.
@@ -457,6 +463,24 @@ time_format
 └─…다른
 ```
 
+__*자리 표시자 – 설명 – 예시는 2024-04-30T18:27:49+08:00를 기준으로 합니다.*__<br />
+`{yyyy}` – 연도 – 예 : 2024.<br />
+`{yy}` – 약식 연도 – 예 : 24.<br />
+`{Mon}` – 해당 월의 약칭(영문) – 예 : Apr.<br />
+`{mm}` – 앞에 0이 붙는 달 – 예 : 04.<br />
+`{m}` – 달 – 예 : 4.<br />
+`{Day}` – 요일의 약칭(영문) – 예 : Tue.<br />
+`{dd}` – 앞에 0이 붙은 해당 월의 일 – 예 : 30.<br />
+`{d}` – 해당 월의 일 – 예 : 30.<br />
+`{hh}` – 앞에 0이 붙은 시간(24시간제 사용) – 예 : 18.<br />
+`{h}` – 시간(24시간제 사용) – 예 : 18.<br />
+`{ii}` – 앞에 0이 붙는 분 – 예 : 27.<br />
+`{i}` – 분 – 예 : 27.<br />
+`{ss}` – 앞에 0이 붙은 초 – 예 : 49.<br />
+`{s}` – 초 – 예 : 49.<br />
+`{tz}` – 시간대(콜론 제외) – 예 : +0800.<br />
+`{t:z}` – 시간대(콜론 포함) – 예 : +08:00.
+
 ##### "ipaddr" `[string]`
 - 연결 요청의 IP 주소를 어디에서 찾을 것인가에 대해 (Cloudflare 같은 서비스에 대해 유효). Default (기본 설정) = REMOTE_ADDR. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
@@ -491,10 +515,12 @@ http_response_header_code
 │ 캐시하고 후속 요청을 보내지 않기 때문에 가 양성을
 │ 해결할 때 문제를 일으킬 수 있습니다. 어떤 상황에서는
 │ 특정 종류의 트래픽에 대해 가장 선호될 수 있습니다.
-├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
-│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
-│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
-│ 권장되지 않습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). 클라이언트, 로봇,
+│ 브라우저, 등이 이해하지 못할 가능성이 매우 높습니다.
+│ 오락과 편의를 위해 제공되지만, 일반적으로 권장되지
+│ 않습니다.
 ├─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
 │ 상황에서는 권장되지 않습니다.
 └─503 (503 Service Unavailable (서비스 불가)): 가장 강력하지만 사용자 친화적이지 않습니다.
@@ -584,7 +610,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -595,6 +621,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -651,10 +678,12 @@ ban_override
 │ 캐시하고 후속 요청을 보내지 않기 때문에 가 양성을
 │ 해결할 때 문제를 일으킬 수 있습니다. 어떤 상황에서는
 │ 특정 종류의 트래픽에 대해 가장 선호될 수 있습니다.
-├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
-│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
-│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
-│ 권장되지 않습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). 클라이언트, 로봇,
+│ 브라우저, 등이 이해하지 못할 가능성이 매우 높습니다.
+│ 오락과 편의를 위해 제공되지만, 일반적으로 권장되지
+│ 않습니다.
 ├─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
 │ 상황에서는 권장되지 않습니다.
 └─503 (503 Service Unavailable (서비스 불가)): 가장 강력하지만 사용자 친화적이지 않습니다.
@@ -755,20 +784,32 @@ CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위�
 ##### "standard_log" `[string]`
 - 액세스 시도 저지를 기록, 인간에 의해 읽기 가능. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "apache_style_log" `[string]`
 - 액세스 시도 저지를 기록, Apache 스타일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
 
 ##### "serialised_log" `[string]`
 - 액세스 시도 저지를 기록 직렬화되었습니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "error_log" `[string]`
 - 치명적이지 않은 오류를 탐지하기위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
 
 ##### "outbound_request_log" `[string]`
 - 아웃바운드 요청의 결과를 기록하기 위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "report_log" `[string]`
 - 외부 API로 전송된 보고서를 기록하기 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
 
 ##### "truncate" `[string]`
 - 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
@@ -797,8 +838,12 @@ log_rotation_action
 ##### "frontend_log" `[string]`
 - 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "signatures_update_event_log" `[string]`
 - 프런트 엔드임를 통해 서명이 업데이트될 때 로깅을 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
 
 ##### "max_login_attempts" `[int]`
 - 로그인 시도 최대 횟수입니다 (프론트 엔드). Default (기본 설정) = 5.
@@ -1008,6 +1053,8 @@ usemode
 ##### "recaptcha_log" `[string]`
 - 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "signature_limit" `[int]`
 - 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
 
@@ -1036,10 +1083,12 @@ nonblocked_status_code
 │ 가능성이 큽니다.
 ├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
 │ 일반적인 상황에 권장됩니다.
-├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
-│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
-│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
-│ 권장되지 않습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). 클라이언트, 로봇,
+│ 브라우저, 등이 이해하지 못할 가능성이 매우 높습니다.
+│ 오락과 편의를 위해 제공되지만, 일반적으로 권장되지
+│ 않습니다.
 ├─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
 │ 다른 상황에서는 권장되지 않습니다.
 └─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
@@ -1087,6 +1136,8 @@ usemode
 ##### "hcaptcha_log" `[string]`
 - 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
 
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+
 ##### "signature_limit" `[int]`
 - 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
 
@@ -1115,10 +1166,12 @@ nonblocked_status_code
 │ 가능성이 큽니다.
 ├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
 │ 일반적인 상황에 권장됩니다.
-├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 ({{Links.RFC2324}}). 클라이언트,
-│ 로봇, 브라우저, 등이 이해하지 못할 가능성이 매우
-│ 높습니다. 오락과 편의를 위해 제공되지만, 일반적으로
-│ 권장되지 않습니다.
+├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). 클라이언트, 로봇,
+│ 브라우저, 등이 이해하지 못할 가능성이 매우 높습니다.
+│ 오락과 편의를 위해 제공되지만, 일반적으로 권장되지
+│ 않습니다.
 ├─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
 │ 다른 상황에서는 권장되지 않습니다.
 └─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
@@ -2294,4 +2347,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2024년 7월 1일.
+최종 업데이트 : 2024년 7월 3일.

@@ -362,14 +362,20 @@ fields
 ├─Ignored ("نظر انداز")
 ├─Request_Method ("درخواست کا طریقہ")
 ├─Protocol ("پروٹوکول")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("میزبان کا نام")
 ├─CAPTCHA ("CAPTCHA کے ریاست")
-└─Inspection ("* حالات کا معائنہ")
+├─Inspection ("* حالات کا معائنہ")
+└─ClientL10NAccepted ("زبان کا حل")
 ```
 
 * صرف معاون قواعد کو ڈیبگ کرنے کے لیے بنایا گیا ہے. مسدود صارفین کو ظاہر نہیں کیا گیا.
 
 ** ASN تلاش کی فعالیت کی ضرورت ہے (مثال کے طور پر، IP-API یا BGPView ماڈیول کے ذریعے).
+
+!! یہ کم اینٹروپی کلائنٹ کا اشارہ ہے. کلائنٹ کے اشارے ایک نئی، تجرباتی ویب ٹیکنالوجی ہے جو ابھی تک تمام براؤزرز اور بڑے کلائنٹس میں وسیع پیمانے پر تعاون یافتہ نہیں ہے. <em>دیکھیں: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.</em> اگرچہ کلائنٹ کے اشارے فنگر پرنٹنگ کے لیے کارآمد ثابت ہو سکتے ہیں، کیونکہ وہ وسیع پیمانے پر تعاون یافتہ نہیں ہیں، لیکن درخواستوں میں ان کی موجودگی کو فرض نہیں کیا جانا چاہیے اور نہ ہی ان پر انحصار کیا جانا چاہیے (یعنی، ان کی غیر موجودگی کی بنیاد پر بلاک کرنا ایک برا خیال ہے).
 
 ##### <div dir="rtl">"timezone" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>استعمال کرنے کے لئے ٹائم زون کی وضاحت کرتا ہے (جیسے، Africa/Cairo، America/New_York، Asia/Tokyo، Australia/Perth، Europe/Berlin، Pacific/Guam، وغیرہ). SYSTEM کی وضاحت کریں تاکہ PHP کو آپ کے لئے خود بخود یہ سنبھل سکے.</li></ul></div>
@@ -463,6 +469,24 @@ time_format
 └─…دیگر
 ```
 
+<strong><em>پلیس ہولڈر – وضاحت – <span dir="ltr">2024-04-30T18:27:49+08:00</span> پر مبنی مثال.</em></strong><br />
+<code dir="ltr" class="s">{yyyy}</code> – سال – جیسے، 2024.<br />
+<code dir="ltr" class="s">{yy}</code> – مختصر سال – جیسے، 24.<br />
+<code dir="ltr" class="s">{Mon}</code> – مہینے کا مختصر نام (انگریزی میں) – جیسے، Apr.<br />
+<code dir="ltr" class="s">{mm}</code> – پہلے صفر کے ساتھ مہینے – جیسے، 04.<br />
+<code dir="ltr" class="s">{m}</code> – مہینے – جیسے، 4.<br />
+<code dir="ltr" class="s">{Day}</code> – دن کا مختصر نام (انگریزی میں) – جیسے، Tue.<br />
+<code dir="ltr" class="s">{dd}</code> – پہلے صفر کے ساتھ دن – جیسے، 30.<br />
+<code dir="ltr" class="s">{d}</code> – دن – جیسے، 30.<br />
+<code dir="ltr" class="s">{hh}</code> – پہلے صفر کے ساتھ گھنٹہ (24 گھنٹے کا وقت استعمال کرتا ہے) – جیسے، 18.<br />
+<code dir="ltr" class="s">{h}</code> – گھنٹہ (24 گھنٹے کا وقت استعمال کرتا ہے) – جیسے، 18.<br />
+<code dir="ltr" class="s">{ii}</code> – پہلے صفر کے ساتھ منٹ – جیسے، 27.<br />
+<code dir="ltr" class="s">{i}</code> – منٹ – جیسے، 27.<br />
+<code dir="ltr" class="s">{ss}</code> – پہلے صفر کے ساتھ سیکنڈ – جیسے، 49.<br />
+<code dir="ltr" class="s">{s}</code> – سیکنڈ – جیسے، 49.<br />
+<code dir="ltr" class="s">{tz}</code> – ٹائم زون (بغیر رابطہ کے) – جیسے، <span dir="ltr">+0800</span>.<br />
+<code dir="ltr" class="s">{t:z}</code> – ٹائم زون (رابطہ کے ساتھ) – جیسے، <span dir="ltr">+08:00</span>.
+
 ##### <div dir="rtl">"ipaddr" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کہاں درخواستوں منسلک کرنے کے IP ایڈریس کو تلاش کرنے کے لئے؟ (جیسا Cloudflare کے طور پر خدمات اور پسند کرتا ہے کے لئے مفید). پہلے سے طے شدہ = REMOTE_ADDR. انتباہ: جب تک کہ آپ کو پتہ ہے تم کیا کر رہے ہو اس کو تبدیل نہ کریں!</li></ul></div>
 
@@ -499,11 +523,13 @@ http_response_header_code
 │ کیش کریں گے اور بعد میں درخواستیں نہیں
 │ بھیجیں گے. کچھ سیاق و سباق میں استعمال
 │ کرنے کے لیے بہترین ہو سکتا ہے.
-├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
-│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
-│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
-│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
-│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). کسی بھی
+│ کلائنٹ، بوٹ، براؤزر، یا کسی اور طرح سے
+│ سمجھنے کا امکان نہیں ہے. تفریح اور سہولت
+│ کے لیے فراہم کی گئی ہے، لیکن عام طور پر
+│ تجویز نہیں کی جاتی ہے.
 ├─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
 │ مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
 │ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
@@ -608,7 +634,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -619,6 +645,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -676,11 +703,13 @@ ban_override
 │ کیش کریں گے اور بعد میں درخواستیں نہیں
 │ بھیجیں گے. کچھ سیاق و سباق میں استعمال
 │ کرنے کے لیے بہترین ہو سکتا ہے.
-├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
-│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
-│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
-│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
-│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). کسی بھی
+│ کلائنٹ، بوٹ، براؤزر، یا کسی اور طرح سے
+│ سمجھنے کا امکان نہیں ہے. تفریح اور سہولت
+│ کے لیے فراہم کی گئی ہے، لیکن عام طور پر
+│ تجویز نہیں کی جاتی ہے.
 ├─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
 │ مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
 │ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
@@ -782,20 +811,32 @@ disabled_channels
 ##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے انسانی قابل مطالعہ فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے اپاچی طرز فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لئے serialized کی فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کیلئے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی آؤٹ باؤنڈ درخواستوں کے نتائج کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی API کو بھیجی گئی کسی بھی رپورٹ کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>وہ ایک خاص سائز تک پہنچنے میں جب صاف لاگ مسلیں؟ ویلیو میں B/KB/MB/GB/TB زیادہ سے زیادہ سائز ہے. جب 0KB، وہ غیر معینہ مدت تک ترقی کر سکتا ہے (پہلے سے طے). نوٹ: واحد فائلوں پر لاگو ہوتا ہے! فائلیں اجتماعی غور نہیں کر رہے ہیں.</li></ul></div>
@@ -824,8 +865,12 @@ log_rotation_action
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لئے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لئے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
+
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
@@ -1037,6 +1082,8 @@ usemode
 ##### <div dir="rtl">"recaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
 
@@ -1065,11 +1112,13 @@ nonblocked_status_code
 │ کریں گی کہ درخواست کامیاب تھی.
 ├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
 │ عام حالات کے لیے تجویز کردہ.
-├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
-│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
-│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
-│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
-│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). کسی بھی
+│ کلائنٹ، بوٹ، براؤزر، یا کسی اور طرح سے
+│ سمجھنے کا امکان نہیں ہے. تفریح اور سہولت
+│ کے لیے فراہم کی گئی ہے، لیکن عام طور پر
+│ تجویز نہیں کی جاتی ہے.
 ├─429 (429 Too Many Requests (بہت ساری درخواستیں)): شرح کو محدود کرنے، DDoS حملوں سے نمٹنے، اور
 │ سیلاب سے بچاؤ کے لیے تجویز کردہ. دوسرے
 │ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
@@ -1121,6 +1170,8 @@ usemode
 ##### <div dir="rtl">"hcaptcha_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
 
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
+
 ##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
 
@@ -1149,11 +1200,13 @@ nonblocked_status_code
 │ کریں گی کہ درخواست کامیاب تھی.
 ├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
 │ عام حالات کے لیے تجویز کردہ.
-├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں
-│ ({{Links.RFC2324}}). کسی بھی کلائنٹ، بوٹ، براؤزر،
-│ یا کسی اور طرح سے سمجھنے کا امکان نہیں ہے.
-│ تفریح اور سہولت کے لیے فراہم کی گئی ہے،
-│ لیکن عام طور پر تجویز نہیں کی جاتی ہے.
+├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). کسی بھی
+│ کلائنٹ، بوٹ، براؤزر، یا کسی اور طرح سے
+│ سمجھنے کا امکان نہیں ہے. تفریح اور سہولت
+│ کے لیے فراہم کی گئی ہے، لیکن عام طور پر
+│ تجویز نہیں کی جاتی ہے.
 ├─429 (429 Too Many Requests (بہت ساری درخواستیں)): شرح کو محدود کرنے، DDoS حملوں سے نمٹنے، اور
 │ سیلاب سے بچاؤ کے لیے تجویز کردہ. دوسرے
 │ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
@@ -2376,4 +2429,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱ جولائی ۲۰۲۴ (۲۰۲۴.۰۷.۰۱).</div>
+<div dir="rtl">آخری تازہ کاری: ۳ جولائی ۲۰۲۴ (۲۰۲۴.۰۷.۰۳).</div>

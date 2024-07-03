@@ -338,7 +338,7 @@ fields
 ├─ScriptIdent ("Guión versión")
 ├─DateTime ("Fecha/Hora")
 ├─IPAddr ("Dirección IP")
-├─IPAddrResolved ("Dirección IP (Resuelto)")
+├─IPAddrResolved ("Dirección IP (resuelto)")
 ├─Query ("Query")
 ├─Referrer ("Referente")
 ├─UA ("Agente de usuario")
@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignorado")
 ├─Request_Method ("Método de solicitud")
 ├─Protocol ("Protocolo")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nombre de host")
 ├─CAPTCHA ("Estado CAPTCHA")
-└─Inspection ("* Inspección de condiciones")
+├─Inspection ("* Inspección de condiciones")
+└─ClientL10NAccepted ("Resolución de idioma")
 ```
 
 * Destinado solo para reglas auxiliares. No se muestra a los usuarios bloqueados.
 
 ** Requiere la funcionalidad de búsqueda de ASN (por ejemplo, a través del módulo IP-API o BGPView).
+
+!! Esta es una sugerencia de cliente de baja entropía. Las sugerencias de cliente son una tecnología web nueva y experimental que aún no es ampliamente compatible con todos los navegadores y clientes principales. *Ver: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Aunque las sugerencias de los clientes pueden ser útiles para la toma de huellas digitales, ya que no cuentan con un amplio soporte, no se debe asumir ni confiar en su presencia en las solicitudes (es decir, bloquear en función de su ausencia es una mala idea).
 
 ##### "timezone" `[string]`
 - Esto se usa para especificar la zona horaria a usar (por ejemplo, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Especifique "SYSTEM" para permitir que PHP maneje esto automáticamente.
@@ -457,6 +463,24 @@ time_format
 └─…Otro
 ```
 
+__*Marcador de posición – Explicación – Ejemplo basado en 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – El año – P.ej. 2024.<br />
+`{yy}` – El año abreviado – P.ej. 24.<br />
+`{Mon}` – El nombre abreviado del mes (en inglés) – P.ej. Apr.<br />
+`{mm}` – El mes con ceros a la izquierda – P.ej. 04.<br />
+`{m}` – El mes – P.ej. 4.<br />
+`{Day}` – El nombre abreviado del día (en inglés) – P.ej. Tue.<br />
+`{dd}` – El día con ceros a la izquierda – P.ej. 30.<br />
+`{d}` – El día – P.ej. 30.<br />
+`{hh}` – La hora con ceros a la izquierda (utiliza el formato de 24 horas) – P.ej. 18.<br />
+`{h}` – La hora (utiliza el formato de 24 horas) – P.ej. 18.<br />
+`{ii}` – El minuto con ceros a la izquierda – P.ej. 27.<br />
+`{i}` – El minuto – P.ej. 27.<br />
+`{ss}` – El segundo con ceros a la izquierda – P.ej. 49.<br />
+`{s}` – El segundo – P.ej. 49.<br />
+`{tz}` – La zona horaria (sin dos puntos) – P.ej. +0800.<br />
+`{t:z}` – La zona horaria (con dos puntos) – P.ej. +08:00.
+
 ##### "ipaddr" `[string]`
 - ¿Dónde puedo encontrar el IP dirección de las solicitudes entrantes? (Útil para servicios como Cloudflare y tales). Predefinido = REMOTE_ADDR. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
@@ -491,10 +515,11 @@ http_response_header_code
 │ algunos navegadores almacenan en caché este mensaje de estado y no envían
 │ solicitudes posteriores, incluso después de haber sido desbloqueados. Puede
 │ ser el más preferible en algunos contextos, para ciertos tipos de tráfico.
-├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes ({{Links.RFC2324}}).
-│ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
-│ entiendará. Provisto por diversión y conveniencia, pero generalmente no
-│ recomendado.
+├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es muy poco probable que
+│ cualquier cliente, bot, navegador, u otro lo entiendará. Provisto por
+│ diversión y conveniencia, pero generalmente no recomendado.
 ├─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
 │ recomendado en otros contextos.
 └─503 (503 Service Unavailable (Servicio no disponible)): Más robusto, pero menos fácil de usar. Recomendado para cuando está bajo
@@ -588,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -599,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -655,10 +681,11 @@ ban_override
 │ algunos navegadores almacenan en caché este mensaje de estado y no envían
 │ solicitudes posteriores, incluso después de haber sido desbloqueados. Puede
 │ ser el más preferible en algunos contextos, para ciertos tipos de tráfico.
-├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes ({{Links.RFC2324}}).
-│ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
-│ entiendará. Provisto por diversión y conveniencia, pero generalmente no
-│ recomendado.
+├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es muy poco probable que
+│ cualquier cliente, bot, navegador, u otro lo entiendará. Provisto por
+│ diversión y conveniencia, pero generalmente no recomendado.
 ├─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
 │ recomendado en otros contextos.
 └─503 (503 Service Unavailable (Servicio no disponible)): Más robusto, pero menos fácil de usar. Recomendado para cuando está bajo
@@ -759,20 +786,32 @@ Configuración relacionada con el registro (excluyendo lo que es aplicable a otr
 ##### "standard_log" `[string]`
 - Un archivo legible por humanos para el registro de todos los intentos de acceso bloqueados. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "apache_style_log" `[string]`
 - Un archivo en el estilo de Apache para el registro de todos los intentos de acceso bloqueados. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Un archivo serializado para el registro de todos los intentos de acceso bloqueados. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "error_log" `[string]`
 - Un archivo para registrar cualquier error detectado que no sea fatal. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Un archivo para registrar los resultados de cualquier solicitud saliente. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "report_log" `[string]`
 - Un archivo para registrar cualquier reportes enviados a las API externas. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predeterminado de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
@@ -801,8 +840,12 @@ Configuración para el front-end.
 ##### "frontend_log" `[string]`
 - Archivo para registrar intentos de login al front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
 
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signatures_update_event_log" `[string]`
 - Un archivo para registrar cuando las firmas se actualizan a través del front-end. Especificar el nombre del archivo, o dejar en blanco para desactivar.
+
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Número máximo de intentos de login al front-end. Predefinido = 5.
@@ -981,7 +1024,7 @@ usemode
 ├─3 (Solo cuando está dentro del límite de firmas y no está prohibido (independientemente de si está bloqueado).)
 ├─4 (Solo cuando no está bloqueado.)
 ├─5 (Solo cuando no está bloqueado, o cuando está especialmente marcado para su uso, dentro del límite de firmas y no está prohibido.)
-└─6 (Solo cuando no está bloqueado, en solicitudes de páginas sensibles.)
+└─6 (Solo cuando no está bloqueado, en solicitudes de páginas confidenciales.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1012,6 +1055,8 @@ Ver también:
 ##### "recaptcha_log" `[string]`
 - Registrar todos los intentos de CAPTCHA? En caso afirmativo, especifique el nombre que se utilizará para el archivo de registro. Si no, dejar esta variable en blanco.
 
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### "signature_limit" `[int]`
 - Número máximo de firmas permitidas antes de que se retire la oferta de CAPTCHA. Predefinido = 1.
 
@@ -1040,10 +1085,11 @@ nonblocked_status_code
 │ que la solicitud fue exitosa.
 ├─403 (403 Forbidden (Prohibido)): Un poco más robusto, pero un poco menos fácil de usar. Recomendado para la
 │ mayoría de las circunstancias generales.
-├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes ({{Links.RFC2324}}).
-│ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
-│ entiendará. Provisto por diversión y conveniencia, pero generalmente no
-│ recomendado.
+├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es muy poco probable que
+│ cualquier cliente, bot, navegador, u otro lo entiendará. Provisto por
+│ diversión y conveniencia, pero generalmente no recomendado.
 ├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para la limitación de tasa, cuando se trata de ataques DDoS, y
 │ para la prevención de inundaciones. No recomendado en otros contextos.
 └─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
@@ -1064,7 +1110,7 @@ usemode
 ├─3 (Solo cuando está dentro del límite de firmas y no está prohibido (independientemente de si está bloqueado).)
 ├─4 (Solo cuando no está bloqueado.)
 ├─5 (Solo cuando no está bloqueado, o cuando está especialmente marcado para su uso, dentro del límite de firmas y no está prohibido.)
-└─6 (Solo cuando no está bloqueado, en solicitudes de páginas sensibles.)
+└─6 (Solo cuando no está bloqueado, en solicitudes de páginas confidenciales.)
 ```
 
 ##### "lockip" `[bool]`
@@ -1090,6 +1136,8 @@ Ver también:
 
 ##### "hcaptcha_log" `[string]`
 - Registrar todos los intentos de CAPTCHA? En caso afirmativo, especifique el nombre que se utilizará para el archivo de registro. Si no, dejar esta variable en blanco.
+
+Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signature_limit" `[int]`
 - Número máximo de firmas permitidas antes de que se retire la oferta de CAPTCHA. Predefinido = 1.
@@ -1119,10 +1167,11 @@ nonblocked_status_code
 │ que la solicitud fue exitosa.
 ├─403 (403 Forbidden (Prohibido)): Un poco más robusto, pero un poco menos fácil de usar. Recomendado para la
 │ mayoría de las circunstancias generales.
-├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes ({{Links.RFC2324}}).
-│ Es muy poco probable que cualquier cliente, bot, navegador, u otro lo
-│ entiendará. Provisto por diversión y conveniencia, pero generalmente no
-│ recomendado.
+├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Es muy poco probable que
+│ cualquier cliente, bot, navegador, u otro lo entiendará. Provisto por
+│ diversión y conveniencia, pero generalmente no recomendado.
 ├─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para la limitación de tasa, cuando se trata de ataques DDoS, y
 │ para la prevención de inundaciones. No recomendado en otros contextos.
 └─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
@@ -2308,4 +2357,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 1 de Julio de 2024 (2024.07.01).
+Última Actualización: 3 de Julio de 2024 (2024.07.03).

@@ -356,14 +356,20 @@ fields
 ├─Ignored ("Ignoré")
 ├─Request_Method ("Méthode de requête")
 ├─Protocol ("Protocole")
+├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
+├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
+├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nom d'hôte")
 ├─CAPTCHA ("État du CAPTCHA")
-└─Inspection ("* Inspection des conditions")
+├─Inspection ("* Inspection des conditions")
+└─ClientL10NAccepted ("Résolution linguistique")
 ```
 
 * Destiné uniquement au débogage des règles auxiliaires. Non affiché pour les utilisateurs bloqués.
 
 ** La fonctionnalité de recherche ASN est nécessaire (par exemple, via le module IP-API ou BGPView).
+
+!! Il s'agit d'un indice client à faible entropie. Les indice client sont une nouvelle technologie Web expérimentale qui n'est pas encore largement prise en charge par tous les navigateurs et principaux clients. *Voir : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Bien que les indices des clients puissent être utiles pour la prise d'empreintes digitales, comme elles ne sont pas largement prises en charge, leur présence dans les requêtes ne doit pas être supposée ni fiable (c'est-à-dire que le blocage en fonction de leur absence est une mauvaise idée).
 
 ##### « timezone » `[string]`
 - Ceci est utilisé pour spécifier le fuseau horaire à utiliser (par exemple, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, etc). Spécifiez « SYSTEM » pour laisser PHP gérer cela automatiquement pour vous.
@@ -457,6 +463,24 @@ time_format
 └─…Autres
 ```
 
+__*Espace réservé – Explication – Exemple basé sur 2024-04-30T18:27:49+08:00.*__<br />
+`{yyyy}` – L'année – Par exemple, 2024.<br />
+`{yy}` – L'année abrégée – Par exemple, 24.<br />
+`{Mon}` – Le nom abrégé du mois (en anglais) – Par exemple, Apr.<br />
+`{mm}` – Le mois avec des zéros non significatifs – Par exemple, 04.<br />
+`{m}` – Le mois – Par exemple, 4.<br />
+`{Day}` – Le nom abrégé du jour (en anglais) – Par exemple, Tue.<br />
+`{dd}` – Le jour avec des zéros non significatifs – Par exemple, 30.<br />
+`{d}` – Le jour – Par exemple, 30.<br />
+`{hh}` – L'heure avec des zéros non significatifs (utilise le format 24 heures) – Par exemple, 18.<br />
+`{h}` – L'heure (utilise le format 24 heures) – Par exemple, 18.<br />
+`{ii}` – La minute avec des zéros non significatifs – Par exemple, 27.<br />
+`{i}` – La minute – Par exemple, 27.<br />
+`{ss}` – La seconde avec des zéros non significatifs – Par exemple, 49.<br />
+`{s}` – La seconde – Par exemple, 49.<br />
+`{tz}` – Le fuseau horaire (sans deux points) – Par exemple, +0800.<br />
+`{t:z}` – Le fuseau horaire (avec deux points) – Par exemple, +08:00.
+
 ##### « ipaddr » `[string]`
 - Où trouver l'adresse IP de requêtes ? (Utile pour services tels que Cloudflare et similaires). Par Défaut = REMOTE_ADDR. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
@@ -491,10 +515,12 @@ http_response_header_code
 │ certains navigateurs mettront en cache ce message d'état et n'enverront pas
 │ de requêtes ultérieures, même après avoir été débloqués. Peut être
 │ le plus préférable dans certains contextes, pour certains types de trafic.
-├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
-│ est très peu probable qu'il soit compris par un client, un bot, un
-│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
-│ généralement pas recommandé.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Il est très peu probable
+│ qu'il soit compris par un client, un bot, un navigateur, ou autre. Fourni
+│ pour le divertissement et la commodité, mais généralement pas
+│ recommandé.
 ├─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
 │ recommandé dans d'autres contextes.
 └─503 (503 Service Unavailable (Service indisponible)): Le plus robuste, mais le moins convivial. Recommandé en cas d'attaque, ou
@@ -587,7 +613,7 @@ numbers
 ├─Arabic-2 ("١٬٢٣٤٬٥٦٧٫٨٩")
 ├─Arabic-3 ("۱٬۲۳۴٬۵۶۷٫۸۹")
 ├─Arabic-4 ("۱۲٬۳۴٬۵۶۷٫۸۹")
-├─Armenian ("Ռ̅Մ̅Լ̅ՏՇԿԷ")
+├─Armenian ("Ճ̅Ի̅Գ̅ՏՇԿԷ")
 ├─Base-12 ("4b6547.a8")
 ├─Base-16 ("12d687.e3")
 ├─Bengali-1 ("১২,৩৪,৫৬৭.৮৯")
@@ -598,6 +624,7 @@ numbers
 ├─Chinese-Traditional ("一百二十三萬四千五百六十七點八九")
 ├─Chinese-Traditional-Financial ("壹佰貳拾叄萬肆仟伍佰陸拾柒點捌玖")
 ├─Fullwidth ("１２３４５６７.８９")
+├─Geez ("፻፳፫፼፵፭፻፷፯")
 ├─Hebrew ("א׳׳ב׳קג׳יד׳ךסז")
 ├─India-1 ("12,34,567.89")
 ├─India-2 ("१२,३४,५६७.८९")
@@ -654,10 +681,12 @@ ban_override
 │ certains navigateurs mettront en cache ce message d'état et n'enverront pas
 │ de requêtes ultérieures, même après avoir été débloqués. Peut être
 │ le plus préférable dans certains contextes, pour certains types de trafic.
-├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
-│ est très peu probable qu'il soit compris par un client, un bot, un
-│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
-│ généralement pas recommandé.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Il est très peu probable
+│ qu'il soit compris par un client, un bot, un navigateur, ou autre. Fourni
+│ pour le divertissement et la commodité, mais généralement pas
+│ recommandé.
 ├─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
 │ recommandé dans d'autres contextes.
 └─503 (503 Service Unavailable (Service indisponible)): Le plus robuste, mais le moins convivial. Recommandé en cas d'attaque, ou
@@ -757,20 +786,32 @@ Configuration liée à la journalisation (à l'exclusion de ce qui est applicabl
 ##### « standard_log » `[string]`
 - Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « apache_style_log » `[string]`
 - Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
+
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « serialised_log » `[string]`
 - Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « error_log » `[string]`
 - Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
+
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « outbound_request_log » `[string]`
 - Un fichier pour l'enregistrement des résultats de toutes les requêtes sortantes. Spécifier un fichier, ou laisser vide à désactiver.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « report_log » `[string]`
 - Un fichier pour l'enregistrement des rapports envoyés aux API externes. Spécifier un fichier, ou laisser vide à désactiver.
+
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « truncate » `[string]`
 - Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
@@ -799,8 +840,12 @@ Configuration pour l'accès frontal.
 ##### « frontend_log » `[string]`
 - Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « signatures_update_event_log » `[string]`
 - Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
+
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « max_login_attempts » `[int]`
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
@@ -872,7 +917,7 @@ __Un par signature.__ Une signature peut invoquer plusieurs profils, mais ne peu
 
 __Priorité.__ Une option sélectionnée est toujours prioritaire sur une option non sélectionnée. Par exemple, si plusieurs mots abrégés sont en jeu mais qu'un seul d'entre eux est défini comme étant bloqué, la demande sera toujours bloqué.
 
-__Points de terminaison humains et services de cloud.__ Service de cloud peut faire référence aux fournisseurs d'hébergement Web, aux fermes de serveurs, aux centres de données, ou à un certain nombre d'autres choses. Point de terminaison humain fait référence aux moyens par lesquels un humain accède à Internet, par exemple, par le biais d'un fournisseur de services internet. Un réseau ne fournit généralement que l'un ou l'autre, mais peut parfois fournir les deux. Nous visons à ne jamais identifier les points de terminaison humains potentiels comme des services de cloud. Par conséquent, un service de cloud peut être identifié comme autre chose si sa gamme est partagé par des points de terminaison humains connus. À l'inverse, nous visons à toujours identifier les services de cloud, dont les gammes ne sont partagés par aucun point de terminaison humain connu, comme des services de cloud. Par conséquent, une requête identifié explicitement comme un service de cloud ne partage probablement pas sa gamme avec des points de terminaison humains connus. De même, une requête identifié explicitement par des attaques ou des spam risque les partage probablement. Cela dit, l'internet est toujours en mouvement, les objectifs des réseaux changent avec le temps, et les gammes sont toujours achetés ou vendues, alors restez conscient et vigilant en ce qui concerne les faux positifs.
+__Points de terminaison humains et services de cloud.__ Service de cloud peut faire référence aux fournisseurs d'hébergement Web, aux fermes de serveurs, aux centres de données, ou à un certain nombre d'autres choses. Point de terminaison humain fait référence aux moyens par lesquels un humain accède à internet, par exemple, par le biais d'un fournisseur de services internet. Un réseau ne fournit généralement que l'un ou l'autre, mais peut parfois fournir les deux. Nous visons à ne jamais identifier les points de terminaison humains potentiels comme des services de cloud. Par conséquent, un service de cloud peut être identifié comme autre chose si sa gamme est partagé par des points de terminaison humains connus. À l'inverse, nous visons à toujours identifier les services de cloud, dont les gammes ne sont partagés par aucun point de terminaison humain connu, comme des services de cloud. Par conséquent, une requête identifié explicitement comme un service de cloud ne partage probablement pas sa gamme avec des points de terminaison humains connus. De même, une requête identifié explicitement par des attaques ou des spam risque les partage probablement. Cela dit, l'internet est toujours en mouvement, les objectifs des réseaux changent avec le temps, et les gammes sont toujours achetés ou vendues, alors restez conscient et vigilant en ce qui concerne les faux positifs.
 
 ##### « default_tracktime » `[string]`
 - La durée pendant laquelle les adresses IP doivent être suivies. Défaut = 7d0°0′0″ (1 semaine).
@@ -1010,6 +1055,8 @@ Voir également :
 ##### « recaptcha_log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « signature_limit » `[int]`
 - Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
 
@@ -1038,10 +1085,12 @@ nonblocked_status_code
 │ requête a réussi.
 ├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
 │ circonstances générales.
-├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
-│ est très peu probable qu'il soit compris par un client, un bot, un
-│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
-│ généralement pas recommandé.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Il est très peu probable
+│ qu'il soit compris par un client, un bot, un navigateur, ou autre. Fourni
+│ pour le divertissement et la commodité, mais généralement pas
+│ recommandé.
 ├─429 (429 Too Many Requests (Trop de requêtes)): Recommandé pour la limitation du débit, en cas d'attaques DDoS, et pour la
 │ prévention des inondations. Non recommandé dans d'autres contextes.
 └─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
@@ -1089,6 +1138,8 @@ Voir également :
 ##### « hcaptcha_log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+
 ##### « signature_limit » `[int]`
 - Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
 
@@ -1117,10 +1168,12 @@ nonblocked_status_code
 │ requête a réussi.
 ├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
 │ circonstances générales.
-├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril ({{Links.RFC2324}}). Il
-│ est très peu probable qu'il soit compris par un client, un bot, un
-│ navigateur, ou autre. Fourni pour le divertissement et la commodité, mais
-│ généralement pas recommandé.
+├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
+│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
+│ rel="noopener noreferrer external">RFC 2324</a>). Il est très peu probable
+│ qu'il soit compris par un client, un bot, un navigateur, ou autre. Fourni
+│ pour le divertissement et la commodité, mais généralement pas
+│ recommandé.
 ├─429 (429 Too Many Requests (Trop de requêtes)): Recommandé pour la limitation du débit, en cas d'attaques DDoS, et pour la
 │ prévention des inondations. Non recommandé dans d'autres contextes.
 └─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
@@ -2312,4 +2365,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 1 Juillet 2024 (2024.07.01).
+Dernière mise à jour : 3 Juillet 2024 (2024.07.03).
