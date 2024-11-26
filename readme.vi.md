@@ -1712,6 +1712,7 @@ Các gói và sản phẩm sau đã được tìm thấy là không tương thí
 
 Các mô-đun đã được cung cấp để đảm bảo rằng các gói và sản phẩm sau sẽ tương thích với CIDRAM:
 - __[BunnyCDN](https://github.com/CIDRAM/CIDRAM/issues/56)__
+- __[Quic cloud](https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/)__
 
 *Xem thêm: [Biểu đồ tương thích](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2361,4 +2362,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2024.07.03.
+Lần cuối cập nhật: 2024.11.26.

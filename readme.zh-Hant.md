@@ -1648,6 +1648,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 
 已提供模塊以確保以下軟件包和產品與CIDRAM兼容：
 - __[BunnyCDN](https://github.com/CIDRAM/CIDRAM/issues/56)__
+- __[Quic cloud](https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/)__
 
 *也可以看看：​[兼容性圖表](https://maikuolan.github.io/Compatibility-Charts/)。*
 
@@ -2299,4 +2300,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2024年7月3日。
+最後更新：2024年11月26日。

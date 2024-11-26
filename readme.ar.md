@@ -1733,6 +1733,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 <div dir="rtl">تم توفير وحدات لضمان توافق الحزم والمنتجات التالية مع CIDRAM:</div>
 <div dir="rtl"><ul>
  <li><strong><a dir="ltr" href="https://github.com/CIDRAM/CIDRAM/issues/56">BunnyCDN</a></strong></li>
+ <li><strong><a dir="ltr" href="https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/">Quic cloud</a></strong></li>
 </ul></div>
 
 <div dir="rtl"><em>انظر أيضا: <a href="https://maikuolan.github.io/Compatibility-Charts/">مخططات التوافق</a>.</em><br /><br /></div>
@@ -2419,4 +2420,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٣ يوليو ٢٠٢٤ (٢٠٢٤.٠٧.٠٣).</div>
+<div dir="rtl">آخر تحديث: ٢٦ نوفمبر ٢٠٢٤ (٢٠٢٤.١١.٢٦).</div>

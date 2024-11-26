@@ -1698,6 +1698,7 @@ Paket dan produk berikut telah ditemukan tidak bisa dioperasikan dengan CIDRAM:
 
 Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompatibel dengan CIDRAM:
 - __[BunnyCDN](https://github.com/CIDRAM/CIDRAM/issues/56)__
+- __[Quic cloud](https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/)__
 
 *Lihat juga: [Bagan Kompatibilitas](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2350,4 +2351,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 3 Juli 2024 (2024.07.03).
+Terakhir Diperbarui: 26 November 2024 (2024.11.26).

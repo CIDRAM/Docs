@@ -1680,6 +1680,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 
 CIDRAMとの互換性を確保するために、以下のパッケージと製品用、モジュールが用意されています。
 - __[BunnyCDN](https://github.com/CIDRAM/CIDRAM/issues/56)__
+- __[Quic cloud](https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/)__
 
 *参照：​[互換性チャート](https://maikuolan.github.io/Compatibility-Charts/)。*
 
@@ -2330,4 +2331,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２４年７月３日。
+最終アップデート：２０２４年１１月２６日。

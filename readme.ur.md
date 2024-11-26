@@ -1743,6 +1743,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 <div dir="rtl">اس بات کا یقین کرنے کے لئے کہ مندرجہ ذیل پیکجوں اور مصنوعات CIDRAM کے ساتھ مطابقت پذیر ہوں گے ماڈیولز دستیاب کیے گئے ہیں:</div>
 <div dir="rtl"><ul>
  <li><strong><a dir="ltr" href="https://github.com/CIDRAM/CIDRAM/issues/56">BunnyCDN</a></strong></li>
+ <li><strong><a dir="ltr" href="https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/">Quic cloud</a></strong></li>
 </ul></div>
 
 <div dir="rtl"><em>بھی دیکھو: <a href="https://maikuolan.github.io/Compatibility-Charts/">مطابقت چارٹ</a>.</em><br /><br /></div>
@@ -2429,4 +2430,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۳ جولائی ۲۰۲۴ (۲۰۲۴.۰۷.۰۳).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۶ نومبر ۲۰۲۴ (۲۰۲۴.۱۱.۲۶).</div>

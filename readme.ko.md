@@ -1698,6 +1698,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 
 CIDRAM과의 호환성을 보장하기 위해, 다음 패키지 및 제품에, 모듈을 사용할 수 있습니다.
 - __[BunnyCDN](https://github.com/CIDRAM/CIDRAM/issues/56)__
+- __[Quic cloud](https://wordpress.org/support/topic/quic-dot-cloud-requires-all-ips-allowed/)__
 
 *참조 : [호환성 차트](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2347,4 +2348,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2024년 7월 3일.
+최종 업데이트 : 2024년 11월 26일.
