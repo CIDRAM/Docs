@@ -199,6 +199,7 @@ Configuración (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configuración (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -762,6 +766,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - Si ha optado por recibir notificaciones del CIDRAM por correo electrónico, por ejemplo, cuando se activan reglas auxiliares específicas, puede especificar el nombre del destinatario de esas notificaciones aquí.
 
+##### "email_notification_when" `[string]`
+- Cuándo enviar notificaciones después de ser generadas.
+
+```
+email_notification_when
+├─Immediately ("Inmediatamente.")
+├─After24Hours ("Después de 24 horas, agrupados juntos (o cuando se desencadena manualmente, por ejemplo, a través de cron).")
+└─ManuallyOnly ("Sólo cuando se desencadena manualmente (por ejemplo, a través de cron).")
+```
+
 #### "components" (Categoría)
 Configuración para la activación y la desactivación de los componentes utilizados por CIDRAM. Normalmente se administra desde la página de actualizaciones, pero también se puede administrar desde aquí para un control más preciso y para los componentes personalizados que la página de actualizaciones no reconoce.
 
@@ -896,10 +910,11 @@ shorthand
 ├─Legal ("¹ Legal")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Riesgo de spam")
+├─Spam ("Spam")
 ├─Banned ("³ Prohibido")
 ├─BadIP ("³ IP no válida")
 ├─RL ("³ Tarifa limitada")
+├─Conflict ("³ Conflicto")
 └─Other ("⁴ Otro")
 ```
 
@@ -927,6 +942,23 @@ __Puntos finales humanos y servicios en la nube.__ Servicio en la nube puede ref
 
 ##### "tracking_override" `[bool]`
 - ¿Permitir que los módulos reemplacen las opciones de seguimiento? True = Sí [Predefinido]; False = No.
+
+##### "conflict_response" `[int]`
+- Cuando hay demasiados intentos simultáneos de acceder a los mismos recursos (por ejemplo, solicitudes simultáneas a múltiples procesos PHP en la misma máquina para los mismos recursos), algunos de esos intentos pueden fallar. En el caso poco común y poco probable de que esto afecte a los archivos de firma o los módulos, es posible que CIDRAM no pueda tomar una determinación efectiva sobre la solicitud. ¿Si esto sucede, se debe bloquear la solicitud, y qué mensaje de estado HTTP debe enviar CIDRAM?
+
+```
+conflict_response
+├─0 (No bloquees la solicitud.): Si prefiere que las solicitudes se bloqueen solo cuando esté seguro de que
+│ son malignas, o prefiere pecar de cauteloso con respecto a los falsos
+│ positivos (a costa de que ocasionalmente entre tráfico no deseado), elija
+│ esta opción. Si prefiere que se bloqueen las solicitudes si no está seguro
+│ de que sean benignas, o prefiere pecar de vigilante (a costa de producir
+│ falsos positivos ocasionales), elija una de las otras opciones disponibles.
+├─409 (409 Conflicto): Recomendado para conflictos de recursos (por ejemplo, conflictos de fusión,
+│ conflictos de acceso a archivos, etc). No recomendado en otros contextos.
+└─429 (429 Too Many Requests (Demasiadas solicitudes)): Recomendado para la limitación de tasa, cuando se trata de ataques DDoS, y
+  para la prevención de inundaciones. No recomendado en otros contextos.
+```
 
 #### "verification" (Categoría)
 Configuración para verificar de dónde se originan las solicitudes.
@@ -1339,6 +1371,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2358,4 +2391,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 26 de Noviembre de 2024 (2024.11.26).
+Última Actualización: 9 de Enero de 2025 (2025.01.09).

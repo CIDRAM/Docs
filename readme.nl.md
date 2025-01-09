@@ -199,6 +199,7 @@ Configuratie (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configuratie (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -762,6 +766,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - Als u ervoor heeft gekozen om meldingen van CIDRAM via e-mail te ontvangen, b.v., wanneer specifieke aanvullende regels worden geactiveerd, u kunt hier de naam van de ontvanger voor die meldingen opgeven.
 
+##### "email_notification_when" `[string]`
+- Wanneer meldingen moeten worden verzonden nadat ze zijn gegenereerd.
+
+```
+email_notification_when
+├─Immediately ("Onmiddellijk.")
+├─After24Hours ("Na 24 uur, gebundeld (of wanneer handmatig getriggerde, b.v., via cron).")
+└─ManuallyOnly ("Alleen wanneer handmatig getriggerde (b.v., via cron).")
+```
+
 #### "components" (Categorie)
 Configuratie voor het activeren en het deactiveren van de door CIDRAM gebruikte componenten. Meestal gevuld door de updates-pagina, maar kan ook vanaf hier worden beheerd voor fijnere controle en voor aangepaste componenten die niet worden herkend door de updates-pagina.
 
@@ -896,10 +910,11 @@ shorthand
 ├─Legal ("¹ Wettelijke")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Spam risico")
+├─Spam ("Spam")
 ├─Banned ("³ Verbannen")
 ├─BadIP ("³ Ongeldig IP")
 ├─RL ("³ Tarief beperkt")
+├─Conflict ("³ Conflict")
 └─Other ("⁴ Anders")
 ```
 
@@ -917,7 +932,7 @@ __Eén per signature.__ Een signature kan meerdere profielen oproepen, maar kan 
 
 __Prioriteit.__ Een geselecteerde optie heeft altijd voorrang op een niet geselecteerde optie. B.v., als er meerdere stenowoorden in het spel zijn, maar slechts één ervan als geblokkeerd is ingesteld, wordt het verzoek nog steeds geblokkeerd.
 
-__Menselijke eindpunten en cloud services.__ Cloud service kan verwijzen naar webhosting providers, server farms, data centers of een aantal andere dingen. Menselijk eindpunt verwijst naar de manier waarop een mens toegang krijgt tot internet, b.v., via een internetprovider. Een netwerk biedt meestal slechts een of het ander, maar kan soms beide bieden. We streven ernaar om potentiële menselijke eindpunten nooit als cloudservices te identificeren. Daarom een cloud service kan worden geïdentificeerd als iets anders als het bereik wordt gedeeld door bekende menselijke eindpunten. Evenzo, we streven ernaar om cloud services, waarvan het bereik niet wordt gedeeld door bekende menselijke eindpunten, altijd als cloud services te identificeren. Daarom een aanvraag dat expliciet als een cloud service wordt geïdentificeerd waarschijnlijk niet deelt het bereik met bekende menselijke eindpunten. Evenzo, een verzoek dat expliciet wordt geïdentificeerd door aanvallen of spam risico waarschijnlijk deelt het bereik. Het internet is echter altijd in beweging, de doeleinden van netwerken veranderen in de loop van de tijd, en bereik worden altijd gekocht of verkocht, dus blijf bewust en waakzaam met betrekking tot valse positieven.
+__Menselijke eindpunten en cloud services.__ Cloud service kan verwijzen naar webhosting providers, server farms, data centers of een aantal andere dingen. Menselijk eindpunt verwijst naar de manier waarop een mens toegang krijgt tot internet, b.v., via een internetprovider. Een netwerk biedt meestal slechts een of het ander, maar kan soms beide bieden. We streven ernaar om potentiële menselijke eindpunten nooit als cloudservices te identificeren. Daarom een cloud service kan worden geïdentificeerd als iets anders als het bereik wordt gedeeld door bekende menselijke eindpunten. Evenzo, we streven ernaar om cloud services, waarvan het bereik niet wordt gedeeld door bekende menselijke eindpunten, altijd als cloud services te identificeren. Daarom een verzoek dat expliciet als een cloud service wordt geïdentificeerd waarschijnlijk niet deelt het bereik met bekende menselijke eindpunten. Evenzo, een verzoek dat expliciet wordt geïdentificeerd door aanvallen of spam risico waarschijnlijk deelt het bereik. Het internet is echter altijd in beweging, de doeleinden van netwerken veranderen in de loop van de tijd, en bereik worden altijd gekocht of verkocht, dus blijf bewust en waakzaam met betrekking tot valse positieven.
 
 ##### "default_tracktime" `[string]`
 - De duur dat IP-adressen moeten worden gevolgd. Standaard = 7d0°0′0″ (1 week).
@@ -927,6 +942,23 @@ __Menselijke eindpunten en cloud services.__ Cloud service kan verwijzen naar we
 
 ##### "tracking_override" `[bool]`
 - Moeten modules worden toegestaan om opties voor tracking te overschrijven? True = Ja [Standaard]; False = Nee.
+
+##### "conflict_response" `[int]`
+- Wanneer er te veel gelijktijdige pogingen worden gedaan om toegang te krijgen tot dezelfde bronnen (b.v., gelijktijdige verzoeken aan meerdere PHP-processen op dezelfde machine voor dezelfde bronnen), kunnen sommige van die pogingen mislukken. In het zeldzame en onwaarschijnlijke geval dat dit gevolgen heeft voor signatuurbestanden of modules, kan CIDRAM mogelijk geen effectieve beslissing nemen over het verzoek. Als dit gebeurt, moet het verzoek dan worden geblokkeerd, en welk HTTP-statusbericht moet CIDRAM verzenden?
+
+```
+conflict_response
+├─0 (Blokkeer het verzoek niet.): Als u liever wilt dat verzoeken alleen worden geblokkeerd als u zeker weet
+│ dat ze kwaadaardig zijn, of als u voorzichtig wilt zijn met vals-positieve
+│ (ten koste van ongewenste verkeer dat af en toe doorkomt), kies dit. Als u
+│ liever wilt dat verzoeken worden geblokkeerd als u niet zeker weet of ze
+│ goedaardig zijn, of als u liever waakzaam wilt blijven (ten koste van de
+│ incidentele vals-positieve), kiest u een van de andere beschikbare opties.
+├─409 (409 Conflict): Aanbevolen bij resourceconflicten (b.v., conflicten bij samenvoegingen,
+│ conflicten bij bestandstoegang, enz). Niet aanbevolen in andere contexten.
+└─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
+  het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
+```
 
 #### "verification" (Categorie)
 Configuratie om te verifiëren waar verzoeken vandaan komen.
@@ -1339,6 +1371,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -1452,7 +1485,7 @@ Als u wilt signatures te vervallen na verloop van tijd, op soortgelijke wijze al
 Expires: 2016.12.31
 ```
 
-Verlopen signatures zullen nooit worden getriggerd bij een aanvraag, wat er ook gebeurt.
+Verlopen signatures zullen nooit worden getriggerd bij een verzoek, wat er ook gebeurt.
 
 ##### 6.1.2 HERKOMST ETIKETTEN
 
@@ -1877,7 +1910,7 @@ Kort antwoord: Nee.
 
 Een iets langer antwoord: CIDRAM helpt de impact van ongewenst verkeer op uw website te verminderen (waardoor de bandbreedtekosten van uw website worden geminderd), helpt de impact van ongewenst verkeer op uw hardware te verminderen (b.v., de mogelijkheid van uw server om verzoeken te verwerken en te serveren), en kan helpen om verschillende andere mogelijke negatieve effecten geassocieerd met ongewenst verkeer te verminderen. Er zijn echter twee belangrijke dingen die onthouden moeten worden om deze vraag te begrijpen.
 
-Ten eerste, CIDRAM is een PHP-pakket en werkt daarom op de computer waarop PHP is geïnstalleerd. Dit betekent dat CIDRAM een verzoek alleen kan zien en blokkeren *nadat* de server het al heeft ontvangen. Ten tweede, effectieve DDoS-mitigatie moet aanvragen filteren *voordat* ze de server bereikt waarop de DDoS-aanval gericht is. In het ideale geval moeten DDoS-aanvallen worden gedetecteerd en beperkt door oplossingen die in staat zijn om verkeer dat is gekoppeld aan aanvallen te laten vallen of omleiden, voordat het in de eerste plaats de gerichte server bereikt.
+Ten eerste, CIDRAM is een PHP-pakket en werkt daarom op de computer waarop PHP is geïnstalleerd. Dit betekent dat CIDRAM een verzoek alleen kan zien en blokkeren *nadat* de server het al heeft ontvangen. Ten tweede, effectieve DDoS-mitigatie moet verzoeken filteren *voordat* ze de server bereikt waarop de DDoS-aanval gericht is. In het ideale geval moeten DDoS-aanvallen worden gedetecteerd en beperkt door oplossingen die in staat zijn om verkeer dat is gekoppeld aan aanvallen te laten vallen of omleiden, voordat het in de eerste plaats de gerichte server bereikt.
 
 Dit kan worden geïmplementeerd met behulp van speciale hardware-oplossingen op locatie, en/of cloudgebaseerde oplossingen zoals speciale DDoS-mitigatie diensten, routering van de DNS van een domein via DDoS-resistente netwerken, cloudgebaseerde filteren, of een combinatie daarvan. In elk geval is dit onderwerp echter een beetje te ingewikkeld om grondig met slechts een paar alinea's uit te leggen, dus ik zou aanraden verder onderzoek te doen als dit een onderwerp is dat u wilt nastreven. Wanneer de ware aard van DDoS-aanvallen goed wordt begrepen, zal dit antwoord logischer zijn.
 
@@ -2161,7 +2194,7 @@ CIDRAM kan informatie op verschillende manieren loggen, wat verschillende soorte
 
 ##### 9.3.0 BLOKGEBEURTENISSEN
 
-Het primaire type loggen dat CIDRAM kan uitvoeren, heeft betrekking op "blokgebeurtenissen". Dit type loggen heeft betrekking op wanneer CIDRAM een aanvraag blokkeert, en kan in drie verschillende indelingen worden aangeboden:
+Het primaire type loggen dat CIDRAM kan uitvoeren, heeft betrekking op "blokgebeurtenissen". Dit type loggen heeft betrekking op wanneer CIDRAM een verzoek blokkeert, en kan in drie verschillende indelingen worden aangeboden:
 - Door mensen leesbare logbestanden.
 - Apache-stijl logbestanden.
 - Geserialiseerde logbestanden.
@@ -2297,7 +2330,7 @@ CIDRAM codeert de cache of logboekinformatie niet. [Encryptie](https://nl.wikipe
 
 #### 9.4 COOKIES
 
-CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende aanvragen in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende aanvragen (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
+CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende verzoeken in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende verzoeken (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
 
 In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het relevant is), waardoor de gebruiker wordt gewaarschuwd dat cookies worden ingesteld als deze zich bezighouden met de relevante acties. Cookies zijn niet ingesteld op andere punten in de codebase.
 
@@ -2368,4 +2401,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 26 November 2024 (2024.11.26).
+Laatste Bijgewerkt: 9 Januari 2025 (2025.01.09).

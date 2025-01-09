@@ -199,6 +199,7 @@ Konfigurasi (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Konfigurasi (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -757,10 +761,20 @@ disabled_channels
 - Daftar jalur yang dianggap sebagai halaman sensitif. Setiap jalur yang terdaftar akan diperiksa terhadap URI yang direkonstruksi bila diperlukan. Jalur yang dimulai dengan garis miring ke depan akan diperlakukan sebagai literal, dan dicocokkan dari komponen jalur permintaan selanjutnya. Jika tidak, jalur yang dimulai dengan karakter non-alfanumerik, dan diakhiri dengan karakter yang sama (atau karakter yang sama ditambah tanda "i" opsional) akan diperlakukan sebagai ekspresi reguler. Jenis jalur lain apapun akan diperlakukan sebagai literal, dan dapat dicocokkan dari bagian manapun dari URI. Apakah jalur dianggap sebagai halaman sensitif dapat memengaruhi perilaku beberapa modul, tetapi sebaliknya tidak berpengaruh apapun.
 
 ##### "email_notification_address" `[string]`
-- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan alamat penerima notifikasi tersebut disini.
+- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan alamat penerima untuk notifikasi tersebut disini.
 
 ##### "email_notification_name" `[string]`
-- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan nama penerima notifikasi tersebut disini.
+- Jika Anda memilih untuk menerima notifikasi dari CIDRAM melalui email, misalnya, ketika aturan tambahan tertentu dipicu, Anda dapat menentukan nama penerima untuk notifikasi tersebut disini.
+
+##### "email_notification_when" `[string]`
+- Kapan harus mengirim notifikasi setelah mereka dibuat.
+
+```
+email_notification_when
+├─Immediately ("Segera.")
+├─After24Hours ("Setelah 24 jam, digabungkan bersama (atau ketika dipicu secara manual, misalnya, melalui cron).")
+└─ManuallyOnly ("Hanya bila dipicu secara manual (misalnya, melalui cron).")
+```
 
 #### "components" (Kategori)
 Konfigurasi untuk pengaktifan dan penonaktifan komponen yang digunakan oleh CIDRAM. Biasanya diisi oleh halaman pembaruan, tetapi juga dapat dikelola dari sini untuk kontrol yang lebih baik dan untuk komponen dipersonalisasi yang tidak dikenali oleh halaman pembaruan.
@@ -896,10 +910,11 @@ shorthand
 ├─Legal ("¹ Hukum")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Risiko spam")
+├─Spam ("Spam")
 ├─Banned ("³ Dilarang")
 ├─BadIP ("³ IP tidak valid")
 ├─RL ("³ Laju terbatas")
+├─Conflict ("³ Konflik")
 └─Other ("⁴ Lain")
 ```
 
@@ -927,6 +942,23 @@ __Titik akhir manusia dan layanan komputasi awan.__ Layanan komputasi awan dapat
 
 ##### "tracking_override" `[bool]`
 - Izinkan modul untuk mengganti opsi pelacakan? True = Ya [Default]; False = Tidak.
+
+##### "conflict_response" `[int]`
+- Bila terdapat terlalu banyak upaya simultan untuk mengakses sumber daya yang sama (misalnya, permintaan simultan ke beberapa proses PHP pada mesin yang sama untuk sumber daya yang sama), beberapa upaya tersebut mungkin gagal. Jika hal ini memengaruhi file tanda tangan atau modul, CIDRAM mungkin tidak dapat membuat penentuan efektif mengenai permintaan tersebut. Jika ini terjadi, haruskah permintaan diblokir, dan mana pesan status HTTP harus CIDRAM kirim?
+
+```
+conflict_response
+├─0 (Jangan blokir permintaan tersebut.): Jika Anda lebih suka permintaan diblokir hanya bila Anda yakin permintaan
+│ tersebut jahat, atau Anda lebih suka berhati-hati terhadap positif palsu
+│ (dengan risiko lalu lintas yang tidak diinginkan terkadang masuk), pilih
+│ ini. Jika Anda lebih suka permintaan diblokir bila Anda tidak yakin
+│ permintaan tersebut tidak berbahaya, atau Anda lebih suka bersikap waspada
+│ (dengan risiko positif palsu sesekali), pilih dari opsi lain yang tersedia.
+├─409 (409 Konflik): Direkomendasikan untuk konflik sumber daya (misalnya, konflik penggabungan,
+│ konflik akses berkas, dll). Tidak direkomendasikan dalam konteks lain.
+└─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
+  untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
+```
 
 #### "verification" (Kategori)
 Konfigurasi untuk memverifikasi dari mana permintaan berasal.
@@ -1339,6 +1371,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2351,4 +2384,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 26 November 2024 (2024.11.26).
+Terakhir Diperbarui: 9 Januari 2025 (2025.01.09).

@@ -199,6 +199,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -577,6 +579,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -760,6 +764,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - 이메일을 통해 CIDRAM으로부터 알림을 받기로 선택한 경우, 예를 들어 특정 보조 규칙이 트리거되는 경우, 여기서 해당 알림의 수신자 이름을 지정할 수 있습니다.
 
+##### "email_notification_when" `[string]`
+- 생성된 후 알림을 보내는 시기.
+
+```
+email_notification_when
+├─Immediately ("즉시.")
+├─After24Hours ("24시간 후, 함께 묶음 (또는 수동으로 트리거되는 경우, 예를 들어, cron을 통해).")
+└─ManuallyOnly ("수동으로 트리거되는 경우에만 (예를 들어, cron을 통해).")
+```
+
 #### "components" (카테고리)
 CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위한 구성입니다. 일반적으로 업데이트 페이지에 의해 채워지지만, 세부 제어 및 업데이트 페이지에서 인식하지 못하는 사용자 지정 구성 요소를 위해 여기에서 관리할 수도 있습니다.
 
@@ -894,10 +908,11 @@ shorthand
 ├─Legal ("¹ 적법한")
 ├─Malware ("멀웨어")
 ├─Proxy ("² 프록시")
-├─Spam ("스팸 위험")
+├─Spam ("스팸")
 ├─Banned ("³ 금지 된")
 ├─BadIP ("³ 잘못된 IP")
 ├─RL ("³ 제한 속도")
+├─Conflict ("³ 충돌")
 └─Other ("⁴ 다른")
 ```
 
@@ -925,6 +940,24 @@ __휴먼 엔드포인트 및 클라우드 서비스.__ 클라우드 서비스는
 
 ##### "tracking_override" `[bool]`
 - 모듈이 추적 옵션을 재정의하도록 허용하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
+
+##### "conflict_response" `[int]`
+- 같은 리소스에 동시에 액세스하려는 시도가 너무 많은 경우 (예, 동일한 리소스에 대해 동일한 머신에서 여러 PHP 프로세스에 동시 요청), 일부 시도는 실패할 수 있습니다. 이것이 서명 파일이나 모듈에 영향을 미치는 경우, CIDRAM이 요청에 대해 효과적인 결정을 내리지 못할 수 있습니다. 이런 일이 발생하면, 요청을 차단해야 할까요? 그리고 CIDRAM은 어떤 HTTP 상태 메시지를 보내야 할까요?
+
+```
+conflict_response
+├─0 (요청을 차단하지 마세요.): 악성인 것으로 확신할 때만 요청을 차단하거나, 거짓
+│ 양성 반응에 대해 신중하게 대처하려는 경우 이 (원치
+│ 않는 교통이 가끔 통과하는 대가를 치르면서), 옵션을
+│ 선택하세요. 무해한 요청인지 확실하지 않을 때 경계를
+│ 유지하고 요청을 차단하려면 (가끔씩 거짓 양성 반응이
+│ 나올 수 있다는 대가를 치르며), 사용 가능한 다른 옵션
+│ 중 하나를 선택하세요.
+├─409 (409 Conflict (충돌)): 리소스 충돌에 (예 : 병합 충돌, 파일 액세스 충돌, 등등)
+│ 권장됩니다. 다른 상황에서는 권장되지 않습니다.
+└─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
+  다른 상황에서는 권장되지 않습니다.
+```
 
 #### "verification" (카테고리)
 요청의 출처를 확인하기 위한 구성.
@@ -1339,6 +1372,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2348,4 +2382,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2024년 11월 26일.
+최종 업데이트 : 2025년 1월 9일.

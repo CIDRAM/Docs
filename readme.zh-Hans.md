@@ -199,6 +199,7 @@ $CIDRAM->view();
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ $CIDRAM->view();
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -305,7 +307,7 @@ $CIDRAM->view();
 基本配置（任何不属于其他类别的核心配置）。
 
 ##### “stages” `[string]`
-- 用于执行链的各个阶段的控件（是否启用，是否记录错误，等等）。
+- 用于执行链的各个阶段的控件（是否启用、是否记录错误、等等）。
 
 ```
 stages
@@ -372,7 +374,7 @@ fields
 !! 这是一个低熵客户端提示。客户端提示是一种新的、实验性的网络技术，尚未得到所有浏览器和主要客户端的广泛支持。 *看：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* 虽然客户端提示对于指纹识别很有用，但由于它们没有得到广泛支持，因此不应假定或依赖它们在请求中的存在（换句话说，基于他们的缺席而阻止是一个坏主意）。
 
 ##### “timezone” `[string]`
-- 这用于指定要使用的时区​（例如，Africa/Cairo，America/New_York，Asia/Tokyo，Australia/Perth，Europe/Berlin，Pacific/Guam，等等）。​指定“SYSTEM”使PHP自动为您处理。
+- 这用于指定要使用的时区​（例如，Africa/Cairo、America/New_York、Asia/Tokyo、Australia/Perth、Europe/Berlin、Pacific/Guam、等等）。​指定“SYSTEM”使PHP自动为您处理。
 
 ```
 timezone
@@ -561,6 +563,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -711,7 +715,7 @@ statistics
 注意：IPv6查找在某些32位系统上可能无法正常工作。
 
 ##### “disabled_channels” `[string]`
-- 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时，在获取组件元数据时，等等）。
+- 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时、在获取组件元数据时、等等）。
 
 ```
 disabled_channels
@@ -731,6 +735,16 @@ disabled_channels
 
 ##### “email_notification_name” `[string]`
 - 如果您选择通过电子邮件接收CIDRAM的通知，例如，当特定的辅助规则被触发时，您可以在此处指定这些通知的收件人姓名。
+
+##### “email_notification_when” `[string]`
+- 生成后何时发送通知。
+
+```
+email_notification_when
+├─Immediately ("立即地。")
+├─After24Hours ("24小时后，捆绑在一起（或手动触发时，例如，通过cron）。")
+└─ManuallyOnly ("仅在手动触发时（例如，通过cron）。")
+```
 
 #### “components” （类别）
 CIDRAM使用的组件的启用和停用的配置。​通常由更新页面填充，但也可以从此处进行管理，以实现更好的控制以及更新页面无法识别的自定义组件。
@@ -866,10 +880,11 @@ shorthand
 ├─Legal ("¹ 法律义务")
 ├─Malware ("恶意软件")
 ├─Proxy ("² 代理")
-├─Spam ("垃圾邮件的风险")
+├─Spam ("垃圾邮件")
 ├─Banned ("³ 禁止")
 ├─BadIP ("³ 无效的IP！")
 ├─RL ("³ 速率限制")
+├─Conflict ("³ 冲突")
 └─Other ("⁴ 其他")
 ```
 
@@ -897,6 +912,16 @@ __7.__ __人类端点和云服务。__ 云服务可能是指虚拟主机提供�
 
 ##### “tracking_override” `[bool]`
 - 允许模块覆盖跟踪选项吗？​True（真）=允许【标准】；False（假）=不允许。
+
+##### “conflict_response” `[int]`
+- 当同时尝试访问相同资源的次数过多时（例如，同时向同一台机器上的多个PHP进程发出对相同资源的请求），其中一些尝试可能会失败。​万一发生这种情况，并且影响到签名文件或模块，CIDRAM可能无法对该请求做出有效的决定。​如果发生这种情况，应该阻止该请求吗？​并且，CIDRAM应该发送哪条HTTP状态消息？
+
+```
+conflict_response
+├─0 (不要阻止该请求。): 如果您希望仅当您确定请求是恶意的时才阻止请求，或者对误报采取谨慎态度（以偶尔导致不必要的流量通过为代价），请选择此项。​如果您希望在不确定请求是否良性时阻止请求，或者希望保持警惕（偶尔会出现误报的风险），请选择其他可用选项。
+├─409 ( "409 Conflict （冲突）): 推荐用于资源冲突（例如，合并冲突、文件访问冲突、等等）。​不推荐在其他情况下。
+└─429 (429 Too Many Requests （请求过多）): 推荐用于速率限制、处理DDoS攻击、和防洪。​不推荐在其他情况下。
+```
 
 #### “verification” （类别）
 请求来源验证配置。
@@ -1289,6 +1314,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2302,4 +2328,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2024年11月26日。
+最后更新：2025年1月9日。

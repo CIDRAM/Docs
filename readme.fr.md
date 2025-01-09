@@ -199,6 +199,7 @@ Configuration (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configuration (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -762,6 +766,16 @@ disabled_channels
 ##### « email_notification_name » `[string]`
 - Si vous avez choisi de recevoir des notifications de CIDRAM par e-mail, par exemple, lorsque des règles auxiliaires spécifiques sont déclenchées, vous pouvez spécifier ici le nom du destinataire de ces notifications.
 
+##### « email_notification_when » `[string]`
+- Quand envoyer des notifications après avoir été générés.
+
+```
+email_notification_when
+├─Immediately ("Immédiatement.")
+├─After24Hours ("Après 24 heures, regroupés (ou lorsqu'il est déclenché manuellement, par exemple, via cron).")
+└─ManuallyOnly ("Seulement lorsqu'il est déclenché manuellement (par exemple, via cron).")
+```
+
 #### « components » (Catégorie)
 Configuration pour l'activation et la désactivation des composants utilisés par le CIDRAM. Généralement rempli par la page des mises à jour, mais peut également être géré à partir d'ici pour un contrôle plus précis et pour les composants personnalisés non reconnus par la page des mises à jour.
 
@@ -896,10 +910,11 @@ shorthand
 ├─Legal ("¹ Légal")
 ├─Malware ("Logiciels malveillants")
 ├─Proxy ("² Proxy")
-├─Spam ("Spam risque")
+├─Spam ("Spam")
 ├─Banned ("³ Interdit")
 ├─BadIP ("³ Invalide IP")
 ├─RL ("³ Débit limité")
+├─Conflict ("³ Conflit")
 └─Other ("⁴ Autres")
 ```
 
@@ -915,7 +930,7 @@ __4.__ Fait référence aux cas où les mots abrégés ne sont pas du tout utili
 
 __Un par signature.__ Une signature peut invoquer plusieurs profils, mais ne peut utiliser qu'un seul mot abrégé. Il est possible que plusieurs mots abrégés sont appropriés, mais comme un seul peut être utilisé, nous efforçons de toujours n'utiliser que le plus approprié.
 
-__Priorité.__ Une option sélectionnée est toujours prioritaire sur une option non sélectionnée. Par exemple, si plusieurs mots abrégés sont en jeu mais qu'un seul d'entre eux est défini comme étant bloqué, la demande sera toujours bloqué.
+__Priorité.__ Une option sélectionnée est toujours prioritaire sur une option non sélectionnée. Par exemple, si plusieurs mots abrégés sont en jeu mais qu'un seul d'entre eux est défini comme étant bloqué, la requête sera toujours bloqué.
 
 __Points de terminaison humains et services de cloud.__ Service de cloud peut faire référence aux fournisseurs d'hébergement Web, aux fermes de serveurs, aux centres de données, ou à un certain nombre d'autres choses. Point de terminaison humain fait référence aux moyens par lesquels un humain accède à internet, par exemple, par le biais d'un fournisseur de services internet. Un réseau ne fournit généralement que l'un ou l'autre, mais peut parfois fournir les deux. Nous visons à ne jamais identifier les points de terminaison humains potentiels comme des services de cloud. Par conséquent, un service de cloud peut être identifié comme autre chose si sa gamme est partagé par des points de terminaison humains connus. À l'inverse, nous visons à toujours identifier les services de cloud, dont les gammes ne sont partagés par aucun point de terminaison humain connu, comme des services de cloud. Par conséquent, une requête identifié explicitement comme un service de cloud ne partage probablement pas sa gamme avec des points de terminaison humains connus. De même, une requête identifié explicitement par des attaques ou des spam risque les partage probablement. Cela dit, l'internet est toujours en mouvement, les objectifs des réseaux changent avec le temps, et les gammes sont toujours achetés ou vendues, alors restez conscient et vigilant en ce qui concerne les faux positifs.
 
@@ -927,6 +942,25 @@ __Points de terminaison humains et services de cloud.__ Service de cloud peut fa
 
 ##### « tracking_override » `[bool]`
 - Autoriser les modules à remplacer les options de suivi ? True = Oui [Défaut] ; False = Non.
+
+##### « conflict_response » `[int]`
+- Lorsqu'il y a trop de tentatives simultanées pour accéder aux mêmes ressources (par exemple, des requêtes simultanées à plusieurs processus PHP sur la même machine pour les mêmes ressources), certaines de ces tentatives peuvent échouer. Dans le cas rare et peu probable où cela affecte les fichiers de signature ou les modules, CIDRAM peut être empêché de prendre une décision efficace concernant la requête. Dans un tel cas, la requête doit-elle être bloquée, et quel message d’état HTTP CIDRAM doit-il envoyer ?
+
+```
+conflict_response
+├─0 (Ne bloquez pas la requête.): Si vous préférez que les requêtes ne soient bloquées que lorsque vous
+│ êtes certain qu'elles sont malveillantes, ou que vous préfériez faire
+│ preuve de prudence concernant les faux positifs (au prix d'un trafic
+│ indésirable qui passe occasionnellement), choisissez cette option. Si vous
+│ préférez que les requêtes soient bloquées si vous n'êtes pas certain
+│ qu'elles sont bénignes, ou faire preuve de vigilance (au prix de faux
+│ positifs occasionnels), choisissez l'une des autres options disponibles.
+├─409 (409 Conflit): Recommandé pour les conflits de ressources (par exemple, conflits de
+│ fusion, conflits d'accès aux fichiers, etc). Non recommandé dans d'autres
+│ contextes.
+└─429 (429 Too Many Requests (Trop de requêtes)): Recommandé pour la limitation du débit, en cas d'attaques DDoS, et pour la
+  prévention des inondations. Non recommandé dans d'autres contextes.
+```
 
 #### « verification » (Catégorie)
 Configuration pour vérifier d'où proviennent les requêtes.
@@ -1187,7 +1221,7 @@ Configuration pour les exigences légales.
 - Pseudonymiser les adresses IP lors de la journalisation ? True = Oui [Défaut] ; False = Non.
 
 ##### « privacy_policy » `[string]`
-- L'adresse d'une politique de confidentialité pertinente à afficher dans le pied de page des pages générées. Spécifier une URL, ou laisser vide à désactiver.
+- L'adresse d'une politique de confidentialité pertinente à afficher dans le pied de page des pages générés. Spécifier une URL, ou laisser vide à désactiver.
 
 #### « template_data » (Catégorie)
 Configuration pour les modèles et thèmes.
@@ -1341,6 +1375,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2366,4 +2401,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 26 Novembre 2024 (2024.11.26).
+Dernière mise à jour : 9 Janvier 2025 (2025.01.09).

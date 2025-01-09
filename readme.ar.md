@@ -205,6 +205,7 @@ $CIDRAM->view();
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -238,6 +239,7 @@ $CIDRAM->view();
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -595,6 +597,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -781,6 +785,16 @@ disabled_channels
 ##### <div dir="rtl">"email_notification_name" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>إذا اخترت تلقي الإشعارات من CIDRAM عبر البريد الإلكتروني، على سبيل المثال، عند تفعيل قواعد مساعدة محددة، يمكنك تحديد اسم المستلم لتلك الإشعارات هنا.</li></ul></div>
 
+##### <div dir="rtl">"email_notification_when" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>متى يتم إرسال الإشعارات بعد إنشائها.</li></ul></div>
+
+```
+email_notification_when
+├─Immediately ("في الحال.")
+├─After24Hours ("بعد 24 ساعة، يتم تجميعها معًا (أو عند تشغيلها يدويًا، على سبيل المثال، عبر cron).")
+└─ManuallyOnly ("فقط عند تشغيله يدويًا (على سبيل المثال، عبر cron).")
+```
+
 #### <div dir="rtl">"components" (التصنيف)<br /></div>
 <div dir="rtl">التكوين لتنشيط وتعطيل المكونات المستخدمة من قبل CIDRAM. عادةً ما يتم ملؤها بواسطة صفحة التحديثات، ولكن يمكن أيضًا إدارتها من هنا لتحكم أفضل وللمكونات المخصصة التي لا تتعرف عليها صفحة التحديثات.<br /><br /></div>
 
@@ -915,10 +929,11 @@ shorthand
 ├─Legal ("¹ قانوني")
 ├─Malware ("البرمجيات الخبيثة")
 ├─Proxy ("² خدمة بروكسي")
-├─Spam ("خطر البريد المزعج")
+├─Spam ("البريد المزعج")
 ├─Banned ("³ حظر")
 ├─BadIP ("³ IP غير صالح")
 ├─RL ("³ معدل محدود")
+├─Conflict ("³ صراع")
 └─Other ("⁴ آخر")
 ```
 
@@ -946,6 +961,29 @@ __نقاط النهاية البشرية والخدمات السحابية.__ ق
 
 ##### <div dir="rtl">"tracking_override" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>هل تسمح للوحدات النمطية بتجاوز خيارات التتبع؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
+
+##### <div dir="rtl">"conflict_response" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>عندما يكون هناك العديد من المحاولات المتزامنة للوصول إلى نفس الموارد (على سبيل المثال، الطلبات المتزامنة لعمليات PHP متعددة على نفس الجهاز لنفس الموارد)، فقد تفشل بعض هذه المحاولات. في حالة نادرة وغير محتملة أن يؤثر هذا على ملفات التوقيع أو الوحدات النمطية، قد يتم منع CIDRAM من اتخاذ قرار فعال بشأن الطلب. إذا حدث هذا، فهل يجب حظر الطلب، وما هي رسالة حالة HTTP التي يجب أن يرسلها CIDRAM؟</li></ul></div>
+
+```
+conflict_response
+├─0 (لا تمنع الطلب.): إذا كنت تفضل حظر الطلبات فقط عندما تكون
+│ متأكدًا من أنها خبيثة، أو اتخاذ جانب
+│ الحذر فيما يتعلق بالإيجابيات الخاطئة (على
+│ حساب حركة المرور غير المرغوب فيها التي
+│ تمر أحيانًا)، فاختر هذا. إذا كنت تفضل حظر
+│ الطلبات إذا لم تكن متأكدًا من سلامتها،
+│ وتفضل أن تظل يقظًا (على حساب النتائج
+│ الإيجابية الخاطئة في بعض الأحيان)، فاختر
+│ أحد الخيارات الأخرى المتاحة.
+├─409 (409 Conflict (صراع)): يوصى به في حالة تعارضات الموارد (على سبيل
+│ المثال، تعارضات الدمج، وتعارضات الوصول
+│ إلى الملفات، وما إلى ذلك). لا ينصح به في
+│ سياقات أخرى.
+└─429 (429 Too Many Requests (طلبات كثيرة جدا)): يوصى به لتحدود معدل، عند التعامل مع هجمات
+  DDoS، وللوقاية من الفيضانات. لا ينصح به في
+  سياقات أخرى.
+```
 
 #### <div dir="rtl">"verification" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للتحقق من مصدر الطلبات.<br /><br /></div>
@@ -1366,6 +1404,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2420,4 +2459,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٦ نوفمبر ٢٠٢٤ (٢٠٢٤.١١.٢٦).</div>
+<div dir="rtl">آخر تحديث: ٩ يناير ٢٠٢٥ (٢٠٢٥.٠١.٠٩).</div>

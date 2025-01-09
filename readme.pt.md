@@ -199,6 +199,7 @@ Configuração (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configuração (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -579,6 +581,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -760,6 +764,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - Se você optou por receber notificações do CIDRAM por e-mail, por exemplo, quando regras auxiliares específicas são desencadeadas, você pode especificar o nome do destinatário dessas notificações aqui.
 
+##### "email_notification_when" `[string]`
+- Quando enviar notificações após serem geradas.
+
+```
+email_notification_when
+├─Immediately ("Imediatamente.")
+├─After24Hours ("Após 24 horas, agrupados juntos (ou quando desencadeados manualmente, por exemplo, via cron).")
+└─ManuallyOnly ("Somente quando desencadeado manualmente (por exemplo, via cron).")
+```
+
 #### "components" (Categoria)
 Configuração para ativação e desativação dos componentes utilizados pelo CIDRAM. Normalmente preenchido pela página de atualizações, mas também pode ser gerenciado aqui para um controle mais preciso e para componentes personalizados não reconhecidos pela página de atualizações.
 
@@ -894,10 +908,11 @@ shorthand
 ├─Legal ("¹ Legais")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Risco de spam")
+├─Spam ("Spam")
 ├─Banned ("³ Banido")
 ├─BadIP ("³ IP inválido")
 ├─RL ("³ Taxa limitada")
+├─Conflict ("³ Conflito")
 └─Other ("⁴ Outros")
 ```
 
@@ -925,6 +940,24 @@ __Pontos finais humanos e serviços em nuvem.__ O serviço em nuvem pode se refe
 
 ##### "tracking_override" `[bool]`
 - Permitir que os módulos substituem as opções de monitoração? True = Sim [Padrão]; False = Não.
+
+##### "conflict_response" `[int]`
+- Quando há muitas tentativas simultâneas de acessar os mesmos recursos (por exemplo, solicitações simultâneas para vários processos PHP na mesma máquina para os mesmos recursos), algumas dessas tentativas podem falhar. No caso raro e improvável de isso afetar arquivos de assinatura ou módulos, o CIDRAM pode ser impedido de tomar uma decisão efetiva sobre a solicitação. Se isso acontecer, a solicitação deve ser bloqueada, e qual mensagem de status HTTP o CIDRAM deve enviar?
+
+```
+conflict_response
+├─0 (Não bloqueie a solicitação.): Se você preferir que as solicitações sejam bloqueadas somente quando
+│ tiver certeza de que são malignas, ou preferir ser cauteloso em relação a
+│ falsos positivos (ao custo de tráfego indesejado ocasionalmente passar),
+│ escolha esta opção. Se você preferir que as solicitações sejam
+│ bloqueadas caso não tenha certeza de que são benignas, ou preferir
+│ permanecer vigilante (ao custo de falsos positivos ocasionais), escolha uma
+│ das outras opções disponíveis.
+├─409 (409 Conflito): Recomendado para conflitos de recursos (por exemplo, conflitos de mesclagem,
+│ conflitos de acesso a arquivos, etc). Não recomendado em outros contextos.
+└─429 (429 Too Many Requests (Pedidos em excesso)): Recomendado para limitação de taxa, ao lidar com ataques DDoS, e para
+  prevenção de inundações. Não recomendado em outros contextos.
+```
 
 #### "verification" (Categoria)
 Configuração para verificar a origem das solicitações.
@@ -1337,6 +1370,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2352,4 +2386,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 26 de Novembro de 2024 (2024.11.26).
+Última Atualização: 9 de Janeiro de 2025 (2025.01.09).

@@ -199,6 +199,7 @@ Konfiguration (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Konfiguration (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -762,6 +766,16 @@ disabled_channels
 ##### „email_notification_name“ `[string]`
 - Wenn Sie Benachrichtigungen von CIDRAM per E-Mail wünschen, z.B., wenn bestimmte Hilfsregeln ausgelöst werden, hier können Sie den Empfängernamen für diese Benachrichtigungen angeben.
 
+##### „email_notification_when“ `[string]`
+- Wann sollen Benachrichtigungen nach der Generierung gesendet werden.
+
+```
+email_notification_when
+├─Immediately ("Sofort.")
+├─After24Hours ("Nach 24 Stunden, gebündelt (oder bei manueller Auslösung, z.B., über Cron).")
+└─ManuallyOnly ("Nur bei manueller Auslösung (z.B., über Cron).")
+```
+
 #### „components“ (Kategorie)
 Konfiguration zur Aktivierung und Deaktivierung der von CIDRAM verwendeten Komponenten. Wird normalerweise von der Update-Seite ausgefüllt, aber kann auch von hier aus verwaltet werden, um eine genauere Kontrolle zu haben und für benutzerdefinierte Komponenten die von der Update-Seite nicht erkannt werden.
 
@@ -896,10 +910,11 @@ shorthand
 ├─Legal ("¹ Gesetzliche")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy-Service")
-├─Spam ("Spam Risiko")
+├─Spam ("Spam")
 ├─Banned ("³ Verbannt")
 ├─BadIP ("³ Ungültige IP")
 ├─RL ("³ Rate begrenzt")
+├─Conflict ("³ Konflikt")
 └─Other ("⁴ Andere")
 ```
 
@@ -927,6 +942,26 @@ __Menschliche Endpunkte und Cloud-Service.__ Cloud-Service können sich auf Webh
 
 ##### „tracking_override“ `[bool]`
 - Sollten Module erlaubt sein Tracking-Optionen zu überschreiben? True = Ja [Standardeinstellung]; False = Nein.
+
+##### „conflict_response“ `[int]`
+- Wenn es zu viele gleichzeitige Versuche gibt auf dieselben Ressourcen zuzugreifen (z.B., gleichzeitige Anforderungen an mehrere PHP-Prozesse auf demselben Computer für dieselben Ressourcen), können einige dieser Versuche fehlschlagen. In dem seltenen und unwahrscheinlichen Fall dass Signaturdateien oder Module hiervon betroffen sind, kann CIDRAM möglicherweise keine wirksame Entscheidung über die Anfrage treffen. Wenn dies geschieht, sollte die Anforderung blockiert werden, und welche HTTP-Statusmeldung sollte CIDRAM senden?
+
+```
+conflict_response
+├─0 (Blockieren die Anfrage nicht.): Wenn Sie es vorziehen dass Anfragen nur dann blockiert werden wenn Sie
+│ sicher dass sie bösartig sind, oder wenn Sie auf Nummer sicher in Bezug auf
+│ Falsche-Positives möchten (auf Kosten dessen, dass gelegentlich
+│ unerwünschter Datenverkehr durchkommt), wählen Sie diese. Wenn Sie es
+│ vorziehen dass Anfragen blockiert werden wenn Sie nicht sicher ob sie
+│ harmlos sind, oder wenn Sie möchten lieber wachsam bleiben (auf Kosten
+│ gelegentlicher Falsche-Positives), wählen Sie eine der anderen verfügbaren
+│ Optionen.
+├─409 (409 Konflikt): Empfohlen für Ressourcenkonflikte (z.B., Zusammenführungskonflikte,
+│ Dateizugriffskonflikte, u.s.w.). Nicht in anderen Kontexten empfohlen.
+└─429 (429 Too Many Requests (Zu viele Anfragen)): Empfohlen zur Ratenbegrenzung, beim Umgang mit DDoS-Angriffen, und zur
+  Verhinderung von Netzüberschwemmungen. Nicht in anderen Kontexten
+  empfohlen.
+```
 
 #### „verification“ (Kategorie)
 Konfiguration zur Verifizierung woher Anfragen stammen.
@@ -1341,6 +1376,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2370,4 +2406,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 26. November 2024 (2024.11.26).
+Zuletzt aktualisiert: 9. Januar 2025 (2025.01.09).

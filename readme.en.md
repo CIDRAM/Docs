@@ -199,6 +199,7 @@ Configuration (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configuration (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -578,6 +580,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -758,6 +762,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - If you've opted to receive notifications from CIDRAM via email, e.g., when specific auxiliary rules are triggered, you can specify the recipient name for those notifications here.
 
+##### "email_notification_when" `[string]`
+- When to send notifications after being generated.
+
+```
+email_notification_when
+├─Immediately ("Immediately.")
+├─After24Hours ("After 24 hours, bundled together (or when triggered manually, e.g., via cron).")
+└─ManuallyOnly ("Only when triggered manually (e.g., via cron).")
+```
+
 #### "components" (Category)
 Configuration for the activation and the deactivation of the components used by CIDRAM. Typically populated by the updates page, but can also be managed from here for finer control and for custom components not recognised by the updates page.
 
@@ -892,10 +906,11 @@ shorthand
 ├─Legal ("¹ Legal")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Spam risk")
+├─Spam ("Spam")
 ├─Banned ("³ Banned")
 ├─BadIP ("³ Invalid IP")
 ├─RL ("³ Rate limited")
+├─Conflict ("³ Conflict")
 └─Other ("⁴ Other")
 ```
 
@@ -923,6 +938,23 @@ __Human endpoints and cloud services.__ Cloud service may refer to webhosting pr
 
 ##### "tracking_override" `[bool]`
 - Allow modules to override tracking options? True = Yes [Default]; False = No.
+
+##### "conflict_response" `[int]`
+- When there are too many simultaneous attempts to access the same resources (e.g., simultaneous requests to multiple PHP processes at the same machine for the same resources), some of those attempts may fail. In the rare and unlikely event that this affects signature files or modules, CIDRAM may be prevented from making an effective determination about the request. If this happens, should the request be blocked, and which HTTP status message should CIDRAM send?
+
+```
+conflict_response
+├─0 (Don't block the request.): If you would prefer that requests be blocked only when you're certain
+│ they're malign, or to err on the side of caution regarding false positives
+│ (at the cost of unwanted traffic occasionally getting through), choose this.
+│ If you would prefer that requests be blocked if you're not certain they're
+│ benign, or to err on the side of vigilance (at the cost of occasional false
+│ positives), choose one of the other available options.
+├─409 (409 Conflict): Recommended for resource conflicts (e.g., merge conflicts, file access
+│ conflicts, etc). Not recommended in other contexts.
+└─429 (429 Too Many Requests): Recommended for rate limiting, when dealing with DDoS attacks, and for flood
+  prevention. Not recommended in other contexts.
+```
 
 #### "verification" (Category)
 Configuration for verifying where requests originate from.
@@ -1333,6 +1365,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2353,4 +2386,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 26 November 2024 (2024.11.26).
+Last Updated: 9 January 2025 (2025.01.09).

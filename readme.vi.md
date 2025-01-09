@@ -199,6 +199,7 @@ Cấu hình (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Cấu hình (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -587,6 +589,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -772,6 +776,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - Nếu bạn đã chọn nhận thông báo từ CIDRAM qua email, ví dụ, khi các quy tắc phụ trợ cụ thể được kích hoạt, bạn có thể chỉ định tên người nhận cho những thông báo đó tại đây.
 
+##### "email_notification_when" `[string]`
+- Khi nào gửi thông báo sau khi được tạo.
+
+```
+email_notification_when
+├─Immediately ("Ngay lập tức.")
+├─After24Hours ("Sau 24 giờ, được đóng gói lại với nhau (hoặc khi được kích hoạt thủ công, ví dụ, thông qua cron).")
+└─ManuallyOnly ("Chỉ khi được kích hoạt thủ công (ví dụ, thông qua cron).")
+```
+
 #### "components" (Thể loại)
 Cấu hình để kích hoạt và vô hiệu hóa các thành phần được sử dụng bởi CIDRAM. Thường được điền bởi trang cập nhật, nhưng cũng có thể được quản lý từ đây để kiểm soát tốt hơn và cho các thành phần tùy chỉnh không được công nhận bởi trang cập nhật.
 
@@ -906,10 +920,11 @@ shorthand
 ├─Legal ("¹ Nghĩa vụ hợp pháp")
 ├─Malware ("Phần mềm độc hại")
 ├─Proxy ("² Proxy")
-├─Spam ("Nguy cơ rác")
+├─Spam ("Thư rác")
 ├─Banned ("³ Bị cấm")
 ├─BadIP ("³ IP không hợp lệ")
 ├─RL ("³ Giới hạn tốc độ")
+├─Conflict ("³ Xung đột")
 └─Other ("⁴ Khác")
 ```
 
@@ -938,6 +953,26 @@ __Điểm cuối của con người và dịch vụ điện toán đám mây.__ 
 ##### "tracking_override" `[bool]`
 - Cho phép các mô-đun ghi đè các tùy chọn giám sát? True = Vâng [Mặc định]; False = Không.
 
+##### "conflict_response" `[int]`
+- Khi có quá nhiều lần thử truy cập cùng một tài nguyên cùng lúc (v.d., yêu cầu đồng thời tới nhiều quy trình PHP trên cùng một máy cho cùng một tài nguyên), một số lần thử đó có thể không thành công. Trong trường hợp hiếm hoi và không chắc xảy ra khi điều này ảnh hưởng đến các tập tin chữ ký hay mô-đun, CIDRAM có thể không đưa ra được quyết định hiệu quả về yêu cầu. Nếu điều này xảy ra, yêu cầu có nên bị chặn không, và CIDRAM nên gửi tin nhắn trạng thái HTTP nào?
+
+```
+conflict_response
+├─0 (Đừng chặn yêu cầu.): Nếu bạn muốn các yêu cầu chỉ bị chặn khi bạn chắc chắn
+│ rằng chúng là ác ý, hoặc thích thận trọng hơn với sai tích
+│ cực (với cái giá là thỉnh thoảng có lưu lượng truy cập
+│ không mong muốn đi qua), chọn cái này. Nếu bạn muốn yêu cầu
+│ bị chặn nếu bạn không chắc chắn chúng là vô hại, hoặc
+│ thích giữ cảnh giác (với cái giá là thỉnh thoảng có sai
+│ tích cực), chọn một trong những tùy chọn có sẵn khác.
+├─409 (409 Conflict (Xung đột)): Được khuyến nghị cho các xung đột tài nguyên (v.d., xung
+│ đột hợp nhất, xung đột truy cập tập tin, vv). Không được
+│ khuyến khích trong các ngữ cảnh khác.
+└─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
+  các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
+  được khuyến khích trong các ngữ cảnh khác.
+```
+
 #### "verification" (Thể loại)
 Cấu hình để xác minh yêu cầu bắt nguồn từ đâu.
 
@@ -963,7 +998,7 @@ search_engines
 └─YoudaoBot ("YoudaoBot")
 ```
 
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (v.d., xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
@@ -981,7 +1016,7 @@ social_media
 └─Twitterbot ("*!! Twitterbot")
 ```
 
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (v.d., xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
@@ -1003,7 +1038,7 @@ other
 └─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
 ```
 
-__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (ví dụ: xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
+__"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (v.d., xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
 
 __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợp, yêu cầu đã được xác minh tích cực vẫn có thể bị chặn do tập tin chữ ký, mô-đun, hoặc các điều kiện khác của yêu cầu, và đường tránh có thể cần thiết để tránh sai tích cực. Trong trường hợp sai tích cực gây ra chính xác một vi phạm, một đường tránh như vậy có thể được mô tả là "đường tránh một cú đánh".
 
@@ -1353,6 +1388,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2362,4 +2398,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2024.11.26.
+Lần cuối cập nhật: 2025.01.09.

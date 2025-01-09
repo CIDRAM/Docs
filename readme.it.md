@@ -199,6 +199,7 @@ Configurazione (v3)
 │       sensitive [string]
 │       email_notification_address [string]
 │       email_notification_name [string]
+│       email_notification_when [string]
 ├───components
 │       ipv4 [string]
 │       ipv6 [string]
@@ -232,6 +233,7 @@ Configurazione (v3)
 │       default_tracktime [string]
 │       infraction_limit [int]
 │       tracking_override [bool]
+│       conflict_response [int]
 ├───verification
 │       search_engines [string]
 │       social_media [string]
@@ -580,6 +582,8 @@ lang
 ├─ja ("日本語")
 ├─ko ("한국어")
 ├─lv ("Latviešu")
+├─ml ("മലയാളം")
+├─mr ("मराठी")
 ├─ms ("Bahasa Melayu")
 ├─nl ("Nederlandse")
 ├─no ("Norsk")
@@ -762,6 +766,16 @@ disabled_channels
 ##### "email_notification_name" `[string]`
 - Se hai scelto di ricevere notifiche da CIDRAM via la posta elettronica, ad esempio, quando vengono innescate regole ausiliarie specifiche, puoi specificare il nome del destinatario per tali notifiche qui.
 
+##### "email_notification_when" `[string]`
+- Quando inviare le notifiche dopo la loro generazione.
+
+```
+email_notification_when
+├─Immediately ("Immediatamente.")
+├─After24Hours ("Dopo 24 ore, raggruppati insieme (o quando innescate manualmente, ad es., tramite cron).")
+└─ManuallyOnly ("Solo quando innescate manualmente (ad es., tramite cron).")
+```
+
 #### "components" (Categoria)
 Configurazione per l'attivazione e la disattivazione dei componenti utilizzati da CIDRAM. Tipicamente popolato dalla pagina degli aggiornamenti, ma può anche essere gestito da qui per un controllo più accurato e per componenti personalizzati non riconosciuti dalla pagina degli aggiornamenti.
 
@@ -896,18 +910,19 @@ shorthand
 ├─Legal ("¹ Legale")
 ├─Malware ("Malware")
 ├─Proxy ("² Proxy")
-├─Spam ("Rischio per lo spam")
+├─Spam ("Spam")
 ├─Banned ("³ Vietato")
 ├─BadIP ("³ IP non valido")
 ├─RL ("³ Velocità limitato")
+├─Conflict ("³ Conflitto")
 └─Other ("⁴ Altro")
 ```
 
-__0.__ Se il tuo sito web necessita di accesso tramite LAN o localhost, non bloccarlo. Altrimenti, puoi bloccarlo.
+__0.__ Se il suo sito web necessita di accesso tramite LAN o localhost, non bloccarlo. Altrimenti, puoi bloccarlo.
 
 __1.__ Nessuno dei file di firma predefiniti lo utilizza, ma è comunque supportato nel caso in cui possa essere utile per alcuni utenti.
 
-__2.__ Se hai bisogno che gli utenti possano accedere al tuo sito web tramite proxy, non bloccarlo. Altrimenti, puoi bloccarlo.
+__2.__ Se hai bisogno che gli utenti possano accedere al suo sito web tramite proxy, non bloccarlo. Altrimenti, puoi bloccarlo.
 
 __3.__ L'utilizzo diretto nelle firme non è supportato, ma può essere invocato con altri mezzi in circostanze particolari.
 
@@ -927,6 +942,24 @@ __Punti finali umani e servizi cloud.__ Il servizio cloud può fare riferimento 
 
 ##### "tracking_override" `[bool]`
 - I moduli dovrebbero essere autorizzati a sostituire le opzioni di tracciamento? True = Sì [Predefinito]; False = No.
+
+##### "conflict_response" `[int]`
+- Quando ce ne sono troppi tentativi simultanei di accedere alle stesse risorse (ad esempio, richieste simultanee a più processi PHP sulla stessa macchina per le stesse risorse), alcuni di questi tentativi potrebbero fallire. Nel raro e improbabile caso in cui ciò influisca sui file delle firme o sui moduli, CIDRAM potrebbe non essere in grado di prendere una decisione effettiva in merito alla richiesta. In tal caso, dovrebbe la richiesta essere bloccata, e quale messaggio di stato HTTP dovrebbe CIDRAM inviare?
+
+```
+conflict_response
+├─0 (Non bloccare la richiesta.): Se preferisci che le richieste vengano bloccate solo quando sei certo che
+│ siano maligne, o se preferisci essere cauto riguardo ai falsi positivi (a
+│ costo di far passare occasionalmente traffico indesiderato), scegli questa
+│ opzione. Se preferisci che le richieste vengano bloccate se non sei certo
+│ che sono benigni, o preferisci essere più vigile (a costo di occasionali
+│ falsi positivi), scegli una delle altre opzioni disponibili.
+├─409 (409 Conflitto): Consigliato per conflitti di risorse (ad esempio, conflitti di unione,
+│ conflitti di accesso ai file, ecc). Non consigliato in altri contesti.
+└─429 (429 Too Many Requests (Troppe richieste)): Consigliato per la limitazione della velocità, quando si tratta di attacchi
+  DDoS, e per la prevenzione delle inondazioni. Non consigliato in altri
+  contesti.
+```
 
 #### "verification" (Categoria)
 Configurazione per verificare da dove provengono le richieste.
@@ -1034,7 +1067,7 @@ usemode
 - Legare CAPTCHA per gli utenti?
 
 ##### "sitekey" `[string]`
-- Questo valore può essere trovato nella dashboard del tuo servizio CAPTCHA.
+- Questo valore può essere trovato nella dashboard del suo servizio CAPTCHA.
 
 Guarda anche:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
@@ -1042,7 +1075,7 @@ Guarda anche:
 - [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
-- Questo valore può essere trovato nella dashboard del tuo servizio CAPTCHA.
+- Questo valore può essere trovato nella dashboard del suo servizio CAPTCHA.
 
 Guarda anche:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
@@ -1121,13 +1154,13 @@ usemode
 - Legare CAPTCHA per gli utenti?
 
 ##### "sitekey" `[string]`
-- Questo valore può essere trovato nella dashboard del tuo servizio CAPTCHA.
+- Questo valore può essere trovato nella dashboard del suo servizio CAPTCHA.
 
 Guarda anche:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
 ##### "secret" `[string]`
-- Questo valore può essere trovato nella dashboard del tuo servizio CAPTCHA.
+- Questo valore può essere trovato nella dashboard del suo servizio CAPTCHA.
 
 Guarda anche:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
@@ -1341,6 +1374,7 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
+├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2356,4 +2390,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 26 Novembre 2024 (2024.11.26).
+Ultimo Aggiornamento: 9 Gennaio 2025 (2025.01.09).

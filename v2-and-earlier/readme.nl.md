@@ -611,7 +611,7 @@ Waarde | Produceert | Beschrijving
 *Zie ook: [Wat kan ik gebruiken voor "default_dns"?](#wat-kan-ik-gebruiken-voor-default_dns)*
 
 ##### "search_engine_verification"
-- Poging om aanvragen van zoekmachines te bevestigen? Verificatie van zoekmachines zorgt ervoor dat ze niet zullen worden verbannen als gevolg van het overschrijden van de overtreding limiet (verbod op zoekmachines van uw website zal meestal een negatief effect hebben op uw zoekmachine ranking, SEO, enz). Wanneer geverifieerd, zoekmachines kunnen worden geblokkeerd als per normaal, maar zal niet worden verbannen. Wanneer niet geverifieerd, het is mogelijk dat zij worden verbannen ten gevolge van het overschrijden van de overtreding limiet. Bovendien, het verifiëren van zoekmachines biedt bescherming tegen nep-zoekmachine aanvragen en tegen de mogelijk schadelijke entiteiten vermomd als zoekmachines (dergelijke aanvragen zal worden geblokkeerd wanneer het verifiëren van zoekmachines is ingeschakeld). True = Inschakelen het verifiëren van zoekmachines [Standaard]; False = Uitschakelen het verifiëren van zoekmachines.
+- Poging om verzoeken van zoekmachines te bevestigen? Verificatie van zoekmachines zorgt ervoor dat ze niet zullen worden verbannen als gevolg van het overschrijden van de overtreding limiet (verbod op zoekmachines van uw website zal meestal een negatief effect hebben op uw zoekmachine ranking, SEO, enz). Wanneer geverifieerd, zoekmachines kunnen worden geblokkeerd als per normaal, maar zal niet worden verbannen. Wanneer niet geverifieerd, het is mogelijk dat zij worden verbannen ten gevolge van het overschrijden van de overtreding limiet. Bovendien, het verifiëren van zoekmachines biedt bescherming tegen nep-zoekmachine verzoeken en tegen de mogelijk schadelijke entiteiten vermomd als zoekmachines (dergelijke verzoeken zal worden geblokkeerd wanneer het verifiëren van zoekmachines is ingeschakeld). True = Inschakelen het verifiëren van zoekmachines [Standaard]; False = Uitschakelen het verifiëren van zoekmachines.
 
 Momenteel ondersteund:
 - __[Applebot](https://discussions.apple.com/thread/7090135)__
@@ -632,7 +632,7 @@ Niet compatibel (veroorzaakt conflicten):
 - __[Mix.com](https://github.com/CIDRAM/CIDRAM/issues/80)__
 
 ##### "social_media_verification"
-- Poging om aanvragen voor sociale media te verifiëren? Verificatie van sociale media biedt bescherming tegen nep-aanvragen voor sociale media (dergelijke aanvragen worden geblokkeerd). True = Inschakelen verificatie van sociale media [Standaard]; False = Uitschakelen verificatie van sociale media.
+- Poging om verzoeken voor sociale media te verifiëren? Verificatie van sociale media biedt bescherming tegen nep-verzoeken voor sociale media (dergelijke verzoeken worden geblokkeerd). True = Inschakelen verificatie van sociale media [Standaard]; False = Uitschakelen verificatie van sociale media.
 
 Momenteel ondersteund:
 - __[Embedly](https://udger.com/resources/ua-list/bot-detail?bot=Embedly#id22674)__
@@ -1105,7 +1105,7 @@ Als u wilt signatures te vervallen na verloop van tijd, op soortgelijke wijze al
 Expires: 2016.12.31
 ```
 
-Verlopen signatures zullen nooit worden getriggerd bij een aanvraag, wat er ook gebeurt.
+Verlopen signatures zullen nooit worden getriggerd bij een verzoek, wat er ook gebeurt.
 
 ##### 7.1.2 HERKOMST ETIKETTEN
 
@@ -1543,7 +1543,7 @@ Kort antwoord: Nee.
 
 Een iets langer antwoord: CIDRAM helpt de impact van ongewenst verkeer op uw website te verminderen (waardoor de bandbreedtekosten van uw website worden geminderd), helpt de impact van ongewenst verkeer op uw hardware te verminderen (b.v., de mogelijkheid van uw server om verzoeken te verwerken en te serveren), en kan helpen om verschillende andere mogelijke negatieve effecten geassocieerd met ongewenst verkeer te verminderen. Er zijn echter twee belangrijke dingen die onthouden moeten worden om deze vraag te begrijpen.
 
-Ten eerste, CIDRAM is een PHP-pakket en werkt daarom op de computer waarop PHP is geïnstalleerd. Dit betekent dat CIDRAM een verzoek alleen kan zien en blokkeren *nadat* de server het al heeft ontvangen. Ten tweede, effectieve DDoS-mitigatie moet aanvragen filteren *voordat* ze de server bereikt waarop de DDoS-aanval gericht is. In het ideale geval moeten DDoS-aanvallen worden gedetecteerd en beperkt door oplossingen die in staat zijn om verkeer dat is gekoppeld aan aanvallen te laten vallen of omleiden, voordat het in de eerste plaats de gerichte server bereikt.
+Ten eerste, CIDRAM is een PHP-pakket en werkt daarom op de computer waarop PHP is geïnstalleerd. Dit betekent dat CIDRAM een verzoek alleen kan zien en blokkeren *nadat* de server het al heeft ontvangen. Ten tweede, effectieve DDoS-mitigatie moet verzoeken filteren *voordat* ze de server bereikt waarop de DDoS-aanval gericht is. In het ideale geval moeten DDoS-aanvallen worden gedetecteerd en beperkt door oplossingen die in staat zijn om verkeer dat is gekoppeld aan aanvallen te laten vallen of omleiden, voordat het in de eerste plaats de gerichte server bereikt.
 
 Dit kan worden geïmplementeerd met behulp van speciale hardware-oplossingen op locatie, en/of cloudgebaseerde oplossingen zoals speciale DDoS-mitigatie diensten, routering van de DNS van een domein via DDoS-resistente netwerken, cloudgebaseerde filteren, of een combinatie daarvan. In elk geval is dit onderwerp echter een beetje te ingewikkeld om grondig met slechts een paar alinea's uit te leggen, dus ik zou aanraden verder onderzoek te doen als dit een onderwerp is dat u wilt nastreven. Wanneer de ware aard van DDoS-aanvallen goed wordt begrepen, zal dit antwoord logischer zijn.
 
@@ -1788,7 +1788,7 @@ CIDRAM ondersteunt reCAPTCHA en hCAPTCHA. Ze nodig API-sleutels om correct te we
 
 [Stop Forum Spam](https://www.stopforumspam.com/) is een fantastische, vrij beschikbare service die kan helpen forums, blogs, en websites van spammers te beschermen. Het doet dit door een database van bekende spammers aan te bieden, en een API die kan worden gebruikt om te controleren of een IP-adres, gebruikersnaam, of e-mailadres in de database wordt vermeld.
 
-CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de Stop Forum Spam API in overeenstemming met het beoogde doel van de module. Wanneer de module is geïnstalleerd, communiceert CIDRAM met deze API wanneer een inkomende aanvraag een resource aanvraagt die door CIDRAM wordt herkend als een type resource dat vaak wordt getarget door spammers (zoals inlogpagina's, registratiepagina's, e-mailverificatiepagina's, opmerkingenformulieren, enz).
+CIDRAM biedt een optionele module die gebruikmaakt van deze API om te controleren of het IP-adres van inkomende verzoeken bij een verdachte spammer hoort. De module is niet standaard geïnstalleerd, maar als u ervoor kiest om deze te installeren, kunnen de gebruikers IP-adressen worden gedeeld met de Stop Forum Spam API in overeenstemming met het beoogde doel van de module. Wanneer de module is geïnstalleerd, communiceert CIDRAM met deze API wanneer een inkomende verzoek een resource aanvraagt die door CIDRAM wordt herkend als een type resource dat vaak wordt getarget door spammers (zoals inlogpagina's, registratiepagina's, e-mailverificatiepagina's, opmerkingenformulieren, enz).
 
 ##### 11.2.5 ABUSEIPDB
 
@@ -1808,7 +1808,7 @@ CIDRAM kan informatie op verschillende manieren loggen, wat verschillende soorte
 
 ##### 11.3.0 BLOKGEBEURTENISSEN
 
-Het primaire type loggen dat CIDRAM kan uitvoeren, heeft betrekking op "blokgebeurtenissen". Dit type loggen heeft betrekking op wanneer CIDRAM een aanvraag blokkeert, en kan in drie verschillende indelingen worden aangeboden:
+Het primaire type loggen dat CIDRAM kan uitvoeren, heeft betrekking op "blokgebeurtenissen". Dit type loggen heeft betrekking op wanneer CIDRAM een verzoek blokkeert, en kan in drie verschillende indelingen worden aangeboden:
 - Door mensen leesbare logbestanden.
 - Apache-stijl logbestanden.
 - Geserialiseerde logbestanden.
@@ -1945,7 +1945,7 @@ CIDRAM codeert de cache of logboekinformatie niet. [Encryptie](https://nl.wikipe
 
 #### 11.4 COOKIES
 
-CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende aanvragen in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende aanvragen (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
+CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende verzoeken in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende verzoeken (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
 
 In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het relevant is), waardoor de gebruiker wordt gewaarschuwd dat cookies worden ingesteld als deze zich bezighouden met de relevante acties. Cookies zijn niet ingesteld op andere punten in de codebase.
 
@@ -1990,4 +1990,4 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 ---
 
 
-Laatste Bijgewerkt: 28 Januari 2024 (2024.01.28).
+Laatste Bijgewerkt: 28 December 2024 (2024.12.28).
