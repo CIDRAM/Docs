@@ -33,7 +33,6 @@ CIDRAM（シドラム、​クラスレス・ドメイン間・ルーティン�
 本ドキュメントならびに関連パッケージは以下のＵＲＬからダウンロードできます。
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
-- [SourceForge](https://sourceforge.net/projects/cidram/)。
 
 ---
 

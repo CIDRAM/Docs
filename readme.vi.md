@@ -32,7 +32,6 @@ Bản này là chương trình miễn phí; bạn có thể phân phối lại h
 Tài liệu này và các gói liên quan của nó có thể được tải về miễn phí từ:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 

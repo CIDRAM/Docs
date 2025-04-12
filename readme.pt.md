@@ -32,7 +32,6 @@ Este script é livre software; você pode redistribuí-lo e/ou modificá-lo de a
 Este documento e seu pacote associado pode ser baixado gratuitamente de:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 

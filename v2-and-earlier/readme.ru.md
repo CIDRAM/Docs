@@ -33,7 +33,6 @@ CIDRAM/СИДРАМ (Бесклассовая Адресация Доступа 
 Этот документ с относящимися к нему пакетом файлов можно бесплатно скачать на страницах:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 

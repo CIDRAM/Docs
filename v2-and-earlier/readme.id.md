@@ -33,7 +33,6 @@ Skrip ini adalah perangkat lunak gratis; Anda dapat mendistribusikan kembali dan
 Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 

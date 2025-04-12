@@ -33,7 +33,6 @@ CIDRAM （無類別域間路由訪問管理器）是一個PHP腳本，​旨在�
 現在CIDRAM的代碼文件和關聯包可以從以下地址免費下載：
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
-- [SourceForge](https://sourceforge.net/projects/cidram/)。
 
 ---
 

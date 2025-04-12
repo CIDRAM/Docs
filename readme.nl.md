@@ -32,7 +32,6 @@ Dit script is gratis software; u kunt, onder de voorwaarden van de GNU General P
 Dit document en de bijbehorende pakket kunt gedownload gratis zijn van:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 

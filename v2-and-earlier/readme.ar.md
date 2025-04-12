@@ -35,7 +35,6 @@
 <div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
 - <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
 - <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
-- <a dir="ltr" href="https://sourceforge.net/projects/cidram/">SourceForge</a>.
 
 ---
 

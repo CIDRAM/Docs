@@ -35,7 +35,6 @@
 <div dir="rtl">یہ دستاویز اور اس کے متعلقہ پیکجوں کے لئے مفت سے ڈاؤن لوڈ کیا جا سکتا ہے:</div>
 - <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
 - <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
-- <a dir="ltr" href="https://sourceforge.net/projects/cidram/">SourceForge</a>.
 
 ---
 

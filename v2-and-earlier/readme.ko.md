@@ -33,7 +33,6 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 이 문서와 관련 패키지는 다음 링크에서 무료로 다운로드할 수 있습니다 :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
-- [SourceForge](https://sourceforge.net/projects/cidram/).
 
 ---
 
