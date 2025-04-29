@@ -570,7 +570,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -977,7 +978,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1023,8 +1023,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __Was sind „Positive“ und „Negative“?__ Das erfolgreiche Ergebnis der Verifizierung der durch eine Anfrage präsentierten Identität könnte als „positiv“ oder „negativ“ beschrieben werden. In dem Fall dass die präsentierte Identität als die wahre Identität bestätigt wird, würde sie als „positiv“ bezeichnet werden. In dem Fall dass die präsentierten Identität als gefälscht bestätigt, würde sie als „negativ“ bezeichnet werden. Ein erfolgloses Ergebnis (z.B., die Verifizierung fehlschlägt, oder die Echtheit der präsentierten Identität kann nicht festgestellt werden) würde jedoch nicht als „positiv“ oder „negativ“ beschrieben. Stattdessen würde ein erfolgloses Ergebnis einfach als nicht verifiziert beschrieben. Wenn kein Versuch unternommen wird für die durch eine Anfrage präsentierte Identität zu verifizieren, würde die Anfrage ebenfalls als nicht verifiziert beschrieben. Die Begriffe sind nur in dem Kontext sinnvoll, in dem die durch eine Anfrage präsentierte Identität anerkannt wird und daher der Verifizierung möglich ist. In dem Fall in denen die präsentierte Identität nicht mit den oben bereitgestellten Optionen übereinstimmt, oder wenn keine Identität präsentiert wird, werden die oben bereitgestellten Optionen irrelevant.
@@ -1323,13 +1322,13 @@ Zusätzliche Cache-Optionen. Hinweis: Das Ändern dieser Werte kann Sie möglich
 - Dies gibt an, ob PDO für das Caching verwendet werden soll. Standardeinstellung = False.
 
 ##### „memcached_host“ `[string]`
-- Memcached Hostwert. Standardeinstellung = „localhost“.
+- Memcached Hostwert. Standardeinstellung = localhost.
 
 ##### „memcached_port“ `[int]`
 - Memcached Portwert. Standardeinstellung = „11211“.
 
 ##### „redis_host“ `[string]`
-- Redis Hostwert. Standardeinstellung = „localhost“.
+- Redis Hostwert. Standardeinstellung = localhost.
 
 ##### „redis_port“ `[int]`
 - Redis Portwert. Standardeinstellung = „6379“.
@@ -1369,9 +1368,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2405,4 +2402,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 9. Januar 2025 (2025.01.09).
+Zuletzt aktualisiert: 29. April 2025 (2025.04.29).

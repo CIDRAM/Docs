@@ -570,7 +570,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -974,7 +975,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1020,8 +1020,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi sebagai dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
@@ -1318,13 +1317,13 @@ Opsi cache tambahan. Catat: Mengubah nilai ini berpotensi membuat Anda keluar.
 - Menentukan apakah akan mencoba menggunakan PDO untuk cache. Default = False.
 
 ##### "memcached_host" `[string]`
-- Nilai host Memcached. Default = "localhost".
+- Nilai host Memcached. Default = localhost.
 
 ##### "memcached_port" `[int]`
 - Nilai port Memcached. Default = "11211".
 
 ##### "redis_host" `[string]`
-- Nilai host Redis. Default = "localhost".
+- Nilai host Redis. Default = localhost.
 
 ##### "redis_port" `[int]`
 - Nilai port Redis. Default = "6379".
@@ -1364,9 +1363,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2383,4 +2380,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 9 Januari 2025 (2025.01.09).
+Terakhir Diperbarui: 29 April 2025 (2025.04.29).

@@ -585,7 +585,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -999,7 +1000,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1045,8 +1045,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __ما هي "الإيجابيات" و "السلبيات"؟__ عند التحقق من الهوية المقدمة من خلال الطلب، يمكن وصف النتيجة الناجحة بأنها "إيجابية" أو "سلبية". عندما يتم التأكد من أن الهوية المقدمة هي الهوية الحقيقية، فإنها توصف بأنها "إيجابية". عندما يتم التأكد من تزوير الهوية المقدمة، توصف بأنها "سلبية". ومع ذلك، فإن النتيجة غير الناجحة (على سبيل المثال، فشل التحقق، أو عدم إمكانية تحديد صحة الهوية المقدمة) لن يتم وصفها بأنها "إيجابية" أو "سلبية". بدلاً من ذلك، يمكن وصف النتيجة غير الناجحة ببساطة بأنها لم يتم التحقق منها. عندما لا يتم إجراء أي محاولة للتحقق من الهوية المقدمة من خلال طلب ما، فسيتم وصف الطلب بالمثل بأنه لم يتم التحقق منه. لا تكون المصطلحات منطقية إلا في السياق الذي يتم فيه التعرف على الهوية المقدمة من خلال الطلب، وبالتالي، حيث يكون التحقق ممكنًا. إذا كانت الهوية المقدمة لا تتطابق مع الخيارات المذكورة أعلاه، أو إذا لم يتم تقديم هوية، فإن الخيارات المقدمة أعلاه تصبح غير ملائمة.
@@ -1351,13 +1350,13 @@ exceptions
 <div dir="rtl"><ul><li>يحدد هذا ما إذا كنت تريد استخدام PDO للتخزين المؤقت. افتراضي = False (زائفة).</li></ul></div>
 
 ##### <div dir="rtl">"memcached_host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>قيمة المضيف Memcached. افتراضي = "localhost".</li></ul></div>
+<div dir="rtl"><ul><li>قيمة المضيف Memcached. افتراضي = localhost.</li></ul></div>
 
 ##### <div dir="rtl">"memcached_port" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>قيمة منفذ Memcached. افتراضي = "11211".</li></ul></div>
 
 ##### <div dir="rtl">"redis_host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>قيمة المضيف Redis. افتراضي = "localhost".</li></ul></div>
+<div dir="rtl"><ul><li>قيمة المضيف Redis. افتراضي = localhost.</li></ul></div>
 
 ##### <div dir="rtl">"redis_port" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>قيمة منفذ Redis. افتراضي = "6379".</li></ul></div>
@@ -1397,9 +1396,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2458,4 +2455,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٩ يناير ٢٠٢٥ (٢٠٢٥.٠١.٠٩).</div>
+<div dir="rtl">آخر تحديث: ٢٩ أبريل ٢٠٢٥ (٢٠٢٥.٠٤.٢٩).</div>

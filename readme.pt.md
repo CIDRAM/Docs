@@ -569,7 +569,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -973,7 +974,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1019,8 +1019,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __O que são "positivos" e "negativos"?__ Quando verificando a identidade apresentada por uma solicitação, um resultado bem-sucedido pode ser descrito como "positivo" ou "negativo". Quando a identidade apresentada for confirmada como sendo a verdadeira identidade, ela será descrita como "positiva". Quando a identidade apresentada for confirmada como falsificada, ela será descrita como "negativa". No entanto, um resultado malsucedido (por exemplo, falha na verificação, ou a veracidade da identidade apresentada não pode ser determinada) não seria descrito como "positivo" ou "negativo". Em vez disso, um resultado malsucedido seria descrito simplesmente como não verificado. Quando não for feita nenhuma tentativa de verificar a identidade apresentada por uma solicitação, a solicitação também será descrita como não verificado. Os termos fazem sentido apenas no contexto em que a identidade apresentada por uma solicitação é reconhecida e, portanto, onde a verificação é possível. Nos casos em que a identidade apresentada não corresponde às opções fornecidas acima, ou onde nenhuma identidade é apresentada, as opções fornecidas acima tornam-se irrelevantes.
@@ -1317,13 +1316,13 @@ Opções de cache suplementares. Nota: Alterar estes valores podem potencialment
 - Especifica se deve tentar usar o PDO para armazenamento em cache. Padrão = False.
 
 ##### "memcached_host" `[string]`
-- Valor da host do Memcached. Padrão = "localhost".
+- Valor da host do Memcached. Padrão = localhost.
 
 ##### "memcached_port" `[int]`
 - Valor da porta do Memcached. Padrão = "11211".
 
 ##### "redis_host" `[string]`
-- Valor da host do Redis. Padrão = "localhost".
+- Valor da host do Redis. Padrão = localhost.
 
 ##### "redis_port" `[int]`
 - Valor da porta do Redis. Padrão = "6379".
@@ -1363,9 +1362,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2385,4 +2382,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 9 de Janeiro de 2025 (2025.01.09).
+Última Atualização: 29 de Abril de 2025 (2025.04.29).

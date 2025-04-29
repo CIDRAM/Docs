@@ -570,7 +570,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -974,7 +975,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1020,8 +1020,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
@@ -1318,13 +1317,13 @@ Aanvullende cache-opties. Opmerking: Als u deze waarden wijzigt, mogelijk bent u
 - Dit geeft aan of PDO moet worden gebruikt voor caching. Standaard = False.
 
 ##### "memcached_host" `[string]`
-- Memcached hostwaarde. Standaard = "localhost".
+- Memcached hostwaarde. Standaard = localhost.
 
 ##### "memcached_port" `[int]`
 - Memcached poortwaarde. Standaard = "11211".
 
 ##### "redis_host" `[string]`
-- Redis hostwaarde. Standaard = "localhost".
+- Redis hostwaarde. Standaard = localhost.
 
 ##### "redis_port" `[int]`
 - Redis poortwaarde. Standaard = "6379".
@@ -1364,9 +1363,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2400,4 +2397,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 9 Januari 2025 (2025.01.09).
+Laatste Bijgewerkt: 29 April 2025 (2025.04.29).

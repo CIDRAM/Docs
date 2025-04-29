@@ -1,8 +1,12 @@
 <?php
 $loadL10N = function (string $Language) {
+    $Preferred = $Language;
     if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml')) {
-        echo 'Unable to read the "' . $Language . '" language files!';
-        die;
+        $Language = preg_replace('~-.*$~', '', $Language);
+        if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml')) {
+            echo 'Unable to read the "' . $Language . '" language files!';
+            die;
+        }
     }
     $DataDocGen = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'DocGen' . DIRECTORY_SEPARATOR . $Language . '.yml');
     $Language = preg_replace('~-.*$~', '', $Language);
@@ -20,11 +24,14 @@ $loadL10N = function (string $Language) {
     }
     $Arr = [];
     $YAML->process($DataDocGen, $Arr);
-    $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $Language . '.yml');
-    $YAML->process($Data, $Arr);
-    $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . $Language . '.yml');
-    $YAML->process($Data, $Arr);
-    return new \Maikuolan\Common\L10N($Arr, []);
+    foreach (['frontend', 'core'] as $Source) {
+        $Data = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'vault' . DIRECTORY_SEPARATOR . 'l10n' . DIRECTORY_SEPARATOR . $Source . DIRECTORY_SEPARATOR . $Language . '.yml');
+        $YAML->process($Data, $Arr);
+    }
+    $L10N = new \Maikuolan\Common\L10N($Arr, []);
+    $L10N->autoAssignRules($Preferred);
+    $L10N->PreferredVariant = $Preferred;
+    return $L10N;
 };
 
 if (!isset($_GET['language'])) {
@@ -39,8 +46,6 @@ if (!isset($_GET['language'])) {
 
     $Final = '';
     $Data = $loadL10N($_GET['language']);
-    $Data->PreferredVariant = $_GET['language'];
-    $Data->autoAssignRules($_GET['language']);
     $First = "```\n" . $Data->getString('link.Configuration') . " (v3)\n│\n";
     $Cats = count($CIDRAM->CIDRAM['Config Defaults']);
     $Current = 1;

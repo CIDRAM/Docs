@@ -558,7 +558,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -953,7 +954,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -999,8 +999,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
@@ -1295,13 +1294,13 @@ exceptions
 - キャッシュに「PDO」を使用するかどうかを指定します。 Default/デフォルルト = False。
 
 ##### "memcached_host" `[string]`
-- Memcachedのホスト値。 Default/デフォルルト = 「localhost」。
+- Memcachedのホスト値。 Default/デフォルルト = localhost。
 
 ##### "memcached_port" `[int]`
 - Memcachedのポート値。 Default/デフォルルト = 「11211」。
 
 ##### "redis_host" `[string]`
-- Redisのホスト値。 Default/デフォルルト = 「localhost」。
+- Redisのホスト値。 Default/デフォルルト = localhost。
 
 ##### "redis_port" `[int]`
 - Redisのポート値。 Default/デフォルルト = 「6379」。
@@ -1341,9 +1340,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2358,4 +2355,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年１月９日。
+最終アップデート：２０２５年４月２９日。

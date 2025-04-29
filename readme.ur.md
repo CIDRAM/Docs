@@ -591,7 +591,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -1006,7 +1007,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -1052,8 +1052,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __"مثبت" اور "منفی" کیا ہیں؟__ درخواست کے ذریعے پیش کردہ شناخت کی تصدیق کرتے وقت، ایک کامیاب نتیجہ کو "مثبت" یا "منفی" کے طور پر بیان کیا جا سکتا ہے. جب پیش کی گئی شناخت کے حقیقی شناخت ہونے کی تصدیق ہو جاتی ہے، تو اسے "مثبت" کے طور پر بیان کیا جائے گا. جب پیش کردہ شناخت کے جھوٹے ہونے کی تصدیق ہو جاتی ہے، تو اسے "منفی" کے طور پر بیان کیا جائے گا. تاہم، ایک ناکام نتیجہ (مثال کے طور پر، تصدیق ناکام ہو جاتی ہے، یا پیش کردہ شناخت کی سچائی کا تعین نہیں کیا جا سکتا) کو "مثبت" یا "منفی" کے طور پر بیان نہیں کیا جائے گا. اس کے بجائے، ایک ناکام نتیجہ کو محض غیر تصدیق شدہ کے طور پر بیان کیا جائے گا. جب درخواست کے ذریعہ پیش کردہ شناخت کی تصدیق کرنے کی کوئی کوشش نہیں کی جاتی ہے، تو درخواست کو بھی غیر تصدیق شدہ کے طور پر بیان کیا جائے گا. شرائط صرف اس تناظر میں معنی رکھتی ہیں جہاں درخواست کے ذریعہ پیش کردہ شناخت کو تسلیم کیا جاتا ہے، اور اس وجہ سے، جہاں تصدیق ممکن ہے. اگر پیش کردہ شناخت اوپر فراہم کردہ اختیارات سے مماثل نہیں ہے، یا اگر کوئی شناخت پیش نہیں کی گئی ہے، تو اوپر فراہم کردہ اختیارات غیر متعلقہ ہو جاتے ہیں.
@@ -1362,13 +1361,13 @@ exceptions
 <div dir="rtl"><ul><li>اس کی وضاحت کرتا ہے کہ کیش کے لئے PDO استعمال کرنا چاہے. پہلے سے طے شدہ = False (جھوٹی).</li></ul></div>
 
 ##### <div dir="rtl">"memcached_host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>Memcached کے میزبان نام. پہلے سے طے شدہ = "localhost".</li></ul></div>
+<div dir="rtl"><ul><li>Memcached کے میزبان نام. پہلے سے طے شدہ = localhost.</li></ul></div>
 
 ##### <div dir="rtl">"memcached_port" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>Memcached کے لئے بندرگاہ. پہلے سے طے شدہ = "11211".</li></ul></div>
 
 ##### <div dir="rtl">"redis_host" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>Redis کے میزبان نام. پہلے سے طے شدہ = "localhost".</li></ul></div>
+<div dir="rtl"><ul><li>Redis کے میزبان نام. پہلے سے طے شدہ = localhost.</li></ul></div>
 
 ##### <div dir="rtl">"redis_port" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>Redis کے لئے بندرگاہ. پہلے سے طے شدہ = "6379".</li></ul></div>
@@ -1408,9 +1407,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2469,4 +2466,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۹ جنوری ۲۰۲۵ (۲۰۲۵.۰۱.۰۹).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۹ اپریل ۲۰۲۵ (۲۰۲۵.۰۴.۲۹).</div>

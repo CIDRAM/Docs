@@ -551,7 +551,8 @@ lang
 ├─en-US ("English (US)")
 ├─es ("Español")
 ├─fa ("فارسی")
-├─fr ("Français")
+├─fr ("Français (FR)")
+├─fr-CA ("Français (CA)")
 ├─gl ("Galego")
 ├─gu ("ગુજરાતી")
 ├─he ("עברית")
@@ -767,32 +768,32 @@ CIDRAM使用的組件的啟用和停用的配置。​通常由更新頁面填�
 與日誌相關的配置（與其他類別相關的被排除）。
 
 ##### 『standard_log』 `[string]`
-- 人類可讀文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
+- 人類可讀文件用於記錄所有被攔截的訪問。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『apache_style_log』 `[string]`
-- Apache風格文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
+- Apache風格文件用於記錄所有被攔截的訪問。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『serialised_log』 `[string]`
-- 連載的文件用於記錄所有被攔截的訪問。​指定一個文件名，​或留空以禁用。
+- 連載的文件用於記錄所有被攔截的訪問。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『error_log』 `[string]`
-- 用於記錄檢測到的任何非致命錯誤的文件。​指定一個文件名，​或留空以禁用。
+- 用於記錄檢測到的任何非致命錯誤的文件。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『outbound_request_log』 `[string]`
-- 用於記錄任何出站請求結果的文件。​指定一個文件名，​或留空以禁用。
+- 用於記錄任何出站請求結果的文件。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『report_log』 `[string]`
-- 用於記錄發送到外部API的任何報告的文件。​指定一個文件名，​或留空以禁用。
+- 用於記錄發送到外部API的任何報告的文件。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
@@ -821,12 +822,12 @@ log_rotation_action
 前端的配置。
 
 ##### 『frontend_log』 `[string]`
-- 前端登錄嘗試的錄音文件。​指定一個文件名，​或留空以禁用。
+- 前端登錄嘗試的錄音文件。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 ##### 『signatures_update_event_log』 `[string]`
-- 通過前端更新簽名時用於記錄的文件。​指定一個文件名，​或留空以禁用。
+- 通過前端更新簽名時用於記錄的文件。​指定一個檔案名稱，​或留空以禁用。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
@@ -937,7 +938,6 @@ search_engines
 ├─DuckDuckBot ("* DuckDuckBot")
 ├─Googlebot ("* Googlebot")
 ├─MojeekBot ("MojeekBot")
-├─Neevabot ("* Neevabot")
 ├─PetalBot ("* PetalBot")
 ├─Qwantify ("Qwantify/Bleriot")
 ├─SeznamBot ("SeznamBot")
@@ -979,8 +979,7 @@ other
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-├─GPTBot ("!! GPTBot")
-└─Grapeshot ("* Oracle Data Cloud Crawler (Grapeshot)")
+└─GPTBot ("!! GPTBot")
 ```
 
 __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，成功的結果可以描述為『陽性』或『陰性』。​當所呈現的身份被確認為真實身份時，將被描述為『陽性』。​當所提供的身份被證實為偽造時，將被描述為『陰性』。​但是，不成功的結果（例如，驗證失敗，或無法確定所提供身份的真實性）不會被描述為『陽性』或『陰性』。​相反，不成功的結果將被簡單地描述為未驗證。​當沒有嘗試驗證請求提供的身份時，該請求同樣會被描述為未驗證。​這些術語僅在請求提供的身份被識別的情況下才有意義，因此，在可以進行驗證的情況下。​如果提供的身份與上面提供的選項不匹配，或者沒有提供身份，則上面提供的選項變得無關。<br /><br />__什麼是『一擊繞過』？__ 在某些情況下，由於簽名文件、模組、或請求的其他條件，可能仍會阻止經過肯定驗證的請求，為了避免假陽性，可能需要繞過。​在繞過旨在處理僅一項違規行為的情況下，這樣的繞過可以被描述為『一擊繞過』。
@@ -1041,7 +1040,7 @@ usemode
 - 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
 
 ##### 『recaptcha_log』 `[string]`
-- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個文件名到使用。​如果不，​離開這個變量為空白。
+- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個檔案名稱到使用。​如果不，​離開這個變量為空白。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
@@ -1116,7 +1115,7 @@ usemode
 - 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
 
 ##### 『hcaptcha_log』 `[string]`
-- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個文件名到使用。​如果不，​離開這個變量為空白。
+- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個檔案名稱到使用。​如果不，​離開這個變量為空白。
 
 有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
@@ -1261,13 +1260,13 @@ exceptions
 - 指定是否嘗試使用PDO進行緩存。 默認 = False。
 
 ##### 『memcached_host』 `[string]`
-- Memcached 主機值。 默認 = 『localhost』。
+- Memcached 主機值。 默認 = localhost。
 
 ##### 『memcached_port』 `[int]`
 - Memcached 端口值。 默認 = 『11211』。
 
 ##### 『redis_host』 `[string]`
-- Redis 主機值。 默認 = 『localhost』。
+- Redis 主機值。 默認 = localhost。
 
 ##### 『redis_port』 `[int]`
 - Redis 端口值。 默認 = 『6379』。
@@ -1307,9 +1306,7 @@ used
 ├─Feedspot ("Feedspot")
 ├─GoogleFiber ("Google Fiber")
 ├─Googlebot ("Googlebot")
-├─Grapeshot ("Grapeshot")
 ├─Jetpack ("Jetpack")
-├─Neevabot ("Neevabot")
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
@@ -2325,4 +2322,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2025年1月9日。
+最後更新：2025年4月29日。
