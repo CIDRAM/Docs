@@ -1275,6 +1275,8 @@ captcha_title
 #### „rate_limiting“ (Kategorie)
 Konfiguration für Ratenbegrenzung (nicht für den allgemeinen Gebrauch empfohlen).
 
+Beachten Sie dass die Ratenbegrenzungsfunktionalität von CIDRAM, genau wie alle anderen CIDRAM-Funktionalität, kann nur auf Seiten und Ressourcen angewendet werden bei denen CIDRAM verbunden ist. Dies würde normalerweise bedeuten dass Nicht-PHP-Ressourcen nicht abgedeckt wären, außer wenn sie ausdrücklich von verbundenen PHP-Ressourcen bereitgestellt würden. Wenn Sie ein Servermodul, cPanel, oder ein anderes Netzwerktool verwenden können um eine Ratenbegrenzung durchzusetzen, wäre es besser dies anstelle der Ratenbegrenzungsfunktionalität von CIDRAM zu verwenden. Beachten Sie auch dass ein aufmerksamer und entschlossener Benutzer die Ratenbegrenzung leicht umgehen könnte indem er seine IP-Adresse rotiert oder zu einem Proxy oder VPN-Anbieter wechselt den CIDRAM noch nicht kennt, und beachten Sie dass die Ratenbegrenzung für tatsächliche Endbenutzer sehr ärgerlich sein kann. Dies kann manchmal notwendig sein, aber es ist selten wünschenswert.
+
 ##### „max_bandwidth“ `[string]`
 - Die maximal zulässige Bandbreite innerhalb der Zulassungsperiode, bevor die Ratenbegrenzung für zukünftige Anforderungen aktiviert wird. Ein Wert von 0 deaktiviert diese Art der Ratenbegrenzung. Standardeinstellung = 0KB.
 
@@ -2402,4 +2404,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 29. April 2025 (2025.04.29).
+Zuletzt aktualisiert: 4. Juni 2025 (2025.06.04).

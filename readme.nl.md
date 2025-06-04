@@ -1270,6 +1270,8 @@ captcha_title
 #### "rate_limiting" (Categorie)
 Configuratie voor tarieflimiet (niet aanbevolen voor algemeen gebruik).
 
+Houd er rekening mee dat de tarieflimietfunctionaliteit van CIDRAM, net als alle andere CIDRAM-functies, alleen kan worden toegepast op de pagina's en bronnen waarmee CIDRAM is verbonden. Dat betekent over het algemeen dat niet-PHP-bronnen niet worden gedekt, tenzij ze expliciet worden bediend door aangesloten PHP-bronnen. Als u een servermodule, cPanel, of een ander netwerkhulpmiddel kunt gebruiken om tarieflimieten af te dwingen, het zou beter zijn om dat te gebruiken in plaats van de tarieflimietfunctionaliteit van CIDRAM. Houd er ook rekening mee dat een gemotiveerde en vastberaden gebruiker de tarieflimietfunctionaliteit gemakkelijk kan omzeilen door zijn IP-adres te roteren of door over te schakelen naar een proxy of VPN-provider waarvan CIDRAM nog niet op de hoogte is, en houd er rekening mee dat tarieflimieten erg vervelend kunnen zijn voor echte eindgebruikers. Soms kan het nodig zijn, maar zelden is het wenselijk.
+
 ##### "max_bandwidth" `[string]`
 - De maximale hoeveelheid toegestane bandbreedte binnen de toeslagperiode voordat tarieflimiet voor toekomstige verzoeken wordt ingeschakeld. Een waarde van 0 schakelt dit type tarieflimiet uit. Standaard = 0KB.
 
@@ -2397,4 +2399,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 29 April 2025 (2025.04.29).
+Laatste Bijgewerkt: 4 Juni 2025 (2025.06.04).

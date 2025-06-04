@@ -1270,6 +1270,8 @@ captcha_title
 #### "rate_limiting" (Kategori)
 Konfigurasi untuk pembatasan laju (tidak direkomendasikan untuk penggunaan umum).
 
+Perlu diingat bahwa seperti halnya semua fitur CIDRAM lainnya, fitur pembatasan laju CIDRAM hanya dapat diterapkan untuk halaman dan sumber daya yang terhubung dengan CIDRAM. Ini biasanya berarti bahwa sumber daya yang bukan PHP tidak akan dicakup kecuali jika secara eksplisit dilayani oleh sumber daya PHP yang terhubung. Jika Anda dapat menggunakan modul server, cPanel, atau alat jaringan lain untuk menerapkan pembatasan laju, akan lebih baik menggunakannya daripada fitur pembatasan laju CIDRAM. Perlu diingat juga bahwa pengguna yang sangat bertekad dapat dengan mudah menghindari pembatasan laju dengan memutar alamat IP mereka, atau dengan beralih ke penyedia proxy atau VPN yang belum diketahui oleh CIDRAM, dan perlu diingat bahwa pembatasan laju bisa sangat mengganggu bagi pengguna akhir. Kadang-kadang hal itu mungkin diperlukan, tetapi jarang diinginkan.
+
 ##### "max_bandwidth" `[string]`
 - Jumlah maksimum bandwidth yang diizinkan dalam periode tunjangan sebelum mengaktifkan pembatasan laju untuk permintaan di masa mendatang. Nilai 0 menonaktifkan jenis pembatasan laju ini. Default = 0KB.
 
@@ -2380,4 +2382,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 29 April 2025 (2025.04.29).
+Terakhir Diperbarui: 4 Juni 2025 (2025.06.04).

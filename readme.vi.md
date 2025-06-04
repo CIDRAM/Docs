@@ -1287,6 +1287,8 @@ captcha_title
 #### "rate_limiting" (Thể loại)
 Cấu hình cho giới hạn tốc độ (không khuyến khích sử dụng chung).
 
+Hãy nhớ rằng giống như mọi tính năng khác của CIDRAM, tính năng giới hạn tốc độ của CIDRAM chỉ có thể được áp dụng cho những trang và tài nguyên mà CIDRAM được kết nối. Điều đó thường có nghĩa là các tài nguyên không phải PHP sẽ không được bảo vệ, ngoại trừ trường hợp được cung cấp rõ ràng bởi các tài nguyên PHP được kết nối. Nếu bạn có thể sử dụng mô-đun máy chủ, cPanel, hoặc một số công cụ mạng khác để áp dụng giới hạn tốc độ, thì tốt hơn nên sử dụng chúng thay vì tính năng giới hạn tốc độ của CIDRAM. Ngoài ra, hãy nhớ rằng người dùng đặc biệt quyết tâm có thể dễ dàng vượt qua giới hạn tốc độ bằng cách thay đổi địa chỉ IP của họ hoặc chuyển sang nhà cung cấp proxy hoặc VPN mà CIDRAM chưa biết, và hãy nhớ rằng việc giới hạn tốc độ có thể gây rất nhiều khó chịu cho người dùng thực sự. Đôi khi điều này là cần thiết, nhưng hiếm khi là mong muốn.
+
 ##### "max_bandwidth" `[string]`
 - Số lượng băng thông tối đa được phép trong khoảng thời gian cho phép trước khi cho phép giới hạn tốc độ cho các yêu cầu trong tương lai. Giá trị 0 sẽ vô hiệu hóa loại giới hạn tốc độ này. Mặc định = 0KB.
 
@@ -2394,4 +2396,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.04.29.
+Lần cuối cập nhật: 2025.06.04.

@@ -944,7 +944,7 @@ __Points de terminaison humains et services de cloud.__ Service de cloud peut fa
 - Autoriser les modules à remplacer les options de suivi ? True = Oui [Défaut] ; False = Non.
 
 ##### « conflict_response » `[int]`
-- Lorsqu'il y a trop de tentatives simultanées pour accéder aux mêmes ressources (par exemple, des requêtes simultanées à plusieurs processus PHP sur la même machine pour les mêmes ressources), certaines de ces tentatives peuvent échouer. Dans le cas rare et peu probable où cela affecte les fichiers de signature ou les modules, CIDRAM peut être empêché de prendre une décision efficace concernant la requête. Dans un tel cas, la requête doit-elle être bloquée, et quel message d’état HTTP CIDRAM doit-il envoyer ?
+- Lorsqu'il y a trop de tentatives simultanées pour accéder aux mêmes ressources (par exemple, des requêtes simultanées à plusieurs processus PHP sur la même machine pour les mêmes ressources), certaines de ces tentatives peuvent échouer. Dans le cas rare et peu probable où cela affecte les fichiers de signature ou les modules, CIDRAM peut être empêché de prendre une décision efficace concernant la requête. Dans un tel cas, la requête doit-elle être bloquée, et quel message d'état HTTP CIDRAM doit-il envoyer ?
 
 ```
 conflict_response
@@ -1273,6 +1273,8 @@ captcha_title
 
 #### « rate_limiting » (Catégorie)
 Configuration pour la limitation du débit (non recommandé pour d'utilisation générale).
+
+Gardez à l'esprit que, comme pour toutes les autres fonctionnalités de CIDRAM, la fonctionnalité de limitation du débit de CIDRAM ne peut être appliqué qu'aux pages et ressources auxquelles CIDRAM est connecté. Cela signifie généralement que les ressources non PHP ne seraient pas couvertes, sauf si elles sont explicitement servies par des ressources PHP connectés. Si vous pouvez utiliser un module serveur, cPanel, ou un autre outil réseau pour appliquer la limitation du débit, il serait préférable de l'utiliser plutôt que la fonctionnalité de limitation du débit de CIDRAM. Gardez également à l'esprit qu'un utilisateur enthousiaste et déterminé pourrait facilement contourner la limitation du débit en faisant tourner son adresse IP ou en passant à un fournisseur de proxy ou de VPN dont CIDRAM n'a pas encore connaissance, et gardez à l'esprit que la limitation du débit peut être très ennuyeuse pour les utilisateurs finaux réels. Cela peut parfois être nécessaire, mais c'est rarement souhaitable.
 
 ##### « max_bandwidth » `[string]`
 - La quantité maximale de bande passante autorisée dans la période de tolérance avant de permettre la limitation du débit pour les requêtes futures. Une valeur de 0 désactive ce type de limitation du débit. Défaut = 0KB.
@@ -2397,4 +2399,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 29 Avril 2025 (2025.04.29).
+Dernière mise à jour : 4 Juin 2025 (2025.06.04).

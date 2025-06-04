@@ -1270,6 +1270,8 @@ captcha_title
 #### "rate_limiting" (Categoría)
 Configuración para limitar la tasa de acceso (no recomendado para uso general).
 
+Tenga en cuenta que, al igual que con todas las demás funciones de CIDRAM, la función de limitación de tasa de CIDRAM solo se puede aplicar a aquellas páginas y recursos a los que CIDRAM está conectado. Por lo general, eso significaría que los recursos que no sean PHP no estarían cubiertos, excepto cuando fueran atendidos explícitamente por recursos PHP conectados. Si puede usar un módulo de servidor, cPanel, o alguna otra herramienta de red para aplicar la limitación de tasa, sería mejor usar eso en lugar de la función de limitación de tasa de CIDRAM. También tenga en cuenta que un usuario suficientemente motivado podría fácilmente eludir la limitación de tasa rotando su dirección IP o cambiando a un proveedor proxy o VPN que CIDRAM aún no conoce, y tenga en cuenta que la limitación de tasa puede ser muy molesta para los usuarios finales reales. A veces puede ser necesario, pero rara vez es deseable.
+
 ##### "max_bandwidth" `[string]`
 - La cantidad máxima de ancho de banda permitida dentro del período de asignación antes de habilitar los límites de tarifas para solicitudes futuras. Un valor de 0 desactiva este tipo de limitación de la tarifa. Predefinido = 0KB.
 
@@ -2387,4 +2389,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 29 de Abril de 2025 (2025.04.29).
+Última Actualización: 4 de Junio de 2025 (2025.06.04).

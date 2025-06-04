@@ -1273,6 +1273,8 @@ captcha_title
 #### "rate_limiting" (Categoria)
 Configurazione per la limitazione della velocità (non raccomandato per uso generale).
 
+Tieni presente che, come per tutte le altre funzionalità di CIDRAM, la limitazione della velocità di CIDRAM può essere applicata solo alle pagine e alle risorse a cui CIDRAM è connesso. Ciò significherebbe in genere che le risorse non PHP non sarebbero coperte, se non nei casi in cui fossero esplicitamente fornite da risorse PHP connesse. Se è possibile utilizzare un modulo server, cPanel, o qualche altro strumento di rete per imporre la limitazione della velocità, sarebbe meglio utilizzare quello anziché la funzionalità di limitazione della velocità di CIDRAM. Tieni presente che un utente attento e determinato potrebbe facilmente aggirare la limitazione della velocità ruotando il proprio indirizzo IP o passando a un provider proxy o VPN di cui CIDRAM non è ancora a conoscenza, e tieni presente che la limitazione della velocità può essere molto fastidiosa per gli utenti finali veri. A volte può essere necessario, ma raramente è auspicabile.
+
 ##### "max_bandwidth" `[string]`
 - La quantità massima di larghezza di banda consentita entro il periodo di tolleranza prima di abilitare la limitazione della velocità per le richieste future. Un valore pari a 0 disabilita questo tipo di limitazione della velocità. Predefinito = 0KB.
 
@@ -2386,4 +2388,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 29 Aprile 2025 (2025.04.29).
+Ultimo Aggiornamento: 4 Giugno 2025 (2025.06.04).

@@ -1264,6 +1264,8 @@ captcha_title
 #### "rate_limiting" (Category)
 Configuration for rate limiting (not recommended for general use).
 
+Keep in mind that just as with all other CIDRAM features, CIDRAM's rate limiting feature can only be applied for those pages and resources to which CIDRAM is connected. That would typically mean that non-PHP resources would not be covered except where explicitly served by connected PHP resources. If you're able to use a server module, cPanel, or some other network tool to enforce rate limiting, it would be better to use that instead of CIDRAM's rate limiting feature. Also keep in mind that a keen and determined user could easily circumvent rate limiting by rotating their IP address, or by switching to a proxy or VPN provider which CIDRAM isn't yet aware of, and keep in mind that rate limiting can be very annoying for actual, real end-users. It may at times be necessary, but is rarely desirable.
+
 ##### "max_bandwidth" `[string]`
 - The maximum amount of bandwidth allowed within the allowance period before rate limiting future requests. A value of 0 disables this type of rate limiting. Default = 0KB.
 
@@ -2382,4 +2384,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 29 April 2025 (2025.04.29).
+Last Updated: 4 June 2025 (2025.06.04).
