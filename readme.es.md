@@ -32,6 +32,7 @@ Este script es un software gratuito; puede redistribuirlo y/o modificarlo según
 Este documento y su paquete asociado puede ser descargado de forma gratuita desde:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Marcador de posición – Explicación – Ejemplo basado en 2024-04-30T18:27
 `{t:z}` – La zona horaria (con dos puntos) – P.ej. +08:00.
 
 ##### "ipaddr" `[string]`
-- ¿Dónde puedo encontrar el IP dirección de las solicitudes entrantes? (Útil para servicios como Cloudflare y tales). Predefinido = REMOTE_ADDR. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
+- ¿Dónde puedo encontrar el IP dirección de las solicitudes entrantes? (Útil para servicios como Cloudflare). Predefinido = REMOTE_ADDR. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
 ```
 ipaddr
@@ -749,9 +750,10 @@ Nota: Es posible que las búsquedas de IPv6 no funcionen correctamente en alguno
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2389,4 +2391,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 4 de Junio de 2025 (2025.06.04).
+Última Actualización: 14 de Junio de 2025 (2025.06.14).

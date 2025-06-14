@@ -32,6 +32,7 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 이 문서와 관련 패키지는 다음 링크에서 무료로 다운로드할 수 있습니다 :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*자리 표시자 – 설명 – 예시는 2024-04-30T18:27:49+08:00를 기준
 `{t:z}` – 시간대(콜론 포함) – 예 : +08:00.
 
 ##### "ipaddr" `[string]`
-- 연결 요청의 IP 주소를 어디에서 찾을 것인가에 대해 (Cloudflare 같은 서비스에 대해 유효). Default (기본 설정) = REMOTE_ADDR. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
+- 연결 요청의 IP 주소를 어디에서 찾을 것인가에 대해 (Cloudflare와 같은 서비스에 유용합니다). Default (기본 설정) = REMOTE_ADDR. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
 ```
 ipaddr
@@ -747,9 +748,10 @@ statistics
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2380,4 +2382,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2025년 6월 4일.
+최종 업데이트 : 2025년 6월 14일.

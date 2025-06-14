@@ -33,6 +33,7 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 이 문서와 관련 패키지는 다음 링크에서 무료로 다운로드할 수 있습니다 :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -682,7 +683,7 @@ _** : ASN 조회 기능이 필요합니다 (예를 들어 BGPView 모듈에서)
 
 ##### "disabled_channels"
 - 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
-- *사용 가능한 옵션 : `GitHub,BitBucket,GoogleDNS`*
+- *사용 가능한 옵션 : `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### "default_timeout"
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
@@ -1969,4 +1970,4 @@ CIDRAM은 마케팅이나 광고 목적으로 정보를 수집하거나 처리�
 ---
 
 
-최종 업데이트 : 2024년 1월 28일.
+최종 업데이트 : 2025년 6월 14일.

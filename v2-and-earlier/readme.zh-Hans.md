@@ -33,6 +33,7 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 现在CIDRAM的代码文件和关联包可以从以下地址免费下载：
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
 
 ---
 
@@ -682,7 +683,7 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 
 ##### “disabled_channels”
 - 这可用于防止CIDRAM在发送请求时使用特定通道（例如，在更新时，在获取组件元数据时，等等）。
-- *可用选项： `GitHub,BitBucket,GoogleDNS`*
+- *可用选项： `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### “default_timeout”
 - 用于外部请求的默认超时？ 标准 = 12秒。
@@ -1973,4 +1974,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2024年1月28日。
+最后更新：2025年6月14日。

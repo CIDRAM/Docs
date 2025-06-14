@@ -32,6 +32,7 @@ Dieses Skript ist freie Software; Sie können Sie weitergeben und/oder modifizie
 Dieses Dokument und das zugehörige Paket kann von folgenden Links kostenlos heruntergeladen werden:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Platzhalter – Erläuterung – Beispiel basierend auf 2024-04-30T18:27:49+0
 `{t:z}` – Die Zeitzone (mit Doppelpunkt) – Z.B., +08:00.
 
 ##### „ipaddr“ `[string]`
-- Ort der IP-Adresse der aktuellen Verbindung im gesamten Datenstrom (nützlich für Cloud-Services). Standardeinstellung = REMOTE_ADDR. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
+- Ort der IP-Adresse der aktuellen Verbindung im gesamten Datenstrom (nützlich für Dienste wie Cloudflare). Standardeinstellung = REMOTE_ADDR. ACHTUNG: Ändern Sie diesen Wert nur, wenn Sie wissen, was Sie tun!
 
 ```
 ipaddr
@@ -749,9 +750,10 @@ Hinweis: IPv6-Lookups funktionieren auf einigen 32-Bit-Systemen möglicherweise 
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### „default_timeout“ `[int]`
@@ -2404,4 +2406,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 4. Juni 2025 (2025.06.04).
+Zuletzt aktualisiert: 14. Juni 2025 (2025.06.14).

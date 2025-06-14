@@ -34,6 +34,7 @@
 <div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
 - <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
 - <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://codeberg.org/Maikuolan/CIDRAM">Codeberg</a>.
 
 ---
 
@@ -489,7 +490,7 @@ time_format
 <code dir="ltr" class="s">{t:z}</code> – المنطقة الزمنية (مع النقطتين) – على سبيل المثال، <span dir="ltr">+08:00</span>.
 
 ##### <div dir="rtl">"ipaddr" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>أين يمكن العثور على عنوان IP لربط الطلبات؟ (مفيدة للخدمات مثل لايتكلاود و مثلها). الافتراضي = REMOTE_ADDR. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
+<div dir="rtl"><ul><li>أين يمكن العثور على عنوان IP لربط الطلبات؟ (مفيدة للخدمات مثل Cloudflare). الافتراضي = REMOTE_ADDR. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
 
 ```
 ipaddr
@@ -768,9 +769,10 @@ statistics
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
@@ -2457,4 +2459,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٤ يونيو ٢٠٢٥ (٢٠٢٥.٠٦.٠٤).</div>
+<div dir="rtl">آخر تحديث: ١٤ يونيو ٢٠٢٥ (٢٠٢٥.٠٦.١٤).</div>

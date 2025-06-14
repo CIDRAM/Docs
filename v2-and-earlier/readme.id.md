@@ -33,6 +33,7 @@ Skrip ini adalah perangkat lunak gratis; Anda dapat mendistribusikan kembali dan
 Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -682,7 +683,7 @@ Didukung sekarang:
 
 ##### "disabled_channels"
 - Ini dapat digunakan untuk mencegah CIDRAM dari menggunakan saluran tertentu saat mengirim permintaan (misalnya, saat memperbarui, saat mengambil metadata komponen, dll).
-- *Opsi yang tersedia: `GitHub,BitBucket,GoogleDNS`*
+- *Opsi yang tersedia: `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### "default_timeout"
 - Batas waktu default untuk digunakan untuk permintaan eksternal? Default = 12 detik.
@@ -1972,4 +1973,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 28 Januari 2024 (2024.01.28).
+Terakhir Diperbarui: 14 Juni 2025 (2025.06.14).

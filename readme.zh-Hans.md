@@ -32,6 +32,7 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 现在CIDRAM的代码文件和关联包可以从以下地址免费下载：
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
 
 ---
 
@@ -483,7 +484,7 @@ __*占位符 – 解释 – 基于2024-04-30T18:27:49+08:00的示例。*__<br />
 `{t:z}` – 时区（带冒号） – 例如，+08:00。
 
 ##### “ipaddr” `[string]`
-- 在哪里可以找到连接请求IP地址？​（可以使用为服务例如Cloudflare和类似）。 标准 = REMOTE_ADDR。 警告：不要修改此除非您知道什么您做着！
+- 在哪里可以找到连接请求IP地址？ （对于Cloudflare等服务有用）。 标准 = REMOTE_ADDR。 警告：不要修改此除非您知道什么您做着！
 
 ```
 ipaddr
@@ -719,9 +720,10 @@ statistics
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### “default_timeout” `[int]`
@@ -2326,4 +2328,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2025年6月4日。
+最后更新：2025年6月14日。

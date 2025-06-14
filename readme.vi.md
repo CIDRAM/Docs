@@ -32,6 +32,7 @@ Bản này là chương trình miễn phí; bạn có thể phân phối lại h
 Tài liệu này và các gói liên quan của nó có thể được tải về miễn phí từ:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Phần giữ chỗ – Giải trình – Ví dụ dựa trên 2024-04-30T18:2
 `{t:z}` – Múi giờ (có dấu hai chấm) – Ví dụ, +08:00.
 
 ##### "ipaddr" `[string]`
-- Nơi để tìm địa chỉ IP của các yêu cầu kết nối? (Hữu ích cho các dịch vụ như Cloudflare và vv). Mặc định = REMOTE_ADDR. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
+- Nơi để tìm địa chỉ IP của các yêu cầu kết nối? (Hữu ích cho các dịch vụ như Cloudflare). Mặc định = REMOTE_ADDR. CẢNH BÁO: Không thay đổi này, trừ khi bạn biết những gì bạn đang làm!
 
 ```
 ipaddr
@@ -759,9 +760,10 @@ Lưu ý: Tra cứu IPv6 có thể không hoạt động chính xác trên một 
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2396,4 +2398,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.06.04.
+Lần cuối cập nhật: 2025.06.14.

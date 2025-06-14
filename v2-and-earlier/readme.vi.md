@@ -33,6 +33,7 @@ Bản này là chương trình miễn phí; bạn có thể phân phối lại h
 Tài liệu này và các gói liên quan của nó có thể được tải về miễn phí từ:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -682,7 +683,7 @@ _**: Yêu cầu chức năng tra cứu ASN, v.d., từ mô-đun BGPView._
 
 ##### "disabled_channels"
 - Điều này có thể được sử dụng để ngăn CIDRAM sử dụng các kênh cụ thể khi gửi yêu cầu (ví dụ, khi cập nhật, khi lấy siêu dữ liệu thành phần, vv).
-- *Tùy chọn có sẵn: `GitHub,BitBucket,GoogleDNS`*
+- *Tùy chọn có sẵn: `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### "default_timeout"
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
@@ -1969,4 +1970,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2024.05.23.
+Lần cuối cập nhật: 2025.06.14.

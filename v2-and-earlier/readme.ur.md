@@ -35,6 +35,7 @@
 <div dir="rtl">یہ دستاویز اور اس کے متعلقہ پیکجوں کے لیے مفت سے ڈاؤن لوڈ کیا جا سکتا ہے:</div>
 - <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
 - <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://codeberg.org/Maikuolan/CIDRAM">Codeberg</a>.
 
 ---
 
@@ -778,7 +779,7 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>درخواستوں کو بھیجنے کے لیے خاص طور پر چینلز کا استعمال کے لیے CIDRAM کو روکنے کے لیے یہ استعمال کیا جا سکتا ہے (مثال کے طور پر، جب اپ ڈیٹ کرنا، اجزاء میٹا ڈیٹا، وغیرہ کو پکڑنے کے بعد).</li>
- <li><em>دستیاب اختیارات: <code dir="ltr">GitHub,BitBucket,GoogleDNS</code></em></li>
+ <li><em>دستیاب اختیارات: <code dir="ltr">GitHub,BitBucket,Codeberg,GoogleDNS</code></em></li>
 </ul></div>
 
 ##### <div dir="rtl">"default_timeout"<br /></div>
@@ -2260,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۷ مئی ۲۰۲۵ (۲۰۲۵.۰۵.۱۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۱۴ جون ۲۰۲۵ (۲۰۲۵.۰۶.۱۴).</div>

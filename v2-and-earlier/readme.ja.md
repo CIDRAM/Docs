@@ -33,6 +33,7 @@ CIDRAM（シドラム、​クラスレス・ドメイン間・ルーティン�
 本ドキュメントならびに関連パッケージは以下のＵＲＬからダウンロードできます。
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
 
 ---
 
@@ -682,7 +683,7 @@ _**： ＡＳＮルックアップ機能が必要（例、BGPViewモジュール
 
 ##### "disabled_channels" （ディセーブルド・チャネルズ）
 - これは、要求を送信するときにCIDRAMが特定のチャネルを使用しないようにするために使用できます​（例えば、更新時、コンポーネント・メタデータの取得時、など）。
-- *利用可能なオプション： `GitHub,BitBucket,GoogleDNS`*
+- *利用可能なオプション： `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### "default_timeout" （デフォルト・タイムアウト）
 - 外部リクエストに使用するデフォルトのタイムアウト？ Default/デフォルルト = １２秒。
@@ -1970,4 +1971,4 @@ CIDRAMは、マーケティングやアドバタイジング目的で情報を�
 ---
 
 
-最終アップデート：２０２４年１月２８日。
+最終アップデート：２０２５年６月１４日。

@@ -35,6 +35,7 @@
 <div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
 - <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
 - <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
+- <a dir="ltr" href="https://codeberg.org/Maikuolan/CIDRAM">Codeberg</a>.
 
 ---
 
@@ -778,7 +779,7 @@ Configuration (v2)
 ##### <div dir="rtl">"disabled_channels"<br /></div>
 <div dir="rtl"><ul>
  <li>يمكن استخدام هذا لمنع CIDRAM من استخدام قنوات معينة عند إرسال الطلبات (على سبيل المثال، عند التحديث، عند جلب بيانات تعريف المكون، إلخ).</li>
- <li><em>الخيارات المتاحة: <code dir="ltr">GitHub,BitBucket,GoogleDNS</code></em></li>
+ <li><em>الخيارات المتاحة: <code dir="ltr">GitHub,BitBucket,Codeberg,GoogleDNS</code></em></li>
 </ul></div>
 
 ##### <div dir="rtl">"default_timeout"<br /></div>
@@ -2260,4 +2261,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٨ يناير ٢٠٢٤ (٢٠٢٤.٠١.٢٨).</div>
+<div dir="rtl">آخر تحديث: ١٤ يونيو ٢٠٢٥ (٢٠٢٥.٠٦.١٤).</div>

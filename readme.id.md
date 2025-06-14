@@ -32,6 +32,7 @@ Skrip ini adalah perangkat lunak gratis; Anda dapat mendistribusikan kembali dan
 Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Placeholder – Penjelasan – Contoh berdasarkan 2024-04-30T18:27:49+08:00.*
 `{t:z}` – Zona waktu (dengan titik dua) – Misalnya, +08:00.
 
 ##### "ipaddr" `[string]`
-- Dimana menemukan alamat IP dari menghubungkan permintaan? (Berguna untuk pelayanan-pelayanan seperti Cloudflare dan sejenisnya). Default = REMOTE_ADDR. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
+- Dimana menemukan alamat IP dari menghubungkan permintaan? (Berguna untuk layanan seperti Cloudflare). Default = REMOTE_ADDR. PERINGATAN: Jangan ganti ini kecuali Anda tahu apa yang Anda lakukan!
 
 ```
 ipaddr
@@ -749,9 +750,10 @@ Catat: Pencarian IPv6 mungkin tidak bekerja dengan benar pada beberapa sistem 32
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2382,4 +2384,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 4 Juni 2025 (2025.06.04).
+Terakhir Diperbarui: 14 Juni 2025 (2025.06.14).

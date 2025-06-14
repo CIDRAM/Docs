@@ -33,6 +33,7 @@ Este script es un software gratuito; puede redistribuirlo y/o modificarlo según
 Este documento y su paquete asociado puede ser descargado de forma gratuita desde:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -682,7 +683,7 @@ Soportado actualmente:
 
 ##### "disabled_channels"
 - Esto se puede usar para evitar que CIDRAM use canales particulares al enviar solicitudes (por ejemplo, al actualizar, al obtener metadatos de componentes, etc).
-- *Opciones disponibles: `GitHub,BitBucket,GoogleDNS`*
+- *Opciones disponibles: `GitHub,BitBucket,Codeberg,GoogleDNS`*
 
 ##### "default_timeout"
 - ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
@@ -1979,4 +1980,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 28 de Enero de 2024 (2024.01.28).
+Última Actualización: 14 de Junio de 2025 (2025.06.14).

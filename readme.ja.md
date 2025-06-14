@@ -32,6 +32,7 @@ CIDRAM（シドラム、​クラスレス・ドメイン間・ルーティン�
 本ドキュメントならびに関連パッケージは以下のＵＲＬからダウンロードできます。
 - [GitHub](https://github.com/CIDRAM/CIDRAM)。
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
 
 ---
 
@@ -483,7 +484,7 @@ __*プレースホルダー – 説明 – 例は2024-04-30T18:27:49+08:00に基
 `{t:z}` – タイムゾーン（コロン付き） – 例えば、+08:00。
 
 ##### "ipaddr" `[string]`
-- 接続リクエストのＩＰアドレスをどこで見つけるべきかについて（Cloudflareのようなサービスに対して有効）。 Default/デフォルルト = REMOTE_ADDR。​注意：あなたが何をしているのか、分からない限り、これを変更しないでください。
+- 接続リクエストのＩＰアドレスをどこで見つけるべきかについて（Cloudflareなどのサービスに役立ちます）。 Default/デフォルルト = REMOTE_ADDR。​注意：あなたが何をしているのか、分からない限り、これを変更しないでください。
 
 ```
 ipaddr
@@ -733,9 +734,10 @@ statistics
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2357,4 +2359,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年６月４日。
+最終アップデート：２０２５年６月１４日。

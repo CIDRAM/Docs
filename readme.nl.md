@@ -32,6 +32,7 @@ Dit script is gratis software; u kunt, onder de voorwaarden van de GNU General P
 Dit document en de bijbehorende pakket kunt gedownload gratis zijn van:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Tijdelijke aanduiding – Uitleg – Voorbeeld gebaseerd op 2024-04-30T18:27:
 `{t:z}` – De tijdzone (met dubbele punt) – B.v., +08:00.
 
 ##### "ipaddr" `[string]`
-- Waar het IP-adres van het aansluiten verzoek te vinden? (Handig voor diensten zoals Cloudflare en dergelijke). Standaard = REMOTE_ADDR. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
+- Waar het IP-adres van het aansluiten verzoek te vinden? (Handig voor diensten zoals Cloudflare). Standaard = REMOTE_ADDR. WAARSCHUWING: Verander dit niet tenzij u weet wat u doet!
 
 ```
 ipaddr
@@ -749,9 +750,10 @@ Opmerking: IPv6-opzoeken mogelijk werken niet correct op sommige 32-bits systeme
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2399,4 +2401,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 4 Juni 2025 (2025.06.04).
+Laatste Bijgewerkt: 14 Juni 2025 (2025.06.14).

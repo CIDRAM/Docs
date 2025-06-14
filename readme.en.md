@@ -32,6 +32,7 @@ This script is free software; you can redistribute it and/or modify it under the
 This document and its associated package can be downloaded for free from:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
 
 ---
 
@@ -483,7 +484,7 @@ __*Placeholder – Explanation – Example based on 2024-04-30T18:27:49+08:00.*_
 `{t:z}` – The timezone (with colon) – E.g., +08:00.
 
 ##### "ipaddr" `[string]`
-- Where to find the IP address of connecting requests? (Useful for services such as Cloudflare and the likes). Default = REMOTE_ADDR. WARNING: Don't change this unless you know what you're doing!
+- Where to find the IP address of connecting requests? (Useful for services such as Cloudflare). Default = REMOTE_ADDR. WARNING: Don't change this unless you know what you're doing!
 
 ```
 ipaddr
@@ -745,9 +746,10 @@ Note: IPv6 lookups mightn't work correctly on some 32-bit systems.
 
 ```
 disabled_channels
-├─GitHub ("GitHub")
-├─BitBucket ("BitBucket")
-└─GoogleDNS ("GoogleDNS")
+├─GitHub ("<span class="origin us">US</span> GitHub")
+├─BitBucket ("<span class="origin us">US</span> BitBucket")
+├─Codeberg ("<span class="origin de">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
 
 ##### "default_timeout" `[int]`
@@ -2384,4 +2386,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 4 June 2025 (2025.06.04).
+Last Updated: 14 June 2025 (2025.06.14).
