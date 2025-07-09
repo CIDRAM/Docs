@@ -195,6 +195,8 @@ Configuration (v3)
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -755,6 +757,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### « request_proxy » `[string]`
+- Si vous souhaitez que les requêtes sortantes soient envoyés via un proxy, spécifiez ce proxy ici. Sinon, laissez ce champ vide.
+
+##### « request_proxyauth » `[string]`
+- Si vous envoyez des requêtes sortantes via un proxy et si ce proxy nécessite un nom d'utilisateur et un mot de passe, spécifiez ce nom d'utilisateur et ce mot de passe ici (par exemple, `user:pass`). Sinon, laissez ce champ vide.
 
 ##### « default_timeout » `[int]`
 - Délai d'attente par défaut à utiliser pour les requêtes externes ? Défaut = 12 secondes.
@@ -2401,4 +2409,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 14 Juin 2025 (2025.06.14).
+Dernière mise à jour : 9 Juillet 2025 (2025.07.09).

@@ -195,6 +195,8 @@ Configuration (v3)
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -751,6 +753,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### "request_proxy" `[string]`
+- If you want outbound requests to be sent through a proxy, specify that proxy here. If not, leave this blank.
+
+##### "request_proxyauth" `[string]`
+- If sending outbound requests through a proxy and if that proxy requires a username and password, specify that username and password here (e.g., `user:pass`). If not, leave this blank.
 
 ##### "default_timeout" `[int]`
 - Default timeout to use for external requests? Default = 12 seconds.
@@ -2386,4 +2394,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 14 June 2025 (2025.06.14).
+Last Updated: 9 July 2025 (2025.07.09).

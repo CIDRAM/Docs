@@ -195,6 +195,8 @@ $CIDRAM->view();
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -725,6 +727,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### “request_proxy” `[string]`
+- 如果您希望通过代理发送出站请求，请在此处指定该代理。​如果您不想这，请将此处留空。
+
+##### “request_proxyauth” `[string]`
+- 如果通过代理发送出站请求并且该代理需要用户名和密码，请在此处指定该用户名和密码（例如，`user:pass`）。​如果您不想这，请将此处留空。
 
 ##### “default_timeout” `[int]`
 - 用于外部请求的默认超时？ 标准 = 12秒。
@@ -2328,4 +2336,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2025年6月14日。
+最后更新：2025年7月9日。

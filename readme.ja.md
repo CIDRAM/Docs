@@ -195,6 +195,8 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -739,6 +741,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### "request_proxy" `[string]`
+- 送信リクエストをプロキシ経由で送信したい場合は、ここでそのプロキシを指定します。​そうでない場合は、空白のままにします。
+
+##### "request_proxyauth" `[string]`
+- プロキシ経由で送信リクエストを送信する場合、そのプロキシでユーザー名とパスワードが必要な場合は、ここでユーザー名とパスワードを指定します（例えば、`user:pass`）。​そうでない場合は、空白のままにします。
 
 ##### "default_timeout" `[int]`
 - 外部リクエストに使用するデフォルトのタイムアウト？ Default/デフォルルト = １２秒。
@@ -2359,4 +2367,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年６月１４日。
+最終アップデート：２０２５年７月９日。

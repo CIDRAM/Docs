@@ -195,6 +195,8 @@ Cấu hình (v3)
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -765,6 +767,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### "request_proxy" `[string]`
+- Nếu bạn muốn yêu cầu được gửi thông qua proxy, hãy chỉ định proxy đó tại đây. Nếu không, hãy để trống mục này.
+
+##### "request_proxyauth" `[string]`
+- Nếu gửi yêu cầu thông qua proxy và nếu proxy đó yêu cầu tên người dùng và mật khẩu, hãy chỉ định tên người dùng và mật khẩu đó tại đây (ví dụ, `user:pass`). Nếu không, hãy để trống mục này.
 
 ##### "default_timeout" `[int]`
 - Thời gian chờ mặc định để sử dụng cho các yêu cầu bên ngoài? Mặc định = 12 giây.
@@ -2398,4 +2406,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.06.14.
+Lần cuối cập nhật: 2025.07.09.

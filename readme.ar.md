@@ -201,6 +201,8 @@ $CIDRAM->view();
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -774,6 +776,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### <div dir="rtl">"request_proxy" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>إذا كنت تريد إرسال الطلبات الصادرة عبر وكيل، حدد هذا الوكيل هنا. إذا لم يكن الأمر كذلك، اترك هذا فارغًا.</li></ul></div>
+
+##### <div dir="rtl">"request_proxyauth" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>إذا كنت ترسل طلبات صادرة من خلال وكيل وإذا كان هذا الوكيل يتطلب اسم مستخدم وكلمة مرور، فحدد اسم المستخدم وكلمة المرور هنا (على سبيل المثال، <code dir="ltr">user:pass</code>). إذا لم يكن الأمر كذلك، اترك هذا فارغًا.</li></ul></div>
 
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>المهلة الافتراضية لاستخدامها للطلبات الخارجية؟ الافتراضي = 12 ثانية.</li></ul></div>
@@ -2459,4 +2467,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٤ يونيو ٢٠٢٥ (٢٠٢٥.٠٦.١٤).</div>
+<div dir="rtl">آخر تحديث: ٩ يوليو ٢٠٢٥ (٢٠٢٥.٠٧.٠٩).</div>

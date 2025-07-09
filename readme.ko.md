@@ -195,6 +195,8 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -753,6 +755,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### "request_proxy" `[string]`
+- 아웃바운드 요청을 프록시를 통해 보내려면, 여기에 해당 프록시를 지정하세요. 그렇지 않은 경우, 이 항목을 비워 두십시오.
+
+##### "request_proxyauth" `[string]`
+- 프록시를 통해 아웃바운드 요청을 보내고 해당 프록시에 사용자 이름과 비밀번호가 필요한 경우, 여기에 해당 사용자 이름과 비밀번호를 지정하십시오 (예를 들어, `user:pass`). 그렇지 않은 경우, 이 항목을 비워 두십시오.
 
 ##### "default_timeout" `[int]`
 - 외부 요청에 사용할 기본 제한 시간? Default (기본 설정) = 12 초.
@@ -2382,4 +2390,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2025년 6월 14일.
+최종 업데이트 : 2025년 7월 9일.

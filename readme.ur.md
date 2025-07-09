@@ -201,6 +201,8 @@ $CIDRAM->view();
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -780,6 +782,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### <div dir="rtl">"request_proxy" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ چاہتے ہیں کہ باہر جانے والی درخواستیں کسی پراکسی کے ذریعے بھیجی جائیں، تو اس پراکسی کو یہاں بیان کریں. اگر نہیں، تو اسے خالی چھوڑ دیں.</li></ul></div>
+
+##### <div dir="rtl">"request_proxyauth" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر پراکسی کے ذریعے آؤٹ باؤنڈ درخواستیں بھیج رہے ہیں اور اگر اس پراکسی کو صارف نام اور پاس ورڈ کی ضرورت ہے، تو وہ صارف نام اور پاس ورڈ یہاں بتائیں (مثال کے طور پر، <code dir="ltr">user:pass</code>). اگر نہیں، تو اسے خالی چھوڑ دیں.</li></ul></div>
 
 ##### <div dir="rtl">"default_timeout" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی درخواستوں کے لیے استعمال کرنے کے لیے پہلے سے طے شدہ ٹائم آؤٹ؟ پہلے سے طے شدہ = 12 سیکنڈ.</li></ul></div>
@@ -2470,4 +2478,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۴ جون ۲۰۲۵ (۲۰۲۵.۰۶.۱۴).</div>
+<div dir="rtl">آخری تازہ کاری: ۹ جولائی ۲۰۲۵ (۲۰۲۵.۰۷.۰۹).</div>

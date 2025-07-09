@@ -195,6 +195,8 @@ Konfigurasi (v3)
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
+│       request_proxy [string]
+│       request_proxyauth [string]
 │       default_timeout [int]
 │       sensitive [string]
 │       email_notification_address [string]
@@ -755,6 +757,12 @@ disabled_channels
 ├─Codeberg ("<span class="origin de">DE</span> Codeberg")
 └─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
 ```
+
+##### "request_proxy" `[string]`
+- Jika Anda ingin permintaan keluar dikirim melalui proxy, tentukan proxy tersebut disini. Jika tidak, biarkan ini kosong.
+
+##### "request_proxyauth" `[string]`
+- Jika mengirim permintaan keluar melalui proxy dan jika proxy tersebut memerlukan nama pengguna dan kata sandi, tentukan nama pengguna dan kata sandi tersebut disini (misalnya, `user:pass`). Jika tidak, biarkan ini kosong.
 
 ##### "default_timeout" `[int]`
 - Batas waktu default yang digunakan untuk permintaan eksternal? Default = 12 detik.
@@ -2384,4 +2392,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 14 Juni 2025 (2025.06.14).
+Terakhir Diperbarui: 9 Juli 2025 (2025.07.09).
