@@ -750,7 +750,7 @@ Nếu bạn muốn, bạn có thể giới thiệu cho người dùng một th�
 Bạn có thể lấy "site key" và "secret key" cho reCAPTCHA từ đây:
 - https://developers.google.com/recaptcha/
 
-Bạn có thể lấy "site key" và "secret key" cho hCAPTCHA từ đây:
+Bạn có thể lấy "site key" và "secret key" cho hCaptcha từ đây:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -770,7 +770,7 @@ Bất kỳ giá trị nào khác. | Không bao giờ!
 - Chú thích: Giá trị "lockip" được bỏ qua khi "lockuser" là false, bởi vì các cơ chế để nhớ "người dùng" khác nhau ơ tùy thuộc vào giá trị này.
 
 ##### "lockuser"
-- Chỉ định liệu thành công hoàn thành của reCAPTCHA/hCAPTCHA nên được khóa trên người dùng cụ thể. False = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ cấp quyền truy cập cho tất cả các yêu cầu có nguồn gốc từ cùng một IP như được sử dụng bởi người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash không được sử dụng; Thay vào đó, một danh sách trắng IP sẽ được sử dụng. True = Thành công hoàn thành của reCAPTCHA/hCAPTCHA sẽ chỉ cấp quyền truy cập cho người dùng mà hoàn thành reCAPTCHA/hCAPTCHA; Cookie và băm/hash được sử dụng để nhớ người dùng; Một danh sách trắng IP sẽ không được sử dụng (mặc định).
+- Chỉ định liệu thành công hoàn thành của reCAPTCHA/hCaptcha nên được khóa trên người dùng cụ thể. False = Thành công hoàn thành của reCAPTCHA/hCaptcha sẽ cấp quyền truy cập cho tất cả các yêu cầu có nguồn gốc từ cùng một IP như được sử dụng bởi người dùng mà hoàn thành reCAPTCHA/hCaptcha; Cookie và băm/hash không được sử dụng; Thay vào đó, một danh sách trắng IP sẽ được sử dụng. True = Thành công hoàn thành của reCAPTCHA/hCaptcha sẽ chỉ cấp quyền truy cập cho người dùng mà hoàn thành reCAPTCHA/hCaptcha; Cookie và băm/hash được sử dụng để nhớ người dùng; Một danh sách trắng IP sẽ không được sử dụng (mặc định).
 
 ##### "sitekey"
 - Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 YAML CƠ BẢN
 
-Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
+Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCaptcha; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
 
 Sử dụng YAML trong các tập tin chữ ký là không bắt buộc (có nghĩa là, bạn có thể sử dụng nó nếu bạn muốn làm như vậy, nhưng bạn không cần phải làm như vậy), và có thể tận dụng nhiều nhất (nhưng không phải tất cả) tùy chọn cấu hình.
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCAPTCHA
+##### 7.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCaptcha
 
-Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
+Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCaptcha, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1770,7 +1770,7 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM hỗ trợ reCAPTCHA và hCAPTCHA. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
+CIDRAM hỗ trợ reCAPTCHA và hCaptcha. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1970,4 +1970,4 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 ---
 
 
-Lần cuối cập nhật: 2025.06.14.
+Lần cuối cập nhật: 2025.08.06.

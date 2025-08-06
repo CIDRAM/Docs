@@ -1054,7 +1054,7 @@ adjust
 ```
 
 #### „recaptcha“ (Kategorie)
-Konfiguration für ReCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
+Konfiguration für reCAPTCHA (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
 
 ##### „usemode“ `[int]`
 - Wann sollte das CAPTCHA angeboten werden? Hinweis: Whitelist markierte oder verifizierte und nicht blockierte Anfragen müssen niemals ein CAPTCHA abschließen. Auch: CAPTCHAs können eine nützliche zusätzliche Schutzebene gegen Bots und verschiedene Arten von böswilligen automatisierten Anfragen bieten, aber bieten keinen Schutz gegen böswilligen Menschen.
@@ -1082,7 +1082,6 @@ usemode
 Siehe auch:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### „secret“ `[string]`
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
@@ -1090,7 +1089,6 @@ Siehe auch:
 Siehe auch:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### „expiry“ `[float]`
 - Anzahl der Stunden an die sich CAPTCHA-Instanzen erinnern sollten. Standardeinstellung = 720 (1 Monat).
@@ -1141,7 +1139,7 @@ nonblocked_status_code
 ```
 
 #### „hcaptcha“ (Kategorie)
-Konfiguration für HCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
+Konfiguration für hCaptcha (bietet eine Möglichkeit für Menschen den Zugang wiederherzustellen, wenn sie blockiert sind).
 
 ##### „usemode“ `[int]`
 - Wann sollte das CAPTCHA angeboten werden? Hinweis: Whitelist markierte oder verifizierte und nicht blockierte Anfragen müssen niemals ein CAPTCHA abschließen. Auch: CAPTCHAs können eine nützliche zusätzliche Schutzebene gegen Bots und verschiedene Arten von böswilligen automatisierten Anfragen bieten, aber bieten keinen Schutz gegen böswilligen Menschen.
@@ -1569,7 +1567,7 @@ Origin: BB
 
 ##### 6.2.0 YAML GRUNDLAGEN
 
-Eine vereinfachte Form von YAML-Markup kann in Signaturdateien verwendet werden, um Verhalten und Einstellungen spezifisch für einzelne Signatur-Sektionen zu definieren. Dies kann nützlich sein wenn Sie den Wert von Ihrer Konfiguration-Richtlinien variieren möchten auf der Grundlage von individuellen Signaturen und Signatur-Sektionen (beispielsweise; wenn Sie eine E-Mail-Adresse für Support-Tickets anbieten möchten, für irgendein Benutzer welche durch eine spezifische Signatur blockiert sind, aber Sie diese E-Mail-Adresse nicht für Nutzer welche durch andere Signaturen blockiert sind bieten möchten; wenn Sie möchten dass bestimmte Signaturen eine Seitenumleitung auslösen; wenn Sie einen Signatur-Sektion für die Verwendung mit reCAPTCHA/hCAPTCHA freischalten möchten; wenn Sie um blockierte Zugriffsversuche zu protokollieren in einzelne Dateien auf der Grundlage von einzelnen Signaturen und/oder Signatur-Sektionen möchten).
+Eine vereinfachte Form von YAML-Markup kann in Signaturdateien verwendet werden, um Verhalten und Einstellungen spezifisch für einzelne Signatur-Sektionen zu definieren. Dies kann nützlich sein wenn Sie den Wert von Ihrer Konfiguration-Richtlinien variieren möchten auf der Grundlage von individuellen Signaturen und Signatur-Sektionen (beispielsweise; wenn Sie eine E-Mail-Adresse für Support-Tickets anbieten möchten, für irgendein Benutzer welche durch eine spezifische Signatur blockiert sind, aber Sie diese E-Mail-Adresse nicht für Nutzer welche durch andere Signaturen blockiert sind bieten möchten; wenn Sie möchten dass bestimmte Signaturen eine Seitenumleitung auslösen; wenn Sie einen Signatur-Sektion für die Verwendung mit reCAPTCHA/hCaptcha freischalten möchten; wenn Sie um blockierte Zugriffsversuche zu protokollieren in einzelne Dateien auf der Grundlage von einzelnen Signaturen und/oder Signatur-Sektionen möchten).
 
 Die Verwendung von YAML-Markup in den Signaturdateien ist völlig optional (d.h., Sie können YAML-Markup verwenden, wenn Sie dies möchten, aber Sie sind nicht verpflichtet dies zu tun), und ist in der Lage die meisten (aber nicht alles) Konfigurations-Richtlinien zu nutzen.
 
@@ -1624,9 +1622,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 WIE MAN „SPEZIELL MARKIEREN“ DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCAPTCHA NUTZT
+##### 6.2.1 WIE MAN „SPEZIELL MARKIEREN“ DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCaptcha NUTZT
 
-Wenn „usemode“ 2 oder 5 ist, um Signatur-Sektionen „besonders zumarkiert“ für die Verwendung mit reCAPTCHA/hCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
+Wenn „usemode“ 2 oder 5 ist, um Signatur-Sektionen „besonders zumarkiert“ für die Verwendung mit reCAPTCHA/hCaptcha, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1725,6 +1723,7 @@ Variable | Beschreibung
 ----|----
 `$this->BlockInfo['DateTime']` | Das aktuelle Datum und die Uhrzeit.
 `$this->BlockInfo['IPAddr']` | IP-Adresse für die aktuelle Anfrage.
+`$this->BlockInfo['IPAddrResolved']` | Wenn der IP-Adresse die aktuelle Anfrage eine 6to4, Teredo, oder ISATAP Adresse ist, wird diese Adresse in ihr IPv4-Äquivalent aufgelöst. Wenn nicht, dann die IP-Adresse für die aktuelle Anfrage.
 `$this->BlockInfo['ScriptIdent']` | CIDRAM Script-Version.
 `$this->BlockInfo['Query']` | Die Abfrage (query) für die aktuelle Anfrage.
 `$this->BlockInfo['Referrer']` | Der Referrer für die aktuelle Anfrage (falls vorhanden).
@@ -1734,6 +1733,8 @@ Variable | Beschreibung
 `$this->BlockInfo['SignatureCount']` | Die Anzahl der Signaturen, die für die aktuelle Anfrage ausgelöst wurden.
 `$this->BlockInfo['Signatures']` | Referenzinformationen für alle Signaturen, die für die aktuelle Anforderung ausgelöst wurden.
 `$this->BlockInfo['WhyReason']` | Referenzinformationen für alle Signaturen, die für die aktuelle Anforderung ausgelöst wurden.
+`$this->BlockInfo['Request_Method']` | Die Anforderungsmethode die aktuelle Anfrage.
+`$this->BlockInfo['Protocol']` | Das Protokoll die aktuelle Anfrage.
 
 ---
 
@@ -2175,7 +2176,7 @@ Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM „Forwa
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM unterstützt reCAPTCHA und hCAPTCHA. Sie benötigen API-Schlüssel, um ordnungsgemäß zu funktionieren. Sie sind standardmäßig deaktiviert, können jedoch durch Konfigurieren der erforderlichen API-Schlüssel aktiviert werden. Wenn diese Option aktiviert ist, kann eine Kommunikation zwischen dem Dienst und CIDRAM oder dem Browser des Benutzers erfolgen. Dies kann möglicherweise die Übermittlung von Informationen wie die IP-Adresse des Benutzers, den Benutzeragenten, das Betriebssystem und andere Details zur Anfrage verfügbar.
+CIDRAM unterstützt reCAPTCHA und hCaptcha. Sie benötigen API-Schlüssel, um ordnungsgemäß zu funktionieren. Sie sind standardmäßig deaktiviert, können jedoch durch Konfigurieren der erforderlichen API-Schlüssel aktiviert werden. Wenn diese Option aktiviert ist, kann eine Kommunikation zwischen dem Dienst und CIDRAM oder dem Browser des Benutzers erfolgen. Dies kann möglicherweise die Übermittlung von Informationen wie die IP-Adresse des Benutzers, den Benutzeragenten, das Betriebssystem und andere Details zur Anfrage verfügbar.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2414,4 +2415,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 9. Juli 2025 (2025.07.09).
+Zuletzt aktualisiert: 6. August 2025 (2025.08.06).

@@ -750,7 +750,7 @@ Se desejar, você pode apresentar aos usuários um desafio CAPTCHA para distingu
 Você pode obter uma "site key" e uma "secret key" para o reCAPTCHA aqui:
 - https://developers.google.com/recaptcha/
 
-Você pode obter uma "site key" e uma "secret key" para o hCAPTCHA aqui:
+Você pode obter uma "site key" e uma "secret key" para o hCaptcha aqui:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -770,7 +770,7 @@ Qualquer outro valor. | Nunca!
 - Notar: O valor de "lockip" é ignorado quando "lockuser" é false, devido a que o mecanismo para lembrar "usuários" varia de acordo com este valor.
 
 ##### "lockuser"
-- Especifica se a conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA deve ser ligado a usuários específicos. False = A conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA irá conceder acesso a todos as solicitações provenientes do mesmo IP como aquilo utilizado pelo utilizador completar a instância de reCAPTCHA/hCAPTCHA; Cookies e hashes não são usados; Em vez disso, um IP whitelist será usado. True = A conclusão bem sucedida de uma instância de reCAPTCHA/hCAPTCHA só irá conceder acesso para o usuário completar a instância de reCAPTCHA/hCAPTCHA; Cookies e hashes são usados para lembrar o usuário; Um IP whitelist não é usado (padrão).
+- Especifica se a conclusão bem sucedida de uma instância de reCAPTCHA/hCaptcha deve ser ligado a usuários específicos. False = A conclusão bem sucedida de uma instância de reCAPTCHA/hCaptcha irá conceder acesso a todos as solicitações provenientes do mesmo IP como aquilo utilizado pelo utilizador completar a instância de reCAPTCHA/hCaptcha; Cookies e hashes não são usados; Em vez disso, um IP whitelist será usado. True = A conclusão bem sucedida de uma instância de reCAPTCHA/hCaptcha só irá conceder acesso para o usuário completar a instância de reCAPTCHA/hCaptcha; Cookies e hashes são usados para lembrar o usuário; Um IP whitelist não é usado (padrão).
 
 ##### "sitekey"
 - Esse valor pode ser encontrado no painel de seu serviço de CAPTCHA.
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 YAML BÁSICOS
 
-Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCAPTCHA; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
+Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCaptcha; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
 
 Uso de marcação YAML nos arquivos de assinatura é totalmente opcional (isto é, você pode usá-lo se desejar fazê-lo, mas você não é obrigado a fazê-lo), e é capaz de alavancar mais (mas nem todos) das diretivas de configuração.
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCAPTCHA
+##### 7.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCaptcha
 
-Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com reCAPTCHA/hCAPTCHA, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
+Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com reCAPTCHA/hCaptcha, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1774,7 +1774,7 @@ Quando a verificação dos motores de busca é ativada, o CIDRAM tenta executar 
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM oferece suporte a reCAPTCHA e hCAPTCHA. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
+CIDRAM oferece suporte a reCAPTCHA e hCaptcha. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1976,4 +1976,4 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 ---
 
 
-Última Atualização: 14 de Junho de 2025 (2025.06.14).
+Última Atualização: 6 de Agosto de 2025 (2025.08.06).

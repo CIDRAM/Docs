@@ -750,7 +750,7 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 您可以从此处获得reCAPTCHA的“site key”和“secret key”：
 - https://developers.google.com/recaptcha/
 
-您可以从此处获得hCAPTCHA的“site key”和“secret key”：
+您可以从此处获得hCaptcha的“site key”和“secret key”：
 - https://www.hcaptcha.com/
 
 ##### “usemode”
@@ -770,7 +770,7 @@ _**： 需要ASN查找功能，例如从BGPView模块。_
 - 注意：“lockip”值被忽略当“lockuser”是false（假），​由于该机制为记忆的“用户”可以根据这个值的变化。
 
 ##### “lockuser”
-- 指定是否一个reCAPTCHA/hCAPTCHA成功完成应锁定到特定用户。​False（假）=一个reCAPTCHA/hCAPTCHA成功完成将授予访问为所有请求该来自同IP作为由用户使用当完成的reCAPTCHA/hCAPTCHA；​Cookie和哈希不被使用；代替，​一个IP白名单将被用于。​True（真）=一个reCAPTCHA/hCAPTCHA成功完成只会授予访问为用户该完成了reCAPTCHA/hCAPTCHA；​Cookie和哈希是用于记住用户；一个IP白名单不被使用【标准】。
+- 指定是否一个reCAPTCHA/hCaptcha成功完成应锁定到特定用户。​False（假）=一个reCAPTCHA/hCaptcha成功完成将授予访问为所有请求该来自同IP作为由用户使用当完成的reCAPTCHA/hCaptcha；​Cookie和哈希不被使用；代替，​一个IP白名单将被用于。​True（真）=一个reCAPTCHA/hCaptcha成功完成只会授予访问为用户该完成了reCAPTCHA/hCaptcha；​Cookie和哈希是用于记住用户；一个IP白名单不被使用【标准】。
 
 ##### “sitekey”
 - 可以在您的CAPTCHA服务的仪表板中找到该值。
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 YAML基本概念
 
-简化形式的YAML标记可以使用在签名文件用于目的定义行为和配置设置具体到个人签名章节。​这可能是有用的如果您希望您的配置指令值到变化之间的个人签名和签名章节（例如；如果您想提供一个电子邮件地址为支持票为任何用户拦截的通过一个特定的签名，​但不希望提供一个电子邮件地址为支持票为用户拦截的通过任何其他签名；如果您想一些具体的签名到触发页面重定向；如果您想标记一个签名为使用的reCAPTCHA/hCAPTCHA；如果您想日志拦截的访问到单独的文件按照个人签名和/或签名章节）。
+简化形式的YAML标记可以使用在签名文件用于目的定义行为和配置设置具体到个人签名章节。​这可能是有用的如果您希望您的配置指令值到变化之间的个人签名和签名章节（例如；如果您想提供一个电子邮件地址为支持票为任何用户拦截的通过一个特定的签名，​但不希望提供一个电子邮件地址为支持票为用户拦截的通过任何其他签名；如果您想一些具体的签名到触发页面重定向；如果您想标记一个签名为使用的reCAPTCHA/hCaptcha；如果您想日志拦截的访问到单独的文件按照个人签名和/或签名章节）。
 
 使用YAML标记在签名文件是完全可选（即，​如果您想用这个，​您可以用这个，​但您没有需要用这个），​和能够利用最的（但不所有的）配置指令。
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 如何“特别标记”签名章节为使用的reCAPTCHA或hCAPTCHA
+##### 7.2.1 如何“特别标记”签名章节为使用的reCAPTCHA或hCaptcha
 
-当“usemode”是“2”或“5”，​为“特别标记”签名章节为使用的reCAPTCHA或hCAPTCHA，​一个条目是包括在YAML段为了那个签名章节（看下面的例子）。
+当“usemode”是“2”或“5”，​为“特别标记”签名章节为使用的reCAPTCHA或hCaptcha，​一个条目是包括在YAML段为了那个签名章节（看下面的例子）。
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1766,7 +1766,7 @@ CIDRAM的`pdo_dsn`应配置如下。
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM支持reCAPTCHA和hCAPTCHA。​他们需要API密钥才能正常工作。​默认情况下禁用，但它们可以通过配置所需的API密钥启用。​在启用的情况下，在服务与CIDRAM或用户的浏览器之间可能会发生通信。​这可能涉及通信信息，例如用户的IP地址，用户代理，操作系统，以及可用于请求的其他详细信息。
+CIDRAM支持reCAPTCHA和hCaptcha。​他们需要API密钥才能正常工作。​默认情况下禁用，但它们可以通过配置所需的API密钥启用。​在启用的情况下，在服务与CIDRAM或用户的浏览器之间可能会发生通信。​这可能涉及通信信息，例如用户的IP地址，用户代理，操作系统，以及可用于请求的其他详细信息。
 
 ##### 11.2.4 STOP FORUM SPAM 【停止论坛垃圾邮件】
 
@@ -1974,4 +1974,4 @@ CIDRAM不收集或处理任何信息用于营销或广告目的，既不销售�
 ---
 
 
-最后更新：2025年6月14日。
+最后更新：2025年8月6日。

@@ -750,7 +750,7 @@ Si lo desea, puede presentar a los usuarios un desafío CAPTCHA para distinguirl
 Puede obtener una "site key" y una "secret key" para reCAPTCHA desde aquí:
 - https://developers.google.com/recaptcha/
 
-Puede obtener una "site key" y una "secret key" para hCAPTCHA desde aquí:
+Puede obtener una "site key" y una "secret key" para hCaptcha desde aquí:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -770,7 +770,7 @@ Cualquier otro valor. | ¡Nunca!
 - Notar: El valor de "lockip" se ignora cuando "lockuser" es false, debido a que el mecanismo para recordar "usuarios" varía dependiendo de este valor.
 
 ##### "lockuser"
-- Especifica si la completar con éxito una instancia de reCAPTCHA/hCAPTCHA debe estar ligados a usuarios específicos. False = La completar con éxito de una instancia de reCAPTCHA/hCAPTCHA otorgará acceso a todas las solicitudes procedentes de la misma IP que es utilizado por el usuario que es completar la instancia de reCAPTCHA/hCAPTCHA; Las cookies y los hashes no se utilizan; En lugar de ello, se utilizará una lista blanca IP. True = La completar con éxito de una instancia de reCAPTCHA/hCAPTCHA sólo se autorizará el acceso al usuario completar la instancia de reCAPTCHA/hCAPTCHA; Las cookies y los hashes se utilizan para recordar al usuario; Una lista blanca de IP no se utiliza (predefinida).
+- Especifica si la completar con éxito una instancia de reCAPTCHA/hCaptcha debe estar ligados a usuarios específicos. False = La completar con éxito de una instancia de reCAPTCHA/hCaptcha otorgará acceso a todas las solicitudes procedentes de la misma IP que es utilizado por el usuario que es completar la instancia de reCAPTCHA/hCaptcha; Las cookies y los hashes no se utilizan; En lugar de ello, se utilizará una lista blanca IP. True = La completar con éxito de una instancia de reCAPTCHA/hCaptcha sólo se autorizará el acceso al usuario completar la instancia de reCAPTCHA/hCaptcha; Las cookies y los hashes se utilizan para recordar al usuario; Una lista blanca de IP no se utiliza (predefinida).
 
 ##### "sitekey"
 - Este valor se puede encontrar en el panel de control de su servicio de CAPTCHA.
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 LOS FUNDAMENTOS DE YAML
 
-Una forma simplificada de YAML markup se puede utilizar en los archivos de firmas con el propósito de definir los comportamientos y configuraciones específicas para las secciones de firmas individuales. Esto puede ser útil si desea que el valor de sus directivas de configuración diferir sobre la base de las firmas individuales y las secciones de firmas (por ejemplo; si desea proporcionar una dirección de correo electrónico para los tickets de soporte para cualquier usuario bloqueadas por una firma particular, pero no desea proporcionar una dirección de correo electrónico para tickets de soporte para usuarios bloqueados por cualquier otro firmas; si desea por algunas firmas específicas para desencadenar una redirección de página; si desea marcar una sección de firmas para usar con reCAPTCHA/hCAPTCHA; si desea registrar los intentos de acceso bloqueados para archivos separados sobre la base de firmas individuales y/o secciones de firmas).
+Una forma simplificada de YAML markup se puede utilizar en los archivos de firmas con el propósito de definir los comportamientos y configuraciones específicas para las secciones de firmas individuales. Esto puede ser útil si desea que el valor de sus directivas de configuración diferir sobre la base de las firmas individuales y las secciones de firmas (por ejemplo; si desea proporcionar una dirección de correo electrónico para los tickets de soporte para cualquier usuario bloqueadas por una firma particular, pero no desea proporcionar una dirección de correo electrónico para tickets de soporte para usuarios bloqueados por cualquier otro firmas; si desea por algunas firmas específicas para desencadenar una redirección de página; si desea marcar una sección de firmas para usar con reCAPTCHA/hCaptcha; si desea registrar los intentos de acceso bloqueados para archivos separados sobre la base de firmas individuales y/o secciones de firmas).
 
 El uso de YAML markup en los archivos de firma es totalmente opcional (es decir, usted puede utilizarlo si desea hacerlo, pero no está obligado a hacerlo), y es capaz de aprovechar la mayoría (pero no todos) de las directivas de configuración.
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 CÓMO "ESPECIALMENTE MARCAR" SECCIONES DE FIRMAS PARA USAR CON reCAPTCHA/hCAPTCHA
+##### 7.2.1 CÓMO "ESPECIALMENTE MARCAR" SECCIONES DE FIRMAS PARA USAR CON reCAPTCHA/hCaptcha
 
-Cuando "usemode" es 2 o 5, para "especialmente marcar" secciones de firmas para usar con reCAPTCHA/hCAPTCHA, una entrada está incluida en el segmento de YAML para que esa sección de firmas (vea el ejemplo siguiente).
+Cuando "usemode" es 2 o 5, para "especialmente marcar" secciones de firmas para usar con reCAPTCHA/hCaptcha, una entrada está incluida en el segmento de YAML para que esa sección de firmas (vea el ejemplo siguiente).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1773,7 +1773,7 @@ Cuando la verificación del motor de búsqueda está habilitada, CIDRAM intenta 
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM suporte reCAPTCHA y hCAPTCHA. Requieren claves API para funcionar correctamente. Están deshabilitados de forma predeterminada, pero se pueden habilitar configurando las claves API requeridas. Cuando están habilitado, la comunicación puede ocurrir entre el servicio y CIDRAM o el navegador del usuario. Esto puede implicar la comunicación de información como la dirección IP del usuario, el agente de usuario, el sistema operativo, y otros detalles disponibles para la solicitud.
+CIDRAM suporte reCAPTCHA y hCaptcha. Requieren claves API para funcionar correctamente. Están deshabilitados de forma predeterminada, pero se pueden habilitar configurando las claves API requeridas. Cuando están habilitado, la comunicación puede ocurrir entre el servicio y CIDRAM o el navegador del usuario. Esto puede implicar la comunicación de información como la dirección IP del usuario, el agente de usuario, el sistema operativo, y otros detalles disponibles para la solicitud.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1980,4 +1980,4 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 ---
 
 
-Última Actualización: 14 de Junio de 2025 (2025.06.14).
+Última Actualización: 6 de Agosto de 2025 (2025.08.06).

@@ -750,7 +750,7 @@ _**： 需要ASN查找功能，例如從BGPView模組。_
 您可以從此處獲得reCAPTCHA的『site key』和『secret key』：
 - https://developers.google.com/recaptcha/
 
-您可以從此處獲得hCAPTCHA的『site key』和『secret key』：
+您可以從此處獲得hCaptcha的『site key』和『secret key』：
 - https://www.hcaptcha.com/
 
 ##### 『usemode』
@@ -770,7 +770,7 @@ _**： 需要ASN查找功能，例如從BGPView模組。_
 - 注意：『lockip』值被忽略當『lockuser』是`false`（假），​由於該機制為記憶的『用戶』可以根據這個值的變化。
 
 ##### 『lockuser』
-- 指定是否一個reCAPTCHA/hCAPTCHA成功完成應鎖定到特定用戶。​False（假）=一個reCAPTCHA/hCAPTCHA成功完成將授予訪問為所有請求該來自同IP作為由用戶使用當完成的reCAPTCHA/hCAPTCHA；​Cookie和哈希不被使用；代替，​一個IP白名單將被用於。​True（真）=一個reCAPTCHA/hCAPTCHA成功完成只會授予訪問為用戶該完成了reCAPTCHA/hCAPTCHA；​Cookie和哈希是用於記住用戶；一個IP白名單不被使用【標準】。
+- 指定是否一個reCAPTCHA/hCaptcha成功完成應鎖定到特定用戶。​False（假）=一個reCAPTCHA/hCaptcha成功完成將授予訪問為所有請求該來自同IP作為由用戶使用當完成的reCAPTCHA/hCaptcha；​Cookie和哈希不被使用；代替，​一個IP白名單將被用於。​True（真）=一個reCAPTCHA/hCaptcha成功完成只會授予訪問為用戶該完成了reCAPTCHA/hCaptcha；​Cookie和哈希是用於記住用戶；一個IP白名單不被使用【標準】。
 
 ##### 『sitekey』
 - 可以在您的CAPTCHA服務的儀表板中找到該值。
@@ -892,7 +892,7 @@ PHPMailer配置。
 
 ##### 『smtp_secure』
 - *v1: 『SMTPSecure』*
-- 通過SMTP發送電子郵件時使用的協議（TLS或SSL）。
+- 通過SMTP發送電子郵件時使用的協定（TLS或SSL）。
 
 ##### 『smtp_auth』
 - *v1: 『SMTPAuth』*
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 YAML基本概念
 
-簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的reCAPTCHA/hCAPTCHA；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
+簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的reCAPTCHA/hCaptcha；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
 
 使用YAML標記在簽名文件是完全可選（即，​如果您想用這個，​您可以用這個，​但您沒有需要用這個），​和能夠利用最的（但不所有的）配置指令。
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA
+##### 7.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha
 
-當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
+當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1766,7 +1766,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM支持reCAPTCHA和hCAPTCHA。​他們需要API密鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API密鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
+CIDRAM支持reCAPTCHA和hCaptcha。​他們需要API密鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API密鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
 
 ##### 11.2.4 STOP FORUM SPAM 【停止論壇垃圾郵件】
 
@@ -1974,4 +1974,4 @@ CIDRAM不收集或處理任何信息用於營銷或廣告目的，既不銷售�
 ---
 
 
-最後更新：2025年7月8日。
+最後更新：2025年8月6日。

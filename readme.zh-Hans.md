@@ -1008,7 +1008,7 @@ adjust
 ```
 
 #### “recaptcha” （类别）
-ReCaptcha的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
+ReCAPTCHA的配置（为人们提供了一种在受阻时重新获得访问权限的方法）。
 
 ##### “usemode” `[int]`
 - 何时应提供CAPTCHA吗？​注意：列入白名单或已验证且未阻止的请求永远不需要完成CAPTCHA。​另请注意：CAPTCHA可以提供有用的保护层，防止机器人和各种恶意自动请求，但不会提供任何针对恶意人类的保护。
@@ -1036,7 +1036,6 @@ usemode
 也可以看看：
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### “secret” `[string]`
 - 可以在您的CAPTCHA服务的仪表板中找到该值。
@@ -1044,7 +1043,6 @@ usemode
 也可以看看：
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### “expiry” `[float]`
 - 记得CAPTCHA多少小时？ 标准 = 720 （1个月）。
@@ -1505,7 +1503,7 @@ Origin: BB
 
 ##### 6.2.0 YAML基本概念
 
-简化形式的YAML标记可以使用在签名文件用于目的定义行为和配置设置具体到个人签名章节。​这可能是有用的如果您希望您的配置指令值到变化之间的个人签名和签名章节（例如；如果您想提供一个电子邮件地址为支持票为任何用户拦截的通过一个特定的签名，​但不希望提供一个电子邮件地址为支持票为用户拦截的通过任何其他签名；如果您想一些具体的签名到触发页面重定向；如果您想标记一个签名为使用的reCAPTCHA/hCAPTCHA；如果您想日志拦截的访问到单独的文件按照个人签名和/或签名章节）。
+简化形式的YAML标记可以使用在签名文件用于目的定义行为和配置设置具体到个人签名章节。​这可能是有用的如果您希望您的配置指令值到变化之间的个人签名和签名章节（例如；如果您想提供一个电子邮件地址为支持票为任何用户拦截的通过一个特定的签名，​但不希望提供一个电子邮件地址为支持票为用户拦截的通过任何其他签名；如果您想一些具体的签名到触发页面重定向；如果您想标记一个签名为使用的reCAPTCHA/hCaptcha；如果您想日志拦截的访问到单独的文件按照个人签名和/或签名章节）。
 
 使用YAML标记在签名文件是完全可选（即，​如果您想用这个，​您可以用这个，​但您没有需要用这个），​和能够利用最的（但不所有的）配置指令。
 
@@ -1560,9 +1558,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 如何“特别标记”签名章节为使用的reCAPTCHA或hCAPTCHA
+##### 6.2.1 如何“特别标记”签名章节为使用的reCAPTCHA或hCaptcha
 
-当“usemode”是“2”或“5”，​为“特别标记”签名章节为使用的reCAPTCHA或hCAPTCHA，​一个条目是包括在YAML段为了那个签名章节（看下面的例子）。
+当“usemode”是“2”或“5”，​为“特别标记”签名章节为使用的reCAPTCHA或hCaptcha，​一个条目是包括在YAML段为了那个签名章节（看下面的例子）。
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1661,6 +1659,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ----|----
 `$this->BlockInfo['DateTime']` | 当前日期和时间。
 `$this->BlockInfo['IPAddr']` | 当前请求的IP地址。
+`$this->BlockInfo['IPAddrResolved']` | 如果当前请求的IP地址是6to4、Teredo、或ISATAP地址，则该地址将解析为其IPv4等效地址。​如果不是，它将是当前请求的IP地址。
 `$this->BlockInfo['ScriptIdent']` | CIDRAM脚本版本。
 `$this->BlockInfo['Query']` | 当前请求的查询。
 `$this->BlockInfo['Referrer']` | 当前请求的引用者（如果存在）。
@@ -1670,6 +1669,8 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 `$this->BlockInfo['SignatureCount']` | 当前请求的触发的签名数量。
 `$this->BlockInfo['Signatures']` | 针对当前请求触发的任何签名的参考信息。
 `$this->BlockInfo['WhyReason']` | 针对当前请求触发的任何签名的参考信息。
+`$this->BlockInfo['Request_Method']` | 当前请求的请求方法。
+`$this->BlockInfo['Protocol']` | 当前请求的协议。
 
 ---
 
@@ -2099,7 +2100,7 @@ CIDRAM的`pdo_dsn`应配置如下。
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM支持reCAPTCHA和hCAPTCHA。​他们需要API密钥才能正常工作。​默认情况下禁用，但它们可以通过配置所需的API密钥启用。​在启用的情况下，在服务与CIDRAM或用户的浏览器之间可能会发生通信。​这可能涉及通信信息，例如用户的IP地址，用户代理，操作系统，以及可用于请求的其他详细信息。
+CIDRAM支持reCAPTCHA和hCaptcha。​他们需要API密钥才能正常工作。​默认情况下禁用，但它们可以通过配置所需的API密钥启用。​在启用的情况下，在服务与CIDRAM或用户的浏览器之间可能会发生通信。​这可能涉及通信信息，例如用户的IP地址，用户代理，操作系统，以及可用于请求的其他详细信息。
 
 ##### 9.2.3 STOP FORUM SPAM 【停止论坛垃圾邮件】
 
@@ -2336,4 +2337,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2025年7月9日。
+最后更新：2025年8月6日。

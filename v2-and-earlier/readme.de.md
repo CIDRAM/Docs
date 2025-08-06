@@ -750,7 +750,7 @@ Wenn Sie möchten, können Sie Benutzern eine CAPTCHA-Herausforderung stellen, u
 Hier kann Sie einen "site key" und einen "secret key" für reCAPTCHA erhalten:
 - https://developers.google.com/recaptcha/
 
-Hier kann Sie einen "site key" und einen "secret key" für hCAPTCHA erhalten:
+Hier kann Sie einen "site key" und einen "secret key" für hCaptcha erhalten:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -770,7 +770,7 @@ Jeder andere Wert. | Noch nie!
 - Beachten: Der Wert für "lockip" wird ignoriert, wenn "lockuser" false ist, aufgrund der Tatsache dass der Mechanismus zum Erinnern "Benutzer" sich je nach diesem Wert unterscheidet.
 
 ##### "lockuser"
-- Gibt an ob der erfolgreiche Abschluss eines reCAPTCHA/hCAPTCHA-Instanz an bestimmte Benutzer gebunden werden soll. False = Der erfolgreiche Abschluss einer reCAPTCHA/hCAPTCHA-Instanz erlaubt alle Anfragen von dieser IP; Cookies und Hashes werden nicht verwendet; Stattdessen wird eine IP-Whitelist verwendet. True = Der erfolgreiche Abschluss einer reCAPTCHA/hCAPTCHA-Instanz erlaubt nur dem Benutzer Zugriff; Cookies und Hashes werden verwendet, um den Benutzer zu merken; Eine IP-Whitelist wird nicht verwendet (Standardeinstellung).
+- Gibt an ob der erfolgreiche Abschluss eines reCAPTCHA/hCaptcha-Instanz an bestimmte Benutzer gebunden werden soll. False = Der erfolgreiche Abschluss einer reCAPTCHA/hCaptcha-Instanz erlaubt alle Anfragen von dieser IP; Cookies und Hashes werden nicht verwendet; Stattdessen wird eine IP-Whitelist verwendet. True = Der erfolgreiche Abschluss einer reCAPTCHA/hCaptcha-Instanz erlaubt nur dem Benutzer Zugriff; Cookies und Hashes werden verwendet, um den Benutzer zu merken; Eine IP-Whitelist wird nicht verwendet (Standardeinstellung).
 
 ##### "sitekey"
 - Dieser Wert befindet sich im Dashboard für Ihren CAPTCHA-Dienst.
@@ -1176,7 +1176,7 @@ Origin: BB
 
 ##### 7.2.0 YAML GRUNDLAGEN
 
-Eine vereinfachte Form von YAML-Markup kann in Signaturdateien verwendet werden, um Verhalten und Einstellungen spezifisch für einzelne Signatur-Sektionen zu definieren. Dies kann nützlich sein wenn Sie den Wert von Ihrer Konfiguration-Richtlinien variieren möchten auf der Grundlage von individuellen Signaturen und Signatur-Sektionen (beispielsweise; wenn Sie eine E-Mail-Adresse für Support-Tickets anbieten möchten, für irgendein Benutzer welche durch eine spezifische Signatur blockiert sind, aber Sie diese E-Mail-Adresse nicht für Nutzer welche durch andere Signaturen blockiert sind bieten möchten; wenn Sie möchten dass bestimmte Signaturen eine Seitenumleitung auslösen; wenn Sie einen Signatur-Sektion für die Verwendung mit reCAPTCHA/hCAPTCHA freischalten möchten; wenn Sie um blockierte Zugriffsversuche zu protokollieren in einzelne Dateien auf der Grundlage von einzelnen Signaturen und/oder Signatur-Sektionen möchten).
+Eine vereinfachte Form von YAML-Markup kann in Signaturdateien verwendet werden, um Verhalten und Einstellungen spezifisch für einzelne Signatur-Sektionen zu definieren. Dies kann nützlich sein wenn Sie den Wert von Ihrer Konfiguration-Richtlinien variieren möchten auf der Grundlage von individuellen Signaturen und Signatur-Sektionen (beispielsweise; wenn Sie eine E-Mail-Adresse für Support-Tickets anbieten möchten, für irgendein Benutzer welche durch eine spezifische Signatur blockiert sind, aber Sie diese E-Mail-Adresse nicht für Nutzer welche durch andere Signaturen blockiert sind bieten möchten; wenn Sie möchten dass bestimmte Signaturen eine Seitenumleitung auslösen; wenn Sie einen Signatur-Sektion für die Verwendung mit reCAPTCHA/hCaptcha freischalten möchten; wenn Sie um blockierte Zugriffsversuche zu protokollieren in einzelne Dateien auf der Grundlage von einzelnen Signaturen und/oder Signatur-Sektionen möchten).
 
 Die Verwendung von YAML-Markup in den Signaturdateien ist völlig optional (d.h., Sie können YAML-Markup verwenden, wenn Sie dies möchten, aber Sie sind nicht verpflichtet dies zu tun), und ist in der Lage die meisten (aber nicht alles) Konfigurations-Richtlinien zu nutzen.
 
@@ -1229,9 +1229,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 WIE MAN "SPEZIELL MARKIEREN" DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCAPTCHA NUTZT
+##### 7.2.1 WIE MAN "SPEZIELL MARKIEREN" DEN SIGNATUR-SEKTIONEN FÜR DIE VERWENDUNG MIT reCAPTCHA/hCaptcha NUTZT
 
-Wenn "usemode" 2 oder 5 ist, um Signatur-Sektionen "besonders zumarkiert" für die Verwendung mit reCAPTCHA/hCAPTCHA, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
+Wenn "usemode" 2 oder 5 ist, um Signatur-Sektionen "besonders zumarkiert" für die Verwendung mit reCAPTCHA/hCaptcha, ist ein Eintrag in dem YAML-Segment für diese Signatur-Sektion enthalten (siehe Beispiel unten).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1780,7 +1780,7 @@ Wenn die Verifizierung von Suchmaschinen aktiviert ist, versucht CIDRAM "Forward
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM unterstützt reCAPTCHA und hCAPTCHA. Sie benötigen API-Schlüssel, um ordnungsgemäß zu funktionieren. Sie sind standardmäßig deaktiviert, können jedoch durch Konfigurieren der erforderlichen API-Schlüssel aktiviert werden. Wenn diese Option aktiviert ist, kann eine Kommunikation zwischen dem Dienst und CIDRAM oder dem Browser des Benutzers erfolgen. Dies kann möglicherweise die Übermittlung von Informationen wie die IP-Adresse des Benutzers, den Benutzeragenten, das Betriebssystem und andere Details zur Anfrage verfügbar.
+CIDRAM unterstützt reCAPTCHA und hCaptcha. Sie benötigen API-Schlüssel, um ordnungsgemäß zu funktionieren. Sie sind standardmäßig deaktiviert, können jedoch durch Konfigurieren der erforderlichen API-Schlüssel aktiviert werden. Wenn diese Option aktiviert ist, kann eine Kommunikation zwischen dem Dienst und CIDRAM oder dem Browser des Benutzers erfolgen. Dies kann möglicherweise die Übermittlung von Informationen wie die IP-Adresse des Benutzers, den Benutzeragenten, das Betriebssystem und andere Details zur Anfrage verfügbar.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1990,4 +1990,4 @@ Alternativ gibt es einen kurzen (nicht autoritativen) Überblick über die GDPR/
 ---
 
 
-Zuletzt aktualisiert: 14. Juni 2025 (2025.06.14).
+Zuletzt aktualisiert: 6. August 2025 (2025.08.06).

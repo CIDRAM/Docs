@@ -1050,7 +1050,7 @@ adjust
 ```
 
 #### "recaptcha" (카테고리)
-ReCaptcha 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
+ReCAPTCHA 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
 
 ##### "usemode" `[int]`
 - 보안 문자는 언제 제공해야 합니까? 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고 : CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
@@ -1078,7 +1078,6 @@ usemode
 또한보십시오 :
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
@@ -1086,7 +1085,6 @@ usemode
 또한보십시오 :
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - 보안 문자 인스턴스를 기억 시간. Default (기본 설정) = 720 (1 개월).
@@ -1563,7 +1561,7 @@ Origin: BB
 
 ##### 6.2.0 YAML 기초
 
-섹션 관련 설정을 정의하기 위해, 간단한 형식의 YAML 마크 업을 서명 파일로 사용할 수 있습니다. 이것은 다른 서명 섹션에 대해 다른 설정을 할 때 유용합니다 (예를 들면 : 지원 티켓의 이메일 주소를 지정하려면, 그러나 특정 섹션 만; 특정 서명으로 페이지 리디렉션을 트리거하려면; reCAPTCHA/hCAPTCHA에서 사용하기 위해 서명 섹션을 표시하려면; 개별 서명에 따라 그리고/또는 서명 섹션에 따라, 차단 된 액세스 시도를 별도의 파일에 기록하려면).
+섹션 관련 설정을 정의하기 위해, 간단한 형식의 YAML 마크 업을 서명 파일로 사용할 수 있습니다. 이것은 다른 서명 섹션에 대해 다른 설정을 할 때 유용합니다 (예를 들면 : 지원 티켓의 이메일 주소를 지정하려면, 그러나 특정 섹션 만; 특정 서명으로 페이지 리디렉션을 트리거하려면; reCAPTCHA/hCaptcha에서 사용하기 위해 서명 섹션을 표시하려면; 개별 서명에 따라 그리고/또는 서명 섹션에 따라, 차단 된 액세스 시도를 별도의 파일에 기록하려면).
 
 서명 파일로 YAML 마크 업의 사용은 옵션입니다 (즉, 당신이 원한다면 그것을 사용할 수 있지만 그렇게 할 필요는 없습니다). 대부분의 (하지만 전부는 아니지만) 구성 지시문을 활용할 수 있습니다.
 
@@ -1618,9 +1616,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 reCAPTCHA 또는 hCAPTCHA에서 사용하기 위해 서명 섹션을 표시하는 방법.
+##### 6.2.1 reCAPTCHA 또는 hCaptcha에서 사용하기 위해 서명 섹션을 표시하는 방법.
 
-"usemode"가 2 또는 5 이면 reCAPTCHA 또는 hCAPTCHA에서 사용하기 위해 서명 섹션을 표시하려면 시그니처 섹션 YAML 마커 세그먼트를 포함해야합니다 (아래의 예를 참조하십시오).
+"usemode"가 2 또는 5 이면 reCAPTCHA 또는 hCaptcha에서 사용하기 위해 서명 섹션을 표시하려면 시그니처 섹션 YAML 마커 세그먼트를 포함해야합니다 (아래의 예를 참조하십시오).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1719,6 +1717,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ----|----
 `$this->BlockInfo['DateTime']` | 현재 날짜와 시간.
 `$this->BlockInfo['IPAddr']` | 현재 요청의 IP 주소.
+`$this->BlockInfo['IPAddrResolved']` | 현재 요청에 대한 IP 주소가 6to4, Teredo, 또는 ISATAP 주소인 경우 해당 주소는 해당 IPv4 주소로 확인됩니다. 그렇지 않은 경우에는, 현재 요청에 대한 IP 주소가 됩니다.
 `$this->BlockInfo['ScriptIdent']` | CIDRAM 스크립트 버전.
 `$this->BlockInfo['Query']` | 현재 요청에 대한 쿼리입니다.
 `$this->BlockInfo['Referrer']` | 현재 요청에 대한 리퍼러 (존재하는 경우).
@@ -1728,6 +1727,8 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 `$this->BlockInfo['SignatureCount']` | 현재 요청에 대해 트리거 된 서명 수입니다.
 `$this->BlockInfo['Signatures']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
 `$this->BlockInfo['WhyReason']` | 현재 요청에 대해 트리거 된 모든 서명에 대한 참조 정보.
+`$this->BlockInfo['Request_Method']` | 현재 요청의 요청 방법입니다.
+`$this->BlockInfo['Protocol']` | 현재 요청의 프로토콜입니다.
 
 ---
 
@@ -2155,7 +2156,7 @@ cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM은 reCAPTCHA 및 hCAPTCHA를 지원합니다. 올바르게 작동하려면 API 키가 필요합니다. 기본적으로 비활성화되어 있지만 필요한 API 키를 구성하여 활성화 할 수 있습니다. 활성화되면 서비스와 CIDRAM 또는 사용자 브라우저 간에 통신이 발생할 수 있습니다. 여기에는 사용자의 IP 주소, 사용자 에이전트, 운영 체제 및 요청에 사용할 수 있는 기타 세부 정보와 같은 정보 통신이 포함될 수 있습니다.
+CIDRAM은 reCAPTCHA 및 hCaptcha를 지원합니다. 올바르게 작동하려면 API 키가 필요합니다. 기본적으로 비활성화되어 있지만 필요한 API 키를 구성하여 활성화 할 수 있습니다. 활성화되면 서비스와 CIDRAM 또는 사용자 브라우저 간에 통신이 발생할 수 있습니다. 여기에는 사용자의 IP 주소, 사용자 에이전트, 운영 체제 및 요청에 사용할 수 있는 기타 세부 정보와 같은 정보 통신이 포함될 수 있습니다.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2390,4 +2391,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2025년 7월 9일.
+최종 업데이트 : 2025년 8월 6일.

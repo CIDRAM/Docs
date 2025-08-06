@@ -750,7 +750,7 @@ Si vous le souhaitez, vous pouvez proposer aux utilisateurs un challenge CAPTCHA
 Vous pouvez obtenir une « site key » et une « secret key » pour reCAPTCHA à partir d'ici :
 - https://developers.google.com/recaptcha/
 
-Vous pouvez obtenir une « site key » et une « secret key » pour hCAPTCHA à partir d'ici :
+Vous pouvez obtenir une « site key » et une « secret key » pour hCaptcha à partir d'ici :
 - https://www.hcaptcha.com/
 
 ##### « usemode »
@@ -770,7 +770,7 @@ Toute autre valeur. | Jamais !
 - Note : La valeur de « lockip » est ignoré lorsque « lockuser » est false, en raison de ce que le mécanisme pour se souvenir de « utilisateurs » varie en fonction de cette valeur.
 
 ##### « lockuser »
-- Indique si le succès d'une instance de reCAPTCHA/hCAPTCHA devrait être verrouillé à des utilisateurs spécifiques. False = Le succès d'une instance de reCAPTCHA/hCAPTCHA donnera accès à toutes les requêtes provenant de la même adresse IP que celui utilisé par l'utilisateur de remplir l'instance du reCAPTCHA/hCAPTCHA ; Cookies et hachages ne sont pas utilisés ; Au lieu, une liste blanche IP sera utilisé. True = Le succès d'une instance de reCAPTCHA/hCAPTCHA donnera accès seulement à l'utilisateur remplissant l'instance du reCAPTCHA/hCAPTCHA ; Cookies et hachages sont utilisés pour mémoriser l'utilisateur ; Une liste blanche IP n'est pas utilisé (défaut).
+- Indique si le succès d'une instance de reCAPTCHA/hCaptcha devrait être verrouillé à des utilisateurs spécifiques. False = Le succès d'une instance de reCAPTCHA/hCaptcha donnera accès à toutes les requêtes provenant de la même adresse IP que celui utilisé par l'utilisateur de remplir l'instance du reCAPTCHA/hCaptcha ; Cookies et hachages ne sont pas utilisés ; Au lieu, une liste blanche IP sera utilisé. True = Le succès d'une instance de reCAPTCHA/hCaptcha donnera accès seulement à l'utilisateur remplissant l'instance du reCAPTCHA/hCaptcha ; Cookies et hachages sont utilisés pour mémoriser l'utilisateur ; Une liste blanche IP n'est pas utilisé (défaut).
 
 ##### « sitekey »
 - Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 BASES DE YAML
 
-Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec reCAPTCHA/hCAPTCHA ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
+Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec reCAPTCHA/hCaptcha ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
 
 L'utilisation de YAML dans les fichiers de signature est entièrement facultative (c'est à dire, vous pouvez l'utiliser si vous le souhaitez, mais vous n'êtes pas obligé de le faire), et est capable d'affecter la plupart (mais pas tout) les directives de configuration.
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCAPTCHA
+##### 7.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCaptcha
 
-Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
+Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCaptcha, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1780,7 +1780,7 @@ Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'e
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM prend en charge reCAPTCHA et hCAPTCHA. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
+CIDRAM prend en charge reCAPTCHA et hCaptcha. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1844,7 +1844,7 @@ Un événement blocage journalisé inclut généralement les informations suivan
 - Références aux raisons de l'événement de blocage et à certaines informations de débogage de base liées.
 - L'agent utilisateur de la requête bloquée (comment l'entité requérante s'est identifiée à la requête).
 - Une reconstruction de l'identifiant de la ressource initialement requêtée.
-- L'état CAPTCHA pour la requête en cours (le cas échéant).
+- L'état CAPTCHA pour la requête actuelle (le cas échéant).
 
 *Les directives de configuration responsables de ce type de journalisation, et pour chacun des trois formats disponibles, sont :*
 - `general` -> `logfile`
@@ -1986,4 +1986,4 @@ Alternativement, il y a un bref aperçu (non autorisé) de GDPR/DSGVO disponible
 ---
 
 
-Dernière mise à jour : 14 Juin 2025 (2025.06.14).
+Dernière mise à jour : 6 Août 2025 (2025.08.06).

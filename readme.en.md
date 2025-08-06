@@ -1047,7 +1047,7 @@ adjust
 ```
 
 #### "recaptcha" (Category)
-Configuration for ReCaptcha (provides a way for humans to regain access when blocked).
+Configuration for reCAPTCHA (provides a way for humans to regain access when blocked).
 
 ##### "usemode" `[int]`
 - When should the CAPTCHA be offered? Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA. Also note: CAPTCHAs can provide a useful, additional layer of protection against bots and various kinds of malicious automated requests, but won't provide any protection against a malicious human.
@@ -1075,7 +1075,6 @@ usemode
 See also:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - This value can be found in the dashboard for your CAPTCHA service.
@@ -1083,7 +1082,6 @@ See also:
 See also:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - Number of hours to remember CAPTCHA instances. Default = 720 (1 month).
@@ -1132,7 +1130,7 @@ nonblocked_status_code
 ```
 
 #### "hcaptcha" (Category)
-Configuration for HCaptcha (provides a way for humans to regain access when blocked).
+Configuration for hCaptcha (provides a way for humans to regain access when blocked).
 
 ##### "usemode" `[int]`
 - When should the CAPTCHA be offered? Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA. Also note: CAPTCHAs can provide a useful, additional layer of protection against bots and various kinds of malicious automated requests, but won't provide any protection against a malicious human.
@@ -1556,7 +1554,7 @@ Origin: BB
 
 ##### 6.2.0 YAML BASICS
 
-A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCAPTCHA; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
+A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCaptcha; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
 
 Use of YAML markup in the signature files is entirely optional (i.e., you may use it if you wish to do so, but you are not required to do so), and is able to leverage most (but not all) configuration directives.
 
@@ -1611,9 +1609,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCAPTCHA
+##### 6.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCaptcha
 
-When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
+When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCaptcha, an entry is included in the YAML segment for that signature section (see the example below).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1712,6 +1710,7 @@ Variable | Description
 ----|----
 `$this->BlockInfo['DateTime']` | The current date and time.
 `$this->BlockInfo['IPAddr']` | IP address for the current request.
+`$this->BlockInfo['IPAddrResolved']` | If the IP address for the current request is a 6to4, Teredo, or ISATAP address, that address resolved to its IPv4 equivalent. If not, then the IP address for the current request.
 `$this->BlockInfo['ScriptIdent']` | CIDRAM script version.
 `$this->BlockInfo['Query']` | The query for the current request.
 `$this->BlockInfo['Referrer']` | The referrer for the current request (if one exists).
@@ -1721,6 +1720,8 @@ Variable | Description
 `$this->BlockInfo['SignatureCount']` | The number of signatures triggered for the current request.
 `$this->BlockInfo['Signatures']` | Reference information for any signatures triggered for the current request.
 `$this->BlockInfo['WhyReason']` | Reference information for any signatures triggered for the current request.
+`$this->BlockInfo['Request_Method']` | The request method of the current request.
+`$this->BlockInfo['Protocol']` | The protocol of the current request.
 
 ---
 
@@ -2155,7 +2156,7 @@ When search engine verification is enabled, CIDRAM attempts to perform "forward 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM supports reCAPTCHA and hCAPTCHA. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
+CIDRAM supports reCAPTCHA and hCaptcha. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2394,4 +2395,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 9 July 2025 (2025.07.09).
+Last Updated: 6 August 2025 (2025.08.06).

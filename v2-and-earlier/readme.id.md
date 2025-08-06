@@ -750,7 +750,7 @@ Jika mau, Anda dapat memberikan tantangan CAPTCHA kepada pengguna untuk membedak
 Anda bisa mendapatkan "site key" dan "secret key" untuk reCAPTCHA dari sini:
 - https://developers.google.com/recaptcha/
 
-Anda bisa mendapatkan "site key" dan "secret key" untuk hCAPTCHA dari sini:
+Anda bisa mendapatkan "site key" dan "secret key" untuk hCaptcha dari sini:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -770,7 +770,7 @@ Nilai lainnya. | Tidak pernah!
 - Catat: Nilai "lockip" diabaikan ketika "lockuser" adalah false, karena mekanisme untuk mengingat "pengguna" berbeda tergantung pada nilai ini.
 
 ##### "lockuser"
-- Menyatakan apakah berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA harus dikunci untuk pengguna spesifik. False = Berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA akan memberikan akses ke semua permintaan yang berasal dari IP digunakan oleh pengguna yang menyelesaikan instansi reCAPTCHA/hCAPTCHA; Cookie dan hash tidak digunakan; Sebaliknya, sebuah daftar putih IP akan digunakan. True = Berhasil menyelesaikan instansi reCAPTCHA/hCAPTCHA hanya akan memberikan akses kepada pengguna yang menyelesaikan instansi reCAPTCHA/hCAPTCHA; Cookie dan hash digunakan untuk mengingat pengguna; Daftar putih IP tidak digunakan (default).
+- Menyatakan apakah berhasil menyelesaikan instansi reCAPTCHA/hCaptcha harus dikunci untuk pengguna spesifik. False = Berhasil menyelesaikan instansi reCAPTCHA/hCaptcha akan memberikan akses ke semua permintaan yang berasal dari IP digunakan oleh pengguna yang menyelesaikan instansi reCAPTCHA/hCaptcha; Cookie dan hash tidak digunakan; Sebaliknya, sebuah daftar putih IP akan digunakan. True = Berhasil menyelesaikan instansi reCAPTCHA/hCaptcha hanya akan memberikan akses kepada pengguna yang menyelesaikan instansi reCAPTCHA/hCaptcha; Cookie dan hash digunakan untuk mengingat pengguna; Daftar putih IP tidak digunakan (default).
 
 ##### "sitekey"
 - Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
@@ -1174,7 +1174,7 @@ Origin: BB
 
 ##### 7.2.0 DASAR-DASAR YAML
 
-Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
+Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
 
 Penggunaan YAML markup dalam file tanda tangan sepenuhnya opsional (yaitu, Anda dapat menggunakannya jika Anda ingin melakukannya, tapi Anda tidak diharuskan untuk melakukannya), dan mampu memanfaatkan kebanyakan (tapi tidak semua) direktif konfigurasi.
 
@@ -1227,9 +1227,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCAPTCHA
+##### 7.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCaptcha
 
-Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
+Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1773,7 +1773,7 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM mendukung reCAPTCHA dan hCAPTCHA. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
+CIDRAM mendukung reCAPTCHA dan hCaptcha. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1973,4 +1973,4 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 ---
 
 
-Terakhir Diperbarui: 14 Juni 2025 (2025.06.14).
+Terakhir Diperbarui: 6 Agustus 2025 (2025.08.06).

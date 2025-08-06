@@ -760,7 +760,7 @@ If you want, you can present users with a CAPTCHA challenge in order to distingu
 You can obtain a "site key" and a "secret key" for reCAPTCHA from here:
 - https://developers.google.com/recaptcha/
 
-You can obtain a "site key" and a "secret key" for hCAPTCHA from here:
+You can obtain a "site key" and a "secret key" for hCaptcha from here:
 - https://www.hcaptcha.com/
 
 ##### "usemode"
@@ -780,7 +780,7 @@ Any other value. | Never!
 - Note: "lockip" value is ignored when "lockuser" is false, due to that the mechanism for remembering "users" differs depending on this value.
 
 ##### "lockuser"
-- Specifies whether successful completion of a reCAPTCHA/hCAPTCHA instance should be locked to specific users. False = Successful completion of a reCAPTCHA/hCAPTCHA instance will grant access to all requests originating from the same IP as that used by the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes aren't used; Instead, an IP whitelist will be used. True = Successful completion of a reCAPTCHA/hCAPTCHA instance will only grant access to the user completing the reCAPTCHA/hCAPTCHA instance; Cookies and hashes are used to remember the user; An IP whitelist is not used (default).
+- Specifies whether successful completion of a reCAPTCHA/hCaptcha instance should be locked to specific users. False = Successful completion of a reCAPTCHA/hCaptcha instance will grant access to all requests originating from the same IP as that used by the user completing the reCAPTCHA/hCaptcha instance; Cookies and hashes aren't used; Instead, an IP whitelist will be used. True = Successful completion of a reCAPTCHA/hCaptcha instance will only grant access to the user completing the reCAPTCHA/hCaptcha instance; Cookies and hashes are used to remember the user; An IP whitelist is not used (default).
 
 ##### "sitekey"
 - This value can be found in the dashboard for your CAPTCHA service.
@@ -1184,7 +1184,7 @@ Origin: BB
 
 ##### 7.2.0 YAML BASICS
 
-A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCAPTCHA; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
+A simplified form of YAML markup may be used in signature files for the purpose of defining behaviours and settings specific to individual signature sections. This may be useful if you want the value of your configuration directives to differ on the basis of individual signatures and signature sections (for example; if you want to supply an email address for support tickets for any users blocked by one particular signature, but don't want to supply an email address for support tickets for users blocked by any other signatures; if you want some specific signatures to trigger a page redirect; if you want to mark a signature section for use with reCAPTCHA/hCaptcha; if you want to log blocked access attempts to separate files on the basis of individual signatures and/or signature sections).
 
 Use of YAML markup in the signature files is entirely optional (i.e., you may use it if you wish to do so, but you are not required to do so), and is able to leverage most (but not all) configuration directives.
 
@@ -1237,9 +1237,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCAPTCHA
+##### 7.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH reCAPTCHA/hCaptcha
 
-When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCAPTCHA, an entry is included in the YAML segment for that signature section (see the example below).
+When "usemode" is 2 or 5, to "specially mark" signature sections for use with reCAPTCHA/hCaptcha, an entry is included in the YAML segment for that signature section (see the example below).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1781,7 +1781,7 @@ When search engine verification is enabled, CIDRAM attempts to perform "forward 
 
 ##### 11.2.3 CAPTCHA
 
-CIDRAM supports reCAPTCHA and hCAPTCHA. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
+CIDRAM supports reCAPTCHA and hCaptcha. They require API keys in order to be work correctly. They are disabled by default, but may be enabled by configuring the required API keys. When enabled, communication may occur between the service and CIDRAM or the user's browser. This may potentially involve communicating information such as the user's IP address, user agent, operating system, and other details available to the request.
 
 ##### 11.2.4 STOP FORUM SPAM
 
@@ -1991,4 +1991,4 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 ---
 
 
-Last Updated: 14 June 2025 (2025.06.14).
+Last Updated: 6 August 2025 (2025.08.06).

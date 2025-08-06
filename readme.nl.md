@@ -1051,7 +1051,7 @@ adjust
 ```
 
 #### "recaptcha" (Categorie)
-Configuratie voor ReCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
+Configuratie voor reCAPTCHA (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
 ##### "usemode" `[int]`
 - Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
@@ -1079,7 +1079,6 @@ usemode
 Zie ook:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
@@ -1087,7 +1086,6 @@ Zie ook:
 Zie ook:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
@@ -1137,7 +1135,7 @@ nonblocked_status_code
 ```
 
 #### "hcaptcha" (Categorie)
-Configuratie voor HCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
+Configuratie voor hCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
 ##### "usemode" `[int]`
 - Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
@@ -1562,7 +1560,7 @@ Origin: BB
 
 ##### 6.2.0 YAML BASICS
 
-Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA/hCAPTCHA te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
+Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA/hCaptcha te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
 
 Het gebruik van YAML markup in de signatuurbestanden is volledig optioneel (d.w.z., u kan het gebruiken als u wenst te doen, maar u bent niet verplicht om dit te doen), en is in staat om de meeste (maar niet alle) configuratie richtlijnen hefboomeffect.
 
@@ -1617,9 +1615,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCAPTCHA
+##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCaptcha
 
-Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA/hCAPTCHA, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
+Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA/hCaptcha, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1717,16 +1715,19 @@ Hieronder vindt u enkele veelvoorkomende variabelen die handig kunnen zijn voor 
 Variabele | Beschrijving
 ----|----
 `$this->BlockInfo['DateTime']` | De huidige datum en tijd.
-`$this->BlockInfo['IPAddr']` | IP-adres voor het huidige verzoek.
+`$this->BlockInfo['IPAddr']` | IP-adres voor de huidige verzoek.
+`$this->BlockInfo['IPAddrResolved']` | Als het IP-adres voor de huidige aanvraag een 6to4, Teredo, of ISATAP adres is, wordt dat adres omgezet naar het IPv4-equivalent. Indien dit niet het geval is, dan het IP-adres voor de huidige aanvraag.
 `$this->BlockInfo['ScriptIdent']` | CIDRAM-scriptversie.
-`$this->BlockInfo['Query']` | De vraag voor het huidige verzoek.
-`$this->BlockInfo['Referrer']` | De verwijzer voor het huidige verzoek (indien aanwezig).
-`$this->BlockInfo['UA']` | De user-agent voor het huidige verzoek.
-`$this->BlockInfo['UALC']` | De user-agent voor het huidige verzoek (in kleine letters).
-`$this->BlockInfo['ReasonMessage']` | Het bericht dat moet worden weergegeven aan de gebruiker/client voor het huidige verzoek als ze zijn geblokkeerd.
-`$this->BlockInfo['SignatureCount']` | Het aantal signatures dat is getriggerd voor het huidige verzoek.
-`$this->BlockInfo['Signatures']` | Referentie-informatie voor alle signatures die zijn getriggerd voor het huidige verzoek.
-`$this->BlockInfo['WhyReason']` | Referentie-informatie voor alle signatures die zijn getriggerd voor het huidige verzoek.
+`$this->BlockInfo['Query']` | De vraag voor de huidige verzoek.
+`$this->BlockInfo['Referrer']` | De verwijzer voor de huidige verzoek (indien aanwezig).
+`$this->BlockInfo['UA']` | De user-agent voor de huidige verzoek.
+`$this->BlockInfo['UALC']` | De user-agent voor de huidige verzoek (in kleine letters).
+`$this->BlockInfo['ReasonMessage']` | Het bericht dat moet worden weergegeven aan de gebruiker/client voor de huidige verzoek als ze zijn geblokkeerd.
+`$this->BlockInfo['SignatureCount']` | Het aantal signatures dat is getriggerd voor de huidige verzoek.
+`$this->BlockInfo['Signatures']` | Referentie-informatie voor alle signatures die zijn getriggerd voor de huidige verzoek.
+`$this->BlockInfo['WhyReason']` | Referentie-informatie voor alle signatures die zijn getriggerd voor de huidige verzoek.
+`$this->BlockInfo['Request_Method']` | De aanvraagmethode voor de huidige aanvraag.
+`$this->BlockInfo['Protocol']` | Het protocol voor de huidige aanvraag.
 
 ---
 
@@ -2172,7 +2173,7 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM ondersteunt reCAPTCHA en hCAPTCHA. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
+CIDRAM ondersteunt reCAPTCHA en hCaptcha. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2240,7 +2241,7 @@ Een geregistreerde blokgebeurtenis bevat meestal de volgende informatie:
 - Verwijzingen naar de redenen voor de blokgebeurtenis, en enkele standaard, gerelateerde foutopsporingsinformatie.
 - De user agent van het geblokkeerde verzoek (d.w.z., hoe de verzoekende entiteit zichzelf identificeerde bij het verzoek).
 - Een reconstructie van de identifier voor de oorspronkelijk aangevraagde bron.
-- De CAPTCHA state voor het huidige verzoek (indien relevant).
+- De CAPTCHA state voor de huidige verzoek (indien relevant).
 
 *De configuratie richtlijnen die verantwoordelijk zijn voor dit type loggen, en voor elk van de drie beschikbare indelingen, zijn:*
 - `logging` -> `apache_style_log`
@@ -2409,4 +2410,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 9 Juli 2025 (2025.07.09).
+Laatste Bijgewerkt: 6 Augustus 2025 (2025.08.06).

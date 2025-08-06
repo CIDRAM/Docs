@@ -1083,7 +1083,7 @@ adjust
 ```
 
 #### <div dir="rtl">"recaptcha" (قسم)<br /></div>
-<div dir="rtl">ReCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
+<div dir="rtl">reCAPTCHA کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
@@ -1111,7 +1111,6 @@ usemode
 <div dir="rtl">بھی دیکھو:<ul dir="rtl">
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/v3">reCAPTCHA v3</a></li>
 </ul></div>
 
 ##### <div dir="rtl">"secret" <code dir="ltr">[string]</code><br /></div>
@@ -1120,7 +1119,6 @@ usemode
 <div dir="rtl">بھی دیکھو:<ul dir="rtl">
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/v3">reCAPTCHA v3</a></li>
 </ul></div>
 
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
@@ -1175,7 +1173,7 @@ nonblocked_status_code
 ```
 
 #### <div dir="rtl">"hcaptcha" (قسم)<br /></div>
-<div dir="rtl">HCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
+<div dir="rtl">hCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
@@ -1665,9 +1663,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">۶.۲.۱ کس طرح "خاص نشان" reCAPTCHA/hCAPTCHA کے ساتھ استعمال کریں کے لیے دستخط قسموں<br /><br /></div>
+##### <div dir="rtl">۶.۲.۱ کس طرح "خاص نشان" reCAPTCHA/hCaptcha کے ساتھ استعمال کریں کے لیے دستخط قسموں<br /><br /></div>
 
-<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" reCAPTCHA/hCAPTCHA کے ساتھ استعمال کے لیے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لیے.<br /><br /></div>
+<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" reCAPTCHA/hCaptcha کے ساتھ استعمال کے لیے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لیے.<br /><br /></div>
 
 <pre dir="ltr">
 1.2.3.4/32 Deny Generic
@@ -1767,6 +1765,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ----|----
 &nbsp; <div dir="rtl" style="display:inline">موجودہ تاریخ اور وقت.</div> | `$this->BlockInfo['DateTime']`
 &nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لیے IP ایڈریس.</div> | `$this->BlockInfo['IPAddr']`
+&nbsp; <div dir="rtl" style="display:inline">اگر موجودہ درخواست کا IP پتہ 6to4، Teredo، یا ISATAP ایڈریس ہے، تو وہ پتہ اس کے IPv4 کے برابر ہو جائے گا. اگر نہیں، تو یہ موجودہ درخواست کا IP پتہ ہوگا.</div> | `$this->BlockInfo['IPAddrResolved']`
 &nbsp; <div dir="rtl" style="display:inline">CIDRAM سکرپٹ ورژن.</div> | `$this->BlockInfo['ScriptIdent']`
 &nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لیے سوال.</div> | `$this->BlockInfo['Query']`
 &nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کے لیے ریفرر (اگر ایک موجود ہے).</div> | `$this->BlockInfo['Referrer']`
@@ -1776,6 +1775,8 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 &nbsp; <div dir="rtl" style="display:inline">دستخط کی تعداد موجودہ درخواست کے لیے شروع ہوگئی ہے.</div> | `$this->BlockInfo['SignatureCount']`
 &nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لیے حوالہ کی معلومات موجودہ درخواست کے لیے تیار ہوئی.</div> | `$this->BlockInfo['Signatures']`
 &nbsp; <div dir="rtl" style="display:inline">کسی بھی دستخط کے لیے حوالہ کی معلومات موجودہ درخواست کے لیے تیار ہوئی.</div> | `$this->BlockInfo['WhyReason']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کی درخواست کا طریقہ.</div> | `$this->BlockInfo['Request_Method']`
+&nbsp; <div dir="rtl" style="display:inline">موجودہ درخواست کا پروٹوکول.</div> | `$this->BlockInfo['Protocol']`
 
 ---
 
@@ -2216,7 +2217,7 @@ modules: |
 
 ##### <div dir="rtl">۹.۲.۲ CAPTCHA<br /><br /></div>
 
-<div dir="rtl">reCAPTCHA اور hCAPTCHA پیکیج کے ذریعہ تعاون یافتہ ہیں. ان کو صحیح طریقے سے کام کرنے کے لیے API کیز کی ضرورت ہوتی ہے. وہ بطور ڈیفالٹ غیر فعال ہیں، لیکن مطلوبہ API چابیاں تشکیل دے کر ان کو فعال کیا جاسکتا ہے. جب فعال ہوجائے تو، خدمت اور CIDRAM یا صارف کے براؤزر کے مابین مواصلت ہوسکتی ہے. اس میں ممکنہ طور پر بات چیت کرنے والی معلومات شامل ہوسکتی ہے جیسے صارف کا آئی پی ایڈریس، صارف ایجنٹ، آپریٹنگ سسٹم، اور دیگر تفصیلات.<br /><br /></div>
+<div dir="rtl">reCAPTCHA اور hCaptcha پیکیج کے ذریعہ تعاون یافتہ ہیں. ان کو صحیح طریقے سے کام کرنے کے لیے API کیز کی ضرورت ہوتی ہے. وہ بطور ڈیفالٹ غیر فعال ہیں، لیکن مطلوبہ API چابیاں تشکیل دے کر ان کو فعال کیا جاسکتا ہے. جب فعال ہوجائے تو، خدمت اور CIDRAM یا صارف کے براؤزر کے مابین مواصلت ہوسکتی ہے. اس میں ممکنہ طور پر بات چیت کرنے والی معلومات شامل ہوسکتی ہے جیسے صارف کا آئی پی ایڈریس، صارف ایجنٹ، آپریٹنگ سسٹم، اور دیگر تفصیلات.<br /><br /></div>
 
 ##### <div dir="rtl">۹.۲.۳ STOP FORUM SPAM<br /><br /></div>
 
@@ -2478,4 +2479,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۹ جولائی ۲۰۲۵ (۲۰۲۵.۰۷.۰۹).</div>
+<div dir="rtl">آخری تازہ کاری: ۶ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۰۶).</div>

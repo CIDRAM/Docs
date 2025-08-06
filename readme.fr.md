@@ -1053,7 +1053,7 @@ adjust
 ```
 
 #### « recaptcha » (Catégorie)
-Configuration pour ReCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
+Configuration pour reCAPTCHA (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
 
 ##### « usemode » `[int]`
 - Quand faut-il offrir le CAPTCHA ? Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
@@ -1081,7 +1081,6 @@ usemode
 Voir également :
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### « secret » `[string]`
 - Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
@@ -1089,7 +1088,6 @@ Voir également :
 Voir également :
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### « expiry » `[float]`
 - Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
@@ -1140,7 +1138,7 @@ nonblocked_status_code
 ```
 
 #### « hcaptcha » (Catégorie)
-Configuration pour HCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
+Configuration pour hCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
 
 ##### « usemode » `[int]`
 - Quand faut-il offrir le CAPTCHA ? Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
@@ -1566,7 +1564,7 @@ Origin: BB
 
 ##### 6.2.0 BASES DE YAML
 
-Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec reCAPTCHA/hCAPTCHA ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
+Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec reCAPTCHA/hCaptcha ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
 
 L'utilisation de YAML dans les fichiers de signature est entièrement facultative (c'est à dire, vous pouvez l'utiliser si vous le souhaitez, mais vous n'êtes pas obligé de le faire), et est capable d'affecter la plupart (mais pas tout) les directives de configuration.
 
@@ -1621,9 +1619,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCAPTCHA
+##### 6.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCaptcha
 
-Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCAPTCHA, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
+Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCaptcha, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1722,6 +1720,7 @@ Variable | Description
 ----|----
 `$this->BlockInfo['DateTime']` | La date et l'heure actuelles.
 `$this->BlockInfo['IPAddr']` | L'adresse IP pour la requête actuelle.
+`$this->BlockInfo['IPAddrResolved']` | Si l'adresse IP pour la requête actuelle est une adresse 6to4, Teredo, ou ISATAP, cette adresse est résolue en son équivalent IPv4. Sinon, ce sera l'adresse IP pour la requête actuelle.
 `$this->BlockInfo['ScriptIdent']` | Version de CIDRAM.
 `$this->BlockInfo['Query']` | La « query » pour la requête actuelle.
 `$this->BlockInfo['Referrer']` | Le référent pour la requête actuelle (s'il existe).
@@ -1731,6 +1730,8 @@ Variable | Description
 `$this->BlockInfo['SignatureCount']` | Le nombre de signatures déclenchées pour la requête actuelle.
 `$this->BlockInfo['Signatures']` | Informations de référence pour toutes les signatures déclenchées pour la requête actuelle.
 `$this->BlockInfo['WhyReason']` | Informations de référence pour toutes les signatures déclenchées pour la requête actuelle.
+`$this->BlockInfo['Request_Method']` | La méthode de requête pour la requête actuelle.
+`$this->BlockInfo['Protocol']` | Le protocole pour la requête actuelle.
 
 ---
 
@@ -2174,7 +2175,7 @@ Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'e
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM prend en charge reCAPTCHA et hCAPTCHA. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
+CIDRAM prend en charge reCAPTCHA et hCaptcha. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2242,7 +2243,7 @@ Un événement blocage journalisé inclut généralement les informations suivan
 - Références aux raisons de l'événement de blocage et à certaines informations de débogage de base liées.
 - L'agent utilisateur de la requête bloquée (comment l'entité requérante s'est identifiée à la requête).
 - Une reconstruction de l'identifiant de la ressource initialement requêtée.
-- L'état CAPTCHA pour la requête en cours (le cas échéant).
+- L'état CAPTCHA pour la requête actuelle (le cas échéant).
 
 *Les directives de configuration responsables de ce type de journalisation, et pour chacun des trois formats disponibles, sont :*
 - `logging` -> `apache_style_log`
@@ -2409,4 +2410,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 9 Juillet 2025 (2025.07.09).
+Dernière mise à jour : 6 Août 2025 (2025.08.06).

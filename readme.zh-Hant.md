@@ -359,7 +359,7 @@ fields
 ├─Expired ("已過期")
 ├─Ignored ("忽略了")
 ├─Request_Method ("請求方法")
-├─Protocol ("協議")
+├─Protocol ("協定")
 ├─SEC_CH_UA_PLATFORM ("!! SEC_CH_UA_PLATFORM")
 ├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
 ├─SEC_CH_UA ("!! SEC_CH_UA")
@@ -1008,7 +1008,7 @@ adjust
 ```
 
 #### 『recaptcha』 （類別）
-ReCaptcha的配置（為人們提供了一種在受阻時重新獲得訪問權限的方法）。
+ReCAPTCHA的配置（為人們提供了一種在受阻時重新獲得訪問權限的方法）。
 
 ##### 『usemode』 `[int]`
 - 何時應提供CAPTCHA嗎？​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成CAPTCHA。​另請注意：CAPTCHA可以提供有用的保護層，防止機器人和各種惡意自動請求，但不會提供任何針對惡意人類的保護。
@@ -1036,7 +1036,6 @@ usemode
 也可以看看：
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### 『secret』 `[string]`
 - 可以在您的CAPTCHA服務的儀表板中找到該值。
@@ -1044,7 +1043,6 @@ usemode
 也可以看看：
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### 『expiry』 `[float]`
 - 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
@@ -1505,7 +1503,7 @@ Origin: BB
 
 ##### 6.2.0 YAML基本概念
 
-簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的reCAPTCHA/hCAPTCHA；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
+簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的reCAPTCHA/hCaptcha；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
 
 使用YAML標記在簽名文件是完全可選（即，​如果您想用這個，​您可以用這個，​但您沒有需要用這個），​和能夠利用最的（但不所有的）配置指令。
 
@@ -1560,9 +1558,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA
+##### 6.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha
 
-當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCAPTCHA，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
+當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1661,6 +1659,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ----|----
 `$this->BlockInfo['DateTime']` | 當前日期和時間。
 `$this->BlockInfo['IPAddr']` | 當前請求的IP地址。
+`$this->BlockInfo['IPAddrResolved']` | 如果目前請求的IP位址是6to4、Teredo、或ISATAP位址，則該位址將解析為其IPv4等效位址。​如果不是，它將是目前請求的IP位址。
 `$this->BlockInfo['ScriptIdent']` | CIDRAM腳本版本。
 `$this->BlockInfo['Query']` | 當前請求的查詢。
 `$this->BlockInfo['Referrer']` | 當前請求的引用者（如果存在）。
@@ -1670,6 +1669,8 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 `$this->BlockInfo['SignatureCount']` | 當前請求的觸發的簽名數量。
 `$this->BlockInfo['Signatures']` | 針對當前請求觸發的任何簽名的參考信息。
 `$this->BlockInfo['WhyReason']` | 針對當前請求觸發的任何簽名的參考信息。
+`$this->BlockInfo['Request_Method']` | 目前請求的請求方法。
+`$this->BlockInfo['Protocol']` | 當前請求的協定。
 
 ---
 
@@ -2097,7 +2098,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM支持reCAPTCHA和hCAPTCHA。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
+CIDRAM支持reCAPTCHA和hCaptcha。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
 
 ##### 9.2.3 STOP FORUM SPAM 【停止論壇垃圾郵件】
 
@@ -2334,4 +2335,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2025年7月9日。
+最後更新：2025年8月6日。

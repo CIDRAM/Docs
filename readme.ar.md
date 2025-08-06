@@ -1076,7 +1076,7 @@ adjust
 ```
 
 #### <div dir="rtl">"recaptcha" (التصنيف)<br /></div>
-<div dir="rtl">التكوين ل ReCaptcha (يوفر وسيلة للبشر لاستعادة الوصول عند حجبه).<br /><br /></div>
+<div dir="rtl">التكوين ل reCAPTCHA (يوفر وسيلة للبشر لاستعادة الوصول عند حجبه).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>متى يجب تقديم الCAPTCHA؟ ملاحظة: لا تحتاج الطلبات المدرجة في القائمة البيضاء أو التي تم التحقق منها والتي لم يتم حظرها إلى إكمال اختبار CAPTCHA. لاحظ أيضًا: يمكن أن توفر اختبارات CAPTCHA طبقة إضافية مفيدة من الحماية ضد الروبوتات وأنواع مختلفة من الطلبات الآلية الضارة، ولكنها لن توفر أي حماية ضد أي شخص ضار.</li></ul></div>
@@ -1104,7 +1104,6 @@ usemode
 <div dir="rtl">أنظر أيضا:<ul dir="rtl">
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/v3">reCAPTCHA v3</a></li>
 </ul></div>
 
 ##### <div dir="rtl">"secret" <code dir="ltr">[string]</code><br /></div>
@@ -1113,7 +1112,6 @@ usemode
 <div dir="rtl">أنظر أيضا:<ul dir="rtl">
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
 <li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/v3">reCAPTCHA v3</a></li>
 </ul></div>
 
 ##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
@@ -1166,7 +1164,7 @@ nonblocked_status_code
 ```
 
 #### <div dir="rtl">"hcaptcha" (التصنيف)<br /></div>
-<div dir="rtl">التكوين ل HCaptcha (يوفر وسيلة للبشر لاستعادة الوصول عند حجبه).<br /><br /></div>
+<div dir="rtl">التكوين ل hCaptcha (يوفر وسيلة للبشر لاستعادة الوصول عند حجبه).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>متى يجب تقديم الCAPTCHA؟ ملاحظة: لا تحتاج الطلبات المدرجة في القائمة البيضاء أو التي تم التحقق منها والتي لم يتم حظرها إلى إكمال اختبار CAPTCHA. لاحظ أيضًا: يمكن أن توفر اختبارات CAPTCHA طبقة إضافية مفيدة من الحماية ضد الروبوتات وأنواع مختلفة من الطلبات الآلية الضارة، ولكنها لن توفر أي حماية ضد أي شخص ضار.</li></ul></div>
@@ -1654,9 +1652,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">٦.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA/hCAPTCHA<br /><br /></div>
+##### <div dir="rtl">٦.٢.١ كيفية "تحمل علامة" أقسام توقيع للاستخدام مع reCAPTCHA/hCaptcha<br /><br /></div>
 
-<div dir="rtl">عندما "usemode" هو 2 أو 5، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA/hCAPTCHA، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
+<div dir="rtl">عندما "usemode" هو 2 أو 5، من أجل دلالة أقسام توقيع للاستخدام مع اختبار reCAPTCHA/hCaptcha، تشير إلى أن في YAML لهذا القسم التوقيع (راجع الأمثلة أدناه).<br /><br /></div>
 
 <pre dir="ltr">
 1.2.3.4/32 Deny Generic
@@ -1756,6 +1754,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ----|----
 &nbsp; <div dir="rtl" style="display:inline">التاريخ والوقت الحاليان.</div> | `$this->BlockInfo['DateTime']`
 &nbsp; <div dir="rtl" style="display:inline">عنوان IP للطلب الحالي.</div> | `$this->BlockInfo['IPAddr']`
+&nbsp; <div dir="rtl" style="display:inline">إذا كان عنوان IP للطلب الحالي هو عنوان 6to4 أو Teredo أو ISATAP، فسيتم حل هذا العنوان إلى نظيره IPv4. إذا لم يكن الأمر كذلك، فسيكون عنوان IP للطلب الحالي.</div> | `$this->BlockInfo['IPAddrResolved']`
 &nbsp; <div dir="rtl" style="display:inline">إصدار النص البرمجي CIDRAM.</div> | `$this->BlockInfo['ScriptIdent']`
 &nbsp; <div dir="rtl" style="display:inline">الاستعلام عن الطلب الحالي.</div> | `$this->BlockInfo['Query']`
 &nbsp; <div dir="rtl" style="display:inline">المحيل للطلب الحالي (إذا كان موجودا).</div> | `$this->BlockInfo['Referrer']`
@@ -1765,6 +1764,8 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 &nbsp; <div dir="rtl" style="display:inline">عدد التوقيعات التي أدت إلى الطلب الحالي.</div> | `$this->BlockInfo['SignatureCount']`
 &nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$this->BlockInfo['Signatures']`
 &nbsp; <div dir="rtl" style="display:inline">المعلومات المرجعية عن أي توقيعات أثارت للطلب الحالي.</div> | `$this->BlockInfo['WhyReason']`
+&nbsp; <div dir="rtl" style="display:inline">طريقة الطلب للطلب الحالي.</div> | `$this->BlockInfo['Request_Method']`
+&nbsp; <div dir="rtl" style="display:inline">بروتوكول الطلب الحالي.</div> | `$this->BlockInfo['Protocol']`
 
 ---
 
@@ -2205,7 +2206,7 @@ modules: |
 
 ##### <div dir="rtl">٩.٢.٢ CAPTCHA<br /><br /></div>
 
-<div dir="rtl">يتم دعم reCAPTCHA و hCAPTCHA بواسطة CIDRAM. تتطلب مفاتيح API لكي تعمل بشكل صحيح. يتم تعطيلها افتراضيًا، ولكن يمكن تمكينها عن طريق تكوين مفاتيح واجهة برمجة التطبيقات المطلوبة. عند التمكين، قد يحدث اتصال بين الخدمة و CIDRAM أو متصفح المستخدم. قد يتضمن ذلك نقل معلومات مثل عنوان IP للمستخدم ووكيل المستخدم ونظام التشغيل.<br /><br /></div>
+<div dir="rtl">يتم دعم reCAPTCHA و hCaptcha بواسطة CIDRAM. تتطلب مفاتيح API لكي تعمل بشكل صحيح. يتم تعطيلها افتراضيًا، ولكن يمكن تمكينها عن طريق تكوين مفاتيح واجهة برمجة التطبيقات المطلوبة. عند التمكين، قد يحدث اتصال بين الخدمة و CIDRAM أو متصفح المستخدم. قد يتضمن ذلك نقل معلومات مثل عنوان IP للمستخدم ووكيل المستخدم ونظام التشغيل.<br /><br /></div>
 
 ##### <div dir="rtl">٩.٢.٣ STOP FORUM SPAM<br /><br /></div>
 
@@ -2467,4 +2468,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٩ يوليو ٢٠٢٥ (٢٠٢٥.٠٧.٠٩).</div>
+<div dir="rtl">آخر تحديث: ٦ أغسطس ٢٠٢٥ (٢٠٢٥.٠٨.٠٦).</div>

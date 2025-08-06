@@ -1051,7 +1051,7 @@ adjust
 ```
 
 #### "recaptcha" (Kategori)
-Konfigurasi untuk ReCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
+Konfigurasi untuk reCAPTCHA (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
 
 ##### "usemode" `[int]`
 - Kapan CAPTCHA harus ditawarkan? Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
@@ -1079,7 +1079,6 @@ usemode
 Lihat juga:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
@@ -1087,7 +1086,6 @@ Lihat juga:
 Lihat juga:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
@@ -1137,7 +1135,7 @@ nonblocked_status_code
 ```
 
 #### "hcaptcha" (Kategori)
-Konfigurasi untuk HCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
+Konfigurasi untuk hCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
 
 ##### "usemode" `[int]`
 - Kapan CAPTCHA harus ditawarkan? Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
@@ -1562,7 +1560,7 @@ Origin: BB
 
 ##### 6.2.0 DASAR-DASAR YAML
 
-Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
+Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
 
 Penggunaan YAML markup dalam file tanda tangan sepenuhnya opsional (yaitu, Anda dapat menggunakannya jika Anda ingin melakukannya, tapi Anda tidak diharuskan untuk melakukannya), dan mampu memanfaatkan kebanyakan (tapi tidak semua) direktif konfigurasi.
 
@@ -1617,9 +1615,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCAPTCHA
+##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCaptcha
 
-Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCAPTCHA, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
+Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1718,6 +1716,7 @@ Variabel | Deskripsi
 ----|----
 `$this->BlockInfo['DateTime']` | Tanggal dan waktu sekarang.
 `$this->BlockInfo['IPAddr']` | Alamat IP untuk permintaan saat ini.
+`$this->BlockInfo['IPAddrResolved']` | Jika alamat IP untuk permintaan saat ini adalah alamat 6to4, Teredo, atau ISATAP, alamat tersebut diselesaikan ke padanan IPv4-nya. Jika tidak, maka alamat IP untuk permintaan saat ini.
 `$this->BlockInfo['ScriptIdent']` | Versi skrip CIDRAM.
 `$this->BlockInfo['Query']` | "Query" untuk permintaan saat ini.
 `$this->BlockInfo['Referrer']` | Perujuk untuk permintaan saat ini (jika ada).
@@ -1727,6 +1726,8 @@ Variabel | Deskripsi
 `$this->BlockInfo['SignatureCount']` | Jumlah tanda tangan dipicu untuk permintaan saat ini.
 `$this->BlockInfo['Signatures']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
 `$this->BlockInfo['WhyReason']` | Informasi referensi untuk tanda tangan yang dipicu untuk permintaan saat ini.
+`$this->BlockInfo['Request_Method']` | Metode permintaan untuk permintaan saat ini.
+`$this->BlockInfo['Protocol']` | Protokol untuk permintaan saat ini.
 
 ---
 
@@ -2163,7 +2164,7 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM mendukung reCAPTCHA dan hCAPTCHA. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
+CIDRAM mendukung reCAPTCHA dan hCaptcha. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2392,4 +2393,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 9 Juli 2025 (2025.07.09).
+Terakhir Diperbarui: 6 Agustus 2025 (2025.08.06).

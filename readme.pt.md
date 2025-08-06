@@ -1050,7 +1050,7 @@ adjust
 ```
 
 #### "recaptcha" (Categoria)
-Configuração para ReCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
+Configuração para reCAPTCHA (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
 
 ##### "usemode" `[int]`
 - Quando o CAPTCHA deve ser oferecido? Nota: Solicitações na lista branca ou verificadas e não bloqueadas nunca precisam completar um CAPTCHA. Também: Os CAPTCHAs podem fornecer uma camada de proteção útil contra bots e vários tipos de solicitações automatizadas e maliciosas, mas não fornecerão nenhuma proteção contra humanos maliciosas.
@@ -1078,7 +1078,6 @@ usemode
 Veja também:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - Este valor pode ser encontrado no painel do seu serviço CAPTCHA.
@@ -1086,7 +1085,6 @@ Veja também:
 Veja também:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - Número de horas para lembrar instâncias CAPTCHA. Padrão = 720 (1 mês).
@@ -1136,7 +1134,7 @@ nonblocked_status_code
 ```
 
 #### "hcaptcha" (Categoria)
-Configuração para HCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
+Configuração para hCaptcha (fornece uma maneira para os humanos recuperarem o acesso quando bloqueados).
 
 ##### "usemode" `[int]`
 - Quando o CAPTCHA deve ser oferecido? Nota: Solicitações na lista branca ou verificadas e não bloqueadas nunca precisam completar um CAPTCHA. Também: Os CAPTCHAs podem fornecer uma camada de proteção útil contra bots e vários tipos de solicitações automatizadas e maliciosas, mas não fornecerão nenhuma proteção contra humanos maliciosas.
@@ -1561,7 +1559,7 @@ Origin: BB
 
 ##### 6.2.0 YAML BÁSICOS
 
-Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCAPTCHA; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
+Uma forma simplificada de marcação YAML pode ser usado em arquivos de assinatura com a finalidade de definir comportamentos e configurações específicas para as seções de assinaturas individuais. Isto pode ser útil se você quiser que o valor de suas diretivas de configuração para diferir na base de assinaturas individuais e seções de assinatura (por exemplo; se você quiser fornecer um endereço de e-mail para tickets de suporte para quaisquer usuários bloqueados por uma assinatura específica, mas não quer fornecer um endereço de e-mail para tickets de suporte para usuários bloqueados por quaisquer outras assinaturas; se você quiser algumas assinaturas específicas para provocar um redirecionamento página; se você quiser marcar uma seção de assinaturas para uso com reCAPTCHA/hCaptcha; Se você quiser registrar tentativas de acesso bloqueadas para separar arquivos na base de assinaturas individuais e/ou seções de assinatura).
 
 Uso de marcação YAML nos arquivos de assinatura é totalmente opcional (isto é, você pode usá-lo se desejar fazê-lo, mas você não é obrigado a fazê-lo), e é capaz de alavancar mais (mas nem todos) das diretivas de configuração.
 
@@ -1616,9 +1614,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCAPTCHA
+##### 6.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM reCAPTCHA/hCaptcha
 
-Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com reCAPTCHA/hCAPTCHA, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
+Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com reCAPTCHA/hCaptcha, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1717,6 +1715,7 @@ Variável | Descrição
 ----|----
 `$this->BlockInfo['DateTime']` | A data e a hora atuais.
 `$this->BlockInfo['IPAddr']` | O endereço IP para a solicitação atual.
+`$this->BlockInfo['IPAddrResolved']` | Se o endereço IP da solicitação atual for um endereço 6to4, Teredo, ou ISATAP, esse endereço será resolvido para seu equivalente IPv4. Caso contrário, o endereço IP para a solicitação atual.
 `$this->BlockInfo['ScriptIdent']` | Versão do CIDRAM.
 `$this->BlockInfo['Query']` | A consulta para a solicitação atual.
 `$this->BlockInfo['Referrer']` | O referente para a solicitação atual (se houver).
@@ -1726,6 +1725,8 @@ Variável | Descrição
 `$this->BlockInfo['SignatureCount']` | O número de assinaturas desencadeadas para a solicitação atual.
 `$this->BlockInfo['Signatures']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
 `$this->BlockInfo['WhyReason']` | Informações de referência para qualquer assinatura desencadeada para a solicitação atual.
+`$this->BlockInfo['Request_Method']` | O método de solicitação para a solicitação atual.
+`$this->BlockInfo['Protocol']` | O protocolo para a solicitação atual.
 
 ---
 
@@ -2163,7 +2164,7 @@ Quando a verificação dos motores de busca é ativada, o CIDRAM tenta executar 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM oferece suporte a reCAPTCHA e hCAPTCHA. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
+CIDRAM oferece suporte a reCAPTCHA e hCaptcha. Eles requerem chaves de API para funcionar corretamente. Eles são desativados por padrão, mas podem ser ativados configurando as chaves API necessárias. Quando ativado, a comunicação pode ocorrer entre o serviço e o CIDRAM ou o navegador do usuário. Isso pode envolver a comunicação de informações como o endereço IP do usuário, agente do usuário, sistema operacional, e outros detalhes disponíveis para a solicitação.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2394,4 +2395,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 9 de Julho de 2025 (2025.07.09).
+Última Atualização: 6 de Agosto de 2025 (2025.08.06).

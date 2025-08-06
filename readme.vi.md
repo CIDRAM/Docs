@@ -1064,7 +1064,7 @@ adjust
 ```
 
 #### "recaptcha" (Thể loại)
-Cấu hình cho ReCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
+Cấu hình cho reCAPTCHA (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
 
 ##### "usemode" `[int]`
 - Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA. Cũng lưu ý: CAPTCHA có thể cung cấp một lớp bảo vệ bổ sung, hữu ích chống lại bot và các loại yêu cầu tự động độc hại khác nhau, nhưng sẽ không cung cấp bất kỳ biện pháp bảo vệ nào chống lại con người độc hại.
@@ -1092,7 +1092,6 @@ usemode
 Xem thêm:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "secret" `[string]`
 - Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
@@ -1100,7 +1099,6 @@ Xem thêm:
 Xem thêm:
 - [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
 - [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-- [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
 
 ##### "expiry" `[float]`
 - Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
@@ -1152,7 +1150,7 @@ nonblocked_status_code
 ```
 
 #### "hcaptcha" (Thể loại)
-Cấu hình cho HCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
+Cấu hình cho hCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
 
 ##### "usemode" `[int]`
 - Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA. Cũng lưu ý: CAPTCHA có thể cung cấp một lớp bảo vệ bổ sung, hữu ích chống lại bot và các loại yêu cầu tự động độc hại khác nhau, nhưng sẽ không cung cấp bất kỳ biện pháp bảo vệ nào chống lại con người độc hại.
@@ -1579,7 +1577,7 @@ Origin: BB
 
 ##### 6.2.0 YAML CƠ BẢN
 
-Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
+Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCaptcha; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
 
 Sử dụng YAML trong các tập tin chữ ký là không bắt buộc (có nghĩa là, bạn có thể sử dụng nó nếu bạn muốn làm như vậy, nhưng bạn không cần phải làm như vậy), và có thể tận dụng nhiều nhất (nhưng không phải tất cả) tùy chọn cấu hình.
 
@@ -1634,9 +1632,9 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCAPTCHA
+##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCaptcha
 
-Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCAPTCHA, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
+Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCaptcha, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
 ```
 1.2.3.4/32 Deny Generic
@@ -1735,6 +1733,7 @@ Biến | Chi tiết
 ----|----
 `$this->BlockInfo['DateTime']` | Ngày hiện tại và thời gian.
 `$this->BlockInfo['IPAddr']` | Địa chỉ IP cho yêu cầu hiện tại.
+`$this->BlockInfo['IPAddrResolved']` | Nếu địa chỉ IP cho yêu cầu hiện tại là địa chỉ 6to4, Teredo, hoặc ISATAP, thì địa chỉ đó sẽ được phân giải thành địa chỉ IPv4 tương đương. Nếu không, thì đó sẽ là địa chỉ IP cho yêu cầu hiện tại.
 `$this->BlockInfo['ScriptIdent']` | Phiên bản kịch bản CIDRAM.
 `$this->BlockInfo['Query']` | Truy vấn (query) cho yêu cầu hiện tại.
 `$this->BlockInfo['Referrer']` | Người giới thiệu (referrer) cho yêu cầu hiện tại (nếu có).
@@ -1744,6 +1743,8 @@ Biến | Chi tiết
 `$this->BlockInfo['SignatureCount']` | Số chữ ký kích hoạt cho yêu cầu hiện tại.
 `$this->BlockInfo['Signatures']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
 `$this->BlockInfo['WhyReason']` | Thông tin tham khảo cho bất kỳ chữ ký nào được kích hoạt cho yêu cầu hiện tại.
+`$this->BlockInfo['Request_Method']` | Phương thức yêu cầu cho yêu cầu hiện tại.
+`$this->BlockInfo['Protocol']` | Giao thức cho yêu cầu hiện tại.
 
 ---
 
@@ -2177,7 +2178,7 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM hỗ trợ reCAPTCHA và hCAPTCHA. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
+CIDRAM hỗ trợ reCAPTCHA và hCaptcha. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2406,4 +2407,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.07.09.
+Lần cuối cập nhật: 2025.08.06.
