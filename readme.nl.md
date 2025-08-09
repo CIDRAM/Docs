@@ -225,6 +225,7 @@ Configuratie (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Configuratie (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -875,7 +877,7 @@ Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoege
 - Maximum aantal frontend-inlogpogingen. Standaard = 5.
 
 ##### "theme" `[string]`
-- Standaard thema om te gebruiken voor de frontend.
+- Het thema dat voor de frontend gebruikt moet worden.
 
 ```
 theme
@@ -888,6 +890,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Anders
+```
+
+##### "theme_mode" `[string]`
+- De modus voor het thema dat voor de frontend gebruikt moet worden.
+
+```
+theme_mode
+├─normal ("Normaal")
+└─inverted ("Omgekeerd")
 ```
 
 ##### "magnification" `[float]`
@@ -1103,8 +1114,8 @@ Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoege
 
 ```
 api
-├─V2 ("V2 (Selectievakje)")
-└─Invisible ("V2 (Onzichtbaar)")
+├─v2 ("v2 (Selectievakje)")
+└─Invisible ("v2 (Onzichtbaar)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1185,8 +1196,8 @@ Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoege
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Onzichtbaar)")
+├─v1 ("v1")
+└─Invisible ("v1 (Onzichtbaar)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1229,7 +1240,7 @@ Configuratie voor wettelijke vereisten.
 Configuratie voor sjablonen en thema's.
 
 ##### "theme" `[string]`
-- Standaard thema om te gebruiken voor CIDRAM.
+- Het thema dat gebruikt moet worden voor blokgebeurtenissen en CAPTCHA-verzoeken.
 
 ```
 theme
@@ -1242,6 +1253,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Anders
+```
+
+##### "theme_mode" `[string]`
+- De modus voor het thema dat gebruikt moet worden voor blokgebeurtenissen en CAPTCHA-verzoeken.
+
+```
+theme_mode
+├─normal ("Normaal")
+└─inverted ("Omgekeerd")
 ```
 
 ##### "magnification" `[float]`
@@ -1377,7 +1397,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2410,4 +2429,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 6 Augustus 2025 (2025.08.06).
+Laatste Bijgewerkt: 9 Augustus 2025 (2025.08.09).

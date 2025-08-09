@@ -225,6 +225,7 @@ Konfiguration (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Konfiguration (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -875,7 +877,7 @@ Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinfo
 - Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
 
 ##### „theme“ `[string]`
-- Standard-Thema für das Front-End zu verwenden.
+- Thema für das Front-End zu verwenden.
 
 ```
 theme
@@ -888,6 +890,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Andere
+```
+
+##### „theme_mode“ `[string]`
+- Der Modus für das Thema für das Front-End zu verwenden.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Invertiert")
 ```
 
 ##### „magnification“ `[float]`
@@ -1106,8 +1117,8 @@ Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinfo
 
 ```
 api
-├─V2 ("V2 (Kontrollkästchen)")
-└─Invisible ("V2 (Unsichtbar)")
+├─v2 ("v2 (Kontrollkästchen)")
+└─Invisible ("v2 (Unsichtbar)")
 ```
 
 ##### „show_cookie_warning“ `[bool]`
@@ -1189,8 +1200,8 @@ Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinfo
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Unsichtbar)")
+├─v1 ("v1")
+└─Invisible ("v1 (Unsichtbar)")
 ```
 
 ##### „show_cookie_warning“ `[bool]`
@@ -1234,7 +1245,7 @@ Konfiguration für gesetzliche Anforderungen.
 Konfiguration für Vorlagen und Themen.
 
 ##### „theme“ `[string]`
-- Standard-Thema für CIDRAM zu verwenden.
+- Thema für Blockereignisse und CAPTCHA-Anfragen zu verwenden.
 
 ```
 theme
@@ -1247,6 +1258,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Andere
+```
+
+##### „theme_mode“ `[string]`
+- Der Modus für das Thema für Blockereignisse und CAPTCHA-Anfragen zu verwenden.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Invertiert")
 ```
 
 ##### „magnification“ `[float]`
@@ -1382,7 +1402,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2415,4 +2434,4 @@ Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dok
 ---
 
 
-Zuletzt aktualisiert: 6. August 2025 (2025.08.06).
+Zuletzt aktualisiert: 9. August 2025 (2025.08.09).

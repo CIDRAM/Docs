@@ -225,6 +225,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -859,7 +861,7 @@ log_rotation_action
 - ログイン試行の最大回数（フロントエンド）。 Default/デフォルルト = ５。
 
 ##### "theme" `[string]`
-- フロントエンドに使用するデフォルト・テーマ。
+- フロントエンドに使用するテーマ。
 
 ```
 theme
@@ -872,6 +874,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…その他
+```
+
+##### "theme_mode" `[string]`
+- フロントエンドに使用するテーマのモード。
+
+```
+theme_mode
+├─normal ("普通")
+└─inverted ("反転")
 ```
 
 ##### "magnification" `[float]`
@@ -1082,8 +1093,8 @@ usemode
 
 ```
 api
-├─V2 ("V2 (チェックボックス)")
-└─Invisible ("V2 (インビジブル)")
+├─v2 ("v2 (チェックボックス)")
+└─Invisible ("v2 (インビジブル)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1163,8 +1174,8 @@ usemode
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (インビジブル)")
+├─v1 ("v1")
+└─Invisible ("v1 (インビジブル)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1206,7 +1217,7 @@ nonblocked_status_code
 テンプレートとテーマの設定。
 
 ##### "theme" `[string]`
-- CIDRAMに使用するデフォルト・テーマ。
+- ブロック・イベントとキャプチャ・リクエストに使用するテーマ。
 
 ```
 theme
@@ -1219,6 +1230,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…その他
+```
+
+##### "theme_mode" `[string]`
+- ブロック・イベントとキャプチャ・リクエストに使用するテーマのモード。
+
+```
+theme_mode
+├─normal ("普通")
+└─inverted ("反転")
 ```
 
 ##### "magnification" `[float]`
@@ -1354,7 +1374,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2368,4 +2387,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年８月６日。
+最終アップデート：２０２５年８月９日。

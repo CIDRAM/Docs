@@ -225,6 +225,7 @@ Cấu hình (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Cấu hình (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -885,7 +887,7 @@ Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ và
 - Số lượng tối đa cố gắng đăng nhập front-end. Mặc định = 5.
 
 ##### "theme" `[string]`
-- Chủ đề mặc định để sử dụng cho front-end.
+- Chủ đề sẽ được sử dụng cho front-end.
 
 ```
 theme
@@ -898,6 +900,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Khác
+```
+
+##### "theme_mode" `[string]`
+- Chế độ cho chủ đề sẽ được sử dụng cho front-end.
+
+```
+theme_mode
+├─normal ("Bình thường")
+└─inverted ("Nghịch đảo")
 ```
 
 ##### "magnification" `[float]`
@@ -1116,8 +1127,8 @@ Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ và
 
 ```
 api
-├─V2 ("V2 (Hộp kiểm)")
-└─Invisible ("V2 (Vô hình)")
+├─v2 ("v2 (Hộp kiểm)")
+└─Invisible ("v2 (Vô hình)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1200,8 +1211,8 @@ Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ và
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Vô hình)")
+├─v1 ("v1")
+└─Invisible ("v1 (Vô hình)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1246,7 +1257,7 @@ Cấu hình cho các yêu cầu pháp lý.
 Cấu hình cho mẫu và chủ đề.
 
 ##### "theme" `[string]`
-- Chủ đề mặc định để sử dụng cho CIDRAM.
+- Chủ đề sẽ được sử dụng cho các sự kiện chặn và yêu cầu CAPTCHA.
 
 ```
 theme
@@ -1259,6 +1270,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Khác
+```
+
+##### "theme_mode" `[string]`
+- Chế độ cho chủ đề sẽ được sử dụng cho các sự kiện chặn và yêu cầu CAPTCHA.
+
+```
+theme_mode
+├─normal ("Bình thường")
+└─inverted ("Nghịch đảo")
 ```
 
 ##### "magnification" `[float]`
@@ -1394,7 +1414,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2407,4 +2426,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.08.06.
+Lần cuối cập nhật: 2025.08.09.

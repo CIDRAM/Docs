@@ -231,6 +231,7 @@ $CIDRAM->view();
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -278,6 +279,7 @@ $CIDRAM->view();
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -743,8 +745,8 @@ statistics
 ├─Blocked-IPv4 ("الطلبات المحظورة – IPv4")
 ├─Blocked-IPv6 ("الطلبات المحظورة – IPv6")
 ├─Blocked-Other ("الطلبات المحظورة – آخر")
-├─Banned-IPv4 ("طلبات محظورة  – IPv4")
-├─Banned-IPv6 ("طلبات محظورة  – IPv6")
+├─Banned-IPv4 ("طلبات محظورة – IPv4")
+├─Banned-IPv6 ("طلبات محظورة – IPv6")
 ├─Passed-IPv4 ("مرت الطلبات – IPv4")
 ├─Passed-IPv6 ("مرت الطلبات – IPv6")
 ├─Passed-Other ("مرت الطلبات – آخر")
@@ -894,7 +896,7 @@ log_rotation_action
 <div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
 
 ##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>الموضوع الافتراضي الذي سيتم استخدامه للواجهة الأمامية.</li></ul></div>
+<div dir="rtl"><ul><li>الموضوع الذي سيتم استخدامه للواجهة الأمامية.</li></ul></div>
 
 ```
 theme
@@ -907,6 +909,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…آخر
+```
+
+##### <div dir="rtl">"theme_mode" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الوضع الذي سيتم استخدامه للموضوع في الواجهة الأمامية.</li></ul></div>
+
+```
+theme_mode
+├─normal ("طبيعي")
+└─inverted ("معكوس")
 ```
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
@@ -1130,8 +1141,8 @@ usemode
 
 ```
 api
-├─V2 ("V2 (خانة اختيار)")
-└─Invisible ("V2 (غير مرئى)")
+├─v2 ("v2 (خانة اختيار)")
+└─Invisible ("v2 (غير مرئى)")
 ```
 
 ##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
@@ -1216,8 +1227,8 @@ usemode
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (غير مرئى)")
+├─v1 ("v1")
+└─Invisible ("v1 (غير مرئى)")
 ```
 
 ##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
@@ -1262,7 +1273,7 @@ nonblocked_status_code
 <div dir="rtl">التكوين للقوالب والسمات.<br /><br /></div>
 
 ##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>الموضوع الافتراضي لاستخدام CIDRAM.</li></ul></div>
+<div dir="rtl"><ul><li>الموضوع الذي سيتم استخدامه لأحداث الحظر وطلبات CAPTCHA.</li></ul></div>
 
 ```
 theme
@@ -1275,6 +1286,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…آخر
+```
+
+##### <div dir="rtl">"theme_mode" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>الوضع للموضوع الذي سيتم استخدامه لأحداث الحظر وطلبات CAPTCHA.</li></ul></div>
+
+```
+theme_mode
+├─normal ("طبيعي")
+└─inverted ("معكوس")
 ```
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
@@ -1410,7 +1430,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2468,4 +2487,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ٦ أغسطس ٢٠٢٥ (٢٠٢٥.٠٨.٠٦).</div>
+<div dir="rtl">آخر تحديث: ٩ أغسطس ٢٠٢٥ (٢٠٢٥.٠٨.٠٩).</div>

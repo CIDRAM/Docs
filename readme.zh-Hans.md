@@ -225,6 +225,7 @@ $CIDRAM->view();
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ $CIDRAM->view();
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -845,7 +847,7 @@ log_rotation_action
 - 最大前端登录尝试次数。 标准 = 5。
 
 ##### “theme” `[string]`
-- 用于前端的默认主题。
+- 用于前端的主题。
 
 ```
 theme
@@ -858,6 +860,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…其他
+```
+
+##### “theme_mode” `[string]`
+- 用于前端的主题模式。
+
+```
+theme_mode
+├─normal ("普通的")
+└─inverted ("倒置的")
 ```
 
 ##### “magnification” `[float]`
@@ -1060,8 +1071,8 @@ usemode
 
 ```
 api
-├─V2 ("V2 (选框)")
-└─Invisible ("V2 (不可见的)")
+├─v2 ("v2 (选框)")
+└─Invisible ("v2 (不可见的)")
 ```
 
 ##### “show_cookie_warning” `[bool]`
@@ -1135,8 +1146,8 @@ usemode
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (不可见的)")
+├─v1 ("v1")
+└─Invisible ("v1 (不可见的)")
 ```
 
 ##### “show_cookie_warning” `[bool]`
@@ -1172,7 +1183,7 @@ nonblocked_status_code
 模板和主题的配置。
 
 ##### “theme” `[string]`
-- 用于CIDRAM的默认主题。
+- 用于阻止事件和CAPTCHA请求的主题。
 
 ```
 theme
@@ -1185,6 +1196,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…其他
+```
+
+##### “theme_mode” `[string]`
+- 用于阻止事件和CAPTCHA请求的主题模式。
+
+```
+theme_mode
+├─normal ("普通的")
+└─inverted ("倒置的")
 ```
 
 ##### “magnification” `[float]`
@@ -1320,7 +1340,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2337,4 +2356,4 @@ v4目前不存在。​不过，当从v3升级到v4时，升级过程应该会�
 ---
 
 
-最后更新：2025年8月6日。
+最后更新：2025年8月9日。

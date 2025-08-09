@@ -225,6 +225,7 @@ Konfigurasi (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Konfigurasi (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -875,7 +877,7 @@ Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file l
 - Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
 
 ##### "theme" `[string]`
-- Tema default yang digunakan untuk front-end.
+- Tema yang akan digunakan untuk front-end.
 
 ```
 theme
@@ -888,6 +890,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Lain
+```
+
+##### "theme_mode" `[string]`
+- Mode untuk tema yang akan digunakan untuk front-end.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Terbalik")
 ```
 
 ##### "magnification" `[float]`
@@ -1103,8 +1114,8 @@ Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file l
 
 ```
 api
-├─V2 ("V2 (Kotak centang)")
-└─Invisible ("V2 (Tak terlihat)")
+├─v2 ("v2 (Kotak centang)")
+└─Invisible ("v2 (Tak terlihat)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1185,8 +1196,8 @@ Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file l
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Tak terlihat)")
+├─v1 ("v1")
+└─Invisible ("v1 (Tak terlihat)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1229,7 +1240,7 @@ Konfigurasi untuk persyaratan hukum.
 Konfigurasi untuk template dan tema.
 
 ##### "theme" `[string]`
-- Tema default yang digunakan untuk CIDRAM.
+- Tema yang akan digunakan untuk acara blokir dan permintaan CAPTCHA.
 
 ```
 theme
@@ -1242,6 +1253,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Lain
+```
+
+##### "theme_mode" `[string]`
+- Mode untuk tema yang akan digunakan untuk acara blokir dan permintaan CAPTCHA.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Terbalik")
 ```
 
 ##### "magnification" `[float]`
@@ -1377,7 +1397,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2393,4 +2412,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 6 Agustus 2025 (2025.08.06).
+Terakhir Diperbarui: 9 Agustus 2025 (2025.08.09).

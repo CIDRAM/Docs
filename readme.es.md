@@ -225,6 +225,7 @@ Configuración (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Configuración (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -875,7 +877,7 @@ Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los ar
 - Número máximo de intentos de login al front-end. Predefinido = 5.
 
 ##### "theme" `[string]`
-- Tema predefinido a utilizar para el front-end.
+- El tema a utilizar para el front-end.
 
 ```
 theme
@@ -888,6 +890,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Otro
+```
+
+##### "theme_mode" `[string]`
+- El modo para el tema a utilizar para el front-end.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Invertido")
 ```
 
 ##### "magnification" `[float]`
@@ -1103,8 +1114,8 @@ Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los ar
 
 ```
 api
-├─V2 ("V2 (Casilla de verificación)")
-└─Invisible ("V2 (Invisible)")
+├─v2 ("v2 (Casilla de verificación)")
+└─Invisible ("v2 (Invisible)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1185,8 +1196,8 @@ Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los ar
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Invisible)")
+├─v1 ("v1")
+└─Invisible ("v1 (Invisible)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1229,7 +1240,7 @@ Configuración para requisitos legales.
 Configuración para plantillas y temas.
 
 ##### "theme" `[string]`
-- Tema predefinido a utilizar para CIDRAM.
+- El tema a utilizar para los eventos de bloque y las solicitudes de CAPTCHA.
 
 ```
 theme
@@ -1242,6 +1253,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Otro
+```
+
+##### "theme_mode" `[string]`
+- El modo para el tema a utilizar para los eventos de bloque y las solicitudes de CAPTCHA.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Invertido")
 ```
 
 ##### "magnification" `[float]`
@@ -1377,7 +1397,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2400,4 +2419,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 6 de Agosto de 2025 (2025.08.06).
+Última Actualización: 9 de Agosto de 2025 (2025.08.09).

@@ -225,6 +225,7 @@ $CIDRAM->view();
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ $CIDRAM->view();
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -911,7 +913,7 @@ log_rotation_action
 - Максимальное количество попыток входа в систему фронтенда. Стандарт = 5.
 
 ##### «theme» `[string]`
-- Стандартная тема для фронтенда.
+- Тема, которая будет использоваться для фронтенда.
 
 ```
 theme
@@ -924,6 +926,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Другие
+```
+
+##### «theme_mode» `[string]`
+- Режим для тема, которая будет использоваться для фронтенда.
+
+```
+theme_mode
+├─normal ("Нормальный")
+└─inverted ("Перевернутый")
 ```
 
 ##### «magnification» `[float]`
@@ -1150,8 +1161,8 @@ usemode
 
 ```
 api
-├─V2 ("V2 (Флажок)")
-└─Invisible ("V2 (Невидимый)")
+├─v2 ("v2 (Флажок)")
+└─Invisible ("v2 (Невидимый)")
 ```
 
 ##### «show_cookie_warning» `[bool]`
@@ -1241,8 +1252,8 @@ usemode
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Невидимый)")
+├─v1 ("v1")
+└─Invisible ("v1 (Невидимый)")
 ```
 
 ##### «show_cookie_warning» `[bool]`
@@ -1294,7 +1305,7 @@ nonblocked_status_code
 Конфигурация для шаблонов и темов.
 
 ##### «theme» `[string]`
-- Стандартная тема для CIDRAM.
+- Тема, которая будет использоваться для событий блокировки и запросов CAPTCHA.
 
 ```
 theme
@@ -1307,6 +1318,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Другие
+```
+
+##### «theme_mode» `[string]`
+- Режим для тема, которая будет использоваться для событий блокировки и запросов CAPTCHA.
+
+```
+theme_mode
+├─normal ("Нормальный")
+└─inverted ("Перевернутый")
 ```
 
 ##### «magnification» `[float]`
@@ -1442,7 +1462,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2459,4 +2478,4 @@ CIDRAM v4 еще не существует. Однако, когда приде�
 ---
 
 
-Последнее обновление: 6 Августа 2025 г (2025.08.06).
+Последнее обновление: 9 Августа 2025 г (2025.08.09).

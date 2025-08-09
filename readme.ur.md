@@ -231,6 +231,7 @@ $CIDRAM->view();
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -278,6 +279,7 @@ $CIDRAM->view();
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -900,7 +902,7 @@ log_rotation_action
 <div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
 
 ##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>فرنٹ اینڈ کے لیے استعمال کرنے کے لیے ڈیفالٹ تھیم.</li></ul></div>
+<div dir="rtl"><ul><li>فرنٹ اینڈ کے لیے استعمال کرنے والی تھیم.</li></ul></div>
 
 ```
 theme
@@ -913,6 +915,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…دیگر
+```
+
+##### <div dir="rtl">"theme_mode" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>فرنٹ اینڈ کے لیے استعمال کرنے والی تھیم کے لیے موڈ.</li></ul></div>
+
+```
+theme_mode
+├─normal ("نارمل")
+└─inverted ("الٹا")
 ```
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
@@ -949,7 +960,7 @@ shorthand
 ├─Banned ("³ کالعدم")
 ├─BadIP ("³ غلط IP")
 ├─RL ("³ ریٹ محدود")
-├─Conflict ("³ تنازعہ")
+├─Conflict ("³ تنازع")
 └─Other ("⁴ دیگر")
 ```
 
@@ -993,7 +1004,7 @@ conflict_response
 │ وہ بے نظیر ہیں، یا چوکس رہنے کے لیے (کبھی
 │ کبھار جھوٹے مثبت ہونے کے خطرے میں)، دوسرے
 │ دستیاب اختیارات میں سے ایک کا انتخاب کریں.
-├─409 (409 Conflict (تنازعہ)): وسائل کے تنازعات کے لیے تجویز کردہ (مثلاً،
+├─409 (409 Conflict (تنازع)): وسائل کے تنازعات کے لیے تجویز کردہ (مثلاً،
 │ ضم تنازعات، فائل تک رسائی کے تنازعات،
 │ وغیرہ). دوسرے سیاق و سباق میں سفارش نہیں کی
 │ جاتی ہے.
@@ -1083,7 +1094,7 @@ adjust
 ```
 
 #### <div dir="rtl">"recaptcha" (قسم)<br /></div>
-<div dir="rtl">reCAPTCHA کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
+<div dir="rtl">ReCAPTCHA کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
@@ -1137,8 +1148,8 @@ usemode
 
 ```
 api
-├─V2 ("V2 (چیک باکس)")
-└─Invisible ("V2 (پوشیدہ)")
+├─v2 ("v2 (چیک باکس)")
+└─Invisible ("v2 (پوشیدہ)")
 ```
 
 ##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
@@ -1173,7 +1184,7 @@ nonblocked_status_code
 ```
 
 #### <div dir="rtl">"hcaptcha" (قسم)<br /></div>
-<div dir="rtl">hCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
+<div dir="rtl">HCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
@@ -1225,8 +1236,8 @@ usemode
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (پوشیدہ)")
+├─v1 ("v1")
+└─Invisible ("v1 (پوشیدہ)")
 ```
 
 ##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
@@ -1273,7 +1284,7 @@ nonblocked_status_code
 <div dir="rtl">ٹیمپلیٹس اور تھیمز کی ترتیبات.<br /><br /></div>
 
 ##### <div dir="rtl">"theme" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>CIDRAM کے لیے استعمال کرنے کے لیے ڈیفالٹ تھیم.</li></ul></div>
+<div dir="rtl"><ul><li>بلاک ایونٹس اور CAPTCHA کی درخواستوں کے لیے استعمال کرنے والی تھیم.</li></ul></div>
 
 ```
 theme
@@ -1286,6 +1297,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…دیگر
+```
+
+##### <div dir="rtl">"theme_mode" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>بلاک ایونٹس اور CAPTCHA کی درخواستوں کے لیے تھیم کا موڈ.</li></ul></div>
+
+```
+theme_mode
+├─normal ("نارمل")
+└─inverted ("الٹا")
 ```
 
 ##### <div dir="rtl">"magnification" <code dir="ltr">[float]</code><br /></div>
@@ -1421,7 +1441,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2479,4 +2498,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۶ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۰۶).</div>
+<div dir="rtl">آخری تازہ کاری: ۹ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۰۹).</div>

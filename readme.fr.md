@@ -225,6 +225,7 @@ Configuration (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Configuration (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -875,7 +877,7 @@ Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
 
 ##### « theme » `[string]`
-- Le thème à utiliser par défaut pour l'accès frontal.
+- Le thème à utiliser pour l'accès frontal.
 
 ```
 theme
@@ -888,6 +890,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Autres
+```
+
+##### « theme_mode » `[string]`
+- Le mode pour le thème à utiliser pour l'accès frontal.
+
+```
+theme_mode
+├─normal ("Normale")
+└─inverted ("Inversé")
 ```
 
 ##### « magnification » `[float]`
@@ -1105,8 +1116,8 @@ Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des
 
 ```
 api
-├─V2 ("V2 (Case à cocher)")
-└─Invisible ("V2 (Invisible)")
+├─v2 ("v2 (Case à cocher)")
+└─Invisible ("v2 (Invisible)")
 ```
 
 ##### « show_cookie_warning » `[bool]`
@@ -1188,8 +1199,8 @@ Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Invisible)")
+├─v1 ("v1")
+└─Invisible ("v1 (Invisible)")
 ```
 
 ##### « show_cookie_warning » `[bool]`
@@ -1233,7 +1244,7 @@ Configuration pour les exigences légales.
 Configuration pour les modèles et thèmes.
 
 ##### « theme » `[string]`
-- Le thème à utiliser par défaut pour CIDRAM.
+- Le thème à utiliser pour les événements de blocage et les requêtes d'un CAPTCHA.
 
 ```
 theme
@@ -1246,6 +1257,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Autres
+```
+
+##### « theme_mode » `[string]`
+- Le mode pour le thème à utiliser pour les événements de blocage et les requêtes d'un CAPTCHA.
+
+```
+theme_mode
+├─normal ("Normale")
+└─inverted ("Inversé")
 ```
 
 ##### « magnification » `[float]`
@@ -1381,7 +1401,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2410,4 +2429,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 6 Août 2025 (2025.08.06).
+Dernière mise à jour : 9 Août 2025 (2025.08.09).

@@ -225,6 +225,7 @@ Configuration (v3)
 │       signatures_update_event_log [string]
 │       max_login_attempts [int]
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       custom_header [string]
 │       custom_footer [string]
@@ -272,6 +273,7 @@ Configuration (v3)
 │       privacy_policy [string]
 ├───template_data
 │       theme [string]
+│       theme_mode [string]
 │       magnification [float]
 │       css_url [string]
 │       block_event_title [string]
@@ -871,7 +873,7 @@ Useful tip: You can attach date/time information to the names of log files by us
 - Maximum number of front-end login attempts. Default = 5.
 
 ##### "theme" `[string]`
-- The default theme to use for the front-end.
+- The theme to use for the front-end.
 
 ```
 theme
@@ -884,6 +886,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Other
+```
+
+##### "theme_mode" `[string]`
+- The mode for the theme to use for the front-end.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Inverted")
 ```
 
 ##### "magnification" `[float]`
@@ -1099,8 +1110,8 @@ Useful tip: You can attach date/time information to the names of log files by us
 
 ```
 api
-├─V2 ("V2 (Checkbox)")
-└─Invisible ("V2 (Invisible)")
+├─v2 ("v2 (Checkbox)")
+└─Invisible ("v2 (Invisible)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1180,8 +1191,8 @@ Useful tip: You can attach date/time information to the names of log files by us
 
 ```
 api
-├─V1 ("V1")
-└─Invisible ("V1 (Invisible)")
+├─v1 ("v1")
+└─Invisible ("v1 (Invisible)")
 ```
 
 ##### "show_cookie_warning" `[bool]`
@@ -1223,7 +1234,7 @@ Configuration for legal requirements.
 Configuration for templates and themes.
 
 ##### "theme" `[string]`
-- The default theme to use for CIDRAM.
+- The theme to use for block events and CAPTCHA requests.
 
 ```
 theme
@@ -1236,6 +1247,15 @@ theme
 ├─rbi ("Red-Blue Inverted")
 ├─slate ("Slate")
 └─…Other
+```
+
+##### "theme_mode" `[string]`
+- The mode for the theme to use for block events and CAPTCHA requests.
+
+```
+theme_mode
+├─normal ("Normal")
+└─inverted ("Inverted")
 ```
 
 ##### "magnification" `[float]`
@@ -1371,7 +1391,6 @@ used
 ├─PetalBot ("PetalBot")
 ├─Pinterest ("Pinterest")
 ├─Redditbot ("Redditbot")
-├─Skype ("Skype URL Preview")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
 └─Yandex ("Yandex/Яндекс")
@@ -2395,4 +2414,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 6 August 2025 (2025.08.06).
+Last Updated: 9 August 2025 (2025.08.09).
