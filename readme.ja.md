@@ -1,4 +1,4 @@
-## CIDRAM v3のドキュメンテーション（日本語）。
+## CIDRAM v4のドキュメンテーション（日本語）。
 
 ### 目次
 - １.[序文](#user-content-SECTION1)
@@ -242,32 +242,21 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 - 実行チェーンの段階のコントロールです （有効かどうか、エラーがログに記録されるかどうか、など）。
 
 ```
-stages
+stages───[この段階を有効にしますか？]─[この段階で発生したエラーをログに記録しますか？]─[この段階で発生した違反は、ＩＰトラッキングにカウントしますか？]
 ├─Tests ("シグネチャ・ファイル・テストを実行する")
 ├─Modules ("モジュールを実行する")
 ├─SearchEngineVerification ("検索エンジンの検証を実行する")
@@ -339,7 +328,7 @@ stages
 - ブロック・イベント中のために、フィールドのコントロールです （リクエストがブロックされたとき）。
 
 ```
-fields
+fields───[このフィールドはログ・エントリに表示する必要がありますか？]─[このフィールドは「アクセス拒否」ページに表示する必要がありますか？]─[空のときにこのフィールドを省略しますか？]
 ├─ID ("ＩＤ")
 ├─ScriptIdent ("スクリプトのバージョン")
 ├─DateTime ("日/月/年/時刻")
@@ -514,6 +503,7 @@ ipaddr
 http_response_header_code
 ├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
 │ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+│ ブロックされていないリクエストに推奨されます。
 ├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
 │ ほとんどの場合に推奨されます。
 ├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
@@ -671,6 +661,7 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
 │ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+│ ブロックされていないリクエストに推奨されます。
 ├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
 │ ほとんどの場合に推奨されます。
 ├─410 (410 Gone （なくなっています）): 一部のブラウザは、ブロックが解除された後でも、このステータス・メッセージをキャッシュし、後続のリクエストを送信しないため、偽陽性を解決するときに問題が発生する可能性があります。
@@ -715,8 +706,8 @@ statistics
 ├─Passed-IPv4 ("許可されたリクエスト – IPv4")
 ├─Passed-IPv6 ("許可されたリクエスト – IPv6")
 ├─Passed-Other ("許可されたリクエスト – その他")
-├─CAPTCHAs-Failed ("キャプチャの試み – 失敗しました！")
-├─CAPTCHAs-Passed ("キャプチャの試み – 合格！")
+├─CAPTCHAs-Failed ("キャプチャの試み – 失敗しました（%s）！")
+├─CAPTCHAs-Passed ("キャプチャの試み – 合格（%s）！")
 ├─Reported-IPv4-OK ("外部ＡＰＩに報告されたリクエスト – IPv4 – ＯＫ")
 ├─Reported-IPv4-Failed ("外部ＡＰＩに報告されたリクエスト – IPv4 – 失敗しました")
 ├─Reported-IPv6-OK ("外部ＡＰＩに報告されたリクエスト – IPv6 – ＯＫ")
@@ -907,7 +898,7 @@ theme_mode
 - 与えられた速記語を利用するシグネチャに対してポジティブ・マッチがある場合に、要求をどう処理するかを制御のためです。
 
 ```
-shorthand
+shorthand───[それをブロックします。]─[それをプロファイルします。]─[ブロックされている場合、出力テンプレートを抑制する。]
 ├─Attacks ("攻撃")
 ├─Bogon ("⁰ ボゴンＩＰ")
 ├─Cloud ("クラウド・サービス")
@@ -967,7 +958,7 @@ conflict_response
 - 検索エンジンからのリクエストを検証するためのコントロール。
 
 ```
-search_engines
+search_engines───[確認してみますか？]─[陰性をブロックしますか？]─[未確認のリクエストをブロックしますか？]─[シングル・ヒット・バイパスを許可しますか？]─[陽性の追跡をやめますか？]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -994,7 +985,7 @@ __「シングル・ヒット・バイパス」とは何ですか？__ 場合に
 - ソーシャル・メディア・プラットフォームからのリクエストを検証するためのコントロール。
 
 ```
-social_media
+social_media───[確認してみますか？]─[陰性をブロックしますか？]─[未確認のリクエストをブロックしますか？]─[シングル・ヒット・バイパスを許可しますか？]─[陽性の追跡をやめますか？]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1016,7 +1007,7 @@ __「シングル・ヒット・バイパス」とは何ですか？__ 場合に
 - 可能な場合は、他の種類のリクエストを検証するためのコントロール。
 
 ```
-other
+other───[確認してみますか？]─[陰性をブロックしますか？]─[未確認のリクエストをブロックしますか？]─[シングル・ヒット・バイパスを許可しますか？]─[陽性の追跡をやめますか？]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1035,20 +1026,20 @@ __「シングル・ヒット・バイパス」とは何ですか？__ 場合に
 - 検証のコンテキストで他の機能を調整するためのコントロール。
 
 ```
-adjust
+adjust───[HCaptchaを抑制して]
 ├─Negatives ("ブロックされた陰性")
 └─NonVerified ("ブロックされた未確認")
 ```
 
-#### "recaptcha" （カテゴリ）
-ReCAPTCHAの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
+#### "captcha" （カテゴリ）
+キャプチャの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
 
 ##### "usemode" `[int]`
-- キャプチャはいつ提供する必要がありますか？​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。​また注意してください：​ＣＡＰＴＣＨＡは、ボットやさまざまな種類の悪意のある自動化されたリクエストに対する有用な追加の保護レイヤーを提供できますが、悪意のある人間に対する保護は提供しません。
+- キャプチャはいつ提供されるべきでしょうか？​ここで、サポートされている各プロバイダーの優先動作を指定できます。​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。​また注意してください：​キャプチャは、ボットやさまざまな種類の悪意のある自動化されたリクエストに対する有用な追加の保護レイヤーを提供できますが、悪意のある人間に対する保護は提供しません。
 
 ```
-usemode
-├─0 (決して !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (決して。)
 ├─1 (ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。)
 ├─2 (ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。)
 ├─3 (シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。)
@@ -1057,59 +1048,14 @@ usemode
 └─6 (ブロックされていない場合、機密ページのリクエストの場合のみ。)
 ```
 
-##### "lockip" `[bool]`
-- キャプチャをＩＰにロックしますか？
-
-##### "lockuser" `[bool]`
-- キャプチャをユーザーにロックしますか？
-
-##### "sitekey" `[string]`
-- この値は、キャプチャ・サービスのダッシュボードに表示されます。
-
-参照してください：
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "secret" `[string]`
-- この値は、キャプチャ・サービスのダッシュボードに表示されます。
-
-参照してください：
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "expiry" `[float]`
-- キャプチャ・インスタンスを覚えておく時間数。 Default（デフォルルト） = ７２０（１ヶ月）。
-
-##### "recaptcha_log" `[string]`
-- キャプチャ試行の記録。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
-
-役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
-
-##### "signature_limit" `[int]`
-- キャプチャが取り消される前に許可されるシグネチャの最大数。 Default/デフォルルト = １。
-
-##### "api" `[string]`
-- どのＡＰＩを使用するのですか？
-
-```
-api
-├─v2 ("v2 (チェックボックス)")
-└─Invisible ("v2 (インビジブル)")
-```
-
-##### "show_cookie_warning" `[bool]`
-- クッキーの警告を表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
-
-##### "show_api_message" `[bool]`
-- ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
-
 ##### "nonblocked_status_code" `[int]`
 - ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
 │ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
+│ ブロックされていないリクエストに推奨されます。
 ├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
 │ ほとんどの場合に推奨されます。
 ├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
@@ -1123,86 +1069,94 @@ nonblocked_status_code
   他のコンテキストでは推奨されません。
 ```
 
-#### "hcaptcha" （カテゴリ）
-HCaptchaの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
-
-##### "usemode" `[int]`
-- キャプチャはいつ提供する必要がありますか？​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。​また注意してください：​ＣＡＰＴＣＨＡは、ボットやさまざまな種類の悪意のある自動化されたリクエストに対する有用な追加の保護レイヤーを提供できますが、悪意のある人間に対する保護は提供しません。
-
-```
-usemode
-├─0 (決して !!!)
-├─1 (ブロックされ、シグネチャの制限内であり、禁止されていない場合のみ。)
-├─2 (ブロックされ、シグネチャの制限内であり、使用するために特別にマークされている、禁止されていない場合のみ。)
-├─3 (シグネチャの制限内であり、禁止されていない場合のみ（ブロックされているかどうかに関係なく）。)
-├─4 (ブロックされていない場合のみ。)
-├─5 (ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。)
-└─6 (ブロックされていない場合、機密ページのリクエストの場合のみ。)
-```
-
-##### "lockip" `[bool]`
-- キャプチャをＩＰにロックしますか？
-
-##### "lockuser" `[bool]`
-- キャプチャをユーザーにロックしますか？
-
-##### "sitekey" `[string]`
-- この値は、キャプチャ・サービスのダッシュボードに表示されます。
-
-参照してください：
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "secret" `[string]`
-- この値は、キャプチャ・サービスのダッシュボードに表示されます。
-
-参照してください：
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "expiry" `[float]`
-- キャプチャ・インスタンスを覚えておく時間数。 Default（デフォルルト） = ７２０（１ヶ月）。
-
-##### "hcaptcha_log" `[string]`
-- キャプチャ試行の記録。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
-
-役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
-
-##### "signature_limit" `[int]`
-- キャプチャが取り消される前に許可されるシグネチャの最大数。 Default/デフォルルト = １。
-
 ##### "api" `[string]`
 - どのＡＰＩを使用するのですか？
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (インビジブル)")
+├─Invisible ("v1 (インビジブル)")
+└─v2 ("v2")
 ```
 
-##### "show_cookie_warning" `[bool]`
-- クッキーの警告を表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
-
-##### "show_api_message" `[bool]`
-- ＡＰＩメッセージを表示しますか？ True = はい（Default/デフォルルト）。 False = いいえ。
-
-##### "nonblocked_status_code" `[int]`
-- ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
+##### "messages" `[string]`
+- キャプチャと一緒に表示されるメッセージ。
 
 ```
-nonblocked_status_code
-├─200 (200 OK （大丈夫です）): それは最小の堅牢が、最もユーザー・フレンドリーです。
-│ 自動化されたリクエストは、この応答をリクエストが成功したことを示すものとして解釈する可能性があります。
-├─403 (403 Forbidden （禁断）): それはもっと堅牢ですが、少ないユーザー・フレンドリーです。
-│ ほとんどの場合に推奨されます。
-├─418 (418 I'm a teapot （私はティーポットです）): エイプリル・フールのジョークを参照しています（<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>）。
-│ クライアント、ボット、ブラウザ、などに理解される可能性はほとんどありません。
-│ 娯楽と利便性のために提供されていますが、一般的にはお勧めしません。
-├─429 (429 Too Many Requests （リクエストが多すぎます）): レート制限、ＤＤｏＳ攻撃に対処する場合、およびフラッド防止に推奨されます。
-│ 他のコンテキストでは推奨されません。
-└─451 (451 Unavailable For Legal Reasons （法的な理由で利用できません）): 主に法的な理由でブロックする場合に推奨されます。
-  他のコンテキストでは推奨されません。
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("クッキーの警告を表示しますか？): お住まいの国または州のプライバシー法（例えば、ＥＵのＧＤＰＲ／ＤＳＧＶＯ、ブラジルのＬＧＰＤ、など）に応じて、これが法的に義務付けられている場合があります。"
+└─api_message ("ＡＰＩメッセージを表示しますか？): キャプチャの完了に関して、使用されているＡＰＩに適したユーザーへの指示。"
 ```
+
+##### "lockto" `[string]`
+- キャプチャをロックする対象。
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("キャプチャは、キャプチャを完了したユーザーのＩＰアドレスにロックしますが、実際のユーザーにはロックされません。): クッキーは、ユーザーを識別するために使用されません。​キャプチャが正常に完了してアクセスが回復された場合、同じＩＰアドレスから接続するすべてのユーザーに適用されます。"
+├─user ("キャプチャは、キャプチャを完了したユーザーにロックしますが、ＩＰアドレスにはロックされません。): クッキーは、ユーザーを識別するために使用されます。​キャプチャが正常に完了してアクセスが回復された場合、それはキャプチャを完了したユーザーにのみ適用され、クッキーが有効である限り、ＩＰアドレスが変更されても、持続します。"
+└─both ("キャプチャは、キャプチャを完了したユーザーとそのＩＰアドレスにロックします。): クッキーは、ユーザーを識別するために使用されます。​キャプチャが正常に完了してアクセスが回復された場合、それはキャプチャを完了したユーザーにのみ適用されます。​ＩＰアドレスが変更されるとアクセスは継続されなくなります。"
+```
+
+##### "hcaptcha_sitekey" `[string]`
+- HCaptcha「Ｈキャプチャ」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "hcaptcha_secret" `[string]`
+- HCaptcha「Ｈキャプチャ」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "friendly_sitekey" `[string]`
+- Friendly Captcha「フレンドリー・キャプチャ」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "friendly_apikey" `[string]`
+- Friendly Captcha「フレンドリー・キャプチャ」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "turnstile_sitekey" `[string]`
+- Cloudflare Turnstile「クラウドフレア・ターンスタイル」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "turnstile_secret" `[string]`
+- Cloudflare Turnstile「クラウドフレア・ターンスタイル」を、CIDRAM「シドラム」で使いたいときは、ここに値を入力する必要があります。​使用しない場合は、無視しても大丈夫です。
+
+この値は、キャプチャ・サービスのダッシュボードに表示されます。
+
+参照してください：
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "expiry" `[float]`
+- キャプチャ・インスタンスを覚えておく時間数。 Default（デフォルルト） = ７２０（１ヶ月）。
+
+##### "signature_limit" `[int]`
+- キャプチャが取り消される前に許可されるシグネチャの最大数。 Default/デフォルルト = １。
+
+##### "log" `[string]`
+- キャプチャ試行の記録。​ファイル名指定するか、無効にしたい場合は空白のままにして下さい。
+
+役に立つヒント:時刻形式のプレースホルダーを使用して、ログ・ファイルの名前に日付/時刻情報を添付できます。​使用可能な時刻形式のプレースホルダーが<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>に表示されます。
 
 #### "legal" （カテゴリ）
 法的要件のコンフィギュレーション。
@@ -1556,7 +1510,7 @@ Origin: BB
 
 ##### 6.2.0 ＹＡＭＬ基本原則
 
-セクション固有の設定を定義するために、​シンプルな形式のＹＡＭＬマークアップをシグネチャ・ファイルで使用することができます。​これは、​異なるシグネチャセクションに対して異なる設定を行う場合に便利です （例えば：​サポートチケットのＥメールアドレスを指定したい場合は、​しかし特定のセクションのみ；​特定のシグネチャでページリダイレクトをトリガーしたい場合は；​reCAPTCHA/hCaptchaで使用するためにシグネチャセクションをマークしたい場合は；​個々のシグネチャに基づいて、​そして/または、​シグネチャセクションに基づいて、​ブロックされたアクセス試行を別々のファイルに記録したい場合は）。
+セクション固有の設定を定義するために、​シンプルな形式のＹＡＭＬマークアップをシグネチャ・ファイルで使用することができます。​これは、​異なるシグネチャセクションに対して異なる設定を行う場合に便利です （例えば：​サポートチケットのＥメールアドレスを指定したい場合は、​しかし特定のセクションのみ；​特定のシグネチャでページリダイレクトをトリガーしたい場合は；​hCaptchaで使用するためにシグネチャセクションをマークしたい場合は；​個々のシグネチャに基づいて、​そして/または、​シグネチャセクションに基づいて、​ブロックされたアクセス試行を別々のファイルに記録したい場合は）。
 
 シグネチャ・ファイルでのＹＡＭＬマークアップの使用はオプションです（即ち、​あなたが望むならそれを使うことができますが、​そうする必要はありません）。​大部分の（しかしすべてではない）コンフィギュレーション・ディレクティブを活用することができます。
 
@@ -1578,12 +1532,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1620,8 +1568,6 @@ general:
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2151,7 +2097,7 @@ Cronjobsの目的で専用ファイルを使用している場合、通常のユ
 
 ##### 9.2.2 キャプチャ
 
-CIDRAMはreCAPTCHAとhCaptchaをサポートしています。​正しく機能するには、ＡＰＩキーが必要です。​これらはデフォルトで無効になっていますが、必要なＡＰＩキーを構成することで有効になる場合があります。​有効にすると、サービスとCIDRAMまたはユーザーのブラウザとの間で通信が発生する場合があります。​これには、ユーザーのＩＰアドレス、ユーザー・エージェント、オペレーティング・システム、およびリクエストで利用可能なその他の詳細などの情報の通信が含まれる可能性があります。
+CIDRAMはhCaptchaをサポートしています。​正しく機能するには、ＡＰＩキーが必要です。​これらはデフォルトで無効になっていますが、必要なＡＰＩキーを構成することで有効になる場合があります。​有効にすると、サービスとCIDRAMまたはユーザーのブラウザとの間で通信が発生する場合があります。​これには、ユーザーのＩＰアドレス、ユーザー・エージェント、オペレーティング・システム、およびリクエストで利用可能なその他の詳細などの情報の通信が含まれる可能性があります。
 
 ##### 9.2.3 STOP FORUM SPAM （ストップ・フォーラム・スパム）
 
@@ -2240,7 +2186,6 @@ x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx
 
 *キャプチャ・ロギングを担当するコンフィギュレーション・ディレクティブ：*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 フロントエンド・ロギング
 
@@ -2322,8 +2267,6 @@ CIDRAMは、コードベースの2つのポイントで[Cookie](https://ja.wikip
 *注意：「インビジブル」キャプチャＡＰＩは、一部の法域ではクッキー法と互換性がない可能性があります。​クッキー法の対象となるウェブサイトはそれを避けるべきです。​代わりに、提供されている他のＡＰＩを使用するか、キャプチャを完全に無効にすることを選択することをお勧めします。*
 
 *関連するコンフィギュレーション・ディレクティブ：*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2387,4 +2330,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年８月９日。
+最終アップデート：２０２５年８月２１日。

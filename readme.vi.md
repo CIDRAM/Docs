@@ -1,4 +1,4 @@
-## Tài liệu của CIDRAM v3 (Tiếng Việt).
+## Tài liệu của CIDRAM v4 (Tiếng Việt).
 
 ### Nội dung
 - 1. [LỜI GIỚI THIỆU](#user-content-SECTION1)
@@ -242,32 +242,21 @@ Cấu hình (v3)
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về c�
 - Điều khiển cho các giai đoạn của chuỗi thực thi (có được bật hay không, có lỗi được ghi lại hay không, vv).
 
 ```
-stages
+stages───[Bật giai đoạn này?]─[Ghi lại bất kỳ lỗi nào được tạo ra trong giai đoạn này?]─[Đếm các vi phạm được tạo ra trong giai đoạn này đối với giám sát IP?]
 ├─Tests ("Thực hiện kiểm tra tập tin chữ ký")
 ├─Modules ("Thực hiện mô-đun")
 ├─SearchEngineVerification ("Thực hiện xác minh của máy tìm kiếm")
@@ -339,7 +328,7 @@ stages
 - Điều khiển cho các trường trong các sự kiện chặn (khi một yêu cầu bị chặn).
 
 ```
-fields
+fields───[Trường này có nên xuất hiện trong các mục nhập nhật ký không?]─[Trường này có nên xuất hiện trên trang "truy cập đã bị từ chối" không?]─[Bỏ qua trường này khi nó trống?]
 ├─ID ("ID")
 ├─ScriptIdent ("Phiên bản kịch bản")
 ├─DateTime ("Ngày/Thời gian")
@@ -514,7 +503,8 @@ Xem thêm:
 http_response_header_code
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
-│ là dấu hiệu cho thấy yêu cầu đã thành công.
+│ là dấu hiệu cho thấy yêu cầu đã thành công. Được khuyến
+│ khích cho các yêu cầu không bị chặn.
 ├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
 │ khích cho hầu hết các trường hợp chung.
 ├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
@@ -690,7 +680,8 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
-│ là dấu hiệu cho thấy yêu cầu đã thành công.
+│ là dấu hiệu cho thấy yêu cầu đã thành công. Được khuyến
+│ khích cho các yêu cầu không bị chặn.
 ├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
 │ khích cho hầu hết các trường hợp chung.
 ├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
@@ -741,8 +732,8 @@ statistics
 ├─Passed-IPv4 ("Yêu cầu được phép – IPv4")
 ├─Passed-IPv6 ("Yêu cầu được phép – IPv6")
 ├─Passed-Other ("Yêu cầu được phép – Khác")
-├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – Thất bại!")
-├─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công!")
+├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – Thất bại (%s)!")
+├─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công (%s)!")
 ├─Reported-IPv4-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – OK")
 ├─Reported-IPv4-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – Thất bại")
 ├─Reported-IPv6-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – OK")
@@ -933,7 +924,7 @@ Cấu hình cho chữ ký, tập tin chữ ký, mô-đun, vv.
 - Kiểm soát những việc cần làm với một yêu cầu khi có sự trùng khớp tích cực với một chữ ký sử dụng các từ viết tắt đã cho.
 
 ```
-shorthand
+shorthand───[Chặn nó.]─[Hồ sơ nó.]─[Khi bị chặn, đàn áp mẫu đầu ra.]
 ├─Attacks ("Cuộc tấn công")
 ├─Bogon ("⁰ IP bogon")
 ├─Cloud ("Dịch vụ điện toán đám mây")
@@ -1001,7 +992,7 @@ Cấu hình để xác minh yêu cầu bắt nguồn từ đâu.
 - Điều khiển cho xác minh các yêu cầu từ các máy tìm kiếm.
 
 ```
-search_engines
+search_engines───[Cố gắng xác minh?]─[Chặn tiêu cực?]─[Chặn các yêu cầu chưa được xác minh?]─[Cho phép đường tránh một cú đánh?]─[Ngừng giám sát các tích cực?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1028,7 +1019,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 - Điều khiển cho xác minh các yêu cầu từ các nền tảng truyền thông xã hội.
 
 ```
-social_media
+social_media───[Cố gắng xác minh?]─[Chặn tiêu cực?]─[Chặn các yêu cầu chưa được xác minh?]─[Cho phép đường tránh một cú đánh?]─[Ngừng giám sát các tích cực?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1050,7 +1041,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 - Điều khiển cho xác minh các loại yêu cầu khác nếu có thể.
 
 ```
-other
+other───[Cố gắng xác minh?]─[Chặn tiêu cực?]─[Chặn các yêu cầu chưa được xác minh?]─[Cho phép đường tránh một cú đánh?]─[Ngừng giám sát các tích cực?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1069,20 +1060,20 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 - Điều khiển cho các điều chỉnh các tính năng khác trong bối cảnh xác minh.
 
 ```
-adjust
+adjust───[Đàn áp hCaptcha]
 ├─Negatives ("Tiêu cực bị chặn")
 └─NonVerified ("Chưa được xác minh bị chặn")
 ```
 
-#### "recaptcha" (Thể loại)
-Cấu hình cho reCAPTCHA (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
+#### "captcha" (Thể loại)
+Cấu hình cho CAPTCHA (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
 
 ##### "usemode" `[int]`
-- Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA. Cũng lưu ý: CAPTCHA có thể cung cấp một lớp bảo vệ bổ sung, hữu ích chống lại bot và các loại yêu cầu tự động độc hại khác nhau, nhưng sẽ không cung cấp bất kỳ biện pháp bảo vệ nào chống lại con người độc hại.
+- Khi nào nên cung cấp CAPTCHA? Bạn có thể chỉ định hành vi ưu tiên cho từng nhà cung cấp được hỗ trợ tại đây. Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA. Cũng lưu ý: CAPTCHA có thể cung cấp một lớp bảo vệ bổ sung, hữu ích chống lại bot và các loại yêu cầu tự động độc hại khác nhau, nhưng sẽ không cung cấp bất kỳ biện pháp bảo vệ nào chống lại con người độc hại.
 
 ```
-usemode
-├─0 (Không bao giờ !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (Không bao giờ.)
 ├─1 (Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.)
 ├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
 ├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
@@ -1091,60 +1082,15 @@ usemode
 └─6 (Chỉ khi không bị chặn, ở những yêu cầu trang nhạy cảm.)
 ```
 
-##### "lockip" `[bool]`
-- Khóa CAPTCHA để IP?
-
-##### "lockuser" `[bool]`
-- Khóa CAPTCHA để người dùng?
-
-##### "sitekey" `[string]`
-- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
-
-Xem thêm:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "secret" `[string]`
-- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
-
-Xem thêm:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "expiry" `[float]`
-- Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
-
-##### "recaptcha_log" `[string]`
-- Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
-
-Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
-
-##### "api" `[string]`
-- API nào để sử dụng?
-
-```
-api
-├─v2 ("v2 (Hộp kiểm)")
-└─Invisible ("v2 (Vô hình)")
-```
-
-##### "show_cookie_warning" `[bool]`
-- Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
-
-##### "show_api_message" `[bool]`
-- Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
-
 ##### "nonblocked_status_code" `[int]`
 - Mã trạng thái nào nên được sử dụng khi hiển thị CAPTCHA cho các yêu cầu không bị chặn?
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
-│ là dấu hiệu cho thấy yêu cầu đã thành công.
+│ là dấu hiệu cho thấy yêu cầu đã thành công. Được khuyến
+│ khích cho các yêu cầu không bị chặn.
 ├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
 │ khích cho hầu hết các trường hợp chung.
 ├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
@@ -1160,89 +1106,107 @@ nonblocked_status_code
   được khuyến khích trong các ngữ cảnh khác.
 ```
 
-#### "hcaptcha" (Thể loại)
-Cấu hình cho hCaptcha (cung cấp một cách để con người lấy lại quyền truy cập khi bị chặn).
-
-##### "usemode" `[int]`
-- Khi nào nên cung cấp CAPTCHA? Lưu ý: Các yêu cầu trong danh sách trắng hay đã xác minh và không bị chặn không cần phải hoàn thành CAPTCHA. Cũng lưu ý: CAPTCHA có thể cung cấp một lớp bảo vệ bổ sung, hữu ích chống lại bot và các loại yêu cầu tự động độc hại khác nhau, nhưng sẽ không cung cấp bất kỳ biện pháp bảo vệ nào chống lại con người độc hại.
-
-```
-usemode
-├─0 (Không bao giờ !!!)
-├─1 (Chỉ khi bị chặn, trong giới hạn chữ ký, và không bị cấm.)
-├─2 (Chỉ khi bị chặn, được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
-├─3 (Chỉ khi trong giới hạn chữ ký, và không bị cấm (bất kể có bị chặn hay không).)
-├─4 (Chỉ khi không bị chặn.)
-├─5 (Chỉ khi không bị chặn, hoặc khi được đánh dấu đặc biệt để sử dụng, trong giới hạn chữ ký, và không bị cấm.)
-└─6 (Chỉ khi không bị chặn, ở những yêu cầu trang nhạy cảm.)
-```
-
-##### "lockip" `[bool]`
-- Khóa CAPTCHA để IP?
-
-##### "lockuser" `[bool]`
-- Khóa CAPTCHA để người dùng?
-
-##### "sitekey" `[string]`
-- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
-
-Xem thêm:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "secret" `[string]`
-- Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
-
-Xem thêm:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "expiry" `[float]`
-- Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
-
-##### "hcaptcha_log" `[string]`
-- Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
-
-Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
-
 ##### "api" `[string]`
 - API nào để sử dụng?
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (Vô hình)")
+├─Invisible ("v1 (Vô hình)")
+└─v2 ("v2")
 ```
 
-##### "show_cookie_warning" `[bool]`
-- Hiển thị cảnh báo cookie? True = Vâng [Mặc định]; False = Không.
-
-##### "show_api_message" `[bool]`
-- Hiển thị thông báo API? True = Vâng [Mặc định]; False = Không.
-
-##### "nonblocked_status_code" `[int]`
-- Mã trạng thái nào nên được sử dụng khi hiển thị CAPTCHA cho các yêu cầu không bị chặn?
+##### "messages" `[string]`
+- Tin nhắn sẽ được hiển thị cùng với CAPTCHA.
 
 ```
-nonblocked_status_code
-├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
-│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
-│ là dấu hiệu cho thấy yêu cầu đã thành công.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
-│ khích cho hầu hết các trường hợp chung.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
-│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
-│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
-│ lợi, nhưng thường không được khuyến khích.
-├─429 (429 Too Many Requests (Quá nhiều yêu cầu)): Được khuyến khích cho giới hạn tốc độ, khi đối phó với
-│ các cuộc tấn công DDoS, và để ngăn chặn lũ lụt. Không
-│ được khuyến khích trong các ngữ cảnh khác.
-└─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
-  được khuyến khích trong các ngữ cảnh khác.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("Hiển thị cảnh báo cookie?): Tùy thuộc vào luật bảo mật của quốc gia hoặc tiểu bang
+│ của bạn (ví dụ, GDPR/DSGVO ở EU, LGPD ở Brazil, vv), điều này
+│ có thể là bắt buộc về mặt pháp lý."
+└─api_message ("Hiển thị thông báo API?): Hướng dẫn cho người dùng, phù hợp với API được sử
+  dụng, về cách hoàn thành CAPTCHA."
 ```
+
+##### "lockto" `[string]`
+- Khóa CAPTCHA.
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("Khóa CAPTCHA vào địa chỉ IP của người dùng hoàn thành CAPTCHA nhưng không phải vào chính người dùng đó.): Cookie KHÔNG được sử dụng để xác định người dùng. Khi
+│ quyền truy cập được lấy lại do hoàn thành thành công
+│ CAPTCHA, quyền này sẽ áp dụng cho bất kỳ ai kết nối từ
+│ cùng một địa chỉ IP."
+├─user ("Khóa CAPTCHA đối với người dùng hoàn thành CAPTCHA nhưng không đối với địa chỉ IP của họ.): Cookie được sử dụng để xác định người dùng. Khi quyền
+│ truy cập được lấy lại do hoàn thành thành công CAPTCHA,
+│ quyền này chỉ áp dụng cho người dùng hoàn thành CAPTCHA và
+│ sẽ tồn tại miễn là cookie của họ vẫn còn hiệu lực, ngay
+│ cả khi địa chỉ IP của họ thay đổi."
+└─both ("Khóa CAPTCHA đối với người dùng hoàn thành CAPTCHA cũng như đối với địa chỉ IP của họ.): Cookie được sử dụng để xác định người dùng. Khi quyền
+  truy cập được lấy lại do hoàn thành thành công CAPTCHA,
+  quyền này chỉ áp dụng cho người dùng hoàn thành CAPTCHA và
+  sẽ không còn hiệu lực nếu địa chỉ IP của họ thay đổi."
+```
+
+##### "hcaptcha_sitekey" `[string]`
+- Nếu bạn muốn sử dụng hCaptcha với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "hcaptcha_secret" `[string]`
+- Nếu bạn muốn sử dụng hCaptcha với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "friendly_sitekey" `[string]`
+- Nếu bạn muốn sử dụng Friendly Captcha với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "friendly_apikey" `[string]`
+- Nếu bạn muốn sử dụng Friendly Captcha với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "turnstile_sitekey" `[string]`
+- Nếu bạn muốn sử dụng Cloudflare Turnstile với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "turnstile_secret" `[string]`
+- Nếu bạn muốn sử dụng Cloudflare Turnstile với CIDRAM, bạn sẽ cần nhập giá trị vào đây. Nếu không, bạn có thể bỏ qua điều này.
+
+Giá trị này có thể được tìm thấy trong bảng điều khiển cho dịch vụ CAPTCHA của bạn.
+
+Xem thêm:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "expiry" `[float]`
+- Số giờ để nhớ CAPTCHA. Mặc định = 720 (1 tháng).
+
+##### "signature_limit" `[int]`
+- Số lượng chữ ký tối đa được phép trước khi đề nghị CAPTCHA bị rút lại. Mặc định = 1.
+
+##### "log" `[string]`
+- Đăng nhập tất cả các nỗ lực cho CAPTCHA? Nếu có, ghi rõ tên để sử dụng cho các tập tin đăng nhập. Nếu không, đốn biến này.
+
+Lời khuyên hữu ích: Bạn có thể đính kèm thông tin ngày/giờ vào tên của tập tin nhật ký bằng cách sử dụng phần giữ chỗ định dạng thời gian. Phần giữ chỗ định dạng thời gian có sẵn được hiển thị tại <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### "legal" (Thể loại)
 Cấu hình cho các yêu cầu pháp lý.
@@ -1596,7 +1560,7 @@ Origin: BB
 
 ##### 6.2.0 YAML CƠ BẢN
 
-Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với reCAPTCHA/hCaptcha; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
+Một hình thức đơn giản của YAML có thể được sử dụng trong các tập tin chữ ký cho mục đích xác định các hành vi và các thiết lập cụ thể để phần chữ ký cá nhân. Điều này có thể hữu ích nếu bạn muốn giá trị của chỉ thị cấu hình của bạn để khác biệt trên cơ sở chữ ký cá nhân và phần chữ ký (ví dụ; nếu bạn muốn cung cấp một địa chỉ email cho vé hỗ trợ cho bất kỳ người dùng bị chặn bởi một chữ ký đặc biệt, nhưng không muốn cung cấp một địa chỉ email cho vé hỗ trợ cho người dùng bị chặn bởi bất kỳ chữ ký khác; nếu bạn muốn có một số chữ ký cụ thể để kích hoạt một chuyển hướng trang; nếu bạn muốn đánh dấu một phần chữ ký để sử dụng với hCaptcha; nếu bạn muốn ghi lại cố gắng truy cập bị chặn vào các tập tin riêng biệt trên cơ sở chữ ký cá nhân hay phần chữ ký).
 
 Sử dụng YAML trong các tập tin chữ ký là không bắt buộc (có nghĩa là, bạn có thể sử dụng nó nếu bạn muốn làm như vậy, nhưng bạn không cần phải làm như vậy), và có thể tận dụng nhiều nhất (nhưng không phải tất cả) tùy chọn cấu hình.
 
@@ -1618,12 +1582,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1651,17 +1609,15 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI reCAPTCHA/hCaptcha
+##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI hCaptcha
 
-Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với reCAPTCHA/hCaptcha, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
+Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với hCaptcha, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2197,7 +2153,7 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM hỗ trợ reCAPTCHA và hCaptcha. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
+CIDRAM hỗ trợ hCaptcha. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2286,7 +2242,6 @@ Mục nhập nhật ký CAPTCHA chứa địa chỉ IP của người dùng đan
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký CAPTCHA là:*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 NHẬT KÝ FRONT-END
 
@@ -2364,8 +2319,6 @@ Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi b
 *Chú thích: Các API CAPTCHA "vô hình" có thể không tương thích với luật cookie ở một số khu vực pháp lý, và nên được tránh bởi bất kỳ trang web nào tuân theo các luật đó. Thay vào đó, chọn sử dụng các API được cung cấp khác, hoặc đơn giản là vô hiệu hóa hoàn toàn CAPTCHA, có thể thích hợp hơn.*
 
 *Chỉ thị cấu hình có liên quan:*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2426,4 +2379,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.08.09.
+Lần cuối cập nhật: 2025.08.21.

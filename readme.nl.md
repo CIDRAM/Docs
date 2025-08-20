@@ -1,4 +1,4 @@
-## Documentatie voor CIDRAM v3 (Nederlandse).
+## Documentatie voor CIDRAM v4 (Nederlandse).
 
 ### Inhoud
 - 1. [PREAMBULE](#user-content-SECTION1)
@@ -242,32 +242,21 @@ Configuratie (v3)
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ Algemene configuratie (elke kernconfiguratie die niet tot andere categorieën be
 - Controles voor de fasen van de uitvoeringsketen (of ingeschakeld, of fouten worden geregistreerd, enz).
 
 ```
-stages
+stages───[Inschakelen deze fase?]─[Moeten fouten die gegenereerd door deze fase worden geregistreerd?]─[Moeten overtredingen die gegenereerd door deze fase meetellen voor IP-tracking?]
 ├─Tests ("Voer de signatuurbestandentests")
 ├─Modules ("Voer de modules")
 ├─SearchEngineVerification ("Voer zoekmachine verificatie")
@@ -339,7 +328,7 @@ stages
 - Controles voor de velden tijdens blokgebeurtenissen (wanneer een verzoek wordt geblokkeerd).
 
 ```
-fields
+fields───[Moet dit veld in logs verschijnen?]─[Moet dit veld verschijnen op de "toegang geweigerd" pagina?]─[Weglaten dit veld als het leeg is?]
 ├─ID ("ID")
 ├─ScriptIdent ("Script versie")
 ├─DateTime ("Datum/Tijd")
@@ -514,7 +503,7 @@ Zie ook:
 http_response_header_code
 ├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
 │ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
-│ het verzoek was succesvol.
+│ het verzoek was succesvol. Aanbevolen voor niet-geblokkeerde verzoeken.
 ├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
 │ algemene omstandigheden.
 ├─410 (410 Gone (Weg)): Kan problemen veroorzaken bij het oplossen van valse positieven, omdat
@@ -683,7 +672,7 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
 │ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
-│ het verzoek was succesvol.
+│ het verzoek was succesvol. Aanbevolen voor niet-geblokkeerde verzoeken.
 ├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
 │ algemene omstandigheden.
 ├─410 (410 Gone (Weg)): Kan problemen veroorzaken bij het oplossen van valse positieven, omdat
@@ -731,8 +720,8 @@ statistics
 ├─Passed-IPv4 ("Verzoeken toegestaan – IPv4")
 ├─Passed-IPv6 ("Verzoeken toegestaan – IPv6")
 ├─Passed-Other ("Verzoeken toegestaan – Anders")
-├─CAPTCHAs-Failed ("CAPTCHA pogingen – Mislukt!")
-├─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes!")
+├─CAPTCHAs-Failed ("CAPTCHA pogingen – Mislukt (%s)!")
+├─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes (%s)!")
 ├─Reported-IPv4-OK ("Verzoeken gerapporteerd aan externe API's – IPv4 – OK")
 ├─Reported-IPv4-Failed ("Verzoeken gerapporteerd aan externe API's – IPv4 – Mislukt")
 ├─Reported-IPv6-OK ("Verzoeken gerapporteerd aan externe API's – IPv6 – OK")
@@ -923,7 +912,7 @@ Configuratie voor signatures, signatuurbestanden, modules, enz.
 - Controles voor wat te doen met een verzoek wanneer er een positieve overeenkomst is met een signature die de gegeven stenowoorden gebruikt.
 
 ```
-shorthand
+shorthand───[Blokkeer het.]─[Profileer het.]─[Wanneer geblokkeerd, onderdrukken de uitvoersjabloon.]
 ├─Attacks ("Aanvallen")
 ├─Bogon ("⁰ Bogon IP")
 ├─Cloud ("Cloud Service")
@@ -988,7 +977,7 @@ Configuratie om te verifiëren waar verzoeken vandaan komen.
 - Controles voor het verifiëren van verzoeken van zoekmachines.
 
 ```
-search_engines
+search_engines───[Proberen te verifiëren?]─[Negatieven blokkeren?]─[Niet-geverifieerde verzoeken blokkeren?]─[Enkele-treffer bypasses toestaan?]─[Tracking annuleren voor positieven?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1015,7 +1004,7 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 - Controles voor het verifiëren van verzoeken van sociale media platforms.
 
 ```
-social_media
+social_media───[Proberen te verifiëren?]─[Negatieven blokkeren?]─[Niet-geverifieerde verzoeken blokkeren?]─[Enkele-treffer bypasses toestaan?]─[Tracking annuleren voor positieven?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1037,7 +1026,7 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 - Controles voor het verifiëren van andere soorten verzoeken waar mogelijk.
 
 ```
-other
+other───[Proberen te verifiëren?]─[Negatieven blokkeren?]─[Niet-geverifieerde verzoeken blokkeren?]─[Enkele-treffer bypasses toestaan?]─[Tracking annuleren voor positieven?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1056,20 +1045,20 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 - Controles om andere functionaliteit aan te passen in de context van verificatie.
 
 ```
-adjust
+adjust───[HCaptcha onderdrukken]
 ├─Negatives ("Geblokkeerde negatieven")
 └─NonVerified ("Geblokkeerde niet-geverifieerde")
 ```
 
-#### "recaptcha" (Categorie)
-Configuratie voor reCAPTCHA (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
+#### "captcha" (Categorie)
+Configuratie voor CAPTCHA (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
 ##### "usemode" `[int]`
-- Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
+- Wanneer moeten CAPTCHA's worden aangeboden? Hier kunt u het gewenste gedrag voor elke ondersteunde provider opgeven. Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
 
 ```
-usemode
-├─0 (Nooit !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (Nooit.)
 ├─1 (Alleen wanneer geblokkeerd, binnen de signatures limiet, en niet verbannen.)
 ├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
 ├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
@@ -1078,60 +1067,14 @@ usemode
 └─6 (Alleen wanneer niet geblokkeerd, bij verzoek van gevoelige pagina's.)
 ```
 
-##### "lockip" `[bool]`
-- Binden CAPTCHA om IP's?
-
-##### "lockuser" `[bool]`
-- Binden CAPTCHA om gebruikers?
-
-##### "sitekey" `[string]`
-- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
-
-Zie ook:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "secret" `[string]`
-- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
-
-Zie ook:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "expiry" `[float]`
-- Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
-
-##### "recaptcha_log" `[string]`
-- Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
-
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
-
-##### "api" `[string]`
-- Welke API gebruiken?
-
-```
-api
-├─v2 ("v2 (Selectievakje)")
-└─Invisible ("v2 (Onzichtbaar)")
-```
-
-##### "show_cookie_warning" `[bool]`
-- Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
-
-##### "show_api_message" `[bool]`
-- API-bericht weergeven? True = Ja [Standaard]; False = Nee.
-
 ##### "nonblocked_status_code" `[int]`
 - Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
 │ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
-│ het verzoek was succesvol.
+│ het verzoek was succesvol. Aanbevolen voor niet-geblokkeerde verzoeken.
 ├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
 │ algemene omstandigheden.
 ├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
@@ -1145,87 +1088,105 @@ nonblocked_status_code
   aanbevolen in andere contexten.
 ```
 
-#### "hcaptcha" (Categorie)
-Configuratie voor hCaptcha (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
-
-##### "usemode" `[int]`
-- Wanneer moet de CAPTCHA worden aangeboden? Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
-
-```
-usemode
-├─0 (Nooit !!!)
-├─1 (Alleen wanneer geblokkeerd, binnen de signatures limiet, en niet verbannen.)
-├─2 (Alleen wanneer geblokkeerd, speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
-├─3 (Alleen binnen de signatures limiet en niet verbannen (ongeacht of deze is geblokkeerd).)
-├─4 (Alleen wanneer niet geblokkeerd.)
-├─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
-└─6 (Alleen wanneer niet geblokkeerd, bij verzoek van gevoelige pagina's.)
-```
-
-##### "lockip" `[bool]`
-- Binden CAPTCHA om IP's?
-
-##### "lockuser" `[bool]`
-- Binden CAPTCHA om gebruikers?
-
-##### "sitekey" `[string]`
-- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
-
-Zie ook:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "secret" `[string]`
-- Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
-
-Zie ook:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "expiry" `[float]`
-- Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
-
-##### "hcaptcha_log" `[string]`
-- Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
-
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
-
 ##### "api" `[string]`
 - Welke API gebruiken?
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (Onzichtbaar)")
+├─Invisible ("v1 (Onzichtbaar)")
+└─v2 ("v2")
 ```
 
-##### "show_cookie_warning" `[bool]`
-- Cookiewaarschuwing weergeven? True = Ja [Standaard]; False = Nee.
-
-##### "show_api_message" `[bool]`
-- API-bericht weergeven? True = Ja [Standaard]; False = Nee.
-
-##### "nonblocked_status_code" `[int]`
-- Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
+##### "messages" `[string]`
+- Berichten die naast CAPTCHA's worden weergegeven.
 
 ```
-nonblocked_status_code
-├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
-│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
-│ het verzoek was succesvol.
-├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
-│ algemene omstandigheden.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
-│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
-│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
-│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
-│ algemeen niet aanbevolen.
-├─429 (429 Too Many Requests (Te veel verzoeken)): Aanbevolen voor de tarieflimiet, bij het omgaan met DDoS-aanvallen, en voor
-│ het voorkomen van overstromingen. Niet aanbevolen in andere contexten.
-└─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
-  aanbevolen in andere contexten.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("Cookiewaarschuwing weergeven?): Afhankelijk van de privacywetgeving van uw land of staat (b.v.,
+│ GDPR/DSGVO/AVG in de EU, LGPD in Brazilië, enz) kan dit wettelijk verplicht
+│ zijn."
+└─api_message ("API-bericht weergeven?): Instructies voor de gebruiker, passend bij de gebruikte API, met betrekking
+  tot het invullen van de CAPTCHA."
 ```
+
+##### "lockto" `[string]`
+- Waaraan CAPTCHA's gekoppeld moeten worden.
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("Koppel CAPTCHA's aan het IP-adres van de gebruiker die de CAPTCHA invult, maar niet aan de gebruiker zelf.): Cookies worden NIET gebruikt om gebruikers te identificeren. Wanneer de
+│ toegang wordt hersteld doordat een CAPTCHA succesvol is voltooid, dit geldt
+│ voor iedereen die verbinding maakt vanaf hetzelfde IP-adres."
+├─user ("Koppel CAPTCHA's aan de gebruiker die de CAPTCHA invult, maar niet aan zijn/haar IP-adres.): Cookies worden gebruikt om gebruikers te identificeren. Wanneer de toegang
+│ wordt hersteld doordat een CAPTCHA succesvol is voltooid, dit geldt alleen
+│ voor de gebruiker die de CAPTCHA heeft voltooid, en zolang de cookie geldig
+│ blijft, blijft deze bestaan, zelfs als het IP-adres verandert."
+└─both ("Koppel CAPTCHA's aan de gebruiker die de CAPTCHA invult en aan zijn/haar IP-adres.): Cookies worden gebruikt om gebruikers te identificeren. Wanneer de toegang
+  wordt hersteld doordat een CAPTCHA succesvol is voltooid, dit geldt alleen
+  voor de gebruiker die de CAPTCHA heeft voltooid, en blijft niet behouden als
+  zijn/haar IP-adres verandert."
+```
+
+##### "hcaptcha_sitekey" `[string]`
+- Als u hCaptcha met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "hcaptcha_secret" `[string]`
+- Als u hCaptcha met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "friendly_sitekey" `[string]`
+- Als u Friendly Captcha met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "friendly_apikey" `[string]`
+- Als u Friendly Captcha met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "turnstile_sitekey" `[string]`
+- Als u Cloudflare Turnstile met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "turnstile_secret" `[string]`
+- Als u Cloudflare Turnstile met CIDRAM wilt gebruiken, moet u hier een waarde invoeren. Zo niet, dan kunt u deze negeren.
+
+Deze waarde is te vinden in het dashboard voor uw CAPTCHA-service.
+
+Zie ook:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "expiry" `[float]`
+- Aantal uren om CAPTCHA instanties herinneren. Standaard = 720 (1 maand).
+
+##### "signature_limit" `[int]`
+- Maximaal aantal toegestane signatures voordat een CAPTCHA-aanbieding wordt ingetrokken. Standaard = 1.
+
+##### "log" `[string]`
+- Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
+
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### "legal" (Categorie)
 Configuratie voor wettelijke vereisten.
@@ -1579,7 +1540,7 @@ Origin: BB
 
 ##### 6.2.0 YAML BASICS
 
-Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met reCAPTCHA/hCaptcha te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
+Een vereenvoudigde vorm van YAML markup kan worden gebruikt in signatuurbestanden voor het bepalen van gedragingen en specifieke instellingen voor afzonderlijke signatuursecties. Dit kan handig zijn als u de waarde van uw configuratie richtlijnen willen afwijken op basis van individuele signatures en signatuursecties (bijvoorbeeld; als u wilt om een e-mailadres te leveren voor support tickets voor alle gebruikers geblokkeerd door een bepaalde signature, maar wil niet om een e-mailadres te leveren voor support tickets voor de gebruikers geblokkeerd door andere signatures; als u wilt een specifieke signatures te leiden tot een pagina redirect; als u wilt een signature-sectie voor gebruik met hCaptcha te markeren; als u wilt om geblokkeerde toegang pogingen te loggen in afzonderlijke bestanden op basis van individuele signatures en/of signatuursecties).
 
 Het gebruik van YAML markup in de signatuurbestanden is volledig optioneel (d.w.z., u kan het gebruiken als u wenst te doen, maar u bent niet verplicht om dit te doen), en is in staat om de meeste (maar niet alle) configuratie richtlijnen hefboomeffect.
 
@@ -1601,12 +1562,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1634,17 +1589,15 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET reCAPTCHA/hCaptcha
+##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET hCaptcha
 
-Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met reCAPTCHA/hCaptcha, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
+Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met hCaptcha, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2192,7 +2145,7 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM ondersteunt reCAPTCHA en hCaptcha. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
+CIDRAM ondersteunt hCaptcha. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2281,7 +2234,6 @@ IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State:
 
 *De configuratie richtlijn die verantwoordelijk is voor CAPTCHA loggen is:*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 FRONTEND LOGGEN
 
@@ -2365,8 +2317,6 @@ In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het rel
 *Notitie: De "onzichtbare" CAPTCHA-API's zijn mogelijk incompatibel met de cookiewetgeving in sommige rechtsgebieden, en moet worden vermeden door websites die onder dergelijke wetgeving vallen. Kiezen om in plaats daarvan de andere meegeleverde API's te gebruiken, of gewoon CAPTCHA volledig uitschakelen, kan de voorkeur hebben.*
 
 *Relevante configuratie-opties:*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2429,4 +2379,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 9 Augustus 2025 (2025.08.09).
+Laatste Bijgewerkt: 21 Augustus 2025 (2025.08.21).

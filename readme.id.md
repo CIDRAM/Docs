@@ -1,4 +1,4 @@
-## Dokumentasi untuk CIDRAM v3 (Bahasa Indonesia).
+## Dokumentasi untuk CIDRAM v4 (Bahasa Indonesia).
 
 ### Isi
 - 1. [SEPATAH KATA](#user-content-SECTION1)
@@ -242,32 +242,21 @@ Konfigurasi (v3)
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ Konfigurasi umum (konfigurasi inti apapun yang bukan milik kategori lain).
 - Kontrol untuk tahapan rantai eksekusi (apakah diaktifkan, apakah kesalahan dicatat, dll).
 
 ```
-stages
+stages───[Aktifkan tahap ini?]─[Mencatat kesalahan yang dihasilkan selama tahap ini?]─[Menghitung pelanggaran yang dihasilkan selama tahap ini terhadap pelacakan IP?]
 ├─Tests ("Jalankan tes untuk file tanda tangan")
 ├─Modules ("Jalankan modul")
 ├─SearchEngineVerification ("Jalankan verifikasi mesin pencari")
@@ -339,7 +328,7 @@ stages
 - Kontrol untuk bidang selama acara blokir (ketika permintaan diblokir).
 
 ```
-fields
+fields───[Sertakan bidang ini dalam entri log?]─[Sertakan bidang ini di halaman "akses ditolak"?]─[Abaikan bidang ini saat kosong?]
 ├─ID ("ID")
 ├─ScriptIdent ("Versi skrip")
 ├─DateTime ("Tanggal/Waktu")
@@ -514,7 +503,7 @@ Lihat juga:
 http_response_header_code
 ├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
 │ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
-│ permintaan berhasil.
+│ permintaan berhasil. Direkomendasikan untuk permintaan yang tidak diblokir.
 ├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
 │ keadaan umum.
 ├─410 (410 Gone (Dipergi)): Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena
@@ -683,7 +672,7 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
 │ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
-│ permintaan berhasil.
+│ permintaan berhasil. Direkomendasikan untuk permintaan yang tidak diblokir.
 ├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
 │ keadaan umum.
 ├─410 (410 Gone (Dipergi)): Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena
@@ -731,8 +720,8 @@ statistics
 ├─Passed-IPv4 ("Permintaan berlalu – IPv4")
 ├─Passed-IPv6 ("Permintaan berlalu – IPv6")
 ├─Passed-Other ("Permintaan berlalu – Lain")
-├─CAPTCHAs-Failed ("Upaya CAPTCHA – Gagal!")
-├─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus!")
+├─CAPTCHAs-Failed ("Upaya CAPTCHA – Gagal (%s)!")
+├─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus (%s)!")
 ├─Reported-IPv4-OK ("Permintaan dilaporkan ke API eksternal – IPv4 – OK")
 ├─Reported-IPv4-Failed ("Permintaan dilaporkan ke API eksternal – IPv4 – Gagal")
 ├─Reported-IPv6-OK ("Permintaan dilaporkan ke API eksternal – IPv6 – OK")
@@ -923,7 +912,7 @@ Konfigurasi untuk tanda tangan, file tanda tangan, modul, dll.
 - Kontrol untuk apa yang harus dilakukan dengan permintaan jika/ketika ada kecocokan yang positif dengan tanda tangan yang menggunakan kata-kata singkat yang diberikan.
 
 ```
-shorthand
+shorthand───[Memblokirnya.]─[Memprofilkannya.]─[Saat diblokir, menekan templat keluaran.]
 ├─Attacks ("Serangan")
 ├─Bogon ("⁰ IP yang bogon")
 ├─Cloud ("Layanan komputasi awan")
@@ -988,7 +977,7 @@ Konfigurasi untuk memverifikasi dari mana permintaan berasal.
 - Kontrol untuk memverifikasi permintaan dari mesin pencari.
 
 ```
-search_engines
+search_engines───[Mencoba memverifikasi?]─[Blokir negatif?]─[Blokir permintaan yang tidak diverifikasi?]─[Izinkan bypass satu pelanggaran?]─[Hapus pelacakan untuk positif?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1015,7 +1004,7 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 - Kontrol untuk memverifikasi permintaan dari platform media sosial.
 
 ```
-social_media
+social_media───[Mencoba memverifikasi?]─[Blokir negatif?]─[Blokir permintaan yang tidak diverifikasi?]─[Izinkan bypass satu pelanggaran?]─[Hapus pelacakan untuk positif?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1037,7 +1026,7 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 - Kontrol untuk memverifikasi jenis permintaan lain jika/bila memungkinkan.
 
 ```
-other
+other───[Mencoba memverifikasi?]─[Blokir negatif?]─[Blokir permintaan yang tidak diverifikasi?]─[Izinkan bypass satu pelanggaran?]─[Hapus pelacakan untuk positif?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1056,20 +1045,20 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 - Kontrol untuk menyesuaikan fitur lain saat dalam konteks verifikasi.
 
 ```
-adjust
+adjust───[Menekan hCaptcha]
 ├─Negatives ("Negatif yang diblokir")
 └─NonVerified ("Tidak diverifikasi yang diblokir")
 ```
 
-#### "recaptcha" (Kategori)
-Konfigurasi untuk reCAPTCHA (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
+#### "captcha" (Kategori)
+Konfigurasi untuk CAPTCHA (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
 
 ##### "usemode" `[int]`
-- Kapan CAPTCHA harus ditawarkan? Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
+- Kapan CAPTCHA harus ditawarkan? Anda dapat menentukan perilaku yang disukai untuk setiap penyedia yang didukung disini. Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
 
 ```
-usemode
-├─0 (Tak pernah !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (Tak pernah.)
 ├─1 (Hanya jika diblokir, dalam batas tanda tangan, dan tidak dilarang.)
 ├─2 (Hanya jika diblokir, ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
 ├─3 (Hanya jika dalam batas tanda tangan, dan tidak dilarang (terlepas dari apakah diblokir).)
@@ -1078,60 +1067,14 @@ usemode
 └─6 (Hanya jika tidak diblokir, pada permintaan halaman sensitif.)
 ```
 
-##### "lockip" `[bool]`
-- Kunci CAPTCHA ke IP?
-
-##### "lockuser" `[bool]`
-- Kunci CAPTCHA ke pengguna?
-
-##### "sitekey" `[string]`
-- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
-
-Lihat juga:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "secret" `[string]`
-- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
-
-Lihat juga:
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "expiry" `[float]`
-- Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
-
-##### "recaptcha_log" `[string]`
-- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
-
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
-
-##### "api" `[string]`
-- API mana yang akan digunakan?
-
-```
-api
-├─v2 ("v2 (Kotak centang)")
-└─Invisible ("v2 (Tak terlihat)")
-```
-
-##### "show_cookie_warning" `[bool]`
-- Tampilkan peringatan cookie? True = Ya [Default]; False = Tidak.
-
-##### "show_api_message" `[bool]`
-- Tampilkan pesan API? True = Ya [Default]; False = Tidak.
-
 ##### "nonblocked_status_code" `[int]`
 - Kode status mana yang harus digunakan saat menampilkan CAPTCHA ke permintaan yang tidak diblokir?
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
 │ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
-│ permintaan berhasil.
+│ permintaan berhasil. Direkomendasikan untuk permintaan yang tidak diblokir.
 ├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
 │ keadaan umum.
 ├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
@@ -1145,87 +1088,105 @@ nonblocked_status_code
   direkomendasikan dalam konteks lain.
 ```
 
-#### "hcaptcha" (Kategori)
-Konfigurasi untuk hCaptcha (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
-
-##### "usemode" `[int]`
-- Kapan CAPTCHA harus ditawarkan? Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
-
-```
-usemode
-├─0 (Tak pernah !!!)
-├─1 (Hanya jika diblokir, dalam batas tanda tangan, dan tidak dilarang.)
-├─2 (Hanya jika diblokir, ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
-├─3 (Hanya jika dalam batas tanda tangan, dan tidak dilarang (terlepas dari apakah diblokir).)
-├─4 (Hanya jika tidak diblokir.)
-├─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
-└─6 (Hanya jika tidak diblokir, pada permintaan halaman sensitif.)
-```
-
-##### "lockip" `[bool]`
-- Kunci CAPTCHA ke IP?
-
-##### "lockuser" `[bool]`
-- Kunci CAPTCHA ke pengguna?
-
-##### "sitekey" `[string]`
-- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
-
-Lihat juga:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "secret" `[string]`
-- Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
-
-Lihat juga:
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "expiry" `[float]`
-- Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
-
-##### "hcaptcha_log" `[string]`
-- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
-
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### "signature_limit" `[int]`
-- Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
-
 ##### "api" `[string]`
 - API mana yang akan digunakan?
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (Tak terlihat)")
+├─Invisible ("v1 (Tak terlihat)")
+└─v2 ("v2")
 ```
 
-##### "show_cookie_warning" `[bool]`
-- Tampilkan peringatan cookie? True = Ya [Default]; False = Tidak.
-
-##### "show_api_message" `[bool]`
-- Tampilkan pesan API? True = Ya [Default]; False = Tidak.
-
-##### "nonblocked_status_code" `[int]`
-- Kode status mana yang harus digunakan saat menampilkan CAPTCHA ke permintaan yang tidak diblokir?
+##### "messages" `[string]`
+- Pesan untuk ditampilkan bersama CAPTCHA.
 
 ```
-nonblocked_status_code
-├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
-│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
-│ permintaan berhasil.
-├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
-│ keadaan umum.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
-│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
-│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
-├─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
-│ untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
-└─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
-  direkomendasikan dalam konteks lain.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("Tampilkan peringatan cookie?): Bergantung pada undang-undang privasi untuk negara Anda (misalnya,
+│ GDPR/DSGVO di UE, LGPD di Brasil, dll), ini mungkin diwajibkan secara
+│ hukum."
+└─api_message ("Tampilkan pesan API?): Instruksi kepada pengguna, sesuai dengan API yang digunakan, mengenai
+  penyelesaian CAPTCHA."
 ```
+
+##### "lockto" `[string]`
+- Dimana mengunci CAPTCHA.
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("Kunci CAPTCHA pada alamat IP dari pengguna yang menyelesaikan CAPTCHA, tetapi bukan pada pengguna sebenarnya.): Cookie TIDAK digunakan untuk mengidentifikasi pengguna. Jika akses diperoleh
+│ kembali karena berhasil menyelesaikan CAPTCHA, akses tersebut berlaku bagi
+│ siapa saja yang terhubung dari alamat IP yang sama."
+├─user ("Kunci CAPTCHA untuk pengguna yang menyelesaikan CAPTCHA, tetapi bukan pada alamat IP mereka.): Cookie digunakan untuk mengidentifikasi pengguna. Jika akses diperoleh
+│ kembali karena berhasil menyelesaikan CAPTCHA, akses tersebut hanya berlaku
+│ bagi pengguna yang menyelesaikan CAPTCHA, dan selama cookie mereka tetap
+│ valid, akses akan tetap ada, bahkan jika alamat IP mereka berubah."
+└─both ("Kunci CAPTCHA pada pengguna yang menyelesaikan CAPTCHA serta alamat IP mereka.): Cookie digunakan untuk mengidentifikasi pengguna. Jika akses diperoleh
+  kembali karena berhasil menyelesaikan CAPTCHA, akses tersebut hanya berlaku
+  bagi pengguna yang menyelesaikan CAPTCHA, dan tidak akan bertahan jika
+  alamat IP mereka berubah."
+```
+
+##### "hcaptcha_sitekey" `[string]`
+- Jika Anda ingin menggunakan hCaptcha dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "hcaptcha_secret" `[string]`
+- Jika Anda ingin menggunakan hCaptcha dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "friendly_sitekey" `[string]`
+- Jika Anda ingin menggunakan Friendly Captcha dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "friendly_apikey" `[string]`
+- Jika Anda ingin menggunakan Friendly Captcha dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "turnstile_sitekey" `[string]`
+- Jika Anda ingin menggunakan Cloudflare Turnstile dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "turnstile_secret" `[string]`
+- Jika Anda ingin menggunakan Cloudflare Turnstile dengan CIDRAM, Anda perlu memasukkan nilai disini. Jika tidak, Anda dapat mengabaikannya.
+
+Nilai ini dapat ditemukan di dashboard untuk layanan CAPTCHA Anda.
+
+Lihat juga:
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "expiry" `[float]`
+- Jumlah jam untuk mengingat instansi CAPTCHA. Default = 720 (1 bulan).
+
+##### "signature_limit" `[int]`
+- Jumlah maksimum tanda tangan yang diperbolehkan sebelum penawaran CAPTCHA ditarik. Default = 1.
+
+##### "log" `[string]`
+- Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
+
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### "legal" (Kategori)
 Konfigurasi untuk persyaratan hukum.
@@ -1579,7 +1540,7 @@ Origin: BB
 
 ##### 6.2.0 DASAR-DASAR YAML
 
-Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
+Sebuah bentuk sederhana YAML markup dapat digunakan dalam file tanda tangan untuk tujuan perilaku mendefinisikan dan direktif spesifik untuk bagian tanda tangan individu. Ini mungkin berguna jika Anda ingin nilai direktif konfigurasi berbeda atas dasar tanda tangan individu dan bagian tanda tangan (sebagai contoh; jika Anda ingin memberikan alamat email untuk tiket dukungan untuk setiap pengguna diblokir oleh satu tanda tangan tertentu, tapi tidak ingin memberikan alamat email untuk tiket dukungan untuk pengguna diblokir oleh tanda tangan lain; jika Anda ingin beberapa tanda tangan spesifik untuk memicu halaman redireksi; jika Anda ingin menandai bagian tanda tangan untuk digunakan dengan hCaptcha; jika Anda ingin merekam diblokir upaya akses untuk memisahkan file berdasarkan tanda tangan individu dan/atau bagian tanda tangan).
 
 Penggunaan YAML markup dalam file tanda tangan sepenuhnya opsional (yaitu, Anda dapat menggunakannya jika Anda ingin melakukannya, tapi Anda tidak diharuskan untuk melakukannya), dan mampu memanfaatkan kebanyakan (tapi tidak semua) direktif konfigurasi.
 
@@ -1601,12 +1562,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1634,17 +1589,15 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN reCAPTCHA/hCaptcha
+##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN hCaptcha
 
-Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan reCAPTCHA/hCaptcha, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
+Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan hCaptcha, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2183,7 +2136,7 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM mendukung reCAPTCHA dan hCaptcha. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
+CIDRAM mendukung hCaptcha. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2272,7 +2225,6 @@ Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status CAP
 
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan CAPTCHA adalah:*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 LOG BAGIAN DEPAN
 
@@ -2350,8 +2302,6 @@ Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), me
 *Catat: CAPTCHA API "tak terlihat" mungkin tidak kompatibel dengan hukum cookie di beberapa yurisdiksi, dan harus dihindari oleh situs web apapun yang tunduk pada hukum-hukum tersebut. Memilih untuk menggunakan API lain yang disediakan, atau menonaktifkan CAPTCHA sepenuhnya, mungkin lebih disukai.*
 
 *Direktif konfigurasi yang relevan:*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2412,4 +2362,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 9 Agustus 2025 (2025.08.09).
+Terakhir Diperbarui: 21 Agustus 2025 (2025.08.21).

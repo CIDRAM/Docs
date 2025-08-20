@@ -1,4 +1,4 @@
-## <div dir="rtl">CIDRAM v3 لیے دستاویزی (اردو).</div>
+## <div dir="rtl">CIDRAM v4 لیے دستاویزی (اردو).</div>
 
 ### <div dir="rtl">فہرست:</div>
 <div dir="rtl"><ul>
@@ -248,32 +248,21 @@ $CIDRAM->view();
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -320,7 +309,7 @@ $CIDRAM->view();
 <div dir="rtl"><ul><li>عمل درآمد کے مراحل کے لیے کنٹرول (فعال کرنے کے اقدامات، غلطی لاگنگ، وغیرہ).</li></ul></div>
 
 ```
-stages
+stages───[اس مرحلے کو فعال کریں؟]─[اس مرحلے کے دوران پیدا ہونے والی کسی غلطی کو لاگ کریں؟]─[IP ٹریکنگ کی طرف اس مرحلے کے دوران پیدا ہونے والی خلاف ورزیوں کو شمار کریں؟]
 ├─Tests ("دستخطی فائلوں کے ٹیسٹ پر عمل کریں")
 ├─Modules ("ماڈیولز پر عمل کریں")
 ├─SearchEngineVerification ("سرچ انجن کی تصدیق پر عمل کریں")
@@ -345,7 +334,7 @@ stages
 <div dir="rtl"><ul><li>بلاک ہونے پر فیلڈز کے لیے کنٹرول (جب کوئی درخواست بلاک ہو جاتی ہے).</li></ul></div>
 
 ```
-fields
+fields───[کیا یہ فیلڈ لاگ اندراجات میں ظاہر ہونا چاہیے؟]─[کیا یہ فیلڈ "رسائی مسترد کر دی" صفحہ پر ظاہر ہونا چاہیے؟]─[جب یہ فیلڈ خالی ہو تو اسے چھوڑ دیں؟]
 ├─ID ("ID")
 ├─ScriptIdent ("اسکرپٹ ورژن")
 ├─DateTime ("تاریخ وقت")
@@ -521,7 +510,8 @@ ipaddr
 http_response_header_code
 ├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
 │ خودکار درخواستیں غالباً اس جواب کی تشریح
-│ کریں گی کہ درخواست کامیاب تھی.
+│ کریں گی کہ درخواست کامیاب تھی. غیر مسدود
+│ درخواستوں کے لیے تجویز کردہ.
 ├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
 │ عام حالات کے لیے تجویز کردہ.
 ├─410 (410 Gone (چلا گیا)): غلط مثبت کو حل کرتے وقت مسائل پیدا ہوسکتے
@@ -704,7 +694,8 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
 │ خودکار درخواستیں غالباً اس جواب کی تشریح
-│ کریں گی کہ درخواست کامیاب تھی.
+│ کریں گی کہ درخواست کامیاب تھی. غیر مسدود
+│ درخواستوں کے لیے تجویز کردہ.
 ├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
 │ عام حالات کے لیے تجویز کردہ.
 ├─410 (410 Gone (چلا گیا)): غلط مثبت کو حل کرتے وقت مسائل پیدا ہوسکتے
@@ -756,8 +747,8 @@ statistics
 ├─Passed-IPv4 ("درخواستیں گزر گئیں – IPv4")
 ├─Passed-IPv6 ("درخواستیں گزر گئیں – IPv6")
 ├─Passed-Other ("درخواستیں گزر گئیں – دیگر")
-├─CAPTCHAs-Failed ("کوششیں CAPTCHA – ناکامی!")
-├─CAPTCHAs-Passed ("کوششیں CAPTCHA – ایوان کے پاس!")
+├─CAPTCHAs-Failed ("کوششیں CAPTCHA – ناکامی (%s)!")
+├─CAPTCHAs-Passed ("کوششیں CAPTCHA – ایوان کے پاس (%s)!")
 ├─Reported-IPv4-OK ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv4 – ٹھیک ہے")
 ├─Reported-IPv4-Failed ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv4 – ناکامی")
 ├─Reported-IPv6-OK ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv6 – ٹھیک ہے")
@@ -948,7 +939,7 @@ theme_mode
 <div dir="rtl"><ul><li>یہ کنٹرول کرتا ہے کہ جب کسی دستخط کے خلاف مثبت مماثلت ہو جس میں دیے گئے شارٹ ہینڈ الفاظ کا استعمال ہوتا ہے تو درخواست کے ساتھ کیا کرنا ہے.</li></ul></div>
 
 ```
-shorthand
+shorthand───[اسے بلاک کریں.]─[اسے پروفائل کریں.]─[بلاک ہونے پر، آؤٹ پٹ ٹیمپلیٹ کا استعمال نہ کریں.]
 ├─Attacks ("حملے")
 ├─Bogon ("⁰ Bogon IP")
 ├─Cloud ("کلاؤڈ سروس")
@@ -1020,7 +1011,7 @@ conflict_response
 <div dir="rtl"><ul><li>سرچ انجنوں سے درخواستوں کی تصدیق کے لیے کنٹرولز.</li></ul></div>
 
 ```
-search_engines
+search_engines───[تصدیق کرنے کی کوشش کریں؟]─[منفی کو مسدود کریں؟]─[غیر تصدیق شدہ درخواستوں کو مسدود کریں؟]─[سنگل ہٹ بائی پاسز کی اجازت دیں؟]─[مثبت سے باخبر رہنا بند کرو؟]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1047,7 +1038,7 @@ __"سنگل ہٹ بائی پاس" کیا ہیں؟__ کچھ معاملات میں
 <div dir="rtl"><ul><li>سوشل میڈیا پلیٹ فارمز سے درخواستوں کی تصدیق کے لیے کنٹرولز.</li></ul></div>
 
 ```
-social_media
+social_media───[تصدیق کرنے کی کوشش کریں؟]─[منفی کو مسدود کریں؟]─[غیر تصدیق شدہ درخواستوں کو مسدود کریں؟]─[سنگل ہٹ بائی پاسز کی اجازت دیں؟]─[مثبت سے باخبر رہنا بند کرو؟]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1069,7 +1060,7 @@ __"سنگل ہٹ بائی پاس" کیا ہیں؟__ کچھ معاملات میں
 <div dir="rtl"><ul><li>جہاں ممکن ہو دوسری قسم کی درخواستوں کی تصدیق کے لیے کنٹرولز.</li></ul></div>
 
 ```
-other
+other───[تصدیق کرنے کی کوشش کریں؟]─[منفی کو مسدود کریں؟]─[غیر تصدیق شدہ درخواستوں کو مسدود کریں؟]─[سنگل ہٹ بائی پاسز کی اجازت دیں؟]─[مثبت سے باخبر رہنا بند کرو؟]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1088,20 +1079,20 @@ __"سنگل ہٹ بائی پاس" کیا ہیں؟__ کچھ معاملات میں
 <div dir="rtl"><ul><li>تصدیق کے تناظر میں دیگر خصوصیات کو ایڈجسٹ کرنے کے کنٹرولز.</li></ul></div>
 
 ```
-adjust
+adjust───[HCaptcha کا استعمال نہ کریں]
 ├─Negatives ("بلاک شدہ منفی")
 └─NonVerified ("بلاک شدہ غیر تصدیق شدہ")
 ```
 
-#### <div dir="rtl">"recaptcha" (قسم)<br /></div>
-<div dir="rtl">ReCAPTCHA کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
+#### <div dir="rtl">"captcha" (قسم)<br /></div>
+<div dir="rtl">CAPTCHA کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
 
 ##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
+<div dir="rtl"><ul><li>CAPTCHA کب پیش کیے جائیں؟ آپ یہاں ہر معاون فراہم کنندہ کے لیے ترجیحی سلوک کی وضاحت کر سکتے ہیں. نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
 
 ```
-usemode
-├─0 (کبھی نہیں !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (کبھی نہیں.)
 ├─1 (صرف اس صورت میں جب بلاک ہوجائے، دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو.)
 ├─2 (صرف اس صورت میں جب بلاک ہو، استعمال کے لیے خصوصی طور پر نشان زد، دستخطوں کی حد میں ہو، اور پابندی نہیں ہو.)
 ├─3 (صرف اس وقت جب دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو (کوئی بات نہیں بلاک ہو یا نہیں).)
@@ -1110,62 +1101,15 @@ usemode
 └─6 (صرف اس وقت جب بلاک نہ ہوا ہو، حساس صفحہ کی درخواستوں پر.)
 ```
 
-##### <div dir="rtl">"lockip" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>ئی پی ایس کے لیے ہیتی لاک؟</li></ul></div>
-
-##### <div dir="rtl">"lockuser" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>صارفین کے لیے ہیتی لاک؟</li></ul></div>
-
-##### <div dir="rtl">"sitekey" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.</li></ul></div>
-
-<div dir="rtl">بھی دیکھو:<ul dir="rtl">
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-</ul></div>
-
-##### <div dir="rtl">"secret" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.</li></ul></div>
-
-<div dir="rtl">بھی دیکھو:<ul dir="rtl">
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/invisible">Invisible reCAPTCHA</a></li>
-<li><a dir="ltr" href="https://developers.google.com/recaptcha/docs/display">reCAPTCHA v2</a></li>
-</ul></div>
-
-##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
-<div dir="rtl"><ul><li>گھنٹوں کی تعداد CAPTCHA کے واقعات کو یاد کرنے. پہلے سے طے شدہ = 720 (1 ماہ).</li></ul></div>
-
-##### <div dir="rtl">"recaptcha_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
-
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
-
-##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
-
-##### <div dir="rtl">"api" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>کون سا API استعمال کرنے کے لیے؟</li></ul></div>
-
-```
-api
-├─v2 ("v2 (چیک باکس)")
-└─Invisible ("v2 (پوشیدہ)")
-```
-
-##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>کوکی انتباہ دکھائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
-##### <div dir="rtl">"show_api_message" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>API کا پیغام دکھائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
 ##### <div dir="rtl">"nonblocked_status_code" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>غیر مسدود درخواستوں پر CAPTCHA کی نمائش کرتے وقت کون سا اسٹیٹس کوڈ استعمال کرنا چاہیے؟</li></ul></div>
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
 │ خودکار درخواستیں غالباً اس جواب کی تشریح
-│ کریں گی کہ درخواست کامیاب تھی.
+│ کریں گی کہ درخواست کامیاب تھی. غیر مسدود
+│ درخواستوں کے لیے تجویز کردہ.
 ├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
 │ عام حالات کے لیے تجویز کردہ.
 ├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
@@ -1183,93 +1127,118 @@ nonblocked_status_code
   سیاق و سباق میں سفارش نہیں کی جاتی ہے.
 ```
 
-#### <div dir="rtl">"hcaptcha" (قسم)<br /></div>
-<div dir="rtl">HCaptcha کی ترتیبات (بلاک ہونے پر انسانوں کو دوبارہ رسائی حاصل کرنے کا ایک راستہ فراہم کرتا ہے).<br /><br /></div>
-
-##### <div dir="rtl">"usemode" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>CAPTCHA کب پیش کیا جائے؟ نوٹ: وائٹ لسٹڈ یا توثیق شدہ اور غیر مسدود درخواستوں کو کبھی بھی CAPTCHA کو مکمل کرنے کی ضرورت نہیں ہے. یہ بھی نوٹ کریں: CAPTCHA بوٹس اور مختلف قسم کی بدنیتی پر مبنی خودکار درخواستوں کے خلاف مفید تحفظ فراہم کر سکتے ہیں، لیکن بدنیتی پر مبنی انسان کے خلاف کوئی تحفظ فراہم نہیں کریں گے.</li></ul></div>
-
-```
-usemode
-├─0 (کبھی نہیں !!!)
-├─1 (صرف اس صورت میں جب بلاک ہوجائے، دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو.)
-├─2 (صرف اس صورت میں جب بلاک ہو، استعمال کے لیے خصوصی طور پر نشان زد، دستخطوں کی حد میں ہو، اور پابندی نہیں ہو.)
-├─3 (صرف اس وقت جب دستخطوں کی حد میں ہو، اور پابندی عائد نہ ہو (کوئی بات نہیں بلاک ہو یا نہیں).)
-├─4 (صرف اس وقت جب بلاک نہیں کیا جاتا ہے.)
-├─5 (صرف اس وقت جب بلاک نہ ہوا ہو، یا جب استعمال کے لیے خاص طور پر نشان زد کیا گیا ہو، دستخطوں کی حد میں ہو، اور پابندی نہ ہو.)
-└─6 (صرف اس وقت جب بلاک نہ ہوا ہو، حساس صفحہ کی درخواستوں پر.)
-```
-
-##### <div dir="rtl">"lockip" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>ئی پی ایس کے لیے ہیتی لاک؟</li></ul></div>
-
-##### <div dir="rtl">"lockuser" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>صارفین کے لیے ہیتی لاک؟</li></ul></div>
-
-##### <div dir="rtl">"sitekey" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.</li></ul></div>
-
-<div dir="rtl">بھی دیکھو:<ul dir="rtl">
-<li><a dir="ltr" href="https://dashboard.hcaptcha.com/overview">HCaptcha Dashboard</a></li>
-</ul></div>
-
-##### <div dir="rtl">"secret" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.</li></ul></div>
-
-<div dir="rtl">بھی دیکھو:<ul dir="rtl">
-<li><a dir="ltr" href="https://dashboard.hcaptcha.com/overview">HCaptcha Dashboard</a></li>
-</ul></div>
-
-##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
-<div dir="rtl"><ul><li>گھنٹوں کی تعداد CAPTCHA کے واقعات کو یاد کرنے. پہلے سے طے شدہ = 720 (1 ماہ).</li></ul></div>
-
-##### <div dir="rtl">"hcaptcha_log" <code dir="ltr">[string]</code><br /></div>
-<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
-
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
-
-##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
-
 ##### <div dir="rtl">"api" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کون سا API استعمال کرنے کے لیے؟</li></ul></div>
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (پوشیدہ)")
+├─Invisible ("v1 (پوشیدہ)")
+└─v2 ("v2")
 ```
 
-##### <div dir="rtl">"show_cookie_warning" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>کوکی انتباہ دکھائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
-##### <div dir="rtl">"show_api_message" <code dir="ltr">[bool]</code><br /></div>
-<div dir="rtl"><ul><li>API کا پیغام دکھائیں؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
-
-##### <div dir="rtl">"nonblocked_status_code" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>غیر مسدود درخواستوں پر CAPTCHA کی نمائش کرتے وقت کون سا اسٹیٹس کوڈ استعمال کرنا چاہیے؟</li></ul></div>
+##### <div dir="rtl">"messages" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>CAPTCHA کے ساتھ دکھائے جانے والے پیغامات.</li></ul></div>
 
 ```
-nonblocked_status_code
-├─200 (200 OK (ٹھیک ہے)): کم سے کم مضبوط، لیکن سب سے زیادہ صارف دوست.
-│ خودکار درخواستیں غالباً اس جواب کی تشریح
-│ کریں گی کہ درخواست کامیاب تھی.
-├─403 (403 Forbidden (ممنوعہ)): زیادہ مضبوط، لیکن کم صارف دوست. زیادہ تر
-│ عام حالات کے لیے تجویز کردہ.
-├─418 (418 I'm a teapot (میں چائے کا برتن)): اپریل فول کے لطیفے کا حوالہ دیتے ہیں (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). کسی بھی
-│ کلائنٹ، بوٹ، براؤزر، یا کسی اور طرح سے
-│ سمجھنے کا امکان نہیں ہے. تفریح اور سہولت
-│ کے لیے فراہم کی گئی ہے، لیکن عام طور پر
-│ تجویز نہیں کی جاتی ہے.
-├─429 (429 Too Many Requests (بہت ساری درخواستیں)): شرح کو محدود کرنے، DDoS حملوں سے نمٹنے، اور
-│ سیلاب سے بچاؤ کے لیے تجویز کردہ. دوسرے
-│ سیاق و سباق میں سفارش نہیں کی جاتی ہے.
-└─451 (451 Unavailable For Legal Reasons (قانونی وجوہات کی بنا پر دستیاب نہیں ہے)): بنیادی طور پر قانونی وجوہات کی بنا پر
-  مسدود کرنے پر تجویز کیا جاتا ہے. دوسرے
-  سیاق و سباق میں سفارش نہیں کی جاتی ہے.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("کوکی انتباہ دکھائیں؟): آپ کے ملک یا ریاست کے رازداری کے قوانین پر
+│ منحصر ہے (مثلاً، EU میں GDPR/DSGVO، برازیل میں
+│ LGPD وغیرہ)، یہ قانونی طور پر درکار ہو سکتا
+│ ہے."
+└─api_message ("API کا پیغام دکھائیں؟): CAPTCHA کی تکمیل کے حوالے سے صارف کے لیے
+  ہدایات، استعمال کیے گئے API کے لیے موزوں."
 ```
+
+##### <div dir="rtl">"lockto" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>CAPTCHA کو کس چیز پر لاک کرنا ہے.</li></ul></div>
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("CAPTCHA کو CAPTCHA مکمل کرنے والے صارف کے IP پتے پر لاک کریں لیکن اصل صارف کے لیے نہیں.): کوکیز کا استعمال صارفین کی شناخت کے لیے
+│ نہیں کیا جاتا. جب CAPTCHA کی کامیاب تکمیل کی
+│ وجہ سے دوبارہ رسائی حاصل کی جاتی ہے، تو اس
+│ کا اطلاق اسی IP ایڈریس سے جڑنے والے ہر فرد
+│ پر ہوتا ہے."
+├─user ("CAPTCHA مکمل کرنے والے صارف کے لیے CAPTCHA کو لاک کریں لیکن ان کے IP ایڈریس پر نہیں.): کوکیز کا استعمال صارفین کی شناخت کے لیے
+│ کیا جاتا ہے. جب CAPTCHA کی کامیاب تکمیل کی وجہ
+│ سے دوبارہ رسائی حاصل کی جاتی ہے، تو یہ صرف
+│ CAPTCHA کو مکمل کرنے والے صارف پر لاگو ہوتا
+│ ہے، اور جب تک ان کی کوکی درست رہے گی،
+│ برقرار رہے گی، چاہے ان کا IP پتہ بدل جائے."
+└─both ("CAPTCHA مکمل کرنے والے صارف کے ساتھ ساتھ ان کے IP ایڈریس پر CAPTCHA کو لاک کریں.): کوکیز کا استعمال صارفین کی شناخت کے لیے
+  کیا جاتا ہے. جب CAPTCHA کی کامیاب تکمیل کی وجہ
+  سے دوبارہ رسائی حاصل کی جاتی ہے، تو یہ صرف
+  CAPTCHA کو مکمل کرنے والے صارف پر لاگو ہوتا
+  ہے، اور اگر اس کا IP پتہ تبدیل ہوتا ہے تو یہ
+  برقرار نہیں رہے گا."
+```
+
+##### <div dir="rtl">"hcaptcha_sitekey" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ hCaptcha استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://dashboard.hcaptcha.com/overview">HCaptcha Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"hcaptcha_secret" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ hCaptcha استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://dashboard.hcaptcha.com/overview">HCaptcha Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"friendly_sitekey" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ Friendly Captcha استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://app.friendlycaptcha.eu/dashboard">Friendly Captcha Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"friendly_apikey" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ Friendly Captcha استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://app.friendlycaptcha.eu/dashboard">Friendly Captcha Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"turnstile_sitekey" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ Cloudflare Turnstile استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://dash.cloudflare.com/">Cloudflare Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"turnstile_secret" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>اگر آپ CIDRAM کے ساتھ Cloudflare Turnstile استعمال کرنا چاہتے ہیں، تو آپ کو یہاں ایک قدر درج کرنے کی ضرورت ہوگی. اگر نہیں، تو آپ اسے نظر انداز کر سکتے ہیں.</li></ul></div>
+
+یہ قدر آپ کے CAPTCHA خدمت کے لیے ڈیش بورڈ میں مل سکتی ہے.
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://dash.cloudflare.com/">Cloudflare Dashboard</a></li>
+</ul></div>
+
+##### <div dir="rtl">"expiry" <code dir="ltr">[float]</code><br /></div>
+<div dir="rtl"><ul><li>گھنٹوں کی تعداد CAPTCHA کے واقعات کو یاد کرنے. پہلے سے طے شدہ = 720 (1 ماہ).</li></ul></div>
+
+##### <div dir="rtl">"signature_limit" <code dir="ltr">[int]</code><br /></div>
+<div dir="rtl"><ul><li>CAPTCHA پیش کش واپس لینے سے پہلے دستخطوں کی زیادہ سے زیادہ تعداد کی اجازت. پہلے سے طے شدہ = 1.</li></ul></div>
+
+##### <div dir="rtl">"log" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
+
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a> پر دکھائے جاتے ہیں.
 
 #### <div dir="rtl">"legal" (قسم)<br /></div>
 <div dir="rtl">قانونی تقاضوں کے لیے ترتیبات.<br /><br /></div>
@@ -1649,12 +1618,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1682,17 +1645,15 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### <div dir="rtl">۶.۲.۱ کس طرح "خاص نشان" reCAPTCHA/hCaptcha کے ساتھ استعمال کریں کے لیے دستخط قسموں<br /><br /></div>
+##### <div dir="rtl">۶.۲.۱ کس طرح "خاص نشان" hCaptcha کے ساتھ استعمال کریں کے لیے دستخط قسموں<br /><br /></div>
 
-<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" reCAPTCHA/hCaptcha کے ساتھ استعمال کے لیے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لیے.<br /><br /></div>
+<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" hCaptcha کے ساتھ استعمال کے لیے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لیے.<br /><br /></div>
 
 <pre dir="ltr">
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 </pre>
@@ -2236,7 +2197,7 @@ modules: |
 
 ##### <div dir="rtl">۹.۲.۲ CAPTCHA<br /><br /></div>
 
-<div dir="rtl">reCAPTCHA اور hCaptcha پیکیج کے ذریعہ تعاون یافتہ ہیں. ان کو صحیح طریقے سے کام کرنے کے لیے API کیز کی ضرورت ہوتی ہے. وہ بطور ڈیفالٹ غیر فعال ہیں، لیکن مطلوبہ API چابیاں تشکیل دے کر ان کو فعال کیا جاسکتا ہے. جب فعال ہوجائے تو، خدمت اور CIDRAM یا صارف کے براؤزر کے مابین مواصلت ہوسکتی ہے. اس میں ممکنہ طور پر بات چیت کرنے والی معلومات شامل ہوسکتی ہے جیسے صارف کا آئی پی ایڈریس، صارف ایجنٹ، آپریٹنگ سسٹم، اور دیگر تفصیلات.<br /><br /></div>
+<div dir="rtl">hCaptcha پیکیج کے ذریعہ تعاون یافتہ ہیں. ان کو صحیح طریقے سے کام کرنے کے لیے API کیز کی ضرورت ہوتی ہے. وہ بطور ڈیفالٹ غیر فعال ہیں، لیکن مطلوبہ API چابیاں تشکیل دے کر ان کو فعال کیا جاسکتا ہے. جب فعال ہوجائے تو، خدمت اور CIDRAM یا صارف کے براؤزر کے مابین مواصلت ہوسکتی ہے. اس میں ممکنہ طور پر بات چیت کرنے والی معلومات شامل ہوسکتی ہے جیسے صارف کا آئی پی ایڈریس، صارف ایجنٹ، آپریٹنگ سسٹم، اور دیگر تفصیلات.<br /><br /></div>
 
 ##### <div dir="rtl">۹.۲.۳ STOP FORUM SPAM<br /><br /></div>
 
@@ -2333,7 +2294,6 @@ IP پتہ: x.x.x.x - تاریخ وقت: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCH
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
  <li><code dir="ltr">hcaptcha_log</code> &lt;- <code dir="ltr">hcaptcha</code></li>
- <li><code dir="ltr">recaptcha_log</code> &lt;- <code dir="ltr">recaptcha</code></li>
 </ul></div>
 
 ##### <div dir="rtl">۹.۳.۲ سامنے کے آخر لاگ<br /><br /></div>
@@ -2431,8 +2391,6 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 <div dir="rtl">متعلقہ ترتیب ہدایات:<br /></div>
 <div dir="rtl"><ul>
- <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">recaptcha</code></li>
- <li><code dir="ltr">api</code> &lt;- <code dir="ltr">recaptcha</code></li>
  <li><code dir="ltr">lockuser</code> &lt;- <code dir="ltr">hcaptcha</code></li>
  <li><code dir="ltr">api</code> &lt;- <code dir="ltr">hcaptcha</code></li>
 </ul></div>
@@ -2498,4 +2456,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۹ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۰۹).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۱ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۲۱).</div>

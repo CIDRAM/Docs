@@ -1,4 +1,4 @@
-## CIDRAM v3 설명서 (한국어).
+## CIDRAM v4 설명서 (한국어).
 
 ### 목차
 - 1. [서문](#user-content-SECTION1)
@@ -242,32 +242,21 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 - 실행 체인의 단계에 대한 제어 (활성화 여부, 오류 기록 여부, 등등).
 
 ```
-stages
+stages───[이 단계를 활성화하시겠습니까?]─[이 단계에서 생성된 오류를 기록하시겠습니까?]─[이 단계에서 생성된 위반은 IP 추적에 포함되어야 합니까?]
 ├─Tests ("서명 파일 테스트 실행")
 ├─Modules ("모듈 실행")
 ├─SearchEngineVerification ("검색 엔진 검증 실행")
@@ -339,7 +328,7 @@ stages
 - 블록 이벤트 중 필드 제어 (요청이 차단되었을 때).
 
 ```
-fields
+fields───[이 필드가 로그 항목에 나타나야 합니까?]─[이 필드가 "액세스 거부" 페이지에 나타나야 합니까?]─[이 필드가 비어 있으면 생략하시겠습니까?]
 ├─ID ("신분증")
 ├─ScriptIdent ("스크립트 버전")
 ├─DateTime ("일·월·년·시간")
@@ -514,7 +503,7 @@ ipaddr
 http_response_header_code
 ├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
 │ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
-│ 가능성이 큽니다.
+│ 가능성이 큽니다. 차단되지 않은 요청에 권장됩니다.
 ├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
 │ 일반적인 상황에 권장됩니다.
 ├─410 (410 Gone (갔다)): 일부 브라우저는 차단 해제된 후에도 이 상태 메시지를
@@ -680,7 +669,7 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
 │ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
-│ 가능성이 큽니다.
+│ 가능성이 큽니다. 차단되지 않은 요청에 권장됩니다.
 ├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
 │ 일반적인 상황에 권장됩니다.
 ├─410 (410 Gone (갔다)): 일부 브라우저는 차단 해제된 후에도 이 상태 메시지를
@@ -729,8 +718,8 @@ statistics
 ├─Passed-IPv4 ("허용된 요청 – IPv4")
 ├─Passed-IPv6 ("허용된 요청 – IPv6")
 ├─Passed-Other ("허용된 요청 – 다른")
-├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – 실패했습니다!")
-├─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격!")
+├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – 실패했습니다 (%s)!")
+├─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격 (%s)!")
 ├─Reported-IPv4-OK ("외부 API에 보고된 요청 – IPv4 – 확인")
 ├─Reported-IPv4-Failed ("외부 API에 보고된 요청 – IPv4 – 실패했습니다")
 ├─Reported-IPv6-OK ("외부 API에 보고된 요청 – IPv6 – 확인")
@@ -921,7 +910,7 @@ theme_mode
 - 주어진 속기 단어를 사용하는 서명에 대해 긍정적인 일치가 있을 때 요청을 처리하는 방법을 제어합니다.
 
 ```
-shorthand
+shorthand───[차단하세요.]─[프로필을.]─[차단되면, 출력 템플릿을 억제합니다.]
 ├─Attacks ("공격")
 ├─Bogon ("⁰ 보곤 IP")
 ├─Cloud ("클라우드 서비스")
@@ -987,7 +976,7 @@ conflict_response
 - 검색 엔진의 요청을 확인하기 위한 컨트롤입니다.
 
 ```
-search_engines
+search_engines───[검증을 시도?]─[네거티브를 차단하시겠습니까?]─[검증되지 않은 요청을 차단하시겠습니까?]─[단일 히트 바이 패스를 허용하시겠습니까?]─[포지티브를 추적 해제하시겠습니까?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1014,7 +1003,7 @@ __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명
 - 소셜 미디어 플랫폼의 요청을 확인하기 위한 컨트롤입니다.
 
 ```
-social_media
+social_media───[검증을 시도?]─[네거티브를 차단하시겠습니까?]─[검증되지 않은 요청을 차단하시겠습니까?]─[단일 히트 바이 패스를 허용하시겠습니까?]─[포지티브를 추적 해제하시겠습니까?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1036,7 +1025,7 @@ __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명
 - 가능한 경우 다른 종류의 요청을 확인하기 위한 제어입니다.
 
 ```
-other
+other───[검증을 시도?]─[네거티브를 차단하시겠습니까?]─[검증되지 않은 요청을 차단하시겠습니까?]─[단일 히트 바이 패스를 허용하시겠습니까?]─[포지티브를 추적 해제하시겠습니까?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1055,20 +1044,20 @@ __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명
 - 검증과 관련하여 다른 기능을 조정하는 컨트롤입니다.
 
 ```
-adjust
+adjust───[HCaptcha 억제]
 ├─Negatives ("차단된 네거티브")
 └─NonVerified ("차단된 검증되지 않은")
 ```
 
-#### "recaptcha" (카테고리)
-ReCAPTCHA 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
+#### "captcha" (카테고리)
+CAPTCHA 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
 
 ##### "usemode" `[int]`
-- 보안 문자는 언제 제공해야 합니까? 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고 : CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
+- CAPTCHA는 언제 제공해야 합니까 ? 여기에서 지원되는 각 공급자에 대한 기본 동작을 지정할 수 있습니다. 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고 : CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
 
 ```
-usemode
-├─0 (못 !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (못.)
 ├─1 (차단되었을, 서명 한도 내고 금지되지 않으면 때만.)
 ├─2 (차단되었을, 특별히 사용 표시, 서명 한도 내고 금지되지 않으면 때만.)
 ├─3 (서명 한도 내고 금지되지 않으면 때만 (차단 여부와 관계없이).)
@@ -1077,60 +1066,14 @@ usemode
 └─6 (차단되지 않은 경우에만, 민감한 페이지 요청 시.)
 ```
 
-##### "lockip" `[bool]`
-- 보안 문자를 IP로 잠금 하시겠습니까?
-
-##### "lockuser" `[bool]`
-- 보안 문자를 사용자에 잠금 하시겠습니까?
-
-##### "sitekey" `[string]`
-- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
-
-또한보십시오 :
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "secret" `[string]`
-- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
-
-또한보십시오 :
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### "expiry" `[float]`
-- 보안 문자 인스턴스를 기억 시간. Default (기본 설정) = 720 (1 개월).
-
-##### "recaptcha_log" `[string]`
-- 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
-
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
-
-##### "signature_limit" `[int]`
-- 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
-
-##### "api" `[string]`
-- 어떤 API를 사용할 수 있습니까?
-
-```
-api
-├─v2 ("v2 (체크 박스)")
-└─Invisible ("v2 (보이지 않음)")
-```
-
-##### "show_cookie_warning" `[bool]`
-- 쿠키 경고 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
-
-##### "show_api_message" `[bool]`
-- API 메시지를 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
-
 ##### "nonblocked_status_code" `[int]`
 - 차단되지 않은 요청에 CAPTCHA를 표시 할 때 어떤 상태 코드를 사용해야합니까?
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
 │ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
-│ 가능성이 큽니다.
+│ 가능성이 큽니다. 차단되지 않은 요청에 권장됩니다.
 ├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
 │ 일반적인 상황에 권장됩니다.
 ├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
@@ -1145,88 +1088,103 @@ nonblocked_status_code
   상황에서는 권장되지 않습니다.
 ```
 
-#### "hcaptcha" (카테고리)
-HCaptcha 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
-
-##### "usemode" `[int]`
-- 보안 문자는 언제 제공해야 합니까? 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고 : CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
-
-```
-usemode
-├─0 (못 !!!)
-├─1 (차단되었을, 서명 한도 내고 금지되지 않으면 때만.)
-├─2 (차단되었을, 특별히 사용 표시, 서명 한도 내고 금지되지 않으면 때만.)
-├─3 (서명 한도 내고 금지되지 않으면 때만 (차단 여부와 관계없이).)
-├─4 (차단되지 때만.)
-├─5 (차단되지 않은 경우, 또는 특별히 사용 표시, 서명 한도 내고 금지되지 않으면 때만.)
-└─6 (차단되지 않은 경우에만, 민감한 페이지 요청 시.)
-```
-
-##### "lockip" `[bool]`
-- 보안 문자를 IP로 잠금 하시겠습니까?
-
-##### "lockuser" `[bool]`
-- 보안 문자를 사용자에 잠금 하시겠습니까?
-
-##### "sitekey" `[string]`
-- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
-
-또한보십시오 :
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "secret" `[string]`
-- 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
-
-또한보십시오 :
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### "expiry" `[float]`
-- 보안 문자 인스턴스를 기억 시간. Default (기본 설정) = 720 (1 개월).
-
-##### "hcaptcha_log" `[string]`
-- 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
-
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
-
-##### "signature_limit" `[int]`
-- 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
-
 ##### "api" `[string]`
 - 어떤 API를 사용할 수 있습니까?
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (보이지 않음)")
+├─Invisible ("v1 (보이지 않음)")
+└─v2 ("v2")
 ```
 
-##### "show_cookie_warning" `[bool]`
-- 쿠키 경고 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
-
-##### "show_api_message" `[bool]`
-- API 메시지를 표시 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
-
-##### "nonblocked_status_code" `[int]`
-- 차단되지 않은 요청에 CAPTCHA를 표시 할 때 어떤 상태 코드를 사용해야합니까?
+##### "messages" `[string]`
+- CAPTCHA와 함께 표시될 메시지입니다.
 
 ```
-nonblocked_status_code
-├─200 (200 OK): 가장 덜 강력하지만 가장 사용자 친화적입니다. 자동화된
-│ 요청은 이 응답을 요청이 성공했다는 표시로 해석할
-│ 가능성이 큽니다.
-├─403 (403 Forbidden (금지)): 더 강력하지만, 사용자 친화성은 떨어집니다. 대부분의
-│ 일반적인 상황에 권장됩니다.
-├─418 (418 I'm a teapot (나는 찻주전자)): 만우절 농담을 참고하여 (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). 클라이언트, 로봇,
-│ 브라우저, 등이 이해하지 못할 가능성이 매우 높습니다.
-│ 오락과 편의를 위해 제공되지만, 일반적으로 권장되지
-│ 않습니다.
-├─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
-│ 다른 상황에서는 권장되지 않습니다.
-└─451 (451 Unavailable For Legal Reasons (법적 이유로 사용할 수 없음)): 주로 법적 이유로 차단할 때 권장됩니다. 다른
-  상황에서는 권장되지 않습니다.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("쿠키 경고 표시 하시겠습니까 ?): 해당 국가 또는 주의 개인정보 보호법 (예 : EU의 GDPR/DSGVO,
+│ 브라질의 LGPD, 등)에 따라, 법적으로 요구될 수 있습니다."
+└─api_message ("API 메시지를 표시 하시겠습니까 ?): CAPTCHA를 완료하기 위한 API에 적합한 사용자 지침입니다."
 ```
+
+##### "lockto" `[string]`
+- CAPTCHA를 잠글 대상.
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("CAPTCHA는 CAPTCHA를 완료하는 사용자의 IP 주소에 잠금되어야 하며, 실제 사용자에게는 잠금되어서는 안 됩니다.): 쿠키는 사용자를 식별하는 데 사용되지 않습니다.
+│ CAPTCHA를 성공적으로 완료하여 접근이 회복된 경우,
+│ 동일한 IP 주소에서 접속하는 모든 사람에게 적용됩니다."
+├─user ("CAPTCHA는 CAPTCHA를 완료한 사용자에게만 잠금되어야 하지만, IP 주소에는 잠금되어서는 안 됩니다.): 쿠키는 사용자를 식별하는 데 사용됩니다. CAPTCHA를
+│ 성공적으로 완료하여 접근이 회복된 경우, 이는 CAPTCHA를
+│ 완료한 사용자에게만 적용되며, 쿠키가 유효한 한 IP
+│ 주소가 변경되더라도 유지됩니다."
+└─both ("CAPTCHA는 CAPTCHA를 완료한 사용자와 해당 IP 주소에 모두 잠금되어야 합니다.): 쿠키는 사용자를 식별하는 데 사용됩니다. CAPTCHA를
+  성공적으로 완료하여 접근이 회복된 경우, 이는 사용자가
+  CAPTCHA를 완료한 경우에만 적용됩니다. IP 주소가 변경되면
+  액세스가 지속되지 않습니다."
+```
+
+##### "hcaptcha_sitekey" `[string]`
+- CIDRAM과 함께 hCaptcha를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "hcaptcha_secret" `[string]`
+- CIDRAM과 함께 hCaptcha를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### "friendly_sitekey" `[string]`
+- CIDRAM과 함께 Friendly Captcha를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "friendly_apikey" `[string]`
+- CIDRAM과 함께 Friendly Captcha를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### "turnstile_sitekey" `[string]`
+- CIDRAM과 함께 Cloudflare Turnstile를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "turnstile_secret" `[string]`
+- CIDRAM과 함께 Cloudflare Turnstile를 사용하려면 여기에 값을 입력해야 합니다. 그렇지 않다면 무시해도 됩니다.
+
+이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
+
+또한보십시오 :
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### "expiry" `[float]`
+- 보안 문자 인스턴스를 기억 시간. Default (기본 설정) = 720 (1 개월).
+
+##### "signature_limit" `[int]`
+- 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
+
+##### "log" `[string]`
+- 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+
+유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
 
 #### "legal" (카테고리)
 법적 요구 사항 설정.
@@ -1580,7 +1538,7 @@ Origin: BB
 
 ##### 6.2.0 YAML 기초
 
-섹션 관련 설정을 정의하기 위해, 간단한 형식의 YAML 마크 업을 서명 파일로 사용할 수 있습니다. 이것은 다른 서명 섹션에 대해 다른 설정을 할 때 유용합니다 (예를 들면 : 지원 티켓의 이메일 주소를 지정하려면, 그러나 특정 섹션 만; 특정 서명으로 페이지 리디렉션을 트리거하려면; reCAPTCHA/hCaptcha에서 사용하기 위해 서명 섹션을 표시하려면; 개별 서명에 따라 그리고/또는 서명 섹션에 따라, 차단 된 액세스 시도를 별도의 파일에 기록하려면).
+섹션 관련 설정을 정의하기 위해, 간단한 형식의 YAML 마크 업을 서명 파일로 사용할 수 있습니다. 이것은 다른 서명 섹션에 대해 다른 설정을 할 때 유용합니다 (예를 들면 : 지원 티켓의 이메일 주소를 지정하려면, 그러나 특정 섹션 만; 특정 서명으로 페이지 리디렉션을 트리거하려면; hCaptcha에서 사용하기 위해 서명 섹션을 표시하려면; 개별 서명에 따라 그리고/또는 서명 섹션에 따라, 차단 된 액세스 시도를 별도의 파일에 기록하려면).
 
 서명 파일로 YAML 마크 업의 사용은 옵션입니다 (즉, 당신이 원한다면 그것을 사용할 수 있지만 그렇게 할 필요는 없습니다). 대부분의 (하지만 전부는 아니지만) 구성 지시문을 활용할 수 있습니다.
 
@@ -1602,12 +1560,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1644,8 +1596,6 @@ general:
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2175,7 +2125,7 @@ cronjobs에 특정 파일을 사용하는 경우, 일반 사용자 요청 중에
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM은 reCAPTCHA 및 hCaptcha를 지원합니다. 올바르게 작동하려면 API 키가 필요합니다. 기본적으로 비활성화되어 있지만 필요한 API 키를 구성하여 활성화 할 수 있습니다. 활성화되면 서비스와 CIDRAM 또는 사용자 브라우저 간에 통신이 발생할 수 있습니다. 여기에는 사용자의 IP 주소, 사용자 에이전트, 운영 체제 및 요청에 사용할 수 있는 기타 세부 정보와 같은 정보 통신이 포함될 수 있습니다.
+CIDRAM은 hCaptcha를 지원합니다. 올바르게 작동하려면 API 키가 필요합니다. 기본적으로 비활성화되어 있지만 필요한 API 키를 구성하여 활성화 할 수 있습니다. 활성화되면 서비스와 CIDRAM 또는 사용자 브라우저 간에 통신이 발생할 수 있습니다. 여기에는 사용자의 IP 주소, 사용자 에이전트, 운영 체제 및 요청에 사용할 수 있는 기타 세부 정보와 같은 정보 통신이 포함될 수 있습니다.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2264,7 +2214,6 @@ IP 주소 : x.x.x.x - 일·월·년·시간 : Day, dd Mon 20xx hh:ii:ss +0000 
 
 *CAPTCHA 로깅을 담당하는 구성 지시문 :*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 프론트 엔드 로깅
 
@@ -2346,8 +2295,6 @@ CIDRAM은 [쿠키](https://ko.wikipedia.org/wiki/HTTP_%EC%BF%A0%ED%82%A4)를 코
 *노트 : "보이지 않는"CAPTCHA API는 일부 관할권에서 쿠키 법률과 호환되지 않을 수 있습니다. 쿠키 법이 적용되는 웹 사이트는을 피해 야합니다. 대신, 제공된 다른 API를 사용하거나, 단순히 CAPTCHA를 완전히 비활성화하는 것이, 바람직 할 수 있습니다.*
 
 *관련 설정 지시어 :*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2410,4 +2357,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2025년 8월 9일.
+최종 업데이트 : 2025년 8월 21일.

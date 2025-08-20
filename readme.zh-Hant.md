@@ -1,4 +1,4 @@
-## CIDRAM v3 中文（傳統）文檔。
+## CIDRAM v4 中文（傳統）文檔。
 
 ### 內容
 - 1. [前言](#user-content-SECTION1)
@@ -242,32 +242,21 @@ $CIDRAM->view();
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ $CIDRAM->view();
 - 用於執行鏈的各個階段的控件（是否啟用、是否記錄錯誤、等等）。
 
 ```
-stages
+stages───[啟用此階段？]─[記錄在此階段產生的任何錯誤？]─[將在此階段產生的違規計入IP跟踪？]
 ├─Tests ("執行簽名文件測試")
 ├─Modules ("執行模組")
 ├─SearchEngineVerification ("執行搜索引擎驗證")
@@ -339,7 +328,7 @@ stages
 - 用於阻止事件的字段控件（當請求被阻止時）。
 
 ```
-fields
+fields───[該字段是否應該出現在日誌條目中？]─[該字段是否應該出現在『拒絕訪問』頁面上？]─[為空時忽略此字段？]
 ├─ID ("ID")
 ├─ScriptIdent ("腳本版本")
 ├─DateTime ("日期/時間")
@@ -366,7 +355,7 @@ fields
 ├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
 ├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("主機名")
-├─CAPTCHA ("CAPTCHA狀態")
+├─CAPTCHA ("驗證碼狀態")
 ├─Inspection ("* 條件檢查")
 └─ClientL10NAccepted ("語言解析")
 ```
@@ -512,7 +501,7 @@ ipaddr
 
 ```
 http_response_header_code
-├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。
+├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。​建議用於非阻塞請求。
 ├─403 (403 Forbidden （禁止的）): 更健壯，但不太用戶友好。​一般最推薦的。
 ├─410 (410 Gone （走了）): 解決假陽性時可能會導致問題，因為某些瀏覽器會緩存此狀態消息並且不會發送後續請求，即使在被解除阻止後也是如此。​在某些情況下可能是最可取的。
 ├─418 (418 I'm a teapot （我是一個茶壺）): 引用愚人節的笑話【<a href="https://tools.ietf.org/html/rfc2324"
@@ -662,7 +651,7 @@ emailaddr_display_style
 
 ```
 ban_override
-├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。
+├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。​建議用於非阻塞請求。
 ├─403 (403 Forbidden （禁止的）): 更健壯，但不太用戶友好。​一般最推薦的。
 ├─410 (410 Gone （走了）): 解決假陽性時可能會導致問題，因為某些瀏覽器會緩存此狀態消息並且不會發送後續請求，即使在被解除阻止後也是如此。​在某些情況下可能是最可取的。
 ├─418 (418 I'm a teapot （我是一個茶壺）): 引用愚人節的笑話【<a href="https://tools.ietf.org/html/rfc2324"
@@ -701,8 +690,8 @@ statistics
 ├─Passed-IPv4 ("允許的請求 – IPv4")
 ├─Passed-IPv6 ("允許的請求 – IPv6")
 ├─Passed-Other ("允許的請求 – 其他")
-├─CAPTCHAs-Failed ("CAPTCHA嘗試 – 失敗！")
-├─CAPTCHAs-Passed ("CAPTCHA嘗試 – 成功！")
+├─CAPTCHAs-Failed ("驗證碼嘗試 – 失敗（%s）！")
+├─CAPTCHAs-Passed ("驗證碼嘗試 – 成功（%s）！")
 ├─Reported-IPv4-OK ("向外部API報告的請求 – IPv4 – OK")
 ├─Reported-IPv4-Failed ("向外部API報告的請求 – IPv4 – 失敗")
 ├─Reported-IPv6-OK ("向外部API報告的請求 – IPv6 – OK")
@@ -893,7 +882,7 @@ theme_mode
 - 當與使用給定速記詞的簽名匹配時，控制如何處理請求。
 
 ```
-shorthand
+shorthand───[阻止它。]─[分類它。]─[被阻止時，禁止輸出模板。]
 ├─Attacks ("攻擊")
 ├─Bogon ("⁰ 火星IP")
 ├─Cloud ("雲服務")
@@ -940,7 +929,7 @@ __7.__ __人類端點和雲服務。__ 雲服務可能是指虛擬主機提供�
 ```
 conflict_response
 ├─0 (不要阻止該請求。): 如果您希望僅在確定請求是惡意的時才阻止請求，或在誤報方面採取謹慎態度（以偶爾透過不必要的流量為代價），請選擇此選項。​如果您希望在不確定請求是否良性的情況下阻止請求，或者希望保持警惕（偶爾有誤報的風險），請選擇其他可用選項。
-├─409 ( "409 Conflict （冲突）): 推荐用于资源冲突（例如，合并冲突、文件访问冲突、等等）。​不推荐在其他情况下。
+├─409 (409 Conflict （衝突）): 建議用於資源衝突（例如，合併衝突、文件存取衝突、等等）。​不推薦在其他情況下。
 └─429 (429 Too Many Requests （請求過多）): 推薦用於速率限制、處理DDoS攻擊、和防洪。​不推薦在其他情況下。
 ```
 
@@ -951,7 +940,7 @@ conflict_response
 - 用於驗證來自搜索引擎的請求的控件。
 
 ```
-search_engines
+search_engines───[嘗試驗證？]─[阻止陰性？]─[阻止未驗證的請求？]─[允許一擊繞過？]─[取消跟踪陽性？]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -976,7 +965,7 @@ __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，
 - 用於驗證來自社交媒體平台的請求的控件。
 
 ```
-social_media
+social_media───[嘗試驗證？]─[阻止陰性？]─[阻止未驗證的請求？]─[允許一擊繞過？]─[取消跟踪陽性？]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -996,7 +985,7 @@ __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，
 - 用於在可能的情況下，驗證其他類型的請求的控件。
 
 ```
-other
+other───[嘗試驗證？]─[阻止陰性？]─[阻止未驗證的請求？]─[允許一擊繞過？]─[取消跟踪陽性？]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1013,20 +1002,20 @@ __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，
 - 在驗證上下文中調整其他功能的控件。
 
 ```
-adjust
+adjust───[禁止hCaptcha]
 ├─Negatives ("被阻止的陰性")
 └─NonVerified ("被阻止的未驗證")
 ```
 
-#### 『recaptcha』 （類別）
-ReCAPTCHA的配置（為人們提供了一種在受阻時重新獲得訪問權限的方法）。
+#### 『captcha』 （類別）
+驗證碼的配置（為人們提供了一種在受阻時重新獲得訪問權限的方法）。
 
 ##### 『usemode』 `[int]`
-- 何時應提供CAPTCHA嗎？​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成CAPTCHA。​另請注意：CAPTCHA可以提供有用的保護層，防止機器人和各種惡意自動請求，但不會提供任何針對惡意人類的保護。
+- 何時應提供驗證碼？​您可以在此處為每個受支援的提供者指定首選行為。​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成驗證碼。​另請注意：驗證碼可以提供有用的保護層，防止機器人和各種惡意自動請求，但不會提供任何針對惡意人類的保護。
 
 ```
-usemode
-├─0 (決不 !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (決不。)
 ├─1 (僅當被阻止時，在簽名限制之內，並且不被禁止。)
 ├─2 (僅當被阻止時，專門標明使用時，在簽名限制之內，並且不被禁止。)
 ├─3 (僅在簽名限制之內，並且不被禁止（不管是否被阻止）。)
@@ -1035,58 +1024,12 @@ usemode
 └─6 (僅在不被阻止時，在敏感頁面請求時。)
 ```
 
-##### 『lockip』 `[bool]`
-- 應該CAPTCHA鎖定到IP？
-
-##### 『lockuser』 `[bool]`
-- 應該CAPTCHA鎖定到用戶？
-
-##### 『sitekey』 `[string]`
-- 可以在您的CAPTCHA服務的儀表板中找到該值。
-
-也可以看看：
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### 『secret』 `[string]`
-- 可以在您的CAPTCHA服務的儀表板中找到該值。
-
-也可以看看：
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### 『expiry』 `[float]`
-- 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
-
-##### 『recaptcha_log』 `[string]`
-- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個檔案名稱到使用。​如果不，​離開這個變量為空白。
-
-有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
-
-##### 『signature_limit』 `[int]`
-- 撤銷CAPTCHA之前允許的最大簽名數。 標準 = 1。
-
-##### 『api』 `[string]`
-- 使用哪個API？
-
-```
-api
-├─v2 ("v2 (選框)")
-└─Invisible ("v2 (不可見的)")
-```
-
-##### 『show_cookie_warning』 `[bool]`
-- 顯示cookie警告嗎？​True（真）=顯示【標準】；False（假）=不顯示。
-
-##### 『show_api_message』 `[bool]`
-- 顯示API訊息嗎？​True（真）=顯示【標準】；False（假）=不顯示。
-
 ##### 『nonblocked_status_code』 `[int]`
-- 向未阻止的請求顯示CAPTCHA時應使用哪個狀態代碼？
+- 向未阻止的請求顯示驗證碼時應使用哪個狀態代碼？
 
 ```
-nonblocked_status_code
-├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。​建議用於非阻塞請求。
 ├─403 (403 Forbidden （禁止的）): 更健壯，但不太用戶友好。​一般最推薦的。
 ├─418 (418 I'm a teapot （我是一個茶壺）): 引用愚人節的笑話【<a href="https://tools.ietf.org/html/rfc2324"
 │ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC
@@ -1095,80 +1038,94 @@ nonblocked_status_code
 └─451 (451 Unavailable For Legal Reasons （因法律原因不可用）): 主要出於法律原因被阻止時推薦。​不推薦在其他情況下。
 ```
 
-#### 『hcaptcha』 （類別）
-HCaptcha的配置（為人們提供了一種在受阻時重新獲得訪問權限的方法）。
-
-##### 『usemode』 `[int]`
-- 何時應提供CAPTCHA嗎？​注意：列入白名單或已驗證且未阻止的請求永遠不需要完成CAPTCHA。​另請注意：CAPTCHA可以提供有用的保護層，防止機器人和各種惡意自動請求，但不會提供任何針對惡意人類的保護。
-
-```
-usemode
-├─0 (決不 !!!)
-├─1 (僅當被阻止時，在簽名限制之內，並且不被禁止。)
-├─2 (僅當被阻止時，專門標明使用時，在簽名限制之內，並且不被禁止。)
-├─3 (僅在簽名限制之內，並且不被禁止（不管是否被阻止）。)
-├─4 (僅在不被阻止時。)
-├─5 (僅在不被阻止時，或專門標明使用時，在簽名限制之內，並且不被禁止。)
-└─6 (僅在不被阻止時，在敏感頁面請求時。)
-```
-
-##### 『lockip』 `[bool]`
-- 應該CAPTCHA鎖定到IP？
-
-##### 『lockuser』 `[bool]`
-- 應該CAPTCHA鎖定到用戶？
-
-##### 『sitekey』 `[string]`
-- 可以在您的CAPTCHA服務的儀表板中找到該值。
-
-也可以看看：
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### 『secret』 `[string]`
-- 可以在您的CAPTCHA服務的儀表板中找到該值。
-
-也可以看看：
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### 『expiry』 `[float]`
-- 記得CAPTCHA多少小時？ 標準 = 720 （1個月）。
-
-##### 『hcaptcha_log』 `[string]`
-- 記錄所有的CAPTCHA的嘗試？​要做到這一點，​指定一個檔案名稱到使用。​如果不，​離開這個變量為空白。
-
-有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
-
-##### 『signature_limit』 `[int]`
-- 撤銷CAPTCHA之前允許的最大簽名數。 標準 = 1。
-
 ##### 『api』 `[string]`
 - 使用哪個API？
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (不可見的)")
+├─Invisible ("v1 (不可見的)")
+└─v2 ("v2")
 ```
 
-##### 『show_cookie_warning』 `[bool]`
-- 顯示cookie警告嗎？​True（真）=顯示【標準】；False（假）=不顯示。
-
-##### 『show_api_message』 `[bool]`
-- 顯示API訊息嗎？​True（真）=顯示【標準】；False（假）=不顯示。
-
-##### 『nonblocked_status_code』 `[int]`
-- 向未阻止的請求顯示CAPTCHA時應使用哪個狀態代碼？
+##### 『messages』 `[string]`
+- 與驗證碼一起顯示的訊息。
 
 ```
-nonblocked_status_code
-├─200 (200 OK （好的）): 最不健壯，但最用戶友好。​自動請求很可能將此響應解釋為成功。
-├─403 (403 Forbidden （禁止的）): 更健壯，但不太用戶友好。​一般最推薦的。
-├─418 (418 I'm a teapot （我是一個茶壺）): 引用愚人節的笑話【<a href="https://tools.ietf.org/html/rfc2324"
-│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC
-│ 2324</a>】。​任何客戶端、機器人、瀏覽器、或其他方式都不太可能理解。​它是為了娛樂和方便而提供的，但是通常不推薦。
-├─429 (429 Too Many Requests （請求過多）): 推薦用於速率限制、處理DDoS攻擊、和防洪。​不推薦在其他情況下。
-└─451 (451 Unavailable For Legal Reasons （因法律原因不可用）): 主要出於法律原因被阻止時推薦。​不推薦在其他情況下。
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("顯示cookie警告嗎？): 根據您所在國家或州的隱私法（例如，歐盟的GDPR/DSGVO、巴西的LGPD、等等），這可能是法律要求的。"
+└─api_message ("顯示API訊息嗎？): 針對所用API的使用者有關完成驗證碼的說明。"
 ```
+
+##### 『lockto』 `[string]`
+- 將驗證碼鎖定在什麼。
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("將驗證碼鎖定到完成它的使用者的IP位址，但不鎖定到使用者。): Cookies不用於識別使用者。​當由於成功完成驗證碼而重新獲得訪問時，它適用於從相同IP位址連接的任何人。"
+├─user ("將驗證碼鎖定到完成它的使用者，但不鎖定到其IP位址。): Cookies用於識別使用者。​當由於成功完成驗證碼而重新獲得訪問時，它僅適用於完成它的用戶，並且只要他們的cookie仍然有效，即使他們的IP位址發生變化，它也會持續適用。"
+└─both ("將驗證碼鎖定到完成它的使用者以及他們的IP位址。): Cookies用於識別使用者。​當由於成功完成驗證碼而重新獲得訪問時，它僅適用於完成它的用戶，並且如果他們的IP位址發生變化，它將不再有效。"
+```
+
+##### 『hcaptcha_sitekey』 `[string]`
+- 如果您想將hCaptcha與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### 『hcaptcha_secret』 `[string]`
+- 如果您想將hCaptcha與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### 『friendly_sitekey』 `[string]`
+- 如果您想將Friendly Captcha與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### 『friendly_apikey』 `[string]`
+- 如果您想將Friendly Captcha與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### 『turnstile_sitekey』 `[string]`
+- 如果您想將Cloudflare Turnstile與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### 『turnstile_secret』 `[string]`
+- 如果您想將Cloudflare Turnstile與CIDRAM一起使用，則需要在此輸入一個值。​如果不使用它，您可以忽略它。
+
+可以在您的驗證碼服務的儀表板中找到該值。
+
+也可以看看：
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### 『expiry』 `[float]`
+- 記得驗證碼多少小時？ 標準 = 720 （1個月）。
+
+##### 『signature_limit』 `[int]`
+- 撤銷驗證碼之前允許的最大簽名數。 標準 = 1。
+
+##### 『log』 `[string]`
+- 記錄所有的驗證碼的嘗試？​要做到這一點，​指定一個檔案名稱到使用。​如果不，​離開這個變量為空白。
+
+有用的提示：您可以使用時間格式佔位符將日期/時間資訊附加到日誌檔案的名稱。​可用的時間格式佔位符顯示在<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>處。
 
 #### 『legal』 （類別）
 法律要求的配置。
@@ -1183,7 +1140,7 @@ nonblocked_status_code
 模板和主題的配置。
 
 ##### 『theme』 `[string]`
-- 用於阻止事件和CAPTCHA請求的主題。
+- 用於阻止事件和驗證碼請求的主題。
 
 ```
 theme
@@ -1199,7 +1156,7 @@ theme
 ```
 
 ##### 『theme_mode』 `[string]`
-- 用於阻止事件和CAPTCHA請求的主題模式。
+- 用於阻止事件和驗證碼請求的主題模式。
 
 ```
 theme_mode
@@ -1224,7 +1181,7 @@ block_event_title
 ```
 
 ##### 『captcha_title』 `[string]`
-- 為CAPTCHA請求顯示的頁面標題。
+- 為驗證碼請求顯示的頁面標題。
 
 ```
 captcha_title
@@ -1275,7 +1232,7 @@ exceptions
 補充緩存選項。​注意：更改這些值可能會使您註銷。
 
 ##### 『prefix』 `[string]`
-- 該值將附加到所有緩存條目的鍵的開頭。 默認 = 『CIDRAM_』。​當同一服務器上存在多個安裝時，這對於將它們的緩存彼此分開非常有用。
+- 該值將附加到所有緩存條目的鍵的開頭。 默認 = 『CIDRAM_』。 當同一服務器上存在多個安裝時，這對於將它們的緩存彼此分開非常有用。
 
 ##### 『enable_apcu』 `[bool]`
 - 指定是否嘗試使用APCu進行緩存。 默認 = True。
@@ -1522,7 +1479,7 @@ Origin: BB
 
 ##### 6.2.0 YAML基本概念
 
-簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的reCAPTCHA/hCaptcha；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
+簡化形式的YAML標記可以使用在簽名文件用於目的定義行為和配置設置具體到個人簽名章節。​這可能是有用的如果您希望您的配置指令值到變化之間的個人簽名和簽名章節（例如；如果您想提供一個電子郵件地址為支持票為任何用戶攔截的通過一個特定的簽名，​但不希望提供一個電子郵件地址為支持票為用戶攔截的通過任何其他簽名；如果您想一些具體的簽名到觸發頁面重定向；如果您想標記一個簽名為使用的hCaptcha；如果您想日誌攔截的訪問到單獨的文件按照個人簽名和/或簽名章節）。
 
 使用YAML標記在簽名文件是完全可選（即，​如果您想用這個，​您可以用這個，​但您沒有需要用這個），​和能夠利用最的（但不所有的）配置指令。
 
@@ -1544,12 +1501,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1586,8 +1537,6 @@ general:
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2117,7 +2066,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM支持reCAPTCHA和hCaptcha。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
+CIDRAM支持hCaptcha。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
 
 ##### 9.2.3 STOP FORUM SPAM 【停止論壇垃圾郵件】
 
@@ -2206,7 +2155,6 @@ IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA狀態�
 
 *負責CAPTCHA日誌記錄的配置指令是：*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 前端日誌記錄
 
@@ -2288,8 +2236,6 @@ CIDRAM在其代碼庫中的兩個點設置[cookie](https://zh.wikipedia.org/wiki
 *注意：在某些司法管轄區中，『不可见的』 CAPTCHA API可能與Cookie法律不兼容，任何受這些法律約束的網站都應該避免這個API。​選擇改用其他提供的API，或完全禁用CAPTCHA，可能是更可取的選擇。*
 
 *相關配置指令：*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2354,4 +2300,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2025年8月9日。
+最後更新：2025年8月21日。

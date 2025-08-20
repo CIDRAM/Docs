@@ -1,4 +1,4 @@
-## Documentation pour CIDRAM v3 (Français).
+## Documentation pour CIDRAM v4 (Français).
 
 ### Contenu
 - 1. [PRÉAMBULE](#user-content-SECTION1)
@@ -242,32 +242,21 @@ Configuration (v3)
 │       social_media [string]
 │       other [string]
 │       adjust [string]
-├───recaptcha
+├───captcha
 │       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       recaptcha_log [string]
-│       signature_limit [int]
-│       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
 │       nonblocked_status_code [int]
-├───hcaptcha
-│       usemode [int]
-│       lockip [bool]
-│       lockuser [bool]
-│       sitekey [string]
-│       secret [string]
-│       expiry [float]
-│       hcaptcha_log [string]
-│       signature_limit [int]
 │       api [string]
-│       show_cookie_warning [bool]
-│       show_api_message [bool]
-│       nonblocked_status_code [int]
+│       messages [string]
+│       lockto [string]
+│       hcaptcha_sitekey [string]
+│       hcaptcha_secret [string]
+│       friendly_sitekey [string]
+│       friendly_apikey [string]
+│       turnstile_sitekey [string]
+│       turnstile_secret [string]
+│       expiry [float]
+│       signature_limit [int]
+│       log [string]
 ├───legal
 │       pseudonymise_ip_addresses [bool]
 │       privacy_policy [string]
@@ -314,7 +303,7 @@ Configuration générale (toute configuration de base n'appartenant pas à d'aut
 - Contrôles des étapes de la chaîne d'exécution (s'il est activé, si les erreurs sont enregistrées, etc).
 
 ```
-stages
+stages───[Activer cette étape ?]─[Enregistrer les erreurs générés lors de cette étape ?]─[Compter les infractions générés lors de cette étape dans le surveillance d'IP ?]
 ├─Tests ("Exécuter les tests des fichiers de signature")
 ├─Modules ("Exécuter les modules")
 ├─SearchEngineVerification ("Exécuter la vérification des moteurs de recherche")
@@ -339,7 +328,7 @@ stages
 - Contrôles des champs lors d'un événement de bloc (lorsqu'une requête est bloquée).
 
 ```
-fields
+fields───[Inclure ce champ dans les journaux ?]─[Inclure ce champ sur la page « accès refusé » ?]─[Omettre ce champ lorsqu'il est vide ?]
 ├─ID ("ID")
 ├─ScriptIdent ("La version du script")
 ├─DateTime ("Date/Heure")
@@ -514,7 +503,7 @@ Voir également :
 http_response_header_code
 ├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
 │ probablement interpréteront cette réponse comme une indication que la
-│ requête a réussi.
+│ requête a réussi. Recommandé pour les requêtes non bloquées.
 ├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
 │ circonstances générales.
 ├─410 (410 Gone (Parti)): Peut causer des problèmes lors de la résolution des faux positifs, car
@@ -683,7 +672,7 @@ emailaddr_display_style
 ban_override
 ├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
 │ probablement interpréteront cette réponse comme une indication que la
-│ requête a réussi.
+│ requête a réussi. Recommandé pour les requêtes non bloquées.
 ├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
 │ circonstances générales.
 ├─410 (410 Gone (Parti)): Peut causer des problèmes lors de la résolution des faux positifs, car
@@ -731,8 +720,8 @@ statistics
 ├─Passed-IPv4 ("Requêtes passées – IPv4")
 ├─Passed-IPv6 ("Requêtes passées – IPv6")
 ├─Passed-Other ("Requêtes passées – Autres")
-├─CAPTCHAs-Failed ("Tentatives de CAPTCHA – Échoué !")
-├─CAPTCHAs-Passed ("Tentatives de CAPTCHA – Passé !")
+├─CAPTCHAs-Failed ("Tentatives de CAPTCHA – Échoué (%s) !")
+├─CAPTCHAs-Passed ("Tentatives de CAPTCHA – Passé (%s) !")
 ├─Reported-IPv4-OK ("Requêtes rapportés aux API externes – IPv4 – D'accord")
 ├─Reported-IPv4-Failed ("Requêtes rapportés aux API externes – IPv4 – Échoué")
 ├─Reported-IPv6-OK ("Requêtes rapportés aux API externes – IPv6 – D'accord")
@@ -923,7 +912,7 @@ Configuration pour les signatures, fichiers de signatures, modules, etc.
 - Contrôle ce qu'il faut faire avec une requête lorsqu'il y a une correspondance positive avec une signature qui utilise les mots abrégés donnés.
 
 ```
-shorthand
+shorthand───[Bloquez le.]─[Profilez le.]─[Lorsqu'il est bloqué, supprime le modèle de sortie.]
 ├─Attacks ("Attaques")
 ├─Bogon ("⁰ Bogon IP")
 ├─Cloud ("Service de cloud")
@@ -990,7 +979,7 @@ Configuration pour vérifier d'où proviennent les requêtes.
 - Contrôles pour vérifier les requêtes des moteurs de recherche.
 
 ```
-search_engines
+search_engines───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1017,7 +1006,7 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 - Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
 
 ```
-social_media
+social_media───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1039,7 +1028,7 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 - Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
 
 ```
-other
+other───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1058,20 +1047,20 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 - Contrôles pour ajuster d'autres fonctionnalités dans le contexte de la vérification.
 
 ```
-adjust
+adjust───[Supprimer hCaptcha]
 ├─Negatives ("Négatifs bloqués")
 └─NonVerified ("Non vérifiés bloqués")
 ```
 
-#### « recaptcha » (Catégorie)
-Configuration pour reCAPTCHA (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
+#### « captcha » (Catégorie)
+Configuration pour les CAPTCHA (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
 
 ##### « usemode » `[int]`
-- Quand faut-il offrir le CAPTCHA ? Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
+- Quand faut-il offrir des CAPTCHA ? Vous pouvez spécifier ici le comportement préféré pour chaque fournisseur supporté. Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
 
 ```
-usemode
-├─0 (Jamais !!!)
+usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─0 (Jamais.)
 ├─1 (Seulement lorsqu'il est bloqué, dans la limite de signatures, et non interdit.)
 ├─2 (Seulement lorsqu'il est bloqué, spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
 ├─3 (Seulement dans la limite de signatures, et non interdite (qu'elle soit bloquée ou non).)
@@ -1080,60 +1069,14 @@ usemode
 └─6 (Seulement lorsqu'il n'est pas bloqué, lors de requêtes de pages sensibles.)
 ```
 
-##### « lockip » `[bool]`
-- Verrouiller CAPTCHA aux adresses IP ?
-
-##### « lockuser » `[bool]`
-- Verrouiller CAPTCHA aux les utilisateurs ?
-
-##### « sitekey » `[string]`
-- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
-
-Voir également :
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### « secret » `[string]`
-- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
-
-Voir également :
-- [Invisible reCAPTCHA](https://developers.google.com/recaptcha/docs/invisible)
-- [reCAPTCHA v2](https://developers.google.com/recaptcha/docs/display)
-
-##### « expiry » `[float]`
-- Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
-
-##### « recaptcha_log » `[string]`
-- Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
-
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### « signature_limit » `[int]`
-- Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
-
-##### « api » `[string]`
-- Quelle API utiliser ?
-
-```
-api
-├─v2 ("v2 (Case à cocher)")
-└─Invisible ("v2 (Invisible)")
-```
-
-##### « show_cookie_warning » `[bool]`
-- Afficher l'avertissement concernant les cookies ? True = Oui [Défaut] ; False = Non.
-
-##### « show_api_message » `[bool]`
-- Afficher le message de l'API ? True = Oui [Défaut] ; False = Non.
-
 ##### « nonblocked_status_code » `[int]`
 - Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
 
 ```
-nonblocked_status_code
+nonblocked_status_code───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
 │ probablement interpréteront cette réponse comme une indication que la
-│ requête a réussi.
+│ requête a réussi. Recommandé pour les requêtes non bloquées.
 ├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
 │ circonstances générales.
 ├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
@@ -1148,88 +1091,105 @@ nonblocked_status_code
   recommandé dans d'autres contextes.
 ```
 
-#### « hcaptcha » (Catégorie)
-Configuration pour hCaptcha (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
-
-##### « usemode » `[int]`
-- Quand faut-il offrir le CAPTCHA ? Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
-
-```
-usemode
-├─0 (Jamais !!!)
-├─1 (Seulement lorsqu'il est bloqué, dans la limite de signatures, et non interdit.)
-├─2 (Seulement lorsqu'il est bloqué, spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
-├─3 (Seulement dans la limite de signatures, et non interdite (qu'elle soit bloquée ou non).)
-├─4 (Seulement lorsqu'il n'est pas bloqué.)
-├─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
-└─6 (Seulement lorsqu'il n'est pas bloqué, lors de requêtes de pages sensibles.)
-```
-
-##### « lockip » `[bool]`
-- Verrouiller CAPTCHA aux adresses IP ?
-
-##### « lockuser » `[bool]`
-- Verrouiller CAPTCHA aux les utilisateurs ?
-
-##### « sitekey » `[string]`
-- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
-
-Voir également :
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### « secret » `[string]`
-- Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
-
-Voir également :
-- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
-
-##### « expiry » `[float]`
-- Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
-
-##### « hcaptcha_log » `[string]`
-- Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
-
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
-
-##### « signature_limit » `[int]`
-- Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
-
 ##### « api » `[string]`
 - Quelle API utiliser ?
 
 ```
-api
+api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─v0 ("v0")
 ├─v1 ("v1")
-└─Invisible ("v1 (Invisible)")
+├─Invisible ("v1 (Invisible)")
+└─v2 ("v2")
 ```
 
-##### « show_cookie_warning » `[bool]`
-- Afficher l'avertissement concernant les cookies ? True = Oui [Défaut] ; False = Non.
-
-##### « show_api_message » `[bool]`
-- Afficher le message de l'API ? True = Oui [Défaut] ; False = Non.
-
-##### « nonblocked_status_code » `[int]`
-- Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
+##### « messages » `[string]`
+- Messages à afficher à côté des CAPTCHA.
 
 ```
-nonblocked_status_code
-├─200 (200 OK): Le moins robuste, mais le plus convivial. Les requêtes automatisées très
-│ probablement interpréteront cette réponse comme une indication que la
-│ requête a réussi.
-├─403 (403 Forbidden (Interdit)): Plus robuste, mais moins convivial. Recommandé pour la plupart des
-│ circonstances générales.
-├─418 (418 I'm a teapot (Je suis une théière)): Fait référence à une blague du poisson d'avril (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Il est très peu probable
-│ qu'il soit compris par un client, un bot, un navigateur, ou autre. Fourni
-│ pour le divertissement et la commodité, mais généralement pas
-│ recommandé.
-├─429 (429 Too Many Requests (Trop de requêtes)): Recommandé pour la limitation du débit, en cas d'attaques DDoS, et pour la
-│ prévention des inondations. Non recommandé dans d'autres contextes.
-└─451 (451 Unavailable For Legal Reasons (Indisponible pour des raisons légales)): Recommandé en cas de blocage principalement pour des raisons légales. Non
-  recommandé dans d'autres contextes.
+messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─cookie_warning ("Afficher l'avertissement concernant les cookies ?): Selon les lois sur la confidentialité de votre pays ou état (par exemple,
+│ GDPR/DSGVO dans l'UE, LGPD au Brésil, etc), cela peut être légalement
+│ requis."
+└─api_message ("Afficher le message de l'API ?): Instructions à l'utilisateur, adaptées à l'API utilisée, concernant la
+  réalisation du CAPTCHA."
 ```
+
+##### « lockto » `[string]`
+- À quoi verrouiller les CAPTCHA.
+
+```
+lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
+├─ip ("Verrouillez les CAPTCHA sur l'adresse IP de l'utilisateur qui complète le CAPTCHA, mais pas sur l'utilisateur réel.): Les cookies ne sont PAS utilisés pour identifier les utilisateurs. Lorsque
+│ l'accès est récupéré suite à la réussite d'un CAPTCHA, il s'applique
+│ à toute personne se connectant à partir de la même adresse IP."
+├─user ("Verrouillez les CAPTCHA sur l'utilisateur qui complète le CAPTCHA, mais pas sur son adresse IP.): Les cookies sont utilisés pour identifier les utilisateurs. Lorsque
+│ l'accès est récupéré suite à la réussite d'un CAPTCHA, il s'applique
+│ uniquement à l'utilisateur qui a complété le CAPTCHA et, tant que son
+│ cookie reste valide, il persistera, même si son adresse IP change."
+└─both ("Verrouillez les CAPTCHA sur l'utilisateur complétant le CAPTCHA ainsi que sur son adresse IP.): Les cookies sont utilisés pour identifier les utilisateurs. Lorsque
+  l'accès est récupéré suite à la réussite d'un CAPTCHA, il s'applique
+  uniquement à l'utilisateur qui a complété le CAPTCHA et ne persistera pas
+  si son adresse IP change."
+```
+
+##### « hcaptcha_sitekey » `[string]`
+- Si vous souhaitez utiliser hCaptcha avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### « hcaptcha_secret » `[string]`
+- Si vous souhaitez utiliser hCaptcha avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
+
+##### « friendly_sitekey » `[string]`
+- Si vous souhaitez utiliser Friendly Captcha avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### « friendly_apikey » `[string]`
+- Si vous souhaitez utiliser Friendly Captcha avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
+
+##### « turnstile_sitekey » `[string]`
+- Si vous souhaitez utiliser Cloudflare Turnstile avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### « turnstile_secret » `[string]`
+- Si vous souhaitez utiliser Cloudflare Turnstile avec CIDRAM, vous devrez entrer une valeur ici. Sinon, vous pouvez l'ignorer.
+
+Cette valeur se trouve dans le tableau de bord de votre service CAPTCHA.
+
+Voir également :
+- [Cloudflare Dashboard](https://dash.cloudflare.com/)
+
+##### « expiry » `[float]`
+- Nombre d'heures à retenir des instances CAPTCHA. Défaut = 720 (1 mois).
+
+##### « signature_limit » `[int]`
+- Nombre maximum de signatures autorisé avant le retrait de l'offre de CAPTCHA. Défaut = 1.
+
+##### « log » `[string]`
+- Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
+
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### « legal » (Catégorie)
 Configuration pour les exigences légales.
@@ -1583,7 +1543,7 @@ Origin: BB
 
 ##### 6.2.0 BASES DE YAML
 
-Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec reCAPTCHA/hCaptcha ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
+Une forme simplifiée de YAML peut être utilisé dans les fichiers de signature dans le but de définir des comportements et des paramètres spécifiques aux différentes sections de signatures. Cela peut être utile si vous voulez que la valeur de vos directives de configuration différer sur la base des signatures individuelles et des sections de signature (par exemple : si vous voulez fournir une adresse e-mail pour les tickets de support pour tous les utilisateurs bloqués par une signature particulière, mais ne veulent pas fournir une adresse e-mail pour les tickets de support pour les utilisateurs bloqués par d'autres signatures ; si vous voulez des signatures spécifiques pour déclencher une redirection de page ; si vous voulez marquer une section de signature pour l'utilisation avec hCaptcha ; si vous voulez enregistrer les tentatives d'accès bloquées à des fichiers séparés sur la base des signatures individuelles et/ou des sections de signatures).
 
 L'utilisation de YAML dans les fichiers de signature est entièrement facultative (c'est à dire, vous pouvez l'utiliser si vous le souhaitez, mais vous n'êtes pas obligé de le faire), et est capable d'affecter la plupart (mais pas tout) les directives de configuration.
 
@@ -1605,12 +1565,6 @@ logging:
  standard_log: "logfile.{yyyy}-{mm}-{dd}.txt"
  apache_style_log: "access.{yyyy}-{mm}-{dd}.txt"
  serialised_log: "serial.{yyyy}-{mm}-{dd}.txt"
-recaptcha:
- lockip: false
- lockuser: true
- expiry: 720
- recaptcha_log: "recaptcha.{yyyy}-{mm}-{dd}.txt"
- enabled: true
 template_data:
  css_url: "https://domain.tld/cidram.css"
 
@@ -1638,17 +1592,15 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC reCAPTCHA/hCaptcha
+##### 6.2.1 COMMENT « SPÉCIALEMENT MARQUER » LES SECTIONS DE SIGNATURE POUR L'UTILISATION AVEC hCaptcha
 
-Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec reCAPTCHA/hCaptcha, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
+Quand « usemode » est 2 ou 5, à « spécialement marquer » les sections de signature pour l'utilisation avec hCaptcha, une entrée est incluse dans le segment de YAML pour cette section de signatures (voir l'exemple ci-dessous).
 
 ```
 1.2.3.4/32 Deny Generic
 2.3.4.5/32 Deny Generic
 Tag: CAPTCHA Marked
 ---
-recaptcha:
- enabled: true
 hcaptcha:
  enabled: true
 ```
@@ -2194,7 +2146,7 @@ Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'e
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM prend en charge reCAPTCHA et hCaptcha. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
+CIDRAM prend en charge hCaptcha. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2283,7 +2235,6 @@ IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CA
 
 *La directive de configuration responsable de la journalisation CAPTCHA est :*
 - `hcaptcha` -> `hcaptcha_log`
-- `recaptcha` -> `recaptcha_log`
 
 ##### 9.3.2 JOURNALISATION FRONTALE
 
@@ -2365,8 +2316,6 @@ Dans les deux cas, les avertissements de cookie sont affichés en évidence (le 
 *Remarque : Les APIs CAPTCHA « invisible » peuvent être incompatibles avec les lois sur les cookies dans certaines juridictions, et devrait être évitée par tous les sites web soumis à ces lois. Opter d'utiliser les autres API fournies à la place, ou simplement désactiver complètement CAPTCHA, peut être préférable.*
 
 *Directives de configuration pertinentes :*
-- `recaptcha` -> `lockuser`
-- `recaptcha` -> `api`
 - `hcaptcha` -> `lockuser`
 - `hcaptcha` -> `api`
 
@@ -2429,4 +2378,4 @@ Des informations plus détaillées seront incluses ici, dans la documentation, �
 ---
 
 
-Dernière mise à jour : 9 Août 2025 (2025.08.09).
+Dernière mise à jour : 21 Août 2025 (2025.08.21).
