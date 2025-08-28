@@ -192,6 +192,7 @@ Konfigurasi (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Konfigurasi umum (konfigurasi inti apapun yang bukan milik kategori lain).
 
 ```
 stages───[Aktifkan tahap ini?]─[Mencatat kesalahan yang dihasilkan selama tahap ini?]─[Menghitung pelanggaran yang dihasilkan selama tahap ini terhadap pelacakan IP?]
+├─BanCheck ("Periksa apakah dilarang")
 ├─Tests ("Jalankan tes untuk file tanda tangan")
 ├─Modules ("Jalankan modul")
 ├─SearchEngineVerification ("Jalankan verifikasi mesin pencari")
@@ -316,6 +318,7 @@ stages───[Aktifkan tahap ini?]─[Mencatat kesalahan yang dihasilkan selam
 ├─Reporting ("Jalankan pelaporan")
 ├─Statistics ("Memperbarui statistik")
 ├─Webhooks ("Jalankan webhook")
+├─TriggerNotifications ("Memproses antrean notifikasi pemicu email")
 ├─PrepareFields ("Siapkan bidang untuk keluaran dan log")
 ├─Output ("Menghasilkan keluaran (permintaan yang diblokir)")
 ├─WriteLogs ("Mencatat ke log (permintaan yang diblokir)")
@@ -711,21 +714,24 @@ default_algo
 - Mengontrol informasi statistik mana yang akan dilacak.
 
 ```
-statistics
-├─Blocked-IPv4 ("Permintaan diblokir – IPv4")
-├─Blocked-IPv6 ("Permintaan diblokir – IPv6")
-├─Blocked-Other ("Permintaan diblokir – Lain")
-├─Banned-IPv4 ("Permintaan dilarang – IPv4")
-├─Banned-IPv6 ("Permintaan dilarang – IPv6")
-├─Passed-IPv4 ("Permintaan berlalu – IPv4")
-├─Passed-IPv6 ("Permintaan berlalu – IPv6")
-├─Passed-Other ("Permintaan berlalu – Lain")
-├─CAPTCHAs-Failed ("Upaya CAPTCHA – Gagal (%s)!")
-├─CAPTCHAs-Passed ("Upaya CAPTCHA – Lulus (%s)!")
-├─Reported-IPv4-OK ("Permintaan dilaporkan ke API eksternal – IPv4 – OK")
-├─Reported-IPv4-Failed ("Permintaan dilaporkan ke API eksternal – IPv4 – Gagal")
-├─Reported-IPv6-OK ("Permintaan dilaporkan ke API eksternal – IPv6 – OK")
-└─Reported-IPv6-Failed ("Permintaan dilaporkan ke API eksternal – IPv6 – Gagal")
+statistics───[IPv4]─[IPv6]─[Lain]
+├─Blocked ("Permintaan diblokir")
+├─Banned ("Permintaan dilarang")
+├─Passed ("Permintaan berlalu")
+├─ReportOK ("Permintaan dilaporkan ke API eksternal – OK")
+└─ReportFailed ("Permintaan dilaporkan ke API eksternal – Gagal")
+```
+
+Catat: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dari halaman aturan tambahan.
+
+##### "statistics_captchas" `[string]`
+- Mengontrol informasi statistik mana yang akan dilacak untuk CAPTCHA.
+
+```
+statistics_captchas───[Gagal]─[Lulus]─[Disajikan]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Catat: Apakah akan melacak statistik untuk aturan tambahan dapat dikontrol dari halaman aturan tambahan.
@@ -1045,7 +1051,7 @@ __Apa itu "bypass satu pelanggaran"?__ Dalam beberapa kasus, permintaan diverifi
 - Kontrol untuk menyesuaikan fitur lain saat dalam konteks verifikasi.
 
 ```
-adjust───[Menekan hCaptcha]
+adjust───[Menekan hCaptcha]─[Menekan Friendly Captcha]─[Menekan Cloudflare Turnstile]
 ├─Negatives ("Negatif yang diblokir")
 └─NonVerified ("Tidak diverifikasi yang diblokir")
 ```
@@ -1587,19 +1593,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 BAGAIMANA "KHUSUS MENANDAI" BAGIAN TANDA TANGAN UNTUK DIGUNAKAN DENGAN hCaptcha
-
-Ketika "usemode" 2 atau 5, untuk "khusus menandai" bagian tanda tangan untuk digunakan dengan hCaptcha, entri termasuk dalam segmen YAML untuk bagian tanda tangan (lihat contoh dibawah ini).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 INFORMASI TAMBAHAN
@@ -2362,4 +2355,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 21 Agustus 2025 (2025.08.21).
+Terakhir Diperbarui: 29 Agustus 2025 (2025.08.29).

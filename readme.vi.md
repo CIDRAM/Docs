@@ -192,6 +192,7 @@ Cấu hình (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Cấu hình chung (bất kỳ cấu hình cốt lõi nào không thuộc về c�
 
 ```
 stages───[Bật giai đoạn này?]─[Ghi lại bất kỳ lỗi nào được tạo ra trong giai đoạn này?]─[Đếm các vi phạm được tạo ra trong giai đoạn này đối với giám sát IP?]
+├─BanCheck ("Kiểm tra xem có bị cấm hay không")
 ├─Tests ("Thực hiện kiểm tra tập tin chữ ký")
 ├─Modules ("Thực hiện mô-đun")
 ├─SearchEngineVerification ("Thực hiện xác minh của máy tìm kiếm")
@@ -316,6 +318,7 @@ stages───[Bật giai đoạn này?]─[Ghi lại bất kỳ lỗi nào đ�
 ├─Reporting ("Thực hiện báo cáo")
 ├─Statistics ("Cập nhật số liệu thống kê")
 ├─Webhooks ("Thực hiện webhook")
+├─TriggerNotifications ("Xử lý hàng đợi thông báo kích hoạt email")
 ├─PrepareFields ("Chuẩn bị các trường cho đầu ra và nhật ký")
 ├─Output ("Tạo đầu ra (yêu cầu bị chặn)")
 ├─WriteLogs ("Ghi vào nhật ký (yêu cầu bị chặn)")
@@ -723,21 +726,24 @@ default_algo
 - Kiểm soát thông tin thống kê cần giám sát.
 
 ```
-statistics
-├─Blocked-IPv4 ("Yêu cầu bị chặn – IPv4")
-├─Blocked-IPv6 ("Yêu cầu bị chặn – IPv6")
-├─Blocked-Other ("Yêu cầu bị chặn – Khác")
-├─Banned-IPv4 ("Yêu cầu bị cấm – IPv4")
-├─Banned-IPv6 ("Yêu cầu bị cấm – IPv6")
-├─Passed-IPv4 ("Yêu cầu được phép – IPv4")
-├─Passed-IPv6 ("Yêu cầu được phép – IPv6")
-├─Passed-Other ("Yêu cầu được phép – Khác")
-├─CAPTCHAs-Failed ("CAPTCHA nỗ lực – Thất bại (%s)!")
-├─CAPTCHAs-Passed ("CAPTCHA nỗ lực – Thành công (%s)!")
-├─Reported-IPv4-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – OK")
-├─Reported-IPv4-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv4 – Thất bại")
-├─Reported-IPv6-OK ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – OK")
-└─Reported-IPv6-Failed ("Các yêu cầu được báo cáo cho các API bên ngoài – IPv6 – Thất bại")
+statistics───[IPv4]─[IPv6]─[Khác]
+├─Blocked ("Yêu cầu bị chặn")
+├─Banned ("Yêu cầu bị cấm")
+├─Passed ("Yêu cầu được phép")
+├─ReportOK ("Các yêu cầu được báo cáo cho các API bên ngoài – OK")
+└─ReportFailed ("Các yêu cầu được báo cáo cho các API bên ngoài – Thất bại")
+```
+
+Lưu ý: Giám sát thống kê cho các quy tắc phụ trợ có thể được kiểm soát từ trang quy tắc phụ trợ.
+
+##### "statistics_captchas" `[string]`
+- Kiểm soát thông tin thống kê cần giám sát cho CAPTCHA.
+
+```
+statistics_captchas───[Thất bại]─[Thành công]─[Đã phục vụ]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Lưu ý: Giám sát thống kê cho các quy tắc phụ trợ có thể được kiểm soát từ trang quy tắc phụ trợ.
@@ -1060,7 +1066,7 @@ __"Đường tránh một cú đánh" là gì?__ Trong một số trường hợ
 - Điều khiển cho các điều chỉnh các tính năng khác trong bối cảnh xác minh.
 
 ```
-adjust───[Đàn áp hCaptcha]
+adjust───[Đàn áp hCaptcha]─[Đàn áp Friendly Captcha]─[Đàn áp Cloudflare Turnstile]
 ├─Negatives ("Tiêu cực bị chặn")
 └─NonVerified ("Chưa được xác minh bị chặn")
 ```
@@ -1607,19 +1613,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 LÀM THẾ NÀO ĐỂ "ĐẶC BIỆT ĐÁNH DẤU" PHẦN CHỮ KÝ ĐỂ SỬ DỤNG VỚI hCaptcha
-
-Khi "usemode" là 2 hoặc 5, để "đặc biệt đánh dấu" phần chữ ký để sử dụng với hCaptcha, một mục được bao gồm trong phân khúc YAML cho rằng phần chữ ký (xem ví dụ dưới đây).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 PHỤ TRỢ
@@ -2379,4 +2372,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.08.21.
+Lần cuối cập nhật: 2025.08.29.

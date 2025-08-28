@@ -192,6 +192,7 @@ Configuratie (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Algemene configuratie (elke kernconfiguratie die niet tot andere categorieën be
 
 ```
 stages───[Inschakelen deze fase?]─[Moeten fouten die gegenereerd door deze fase worden geregistreerd?]─[Moeten overtredingen die gegenereerd door deze fase meetellen voor IP-tracking?]
+├─BanCheck ("Controleer of verbannen")
 ├─Tests ("Voer de signatuurbestandentests")
 ├─Modules ("Voer de modules")
 ├─SearchEngineVerification ("Voer zoekmachine verificatie")
@@ -316,6 +318,7 @@ stages───[Inschakelen deze fase?]─[Moeten fouten die gegenereerd door de
 ├─Reporting ("Voer rapportage")
 ├─Statistics ("Bijwerk statistieken")
 ├─Webhooks ("Voer webhooks")
+├─TriggerNotifications ("Verwerk de wachtrij van triggermelding e-mails")
 ├─PrepareFields ("Voorbereiden velden voor uitvoer en logs")
 ├─Output ("Genereren uitvoer (geblokkeerde verzoeken)")
 ├─WriteLogs ("Schrijf naar logs (geblokkeerde verzoeken)")
@@ -711,21 +714,24 @@ default_algo
 - Bepaalt welke statistische informatie moet worden bijgehouden.
 
 ```
-statistics
-├─Blocked-IPv4 ("Verzoeken geblokkeerd – IPv4")
-├─Blocked-IPv6 ("Verzoeken geblokkeerd – IPv6")
-├─Blocked-Other ("Verzoeken geblokkeerd – Anders")
-├─Banned-IPv4 ("Verzoeken verbannen – IPv4")
-├─Banned-IPv6 ("Verzoeken verbannen – IPv6")
-├─Passed-IPv4 ("Verzoeken toegestaan – IPv4")
-├─Passed-IPv6 ("Verzoeken toegestaan – IPv6")
-├─Passed-Other ("Verzoeken toegestaan – Anders")
-├─CAPTCHAs-Failed ("CAPTCHA pogingen – Mislukt (%s)!")
-├─CAPTCHAs-Passed ("CAPTCHA pogingen – Succes (%s)!")
-├─Reported-IPv4-OK ("Verzoeken gerapporteerd aan externe API's – IPv4 – OK")
-├─Reported-IPv4-Failed ("Verzoeken gerapporteerd aan externe API's – IPv4 – Mislukt")
-├─Reported-IPv6-OK ("Verzoeken gerapporteerd aan externe API's – IPv6 – OK")
-└─Reported-IPv6-Failed ("Verzoeken gerapporteerd aan externe API's – IPv6 – Mislukt")
+statistics───[IPv4]─[IPv6]─[Anders]
+├─Blocked ("Verzoeken geblokkeerd")
+├─Banned ("Verzoeken verbannen")
+├─Passed ("Verzoeken toegestaan")
+├─ReportOK ("Verzoeken gerapporteerd aan externe API's – OK")
+└─ReportFailed ("Verzoeken gerapporteerd aan externe API's – Mislukt")
+```
+
+Opmerking: Het bijhouden van statistieken voor aanvullende regels kan worden beheerd vanaf de pagina met aanvullende regels.
+
+##### "statistics_captchas" `[string]`
+- Bepaalt welke statistische informatie moet worden bijgehouden voor CAPTCHA's.
+
+```
+statistics_captchas───[Mislukt]─[Geslaagd]─[Geserveerd]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Opmerking: Het bijhouden van statistieken voor aanvullende regels kan worden beheerd vanaf de pagina met aanvullende regels.
@@ -1045,7 +1051,7 @@ __Wat zijn "enkele-treffer bypasses"?__ In sommige gevallen kan een positief-gev
 - Controles om andere functionaliteit aan te passen in de context van verificatie.
 
 ```
-adjust───[HCaptcha onderdrukken]
+adjust───[HCaptcha onderdrukken]─[Friendly Captcha onderdrukken]─[Cloudflare Turnstile onderdrukken]
 ├─Negatives ("Geblokkeerde negatieven")
 └─NonVerified ("Geblokkeerde niet-geverifieerde")
 ```
@@ -1587,19 +1593,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 HOE OM SIGNATUURSECTIES TE MARKEREN VOOR GEBRUIK MET hCaptcha
-
-Als "usemode" is 2 of 5, om signatuursecties te markeren voor gebruik met hCaptcha, een invoer wordt opgenomen in het YAML segment voor dat signature-sectie (zie het onderstaande voorbeeld).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 EXTRA INFORMATIE
@@ -2379,4 +2372,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 21 Augustus 2025 (2025.08.21).
+Laatste Bijgewerkt: 29 Augustus 2025 (2025.08.29).

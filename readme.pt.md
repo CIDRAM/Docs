@@ -192,6 +192,7 @@ Configuração (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Configuração geral (qualquer configuração principal que não pertença a out
 
 ```
 stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta etapa?]─[Contar infrações geradas durante esta etapa para o monitoração de IP?]
+├─BanCheck ("Verifique se está banido")
 ├─Tests ("Executar testes para os arquivos de assinatura")
 ├─Modules ("Executar módulos")
 ├─SearchEngineVerification ("Executar verificação dos motores de busca")
@@ -316,6 +318,7 @@ stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta 
 ├─Reporting ("Executar relatórios")
 ├─Statistics ("Atualizar estatísticas")
 ├─Webhooks ("Executar webhooks")
+├─TriggerNotifications ("Processar a fila de notificação do desencadeamento de e-mail")
 ├─PrepareFields ("Preparar campos para saída e logs")
 ├─Output ("Gerar saída (solicitações bloqueadas)")
 ├─WriteLogs ("Gravar nos logs (solicitações bloqueadas)")
@@ -334,7 +337,7 @@ fields───[Este campo deve aparecer nas entradas de log?]─[Este campo dev
 ├─DateTime ("Data/Hora")
 ├─IPAddr ("Endereço IP")
 ├─IPAddrResolved ("Endereço IP (resolvido)")
-├─Query ("Query")
+├─Query ("Consulta")
 ├─Referrer ("Referenciador")
 ├─UA ("Agente do usuário")
 ├─UALC ("Agente do usuário (minúscula)")
@@ -711,21 +714,24 @@ default_algo
 - Controla quais informações estatísticas rastrear.
 
 ```
-statistics
-├─Blocked-IPv4 ("Solicitações bloqueadas – IPv4")
-├─Blocked-IPv6 ("Solicitações bloqueadas – IPv6")
-├─Blocked-Other ("Solicitações bloqueadas – Outros")
-├─Banned-IPv4 ("Solicitações banidas – IPv4")
-├─Banned-IPv6 ("Solicitações banidas – IPv6")
-├─Passed-IPv4 ("Solicitações aprovadas – IPv4")
-├─Passed-IPv6 ("Solicitações aprovadas – IPv6")
-├─Passed-Other ("Solicitações aprovadas – Outros")
-├─CAPTCHAs-Failed ("CAPTCHA tentativas – Falhou (%s)!")
-├─CAPTCHAs-Passed ("CAPTCHA tentativas – Sucesso (%s)!")
-├─Reported-IPv4-OK ("Solicitações relatados para APIs externos – IPv4 – OK")
-├─Reported-IPv4-Failed ("Solicitações relatados para APIs externos – IPv4 – Falhou")
-├─Reported-IPv6-OK ("Solicitações relatados para APIs externos – IPv6 – OK")
-└─Reported-IPv6-Failed ("Solicitações relatados para APIs externos – IPv6 – Falhou")
+statistics───[IPv4]─[IPv6]─[Outros]
+├─Blocked ("Solicitações bloqueadas")
+├─Banned ("Solicitações banidas")
+├─Passed ("Solicitações aprovadas")
+├─ReportOK ("Solicitações relatados para APIs externos – OK")
+└─ReportFailed ("Solicitações relatados para APIs externos – Falhou")
+```
+
+Nota: O rastreamento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
+
+##### "statistics_captchas" `[string]`
+- Controla quais informações estatísticas rastrear para CAPTCHAs.
+
+```
+statistics_captchas───[Falhou]─[Passado]─[Servido]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Nota: O rastreamento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
@@ -1046,7 +1052,7 @@ __O que são "bypasses de acerto único"?__ Em alguns casos, uma solicitação c
 - Controles para ajustar outros recursos no contexto de verificação.
 
 ```
-adjust───[Suprimir hCaptcha]
+adjust───[Suprimir hCaptcha]─[Suprimir Friendly Captcha]─[Suprimir Cloudflare Turnstile]
 ├─Negatives ("Os negativos bloqueados")
 └─NonVerified ("Os não verificados bloqueados")
 ```
@@ -1588,19 +1594,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 COMO "MARCAR ESPECIALMENTE" SEÇÕES DE ASSINATURA PARA USO COM hCaptcha
-
-Quando "usemode" é 2 ou 5, para "marcar especialmente" seções de assinatura para uso com hCaptcha, uma entrada está incluído no segmento de YAML para que a seção de assinatura (veja o exemplo abaixo).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 AUXILIAR
@@ -2366,4 +2359,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 21 de Agosto de 2025 (2025.08.21).
+Última Atualização: 29 de Agosto de 2025 (2025.08.29).

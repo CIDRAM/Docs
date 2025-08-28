@@ -192,6 +192,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 
 ```
 stages───[이 단계를 활성화하시겠습니까?]─[이 단계에서 생성된 오류를 기록하시겠습니까?]─[이 단계에서 생성된 위반은 IP 추적에 포함되어야 합니까?]
+├─BanCheck ("금지되었는지 확인하는")
 ├─Tests ("서명 파일 테스트 실행")
 ├─Modules ("모듈 실행")
 ├─SearchEngineVerification ("검색 엔진 검증 실행")
@@ -316,6 +318,7 @@ stages───[이 단계를 활성화하시겠습니까?]─[이 단계에서 
 ├─Reporting ("보고 실행")
 ├─Statistics ("통계 업데이트")
 ├─Webhooks ("웹훅 실행")
+├─TriggerNotifications ("이메일 트리거 알림 대기열 처리")
 ├─PrepareFields ("출력 및 로그용 필드 준비")
 ├─Output ("출력 생성 (차단된 요청)")
 ├─WriteLogs ("로그에 쓰기 (차단된 요청)")
@@ -709,21 +712,24 @@ default_algo
 - 추적할 통계 정보를 제어합니다.
 
 ```
-statistics
-├─Blocked-IPv4 ("차단된 요청 – IPv4")
-├─Blocked-IPv6 ("차단된 요청 – IPv6")
-├─Blocked-Other ("차단된 요청 – 다른")
-├─Banned-IPv4 ("금지된 요청 – IPv4")
-├─Banned-IPv6 ("금지된 요청 – IPv6")
-├─Passed-IPv4 ("허용된 요청 – IPv4")
-├─Passed-IPv6 ("허용된 요청 – IPv6")
-├─Passed-Other ("허용된 요청 – 다른")
-├─CAPTCHAs-Failed ("CAPTCHA 완료 시도 – 실패했습니다 (%s)!")
-├─CAPTCHAs-Passed ("CAPTCHA 완료 시도 – 합격 (%s)!")
-├─Reported-IPv4-OK ("외부 API에 보고된 요청 – IPv4 – 확인")
-├─Reported-IPv4-Failed ("외부 API에 보고된 요청 – IPv4 – 실패했습니다")
-├─Reported-IPv6-OK ("외부 API에 보고된 요청 – IPv6 – 확인")
-└─Reported-IPv6-Failed ("외부 API에 보고된 요청 – IPv6 – 실패했습니다")
+statistics───[IPv4]─[IPv6]─[다른]
+├─Blocked ("차단된 요청")
+├─Banned ("금지된 요청")
+├─Passed ("허용된 요청")
+├─ReportOK ("외부 API에 보고된 요청 – 확인")
+└─ReportFailed ("외부 API에 보고된 요청 – 실패했습니다")
+```
+
+참고 : 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
+
+##### "statistics_captchas" `[string]`
+- CAPTCHA에 대해 추적할 통계 정보를 제어합니다.
+
+```
+statistics_captchas───[실패했습니다]─[성공했습니다]─[제공됨]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 참고 : 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
@@ -1044,7 +1050,7 @@ __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명
 - 검증과 관련하여 다른 기능을 조정하는 컨트롤입니다.
 
 ```
-adjust───[HCaptcha 억제]
+adjust───[HCaptcha 억제]─[Friendly Captcha 억제]─[Cloudflare Turnstile 억제]
 ├─Negatives ("차단된 네거티브")
 └─NonVerified ("차단된 검증되지 않은")
 ```
@@ -1585,19 +1591,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 reCAPTCHA 또는 hCaptcha에서 사용하기 위해 서명 섹션을 표시하는 방법.
-
-"usemode"가 2 또는 5 이면 reCAPTCHA 또는 hCaptcha에서 사용하기 위해 서명 섹션을 표시하려면 시그니처 섹션 YAML 마커 세그먼트를 포함해야합니다 (아래의 예를 참조하십시오).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 보조
@@ -2357,4 +2350,4 @@ v4는 아직 존재하지 않습니다. 그러나, v3에서 v4로 업그레이�
 ---
 
 
-최종 업데이트 : 2025년 8월 21일.
+최종 업데이트 : 2025년 8월 29일.

@@ -198,6 +198,7 @@ $CIDRAM->view();
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -310,6 +311,7 @@ $CIDRAM->view();
 
 ```
 stages───[اس مرحلے کو فعال کریں؟]─[اس مرحلے کے دوران پیدا ہونے والی کسی غلطی کو لاگ کریں؟]─[IP ٹریکنگ کی طرف اس مرحلے کے دوران پیدا ہونے والی خلاف ورزیوں کو شمار کریں؟]
+├─BanCheck ("چیک کریں کہ آیا پابندی لگائی گئی ہے")
 ├─Tests ("دستخطی فائلوں کے ٹیسٹ پر عمل کریں")
 ├─Modules ("ماڈیولز پر عمل کریں")
 ├─SearchEngineVerification ("سرچ انجن کی تصدیق پر عمل کریں")
@@ -322,6 +324,7 @@ stages───[اس مرحلے کو فعال کریں؟]─[اس مرحلے ک�
 ├─Reporting ("رپورٹنگ پر عمل کریں")
 ├─Statistics ("اعداد و شمار کو اپ ڈیٹ کریں")
 ├─Webhooks ("ویب ہکس پر عمل کریں")
+├─TriggerNotifications ("ای میل ٹرگر اطلاع کی قطار پر کارروائی کریں")
 ├─PrepareFields ("آؤٹ پٹ اور لاگز کے لیے فیلڈز تیار کریں")
 ├─Output ("آؤٹ پٹ پیدا کریں (بلاک شدہ درخواستیں)")
 ├─WriteLogs ("لاگ فائلوں میں لکھیں (بلاک شدہ درخواستیں)")
@@ -738,21 +741,24 @@ default_algo
 <div dir="rtl"><ul><li>کنٹرول کرتا ہے کہ کون سی شماریاتی معلومات کو ٹریک کرنا ہے.</li></ul></div>
 
 ```
-statistics
-├─Blocked-IPv4 ("کی درخواستیں بلاک – IPv4")
-├─Blocked-IPv6 ("کی درخواستیں بلاک – IPv6")
-├─Blocked-Other ("کی درخواستیں بلاک – دیگر")
-├─Banned-IPv4 ("کی درخواستیں کالعدم – IPv4")
-├─Banned-IPv6 ("کی درخواستیں کالعدم – IPv6")
-├─Passed-IPv4 ("درخواستیں گزر گئیں – IPv4")
-├─Passed-IPv6 ("درخواستیں گزر گئیں – IPv6")
-├─Passed-Other ("درخواستیں گزر گئیں – دیگر")
-├─CAPTCHAs-Failed ("کوششیں CAPTCHA – ناکامی (%s)!")
-├─CAPTCHAs-Passed ("کوششیں CAPTCHA – ایوان کے پاس (%s)!")
-├─Reported-IPv4-OK ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv4 – ٹھیک ہے")
-├─Reported-IPv4-Failed ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv4 – ناکامی")
-├─Reported-IPv6-OK ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv6 – ٹھیک ہے")
-└─Reported-IPv6-Failed ("درخواستوں کی اطلاع بیرونی API کو دی گئی – IPv6 – ناکامی")
+statistics───[IPv4]─[IPv6]─[دیگر]
+├─Blocked ("کی درخواستیں بلاک")
+├─Banned ("کی درخواستیں کالعدم")
+├─Passed ("درخواستیں گزر گئیں")
+├─ReportOK ("درخواستوں کی اطلاع بیرونی API کو دی گئی – ٹھیک ہے")
+└─ReportFailed ("درخواستوں کی اطلاع بیرونی API کو دی گئی – ناکامی")
+```
+
+نوٹ: معاون قواعد کے اعداد و شمار کو ٹریک کرنا ہے یا نہیں، معاون قواعد کے صفحہ سے کنٹرول کیا جا سکتا ہے.
+
+##### <div dir="rtl">"statistics_captchas" <code dir="ltr">[string]</code><br /></div>
+<div dir="rtl"><ul><li>کنٹرول کرتا ہے کہ CAPTCHA کے لیے کون سی شماریاتی معلومات کو ٹریک کرنا ہے.</li></ul></div>
+
+```
+statistics_captchas───[ناکامی]─[کامیابی]─[خدمت کی]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 نوٹ: معاون قواعد کے اعداد و شمار کو ٹریک کرنا ہے یا نہیں، معاون قواعد کے صفحہ سے کنٹرول کیا جا سکتا ہے.
@@ -1079,7 +1085,7 @@ __"سنگل ہٹ بائی پاس" کیا ہیں؟__ کچھ معاملات میں
 <div dir="rtl"><ul><li>تصدیق کے تناظر میں دیگر خصوصیات کو ایڈجسٹ کرنے کے کنٹرولز.</li></ul></div>
 
 ```
-adjust───[HCaptcha کا استعمال نہ کریں]
+adjust───[HCaptcha کا استعمال نہ کریں]─[Friendly Captcha کا استعمال نہ کریں]─[Cloudflare Turnstile کا استعمال نہ کریں]
 ├─Negatives ("بلاک شدہ منفی")
 └─NonVerified ("بلاک شدہ غیر تصدیق شدہ")
 ```
@@ -1644,19 +1650,6 @@ general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
 ```
-
-##### <div dir="rtl">۶.۲.۱ کس طرح "خاص نشان" hCaptcha کے ساتھ استعمال کریں کے لیے دستخط قسموں<br /><br /></div>
-
-<div dir="rtl">جب <code dir="ltr">"usemode"</code> 2 یا 5 ہے، "خاص نشان" hCaptcha کے ساتھ استعمال کے لیے دستخط حصوں، ایک اندراج ہے کہ دستخط کے حصے کے لیے YAML طبقہ میں (ذیل کی مثال ملاحظہ کریں) شامل ہے کرنے کے لیے.<br /><br /></div>
-
-<pre dir="ltr">
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
-</pre>
 
 #### <div dir="rtl">۶.۳ معاون<br /><br /></div>
 
@@ -2456,4 +2449,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۱ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۲۱).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۹ اگست ۲۰۲۵ (۲۰۲۵.۰۸.۲۹).</div>

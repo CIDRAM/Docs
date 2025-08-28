@@ -192,6 +192,7 @@ Configuration (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ General configuration (any core configuration not belonging to other categories)
 
 ```
 stages───[Enable this stage?]─[Log any errors generated during this stage?]─[Should infractions generated during this stage count towards IP tracking?]
+├─BanCheck ("Check whether banned")
 ├─Tests ("Execute signature files tests")
 ├─Modules ("Execute modules")
 ├─SearchEngineVerification ("Execute search engine verification")
@@ -316,6 +318,7 @@ stages───[Enable this stage?]─[Log any errors generated during this stag
 ├─Reporting ("Execute reporting")
 ├─Statistics ("Update statistics")
 ├─Webhooks ("Execute webhooks")
+├─TriggerNotifications ("Process email trigger notification queue")
 ├─PrepareFields ("Prepare fields for output and logs")
 ├─Output ("Generate output (blocked requests)")
 ├─WriteLogs ("Write to logs (blocked requests)")
@@ -709,21 +712,24 @@ default_algo
 - Controls which statistical information to track.
 
 ```
-statistics
-├─Blocked-IPv4 ("Requests blocked – IPv4")
-├─Blocked-IPv6 ("Requests blocked – IPv6")
-├─Blocked-Other ("Requests blocked – Other")
-├─Banned-IPv4 ("Requests banned – IPv4")
-├─Banned-IPv6 ("Requests banned – IPv6")
-├─Passed-IPv4 ("Requests passed – IPv4")
-├─Passed-IPv6 ("Requests passed – IPv6")
-├─Passed-Other ("Requests passed – Other")
-├─CAPTCHAs-Failed ("CAPTCHA attempts – Failed (%s)!")
-├─CAPTCHAs-Passed ("CAPTCHA attempts – Passed (%s)!")
-├─Reported-IPv4-OK ("Requests reported to external APIs – IPv4 – OK")
-├─Reported-IPv4-Failed ("Requests reported to external APIs – IPv4 – Failed")
-├─Reported-IPv6-OK ("Requests reported to external APIs – IPv6 – OK")
-└─Reported-IPv6-Failed ("Requests reported to external APIs – IPv6 – Failed")
+statistics───[IPv4]─[IPv6]─[Other]
+├─Blocked ("Requests blocked")
+├─Banned ("Requests banned")
+├─Passed ("Requests passed")
+├─ReportOK ("Requests reported to external APIs – OK")
+└─ReportFailed ("Requests reported to external APIs – Failed")
+```
+
+Note: Whether to track statistics for auxiliary rules can be controlled from the auxiliary rules page.
+
+##### "statistics_captchas" `[string]`
+- Controls which statistical information to track for CAPTCHAs.
+
+```
+statistics_captchas───[Failed]─[Passed]─[Served]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Note: Whether to track statistics for auxiliary rules can be controlled from the auxiliary rules page.
@@ -1043,7 +1049,7 @@ __What are "single-hit bypasses"?__ In some cases, a positive-verified request m
 - Controls to adjust other features when in the context of verification.
 
 ```
-adjust───[Suppress hCaptcha]
+adjust───[Suppress hCaptcha]─[Suppress Friendly Captcha]─[Suppress Cloudflare Turnstile]
 ├─Negatives ("Blocked negatives")
 └─NonVerified ("Blocked non-verified")
 ```
@@ -1583,19 +1589,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 HOW TO "SPECIALLY MARK" SIGNATURE SECTIONS FOR USE WITH hCaptcha
-
-When "usemode" is 2 or 5, to "specially mark" signature sections for use with hCaptcha, an entry is included in the YAML segment for that signature section (see the example below).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 AUXILIARY
@@ -2366,4 +2359,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 21 August 2025 (2025.08.21).
+Last Updated: 29 August 2025 (2025.08.29).

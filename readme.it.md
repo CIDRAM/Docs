@@ -192,6 +192,7 @@ Configurazione (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Configurazione generale (qualsiasi configurazione di base non appartenente ad al
 
 ```
 stages───[Abilitare questa fase?]─[Gli errori generati durante questa fase devono essere registrati?]─[Le infrazioni generati durante questa fase devono essere conteggiate ai fini del tracciamento IP?]
+├─BanCheck ("Controlla se è vietato")
 ├─Tests ("Esegui test sui file di firma")
 ├─Modules ("Esegui moduli")
 ├─SearchEngineVerification ("Esegui la verifica dei motori di ricerca")
@@ -316,6 +318,7 @@ stages───[Abilitare questa fase?]─[Gli errori generati durante questa fa
 ├─Reporting ("Esegui rapporti")
 ├─Statistics ("Aggiorna le statistiche")
 ├─Webhooks ("Esegui webhook")
+├─TriggerNotifications ("Elabora la coda di notifiche di innescamento posta elettronica")
 ├─PrepareFields ("Preparare i campi per l'output e i registri")
 ├─Output ("Genera output (richieste bloccate)")
 ├─WriteLogs ("Scrivi nei file di log (richieste bloccate)")
@@ -711,21 +714,24 @@ default_algo
 - Controlla quali informazioni statistiche tracciare.
 
 ```
-statistics
-├─Blocked-IPv4 ("Richieste bloccate – IPv4")
-├─Blocked-IPv6 ("Richieste bloccate – IPv6")
-├─Blocked-Other ("Richieste bloccate – Altro")
-├─Banned-IPv4 ("Richieste vietate – IPv4")
-├─Banned-IPv6 ("Richieste vietate – IPv6")
-├─Passed-IPv4 ("Richieste accettate – IPv4")
-├─Passed-IPv6 ("Richieste accettate – IPv6")
-├─Passed-Other ("Richieste accettate – Altro")
-├─CAPTCHAs-Failed ("Tentativi di CAPTCHA – Fallito (%s)!")
-├─CAPTCHAs-Passed ("Tentativi di CAPTCHA – Successo (%s)!")
-├─Reported-IPv4-OK ("Richieste rapportate ad API esterne – IPv4 – OK")
-├─Reported-IPv4-Failed ("Richieste rapportate ad API esterne – IPv4 – Fallito")
-├─Reported-IPv6-OK ("Richieste rapportate ad API esterne – IPv6 – OK")
-└─Reported-IPv6-Failed ("Richieste rapportate ad API esterne – IPv6 – Fallito")
+statistics───[IPv4]─[IPv6]─[Altro]
+├─Blocked ("Richieste bloccate")
+├─Banned ("Richieste vietate")
+├─Passed ("Richieste accettate")
+├─ReportOK ("Richieste rapportate ad API esterne – OK")
+└─ReportFailed ("Richieste rapportate ad API esterne – Fallito")
+```
+
+Nota: È possibile controllare se tenere traccia delle statistiche per le regole ausiliarie dalla pagina delle regole ausiliarie.
+
+##### "statistics_captchas" `[string]`
+- Controlla quali informazioni statistiche tracciare per i CAPTCHA.
+
+```
+statistics_captchas───[Fallito]─[Superato]─[Servito]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Nota: È possibile controllare se tenere traccia delle statistiche per le regole ausiliarie dalla pagina delle regole ausiliarie.
@@ -1046,7 +1052,7 @@ __Cosa sono i "bypass a colpo singolo"?__ In alcuni casi, una richiesta verifica
 - Controlli per regolare altre funzionalità nel contesto della verifica.
 
 ```
-adjust───[Sopprimi hCaptcha]
+adjust───[Sopprimi hCaptcha]─[Sopprimi Friendly Captcha]─[Sopprimi Cloudflare Turnstile]
 ├─Negatives ("I negativi che sono bloccati")
 └─NonVerified ("I non verificati che sono bloccati")
 ```
@@ -1590,19 +1596,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 COME "APPOSITAMENTE CONTRASSEGNARE" SEZIONI DI FIRMA PER L'UTILIZZO CON hCaptcha
-
-Quando "usemode" è 2 o 5, a "appositamente contrassegnare" sezioni di firma per l'utilizzo con hCaptcha, una voce è incluso nel segmento di YAML per tale sezione di firme (vedere l'esempio cui seguito).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 AUSILIARIO
@@ -2368,4 +2361,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 21 Agosto 2025 (2025.08.21).
+Ultimo Aggiornamento: 29 Agosto 2025 (2025.08.29).

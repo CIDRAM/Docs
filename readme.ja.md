@@ -192,6 +192,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ PHPMailerをインストールしたら、CIDRAMコンフィギュレーショ�
 
 ```
 stages───[この段階を有効にしますか？]─[この段階で発生したエラーをログに記録しますか？]─[この段階で発生した違反は、ＩＰトラッキングにカウントしますか？]
+├─BanCheck ("禁止されているかどうかを確認する")
 ├─Tests ("シグネチャ・ファイル・テストを実行する")
 ├─Modules ("モジュールを実行する")
 ├─SearchEngineVerification ("検索エンジンの検証を実行する")
@@ -316,6 +318,7 @@ stages───[この段階を有効にしますか？]─[この段階で発�
 ├─Reporting ("レポートを実行する")
 ├─Statistics ("統計をアップデートする")
 ├─Webhooks ("Webhookを実行する")
+├─TriggerNotifications ("Ｅメール・トリガー通知キューを処理する")
 ├─PrepareFields ("出力とログ用のフィールドを準備する")
 ├─Output ("出力を生成する（ブロックされたリクエスト）")
 ├─WriteLogs ("ログへの書き込み（ブロックされたリクエスト）")
@@ -697,21 +700,24 @@ default_algo
 - 追跡する統計情報を制御します。
 
 ```
-statistics
-├─Blocked-IPv4 ("ブロックされたリクエスト – IPv4")
-├─Blocked-IPv6 ("ブロックされたリクエスト – IPv6")
-├─Blocked-Other ("ブロックされたリクエスト – その他")
-├─Banned-IPv4 ("禁止されたリクエスト – IPv4")
-├─Banned-IPv6 ("禁止されたリクエスト – IPv6")
-├─Passed-IPv4 ("許可されたリクエスト – IPv4")
-├─Passed-IPv6 ("許可されたリクエスト – IPv6")
-├─Passed-Other ("許可されたリクエスト – その他")
-├─CAPTCHAs-Failed ("キャプチャの試み – 失敗しました（%s）！")
-├─CAPTCHAs-Passed ("キャプチャの試み – 合格（%s）！")
-├─Reported-IPv4-OK ("外部ＡＰＩに報告されたリクエスト – IPv4 – ＯＫ")
-├─Reported-IPv4-Failed ("外部ＡＰＩに報告されたリクエスト – IPv4 – 失敗しました")
-├─Reported-IPv6-OK ("外部ＡＰＩに報告されたリクエスト – IPv6 – ＯＫ")
-└─Reported-IPv6-Failed ("外部ＡＰＩに報告されたリクエスト – IPv6 – 失敗しました")
+statistics───[IPv4]─[IPv6]─[その他]
+├─Blocked ("ブロックされたリクエスト")
+├─Banned ("禁止されたリクエスト")
+├─Passed ("許可されたリクエスト")
+├─ReportOK ("外部ＡＰＩに報告されたリクエスト – ＯＫ")
+└─ReportFailed ("外部ＡＰＩに報告されたリクエスト – 失敗しました")
+```
+
+注：補助ルールの統計を追跡するかどうかは、補助ルール・ページから制御できます。
+
+##### "statistics_captchas" `[string]`
+- キャプチャで追跡する統計情報を制御します。
+
+```
+statistics_captchas───[失敗しました]─[合格された]─[提供された]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 注：補助ルールの統計を追跡するかどうかは、補助ルール・ページから制御できます。
@@ -1026,7 +1032,7 @@ __「シングル・ヒット・バイパス」とは何ですか？__ 場合に
 - 検証のコンテキストで他の機能を調整するためのコントロール。
 
 ```
-adjust───[HCaptchaを抑制して]
+adjust───[HCaptchaを抑制して]─[Friendly Captchaを抑制して]─[Cloudflare Turnstileを抑制して]
 ├─Negatives ("ブロックされた陰性")
 └─NonVerified ("ブロックされた未確認")
 ```
@@ -1557,19 +1563,6 @@ Tag: Foobar 3
 general:
  http_response_header_code: 403
  silent_mode: "http://127.0.0.1/"
-```
-
-##### 6.2.1 reCAPTCHAまたはhCaptchaで使用するためにシグネチャセクションをマークする方法。
-
-「usemode」が「2」または「5」の場合、​reCAPTCHAまたはhCaptchaで使用するためにシグネチャセクションをマークするには、​そのシグネチャセクションのＹＡＭＬマーカーセグメントを含めてください（以下の例を参照してください）。
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
 ```
 
 #### 6.3 補助
@@ -2330,4 +2323,4 @@ v4はまだ存在しません。​ただし、v3からv4にアップグレー�
 ---
 
 
-最終アップデート：２０２５年８月２１日。
+最終アップデート：２０２５年８月２９日。

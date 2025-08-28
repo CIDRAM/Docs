@@ -71,7 +71,7 @@ require_once '/path/to/the/vault/directory/loader.php';
 
 `php_value auto_prepend_file "/path/to/your/entrypoint.php"`
 
-在其他情況下，創建入口點的最合適位置可能是在代碼庫或CMS中的最早點。​這確保了每當訪問您網站上的頁面時它總是會執行。​如果您的代碼庫使用『引導程序』，那麼該文件的開頭就是一個很好的例子。​如果您的代碼庫有一個中央文件負責連接到您的數據庫，那麼該文件的開頭將是另一個很好的例子。
+在其他情況下，創建入口點的最合適位置可能是在代碼庫或CMS中的最早點。​這確保了每當訪問您網站上的頁面時它總是會執行。​如果您的代碼庫使用『引導程序』，那麼該文件的開頭就是一個很好的例子。​如果您的代碼庫有一個中央文件負責連接到您的資料庫，那麼該文件的開頭將是另一個很好的例子。
 
 #### 2.1 與COMPOSER安裝
 
@@ -81,7 +81,7 @@ require_once '/path/to/the/vault/directory/loader.php';
 
 #### 2.2 為WORDPRESS安裝
 
-[CIDRAM在WordPress外掛數據庫中註冊](https://wordpress.org/plugins/cidram/)，​您可以直接從外掛儀表板安裝CIDRAM。​您可以像其他外掛一樣安裝，​不需要添加步驟。
+[CIDRAM在WordPress外掛資料庫中註冊](https://wordpress.org/plugins/cidram/)，​您可以直接從外掛儀表板安裝CIDRAM。​您可以像其他外掛一樣安裝，​不需要添加步驟。
 
 *警告：在外掛儀表板裡更新CIDRAM會導致乾淨的安裝！​如果您已經自定義了您的安裝（更改了您的配置，​安裝的模組等），​在外掛儀表板裡進行更新時，​這些定制將會丟失！​日誌文件也將丟失！​要保留日誌文件和自定義，​請通過CIDRAM前端更新頁面進行更新。​*
 
@@ -192,6 +192,7 @@ $CIDRAM->view();
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ $CIDRAM->view();
 
 ```
 stages───[啟用此階段？]─[記錄在此階段產生的任何錯誤？]─[將在此階段產生的違規計入IP跟踪？]
+├─BanCheck ("檢查是否被禁止")
 ├─Tests ("執行簽名文件測試")
 ├─Modules ("執行模組")
 ├─SearchEngineVerification ("執行搜索引擎驗證")
@@ -316,6 +318,7 @@ stages───[啟用此階段？]─[記錄在此階段產生的任何錯誤�
 ├─Reporting ("執行報告")
 ├─Statistics ("更新統計")
 ├─Webhooks ("執行webhook")
+├─TriggerNotifications ("處理電子郵件觸發通知佇列")
 ├─PrepareFields ("為輸出和日誌準備字段")
 ├─Output ("生成輸出（被阻止的請求）")
 ├─WriteLogs ("寫入日誌（被阻止的請求）")
@@ -681,21 +684,24 @@ default_algo
 - 控制要跟踪的統計信息。
 
 ```
-statistics
-├─Blocked-IPv4 ("請求已阻止 – IPv4")
-├─Blocked-IPv6 ("請求已阻止 – IPv6")
-├─Blocked-Other ("請求已阻止 – 其他")
-├─Banned-IPv4 ("請求已禁止 – IPv4")
-├─Banned-IPv6 ("請求已禁止 – IPv6")
-├─Passed-IPv4 ("允許的請求 – IPv4")
-├─Passed-IPv6 ("允許的請求 – IPv6")
-├─Passed-Other ("允許的請求 – 其他")
-├─CAPTCHAs-Failed ("驗證碼嘗試 – 失敗（%s）！")
-├─CAPTCHAs-Passed ("驗證碼嘗試 – 成功（%s）！")
-├─Reported-IPv4-OK ("向外部API報告的請求 – IPv4 – OK")
-├─Reported-IPv4-Failed ("向外部API報告的請求 – IPv4 – 失敗")
-├─Reported-IPv6-OK ("向外部API報告的請求 – IPv6 – OK")
-└─Reported-IPv6-Failed ("向外部API報告的請求 – IPv6 – 失敗")
+statistics───[IPv4]─[IPv6]─[其他]
+├─Blocked ("請求已阻止")
+├─Banned ("請求已禁止")
+├─Passed ("允許的請求")
+├─ReportOK ("向外部API報告的請求 – OK")
+└─ReportFailed ("向外部API報告的請求 – 失敗")
+```
+
+注意：輔助規則的跟踪統計可以從輔助規則頁面進行控制。
+
+##### 『statistics_captchas』 `[string]`
+- 控制要追蹤CAPTCHA的統計信息。
+
+```
+statistics_captchas───[失敗]─[成功]─[已送達]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 注意：輔助規則的跟踪統計可以從輔助規則頁面進行控制。
@@ -1002,7 +1008,7 @@ __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，
 - 在驗證上下文中調整其他功能的控件。
 
 ```
-adjust───[禁止hCaptcha]
+adjust───[禁止hCaptcha]─[禁止Friendly Captcha]─[禁止Cloudflare Turnstile]
 ├─Negatives ("被阻止的陰性")
 └─NonVerified ("被阻止的未驗證")
 ```
@@ -1528,19 +1534,6 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 如何『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha
-
-當『usemode』是『2』或『5』，​為『特別標記』簽名章節為使用的reCAPTCHA或hCaptcha，​一個條目是包括在YAML段為了那個簽名章節（看下面的例子）。
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
-```
-
 #### 6.3 輔
 
 ##### 6.3.0 忽略簽名章節
@@ -1876,17 +1869,17 @@ modules: |
 
 #### <a name="HOW_TO_USE_PDO"></a>『PDO DSN』是什麼？如何能PDO與CIDRAM一起使用？
 
-『PDO』 是 『[PHP Data Objects](https://www.php.net/manual/zh/intro.pdo.php)』 的首字母縮寫（它的意思是『PHP數據對象』）。​它為PHP提供了一個接口，使其能夠連接到各種PHP應用程序通常使用的某些數據庫系統。
+『PDO』 是 『[PHP Data Objects](https://www.php.net/manual/zh/intro.pdo.php)』 的首字母縮寫（它的意思是『PHP數據對象』）。​它為PHP提供了一個接口，使其能夠連接到各種PHP應用程序通常使用的某些資料庫系統。
 
-『DSN』 是 『[data source name](https://en.wikipedia.org/wiki/Data_source_name)』 的首字母縮寫（它的意思是『數據源名稱』）。​『PDO DSN』向PDO描述了它應如何連接到數據庫。
+『DSN』 是 『[data source name](https://en.wikipedia.org/wiki/Data_source_name)』 的首字母縮寫（它的意思是『數據源名稱』）。​『PDO DSN』向PDO描述了它應如何連接到資料庫。
 
-CIDRAM可以將PDO用於緩存。​為了使其正常工作，您需要相應地配置CIDRAM，從而啟用PDO，需要為CIDRAM創建一個新數據庫以供使用（如果您尚未想到要供CIDRAM使用的數據庫），並需要按照以下結構在數據庫中創建一個新表。
+CIDRAM可以將PDO用於緩存。​為了使其正常工作，您需要相應地配置CIDRAM，從而啟用PDO，需要為CIDRAM創建一個新資料庫以供使用（如果您尚未想到要供CIDRAM使用的資料庫），並需要按照以下結構在資料庫中創建一個新表。
 
-當數據庫連接成功時，但是必要的表不存在，表自動創建將嘗試。​但是，此行為尚未經過廣泛測試，因此無法保證成功。
+當資料庫連接成功時，但是必要的表不存在，表自動創建將嘗試。​但是，此行為尚未經過廣泛測試，因此無法保證成功。
 
-當然，這僅在您確實希望CIDRAM使用PDO時適用。​如果您對CIDRAM使用平面文件緩存（按照其默認配置）或提供的任何其他各種緩存選項感到足夠滿意，則無需費心設置數據庫，數據庫表，等等。
+當然，這僅在您確實希望CIDRAM使用PDO時適用。​如果您對CIDRAM使用平面文件緩存（按照其默認配置）或提供的任何其他各種緩存選項感到足夠滿意，則無需費心設置資料庫，資料庫表，等等。
 
-下面描述的結構使用『cidram』作為其數據庫名稱，但是您可以使用任何想要的數據庫名稱，只要在DSN配置中名稱被複製。
+下面描述的結構使用『cidram』作為其資料庫名稱，但是您可以使用任何想要的資料庫名稱，只要在DSN配置中名稱被複製。
 
 ```
 ╔══════════════════════════════════════════════╗
@@ -1903,31 +1896,31 @@ CIDRAM可以將PDO用於緩存。​為了使其正常工作，您需要相應�
 CIDRAM的`pdo_dsn`應配置如下。
 
 ```
-取決於所使用的數據庫驅動程序......
+取決於所使用的資料庫驅動程序......
 ├─4d （警告：實驗性，未經測試，不建議！）
 │ │
 │ │         ╔═══════╗
 │ └─4D:host=localhost;charset=UTF-8
 │           ╚╤══════╝
-│            └要查找數據庫的主機。
+│            └要查找資料庫的主機。
 ├─cubrid
 │ │
 │ │             ╔═══════╗      ╔═══╗        ╔═════╗
 │ └─cubrid:host=localhost;port=33000;dbname=example
 │               ╚╤══════╝      ╚╤══╝        ╚╤════╝
-│                │              │            └要使用的數據庫的名稱。
+│                │              │            └要使用的資料庫的名稱。
 │                │              │
 │                │              └連接的主機端口號。
 │                │
-│                └要查找數據庫的主機。
+│                └要查找資料庫的主機。
 ├─dblib
 │ │
 │ │ ╔═══╗      ╔═══════╗        ╔═════╗
 │ └─dblib:host=localhost;dbname=example
 │   ╚╤══╝      ╚╤══════╝        ╚╤════╝
-│    │          │                └要使用的數據庫的名稱。
+│    │          │                └要使用的資料庫的名稱。
 │    │          │
-│    │          └要查找數據庫的主機。
+│    │          └要查找資料庫的主機。
 │    │
 │    └可能的值： 『mssql』， 『sybase』， 『dblib』。
 ├─firebird
@@ -1935,7 +1928,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 │ │                 ╔═══════════════════╗
 │ └─firebird:dbname=/path/to/database.fdb
 │                   ╚╤══════════════════╝
-│                    ├可以是本地數據庫文件的路徑。
+│                    ├可以是本地資料庫文件的路徑。
 │                    │
 │                    ├可以連接主機和端口號。
 │                    │
@@ -1945,13 +1938,13 @@ CIDRAM的`pdo_dsn`應配置如下。
 │ │         ╔═════╗
 │ └─ibm:DSN=example
 │           ╚╤════╝
-│            └要連接的在目錄中數據庫。
+│            └要連接的在目錄中資料庫。
 ├─informix
 │ │
 │ │              ╔═════╗
 │ └─informix:DSN=example
 │                ╚╤════╝
-│                 └要連接的在目錄中數據庫。
+│                 └要連接的在目錄中資料庫。
 ├─mysql （最推薦！）
 │ │
 │ │              ╔═════╗      ╔═══════╗      ╔══╗
@@ -1959,15 +1952,15 @@ CIDRAM的`pdo_dsn`應配置如下。
 │                ╚╤════╝      ╚╤══════╝      ╚╤═╝
 │                 │            │              └連接的主機端口號。
 │                 │            │
-│                 │            └要查找數據庫的主機。
+│                 │            └要查找資料庫的主機。
 │                 │
-│                 └要使用的數據庫的名稱。
+│                 └要使用的資料庫的名稱。
 ├─oci
 │ │
 │ │            ╔═════╗
 │ └─oci:dbname=example
 │              ╚╤════╝
-│               ├可以參考特定的在目錄中數據庫。
+│               ├可以參考特定的在目錄中資料庫。
 │               │
 │               ├可以連接主機和端口號。
 │               │
@@ -1977,7 +1970,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 │ │      ╔═════╗
 │ └─odbc:example
 │        ╚╤════╝
-│         ├可以參考特定的在目錄中數據庫。
+│         ├可以參考特定的在目錄中資料庫。
 │         │
 │         ├可以連接主機和端口號。
 │         │
@@ -1987,32 +1980,32 @@ CIDRAM的`pdo_dsn`應配置如下。
 │ │            ╔═══════╗      ╔══╗        ╔═════╗
 │ └─pgsql:host=localhost;port=5432;dbname=example
 │              ╚╤══════╝      ╚╤═╝        ╚╤════╝
-│               │              │           └要使用的數據庫的名稱。
+│               │              │           └要使用的資料庫的名稱。
 │               │              │
 │               │              └連接的主機端口號。
 │               │
-│               └要查找數據庫的主機。
+│               └要查找資料庫的主機。
 ├─sqlite
 │ │
 │ │        ╔════════╗
 │ └─sqlite:example.db
 │          ╚╤═══════╝
-│           └要使用的本地數據庫文件的路徑。
+│           └要使用的本地資料庫文件的路徑。
 └─sqlsrv
   │
   │               ╔═══════╗ ╔══╗          ╔═════╗
   └─sqlsrv:Server=localhost,1521;Database=example
                   ╚╤══════╝ ╚╤═╝          ╚╤════╝
-                   │         │             └要使用的數據庫的名稱。
+                   │         │             └要使用的資料庫的名稱。
                    │         │
                    │         └連接的主機端口號。
                    │
-                   └要查找數據庫的主機。
+                   └要查找資料庫的主機。
 ```
 
 如果不確定如何構造DSN，請嘗試先查看它是否按原樣工作，而不進行任何更改。
 
-請注意， `pdo_username` 和 `pdo_password` 應與您為數據庫選擇的使用者名稱和密碼相同。
+請注意， `pdo_username` 和 `pdo_password` 應與您為資料庫選擇的使用者名稱和密碼相同。
 
 #### <a name="BLOCK_CRON"></a>CIDRAM正在阻止cronjobs。​如何解決這個問題？
 
@@ -2070,7 +2063,7 @@ CIDRAM支持hCaptcha。​他們需要API金鑰才能正常工作。​默認情
 
 ##### 9.2.3 STOP FORUM SPAM 【停止論壇垃圾郵件】
 
-[Stop Forum Spam](https://www.stopforumspam.com/)是一個輝煌的，免費提供的服務，可以幫助保護論壇，博客，和網站免受垃圾郵件製造者。​它提供了一個已知垃圾郵件發送者的數據庫，以及一個可用來檢查數據庫中是否列出IP地址，使用者名稱或電子郵件地址的API。
+[Stop Forum Spam](https://www.stopforumspam.com/)是一個輝煌的，免費提供的服務，可以幫助保護論壇，博客，和網站免受垃圾郵件製造者。​它提供了一個已知垃圾郵件發送者的資料庫，以及一個可用來檢查資料庫中是否列出IP地址，使用者名稱或電子郵件地址的API。
 
 CIDRAM提供了一個可選模組，它使用API​來檢查入站請求的IP地址是否屬於可疑垃圾郵件發送者。​如果安裝並激活模組時候，則可以根據模組的配置和預期用途將用戶的IP地址與服務共享。
 
@@ -2300,4 +2293,4 @@ v4目前不存在。​不過，當從v3升級到v4時，升級過程應該會�
 ---
 
 
-最後更新：2025年8月21日。
+最後更新：2025年8月29日。

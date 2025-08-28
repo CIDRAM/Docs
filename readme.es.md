@@ -192,6 +192,7 @@ Configuración (v3)
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
+│       statistics_captchas [string]
 │       force_hostname_lookup [bool]
 │       allow_gethostbyaddr_lookup [bool]
 │       disabled_channels [string]
@@ -304,6 +305,7 @@ Configuración general (cualquier configuración que no pertenezca a otras categ
 
 ```
 stages───[¿Habilitar esta etapa?]─[¿Registrar los errores generados durante esta etapa?]─[¿Las infracciones generadas durante esta etapa deben contar para el seguimiento de IP?]
+├─BanCheck ("Comprobar si está prohibido")
 ├─Tests ("Ejecutar pruebas de los archivos de firma")
 ├─Modules ("Ejecutar módulos")
 ├─SearchEngineVerification ("Ejecutar la verificación del motor de búsqueda")
@@ -316,6 +318,7 @@ stages───[¿Habilitar esta etapa?]─[¿Registrar los errores generados du
 ├─Reporting ("Ejecutar reportes")
 ├─Statistics ("Actualizar estadísticas")
 ├─Webhooks ("Ejecutar webhooks")
+├─TriggerNotifications ("Procesar la cola de notificaciones de desencadenamiento por correo electrónico")
 ├─PrepareFields ("Preparar campos para salida y registros")
 ├─Output ("Generar salida (solicitudes bloqueadas)")
 ├─WriteLogs ("Escribir en registros (solicitudes bloqueadas)")
@@ -334,7 +337,7 @@ fields───[¿Debería aparecer este campo en las entradas de registro?]─[
 ├─DateTime ("Fecha/Hora")
 ├─IPAddr ("Dirección IP")
 ├─IPAddrResolved ("Dirección IP (resuelto)")
-├─Query ("Query")
+├─Query ("Consulta")
 ├─Referrer ("Referente")
 ├─UA ("Agente de usuario")
 ├─UALC ("Agente de usuario (minúscula)")
@@ -711,21 +714,24 @@ default_algo
 - Controla qué información estadística rastrear.
 
 ```
-statistics
-├─Blocked-IPv4 ("Solicitudes bloqueadas – IPv4")
-├─Blocked-IPv6 ("Solicitudes bloqueadas – IPv6")
-├─Blocked-Other ("Solicitudes bloqueadas – Otro")
-├─Banned-IPv4 ("Solicitudes prohibidas – IPv4")
-├─Banned-IPv6 ("Solicitudes prohibidas – IPv6")
-├─Passed-IPv4 ("Solicitudes aprobadas – IPv4")
-├─Passed-IPv6 ("Solicitudes aprobadas – IPv6")
-├─Passed-Other ("Solicitudes aprobadas – Otro")
-├─CAPTCHAs-Failed ("Intentos de CAPTCHA – ¡Fallado (%s)!")
-├─CAPTCHAs-Passed ("Intentos de CAPTCHA – ¡Éxito (%s)!")
-├─Reported-IPv4-OK ("Solicitudes reportados a API externos – IPv4 – OK")
-├─Reported-IPv4-Failed ("Solicitudes reportados a API externos – IPv4 – Fallado")
-├─Reported-IPv6-OK ("Solicitudes reportados a API externos – IPv6 – OK")
-└─Reported-IPv6-Failed ("Solicitudes reportados a API externos – IPv6 – Fallado")
+statistics───[IPv4]─[IPv6]─[Otro]
+├─Blocked ("Solicitudes bloqueadas")
+├─Banned ("Solicitudes prohibidas")
+├─Passed ("Solicitudes aprobadas")
+├─ReportOK ("Solicitudes reportados a API externos – OK")
+└─ReportFailed ("Solicitudes reportados a API externos – Fallado")
+```
+
+Nota: Desde la página de reglas auxiliares se puede controlar si realizar un rastreo de las estadísticas de las reglas auxiliares.
+
+##### "statistics_captchas" `[string]`
+- Controla qué información estadística rastrear para los CAPTCHA.
+
+```
+statistics_captchas───[Fallado]─[Pasado]─[Servido]
+├─HCaptcha ("hCaptcha")
+├─FriendlyCaptcha ("Friendly Captcha")
+└─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
 Nota: Desde la página de reglas auxiliares se puede controlar si realizar un rastreo de las estadísticas de las reglas auxiliares.
@@ -1045,7 +1051,7 @@ __¿Qué son los "bypasses de un solo golpe"?__ En algunos casos, una solicitud 
 - Controles para ajustar otras funciones en el contexto de la verificación.
 
 ```
-adjust───[Suprimir hCaptcha]
+adjust───[Suprimir hCaptcha]─[Suprimir Friendly Captcha]─[Suprimir Cloudflare Turnstile]
 ├─Negatives ("Negativos que están bloqueados")
 └─NonVerified ("No verificados que están bloqueados")
 ```
@@ -1589,19 +1595,6 @@ general:
  silent_mode: "http://127.0.0.1/"
 ```
 
-##### 6.2.1 CÓMO "ESPECIALMENTE MARCAR" SECCIONES DE FIRMAS PARA USAR CON hCaptcha
-
-Cuando "usemode" es 2 o 5, para "especialmente marcar" secciones de firmas para usar con hCaptcha, una entrada está incluida en el segmento de YAML para que esa sección de firmas (vea el ejemplo siguiente).
-
-```
-1.2.3.4/32 Deny Generic
-2.3.4.5/32 Deny Generic
-Tag: CAPTCHA Marked
----
-hcaptcha:
- enabled: true
-```
-
 #### 6.3 AUXILIAR
 
 ##### 6.3.0 IGNORANDO LAS SECCIONES DE FIRMA
@@ -1690,7 +1683,7 @@ Variable | Descripción
 `$this->BlockInfo['IPAddr']` | Dirección IP para la solicitud actual.
 `$this->BlockInfo['IPAddrResolved']` | Si la dirección IP de la solicitud actual es una dirección 6to4, Teredo, o ISATAP, esa dirección se resuelve en su equivalente IPv4. En caso contrario, se indicará la dirección IP de la solicitud actual.
 `$this->BlockInfo['ScriptIdent']` | Versión de CIDRAM.
-`$this->BlockInfo['Query']` | La "query" para la solicitud actual.
+`$this->BlockInfo['Query']` | La consulta para la solicitud actual.
 `$this->BlockInfo['Referrer']` | El referente para la solicitud actual (si existe).
 `$this->BlockInfo['UA']` | El agente de usuario (user agent) para la solicitud actual.
 `$this->BlockInfo['UALC']` | El agente de usuario (user agent) para la solicitud actual (en minúsculas).
@@ -2369,4 +2362,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 21 de Agosto de 2025 (2025.08.21).
+Última Actualización: 29 de Agosto de 2025 (2025.08.29).
