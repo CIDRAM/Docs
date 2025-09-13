@@ -171,7 +171,7 @@ Notitie: Het beschermen van uw vault tegen ongeautoriseerde toegang (b.v., door 
 Het volgende is een lijst van variabelen die in de `config.yml` configuratiebestand van CIDRAM, samen met een beschrijving van hun doel en functie.
 
 ```
-Configuratie (v3)
+Configuratie (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Configuratie (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -503,7 +502,7 @@ Zie ook:
 - Welk HTTP-statusbericht moet CIDRAM verzenden bij het blokkeren van verzoeken?
 
 ```
-http_response_header_code
+http_response_header_code───[Standaard]─[Wettelijke]─[Verbannen]
 ├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
 │ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
 │ het verzoek was succesvol. Aanbevolen voor niet-geblokkeerde verzoeken.
@@ -524,6 +523,18 @@ http_response_header_code
   wordt aangevallen, of wanneer u te maken hebt met extreem hardnekkig
   ongewenst verkeer.
 ```
+
+__1.__ Wanneer de "stille modus" actief is, wordt het door `general➡silent_mode_response_header_code` gedefinieerde HTTP-statusbericht gebruikt (dit heeft de hoogste prioriteit).
+
+__2.__ Wanneer de aanvragende entiteit is verbannen vanwege overschrijding van de overtredingslimiet, wordt het HTTP-statusbericht voor "verbannen" gebruikt.
+
+__3.__ Wanneer geblokkeerd vanwege tarieflimiet, wordt 429 gebruikt, of wanneer geblokkeerd vanwege resourceconflicten, wordt het HTTP-statusbericht gedefinieerd door `signatures➡conflict_response` gebruikt (tarieflimiet en hulpbronnenconflicten hebben in deze context gelijke prioriteit).
+
+__4.__ Wanneer geblokkeerd vanwege een aanvullende regel die een "HTTP-statuscode overschrijven" instelt, wordt die HTTP-statuscode overschrijven gebruikt.
+
+__5.__ Wanneer geblokkeerd vanwege juridische redenen (d.w.z., wanneer geblokkeerd vanwege een aangepaste signature die het stenowoord "wettelijke" gebruikt), wordt het HTTP-statusbericht voor "wettelijke" gebruikt.
+
+__6.__ Voor alle andere geblokkeerde verzoeken wordt het HTTP-statusbericht voor "standaard" gebruikt (dit heeft de laagste prioriteit).
 
 ##### "silent_mode" `[string]`
 - Moet CIDRAM stilletjes omleiden geblokkeerd toegang pogingen in plaats van het weergeven van de "toegang geweigerd" pagina? Als ja, geef de locatie te omleiden geblokkeerd toegang pogingen. Als nee, verlaat deze variabele leeg.
@@ -666,32 +677,6 @@ numbers
 emailaddr_display_style
 ├─default ("Klikbare link")
 └─noclick ("Niet-klikbare tekst")
-```
-
-##### "ban_override" `[int]`
-- Overrijden "http_response_header_code" wanneer "infraction_limit" wordt overschreden? 200 = Niet overrijden [Standaard]. Andere waarden zijn hetzelfde als de beschikbare waarden voor "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Minst robuust, maar meest gebruiksvriendelijk. Geautomatiseerde verzoeken
-│ zullen dit antwoord hoogstwaarschijnlijk interpreteren als een indicatie dat
-│ het verzoek was succesvol. Aanbevolen voor niet-geblokkeerde verzoeken.
-├─403 (403 Forbidden (Verboden)): Robuuster, maar minder gebruiksvriendelijk. Aanbevolen voor de meeste
-│ algemene omstandigheden.
-├─410 (410 Gone (Weg)): Kan problemen veroorzaken bij het oplossen van valse positieven, omdat
-│ sommige browsers dit statusbericht in de cache opslaan en geen volgende
-│ verzoeken verzenden, zelfs niet nadat de blokkering is opgeheven. Kan in
-│ sommige contexten, voor bepaalde soorten verkeer, de meeste voorkeur hebben.
-├─418 (418 I'm a teapot (Ik ben een theepot)): Verwijst naar een 1-aprilgrap (<a href="https://tools.ietf.org/html/rfc2324"
-│ dir="ltr" hreflang="en-US" rel="noopener noreferrer external">RFC 2324</a>).
-│ Het is zeer onwaarschijnlijk dat deze door een client, bot, browser, of
-│ anderszins wordt begrepen. Geleverd voor amusement en gemak, maar over het
-│ algemeen niet aanbevolen.
-├─451 (451 Unavailable For Legal Reasons (Om juridische redenen onbeschikbaar)): Aanbevolen bij blokkering voornamelijk om juridische redenen. Niet
-│ aanbevolen in andere contexten.
-└─503 (503 Service Unavailable (Dienst onbeschikbaar)): Meest robuust, maar minst gebruiksvriendelijk. Aanbevolen voor wanneer u
-  wordt aangevallen, of wanneer u te maken hebt met extreem hardnekkig
-  ongewenst verkeer.
 ```
 
 ##### "default_dns" `[string]`
@@ -1721,7 +1706,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Hoe vaak worden signatures bijgewerkt?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ik heb een fout tegengekomen tijdens het gebruik van CIDRAM en ik weet niet wat te doen! Help alstublieft!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Ik ben geblokkeerd door CIDRAM van een website die ik wil bezoeken! Help alstublieft!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Ik wil CIDRAM v3 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Ik wil CIDRAM v3~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Kan ik een enkele CIDRAM-installatie gebruiken om meerdere domeinen te beschermen?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Ik wil niet tijd verspillen met het installeren van dit en om het te laten werken met mijn website; Kan ik u betalen om het te doen?](#user-content-PAY_YOU_TO_DO_IT)
 - [Kan ik u of een van de ontwikkelaars van dit project voor privéwerk huren?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1799,9 +1784,9 @@ Bijwerkfrequentie varieert afhankelijk van de signatuurbestanden betrokken. Alle
 
 CIDRAM biedt een manier voor website-eigenaren om ongewenst verkeer te blokkeren, maar het is de verantwoordelijkheid van de website-eigenaren om zelf te beslissen hoe ze willen CIDRAM gebruiken. In het geval van de valse positieven met betrekking tot de signatuurbestanden normaal meegeleverd met CIDRAM, correcties kunnen worden gemaakt, maar met betrekking tot het wordt gedeblokkeerd van specifieke websites, u nodig hebt om te communiceren met de eigenaren van de websites in kwestie. In gevallen waarin correcties worden gemaakt, op zijn minst, zullen ze nodig hebben om hun signatuurbestanden en/of installatie bij te werken, en in andere gevallen (zoals bijvoorbeeld, waarin ze hun installatie hebt gewijzigd, creëerden hun eigen aangepaste signatures, enz), het is hun verantwoordelijkheid om uw probleem op te lossen, en is geheel buiten onze controle.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ik wil CIDRAM v3 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ik wil CIDRAM v3~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?
 
-Nee. PHP≥7.2 is een minimale vereiste voor CIDRAM v3.
+Nee. PHP≥7.2 is een minimale vereiste voor CIDRAM v3~v4.
 
 *Zie ook: [Compatibiliteitskaarten](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2347,7 +2332,7 @@ Als alternatief is er een kort (niet-gezaghebbende) overzicht van GDPR/DSGVO/AVG
 
 ### 10. <a name="SECTION10"></a>UPGRADEN VAN EERDERE HOOFDVERSIES
 
-#### 10.0 CIDRAM v3
+#### 10.0 Upgraden naar CIDRAM v3
 
 Er zijn aanzienlijke verschillen tussen v3 en eerdere hoofdversies. Belangrijk is dat de manier waarop ingangspunten werken, de manier waarop modules zijn gestructureerd, en de manier waarop de updater werkt voor v3 anders is dan de manier waarop die dingen werkten voor eerdere hoofdversies. Vanwege deze verschillen is het uitvoeren van een nieuwe installatie de beste manier om te upgraden naar v3 van eerdere hoofdversies.
 
@@ -2363,7 +2348,13 @@ Sommige signatuurbestanden, modules, en blokkeerlijsten die openbaar beschikbaar
 
 Er zijn enkele subtiele wijzigingen in de manier waarop aanvullende regels zijn gestructureerd en er zijn wijzigingen in de configuratie, maar als u de import/export functie op de front-end back-up-pagina gebruikt, hoeft u niets handmatig te herschrijven, aan te passen, of opnieuw te maken. Bij het importeren weet CIDRAM wat er nodig is en regelt het automatisch voor u.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Upgraden naar CIDRAM v4 vanaf een versie ouder dan CIDRAM v3
+
+Zie hierboven: Een nieuwe installatie wordt aanbevolen.
+
+#### 10.2 Upgraden naar CIDRAM v4 van CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 bestaat nog niet. Wanneer het echter tijd is om te upgraden van v3 naar v4, zou het upgradeproces veel eenvoudiger moeten zijn. We zullen niet precies weten hoeveel verschil het zal zijn tot de tijd daar is, maar ik verwacht dat de verschillen veel kleiner zullen zijn dan voorheen, en mechanismen zijn vanaf het begin al in v3 geïmplementeerd om een soepeler upgradeproces te vergemakkelijken. Zolang er geen significante wijzigingen zijn in de updater of de manier waarop ingangspunten werken, zou het in theorie mogelijk moeten zijn om volledig via de front-end te upgraden, zonder dat een nieuwe installatie nodig is.
 
@@ -2372,4 +2363,4 @@ Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in d
 ---
 
 
-Laatste Bijgewerkt: 29 Augustus 2025 (2025.08.29).
+Laatste Bijgewerkt: 13 September 2025 (2025.09.13).

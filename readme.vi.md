@@ -171,7 +171,7 @@ Chú thích: Bảo vệ vault của bạn khỏi bị truy cập trái phép (v�
 Sau đây là danh sách các biến tìm thấy trong tập tin cấu hình cho CIDRAM `config.yml`, cùng với một mô tả về mục đích và chức năng của chúng.
 
 ```
-Cấu hình (v3)
+Cấu hình (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Cấu hình (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -503,7 +502,7 @@ Xem thêm:
 - Những gì thông báo trạng thái HTTP mà CIDRAM nên gửi khi yêu cầu bị chặn?
 
 ```
-http_response_header_code
+http_response_header_code───[Mặc định]─[Pháp lý]─[Bị cấm]
 ├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
 │ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
 │ là dấu hiệu cho thấy yêu cầu đã thành công. Được khuyến
@@ -528,6 +527,18 @@ http_response_header_code
   Được khuyến khích khi bị tấn công, hoặc khi xử lý lưu
   lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
+
+__1.__ Khi "chế độ im lặng" có hiệu lực, thông báo trạng thái HTTP được xác định bởi `general➡silent_mode_response_header_code` sẽ được sử dụng (thông báo này có mức độ ưu tiên cao nhất).
+
+__2.__ Khi thực thể yêu cầu bị cấm do vượt quá giới hạn vi phạm, thông báo trạng thái HTTP "bị cấm" sẽ được sử dụng.
+
+__3.__ Khi bị chặn do giới hạn tốc độ, 429 sẽ được sử dụng, hoặc khi bị chặn do xung đột tài nguyên, thông báo trạng thái HTTP được xác định bởi `signatures➡conflict_response` sẽ được sử dụng (giới hạn tốc độ và xung đột tài nguyên có mức độ ưu tiên ngang nhau trong bối cảnh này).
+
+__4.__ Khi bị chặn do quy tắc phụ trợ đặt "ghi đè mã trạng thái HTTP", ghi đè mã trạng thái HTTP đó sẽ được sử dụng.
+
+__5.__ Khi bị chặn do nghĩa vụ pháp lý (tức là, khi bị chặn do chữ ký tùy chỉnh sử dụng từ viết tắt "pháp lý"), thông báo trạng thái HTTP cho "pháp lý" sẽ được sử dụng.
+
+__6.__ Đối với tất cả các yêu cầu bị chặn khác, thông báo trạng thái HTTP cho "mặc định" sẽ được sử dụng (thông báo này có mức độ ưu tiên thấp nhất).
 
 ##### "silent_mode" `[string]`
 - CIDRAM nên âm thầm chuyển hướng cố gắng truy cập bị chặn thay vì hiển thị trang "Truy cập đã bị từ chối"? Nếu vâng, xác định vị trí để chuyển hướng cố gắng truy cập bị chặn để. Nếu không, để cho biến này được trống.
@@ -674,36 +685,6 @@ numbers
 emailaddr_display_style
 ├─default ("Liên kết có thể nhấp")
 └─noclick ("Văn bản không thể nhấp")
-```
-
-##### "ban_override" `[int]`
-- Ghi đè "http_response_header_code" khi "infraction_limit" bị vượt quá? 200 = Không ghi đè [Mặc định]. Các giá trị khác giống với các giá trị có sẵn cho "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Không mạnh mẽ, nhưng thân thiện với người dùng nhất. Các
-│ yêu cầu tự động rất có thể sẽ diễn giải phản hồi này
-│ là dấu hiệu cho thấy yêu cầu đã thành công. Được khuyến
-│ khích cho các yêu cầu không bị chặn.
-├─403 (403 Forbidden (Bị cấm)): Hơi mạnh mẽ, và thân thiện với người dùng. Được khuyến
-│ khích cho hầu hết các trường hợp chung.
-├─410 (410 Gone (Đã biến mất)): Có thể gây ra sự cố khi giải quyết các sai tích cực, vì
-│ một số trình duyệt sẽ lưu vào bộ nhớ cache thông báo
-│ trạng thái này và không gửi các yêu cầu tiếp theo, ngay cả
-│ khi đã được bỏ chặn. Có thể thích hợp nhất trong một
-│ số ngữ cảnh, đối với một số loại lưu lượng truy cập
-│ nhất định.
-├─418 (418 I'm a teapot (Tôi là một ấm trà)): Điều này đề cập đến một trò đùa ngày cá tháng tư (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Rất khó có thể
-│ được hiểu bởi bất kỳ ứng dụng khách, bot, trình duyệt,
-│ hoặc cách nào khác. Được cung cấp để giải trí và tiện
-│ lợi, nhưng thường không được khuyến khích.
-├─451 (451 Unavailable For Legal Reasons (Không có sẵn vì lý do pháp lý)): Được khuyến khích khi chặn chủ yếu vì lý do pháp lý. Không
-│ được khuyến khích trong các ngữ cảnh khác.
-└─503 (503 Service Unavailable (Dịch vụ không sẵn có)): Mạnh mẽ nhất, nhưng không thân thiện với người dùng.
-  Được khuyến khích khi bị tấn công, hoặc khi xử lý lưu
-  lượng truy cập không mong muốn và cực kỳ dai dẳng.
 ```
 
 ##### "default_dns" `[string]`
@@ -935,7 +916,7 @@ shorthand───[Chặn nó.]─[Hồ sơ nó.]─[Khi bị chặn, đàn áp 
 ├─Bogon ("⁰ IP bogon")
 ├─Cloud ("Dịch vụ điện toán đám mây")
 ├─Generic ("Chủng loại")
-├─Legal ("¹ Nghĩa vụ hợp pháp")
+├─Legal ("¹ Pháp lý")
 ├─Malware ("Phần mềm độc hại")
 ├─Proxy ("² Proxy")
 ├─Spam ("Thư rác")
@@ -1741,7 +1722,7 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 - [Tần suất cập nhật chữ ký là bao nhiêu?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Tôi đã gặp một vấn đề trong khi sử dụng CIDRAM và tôi không biết phải làm gì về nó! Hãy giúp tôi!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Tôi đã bị chặn bởi CIDRAM từ một trang web mà tôi muốn ghé thăm! Hãy giúp tôi!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Tôi muốn sử dụng CIDRAM v3 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Tôi muốn sử dụng CIDRAM v3~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Tôi có thể sử dụng một cài đặt CIDRAM để bảo vệ nhiều tên miền?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Tôi không muốn lãng phí thời gian bằng cách cài đặt này và đảm bảo rằng nó hoạt động với trang web của tôi; Tôi có thể trả tiền cho bạn để làm điều đó cho tôi?](#user-content-PAY_YOU_TO_DO_IT)
 - [Tôi có thể thuê bạn hay bất kỳ nhà phát triển nào của dự án này cho công việc riêng tư?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1819,9 +1800,9 @@ Tần suất cập nhật thay đổi tùy thuộc vào các tập tin chữ ký
 
 CIDRAM cung cấp một cách cho chủ sở hữu trang web để chặn lưu lượng không mong muốn, nhưng đó là trách nhiệm của chủ sở hữu trang web tự quyết định cách mà họ muốn sử dụng CIDRAM. Trong trường hợp của sai tích cực liên quan đến các tập tin chữ ký thường trong gói CIDRAM, đính chính có thể được thực hiện, nhưng để được bỏ chặn từ các trang web cụ thể, bạn sẽ cần phải liên hệ với chủ sở hữu của các trang web được đề cập. Trong trường hợp đính chính được thực hiện, ít nhất, họ sẽ cần phải cập nhật các tập tin chữ ký hay cài đặt của họ, và trong các trường hợp khác (chẳng hạn như, ví dụ, khi họ đã sửa đổi cài đặt của họ, đã tạo ra chữ ký riêng của họ, vv), trách nhiệm của giải quyết vấn đề của bạn hoàn toàn là của họ, và hoàn toàn nằm ngoài tầm kiểm soát của chúng tôi.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Tôi muốn sử dụng CIDRAM v3 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Tôi muốn sử dụng CIDRAM v3~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?
 
-Không. PHP≥7.2 là yêu cầu tối thiểu đối với CIDRAM v3.
+Không. PHP≥7.2 là yêu cầu tối thiểu đối với CIDRAM v3~v4.
 
 *Xem thêm: [Biểu đồ tương thích](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2347,7 +2328,7 @@ Một số tài nguyên được khuyến khích để tìm hiểu thêm thông 
 
 ### 10. <a name="SECTION10"></a>NÂNG CẤP TỪ CÁC PHIÊN BẢN CHÍNH TRƯỚC ĐÓ
 
-#### 10.0 CIDRAM v3
+#### 10.0 Nâng cấp lên CIDRAM v3
 
 Có sự khác biệt đáng kể giữa v3 và các phiên bản chính trước đó. Cách thức hoạt động của các điểm vào, cách thức cấu trúc các mô-đun, và cách thức hoạt động của trình cập nhật đối với v3 khác với cách thức hoạt động của những thứ đó đối với các phiên bản chính trước đó. Do những khác biệt này, cách tốt nhất để nâng cấp lên v3 từ các phiên bản chính trước đó là thực hiện cài đặt mới.
 
@@ -2363,7 +2344,13 @@ Một số tập tin chữ ký, mô-đun, và danh sách chặn có sẵn công 
 
 Có một số thay đổi tinh tế đối với cách cấu trúc các quy tắc phụ trợ và có những thay đổi đối với cấu hình, nhưng nếu bạn sử dụng tính năng nhập/xuất tại trang sao lưu front-end, thì bạn sẽ không cần phải viết lại, điều chỉnh, hoặc tạo lại bất kỳ thứ gì theo cách thủ công. Khi nhập, CIDRAM biết những gì cần thiết và sẽ tự động xử lý cho bạn.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Nâng cấp lên CIDRAM v4 từ phiên bản cũ hơn CIDRAM v3
+
+Xem ở trên: Nên cài đặt mới.
+
+#### 10.2 Nâng cấp lên CIDRAM v4 từ CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 chưa tồn tại. Tuy nhiên, trong tương lai, khi nâng cấp từ v3 lên v4, quá trình nâng cấp sẽ đơn giản hơn nhiều. Chúng tôi sẽ không biết chính xác nó sẽ khác như thế nào cho đến thời điểm đó, nhưng tôi dự đoán sự khác biệt sẽ ít hơn trước, và các cơ chế đã được triển khai vào v3 ngay từ đầu để tạo điều kiện cho quá trình nâng cấp diễn ra suôn sẻ hơn. Miễn là không có thay đổi đáng kể nào đối với trình cập nhật hoặc cách thức hoạt động của các điểm vào, thì theo lý thuyết, có thể nâng cấp hoàn toàn thông qua front-end mà không cần thực hiện cài đặt mới.
 
@@ -2372,4 +2359,4 @@ Thông tin chi tiết hơn sẽ được đưa vào đây, trong tài liệu, v�
 ---
 
 
-Lần cuối cập nhật: 2025.08.29.
+Lần cuối cập nhật: 2025.09.13.

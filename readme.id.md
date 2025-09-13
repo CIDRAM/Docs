@@ -171,7 +171,7 @@ Catat: Melindungi vault Anda terhadap akses yang tidak sah (misalnya, dengan mem
 Berikut list variabel yang ditemukan pada file konfigurasi CIDRAM `config.yml`, dengan deskripsi dari tujuan dan fungsi.
 
 ```
-Konfigurasi (v3)
+Konfigurasi (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Konfigurasi (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -503,7 +502,7 @@ Lihat juga:
 - Pesan status HTTP mana yang harus dikirim oleh CIDRAM ketika memblokir permintaan?
 
 ```
-http_response_header_code
+http_response_header_code───[Default]─[Hukum]─[Dilarang]
 ├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
 │ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
 │ permintaan berhasil. Direkomendasikan untuk permintaan yang tidak diblokir.
@@ -524,6 +523,18 @@ http_response_header_code
   diserang, atau saat berhadapan dengan lalu lintas yang tidak diinginkan yang
   sangat persisten.
 ```
+
+__1.__ Jika "mode senyap" berlaku, pesan status HTTP yang ditentukan oleh `general➡silent_mode_response_header_code` akan digunakan (ini memiliki prioritas tertinggi).
+
+__2.__ Jika entitas yang meminta telah diblokir karena melampaui batas pelanggaran, pesan status HTTP untuk "dilarang" akan digunakan.
+
+__3.__ Jika diblokir karena pembatasan laju, 429 akan digunakan, atau jika diblokir karena konflik sumber daya, pesan status HTTP yang ditentukan oleh `signatures➡conflict_response` akan digunakan (pembatasan laju dan konflik sumber daya mempunyai prioritas yang sama dalam konteks ini).
+
+__4.__ Jika diblokir karena aturan tambahan yang menetapkan "penggantian kode status HTTP", penggantian kode status HTTP tersebut akan digunakan.
+
+__5.__ Jika diblokir karena alasan hukum (misalnya, jika diblokir karena tanda tangan khusus yang menggunakan kata singkatan "hukum"), pesan status HTTP untuk "hukum" akan digunakan.
+
+__6.__ Untuk semua permintaan terblokir lainnya, pesan status HTTP untuk "default" akan digunakan (ini memiliki prioritas terendah).
 
 ##### "silent_mode" `[string]`
 - Seharusnya CIDRAM diam-diam mengarahkan diblokir upaya akses bukannya menampilkan halaman "akses ditolak"? Jika ya, menentukan lokasi untuk mengarahkan diblokir upaya akses. Jika tidak, kosongkan variabel ini.
@@ -666,32 +677,6 @@ numbers
 emailaddr_display_style
 ├─default ("Link yang dapat diklik")
 └─noclick ("Teks yang tidak dapat diklik")
-```
-
-##### "ban_override" `[int]`
-- Mengesampingkan "http_response_header_code" ketika "infraction_limit" adalah melampaui? 200 = Jangan mengesampingkan [Default]. Nilai lainnya sama dengan nilai yang tersedia untuk "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Paling tidak kuat, tetapi paling ramah-pengguna. Permintaan otomatis
-│ kemungkinan besar akan menafsirkan respons ini sebagai indikasi bahwa
-│ permintaan berhasil. Direkomendasikan untuk permintaan yang tidak diblokir.
-├─403 (403 Forbidden (Terlarang)): Lebih kuat, tetapi kurang ramah-pengguna. Direkomendasikan untuk kebanyakan
-│ keadaan umum.
-├─410 (410 Gone (Dipergi)): Dapat menyebabkan masalah saat menyelesaikan kesalahan positif, karena
-│ beberapa browser akan menyimpan pesan status ini di cache dan tidak mengirim
-│ permintaan berikutnya, bahkan setelah tidak diblokir lagi. Mungkin yang
-│ paling disukai dalam beberapa konteks, untuk jenis lalu lintas tertentu.
-├─418 (418 I'm a teapot (Saya adalah teko)): Referensi pada lelucon April Mop (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Probabilitas rendah bahwa
-│ akan dipahami oleh klien, bot, browser, atau lainnya. Disediakan untuk
-│ hiburan dan kenyamanan, tetapi umumnya tidak direkomendasikan.
-├─451 (451 Unavailable For Legal Reasons (Tidak tersedia karena alasan hukum)): Direkomendasikan saat memblokir terutama karena alasan hukum. Tidak
-│ direkomendasikan dalam konteks lain.
-└─503 (503 Service Unavailable (Layanan tidak tersedia)): Paling kuat, tetapi paling tidak ramah-pengguna. Direkomendasikan untuk saat
-  diserang, atau saat berhadapan dengan lalu lintas yang tidak diinginkan yang
-  sangat persisten.
 ```
 
 ##### "default_dns" `[string]`
@@ -971,7 +956,7 @@ conflict_response
 │ permintaan tersebut tidak berbahaya, atau Anda lebih suka bersikap waspada
 │ (dengan risiko positif palsu sesekali), pilih dari opsi lain yang tersedia.
 ├─409 (409 Konflik): Direkomendasikan untuk konflik sumber daya (misalnya, konflik penggabungan,
-│ konflik akses berkas, dll). Tidak direkomendasikan dalam konteks lain.
+│ konflik akses file, dll). Tidak direkomendasikan dalam konteks lain.
 └─429 (429 Too Many Requests (Terlalu Banyak Permintaan)): Direkomendasikan untuk pembatasan laju, saat menangani serangan DDoS, dan
   untuk pencegahan banjir. Tidak direkomendasikan dalam konteks lain.
 ```
@@ -1721,7 +1706,7 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 - [Seberapa sering tanda tangan diperbarui?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Saya diblokir oleh CIDRAM dari situs web yang saya ingin mengunjungi! Tolong bantu!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Saya ingin menggunakan CIDRAM v3 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Saya ingin menggunakan CIDRAM v3~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Dapatkah saya menggunakan satu instalasi CIDRAM untuk melindungi beberapa domain?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Saya tidak ingin membuang waktu dengan menginstal ini dan membuatnya bekerja dengan situs web saya; Bisakah saya membayar Anda untuk melakukan semuanya untuk saya?](#user-content-PAY_YOU_TO_DO_IT)
 - [Dapatkah saya mempekerjakan Anda atau pengembang proyek ini untuk pekerjaan pribadi?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1799,9 +1784,9 @@ Frekuensi pembaruan bervariasi tergantung pada file tanda tangan. Semua penulis 
 
 CIDRAM menyediakan sarana bagi pemilik situs web untuk memblokir lalu lintas yang tidak diinginkan, tapi pemilik situs web bertanggung jawab untuk memutuskan bagaimana mereka ingin menggunakan CIDRAM. Dalam kasus positif palsu yang berkaitan dengan file tanda tangan yang biasanya disertakan dengan CIDRAM, koreksi dapat dibuat, tetapi dalam hal yang tidak terblokir dari situs web tertentu, Anda harus menghubungi pemilik dari situs yang bersangkutan. Dalam kasus dimana koreksi dibuat, setidaknya, mereka harus memperbarui file tanda tangan mereka dan/atau memperbarui instalasi mereka, dan dalam kasus lain (seperti, misalnya, ketika mereka diubah instalasi mereka, membuat tanda tangan kustom, dll), tanggung jawab untuk memecahkan masalah Anda sepenuhnya milik mereka, dan sepenuhnya di luar kendali kita.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Saya ingin menggunakan CIDRAM v3 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Saya ingin menggunakan CIDRAM v3~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?
 
-Tidak. PHP≥7.2 adalah persyaratan minimum untuk CIDRAM v3.
+Tidak. PHP≥7.2 adalah persyaratan minimum untuk CIDRAM v3~v4.
 
 *Lihat juga: [Bagan Kompatibilitas](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2330,7 +2315,7 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 
 ### 10. <a name="SECTION10"></a>MEMUTAKHIRKAN DARI VERSI UTAMA SEBELUMNYA
 
-#### 10.0 CIDRAM v3
+#### 10.0 Memutakhirkan ke CIDRAM v3
 
 Ada perbedaan yang signifikan antara v3 dan versi utama sebelumnya. Cara kerja titik masuk, cara menyusun modul, dan cara kerja pembaru untuk v3 berbeda dengan cara kerja hal-hal tersebut untuk versi utama sebelumnya. Karena perbedaan ini, cara terbaik untuk memutakhirkan ke v3 dari versi utama sebelumnya adalah dengan melakukan penginstalan baru.
 
@@ -2346,7 +2331,13 @@ Beberapa file tanda tangan, modul, dan daftar blokir yang tersedia untuk umum un
 
 Ada beberapa perubahan halus pada struktur aturan tambahan, dan ada perubahan pada konfigurasi, tetapi jika Anda menggunakan fitur impor/ekspor di halaman backup dari front-end, Anda tidak perlu menulis ulang, menyesuaikan, atau membuat ulang apapun secara manual. Saat mengimpor, CIDRAM mengetahui apa yang dibutuhkan, dan akan menanganinya untuk Anda secara otomatis.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Memutakhirkan ke CIDRAM v4 dari versi sebelum CIDRAM v3
+
+Lihat di atas: Instalasi baru direkomendasikan.
+
+#### 10.2 Memutakhirkan ke CIDRAM v4 dari CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 belum ada. Namun, ketika saatnya tiba untuk memutakhirkan dari v3 ke v4, proses pemutakhiran seharusnya jauh lebih sederhana. Kami tidak akan tahu persis seberapa signifikan perbedaannya sampai saatnya tiba, tetapi saya memperkirakan perbedaannya akan jauh lebih sedikit dari sebelumnya, dan mekanisme telah diterapkan ke v3 sejak awal untuk memfasilitasi proses pemutakhiran yang lebih lancar. Selama tidak ada perubahan signifikan pada pembaru atau cara kerja titik masuk, secara teori, dimungkinkan untuk memutakhirkan seluruhnya melalui front-end, tanpa perlu melakukan penginstalan baru.
 
@@ -2355,4 +2346,4 @@ Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang
 ---
 
 
-Terakhir Diperbarui: 29 Agustus 2025 (2025.08.29).
+Terakhir Diperbarui: 13 September 2025 (2025.09.13).

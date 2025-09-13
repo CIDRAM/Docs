@@ -171,7 +171,7 @@ Note: Protecting your vault against unauthorised access (e.g., by hardening your
 The following is a list of the directives available to CIDRAM in the `config.yml` configuration file, along with a description of the purpose of these directives.
 
 ```
-Configuration (v3)
+Configuration (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Configuration (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -503,7 +502,7 @@ See also:
 - Which HTTP status message should CIDRAM send when blocking requests?
 
 ```
-http_response_header_code
+http_response_header_code───[Default]─[Legal]─[Banned]
 ├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
 │ interpret this response as indication that the request was successful.
 │ Recommended for non-blocked requests.
@@ -523,6 +522,18 @@ http_response_header_code
 └─503 (503 Service Unavailable): Most robust, but least user-friendly. Recommended for when under attack, or
   for when dealing with extremely persistent unwanted traffic.
 ```
+
+__1.__ When "silent mode" is in effect, the HTTP status message defined by `general➡silent_mode_response_header_code` will be used (this has the highest precedence).
+
+__2.__ When the requesting entity has been banned due to exceeding the infraction limit, the HTTP status message for "banned" will be used.
+
+__3.__ When blocked due to rate limiting, 429 will be used, or when blocked due to resource conflicts, the HTTP status message defined by `signatures➡conflict_response` will be used (rate limiting and resource conflicts have equal precedence in this context).
+
+__4.__ When blocked due to an auxiliary rule which sets an "HTTP status code override", that HTTP status code override will be used.
+
+__5.__ When blocked due to legal reasons (i.e., when blocked due to a custom signature which uses the "legal" shorthand word), the HTTP status message for "legal" will be used.
+
+__6.__ For all other blocked requests, the HTTP status message for "default" will be used (this has the lowest precedence).
 
 ##### "silent_mode" `[string]`
 - Should CIDRAM silently redirect blocked access attempts instead of displaying the "access denied" page? If yes, specify the location to redirect blocked access attempts to. If no, leave this variable blank.
@@ -665,31 +676,6 @@ numbers
 emailaddr_display_style
 ├─default ("Clickable link")
 └─noclick ("Non-clickable text")
-```
-
-##### "ban_override" `[int]`
-- Override "http_response_header_code" when "infraction_limit" is exceeded? 200 = Don't override [Default]. Other values are the same as the available values for "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Least robust, but most user-friendly. Automated requests will most likely
-│ interpret this response as indication that the request was successful.
-│ Recommended for non-blocked requests.
-├─403 (403 Forbidden): More robust, but less user-friendly. Recommended for most general
-│ circumstances.
-├─410 (410 Gone): Could cause problems when resolving false positives, because some browsers
-│ will cache this status message and not send subsequent requests, even after
-│ having been unblocked. May be the most preferable in some contexts, for
-│ certain kinds of traffic.
-├─418 (418 I'm a teapot): References an April Fools' joke (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Very unlikely to be
-│ understood by any client, bot, browser, or otherwise. Provided for amusement
-│ and convenience, but not generally recommended.
-├─451 (451 Unavailable For Legal Reasons): Recommended when blocking primarily for legal reasons. Not recommended in
-│ other contexts.
-└─503 (503 Service Unavailable): Most robust, but least user-friendly. Recommended for when under attack, or
-  for when dealing with extremely persistent unwanted traffic.
 ```
 
 ##### "default_dns" `[string]`
@@ -1717,7 +1703,7 @@ Modules have been made available to ensure that the following packages and produ
 - [How frequently are signatures updated?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [I've been blocked by CIDRAM from a website that I want to visit! Please help!](#user-content-BLOCKED_WHAT_TO_DO)
-- [I want to use CIDRAM v3 with a PHP version older than 7.2; Can you help?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [I want to use CIDRAM v3~v4 with a PHP version older than 7.2; Can you help?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Can I use a single CIDRAM installation to protect multiple domains?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [I don't want to mess around with installing this and getting it to work with my website; Can I just pay you to do it all for me?](#user-content-PAY_YOU_TO_DO_IT)
 - [Can I hire you or any of the developers of this project for private work?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1795,9 +1781,9 @@ Update frequency varies depending on the signature files in question. All mainta
 
 CIDRAM provides a means for website owners to block undesirable traffic, but it's the responsibility of website owners to decide for themselves how they want to use CIDRAM. In case of the false positives relating to the signature files normally included with CIDRAM, corrections can be made, but in regards to being unblocked from specific websites, you'll need to take that up with the owners of the websites in question. In cases where corrections are made, at the very least, they'll need to update their signature files and/or installation, and in other cases (such as, for example, where they've modified their installation, created their own custom signatures, etc), the responsibility to solve your problem is entirely theirs, and is entirely outside our control.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>I want to use CIDRAM v3 with a PHP version older than 7.2; Can you help?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>I want to use CIDRAM v3~v4 with a PHP version older than 7.2; Can you help?
 
-No. PHP≥7.2 is a minimum requirement for CIDRAM v3.
+No. PHP≥7.2 is a minimum requirement for CIDRAM v3~v4.
 
 *See also: [Compatibility Charts](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2334,7 +2320,7 @@ Alternatively, there's a brief (non-authoritative) overview of GDPR/DSGVO availa
 
 ### 10. <a name="SECTION10"></a>UPGRADING FROM PREVIOUS MAJOR VERSIONS
 
-#### 10.0 CIDRAM v3
+#### 10.0 Upgrading to CIDRAM v3
 
 There are significant differences between v3 and previous major versions. Importantly, the way entrypoints work, the way modules are structured, and the way the updater works for v3 is different to the way those things worked for previous major versions. Because of these differences, the best way to upgrade to v3 from previous major versions would be to perform a fresh installation.
 
@@ -2350,7 +2336,13 @@ Some of the signature files, modules, and blocklists publicly available for prev
 
 There are some subtle changes to the way auxiliary rules are structured, and there are changes to the configuration, but if you use the import/export feature at the front-end backup page, you won't need to manually rewrite, adjust, or recreate anything. When importing, CIDRAM knows what's needed, and will handle it for you automatically.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Upgrading to CIDRAM v4 from a version earlier than CIDRAM v3
+
+Refer to the above: A fresh installation is recommended.
+
+#### 10.2 Upgrading to CIDRAM v4 from CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 doesn't yet exist. However, when the time comes to upgrade from v3 to v4, the upgrade process should be much simpler. We won't know exactly how significantly different it will be until the time comes, but I anticipate the differences to be much less than before, and mechanisms have already been implemented into v3 right from the start to facilitate a smoother upgrade process. As long as there aren't significant changes to the updater or the way that entrypoints work, it should, in theory, be possible to upgrade entirely via the front-end, without the need to perform a fresh installation.
 
@@ -2359,4 +2351,4 @@ More detailed information will be included here, in the documentation, at an app
 ---
 
 
-Last Updated: 29 August 2025 (2025.08.29).
+Last Updated: 13 September 2025 (2025.09.13).

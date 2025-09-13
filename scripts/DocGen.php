@@ -46,7 +46,7 @@ if (!isset($_GET['language'])) {
 
     $Final = '';
     $Data = $loadL10N($_GET['language']);
-    $First = "```\n" . $Data->getString('link.Configuration') . " (v3)\n│\n";
+    $First = "```\n" . $Data->getString('link.Configuration') . " (v4)\n│\n";
     $Cats = count($CIDRAM->CIDRAM['Config Defaults']);
     $Current = 1;
     foreach ($CIDRAM->CIDRAM['Config Defaults'] as $Category => $Directives) {

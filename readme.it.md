@@ -171,7 +171,7 @@ Nota: Proteggere il tuo vault dall'accesso non autorizzato (per esempio, per mez
 Il seguente è un elenco di variabili trovate nelle `config.yml` file di configurazione di CIDRAM, insieme con una descrizione del loro scopo e funzione.
 
 ```
-Configurazione (v3)
+Configurazione (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Configurazione (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -503,7 +502,7 @@ Guarda anche:
 - Quale messaggio di stato HTTP dovrebbe inviare CIDRAM durante il blocco delle richieste?
 
 ```
-http_response_header_code
+http_response_header_code───[Predefinito]─[Legale]─[Vietato]
 ├─200 (200 OK): Meno robusto, ma più facile da usare. Molto probabilmente le richieste
 │ automatiche interpreteranno questa risposta come un'indicazione che la
 │ richiesta riuscito. Consigliato per richieste non bloccate.
@@ -524,6 +523,18 @@ http_response_header_code
   attacco, o quando si ha a che fare con traffico indesiderato estremamente
   persistente.
 ```
+
+__1.__ Quando è attiva la "modalità silenziosa", verrà utilizzato il messaggio di stato HTTP definito da `general➡silent_mode_response_header_code` (questo ha la precedenza più alta).
+
+__2.__ Se l'entità richiedente è stata vietata a causa del superamento del limite di infrazione, verrà utilizzato il messaggio di stato HTTP per "vietato".
+
+__3.__ Se bloccato a causa della limitazione della velocità, verrà utilizzato 429 oppure, in caso di blocco a causa di conflitti di risorse, verrà utilizzato il messaggio di stato HTTP definito da `signatures➡conflict_response` (in questo contesto, la limitazione della velocità e i conflitti di risorse hanno pari precedenza).
+
+__4.__ Se bloccato a causa di una regola ausiliaria che imposta un "sostituzione del codice di stato HTTP", verrà utilizzato tale sostituzione del codice di stato HTTP.
+
+__5.__ Se bloccato per motivi legali (ad esempio, se bloccato a causa di una firma personalizzata che utilizza la parola abbreviata "legale"), verrà utilizzato il messaggio di stato HTTP per "legale".
+
+__6.__ Per tutte le altre richieste bloccate, verrà utilizzato il messaggio di stato HTTP per "default" (questo ha la precedenza più bassa).
 
 ##### "silent_mode" `[string]`
 - CIDRAM dovrebbe reindirizzare silenziosamente tutti i tentativi di accesso bloccati invece di visualizzare la pagina "accesso negato"? Se si, specificare la localizzazione di reindirizzare i tentativi di accesso bloccati. Se no, lasciare questo variabile vuoto.
@@ -666,32 +677,6 @@ numbers
 emailaddr_display_style
 ├─default ("Link cliccabile")
 └─noclick ("Testo non cliccabile")
-```
-
-##### "ban_override" `[int]`
-- Sostituire "http_response_header_code" quando "infraction_limit" è superato? 200 = Non sostituire [Predefinito]. Altri valori sono uguali ai valori disponibili per "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Meno robusto, ma più facile da usare. Molto probabilmente le richieste
-│ automatiche interpreteranno questa risposta come un'indicazione che la
-│ richiesta riuscito. Consigliato per richieste non bloccate.
-├─403 (403 Forbidden (Vietato)): Un po' più robusto, ma un po' meno facile da usare. Consigliato per la
-│ maggior parte delle circostanze generali.
-├─410 (410 Gone (Andato)): Potrebbe causare problemi durante la risoluzione dei falsi positivi, perché
-│ alcuni browser memorizzano nella cache questo messaggio di stato e non
-│ inviano richieste successive, anche dopo essere stati sbloccati. Può essere
-│ il più preferibile in alcuni contesti, per specifici tipi di traffico.
-├─418 (418 I'm a teapot (Sono una teiera)): Fa riferimento a uno scherzo di pesce d'aprile (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). È molto improbabile che
-│ venga compreso da qualsiasi client, bot, browser, o altro. Fornito per
-│ divertimento e comodità, ma generalmente non consigliato.
-├─451 (451 Unavailable For Legal Reasons (Non disponibile per motivi legali)): Consigliato in caso di blocco principalmente per motivi legali. Non
-│ consigliato in altri contesti.
-└─503 (503 Service Unavailable (Servizio non disponibile)): Più robusto, ma meno facile da usare. Consigliato per quando si è sotto
-  attacco, o quando si ha a che fare con traffico indesiderato estremamente
-  persistente.
 ```
 
 ##### "default_dns" `[string]`
@@ -1724,7 +1709,7 @@ I moduli sono stati resi disponibili per garantire che i seguenti pacchetti e pr
 - [Con quale frequenza vengono aggiornate le firme?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ho incontrato un problema durante l'utilizzo CIDRAM e non so che cosa fare al riguardo! Aiutami!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [CIDRAM mi ha bloccato da un sito web che voglio visitare! Aiutami!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Voglio usare CIDRAM v3 con una versione di PHP più vecchio di 7.2; Puoi aiutami?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Voglio usare CIDRAM v3~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Posso utilizzare un'installazione singola di CIDRAM per proteggere più domini?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Non voglio perdere tempo con l'installazione di questo e farlo funzionare con il mio sito web; Posso pagarti per farlo per me?](#user-content-PAY_YOU_TO_DO_IT)
 - [Posso assumere voi o uno degli sviluppatori di questo progetto per lavori privati?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1802,9 +1787,9 @@ Frequenza di aggiornamento varia a seconda delle file di firma in questione. Tut
 
 CIDRAM fornisce un mezzo per proprietari di siti web per bloccare il traffico indesiderato, ma è la responsabilità dei proprietari di siti web di decidere per se stessi come vogliono usare CIDRAM. Nel caso dei falsi positivi relativi alla firma file normalmente incluso con CIDRAM, correzioni possono essere fatte, ma per essere sbloccato da siti web specifici, è necessario prendere quella con i proprietari dei siti web in questione. Nei casi in cui vengono effettuate correzioni, almeno, avranno bisogno di aggiornare i propri file di firma e/o installazione, e in altri casi (come ad esempio, dove hanno modificato il loro installazione, creato le proprie firme personalizzate, ecc), la responsabilità di risolvere il problema è tutto loro, ed è completamente al di fuori del nostro controllo.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Voglio usare CIDRAM v3 con una versione di PHP più vecchio di 7.2; Puoi aiutami?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Voglio usare CIDRAM v3~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?
 
-No. PHP≥7.2 è un requisito minimo per CIDRAM v3.
+No. PHP≥7.2 è un requisito minimo per CIDRAM v3~v4.
 
 *Guarda anche: [Grafici di Compatibilità](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2336,7 +2321,7 @@ In alternativa, è disponibile una breve panoramica (non autorevole) di GDPR/DSG
 
 ### 10. <a name="SECTION10"></a>AGGIORNAMENTO DA VERSIONI PRINCIPALI PRECEDENTI
 
-#### 10.0 CIDRAM v3
+#### 10.0 Aggiornamento a CIDRAM v3
 
 Esistono differenze significative tra la v3 e le versioni principali precedenti. Il modo in cui funzionano gli punti di ingresso, il modo in cui i moduli sono strutturati, e il modo in cui il programma di aggiornamento funziona per v3 è diverso dal modo in cui queste cose funzionavano per le versioni principali precedenti. A causa di queste differenze, il modo migliore per eseguire l'aggiornamento alla v3 dalle versioni principali precedenti sarebbe eseguire una nuova installazione.
 
@@ -2352,7 +2337,13 @@ Alcuni dei file delle firme, dei moduli, e delle liste di blocco disponibili pub
 
 Ci sono alcune sottili modifiche al modo in cui sono strutturate le regole ausiliarie, e ci sono modifiche alla configurazione, ma se utilizzi la funzione di importazione/esportazione nella pagina di backup front-end, non avrai bisogno di riscrivere, regolare, o ricreare manualmente nulla. Durante l'importazione, CIDRAM sa cosa è necessario e lo gestirà automaticamente per te.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Aggiornamento a CIDRAM v4 da una versione precedente a CIDRAM v3
+
+Fare riferimento a quanto sopra: Si consiglia una nuova installazione.
+
+#### 10.2 Aggiornamento a CIDRAM v4 da CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 non esiste in questo momento. Tuttavia, quando arriva il momento di aggiornare dalla v3 alla v4, il processo di aggiornamento dovrebbe essere molto più semplice. Non sapremo quanto saranno significative le differenze fino a quando non sarà disponibile, ma prevedo che le differenze saranno molto inferiori rispetto a prima, e i meccanismi sono già stati implementati nella v3 fin dall'inizio per facilitare un processo di aggiornamento più agevole. Finché non ci sono modifiche significative al programma di aggiornamento o al modo in cui funzionano gli punti di ingresso, in teoria dovrebbe essere possibile eseguire l'aggiornamento interamente tramite il front-end, senza la necessità di eseguire una nuova installazione.
 
@@ -2361,4 +2352,4 @@ Informazioni più dettagliate saranno incluse qui, nella documentazione, in un m
 ---
 
 
-Ultimo Aggiornamento: 29 Agosto 2025 (2025.08.29).
+Ultimo Aggiornamento: 13 Settembre 2025 (2025.09.13).

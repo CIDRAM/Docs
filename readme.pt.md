@@ -171,7 +171,7 @@ Nota: Proteger seu vault contra acesso não autorizado (p.e., por meio de endure
 O seguinte é uma lista de variáveis encontradas no `config.yml` arquivo de configuração para CIDRAM, juntamente com uma descrição de sua propósito e função.
 
 ```
-Configuração (v3)
+Configuração (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Configuração (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -304,7 +303,7 @@ Configuração geral (qualquer configuração principal que não pertença a out
 - Controles para as etapas da cadeia de execução (se ativado, se os erros são registrados, etc).
 
 ```
-stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta etapa?]─[Contar infrações geradas durante esta etapa para o monitoração de IP?]
+stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta etapa?]─[Contar infrações geradas durante esta etapa para o monitoração IP?]
 ├─BanCheck ("Verifique se está banido")
 ├─Tests ("Executar testes para os arquivos de assinatura")
 ├─Modules ("Executar módulos")
@@ -312,7 +311,7 @@ stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta 
 ├─SocialMediaVerification ("Executar verificação de mídia social")
 ├─OtherVerification ("Executar outra verificação")
 ├─Aux ("Executar regras auxiliares")
-├─Tracking ("Executar monitoração de IP")
+├─Tracking ("Executar o monitoração IP")
 ├─RL ("Executar a limitação de taxa")
 ├─CAPTCHA ("Implantar CAPTCHAs (solicitações bloqueadas)")
 ├─Reporting ("Executar relatórios")
@@ -358,7 +357,7 @@ fields───[Este campo deve aparecer nas entradas de log?]─[Este campo dev
 ├─SEC_CH_UA_MOBILE ("!! SEC_CH_UA_MOBILE")
 ├─SEC_CH_UA ("!! SEC_CH_UA")
 ├─Hostname ("Nome do host")
-├─CAPTCHA ("Estado CAPTCHA")
+├─CAPTCHA ("Estado do CAPTCHA")
 ├─Inspection ("* Inspeção do condições")
 └─ClientL10NAccepted ("Resolução de idioma")
 ```
@@ -503,7 +502,7 @@ Veja também:
 - Qual mensagem de status HTTP deve enviar o CIDRAM ao bloquear solicitações?
 
 ```
-http_response_header_code
+http_response_header_code───[Padrão]─[Legais]─[Banido]
 ├─200 (200 OK): Menos robusto, mas mais amigável de usar. As solicitações automatizadas
 │ provavelmente interpretarão essa resposta como indicação de que a
 │ solicitação foi bem-sucedida. Recomendado para solicitações não
@@ -525,11 +524,23 @@ http_response_header_code
   ataque, ou para lidar com tráfego indesejado extremamente persistente.
 ```
 
+__1.__ Quando o "modo silencioso" estiver em vigor, a mensagem de status HTTP definida por `general➡silent_mode_response_header_code` será usada (isso tem a maior precedência).
+
+__2.__ Quando a entidade solicitante for banida por exceder o limite de infrações, a mensagem de status HTTP para "banido" será usada.
+
+__3.__ Quando bloqueado devido à limitação de taxa, 429 será usado, ou quando bloqueado devido a conflitos de recursos, a mensagem de status HTTP definida por `signatures➡conflict_response` será usada (a limitação de taxas e os conflitos de recursos têm igual precedência neste contexto).
+
+__4.__ Quando bloqueado devido a uma regra auxiliar que define uma "substituição do código de status HTTP", essa substituição do código de status HTTP será usada.
+
+__5.__ Quando bloqueado por motivos legais (por exemplo, quando bloqueado devido a uma assinatura personalizada que usa a palavra abreviada "legais"), a mensagem de status HTTP para "legais" será usada.
+
+__6.__ Para todas as outras solicitações bloqueadas, a mensagem de status HTTP para "padrão" será usada (isso tem a menor precedência).
+
 ##### "silent_mode" `[string]`
 - Deve CIDRAM silenciosamente redirecionar as tentativas de acesso bloqueadas em vez de exibir o "acesso negado" página? Se sim, especificar o local para redirecionar as tentativas de acesso bloqueadas para. Se não, deixe esta variável em branco.
 
 ##### "silent_mode_response_header_code" `[int]`
-- Qual mensagem de status HTTP deve enviar o CIDRAM ao redirecionar silenciosamente as tentativas de acesso bloqueados?
+- Qual mensagem de status HTTP deve enviar o CIDRAM ao redirecionar silenciosamente as tentativas de acesso bloqueado?
 
 ```
 silent_mode_response_header_code
@@ -668,32 +679,6 @@ emailaddr_display_style
 └─noclick ("Texto não-clicável")
 ```
 
-##### "ban_override" `[int]`
-- Sobrepor "http_response_header_code" quando "infraction_limit" é excedido? 200 = Não sobrepor [Padrão]. Outros valores são os mesmos que os valores disponíveis para "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Menos robusto, mas mais amigável de usar. As solicitações automatizadas
-│ provavelmente interpretarão essa resposta como indicação de que a
-│ solicitação foi bem-sucedida. Recomendado para solicitações não
-│ bloqueadas.
-├─403 (403 Forbidden (Proibido)): Um pouco mais robusto, mas um pouco menos amigável de usar. Recomendado
-│ para a maioria das circunstâncias gerais.
-├─410 (410 Gone (Se foi)): Pode causar problemas ao resolver falsos positivos, pois alguns navegadores
-│ armazenam em cache essa mensagem de status e não enviam solicitações
-│ subsequentes, mesmo após terem sido desbloqueadas. Pode ser o mais
-│ preferível em alguns contextos, para certos tipos de tráfego.
-├─418 (418 I'm a teapot (Eu sou um bule)): Referências uma piada de primeiro de abril (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Muito improvável de ser
-│ entendido por qualquer cliente, bot, navegador, ou outro. Fornecido para
-│ diversão e conveniência, mas geralmente não recomendado.
-├─451 (451 Unavailable For Legal Reasons (Indisponível por motivos legais)): Recomendado ao bloquear principalmente por motivos legais. Não recomendado
-│ em outros contextos.
-└─503 (503 Service Unavailable (Serviço indisponível)): Mais robusto, mas menos amigável de usar. Recomendado para quando sob
-  ataque, ou para lidar com tráfego indesejado extremamente persistente.
-```
-
 ##### "default_dns" `[string]`
 - Uma lista de servidores DNS a serem usados para pesquisas de nomes de host. ATENÇÃO: Não mude isso a menos que você saiba o que está fazendo!
 
@@ -711,7 +696,7 @@ default_algo
 ```
 
 ##### "statistics" `[string]`
-- Controla quais informações estatísticas rastrear.
+- Controla quais informações estatísticas monitorar.
 
 ```
 statistics───[IPv4]─[IPv6]─[Outros]
@@ -722,10 +707,10 @@ statistics───[IPv4]─[IPv6]─[Outros]
 └─ReportFailed ("Solicitações relatados para APIs externos – Falhou")
 ```
 
-Nota: O rastreamento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
+Nota: O monitoramento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
 
 ##### "statistics_captchas" `[string]`
-- Controla quais informações estatísticas rastrear para CAPTCHAs.
+- Controla quais informações estatísticas monitorar para CAPTCHAs.
 
 ```
 statistics_captchas───[Falhou]─[Passado]─[Servido]
@@ -734,7 +719,7 @@ statistics_captchas───[Falhou]─[Passado]─[Servido]
 └─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
-Nota: O rastreamento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
+Nota: O monitoramento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
 
 ##### "force_hostname_lookup" `[bool]`
 - Forçar pesquisas de nome de anfitrião? True = Sim; False = Não [Padrão]. As pesquisas de nome de anfitrião normalmente são realizadas com base na necessidade, mas pode ser forçado para todos os solicitações. Isso pode ser útil como forma de fornecer informações mais detalhadas nos arquivos de log, mas também pode ter um efeito ligeiramente negativo sobre o desempenho.
@@ -951,7 +936,7 @@ __Prioridade.__ Uma opção selecionada sempre tem prioridade sobre uma opção 
 __Pontos finais humanos e serviços em nuvem.__ O serviço em nuvem pode se referir a provedores de hospedagem na web, farms de servidores, data centers, ou uma série de coisas diferentes. Ponto final humano refere-se ao meio pelo qual um humano acessa a internet, como por meio de um provedor de serviços de internet. Uma rede geralmente fornece apenas um ou outro, mas às vezes pode fornecer ambos. Visamos nunca identificar pontos finais humanos potenciais como serviços em nuvem. Portanto, um serviço de nuvem pode ser identificado como outra coisa se seu alcance for compartilhado por pontos finais humanos conhecidos. Vice versa, visamos sempre identificar serviços em nuvem, cujos alcances não são compartilhados por nenhum ponto final humano conhecido, como serviços em nuvem. Portanto, uma solicitação identificada explicitamente como um serviço de nuvem provavelmente não compartilha seu alcances com nenhum pontos finais humanos conhecidos. Da mesma forma, uma solicitação identificada explicitamente por ataques ou risco de spam provavelmente os compartilha. No entanto, a internet está sempre em fluxo, os propósitos das redes mudam ao longo do tempo, e os alcances estão sempre sendo comprados ou vendidos, portanto, permaneça ciente e vigilante em relação a falsos positivos.
 
 ##### "default_tracktime" `[string]`
-- A duração pela qual os endereços IP devem ser rastreados. Padrão = 7d0°0′0″ (1 semana).
+- A duração pela qual os endereços IP devem ser monitorados. Padrão = 7d0°0′0″ (1 semana).
 
 ##### "infraction_limit" `[int]`
 - Número máximo de infrações que um IP pode incorrer antes de ser banido por monitoração IP. Padrão = 10.
@@ -1330,7 +1315,7 @@ Opções de cache suplementares. Nota: Alterar estes valores podem potencialment
 - Valor de tempo limite do Redis. Padrão = "2.5".
 
 ##### "redis_database_number" `[int]`
-- Número do banco de dados Redis. Padrão = 0. Observação: Não é possível usar valores diferentes de 0 com Redis Cluster.
+- Número do banco de dados Redis. Padrão = 0. Nota: Não é possível usar valores diferentes de 0 com Redis Cluster.
 
 ##### "pdo_dsn" `[string]`
 - Valor DSN do PDO. Padrão = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -1722,7 +1707,7 @@ Os módulos foram disponibilizados para garantir que os seguintes pacotes e prod
 - [Com que frequência as assinaturas são atualizadas?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Eu encontrei um problema ao usar CIDRAM e eu não sei o que fazer sobre isso! Ajude-me!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Eu fui bloqueado pelo CIDRAM de um site que eu quero visitar! Ajude-me!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Eu quero usar CIDRAM v3 com uma versão PHP mais velha do que 7.2; Você pode ajudar?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Eu quero usar CIDRAM v3~v4 com uma versão PHP mais velha do que 7.2; Você pode ajudar?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Posso usar uma única instalação do CIDRAM para proteger vários domínios?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Eu não quero mexer com a instalação deste e fazê-lo funcionar com o meu site; Posso pagar-te para fazer tudo por mim?](#user-content-PAY_YOU_TO_DO_IT)
 - [Posso contratar você ou qualquer um dos desenvolvedores deste projeto para o trabalho privado?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1800,9 +1785,9 @@ A frequência das atualizações varia de acordo com os arquivos de assinatura e
 
 CIDRAM fornece um meio para proprietários de sites para bloquear tráfego indesejável, mas é da responsabilidade dos proprietários do site decidir por si mesmos como eles querem usar CIDRAM. No caso dos falsos positivos relativos aos arquivos de assinatura normalmente incluídos no CIDRAM, correções podem ser feitas, mas no que diz respeito a ser desbloqueado a partir de sites específicos, você precisará tomar isso com os proprietários dos sites em questão. Nos casos em que são feitas correções, pelo menos, eles precisarão atualizar seus arquivos de assinatura e/ou instalação, e em outros casos (tais como, por exemplo, onde eles modificaram sua instalação, criaram suas próprias assinaturas personalizadas, etc), a responsabilidade de resolver o seu problema é inteiramente deles, e está inteiramente fora de nosso controle.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Eu quero usar CIDRAM v3 com uma versão PHP mais velha do que 7.2; Você pode ajudar?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Eu quero usar CIDRAM v3~v4 com uma versão PHP mais velha do que 7.2; Você pode ajudar?
 
-Não. PHP≥7.2 é um requisito mínimo para CIDRAM v3.
+Não. PHP≥7.2 é um requisito mínimo para CIDRAM v3~v4.
 
 *Veja também: [Gráficos de Compatibilidade](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2334,7 +2319,7 @@ Alternativamente, há uma breve visão geral (não autoritativa) do GDPR/DSGVO d
 
 ### 10. <a name="SECTION10"></a>ATUALIZANDO DE VERSÕES PRINCIPAIS ANTERIORES
 
-#### 10.0 CIDRAM v3
+#### 10.0 Atualizando para o CIDRAM v3
 
 Existem diferenças significativas entre a v3 e as versões principais anteriores. A maneira como os pontos de entrada funcionam, a maneira como os módulos são estruturados, e a maneira como o atualizador funciona para v3 é diferente da maneira como essas coisas funcionavam nas versões principais anteriores. Devido a essas diferenças, a melhor maneira de atualizar para v3 de versões principais anteriores seria realizar uma nova instalação.
 
@@ -2350,7 +2335,13 @@ Alguns dos arquivos de assinatura, módulos, e listas de bloqueio disponíveis p
 
 Há algumas mudanças sutis na forma como as regras auxiliares são estruturadas, e há mudanças na configuração, mas se você usar o recurso de importação/exportação na página de backup do front-end, não precisará reescrever, ajustar, ou recriar qualquer coisa. Ao importar, o CIDRAM sabe o que é necessário e cuidará disso para você automaticamente.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Atualizando para o CIDRAM v4 de uma versão anterior ao CIDRAM v3
+
+Consulte o acima: Recomenda-se uma nova instalação.
+
+#### 10.2 Atualizando para o CIDRAM v4 do CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 ainda não existe. Mas, quando chegar a hora de atualizar de v3 para v4, o processo de atualização deve ser muito mais simples. Não saberemos exatamente o quão significativamente diferente será até chegar a hora, mas prevejo que as diferenças serão muito menores do que antes, e os mecanismos já foram implementados na v3 desde o início para facilitar um processo de atualização mais suave. Supondo que não haja mudanças significativas no atualizador ou na forma como os pontos de entrada funcionam, deveria, em teoria, ser possível atualizar totalmente pelo front-end, sem a necessidade de realizar uma nova instalação.
 
@@ -2359,4 +2350,4 @@ Informações mais detalhadas serão incluídas aqui, na documentação, em um m
 ---
 
 
-Última Atualização: 29 de Agosto de 2025 (2025.08.29).
+Última Atualização: 13 de Setembro de 2025 (2025.09.13).

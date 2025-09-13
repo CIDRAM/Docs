@@ -171,7 +171,7 @@ Nota: Proteger su vault contra el acceso no autorizado (p.ej., a modo de endurec
 La siguiente es una lista de variables encuentran en la `config.yml` configuración archivo de CIDRAM, junto con una descripción de sus propósito y función.
 
 ```
-Configuración (v3)
+Configuración (v4)
 │
 ├───general
 │       stages [string]
@@ -188,7 +188,6 @@ Configuración (v3)
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -374,7 +373,7 @@ fields───[¿Debería aparecer este campo en las entradas de registro?]─[
 
 ```
 timezone
-├─SYSTEM ("Usar la zona horaria predeterminada del sistema.")
+├─SYSTEM ("Usar la zona horaria predefinida del sistema.")
 ├─UTC ("UTC")
 └─…Otro
 ```
@@ -503,7 +502,7 @@ Ver también:
 - ¿Cuál mensaje de estado HTTP debe enviar CIDRAM cuando se bloquean las solicitudes?
 
 ```
-http_response_header_code
+http_response_header_code───[Predefinido]─[Legal]─[Prohibido]
 ├─200 (200 OK): Menos robusto, pero más fácil de usar. Lo más probable que las
 │ solicitudes automatizadas interpreten esta respuesta como una indicación de
 │ que la solicitud fue exitosa. Recomendado para solicitudes no bloqueadas.
@@ -524,6 +523,18 @@ http_response_header_code
   ataque, o para cuando se trata de tráfico no deseado extremadamente
   persistente.
 ```
+
+__1.__ Cuando el "modo silencioso" está activo, se utilizará el mensaje de estado HTTP definido por `general➡silent_mode_response_header_code` (esto tiene la mayor precedencia).
+
+__2.__ Cuando la entidad solicitante haya sido prohibido por exceder el límite de infracciones, se utilizará el mensaje de estado HTTP "prohibido".
+
+__3.__ Cuando se bloquea debido a una limitación de tasa, se utilizará 429, o cuando se bloquea debido a conflictos de recursos, se utilizará el mensaje de estado HTTP definido por `signatures➡conflict_response` (la limitación de tasa y los conflictos por los recursos tienen igual precedencia en este contexto).
+
+__4.__ Cuando se bloquea debido a una regla auxiliar que establece una "reemplazo del código de estado HTTP", se utilizará esa reemplazo del código de estado HTTP.
+
+__5.__ Cuando se bloquea debido a razones legales (es decir, cuando se bloquea debido a una firma personalizada que utiliza la palabra abreviada "legal"), se utilizará el mensaje de estado HTTP para "legal".
+
+__6.__ Para todas las demás solicitudes bloqueadas, se utilizará el mensaje de estado HTTP "predefinido" (este tiene la precedencia más baja).
 
 ##### "silent_mode" `[string]`
 - Debería CIDRAM silencio redirigir los intentos de acceso bloqueados en lugar de mostrar la página "acceso denegado"? En caso afirmativo, especifique la ubicación para redirigir los intentos de acceso bloqueados. Si no, dejar esta variable en blanco.
@@ -668,32 +679,6 @@ emailaddr_display_style
 └─noclick ("Texto que no se puede hacer clic")
 ```
 
-##### "ban_override" `[int]`
-- Anular "http_response_header_code" cuando "infraction_limit" es excedido? 200 = No anular [Predefinido]. Otros valores son los mismos que los valores disponibles para "http_response_header_code".
-
-```
-ban_override
-├─200 (200 OK): Menos robusto, pero más fácil de usar. Lo más probable que las
-│ solicitudes automatizadas interpreten esta respuesta como una indicación de
-│ que la solicitud fue exitosa. Recomendado para solicitudes no bloqueadas.
-├─403 (403 Forbidden (Prohibido)): Un poco más robusto, pero un poco menos fácil de usar. Recomendado para la
-│ mayoría de las circunstancias generales.
-├─410 (410 Gone (Ido)): Podría causar problemas a la hora de resolver falsos positivos, ya que
-│ algunos navegadores almacenan en caché este mensaje de estado y no envían
-│ solicitudes posteriores, incluso después de haber sido desbloqueados. Puede
-│ ser el más preferible en algunos contextos, para ciertos tipos de tráfico.
-├─418 (418 I'm a teapot (Soy una tetera)): Hace referencia a una broma del Día de los Inocentes (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). Es muy poco probable que
-│ cualquier cliente, bot, navegador, u otro lo entiendará. Provisto por
-│ diversión y conveniencia, pero generalmente no recomendado.
-├─451 (451 Unavailable For Legal Reasons (No disponible por razones legales)): Recomendado cuando se bloquea principalmente por razones legales. No
-│ recomendado en otros contextos.
-└─503 (503 Service Unavailable (Servicio no disponible)): Más robusto, pero menos fácil de usar. Recomendado para cuando está bajo
-  ataque, o para cuando se trata de tráfico no deseado extremadamente
-  persistente.
-```
-
 ##### "default_dns" `[string]`
 - Una lista de los servidores DNS que se utilizarán para las búsquedas de nombres del host. ¡AVISO: No cambie esto a menos que sepas lo que estás haciendo!
 
@@ -762,7 +747,7 @@ disabled_channels
 - Si envía solicitudes salientes a través de un proxy y ese proxy requiere un nombre de usuario y una contraseña, especifique ese nombre de usuario y contraseña aquí (p.ej., `user:pass`). En caso contrario, deje esto en blanco.
 
 ##### "default_timeout" `[int]`
-- ¿Tiempo de espera predeterminado para usar en solicitudes externas? Predeterminado = 12 segundos.
+- ¿Tiempo de espera predefinido para usar en solicitudes externas? Predefinido = 12 segundos.
 
 ##### "sensitive" `[string]`
 - Una lista de rutas para considerar como páginas confidenciales. Cada ruta listada se comparará con el URI reconstruido cuando sea necesario. Una ruta que comienza con una barra inclinada se tratará como un literal, y se comparará desde el componente de ruta de la solicitud en adelante. Alternativamente, una ruta que comienza con un carácter no alfanumérico, y termina con ese mismo carácter (o ese mismo carácter más un indicador "i" opcional) se tratará como una expresión regular. Cualquier otro tipo de ruta se tratará como un literal, y puede coincidir con cualquier parte del URI. Si una ruta se considera una página confidencial puede afectar el comportamiento de algunos módulos, pero no tiene ningún efecto en otros casos.
@@ -835,7 +820,7 @@ Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los ar
 Consejo útil: Puede adjuntar información de fecha/hora a los nombres de los archivos de registro utilizando marcadores de posición de formato de hora. Los marcadores de posición de formato de hora disponibles se muestran en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
-- ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predeterminado de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
+- ¿Truncar archivos de registro cuando alcanzan cierto tamaño? Valor es el tamaño máximo en B/KB/MB/GB/TB que un archivo de registro puede crecer antes de ser truncado. El valor predefinido de 0KB deshabilita el truncamiento (archivos de registro pueden crecer indefinidamente). Nota: ¡Se aplica a archivos de registro individuales! El tamaño de los archivos de registro no se considera colectivamente.
 
 ##### "log_rotation_limit" `[int]`
 - La rotación de registros limita la cantidad de archivos de registro que deberían existir al mismo tiempo. Cuando se crean nuevos archivos de registro, si la cantidad total de archivos de registro excede el límite especificado, se realizará la acción especificada. Puede especificar el límite deseado aquí. Un valor de 0 deshabilitará la rotación de registros.
@@ -936,7 +921,7 @@ shorthand───[Bloquearlo.]─[Perfilarlo.]─[Cuando está bloqueado, supri
 
 __0.__ Si su sitio web necesita acceso a través de LAN o localhost, no bloquee esto. De lo contrario, puedes bloquear esto.
 
-__1.__ Ninguno de los archivos de firma predeterminados usa esto, pero no obstante, es soportado en caso que pueda ser útil para algunos usuarios.
+__1.__ Ninguno de los archivos de firma predefinidos usa esto, pero no obstante, es soportado en caso que pueda ser útil para algunos usuarios.
 
 __2.__ Si necesita que los usuarios puedan acceder a su sitio web a través de proxies, no bloquee esto. De lo contrario, puedes bloquear esto.
 
@@ -1721,7 +1706,7 @@ Los módulos se han puesto a disposición para garantizar que los siguientes paq
 - [¿Con qué frecuencia se actualizan las firmas?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [¡He encontrado un problema mientras uso CIDRAM y no sé qué hacer al respecto! ¡Por favor ayuda!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [¡He sido bloqueado por CIDRAM desde un sitio web que quiero visitar! ¡Por favor ayuda!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Quiero usar CIDRAM v3 con una versión de PHP más vieja que 7.2; ¿Puede usted ayudar?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Quiero usar CIDRAM v3~v4 con una versión de PHP más vieja que 7.2; ¿Puede usted ayudar?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [¿Puedo usar una sola instalación de CIDRAM para proteger múltiples dominios?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [No quiero molestarme con la instalación de este y conseguir que funcione con mi sitio web; ¿Puedo pagarte por hacer todo por mí?](#user-content-PAY_YOU_TO_DO_IT)
 - [¿Puedo contratar a usted oa cualquiera de los desarrolladores de este proyecto para el trabajo privado?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1799,9 +1784,9 @@ La frecuencia de actualización varía dependiendo de los archivos de firma en c
 
 CIDRAM proporciona un medio para que los propietarios de sitios web bloqueen tráfico indeseable, pero es responsabilidad de los propietarios de sitios web decidir por sí mismos cómo quieren usar CIDRAM. En el caso de los falsos positivos relativos a los archivos de firma normalmente incluidos en CIDRAM, correcciones pueden hacerse, Pero en lo que respecta a ser desbloqueado de sitios web específicos, usted tendrá que tomar eso con los propietarios de los sitios web en cuestión. En los casos en que se realizan correcciones, por lo menos, tendrán que actualizar sus archivos de firma y/o instalación, y en otros casos (tales como, por ejemplo, donde han modificado su instalación, crearon sus propias firmas personalizadas, etc), la responsabilidad de resolver su problema es enteramente suya, y está totalmente fuera de nuestro control.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Quiero usar CIDRAM v3 con una versión de PHP más vieja que 7.2; ¿Puede usted ayudar?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Quiero usar CIDRAM v3~v4 con una versión de PHP más vieja que 7.2; ¿Puede usted ayudar?
 
-No. PHP≥7.2 es un requisito mínimo para CIDRAM v3.
+No. PHP≥7.2 es un requisito mínimo para CIDRAM v3~v4.
 
 *Ver también: [Gráficos de Compatibilidad](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2337,7 +2322,7 @@ Alternativamente, hay una breve descripción (no autoritativa) de GDPR/DSGVO dis
 
 ### 10. <a name="SECTION10"></a>ACTUALIZACIÓN DE VERSIONES PRINCIPALES ANTERIORES
 
-#### 10.0 CIDRAM v3
+#### 10.0 Actualización a CIDRAM v3
 
 Existen diferencias significativas entre v3 y las versiones principales anteriores. Es importante destacar que la forma en que funcionan los puntos de entrada, la forma en que se estructuran los módulos, y la forma en que funciona el actualizador para v3 es diferente a la forma en que funcionaban esas cosas para las versiones principales anteriores. Debido a estas diferencias, la mejor manera de actualizar a v3 desde versiones principales anteriores sería realizar una instalación nueva.
 
@@ -2353,7 +2338,13 @@ Algunos de los archivos de firma, módulos, y listas de bloqueo disponibles púb
 
 Hay algunos cambios sutiles en la forma en que se estructuran las reglas auxiliares, y hay cambios en la configuración, pero si usa la función de importación/exportación en la página de copia de seguridad del front-end, no necesitará volver a escribir, ajustar, o recrear manualmente nada. Al importar, CIDRAM sabe lo que se necesita y lo manejará automáticamente.
 
-#### 10.1 CIDRAM v4
+#### 10.1 Actualización a CIDRAM v4 desde una versión anterior a CIDRAM v3
+
+Consulte lo anterior: Se recomienda una nueva instalación.
+
+#### 10.2 Actualización a CIDRAM v4 desde CIDRAM v3
+
+-- to-do --
 
 CIDRAM v4 aún no existe. Pero, cuando llegue el momento de actualizar de v3 a v4, el proceso de actualización debería ser mucho más simple. No sabremos exactamente cuán significativamente diferente será hasta que llegue el momento, pero anticipo que las diferencias serán mucho menores que antes, y ya se implementaron mecanismos en v3 desde el principio para facilitar un proceso de actualización más fluido. Siempre que no haya cambios significativos en el actualizador o en la forma en que funcionan los puntos de entrada, en teoría, debería ser posible actualizar completamente a través del front-end, sin la necesidad de realizar una instalación nueva.
 
@@ -2362,4 +2353,4 @@ Se incluirá información más detallada aquí, en la documentación, en un mome
 ---
 
 
-Última Actualización: 29 de Agosto de 2025 (2025.08.29).
+Última Actualización: 13 de Septiembre de 2025 (2025.09.13).
