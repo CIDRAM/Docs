@@ -2341,13 +2341,23 @@ Consulte o acima: Recomenda-se uma nova instalação.
 
 #### 10.2 Atualizando para o CIDRAM v4 do CIDRAM v3
 
--- to-do --
+1. Primeiro, vá para a página de atualizações do front-end e, se houver alguma atualização disponível, certifique-se de instalar todas elas. Isso garante que qualquer código escrito mais recentemente, que possa ser necessário para atualizar corretamente as versões principais, esteja disponível para o atualizador e também ajuda a reduzir a quantidade de trabalho que o atualizador precisará fazer ao atualizar as versões principais posteriormente.
 
-CIDRAM v4 ainda não existe. Mas, quando chegar a hora de atualizar de v3 para v4, o processo de atualização deve ser muito mais simples. Não saberemos exatamente o quão significativamente diferente será até chegar a hora, mas prevejo que as diferenças serão muito menores do que antes, e os mecanismos já foram implementados na v3 desde o início para facilitar um processo de atualização mais suave. Supondo que não haja mudanças significativas no atualizador ou na forma como os pontos de entrada funcionam, deveria, em teoria, ser possível atualizar totalmente pelo front-end, sem a necessidade de realizar uma nova instalação.
+2. Vá para a página de configuração do front-end e procure por __`frontend➡remotes`__. Na lista, onde você vê `/v3/`, altere-o para `/v4/`. Clique em atualizar para salvar sua configuração. Essa alteração informa ao atualizador para direcionar a versão principal pretendida ao procurar por atualizações.
 
-Informações mais detalhadas serão incluídas aqui, na documentação, em um momento apropriado no futuro.
+3. Vá para a página de backup do front-end. Selecione exportar, marque as caixas de configuração e regras auxiliares, e pressione OK para baixar um backup atual da sua configuração e regras auxiliares. Houve algumas mudanças na configuração disponível e no sistema de regras auxiliares. Por exemplo, a ação "não registrar" foi removida das regras auxiliares (a opção "suprimir o registro" pode ser usada para obter o mesmo resultado). Você precisará importar esse backup de volta para o CIDRAM após a atualização para que o CIDRAM possa ajustar suas regras auxiliares e configuração conforme necessário para acomodar essas alterações.
+
+4. Vá para a página de atualizações do front-end. As atualizações para a nova versão principal devem aparecer agora. Para evitar tempos limite, antes de atualizar tudo, tente atualizar apenas o core do CIDRAM ou o front-end do CIDRAM (como ambos são dependências mútuas, atualizar um deve atualizar ambos automaticamente de qualquer forma). Como a estrutura da página e o estilo CSS do front-end mudaram significativamente entre as versões principais, eles podem inicialmente parecer quebrados após a atualização; não são. Vá para qualquer outra página do front-end e pressione Ctrl+F5 para tentar executar uma atualização completa (ou seja, uma atualização em que o navegador busca uma nova cópia do estilo CSS e outros periféricos em vez de depender do cache). A estrutura da página e o estilo CSS devem então aparecer corretamente. Caso isso não aconteça, tente limpar o cache do seu navegador.
+
+5. Agora que o core e o front-end foram atualizados, e a estrutura da página e o estilo CSS aparecem corretamente, você pode atualizar todo o resto. Vá para a página de atualizações do front-end e, se você vir o botão no topo da página, clique em atualizar tudo.
+
+6. Para garantir que não haja nenhuma atualização ruim, passada ou presente, ou arquivos corrompidos na instalação, e para garantir que tudo esteja como deveria, clique em reparar tudo. Muito raramente isso deve se tornar um problema real, mas é melhor jogar pelo seguro.
+
+7. Vá para a página de backup do front-end. Selecione importar, marque as caixas de configuração e regras auxiliares, clique no botão para selecionar um arquivo, localize e selecione o backup que você baixou anteriormente, e pressione OK para importar esse backup. CIDRAM ajustará automaticamente quaisquer regras auxiliares e configurações dentro de backups de versões principais anteriores, conforme necessário, para acomodar a versão principal que está sendo importada.
+
+8. Agora que você atualizou as versões principais com sucesso, talvez você queira explorar brevemente a página de configuração do front-end devido às alterações introduzidas pela nova versão principal (por exemplo, para funcionalidade recém-introduzidos). Deixando isso de lado, você concluiu a atualização. A nova versão principal não introduz nenhuma alteração nos arquivos de assinatura, módulos, ou eventos, e assim, você não precisa se preocupar com isso ao atualizar.
 
 ---
 
 
-Última Atualização: 13 de Setembro de 2025 (2025.09.13).
+Última Atualização: 16 de Setembro de 2025 (2025.09.16).

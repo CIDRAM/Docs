@@ -2343,13 +2343,23 @@ Fare riferimento a quanto sopra: Si consiglia una nuova installazione.
 
 #### 10.2 Aggiornamento a CIDRAM v4 da CIDRAM v3
 
--- to-do --
+1. Per prima cosa, vai alla pagina degli aggiornamenti front-end e, se sono disponibili aggiornamenti, assicurati di installarli tutti. Ciò garantisce che qualsiasi codice scritto più di recente, che potrebbe essere necessario per aggiornare correttamente le versioni principali, sarà disponibile per l'aggiornamento e aiuta anche a ridurre la quantità di lavoro che l'aggiornamento dovrà svolgere quando aggiornerà le versioni principali in un secondo momento.
 
-CIDRAM v4 non esiste in questo momento. Tuttavia, quando arriva il momento di aggiornare dalla v3 alla v4, il processo di aggiornamento dovrebbe essere molto più semplice. Non sapremo quanto saranno significative le differenze fino a quando non sarà disponibile, ma prevedo che le differenze saranno molto inferiori rispetto a prima, e i meccanismi sono già stati implementati nella v3 fin dall'inizio per facilitare un processo di aggiornamento più agevole. Finché non ci sono modifiche significative al programma di aggiornamento o al modo in cui funzionano gli punti di ingresso, in teoria dovrebbe essere possibile eseguire l'aggiornamento interamente tramite il front-end, senza la necessità di eseguire una nuova installazione.
+2. Vai alla pagina di configurazione front-end e cerca __`frontend➡remotes`__. Nell'elenco, dove vedi `/v3/`, cambialo in `/v4/`. Fare clic su aggiornarlo per salvare la configurazione. Questa modifica indica all'aggiornamento di prendere di mira la versione principale prevista quando cerca aggiornamenti.
 
-Informazioni più dettagliate saranno incluse qui, nella documentazione, in un momento opportuno in futuro.
+3. Vai alla pagina di backup front-end. Selezionare esportare, spuntare le caselle per la configurazione e le regole ausiliarie e, premere OK per scaricare un backup corrente della configurazione e delle regole ausiliarie. Sono state apportate alcune modifiche alla configurazione disponibile e al sistema di regole ausiliarie. Ad esempio, l'azione "non registrare" è stata rimossa dalle regole ausiliarie (per ottenere lo stesso risultato è possibile utilizzare l'opzione "sopprimi la registrazione"). Dopo l'aggiornamento, sarà necessario importare nuovamente questo backup in CIDRAM affinché CIDRAM possa adattare le regole ausiliarie e la configurazione in base alle necessità per accogliere queste modifiche.
+
+4. Vai alla pagina degli aggiornamenti front-end. Ora dovrebbero apparire gli aggiornamenti per la nuova versione principale. Per evitare timeout, prima di aggiornare tutto, prova ad aggiornare solo il core CIDRAM o il front-end CIDRAM (poiché entrambi sono interdipendenti l'uno dall'altro, aggiornandone uno dovrebbero comunque aggiornarli automaticamente entrambi). Poiché la struttura della pagina e lo stile CSS per il front-end sono cambiati in modo significativo tra le versioni principali, inizialmente potrebbe sembrare non funzionante dopo l'aggiornamento; non lo è. Vai a qualsiasi altra pagina front-end e premi Ctrl+F5 per provare a eseguire un aggiornamento forzato (ovvero un aggiornamento tramite il quale il browser recupera una nuova copia dello stile CSS e di altre periferiche invece di affidarsi alla propria cache). La struttura della pagina e lo stile CSS dovrebbero ora apparire correttamente. In caso contrario, prova a svuotare la cache del browser.
+
+5. Ora che il core e il front-end sono stati aggiornati, e la struttura della pagina e lo stile CSS appaiono correttamente, puoi aggiornare tutto il resto. Vai alla pagina degli aggiornamenti front-end e, se vedi il pulsante nella parte superiore della pagina, fai clic su aggiorna tutto.
+
+6. Per assicurarti che non ci siano aggiornamenti errati persistenti, passati o presenti, o file corrotti nell'installazione, e per assicurarti che tutto sia come dovrebbe essere, fai clic su ripara tutto. Molto raramente questo dovrebbe rappresentare un problema reale, ma è meglio andare sul sicuro.
+
+7. Vai alla pagina di backup front-end. Selezionare importare, spuntare le caselle per la configurazione e le regole ausiliarie, fare clic sul pulsante per selezionare un file, individuare e selezionare il backup scaricato in precedenza e, premere OK per importare tale backup. CIDRAM adatterà automaticamente tutte le regole ausiliarie e le configurazioni nei backup delle versioni principali precedenti, secondo necessità, per adattarsi alla versione principale in cui si sta effettuando l'importazione.
+
+8. Ora che hai aggiornato con successo le versioni principali, potresti voler esplorare brevemente la pagina di configurazione front-end a causa delle modifiche introdotte dalla nuova versione principale (ad esempio, per le nuove funzionalità introdotte). A parte questo, hai completato l'aggiornamento. La nuova versione principale non introduce alcuna modifica ai file di firma, ai moduli, o agli eventi, quindi non devi preoccuparti di questo durante l'aggiornamento.
 
 ---
 
 
-Ultimo Aggiornamento: 13 Settembre 2025 (2025.09.13).
+Ultimo Aggiornamento: 16 Settembre 2025 (2025.09.16).

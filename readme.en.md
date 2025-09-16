@@ -2342,13 +2342,23 @@ Refer to the above: A fresh installation is recommended.
 
 #### 10.2 Upgrading to CIDRAM v4 from CIDRAM v3
 
--- to-do --
+1. Firstly, go to the front-end updates page, and if there are any updates available, be sure to install all of them. This ensures that any code written more recently which may be necessary for upgrading major versions correctly will be available to the updater, and also helps to reduce the amount of work the updater will need to do when upgrading major versions later.
 
-CIDRAM v4 doesn't yet exist. However, when the time comes to upgrade from v3 to v4, the upgrade process should be much simpler. We won't know exactly how significantly different it will be until the time comes, but I anticipate the differences to be much less than before, and mechanisms have already been implemented into v3 right from the start to facilitate a smoother upgrade process. As long as there aren't significant changes to the updater or the way that entrypoints work, it should, in theory, be possible to upgrade entirely via the front-end, without the need to perform a fresh installation.
+2. Go to the front-end configuration page and look for __`frontend➡remotes`__. In the list, where you see `/v3/`, change it to `/v4/`. Click update to save your configuration. This change tells the updater to target the intended major version when looking for updates.
 
-More detailed information will be included here, in the documentation, at an appropriate time in the future.
+3. Go to the front-end backup page. Select export, tick the boxes for configuration and auxiliary rules, and press OK to download a backup of your current configuration and auxiliary rules. There've been some changes to the available configuration and to the auxiliary rules system. E.g., the "don't log" action has been removed from auxiliary rules (the "suppress logging" option can be used instead to achieve the same thing). You'll need to import this backup back to CIDRAM after upgrading in order for CIDRAM to be able to adjust your auxiliary rules and configuration as necessary to accommodate these changes.
+
+4. Go back to the front-end updates page. Updates for the new major version should now appear. To avoid timeouts, before updating all, first try updating just the CIDRAM core or the CIDRAM front-end (as both as mutual dependencies of each other, updating one should automatically update both anyhow). As the page structure and CSS styling for the front-end has significantly changed between major versions, it may initially appear broken after updating; it isn't. Go to any other front-end page and press Ctrl+F5 to try performing a hard-refresh (i.e., a refresh whereby the browser fetches a fresh copy of the CSS styling and other peripherals instead of relying on its cache). The page structure and CSS styling should then appear correctly. If it doesn't, try clearing your browser's cache.
+
+5. Now that the core and the front-end have been updated, and the page structure and CSS styling appears correctly, you can update everything else. Go back to the front-end updates page, and if you see the button at the top of the page, click update all.
+
+6. To ensure there aren't any lingering bad updates either past or present, or any corrupt files in the installation, and to ensure everything is as it should be, click repair all. Very rarely should this ever be an actual issue, but better to play it safe.
+
+7. Go back to the front-end backup page. Select import, tick the boxes for configuration and auxiliary rules, click the button to select a file, locate and select the backup you downloaded earlier, and press OK to import that backup. CIDRAM will automatically adjust any auxiliary rules and configuration within backups from previous major versions as necessary to accommodate the major version being imported to.
+
+8. Now that you've successfully upgraded major versions, you may want to briefly explore the front-end configuration page due to the changes introduced by the new major version (e.g., for newly introduced features). That aside, you've finished the upgrade. The new major version doesn't introduce any changes to signature files, modules, or events, so you don't need to worry about that for upgrading.
 
 ---
 
 
-Last Updated: 13 September 2025 (2025.09.13).
+Last Updated: 16 September 2025 (2025.09.16).

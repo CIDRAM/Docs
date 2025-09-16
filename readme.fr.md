@@ -524,7 +524,7 @@ http_response_header_code───[Défaut]─[Légal]─[Interdit]
   en cas de trafic indésirable extrêmement persistant.
 ```
 
-__1.__ Lorsque le « mode silencieux » est activé, le message d’état HTTP défini par `general➡silent_mode_response_header_code` sera utilisé (ceci a la plus haute priorité).
+__1.__ Lorsque le « mode silencieux » est activé, le message d'état HTTP défini par `general➡silent_mode_response_header_code` sera utilisé (ceci a la plus haute priorité).
 
 __2.__ Lorsque l'entité requérante a été interdit en raison d'un dépassement de la limite d'infraction, le message d'état HTTP pour « interdit » sera utilisé.
 
@@ -2353,13 +2353,23 @@ Voir ci-dessus : Une nouvelle installation est recommandée.
 
 #### 10.2 Mise à niveau vers CIDRAM v4 à partir de CIDRAM v3
 
--- to-do --
+1. Tout d'abord, accédez à la page des mises à jour du frontal et, s'il y a des mises à jour disponibles, assurez-vous de les installer toutes. Cela garantit que tout code écrit plus récemment et qui pourrait être nécessaire pour mettre à niveau correctement les versions majeures sera disponible pour le programme de mise à jour, et contribue également à réduire la quantité de travail que le programme de mise à jour devra effectuer lors de la mise à niveau ultérieure des versions majeures.
 
-CIDRAM v4 n'existe pas pour le moment. Cependant, lorsque vient le temps de passer de la v3 à la v4, le processus de mise à niveau devrait être beaucoup plus simple. Nous ne saurons pas exactement à quel point ce sera différent avant le moment venu, mais je prévois que les différences seront bien moindres qu'auparavant, et des mécanismes ont déjà été implémentés dans la v3 dès le début pour faciliter un processus de mise à niveau plus fluide. Tant qu'il n'y a pas de changements significatifs dans le programme de mise à jour ou dans le fonctionnement des points d'entrée, il devrait, en théorie, être possible de mettre à niveau entièrement via le frontal, sans avoir besoin d'effectuer une nouvelle installation.
+2. Accédez à la page de configuration frontale et recherchez __`frontend➡remotes`__. Dans la liste, là où vous voyez `/v3/`, remplacez-le par `/v4/`. Cliquez sur mettre à jour pour enregistrer votre configuration. Cette modification indique au programme de mise à jour de cibler la version majeure prévue lors de la recherche de mises à jour.
 
-Des informations plus détaillées seront incluses ici, dans la documentation, à un moment approprié dans le futur.
+3. Accédez à la page de sauvegarde frontale. Sélectionnez exporter, cochez les cases pour la configuration et les règles auxiliaires, puis appuyez sur OK pour télécharger une sauvegarde actuelle de votre configuration et de vos règles auxiliaires. Il y a eu quelques changements dans la configuration disponible et dans le système de règles auxiliaires. Par exemple, l'action « ne pas enregistrer » a été supprimée des règles auxiliaires (l'option « supprimer la journalisation » peut être utilisée à la place pour obtenir le même résultat). Vous devrez réimporter cette sauvegarde dans CIDRAM après la mise à niveau afin que CIDRAM puisse ajuster vos règles auxiliaires et votre configuration si nécessaire pour s'adapter à ces modifications.
+
+4. Accédez à la page des mises à jour du frontal. Les mises à jour pour la nouvelle version majeure devraient maintenant apparaître. Pour éviter les délais d'expiration, avant de tout mettre à jour, essayez d'abord de mettre à jour uniquement le cœur CIDRAM ou le frontal CIDRAM (car les deux sont des dépendances mutuelles, la mise à jour de l'un devrait automatiquement mettre à jour les deux de toute façon). Étant donné que la structure de la page et le style CSS du frontal ont considérablement changé entre les versions principales, ils peuvent initialement sembler cassés après la mise à jour ; ce n'est pas le cas. Accédez à n'importe quelle autre page frontale et appuyez sur Ctrl+F5 pour essayer d'effectuer un rafraîchissement complet (c'est-à-dire un rafraîchissement par laquelle le navigateur récupère une nouvelle copie du style CSS et d'autres périphériques au lieu de s'appuyer sur son cache). La structure de la page et le style CSS devraient alors s'afficher correctement. Si ce n'est pas le cas, essayez de vider le cache de votre navigateur.
+
+5. Maintenant que le cœur et le frontal ont été mis à jour, et que la structure de la page et le style CSS apparaissent correctement, vous pouvez mettre à jour tout le reste. Revenez à la page des mises à jour du frontal et si vous voyez le bouton en haut de la page, cliquez sur « tout mettre à jour ».
+
+6. Pour assurez qu'il n'y a pas de mauvaises mises à jour persistantes, passées ou présentes, ou de fichiers corrompus dans l'installation, et pour assurez que tout est comme il se doit, cliquez sur réparer tous. Cela devrait très rarement être un problème réel, mais il vaut mieux jouer la sécurité.
+
+7. Revenez à la page de sauvegarde frontale. Sélectionnez importer, cochez les cases pour la configuration et les règles auxiliaires, cliquez sur le bouton pour sélectionner un fichier, recherchez et sélectionnez la sauvegarde que vous avez téléchargée précédemment, puis appuyez sur OK pour importer cette sauvegarde. CIDRAM ajustera automatiquement toutes les règles auxiliaires et configurations dans les sauvegardes des versions majeures précédentes si nécessaire pour s'adapter à la version majeure en cours d'importation.
+
+8. Maintenant que vous avez mis à niveau avec succès les versions majeures, vous souhaiterez peut-être explorer brièvement la page de configuration frontale en raison des modifications introduites par la nouvelle version majeure (par exemple, pour les fonctionnalités nouvellement introduites). Cela mis à part, vous avez terminé la mise à niveau. La nouvelle version majeure n'introduit aucune modification dans les fichiers de signature, les modules, ou les événements, donc vous n'avez besoin pas à vous en soucier à ce sujet pour la mise à niveau.
 
 ---
 
 
-Dernière mise à jour : 13 Septembre 2025 (2025.09.13).
+Dernière mise à jour : 16 Septembre 2025 (2025.09.16).
