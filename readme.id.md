@@ -2319,7 +2319,7 @@ Beberapa sumber bacaan yang direkomendasikan untuk mempelajari informasi lebih l
 
 Ada perbedaan yang signifikan antara v3 dan versi utama sebelumnya. Cara kerja titik masuk, cara menyusun modul, dan cara kerja pembaru untuk v3 berbeda dengan cara kerja hal-hal tersebut untuk versi utama sebelumnya. Karena perbedaan ini, cara terbaik untuk memutakhirkan ke v3 dari versi utama sebelumnya adalah dengan melakukan penginstalan baru.
 
-Jika Anda ingin mempertahankan konfigurasi dan aturan tambahan Anda, sebelum memulai proses pemutakhiran, buka halaman backup dari front-end. Dari sana, konfigurasi dan aturan tambahan dapat diekspor. Mengekspor akan menyebabkan file diunduh. Setelah memutakhirkan ke versi utama yang baru, file tersebut dapat digunakan untuk mengimpor data yang diekspor sebelumnya ke penginstalan baru.
+Jika Anda ingin mempertahankan konfigurasi dan aturan tambahan Anda, sebelum memulai proses pemutakhiran, buka halaman pencadangan front-end. Dari sana, konfigurasi dan aturan tambahan dapat diekspor. Mengekspor akan menyebabkan file diunduh. Setelah memutakhirkan ke versi utama yang baru, file tersebut dapat digunakan untuk mengimpor data yang diekspor sebelumnya ke penginstalan baru.
 
 Karena perubahan struktur modul, modul yang dimaksudkan untuk versi utama sebelumnya perlu ditulis ulang agar berfungsi dengan baik untuk v3. Migrasi langsung tidak akan berhasil. Hal yang sama berlaku untuk acara.
 
@@ -2329,7 +2329,7 @@ Modul, file tanda tangan, dan acara masing-masing memiliki direktori tersendiri,
 
 Beberapa file tanda tangan, modul, dan daftar blokir yang tersedia untuk umum untuk versi utama sebelumnya telah dihentikan, jadi tidak semuanya akan tersedia untuk v3. Dalam kebanyakan kasus, mereka tidak akan diperlukan, karena fitur baru dan fungsionalitas ditambahkan sejak v3.
 
-Ada beberapa perubahan halus pada struktur aturan tambahan, dan ada perubahan pada konfigurasi, tetapi jika Anda menggunakan fitur impor/ekspor di halaman backup dari front-end, Anda tidak perlu menulis ulang, menyesuaikan, atau membuat ulang apapun secara manual. Saat mengimpor, CIDRAM mengetahui apa yang dibutuhkan, dan akan menanganinya untuk Anda secara otomatis.
+Ada beberapa perubahan halus pada struktur aturan tambahan, dan ada perubahan pada konfigurasi, tetapi jika Anda menggunakan fitur impor/ekspor di halaman pencadangan front-end, Anda tidak perlu menulis ulang, menyesuaikan, atau membuat ulang apapun secara manual. Saat mengimpor, CIDRAM mengetahui apa yang dibutuhkan, dan akan menanganinya untuk Anda secara otomatis.
 
 #### 10.1 Memutakhirkan ke CIDRAM v4 dari versi sebelum CIDRAM v3
 
@@ -2337,13 +2337,23 @@ Lihat di atas: Instalasi baru direkomendasikan.
 
 #### 10.2 Memutakhirkan ke CIDRAM v4 dari CIDRAM v3
 
--- to-do --
+1. Pertama, buka halaman pembaruan front-end, dan jika ada pembaruan yang tersedia, pastikan untuk menginstal semuanya. Hal ini memastikan bahwa kode apapun yang ditulis baru-baru ini yang mungkin diperlukan untuk memutakhirkan versi utama dengan benar akan tersedia bagi pembaru, dan juga membantu mengurangi jumlah pekerjaan yang perlu dilakukan pembaru saat memutakhirkan versi utama nanti.
 
-CIDRAM v4 belum ada. Namun, ketika saatnya tiba untuk memutakhirkan dari v3 ke v4, proses pemutakhiran seharusnya jauh lebih sederhana. Kami tidak akan tahu persis seberapa signifikan perbedaannya sampai saatnya tiba, tetapi saya memperkirakan perbedaannya akan jauh lebih sedikit dari sebelumnya, dan mekanisme telah diterapkan ke v3 sejak awal untuk memfasilitasi proses pemutakhiran yang lebih lancar. Selama tidak ada perubahan signifikan pada pembaru atau cara kerja titik masuk, secara teori, dimungkinkan untuk memutakhirkan seluruhnya melalui front-end, tanpa perlu melakukan penginstalan baru.
+2. Buka halaman konfigurasi front-end dan cari __`frontend➡remotes`__. Dalam daftar, dimana Anda melihat `/v3/`, ubahlah ke `/v4/`. Klik memperbarui untuk menyimpan konfigurasi Anda. Perubahan ini memberi tahu pembaru untuk menargetkan versi utama yang dituju saat mencari pembaruan.
 
-Informasi lebih rinci akan disertakan disini, dalam dokumentasi, pada waktu yang tepat di masa mendatang.
+3. Buka halaman pencadangan front-end. Pilih ekspor, centang kotak untuk konfigurasi dan aturan tambahan, lalu klik OK untuk mengunduh cadangan untuk konfigurasi dan aturan tambahan Anda. Ada beberapa perubahan pada konfigurasi yang tersedia dan pada sistem aturan tambahan. Misalnya, tindakan "jangan catat" telah dihapus dari aturan tambahan (opsi "menekan catatan" dapat digunakan sebagai gantinya untuk mencapai hal yang sama). Anda perlu mengimpor cadangan ini kembali ke CIDRAM setelah melakukan pemutakhiran agar CIDRAM dapat menyesuaikan aturan tambahan dan konfigurasi sebagaimana diperlukan untuk mengakomodasi perubahan ini.
+
+4. Kembali ke halaman pembaruan front-end. Pembaruan untuk versi utama baru sekarang akan muncul. Untuk menghindari waktu habis, sebelum memperbarui semuanya, pertama-tama coba perbarui hanya core atau front-end CIDRAM (karena keduanya saling bergantung satu sama lain, memperbarui satu saja seharusnya akan memperbarui keduanya secara otomatis). Karena struktur halaman dan gaya CSS untuk front-end telah berubah secara signifikan antara versi-versi utama, mungkin awalnya tampak rusak setelah diperbarui; padahal tidak. Buka halaman front-end lain dan klik Ctrl+F5 untuk mencoba melakukan penyegaran paksa (yaitu penyegaran dimana peramban mengambil salinan baru gaya CSS dan periferal lain, dan bukan mengandalkan cache-nya). Struktur halaman dan gaya CSS kemudian akan muncul dengan benar. Jika tidak, coba bersihkan cache peramban Anda.
+
+5. Sekarang core dan front-end telah diperbarui, dan struktur halaman serta gaya CSS tampak benar, Anda dapat memperbarui semua hal lainnya. Kembali ke halaman pembaruan front-end, dan jika Anda melihat tombol di bagian atas halaman, klik memperbarui semua.
+
+6. Untuk memastikan tidak ada pembaruan buruk yang tersisa, masa lalu atau sekarang, atau file yang rusak dalam instalasi, dan untuk memastikan semuanya sebagaimana mestinya, klik memperbaiki semua. Sangat jarang hal ini benar-benar menjadi masalah, tetapi lebih baik bermain aman.
+
+7. Kembali ke halaman pencadangan front-end. Pilih impor, centang kotak untuk konfigurasi dan aturan tambahan, klik tombol untuk memilih file, cari dan pilih cadangan yang Anda unduh sebelumnya, dan klik OK untuk mengimpor cadangan tersebut. CIDRAM secara otomatis akan menyesuaikan aturan tambahan dan konfigurasi apapun dalam cadangan dari versi utama sebelumnya sebagaimana diperlukan untuk mengakomodasi versi utama yang sedang diimpor.
+
+8. Sekarang setelah Anda berhasil memutakhirkan versi utama, Anda mungkin ingin menjelajahi sebentar halaman konfigurasi front-end karena perubahan yang diperkenalkan oleh versi utama baru (misalnya, untuk fitur yang baru diperkenalkan). Selain ini, Anda telah menyelesaikan pemutakhiran. Versi utama yang baru tidak memperkenalkan perubahan apapun pada file tanda tangan, modul, atau acara, jadi Anda tidak perlu mengkhawatirkan hal ini saat melakukan pemutakhiran.
 
 ---
 
 
-Terakhir Diperbarui: 13 September 2025 (2025.09.13).
+Terakhir Diperbarui: 17 September 2025 (2025.09.17).

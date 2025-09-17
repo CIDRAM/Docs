@@ -177,7 +177,7 @@ $CIDRAM->view();
 <div dir="rtl">وفيما يلي قائمة من المتغيرات الموجودة في ملف تكوين "config.yml"، بالإضافة إلى وصف الغرض منه و وظيفته.<br /><br /></div>
 
 ```
-التكوين (v3)
+التكوين (v4)
 │
 ├───general
 │       stages [string]
@@ -194,7 +194,6 @@ $CIDRAM->view();
 │       numbers [string]
 │       emailaddr [string]
 │       emailaddr_display_style [string]
-│       ban_override [int]
 │       default_dns [string]
 │       default_algo [string]
 │       statistics [string]
@@ -510,7 +509,7 @@ ipaddr
 <div dir="rtl"><ul><li>ما هي رسالة حالة HTTP التي يجب أن يرسلها CIDRAM عند حظر الطلبات؟</li></ul></div>
 
 ```
-http_response_header_code
+http_response_header_code───[الافتراضي]─[قانوني]─[حظر]
 ├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
 │ من المرجح أن تفسر الطلبات الآلية هذه
 │ الاستجابة على أنها إشارة إلى نجاح الطلب.
@@ -536,6 +535,18 @@ http_response_header_code
   عند التعامل مع حركة مرور غير مرغوب فيها
   بشكل دائم للغاية.
 ```
+
+__١.__ عندما يكون "الوضع الصامت" ساريًا، سيتم استخدام رسالة حالة HTTP التي تم تحديدها بواسطة <code dir="ltr" class="s">silent_mode_response_header_code⬅general</code> (هذا له الأولوية القصوى).
+
+__٢.__ عندما يتم حظر الكيان الطالب بسبب تجاوز حد المخالفة، سيتم استخدام رسالة حالة HTTP لـ "حظر".
+
+__٣.__ عند الحظر بسبب تحديد المعدل، سيتم استخدام 429، أو عند الحظر بسبب تعارضات الموارد، سيتم استخدام رسالة حالة HTTP المحددة بواسطة <code dir="ltr" class="s">conflict_response⬅signatures</code> (إن الحد من المعدلات و تعارضات الموارد لها الأولوية المتساوية في هذا السياق).
+
+__٤.__ عند الحظر بسبب قاعدة مساعدة تحدد "تجاوز رمز حالة HTTP"، سيتم استخدام تجاوز رمز حالة HTTP هذا.
+
+__٥.__ عند الحظر لأسباب قانونية (أي عند الحظر بسبب توقيع مخصص يستخدم الكلمة المختصرة "قانوني")، سيتم استخدام رسالة حالة HTTP الخاصة بـ "قانوني".
+
+__٦.__ بالنسبة لجميع الطلبات المحظورة الأخرى، سيتم استخدام رسالة حالة HTTP لـ "الافتراضي" (هذا له أدنى أولوية).
 
 ##### <div dir="rtl">"silent_mode" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>يجب CIDRAM إعادة توجيه بصمت محاولات وصول مرفوض بدلا من عرض الصفحة "تم رفض الوصول"؟ اذا نعم، تحديد الموقع لإعادة توجيه محاولات وصول مرفوض. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
@@ -684,37 +695,6 @@ emailaddr_display_style
 └─noclick ("نص غير قابل للنقر")
 ```
 
-##### <div dir="rtl">"ban_override" <code dir="ltr">[int]</code><br /></div>
-<div dir="rtl"><ul><li>تجاوز "http_response_header_code" متى "infraction_limit" تجاوزت؟ 200 = لا تجاوز [الافتراضي]. القيم الأخرى هي نفس القيم المتاحة لـ "http_response_header_code".</li></ul></div>
-
-```
-ban_override
-├─200 (200 OK (حسنا)): أقل قوة، ولكن الأكثر سهولة في الاستخدام.
-│ من المرجح أن تفسر الطلبات الآلية هذه
-│ الاستجابة على أنها إشارة إلى نجاح الطلب.
-│ يوصى به للطلبات غير المحظورة.
-├─403 (403 Forbidden (مُحرَّم)): أكثر قوة، ولكن أقل سهولة في الاستخدام.
-│ موصى به لمعظم الظروف العامة.
-├─410 (410 Gone (ذهب)): يمكن أن يسبب مشاكل عند حل الإيجابيات
-│ الخاطئة، لأن بعض المتصفحات سوف تخزن رسالة
-│ الحالة هذه مؤقتًا ولا ترسل طلبات لاحقة،
-│ حتى بعد إلغاء الحظر. قد يكون الأكثر
-│ تفضيلاً في بعض السياقات، لأنواع معينة من
-│ حركة المرور.
-├─418 (418 I'm a teapot (أنا إبريق شاي)): يشير إلى نكتة كذبة أبريل (<a
-│ href="https://tools.ietf.org/html/rfc2324" dir="ltr" hreflang="en-US"
-│ rel="noopener noreferrer external">RFC 2324</a>). من غير المحتمل
-│ جدًا أن يفهمه أي عميل أو روبوت أو متصفح أو
-│ غير ذلك. يتم توفيرها للتسلية والراحة،
-│ ولكن لا يوصى بها بشكل عام.
-├─451 (451 Unavailable For Legal Reasons (غير متاح لأسباب قانونية)): يوصى به عند الحظر لأسباب قانونية في
-│ المقام الأول. لا ينصح به في سياقات أخرى.
-└─503 (503 Service Unavailable (الخدمة غير متوفرة)): الأكثر قوة، ولكن الأقل سهولة في
-  الاستخدام. يوصى به عند التعرض للهجوم أو
-  عند التعامل مع حركة مرور غير مرغوب فيها
-  بشكل دائم للغاية.
-```
-
 ##### <div dir="rtl">"default_dns" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>قائمة من خوادم DNS لاستخدامها في عمليات البحث عن اسم المضيف. تحذير: لا تغير هذا إلا إذا كنت تعرف ما تفعلونه!</li></ul></div>
 
@@ -828,32 +808,32 @@ email_notification_when
 ##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف يمكن قراءته بالعين لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف على غرار أباتشي لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف تسلسل لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل نتائج أي طلبات صادرة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي تقارير يتم إرسالها إلى واجهات برمجة التطبيقات الخارجية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اقتطاع ملفات السجل عندما تصل إلى حجم معين؟ القيمة هي الحجم الأقصى في بايت/كيلوبايت/ميغابايت/غيغابايت/تيرابايت الذي قد ينمو ملفات السجل إلى قبل اقتطاعه. القيمة الافتراضية 0KB تعطيل اقتطاع (ملفات السجل يمكن أن تنمو إلى أجل غير مسمى). ملاحظة: ينطبق على ملفات السجل الفردية! ولا يعتبر حجمها جماعيا.</li></ul></div>
@@ -882,12 +862,12 @@ log_rotation_action
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
@@ -1234,7 +1214,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ##### <div dir="rtl">"log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">general➡time_format</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr">time_format⬅general</code></a>.
 
 #### <div dir="rtl">"legal" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للمتطلبات القانونية.<br /><br /></div>
@@ -1773,7 +1753,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
  <li><a href="#user-content-SIGNATURE_UPDATE_FREQUENCY">عدد المرات التي يتم تحديثها التوقيعات؟</a></li>
  <li><a href="#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO">لقد واجهت مشكلة! أنا لا أعرف ما يجب القيام به! الرجاء المساعدة!</a></li>
  <li><a href="#user-content-BLOCKED_WHAT_TO_DO">لقد تم حظر من موقع على شبكة الانترنت! الرجاء المساعدة!</a></li>
- <li><a href="#user-content-MINIMUM_PHP_VERSION_V3">أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟</a></li>
+ <li><a href="#user-content-MINIMUM_PHP_VERSION_V3">أريد استخدام CIDRAM v3~v4 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟</a></li>
  <li><a href="#user-content-PROTECT_MULTIPLE_DOMAINS">هل يمكنني استخدام تثبيت CIDRAM واحد لحماية نطاقات متعددة؟</a></li>
  <li><a href="#user-content-PAY_YOU_TO_DO_IT">أنا لا أريد أن تضيع الوقت مع تثبيت هذا أو ضمان أنه يعمل لموقع الويب الخاص بي؛ يمكنني دفع لك أن تفعل ذلك بالنسبة لي؟</a></li>
  <li><a href="#user-content-HIRE_FOR_PRIVATE_WORK">هل يمكنني توظيفك أو أي من مطوري هذا المشروع للعمل الخاص؟</a></li>
@@ -1853,9 +1833,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 <div dir="rtl">CIDRAM يمكن أن تتوقف حركة المرور غير المرغوب فيها، ولكن اصحاب المواقع هي المسؤولة عن البت في كيفية استخدام هذه. ويمكننا تصحيح أخطائنا، ولكن في حالات أخرى، ستحتاج إلى الاتصال بأصحاب الموقع ذات الصلة. لا نستطيع أن نفعل أي شيء عن أشياء خارجة عن سيطرتنا.<br /><br /></div>
 
-#### <div dir="rtl"><a name="MINIMUM_PHP_VERSION_V3"></a>أريد استخدام CIDRAM v3 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟<br /><br /></div>
+#### <div dir="rtl"><a name="MINIMUM_PHP_VERSION_V3"></a>أريد استخدام CIDRAM v3~v4 مع نسخة PHP كبار السن من 7.2؛ يمكنك أن تساعد؟<br /><br /></div>
 
-<div dir="rtl">لا. PHP≥7.2 هو الحد الأدنى لمتطلبات CIDRAM v3.<br /><br /></div>
+<div dir="rtl">لا. PHP≥7.2 هو الحد الأدنى لمتطلبات CIDRAM v3~v4.<br /><br /></div>
 
 <div dir="rtl"><em>انظر أيضا: <a href="https://maikuolan.github.io/Compatibility-Charts/">مخططات التوافق</a>.</em><br /><br /></div>
 
@@ -2414,7 +2394,7 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 ### <div dir="rtl">١٠. <a name="SECTION10"></a>الترقية من الإصدارات الرئيسية السابقة</div>
 
-#### <div dir="rtl">١٠.٠ CIDRAM v3<br /><br /></div>
+#### <div dir="rtl">١٠.٠ الترقية إلى CIDRAM v3<br /><br /></div>
 
 <div dir="rtl">توجد اختلافات كبيرة بين الإصدار 3 والإصدارات الرئيسية السابقة. تختلف طريقة عمل نقاط الدخول، وطريقة تنظيم الوحدات، وطريقة عمل المحدث للإصدار 3 عن طريقة عمل هذه الأشياء للإصدارات الرئيسية السابقة. بسبب هذه الاختلافات، فإن أفضل طريقة للترقية إلى الإصدار 3 من الإصدارات الرئيسية السابقة هي إجراء تثبيت جديد.<br /><br /></div>
 
@@ -2430,13 +2410,15 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 <div dir="rtl">هناك بعض التغييرات الطفيفة في طريقة هيكلة القواعد المساعدة، وهناك تغييرات على التكوين، ولكن إذا كنت تستخدم ميزات الاستيراد والتصدير في صفحة النسخ الاحتياطي للواجهة الأمامية، فلن تحتاج إلى إعادة كتابة أي شيء يدويًا أو ضبطه أو إعادة إنشائه. عند الاستيراد، يعرف CIDRAM ما هو مطلوب، وسوف يتعامل معه تلقائيًا.<br /><br /></div>
 
-#### <div dir="rtl">١٠.١ CIDRAM v4<br /><br /></div>
+#### <div dir="rtl">١٠.١ الترقية إلى CIDRAM v4 من إصدار أقدم من CIDRAM v3<br /><br /></div>
 
-<div dir="rtl">الإصدار 4 غير موجود بعد. ومع ذلك، عندما يحين وقت الترقية من الإصدار 3 إلى الإصدار 4، يجب أن تكون عملية الترقية أبسط بكثير. لن نعرف بالضبط مدى الاختلاف الكبير حتى يحين الوقت، لكنني أتوقع أن تكون الاختلافات أقل بكثير من ذي قبل، وقد تم بالفعل تنفيذ الآليات في الإصدار 3 منذ البداية لتسهيل عملية ترقية أكثر سلاسة. طالما لم تكن هناك تغييرات كبيرة في المحدث أو طريقة عمل نقاط الدخول، فمن المفترض، من الناحية النظرية، أن يكون من الممكن الترقية بالكامل عبر الواجهة الأمامية، دون الحاجة إلى إجراء تثبيت جديد.<br /><br /></div>
+<div dir="rtl">يرجى الرجوع إلى ما ورد أعلاه: يوصى بإجراء تثبيت جديد.<br /><br /></div>
 
-<div dir="rtl">سيتم تضمين المزيد من المعلومات التفصيلية هنا، في الوثائق، في وقت مناسب في المستقبل.<br /><br /></div>
+#### <div dir="rtl">١٠.٢ الترقية إلى CIDRAM v4 من CIDRAM v3<br /><br /></div>
+
+-- to-do --
 
 ---
 
 
-<div dir="rtl">آخر تحديث: ٢٩ أغسطس ٢٠٢٥ (٢٠٢٥.٠٨.٢٩).</div>
+<div dir="rtl">آخر تحديث: ١٧ سبتمبر ٢٠٢٥ (٢٠٢٥.٠٩.١٧).</div>
