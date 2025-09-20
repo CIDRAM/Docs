@@ -892,7 +892,7 @@ theme_mode
 - Als HTML ganz am Unten aller Frontend-Seiten eingefügt. Dies kann nützlich sein, wenn Sie auf allen solchen Seiten einen rechtlichen Hinweis, einen Kontaktlink, Geschäftsinformationen, oder ähnliches einfügen möchten.
 
 ##### „remotes“ `[string]`
-- Eine Liste der Adressen an denen der Updater Komponenten-Metadaten abruft. Dies muss möglicherweise beim Upgrade auf eine neue Hauptversion oder beim Erwerb einer neuen Quelle für Updates angepasst werden, aber sollte unter normalen Umständen in Ruhe gelassen werden.
+- Eine Liste der Adressen an denen der Updater Komponenten-Metadaten abruft. Dies muss möglicherweise beim Upgrade auf eine neue Hauptversion oder beim Erwerb einer neuen Quelle für Aktualisierungen angepasst werden, aber sollte unter normalen Umständen in Ruhe gelassen werden.
 
 ##### „enable_two_factor“ `[bool]`
 - Diese Direktive bestimmt, ob 2FA für Frontend-Konten verwendet werden soll.
@@ -2360,13 +2360,23 @@ Siehe oben: Eine Neuinstallation wird empfohlen.
 
 #### 10.2 Upgrade auf CIDRAM v4 von CIDRAM v3
 
--- to-do --
+1. Gehen Sie zunächst zur Aktualisierungen-Seite des Front-Ends und installieren Sie alle verfügbaren Aktualisierungen. Dadurch wird sichergestellt, dass der kürzlich geschriebener Code der möglicherweise für die korrekte Aktualisierung der Hauptversionen erforderlich sein könnte, dem Updater zur Verfügung steht, und es kann auch den Arbeitsaufwand reduzieren der später vom Updater erledigt werden muss.
 
-CIDRAM v4 existiert derzeit nicht. Wenn jedoch die Zeit für ein Upgrade von v3 auf v4 gekommen ist, sollte der Upgrade-Prozess viel einfacher sein. Bis dahin werden wir nicht genau wissen, wie unterschiedlich es sein wird, aber ich antizipieren, dass die Unterschiede viel geringer sein werden als zuvor, und bereits von Anfang an Mechanismen in v3 implementiert wurden, um den Upgrade-Prozess einfacher zu gestalten. Solange es keine wesentlichen Änderungen am Updater oder an der Einstiegspunkte gibt, sollte es theoretisch möglich sein, ein Upgrade vollständig über das Front-End durchzuführen, keine Neuinstallation erforderlich.
+2. Gehen Sie zur Konfigurationsseite des Front-Ends und suchen Sie nach __`frontend➡remotes`__. Ändern Sie in der Liste das `/v3/` in `/v4/`. Klicken Sie auf „Aktualisieren“ um Ihre Konfiguration zu speichern. Diese Änderung weist den Updater an, bei der Suche nach Updates auf die gewünschte Hauptversion abzuzielen.
 
-Detailliertere Informationen werden zu einem späteren Zeitpunkt hier in der Dokumentation enthalten sein.
+3. Gehen Sie zur Datensicherung-Seite des Front-Ends. Wählen Sie „Exportieren“, aktivieren Sie die Kontrollkästchen für Konfiguration und Hilfsregeln, und drücken Sie „OK“ um eine Sicherung Ihrer aktuellen Konfiguration und Hilfsregeln herunterzuladen. Es wurden einige Änderungen an der verfügbaren Konfiguration und dem System der Hilfsregeln vorgenommen. z.B., die Aktion „nicht protokollieren“ aus den Hilfsregeln entfernt (die Option „Protokollierung unterdrücken“ kann stattdessen verwendet werden um dasselbe zu erreichen). Sie müssen diese Sicherung nach dem Upgrade wieder in CIDRAM importieren damit CIDRAM Ihre Hilfsregeln und Konfigurationen nach Bedarf anpassen kann um diese Änderungen zu berücksichtigen.
+
+4. Gehen Sie zurück zur Aktualisierungen-Seite des Front-Ends. Aktualisierungen für die neue Hauptversion sollte erscheinen. Um Zeitüberschreitungen zu vermeiden, versuchen Sie vor der Aktualisierung aller Komponenten zunächst nur den CIDRAM Core oder das CIDRAM Front-End zu aktualisieren (da beide voneinander abhängig sind, sollte die Aktualisierung eines davon automatisch beide aktualisieren). Da sich die Seitenstruktur und das CSS-Styling für das Front-End zwischen den Hauptversionen erheblich geändert haben, kann es nach der Aktualisierung zunächst so aussehen als ob es nicht funktioniert; das ist jedoch nicht der Fall. Gehen Sie zu einer beliebigen anderen Front-End-Seite und drücken Sie Strg+F5 um einen Hard-Refresh durchzuführen (d.h., eine Aktualisierung bei der der Browser eine neue Kopie des CSS-Stylings und anderer Peripheriegeräte abruft, anstatt sich auf seinen Cache zu verlassen). Die Seitenstruktur und das CSS-Styling sollten dann korrekt angezeigt werden. Wenn dies nicht der Fall ist, leeren Sie den Cache Ihres Browsers.
+
+5. Nachdem der Core und die Front-Ends aktualisiert wurden und die Seitenstruktur und das CSS-Styling korrekt angezeigt werden, können Sie alles andere aktualisieren. Gehen Sie zurück zur Aktualisierung-Seite des Front-Ends und klicken Sie auf „Aktualisieren alles“ wenn Sie die Schaltfläche oben auf der Seite sehen.
+
+6. Um sicherzustellen dass keine fehlerhaften Aktualisierungen oder beschädigten Dateien in der Installation und dass alles so ist wie es sein sollte, klicken Sie auf „Reparieren alles“. Dies dürfte nur sehr selten ein tatsächliches Problem darstellen, aber es ist besser auf Nummer sicher zu gehen.
+
+7. Gehen Sie zurück zur Datensicherung-Seite des Front-Ends. Wählen Sie „Importieren“, aktivieren Sie die Kontrollkästchen für Konfiguration und Hilfsregeln, klicken Sie auf die Schaltfläche um eine Datei auszuwählen, suchen und wählen Sie die zuvor heruntergeladene Sicherung aus, und drücken Sie „OK“ um diese Sicherung zu importieren. CIDRAM passt alle Hilfsregeln und Konfigurationen in Sicherungen früherer Hauptversionen automatisch nach Bedarf an um sie an die Hauptversion in die importiert wird anzupassen.
+
+8. Nachdem Sie die Hauptversionen erfolgreich aktualisiert haben, möchten Sie möglicherweise aufgrund der durch die neue Hauptversion eingeführten Änderungen (z.B., für neu eingeführte Funktionalität) kurz die Konfigurationsseite des Front-Ends erkunden. Abgesehen davon haben Sie das Upgrade abgeschlossen. Die neue Hauptversion führt keine Änderungen an Signaturdateien, Modulen, oder Ereignissen ein, also müssen Sie dir darüber keine Sorgen machen.
 
 ---
 
 
-Zuletzt aktualisiert: 13. September 2025 (2025.09.13).
+Zuletzt aktualisiert: 19. September 2025 (2025.09.19).

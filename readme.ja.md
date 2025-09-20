@@ -2308,13 +2308,17 @@ v3以降、モジュール、シグネチャ・ファイル、イベントには
 
 #### 10.2 CIDRAM v3からCIDRAM v4へのアップグレード
 
+1. まず、フロントエンドのアップデート・ページで、利用可能な更新がある場合は、必ずすべてインストールしてください。​これにより、アップグレードに必要なすべてのコードが利用可能になり、アップデーターに必要な作業量が削減されます。
+
+2. フロントエンド・コンフィギュレーション・ページで、__`frontend➡remotes`__を探します。​リスト内の「`/v3/`」を「`/v4/`に変更します。​設定を保存するには、「アップデート」をクリックします。​この変更により、アップデーターは、アップデートを検索するときに、目的のメジャー・バージョンをターゲットにするように指示されます。
+
+3. バックアップをダウンロードするには、フロントエンド・バックアップ・ページで、「エクスポートして」を選択し、コンフィギュレーションと補助ルールのボックスにチェックを入れ、「ＯＫ」を押してください。​利用可能なコンフィギュレーションと補助ルール・システムにいくつか変更がありました。​たとえば、「ログを記録しない」アクションは補助ルールから削除されました（代わりに「ロギングを抑制する」オプションを使用して同じことを実現できます）。​これらの変更に対応するには、アップグレード後にこのバックアップをCIDRAMにインポートする必要があります（CIDRAMは必要に応じて補助ルールとコンフィギュレーションを自動的に調整します）。
+
+4. この時点で、フロントエンドのアップデート・ページに、新しいメジャー・バージョンのアップデートが表示されます。​To avoid timeouts, before updating all, first try updating just the CIDRAM core or the CIDRAM front-end (as both as mutual dependencies of each other, updating one should automatically update both anyhow).​As the page structure and CSS styling for the front-end has significantly changed between major versions, it may initially appear broken after updating; it isn't.​At any other front-end page and press Ctrl+F5 to try performing a hard-refresh (i.e., a refresh whereby the browser fetches a fresh copy of the CSS styling and other peripherals instead of relying on its cache).​The page structure and CSS styling should then appear correctly.​If it doesn't, try clearing your browser's cache.
+
 -- to-do --
-
-v4はまだ存在しません。​ただし、v3からv4にアップグレードするときは、アップグレード・プロセスがはるかに簡単になるはずです。​その時が来るまで、どれほど大きな違いがあるのか正確にはわかりませんが、違いは以前よりもはるかに小さくなると予想しており、アップグレード・プロセスを簡素化するためのメカニズムが最初からv3に実装されています。​アップデーターやエントリポイントの動作方法に大きな変更がない限り、理論的には、新規インストールを実行することなく、フロントエンド経由で完全にアップグレードできるはずです。
-
-より詳細な情報は、将来の適切な時期にドキュメントに追加される予定です。
 
 ---
 
 
-最終更新日：２０２５年９月１３日。
+最終更新日：２０２５年９月２０日。
