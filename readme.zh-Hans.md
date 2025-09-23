@@ -29,10 +29,15 @@ CIDRAM （无类别域间路由访问管理器）是一个PHP脚本，​旨在�
 - <https://www.gnu.org/licenses/>。
 - <https://opensource.org/licenses/>。
 
-现在CIDRAM的代码文件和关联包可以从以下地址免费下载：
-- [GitHub](https://github.com/CIDRAM/CIDRAM)。
-- [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
-- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
+CIDRAM可以从这里免费下载：
+- [GitHub](https://github.com/CIDRAM/CIDRAM).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+该文件及其各种翻译版本可在此处找到：
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2298,9 +2303,13 @@ v3与之前的主要版本之间存在显着差异。​特别是，入口点、
 
 5. 现在您可以更新其他所有内容。​返回更新页面。​如果您看到页面顶部的按钮，请单击更新一切。
 
--- to-do --
+6. 为确保没有任何损坏的文件并且一切正常，请单击“修复全部”。​这很少会成为一个实际问题，但最好还是谨慎行事。
+
+7. 返回备份页面。​选择导入，勾选配置和辅助规则的复选框，单击按钮选择文件，找到并选择您之前下载的备份，然后按“OK”导入该备份。​CIDRAM将根据需要自动调整以前主要版本备份中的任何辅助规则和配置，以适应导入的主要版本。
+
+8. 您已完成升级。​新的主要版本不会对签名文件、模块、或事件引入任何更改，因此您无需担心这些。​接下来，您可能需要简要浏览一下配置页面，因为新主要版本引入了更改（例如，对于新引入的功能）。
 
 ---
 
 
-最后更新：2025年9月22日。
+最后更新：2025年9月23日。

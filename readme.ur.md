@@ -31,10 +31,17 @@
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-<div dir="rtl">یہ دستاویز اور اس کے متعلقہ پیکجوں کے لیے مفت سے ڈاؤن لوڈ کیا جا سکتا ہے:</div>
-- <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
-- <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
-- <a dir="ltr" href="https://codeberg.org/Maikuolan/CIDRAM">Codeberg</a>.
+<div dir="rtl">CIDRAM یہاں سے آزادانہ طور پر ڈاؤن لوڈ کیا جا سکتا ہے:</div>
+
+- [GitHub](https://github.com/CIDRAM/CIDRAM).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+<div dir="rtl">یہ دستاویز اور اس کے مختلف تراجم یہاں مل سکتے ہیں:</div>
+
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2426,9 +2433,11 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 
 #### <div dir="rtl">۱۰.۲ CIDRAM v3 سے CIDRAM v4 میں اپ گریڈ کرنا<br /><br /></div>
 
+<div dir="rtl">۱. سب سے پہلے، اپ ڈیٹس کے صفحے پر جائیں، اور اگر کوئی اپ ڈیٹس دستیاب ہیں، تو ان سب کو انسٹال کرنا یقینی بنائیں. یہ اپ گریڈنگ کے لیے تمام ضروری کوڈ کی دستیابی کو یقینی بناتا ہے اور اپڈیٹر کے لیے درکار کام کی مقدار کو کم کرنے میں مدد کرتا ہے.<br /><br /></div>
+
 -- to-do --
 
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۷ ستمبر ۲۰۲۵ (۲۰۲۵.۰۹.۱۷).</div>
+<div dir="rtl">آخری تازہ کاری: ۲۳ ستمبر ۲۰۲۵ (۲۰۲۵.۰۹.۲۳).</div>

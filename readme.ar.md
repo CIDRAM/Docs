@@ -31,10 +31,17 @@
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-<div dir="rtl">هذا المستند و الحزم المرتبطة به يمكن تحميلها مجاناً من:</div>
-- <a dir="ltr" href="https://github.com/CIDRAM/CIDRAM">GitHub</a>.
-- <a dir="ltr" href="https://bitbucket.org/Maikuolan/cidram">Bitbucket</a>.
-- <a dir="ltr" href="https://codeberg.org/Maikuolan/CIDRAM">Codeberg</a>.
+<div dir="rtl">يمكن تنزيل CIDRAM مجانًا من هنا:</div>
+
+- [GitHub](https://github.com/CIDRAM/CIDRAM).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+<div dir="rtl">يمكن العثور على هذه الوثيقة وترجماتها المختلفة هنا:</div>
+
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2416,9 +2423,11 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 
 #### <div dir="rtl">١٠.٢ الترقية إلى CIDRAM v4 من CIDRAM v3<br /><br /></div>
 
+<div dir="rtl">١. أولاً، انتقل إلى صفحة التحديثات، وإذا كانت هناك أي تحديثات متوفرة، فتأكد من تثبيتها جميعها. يضمن هذا توفر أي كود قد يكون ضروريًا للتحديث ويساعد في تقليل ما يحتاج المحدث إلى القيام به لاحقًا.<br /><br /></div>
+
 -- to-do --
 
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٧ سبتمبر ٢٠٢٥ (٢٠٢٥.٠٩.١٧).</div>
+<div dir="rtl">آخر تحديث: ٢٣ سبتمبر ٢٠٢٥ (٢٠٢٥.٠٩.٢٣).</div>

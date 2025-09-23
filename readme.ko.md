@@ -29,10 +29,15 @@ CIDRAM (시도라무 클래스없는 도메인 간 라우팅 액세스 매니저
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-이 문서와 관련 패키지는 다음 링크에서 무료로 다운로드할 수 있습니다 :
+CIDRAM은 여기에서 무료로 다운로드할 수 있습니다 :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+이 문서와 다양한 번역본은 여기에서 확인할 수 있습니다 :
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2333,11 +2338,11 @@ v3부터, 모듈, 서명 파일, 및 이벤트에는 각각 고유한 전용 디
 
 1. 첫째, 프런트엔드 업데이트 페이지에서, 사용 가능한 업데이트가 있으면 모두 설치하세요. 이렇게 하면 업그레이드에 필요한 모든 코드를 사용할 수 있으며 업데이터에 필요한 작업량을 줄이는 데 도움이 됩니다.
 
-2. 프런트엔드 구성 페이지에서 __`frontend➡remotes`__를 찾으세요. 목록에서 `/v3/`를 `/v4/`로 변경하세요. 업데이트를 클릭하여 구성을 저장하세요. 이 변경 사항은 업데이트를 찾을 때 업데이터가 의도한 주요 버전을 대상으로 지정하도록 지시합니다.
+2. 프런트엔드 구성 페이지에서 __`frontend➡remotes`__ 를 찾으세요. 목록에서 `/v3/`를 `/v4/`로 변경하세요. 업데이트를 클릭하여 구성을 저장하세요. 이 변경 사항은 업데이트를 찾을 때 업데이터가 의도한 주요 버전을 대상으로 지정하도록 지시합니다.
 
 -- to-do --
 
 ---
 
 
-최종 업데이트 : 2025년 9월 20일.
+최종 업데이트 : 2025년 9월 23일.

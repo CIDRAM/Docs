@@ -29,10 +29,15 @@ Este script é livre software; você pode redistribuí-lo e/ou modificá-lo de a
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-Este documento e seu pacote associado pode ser baixado gratuitamente de:
+CIDRAM pode ser baixado gratuitamente aqui:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+Este documento e várias traduções dele podem ser encontrados aqui:
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2360,4 +2365,4 @@ Consulte o acima: Recomenda-se uma nova instalação.
 ---
 
 
-Última Atualização: 16 de Setembro de 2025 (2025.09.16).
+Última Atualização: 23 de Setembro de 2025 (2025.09.23).

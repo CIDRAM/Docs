@@ -29,10 +29,15 @@ Skrip ini adalah perangkat lunak gratis; Anda dapat mendistribusikan kembali dan
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-Dokumen ini dan paket terhubung di dalamnya dapat di unduh secara gratis dari:
+CIDRAM dapat diunduh gratis dari sini:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+Dokumen ini dan berbagai terjemahannya dapat ditemukan disini:
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2356,4 +2361,4 @@ Lihat di atas: Instalasi baru direkomendasikan.
 ---
 
 
-Terakhir Diperbarui: 17 September 2025 (2025.09.17).
+Terakhir Diperbarui: 23 September 2025 (2025.09.23).

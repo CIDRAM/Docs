@@ -29,10 +29,15 @@ CIDRAM（シドラム、​クラスレス・ドメイン間・ルーティン�
 - <https://www.gnu.org/licenses/>。
 - <https://opensource.org/licenses/>。
 
-本ドキュメントならびに関連パッケージは以下のＵＲＬからダウンロードできます。
-- [GitHub](https://github.com/CIDRAM/CIDRAM)。
-- [Bitbucket](https://bitbucket.org/Maikuolan/cidram)。
-- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM)。
+CIDRAMはここから無料でダウンロードできます：
+- [GitHub](https://github.com/CIDRAM/CIDRAM).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+この文書とそのさまざまな翻訳は、次の場所にあります：
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2310,15 +2315,15 @@ v3以降、モジュール、シグネチャ・ファイル、イベントには
 
 1. まず、フロントエンドのアップデート・ページで、利用可能な更新がある場合は、必ずすべてインストールしてください。​これにより、アップグレードに必要なすべてのコードが利用可能になり、アップデーターに必要な作業量が削減されます。
 
-2. フロントエンド・コンフィギュレーション・ページで、__`frontend➡remotes`__を探します。​リスト内の「`/v3/`」を「`/v4/`に変更します。​設定を保存するには、「アップデート」をクリックします。​この変更により、アップデーターは、アップデートを検索するときに、目的のメジャー・バージョンをターゲットにするように指示されます。
+2. フロントエンド・コンフィギュレーション・ページで、 __`frontend➡remotes`__ を探します。​リスト内の「`/v3/`」を「`/v4/`に変更します。​設定を保存するには、「アップデート」をクリックします。​この変更により、アップデーターは、アップデートを検索するときに、目的のメジャー・バージョンをターゲットにするように指示されます。
 
 3. バックアップをダウンロードするには、フロントエンド・バックアップ・ページで、「エクスポートして」を選択し、コンフィギュレーションと補助ルールのボックスにチェックを入れ、「ＯＫ」を押してください。​利用可能なコンフィギュレーションと補助ルール・システムにいくつか変更がありました。​たとえば、「ログを記録しない」アクションは補助ルールから削除されました（代わりに「ロギングを抑制する」オプションを使用して同じことを実現できます）。​これらの変更に対応するには、アップグレード後にこのバックアップをCIDRAMにインポートする必要があります（CIDRAMは必要に応じて補助ルールとコンフィギュレーションを自動的に調整します）。
 
-4. この時点で、フロントエンドのアップデート・ページに、新しいメジャー・バージョンのアップデートが表示されます。​To avoid timeouts, before updating all, first try updating just the CIDRAM core or the CIDRAM front-end (as both as mutual dependencies of each other, updating one should automatically update both anyhow).​As the page structure and CSS styling for the front-end has significantly changed between major versions, it may initially appear broken after updating; it isn't.​At any other front-end page and press Ctrl+F5 to try performing a hard-refresh (i.e., a refresh whereby the browser fetches a fresh copy of the CSS styling and other peripherals instead of relying on its cache).​The page structure and CSS styling should then appear correctly.​If it doesn't, try clearing your browser's cache.
+4. この時点で、フロントエンドのアップデート・ページに、新しいメジャー・バージョンのアップデートが表示されます。​To avoid timeouts, before updating all, first try updating just the CIDRAM core or the CIDRAM front-end (as both as mutual dependencies of each other, updating one should automatically update both anyhow).​Due to structure and style changes, the page may appear broken after updating; it isn't.​At any other front-end page and press Ctrl+F5 to try performing a hard-refresh (i.e., a refresh whereby the browser fetches a fresh copy of the CSS styling and other peripherals instead of relying on its cache).​The page structure and CSS styling should then appear correctly.​If it doesn't, try clearing your browser's cache.
 
 -- to-do --
 
 ---
 
 
-最終更新日：２０２５年９月２０日。
+最終更新日：２０２５年９月２３日。

@@ -29,10 +29,15 @@ Dit script is gratis software; u kunt, onder de voorwaarden van de GNU General P
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-Dit document en de bijbehorende pakket kunt gedownload gratis zijn van:
+CIDRAM kan hier gratis worden gedownload:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+Dit document en verschillende vertalingen ervan kan hier gevonden worden:
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2354,13 +2359,13 @@ Zie hierboven: Een nieuwe installatie wordt aanbevolen.
 
 #### 10.2 Upgraden naar CIDRAM v4 van CIDRAM v3
 
+1. Ga eerst naar de front-end updates pagina en zorg ervoor dat u alle beschikbare updates installeert. Hiermee wordt gegarandeerd dat code die recentelijk is geschreven en die nodig is voor het correct upgraden van hoofdversies is beschikbaar voor de updater. Bovendien wordt hiermee de hoeveelheid werk verminderd die de updater moet uitvoeren bij het later upgraden van hoofdversies.
+
+2. Ga naar de front-end configuratie pagina en zoek naar __`frontend➡remotes`__. Verander de `/v3/` in de lijst naar `/v4/`. Klik op bijwerken om uw configuratie op te slaan. Hiermee wordt de updater verteld dat hij op de juiste locatie naar updates moet zoeken.
+
 -- to-do --
-
-CIDRAM v4 bestaat nog niet. Wanneer het echter tijd is om te upgraden van v3 naar v4, zou het upgradeproces veel eenvoudiger moeten zijn. We zullen niet precies weten hoeveel verschil het zal zijn tot de tijd daar is, maar ik verwacht dat de verschillen veel kleiner zullen zijn dan voorheen, en mechanismen zijn vanaf het begin al in v3 geïmplementeerd om een soepeler upgradeproces te vergemakkelijken. Zolang er geen significante wijzigingen zijn in de updater of de manier waarop ingangspunten werken, zou het in theorie mogelijk moeten zijn om volledig via de front-end te upgraden, zonder dat een nieuwe installatie nodig is.
-
-Meer gedetailleerde informatie zal hier, in de documentatie, te zijner tijd in de toekomst worden opgenomen.
 
 ---
 
 
-Laatste Bijgewerkt: 13 September 2025 (2025.09.13).
+Laatste Bijgewerkt: 23 September 2025 (2025.09.23).

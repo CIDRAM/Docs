@@ -29,10 +29,15 @@ Bản này là chương trình miễn phí; bạn có thể phân phối lại h
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-Tài liệu này và các gói liên quan của nó có thể được tải về miễn phí từ:
+Bạn có thể tải xuống miễn phí CIDRAM từ đây:
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+Tài liệu này và nhiều bản dịch khác có thể được tìm thấy tại đây:
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2369,4 +2374,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2025.09.19.
+Lần cuối cập nhật: 2025.09.23.

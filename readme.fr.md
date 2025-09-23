@@ -29,10 +29,15 @@ Ce script est un logiciel libre ; vous pouvez redistribuer et/ou le modifier se
 - <https://www.gnu.org/licenses/>.
 - <https://opensource.org/licenses/>.
 
-Ce document et son associé paquet peuvent être téléchargé gratuitement à sans frais à partir de :
+CIDRAM peut être téléchargé gratuitement à partir d'ici :
 - [GitHub](https://github.com/CIDRAM/CIDRAM).
 - [Bitbucket](https://bitbucket.org/Maikuolan/cidram).
 - [Codeberg](https://codeberg.org/Maikuolan/CIDRAM).
+
+Ce document et diverses traductions de celui-ci peuvent être trouvés ici :
+- [GitHub](https://github.com/CIDRAM/Docs).
+- [Bitbucket](https://bitbucket.org/Maikuolan/cidram-docs).
+- [Codeberg](https://codeberg.org/Maikuolan/CIDRAM-Docs).
 
 ---
 
@@ -2349,7 +2354,7 @@ Il y a quelques changements subtils dans la façon dont les règles auxiliaires 
 
 #### 10.1 Mise à niveau vers CIDRAM v4 à partir d'une version antérieure à CIDRAM v3
 
-Voir ci-dessus : Une nouvelle installation est recommandée.
+Voir ci-dessus : Une nouvelle installation est recommandée.
 
 #### 10.2 Mise à niveau vers CIDRAM v4 à partir de CIDRAM v3
 
@@ -2372,4 +2377,4 @@ Voir ci-dessus : Une nouvelle installation est recommandée.
 ---
 
 
-Dernière mise à jour : 16 Septembre 2025 (2025.09.16).
+Dernière mise à jour : 23 Septembre 2025 (2025.09.23).
