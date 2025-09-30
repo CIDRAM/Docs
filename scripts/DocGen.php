@@ -58,6 +58,8 @@ if (!isset($_GET['language'])) {
                 ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
                 html_entity_decode($Out)
             );
+        } else {
+            $Out = preg_replace('~<code dir="ltr" class="s">([^<]+)</code>~i', '<strong><code dir="ltr">\1</code></strong>', html_entity_decode($Out));
         }
         if ($Try = $Data->getString('config.' . $Category . '_hint')) {
             if ($Data->Directionality !== 'rtl') {
@@ -66,6 +68,8 @@ if (!isset($_GET['language'])) {
                     ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
                     html_entity_decode($Try)
                 );
+            } else {
+                $Try = preg_replace('~<code dir="ltr" class="s">([^<]+)</code>~i', '<strong><code dir="ltr">\1</code></strong>', html_entity_decode($Try));
             }
             $Out .= "\n\n" . $Try;
         }
@@ -78,6 +82,8 @@ if (!isset($_GET['language'])) {
                     ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
                     html_entity_decode($Out)
                 );
+            } else {
+                $Out = preg_replace('~<code dir="ltr" class="s">([^<]+)</code>~i', '<strong><code dir="ltr">\1</code></strong>', html_entity_decode($Out));
             }
             if (in_array($Info['type'], ['duration', 'string', 'timezone', 'checkbox', 'url', 'email', 'kb'], true)) {
                 $Type = 'string';
@@ -148,6 +154,8 @@ if (!isset($_GET['language'])) {
                             ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
                             html_entity_decode($HintValue)
                         );
+                    } else {
+                        $HintValue = preg_replace('~<code dir="ltr" class="s">([^<]+)</code>~i', '<strong><code dir="ltr">\1</code></strong>', html_entity_decode($HintValue));
                     }
                     $Final .= $HintValue . "\n\n";
                 } else {
@@ -158,6 +166,8 @@ if (!isset($_GET['language'])) {
                                 ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
                                 html_entity_decode($HintValue)
                             );
+                        } else {
+                            $HintValue = preg_replace('~<code dir="ltr" class="s">([^<]+)</code>~i', '<strong><code dir="ltr">\1</code></strong>', html_entity_decode($HintValue));
                         }
                         if (!is_string($HintKey)) {
                             $Final .= $HintValue . "\n\n";
