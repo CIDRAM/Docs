@@ -2343,6 +2343,8 @@ Algunos de los archivos de firma, módulos, y listas de bloqueo disponibles púb
 
 Hay algunos cambios sutiles en la forma en que se estructuran las reglas auxiliares, y hay cambios en la configuración, pero si usa la función de importación/exportación en la página de copia de seguridad del front-end, no necesitará volver a escribir, ajustar, o recrear manualmente nada. Al importar, CIDRAM sabe lo que se necesita y lo manejará automáticamente.
 
+Para obtener una lista de los cambios introducidos por la v3 (por ejemplo, características agregadas, características eliminadas, etc), consulte el [registro de cambios de la v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Actualización a CIDRAM v4 desde una versión anterior a CIDRAM v3
 
 Consulte lo anterior: Se recomienda una nueva instalación.
@@ -2365,7 +2367,9 @@ Consulte lo anterior: Se recomienda una nueva instalación.
 
 8. Ahora que ha actualizado con éxito las versiones principales, es posible que desee explorar brevemente la página de configuración del front-end debido a los cambios introducidos por la nueva versión principal (por ejemplo, para las características recientemente introducidas). Dejando esto de lado, ya has completado la actualización. La nueva versión principal no introduce ningún cambio en los archivos de firma, módulos, o eventos, por lo que no necesita preocuparse por eso al actualizar.
 
+Para obtener una lista de los cambios introducidos por la v4 (por ejemplo, características agregadas, características eliminadas, etc), consulte el [registro de cambios de la v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
+
 ---
 
 
-Última Actualización: 23 de Septiembre de 2025 (2025.09.23).
+Última Actualización: 5 de Octubre de 2025 (2025.10.05).

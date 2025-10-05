@@ -2359,6 +2359,8 @@ Einige der für frühere Hauptversionen öffentlich verfügbaren Signaturdateien
 
 Es gibt einige subtile Änderungen an der Struktur der Hilfsregeln und an der Konfiguration, aber wenn Sie die Import/Export Funktionalität auf der Front-End-Datensicherung-Seite verwenden, müssen Sie nichts manuell umschreiben, anpassen, oder neu erstellen. Beim Import weiß CIDRAM, was benötigt wird, und erledigt dies automatisch für Sie.
 
+Eine Liste der mit v3 eingeführten Änderungen (z.B., hinzugefügte oder entfernte Funktionen) finden Sie im [Änderungsprotokoll von v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Upgrade auf CIDRAM v4 von einer Version vor CIDRAM v3
 
 Siehe oben: Eine Neuinstallation wird empfohlen.
@@ -2381,7 +2383,9 @@ Siehe oben: Eine Neuinstallation wird empfohlen.
 
 8. Nachdem Sie die Hauptversionen erfolgreich aktualisiert haben, möchten Sie möglicherweise aufgrund der durch die neue Hauptversion eingeführten Änderungen (z.B., für neu eingeführte Funktionalität) kurz die Konfigurationsseite des Front-Ends erkunden. Abgesehen davon haben Sie das Upgrade abgeschlossen. Die neue Hauptversion führt keine Änderungen an Signaturdateien, Modulen, oder Ereignissen ein, also müssen Sie dir darüber keine Sorgen machen.
 
+Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfernte Funktionen) finden Sie im [Änderungsprotokoll von v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
+
 ---
 
 
-Zuletzt aktualisiert: 23. September 2025 (2025.09.23).
+Zuletzt aktualisiert: 5. Oktober 2025 (2025.10.05).

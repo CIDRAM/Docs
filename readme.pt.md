@@ -2340,6 +2340,8 @@ Alguns dos arquivos de assinatura, módulos, e listas de bloqueio disponíveis p
 
 Há algumas mudanças sutis na forma como as regras auxiliares são estruturadas, e há mudanças na configuração, mas se você usar o recurso de importação/exportação na página de backup do front-end, não precisará reescrever, ajustar, ou recriar qualquer coisa. Ao importar, o CIDRAM sabe o que é necessário e cuidará disso para você automaticamente.
 
+Para uma lista das alterações introduzidas pela v3 (por exemplo, recursos adicionados, recursos removidos, etc), consulte o [changelog da v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Atualizando para o CIDRAM v4 de uma versão anterior ao CIDRAM v3
 
 Consulte o acima: Recomenda-se uma nova instalação.
@@ -2361,6 +2363,8 @@ Consulte o acima: Recomenda-se uma nova instalação.
 7. Vá para a página de backup do front-end. Selecione importar, marque as caixas de configuração e regras auxiliares, clique no botão para selecionar um arquivo, localize e selecione o backup que você baixou anteriormente, e pressione OK para importar esse backup. CIDRAM ajustará automaticamente quaisquer regras auxiliares e configurações dentro de backups de versões principais anteriores, conforme necessário, para acomodar a versão principal que está sendo importada.
 
 8. Agora que você atualizou as versões principais com sucesso, talvez você queira explorar brevemente a página de configuração do front-end devido às alterações introduzidas pela nova versão principal (por exemplo, para funcionalidade recém-introduzidos). Deixando isso de lado, você concluiu a atualização. A nova versão principal não introduz nenhuma alteração nos arquivos de assinatura, módulos, ou eventos, e assim, você não precisa se preocupar com isso ao atualizar.
+
+Para uma lista das alterações introduzidas pela v4 (por exemplo, recursos adicionados, recursos removidos, etc), consulte o [changelog da v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
 
 ---
 

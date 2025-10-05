@@ -2353,6 +2353,8 @@ Sommige signatuurbestanden, modules, en blokkeerlijsten die openbaar beschikbaar
 
 Er zijn enkele subtiele wijzigingen in de manier waarop aanvullende regels zijn gestructureerd en er zijn wijzigingen in de configuratie, maar als u de import/export functie op de front-end back-up-pagina gebruikt, hoeft u niets handmatig te herschrijven, aan te passen, of opnieuw te maken. Bij het importeren weet CIDRAM wat er nodig is en regelt het automatisch voor u.
 
+Raadpleeg het [v3-changelog](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300) voor een lijst met de wijzigingen die door v3 zijn geïntroduceerd (b.v., toegevoegde functies, verwijderde functies, enz).
+
 #### 10.1 Upgraden naar CIDRAM v4 vanaf een versie ouder dan CIDRAM v3
 
 Zie hierboven: Een nieuwe installatie wordt aanbevolen.
@@ -2375,7 +2377,9 @@ Zie hierboven: Een nieuwe installatie wordt aanbevolen.
 
 8. Nu u de hoofdversies succesvol hebt geüpgraded, wilt u wellicht kort de front-end configuratie-pagina bekijken vanwege de wijzigingen die zijn doorgevoerd door de nieuwe hoofdversie (b.v., voor nieuw geïntroduceerde functies). Dat terzijde, u hebt de upgrade voltooid. De nieuwe hoofdversie brengt geen wijzigingen aan in signatuurbestanden, modules, of gebeurtenissen, zo u hoeft zich daarover geen zorgen te maken bij een upgrade.
 
+Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400) voor een lijst met de wijzigingen die door v4 zijn geïntroduceerd (b.v., toegevoegde functies, verwijderde functies, enz).
+
 ---
 
 
-Laatste Bijgewerkt: 30 September 2025 (2025.09.30).
+Laatste Bijgewerkt: 5 Oktober 2025 (2025.10.05).

@@ -2352,6 +2352,8 @@ Certains des fichiers de signature, des modules, et des listes de blocage dispon
 
 Il y a quelques changements subtils dans la façon dont les règles auxiliaires sont structurées, et il y a des changements dans la configuration, mais si vous utilisez la fonction d'importation/exportation sur la page de sauvegarde de données frontale, vous n'aurez pas besoin de réécrire, d'ajuster, ou de recréer n'importe quoi. Lors de l'importation, CIDRAM sait ce dont vous avez besoin et le gère automatiquement pour vous.
 
+Pour une liste des modifications introduites par la v3 (par exemple, fonctionnalités ajoutées, fonctionnalités supprimées, etc), reportez-vous au [journal des modifications de la v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Mise à niveau vers CIDRAM v4 à partir d'une version antérieure à CIDRAM v3
 
 Voir ci-dessus : Une nouvelle installation est recommandée.
@@ -2374,7 +2376,9 @@ Voir ci-dessus : Une nouvelle installation est recommandée.
 
 8. Maintenant que vous avez mis à niveau avec succès les versions majeures, vous souhaiterez peut-être explorer brièvement la page de configuration frontale en raison des modifications introduites par la nouvelle version majeure (par exemple, pour les fonctionnalités nouvellement introduites). Cela mis à part, vous avez terminé la mise à niveau. La nouvelle version majeure n'introduit aucune modification dans les fichiers de signature, les modules, ou les événements, donc vous n'avez besoin pas à vous en soucier à ce sujet pour la mise à niveau.
 
+Pour une liste des modifications introduites par la v4 (par exemple, fonctionnalités ajoutées, fonctionnalités supprimées, etc), reportez-vous au [journal des modifications de la v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
+
 ---
 
 
-Dernière mise à jour : 23 Septembre 2025 (2025.09.23).
+Dernière mise à jour : 5 Octobre 2025 (2025.10.05).

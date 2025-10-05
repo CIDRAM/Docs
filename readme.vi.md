@@ -2167,7 +2167,7 @@ Loại nhật ký chính mà CIDRAM có thể thực hiện liên quan đến "s
 - Tập tin nhật ký trong kiểu Apache.
 - Tập tin nhật ký được tuần tự hóa.
 
-sự kiện chặn, được ghi vào tập tin nhật ký mà có thể được đọc bởi con người, thường trông giống như sau (ví dụ):
+Sự kiện chặn, được ghi vào tập tin nhật ký mà có thể được đọc bởi con người, thường trông giống như sau (ví dụ):
 
 ```
 ID: 1234
@@ -2189,7 +2189,7 @@ Cùng một sự kiện chặn, được ghi vào tập tin nhật ký trong ki�
 x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
 ```
 
-sự kiện chặn đã nhật ký thường bao gồm thông tin sau:
+Sự kiện chặn đã nhật ký thường bao gồm thông tin sau:
 - Một số ID tham chiếu đến sự kiện chặn.
 - Phiên bản CIDRAM hiện đang được sử dụng.
 - Ngày và giờ xảy ra sự kiện chặn.
@@ -2349,6 +2349,8 @@ Một số tập tin chữ ký, mô-đun, và danh sách chặn có sẵn công 
 
 Có một số thay đổi tinh tế đối với cách cấu trúc các quy tắc phụ trợ và có những thay đổi đối với cấu hình, nhưng nếu bạn sử dụng tính năng nhập/xuất tại trang sao lưu front-end, thì bạn sẽ không cần phải viết lại, điều chỉnh, hoặc tạo lại bất kỳ thứ gì theo cách thủ công. Khi nhập, CIDRAM biết những gì cần thiết và sẽ tự động xử lý cho bạn.
 
+Để biết danh sách các thay đổi được giới thiệu trong v3 (ví dụ, tính năng được thêm vào, tính năng bị xóa, vv), hãy tham khảo [nhật ký thay đổi v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Nâng cấp lên CIDRAM v4 từ phiên bản cũ hơn CIDRAM v3
 
 Xem ở trên: Nên cài đặt mới.
@@ -2370,6 +2372,8 @@ Xem ở trên: Nên cài đặt mới.
 7. Quay lại trang sao lưu. Chọn nhập, đánh dấu vào ô cho cấu hình và quy tắc phụ trợ, nhấp vào nút để chọn chọn tập tin, định vị và chọn bản sao lưu bạn đã tải xuống trước đó, rồi nhấn OK để nhập bản sao lưu đó. CIDRAM sẽ tự động điều chỉnh mọi quy tắc bổ trợ và cấu hình trong bản sao lưu từ các phiên bản chính trước đó nếu cần để phù hợp với phiên bản chính đang được nhập vào.
 
 8. Bạn đã hoàn tất việc nâng cấp. Phiên bản chính mới không đưa ra bất kỳ thay đổi nào đối với tập tin chữ ký, mô-đun, hoặc sự kiện, do đó bạn không cần phải lo lắng về điều đó khi nâng cấp. Tiếp theo, bạn có thể muốn khám phá sơ qua trang cấu hình do những thay đổi được đưa ra trong phiên bản chính mới (ví dụ, đối với các tính năng mới được giới thiệu).
+
+Để biết danh sách các thay đổi được giới thiệu trong v4 (ví dụ, tính năng được thêm vào, tính năng bị xóa, vv), hãy tham khảo [nhật ký thay đổi v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
 
 ---
 

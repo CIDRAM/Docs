@@ -2336,6 +2336,8 @@ Beberapa file tanda tangan, modul, dan daftar blokir yang tersedia untuk umum un
 
 Ada beberapa perubahan halus pada struktur aturan tambahan, dan ada perubahan pada konfigurasi, tetapi jika Anda menggunakan fitur impor/ekspor di halaman pencadangan front-end, Anda tidak perlu menulis ulang, menyesuaikan, atau membuat ulang apapun secara manual. Saat mengimpor, CIDRAM mengetahui apa yang dibutuhkan, dan akan menanganinya untuk Anda secara otomatis.
 
+Untuk daftar perubahan yang diperkenalkan oleh v3 (misalnya, fitur yang ditambahkan, fitur yang dihapus, dll), lihat [changelog v3](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Memutakhirkan ke CIDRAM v4 dari versi sebelum CIDRAM v3
 
 Lihat di atas: Instalasi baru direkomendasikan.
@@ -2358,7 +2360,9 @@ Lihat di atas: Instalasi baru direkomendasikan.
 
 8. Sekarang setelah Anda berhasil memutakhirkan versi utama, Anda mungkin ingin menjelajahi sebentar halaman konfigurasi front-end karena perubahan yang diperkenalkan oleh versi utama baru (misalnya, untuk fitur yang baru diperkenalkan). Selain ini, Anda telah menyelesaikan pemutakhiran. Versi utama yang baru tidak memperkenalkan perubahan apapun pada file tanda tangan, modul, atau acara, jadi Anda tidak perlu mengkhawatirkan hal ini saat melakukan pemutakhiran.
 
+Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambahkan, fitur yang dihapus, dll), lihat [changelog v4](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
+
 ---
 
 
-Terakhir Diperbarui: 23 September 2025 (2025.09.23).
+Terakhir Diperbarui: 5 Oktober 2025 (2025.10.05).

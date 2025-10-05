@@ -2341,6 +2341,8 @@ Some of the signature files, modules, and blocklists publicly available for prev
 
 There are some subtle changes to the way auxiliary rules are structured, and there are changes to the configuration, but if you use the import/export feature at the front-end backup page, you won't need to manually rewrite, adjust, or recreate anything. When importing, CIDRAM knows what's needed, and will handle it for you automatically.
 
+For a list of the changes introduced by v3 (e.g., features added, features removed, etc), refer to the [v3 changelog](https://github.com/CIDRAM/CIDRAM/blob/v3/Changelog.md#v300).
+
 #### 10.1 Upgrading to CIDRAM v4 from a version earlier than CIDRAM v3
 
 Refer to the above: A fresh installation is recommended.
@@ -2363,7 +2365,9 @@ Refer to the above: A fresh installation is recommended.
 
 8. Now that you've successfully upgraded major versions, you may want to briefly explore the front-end configuration page due to the changes introduced by the new major version (e.g., for newly introduced features). That aside, you've finished the upgrade. The new major version doesn't introduce any changes to signature files, modules, or events, so you don't need to worry about that for upgrading.
 
+For a list of the changes introduced by v4 (e.g., features added, features removed, etc), refer to the [v4 changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.md#v400).
+
 ---
 
 
-Last Updated: 23 September 2025 (2025.09.23).
+Last Updated: 5 October 2025 (2025.10.05).
