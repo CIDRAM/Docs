@@ -1504,7 +1504,7 @@ Expires: 2016.12.31
 
 ##### 6.1.3 ETIQUETAS DE DEFERÊNCIA
 
-Quando um grande número de arquivos de assinatura é instalado e usado ativamente, as instalações podem se tornar bastante complexas, e pode haver algumas assinaturas que se sobrepõem. Nestes casos, a fim de evitar que várias assinaturas sobrepostas sejam desencadeados durante eventos de bloco, etiquetas de deferência podem ser usadas para diferir seções de assinatura específicas nos casos em que algum outro arquivo de assinatura específico é instalado e usado ativamente. Isso pode ser útil nos casos em que algumas assinaturas são atualizadas com mais freqüência do que outras, a fim de diferir as assinaturas atualizadas com menos frequência em favor das assinaturas atualizadas com maior frequência.
+Quando um grande número de arquivos de assinatura é instalado e usado ativamente, as instalações podem se tornar bastante complexas, e pode haver algumas assinaturas que se sobrepõem. Nestes casos, a fim de evitar que várias assinaturas sobrepostas sejam desencadeados durante eventos de bloqueio, etiquetas de deferência podem ser usadas para diferir seções de assinatura específicas nos casos em que algum outro arquivo de assinatura específico é instalado e usado ativamente. Isso pode ser útil nos casos em que algumas assinaturas são atualizadas com mais freqüência do que outras, a fim de diferir as assinaturas atualizadas com menos frequência em favor das assinaturas atualizadas com maior frequência.
 
 As etiquetas de deferência são usadas de forma semelhante a outros tipos de etiquetas. O valor da etiqueta deve corresponder a um arquivo de assinatura instalado e usado ativamente para ser diferido.
 
@@ -2365,4 +2365,4 @@ Consulte o acima: Recomenda-se uma nova instalação.
 ---
 
 
-Última Atualização: 23 de Setembro de 2025 (2025.09.23).
+Última Atualização: 5 de Outubro de 2025 (2025.10.05).

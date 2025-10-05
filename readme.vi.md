@@ -1519,7 +1519,7 @@ Expires: 2016.12.31
 
 ##### 6.1.3 GẮN THẺ TRÌ HOÃN
 
-Khi số lượng lớn các tập tin chữ ký được cài đặt và sử dụng, cài đặt có thể trở nên khá phức tạp, và có thể có một số chữ ký chồng lên nhau. Trong những trường hợp này, để ngăn chặn nhiều chữ ký chồng chéo được kích hoạt trong các sự kiện khối, gắn thẻ trì hoãn có thể được sử dụng để trì hoãn các phần chữ ký cụ thể trong trường hợp một số tập tin chữ ký cụ thể khác được cài đặt và sử dụng. Điều này có thể hữu ích trong trường hợp một số chữ ký được cập nhật thường xuyên hơn các chữ ký khác, để trì hoãn các chữ ký ít được cập nhật thường xuyên hơn với các chữ ký được cập nhật thường xuyên hơn.
+Khi số lượng lớn các tập tin chữ ký được cài đặt và sử dụng, cài đặt có thể trở nên khá phức tạp, và có thể có một số chữ ký chồng lên nhau. Trong những trường hợp này, để ngăn chặn nhiều chữ ký chồng chéo được kích hoạt trong các sự kiện chặn, gắn thẻ trì hoãn có thể được sử dụng để trì hoãn các phần chữ ký cụ thể trong trường hợp một số tập tin chữ ký cụ thể khác được cài đặt và sử dụng. Điều này có thể hữu ích trong trường hợp một số chữ ký được cập nhật thường xuyên hơn các chữ ký khác, để trì hoãn các chữ ký ít được cập nhật thường xuyên hơn với các chữ ký được cập nhật thường xuyên hơn.
 
 Gắn thẻ trì hoãn được sử dụng tương tự như các loại thẻ khác. Giá trị của thẻ phải khớp với tập tin chữ ký được cài đặt và sử dụng để bị trì hoãn.
 
@@ -2167,7 +2167,7 @@ Loại nhật ký chính mà CIDRAM có thể thực hiện liên quan đến "s
 - Tập tin nhật ký trong kiểu Apache.
 - Tập tin nhật ký được tuần tự hóa.
 
-Sự kiện khối, được ghi vào tập tin nhật ký mà có thể được đọc bởi con người, thường trông giống như sau (ví dụ):
+sự kiện chặn, được ghi vào tập tin nhật ký mà có thể được đọc bởi con người, thường trông giống như sau (ví dụ):
 
 ```
 ID: 1234
@@ -2183,21 +2183,21 @@ URI được xây dựng lại: https://your-site.tld/index.php
 Tình trạng CAPTCHA: Trên.
 ```
 
-Cùng một sự kiện khối, được ghi vào tập tin nhật ký trong kiểu Apache, sẽ trông giống như sau:
+Cùng một sự kiện chặn, được ghi vào tập tin nhật ký trong kiểu Apache, sẽ trông giống như sau:
 
 ```
 x.x.x.x - - [Day, dd Mon 20xx hh:ii:ss +0000] "GET /index.php HTTP/1.1" 200 xxxx "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
 ```
 
-Sự kiện khối đã nhật ký thường bao gồm thông tin sau:
-- Một số ID tham chiếu đến sự kiện khối.
+sự kiện chặn đã nhật ký thường bao gồm thông tin sau:
+- Một số ID tham chiếu đến sự kiện chặn.
 - Phiên bản CIDRAM hiện đang được sử dụng.
 - Ngày và giờ xảy ra sự kiện chặn.
 - Địa chỉ IP của yêu cầu bị chặn.
 - Tên máy chủ của địa chỉ IP của yêu cầu bị chặn (nếu có).
 - Số lượng chữ ký được kích hoạt bởi yêu cầu.
 - Tham chiếu đến chữ ký được kích hoạt.
-- Tham khảo các lý do cho sự kiện khối và một số thông tin gỡ rối cơ bản liên quan.
+- Tham khảo các lý do cho sự kiện chặn và một số thông tin gỡ rối cơ bản liên quan.
 - Đại lý người dùng của yêu cầu bị chặn (danh tính của thực thể yêu cầu).
 - Việc xây dựng lại số nhận dạng cho tài nguyên được yêu cầu ban đầu.
 - Trạng thái CAPTCHA cho yêu cầu hiện tại (khi có liên quan).
@@ -2374,4 +2374,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2025.09.23.
+Lần cuối cập nhật: 2025.10.05.
