@@ -2365,7 +2365,7 @@ Zie hierboven: Een nieuwe installatie wordt aanbevolen.
 
 2. Ga naar de front-end configuratie pagina en zoek naar __`frontend➡remotes`__. Verander de `/v3/` in de lijst naar `/v4/`. Klik op bijwerken om uw configuratie op te slaan. Hiermee wordt de updater verteld dat hij op de juiste locatie naar updates moet zoeken.
 
-3. Ga naar de front-end back-up pagina. Selecteer exporteer, vink de vakjes voor configuratie en aanvullende regels, aan en druk op OK om een ​​back-up van uw huidige configuratie en aanvullende regels te downloaden. Er zijn enkele wijzigingen aangebracht in de beschikbare configuratie en in het systeem van aanvullende regels. B.v., de actie "log niet het verzoek" is verwijderd uit de aanvullende regels (de optie "onderdrukken logboekregistratie" kan in plaats daarvan worden gebruikt om hetzelfde te bereiken). U moet deze back-up na de upgrade importeren naar CIDRAM zodat CIDRAM uw aanvullende regels en configuratie indien nodig kan aanpassen om deze wijzigingen.
+3. Ga naar de front-end back-up pagina. Selecteer exporteer, vink de selectievakjes voor configuratie, statistieken, en aanvullende regels aan, en druk vervolgens op OK om een ​​back-up te downloaden. Er zijn enkele wijzigingen. B.v., de actie "log niet het verzoek" is verwijderd uit de aanvullende regels (de optie "onderdrukken logboekregistratie" kan in plaats daarvan worden gebruikt om hetzelfde te bereiken). U moet deze back-up na de upgrade importeren naar CIDRAM.
 
 4. Ga terug naar de front-end updates pagina. Updates voor de nieuwe hoofdversie zouden nu moeten verschijnen. Om time-outs te voorkomen, eerst proberen om alleen de CIDRAM Core of de CIDRAM Front-End bij te werken voordat u alles bijwerkt (omdat beide afhankelijk zijn van elkaar, bijwerken van één ervan sowieso automatisch beide moeten bijwerken). Omdat de paginastructuur en CSS-stijl voor de front-end aanzienlijk zijn gewijzigd tussen de grote versies, na de update kan het in eerste instantie kapot lijken. Dat is niet het geval. Ga naar een andere front-end pagina en druk op Ctrl+F5 om een ​​harde vernieuwing uit te voeren (dat wil zeggen een vernieuwing waarbij de browser een nieuwe kopie van de CSS-stijl en andere randapparatuur ophaalt in plaats van te vertrouwen op de cache). De paginastructuur en CSS-stijl zouden dan correct moeten verschijnen. Als dat niet het geval is, probeer dan de cache van uw browser te wissen.
 
@@ -2373,7 +2373,7 @@ Zie hierboven: Een nieuwe installatie wordt aanbevolen.
 
 6. Om er zeker van te zijn dat er geen slechte updates of corrupte bestanden in de installatie zitten en dat alles in orde is, klikt u op repareren alles. Dit zal zelden een echt probleem zijn, maar het is beter om het zekere voor het onzekere te nemen.
 
-7. Ga terug naar de front-end back-up pagina. Selecteer importeer, vink de vakjes voor configuratie en aanvullende regels aan, klik op de knop om een ​​bestand te selecteren, zoek en selecteer de back-up die u eerder hebt gedownload, en druk op OK om die back-up te importeren. CIDRAM past automatisch alle aanvullende regels en configuraties in back-ups van eerdere hoofdversies aan, indien nodig, om rekening te houden met de hoofdversie die wordt geïmporteerd.
+7. Ga terug naar de front-end back-up pagina. Selecteer importeer, vink de selectievakjes voor configuratie, statistieken, en aanvullende regels aan, klik op de knop om een ​​bestand te selecteren, zoek en selecteer de back-up die u eerder hebt gedownload, en druk op OK om die back-up te importeren. CIDRAM voert automatisch de benodigde aanpassingen uit om de wijzigingen door te voeren.
 
 8. Nu u de hoofdversies succesvol hebt geüpgraded, wilt u wellicht kort de front-end configuratie-pagina bekijken vanwege de wijzigingen die zijn doorgevoerd door de nieuwe hoofdversie (b.v., voor nieuw geïntroduceerde functies). Dat terzijde, u hebt de upgrade voltooid. De nieuwe hoofdversie brengt geen wijzigingen aan in signatuurbestanden, modules, of gebeurtenissen, zo u hoeft zich daarover geen zorgen te maken bij een upgrade.
 
@@ -2382,4 +2382,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 5 Oktober 2025 (2025.10.05).
+Laatste Bijgewerkt: 9 Oktober 2025 (2025.10.09).

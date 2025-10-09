@@ -2371,7 +2371,7 @@ Siehe oben: Eine Neuinstallation wird empfohlen.
 
 2. Gehen Sie zur Konfigurationsseite des Front-Ends und suchen Sie nach __`frontend➡remotes`__. Ändern Sie in der Liste das `/v3/` in `/v4/`. Klicken Sie auf „Aktualisieren“ um Ihre Konfiguration zu speichern. Diese Änderung weist den Updater an, bei der Suche nach Updates auf die gewünschte Hauptversion abzuzielen.
 
-3. Gehen Sie zur Datensicherung-Seite des Front-Ends. Wählen Sie „Exportieren“, aktivieren Sie die Kontrollkästchen für Konfiguration und Hilfsregeln, und drücken Sie „OK“ um eine Sicherung Ihrer aktuellen Konfiguration und Hilfsregeln herunterzuladen. Es wurden einige Änderungen an der verfügbaren Konfiguration und dem System der Hilfsregeln vorgenommen. z.B., die Aktion „nicht protokollieren“ aus den Hilfsregeln entfernt (die Option „Protokollierung unterdrücken“ kann stattdessen verwendet werden um dasselbe zu erreichen). Sie müssen diese Sicherung nach dem Upgrade wieder in CIDRAM importieren damit CIDRAM Ihre Hilfsregeln und Konfigurationen nach Bedarf anpassen kann um diese Änderungen zu berücksichtigen.
+3. Gehen Sie zur Datensicherung-Seite des Front-Ends. Wählen Sie „Exportieren“, aktivieren Sie die Kontrollkästchen für die Konfiguration, für die Statistik, und für die Hilfsregeln, und drücken Sie anschließend „OK“ um ein Backup herunterzuladen. Es hat einige Änderungen gegeben. z.B., die Aktion „nicht protokollieren“ aus den Hilfsregeln entfernt (die Option „Protokollierung unterdrücken“ kann stattdessen verwendet werden um dasselbe zu erreichen). Sie müssen diese Sicherung nach dem Upgrade wieder in CIDRAM importieren.
 
 4. Gehen Sie zurück zur Aktualisierungen-Seite des Front-Ends. Aktualisierungen für die neue Hauptversion sollte erscheinen. Um Zeitüberschreitungen zu vermeiden, versuchen Sie vor der Aktualisierung aller Komponenten zunächst nur den CIDRAM Core oder das CIDRAM Front-End zu aktualisieren (da beide voneinander abhängig sind, sollte die Aktualisierung eines davon automatisch beide aktualisieren). Da sich die Seitenstruktur und das CSS-Styling für das Front-End zwischen den Hauptversionen erheblich geändert haben, kann es nach der Aktualisierung zunächst so aussehen als ob es nicht funktioniert; das ist jedoch nicht der Fall. Gehen Sie zu einer beliebigen anderen Front-End-Seite und drücken Sie Strg+F5 um einen Hard-Refresh durchzuführen (d.h., eine Aktualisierung bei der der Browser eine neue Kopie des CSS-Stylings und anderer Peripheriegeräte abruft, anstatt sich auf seinen Cache zu verlassen). Die Seitenstruktur und das CSS-Styling sollten dann korrekt angezeigt werden. Wenn dies nicht der Fall ist, leeren Sie den Cache Ihres Browsers.
 
@@ -2379,7 +2379,7 @@ Siehe oben: Eine Neuinstallation wird empfohlen.
 
 6. Um sicherzustellen dass keine fehlerhaften Aktualisierungen oder beschädigten Dateien in der Installation und dass alles so ist wie es sein sollte, klicken Sie auf „Reparieren alles“. Dies dürfte nur sehr selten ein tatsächliches Problem darstellen, aber es ist besser auf Nummer sicher zu gehen.
 
-7. Gehen Sie zurück zur Datensicherung-Seite des Front-Ends. Wählen Sie „Importieren“, aktivieren Sie die Kontrollkästchen für Konfiguration und Hilfsregeln, klicken Sie auf die Schaltfläche um eine Datei auszuwählen, suchen und wählen Sie die zuvor heruntergeladene Sicherung aus, und drücken Sie „OK“ um diese Sicherung zu importieren. CIDRAM passt alle Hilfsregeln und Konfigurationen in Sicherungen früherer Hauptversionen automatisch nach Bedarf an um sie an die Hauptversion in die importiert wird anzupassen.
+7. Gehen Sie zurück zur Datensicherung-Seite des Front-Ends. Wählen Sie „Importieren“, aktivieren Sie die Kontrollkästchen für die Konfiguration, für die Statistik, und für die Hilfsregeln, klicken Sie auf die Schaltfläche um eine Datei auszuwählen, suchen und wählen Sie die zuvor heruntergeladene Sicherung aus, und drücken Sie „OK“ um diese Sicherung zu importieren. CIDRAM nimmt automatisch alle erforderlichen Anpassungen basierend auf den Änderungen vor.
 
 8. Nachdem Sie die Hauptversionen erfolgreich aktualisiert haben, möchten Sie möglicherweise aufgrund der durch die neue Hauptversion eingeführten Änderungen (z.B., für neu eingeführte Funktionalität) kurz die Konfigurationsseite des Front-Ends erkunden. Abgesehen davon haben Sie das Upgrade abgeschlossen. Die neue Hauptversion führt keine Änderungen an Signaturdateien, Modulen, oder Ereignissen ein, also müssen Sie dir darüber keine Sorgen machen.
 
@@ -2388,4 +2388,4 @@ Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfer
 ---
 
 
-Zuletzt aktualisiert: 5. Oktober 2025 (2025.10.05).
+Zuletzt aktualisiert: 9. Oktober 2025 (2025.10.09).

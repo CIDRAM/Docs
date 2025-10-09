@@ -2352,7 +2352,7 @@ Consulte o acima: Recomenda-se uma nova instalação.
 
 2. Vá para a página de configuração do front-end e procure por __`frontend➡remotes`__. Na lista, onde você vê `/v3/`, altere-o para `/v4/`. Clique em atualizar para salvar sua configuração. Essa alteração informa ao atualizador para direcionar a versão principal pretendida ao procurar por atualizações.
 
-3. Vá para a página de backup do front-end. Selecione exportar, marque as caixas de configuração e regras auxiliares, e pressione OK para baixar um backup atual da sua configuração e regras auxiliares. Houve algumas mudanças na configuração disponível e no sistema de regras auxiliares. Por exemplo, a ação "não registrar" foi removida das regras auxiliares (a opção "suprimir o registro" pode ser usada para obter o mesmo resultado). Você precisará importar esse backup de volta para o CIDRAM após a atualização para que o CIDRAM possa ajustar suas regras auxiliares e configuração conforme necessário para acomodar essas alterações.
+3. Vá para a página de backup do front-end. Selecione exportar, marque as caixas de seleção para configuração, estatísticas, e regras auxiliares, e pressione OK para baixar um backup. Houve algumas mudanças. Por exemplo, a ação "não registrar" foi removida das regras auxiliares (a opção "suprimir o registro" pode ser usada para obter o mesmo resultado). Você precisará importar esse backup de volta para CIDRAM após a atualização.
 
 4. Vá para a página de atualizações do front-end. As atualizações para a nova versão principal devem aparecer agora. Para evitar tempos limite, antes de atualizar tudo, tente atualizar apenas o core do CIDRAM ou o front-end do CIDRAM (como ambos são dependências mútuas, atualizar um deve atualizar ambos automaticamente de qualquer forma). Como a estrutura da página e o estilo CSS do front-end mudaram significativamente entre as versões principais, eles podem inicialmente parecer quebrados após a atualização; não são. Vá para qualquer outra página do front-end e pressione Ctrl+F5 para tentar executar uma atualização completa (ou seja, uma atualização em que o navegador busca uma nova cópia do estilo CSS e outros periféricos em vez de depender do cache). A estrutura da página e o estilo CSS devem então aparecer corretamente. Caso isso não aconteça, tente limpar o cache do seu navegador.
 
@@ -2360,7 +2360,7 @@ Consulte o acima: Recomenda-se uma nova instalação.
 
 6. Para garantir que não haja nenhuma atualização ruim, passada ou presente, ou arquivos corrompidos na instalação, e para garantir que tudo esteja como deveria, clique em reparar tudo. Muito raramente isso deve se tornar um problema real, mas é melhor jogar pelo seguro.
 
-7. Vá para a página de backup do front-end. Selecione importar, marque as caixas de configuração e regras auxiliares, clique no botão para selecionar um arquivo, localize e selecione o backup que você baixou anteriormente, e pressione OK para importar esse backup. CIDRAM ajustará automaticamente quaisquer regras auxiliares e configurações dentro de backups de versões principais anteriores, conforme necessário, para acomodar a versão principal que está sendo importada.
+7. Vá para a página de backup do front-end. Selecione importar, marque as caixas de seleção para configuração, estatísticas, e regras auxiliares, clique no botão para selecionar um arquivo, localize e selecione o backup que você baixou anteriormente, e pressione OK para importar esse backup. CIDRAM executará automaticamente quaisquer ajustes necessários para acomodar as alterações.
 
 8. Agora que você atualizou as versões principais com sucesso, talvez você queira explorar brevemente a página de configuração do front-end devido às alterações introduzidas pela nova versão principal (por exemplo, para funcionalidade recém-introduzidos). Deixando isso de lado, você concluiu a atualização. A nova versão principal não introduz nenhuma alteração nos arquivos de assinatura, módulos, ou eventos, e assim, você não precisa se preocupar com isso ao atualizar.
 
@@ -2369,4 +2369,4 @@ Para uma lista das alterações introduzidas pela v4 (por exemplo, recursos adic
 ---
 
 
-Última Atualização: 5 de Outubro de 2025 (2025.10.05).
+Última Atualização: 9 de Outubro de 2025 (2025.10.09).

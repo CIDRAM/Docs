@@ -2348,7 +2348,7 @@ Lihat di atas: Instalasi baru direkomendasikan.
 
 2. Buka halaman konfigurasi front-end dan cari __`frontend➡remotes`__. Dalam daftar, dimana Anda melihat `/v3/`, ubahlah ke `/v4/`. Klik memperbarui untuk menyimpan konfigurasi Anda. Perubahan ini memberi tahu pembaru untuk menargetkan versi utama yang dituju saat mencari pembaruan.
 
-3. Buka halaman pencadangan front-end. Pilih ekspor, centang kotak untuk konfigurasi dan aturan tambahan, lalu klik OK untuk mengunduh cadangan untuk konfigurasi dan aturan tambahan Anda. Ada beberapa perubahan pada konfigurasi yang tersedia dan pada sistem aturan tambahan. Misalnya, tindakan "jangan catat" telah dihapus dari aturan tambahan (opsi "menekan catatan" dapat digunakan sebagai gantinya untuk mencapai hal yang sama). Anda perlu mengimpor cadangan ini kembali ke CIDRAM setelah melakukan pemutakhiran agar CIDRAM dapat menyesuaikan aturan tambahan dan konfigurasi sebagaimana diperlukan untuk mengakomodasi perubahan ini.
+3. Buka halaman pencadangan front-end. Pilih ekspor, centang kotak untuk konfigurasi, untuk statistik, dan untuk aturan tambahan, lalu klik OK untuk mengunduh cadangan. Ada beberapa perubahan. Misalnya, tindakan "jangan catat" telah dihapus dari aturan tambahan (opsi "menekan catatan" dapat digunakan sebagai gantinya untuk mencapai hal yang sama). Anda perlu mengimpor cadangan ini kembali ke CIDRAM setelah melakukan pemutakhiran.
 
 4. Kembali ke halaman pembaruan front-end. Pembaruan untuk versi utama baru sekarang akan muncul. Untuk menghindari waktu habis, sebelum memperbarui semuanya, pertama-tama coba perbarui hanya core atau front-end CIDRAM (karena keduanya saling bergantung satu sama lain, memperbarui satu saja seharusnya akan memperbarui keduanya secara otomatis). Karena struktur halaman dan gaya CSS untuk front-end telah berubah secara signifikan antara versi-versi utama, mungkin awalnya tampak rusak setelah diperbarui; padahal tidak. Buka halaman front-end lain dan klik Ctrl+F5 untuk mencoba melakukan penyegaran paksa (yaitu penyegaran dimana peramban mengambil salinan baru gaya CSS dan periferal lain, dan bukan mengandalkan cache-nya). Struktur halaman dan gaya CSS kemudian akan muncul dengan benar. Jika tidak, coba bersihkan cache peramban Anda.
 
@@ -2356,7 +2356,7 @@ Lihat di atas: Instalasi baru direkomendasikan.
 
 6. Untuk memastikan tidak ada pembaruan buruk yang tersisa, masa lalu atau sekarang, atau file yang rusak dalam instalasi, dan untuk memastikan semuanya sebagaimana mestinya, klik memperbaiki semua. Sangat jarang hal ini benar-benar menjadi masalah, tetapi lebih baik bermain aman.
 
-7. Kembali ke halaman pencadangan front-end. Pilih impor, centang kotak untuk konfigurasi dan aturan tambahan, klik tombol untuk memilih file, cari dan pilih cadangan yang Anda unduh sebelumnya, dan klik OK untuk mengimpor cadangan tersebut. CIDRAM secara otomatis akan menyesuaikan aturan tambahan dan konfigurasi apapun dalam cadangan dari versi utama sebelumnya sebagaimana diperlukan untuk mengakomodasi versi utama yang sedang diimpor.
+7. Kembali ke halaman pencadangan front-end. Pilih impor, centang kotak untuk konfigurasi, untuk statistik, dan untuk aturan tambahan, klik tombol untuk memilih file, cari dan pilih cadangan yang Anda unduh sebelumnya, dan klik OK untuk mengimpor cadangan tersebut. CIDRAM akan otomatis melakukan penyesuaian yang diperlukan untuk mengakomodasi perubahan.
 
 8. Sekarang setelah Anda berhasil memutakhirkan versi utama, Anda mungkin ingin menjelajahi sebentar halaman konfigurasi front-end karena perubahan yang diperkenalkan oleh versi utama baru (misalnya, untuk fitur yang baru diperkenalkan). Selain ini, Anda telah menyelesaikan pemutakhiran. Versi utama yang baru tidak memperkenalkan perubahan apapun pada file tanda tangan, modul, atau acara, jadi Anda tidak perlu mengkhawatirkan hal ini saat melakukan pemutakhiran.
 
@@ -2365,4 +2365,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 5 Oktober 2025 (2025.10.05).
+Terakhir Diperbarui: 9 Oktober 2025 (2025.10.09).

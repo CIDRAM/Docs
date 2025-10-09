@@ -2361,7 +2361,7 @@ Xem ở trên: Nên cài đặt mới.
 
 2. Vào trang cấu hình và tìm __`frontend➡remotes`__. Trong danh sách, nơi bạn thấy `/v3/`, hãy đổi thành `/v4/`. Nhấp vào cập nhật để lưu cấu hình của bạn. Thay đổi này cho trình cập nhật biết phải nhắm đến phiên bản chính xác khi tìm kiếm bản cập nhật.
 
-3. Vào trang sao lưu. Chọn xuất, đánh dấu vào ô cho cấu hình và quy tắc phụ trợ, rồi nhấn OK để tải xuống bản sao lưu cấu hình và quy tắc phụ trợ hiện tại của bạn. Đã có một số thay đổi đối với cấu hình có sẵn và hệ thống quy tắc bổ trợ. Ví dụ, hành động "không ghi nhật ký" đã bị xóa khỏi các quy tắc phụ trợ (có thể sử dụng tùy chọn "đàn áp nhật ký" thay thế để đạt được mục đích tương tự). Bạn sẽ cần nhập bản sao lưu này trở lại CIDRAM sau khi nâng cấp để CIDRAM có thể điều chỉnh các quy tắc phụ trợ và cấu hình của bạn khi cần thiết để phù hợp với những thay đổi này.
+3. Vào trang sao lưu. Chọn xuất, đánh dấu vào hộp kiểm để cấu hình, để số liệu thống kê, và để quy tắc phụ trợ, sau đó nhấn OK để tải xuống bản sao lưu. Đã có một số thay đổi. Ví dụ, hành động "không ghi nhật ký" đã bị xóa khỏi các quy tắc phụ trợ (có thể sử dụng tùy chọn "đàn áp nhật ký" thay thế để đạt được mục đích tương tự). Bạn sẽ cần nhập bản sao lưu này trở lại CIDRAM sau khi nâng cấp.
 
 4. Quay lại trang cập nhật. Bản cập nhật cho phiên bản chính mới hiện đã xuất hiện. Để tránh hết thời gian chờ, trước khi cập nhật tất cả, hãy thử cập nhật core hoặc front-end (vì cả hai đều phụ thuộc lẫn nhau, cập nhật một sẽ tự động cập nhật cả hai). Vì cấu trúc trang và kiểu CSS đã thay đổi đáng kể giữa các phiên bản chính nên ban đầu có vẻ như bị hỏng sau khi cập nhật; nhưng không phải vậy. Vào bất kỳ trang nào khác và nhấn Ctrl+F5 để thử thực hiện làm mới cứng (tức là, làm mới trong đó trình duyệt sẽ lấy một bản sao mới của kiểu CSS và các thành phần ngoại vi khác thay vì dựa vào bộ nhớ đệm của trình duyệt). Nếu không được, hãy thử xóa bộ nhớ đệm của trình duyệt.
 
@@ -2369,7 +2369,7 @@ Xem ở trên: Nên cài đặt mới.
 
 6. Để đảm bảo không còn bất kỳ bản cập nhật lỗi hoặc tập tin bị hỏng nào còn sót lại, và để đảm bảo mọi thứ đều ổn, hãy nhấp vào sửa chữa tất cả. Rất hiếm khi đây thực sự là vấn đề, nhưng tốt hơn hết là nên cẩn thận.
 
-7. Quay lại trang sao lưu. Chọn nhập, đánh dấu vào ô cho cấu hình và quy tắc phụ trợ, nhấp vào nút để chọn chọn tập tin, định vị và chọn bản sao lưu bạn đã tải xuống trước đó, rồi nhấn OK để nhập bản sao lưu đó. CIDRAM sẽ tự động điều chỉnh mọi quy tắc bổ trợ và cấu hình trong bản sao lưu từ các phiên bản chính trước đó nếu cần để phù hợp với phiên bản chính đang được nhập vào.
+7. Quay lại trang sao lưu. Chọn nhập, đánh dấu vào hộp kiểm để cấu hình, để số liệu thống kê, và để quy tắc phụ trợ, nhấp vào nút để chọn chọn tập tin, định vị và chọn bản sao lưu bạn đã tải xuống trước đó, rồi nhấn OK để nhập bản sao lưu đó. CIDRAM sẽ tự động thực hiện bất kỳ điều chỉnh nào cần thiết để thích ứng với những thay đổi.
 
 8. Bạn đã hoàn tất việc nâng cấp. Phiên bản chính mới không đưa ra bất kỳ thay đổi nào đối với tập tin chữ ký, mô-đun, hoặc sự kiện, do đó bạn không cần phải lo lắng về điều đó khi nâng cấp. Tiếp theo, bạn có thể muốn khám phá sơ qua trang cấu hình do những thay đổi được đưa ra trong phiên bản chính mới (ví dụ, đối với các tính năng mới được giới thiệu).
 
@@ -2378,4 +2378,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2025.10.05.
+Lần cuối cập nhật: 2025.10.09.

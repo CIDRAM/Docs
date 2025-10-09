@@ -2354,7 +2354,7 @@ Fare riferimento a quanto sopra: Si consiglia una nuova installazione.
 
 2. Vai alla pagina di configurazione front-end e cerca __`frontend➡remotes`__. Nell'elenco, dove vedi `/v3/`, cambialo in `/v4/`. Fare clic su aggiornarlo per salvare la configurazione. Questa modifica indica all'aggiornamento di prendere di mira la versione principale prevista quando cerca aggiornamenti.
 
-3. Vai alla pagina di backup front-end. Selezionare esportare, spuntare le caselle per la configurazione e le regole ausiliarie e, premere OK per scaricare un backup corrente della configurazione e delle regole ausiliarie. Sono state apportate alcune modifiche alla configurazione disponibile e al sistema di regole ausiliarie. Ad esempio, l'azione "non registrare" è stata rimossa dalle regole ausiliarie (per ottenere lo stesso risultato è possibile utilizzare l'opzione "sopprimi la registrazione"). Dopo l'aggiornamento, sarà necessario importare nuovamente questo backup in CIDRAM affinché CIDRAM possa adattare le regole ausiliarie e la configurazione in base alle necessità per accogliere queste modifiche.
+3. Vai alla pagina di backup front-end. Selezionare esportare, spuntare le caselle di controllo per la configurazione, per le statistiche, e per le regole ausiliarie, quindi premere OK per scaricare un backup. Sono state apportate alcune modifiche. Ad esempio, l'azione "non registrare" è stata rimossa dalle regole ausiliarie (per ottenere lo stesso risultato è possibile utilizzare l'opzione "sopprimi la registrazione"). Dopo l'aggiornamento, sarà necessario importare nuovamente questo backup in CIDRAM.
 
 4. Vai alla pagina degli aggiornamenti front-end. Ora dovrebbero apparire gli aggiornamenti per la nuova versione principale. Per evitare timeout, prima di aggiornare tutto, prova ad aggiornare solo il core CIDRAM o il front-end CIDRAM (poiché entrambi sono interdipendenti l'uno dall'altro, aggiornandone uno dovrebbero comunque aggiornarli automaticamente entrambi). Poiché la struttura della pagina e lo stile CSS per il front-end sono cambiati in modo significativo tra le versioni principali, inizialmente potrebbe sembrare non funzionante dopo l'aggiornamento; non lo è. Vai a qualsiasi altra pagina front-end e premi Ctrl+F5 per provare a eseguire un aggiornamento forzato (ovvero un aggiornamento tramite il quale il browser recupera una nuova copia dello stile CSS e di altre periferiche invece di affidarsi alla propria cache). La struttura della pagina e lo stile CSS dovrebbero ora apparire correttamente. In caso contrario, prova a svuotare la cache del browser.
 
@@ -2362,7 +2362,7 @@ Fare riferimento a quanto sopra: Si consiglia una nuova installazione.
 
 6. Per assicurarti che non ci siano aggiornamenti errati persistenti, passati o presenti, o file corrotti nell'installazione, e per assicurarti che tutto sia come dovrebbe essere, fai clic su ripara tutto. Molto raramente questo dovrebbe rappresentare un problema reale, ma è meglio andare sul sicuro.
 
-7. Vai alla pagina di backup front-end. Selezionare importare, spuntare le caselle per la configurazione e le regole ausiliarie, fare clic sul pulsante per selezionare un file, individuare e selezionare il backup scaricato in precedenza e, premere OK per importare tale backup. CIDRAM adatterà automaticamente tutte le regole ausiliarie e le configurazioni nei backup delle versioni principali precedenti, secondo necessità, per adattarsi alla versione principale in cui si sta effettuando l'importazione.
+7. Vai alla pagina di backup front-end. Selezionare importare, spuntare le caselle di controllo per la configurazione, per le statistiche, e per le regole ausiliarie, fare clic sul pulsante per selezionare un file, individuare e selezionare il backup scaricato in precedenza e, premere OK per importare tale backup. CIDRAM eseguirà automaticamente tutte le modifiche necessarie per adattarle ai cambiamenti.
 
 8. Ora che hai aggiornato con successo le versioni principali, potresti voler esplorare brevemente la pagina di configurazione front-end a causa delle modifiche introdotte dalla nuova versione principale (ad esempio, per le nuove funzionalità introdotte). A parte questo, hai completato l'aggiornamento. La nuova versione principale non introduce alcuna modifica ai file di firma, ai moduli, o agli eventi, quindi non devi preoccuparti di questo durante l'aggiornamento.
 
@@ -2371,4 +2371,4 @@ Per un elenco delle modifiche introdotte dalla v4 (ad esempio, funzionalità agg
 ---
 
 
-Ultimo Aggiornamento: 5 Ottobre 2025 (2025.10.05).
+Ultimo Aggiornamento: 9 Ottobre 2025 (2025.10.09).
