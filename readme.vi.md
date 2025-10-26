@@ -895,7 +895,7 @@ theme_mode
 ```
 
 ##### "magnification" `[float]`
-- Phóng to chữ. Mặc định = 1.
+- Phóng to phông chữ. Mặc định = 1.
 
 ##### "custom_header" `[string]`
 - Được chèn dưới dạng HTML ở đầu tất cả các trang front-end. Điều này có thể hữu ích trong trường hợp bạn muốn bao gồm biểu trưng trang web, tiêu đề được cá nhân hóa, tập lệnh, hoặc tương tự ở tất cả các trang như vậy.
@@ -1238,7 +1238,7 @@ theme_mode
 ```
 
 ##### "magnification" `[float]`
-- Phóng to chữ. Mặc định = 1.
+- Phóng to phông chữ. Mặc định = 1.
 
 ##### "css_url" `[string]`
 - URL của tập tin CSS cho các chủ đề tùy chỉnh.
@@ -2378,4 +2378,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2025.10.09.
+Lần cuối cập nhật: 2025.10.26.

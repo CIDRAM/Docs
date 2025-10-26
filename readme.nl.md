@@ -339,13 +339,13 @@ fields───[Moet dit veld in logs verschijnen?]─[Moet dit veld verschijnen
 ├─ID ("ID")
 ├─ScriptIdent ("Script versie")
 ├─DateTime ("Datum/Tijd")
-├─IPAddr ("IP-Adres")
+├─IPAddr ("IP-adres")
 ├─IPAddrResolved ("IP-adres (vastbesloten)")
 ├─Query ("Query")
 ├─Referrer ("Verwijzer")
 ├─UA ("Gebruikersagent")
 ├─UALC ("Gebruikersagent (kleine letters)")
-├─SignatureCount ("Signatures tellen")
+├─SignatureCount ("Het aantal signatures")
 ├─Signatures ("Signatures verwijzing")
 ├─WhyReason ("Waarom geblokkeerd")
 ├─ReasonMessage ("Waarom geblokkeerd (gedetailleerd)")
@@ -1825,7 +1825,7 @@ Ja. Een API is ingebouwd in het frontend voor interactie met de updates pagina v
 
 #### <a name="WHAT_ARE_INFRACTIONS"></a>Wat zijn "overtredingen"?
 
-"Signatures tellen" en "overtredingen" hebben beide betrekking op de ernst en het aantal signatures dat tijdens een bepaald verzoek is geactiveerd, ongeacht of dit te wijten is aan signatuurbestanden, modules, aanvullende regels, of anderszins, maar terwijl het "signatures tellen" alleen voor dat specifieke verzoek blijft bestaan, "overtredingen" kunnen over een aantal verzoeken blijven bestaan, zolang als wordt bepaald door de `default_tracktime`.
+"Het aantal signatures" en "overtredingen" hebben beide betrekking op de ernst en het aantal signatures dat tijdens een bepaald verzoek is geactiveerd, ongeacht of dit te wijten is aan signatuurbestanden, modules, aanvullende regels, of anderszins, maar terwijl het "het aantal signatures" alleen voor dat specifieke verzoek blijft bestaan, "overtredingen" kunnen over een aantal verzoeken blijven bestaan, zolang als wordt bepaald door de `default_tracktime`.
 
 Dit biedt een mechanisme om ervoor te zorgen dat verzoeken van potentieel gevaarlijke bronnen kunnen worden geblokkeerd, waarbij die bron al was geblokkeerd tijdens een eerder verzoek met een voldoende aantal overtredingen.
 
@@ -2167,13 +2167,13 @@ Een blokgebeurtenis, vastgelegd in een door mensen leesbaar logbestand, ziet er 
 
 ```
 ID: 1234
-Script Versie: CIDRAM v1.6.0
+Script versie: CIDRAM v1.6.0
 Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000
-IP-Adres: x.x.x.x
+IP-adres: x.x.x.x
 Hostname: dns.hostname.tld
-Signatures Tellen: 1
+Het aantal signatures: 1
 Signatures Verwijzing: x.x.x.x/xx
-Waarom Geblokkeerd: Cloud Service ("Netwerknaam", Lxx:Fx, [XX])!
+Waarom geblokkeerd: Cloud Service ("Netwerknaam", Lxx:Fx, [XX])!
 User Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
 Gereconstrueerde URI: https://your-site.tld/index.php
 CAPTCHA State: Enabled.
@@ -2212,7 +2212,7 @@ Dit type loggen heeft specifiek betrekking op CAPTCHA-instanties, en gebeurt all
 Een CAPTCHA-logsinvoer bevat het IP-adres van de gebruiker die probeert een CAPTCHA-instantie te voltooien, de datum en tijd waarop de poging heeft plaatsgevonden, en de CAPTCHA state. Een CAPTCHA-logsinvoer ziet er meestal als volgt uit (bijvoorbeeld):
 
 ```
-IP-Adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State: Succes!
+IP-adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State: Succes!
 ```
 
 *De configuratie richtlijn die verantwoordelijk is voor CAPTCHA loggen is:*
@@ -2382,4 +2382,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 9 Oktober 2025 (2025.10.09).
+Laatste Bijgewerkt: 26 Oktober 2025 (2025.10.26).

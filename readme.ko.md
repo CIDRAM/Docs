@@ -5,7 +5,7 @@
 - 2. [설치 방법](#user-content-SECTION2)
 - 3. [사용 방법](#user-content-SECTION3)
 - 4. [프론트엔드 관리](#user-content-SECTION4)
-- 5. [설정 옵션](#user-content-SECTION5)
+- 5. [구성 옵션](#user-content-SECTION5)
 - 6. [서명 형식](#user-content-SECTION6)
 - 7. [알려진 호환성 문제](#user-content-SECTION7)
 - 8. [자주 묻는 질문 (FAQ)](#user-content-SECTION8)
@@ -171,7 +171,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ---
 
 
-### 5. <a name="SECTION5"></a>설정 옵션
+### 5. <a name="SECTION5"></a>구성 옵션
 
 다음은 `config.yml`설정 파일에있는 변수 및 그 목적과 기능의 목록입니다.
 
@@ -302,7 +302,7 @@ PHPMailer를 설치 한 후 CIDRAM 구성 페이지 또는 구성 파일을 통�
 ```
 
 #### "general" (카테고리)
-일반 설정 (다른 카테고리에 속하지 않는 설정).
+일반 구성 (다른 카테고리에 속하지 않는 핵심 구성).
 
 ##### "stages" `[string]`
 - 실행 체인의 단계에 대한 제어 (활성화 여부, 오류 기록 여부, 등등).
@@ -369,25 +369,25 @@ fields───[이 필드가 로그 항목에 나타나야 합니까?]─[이 �
 
 * 보조 규칙 디버깅 전용입니다. 차단된 사용자에게는 표시되지 않습니다.
 
-** ASN 조회 기능이 필요합니다 (예 : IP-API 또는 BGPView 모듈을 통해).
+** ASN 조회 기능이 필요합니다 (예: IP-API 또는 BGPView 모듈을 통해).
 
-!! 이는 낮은 엔트로피 클라이언트 힌트입니다. 클라이언트 힌트는 새로운 실험적 웹 기술이지만 아직 모든 브라우저와 주요 클라이언트에서 널리 지원되지는 않습니다. *보다 : <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* 클라이언트 힌트는 핑거프린팅에 유용할 수 있지만 광범위하게 지원되지 않으므로 요청에 클라이언트 힌트가 있다고 가정하거나 의존해서는 안 됩니다 (즉, 부재를 기준으로 차단하는 것은 나쁜 생각입니다).
+!! 이는 낮은 엔트로피 클라이언트 힌트입니다. 클라이언트 힌트는 새로운 실험적 웹 기술이지만 아직 모든 브라우저와 주요 클라이언트에서 널리 지원되지는 않습니다. *보다: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* 클라이언트 힌트는 핑거프린팅에 유용할 수 있지만 광범위하게 지원되지 않으므로 요청에 클라이언트 힌트가 있다고 가정하거나 의존해서는 안 됩니다 (즉, 부재를 기준으로 차단하는 것은 나쁜 생각입니다).
 
 ##### "timezone" `[string]`
-- 사용할 시간대를 지정합니다 (예 : Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, 등등). PHP가 자동으로 처리하도록하려면, "SYSTEM"을 지정하십시오.
+- 사용할 시간대를 지정하는 데 사용됩니다 (예: Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, 등등). PHP가 이를 자동으로 처리하도록 하려면 "SYSTEM"을 지정하세요.
 
 ```
 timezone
-├─SYSTEM ("시스템 기본 시간대를 사용하십시오.")
+├─SYSTEM ("시스템 기본 시간대 사용.")
 ├─UTC ("UTC")
 └─…다른
 ```
 
 ##### "time_offset" `[int]`
-- 시간대 오프셋 (분).
+- 분 단위 시간대 오프셋.
 
 ##### "time_format" `[string]`
-- CIDRAM에서 사용되는 날짜 형식. 추가 옵션이 요청에 따라 추가 될 수 있습니다.
+- CIDRAM이 사용하는 날짜/시간 표기 형식. 요청 시 옵션이 추가될 수 있습니다.
 
 ```
 time_format
@@ -465,26 +465,26 @@ time_format
 └─…다른
 ```
 
-__*자리 표시자 – 설명 – 예시는 2024-04-30T18:27:49+08:00를 기준으로 합니다.*__<br />
-`{yyyy}` – 연도 – 예 : 2024.<br />
-`{yy}` – 약식 연도 – 예 : 24.<br />
-`{Mon}` – 해당 월의 약칭(영문) – 예 : Apr.<br />
-`{mm}` – 앞에 0이 붙는 달 – 예 : 04.<br />
-`{m}` – 달 – 예 : 4.<br />
-`{Day}` – 요일의 약칭(영문) – 예 : Tue.<br />
-`{dd}` – 앞에 0이 붙은 해당 월의 일 – 예 : 30.<br />
-`{d}` – 해당 월의 일 – 예 : 30.<br />
-`{hh}` – 앞에 0이 붙은 시간(24시간제 사용) – 예 : 18.<br />
-`{h}` – 시간(24시간제 사용) – 예 : 18.<br />
-`{ii}` – 앞에 0이 붙는 분 – 예 : 27.<br />
-`{i}` – 분 – 예 : 27.<br />
-`{ss}` – 앞에 0이 붙은 초 – 예 : 49.<br />
-`{s}` – 초 – 예 : 49.<br />
-`{tz}` – 시간대(콜론 제외) – 예 : +0800.<br />
-`{t:z}` – 시간대(콜론 포함) – 예 : +08:00.
+__*Placeholder – 설명 – 2024-04-30T18:27:49+08:00 기준 예시.*__<br />
+`{yyyy}` – 연도 – 예: 2024.<br />
+`{yy}` – 줄여 쓴 연도 – 예: 24.<br />
+`{Mon}` – 줄여 쓴 월 이름 (영어) – 예: Apr.<br />
+`{mm}` – 앞에 0이 붙은 월 – 예: 04.<br />
+`{m}` – 월 – 예: 4.<br />
+`{Day}` – 줄여 쓴 요일 이름 (영어) – 예: Tue.<br />
+`{dd}` – 앞에 0이 붙은 일 – 예: 30.<br />
+`{d}` – 해당 월의 일 – 예: 30.<br />
+`{hh}` – 앞에 0이 붙은 시간 (24시간제 사용) – 예: 18.<br />
+`{h}` – 시간 (24시간제 사용) – 예: 18.<br />
+`{ii}` – 앞에 0이 붙은 분 – 예: 27.<br />
+`{i}` – 분 – 예: 27.<br />
+`{ss}` – 앞에 0이 붙은 초 – 예: 49.<br />
+`{s}` – 초 – 예: 49.<br />
+`{tz}` – 시간대 (콜론 없음) – 예: +0800.<br />
+`{t:z}` – 시간대 (콜론 있음) – 예: +08:00.
 
 ##### "ipaddr" `[string]`
-- 연결 요청의 IP 주소를 어디에서 찾을 것인가에 대해 (Cloudflare와 같은 서비스에 유용합니다). Default (기본 설정) = REMOTE_ADDR. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
+- 연결 요청의 IP 주소를 어디에서 찾을 것인가에 대해 (Cloudflare와 같은 서비스에 유용합니다). Default (기본 설정) = REMOTE_ADDR. 주의: 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
 ```
 ipaddr
@@ -498,7 +498,7 @@ ipaddr
 └─…다른
 ```
 
-또한보십시오 :
+또한보십시오:
 - [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 - [Squid configuration directive forwarded_for](http://www.squid-cache.org/Doc/config/forwarded_for/)
 - [Forwarded - HTTP \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded)
@@ -670,7 +670,7 @@ numbers
 ```
 
 ##### "emailaddr" `[string]`
-- 여기에 이메일 주소를 입력하고 사용자가 차단 된 경우 사용자에게 보낼 수 있습니다. 이것은 지원과 지원에 사용할 수 있습니다 (실수로 차단 된 경우 등). 경고 : 여기에 입력 된 전자 이메일 주소는 아마 스팸 로봇에 의해 취득됩니다. 여기에서 제공되는 전자 이메일 주소는 모든 일회용하는 것이 좋습니다 (예를 들어, 기본 개인 주소 또는 비즈니스 주소를 사용하지 않는 등).
+- 여기에 이메일 주소를 입력하고 사용자가 차단 된 경우 사용자에게 보낼 수 있습니다. 이것은 지원과 지원에 사용할 수 있습니다 (실수로 차단 된 경우 등). 경고: 여기에 입력 된 전자 이메일 주소는 아마 스팸 로봇에 의해 취득됩니다. 여기에서 제공되는 전자 이메일 주소는 모든 일회용하는 것이 좋습니다 (예를 들어, 기본 개인 주소 또는 비즈니스 주소를 사용하지 않는 등).
 
 ##### "emailaddr_display_style" `[string]`
 - 사용자에게 전자 메일 주소를 어떻게 표시 하시겠습니까?
@@ -682,7 +682,7 @@ emailaddr_display_style
 ```
 
 ##### "default_dns" `[string]`
-- 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 목록입니다. 주의 : 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
+- 호스트 이름 검색에 사용하는 DNS (도메인 이름 시스템) 서버의 목록입니다. 주의: 당신이 무엇을하고 있는지 모르는 한이를 변경하지 마십시오.
 
 __자주하는 질문.__ *<a href="https://github.com/CIDRAM/Docs/blob/master/readme.ko.md#default_dns에-사용할-수있는-항목은-무엇입니까" hreflang="ko-KR">"default_dns"에 사용할 수있는 항목은 무엇입니까?</a>*
 
@@ -709,7 +709,7 @@ statistics───[IPv4]─[IPv6]─[다른]
 └─ReportFailed ("외부 API에 보고된 요청 – 실패했습니다")
 ```
 
-참고 : 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
+참고: 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
 
 ##### "statistics_captchas" `[string]`
 - CAPTCHA에 대해 추적할 통계 정보를 제어합니다.
@@ -721,7 +721,7 @@ statistics_captchas───[실패했습니다]─[성공했습니다]─[제�
 └─CloudflareTurnstile ("Cloudflare Turnstile")
 ```
 
-참고 : 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
+참고: 보조 규칙에 대한 통계를 추적할지 여부는 보조 규칙 페이지에서 제어할 수 있습니다.
 
 ##### "force_hostname_lookup" `[bool]`
 - 호스트 이름 검색을 시행 하시겠습니까 (모든 요청)? True = 예; False = 아니오 (Default / 기본 설정). 호스트 이름 검색은 일반적으로 "필요에 따라"수행됩니다, 그러나 모든 요청에 대해 강제 될 수 있습니다. 이는 로그 파일에보다 자세한 정보를 제공하는 데 유용 할 수 있습니다, 그러나 또한 성능에 약간 부정적인 영향을 줄 수 있습니다.
@@ -729,7 +729,7 @@ statistics_captchas───[실패했습니다]─[성공했습니다]─[제�
 ##### "allow_gethostbyaddr_lookup" `[bool]`
 - UDP를 사용할 수 없을 때 gethostbyaddr 검색을 허용 하시겠습니까? True = 예 (Default / 기본 설정); False = 아니오.
 
-참고 : IPv6 조회는 일부 32비트 시스템에서 제대로 작동하지 않을 수 있습니다.
+참고: IPv6 조회는 일부 32비트 시스템에서 제대로 작동하지 않을 수 있습니다.
 
 ##### "disabled_channels" `[string]`
 - 이것은 CIDRAM이 요청을 보낼 때 특정 채널을 사용하지 못하게하는 데 사용할 수 있습니다 (예를 들어, 업데이트 할 때, 구성 요소 메타 데이터를 가져올 때, 등등).
@@ -792,37 +792,37 @@ CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위�
 로깅 관련 구성 (다른 카테고리에 적용되는 것을 제외).
 
 ##### "standard_log" `[string]`
-- 액세스 시도 저지를 기록, 인간에 의해 읽기 가능. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 액세스 시도 저지를 기록, 인간에 의해 읽기 가능. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "apache_style_log" `[string]`
-- 액세스 시도 저지를 기록, Apache 스타일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 액세스 시도 저지를 기록, Apache 스타일. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "serialised_log" `[string]`
-- 액세스 시도 저지를 기록 직렬화되었습니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 액세스 시도 저지를 기록 직렬화되었습니다. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "error_log" `[string]`
-- 치명적이지 않은 오류를 탐지하기위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 감지된 치명적이지 않은 오류를 기록할 파일. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "outbound_request_log" `[string]`
-- 아웃바운드 요청의 결과를 기록하기 위한 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 아웃바운드 요청의 결과를 기록할 파일. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "report_log" `[string]`
-- 외부 API로 전송된 보고서를 기록하기 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 외부 API로 전송된 보고서를 기록하기 위한 파일입니다. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "truncate" `[string]`
-- 로그 파일이 특정 크기에 도달하면 잘 있습니까? 값은 로그 파일이 잘 리기 전에 커질 가능성이있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값 "0KB"은 절단을 해제합니다 (로그 파일은 무한정 확장 할 수 있습니다). 참고 : 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 일괄 적으로 고려되지 않습니다.
+- 로그 파일이 특정 크기에 도달하면 truncate할까요? 값은 로그 파일이 truncate되기 전에 커질 수 있는 B/KB/MB/GB/TB 단위의 최대 크기입니다. 기본값인 0KB는 truncation을 비활성화합니다 (로그 파일이 무한정 커질 수 있음). 참고: 개별 로그 파일에 적용됩니다! 로그 파일의 크기는 전체적으로 고려되지 않습니다.
 
 ##### "log_rotation_limit" `[int]`
 - 로그 회전은 한 번에 존재해야하는 로그 파일 수를 제한합니다. 새 로그 파일을 만들 때 총 로그, 파일 수가 지정된 제한을 초과하면, 지정된 작업이 수행됩니다. 여기서 원하는 한계를 지정할 수 있습니다. 값 0은 로그 회전을 비활성화합니다.
@@ -832,8 +832,8 @@ CIDRAM에서 사용하는 구성 요소를 활성화 및 비활성화하기 위�
 
 ```
 log_rotation_action
-├─Delete ("제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 삭제하십시오.")
-└─Archive ("제한이 더 이상 초과되지 않을 때까지, 가장 오래된 로그 파일을 보관 한 다음 삭제하십시오.")
+├─Delete ("제한이 더 이상 초과되지 않을 때까지 가장 오래된 로그 파일 삭제.")
+└─Archive ("제한이 더 이상 초과되지 않을 때까지 가장 오래된 로그 파일을 보관한 후 삭제.")
 ```
 
 ##### "log_banned_ips" `[bool]`
@@ -846,14 +846,14 @@ log_rotation_action
 프런트 엔드에 대한 구성입니다.
 
 ##### "frontend_log" `[string]`
-- 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 프론트 엔드 로그인 시도를 기록하는 파일. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "signatures_update_event_log" `[string]`
-- 프런트 엔드임를 통해 서명이 업데이트될 때 로깅을 위한 파일입니다. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 프런트 엔드임를 통해 서명이 업데이트될 때 로깅을 위한 파일입니다. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 ##### "max_login_attempts" `[int]`
 - 로그인 시도 최대 횟수입니다 (프론트 엔드). Default (기본 설정) = 5.
@@ -958,7 +958,7 @@ conflict_response
 │ 유지하고 요청을 차단하려면 (가끔씩 거짓 양성 반응이
 │ 나올 수 있다는 대가를 치르며), 사용 가능한 다른 옵션
 │ 중 하나를 선택하세요.
-├─409 (409 Conflict (충돌)): 리소스 충돌에 (예 : 병합 충돌, 파일 액세스 충돌, 등등)
+├─409 (409 Conflict (충돌)): 리소스 충돌에 (예: 병합 충돌, 파일 액세스 충돌, 등등)
 │ 권장됩니다. 다른 상황에서는 권장되지 않습니다.
 └─429 (429 Too Many Requests (너무 많은 요청)): 속도 제한, DDoS 공격 처리, 및 홍수 방지에 권장됩니다.
   다른 상황에서는 권장되지 않습니다.
@@ -988,7 +988,7 @@ search_engines───[검증을 시도?]─[네거티브를 차단하시겠습
 └─YoudaoBot ("YoudaoBot")
 ```
 
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예: 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
@@ -1006,13 +1006,13 @@ social_media───[검증을 시도?]─[네거티브를 차단하시겠습�
 └─Twitterbot ("*!! Twitterbot")
 ```
 
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예: 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
 * 이 옵션은 `bypasses➡used` 아래에 해당 바이패스가 있습니다. 해당 바이패스의 확인란이 이 옵션의 확인을 위한 확인란과 동일한 방식으로 표시되어 있는지 확인하는 것이 좋습니다.
 
-** ASN 조회 기능이 필요합니다 (예 : IP-API 또는 BGPView 모듈을 통해).
+** ASN 조회 기능이 필요합니다 (예: IP-API 또는 BGPView 모듈을 통해).
 
 *!! iMessage로 인해 오탐이 발생할 가능성이 높습니다.
 
@@ -1027,7 +1027,7 @@ other───[검증을 시도?]─[네거티브를 차단하시겠습니까?]�
 └─GPTBot ("!! GPTBot")
 ```
 
-__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예 : 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
+__"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예: 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
 
 __"단일 히트 바이 패스"란 무엇입니까?__ 어떤 경우에는 서명 파일, 모듈, 또는 기타 요청 조건으로 인해 긍정적으로 확인된 요청이 여전히 차단될 수 있으며 소 탐을 피하고자 바이 패스가 필요할 수 있습니다. 바이패스가 정확히 하나의 위반을 처리하도록 의도된 경우 이러한 바이패스는 "단일 히트 바이 패스"로 설명될 수 있습니다.
 
@@ -1048,7 +1048,7 @@ adjust───[HCaptcha 억제]─[Friendly Captcha 억제]─[Cloudflare Turns
 CAPTCHA 설정 (차단될 때 사람이 다시 액세스할 수 있는 방법을 제공합니다).
 
 ##### "usemode" `[int]`
-- CAPTCHA는 언제 제공해야 합니까 ? 여기에서 지원되는 각 공급자에 대한 기본 동작을 지정할 수 있습니다. 참고 : 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고 : CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
+- CAPTCHA는 언제 제공해야 합니까? 여기에서 지원되는 각 공급자에 대한 기본 동작을 지정할 수 있습니다. 참고: 허용 목록에 있거나 확인되고 차단되지 않은 요청은 보안 문자를 작성할 필요가 없습니다. 또한 참고: CAPTCHA는 봇 및 다양한 종류의 악성 자동 요청에 대한 유용한 추가 보호 계층을 제공할 수 있지만 악의적인 사람에 대한 보호는 제공하지 않습니다.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1099,9 +1099,9 @@ api───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 ```
 messages───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
-├─cookie_warning ("쿠키 경고 표시 하시겠습니까 ?): 해당 국가 또는 주의 개인정보 보호법 (예 : EU의 GDPR/DSGVO,
+├─cookie_warning ("쿠키 경고 표시 하시겠습니까?): 해당 국가 또는 주의 개인정보 보호법 (예: EU의 GDPR/DSGVO,
 │ 브라질의 LGPD, 등)에 따라, 법적으로 요구될 수 있습니다."
-└─api_message ("API 메시지를 표시 하시겠습니까 ?): CAPTCHA를 완료하기 위한 API에 적합한 사용자 지침입니다."
+└─api_message ("API 메시지를 표시 하시겠습니까?): CAPTCHA를 완료하기 위한 API에 적합한 사용자 지침입니다."
 ```
 
 ##### "lockto" `[string]`
@@ -1127,7 +1127,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
 ##### "hcaptcha_secret" `[string]`
@@ -1135,7 +1135,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [HCaptcha Dashboard](https://dashboard.hcaptcha.com/overview)
 
 ##### "friendly_sitekey" `[string]`
@@ -1143,7 +1143,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
 
 ##### "friendly_apikey" `[string]`
@@ -1151,7 +1151,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [Friendly Captcha Dashboard](https://app.friendlycaptcha.eu/dashboard)
 
 ##### "turnstile_sitekey" `[string]`
@@ -1159,7 +1159,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [Cloudflare Dashboard](https://dash.cloudflare.com/)
 
 ##### "turnstile_secret" `[string]`
@@ -1167,7 +1167,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 이 값은 보안 문자 서비스의 대시 보드에서 찾을 수 있습니다.
 
-또한보십시오 :
+또한보십시오:
 - [Cloudflare Dashboard](https://dash.cloudflare.com/)
 
 ##### "expiry" `[float]`
@@ -1177,9 +1177,9 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 - 보안 문자 제안이 철회되기 전에 허용되는 최대 서명 수입니다. Default (기본 설정) = 1.
 
 ##### "log" `[string]`
-- 보안 문자 시도 기록. 파일 이름을 지정하십시오. 비활성화하려면 비워 둡니다.
+- 보안 문자 시도 기록. 파일 이름을 지정하거나, 비활성화하려면 비워 두세요.
 
-유용한 팁 : 시간 형식 자리 표시자를 사용하여 로그 파일 이름에 날짜/시간 정보를 첨부할 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시됩니다.
+유용한 팁: 시간 형식 placeholder를 사용하여 로그 파일 이름에 날짜/시간 정보를 붙일 수 있습니다. 사용 가능한 시간 형식 자리 표시자는 <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>에 표시되어 있습니다.
 
 #### "legal" (카테고리)
 법적 요구 사항 설정.
@@ -1283,7 +1283,7 @@ exceptions
 - 서로 다른 도메인과 호스트에 대한 할당량을 분리하거나 공유해야 합니까? True = 할당량이 분리됩니다. False = 할당량이 공유됩니다 (Default / 기본 설정).
 
 #### "supplementary_cache_options" (카테고리)
-보충 캐시 옵션. 참고 : 이 값을 변경하면 잠재적으로 로그아웃될 수 있습니다.
+보충 캐시 옵션. 참고: 이 값을 변경하면 잠재적으로 로그아웃될 수 있습니다.
 
 ##### "prefix" `[string]`
 - 여기에 지정된 값은 모든 캐시 항목 키 앞에 추가됩니다. Default (기본값) = "CIDRAM_". 동일한 서버에 여러 설치가 있는 경우, 캐시를 서로 분리하여 유지하는 데 유용할 수 있습니다.
@@ -1316,7 +1316,7 @@ exceptions
 - Redis 시간 초과 값. Default (기본값) = "2.5".
 
 ##### "redis_database_number" `[int]`
-- Redis 데이터베이스 번호입니다. Default (기본값) = 0. 참고 : Redis 클러스터에서는 0 이외의 값을 사용할 수 없습니다.
+- Redis 데이터베이스 번호입니다. Default (기본값) = 0. 참고: Redis 클러스터에서는 0 이외의 값을 사용할 수 없습니다.
 
 ##### "pdo_dsn" `[string]`
 - PDO DSN 값. Default (기본값) = "mysql:dbname=cidram;host=localhost;port=3306".
@@ -1618,7 +1618,7 @@ CIDRAM이 제공하는 일부 기능을 사용하면 모듈을 더 간단하고 
 
 `$Condition`의 진실성이 평가됩니다. True의 경우, 서명은 트리거됩니다. False의 경우, 서명은 트리거되지 않습니다. `$Condition`에는 대개 요청을 차단해야하는 조건을 평가하는 PHP 코드가 들어 있습니다.
 
-서명이 트리거되면, `$ReasonShort`가 "왜 차단이 되셨나요"필드에 표시됩니다.
+서명이 트리거되면, `$ReasonShort`가 "왜 차단이 되셨나요"필드에 표시되어 있습니다.
 
 `$ReasonLong`은 차단되었을 때 사용자/클라이언트에게 차단 된 이유를 설명하기 위해 표시되는 선택적 메시지입니다. 생략시 표준 "액세스 거부"메시지를 사용합니다.
 
@@ -1634,7 +1634,7 @@ CIDRAM이 제공하는 일부 기능을 사용하면 모듈을 더 간단하고 
 
 `$Condition`의 진실성이 평가됩니다. True의 경우, 우회가은 트리거됩니다. False의 경우, 우회가은 트리거되지 않습니다. `$Condition`에는 일반적으로 요청을 차단해서는 안되는 조건을 평가하는 PHP 코드가 들어 있습니다.
 
-우회가이 트리거되면, `$ReasonShort`가 "왜 차단이 되셨나요"필드에 표시됩니다.
+우회가이 트리거되면, `$ReasonShort`가 "왜 차단이 되셨나요"필드에 표시되어 있습니다.
 
 `$DefineOptions`는 키/값 쌍을 포함하는 선택적 배열입니다. 요청 인스턴스와 관련된 구성 옵션을 정의하는 데 사용됩니다. 구성 옵션은 우회가이 트리거 될 때 적용됩니다.
 
@@ -2359,4 +2359,4 @@ v4에서 도입된 변경 사항 목록(추가된 기능, 제거된 기능, 등�
 ---
 
 
-최종 업데이트 : 2025년 10월 9일.
+최종 업데이트 : 2025년 10월 26일.
