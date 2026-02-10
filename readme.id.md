@@ -374,7 +374,7 @@ fields───[Sertakan bidang ini dalam entri log?]─[Sertakan bidang ini di 
 !! Ini adalah petunjuk klien dengan entropi rendah. Petunjuk klien adalah teknologi web eksperimental baru yang belum didukung secara luas di semua browser dan klien utama. *Melihat: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA#browser_compatibility" dir="ltr" hreflang="en-US" rel="noopener noreferrer external">Sec-CH-UA - HTTP | MDN</a>.* Meskipun petunjuk klien dapat berguna untuk sidik jari, karena petunjuk tersebut tidak didukung secara luas, kehadiran petunjuk klien tersebut dalam permintaan tidak boleh diasumsikan atau diandalkan (yaitu, memblokir berdasarkan ketidakhadiran mereka adalah ide yang buruk).
 
 ##### "timezone" `[string]`
-- Ini digunakan untuk menentukan zona waktu yang akan digunakan (misalnya, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, dll). Menentukan "SYSTEM" untuk membiarkan PHP menangani ini untuk Anda secara otomatis.
+- Ini digunakan untuk menentukan zona waktu yang akan digunakan (misalnya, Africa/Cairo, America/New_York, Asia/Tokyo, Australia/Perth, Europe/Berlin, Pacific/Guam, dsb). Menentukan "SYSTEM" untuk membiarkan PHP menangani ini untuk Anda secara otomatis.
 
 ```
 timezone
@@ -2119,7 +2119,7 @@ Ketika verifikasi mesin pencari diaktifkan, CIDRAM mencoba melakukan "pencarian 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM mendukung hCaptcha. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
+CIDRAM mendukung CAPTCHA. Mereka membutuhkan kunci API agar berfungsi dengan benar. Mereka dinonaktifkan secara default, tetapi dapat diaktifkan dengan mengonfigurasi kunci API yang diperlukan. Ketika diaktifkan, komunikasi dapat terjadi antara layanan dan CIDRAM atau browser pengguna. Ini mungkin melibatkan mengkomunikasikan informasi seperti alamat IP pengguna, agen pengguna, sistem operasi, dan detail lain yang tersedia untuk permintaan tersebut.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2207,7 +2207,7 @@ Alamat IP: x.x.x.x - Tanggal/Waktu: Day, dd Mon 20xx hh:ii:ss +0000 - Status CAP
 ```
 
 *Direktif konfigurasi yang bertanggung jawab untuk pencatatan CAPTCHA adalah:*
-- `hcaptcha` -> `hcaptcha_log`
+- `captcha` -> `log`
 
 ##### 9.3.2 LOG BAGIAN DEPAN
 
@@ -2278,15 +2278,15 @@ CIDRAM tidak mengenkripsi cache atau informasi log apapun. [Enkripsi](https://id
 
 #### 9.4 COOKIE
 
-CIDRAM menetapkan [cookie](https://id.wikipedia.org/wiki/Kuki_HTTP) pada dua titik dalam basis kodenya. Pertama, ketika pengguna berhasil menyelesaikan instance CAPTCHA (dan mengasumsikan bahwa `lockuser` diatur ke `true`), CIDRAM menetapkan cookie agar dapat mengingat untuk permintaan berikutnya bahwa pengguna telah menyelesaikan instance CAPTCHA, sehingga tidak perlu meminta pengguna untuk menyelesaikan instance CAPTCHA pada permintaan berikutnya. Kedua, ketika pengguna berhasil masuk ke akses bagian depan, CIDRAM menetapkan cookie agar dapat mengingat pengguna untuk permintaan berikutnya (yaitu, cookie digunakan untuk mengotentikasi pengguna ke sesi masuk).
+CIDRAM menetapkan [cookie](https://id.wikipedia.org/wiki/Kuki_HTTP) pada dua titik dalam basis kodenya. Pertama, tergantung pada bagaimana `lockto` telah dikonfigurasi, CIDRAM dapat mengatur cookie untuk mengingat kapan pengguna telah menyelesaikan CAPTCHA. Kedua, ketika pengguna berhasil masuk ke akses bagian depan, CIDRAM menetapkan cookie agar dapat mengingat pengguna untuk permintaan berikutnya (yaitu, cookie digunakan untuk mengotentikasi pengguna ke sesi masuk).
 
 Dalam kedua kasus, peringatan cookie ditampilkan dengan jelas (bila berlaku), memperingatkan pengguna bahwa cookie akan diatur jika mereka terlibat dalam tindakan yang relevan. Cookie tidak diatur dalam titik lain di basis kode.
 
 *Catat: CAPTCHA API "tak terlihat" mungkin tidak kompatibel dengan hukum cookie di beberapa yurisdiksi, dan harus dihindari oleh situs web apapun yang tunduk pada hukum-hukum tersebut. Memilih untuk menggunakan API lain yang disediakan, atau menonaktifkan CAPTCHA sepenuhnya, mungkin lebih disukai.*
 
 *Direktif konfigurasi yang relevan:*
-- `hcaptcha` -> `lockuser`
-- `hcaptcha` -> `api`
+- `captcha` -> `lockto`
+- `captcha` -> `api`
 
 #### 9.5 PEMASARAN DAN PERIKLANAN
 
@@ -2365,4 +2365,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 9 Oktober 2025 (2025.10.09).
+Terakhir Diperbarui: 10 Februari 2026 (2026.02.10).

@@ -2126,9 +2126,9 @@ Wanneer verificatie van zoekmachines is ingeschakeld, probeert CIDRAM "forward D
 - `verification` -> `search_engines`
 - `verification` -> `social_media`
 
-##### 9.2.2 CAPTCHA
+##### 9.2.2 CAPTCHA's
 
-CIDRAM ondersteunt hCaptcha. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
+CIDRAM ondersteunt CAPTCHA's. Ze nodig API-sleutels om correct te werken. Ze zijn standaard uitgeschakeld, maar kunnen worden ingeschakeld door de vereiste API-sleutels te configureren. Indien ingeschakeld, kan er communicatie plaatsvinden tussen de service en CIDRAM of de browser van de gebruiker. Dit kan mogelijk informatie overbrengen zoals het IP-adres van de gebruiker, de user-agent, het besturingssysteem, en andere details die beschikbaar zijn voor het verzoek.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2216,7 +2216,7 @@ IP-adres: x.x.x.x - Datum/Tijd: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA State:
 ```
 
 *De configuratie richtlijn die verantwoordelijk is voor CAPTCHA loggen is:*
-- `hcaptcha` -> `hcaptcha_log`
+- `captcha` -> `log`
 
 ##### 9.3.2 FRONTEND LOGGEN
 
@@ -2293,15 +2293,15 @@ CIDRAM codeert de cache of logboekinformatie niet. [Encryptie](https://nl.wikipe
 
 #### 9.4 COOKIES
 
-CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, wanneer een gebruiker een CAPTCHA-instantie met succes voltooit (en ervan uitgaande dat `lockuser` is ingesteld op `true`), CIDRAM stelt een cookie in om te kunnen onthouden voor volgende verzoeken dat de gebruiker al een CAPTCHA-instantie heeft voltooid, zodat het niet nodig zal zijn om de gebruiker continu te vragen een CAPTCHA-instantie bij volgende verzoeken in te vullen. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende verzoeken (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
+CIDRAM zet [cookies](https://nl.wikipedia.org/wiki/Cookie_(internet)) op twee punten in zijn codebase. Ten eerste, afhankelijk van hoe `lockto` is geconfigureerd, kan CIDRAM een cookie plaatsen om te onthouden wanneer een gebruiker een CAPTCHA heeft voltooid. Ten tweede, wanneer een gebruiker zich met succes ingelogd bij de frontend, stelt CIDRAM een cookie in om de gebruiker te kunnen onthouden voor volgende verzoeken (d.w.z., cookies worden gebruikt om de gebruiker te authenticeren voor een login-sessie).
 
 In beide gevallen worden cookiewaarschuwingen prominent weergegeven (als het relevant is), waardoor de gebruiker wordt gewaarschuwd dat cookies worden ingesteld als deze zich bezighouden met de relevante acties. Cookies zijn niet ingesteld op andere punten in de codebase.
 
 *Notitie: De "onzichtbare" CAPTCHA-API's zijn mogelijk incompatibel met de cookiewetgeving in sommige rechtsgebieden, en moet worden vermeden door websites die onder dergelijke wetgeving vallen. Kiezen om in plaats daarvan de andere meegeleverde API's te gebruiken, of gewoon CAPTCHA volledig uitschakelen, kan de voorkeur hebben.*
 
 *Relevante configuratie-opties:*
-- `hcaptcha` -> `lockuser`
-- `hcaptcha` -> `api`
+- `captcha` -> `lockto`
+- `captcha` -> `api`
 
 #### 9.5 MARKETING EN ADVERTEREN
 
@@ -2382,4 +2382,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 26 Oktober 2025 (2025.10.26).
+Laatste Bijgewerkt: 10 Februari 2026 (2026.02.10).

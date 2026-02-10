@@ -2129,7 +2129,7 @@ Lorsque la vérification des moteurs de recherche est activée, CIDRAM tente d'e
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM prend en charge hCaptcha. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
+CIDRAM prend en charge les CAPTCHA. Ils nécessitent des clés API pour fonctionner correctement. Ils sont désactivés par défaut, mais peuvent être activés en configurant les clés API requises. Lorsqu'elle est activée, une communication peut avoir lieu entre le service et CIDRAM ou le navigateur de l'utilisateur. Cela peut éventuellement impliquer la communication d'informations telles que l'adresse IP de l'utilisateur, l'agent utilisateur, le système d'exploitation, et d'autres détails disponibles pour la demande.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2217,7 +2217,7 @@ IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CA
 ```
 
 *La directive de configuration responsable de la journalisation CAPTCHA est :*
-- `hcaptcha` -> `hcaptcha_log`
+- `captcha` -> `log`
 
 ##### 9.3.2 JOURNALISATION FRONTALE
 
@@ -2292,15 +2292,15 @@ CIDRAM ne crypte pas son cache ou aucune information de journal. Le [cryptage](h
 
 #### 9.4 COOKIES
 
-CIDRAM définit les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) à deux points dans son code. Premièrement, lorsqu'un utilisateur termine avec succès une instance de CAPTCHA (et en supposant que `lockuser` est mis à `true`), CIDRAM définit un cookie afin de pouvoir se souvenir pour les requêtes suivantes que l'utilisateur a déjà terminé une instance de CAPTCHA, de sorte qu'il n'aura pas besoin de requêter continuellement à l'utilisateur de terminer une instance de CAPTCHA lors des requêtes suivantes. Deuxièmement, lorsqu'un utilisateur se connecte avec succès à l'accès frontal, CIDRAM définit un cookie afin de pouvoir se souvenir de l'utilisateur pour les requêtes suivantes (c'est à dire, les cookies sont utilisés pour authentifier l'utilisateur à une session de connexion).
+CIDRAM définit les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) à deux points dans son code. Premièrement, selon la configuration de `lockto`, CIDRAM peut créer un cookie pour se souvenir quand un utilisateur a rempli un CAPTCHA. Deuxièmement, lorsqu'un utilisateur se connecte avec succès à l'accès frontal, CIDRAM définit un cookie afin de pouvoir se souvenir de l'utilisateur pour les requêtes suivantes (c'est à dire, les cookies sont utilisés pour authentifier l'utilisateur à une session de connexion).
 
 Dans les deux cas, les avertissements de cookie sont affichés en évidence (le cas échéant), avertissant l'utilisateur que les cookies seront définis s'ils s'engagent dans les actions correspondantes. Les cookies ne sont définis à aucun autre endroit du code.
 
 *Remarque : Les APIs CAPTCHA « invisible » peuvent être incompatibles avec les lois sur les cookies dans certaines juridictions, et devrait être évitée par tous les sites web soumis à ces lois. Opter d'utiliser les autres API fournies à la place, ou simplement désactiver complètement CAPTCHA, peut être préférable.*
 
 *Directives de configuration pertinentes :*
-- `hcaptcha` -> `lockuser`
-- `hcaptcha` -> `api`
+- `captcha` -> `lockto`
+- `captcha` -> `api`
 
 #### 9.5 COMMERCIALISATION ET PUBLICITÉ
 
@@ -2381,4 +2381,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 9 Octobre 2025 (2025.10.09).
+Dernière mise à jour : 10 Février 2026 (2026.02.10).

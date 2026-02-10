@@ -2062,7 +2062,7 @@ CIDRAM的`pdo_dsn`應配置如下。
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM支持hCaptcha。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
+CIDRAM支持CAPTCHA。​他們需要API金鑰才能正常工作。​默認情況下禁用，但它們可以通過配置所需的API金鑰啟用。​在啟用的情況下，在服務與CIDRAM或用戶的瀏覽器之間可能會發生通信。​這可能涉及通信信息，例如用戶的IP地址，用戶代理，操作系統，以及可用於請求的其他詳細信息。
 
 ##### 9.2.3 STOP FORUM SPAM 【停止論壇垃圾郵件】
 
@@ -2150,7 +2150,7 @@ IP地址：x.x.x.x - Date/Time: Day, dd Mon 20xx hh:ii:ss +0000 - CAPTCHA狀態�
 ```
 
 *負責CAPTCHA日誌記錄的配置指令是：*
-- `hcaptcha` -> `hcaptcha_log`
+- `captcha` -> `log`
 
 ##### 9.3.2 前端日誌記錄
 
@@ -2225,15 +2225,15 @@ CIDRAM不[加密](https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%AF%86)其緩存或�
 
 #### 9.4 COOKIE
 
-CIDRAM在其代碼庫中的兩個點設置[cookie](https://zh.wikipedia.org/wiki/Cookie)。​首先，當用戶成功完成CAPTCHA實例時（這假定`lockuser`設置為`true`），CIDRAM設置cookie，以便能夠在後續請求中記住用戶已經完成了CAPTCHA實例，這樣就不需要不斷要求用戶在後續請求中完成CAPTCHA實例。​其次，當用戶成功登錄前端時，CIDRAM設置cookie以便能夠在後續請求中的記住用戶（即，cookie用於向登錄會話驗證用戶身份）。
+CIDRAM在其代碼庫中的兩個點設置[cookie](https://zh.wikipedia.org/wiki/Cookie)。 首先，根據 `lockto` 的設定方式，CIDRAM可能會設定一個cookie來記住使用者何時完成了CAPTCHA。 其次，當用戶成功登錄前端時，CIDRAM設置cookie以便能夠在後續請求中的記住用戶（即，cookie用於向登錄會話驗證用戶身份）。
 
 在這兩種情況下，cookie警告顯著顯示（適用時），警告用戶如果他們參與相關操作將設置cookie。 Cookie不會在代碼庫中的任何其他位置設置。
 
 *注意：在某些司法管轄區中，『不可见的』 CAPTCHA API可能與Cookie法律不兼容，任何受這些法律約束的網站都應該避免這個API。​選擇改用其他提供的API，或完全禁用CAPTCHA，可能是更可取的選擇。*
 
 *相關配置指令：*
-- `hcaptcha` -> `lockuser`
-- `hcaptcha` -> `api`
+- `captcha` -> `lockto`
+- `captcha` -> `api`
 
 #### 9.5 市場營銷和廣告
 
@@ -2316,4 +2316,4 @@ v3與之前的主要版本之間存在顯著差異。​特別是，入口點、
 ---
 
 
-最後更新：2025年10月9日。
+最後更新：2026年2月10日。

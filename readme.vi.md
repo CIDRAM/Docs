@@ -2132,7 +2132,7 @@ Khi xác minh máy tìm kiếm được kích hoạt, CIDRAM cố gắng thực 
 
 ##### 9.2.2 CAPTCHA
 
-CIDRAM hỗ trợ hCaptcha. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
+CIDRAM hỗ trợ CAPTCHA. Chúng yêu cầu các khóa API để hoạt động chính xác. Chúng bị vô hiệu hóa mặc định, nhưng có thể được kích hoạt bằng cách định cấu hình các khóa API. Khi được kích hoạt, giao tiếp có thể xảy ra giữa dịch vụ và CIDRAM hoặc trình duyệt của người dùng. Điều này có thể liên quan đến việc truyền đạt thông tin như địa chỉ IP của người dùng, đại lý người dùng, hệ điều hành, và các chi tiết khác có sẵn cho yêu cầu.
 
 ##### 9.2.3 STOP FORUM SPAM
 
@@ -2220,7 +2220,7 @@ Mục nhập nhật ký CAPTCHA chứa địa chỉ IP của người dùng đan
 ```
 
 *Chỉ thị cấu hình chịu trách nhiệm cho nhật ký CAPTCHA là:*
-- `hcaptcha` -> `hcaptcha_log`
+- `captcha` -> `log`
 
 ##### 9.3.2 NHẬT KÝ FRONT-END
 
@@ -2291,15 +2291,15 @@ CIDRAM không mã hóa bộ nhớ cache của nó hoặc bất kỳ thông tin l
 
 #### 9.4 COOKIE
 
-CIDRAM đặt [cookie](https://vi.wikipedia.org/wiki/Cookie_(tin_h%E1%BB%8Dc)) ở hai điểm trong cơ sở mã của nó. Thứ nhất, khi người dùng hoàn tất thành công sự xuất hiện CAPTCHA (và giả định rằng `lockuser` được đặt thành `true`), CIDRAM đặt cookie để có thể ghi nhớ các yêu cầu tiếp theo mà người dùng đã hoàn sự xuất hiện CAPTCHA, vì vậy để không cần liên tục yêu cầu người dùng hoàn thành một sự xuất hiện CAPTCHA trên mỗi yêu cầu tiếp theo. Thứ hai, khi người dùng đăng nhập thành công vào front-end, CIDRAM đặt cookie để có thể nhớ người dùng cho các yêu cầu tiếp theo (cookie được sử dụng để xác thực người dùng đến phiên đăng nhập).
+CIDRAM đặt [cookie](https://vi.wikipedia.org/wiki/Cookie_(tin_h%E1%BB%8Dc)) ở hai điểm trong cơ sở mã của nó. Thứ nhất, tùy thuộc vào cách cấu hình `lockto`, CIDRAM có thể thiết lập một cookie để ghi nhớ khi người dùng đã hoàn thành CAPTCHA. Thứ hai, khi người dùng đăng nhập thành công vào front-end, CIDRAM đặt cookie để có thể nhớ người dùng cho các yêu cầu tiếp theo (cookie được sử dụng để xác thực người dùng đến phiên đăng nhập).
 
 Trong cả hai trường hợp, cảnh báo cookie được hiển thị nổi bật (khi nó có liên quan), cảnh báo người dùng rằng cookie sẽ được đặt nếu họ tham gia vào các hành động có liên quan. Cookie không được đặt ở bất kỳ điểm nào khác trong cơ sở mã.
 
 *Chú thích: Các API CAPTCHA "vô hình" có thể không tương thích với luật cookie ở một số khu vực pháp lý, và nên được tránh bởi bất kỳ trang web nào tuân theo các luật đó. Thay vào đó, chọn sử dụng các API được cung cấp khác, hoặc đơn giản là vô hiệu hóa hoàn toàn CAPTCHA, có thể thích hợp hơn.*
 
 *Chỉ thị cấu hình có liên quan:*
-- `hcaptcha` -> `lockuser`
-- `hcaptcha` -> `api`
+- `captcha` -> `lockto`
+- `captcha` -> `api`
 
 #### 9.5 TIẾP THỊ VÀ QUẢNG CÁO
 
@@ -2378,4 +2378,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2025.10.26.
+Lần cuối cập nhật: 2026.02.10.
