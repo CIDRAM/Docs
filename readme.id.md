@@ -739,10 +739,10 @@ Catat: Pencarian IPv6 mungkin tidak bekerja dengan benar pada beberapa sistem 32
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1026,7 +1026,8 @@ other───[Mencoba memverifikasi?]─[Blokir negatif?]─[Blokir permintaan 
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __Apa itu "positif" dan "negatif"?__ Saat memverifikasi identitas yang disajikan oleh permintaan, hasil yang berhasil dapat digambarkan sebagai "positif" atau "negatif". Ketika identitas yang disajikan dikonfirmasi sebagai identitas sebenarnya, itu akan digambarkan sebagai "positif". Ketika identitas yang disajikan dikonfirmasi sebagai dipalsukan, itu akan digambarkan sebagai "negatif". Namun, hasil yang tidak berhasil (misalnya, verifikasi gagal, atau kebenaran identitas yang disajikan tidak dapat ditentukan) tidak akan digambarkan sebagai "positif" atau "negatif". Sebaliknya, hasil yang tidak berhasil akan digambarkan sebagai tidak diverifikasi. Ketika tidak ada upaya untuk memverifikasi identitas yang disajikan oleh permintaan, permintaan tersebut juga akan digambarkan sebagai tidak diverifikasi. Istilah tersebut masuk akal hanya dalam konteks dimana identitas yang disajikan oleh permintaan dikenali, dan jadi, dimana verifikasi dimungkinkan. Jika identitas yang disajikan tidak sesuai dengan opsi yang diberikan di atas, atau jika tidak ada identitas yang disajikan, opsi yang diberikan di atas menjadi tidak relevan.
@@ -1356,7 +1357,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2365,4 +2367,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 10 Februari 2026 (2026.02.10).
+Terakhir Diperbarui: 14 Februari 2026 (2026.02.14).

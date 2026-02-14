@@ -739,10 +739,10 @@ Remarque : Les recherches IPv6 peuvent ne pas fonctionner correctement sur cert
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### « request_proxy » `[string]`
@@ -1028,7 +1028,8 @@ other───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer 
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __Que sont les « positifs » et les « négatifs » ?__ Lors de la vérification de l'identité présenté par une requête, un résultat réussi peut être décrit comme « positif » ou « négatif ». Dans le cas où l'identité présenté est confirmé comme étant la véritable identité, elle serait décrit comme « positif ». Dans le cas où l'identité présenté s'avèrerait falsifié, elle serait décrit comme « négatif ». Cependant, un résultat infructueux (par exemple, la vérification échoue, ou la véracité de l'identité présenté ne peut pas être déterminé) ne serait pas décrit comme « positif » ou « négatif ». Au lieu, un résultat infructueux serait décrit simplement comme non vérifié. Lorsqu'aucune tentative de vérification de l'identité présenté par une requête n'est effectué, la requête serait également décrit comme non vérifié. Les termes n'ont de sens que dans le contexte où l'identité présenté par une requête est reconnue, et donc, où la vérification est possible. Dans les cas où l'identité présenté ne correspond pas aux options fournies ci-dessus, ou lorsqu'aucune identité n'est présenté, les options fournies ci-dessus deviennent sans objet.
@@ -1359,7 +1360,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2381,4 +2383,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 10 Février 2026 (2026.02.10).
+Dernière mise à jour : 14 Février 2026 (2026.02.14).

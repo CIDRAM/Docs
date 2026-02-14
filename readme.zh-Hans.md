@@ -720,10 +720,10 @@ statistics_captchas───[失败]─[成功]─[已送达]
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### “request_proxy” `[string]`
@@ -996,7 +996,8 @@ other───[尝试验证？]─[阻止阴性？]─[阻止未验证的请求�
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __什么是“阳性”和“阴性”？__ 在验证请求提供的身份时，成功的结果可以描述为“阳性”或“阴性”。​当所呈现的身份被确认为真实身份时，将被描述为“阳性”。​当所提供的身份被证实为伪造时，将被描述为“阴性”。​但是，不成功的结果（例如，验证失败，或无法确定所提供身份的真实性）不会被描述为“阳性”或“阴性”。​相反，不成功的结果将被简单地描述为未验证。​当没有尝试验证请求提供的身份时，该请求同样会被描述为未验证。​这些术语仅在请求提供的身份被识别的情况下才有意义，因此，在可以进行验证的情况下。​如果提供的身份与上面提供的选项不匹配，或者没有提供身份，则上面提供的选项变得无关。<br /><br />__什么是“一击绕过”？__ 在某些情况下，由于签名文件、模块、或请求的其他条件，可能仍会阻止经过肯定验证的请求，为了避免假阳性，可能需要绕过。​在绕过旨在处理仅一项违规行为的情况下，这样的绕过可以被描述为“一击绕过”。
@@ -1306,7 +1307,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2316,4 +2318,4 @@ v3与之前的主要版本之间存在显着差异。​特别是，入口点、
 ---
 
 
-最后更新：2026年2月10日。
+最后更新：2026年2月14日。

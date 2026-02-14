@@ -747,10 +747,10 @@ Lưu ý: Tra cứu IPv6 có thể không hoạt động chính xác trên một 
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1037,7 +1037,8 @@ other───[Cố gắng xác minh?]─[Chặn tiêu cực?]─[Chặn các y�
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __"Tích cực" và "tiêu cực" là gì?__ Khi xác minh danh tính được trình bày bởi một yêu cầu, kết quả thành công có thể được mô tả là "tích cực" hoặc "tiêu cực". Trong trường hợp danh tính được trình bày được xác nhận là danh tính thực, danh tính đó sẽ được mô tả là "tích cực". Trong trường hợp danh tính được trình bày được xác nhận là giả mạo, danh tính đó sẽ được mô tả là "tiêu cực". Tuy nhiên, kết quả không thành công (v.d., xác minh không thành công, hoặc không thể xác định tính xác thực của danh tính được trình bày) sẽ không được mô tả là "tích cực" hoặc "tiêu cực". Thay vào đó, một kết quả không thành công sẽ được mô tả đơn giản là chưa được xác minh. Khi không có nỗ lực xác minh danh tính mà một yêu cầu đưa ra được thực hiện, thì yêu cầu đó cũng sẽ được mô tả là chưa được xác minh. Các điều khoản chỉ có ý nghĩa trong bối cảnh mà danh tính được trình bày bởi một yêu cầu được công nhận và do đó, khi có thể xác minh. Trong trường hợp danh tính được trình bày không khớp với các tùy chọn được cung cấp ở trên, hoặc khi không có danh tính nào được trình bày, các tùy chọn được cung cấp ở trên trở nên không liên quan.
@@ -1372,7 +1373,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2378,4 +2380,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2026.02.10.
+Lần cuối cập nhật: 2026.02.14.

@@ -736,10 +736,10 @@ statistics_captchas───[실패했습니다]─[성공했습니다]─[제�
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1024,7 +1024,8 @@ other───[검증을 시도?]─[네거티브를 차단하시겠습니까?]�
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __"긍정적"과 "부정적"이란 무엇입니까?__ 요청으로 제시된 신원을 확인할 때 성공적인 결과는 "긍정적" 또는 "부정적"으로 설명될 수 있습니다. 제시한 신분이 실제 신분으로 확인되면 "긍정적"으로 기재됩니다. 제시한 신원이 위조된 것으로 확인되는 경우 "부정적"으로 기재됩니다. 그러나, 실패한 결과는 (예: 확인에 실패하거나, 제시된 신원의 진실성을 확인할 수 없음) "긍정적" 또는 "부정적"으로 설명되지 않습니다. 대신, 실패한 결과는 단순히 검증되지 않은 것으로 설명됩니다. 요청으로 제시된 신원을 확인하려는 시도가 없을 때 요청은 마찬가지로 확인되지 않은 것으로 설명됩니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다. 이 용어는 요청으로 제공된 신원이 인식되고 따라서 검증이 가능한 상황에서만 의미가 있습니다.
@@ -1353,7 +1354,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2359,4 +2361,4 @@ v4에서 도입된 변경 사항 목록(추가된 기능, 제거된 기능, 등�
 ---
 
 
-최종 업데이트 : 2026년 2월 10일.
+최종 업데이트 : 2026년 2월 14일.

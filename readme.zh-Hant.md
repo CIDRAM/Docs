@@ -720,10 +720,10 @@ statistics_captchas───[失敗]─[成功]─[已送達]
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### 『request_proxy』 `[string]`
@@ -996,7 +996,8 @@ other───[嘗試驗證？]─[阻止陰性？]─[阻止未驗證的請求�
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __什麼是『陽性』和『陰性』？__ 在驗證請求提供的身份時，成功的結果可以描述為『陽性』或『陰性』。​當所呈現的身份被確認為真實身份時，將被描述為『陽性』。​當所提供的身份被證實為偽造時，將被描述為『陰性』。​但是，不成功的結果（例如，驗證失敗，或無法確定所提供身份的真實性）不會被描述為『陽性』或『陰性』。​相反，不成功的結果將被簡單地描述為未驗證。​當沒有嘗試驗證請求提供的身份時，該請求同樣會被描述為未驗證。​這些術語僅在請求提供的身份被識別的情況下才有意義，因此，在可以進行驗證的情況下。​如果提供的身份與上面提供的選項不匹配，或者沒有提供身份，則上面提供的選項變得無關。<br /><br />__什麼是『一擊繞過』？__ 在某些情況下，由於簽名檔案、模組、或請求的其他條件，可能仍會阻止經過肯定驗證的請求，為了避免假陽性，可能需要繞過。​在繞過旨在處理僅一項違規行為的情況下，這樣的繞過可以被描述為『一擊繞過』。
@@ -1306,7 +1307,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2316,4 +2318,4 @@ v3與之前的主要版本之間存在顯著差異。​特別是，入口點、
 ---
 
 
-最後更新：2026年2月10日。
+最後更新：2026年2月14日。

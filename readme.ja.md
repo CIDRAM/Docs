@@ -728,10 +728,10 @@ statistics_captchas───[失敗しました]─[合格された]─[提供�
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1010,7 +1010,8 @@ other───[確認してみますか？]─[陰性をブロックしますか
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __「陽性」と「陰性」とは何ですか？__ リクエストによって提示されたＩＤを検証する場合、成功した結果は「陽性」または「陰性」と記述できます。​提示されたＩＤが真のＩＤであることが確認された場合、「陽性」と記述されます。​提示されたＩＤが偽物であることが確認された場合、「陰性」と記述されます。​ただし、失敗した結果（たとえば、検証が失敗した、または提示されたＩＤの信憑性を判断できない）は、「陽性」または「陰性」とは記述れません。​代わりに、失敗した結果は単に未確認として記述されます。​リクエストによって提示されたＩＤを検証する試みが行われない場合、リクエストは同様に未検証として記述されます。​この用語は、リクエストによって提示されたＩＤが認識されるコンテキストでのみ意味があります（したがって、検証が可能な場合）。​提示されたＩＤが上記のオプションと一致しない場合、またはＩＤが提示されていない場合、上記のオプションは無関係になります。
@@ -1329,7 +1330,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2336,4 +2338,4 @@ v4で導入された変更点（追加された機能、削除された機能、
 ---
 
 
-最終更新日：２０２６年２月１０日。
+最終更新日：２０２６年２月１４日。

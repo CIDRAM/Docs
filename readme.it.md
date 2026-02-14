@@ -739,10 +739,10 @@ Nota: Le ricerche IPv6 potrebbero non funzionare correttamente su alcuni sistemi
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1027,7 +1027,8 @@ other───[Prova a verificare?]─[Blocca i negativi?]─[Blocca le richiest
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __Cosa sono "positivi" e "negativi"?__ Nel verificare l'identità presentata da una richiesta, un esito di successo potrebbe essere descritto come "positivo" o "negativo". Nel caso in cui l'identità presentata fosse confermata come la vera identità, sarebbe descritto come "positivo". Nel caso in cui l'identità presentata fosse confermata come falsificata, sarebbe descritto come "negativo". Tuttavia, un esito senza successo (ad esempio, la verifica è fallita, o non è possibile determinare la veridicità dell'identità presentata) non sarebbe descritto come "positivo" o "negativo". Invece, un esito senza successo verrebbe descritto semplicemente come non verificato. Quando non viene effettuato alcun tentativo di verificare l'identità presentata da una richiesta, la richiesta verrebbe ugualmente descritto come non verificato. I termini hanno senso solo nel contesto in cui viene riconosciuta l'identità presentata da una richiesta e, quindi, dove è possibile la verifica. Nei casi in cui l'identità presentata non corrisponda alle opzioni fornite sopra, o in cui non venga presentata alcuna identità, le opzioni sopra fornite diventano irrilevanti.
@@ -1359,7 +1360,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2371,4 +2373,4 @@ Per un elenco delle modifiche introdotte dalla v4 (ad esempio, funzionalità agg
 ---
 
 
-Ultimo Aggiornamento: 10 Febbraio 2026 (2026.02.10).
+Ultimo Aggiornamento: 14 Febbraio 2026 (2026.02.14).

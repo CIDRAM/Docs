@@ -739,10 +739,10 @@ Opmerking: IPv6-opzoeken mogelijk werken niet correct op sommige 32-bits systeme
 
 ```
 disabled_channels
-├─GitHub ("<span class="origin us">US</span> GitHub")
-├─BitBucket ("<span class="origin us">US</span> BitBucket")
-├─Codeberg ("<span class="origin de">DE</span> Codeberg")
-└─GoogleDNS ("<span class="origin us">US</span> GoogleDNS")
+├─GitHub ("<span class="origin bgHRdBl">US</span> GitHub")
+├─BitBucket ("<span class="origin bgHRdBl">US</span> BitBucket")
+├─Codeberg ("<span class="origin bgVBkRd fgYlw">DE</span> Codeberg")
+└─GoogleDNS ("<span class="origin bgHRdBl">US</span> GoogleDNS")
 ```
 
 ##### "request_proxy" `[string]`
@@ -1026,7 +1026,8 @@ other───[Proberen te verifiëren?]─[Negatieven blokkeren?]─[Niet-gever
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
-└─GPTBot ("!! GPTBot")
+├─GPTBot ("!! GPTBot")
+└─UptimeRobot ("UptimeRobot")
 ```
 
 __Wat zijn "positieven" en "negatieven"?__ Bij het verifiëren van de identiteit die door een verzoek wordt gepresenteerd, een succesvol resultaat kan worden omschreven als "positief" of "negatief". In het geval dat wordt bevestigd dat de gepresenteerde identiteit de ware identiteit is, deze als "positief" beschreven wordt. In het geval dat wordt bevestigd dat de gepresenteerde identiteit vervalst is, deze als "negatief" beschreven wordt. Een onsuccesvolle uitkomst (b.v., verificatie mislukt, of de juistheid van de gepresenteerde identiteit kan niet worden vastgesteld) wordt echter niet als "positief" of "negatief" beschreven. In plaats daarvan zou een mislukte uitkomst eenvoudigweg als niet-geverifieerd worden beschreven. Als er geen poging wordt gedaan om de identiteit van het verzoek te verifiëren, het verzoek wordt eveneens als niet-geverifieerd beschreven. De termen hebben alleen zin in de context waarin de identiteit van het verzoek wordt herkend, en dus waar verificatie mogelijk is. In gevallen waarin de gepresenteerde identiteit niet overeenkomt met de bovenstaande opties, of waar geen identiteit wordt gepresenteerd, worden de bovenstaande opties irrelevant.
@@ -1356,7 +1357,8 @@ used
 ├─Redditbot ("Redditbot")
 ├─Snapchat ("Snapchat")
 ├─Sogou ("Sogou/搜狗")
-└─Yandex ("Yandex/Яндекс")
+├─Yandex ("Yandex/Яндекс")
+└─iCloud ("iCloud (iPhone Safari Bypass)")
 ```
 
 ---
@@ -2382,4 +2384,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 10 Februari 2026 (2026.02.10).
+Laatste Bijgewerkt: 14 Februari 2026 (2026.02.14).
