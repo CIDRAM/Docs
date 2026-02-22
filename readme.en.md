@@ -1600,6 +1600,18 @@ This can also be achieved by using the interface provided by the "sections list"
 
 If you feel that writing your own custom signature files or custom modules is too complicated for you, a simpler alternative may be to use the interface provided by the "auxiliary rules" page of the CIDRAM front-end. By selecting the appropriate options and specifying details about specific types of requests, you can instruct CIDRAM how to respond to those requests. "Auxiliary rules" are executed after all signature files and modules have already finished executing.
 
+##### 6.3.2 SAVING AND ACTIVATING CUSTOM SIGNATURE FILES
+
+For CIDRAM v2 and earlier, in the vault, you'll find two files: `ipv4_custom.dat.RenameMe` and `ipv6_custom.dat.RenameMe`. You can save custom signatures in those files, or, if you'd prefer, you can create new files for your custom signatures, naming them whatever you want. For CIDRAM v2 and earlier, custom signature files must be saved in the base of the vault directory.
+
+For CIDRAM v3 and onward, there aren't any pre-provided files for custom signatures, but you can likewise create new files for your custom signatures, naming them however you want. For CIDRAM v3 and onward, custom signature files must be saved in the prepared "signatures" directory of your CIDRAM installation.
+
+To "activate" custom signature files, they must be cited by the "ipv4" or "ipv6" configuration directives of your configuration file (depending on whether the custom signature files are intended for IPv4 or IPv6 signatures).
+
+For CIDRAM v2 and earlier, "ipv4" and "ipv6" are found under the "signatures" configuration category.
+
+For CIDRAM v3 and onward, "ipv4" and "ipv6" are found under the "components" configuration category.
+
 #### 6.4 <a name="MODULE_BASICS"></a>BASICS (FOR MODULES)
 
 Modules can be used to extend the functionality of CIDRAM, perform additional tasks, or process additional logic.
@@ -1710,7 +1722,7 @@ Modules have been made available to ensure that the following packages and produ
 - [How frequently are signatures updated?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [I've been blocked by CIDRAM from a website that I want to visit! Please help!](#user-content-BLOCKED_WHAT_TO_DO)
-- [I want to use CIDRAM v3~v4 with a PHP version older than 7.2; Can you help?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [I want to use CIDRAM v2~v4 with a PHP version older than 7.2; Can you help?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Can I use a single CIDRAM installation to protect multiple domains?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [I don't want to mess around with installing this and getting it to work with my website; Can I just pay you to do it all for me?](#user-content-PAY_YOU_TO_DO_IT)
 - [Can I hire you or any of the developers of this project for private work?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1788,9 +1800,9 @@ Update frequency varies depending on the signature files in question. All mainta
 
 CIDRAM provides a means for website owners to block undesirable traffic, but it's the responsibility of website owners to decide for themselves how they want to use CIDRAM. In case of the false positives relating to the signature files normally included with CIDRAM, corrections can be made, but in regards to being unblocked from specific websites, you'll need to take that up with the owners of the websites in question. In cases where corrections are made, at the very least, they'll need to update their signature files and/or installation, and in other cases (such as, for example, where they've modified their installation, created their own custom signatures, etc), the responsibility to solve your problem is entirely theirs, and is entirely outside our control.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>I want to use CIDRAM v3~v4 with a PHP version older than 7.2; Can you help?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>I want to use CIDRAM v2~v4 with a PHP version older than 7.2; Can you help?
 
-No. PHP≥7.2 is a minimum requirement for CIDRAM v3~v4.
+No. PHP≥7.2 is a minimum requirement for CIDRAM v2~v4.
 
 *See also: [Compatibility Charts](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2372,4 +2384,4 @@ For a list of the changes introduced by v4 (e.g., features added, features remov
 ---
 
 
-Last Updated: 14 February 2026 (2026.02.14).
+Last Updated: 22 February 2026 (2026.02.22).
