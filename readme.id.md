@@ -537,7 +537,7 @@ __3.__ Jika diblokir karena pembatasan laju, 429 akan digunakan, atau jika diblo
 
 __4.__ Jika diblokir karena aturan tambahan yang menetapkan "penggantian kode status HTTP", penggantian kode status HTTP tersebut akan digunakan.
 
-__5.__ Jika diblokir karena alasan hukum (misalnya, jika diblokir karena tanda tangan khusus yang menggunakan kata singkatan "hukum"), pesan status HTTP untuk "hukum" akan digunakan.
+__5.__ Jika diblokir karena alasan hukum (misalnya, jika diblokir karena tanda tangan kustom yang menggunakan kata singkatan "hukum"), pesan status HTTP untuk "hukum" akan digunakan.
 
 __6.__ Untuk semua permintaan terblokir lainnya, pesan status HTTP untuk "default" akan digunakan (ini memiliki prioritas terendah).
 
@@ -1505,7 +1505,7 @@ Expires: 2016.12.31
 
 ##### 6.1.3 TAG PENANGGUH
 
-Ketika sejumlah besar file tanda tangan diinstal dan aktif digunakan, instalasi bisa menjadi sangat kompleks, dan mungkin ada beberapa tanda tangan yang tumpang tindih. Dalam kasus ini, untuk mencegah banyak tanda tangan tumpang tindih dipicu selama kejadian blokir, tag penangguh dapat digunakan untuk menangguhkan bagian tanda tangan tertentu dalam kasus dimana beberapa file tanda tangan khusus lainnya diinstal dan aktif digunakan. Ini mungkin berguna jika beberapa tanda tangan diperbarui lebih sering daripada yang lain, untuk menangguhkan tanda tangan yang kurang sering diperbarui untuk mendukung tanda tangan yang lebih sering diperbarui.
+Ketika sejumlah besar file tanda tangan diinstal dan aktif digunakan, instalasi bisa menjadi sangat kompleks, dan mungkin ada beberapa tanda tangan yang tumpang tindih. Dalam kasus ini, untuk mencegah banyak tanda tangan tumpang tindih dipicu selama kejadian blokir, tag penangguh dapat digunakan untuk menangguhkan bagian tanda tangan tertentu dalam kasus dimana beberapa file tanda tangan kustom lainnya diinstal dan aktif digunakan. Ini mungkin berguna jika beberapa tanda tangan diperbarui lebih sering daripada yang lain, untuk menangguhkan tanda tangan yang kurang sering diperbarui untuk mendukung tanda tangan yang lebih sering diperbarui.
 
 Tag penangguh digunakan serupa dengan jenis tag lainnya. Nilai tag harus cocok dengan file tanda tangan yang diinstal dan aktif digunakan untuk ditangguhkan.
 
@@ -1602,6 +1602,18 @@ Ini juga dapat dicapai dengan menggunakan antarmuka yang disediakan oleh halaman
 ##### 6.3.1 ATURAN TAMBAHAN
 
 Jika Anda merasa bahwa menulis file tanda tangan atau modul kustom Anda sendiri terlalu rumit untuk Anda, alternatif yang lebih sederhana mungkin menggunakan antarmuka yang disediakan oleh halaman "aturan tambahan" dari bagian depan CIDRAM. Dengan memilih opsi yang sesuai dan menentukan detail tentang jenis permintaan spesifik, Anda dapat menginstruksikan CIDRAM cara menanggapi permintaan tersebut. "Aturan tambahan" dijalankan setelah semua file tanda tangan dan modul telah selesai dijalankan.
+
+##### 6.3.2 MENYIMPAN DAN MENGAKTIFKAN FILE tanda tangan kustom
+
+Untuk CIDRAM v2 dan sebelumnya, di dalam vault, Anda akan menemukan dua file: `ipv4_custom.dat.RenameMe` dan `ipv6_custom.dat.RenameMe`. Anda dapat menyimpan tanda tangan kustom di file-file tersebut, atau, jika Anda mau, Anda dapat membuat file baru untuk tanda tangan kustom Anda, dan menamainya sesuai keinginan Anda. Untuk CIDRAM v2 dan sebelumnya, file tanda tangan kustom harus disimpan di direktori dasar vault.
+
+Untuk CIDRAM v3 dan selanjutnya, tidak ada file yang disediakan sebelumnya untuk tanda tangan kustom, tetapi Anda juga dapat membuat file baru untuk tanda tangan kustom Anda, dengan menamainya sesuai keinginan Anda. Untuk CIDRAM v3 dan selanjutnya, file tanda tangan kustom harus disimpan di direktori "signatures" yang telah disiapkan di instalasi CIDRAM Anda.
+
+Untuk "mengaktifkan" file tanda tangan kustom, file tersebut harus dikutip oleh direktif konfigurasi "ipv4" atau "ipv6" dalam file konfigurasi Anda (tergantung apakah file tanda tangan kustom tersebut ditujukan untuk tanda tangan IPv4 atau IPv6).
+
+Untuk CIDRAM v2 dan sebelumnya, "ipv4" dan "ipv6" dapat ditemukan di bawah kategori konfigurasi "signatures".
+
+Untuk CIDRAM v3 dan selanjutnya, "ipv4" dan "ipv6" dapat ditemukan di bawah kategori konfigurasi "components".
 
 #### 6.4 <a name="MODULE_BASICS"></a>DASAR-DASAR (UNTUK MODUL)
 
@@ -1713,7 +1725,7 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 - [Seberapa sering tanda tangan diperbarui?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Saya diblokir oleh CIDRAM dari situs web yang saya ingin mengunjungi! Tolong bantu!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Saya ingin menggunakan CIDRAM v3~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Saya ingin menggunakan CIDRAM v2~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Dapatkah saya menggunakan satu instalasi CIDRAM untuk melindungi beberapa domain?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Saya tidak ingin membuang waktu dengan menginstal ini dan membuatnya bekerja dengan situs web saya; Bisakah saya membayar Anda untuk melakukan semuanya untuk saya?](#user-content-PAY_YOU_TO_DO_IT)
 - [Dapatkah saya mempekerjakan Anda atau pengembang proyek ini untuk pekerjaan pribadi?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1791,9 +1803,9 @@ Frekuensi pembaruan bervariasi tergantung pada file tanda tangan. Semua penulis 
 
 CIDRAM menyediakan sarana bagi pemilik situs web untuk memblokir lalu lintas yang tidak diinginkan, tapi pemilik situs web bertanggung jawab untuk memutuskan bagaimana mereka ingin menggunakan CIDRAM. Dalam kasus positif palsu yang berkaitan dengan file tanda tangan yang biasanya disertakan dengan CIDRAM, koreksi dapat dibuat, tetapi dalam hal yang tidak terblokir dari situs web tertentu, Anda harus menghubungi pemilik dari situs yang bersangkutan. Dalam kasus dimana koreksi dibuat, setidaknya, mereka harus memperbarui file tanda tangan mereka dan/atau memperbarui instalasi mereka, dan dalam kasus lain (seperti, misalnya, ketika mereka diubah instalasi mereka, membuat tanda tangan kustom, dll), tanggung jawab untuk memecahkan masalah Anda sepenuhnya milik mereka, dan sepenuhnya di luar kendali kita.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Saya ingin menggunakan CIDRAM v3~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Saya ingin menggunakan CIDRAM v2~v4 dengan versi PHP yang lebih tua dari 7.2; Anda dapat membantu?
 
-Tidak. PHP≥7.2 adalah persyaratan minimum untuk CIDRAM v3~v4.
+Tidak. PHP≥7.2 adalah persyaratan minimum untuk CIDRAM v2~v4.
 
 *Lihat juga: [Bagan Kompatibilitas](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2367,4 +2379,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 14 Februari 2026 (2026.02.14).
+Terakhir Diperbarui: 22 Februari 2026 (2026.02.22).

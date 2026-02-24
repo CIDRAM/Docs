@@ -1606,6 +1606,18 @@ Ciò può anche essere raggiunto utilizzando l'interfaccia fornita dalla pagina 
 
 Se ritieni che scrivere i tuoi file di firme personalizzati o moduli personalizzati sia troppo complicato per te, un'alternativa più semplice potrebbe essere quella di utilizzare l'interfaccia fornita dalla pagina "regole ausiliarie" del front-end CIDRAM. Selezionando le opzioni appropriate e specificando i dettagli sui tipi specifici di richieste, è possibile istruire CIDRAM su come rispondere a tali richieste. Le "regole ausiliarie" vengono eseguite dopo che tutti i file di firme e i moduli hanno già completato l'esecuzione.
 
+##### 6.3.2 SALVANDO E ATTIVAZIONE DI FILE DI FIRMA PERSONALIZZATI
+
+Per CIDRAM v2 e precedenti, nel vault troverai due file: `ipv4_custom.dat.RenameMe` e `ipv6_custom.dat.RenameMe`. Puoi salvare le firme personalizzate in questi file oppure, se preferisci, puoi creare nuovi file per le tue firme personalizzate, assegnando loro il nome desiderato. Per CIDRAM v2 e precedenti, i file di firma personalizzati devono essere salvati nella directory base del vault.
+
+Per CIDRAM v3 e successive, non sono presenti file predefiniti per le firme personalizzate, ma è possibile creare nuovi file per le firme personalizzate, assegnando loro il nome desiderato. Per CIDRAM v3 e successive, i file di firma personalizzati devono essere salvati nella directory "signatures" preparata dell'installazione CIDRAM.
+
+Per "attivare" i file di firma personalizzati, è necessario che siano citati dalle direttive di configurazione "ipv4" o "ipv6" del file di configurazione (a seconda che i file di firma personalizzati siano destinati alle firme IPv4 o IPv6).
+
+Per CIDRAM v2 e precedenti, "ipv4" e "ipv6" si trovano nella categoria di configurazione "signatures".
+
+Per CIDRAM v3 e successive, "ipv4" e "ipv6" si trovano nella categoria di configurazione "components".
+
 #### 6.4 <a name="MODULE_BASICS"></a>NOZIONI DI BASE (PER MODULI)
 
 I moduli possono essere utilizzati per estendere la funzionalità di CIDRAM, eseguire attività aggiuntive o elaborare una logica aggiuntiva.
@@ -1716,7 +1728,7 @@ I moduli sono stati resi disponibili per garantire che i seguenti pacchetti e pr
 - [Con quale frequenza vengono aggiornate le firme?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ho incontrato un problema durante l'utilizzo CIDRAM e non so che cosa fare al riguardo! Aiutami!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [CIDRAM mi ha bloccato da un sito web che voglio visitare! Aiutami!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Voglio usare CIDRAM v3~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Voglio usare CIDRAM v2~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Posso utilizzare un'installazione singola di CIDRAM per proteggere più domini?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Non voglio perdere tempo con l'installazione di questo e farlo funzionare con il mio sito web; Posso pagarti per farlo per me?](#user-content-PAY_YOU_TO_DO_IT)
 - [Posso assumere voi o uno degli sviluppatori di questo progetto per lavori privati?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1794,9 +1806,9 @@ Frequenza di aggiornamento varia a seconda delle file di firma in questione. Tut
 
 CIDRAM fornisce un mezzo per proprietari di siti web per bloccare il traffico indesiderato, ma è la responsabilità dei proprietari di siti web di decidere per se stessi come vogliono usare CIDRAM. Nel caso dei falsi positivi relativi alla firma file normalmente incluso con CIDRAM, correzioni possono essere fatte, ma per essere sbloccato da siti web specifici, è necessario prendere quella con i proprietari dei siti web in questione. Nei casi in cui vengono effettuate correzioni, almeno, avranno bisogno di aggiornare i propri file di firma e/o installazione, e in altri casi (come ad esempio, dove hanno modificato il loro installazione, creato le proprie firme personalizzate, ecc), la responsabilità di risolvere il problema è tutto loro, ed è completamente al di fuori del nostro controllo.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Voglio usare CIDRAM v3~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Voglio usare CIDRAM v2~v4 con una versione di PHP più vecchio di 7.2; Puoi aiutami?
 
-No. PHP≥7.2 è un requisito minimo per CIDRAM v3~v4.
+No. PHP≥7.2 è un requisito minimo per CIDRAM v2~v4.
 
 *Guarda anche: [Grafici di Compatibilità](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2373,4 +2385,4 @@ Per un elenco delle modifiche introdotte dalla v4 (ad esempio, funzionalità agg
 ---
 
 
-Ultimo Aggiornamento: 14 Febbraio 2026 (2026.02.14).
+Ultimo Aggiornamento: 22 Febbraio 2026 (2026.02.22).

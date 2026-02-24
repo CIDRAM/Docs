@@ -1606,6 +1606,18 @@ Cela peut également être réalisé en utilisant l'interface fournie par la pag
 
 Si vous estimez que l'écriture de vos propres fichiers de signatures ou de modules personnalisés est trop compliquée pour vous, une alternative plus simple peut être d'utiliser l'interface fournie par la page "règles auxiliaires" de l'accès frontal. En sélectionnant les options appropriées et en spécifiant des détails sur des types spécifiques de requêtes, vous pouvez indiquer à CIDRAM comment répondre à ces requêtes. Les "règles auxiliaires" sont exécutées après que tous les fichiers de signatures et modules ont déjà été exécutés.
 
+##### 6.3.2 ENREGISTREMENT ET ACTIVATION DES FICHIERS DE SIGNATURE PERSONNALISÉS
+
+Pour CIDRAM v2 et antérieures, vous trouverez deux fichiers dans le vault : `ipv4_custom.dat.RenameMe` et `ipv6_custom.dat.RenameMe`. Vous pouvez enregistrer des signatures personnalisées dans ces fichiers, ou, si vous préférez, vous pouvez créer de nouveaux fichiers pour vos signatures personnalisées, en les nommant comme vous le souhaitez. Pour CIDRAM v2 et antérieures, les fichiers de signature personnalisés doivent être enregistrés à la racine du répertoire du vault.
+
+Pour CIDRAM v3 et ultérieures, il n'existe pas de fichiers pré-fournis pour les signatures personnalisées, mais vous pouvez également créer de nouveaux fichiers pour vos signatures personnalisées, en les nommant comme vous le souhaitez. Pour CIDRAM v3 et ultérieures, les fichiers de signature personnalisés doivent être enregistrés dans le répertoire « signatures » préparé de votre installation CIDRAM.
+
+Pour « activer » les fichiers de signature personnalisés, ils doivent être cités par les directives de configuration « ipv4 » ou « ipv6 » de votre fichier de configuration (selon que les fichiers de signature personnalisés sont destinés aux signatures IPv4 ou IPv6).
+
+Pour CIDRAM v2 et versions antérieures, « ipv4 » et « ipv6 » se trouvent dans la catégorie de configuration « signatures ».
+
+Pour CIDRAM v3 et versions ultérieures, « ipv4 » et « ipv6 » se trouvent dans la catégorie de configuration « components ».
+
 #### 6.4 <a name="MODULE_BASICS"></a>BASES (POUR LES MODULES)
 
 Les modules peuvent être utilisés pour étendre les fonctionnalités de CIDRAM, effectuer des tâches supplémentaires ou traiter les logiques supplémentaires.
@@ -1716,7 +1728,7 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 - [À quelle fréquence les signatures sont-elles mises à jour ?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [J'ai rencontré un problème lors de l'utilisation de CIDRAM et je ne sais pas quoi faire à ce sujet ! Aidez-moi !](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [J'ai été bloqué par CIDRAM d'un site Web que je veux visiter ! Aidez-moi !](#user-content-BLOCKED_WHAT_TO_DO)
-- [Je veux utiliser CIDRAM v3~v4 avec une version PHP plus ancienne que 7.2 ; Pouvez-vous m'aider ?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Je veux utiliser CIDRAM v2~v4 avec une version PHP plus ancienne que 7.2 ; Pouvez-vous m'aider ?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Puis-je utiliser une seule installation de CIDRAM pour protéger plusieurs domaines ?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Je ne veux pas déranger avec l'installation de cela et le faire fonctionner avec mon site ; Puis-je vous payer pour tout faire pour moi ?](#user-content-PAY_YOU_TO_DO_IT)
 - [Puis-je vous embaucher ou à l'un des développeurs de ce projet pour un travail privé ?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1794,9 +1806,9 @@ La fréquence de mise à jour varie selon les fichiers de signature en question.
 
 CIDRAM fournit un moyen pour les propriétaires de sites Web de bloquer le trafic indésirable, mais c'est la responsabilité des propriétaires de sites Web de décider eux-mêmes comment ils veulent utiliser CIDRAM. Dans le cas des faux positifs relatifs aux fichiers de signature normalement inclus dans CIDRAM, des corrections peuvent être apportées, mais en ce qui concerne d'être débloqué à partir de sites Web spécifiques, vous devrez contacter les propriétaires des sites Web en question. Dans les cas où des corrections sont apportées, à tout le moins, ils devront mettre à jour leurs fichiers de signature et/ou d'installation, et dans d'autres cas (tels que, par exemple, où ils ont modifié leur installation, créé leurs propres signatures personnalisées, etc), la responsabilité de résoudre votre problème est entièrement à eux, et est entièrement hors de notre contrôle.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Je veux utiliser CIDRAM v3~v4 avec une version PHP plus ancienne que 7.2 ; Pouvez-vous m'aider ?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Je veux utiliser CIDRAM v2~v4 avec une version PHP plus ancienne que 7.2 ; Pouvez-vous m'aider ?
 
-Non. PHP≥7.2 est une exigence minimale pour CIDRAM v3~v4.
+Non. PHP≥7.2 est une exigence minimale pour CIDRAM v2~v4.
 
 *Voir également : [Tableaux de Compatibilité](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2383,4 +2395,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 14 Février 2026 (2026.02.14).
+Dernière mise à jour : 22 Février 2026 (2026.02.22).
