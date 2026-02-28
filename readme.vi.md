@@ -1619,6 +1619,18 @@ Ignore Phần 1
 
 Nếu bạn cảm thấy việc viết các tập tin chữ ký tùy chỉnh hoặc các mô-đun tùy chỉnh của riêng bạn quá phức tạp đối với bạn, một lựa chọn đơn giản hơn có thể là sử dụng giao diện được cung cấp bởi trang "quy tắc phụ trợ" front-end của CIDRAM. Bằng cách chọn các tùy chọn thích hợp và chỉ định chi tiết về các loại yêu cầu cụ thể, bạn có thể hướng dẫn CIDRAM cách trả lời các yêu cầu đó. Các "quy tắc phụ trợ" được thực hiện sau khi tất cả các tập tin chữ ký và mô-đun đã hoàn thành thực hiện.
 
+##### 6.3.2 LƯU VÀ KÍCH HOẠT TẬP TIN CHỮ KÝ TÙY CHỈNH
+
+Đối với CIDRAM v2 trở xuống, trong vault, bạn sẽ tìm thấy hai tập tin: `ipv4_custom.dat.RenameMe` và `ipv6_custom.dat.RenameMe`. Bạn có thể lưu chữ ký tùy chỉnh vào các tập tin đó, hoặc nếu muốn, bạn có thể tạo tập tin mới cho chữ ký tùy chỉnh của mình, đặt tên tùy ý. Đối với CIDRAM v2 trở xuống, tập tin chữ ký tùy chỉnh phải được lưu ở thư mục gốc của vault.
+
+Đối với CIDRAM v3 trở lên, tập tin cho chữ ký tùy chỉnh không được cung cấp trước, nhưng bạn cũng có thể tạo tập tin mới cho chữ ký tùy chỉnh của mình, đặt tên theo ý muốn. Đối với CIDRAM v3 trở lên, tập tin chữ ký tùy chỉnh phải được lưu trong thư mục "signatures" đã được chuẩn bị sẵn của bản cài đặt CIDRAM của bạn.
+
+Để "kích hoạt" tập tin chữ ký tùy chỉnh, chúng phải được trích dẫn bởi các chỉ thị cấu hình "ipv4" hoặc "ipv6" trong tập tin cấu hình của bạn (tùy thuộc vào việc tập tin chữ ký tùy chỉnh đó dành cho chữ ký IPv4 hay IPv6).
+
+Đối với CIDRAM v2 trở xuống, "ipv4" và "ipv6" được tìm thấy trong danh mục cấu hình "signatures".
+
+Đối với CIDRAM v3 trở lên, "ipv4" và "ipv6" được tìm thấy trong danh mục cấu hình "components".
+
 #### 6.4 <a name="MODULE_BASICS"></a>KHÁI NIỆM CƠ BẢN (CHO MÔ-ĐUN)
 
 Các mô-đun có thể được sử dụng để mở rộng chức năng của CIDRAM, thực hiện các tác vụ bổ sung hay xử lý logic bổ sung.
@@ -1729,7 +1741,7 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 - [Tần suất cập nhật chữ ký là bao nhiêu?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Tôi đã gặp một vấn đề trong khi sử dụng CIDRAM và tôi không biết phải làm gì về nó! Hãy giúp tôi!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Tôi đã bị chặn bởi CIDRAM từ một trang web mà tôi muốn ghé thăm! Hãy giúp tôi!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Tôi muốn sử dụng CIDRAM v3~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Tôi muốn sử dụng CIDRAM v2~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Tôi có thể sử dụng một cài đặt CIDRAM để bảo vệ nhiều tên miền?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Tôi không muốn lãng phí thời gian bằng cách cài đặt này và đảm bảo rằng nó hoạt động với trang web của tôi; Tôi có thể trả tiền cho bạn để làm điều đó cho tôi?](#user-content-PAY_YOU_TO_DO_IT)
 - [Tôi có thể thuê bạn hay bất kỳ nhà phát triển nào của dự án này cho công việc riêng tư?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1807,9 +1819,9 @@ Tần suất cập nhật thay đổi tùy thuộc vào các tập tin chữ ký
 
 CIDRAM cung cấp một cách cho chủ sở hữu trang web để chặn lưu lượng không mong muốn, nhưng đó là trách nhiệm của chủ sở hữu trang web tự quyết định cách mà họ muốn sử dụng CIDRAM. Trong trường hợp của sai tích cực liên quan đến các tập tin chữ ký thường trong gói CIDRAM, đính chính có thể được thực hiện, nhưng để được bỏ chặn từ các trang web cụ thể, bạn sẽ cần phải liên hệ với chủ sở hữu của các trang web được đề cập. Trong trường hợp đính chính được thực hiện, ít nhất, họ sẽ cần phải cập nhật các tập tin chữ ký hay cài đặt của họ, và trong các trường hợp khác (chẳng hạn như, ví dụ, khi họ đã sửa đổi cài đặt của họ, đã tạo ra chữ ký riêng của họ, vv), trách nhiệm của giải quyết vấn đề của bạn hoàn toàn là của họ, và hoàn toàn nằm ngoài tầm kiểm soát của chúng tôi.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Tôi muốn sử dụng CIDRAM v3~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Tôi muốn sử dụng CIDRAM v2~v4 với phiên bản PHP cũ hơn 7.2; Bạn có thể giúp?
 
-Không. PHP≥7.2 là yêu cầu tối thiểu đối với CIDRAM v3~v4.
+Không. PHP≥7.2 là yêu cầu tối thiểu đối với CIDRAM v2~v4.
 
 *Xem thêm: [Biểu đồ tương thích](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2380,4 +2392,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2026.02.14.
+Lần cuối cập nhật: 2026.02.24.
