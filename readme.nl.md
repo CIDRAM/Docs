@@ -1603,6 +1603,18 @@ Dit kan ook worden bereikt door de interface te gebruiken die wordt geboden door
 
 Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aangepaste modules te ingewikkeld voor u is, kan een eenvoudiger alternatief zijn om de interface te gebruiken die wordt geboden door de "aanvullende regels"-pagina van de front-end van CIDRAM. Door de juiste opties te selecteren en details over specifieke soorten verzoeken op te geven, kunt u CIDRAM instrueren hoe op die verzoeken moet worden gereageerd. "Aanvullende regels" worden uitgevoerd nadat alle signatuurbestanden en modules al zijn uitgevoerd.
 
+##### 6.3.2 AANGEPASTE SIGNATUURBESTANDEN OPSLAAN EN ACTIVEREN
+
+Voor CIDRAM v2 en eerdere vindt u in de vault twee bestanden: `ipv4_custom.dat.RenameMe` en `ipv6_custom.dat.RenameMe`. U kunt uw eigen signatures in die bestanden opslaan, of, als u dat liever hebt, kun u nieuwe bestanden voor uw eigen signatures aanmaken en ze een naam geven naar keuze. Voor CIDRAM v2 en eerdere moeten aangepaste signatuurbestanden in de basisdirectory van de vault worden opgeslagen.
+
+Voor CIDRAM v3 en latere zijn er geen vooraf meegeleverde bestanden voor aangepaste signatures, maar u kunt wel zelf nieuwe bestanden voor uw eigen signatures aanmaken en deze naar wens benoemen. Voor CIDRAM v3 en latere moeten aangepaste signatuurbestanden worden opgeslagen in de daarvoor bestemde map "signatures" van uw CIDRAM-installatie.
+
+Om aangepaste signatuurbestanden te "activeren", moeten ze worden vermeld in de "ipv4" of "ipv6" configuratierichtlijnen van uw configuratiebestand (afhankelijk van of de aangepaste signatuurbestanden bedoeld zijn voor IPv4 of IPv6 signatures).
+
+Voor CIDRAM v2 en eerdere zijn "ipv4" en "ipv6" te vinden onder de configuratiecategorie "signatures".
+
+Voor CIDRAM v3 en latere zijn "ipv4" en "ipv6" te vinden onder de configuratiecategorie "components".
+
 #### 6.4 <a name="MODULE_BASICS"></a>BASICS (VOOR MODULES)
 
 Modules kunnen worden gebruikt om de functionaliteit van CIDRAM uit te breiden, extra taken uit te voeren, of aanvullende logica te verwerken.
@@ -1713,7 +1725,7 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Hoe vaak worden signatures bijgewerkt?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ik heb een fout tegengekomen tijdens het gebruik van CIDRAM en ik weet niet wat te doen! Help alstublieft!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [Ik ben geblokkeerd door CIDRAM van een website die ik wil bezoeken! Help alstublieft!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Ik wil CIDRAM v3~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Ik wil CIDRAM v2~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Kan ik een enkele CIDRAM-installatie gebruiken om meerdere domeinen te beschermen?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Ik wil niet tijd verspillen met het installeren van dit en om het te laten werken met mijn website; Kan ik u betalen om het te doen?](#user-content-PAY_YOU_TO_DO_IT)
 - [Kan ik u of een van de ontwikkelaars van dit project voor privéwerk huren?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1791,9 +1803,9 @@ Bijwerkfrequentie varieert afhankelijk van de signatuurbestanden betrokken. Alle
 
 CIDRAM biedt een manier voor website-eigenaren om ongewenst verkeer te blokkeren, maar het is de verantwoordelijkheid van de website-eigenaren om zelf te beslissen hoe ze willen CIDRAM gebruiken. In het geval van de valse positieven met betrekking tot de signatuurbestanden normaal meegeleverd met CIDRAM, correcties kunnen worden gemaakt, maar met betrekking tot het wordt gedeblokkeerd van specifieke websites, u nodig hebt om te communiceren met de eigenaren van de websites in kwestie. In gevallen waarin correcties worden gemaakt, op zijn minst, zullen ze nodig hebben om hun signatuurbestanden en/of installatie bij te werken, en in andere gevallen (zoals bijvoorbeeld, waarin ze hun installatie hebt gewijzigd, creëerden hun eigen aangepaste signatures, enz), het is hun verantwoordelijkheid om uw probleem op te lossen, en is geheel buiten onze controle.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ik wil CIDRAM v3~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ik wil CIDRAM v2~v4 gebruiken met een PHP-versie ouder dan 7.2; Kan u helpen?
 
-Nee. PHP≥7.2 is een minimale vereiste voor CIDRAM v3~v4.
+Nee. PHP≥7.2 is een minimale vereiste voor CIDRAM v2~v4.
 
 *Zie ook: [Compatibiliteitskaarten](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2384,4 +2396,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 14 Februari 2026 (2026.02.14).
+Laatste Bijgewerkt: 3 Maart 2026 (2026.03.03).

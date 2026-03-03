@@ -1553,6 +1553,18 @@ Ignore 章節一
 
 如果您覺得編寫自己的自定義簽名檔案或自定義模組對您來說太複雜了，更簡單的替代方案可能是使用CIDRAM前端的『輔助規則』頁面提供的接口。​通過選擇適當的選項並指定有關特定類型的請求的詳細信息，您可以指示CIDRAM如何響應這些請求。​在所有簽名檔案和模組已經完成執行之後執行『輔助規則』。
 
+##### 6.3.2 儲存和啟動自訂簽名檔案
+
+對於CIDRAM v2及更早，在vault中，您會找到兩個檔案： `ipv4_custom.dat.RenameMe` 和 `ipv6_custom.dat.RenameMe`。 您可以將自訂簽名儲存到這些檔案中，或者，如果您願意，您可以為您的自訂簽名建立新檔案，並隨意命名。 對於CIDRAM v2及更早，自訂簽名檔案必須儲存在vault目錄的根中。
+
+對於CIDRAM v3及更高，沒有預先提供的自訂簽名檔案，但您可以為自訂簽名建立新檔案，並隨意命名。 對於CIDRAM v3及更高，自訂簽名檔案必須儲存在CIDRAM安裝的「signatures」目錄中。
+
+若要「啟動」自訂簽名檔案，必須透過配置檔案中的「ipv4」或「ipv6」配置指令來引用它們（取決於自訂簽名檔案是用於IPv4簽名還是IPv6簽名）。
+
+對於CIDRAM v2及更早，「ipv4」和「ipv6」位於「signatures」配置類別下。
+
+對於CIDRAM v3及更高，「ipv4」和「ipv6」位於「components」配置類別下。
+
 #### 6.4 <a name="MODULE_BASICS"></a>基本概念（對於模組）
 
 模組可用於擴展CIDRAM的功能，執行額外的任務，或處理額外的邏輯。
@@ -1663,7 +1675,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 - [什麼是簽名更新頻率？](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [我在使用CIDRAM時遇到問題和我不知道該怎麼辦！​請幫忙！](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [因為CIDRAM，​我被阻止從我想訪問的網站！​請幫忙！](#user-content-BLOCKED_WHAT_TO_DO)
-- [我想使用CIDRAM v3~v4與早於7.2的PHP版本；​您能幫我嗎？](#user-content-MINIMUM_PHP_VERSION_V3)
+- [我想使用CIDRAM v2~v4與早於7.2的PHP版本；​您能幫我嗎？](#user-content-MINIMUM_PHP_VERSION_V3)
 - [我可以使用單個CIDRAM安裝來保護多個域嗎？](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [我不想浪費時間安裝這個和確保它在我的網站上功能正常；我可以僱用您這樣做嗎？](#user-content-PAY_YOU_TO_DO_IT)
 - [我可以聘請您或這個項目的任何開發者私人工作嗎？](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1741,9 +1753,9 @@ CIDRAM會阻止IP地址 | __假陽性__ | 真陽性（正確的推理）
 
 CIDRAM使網站所有者能夠阻止不良流量，​但網站所有者有責任為自己決定如何使用CIDRAM。​在關於默認簽名檔案假陽性的情況下，​可以進行校正。​但關於從特定網站解除阻止，​您需要與相關網站的所有者進行溝通。​當進行校正時，​至少，​他們需要更新他們的簽名檔案和/或安裝。​在其他情況下（例如，​當他們修改了他們的安裝，​當他們創建自己的自定義簽名，​等等），​解決您的問題的責任完全是他們的，​並完全不在我們的控制之內。
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>我想使用CIDRAM v3~v4與早於7.2的PHP版本；​您能幫我嗎？
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>我想使用CIDRAM v2~v4與早於7.2的PHP版本；​您能幫我嗎？
 
-不能。PHP≥7.2是CIDRAM v3~v4的最低要求。
+不能。PHP≥7.2是CIDRAM v2~v4的最低要求。
 
 *也可以看看：​[兼容性圖表](https://maikuolan.github.io/Compatibility-Charts/)。*
 
@@ -1856,7 +1868,7 @@ modules: |
  file5.php
 ```
 
-然後，如果啟用了新文件`file6.php`，當更新頁面再次對它們進行排序時，它應該像這樣結束：
+然後，如果啟用了新檔案`file6.php`，當更新頁面再次對它們進行排序時，它應該像這樣結束：
 
 ```YAML
 modules: |
@@ -2318,4 +2330,4 @@ v3與之前的主要版本之間存在顯著差異。​特別是，入口點、
 ---
 
 
-最後更新：2026年2月14日。
+最後更新：2026年3月3日。

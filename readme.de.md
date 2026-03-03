@@ -162,7 +162,7 @@ Es ist möglich, das Frontend sicherer zu machen, indem Sie die Zwei-Faktor-Auth
 
 Um die Zwei-Faktor-Authentifizierung zu aktivieren, verwenden Sie zunächst die Frontend-Aktualisierungsseite, um die PHPMailer-Komponente zu installieren. CIDRAM verwendet PHPMailer zum Senden von E-Mails.
 
-Nachdem Sie PHPMailer installiert haben, müssen Sie die Konfigurationsdirektiven für PHPMailer über die CIDRAM-Konfigurationsseite oder Konfigurationsdatei ausfüllen. Weitere Informationen zu diesen Konfigurationsanweisungen finden Sie im [Konfigurationsabschnitt](#user-content-SECTION5) dieses Dokuments. Nachdem Sie die PHPMailer-Konfigurationsdirektiven gefüllt haben, setzen Sie `enable_two_factor` auf `true`. Die Zwei-Faktor-Authentifizierung sollte jetzt aktiviert sein.
+Nachdem Sie PHPMailer installiert haben, müssen Sie die Konfigurationsdirektiven für PHPMailer über die CIDRAM-Konfigurationsseite oder Konfigurationsdatei ausfüllen. Weitere Informationen zu diesen Konfigurationsdirektiven finden Sie im [Konfigurationsabschnitt](#user-content-SECTION5) dieses Dokuments. Nachdem Sie die PHPMailer-Konfigurationsdirektiven gefüllt haben, setzen Sie `enable_two_factor` auf `true`. Die Zwei-Faktor-Authentifizierung sollte jetzt aktiviert sein.
 
 Nächst, müssen Sie eine E-Mail-Adresse mit einem Konto verknüpfen, damit CIDRAM bei der Einloggen mit diesem Konto weiß, wohin die 2FA-Codes gesendet werden müssen. Um dies zu tun, verwenden Sie die E-Mail-Adresse als Nutzername für das Konto (wie `foo@bar.tld`), oder formatieren sie den Nutzernamen wie in Emails üblich (wie `Foo Bar <foo@bar.tld>`).
 
@@ -1552,7 +1552,7 @@ Die Verwendung von YAML-Markup in den Signaturdateien ist völlig optional (d.h.
 
 *Beachten: Die YAML-Markup-Implementierung in CIDRAM ist sehr einfach und sehr begrenzt; Es ist ausgelegt um die Anforderungen zu erfüllen welche spezifisch für CIDRAM sind, in einer Weise dass die Vertrautheit mit YAML-Markup gegeben ist, aber folgt nicht den offiziellen Spezifikationen (und wird sich daher nicht in der gleichen Weisewie wie gründlichere Implementierungen anderswo verhalten, und möglicherweise nicht für andere Projekte anderswo geeignet sein).*
 
-In CIDRAM werden YAML-Markup-Segmente durch drei Bindestriche ("---") gegenüber dem Skript identifiziert und enden neben ihren enthaltenen Signaturabschnitten durch doppelte Zeilenumbrüche. Ein typisches YAML-Markup-Segment innerhalb eines Signaturabschnitts besteht aus drei Strichen in einer Zeile unmittelbar nach der Liste der CIDRs und aller Tags, gefolgt von einer zweidimensionalen Liste der Schlüssel-Wert-Paare (erste Dimension, Konfigurationsanweisungskategorien; zweite Dimension, Konfigurationsanweisungen), für die Konfigurationsanweisungen geändert werden sollten (und auf welche Werte), wenn eine Signatur innerhalb dieses Signaturabschnitts ausgelöst wird (siehe die folgenden Beispiele).
+In CIDRAM werden YAML-Markup-Segmente durch drei Bindestriche ("---") gegenüber dem Skript identifiziert und enden neben ihren enthaltenen Signaturabschnitten durch doppelte Zeilenumbrüche. Ein typisches YAML-Markup-Segment innerhalb eines Signaturabschnitts besteht aus drei Strichen in einer Zeile unmittelbar nach der Liste der CIDRs und aller Tags, gefolgt von einer zweidimensionalen Liste der Schlüssel-Wert-Paare (erste Dimension, Konfigurationsanweisungskategorien; zweite Dimension, Konfigurationsdirektiven), für die Konfigurationsdirektiven geändert werden sollten (und auf welche Werte), wenn eine Signatur innerhalb dieses Signaturabschnitts ausgelöst wird (siehe die folgenden Beispiele).
 
 ```
 # Foobar 1.
@@ -1610,6 +1610,18 @@ Dies kann auch erreicht werden, indem die Schnittstelle verwendet wird, die auf 
 ##### 6.3.1 HILFSREGELN
 
 Wenn Sie das Schreiben Ihrer eigenen benutzerdefinierten Signaturdateien oder benutzerdefinierten Module für zu kompliziert halten, könnte die Verwendung der unter „Hilfsregeln“ im CIDRAM-Frontend bereitgestellten Schnittstelle eine hilfe sein. Indem Sie die entsprechenden Optionen auswählen und Details zu bestimmten Anforderungsarten angeben, können Sie CIDRAM anweisen, wie auf diese Anfragen zu reagieren ist. „Hilfsregeln“ werden ausgeführt, nachdem die Ausführung alle der Signaturdateien und Module bereits abgeschlossen ist.
+
+##### 6.3.2 SPEICHERN UND AKTIVIEREN BENUTZERDEFINIERTER SIGNATURDATEIEN
+
+Für CIDRAM v2 und ältere Versionen finden Sie im Vault zwei Dateien: `ipv4_custom.dat.RenameMe` und `ipv6_custom.dat.RenameMe`. Sie können benutzerdefinierte Signaturen in diesen Dateien speichern oder, falls Sie dies bevorzugen, neue Dateien für Ihre benutzerdefinierten Signaturen erstellen und diese beliebig benennen. Bei CIDRAM v2 und früheren müssen benutzerdefinierte Signaturdateien im Stammverzeichnis des Vault gespeichert werden.
+
+Für CIDRAM v3 und höher gibt es keine vordefinierten Dateien für benutzerdefinierte Signaturen, aber Sie können ebenso neue Dateien für Ihre benutzerdefinierten Signaturen erstellen und diese beliebig benennen. Für CIDRAM v3 und höher müssen benutzerdefinierte Signaturdateien im vorbereiteten Verzeichnis „signatures“ Ihrer CIDRAM-Installation gespeichert werden.
+
+Um benutzerdefinierte Signaturdateien zu „aktivieren“, müssen diese in den Konfigurationsdirektiven „ipv4“ oder „ipv6“ Ihrer Konfigurationsdatei referenziert werden (je nachdem, ob die benutzerdefinierten Signaturdateien für IPv4 oder IPv6 Signaturen vorgesehen sind).
+
+Bei CIDRAM v2 und früheren befinden sich „ipv4“ und „ipv6“ unter der Konfigurationskategorie „signatures“.
+
+Bei CIDRAM v3 und höher befinden sich „ipv4“ und „ipv6“ unter der Konfigurationskategorie „components“.
 
 #### 6.4 <a name="MODULE_BASICS"></a>GRUNDLAGEN (FÜR MODULE)
 
@@ -1721,7 +1733,7 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Wie häufig werden Signaturen aktualisiert?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ich habe ein Problem bei der Verwendung von CIDRAM und ich weiß nicht was ich tun soll! Bitte helfen Sie!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [CIDRAM hat mich von einer Website blockiert die ich besuchen möchte! Bitte helfen Sie!](#user-content-BLOCKED_WHAT_TO_DO)
-- [Ich möchte CIDRAM v3~v4 mit einer PHP-Version älter als 7.2 verwenden; Können Sie helfen?](#user-content-MINIMUM_PHP_VERSION_V3)
+- [Ich möchte CIDRAM v2~v4 mit einer PHP-Version älter als 7.2 verwenden; Können Sie helfen?](#user-content-MINIMUM_PHP_VERSION_V3)
 - [Kann ich eine einzige CIDRAM-Installation verwenden, um mehrere Domains zu schützen?](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [Ich möchte keine Zeit damit verbringen (es zu installieren, es richtig zu ordnen, u.s.w.); Kann ich dich einfach bezahlen, um alles für mich zu tun?](#user-content-PAY_YOU_TO_DO_IT)
 - [Kann ich Sie oder einen der Entwickler dieses Projektes für private Arbeit einstellen?](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1799,9 +1811,9 @@ Die Aktualisierungshäufigkeit hängt von den betreffenden Signaturdateien ab. I
 
 CIDRAM bietet ein Mittel für Website-Besitzer, um unerwünschten Verkehr zu blockieren, aber es liegt in der Verantwortung der Website-Besitzer, selbst zu entscheiden, wie sie CIDRAM nutzen wollen. Im Falle der falschen-Positiven in Bezug auf der Signaturdateien die normalerweise mit CIDRAM enthalten sind, können Korrekturen vorgenommen werden, aber in Bezug auf das entblockiert werden von bestimmten Websites, müssen Sie mit den Betreibern der Websites sprechen. In Fällen in denen Korrekturen vorgenommen werden, müssen diese ihre Signaturdateien und/oder Installationen aktualisieren, und in anderen Fällen (wie zum Beispiel, in welchen diese ihre Installation geändert haben, oder in wlchen sie ihre eigenen benutzerdefinierten Signaturen erstellt haben, u.s.w.). Die Verantwortung um dieses Problem zu lösen, liegt ganz bei ihnen und ist außerhalb unserer Kontrolle.
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ich möchte CIDRAM v3~v4 mit einer PHP-Version älter als 7.2 verwenden; Können Sie helfen?
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>Ich möchte CIDRAM v2~v4 mit einer PHP-Version älter als 7.2 verwenden; Können Sie helfen?
 
-Nein. PHP≥7.2 ist eine Mindestanforderung für CIDRAM v3~v4.
+Nein. PHP≥7.2 ist eine Mindestanforderung für CIDRAM v2~v4.
 
 *Siehe auch: [Kompatibilitätstabellen](https://maikuolan.github.io/Compatibility-Charts/).*
 
@@ -2390,4 +2402,4 @@ Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfer
 ---
 
 
-Zuletzt aktualisiert: 14. Februar 2026 (2026.02.14).
+Zuletzt aktualisiert: 3. März 2026 (2026.03.03).

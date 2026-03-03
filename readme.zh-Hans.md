@@ -1553,6 +1553,18 @@ Ignore 章节一
 
 如果您觉得编写自己的自定义签名文件或自定义模块对您来说太复杂了，更简单的替代方案可能是使用CIDRAM前端的“辅助规则”页面提供的接口。​通过选择适当的选项并指定有关特定类型的请求的详细信息，您可以指示CIDRAM如何响应这些请求。​在所有签名文件和模块已经完成执行之后执行“辅助规则”。
 
+##### 6.3.2 保存和激活自定义签名文件
+
+对于CIDRAM v2及更早，在vault中，您会找到两个文件： `ipv4_custom.dat.RenameMe` 和 `ipv6_custom.dat.RenameMe`。 您可以将自定义签名保存到这些文件中，或者，如果您愿意，您可以为您的自定义签名创建新文件，并随意命名。 对于CIDRAM v2及更早，自定义签名文件必须保存在vault目录的根中。
+
+对于CIDRAM v3及更高，没有预先提供的自定义签名文件，但您可以为自定义签名创建新文件，并随意命名。 对于CIDRAM v3及更高，自定义签名文件必须保存在CIDRAM安装的“signatures”目录中。
+
+要“激活”自定义簽名文件，必须通过配置文件中的“ipv4”或“ipv6”配置指令引用它们（取决于自定义签名文件是用于IPv4签名还是IPv6签名）。
+
+对于CIDRAM v2及更早，“ipv4”和“ipv6”位于“signatures”配置类别下。
+
+对于CIDRAM v3及更高，“ipv4”和“ipv6”位于“components”配置类别下。
+
 #### 6.4 <a name="MODULE_BASICS"></a>基本概念（对于模块）
 
 模块可用于扩展CIDRAM的功能，执行额外的任务，或处理额外的逻辑。
@@ -1663,7 +1675,7 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 - [什么是签名更新频率？](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [我在使用CIDRAM时遇到问题和我不知道该怎么办！​请帮忙！](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
 - [因为CIDRAM，​我被阻止从我想访问的网站！​请帮忙！](#user-content-BLOCKED_WHAT_TO_DO)
-- [我想使用CIDRAM v3~v4与早于7.2的PHP版本；​您能帮我吗？](#user-content-MINIMUM_PHP_VERSION_V3)
+- [我想使用CIDRAM v2~v4与早于7.2的PHP版本；​您能帮我吗？](#user-content-MINIMUM_PHP_VERSION_V3)
 - [我可以使用单个CIDRAM安装来保护多个域吗？](#user-content-PROTECT_MULTIPLE_DOMAINS)
 - [我不想浪费时间安装这个和确保它在我的网站上功能正常；我可以雇用您这样做吗？](#user-content-PAY_YOU_TO_DO_IT)
 - [我可以聘请您或这个项目的任何开发者私人工作吗？](#user-content-HIRE_FOR_PRIVATE_WORK)
@@ -1741,9 +1753,9 @@ CIDRAM会阻止IP地址 | __假阳性__ | 真阳性（正确的推理）
 
 CIDRAM使网站所有者能够阻止不良流量，​但网站所有者有责任为自己决定如何使用CIDRAM。​在关于默认签名文件假阳性的情况下，​可以进行校正。​但关于从特定网站解除阻止，​您需要与相关网站的所有者进行沟通。​当进行校正时，​至少，​他们需要更新他们的签名文件和/或安装。​在其他情况下（例如，​当他们修改了他们的安装，​当他们创建自己的自定义签名，​等等），​解决您的问题的责任完全是他们的，​并完全不在我们的控制之内。
 
-#### <a name="MINIMUM_PHP_VERSION_V3"></a>我想使用CIDRAM v3~v4与早于7.2的PHP版本；​您能帮我吗？
+#### <a name="MINIMUM_PHP_VERSION_V3"></a>我想使用CIDRAM v2~v4与早于7.2的PHP版本；​您能帮我吗？
 
-不能。PHP≥7.2是CIDRAM v3~v4的最低要求。
+不能。PHP≥7.2是CIDRAM v2~v4的最低要求。
 
 *也可以看看：​[兼容性图表](https://maikuolan.github.io/Compatibility-Charts/)。*
 
@@ -2318,4 +2330,4 @@ v3与之前的主要版本之间存在显着差异。​特别是，入口点、
 ---
 
 
-最后更新：2026年2月14日。
+最后更新：2026年3月3日。
