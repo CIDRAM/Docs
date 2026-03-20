@@ -339,8 +339,8 @@ fields───[Inclure ce champ dans les journaux ?]─[Inclure ce champ sur l
 ├─ID ("ID")
 ├─ScriptIdent ("La version du script")
 ├─DateTime ("Date/Heure")
-├─IPAddr ("IP adresse")
-├─IPAddrResolved ("IP adresse (résolu)")
+├─IPAddr ("Adresse IP")
+├─IPAddrResolved ("Adresse IP (résolue)")
 ├─Query ("Chaîne de requête")
 ├─Referrer ("Referrer")
 ├─UA ("Agent utilisateur")
@@ -484,7 +484,7 @@ __*Espace réservé – Explication – Exemple basé sur 2024-04-30T18:27:49+08
 `{t:z}` – Le fuseau horaire (avec deux points) – Par exemple, +08:00.
 
 ##### « ipaddr » `[string]`
-- Où trouver l'adresse IP de requêtes ? (Utile pour services tels que Cloudflare). Par Défaut = REMOTE_ADDR. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
+- Où trouver l'adresse IP des requêtes ? (Utile pour services tels que Cloudflare). Par Défaut = REMOTE_ADDR. AVERTISSEMENT : Ne pas changer si vous ne sais pas ce que vous faites !
 
 ```
 ipaddr
@@ -910,7 +910,7 @@ Configuration pour les signatures, fichiers de signatures, modules, etc.
 ```
 shorthand───[Bloquez le.]─[Profilez le.]─[Lorsqu'il est bloqué, supprime le modèle de sortie.]
 ├─Attacks ("Attaques")
-├─Bogon ("⁰ Bogon IP")
+├─Bogon ("⁰ IP bogon")
 ├─Cloud ("Service de cloud")
 ├─Generic ("Générique")
 ├─Legal ("¹ Légal")
@@ -918,7 +918,7 @@ shorthand───[Bloquez le.]─[Profilez le.]─[Lorsqu'il est bloqué, suppr
 ├─Proxy ("² Proxy")
 ├─Spam ("Spam")
 ├─Banned ("³ Interdit")
-├─BadIP ("³ Invalide IP")
+├─BadIP ("³ IP invalide")
 ├─RL ("³ Débit limité")
 ├─Conflict ("³ Conflit")
 └─Other ("⁴ Autres")
@@ -2184,7 +2184,7 @@ Un événement de blocage, journalisé sur un fichier journal lisible par un hum
 ID : 1234
 La version du script : CIDRAM v1.6.0
 Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000
-IP Adresse : x.x.x.x
+Adresse IP : x.x.x.x
 Nom d'hôte : dns.hostname.tld
 Signatures Compte : 1
 Signatures Référence : x.x.x.x/xx
@@ -2227,7 +2227,7 @@ Ce type de journalisation concerne spécifiquement les instances CAPTCHA, et se 
 Une entrée de journal CAPTCHA contient l'adresse IP de l'utilisateur qui tente de terminer une instance CAPTCHA, la date et l'heure auxquelles la tentative s'est produite, et l'état CAPTCHA. Une entrée de journal CAPTCHA ressemble généralement à ceci (à titre d'exemple) :
 
 ```
-IP Adresse : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CAPTCHA : Passé !
+Adresse IP : x.x.x.x - Date/Heure : Day, dd Mon 20xx hh:ii:ss +0000 - État CAPTCHA : Passé !
 ```
 
 *La directive de configuration responsable de la journalisation CAPTCHA est :*
@@ -2395,4 +2395,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 22 Février 2026 (2026.02.22).
+Dernière mise à jour : 18 Mars 2026 (2026.03.18).

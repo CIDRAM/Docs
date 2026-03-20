@@ -364,7 +364,7 @@ fields───[Trường này có nên xuất hiện trong các mục nhập nh
 ├─Hostname ("Tên máy chủ")
 ├─CAPTCHA ("Tình trạng CAPTCHA")
 ├─Inspection ("* Kiểm tra điều kiện")
-└─ClientL10NAccepted ("Độ phân giải ngôn ngữ")
+└─ClientL10NAccepted ("Giải quyết ngôn ngữ")
 ```
 
 * Chỉ dành cho việc gỡ lỗi các quy tắc phụ trợ. Không hiển thị cho người dùng bị chặn.
@@ -2392,4 +2392,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2026.02.24.
+Lần cuối cập nhật: 2026.03.18.

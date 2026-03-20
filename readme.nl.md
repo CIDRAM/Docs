@@ -340,7 +340,7 @@ fields───[Moet dit veld in logs verschijnen?]─[Moet dit veld verschijnen
 ├─ScriptIdent ("Script versie")
 ├─DateTime ("Datum/Tijd")
 ├─IPAddr ("IP-adres")
-├─IPAddrResolved ("IP-adres (vastbesloten)")
+├─IPAddrResolved ("IP-adres (opgelost)")
 ├─Query ("Query")
 ├─Referrer ("Verwijzer")
 ├─UA ("Gebruikersagent")
@@ -2396,4 +2396,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 3 Maart 2026 (2026.03.03).
+Laatste Bijgewerkt: 18 Maart 2026 (2026.03.18).
