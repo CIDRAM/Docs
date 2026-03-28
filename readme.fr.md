@@ -1029,6 +1029,7 @@ other───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer 
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1053,7 +1054,7 @@ adjust───[Supprimer hCaptcha]─[Supprimer Friendly Captcha]─[Supprimer 
 Configuration pour les CAPTCHA (fournit un moyen pour les humains de retrouver l'accès lorsqu'ils sont bloqués).
 
 ##### « usemode » `[int]`
-- Quand faut-il offrir des CAPTCHA ? Vous pouvez spécifier ici le comportement préféré pour chaque fournisseur supporté. Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA. A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
+- Quand faut-il offrir des CAPTCHA ? Vous pouvez spécifier ici le comportement préféré pour chaque fournisseur supporté.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1065,6 +1066,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (Seulement lorsqu'il n'est pas bloqué, ou lorsqu'il sont spécialement marqué pour l'utilisation, dans la limite de signatures, et non interdit.)
 └─6 (Seulement lorsqu'il n'est pas bloqué, lors de requêtes de pages sensibles.)
 ```
+
+Remarque : Les requêtes sur liste blanche ou vérifiées et non bloquées n'ont jamais besoin de compléter un CAPTCHA.
+
+A noter également : Les CAPTCHAs peuvent fournir une couche de protection utile contre les bots et divers types de requêtes automatisées et malveillantes, mais ne fourniront pas aucune protection contre un humain malveillant.
+
+Les requêtes peuvent être « marqués pour l'utilisation » via des règles auxiliaires.
+
+Le caractère « sensible » d'une requête est déterminé par <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+
+La « limite de signature » est déterminée par <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### « nonblocked_status_code » `[int]`
 - Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
@@ -2395,4 +2406,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 18 Mars 2026 (2026.03.18).
+Dernière mise à jour : 28 Mars 2026 (2026.03.28).

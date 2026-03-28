@@ -1027,6 +1027,7 @@ other───[Proberen te verifiëren?]─[Negatieven blokkeren?]─[Niet-gever
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1051,7 +1052,7 @@ adjust───[HCaptcha onderdrukken]─[Friendly Captcha onderdrukken]─[Clou
 Configuratie voor CAPTCHA (biedt een manier voor mensen om toegang te krijgen wanneer ze worden geblokkeerd).
 
 ##### "usemode" `[int]`
-- Wanneer moeten CAPTCHA's worden aangeboden? Hier kunt u het gewenste gedrag voor elke ondersteunde provider opgeven. Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen. Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
+- Wanneer moeten CAPTCHA's worden aangeboden? Hier kunt u het gewenste gedrag voor elke ondersteunde provider opgeven.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1063,6 +1064,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (Alleen wanneer niet geblokkeerd, of wanneer speciaal gemarkeerd voor gebruik, binnen de signatures limiet, en niet verbannen.)
 └─6 (Alleen wanneer niet geblokkeerd, bij verzoek van gevoelige pagina's.)
 ```
+
+Opmerking: Op de witte lijst geplaatste of geverifieerde en niet-geblokkeerde verzoeken hoeven nooit een CAPTCHA in te vullen.
+
+Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bots en verschillende soorten kwaadwillende geautomatiseerde verzoeken, maar bieden geen enkele bescherming tegen kwaadwillende mensen.
+
+Verzoeken kunnen via aanvullende regels worden "gemarkeerd voor gebruik".
+
+Of een verzoek als "gevoelig" wordt beschouwd, wordt bepaald door <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+
+De "signatures limiet" wordt bepaald door <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
@@ -2396,4 +2407,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 18 Maart 2026 (2026.03.18).
+Laatste Bijgewerkt: 28 Maart 2026 (2026.03.28).

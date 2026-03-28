@@ -1027,6 +1027,7 @@ other───[Mencoba memverifikasi?]─[Blokir negatif?]─[Blokir permintaan 
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1051,7 +1052,7 @@ adjust───[Menekan hCaptcha]─[Menekan Friendly Captcha]─[Menekan Cloudf
 Konfigurasi untuk CAPTCHA (menyediakan cara bagi manusia untuk mendapatkan kembali akses ketika diblokir).
 
 ##### "usemode" `[int]`
-- Kapan CAPTCHA harus ditawarkan? Anda dapat menentukan perilaku yang disukai untuk setiap penyedia yang didukung disini. Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA. Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
+- Kapan CAPTCHA harus ditawarkan? Anda dapat menentukan perilaku yang disukai untuk setiap penyedia yang didukung disini.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1063,6 +1064,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (Hanya jika tidak diblokir, atau jika ditandai khusus untuk digunakan, dalam batas tanda tangan, dan tidak dilarang.)
 └─6 (Hanya jika tidak diblokir, pada permintaan halaman sensitif.)
 ```
+
+Catat: Permintaan yang masuk daftar putih atau diverifikasi dan tidak diblokir tidak perlu menyelesaikan CAPTCHA.
+
+Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang berguna terhadap bot dan berbagai jenis permintaan yang otomatis dan berbahaya, tetapi tidak akan memberikan perlindungan apapun terhadap manusia yang berbahaya.
+
+Permintaan dapat "ditandai untuk digunakan" melalui aturan tambahan.
+
+Apakah suatu permintaan dianggap "sensitif" ditentukan oleh <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+
+"Batas tanda tangan" ditentukan oleh <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Kode status mana yang harus digunakan saat menampilkan CAPTCHA ke permintaan yang tidak diblokir?
@@ -2379,4 +2390,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 22 Februari 2026 (2026.02.22).
+Terakhir Diperbarui: 28 Maret 2026 (2026.03.28).

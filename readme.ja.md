@@ -1011,6 +1011,7 @@ other───[確認してみますか？]─[陰性をブロックしますか
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1035,7 +1036,7 @@ adjust───[HCaptchaを抑制して]─[Friendly Captchaを抑制して]─[
 キャプチャの設定（ブロックされたときに人間がアクセスを取り戻す方法を提供します）。
 
 ##### "usemode" `[int]`
-- キャプチャはいつ提供されるべきでしょうか？​ここで、サポートされている各プロバイダーの優先動作を指定できます。​注：ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。​また注意してください：​キャプチャは、ボットやさまざまな種類の悪意のある自動化されたリクエストに対する有用な追加の保護レイヤーを提供できますが、悪意のある人間に対する保護は提供しません。
+- キャプチャはいつ提供されるべきでしょうか？​ここで、サポートされている各プロバイダーの優先動作を指定できます。
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1047,6 +1048,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (ブロックされていない場合、またはシグネチャの制限内であり、使用するために特別にマークされている場合のみ。)
 └─6 (ブロックされていない場合、機密ページのリクエストの場合のみ。)
 ```
+
+注： ホワイト・リストされまたは検証済みでブロックされていないリクエストは、キャプチャを完了する必要はありません。
+
+また注意してください： キャプチャは、ボットやさまざまな種類の悪意のある自動化されたリクエストに対する有用な追加の保護レイヤーを提供できますが、悪意のある人間に対する保護は提供しません。
+
+リクエストは、補助ルールによって「使用対象としてマーク」できます。
+
+リクエストが「機密」であるかどうかは、<a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>によって決まります。
+
+「シグネチャの制限」は、<a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>によって決まります。
 
 ##### "nonblocked_status_code" `[int]`
 - ブロックされていないリクエストにキャプチャを表示する場合、どのステータス・コードを使用する必要がありますか？
@@ -2350,4 +2361,4 @@ v4で導入された変更点（追加された機能、削除された機能、
 ---
 
 
-最終更新日：２０２６年３月３日。
+最終更新日：２０２６年３月２８日。

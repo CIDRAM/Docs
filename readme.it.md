@@ -1028,6 +1028,7 @@ other───[Prova a verificare?]─[Blocca i negativi?]─[Blocca le richiest
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1052,7 +1053,7 @@ adjust───[Sopprimi hCaptcha]─[Sopprimi Friendly Captcha]─[Sopprimi Clo
 Configurazione per CAPTCHA (fornisce un modo per gli umani di riottenere l'accesso quando bloccato).
 
 ##### "usemode" `[int]`
-- Quando dovrebbero essere offerti i CAPTCHA? Qui puoi specificare il comportamento preferito per ciascun provider supportato. Nota: Le richieste nella lista bianca o verificate e non bloccate non devono mai completare un CAPTCHA. Nota anche: I CAPTCHA possono fornire un utile livello aggiuntivo di protezione contro i bot e vari tipi di richieste automatizzate e dannose, ma non forniscono alcuna protezione contro umani dannosi.
+- Quando dovrebbero essere offerti i CAPTCHA? Qui puoi specificare il comportamento preferito per ciascun provider supportato.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1064,6 +1065,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (Solo quando non è bloccato, o quando è appositamente contrassegnato per l'uso, entro il limite di firme, e non è vietato.)
 └─6 (Solo quando non è bloccato, in caso di richieste di pagine sensibili.)
 ```
+
+Nota: Le richieste nella lista bianca o verificate e non bloccate non devono mai completare un CAPTCHA.
+
+Nota anche: I CAPTCHA possono fornire un utile livello aggiuntivo di protezione contro i bot e vari tipi di richieste automatizzate e dannose, ma non forniscono alcuna protezione contro umani dannosi.
+
+Le richieste possono essere "contrassegnate per l'uso" tramite regole ausiliarie.
+
+Se una richiesta è considerata "sensibile" è determinato da <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+
+Il "limite di firme" è determinato da <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Quale codice di stato deve essere utilizzato quando si visualizzano i CAPTCHA per le richieste non bloccate?
@@ -2385,4 +2396,4 @@ Per un elenco delle modifiche introdotte dalla v4 (ad esempio, funzionalità agg
 ---
 
 
-Ultimo Aggiornamento: 22 Febbraio 2026 (2026.02.22).
+Ultimo Aggiornamento: 28 Marzo 2026 (2026.03.28).

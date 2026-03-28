@@ -1026,6 +1026,7 @@ other───[Attempt to verify?]─[Block negatives?]─[Block non-verified re
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
 ├─GPTBot ("!! GPTBot")
+├─OAI-SearchBot ("!! OAI-SearchBot")
 └─UptimeRobot ("UptimeRobot")
 ```
 
@@ -1050,7 +1051,7 @@ adjust───[Suppress hCaptcha]─[Suppress Friendly Captcha]─[Suppress Clo
 Configuration for CAPTCHAs (provides a way for humans to regain access when blocked).
 
 ##### "usemode" `[int]`
-- When should CAPTCHAs be offered? You can specify the preferred behaviour for each supported provider here. Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA. Also note: CAPTCHAs can provide a useful, additional layer of protection against bots and various kinds of malicious automated requests, but won't provide any protection against a malicious human.
+- When should CAPTCHAs be offered? You can specify the preferred behaviour for each supported provider here.
 
 ```
 usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
@@ -1062,6 +1063,16 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ├─5 (Only when not blocked, or when specially marked for use, within the signature limit, and not banned.)
 └─6 (Only when not blocked, at sensitive page requests.)
 ```
+
+Note: Whitelisted or verified and non-blocked requests never need to complete a CAPTCHA.
+
+Also note: CAPTCHAs can provide a useful, additional layer of protection against bots and various kinds of malicious automated requests, but won't provide any protection against a malicious human.
+
+Requests can be "marked for use" via auxiliary rules.
+
+Whether a request is considered as "sensitive" is determined by <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+
+The "signature limit" is determined by <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Which status code should be used when displaying CAPTCHAs to non-blocked requests?
@@ -2384,4 +2395,4 @@ For a list of the changes introduced by v4 (e.g., features added, features remov
 ---
 
 
-Last Updated: 22 February 2026 (2026.02.22).
+Last Updated: 28 March 2026 (2026.03.28).
