@@ -310,25 +310,25 @@ Configuration générale (toute configuration de base n'appartenant pas à d'aut
 ```
 stages───[Activer cette étape ?]─[Enregistrer les erreurs générés lors de cette étape ?]─[Compter les infractions générés lors de cette étape dans le surveillance d'IP ?]
 ├─BanCheck ("Vérifiez si c'est interdit")
-├─Tests ("Exécuter les tests des fichiers de signature")
-├─Modules ("Exécuter les modules")
-├─SearchEngineVerification ("Exécuter la vérification des moteurs de recherche")
-├─SocialMediaVerification ("Exécuter la vérification des médias sociaux")
-├─OtherVerification ("Exécuter une autre vérification")
-├─Aux ("Exécuter les règles auxiliaires")
-├─Tracking ("Exécuter le surveillance d'IP")
-├─RL ("Exécuter la limitation du débit")
-├─CAPTCHA ("Déployer les CAPTCHAs (requêtes bloquées)")
-├─Reporting ("Traiter les rapports")
+├─Tests ("Exécutez les tests des fichiers de signature")
+├─Modules ("Exécutez les modules")
+├─SearchEngineVerification ("Exécutez la vérification des moteurs de recherche")
+├─SocialMediaVerification ("Exécutez la vérification des médias sociaux")
+├─OtherVerification ("Exécutez une autre vérification")
+├─Aux ("Exécutez les règles auxiliaires")
+├─Tracking ("Exécutez le surveillance d'IP")
+├─RL ("Exécutez la limitation du débit")
+├─CAPTCHA ("Déployez les CAPTCHAs (requêtes bloquées)")
+├─Reporting ("Traitez les rapports")
 ├─Statistics ("Mettre à jour les statistiques")
-├─Webhooks ("Exécuter des webhooks")
+├─Webhooks ("Exécutez des webhooks")
 ├─TriggerNotifications ("Traiter la file d'attente des e-mails de notification de déclenchement")
-├─PrepareFields ("Préparer les champs pour la sortie et les journaux")
-├─Output ("Générer une sortie (requêtes bloquées)")
-├─WriteLogs ("Enregistrer dans les journaux (requêtes bloquées)")
+├─PrepareFields ("Préparez les champs pour la sortie et les journaux")
+├─Output ("Générez une sortie (requêtes bloquées)")
+├─WriteLogs ("Enregistrez dans les journaux (requêtes bloquées)")
 ├─Terminate ("Terminer la requête (requêtes bloquées)")
 ├─AuxRedirect ("Rediriger selon les règles auxiliaires")
-└─NonBlockedCAPTCHA ("Déployer les CAPTCHAs (requêtes non bloquées)")
+└─NonBlockedCAPTCHA ("Déployez les CAPTCHAs (requêtes non bloquées)")
 ```
 
 ##### « fields » `[string]`
@@ -1779,9 +1779,7 @@ Souvent (mais pas toujours), les signatures seront regroupées en groupes, forma
 
 « CIDR » est un acronyme pour « Classless Inter-Domain Routing » *[[1](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, et c'est l'acronyme utilisé dans le nom de ce paquet, « CIDRAM », qui est un acronyme pour « Classless Inter-Domain Routing Access Manager ».
 
-Toutefois, dans le contexte du CIDRAM (tel que, au sein de cette documentation, dans les discussions relatives au CIDRAM, ou dans les données linguistiques para CIDRAM), chaque fois qu'un « CIDR » (singulier) ou « CIDRs » (pluriel) est mentionné (et ainsi, par lequel nous utilisons ces mots comme noms dans leur propre droit, par opposition aux acronymes), ce que l'on veut dire signifie un sous-réseau (ou sous-réseaux), exprimé en utilisant la notation CIDR. La raison pour laquelle CIDR (ou CIDRs) est utilisé à la place du sous-réseau (ou sous-réseaux) est de préciser qu'il s'agit spécifiquement de sous-réseaux exprimés à l'aide de la notation CIDR à laquelle on se réfère (parce que la notation CIDR n'est qu'une des différentes façons dont les sous-réseaux peuvent être exprimés). CIDRAM pourrait donc être considéré comme un « gestionnaire d'accès au sous-réseaux ».
-
-Bien que cette double signification de « CIDR » puisse présenter une certaine ambiguïté dans certains cas, cette explication, accompagné par le contexte fourni, devrait aider à résoudre une telle ambiguïté.
+Dans le contexte de CIDRAM, « CIDR » (ou « CIDRs ») fait spécifiquement référence aux sous-réseaux exprimés à l'aide de la notation CIDR.
 
 #### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Qu'est-ce qu'un « faux positif » ?
 
@@ -2389,7 +2387,7 @@ Voir ci-dessus : Une nouvelle installation est recommandée.
 
 2. Accédez à la page de configuration frontale et recherchez __`frontend➡remotes`__. Dans la liste, là où vous voyez `/v3/`, remplacez-le par `/v4/`. Cliquez sur mettre à jour pour enregistrer votre configuration. Cette modification indique au programme de mise à jour de cibler la version majeure prévue lors de la recherche de mises à jour.
 
-3. Accédez à la page de sauvegarde frontale. Sélectionnez exporter, cochez les cases pour la configuration, pour les statistiques, et pour les règles auxiliaires, puis appuyez sur OK pour télécharger une sauvegarde. Il y a eu quelques changements. Par exemple, l'action « ne pas enregistrer » a été supprimée des règles auxiliaires (l'option « supprimer la journalisation » peut être utilisée à la place pour obtenir le même résultat). Vous devrez réimporter cette sauvegarde dans CIDRAM après la mise à niveau.
+3. Accédez à la page de sauvegarde frontale. Sélectionnez exporter, cochez les cases pour la configuration, pour les statistiques, et pour les règles auxiliaires, puis appuyez sur OK pour télécharger une sauvegarde. Il y a eu quelques changements. Par exemple, l'action « n'enregistrez pas » a été supprimée des règles auxiliaires (l'option « supprimer la journalisation » peut être utilisée à la place pour obtenir le même résultat). Vous devrez réimporter cette sauvegarde dans CIDRAM après la mise à niveau.
 
 4. Accédez à la page des mises à jour du frontal. Les mises à jour pour la nouvelle version majeure devraient maintenant apparaître. Pour éviter les délais d'expiration, avant de tout mettre à jour, essayez d'abord de mettre à jour uniquement le cœur CIDRAM ou le frontal CIDRAM (car les deux sont des dépendances mutuelles, la mise à jour de l'un devrait automatiquement mettre à jour les deux de toute façon). Étant donné que la structure de la page et le style CSS du frontal ont considérablement changé entre les versions principales, ils peuvent initialement sembler cassés après la mise à jour ; ce n'est pas le cas. Accédez à n'importe quelle autre page frontale et appuyez sur Ctrl+F5 pour essayer d'effectuer un rafraîchissement complet (c'est-à-dire un rafraîchissement par laquelle le navigateur récupère une nouvelle copie du style CSS et d'autres périphériques au lieu de s'appuyer sur son cache). La structure de la page et le style CSS devraient alors s'afficher correctement. Si ce n'est pas le cas, essayez de vider le cache de votre navigateur.
 
@@ -2406,4 +2404,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 28 Mars 2026 (2026.03.28).
+Dernière mise à jour : 1 Avril 2026 (2026.04.01).

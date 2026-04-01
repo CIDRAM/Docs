@@ -1749,9 +1749,7 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 「ＣＩＤＲ」は「Classless Inter-Domain Routing」（クラスレス・ドメイン間・ルーティング）の略語です *「[１](https://ja.wikipedia.org/wiki/Classless_Inter-Domain_Routing)、​[２](https://whatismyipaddress.com/cidr)」*。​この略語は、​このパッケージの名前の一部、​「CIDRAM」、​として使用されます。​「CIDRAM」は「Classless Inter-Domain Routing Access Manager」（クラスレス・ドメイン間・ルーティング・アクセス・マネージャー）の略語です。
 
-しかし、​CIDRAMの文脈では（例えば、​このドキュメント内、​CIDRAMに関する議論の中で、​CIDRAM言語データ内）、​「CIDR」が言及されるたびに、​私たちの意図する意味は、​CIDR表記を使って表現されたサブネットです。​これは、​意味を明確にするためです（サブネットは複数の方法で表現できるため）。​したがって、​CIDRAMは「サブネット・アクセス・マネージャ」と見なすことができます。
-
-この説明は、​提供された文脈とともに、​あいまいさを解決するのに役立つはずです。
+CIDRAMの文脈において、「ＣＩＤＲ」とは、具体的にはCIDR表記を用いて表現されたサブネットを指します。
 
 #### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>「偽陽性」とは何ですか？
 
@@ -2361,4 +2359,4 @@ v4で導入された変更点（追加された機能、削除された機能、
 ---
 
 
-最終更新日：２０２６年３月２８日。
+最終更新日：２０２６年４月１日。

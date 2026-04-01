@@ -1784,9 +1784,7 @@ Oft (aber nicht immer) werden Signaturen in Gruppen zusammengebunden, um „Sign
 
 „CIDR“ ist ein Akronym für „Classless Inter-Domain Routing“ *[[1](https://de.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, und es ist dieses Akronym, das als Teil des Namens für dieses Paket, „CIDRAM“, verwendet wird, um ein größeres Akronym zu bilden, „Classless Inter-Domain Routing Access Manager“.
 
-Aber, im Kontext von CIDRAM (sowie, in dieser Dokumentation, in Diskussionen über CIDRAM, oder in den CIDRAM-Sprachdaten), wann immer ein „CIDR“ (Singular) oder „CIDRs“ (Plural) ist erwähnt (und somit, wobei wir diese Wörter als Substantive in ihrem eigenen Recht verwenden, im Gegensatz zu Akronymen), was beabsichtigt und gemeint ist ein Subnetz (oder Subnetze), ausgedrückt mit CIDR-Notation. Der Grund dafür, dass CIDR (oder CIDRs) verwendet wird, anstelle von Subnetz (oder Subnetze) ist um zu klären, es ist Subnetze mit CIDR-Notation ausgedrückt auf die wir uns beziehen (weil CIDR-Notation ist nur eine von verschiedenen Möglichkeiten, wie Subnetze ausgedrückt werden können). CIDRAM könnte daher als „Subnetz Access Manager“ betrachtet werden.
-
-Obwohl diese doppelte Bedeutung von „CIDR“ in einigen Fällen mehrdeutig werden kann, diese erklärung, zusammen mit dem Kontext zur Verfügung gestellt, sollte helfen diese Mehrdeutigkeit zu lösen.
+Im Kontext von CIDRAM bezieht sich „CIDR“ (oder „CIDRs“) speziell auf Subnetze, die in CIDR-Notation ausgedrückt werden.
 
 #### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Was ist ein „Falsch-Positiv“?
 
@@ -2413,4 +2411,4 @@ Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfer
 ---
 
 
-Zuletzt aktualisiert: 28. März 2026 (2026.03.28).
+Zuletzt aktualisiert: 1. April 2026 (2026.04.01).

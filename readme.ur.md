@@ -1837,9 +1837,7 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 <div dir="rtl">"CIDR" "Classless Inter-Domain Routing" ("غیر طبقاتی انٹر ڈومین روٹنگ") کے لیے مخفف ہے <em>[<a href="https://ar.wikipedia.org/wiki/%D8%AA%D9%88%D8%AC%D9%8A%D9%87_%D8%A8%D9%8A%D9%86_%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%84%D8%A7%D8%AA_%D9%84%D8%A7%D9%81%D8%A6%D9%88%D9%8A%D8%A7">۱</a>، <a href="https://whatismyipaddress.com/cidr">۲</a>]</em>. یہ مخفف اس پیکج، "CIDRAM" کے لیے نام کا حصہ کے طور پر استعمال کیا جاتا ہے. یہ "Classless Inter-Domain Routing Access Manager" (غیر طبقاتی انٹر ڈومین روٹنگ رسائی مینیجر) کے لیے مخفف ہے.<br /><br /></div>
 
-<div dir="rtl">تاہم، CIDRAM کے تناظر میں (جیسا کہ یہ دستاویزات کے اندر اندر، متعلقہ مباحث میں، یا زبان کے اعداد و شمار کے اندر اندر)، ایک "CIDR" (واحد) یا "CIDR" (جمع) کا ذکر کیا جاتا ہے جب، ہمارے ارادہ معنی ذیلی نیٹ ہے، CIDR سنکیتن کا استعمال کرتے ہوئے اظہار کیا. ذیلی نیٹ کو مختلف مختلف طریقوں سے اظہار کیا جا سکتا ہے کیونکہ اس کی وجہ ہے. CIDRAM، لہذا، ایک "نیٹ رسائی مینیجر" سمجھا جا سکتا ہے.<br /><br /></div>
-
-<div dir="rtl">یہ وضاحت، اور فراہم تناظر، کسی بھی ابہام حل کرنے کے لیے مدد کرنی چاہیے.<br /><br /></div>
+<div dir="rtl">CIDRAM کے تناظر میں، "CIDR" (یا "CIDRs") خاص طور پر CIDR اشارے کا استعمال کرتے ہوئے ظاہر کردہ ذیلی نیٹس سے مراد ہے.<br /><br /></div>
 
 #### <div dir="rtl"><a name="WHAT_IS_A_FALSE_POSITIVE"></a>ایک "جھوٹی مثبت" سے کیا مراد ہے؟<br /><br /></div>
 
@@ -2482,4 +2480,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۲۸ مارچ ۲۰۲۶ (۲۰۲۶.۰۳.۲۸).</div>
+<div dir="rtl">آخری تازہ کاری: ۱ اپریل ۲۰۲۶ (۲۰۲۶.۰۴.۰۱).</div>

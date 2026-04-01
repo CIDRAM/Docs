@@ -1726,9 +1726,7 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 “CIDR” 是 “Classless Inter-Domain Routing” 的首字母缩写 （“无类别域间路由”） *【[1](https://zh.wikipedia.org/wiki/%E6%97%A0%E7%B1%BB%E5%88%AB%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1), [2](https://whatismyipaddress.com/cidr)】*。​这个首字母缩写用于这个包的名称，​“CIDRAM”，​是 “Classless Inter-Domain Routing Access Manager” 的首字母缩写 （“无类别域间路由访问管理器”）。
 
-然而，​在CIDRAM的上下文中（如，​在本文档中，​在CIDRAM的讨论中，​或在CIDRAM语言数据中），​当“CIDR”（单数）或“CIDRs”（复数）被提及时（因此当我们用这些词作为名词在自己的权利，​而不作为首字母缩写），​我们的意图是一个子网，​用CIDR表示法表示。​使用CIDR/CIDRs而不是子网的原因是澄清它是用CIDR表示法表示的子网是我们的意思 （因为子网可以用几种不同的方式表达）。​因此，​CIDRAM可以被认为是“子网访问管理器”。
-
-这个双重含义可能看起来很歧义，​但这个解释并提供上下文应该有助于解决这个歧义。
+在CIDRAM的上下文中，“CIDR”（或“CIDRs”）特指使用CIDR表示法表示的子网。
 
 #### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>什么是“假阳性”？
 
@@ -2341,4 +2339,4 @@ v3与之前的主要版本之间存在显着差异。​特别是，入口点、
 ---
 
 
-最后更新：2026年3月28日。
+最后更新：2026年4月1日。
