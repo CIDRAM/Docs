@@ -21,8 +21,6 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) là một kịch bản PHP được thiết kế để bảo vệ các trang mạng bằng cách ngăn chặn các yêu cầu có nguồn gốc từ các địa chỉ IP coi như là nguồn của lưu lượng không mong muốn, bao gồm (nhưng không giới hạn) giao thông từ thiết bị đầu cuối truy cập không phải con người, dịch vụ điện toán đám mây, chương trình gửi thư rác, công cụ cào, vv. Nó làm điều này bằng cách tính toán CIDR có thể các địa chỉ IP cung cấp từ các yêu cầu gửi đến và sau đó cố gắng để phù hợp với những CIDR có thể chống lại các tập tin chữ ký của nó (các tập tin chữ ký chứa danh sách các CIDR các địa chỉ IP coi như là nguồn của lưu lượng không mong muốn); Nếu trận đấu được tìm thấy, các yêu cầu được chặn.
 
-*(Xem: ["CIDR" là gì?](#user-content-WHAT_IS_A_CIDR)).*
-
 BẢN QUYỀN [CIDRAM](https://cidram.github.io/) 2016 và hơn GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
 Bản này là chương trình miễn phí; bạn có thể phân phối lại hoạc sửa đổi dưới điều kiện của GNU Giấy Phép Công Cộng xuất bản bởi Free Software Foundation; một trong giấy phép phần hai, hoạc (tùy theo sự lựa chọn của bạn) bất kỳ phiên bản nào sau này. Bản này được phân phối với hy vọng rằng nó sẽ có hữu ích, nhưng mà KHÔNG CÓ BẢO HÀNH; ngay cả những bảo đảm ngụ ý KHẢ NĂNG BÁN HÀNG hoạc PHÙ HỢP VỚI MỤC ĐÍT VÀO. Hảy xem GNU Giấy Phép Công Cộng để biết them chi tiết, nằm trong tập tin `LICENSE.txt`, và kho chứa của tập tin này có thể tiềm đước tại:
@@ -102,8 +100,6 @@ Bạn nên kiểm tra cấu hình của cài đặt mới để có thể điề
 CIDRAM nên tự động chặn các yêu cầu không mong muốn để trang mạng của bạn mà không cần bất kỳ hỗ trợ bằng tay, trừ cài đặt.
 
 Bạn có thể tùy chỉnh cấu hình của bạn và tùy chỉnh mà CIDR bị chặn bằng cách sửa đổi tập tin cấu hình hay tập tin chữ ký của bạn.
-
-Nếu bạn gặp bất kỳ sai tích cực, xin vui lòng liên hệ với tôi để cho tôi biết về nó. *(Xem: ["Sai tích cực" là gì?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM có thể được cập nhật bằng tay hoặc thông qua front-end. CIDRAM cũng có thể được cập nhật qua Composer hoặc WordPress, nếu ban đầu được cài đặt qua các phương tiện đó.
 
@@ -1746,8 +1742,6 @@ Các mô-đun đã được cung cấp để đảm bảo rằng các gói và s
 ### 8. <a name="SECTION8"></a>NHỮNG CÂU HỎI THƯỜNG GẶP (FAQ)
 
 - ["Chữ ký" là gì?](#user-content-WHAT_IS_A_SIGNATURE)
-- ["CIDR" là gì?](#user-content-WHAT_IS_A_CIDR)
-- ["Sai tích cực" là gì?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
 - [CIDRAM có thể chặn toàn bộ quốc gia?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Tần suất cập nhật chữ ký là bao nhiêu?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Tôi đã gặp một vấn đề trong khi sử dụng CIDRAM và tôi không biết phải làm gì về nó! Hãy giúp tôi!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1788,30 +1782,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 Thông thường (nhưng không phải luôn luôn), chữ ký sẽ được nhóm lại với nhau, để hình thành "phần chữ ký", thường kèm theo bình luận, đánh dấu, hay siêu dữ liệu liên quan mà có thể được sử dụng để cung cấp bối cảnh bổ sung cho chữ ký hay lệnh bổ sung.
 
-#### <a name="WHAT_IS_A_CIDR"></a>"CIDR" là gì?
-
-"CIDR" là một từ viết tắt cho "Classless Inter-Domain Routing" *[[1](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, và nó là từ viết tắt này được sử dụng như là một phần của tên cho gói này, "CIDRAM", đó là một từ viết tắt cho "Classless Inter-Domain Routing Access Manager".
-
-Trong ngữ cảnh của CIDRAM, "CIDR" (hoặc "CIDRs") đề cập cụ thể đến các mạng con được biểu diễn bằng ký hiệu CIDR.
-
-#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>"Sai tích cực" là gì?
-
-Nghĩa của "sai tích cực" (*hay: "lỗi sai tích cực"; "báo động giả"*; Tiếng Anh: *false positive*; *false positive error*; *false alarm*), mô tả rất đơn giản, và trong một bối cảnh tổng quát, được sử dụng khi kiểm tra cho một điều kiện, để tham khảo các kết quả của bài kiểm tra, khi kết quả là tích cực (hay, điều kiện được xác định là "tích cực", hay "đúng"), nhưng dự kiến sẽ được (hay cần phải có được) tiêu cực (hay, điều kiện, thực tế, là "tiêu cực", hay "sai"). "Sai tích cực" có thể được coi là điều tương tự như "khóc sói" (theo đó các điều kiện đang được kiểm tra là liệu có con sói gần đàn, điều kiện là "sai" bởi vì không có con sói gần đàn, và điều kiện được báo cáo là "tích cực" bởi các người chăn bằng cách gọi "sói, sói"), hay tương tự như tình huống trong thử nghiệm y tế theo đó một bệnh nhân được chẩn đoán là có một số bệnh, trong khi thực tế, họ không có bất kỳ số bệnh.
-
-Một số các từ ngữ khác sử dụng là "đúng tích cực", "đúng tiêu cực" và "sai tiêu cực". "Đúng tích cực" đề cập đến khi các kết quả kiểm tra và tình trạng thực tế của điều kiện là cả hai đúng (hay "tích cực"), và "đúng tiêu cực" đề cập đến khi các kết quả kiểm tra và tình trạng thực tế của điều kiện là cả hai sai (hay "tiêu cực"); "Đúng tích cực" hay "đúng tiêu cực" được coi là một "suy luận đúng". Các phản đề của "sai tích cực" là "sai tiêu cực"; "Sai tiêu cực" đề cập đến khi các kết quả kiểm tra là tiêu cực (hay, điều kiện được xác định là "tiêu cực", hay "sai"), nhưng dự kiến sẽ được (hay cần phải có được) tích cực (hay, điều kiện, thực tế, là "tích cực", hay "đúng").
-
-Trong bối cảnh CIDRAM, các từ ngữ đề cập đến chữ ký của CIDRAM và các họ chặn gì/ai. Khi CIDRAM chặn địa chỉ IP bởi vì chữ ký của nó là xấu, lỗi thời hay không chính xác, nhưng không nên làm như vậy, hay khi nó làm như vậy vì những lý do sai, chúng tôi đề cập đến sự kiện này như "sai tích cực". Khi CIDRAM không chặn một địa chỉ IP đó nên đã bị chặn, bởi vì mối đe dọa khó lường, chữ ký mất tích hay thiếu sót trong chữ ký, chúng tôi đề cập đến sự kiện này như "phát hiện mất tích" (which is analogous to a "sai tiêu cực").
-
-Điều này có thể được tóm tắt bằng bảng dưới đây:
-
-&nbsp; | CIDRAM *KHÔNG* nên chặn một địa chỉ IP | CIDRAM *NÊN* chặn một địa chỉ IP
----|---|---
-CIDRAM *KHÔNG* chặn một địa chỉ IP | Đúng tiêu cực (suy luận đúng) | Phát hiện mất tích (điều tương tự như sai tiêu cực)
-CIDRAM chặn một địa chỉ IP | __Sai tích cực__ | Đúng tích cực (suy luận đúng)
-
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM có thể chặn toàn bộ quốc gia?
 
-Vâng. Cách dễ nhất để làm điều này là bằng cách cài đặt mô-đun BGPView và định cấu hình nó theo nhu cầu của bạn.
+Vâng. Cách dễ nhất để làm điều này là bằng cách cài đặt mô-đun BGPView hoặc mô-đun IP-API và định cấu hình nó theo nhu cầu của bạn.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Tần suất cập nhật chữ ký là bao nhiêu?
 
@@ -1901,11 +1874,11 @@ IP | Nhà điều hành
 
 #### <a name="PROTECT_OTHER_THINGS"></a>Tôi có thể sử dụng CIDRAM để bảo vệ những thứ khác ngoài trang web (v.d., máy chủ email, FTP, SSH, IRC, vv)?
 
-Bạn có thể (theo nghĩa hợp pháp), nhưng không nên (theo nghĩa kỹ thuật và thực tế). Giấy phép của chúng tôi không hạn chế công nghệ nào thực hiện CIDRAM, nhưng CIDRAM là một WAF (Web Application Firewall) và luôn có ý định bảo vệ các trang web. Bởi vì nó không được thiết kế với các công nghệ khác trong tâm trí, nó không có hiệu quả hoặc cung cấp bảo vệ đáng tin cậy cho các công nghệ khác, việc thực hiện có thể là khó khăn, và nguy cơ sai tích cực và phát hiện mất tích là rất cao.
+Bạn có thể (theo nghĩa hợp pháp), nhưng không nên (theo nghĩa kỹ thuật và thực tế). Giấy phép của chúng tôi không hạn chế công nghệ nào thực hiện CIDRAM, nhưng CIDRAM là một WAF (Web Application Firewall) và luôn có ý định bảo vệ các trang web. Bởi vì nó không được thiết kế với các công nghệ khác trong tâm trí, nó không có hiệu quả hoặc cung cấp bảo vệ đáng tin cậy cho các công nghệ khác, việc thực hiện có thể là khó khăn, và nguy cơ sai tích cực và bỏ sót phát hiện là rất cao.
 
 #### <a name="CDN_CACHING_PROBLEMS"></a>Sẽ xảy ra sự cố nếu tôi sử dụng CIDRAM cùng lúc với việc sử dụng các CDN hoặc các dịch vụ bộ nhớ đệm?
 
-Có lẽ. Điều này phụ thuộc vào tính chất của dịch vụ được đề cập và cách bạn sử dụng dịch vụ. Nói chung, nếu bạn chỉ lưu trữ nội dung tĩnh (v.d., hình ảnh, CSS, vv; bất cứ điều gì không thay đổi theo thời gian), không nên có bất kỳ vấn đề. Có thể có vấn đề mặc dù, nếu bạn đang lưu trữ dữ liệu mà thông thường sẽ được tạo động nếu được yêu cầu, hoặc nếu bạn đang lưu trữ kết quả của các yêu cầu POST (điều này về cơ bản sẽ làm cho trang web của bạn và môi trường của nó như bắt buộc tĩnh, và CIDRAM không có khả năng cung cấp bất kỳ lợi ích có ý nghĩa nào trong một môi trường bắt buộc tĩnh). Cũng có thể có các yêu cầu cấu hình cụ thể cho CIDRAM, tùy thuộc vào dịch vụ bộ nhớ đệm hoặc CDN mà bạn đang sử dụng (bạn cần đảm bảo rằng CIDRAM được định cấu hình chính xác cho dịch vụ bộ nhớ đệm hoặc CDN cụ thể mà bạn đang sử dụng). Cấu hình không chính xác cho CIDRAM có thể dẫn đến vấn đề đáng kể của các sai tích cực và các sự phát hiện mất tích.
+Có lẽ. Điều này phụ thuộc vào tính chất của dịch vụ được đề cập và cách bạn sử dụng dịch vụ. Nói chung, nếu bạn chỉ lưu trữ nội dung tĩnh (v.d., hình ảnh, CSS, vv; bất cứ điều gì không thay đổi theo thời gian), không nên có bất kỳ vấn đề. Có thể có vấn đề mặc dù, nếu bạn đang lưu trữ dữ liệu mà thông thường sẽ được tạo động nếu được yêu cầu, hoặc nếu bạn đang lưu trữ kết quả của các yêu cầu POST (điều này về cơ bản sẽ làm cho trang web của bạn và môi trường của nó như bắt buộc tĩnh, và CIDRAM không có khả năng cung cấp bất kỳ lợi ích có ý nghĩa nào trong một môi trường bắt buộc tĩnh). Cũng có thể có các yêu cầu cấu hình cụ thể cho CIDRAM, tùy thuộc vào dịch vụ bộ nhớ đệm hoặc CDN mà bạn đang sử dụng (bạn cần đảm bảo rằng CIDRAM được định cấu hình chính xác cho dịch vụ bộ nhớ đệm hoặc CDN cụ thể mà bạn đang sử dụng). Cấu hình không chính xác cho CIDRAM có thể dẫn đến vấn đề đáng kể của các sai tích cực và các sự bỏ sót phát hiện.
 
 #### <a name="DDOS_ATTACKS"></a>CIDRAM có bảo vệ trang web của tôi khỏi các cuộc tấn công DDoS không?
 
@@ -2401,4 +2374,4 @@ Xem ở trên: Nên cài đặt mới.
 ---
 
 
-Lần cuối cập nhật: 2026.04.01.
+Lần cuối cập nhật: 2026.04.18.

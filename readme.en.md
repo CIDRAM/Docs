@@ -21,8 +21,6 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) is a PHP script designed to protect websites by blocking requests originating from IP addresses regarded as being sources of undesirable traffic, including (but not limited to) traffic from non-human access endpoints, cloud services, spambots, scrapers, etc. It does this by calculating the possible CIDRs of the IP addresses supplied from inbound requests and then attempting to match these possible CIDRs against its signature files (these signature files contain lists of CIDRs of IP addresses regarded as being sources of undesirable traffic); If matches are found, the requests are blocked.
 
-*(See: [What is a "CIDR"?](#user-content-WHAT_IS_A_CIDR)).*
-
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 and beyond GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
 This script is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This script is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details, located in the `LICENSE.txt` file and available also from:
@@ -102,8 +100,6 @@ It's strongly recommended for you to review the configuration of your new instal
 CIDRAM should automatically block undesirable requests to your website without requiring any manual assistance, aside from its initial installation.
 
 You can customise your configuration and customise which CIDRs are blocked by modifying your configuration file and/or your signature files.
-
-If you encounter any false positives, please contact me to let me know about it. *(See: [What is a "false positive"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM can be updated manually or via the front-end. CIDRAM can also be updated via Composer or WordPress, if originally installed via those means.
 
@@ -1727,8 +1723,6 @@ Modules have been made available to ensure that the following packages and produ
 ### 8. <a name="SECTION8"></a>FREQUENTLY ASKED QUESTIONS (FAQ)
 
 - [What is a "signature"?](#user-content-WHAT_IS_A_SIGNATURE)
-- [What is a "CIDR"?](#user-content-WHAT_IS_A_CIDR)
-- [What is a "false positive"?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
 - [Can CIDRAM block entire countries?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [How frequently are signatures updated?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1769,30 +1763,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 Often (but not always), signatures will bundled together in groups, forming "signature sections", often accompanied by comments, markup, and/or related metadata that can be used to provide additional context for the signatures and/or further instruction.
 
-#### <a name="WHAT_IS_A_CIDR"></a>What is a "CIDR"?
-
-"CIDR" is an acronym for "Classless Inter-Domain Routing" *[[1](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, and it's this acronym that's used as part of the name for this package, "CIDRAM", which is an acronym for "Classless Inter-Domain Routing Access Manager".
-
-In the context of CIDRAM, "CIDR" (or "CIDRs") refers specifically to subnets expressed using CIDR notation.
-
-#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>What is a "false positive"?
-
-The term "false positive" (*alternatively: "false positive error"; "false alarm"*), described very simply, and in a generalised context, is used when testing for a condition, to refer to the results of that test, when the results are positive (i.e., the condition is determined to be "positive", or "true"), but are expected to be (or should have been) negative (i.e., the condition, in reality, is "negative", or "false"). A "false positive" could be considered analogous to "crying wolf" (wherein the condition being tested is whether there's a wolf near the herd, the condition is "false" in that there's no wolf near the herd, and the condition is reported as "positive" by the shepherd by way of calling "wolf, wolf"), or analogous to situations in medical testing wherein a patient is diagnosed as having some illness or disease, when in reality, they have no such illness or disease.
-
-Related outcomes when testing for a condition can be described using the terms "true positive", "true negative" and "false negative". A "true positive" refers to when the results of the test and the actual state of the condition are both true (or "positive"), and a "true negative" refers to when the results of the test and the actual state of the condition are both false (or "negative"); A "true positive" or a "true negative" is considered to be a "correct inference". The antithesis of a "false positive" is a "false negative"; A "false negative" refers to when the results of the test are negative (i.e., the condition is determined to be "negative", or "false"), but are expected to be (or should have been) positive (i.e., the condition, in reality, is "positive", or "true").
-
-In the context of CIDRAM, these terms refer to the signatures of CIDRAM and what/whom they block. When CIDRAM blocks an IP address due to bad, outdated or incorrect signatures, but shouldn't have done so, or when it does so for the wrong reasons, we refer to this event as a "false positive". When CIDRAM fails to block an IP address that should have been blocked, due to unforeseen threats, missing signatures or shortfalls in its signatures, we refer to this event as a "missed detection" (which is analogous to a "false negative").
-
-This can be summarised by the table below:
-
-&nbsp; | CIDRAM should *NOT* block an IP address | CIDRAM *SHOULD* block an IP address
----|---|---
-CIDRAM does *NOT* block an IP address | True negative (correct inference) | Missed detection (analogous to false negative)
-CIDRAM *DOES* block an IP address | __False positive__ | True positive (correct inference)
-
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Can CIDRAM block entire countries?
 
-Yes. The easiest way to do this would be by installing the BGPView module and configuring it according to your needs.
+Yes. The easiest way to do this would be by installing the BGPView module or the IP-API module and configuring it according to your needs.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>How frequently are signatures updated?
 
@@ -2393,4 +2366,4 @@ For a list of the changes introduced by v4 (e.g., features added, features remov
 ---
 
 
-Last Updated: 1 April 2026 (2026.04.01).
+Last Updated: 18 April 2026 (2026.04.18).

@@ -21,8 +21,6 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) ist ein PHP-Skript gestaltete für Websites zu schützen, durch das Blockieren von IP-Adressen als Quellen von unerwünschten Verkehr angesehen, einschließlich (aber nicht beschränkt auf) Datenverkehr von nicht-menschlichen Zugang Endpunkte, Cloud-Services, spambots, Website Schaber, u.s.w. Es tut dies durch die möglichen CIDRs von IP-Adressen zu berechnen, von eingehenden Anfragen geliefert, und dann versuchen, diese gegen ihre Signaturdateien zu entsprechen (Diese Signaturdateien enthalten Listen von CIDRs von IP-Adressen als Ursachen für unerwünschte Verkehrs angesehen); Wenn Übereinstimmungen gefunden werden, die Anfragen ist blockiert.
 
-*(Beziehen auf: [Was ist ein „CIDR“?](#user-content-WHAT_IS_A_CIDR)).*
-
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 und darüber hinaus GNU/GPLv2 by [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
 Dieses Skript ist freie Software; Sie können Sie weitergeben und/oder modifizieren unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht; entweder unter Version 2 der Lizenz oder (nach Ihrer Wahl) jeder späteren Version. Dieses Skript wird in der Hoffnung verteilt, dass es nützlich sein wird, allerdings OHNE JEGLICHE GARANTIE; ohne implizite Garantien für VERMARKTUNG/VERKAUF/VERTRIEB oder FÜR EINEN BESTIMMTEN ZWECK. Lesen Sie die GNU General Public License für weitere Details, in der Datei `LICENSE.txt`, ebenfalls verfügbar auf:
@@ -102,8 +100,6 @@ Es wird dringend empfohlen, dass Sie die Konfiguration Ihrer neuen Installation 
 CIDRAM sollte automatisch unerwünschte Verkehr auf Ihre Website blockieren, ohne manuelle Unterstützung erforderlich, abgesehen von seiner Erstinstallation.
 
 Sie können Ihre Konfiguration anpassen, und Sie können welche CIDRs blockiert festlegen, durch Sie Ihre Konfigurationsdatei und/oder Signaturdateien Modifizieren.
-
-Wenn Sie Falsch-Positivs begegnen, bitte kontaktieren Sie mich zu informieren. *(Beziehen auf: [Was ist ein „Falsch-Positiv“?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM kann manuell oder über das Frontend aktualisiert werden. CIDRAM kann auch über Composer oder WordPress aktualisiert werden, wenn es ursprünglich mit diesen Mitteln installiert wurde.
 
@@ -674,7 +670,7 @@ numbers
 ```
 
 ##### „emailaddr“ `[string]`
-- Wenn Sie möchten, können Sie hier eine E-Mail-Adresse angeben, geben auf den Benutzern wenn sie blockiert, für Unterstützung für den Fall dass sie ist blockiert versehentlich oder im fehler. WARNUNG: Jede E-Mail-Adresse die Sie hier angeben wird sicherlich durch Spambots erworben werden im Zuge ihrer Verwendung hier, und so, es wird dringend empfohlen, wenn Sie hier eine E-Mail-Adresse angeben, dass die E-Mail-Adresse die Sie hier angeben, eine Einwegadresse ist, und/oder eine Adresse die Sie nichts dagegen haben Spam (mit anderen Worten, möchten Sie wahrscheinlich nicht Ihre primären persönlichen oder primären geschäftlichen E-Mail-Adressen verwenden).
+- Wenn Sie möchten, können Sie hier eine E-Mail-Adresse angeben, um den Benutzern zu geben wenn sie blockiert sind, für Unterstützung im Falle dass sie versehentlich oder im Fehler blockiert sind. WARNUNG: Jede E-Mail-Adresse die Sie hier angeben wird sicherlich durch Spambots erworben werden im Zuge ihrer Verwendung hier, und so, es wird dringend empfohlen, wenn Sie hier eine E-Mail-Adresse angeben, dass die E-Mail-Adresse die Sie hier angeben, eine Einwegadresse ist, und/oder eine Adresse die Sie nichts dagegen haben Spam (mit anderen Worten, möchten Sie wahrscheinlich nicht Ihre primären persönlichen oder primären geschäftlichen E-Mail-Adressen verwenden).
 
 ##### „emailaddr_display_style“ `[string]`
 - Wie möchten Sie die E-Mail-Adresse für die Nutzer anzeigen?
@@ -1738,8 +1734,6 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 ### 8. <a name="SECTION8"></a>HÄUFIG GESTELLTE FRAGEN (FAQ)
 
 - [Was ist eine „Signatur“?](#user-content-WHAT_IS_A_SIGNATURE)
-- [Was ist ein „CIDR“?](#user-content-WHAT_IS_A_CIDR)
-- [Was ist ein „Falsch-Positiv“?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
 - [Kann CIDRAM ganze Länder blockieren?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Wie häufig werden Signaturen aktualisiert?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ich habe ein Problem bei der Verwendung von CIDRAM und ich weiß nicht was ich tun soll! Bitte helfen Sie!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1780,30 +1774,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 Oft (aber nicht immer) werden Signaturen in Gruppen zusammengebunden, um „Signatur-Sektionen“ zu bilden, oft begleitet von Kommentaren, Markup und/oder verwandten Metadaten welche dazu verwendet werden, um zusätzlichen Kontext für die Signaturen bereitstellen zu können, oder enthalten weitere Informationen.
 
-#### <a name="WHAT_IS_A_CIDR"></a>Was ist ein „CIDR“?
-
-„CIDR“ ist ein Akronym für „Classless Inter-Domain Routing“ *[[1](https://de.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, und es ist dieses Akronym, das als Teil des Namens für dieses Paket, „CIDRAM“, verwendet wird, um ein größeres Akronym zu bilden, „Classless Inter-Domain Routing Access Manager“.
-
-Im Kontext von CIDRAM bezieht sich „CIDR“ (oder „CIDRs“) speziell auf Subnetze, die in CIDR-Notation ausgedrückt werden.
-
-#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Was ist ein „Falsch-Positiv“?
-
-Der Begriff „Falsch-Positiv“ (*Alternative: „falsch-positiv Fehler“; „falscher Alarm“*; Englisch: *false positive*; *false positive error*; *false alarm*), sehr einfach beschrieben, und in einem verallgemeinerten Kontext, wird verwendet, wenn eine Bedingung zu testen ist und wenn die Ergebnisse positiv sind (also wenn die Bedingung als positiv bewertet wird) jedoch die Bedingung als negativ erwartet (oder negativ sein sollte) wird. In der Medizin ist ein „falsch Positiv“ ein Begriff dafür, wenn Patienten mit einer Krankheit identifiziert wurden
-
-Einige andere Begriffe verwendet: „Wahr-Positiv“, „Wahr-Negativ“ und „Falsch-Negativ“. Eine „Wahr-Positiv“ ist, wenn die Ergebnisse des Tests und der wahren Zustand beide wahr sind (oder „Positiv“), und eine „Wahr-Negativ“ ist, wenn die Ergebnisse des Tests und der wahren Zustand beide falsch sind (oder „Negativ“); Eine „Wahr-Positiv“ oder Eine „Wahr-Negativ“ gilt als eine „korrekte Folgerung“. Die Antithese von einem „Falsch-Positiv“ ist ein „Falsch-Negativ“; Ein „Falsch-Negativ“ ist, wenn die Ergebnisse des Tests negativ sind (d.h., die Bedingung bestimmt wird negativ oder falsch zu sein), aber ein positives Resultat zu erwarten ist (oder sollte gewesen, d.h., der Zustand, in Wirklichkeit, ist „positiv“, oder „wahr“).
-
-Im Kontext der CIDRAM, Diese Begriffe beziehen sich auf der Signaturen von CIDRAM, und was/wen sie blockieren. Wenn CIDRAM Blöcke eine IP-Adresse wegen schlechten, veralteten oder falschen Signaturen blockieren, sollten dies aber nicht so getan haben, oder wenn sie es aus den falschen Gründen, beziehen wir uns auf dieses Ergebnis als „Falsch-Positiv“. Wenn CIDRAM, aufgrund unvorhergesehener Bedrohungen, fehlenden Signaturen oder Defiziten in ihren Signaturen, versagt eine IP-Adresse zu blockieren, die blockiert werden sollte, beziehen wir uns auf dieses Ereignis als eine „verpasste Erkennung“ (das entspricht einem „Falsch-Negativ“).
-
-Dies kann durch die folgende Tabelle zusammengefasst werden:
-
-&nbsp; | CIDRAM sollte *KEINE* IP-Adresse blockieren | CIDRAM *SOLLTE* eine IP-Adresse blockieren
----|---|---
-CIDRAM blockiert eine IP-Adresse *NICHT* | Wahr-Negativ (korrekte Folgerung) | **Verpasste Erkennung (analog zu Falsch-Negativ)**
-CIDRAM blockiert eine IP-Adresse | __Falsch-Positiv__ | True-Positiv (korrekte Folgerung)
-
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Kann CIDRAM ganze Länder blockieren?
 
-Ja. Der einfachste Weg ist das BGPView-Modul zu installieren und es gemäß Ihren Anforderungen zu konfigurieren.
+Ja. Der einfachste Weg ist das BGPView-Modul oder das IP-API-Modul zu installieren und es gemäß Ihren Anforderungen zu konfigurieren.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Wie häufig werden Signaturen aktualisiert?
 
@@ -2411,4 +2384,4 @@ Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfer
 ---
 
 
-Zuletzt aktualisiert: 1. April 2026 (2026.04.01).
+Zuletzt aktualisiert: 18. April 2026 (2026.04.18).

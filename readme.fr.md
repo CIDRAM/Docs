@@ -21,8 +21,6 @@
 
 CIDRAM (Classless Inter-Domain Routing Access Manager) est un script PHP conçu pour la protection des sites web par bloquant les requêtes de page produit à partir d'adresses IP considéré comme étant sources de trafic indésirable, comprenant (mais pas limité a) le trafic de terminaux d'accès non humains, services de cloud computing, spambots, scrapers, etc. Elle le fait en calculant les CIDRs possibles des adresses IP fournie par les requêtes entrantes puis essayant pour correspondre à ces CIDRs possibles contre ses fichiers de signatures (ces fichiers de signatures contenir des listes de CIDRs d'adresses IP considéré comme étant sources de trafic indésirable) ; Si des correspondances sont trouvées, les requêtes sont bloquées.
 
-*(Voir : [Qu'est-ce qu'un « CIDR » ?](#user-content-WHAT_IS_A_CIDR)).*
-
 [CIDRAM](https://cidram.github.io/) COPYRIGHT 2016 et au-delà GNU/GPLv2 par [Caleb M (Maikuolan)](https://github.com/Maikuolan).
 
 Ce script est un logiciel libre ; vous pouvez redistribuer et/ou le modifier selon les termes de la GNU General Public License telle que publiée par la Free Software Foundation ; soit la version 2 de la Licence, ou (à votre choix) toute version ultérieure. Ce script est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE, sans même l'implicite garantie de COMMERCIALISATION ou D'ADAPTATION À UN PARTICULIER USAGE. Voir la GNU General Public License pour plus de détails, situé dans le `LICENSE.txt` fichier et disponible également à partir de :
@@ -102,8 +100,6 @@ Il vous est fortement recommandé de revoir la configuration de votre nouvelle i
 CIDRAM devrait bloquer automatiquement les requêtes indésirables à votre site web sans nécessitant aucune intervention manuelle, en dehors de son installation initiale.
 
 Vous pouvez personnaliser votre configuration et personnaliser les CIDRs sont bloqués par modifiant le fichier de configuration et/ou vos fichiers de signatures.
-
-Si vous rencontrez des faux positifs, s'il vous plaît, contactez moi et parle moi de ça. *(Voir : [Qu'est-ce qu'un « faux positif » ?](#user-content-WHAT_IS_A_FALSE_POSITIVE)).*
 
 CIDRAM peut être mis à jour manuellement ou via le frontal. CIDRAM peut également être mis à jour via Composer ou WordPress, si initialement installé via ces moyens.
 
@@ -308,7 +304,7 @@ Configuration générale (toute configuration de base n'appartenant pas à d'aut
 - Contrôles des étapes de la chaîne d'exécution (s'il est activé, si les erreurs sont enregistrées, etc).
 
 ```
-stages───[Activer cette étape ?]─[Enregistrer les erreurs générés lors de cette étape ?]─[Compter les infractions générés lors de cette étape dans le surveillance d'IP ?]
+stages───[Activer cette étape ?]─[Enregistrer les erreurs générés lors de cette étape ?]─[Compter les infractions générés lors de cette étape dans la surveillance d'IP ?]
 ├─BanCheck ("Vérifiez si c'est interdit")
 ├─Tests ("Exécutez les tests des fichiers de signature")
 ├─Modules ("Exécutez les modules")
@@ -316,7 +312,7 @@ stages───[Activer cette étape ?]─[Enregistrer les erreurs générés l
 ├─SocialMediaVerification ("Exécutez la vérification des médias sociaux")
 ├─OtherVerification ("Exécutez une autre vérification")
 ├─Aux ("Exécutez les règles auxiliaires")
-├─Tracking ("Exécutez le surveillance d'IP")
+├─Tracking ("Exécutez la surveillance d'IP")
 ├─RL ("Exécutez la limitation du débit")
 ├─CAPTCHA ("Déployez les CAPTCHAs (requêtes bloquées)")
 ├─Reporting ("Traitez les rapports")
@@ -673,7 +669,7 @@ numbers
 ```
 
 ##### « emailaddr » `[string]`
-- Si vous souhaitez, vous pouvez fournir une adresse e-mail ici à donner aux utilisateurs quand ils sont bloqués, pour qu'ils utilisent comme un point de contact pour support et/ou assistance dans le cas d'eux étant bloqué par erreur. AVERTISSEMENT : Tout de l'adresse e-mail vous fournissez ici sera très certainement être acquis par les robots des spammeurs et voleurs de contenu au cours de son être utilisés ici, et donc, il est recommandé fortement que si vous choisissez pour fournir une adresse e-mail ici, de vous assurer que l'adresse e-mail que vous fournissez ici est une adresse jetable et/ou une adresse que ne vous dérange pas d'être spammé (en d'autres termes, vous ne voulez probablement pas d'utiliser votre adresses e-mail personnel primaire ou d'affaires primaire).
+- Si vous le souhaitez, vous pouvez fournir une adresse e-mail ici à donner aux utilisateurs quand ils sont bloqués, pour qu'ils l'utilisent comme un point de contact pour support et/ou assistance dans le cas où ils seraient bloqués par erreur ou par inadvertance. AVERTISSEMENT : Tout de l'adresse e-mail vous fournissez ici sera très certainement être acquis par les robots des spammeurs et voleurs de contenu au cours de son être utilisés ici, et donc, il est recommandé fortement que si vous choisissez pour fournir une adresse e-mail ici, de vous assurer que l'adresse e-mail que vous fournissez ici est une adresse jetable et/ou une adresse que ne vous dérange pas d'être spammé (en d'autres termes, vous ne voulez probablement pas utiliser votre adresses e-mail personnel primaire ou d'affaires primaire).
 
 ##### « emailaddr_display_style » `[string]`
 - Comment préférez-vous que l'adresse électronique soit présentée aux utilisateurs ?
@@ -975,7 +971,7 @@ Configuration pour vérifier d'où proviennent les requêtes.
 - Contrôles pour vérifier les requêtes des moteurs de recherche.
 
 ```
-search_engines───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
+search_engines───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler la surveillance des positifs ?]
 ├─Amazonbot ("Amazonbot")
 ├─Applebot ("Applebot")
 ├─Baidu ("* Baiduspider/百度")
@@ -1002,7 +998,7 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 - Contrôles pour vérifier les requêtes des plateformes de médias sociaux.
 
 ```
-social_media───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
+social_media───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler la surveillance des positifs ?]
 ├─Embedly ("* Embedly")
 ├─Facebook ("** Facebook")
 ├─Pinterest ("* Pinterest")
@@ -1024,7 +1020,7 @@ __Que sont les « contournements en un seul coup » ?__ Dans certains cas, un
 - Contrôles pour vérifier d'autres types de requêtes lorsque cela est possible.
 
 ```
-other───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler le surveillance des positifs ?]
+other───[Essayer de vérifier ?]─[Bloquer les négatifs ?]─[Bloquer les requêtes non vérifiés ?]─[Autoriser les contournements en un seul coup ?]─[Annuler la surveillance des positifs ?]
 ├─AdSense ("AdSense")
 ├─AmazonAdBot ("* AmazonAdBot")
 ├─ChatGPT-User ("!! ChatGPT-User")
@@ -1733,8 +1729,6 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 ### 8. <a name="SECTION8"></a>QUESTIONS FRÉQUEMMENT POSÉES (FAQ)
 
 - [Qu'est-ce qu'une « signature » ?](#user-content-WHAT_IS_A_SIGNATURE)
-- [Qu'est-ce qu'un « CIDR » ?](#user-content-WHAT_IS_A_CIDR)
-- [Qu'est-ce qu'un « faux positif » ?](#user-content-WHAT_IS_A_FALSE_POSITIVE)
 - [CIDRAM peut-il bloquer des pays entiers ?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [À quelle fréquence les signatures sont-elles mises à jour ?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [J'ai rencontré un problème lors de l'utilisation de CIDRAM et je ne sais pas quoi faire à ce sujet ! Aidez-moi !](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1775,30 +1769,9 @@ $this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 
 
 Souvent (mais pas toujours), les signatures seront regroupées en groupes, formant des « sections de signatures », souvent accompagné de commentaires, de balisage et/ou de métadonnées connexes qui peuvent être utilisées pour fournir un contexte supplémentaire pour les signatures et/ou d'autres instructions.
 
-#### <a name="WHAT_IS_A_CIDR"></a>Qu'est-ce qu'un « CIDR » ?
-
-« CIDR » est un acronyme pour « Classless Inter-Domain Routing » *[[1](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing), [2](https://whatismyipaddress.com/cidr)]*, et c'est l'acronyme utilisé dans le nom de ce paquet, « CIDRAM », qui est un acronyme pour « Classless Inter-Domain Routing Access Manager ».
-
-Dans le contexte de CIDRAM, « CIDR » (ou « CIDRs ») fait spécifiquement référence aux sous-réseaux exprimés à l'aide de la notation CIDR.
-
-#### <a name="WHAT_IS_A_FALSE_POSITIVE"></a>Qu'est-ce qu'un « faux positif » ?
-
-Le terme « faux positif » (*alternativement : « erreur faux positif » ; « fausse alarme »* ; Anglais : *false positive* ; *false positive error* ; *false alarm*), décrit très simplement, et dans un contexte généralisé, est utilisé lors de tester pour une condition, de se référer aux résultats de ce test, lorsque les résultats sont positifs (c'est à dire, lorsque la condition est déterminée comme étant « positif », ou « vrai »), mais ils devraient être (ou aurait dû être) négatif (c'est à dire, lorsque la condition, en réalité, est « négatif », ou « faux »). Un « faux positif » pourrait être considérée comme analogue à « crier au loup » (où la condition testée est de savoir s'il y a un loup près du troupeau, la condition est « faux » en ce que il n'y a pas de loup près du troupeau, et la condition est signalé comme « positif » par le berger par voie de crier « loup ! loup ! »), ou analogues à des situations dans des tests médicaux dans lequel un patient est diagnostiqué comme ayant une maladie, alors qu'en réalité, ils ont pas une telle maladie.
-
-Résultats connexes lors de tester pour une condition peut être décrit en utilisant les termes « vrai positif », « vrai négatif » et « faux négatif ». Un « vrai positif » se réfère à quand les résultats du test et l'état actuel de la condition sont tous deux vrai (ou « positif »), and a « vrai négatif » se réfère à quand les résultats du test et l'état actuel de la condition sont tous deux faux (ou « négatif ») ; Un « vrai positif » ou « vrai négatif » est considéré comme une « inférence correcte ». L'antithèse d'un « faux positif » est un « faux négatif » ; Un « faux négatif » se réfère à quand les résultats du test are négatif (c'est à dire, la condition est déterminée comme étant « négatif », ou « faux »), mais ils devraient être (ou aurait dû être) positif (c'est à dire, la condition, en réalité, est « positif », ou « vrai »).
-
-Dans le contexte de CIDRAM, ces termes réfèrent à les signatures de CIDRAM et que/qui ils bloquent. Quand CIDRAM bloque une adresse IP en raison du mauvais, obsolète ou signatures incorrectes, mais ne devrait pas l'avoir fait, ou quand il le fait pour les mauvaises raisons, nous référons à cet événement comme un « faux positif ». Quand CIDRAM ne parvient pas à bloquer une adresse IP qui aurait dû être bloqué, en raison de menaces imprévues, signatures manquantes ou déficits dans ses signatures, nous référons à cet événement comme un « détection manquée » ou « missed detection » (qui est analogue à un « faux négatif »).
-
-Ceci peut être résumé par le tableau ci-dessous :
-
-&nbsp; | CIDRAM ne devrait *PAS* bloquer une adresse IP | CIDRAM *DEVRAIT* bloquer une adresse IP
----|---|---
-CIDRAM ne bloque *PAS* une adresse IP | Vrai négatif (inférence correcte) | Détection manquée (analogue à faux négatif)
-CIDRAM bloque une adresse IP | __Faux positif__ | Vrai positif (inférence correcte)
-
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM peut-il bloquer des pays entiers ?
 
-Oui. La façon la plus simple de le faire serait d'installer le module BGPView et de le configurer en fonction de vos besoins.
+Oui. La façon la plus simple de le faire serait d'installer le module BGPView ou le module IP-API et de le configurer en fonction de vos besoins.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>À quelle fréquence les signatures sont-elles mises à jour ?
 
@@ -2404,4 +2377,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 1 Avril 2026 (2026.04.01).
+Dernière mise à jour : 18 Avril 2026 (2026.04.18).
