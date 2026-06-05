@@ -818,32 +818,32 @@ email_notification_when
 ##### «standard_log» `[string]`
 - Файл разборчивыми для людей, для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «apache_style_log» `[string]`
 - Apache-стиль файл для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «serialised_log» `[string]`
 - Сериализованная файл для регистрации всех заблокированных попыток несанкционированного доступа. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «error_log» `[string]`
 - Файл для регистрации обнаруженных нефатальных ошибок. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «outbound_request_log» `[string]`
 - Файл для регистрации результатов любых исходящих запросов. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «report_log» `[string]`
 - Файл для регистрации любых отчетов, отправленных во внешние API. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «truncate» `[string]`
 - Усекать лог-файлы, когда они достигают определенного размера? Значение это максимальный размер в Б/КБ/МБ/ГБ/ТБ, до которого файл журнала может увеличиться до усечения. Стандартное значение 0КБ отключает усечение (лог-файлы может расти неограниченно). Примечание: относится к отдельным лог-файлы! Размер файлов журнала не учитывается совместно.
@@ -872,12 +872,12 @@ log_rotation_action
 ##### «frontend_log» `[string]`
 - Файл для запись всех попыток входа в фронтенд. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «signatures_update_event_log» `[string]`
 - Файл для регистрации при обновлении сигнатурей через фронтенд. Задайте имя файлу, или оставьте пустым чтобы деактивировать опцию.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### «max_login_attempts» `[int]`
 - Максимальное количество попыток входа в систему фронтенда. Стандарт = 5.
@@ -1103,9 +1103,9 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 Запросы можно «пометить для использования» с помощью вспомогательных правил.
 
-Определение того, считается ли запрос «конфиденциальным», осуществляется с помощью <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
+Определение того, считается ли запрос «конфиденциальным», осуществляется с помощью <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
 
-«Предел сигнатуры» определяется с помощью <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
+«Предел сигнатуры» определяется с помощью <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### «nonblocked_status_code» `[int]`
 - Какой код статуса следует использовать при отображении CAPTCHA для неблокированных запросов?
@@ -1246,7 +1246,7 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ##### «log» `[string]`
 - Записывать все попытки CAPTCHA? Если да, указать имя использовать для файла журнала. Если нет, оставьте эту переменную пустым.
 
-Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Полезный совет: Вы можете прикрепить информацию о дате и времени к именам файлов журналов, используя заполнители формата времени. Доступные заполнители формата времени отображаются на <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### «legal» (Категория)
 Конфигурация для юридических требований.

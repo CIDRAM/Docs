@@ -54,8 +54,8 @@ if (!isset($_GET['language'])) {
         $Out = $Data->getString('config.' . $Category);
         if ($Data->Directionality !== 'rtl') {
             $Out = str_replace(
-                ['<code>', '<code class="s">', '<code dir="ltr">', '<code dir="rtl">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
-                ['`', '`', '`', '`', '`', '__', '__', '*', '*'],
+                ['<code>', '<code class="s">', '<code dir="ltr">', '<code dir="rtl">', '<code dir="ltr" translate="no">', '</code>', '<strong>', '</strong>', '<em>', '</em>'],
+                ['`', '`', '`', '`', '`', '`', '__', '__', '*', '*'],
                 html_entity_decode($Out)
             );
         } else {

@@ -793,32 +793,32 @@ Configurazione relativa alla registrazione (escluso quello che è applicabile al
 ##### "standard_log" `[string]`
 - Un file leggibile dagli umani per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "apache_style_log" `[string]`
 - Un file nello stile di apache per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Un file serializzato per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "error_log" `[string]`
 - Un file per la registrazione di eventuali errori non fatali rilevati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Un file per la registrazione dei risultati di eventuali richieste in uscita. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "report_log" `[string]`
 - Un file per la registrazione di tutti i rapporti inviati ad API esterne. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -847,12 +847,12 @@ Configurazione per il front-end.
 ##### "frontend_log" `[string]`
 - File per la registrazione di tentativi di accesso al front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "signatures_update_event_log" `[string]`
 - Un file per la registrazione quando le firme vengono aggiornate tramite il front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Numero massimo di tentativi di accesso al front-end. Predefinito = 5.
@@ -1068,9 +1068,9 @@ Nota anche: I CAPTCHA possono fornire un utile livello aggiuntivo di protezione 
 
 Le richieste possono essere "contrassegnate per l'uso" tramite regole ausiliarie.
 
-Se una richiesta è considerata "sensibile" è determinato da <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
+Se una richiesta è considerata "sensibile" è determinato da <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
 
-Il "limite di firme" è determinato da <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
+Il "limite di firme" è determinato da <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Quale codice di stato deve essere utilizzato quando si visualizzano i CAPTCHA per le richieste non bloccate?
@@ -1193,7 +1193,7 @@ Guarda anche:
 ##### "log" `[string]`
 - Registrare tutti i tentativi per CAPTCHA? Se sì, specificare il nome da usare per il file di registrazione. Se non, lasciare questo variabile vuoto.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### "legal" (Categoria)
 Configurazione per requisiti legali.

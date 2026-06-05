@@ -793,32 +793,32 @@ Configuration liée à la journalisation (à l'exclusion de ce qui est applicabl
 ##### « standard_log » `[string]`
 - Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « apache_style_log » `[string]`
 - Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « serialised_log » `[string]`
 - Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « error_log » `[string]`
 - Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « outbound_request_log » `[string]`
 - Un fichier pour l'enregistrement des résultats de toutes les requêtes sortantes. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « report_log » `[string]`
 - Un fichier pour l'enregistrement des rapports envoyés aux API externes. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « truncate » `[string]`
 - Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
@@ -847,12 +847,12 @@ Configuration pour l'accès frontal.
 ##### « frontend_log » `[string]`
 - Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « signatures_update_event_log » `[string]`
 - Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### « max_login_attempts » `[int]`
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
@@ -1069,9 +1069,9 @@ A noter également : Les CAPTCHAs peuvent fournir une couche de protection util
 
 Les requêtes peuvent être « marqués pour l'utilisation » via des règles auxiliaires.
 
-Le caractère « sensible » d'une requête est déterminé par <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
+Le caractère « sensible » d'une requête est déterminé par <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
 
-La « limite de signature » est déterminée par <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
+La « limite de signature » est déterminée par <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
 
 ##### « nonblocked_status_code » `[int]`
 - Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
@@ -1193,7 +1193,7 @@ Voir également :
 ##### « log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 #### « legal » (Catégorie)
 Configuration pour les exigences légales.
