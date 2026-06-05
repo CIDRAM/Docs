@@ -818,32 +818,32 @@ email_notification_when
 ##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لیے انسانی قابل مطالعہ فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لیے اپاچی طرز فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام بلاک کر تک رسائی کی کوششوں کو لاگ ان کرنے کے لیے serialized کی فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی غیر مہلک غلطیوں کو لاگ کرنے کے لیے ایک فائل کا پتہ چلا. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی آؤٹ باؤنڈ درخواستوں کے نتائج کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>بیرونی API کو بھیجی گئی کسی بھی رپورٹ کو لاگ ان کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>وہ ایک خاص سائز تک پہنچنے میں جب صاف لاگ مسلیں؟ ویلیو میں B/KB/MB/GB/TB زیادہ سے زیادہ سائز ہے. جب 0KB، وہ غیر معینہ مدت تک ترقی کر سکتا ہے (پہلے سے طے). نوٹ: واحد فائلوں پر لاگو ہوتا ہے! فائلیں اجتماعی غور نہیں کر رہے ہیں.</li></ul></div>
@@ -872,12 +872,12 @@ log_rotation_action
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>سامنے کے آخر میں لاگ ان کوششوں لاگنگ کے لیے دائر. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>جب دستخطوں کو اپ ڈیٹ پیج کے ذریعہ اپ ڈیٹ کیا جاتا ہے تو ریکارڈ کرنے کے لیے ایک فائل. ایک فائل کا نام کی وضاحت کریں، یا غیر فعال کرنے کو خالی چھوڑ.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>لاگ ان کوششوں کی زیادہ سے زیادہ تعداد (سامنے کے آخر میں). پہلے سے طے شدہ = 5.</li></ul></div>
@@ -931,7 +931,7 @@ theme_mode
 ```
 shorthand───[اسے بلاک کریں.]─[اسے پروفائل کریں.]─[بلاک ہونے پر، آؤٹ پٹ ٹیمپلیٹ کا استعمال نہ کریں.]
 ├─Attacks ("حملے")
-├─Bogon ("⁰ Bogon IP")
+├─Bogon ("⁰ بوگون IP")
 ├─Cloud ("کلاؤڈ سروس")
 ├─Generic ("جنرک")
 ├─Legal ("¹ قانونی")
@@ -1099,9 +1099,9 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 درخواستوں کو معاون قواعد کے ذریعے "استعمال کے لیے نشان زد" کیا جا سکتا ہے.
 
-آیا کسی درخواست کو "حساس" سمجھا جاتا ہے اس کا تعین <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="rtl">sensitive⬅general</code></a> سے ہوتا ہے.
+آیا کسی درخواست کو "حساس" سمجھا جاتا ہے اس کا تعین <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="rtl" translate="no">sensitive⬅general</code></a> سے ہوتا ہے.
 
-"دستخط کی حد" کا تعین <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="rtl">signature_limit⬅captcha</code></a> سے ہوتا ہے.
+"دستخط کی حد" کا تعین <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="rtl" translate="no">signature_limit⬅captcha</code></a> سے ہوتا ہے.
 
 ##### <div dir="rtl">"nonblocked_status_code" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>غیر مسدود درخواستوں پر CAPTCHA کی نمائش کرتے وقت کون سا حیثیت کا کوڈ استعمال کرنا چاہیے؟</li></ul></div>
@@ -1240,13 +1240,17 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ##### <div dir="rtl">"log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تمام CAPTCHA کے کوششوں لاگ؟ اگر ہاں، تو لاگ فائل کے لیے استعمال کرنے کے لیے نام کی وضاحت کریں. اگر نہیں، تو اس متغیر کو خالی چھوڑ دیں.</li></ul></div>
 
-مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
+مفید مشورہ: آپ ٹائم فارمیٹ پلیس ہولڈرز کا استعمال کرکے لاگ فائلوں کے ناموں کے ساتھ تاریخ/وقت کی معلومات منسلک کرسکتے ہیں. دستیاب وقت کی شکل کے پلیس ہولڈرز <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a> پر دکھائے جاتے ہیں.
 
 #### <div dir="rtl">"legal" (قسم)<br /></div>
 <div dir="rtl">قانونی تقاضوں کے لیے کنفگریشنات.<br /><br /></div>
 
 ##### <div dir="rtl">"pseudonymise_ip_addresses" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>لاگ ان کرتے وقت پی ایس ڈی نامناسب IP پتے؟ True (سچے) = جی ہاں [پہلے سے طے شدہ]؛ False (جھوٹی) = نہیں.</li></ul></div>
+
+<div dir="rtl">بھی دیکھو:<ul dir="rtl">
+<li><a dir="ltr" href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation">9.3.5 IP ADDRESS PSEUDONYMISATION</a></li>
+</ul></div>
 
 ##### <div dir="rtl">"privacy_policy" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>کسی بھی پیدا کردہ صفحات کے فوٹر میں ظاہر ہونے والی متعلقہ رازداری کی پالیسی کا پتہ. ایک URL کی وضاحت کریں، یا غیر فعال کرنے کے لیے خالی چھوڑ دیں.</li></ul></div>
@@ -1422,11 +1426,6 @@ used
 
 
 ### <div dir="rtl">۶. <a name="SECTION6"></a>دستخط فارمیٹ</div>
-
-<div dir="rtl">بھی دیکھو:<br /></div>
-<div dir="rtl"><ul>
- <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
-</ul></div>
 
 #### <div dir="rtl">۶.۰ مبادیات (دستخط فائلوں کے لیے)<br /><br /></div>
 
@@ -1785,7 +1784,6 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ### <div dir="rtl">۸. <a name="SECTION8">اکثر پوچھے گئے سوالات (FAQ)</div>
 
 <div dir="rtl"><ul>
- <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ایک "دستخط" کیا ہے؟</a></li>
  <li><a href="#user-content-BLOCK_ENTIRE_COUNTRIES">بلاک تمام ممالک CIDRAM کر سکتا ہوں؟</a></li>
  <li><a href="#user-content-SIGNATURE_UPDATE_FREQUENCY">دستخط کیسے بیشتر اپ ڈیٹ کر رہے ہیں؟</a></li>
  <li><a href="#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO">CIDRAM استعمال کرتے ہوئے میں ایک مسئلہ کا سامنا کرنا پڑا ہے اور میں اس کے بارے میں کیا پتہ نہیں ہے! مدد کریں!</a></li>
@@ -1808,24 +1806,6 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
  <li><a href="#user-content-HOW_TO_USE_PDO">"PDO DSN" کیا ہے؟ میں CIDRAM کے ساتھ PDO کیسے استعمال کرسکتا ہوں؟</a></li>
  <li><a href="#user-content-BLOCK_CRON">CIDRAM cronjobs کو مسدود کررہا ہے؛ اس کو کیسے ٹھیک کریں؟</a></li>
 </ul></div>
-
-#### <div dir="rtl"><a name="WHAT_IS_A_SIGNATURE"></a>ایک "دستخط" کیا ہے؟<br /><br /></div>
-
-<div dir="rtl">CIDRAM کے تناظر میں، اعداد و شمار کے مخصوص کچھ ہم کے لیے تلاش کر رہے ہیں اس کی شناخت کے لیے استعمال کیا جاتا ہے کے لیے ایک "دستخط" مراد، عام طور پر ایک IP پتہ یا CIDR، CIDRAM کے لیے کچھ ہدایات کے ساتھ (یہ مقابلوں جب ہم کے لیے تلاش کر رہے ہیں کیا جواب دینے کا بہترین طریقہ، وغیرہ). CIDRAM کے لیے ایک مخصوص دستخط کی کچھ اس طرح دکھائی دیتی ہے:<br /><br /></div>
-
-<div dir="rtl">"دستخط فائلوں" کے لیے:<br /><br /></div>
-
-`1.2.3.4/32 Deny Generic`
-
-<div dir="rtl">"ماڈیولز" کے لیے:<br /><br /></div>
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-<div dir="rtl">نوٹ: "دستخط فائلوں" کے لیے دستخط، اور "ماڈیولز" کے لیے دستخط وہی چیز نہیں ہیں.<em></em><br /><br /></div>
-
-<div dir="rtl">اکثر ایسا ہوتا ہے (لیکن ہمیشہ نہیں)، دستخط "کے دستخط حصوں" میں بنڈل گا، اکثر تبصرے، مارک اپ، اور متعلقہ میٹا ڈیٹا کے ساتھ شامل تھے. یہ دستخط اور مزید ہدایات کے لیے اضافی سیاق و سباق فراہم کر سکتے ہیں.<br /><br /></div>
 
 #### <div dir="rtl"><a name="BLOCK_ENTIRE_COUNTRIES"></a>بلاک تمام ممالک CIDRAM کر سکتا ہوں؟<br /><br /></div>
 
@@ -2453,4 +2433,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - لاگ ان.
 ---
 
 
-<div dir="rtl">آخری تازہ کاری: ۱۸ اپریل ۲۰۲۶ (۲۰۲۶.۰۴.۱۸).</div>
+<div dir="rtl">آخری تازہ کاری: ۶ جون ۲۰۲۶ (۲۰۲۶.۰۶.۰۶).</div>

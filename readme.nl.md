@@ -46,7 +46,7 @@ Dit document en verschillende vertalingen ervan kan hier gevonden worden:
 
 Eerste, nodig u een nieuwe kopie van CIDRAM. U kunt een archief van de nieuwste versie van CIDRAM downloaden van de [CIDRAM/CIDRAM](https://github.com/CIDRAM/CIDRAM)-repository. In het bijzonder nodig u een nieuwe kopie van de "vault"-map (alles uit het archief behalve de "vault"-map en de inhoud ervan kan veilig worden verwijderd of genegeerd).
 
-Vóór v3 was het nodig om CIDRAM ergens in je openbare root te installeren om toegang te krijgen tot de CIDRAM-frontend. Vanaf v3 echter dat is niet meer nodig, en om de veiligheid te maximaliseren en ongeoorloofde toegang tot CIDRAM en zijn bestanden te voorkomen, wordt aanbevolen om in plaats om CIDRAM *buiten* uw openbare root te installeren. U kunt CIDRAM installeren waar u wilt, zolang het ergens toegankelijk met PHP, ergens redelijk veilig, en ergens u tevreden over. Het is ook niet meer nodig om de naam van de "vault"-map te behouden, dus u kunt de "vault"-map hernoemen naar elke gewenste naam (maar voor het gemak zal de documentatie ernaar blijven verwijzen als "vault").
+Vóór v3 was het nodig om CIDRAM ergens in u openbare root te installeren om toegang te krijgen tot de CIDRAM-frontend. Vanaf v3 echter dat is niet meer nodig, en om de veiligheid te maximaliseren en ongeoorloofde toegang tot CIDRAM en zijn bestanden te voorkomen, wordt aanbevolen om in plaats om CIDRAM *buiten* uw openbare root te installeren. U kunt CIDRAM installeren waar u wilt, zolang het ergens toegankelijk met PHP, ergens redelijk veilig, en ergens u tevreden over. Het is ook niet meer nodig om de naam van de "vault"-map te behouden, dus u kunt de "vault"-map hernoemen naar elke gewenste naam (maar voor het gemak zal de documentatie ernaar blijven verwijzen als "vault").
 
 Upload de "vault"-map naar de gekozen locatie en zorg ervoor dat het de benodigde machtigingen heeft zodat PHP kan schrijven naar de map (afhankelijk van het systeem hoeft u soms niets te doen, of soms moet u CHMOD 755 in de directory zetten, of als er problemen zijn met 755, u kunt 777 proberen, maar 777 wordt niet aanbevolen omdat het minder veilig is).
 
@@ -793,32 +793,32 @@ Configuratie gerelateerd aan logging (dat wat gerelateerd aan andere categorieë
 ##### "standard_log" `[string]`
 - Mensen leesbare bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "apache_style_log" `[string]`
 - Apache-stijl bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Geserialiseerd bestand om alle geblokkeerde toegang pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "error_log" `[string]`
 - Een bestand voor het vastleggen van gedetecteerde niet-fatale fouten. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Een bestand voor het loggen van de resultaten van eventuele uitgaande verzoeken. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "report_log" `[string]`
 - Een bestand voor het loggen van rapporten die naar externe API's zijn verzonden. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Trunceren logbestanden wanneer ze een bepaalde grootte bereiken? Waarde is de maximale grootte in B/KB/MB/GB/TB dat een logbestand kan groeien tot voordat het wordt getrunceerd. De standaardwaarde van 0KB schakelt truncatie uit (logbestanden kunnen onbepaald groeien). Notitie: Van toepassing op individuele logbestanden! De grootte van de logbestanden wordt niet collectief beschouwd.
@@ -847,12 +847,12 @@ Configuratie voor de frontend.
 ##### "frontend_log" `[string]`
 - Bestand om de frontend login pogingen te loggen. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "signatures_update_event_log" `[string]`
 - Een bestand om te loggen wanneer signatures worden bijgewerkt via de frontend. Geef een bestandsnaam, of laat leeg om uit te schakelen.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Maximum aantal frontend-inlogpogingen. Standaard = 5.
@@ -1068,9 +1068,9 @@ Let ook op: CAPTCHA's kunnen een nuttige, extra beschermingslaag bieden tegen bo
 
 Verzoeken kunnen via aanvullende regels worden "gemarkeerd voor gebruik".
 
-Of een verzoek als "gevoelig" wordt beschouwd, wordt bepaald door <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+Of een verzoek als "gevoelig" wordt beschouwd, wordt bepaald door <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
 
-De "signatures limiet" wordt bepaald door <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
+De "signatures limiet" wordt bepaald door <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Welke statuscode moet worden gebruikt bij het weergeven van CAPTCHA's voor niet-geblokkeerde verzoeken?
@@ -1191,13 +1191,16 @@ Zie ook:
 ##### "log" `[string]`
 - Log alle CAPTCHA pogingen? Zo ja, geef de naam te gebruiken voor het logbestand. Zo nee, laat u deze variabele leeg.
 
-Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Handige tip: U kunt datum-/tijdinformatie aan de namen van logbestanden toevoegen door tijdelijke aanduidingen voor de tijdnotatie te gebruiken. Beschikbare tijdelijke aanduidingen voor tijdnotatie worden weergegeven bij <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 #### "legal" (Categorie)
 Configuratie voor wettelijke vereisten.
 
 ##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonimiseren de IP-adressen bij het schrijven van logbestanden? True = Ja [Standaard]; False = Nee.
+
+Zie ook:
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### "privacy_policy" `[string]`
 - Het adres van een relevant privacybeleid dat moet worden weergegeven in de voettekst van eventuele gegenereerde pagina's. Geef een URL, of laat leeg om uit te schakelen.
@@ -1374,9 +1377,6 @@ used
 
 ### 6. <a name="SECTION6"></a>SIGNATURE FORMAAT
 
-*Zie ook:*
-- *[Wat is een "signature"?](#user-content-WHAT_IS_A_SIGNATURE)*
-
 #### 6.0 BASICS (VOOR SIGNATUURBESTANDEN)
 
 Alle IPv4 signatures volgt het formaat: `xxx.xxx.xxx.xxx/yy [Function] [Param]`.
@@ -1419,7 +1419,7 @@ Voorbeeld: `127.0.0.1/32 Greylist`
 
 Als "Deny" wordt gebruikt, als de signature wordt getriggerd, veronderstelling dat er worden geen whitelist-signature getriggerd voor het opgegeven IP-adres en/of opgegeven CIDR, toegang tot de beveiligde pagina wordt ontzegd. "Deny" is wat u wilt gebruiken om een IP-adres en/of CIDR range te daadwerkelijk blokkeren. Wanneer enige signatures zijn getriggerd er dat gebruik "Deny", de "Toegang Geweigerd" pagina van het script zal worden gegenereerd en het verzoek naar de beveiligde pagina wordt gedood.
 
-De `[Param]` waarde geaccepteerd door "Deny" zal worden parsed aan de "Toegang Geweigerd" pagina-uitgang, geleverd aan de klant/gebruiker als de genoemde reden voor hun toegang tot de gevraagde pagina worden geweigerd. Het kan een korte en eenvoudige zin zijn, uit te leggen waarom u hebt gekozen om ze te blokkeren (iets moeten volstaan, zelfs een simpele "Ik wil je niet op mijn website"), of een van het handjevol korte woorden geleverd door het script, dat als gebruikt, wordt vervangen door het script met een voorbereide toelichting waarom de klant/gebruiker is geblokkeerd.
+De `[Param]` waarde geaccepteerd door "Deny" zal worden parsed aan de "Toegang Geweigerd" pagina-uitgang, geleverd aan de klant/gebruiker als de genoemde reden voor hun toegang tot de gevraagde pagina worden geweigerd. Het kan een korte en eenvoudige zin zijn, uit te leggen waarom u hebt gekozen om ze te blokkeren (iets moeten volstaan, zelfs een simpele "Ik wil u niet op mijn website"), of een van het handjevol korte woorden geleverd door het script, dat als gebruikt, wordt vervangen door het script met een voorbereide toelichting waarom de klant/gebruiker is geblokkeerd.
 
 De voorbereide toelichtingen hebben L10N-ondersteuning en kan worden vertaald door het script op basis van de taal die u opgeeft naar de `lang` richtlijn van het script-configuratie. Tevens, u kunt het script instrueren om "Deny"-signatures te negeren op basis van hun `[Param]` waarde (als ze gebruik maken van deze korte woorden) via de richtlijnen gespecificeerd door het script-configuratie (elk kort woord heeft een overeenkomstige richtlijn te verwerken overeenkomende signatures of te negeren hen). `[Param]` waarden dat niet gebruiken deze korte woorden, echter, hebben geen L10N-ondersteuning en daarom zal NIET worden vertaald door het script, en tevens, en zijn niet direct controleerbaar door het script-configuratie.
 
@@ -1613,7 +1613,7 @@ Als u vindt dat het schrijven van uw eigen aangepaste signatuurbestanden of aang
 
 ##### 6.3.2 AANGEPASTE SIGNATUURBESTANDEN OPSLAAN EN ACTIVEREN
 
-Voor CIDRAM v2 en eerdere vindt u in de vault twee bestanden: `ipv4_custom.dat.RenameMe` en `ipv6_custom.dat.RenameMe`. U kunt uw eigen signatures in die bestanden opslaan, of, als u dat liever hebt, kun u nieuwe bestanden voor uw eigen signatures aanmaken en ze een naam geven naar keuze. Voor CIDRAM v2 en eerdere moeten aangepaste signatuurbestanden in de basisdirectory van de vault worden opgeslagen.
+Voor CIDRAM v2 en eerdere vindt u in de vault twee bestanden: `ipv4_custom.dat.RenameMe` en `ipv6_custom.dat.RenameMe`. U kunt uw eigen signatures in die bestanden opslaan, of, als u dat liever hebt, kunt u nieuwe bestanden voor uw eigen signatures aanmaken en ze een naam geven naar keuze. Voor CIDRAM v2 en eerdere moeten aangepaste signatuurbestanden in de basisdirectory van de vault worden opgeslagen.
 
 Voor CIDRAM v3 en latere zijn er geen vooraf meegeleverde bestanden voor aangepaste signatures, maar u kunt wel zelf nieuwe bestanden voor uw eigen signatures aanmaken en deze naar wens benoemen. Voor CIDRAM v3 en latere moeten aangepaste signatuurbestanden worden opgeslagen in de daarvoor bestemde map "signatures" van uw CIDRAM-installatie.
 
@@ -1627,7 +1627,7 @@ Voor CIDRAM v3 en latere zijn "ipv4" en "ipv6" te vinden onder de configuratieca
 
 Modules kunnen worden gebruikt om de functionaliteit van CIDRAM uit te breiden, extra taken uit te voeren, of aanvullende logica te verwerken.
 
-Vanwege dat modules worden geschreven als PHP-bestanden, als je voldoende bekend bent met de CIDRAM-codebase, kun je je modules structureren zoals u wilt, en schrijf uw module-signatures zoals u dat wilt (op grond van wat mogelijk is met PHP).
+Vanwege dat modules worden geschreven als PHP-bestanden, als u voldoende bekend bent met de CIDRAM-codebase, kunt u uw modules structureren zoals u wilt, en schrijf uw module-signatures zoals u dat wilt (op grond van wat mogelijk is met PHP).
 
 *Notitie: Als u het niet prettig vindt om met PHP-code te werken, wordt het niet aanbevolen om uw eigen modules te schrijven.*
 
@@ -1726,7 +1726,6 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 
 ### 8. <a name="SECTION8"></a>VEELGESTELDE VRAGEN (FAQ)
 
-- [Wat is een "signature"?](#user-content-WHAT_IS_A_SIGNATURE)
 - [Kan CIDRAM blok hele landen?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Hoe vaak worden signatures bijgewerkt?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ik heb een fout tegengekomen tijdens het gebruik van CIDRAM en ik weet niet wat te doen! Help alstublieft!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1748,24 +1747,6 @@ Modules zijn beschikbaar gemaakt om ervoor te zorgen dat de volgende pakketten e
 - [Wanneer ik modules of signatuurbestanden activeer of deactiveer via de updates-pagina, sorteert deze ze alfanumeriek in de configuratie. Kan ik de manier wijzigen waarop ze worden gesorteerd?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
 - [Wat is een "PDO DSN"? Hoe kan ik PDO gebruiken met CIDRAM?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM blokkeert cronjobs; Hoe dit op te lossen?](#user-content-BLOCK_CRON)
-
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Wat is een "signature"?
-
-In het context van CIDRAM, een "signature" verwijst naar gegevens die als een indicator/identifier werken, voor iets specifiek waarnaar we op zoek zijn, gewoonlijk een IP-adres of CIDR, en bevat een aantal instructies voor CIDRAM, vertelt het de beste manier om wanneer het ontmoet waar we naar op zoek zijn te reageren. Een typische signature voor CIDRAM ziet er als volgt uit:
-
-Voor "signatuurbestanden":
-
-`1.2.3.4/32 Deny Generic`
-
-Voor "modules":
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-*Notitie: Signatures voor "signatuurbestanden", en signatures voor "modules", zijn niet hetzelfde.*
-
-Vaak (maar niet altijd), signatures bundelen samen in groepen, dat vormen van "signatuursecties", vaak vergezeld van opmerkingen, markup, en/of gerelateerde metadata die kunnen om extra context voor de signatures en/of om verdere instructies worden gebruikt.
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Kan CIDRAM blok hele landen?
 
@@ -1859,7 +1840,7 @@ IP | Operator
 
 #### <a name="PROTECT_OTHER_THINGS"></a>Kan ik CIDRAM gebruiken om andere dingen dan websites te beschermen (b.v., e-mailservers, FTP, SSH, IRC, enz)?
 
-Je kan (in juridische zin), maar je zou dit niet moeten doen (in een technische en praktische zin). Onze licentie beperkt niet welke technologieën CIDRAM implementeren, maar CIDRAM is een WAF (Web Application Firewall) en is altijd bedoeld om websites te beschermen. Omdat het niet is ontworpen met andere technologieën in het achterhoofd, is het onwaarschijnlijk dat het effectief is of een betrouwbare bescherming biedt voor andere technologieën, implementatie zal waarschijnlijk moeilijk zijn, en het risico op valse positieven en gemiste detecties is zeer hoog.
+Je kan (in juridische zin), maar u zou dit niet moeten doen (in een technische en praktische zin). Onze licentie beperkt niet welke technologieën CIDRAM implementeren, maar CIDRAM is een WAF (Web Application Firewall) en is altijd bedoeld om websites te beschermen. Omdat het niet is ontworpen met andere technologieën in het achterhoofd, is het onwaarschijnlijk dat het effectief is of een betrouwbare bescherming biedt voor andere technologieën, implementatie zal waarschijnlijk moeilijk zijn, en het risico op valse positieven en gemiste detecties is zeer hoog.
 
 #### <a name="CDN_CACHING_PROBLEMS"></a>Zullen er problemen optreden als ik CIDRAM tegelijk gebruik met CDN's of cacheservices?
 
@@ -2088,7 +2069,7 @@ Als u al die ideeën hebt geprobeerd en geen van hen voor jou werkte, of als u h
 
 Dit sectie van de documentatie is bedoeld om mogelijke juridische overwegingen met betrekking tot het gebruik en de implementatie van het pakket te beschrijven, en om wat basisgerelateerde informatie te verstrekken. Dit kan voor sommige gebruikers belangrijk zijn om naleving van eventuele wettelijke vereisten in de landen waarin zij actief zijn te waarborgen, en sommige gebruikers moeten hun website-beleid mogelijk aanpassen in overeenstemming met deze informatie.
 
-Eerst en vooral, realiseer je alstublieft dat ik (de auteur van het pakket) geen advocaat en geen gekwalificeerde juridische professional van welke aard. Daarom ben ik niet juridisch gekwalificeerd om juridisch advies te geven. Ook in sommige gevallen, exacte wettelijke vereisten kunnen verschillen tussen verschillende landen en rechtsgebieden, en deze variërende wettelijke vereisten kunnen soms conflicteren (zoals bijvoorbeeld, in het geval van landen die voorrang geven aan [privacyrechten](https://nl.wikipedia.org/wiki/Privacy) en het [recht om te worden vergeten](https://nl.wikipedia.org/wiki/Recht_om_vergeten_te_worden), versus landen die de voorrang geven aan uitgebreide [dataretentie](https://nl.wikipedia.org/wiki/Dataretentie)). Overweeg ook dat toegang tot het pakket niet beperkt is tot specifieke landen of rechtsgebieden, en daarom is de gebruikersbasis van het pakket waarschijnlijk geografisch divers. Gezien deze punten, ben ik niet in de positie om aan te geven wat het betekent om "in overeenstemming met de wetgeving" te zijn voor alle gebruikers, in alle opzichten. Ik hoop echter dat de informatie hierin u zal helpen om zelf tot een beslissing te komen over wat u moet doen om wettelijk compatibel te blijven in de context van het pakket. Als u twijfels of zorgen hebt met betrekking tot de informatie hierin, of als u aanvullende hulp en advies nodig hebt vanuit een juridisch perspectief, ik zou aanraden een gekwalificeerde juridische professional te raadplegen.
+Eerst en vooral, realiseer u alstublieft dat ik (de auteur van het pakket) geen advocaat en geen gekwalificeerde juridische professional van welke aard. Daarom ben ik niet juridisch gekwalificeerd om juridisch advies te geven. Ook in sommige gevallen, exacte wettelijke vereisten kunnen verschillen tussen verschillende landen en rechtsgebieden, en deze variërende wettelijke vereisten kunnen soms conflicteren (zoals bijvoorbeeld, in het geval van landen die voorrang geven aan [privacyrechten](https://nl.wikipedia.org/wiki/Privacy) en het [recht om te worden vergeten](https://nl.wikipedia.org/wiki/Recht_om_vergeten_te_worden), versus landen die de voorrang geven aan uitgebreide [dataretentie](https://nl.wikipedia.org/wiki/Dataretentie)). Overweeg ook dat toegang tot het pakket niet beperkt is tot specifieke landen of rechtsgebieden, en daarom is de gebruikersbasis van het pakket waarschijnlijk geografisch divers. Gezien deze punten, ben ik niet in de positie om aan te geven wat het betekent om "in overeenstemming met de wetgeving" te zijn voor alle gebruikers, in alle opzichten. Ik hoop echter dat de informatie hierin u zal helpen om zelf tot een beslissing te komen over wat u moet doen om wettelijk compatibel te blijven in de context van het pakket. Als u twijfels of zorgen hebt met betrekking tot de informatie hierin, of als u aanvullende hulp en advies nodig hebt vanuit een juridisch perspectief, ik zou aanraden een gekwalificeerde juridische professional te raadplegen.
 
 #### 9.1 AANSPRAKELIJKHEID EN VERANTWOORDELIJKHEID
 
@@ -2379,4 +2360,4 @@ Raadpleeg het [v4-changelog](https://github.com/CIDRAM/CIDRAM/blob/v4/Changelog.
 ---
 
 
-Laatste Bijgewerkt: 18 April 2026 (2026.04.18).
+Laatste Bijgewerkt: 6 Juni 2026 (2026.06.06).

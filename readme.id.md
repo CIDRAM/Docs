@@ -559,7 +559,7 @@ silent_mode_response_header_code
   permintaan yang digunakan untuk permintaan awal.
 ```
 
-Terlepas dari bagaimana kami menginstruksikan klien, penting untuk diingat bahwa pada akhirnya kami tidak memiliki kendali atas apa yang klien pilih untuk dilakukan, dan tidak ada jaminan bahwa klien akan menghormati instruksi kami.
+Terlepas dari bagaimana kita menginstruksikan klien, penting untuk diingat bahwa pada akhirnya kita tidak memiliki kendali atas apa yang klien pilih untuk dilakukan, dan tidak ada jaminan bahwa klien akan menghormati instruksi kita.
 
 ##### "lang" `[string]`
 - Tentukan bahasa default untuk CIDRAM.
@@ -793,32 +793,32 @@ Konfigurasi yang terkait dengan pencatatan (tidak termasuk yang berlaku untuk ka
 ##### "standard_log" `[string]`
 - File yang dapat dibaca oleh manusia untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "apache_style_log" `[string]`
 - File yang dalam gaya Apache untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - File serial untuk mencatat semua upaya akses diblokir. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "error_log" `[string]`
 - File untuk mencatat kesalahan tidak fatal yang terdeteksi. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - File untuk mencatat hasil permintaan keluar apapun. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "report_log" `[string]`
 - File untuk mencatat setiap laporan yang dikirim ke API eksternal. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Memotong file log ketika mereka mencapai ukuran tertentu? Nilai adalah ukuran maksimum dalam B/KB/MB/GB/TB yang bisa ditambahkan untuk file log sebelum dipotong. Nilai default 0KB menonaktifkan pemotongan (file log dapat tumbuh tanpa batas waktu). Catat: Berlaku untuk file log individu! Ukuran file log tidak dianggap secara kolektif.
@@ -847,12 +847,12 @@ Konfigurasi untuk front-end.
 ##### "frontend_log" `[string]`
 - File untuk mencatat upaya masuk bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "signatures_update_event_log" `[string]`
 - File untuk mencatat ketika tanda tangan diperbarui melalui bagian depan. Spesifikasikan nama file, atau biarkan kosong untuk menonaktifkan.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Jumlah maksimum upaya memasukkan ke bagian depan. Default = 5.
@@ -1067,9 +1067,9 @@ Juga mencatat: CAPTCHA dapat memberikan lapisan perlindungan tambahan yang bergu
 
 Permintaan dapat "ditandai untuk digunakan" melalui aturan tambahan.
 
-Apakah suatu permintaan dianggap "sensitif" ditentukan oleh <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+Apakah suatu permintaan dianggap "sensitif" ditentukan oleh <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
 
-"Batas tanda tangan" ditentukan oleh <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
+"Batas tanda tangan" ditentukan oleh <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Kode status mana yang harus digunakan saat menampilkan CAPTCHA ke permintaan yang tidak diblokir?
@@ -1190,13 +1190,16 @@ Lihat juga:
 ##### "log" `[string]`
 - Mencatat hasil semua instansi CAPTCHA? Jika ya, tentukan nama untuk menggunakan untuk file pencatatan. Jika tidak, variabel ini harus kosong.
 
-Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Kiat yang berguna: Anda dapat melampirkan informasi tanggal/waktu ke nama file log dengan menggunakan placeholder format waktu. Placeholder format waktu yang tersedia ditampilkan di <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 #### "legal" (Kategori)
 Konfigurasi untuk persyaratan hukum.
 
 ##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonimisasikan alamat IP saat menulis file log? True = Ya [Default]; False = Tidak.
+
+Lihat juga:
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### "privacy_policy" `[string]`
 - Alamat dari kebijakan privasi yang relevan untuk ditampilkan di footer dari setiap halaman yang dihasilkan. Spesifikasikan URL, atau biarkan kosong untuk menonaktifkan.
@@ -1372,9 +1375,6 @@ used
 
 
 ### 6. <a name="SECTION6"></a>FORMAT TANDA TANGAN
-
-*Lihat juga:*
-- *[Apa yang "tanda tangan"?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 DASAR-DASAR (UNTUK FILE TANDA TANGAN)
 
@@ -1725,7 +1725,6 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 
 ### 8. <a name="SECTION8"></a>PERTANYAAN YANG SERING DIAJUKAN (FAQ)
 
-- [Apa yang "tanda tangan"?](#user-content-WHAT_IS_A_SIGNATURE)
 - [Dapat CIDRAM blok seluruh negara?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Seberapa sering tanda tangan diperbarui?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1748,31 +1747,13 @@ Modul telah tersedia untuk memastikan bahwa paket dan produk berikut akan kompat
 - [Apa itu "PDO DSN"? Bagaimana saya bisa menggunakan PDO dengan CIDRAM?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM memblokir cronjobs; Bagaimana cara memperbaikinya?](#user-content-BLOCK_CRON)
 
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Apa yang "tanda tangan"?
-
-Dalam konteks CIDRAM, "tanda tangan" mengacu pada data yang bertindak sebagai indikator/pengenal untuk sesuatu spesifik yang kita mencari, biasanya alamat IP atau CIDR, dan termasuk beberapa instruksi untuk CIDRAM, mengatakannya cara terbaik untuk menanggapi saat menemukan apa yang kita mencari. Tanda tangan khas untuk CIDRAM terlihat seperti ini:
-
-Untuk "file tanda tangan":
-
-`1.2.3.4/32 Deny Generic`
-
-Untuk "modul":
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-*Catat: Tanda tangan untuk "file tanda tangan", dan tanda tangan untuk "modul", bukanlah hal yang sama.*
-
-Sering (tapi tidak selalu), tanda tangan akan digabungkan dalam grup-grup, Membentuk "bagian tanda tangan", sering disertai dengan komentar, markup, dan/atau metadata terkait yang bisa digunakan untuk memberikan konteks tambahan untuk tanda tangan dan/atau instruksi tambahan.
-
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Dapat CIDRAM blok seluruh negara?
 
 Ya. Cara termudah untuk melakukan ini adalah dengan menginstal modul BGPView atau modul IP-API dan mengonfigurasinya sesuai dengan kebutuhan Anda.
 
 #### <a name="SIGNATURE_UPDATE_FREQUENCY"></a>Seberapa sering tanda tangan diperbarui?
 
-Frekuensi pembaruan bervariasi tergantung pada file tanda tangan. Semua penulis bagi file tanda tangan CIDRAM umumnya mencoba untuk menjaga tanda tangan mereka sebagai diperbarui sebanyak mungkin, tapi karena semua dari kita memiliki komitmen lainnya, kehidupan kita di luar proyek, dan karena kita tidak dikompensasi finansial (yaitu, dibayar) untuk upaya kami pada proyek, jadwal pembaruan yang tepat tidak dapat dijamin. Umumnya, tanda tangan diperbarui ketika ada cukup waktu untuk memperbaruinya, dan umumnya, penulis mencoba untuk memprioritaskan berdasarkan kebutuhan dan frekuensi berbagai perubahan dalam rentang. Bantuan selalu dihargai jika Anda bersedia untuk menawarkan.
+Frekuensi pembaruan bervariasi tergantung pada file tanda tangan. Semua penulis bagi file tanda tangan CIDRAM umumnya mencoba untuk menjaga tanda tangan mereka sebagai diperbarui sebanyak mungkin, tapi karena semua dari kami memiliki komitmen lainnya, kehidupan kami di luar proyek, dan karena kami tidak dikompensasi finansial (yaitu, dibayar) untuk upaya kami pada proyek, jadwal pembaruan yang tepat tidak dapat dijamin. Umumnya, tanda tangan diperbarui ketika ada cukup waktu untuk memperbaruinya, dan umumnya, penulis mencoba untuk memprioritaskan berdasarkan kebutuhan dan frekuensi berbagai perubahan dalam rentang. Bantuan selalu dihargai jika Anda bersedia untuk menawarkan.
 
 #### <a name="ENCOUNTERED_PROBLEM_WHAT_TO_DO"></a>Saya mengalami masalah ketika menggunakan CIDRAM dan saya tidak tahu apa saya harus lakukan! Tolong bantu!
 
@@ -2361,4 +2342,4 @@ Untuk daftar perubahan yang diperkenalkan oleh v4 (misalnya, fitur yang ditambah
 ---
 
 
-Terakhir Diperbarui: 18 April 2026 (2026.04.18).
+Terakhir Diperbarui: 6 Juni 2026 (2026.06.06).

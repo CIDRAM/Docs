@@ -793,32 +793,32 @@ Configuration liée à la journalisation (à l'exclusion de ce qui est applicabl
 ##### « standard_log » `[string]`
 - Un fichier lisible par l'homme pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « apache_style_log » `[string]`
 - Un fichier dans le style d'Apache pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « serialised_log » `[string]`
 - Un fichier sérialisé pour enregistrement de toutes les tentatives d'accès bloquées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « error_log » `[string]`
 - Un fichier pour l'enregistrement des erreurs non fatales détectées. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « outbound_request_log » `[string]`
 - Un fichier pour l'enregistrement des résultats de toutes les requêtes sortantes. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « report_log » `[string]`
 - Un fichier pour l'enregistrement des rapports envoyés aux API externes. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « truncate » `[string]`
 - Tronquer les fichiers journaux lorsqu'ils atteignent une certaine taille ? La valeur est la taille maximale en o/Ko/Mo/Go/To qu'un fichier journal peut croître avant d'être tronqué. La valeur par défaut de 0Ko désactive la troncature (les fichiers journaux peuvent croître indéfiniment). Remarque : S'applique aux fichiers journaux individuels ! La taille des fichiers journaux n'est pas considérée collectivement.
@@ -847,12 +847,12 @@ Configuration pour l'accès frontal.
 ##### « frontend_log » `[string]`
 - Fichier pour l'enregistrement des tentatives de connexion à l'accès frontal. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « signatures_update_event_log » `[string]`
 - Un fichier pour la journalisation lorsque les signatures sont mises à jour via la page des mises à jour. Spécifier un fichier, ou laisser vide à désactiver.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### « max_login_attempts » `[int]`
 - Nombre maximal de tentatives de connexion (l'accès frontal). Défaut = 5.
@@ -1069,9 +1069,9 @@ A noter également : Les CAPTCHAs peuvent fournir une couche de protection util
 
 Les requêtes peuvent être « marqués pour l'utilisation » via des règles auxiliaires.
 
-Le caractère « sensible » d'une requête est déterminé par <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+Le caractère « sensible » d'une requête est déterminé par <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
 
-La « limite de signature » est déterminée par <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
+La « limite de signature » est déterminée par <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
 
 ##### « nonblocked_status_code » `[int]`
 - Quel code d'état doit être utilisé lors de l'affichage des CAPTCHA sur des requêtes non bloquées ?
@@ -1193,13 +1193,16 @@ Voir également :
 ##### « log » `[string]`
 - Enregistrez toutes les tentatives du CAPTCHA ? Si oui, indiquez le nom à utiliser pour le fichier d'enregistrement. Si non, laisser vide ce variable.
 
-Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Conseil utile : Vous pouvez joindre des informations de date/heure aux noms des fichiers journaux à l'aide d'espaces réservés du format horaire. Les espaces réservés du format horaire disponibles sont affichés en <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 #### « legal » (Catégorie)
 Configuration pour les exigences légales.
 
 ##### « pseudonymise_ip_addresses » `[bool]`
 - Pseudonymiser les adresses IP lors de la journalisation ? True = Oui [Défaut] ; False = Non.
+
+Voir également :
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### « privacy_policy » `[string]`
 - L'adresse d'une politique de confidentialité pertinente à afficher dans le pied de page des pages générés. Spécifier une URL, ou laisser vide à désactiver.
@@ -1375,9 +1378,6 @@ used
 
 
 ### 6. <a name="SECTION6"></a>FORMATS DE SIGNATURES
-
-*Voir également :*
-- *[Qu'est-ce qu'une « signature » ?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 BASES (POUR LES FICHIERS DE SIGNATURE)
 
@@ -1728,7 +1728,6 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 
 ### 8. <a name="SECTION8"></a>QUESTIONS FRÉQUEMMENT POSÉES (FAQ)
 
-- [Qu'est-ce qu'une « signature » ?](#user-content-WHAT_IS_A_SIGNATURE)
 - [CIDRAM peut-il bloquer des pays entiers ?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [À quelle fréquence les signatures sont-elles mises à jour ?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [J'ai rencontré un problème lors de l'utilisation de CIDRAM et je ne sais pas quoi faire à ce sujet ! Aidez-moi !](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1750,24 +1749,6 @@ Des modules ont été mis à disposition pour garantir que les packages et produ
 - [Lorsque j'activer ou désactiver des modules ou des fichiers de signatures via la page des mises à jour, il les trie de manière alphanumérique dans la configuration. Puis-je changer la façon dont ils sont triés ?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
 - [Qu'est-ce qu'un « PDO DSN » ? Comment utiliser PDO avec CIDRAM ?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM bloque les cronjobs ; Comment réparer ceci ?](#user-content-BLOCK_CRON)
-
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Qu'est-ce qu'une « signature » ?
-
-Dans le contexte du CIDRAM, une « signature » désigne les données qui servent d'indicateur ou d'identifiant pour quelque chose de spécifique que nous chercher, habituellement une adresse IP ou CIDR, et inclures des instructions pour CIDRAM, indiquant la meilleure façon de répondre quand il rencontre ce que nous chercher. Une signature typique pour CIDRAM ressemble à ceci :
-
-Pour les « fichiers de signature » :
-
-`1.2.3.4/32 Deny Generic`
-
-Pour les « modules » :
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-*Remarque : Les signatures pour les « fichiers de signature », et les signatures pour les « modules », ne sont pas la même chose.*
-
-Souvent (mais pas toujours), les signatures seront regroupées en groupes, formant des « sections de signatures », souvent accompagné de commentaires, de balisage et/ou de métadonnées connexes qui peuvent être utilisées pour fournir un contexte supplémentaire pour les signatures et/ou d'autres instructions.
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>CIDRAM peut-il bloquer des pays entiers ?
 
@@ -2377,4 +2358,4 @@ Pour une liste des modifications introduites par la v4 (par exemple, fonctionnal
 ---
 
 
-Dernière mise à jour : 18 Avril 2026 (2026.04.18).
+Dernière mise à jour : 6 Juin 2026 (2026.06.06).

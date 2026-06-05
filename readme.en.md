@@ -792,32 +792,32 @@ Configuration related to logging (excluding that applicable to other categories)
 ##### "standard_log" `[string]`
 - Human-readable file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "apache_style_log" `[string]`
 - Apache-style file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Serialised file for logging all blocked access attempts. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "error_log" `[string]`
 - A file for logging any non-fatal errors detected. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - A file for logging the results of any outbound requests. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "report_log" `[string]`
 - A file for logging any reports sent to external APIs. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Truncate log files when they reach a certain size? Value is the maximum size in B/KB/MB/GB/TB that a log file may grow to before being truncated. The default value of 0KB disables truncation (log files can grow indefinitely). Note: Applies to individual log files! The size of log files is not considered collectively.
@@ -846,12 +846,12 @@ Configuration for the front-end.
 ##### "frontend_log" `[string]`
 - File for logging front-end login attempts. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "signatures_update_event_log" `[string]`
 - A file for logging when signatures are updated via the front-end. Specify a filename, or leave blank to disable.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Maximum number of front-end login attempts. Default = 5.
@@ -1066,9 +1066,9 @@ Also note: CAPTCHAs can provide a useful, additional layer of protection against
 
 Requests can be "marked for use" via auxiliary rules.
 
-Whether a request is considered as "sensitive" is determined by <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+Whether a request is considered as "sensitive" is determined by <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
 
-The "signature limit" is determined by <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
+The "signature limit" is determined by <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Which status code should be used when displaying CAPTCHAs to non-blocked requests?
@@ -1187,13 +1187,16 @@ See also:
 ##### "log" `[string]`
 - Log all CAPTCHA attempts? If yes, specify the name to use for the log file. If no, leave this variable blank.
 
-Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Useful tip: You can attach date/time information to the names of log files by using time format placeholders. Available time format placeholders are displayed at <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 #### "legal" (Category)
 Configuration for legal requirements.
 
 ##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonymise IP addresses when logging? True = Yes [Default]; False = No.
+
+See also:
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### "privacy_policy" `[string]`
 - The address of a relevant privacy policy to be displayed in the footer of any generated pages. Specify a URL, or leave blank to disable.
@@ -1369,9 +1372,6 @@ used
 
 
 ### 6. <a name="SECTION6"></a>SIGNATURE FORMAT
-
-*See also:*
-- *[What is a "signature"?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 BASICS (FOR SIGNATURE FILES)
 
@@ -1722,7 +1722,6 @@ Modules have been made available to ensure that the following packages and produ
 
 ### 8. <a name="SECTION8"></a>FREQUENTLY ASKED QUESTIONS (FAQ)
 
-- [What is a "signature"?](#user-content-WHAT_IS_A_SIGNATURE)
 - [Can CIDRAM block entire countries?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [How frequently are signatures updated?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [I've encountered a problem while using CIDRAM and I don't know what to do about it! Please help!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1744,24 +1743,6 @@ Modules have been made available to ensure that the following packages and produ
 - [When I activate or deactivate modules or signature files via the updates page, it sorts them alphanumerically in the configuration. Can I change the way that they get sorted?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
 - [What is a "PDO DSN"? How can I use PDO with CIDRAM?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM is blocking cronjobs; How to fix this?](#user-content-BLOCK_CRON)
-
-#### <a name="WHAT_IS_A_SIGNATURE"></a>What is a "signature"?
-
-In the context of CIDRAM, a "signature" refers to data that acts as an indicator/identifier for something specific that we're looking for, usually an IP address or CIDR, and includes some instruction for CIDRAM, telling it the best way to respond when it encounters what we're looking for. A typical signature for CIDRAM looks something like this:
-
-For "signature files":
-
-`1.2.3.4/32 Deny Generic`
-
-For "modules":
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-*Note: Signatures for "signature files", and signatures for "modules", are not the same thing.*
-
-Often (but not always), signatures will bundled together in groups, forming "signature sections", often accompanied by comments, markup, and/or related metadata that can be used to provide additional context for the signatures and/or further instruction.
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Can CIDRAM block entire countries?
 
@@ -2366,4 +2347,4 @@ For a list of the changes introduced by v4 (e.g., features added, features remov
 ---
 
 
-Last Updated: 18 April 2026 (2026.04.18).
+Last Updated: 6 June 2026 (2026.06.06).

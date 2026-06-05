@@ -793,32 +793,32 @@ Configurazione relativa alla registrazione (escluso quello che è applicabile al
 ##### "standard_log" `[string]`
 - Un file leggibile dagli umani per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "apache_style_log" `[string]`
 - Un file nello stile di apache per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "serialised_log" `[string]`
 - Un file serializzato per la registrazione di tutti i tentativi di accesso bloccati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "error_log" `[string]`
 - Un file per la registrazione di eventuali errori non fatali rilevati. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "outbound_request_log" `[string]`
 - Un file per la registrazione dei risultati di eventuali richieste in uscita. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "report_log" `[string]`
 - Un file per la registrazione di tutti i rapporti inviati ad API esterne. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "truncate" `[string]`
 - Troncare i file di log quando raggiungono una determinata dimensione? Il valore è la dimensione massima in B/KB/MB/GB/TB che un file di log può crescere prima di essere troncato. Il valore predefinito di 0KB disattiva il troncamento (i file di log possono crescere indefinitamente). Nota: Si applica ai singoli file di log! La dimensione dei file di log non viene considerata collettivamente.
@@ -847,12 +847,12 @@ Configurazione per il front-end.
 ##### "frontend_log" `[string]`
 - File per la registrazione di tentativi di accesso al front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "signatures_update_event_log" `[string]`
 - Un file per la registrazione quando le firme vengono aggiornate tramite il front-end. Specificare un nome di file, o lasciare vuoto per disabilitare.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 ##### "max_login_attempts" `[int]`
 - Numero massimo di tentativi di accesso al front-end. Predefinito = 5.
@@ -1068,9 +1068,9 @@ Nota anche: I CAPTCHA possono fornire un utile livello aggiuntivo di protezione 
 
 Le richieste possono essere "contrassegnate per l'uso" tramite regole ausiliarie.
 
-Se una richiesta è considerata "sensibile" è determinato da <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a>.
+Se una richiesta è considerata "sensibile" è determinato da <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a>.
 
-Il "limite di firme" è determinato da <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a>.
+Il "limite di firme" è determinato da <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a>.
 
 ##### "nonblocked_status_code" `[int]`
 - Quale codice di stato deve essere utilizzato quando si visualizzano i CAPTCHA per le richieste non bloccate?
@@ -1193,13 +1193,16 @@ Guarda anche:
 ##### "log" `[string]`
 - Registrare tutti i tentativi per CAPTCHA? Se sì, specificare il nome da usare per il file di registrazione. Se non, lasciare questo variabile vuoto.
 
-Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
+Consiglio utile: È possibile allegare informazioni su data/ora ai nomi dei file di registro utilizzando i segnaposto del formato ora. I segnaposto del formato ora disponibili vengono visualizzati in <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a>.
 
 #### "legal" (Categoria)
 Configurazione per requisiti legali.
 
 ##### "pseudonymise_ip_addresses" `[bool]`
 - Pseudonimizzare gli indirizzi IP durante la scrivono i file di registro? True = Sì [Predefinito]; False = No.
+
+Guarda anche:
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### "privacy_policy" `[string]`
 - L'indirizzo di una politica sulla privacy pertinente da visualizzare nel piè di pagina delle pagine generate. Specificare un URL, o lasciare vuoto per disabilitare.
@@ -1375,9 +1378,6 @@ used
 
 
 ### 6. <a name="SECTION6"></a>FIRMA FORMATO
-
-*Guarda anche:*
-- *[Che cosa è una "firma"?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 NOZIONI DI BASE (PER FILE DI FIRMA)
 
@@ -1728,7 +1728,6 @@ I moduli sono stati resi disponibili per garantire che i seguenti pacchetti e pr
 
 ### 8. <a name="SECTION8"></a>DOMANDE FREQUENTI (FAQ)
 
-- [Che cos'è una "firma"?](#user-content-WHAT_IS_A_SIGNATURE)
 - [Può CIDRAM blocchi interi paesi?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Con quale frequenza vengono aggiornate le firme?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ho incontrato un problema durante l'utilizzo CIDRAM e non so che cosa fare al riguardo! Aiutami!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1750,24 +1749,6 @@ I moduli sono stati resi disponibili per garantire che i seguenti pacchetti e pr
 - [Quando si attivano o disattivano moduli o file di firma tramite la pagina degli aggiornamenti, li ordina in ordine alfanumerico nella configurazione. Posso cambiare il modo in cui vengono ordinati?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
 - [Che cos'è un "DSN PDO"? Come posso usare PDO con CIDRAM?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM sta bloccando cronjobs; Come risolvere questo?](#user-content-BLOCK_CRON)
-
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Che cos'è una "firma"?
-
-Nel contesto di CIDRAM, una "firma" si riferisce a dati che fungono da indicatore/identificatore per qualcosa di specifico che stiamo cercando, di solito un indirizzo IP o CIDR, e include alcune istruzioni per CIDRAM, dicendogli il modo migliore per rispondere quando incontra quello che stiamo cercando. Una firma tipica per CIDRAM sembra qualcosa di simile:
-
-Per "file di firma":
-
-`1.2.3.4/32 Deny Generic`
-
-Per "moduli":
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-*Nota: Le firme per "file di firma", e le firme per "moduli", non sono la stessa cosa.*
-
-Spesso (ma non sempre), le firme verranno raggruppate in gruppi, formando "sezioni di firma", spesso accompagnati da commenti, markup e/o metadati correlati che possono essere utilizzati per fornire contesto aggiuntivo per le firme e/o ulteriori istruzioni.
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Può CIDRAM blocchi interi paesi?
 
@@ -2367,4 +2348,4 @@ Per un elenco delle modifiche introdotte dalla v4 (ad esempio, funzionalità agg
 ---
 
 
-Ultimo Aggiornamento: 18 Aprile 2026 (2026.04.18).
+Ultimo Aggiornamento: 6 Giugno 2026 (2026.06.06).

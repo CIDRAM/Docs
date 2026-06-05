@@ -794,32 +794,32 @@ Konfiguration im Zusammenhang mit der Protokollierung (mit Ausnahme der Konfigur
 ##### „standard_log“ `[string]`
 - Name einer Datei in welcher Menschenlesbar alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „apache_style_log“ `[string]`
 - Name einer Apache-Stil-Datei in welcher alle blockierten zugriffsversuche protokolliert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „serialised_log“ `[string]`
 - Name einer Datei zu protokollieren alle blockierten Zugriffsversuche (Format ist serialisiert). Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „error_log“ `[string]`
 - Einer Datei zum Protokollieren aller erkannten Fehler, die nicht schwerwiegend sind. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „outbound_request_log“ `[string]`
 - Eine Datei zum Protokollieren der Ergebnisse aller ausgehenden Anforderungen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „report_log“ `[string]`
 - Eine Datei zum Protokollieren aller an externe APIs gesendeten Berichte. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „truncate“ `[string]`
 - Protokolldateien kürzen wenn diese eine bestimmte Größe erreichen? Wert ist die maximale Größe in B/KB/MB/GB/TB, die eine Protokolldatei erreichen kann, bevor sie gekürtzt wird. Der Standardwert von 0KB deaktiviert die Kürzung (Protokolldateien können unbegrenzt wachsen). Beachten: Gilt für einzelne Protokolldateien! Die Größe der Protokolldateien gilt nicht in der Summe aller Protokolldateien.
@@ -848,12 +848,12 @@ Konfiguration für das Front-End.
 ##### „frontend_log“ `[string]`
 - Datei für die Protokollierung von Frontend Anmelde-Versuchen. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „signatures_update_event_log“ `[string]`
 - Einer Datei zum Protokollieren wenn Signaturen über das Front-End aktualisiert werden. Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 ##### „max_login_attempts“ `[int]`
 - Maximale Anzahl der Versucht zum Anmelden (Frontend). Standardeinstellung = 5.
@@ -1071,9 +1071,9 @@ Auch: CAPTCHAs können eine nützliche zusätzliche Schutzebene gegen Bots und v
 
 Anfragen können über Hilfsregeln „zur Verwendung markiert“ werden.
 
-Ob eine Anfrage als „sensibel“ eingestuft wird, hängt von <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive">`general➡sensitive`</a> ab.
+Ob eine Anfrage als „sensibel“ eingestuft wird, hängt von <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="ltr" translate="no">general➡sensitive`</a> ab.
 
-Die "Signaturgrenze" wird durch <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit">`captcha➡signature_limit`</a> bestimmt.
+Die "Signaturgrenze" wird durch <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="ltr" translate="no">captcha➡signature_limit`</a> bestimmt.
 
 ##### „nonblocked_status_code“ `[int]`
 - Welcher Statuscode sollte verwendet werden, wenn nicht-blockierte CAPTCHAs Anforderungen angezeigt werden?
@@ -1196,13 +1196,16 @@ Siehe auch:
 ##### „log“ `[string]`
 - Protokollieren Sie alle CAPTCHA versucht? Geben Sie einen Dateinamen an oder lassen Sie die Option zum Deaktivieren leer.
 
-Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a> angezeigt.
+Nützlicher Tipp: Sie können den Namen der Protokolldateien Datums-/Uhrzeitinformationen hinzufügen, indem Sie Platzhalter für das Zeitformat verwenden. Verfügbare Platzhalter für Zeitformate werden bei <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="ltr" translate="no">general➡time_format`</a> angezeigt.
 
 #### „legal“ (Kategorie)
 Konfiguration für gesetzliche Anforderungen.
 
 ##### „pseudonymise_ip_addresses“ `[bool]`
 - Pseudonymisieren IP-Adressen beim Schreiben der Protokolldateien? True = Ja [Standardeinstellung]; False = Nein.
+
+Siehe auch:
+- [9.3.5 IP ADDRESS PSEUDONYMISATION](https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation)
 
 ##### „privacy_policy“ `[string]`
 - Die Adresse einer relevanten Datenschutz-Bestimmungen, die in der Fußzeile aller generierten Seiten angezeigt werden soll. Geben Sie eine URL ein, oder lassen Sie sie leer, um sie zu deaktivieren.
@@ -1378,9 +1381,6 @@ used
 
 
 ### 6. <a name="SECTION6"></a>SIGNATURENFORMAT
-
-*Siehe auch:*
-- *[Was ist eine „Signatur“?](#user-content-WHAT_IS_A_SIGNATURE)*
 
 #### 6.0 GRUNDLAGEN (FÜR SIGNATURDATEIEN)
 
@@ -1733,7 +1733,6 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 
 ### 8. <a name="SECTION8"></a>HÄUFIG GESTELLTE FRAGEN (FAQ)
 
-- [Was ist eine „Signatur“?](#user-content-WHAT_IS_A_SIGNATURE)
 - [Kann CIDRAM ganze Länder blockieren?](#user-content-BLOCK_ENTIRE_COUNTRIES)
 - [Wie häufig werden Signaturen aktualisiert?](#user-content-SIGNATURE_UPDATE_FREQUENCY)
 - [Ich habe ein Problem bei der Verwendung von CIDRAM und ich weiß nicht was ich tun soll! Bitte helfen Sie!](#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO)
@@ -1755,24 +1754,6 @@ Module wurden zur Verfügung gestellt, um sicherzustellen, dass die folgenden Pa
 - [Wenn ich Module oder Signaturdateien über die Aktualisierungsseite aktiviere oder deaktiviere, sortiert sich diese alphanumerisch in der Konfiguration. Kann ich die Art der Sortierung ändern?](#user-content-CHANGE_COMPONENT_SORT_ORDER)
 - [Was ist ein „PDO DSN“? Wie kann ich PDO mit CIDRAM verwenden?](#user-content-HOW_TO_USE_PDO)
 - [CIDRAM blockiert Cronjobs; Wie kann das behoben werden?](#user-content-BLOCK_CRON)
-
-#### <a name="WHAT_IS_A_SIGNATURE"></a>Was ist eine „Signatur“?
-
-Im Kontext von CIDRAM, eine „Signatur“ bezieht sich auf Daten, die als Indikator/Identifikator fungieren, für etwas Bestimmtes dass wir suchen (normalerweise eine IP-Adresse oder CIDR), und enthält einige Anweisungen für CIDRAM, wie am besten zu reagieren ist, wenn der angegebene Fall eintritt. Eine typische CIDRAM Signatur sieht in etwa so aus:
-
-Für „Signaturdateien“:
-
-`1.2.3.4/32 Deny Generic`
-
-Für „Module“:
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent „Foobar“ not allowed.');
-```
-
-*Beachten: Signaturen für „Signaturdateien“, und Signaturen für „Module“, sind nicht dasselbe.*
-
-Oft (aber nicht immer) werden Signaturen in Gruppen zusammengebunden, um „Signatur-Sektionen“ zu bilden, oft begleitet von Kommentaren, Markup und/oder verwandten Metadaten welche dazu verwendet werden, um zusätzlichen Kontext für die Signaturen bereitstellen zu können, oder enthalten weitere Informationen.
 
 #### <a name="BLOCK_ENTIRE_COUNTRIES"></a>Kann CIDRAM ganze Länder blockieren?
 
@@ -2384,4 +2365,4 @@ Eine Liste der mit v4 eingeführten Änderungen (z.B., hinzugefügte oder entfer
 ---
 
 
-Zuletzt aktualisiert: 18. April 2026 (2026.04.18).
+Zuletzt aktualisiert: 6. Juni 2026 (2026.06.06).

@@ -812,32 +812,32 @@ email_notification_when
 ##### <div dir="rtl">"standard_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف يمكن قراءته بالعين لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"apache_style_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف على غرار أباتشي لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"serialised_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف تسلسل لتسجيل كل محاولات الوصول سدت. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"error_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي أخطاء غير مميتة المكتشفة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"outbound_request_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل نتائج أي طلبات صادرة. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"report_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل أي تقارير يتم إرسالها إلى واجهات برمجة التطبيقات الخارجية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"truncate" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>اقتطاع ملفات السجل عندما تصل إلى حجم معين؟ القيمة هي الحجم الأقصى في بايت/كيلوبايت/ميغابايت/غيغابايت/تيرابايت الذي قد ينمو ملفات السجل إلى قبل اقتطاعه. القيمة الافتراضية 0KB تعطيل اقتطاع (ملفات السجل يمكن أن تنمو إلى أجل غير مسمى). ملاحظة: ينطبق على ملفات السجل الفردية! ولا يعتبر حجمها جماعيا.</li></ul></div>
@@ -866,12 +866,12 @@ log_rotation_action
 ##### <div dir="rtl">"frontend_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف لتسجيل محاولات الدخول الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"signatures_update_event_log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>ملف للتسجيل عند تحديث التوقيعات عبر الواجهة الأمامية. تحديد اسم الملف، أو اتركه فارغا لتعطيل.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 ##### <div dir="rtl">"max_login_attempts" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>الحد الأقصى لعدد محاولات تسجيل الدخول (front-end). الافتراضي = 5.</li></ul></div>
@@ -1092,9 +1092,9 @@ usemode───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 
 يمكن "وضع علامة على الطلبات للاستخدام" عبر قواعد مساعدة.
 
-يتم تحديد ما إذا كان الطلب يعتبر "حساسًا" من خلال <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="rtl">sensitive⬅general</code></a>.
+يتم تحديد ما إذا كان الطلب يعتبر "حساسًا" من خلال <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_sensitive"><code dir="rtl" translate="no">sensitive⬅general</code></a>.
 
-يتم تحديد "حد التوقيع" بواسطة <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="rtl">signature_limit⬅captcha</code></a>.
+يتم تحديد "حد التوقيع" بواسطة <a onclick="javascript:toggleconfigNav('captchaRow','captchaShowLink')" href="#config_captcha_signature_limit"><code dir="rtl" translate="no">signature_limit⬅captcha</code></a>.
 
 ##### <div dir="rtl">"nonblocked_status_code" <code dir="ltr">[int]</code><br /></div>
 <div dir="rtl"><ul><li>ما هو رمز الحالة الذي يجب استخدامه عند عرض CAPTCHA للطلبات غير المحظورة؟</li></ul></div>
@@ -1230,13 +1230,17 @@ lockto───[hCaptcha]─[Friendly Captcha]─[Cloudflare Turnstile]
 ##### <div dir="rtl">"log" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>تسجيل جميع محاولات اختبار CAPTCHA؟ إذا كانت الإجابة بنعم، حدد اسم لاستخدامه في ملف السجل. ان لم، ترك هذا الحقل فارغا.</li></ul></div>
 
-نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl">time_format⬅general</code></a>.
+نصيحة مفيدة: يمكنك إرفاق معلومات التاريخ/الوقت بأسماء ملفات السجل باستخدام العناصر النائبة لتنسيق الوقت. يتم عرض العناصر النائبة لتنسيق الوقت المتوفرة عند <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format"><code dir="rtl" translate="no">time_format⬅general</code></a>.
 
 #### <div dir="rtl">"legal" (التصنيف)<br /></div>
 <div dir="rtl">التكوين للمتطلبات القانونية.<br /><br /></div>
 
 ##### <div dir="rtl">"pseudonymise_ip_addresses" <code dir="ltr">[bool]</code><br /></div>
 <div dir="rtl"><ul><li>إخفاء عناوين IP عند كتابة السجلات؟ صحيح/True = نعم [افتراضي]؛ زائفة/False = لا.</li></ul></div>
+
+<div dir="rtl">أنظر أيضا:<ul dir="rtl">
+<li><a dir="ltr" href="https://github.com/CIDRAM/Docs/blob/master/readme.en.md#935-ip-address-pseudonymisation">9.3.5 IP ADDRESS PSEUDONYMISATION</a></li>
+</ul></div>
 
 ##### <div dir="rtl">"privacy_policy" <code dir="ltr">[string]</code><br /></div>
 <div dir="rtl"><ul><li>عنوان سياسة الخصوصية ذات الصلة ليتم عرضها في تذييل الصفحات التي تم إنشاؤها. حدد عنوان URL، أو اتركه فارغًا لتعطيله.</li></ul></div>
@@ -1412,11 +1416,6 @@ used
 
 
 ### <div dir="rtl">٦. <a name="SECTION6"></a>شكل/تنسيق التوقيع</div>
-
-<div dir="rtl">أنظر أيضا:<br /></div>
-<div dir="rtl"><ul>
- <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
-</ul></div>
 
 #### <div dir="rtl">٦.٠ مبادئ (بالنسبة إلى ملفات التوقيع)<br /><br /></div>
 
@@ -1775,7 +1774,6 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
 ### <div dir="rtl">٨. <a name="SECTION8"></a>أسئلة وأجوبة (FAQ)</div>
 
 <div dir="rtl"><ul>
- <li><a href="#user-content-WHAT_IS_A_SIGNATURE">ما هو "التوقيع"؟</a></li>
  <li><a href="#user-content-BLOCK_ENTIRE_COUNTRIES">يمكن CIDRAM منع الدول؟</a></li>
  <li><a href="#user-content-SIGNATURE_UPDATE_FREQUENCY">عدد المرات التي يتم تحديثها التوقيعات؟</a></li>
  <li><a href="#user-content-ENCOUNTERED_PROBLEM_WHAT_TO_DO">لقد واجهت مشكلة! أنا لا أعرف ما يجب القيام به! الرجاء المساعدة!</a></li>
@@ -1798,24 +1796,6 @@ if (strlen($this->CIDRAM['Hostname']) && $this->CIDRAM['Hostname'] !== $this->Bl
  <li><a href="#user-content-HOW_TO_USE_PDO">ما هو "PDO DSN"؟ كيف يمكنني استخدام PDO مع CIDRAM؟</a></li>
  <li><a href="#user-content-BLOCK_CRON">CIDRAM يحظر cronjobs؛ كيف يمكن اصلاح هذا؟</a></li>
 </ul></div>
-
-#### <div dir="rtl"><a name="WHAT_IS_A_SIGNATURE"></a>ما هو "التوقيع"؟<br /><br /></div>
-
-<div dir="rtl">في CIDRAM، يشير "التوقيع" إلى البيانات التي تعمل كمعرف، لشيء معين أننا نبحث عنه. عادة عنوان IP أو CIDR، يتضمن بعض التعليمات لCIDRAM، مثل أفضل طريقة للرد عندما يواجه ما نحن نبحث عنه. توقيع نموذجي لCIDRAM يبدو شيئا من هذا القبيل:<br /><br /></div>
-
-<div dir="rtl">بالنسبة إلى "ملفات التوقيع":<br /><br /></div>
-
-`1.2.3.4/32 Deny Generic`
-
-<div dir="rtl">بالنسبة إلى "الوحدات النمطية":<br /><br /></div>
-
-```PHP
-$this->trigger(strpos($this->BlockInfo['UA'], 'Foobar') !== false, 'Foobar-UA', 'User agent "Foobar" not allowed.');
-```
-
-<div dir="rtl">ملاحظة: التوقيعات ل "ملفات التوقيع"، والتوقيعات ل "وحدات"، ليست هي نفس الشيء.<em></em><br /><br /></div>
-
-<div dir="rtl">في كثير من الأحيان (ولكن ليس دائما)، سيتم تجميع التواقيع معا في مجموعات، تشكيل "أقسام التوقيع"، وغالبا ما تكون مصحوبة بتعليقات، وترميز، والبيانات الوصفية ذات الصلة. ويمكن استخدام هذا لتوفير سياق إضافي.<br /><br /></div>
 
 #### <div dir="rtl"><a name="BLOCK_ENTIRE_COUNTRIES"></a>يمكن CIDRAM منع الدول؟<br /><br /></div>
 
@@ -2443,4 +2423,4 @@ x.x.x.x - Day, dd Mon 20xx hh:ii:ss +0000 - "admin" - حاليا على.
 ---
 
 
-<div dir="rtl">آخر تحديث: ١٨ أبريل ٢٠٢٦ (٢٠٢٦.٠٤.١٨).</div>
+<div dir="rtl">آخر تحديث: ٦ يونيو ٢٠٢٦ (٢٠٢٦.٠٦.٠٦).</div>
