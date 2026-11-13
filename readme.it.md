@@ -298,7 +298,7 @@ Configurazione (v4)
 ```
 
 #### "general" (Categoria)
-Configurazione generale (qualsiasi configurazione di base non appartenente ad altre categorie).
+Configurazione generale (eventuali direttive di configurazione di base non appartenenti ad altre categorie).
 
 ##### "stages" `[string]`
 - Controlli per le fasi della catena di esecuzione (se abilitato, se gli errori sono registrati, ecc).
@@ -934,7 +934,7 @@ __Uno per firma.__ Una firma può invocare più profili, ma può utilizzare solo
 
 __Priorità.__ Un'opzione selezionata ha sempre la priorità su un'opzione non selezionata. Ad esempio, se sono in gioco più parole abbreviate ma solo una di esse è impostata come bloccata, la richiesta sarà comunque bloccata.
 
-__Punti finali umani e servizi cloud.__ Il servizio cloud può fare riferimento a provider di web hosting, server farm, data center, o una serie di altre cose. Punto finale umano si riferisce ai mezzi con cui un umano accede a internet, ad esempio tramite un provider di servizi internet. Una rete di solito fornisce solo l'uno o l'altro, ma a volte può fornire entrambi. Miriamo a non identificare mai potenziali punti finali umani come servizi cloud. Pertanto, un servizio cloud può essere identificato come qualcos'altro se il suo gamme è condiviso da punti finali umani noti. Allo stesso modo, miriamo a identificare sempre i servizi cloud, i cui gamme non sono condivisi da alcun punto finale umano noto, come servizi cloud. Pertanto, una richiesta identificata esplicitamente come servizio cloud probabilmente non condivide il suo gamme con nessun punto finale umano noto. Allo stesso modo, una richiesta identificata esplicitamente da attacchi o rischio per lo spam probabilmente li condivide. Tuttavia, internet è sempre in evoluzione, gli scopi delle reti cambiano nel tempo, e le gamme vengono sempre acquistate o vendute, quindi rimani consapevole e vigile riguardo ai falsi positivi.
+__Endpoint umani e servizi cloud.__ Il servizio cloud può fare riferimento a provider di web hosting, server farm, data center, o una serie di altre cose. Endpoint umano si riferisce ai mezzi con cui un umano accede a internet, ad esempio tramite un provider di servizi internet. Una rete di solito fornisce solo l'uno o l'altro, ma a volte può fornire entrambi. Miriamo a non identificare mai potenziali Endpoint umani come servizi cloud. Pertanto, un servizio cloud può essere identificato come qualcos'altro se il suo gamme è condiviso da Endpoint umani noti. Allo stesso modo, miriamo a identificare sempre i servizi cloud, i cui gamme non sono condivisi da alcun endpoint umano noto, come servizi cloud. Pertanto, una richiesta identificata esplicitamente come servizio cloud probabilmente non condivide il suo gamme con nessun endpoint umano noto. Allo stesso modo, una richiesta identificata esplicitamente da attacchi o rischio per lo spam probabilmente li condivide. Tuttavia, internet è sempre in evoluzione, gli scopi delle reti cambiano nel tempo, e le gamme vengono sempre acquistate o vendute, quindi rimani consapevole e vigile riguardo ai falsi positivi.
 
 ##### "default_tracktime" `[string]`
 - La durata per la quale devono essere tracciati gli indirizzi IP. Predefinito = 7d0°0′0″ (1 settimana).

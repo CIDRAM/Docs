@@ -315,7 +315,7 @@ stages───[Ativar esta etapa?]─[Registrar algum erro gerado durante esta 
 ├─Tracking ("Executar o monitoração IP")
 ├─RL ("Executar a limitação de taxa")
 ├─CAPTCHA ("Implantar CAPTCHAs (solicitações bloqueadas)")
-├─Reporting ("Executar relatórios")
+├─Reporting ("Enviar denúncias")
 ├─Statistics ("Atualizar estatísticas")
 ├─Webhooks ("Executar webhooks")
 ├─TriggerNotifications ("Processar a fila de notificação do desencadeamento de e-mail")
@@ -704,8 +704,8 @@ statistics───[IPv4]─[IPv6]─[Outros]
 ├─Blocked ("Solicitações bloqueadas")
 ├─Banned ("Solicitações banidas")
 ├─Passed ("Solicitações aprovadas")
-├─ReportOK ("Solicitações relatados para APIs externos – OK")
-└─ReportFailed ("Solicitações relatados para APIs externos – Falhou")
+├─ReportOK ("Solicitações denunciados para APIs externos – OK")
+└─ReportFailed ("Solicitações denunciados para APIs externos – Falhou")
 ```
 
 Nota: O monitoramento de estatísticas para regras auxiliares pode ser controlado na página de regras auxiliares.
@@ -816,7 +816,7 @@ Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos 
 Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
 ##### "report_log" `[string]`
-- Um arquivo para registrar quaisquer relatórios enviados para APIs externas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
+- Um arquivo para registrar quaisquer denúncias enviadas para APIs externas. Especifique o nome de um arquivo, ou deixe em branco para desabilitar.
 
 Dica útil: Você pode anexar informações de data/hora aos nomes dos arquivos de log usando espaços reservados de formato de hora. Os espaços reservados para formato de hora disponíveis são exibidos em <a onclick="javascript:toggleconfigNav('generalRow','generalShowLink')" href="#config_general_time_format">`general➡time_format`</a>.
 
